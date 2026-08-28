@@ -1,62 +1,39 @@
 import javax.annotation.Nullable;
 
-public abstract class fms<E extends fms.a<E>> extends flr<E> {
-   private static final xl a = xl.c("narration.selection.usage");
+public class fms extends fmb {
+   private final flo a;
 
-   public fms(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fms(flo $$0, xj $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
+   }
+
+   @Override
+   protected void b(flq $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xj $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = frl.a(ae.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   }
+
+   @Override
+   protected void a(fqb $$0) {
+   }
+
+   @Override
+   public void a(heg $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
    }
 
    @Nullable
    @Override
-   public flg a(fqa $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aM_() && $$0 instanceof fqa.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? flg.a(this, flg.a($$2)) : null;
-      } else if (!this.aM_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : flg.a(this, flg.a($$3));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(fpu $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aM_()) {
-         $$0.a(fpt.d, a);
-      }
-   }
-
-   public abstract static class a<E extends fms.a<E>> extends flr.a<E> implements fpv {
-      public abstract xl a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fpu $$0) {
-         $$0.a(fpt.a, this.a());
-      }
+   public fln a(fqh $$0) {
+      return null;
    }
 }

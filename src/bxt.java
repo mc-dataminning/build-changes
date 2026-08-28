@@ -1,31 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public class bxt {
-   public static bwy<bvm> a(float $$0) {
-      return cak.a(
-         (Function<cak.b<bvm>, ? extends App<cak.c<bvm>, can<bvm>>>)($$1 -> $$1.group($$1.c(cei.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dy())) {
-                           return false;
-                        } else {
-                           jh $$5 = $$3.dy();
-                           List<jh> $$6 = jh.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jh::j).collect(ae.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cel($$2x, $$0, 0)));
-                           return true;
-                        }
+   private static jh a(bvj $$0, jh $$1) {
+      azu $$2 = $$0.dV().A;
+      return $$1.b(a($$2), 0, a($$2));
+   }
+
+   private static int a(azu $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bvj> byl<E> a(cel<jh> $$0, int $$1, float $$2) {
+      return can.a(
+         (Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cel.o), $$3.c(cel.m), $$3.a(cel.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     jh $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
+                     if (!$$8) {
+                        bxc.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

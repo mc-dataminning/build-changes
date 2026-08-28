@@ -1,4 +1,3 @@
-public class gvr extends gwb {
-   public int a;
-   public boolean b;
+public class gvr extends gwf {
+   public boolean a;
 }

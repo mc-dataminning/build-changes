@@ -1,80 +1,42 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class ghq extends ggm {
+   private final bul a;
+   private int b;
+   private final int D;
+   private final lq E;
 
-public abstract class ghq extends cor {
-   @Nullable
-   private gdj i;
-   protected ezr b = ezr.c;
-   public float c;
-   public float d;
-   public float e;
-   public final gcy f;
-   public float g;
-   public float h;
+   public ghq(gdh $$0, bul $$1, lq $$2) {
+      this($$0, $$1, $$2, 3);
+   }
 
-   public ghq(gcy $$0, GameProfile $$1) {
-      super($$0, $$0.W(), $$0.X(), $$1);
-      this.f = $$0;
+   public ghq(gdh $$0, bul $$1, lq $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dy());
+   }
+
+   private ghq(gdh $$0, bul $$1, lq $$2, int $$3, ezy $$4) {
+      super($$0, $$1.dA(), $$1.e(0.5), $$1.dG(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
-   public boolean R_() {
-      gdj $$0 = this.a();
-      return $$0 != null && $$0.e() == dfc.d;
-   }
-
-   @Override
-   public boolean f() {
-      gdj $$0 = this.a();
-      return $$0 != null && $$0.e() == dfc.b;
-   }
-
-   @Nullable
-   protected gdj a() {
-      if (this.i == null) {
-         this.i = fjx.Q().L().a(this.cI());
-      }
-
-      return this.i;
-   }
-
-   @Override
-   public void l() {
-      this.g = this.h;
-      this.b = this.dB();
-      super.l();
-   }
-
-   public ezr I(float $$0) {
-      return this.b.a(this.dB(), (double)$$0);
-   }
-
-   public gzu b() {
-      gdj $$0 = this.a();
-      return $$0 == null ? gzl.a(this.cI()) : $$0.g();
-   }
-
-   public float a(boolean $$0, float $$1) {
-      float $$2 = 1.0F;
-      if (this.gm().b) {
-         $$2 *= 1.1F;
-      }
-
-      float $$3 = this.gm().b();
-      if ($$3 != 0.0F) {
-         float $$4 = (float)this.h(bwm.v) / $$3;
-         $$2 *= ($$4 + 1.0F) / 2.0F;
-      }
-
-      if (this.fC()) {
-         if (this.fE().a(cwj.ow)) {
-            float $$5 = Math.min((float)this.fG() / 20.0F, 1.0F);
-            $$2 *= 1.0F - azn.l($$5) * 0.15F;
-         } else if ($$0 && this.gK()) {
-            return 0.1F;
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
       }
 
-      return azn.h($$1, 1.0F, $$2);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

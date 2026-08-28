@@ -1,49 +1,95 @@
-public class dal extends dak {
-   public dal(dah $$0) {
+public class dal extends dar {
+   public dal(dao $$0) {
       super($$0);
    }
 
-   public boolean a(dai $$0, dff $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cwf $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(axm.bH)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cwj.a)) {
-                     return false;
-                  }
+   public boolean a(dap $$0, dfm $$1) {
+      int $$2 = 0;
+      cwm $$3 = cwm.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwm $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cwq.ur)) {
+               if (!$$3.f()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwq.uq)) {
+                  return false;
+               }
+
+               $$2++;
             }
          }
+      }
 
-         return true;
+      return !$$3.f() && $$2 > 0;
+   }
+
+   public cwm a(dap $$0, js.a $$1) {
+      int $$2 = 0;
+      cwm $$3 = cwm.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwm $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cwq.ur)) {
+               if (!$$3.f()) {
+                  return cwm.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwq.uq)) {
+                  return cwm.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      czu $$6 = $$3.a(ku.T);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         czu $$7 = $$6.b();
+         if ($$7 == null) {
+            return cwm.k;
+         } else {
+            cwm $$8 = $$3.c($$2);
+            $$8.b(ku.T, $$7);
+            return $$8;
+         }
+      } else {
+         return cwm.k;
       }
    }
 
-   public cwf a(dai $$0, js.a $$1) {
-      dtx $$2 = new dtx($$0.a(1).h(), $$0.a(3).h(), $$0.a(5).h(), $$0.a(7).h());
-      return dth.a($$2);
+   public jz<cwm> a(dap $$0) {
+      jz<cwm> $$1 = jz.a($$0.a(), cwm.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwm $$3 = $$0.a($$2);
+         if ($$3.h().l()) {
+            $$1.set($$2, new cwm($$3.h().k()));
+         } else if ($$3.h() instanceof cyi) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public dbf<?> ap_() {
+      return dbf.d;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
-   }
-
-   @Override
-   public day<?> aq_() {
-      return day.v;
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

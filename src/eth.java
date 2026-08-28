@@ -1,48 +1,31 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class eth extends eta {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public abstract class eth {
+   private boolean a;
 
-   public static eta.a<eth> a() {
-      return new eta.a<>(eth::new, eth::b, bax.k);
+   public abstract ul a(ul var1, js.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   public eth() {
-      this.b.defaultReturnValue(-1);
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   public static eth b(un $$0, js.a $$1) {
-      eth $$2 = new eth();
-
-      for (String $$3 : $$0.e()) {
-         if ($$0.b($$3, 99)) {
-            $$2.b.put($$3, $$0.h($$3));
-         }
-      }
-
-      return $$2;
+   public boolean d() {
+      return this.a;
    }
 
-   @Override
-   public un a(un $$0, js.a $$1) {
-      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<String> $$2 = (Entry<String>)var3.next();
-         $$0.a((String)$$2.getKey(), $$2.getIntValue());
-      }
-
-      return $$0;
+   public ul a(js.a $$0) {
+      ul $$1 = new ul();
+      $$1.a("data", this.a(new ul(), $$0));
+      va.e($$1);
+      this.a(false);
+      return $$1;
    }
 
-   public etg b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return new etg($$0);
+   public static record a<T extends eth>(Supplier<T> a, BiFunction<ul, js.a, T> b, baw c) {
    }
 }

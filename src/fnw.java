@@ -1,123 +1,145 @@
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class fnw implements fxi {
-   private static final all a = all.b("hud/hotbar");
-   private static final all b = all.b("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final fjx e;
-   private long f;
+public class fnw {
+   private static final int a = 105;
+   private static final int b = 5;
+   private static final int c = 10;
+   private final flo d;
    @Nullable
-   private fxf g;
+   private bos e;
+   private String f = "root";
+   private int g = 0;
 
-   public fnw(fjx $$0) {
+   public fnw(flo $$0) {
+      this.d = $$0;
+   }
+
+   public void a(@Nullable bos $$0) {
       this.e = $$0;
    }
 
    public void a(int $$0) {
-      this.f = ae.c();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new fxf(this);
-      }
+      this.g = $$0;
    }
 
-   private float c() {
-      long $$0 = this.f - ae.c() + 5000L;
-      return azn.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
+   public void a(flq $$0) {
+      if (this.e != null) {
+         List<bow> $$1 = this.e.a(this.f);
+         bow $$2 = $$1.removeFirst();
+         int $$3 = $$0.a() - 105 - 10;
+         int $$4 = $$3 - 105;
+         int $$5 = $$3 + 105;
+         int $$6 = $$1.size() * 9;
+         int $$7 = $$0.b() - this.g - 5;
+         int $$8 = $$7 - $$6;
+         int $$9 = 62;
+         int $$10 = $$8 - 62 - 5;
+         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
+         $$0.a($$4x -> {
+            double $$5x = 0.0;
 
-   public void a(flj $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
+            for (bow $$6x : $$1) {
+               int $$7x = azm.a($$6x.a / 4.0) + 1;
+               fev $$8x = $$4x.getBuffer(gjq.C());
+               int $$9x = axx.f($$6x.a());
+               int $$10x = axx.a($$9x, -8355712);
+               fer.a $$11x = $$0.c().c();
+               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
+
+               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
+                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$14x = azm.a($$13x) * 105.0F;
+                  float $$15x = azm.b($$13x) * 105.0F * 0.5F;
+                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
+               }
+
+               $$8x = $$4x.getBuffer(gjq.B());
+
+               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
+                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$18x = azm.a($$17x) * 105.0F;
+                  float $$19x = azm.b($$17x) * 105.0F * 0.5F;
+                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$21 = azm.a($$20x) * 105.0F;
+                  float $$22 = azm.b($$20x) * 105.0F * 0.5F;
+                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
+                  }
+               }
+
+               $$5x += $$6x.a;
+            }
+         });
+         DecimalFormat $$11 = new DecimalFormat("##0.00");
+         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+         String $$12 = bos.b($$2.d);
+         String $$13 = "";
+         if (!"unspecified".equals($$12)) {
+            $$13 = $$13 + "[0] ";
+         }
+
+         if ($$12.isEmpty()) {
+            $$13 = $$13 + "ROOT ";
          } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = azn.d((float)$$0.b() - 22.0F * $$1);
-            fxj $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
+            $$13 = $$13 + $$12 + " ";
+         }
+
+         int $$14 = 16777215;
+         int $$15 = $$10 - 62;
+         $$0.b(this.d, $$13, $$4, $$15, 16777215);
+         $$13 = $$11.format($$2.b) + "%";
+         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
+
+         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
+            bow $$17 = $$1.get($$16);
+            StringBuilder $$18 = new StringBuilder();
+            if ("unspecified".equals($$17.d)) {
+               $$18.append("[?] ");
+            } else {
+               $$18.append("[").append($$16 + 1).append("] ");
+            }
+
+            String $$19 = $$18.append($$17.d).toString();
+            int $$20 = $$8 + $$16 * 9;
+            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
+            $$19 = $$11.format($$17.a) + "%";
+            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
+            $$19 = $$11.format($$17.b) + "%";
+            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
          }
       }
-   }
-
-   protected void a(flj $$0, float $$1, int $$2, int $$3, fxj $$4) {
-      int $$5 = axy.a($$1);
-      $$0.a(gjh::B, a, $$2 - 91, $$3, 182, 22, $$5);
-      if ($$4.a() >= 0) {
-         $$0.a(gjh::B, b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23, $$5);
-      }
-
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a($$0, $$6, $$0.a() / 2 - 90 + $$6 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$6));
-      }
-   }
-
-   private void a(flj $$0, int $$1, int $$2, float $$3, float $$4, fxh $$5) {
-      if ($$5 != fxf.a) {
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$6 = $$5.aU_() ? 1.0F : 0.25F;
-         $$5.a($$0, $$6, $$4);
-         $$0.c().b();
-         int $$7 = (int)($$4 * 255.0F);
-         if ($$7 > 3 && $$5.aU_()) {
-            xl $$8 = this.e.n.S[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
-         }
-      }
-   }
-
-   public void b(flj $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fxh $$2 = this.g.b();
-         xl $$3 = $$2 == fxf.a ? this.g.c().b() : $$2.aT_();
-         if ($$3 != null) {
-            int $$4 = this.e.h.a($$3);
-            int $$5 = ($$0.a() - $$4) / 2;
-            int $$6 = $$0.b() - 35;
-            $$0.a(this.e.h, $$3, $$5, $$6, $$4, axy.c($$1, -1));
-         }
-      }
-   }
-
-   @Override
-   public void a(fxf $$0) {
-      this.g = null;
-      this.f = 0L;
-   }
-
-   public boolean a() {
-      return this.g != null;
    }
 
    public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
+      if (this.e != null) {
+         List<bow> $$1 = this.e.a(this.f);
+         if (!$$1.isEmpty()) {
+            bow $$2 = $$1.remove(0);
+            if ($$0 == 0) {
+               if (!$$2.d.isEmpty()) {
+                  int $$3 = this.f.lastIndexOf(30);
+                  if ($$3 >= 0) {
+                     this.f = this.f.substring(0, $$3);
+                  }
+               }
+            } else {
+               $$0--;
+               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
+                  if (!this.f.isEmpty()) {
+                     this.f = this.f + "\u001e";
+                  }
 
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fxf.a || !this.g.a($$1).aU_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ae.c();
-      }
-   }
-
-   public void b() {
-      this.f = ae.c();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
+                  this.f = this.f + $$1.get($$0).d;
+               }
+            }
          }
-      } else {
-         this.g = new fxf(this);
       }
    }
 }

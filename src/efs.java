@@ -1,44 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class efs extends eep<ehb> {
-   private static final int a = 7;
-
-   efs(Codec<ehb> $$0) {
+public class efs extends eew<ehj> {
+   public efs(Codec<ehj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eer<ehb> $$0) {
-      dgd $$1 = $$0.b();
-      azv $$2 = $$0.d();
-      ehb $$3 = $$0.f();
-      jh $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      jh.a $$6 = new jh.a();
+   public boolean a(eey<ehj> $$0) {
+      dfn $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azu $$3 = $$0.d();
+      ehj $$4 = $$0.f();
+      Optional<jm> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jh $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && eer.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         eer.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dvo $$8 = $$1.a_($$6);
+   private static Optional<jm> a(dfn $$0, jh $$1, azu $$2) {
+      boolean $$3 = eer.b($$0.a_($$1.d()));
+      boolean $$4 = eer.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jm.a : jm.b);
+      } else if ($$3) {
+         return Optional.of(jm.a);
+      } else {
+         return $$4 ? Optional.of(jm.b) : Optional.empty();
+      }
+   }
 
-         for (ehb.a $$9 : $$3.b) {
-            if (efk.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+   private static void a(dfn $$0, azu $$1, jh $$2, ehj $$3) {
+      eer.c($$0, $$2);
+
+      for (jm $$4 : jm.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            jh $$5 = $$2.a($$4);
+            eer.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               jh $$6 = $$5.a(jm.b($$1));
+               eer.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  jh $$7 = $$6.a(jm.b($$1));
+                  eer.c($$0, $$7);
+               }
             }
          }
       }
-
-      return true;
-   }
-
-   private void a(jh.a $$0, azv $$1, jh $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azv $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

@@ -1,67 +1,81 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Set;
 
-public class cmv extends bwx<cmr> {
-   private static final int c = 256;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final float f = 0.7F;
-   private static final int g = Math.round(15.0F);
-   private static final int h = Math.round(4.0F);
-   private static final int i = Math.round(10.0F);
+public class cmv {
+   public static final float a = 0.6F;
+   public static final float b = 4.0F;
+   public static final float c = 8.0F;
+   public static final float d = 24.0F;
+   static final List<cfs<? extends cfr<? super cmu>>> e = ImmutableList.of(cfs.c, cfs.f, cfs.d, cfs.z);
+   static final List<cel<?>> f = ImmutableList.of(
+      cel.n, cel.h, cel.B, cel.E, cel.o, cel.m, cel.aU, cel.aZ, cel.aV, cel.aW, cel.aX, cel.aY, new cel[]{cel.ba, cel.bb, cel.x, cel.y, cel.t}
+   );
+   private static final int g = 100;
 
-   @VisibleForTesting
-   public cmv() {
-      super(ImmutableMap.of(cei.o, cej.a, cei.aY, cej.b, cei.aW, cej.b, cei.aX, cej.b, cei.aV, cej.a, cei.m, cej.b, cei.ba, cej.b), g + 1 + h);
+   protected static bwj<?> a(cmu $$0, bwj<cmu> $$1) {
+      a($$1);
+      b($$1);
+      b($$0, $$1);
+      $$1.a(Set.of(cql.a));
+      $$1.b(cql.k);
+      $$1.f();
+      return $$1;
    }
 
-   protected boolean a(arq $$0, cmr $$1) {
-      return $$1.ay() != bvq.a ? false : $$1.ee().c(cei.o).map($$1x -> a($$1, $$1x)).map($$1x -> {
-         if (!$$1x) {
-            $$1.ee().b(cei.aV);
-         }
-
-         return $$1x;
-      }).orElse(false);
+   private static void a(bwj<cmu> $$0) {
+      $$0.a(cql.a, 0, ImmutableList.of(new bzu(0.8F), new byg(45, 90)));
    }
 
-   protected boolean a(arq $$0, cmr $$1, long $$2) {
-      return $$1.ee().a(cei.o) && $$1.ee().a(cei.aV);
+   private static void b(bwj<cmu> $$0) {
+      $$0.a(
+         cql.b,
+         ImmutableList.of(
+            Pair.of(0, bzm.a(($$0x, $$1) -> $$1.eb().c(cel.B))),
+            Pair.of(1, bzm.a(($$0x, $$1) -> $$1.gn())),
+            Pair.of(2, new cmv.a(20, 40)),
+            Pair.of(3, new byx(ImmutableList.of(Pair.of(new bxk(20, 100), 1), Pair.of(bys.a(0.6F), 2))))
+         )
+      );
    }
 
-   protected void b(arq $$0, cmr $$1, long $$2) {
-      $$1.ee().c(cei.o).ifPresent($$1x -> $$1.b(bvq.q));
-      $$1.ee().a(cei.aW, bat.a, (long)g);
-      $$1.a(awo.cG, 1.0F, 1.0F);
+   private static void b(cmu $$0, bwj<cmu> $$1) {
+      $$1.a(
+         cql.k,
+         ImmutableList.of(
+            Pair.of(0, bzp.a(cfr.a($$0, 100).negate()::test)), Pair.of(1, new cmy()), Pair.of(2, new cmx()), Pair.of(3, new cmz()), Pair.of(4, new cna())
+         ),
+         ImmutableSet.of(Pair.of(cel.o, cem.a), Pair.of(cel.m, cem.b))
+      );
    }
 
-   protected void c(arq $$0, cmr $$1, long $$2) {
-      if ($$1.ay() == bvq.q) {
-         $$1.b(bvq.a);
+   static void a(cmu $$0) {
+      $$0.eb().a(ImmutableList.of(cql.k, cql.b));
+   }
+
+   public static class a extends byk {
+      @VisibleForTesting
+      public a(int $$0, int $$1) {
+         super($$0, $$1);
       }
 
-      $$1.ee().a(cei.aY, bat.a, (long)i);
-      $$1.ee().b(cei.aV);
-   }
+      @Override
+      protected void c(arp $$0, bvj $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         $$1.a(awn.cM);
+         $$1.b(bvt.p);
+      }
 
-   protected void d(arq $$0, cmr $$1, long $$2) {
-      bwg<cmr> $$3 = $$1.ee();
-      bve $$4 = $$3.c(cei.o).orElse(null);
-      if ($$4 != null) {
-         $$1.a(fi.a.b, $$4.dw());
-         if (!$$3.c(cei.aW).isPresent() && !$$3.c(cei.aX).isPresent()) {
-            $$3.a(cei.aX, bat.a, (long)h);
-            double $$5 = $$4.dD() - $$1.dD();
-            double $$6 = $$4.e($$4.cb() ? 0.8 : 0.3) - $$1.gx();
-            double $$7 = $$4.dJ() - $$1.dJ();
-            cpk.a(new cqb($$1, $$0), $$0, cwf.k, $$5, $$6, $$7, 0.7F, (float)(5 - $$0.ak().a() * 4));
-            $$1.a(awo.cJ, 1.5F, 1.0F);
+      @Override
+      protected void b(arp $$0, bvj $$1, long $$2) {
+         super.b($$0, $$1, $$2);
+         $$1.b(bvt.a);
+         if ($$1.eb().a(cel.o)) {
+            $$1.eb().a(cel.aV, bas.a, 60L);
          }
       }
-   }
-
-   private static boolean a(cmr $$0, bve $$1) {
-      double $$2 = $$0.dw().g($$1.dw());
-      return $$2 < 256.0;
    }
 }

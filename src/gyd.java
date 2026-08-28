@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gyd {
+public class gyd extends gwe {
+   public boolean a;
+   public boolean b;
 }

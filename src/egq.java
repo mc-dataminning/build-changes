@@ -1,30 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egq(ejc b, ecq c, brm d, int e) implements egt {
+public class egq {
    public static final Codec<egq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ejc.a.fieldOf("state_provider").forGetter(egq::a),
-               ecq.b.fieldOf("target").forGetter(egq::b),
-               brm.b(0, 8).fieldOf("radius").forGetter(egq::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(egq::d)
-            )
+      $$0 -> $$0.group(elm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, egq::new)
    );
+   public final jq<elm> b;
+   public final float c;
 
-   public ejc a() {
-      return this.b;
+   public egq(jq<elm> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ecq b() {
-      return this.c;
-   }
-
-   public brm c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public boolean a(dgk $$0, dxr $$1, azu $$2, jh $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,69 +1,73 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cwc {
-   private final Map<all, cwc.a> a = Maps.newHashMap();
-   private int b;
+public class cwc extends cvf {
+   protected static final Map<diq, Pair<Predicate<daf>, Consumer<daf>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dis.i,
+         Pair.of(cwc::b, a(dis.cC.m())),
+         dis.kE,
+         Pair.of(cwc::b, a(dis.cC.m())),
+         dis.j,
+         Pair.of(cwc::b, a(dis.cC.m())),
+         dis.k,
+         Pair.of(cwc::b, a(dis.j.m())),
+         dis.sH,
+         Pair.of((Predicate<daf>)$$0 -> true, a(dis.j.m(), cwq.dO))
+      )
+   );
 
-   public boolean a(cwf $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cwc(cyd $$0, float $$1, float $$2, cwi.a $$3) {
+      super($$0, axc.bC, $$1, $$2, $$3);
    }
 
-   public float a(cwf $$0, float $$1) {
-      all $$2 = this.b($$0);
-      cwc.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azn.a($$5 / $$4, 0.0F, 1.0F);
+   @Override
+   public bsk a(daf $$0) {
+      dfm $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      Pair<Predicate<daf>, Consumer<daf>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bsk.e;
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<all, cwc.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<all, cwc.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
+         Predicate<daf> $$4 = (Predicate<daf>)$$3.getFirst();
+         Consumer<daf> $$5 = (Consumer<daf>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cou $$6 = $$0.o();
+            $$1.a($$6, $$2, awn.mm, awo.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bvh.d($$0.p()));
+               }
             }
+
+            return bsk.a;
+         } else {
+            return bsk.e;
          }
       }
    }
 
-   public all b(cwf $$0) {
-      czk $$1 = $$0.a(ku.z);
-      all $$2 = lz.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   public static Consumer<daf> a(dvv $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(ear.c, $$1.a(), ear.a.a($$1.o(), $$0));
+      };
    }
 
-   public void a(cwf $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   public static Consumer<daf> a(dvv $$0, dfl $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(ear.c, $$2.a(), ear.a.a($$2.o(), $$0));
+         diq.a($$2.q(), $$2.a(), $$2.k(), new cwm($$1));
+      };
    }
 
-   public void a(all $$0, int $$1) {
-      this.a.put($$0, new cwc.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(all $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(all $$0, int $$1) {
-   }
-
-   protected void b(all $$0) {
-   }
-
-   static record a(int a, int b) {
+   public static boolean b(daf $$0) {
+      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
    }
 }

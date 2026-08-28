@@ -1,59 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fja extends fjd {
+   private static final xj b = xj.c("mco.connect.connecting");
+   private final hfn c;
+   private final fgi d;
+   private final fgj e;
 
-public abstract class fja extends fiw {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final xl d;
-   private final Runnable e;
-
-   public fja(long $$0, xl $$1, Runnable $$2) {
-      this.c = $$0;
+   public fja(frw $$0, fgi $$1, fgj $$2) {
       this.d = $$1;
       this.e = $$2;
+      this.c = new hfn($$0);
    }
-
-   protected abstract void a(ffa var1, long var2) throws fgv;
 
    @Override
    public void run() {
-      ffa $$0 = ffa.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fgw var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
-      }
+      this.c.a(this.d, gey.a(this.e.a));
    }
 
    @Override
-   public xl a() {
-      return this.d;
+   public void b() {
+      super.b();
+      this.c.a();
+      fke.Q().af().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xj a() {
+      return b;
    }
 }

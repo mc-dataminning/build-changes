@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cev extends cet {
+   private boolean p;
 
-public class cev extends cfo<btz> {
+   public cev(bvj $$0, dfm $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<cei<?>> a() {
-      return ImmutableSet.of(cei.K, cei.h);
+   protected esl a(int $$0) {
+      this.p = this.a.aq() == bus.G;
+      this.o = new esp(this.p);
+      return new esl(this.o, $$0);
    }
 
-   protected void a(arq $$0, btz $$1) {
-      $$1.ee().c(cei.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bn();
    }
 
-   private void a(btz $$0, cek $$1) {
-      Optional<btz> $$2 = $$1.a($$1x -> $$1x.ar() == $$0.ar() && !$$1x.p_()).map(btz.class::cast);
-      $$0.ee().a(cei.K, $$2);
+   @Override
+   protected ezy b() {
+      return new ezy(this.a.dA(), this.a.e(0.5), this.a.dG());
+   }
+
+   @Override
+   protected double a(ezy $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(ezy $$0, ezy $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public class lo implements lq {
-   private static final Codec<cwf> a = Codec.withAlternative(cwf.c, cwf.a, cwf::new);
+   private static final Codec<cwm> a = Codec.withAlternative(cwm.c, cwm.a, cwm::new);
    private final lr<lo> b;
-   private final cwf c;
+   private final cwm c;
 
    public static MapCodec<lo> a(lr<lo> $$0) {
       return a.xmap($$1 -> new lo($$0, $$1), $$0x -> $$0x.c).fieldOf("item");
    }
 
-   public static zj<? super ww, lo> b(lr<lo> $$0) {
-      return cwf.i.a($$1 -> new lo($$0, $$1), $$0x -> $$0x.c);
+   public static zh<? super wu, lo> b(lr<lo> $$0) {
+      return cwm.i.a($$1 -> new lo($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public lo(lr<lo> $$0, cwf $$1) {
+   public lo(lr<lo> $$0, cwm $$1) {
       if ($$1.f()) {
          throw new IllegalArgumentException("Empty stacks are not allowed");
       } else {
@@ -28,7 +28,7 @@ public class lo implements lq {
       return this.b;
    }
 
-   public cwf b() {
+   public cwm b() {
       return this.c;
    }
 }

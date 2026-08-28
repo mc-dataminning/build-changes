@@ -1,55 +1,105 @@
-public class ctb<T extends crs> implements crg {
-   public static final ctb<csb> a = a("generic_9x1", csb::a);
-   public static final ctb<csb> b = a("generic_9x2", csb::b);
-   public static final ctb<csb> c = a("generic_9x3", csb::c);
-   public static final ctb<csb> d = a("generic_9x4", csb::d);
-   public static final ctb<csb> e = a("generic_9x5", csb::e);
-   public static final ctb<csb> f = a("generic_9x6", csb::f);
-   public static final ctb<csn> g = a("generic_3x3", csn::new);
-   public static final ctb<csi> h = a("crafter_3x3", csi::new);
-   public static final ctb<crv> i = a("anvil", crv::new);
-   public static final ctb<crx> j = a("beacon", crx::new);
-   public static final ctb<cry> k = a("blast_furnace", cry::new);
-   public static final ctb<crz> l = a("brewing_stand", crz::new);
-   public static final ctb<csl> m = a("crafting", csl::new);
-   public static final ctb<cso> n = a("enchantment", cso::new);
-   public static final ctb<csq> o = a("furnace", csq::new);
-   public static final ctb<css> p = a("grindstone", css::new);
-   public static final ctb<cst> q = a("hopper", cst::new);
-   public static final ctb<csy> r = a("lectern", ($$0, $$1) -> new csy($$0));
-   public static final ctb<csz> s = a("loom", csz::new);
-   public static final ctb<ctd> t = a("merchant", ctd::new);
-   public static final ctb<ctm> u = a("shulker_box", ctm::new);
-   public static final ctb<cts> v = a("smithing", cts::new);
-   public static final ctb<ctt> w = a("smoker", ctt::new);
-   public static final ctb<csa> x = a("cartography_table", csa::new);
-   public static final ctb<ctv> y = a("stonecutter", ctv::new);
-   private final crj z;
-   private final ctb.a<T> A;
+public class ctb extends crz {
+   private final bsd m;
+   private final bsd n;
+   private final cjc o;
+   private static final int p = 1;
+   private static final int q = 2;
 
-   private static <T extends crs> ctb<T> a(String $$0, ctb.a<T> $$1) {
-      return kd.a(lz.p, $$0, new ctb<>($$1, crl.h));
-   }
+   public ctb(int $$0, cot $$1, bsd $$2, final cjc $$3, int $$4) {
+      super(null, $$0);
+      this.m = $$2;
+      this.n = $$3.gX();
+      this.o = $$3;
+      $$2.c_($$1.k);
+      this.a(new ctw($$2, 0, 8, 18) {
+         @Override
+         public boolean a(cwm $$0) {
+            return $$0.a(cwq.nL) && !this.h() && $$3.f();
+         }
 
-   private static <T extends crs> ctb<T> a(String $$0, ctb.a<T> $$1, crh... $$2) {
-      return kd.a(lz.p, $$0, new ctb<>($$1, crl.f.a($$2)));
-   }
+         @Override
+         public boolean d() {
+            return $$3.f();
+         }
+      });
+      this.a(new csd(this.n, $$3, but.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cwm $$0) {
+            return $$3.a($$0, but.g);
+         }
 
-   private ctb(ctb.a<T> $$0, crj $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
+         @Override
+         public boolean d() {
+            return $$3.e(but.g);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$5 = 0; $$5 < 3; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               this.a(new ctw($$2, 1 + $$6 + $$5 * $$4, 80 + $$6 * 18, 18 + $$5 * 18));
+            }
+         }
+      }
 
-   public T a(int $$0, coq $$1) {
-      return this.A.create($$0, $$1);
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public crj i() {
-      return this.z;
+   public boolean b(cou $$0) {
+      return !this.o.b(this.m) && this.m.a($$0) && this.n.a($$0) && this.o.bL() && $$0.b(this.o, 4.0);
    }
 
-   interface a<T extends crs> {
-      T create(int var1, coq var2);
+   @Override
+   public cwm b(cou $$0, int $$1) {
+      cwm $$2 = cwm.k;
+      ctw $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cwm $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = this.m.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cwm.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cwm.k;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cwm.k;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cwm.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cwm.k;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cwm.k;
+            }
+
+            return cwm.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cwm.k);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(cou $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 }

@@ -1,71 +1,13 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
-
-public abstract class fzv {
-   private static final Vector3f a = new Vector3f();
-   protected final gcc v;
-   protected final Function<all, gjh> w;
-   private final List<gcc> b;
-
-   public fzv(gcc $$0, Function<all, gjh> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+public class fzv<S extends gwe> extends fzw<S> {
+   public fzv(gcl $$0) {
+      super($$0);
    }
 
-   public final gjh a(all $$0) {
-      return this.w.apply($$0);
-   }
-
-   public final void a(fek $$0, feo $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public final void a(fek $$0, feo $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final gcc e() {
-      return this.v;
-   }
-
-   public Optional<gcc> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gcc> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gcc $$0 : this.b) {
-         $$0.c();
-      }
-   }
-
-   protected void a(bua $$0, fkm $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fkm $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fko.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bua $$0, fkm $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fko.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fkm $$0) {
-      fko.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends fzv {
-      public a(gcc $$0, Function<all, gjh> $$1) {
-         super($$0, $$1);
-      }
+   public static gct a(gcp $$0) {
+      gct $$1 = fzw.a($$0, 0.0F);
+      gcv $$2 = $$1.a();
+      $$2.a("right_leg", gcq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(-1.9F, 12.0F, 0.0F));
+      $$2.a("left_leg", gcq.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(1.9F, 12.0F, 0.0F));
+      return $$1;
    }
 }

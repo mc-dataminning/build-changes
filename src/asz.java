@@ -1,27 +1,15 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public interface asz {
-   asz e = new asz() {
-      @Override
-      public CompletableFuture<asj> a(String $$0) {
-         return CompletableFuture.completedFuture(asj.a($$0));
-      }
+public class asz implements asg {
+   public static final asg.a a = new asg.a("join_world");
 
-      @Override
-      public CompletableFuture<List<asj>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(asj::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   default void a() {
+   @Override
+   public void a(Consumer<zq<?>> $$0) {
+      $$0.accept(abo.a);
    }
 
-   default void b() {
+   @Override
+   public asg.a a() {
+      return a;
    }
-
-   CompletableFuture<asj> a(String var1);
-
-   CompletableFuture<List<asj>> a(List<String> var1);
 }

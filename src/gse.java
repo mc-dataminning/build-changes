@@ -1,33 +1,18 @@
-public class gse extends gnv<chy, gxr, gbr> {
-   public gse(gpa.a $$0) {
-      super($$0, new gbr($$0.a(gcb.dg)), new gbr($$0.a(gcb.di)), 0.5F);
-      this.a(new guc(this, $$0.f(), $$0.h()));
-      this.a(new gud(this));
+public class gse extends gob<cjc, gvp, fya<gvp>> {
+   private static final alj a = alj.b("textures/entity/horse/horse_zombie.png");
+   private static final alj b = alj.b("textures/entity/horse/horse_skeleton.png");
+   private final alj k;
+
+   public gse(gpk.a $$0, gcj $$1, gcj $$2, boolean $$3) {
+      super($$0, new fzu($$0.a($$1)), new fzu($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   protected int a(gxr $$0) {
-      float $$1 = $$0.f;
-      return $$1 == 1.0F ? -1 : axy.a(1.0F, $$1, $$1, $$1);
+   public alj a(gvp $$0) {
+      return this.k;
    }
 
-   public all b(gxr $$0) {
-      return $$0.g;
-   }
-
-   public gxr c() {
-      return new gxr();
-   }
-
-   public void a(chy $$0, gxr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ae_();
-      $$1.b = $$0.y();
-      $$1.c = $$0.gK();
-      $$1.d = $$0.L($$2);
-      $$1.e = $$0.K($$2);
-      $$1.g = $$0.gH();
-      $$1.f = $$0.J($$2);
-      $$1.h = $$0.q() ? $$0.gL() : null;
-      $$1.i = $$0.ak().v();
+   public gvp b() {
+      return new gvp();
    }
 }

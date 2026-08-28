@@ -1,122 +1,118 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cgg implements der {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cgg.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class cgg {
+   private static final int a = 10;
 
-   public cgg() {
-      this.c = cgg.a.c;
+   public static jh a(azu $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new jh($$3, $$4, $$5);
    }
 
-   @Override
-   public int a(arq $$0, boolean $$1, boolean $$2) {
-      if (!$$0.S() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? cgg.a.b : cgg.a.c;
-         }
-
-         if (this.c == cgg.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cgg.a.c;
-               }
-
-               return 1;
-            }
-         }
+   @Nullable
+   public static jh a(azu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = azm.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)azm.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return jh.a($$10, (double)$$12, $$11);
       } else {
-         this.c = cgg.a.c;
-         this.b = false;
-         return 0;
+         return null;
       }
    }
 
-   private boolean a(arq $$0) {
-      for (cor $$1 : $$0.x()) {
-         if (!$$1.R_()) {
-            jh $$2 = $$1.dy();
-            if ($$0.c($$2) && !$$0.t($$2).a(axc.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + azn.d(azn.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + azn.d(azn.a($$4) * 32.0F);
-                  if (this.a($$0, new jh(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static jh a(jh $$0, int $$1, Predicate<jh> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         jh.a $$3 = $$0.k().c(jm.b);
 
-               return true;
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(jm.b);
+         }
+
+         return $$3.j();
+      }
+   }
+
+   @VisibleForTesting
+   public static jh a(jh $$0, int $$1, int $$2, Predicate<jh> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         jh.a $$4 = $$0.k().c(jm.b);
+
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(jm.b);
+         }
+
+         int $$5 = $$4.v();
+
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(jm.b);
+            if ($$3.test($$4)) {
+               $$4.c(jm.a);
+               break;
             }
          }
-      }
 
-      return false;
-   }
-
-   private void b(arq $$0) {
-      ezr $$1 = this.a($$0, new jh(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cmo $$2;
-         try {
-            $$2 = new cmo($$0);
-            $$2.a($$0, $$0.d_($$2.dy()), buo.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$4.j();
       }
    }
 
    @Nullable
-   private ezr a(arq $$0, jh $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(ebj.a.b, $$3, $$4);
-         jh $$6 = new jh($$3, $$5, $$4);
-         if ($$0.c($$6) && clv.b(bup.bu, $$0, buo.h, $$6, $$0.A)) {
-            return ezr.c($$6);
+   public static ezy a(bvp $$0, Supplier<jh> $$1) {
+      return a($$1, $$0::c);
+   }
+
+   @Nullable
+   public static ezy a(Supplier<jh> $$0, ToDoubleFunction<jh> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      jh $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         jh $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? ezy.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static jh a(bvp $$0, int $$1, azu $$2, jh $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fY() && $$1 > 1) {
+         jh $$6 = $$0.fV();
+         if ($$0.dA() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dG() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return jh.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
    }
 }

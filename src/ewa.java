@@ -1,63 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ewa extends evt {
-   public static final MapCodec<ewa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dsi.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, ewa::new)
-   );
-   private final dsi b;
-   private final boolean c;
+public abstract class ewa implements ewb {
+   protected final List<exy> g;
+   private final Predicate<eun> a;
 
-   ewa(List<exr> $$0, dsi $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected ewa(List<exy> $$0) {
+      this.g = $$0;
+      this.a = ae.a($$0);
    }
 
    @Override
-   protected cwf a(cwf $$0, eug $$1) {
-      if (this.c) {
-         $$0.a(ku.ai, dsi.a, this.b, ($$0x, $$1x) -> new dsi.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(ku.ai, this.b);
-      }
+   public abstract ewc<? extends ewa> b();
 
-      return $$0;
+   protected static <T extends ewa> P1<Mu<T>, List<exy>> a(Instance<T> $$0) {
+      return $$0.group(exy.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
+
+   public final cwm b(cwm $$0, eun $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cwm a(cwm var1, eun var2);
 
    @Override
-   public evv<ewa> b() {
-      return evw.E;
+   public void a(eut $$0) {
+      ewb.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   public static ewa.a a(boolean $$0) {
-      return new ewa.a($$0);
+   protected static ewa.a<?> a(Function<List<exy>, ewb> $$0) {
+      return new ewa.b($$0);
    }
 
-   public static class a extends evt.a<ewa.a> {
-      private final dsi.a a = new dsi.a();
-      private final boolean b;
+   public abstract static class a<T extends ewa.a<T>> implements ewb.a, exq<T> {
+      private final Builder<exy> a = ImmutableList.builder();
 
-      a(boolean $$0) {
-         this.b = $$0;
+      public T a(exy.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      protected ewa.a a() {
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<exy> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends ewa.a<ewa.b> {
+      private final Function<List<exy>, ewb> a;
+
+      public b(Function<List<exy>, ewb> $$0) {
+         this.a = $$0;
+      }
+
+      protected ewa.b a() {
          return this;
       }
 
       @Override
-      public evu b() {
-         return new ewa(this.g(), this.a.a(), this.b);
-      }
-
-      public ewa.a a(jq<dsh> $$0, cvc $$1) {
-         this.a.a($$0, $$1);
-         return this;
+      public ewb b() {
+         return this.a.apply(this.g());
       }
    }
 }

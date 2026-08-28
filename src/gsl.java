@@ -1,13 +1,22 @@
-public class gsl extends gtn<gus, fyl> {
-   private static final gjh a = gjh.q(all.b("textures/entity/breeze/breeze_eyes.png"));
+public class gsl extends gqq<cmo, gxz, gby> {
+   private static final alj a = alj.b("textures/entity/witch.png");
 
-   public gsl(gqw<gus, fyl> $$0) {
-      super($$0);
+   public gsl(gpk.a $$0) {
+      super($$0, new gby($$0.a(gck.dq)), 0.5F);
+      this.a(new gul(this, $$0.b()));
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gus $$3, float $$4, float $$5) {
-      feo $$6 = $$1.getBuffer(a);
-      fyl $$7 = this.d();
-      gog.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, gyk.d);
+   public alj a(gxz $$0) {
+      return a;
+   }
+
+   public gxz b() {
+      return new gxz();
+   }
+
+   public void a(cmo $$0, gxz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ar();
+      $$1.b = !$$0.eX().f();
    }
 }

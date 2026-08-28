@@ -1,14 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aab implements zq<zw> {
+   public static final zh<wg, aab> a = zq.a(aab::a, aab::new);
+   private final int b;
 
-public record aab(xl b) implements zs<zy> {
-   public static final zj<ByteBuf, aab> a = xn.f.a(aab::new, aab::b);
-
-   @Override
-   public zu<aab> a() {
-      return aak.c;
+   public aab(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(zy $$0) {
+   private aab(wg $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wg $$0) {
+      $$0.q(this.b);
+   }
+
+   @Override
+   public zs<aab> a() {
+      return aai.e;
+   }
+
+   public void a(zw $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

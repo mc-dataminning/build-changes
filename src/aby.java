@@ -1,23 +1,8 @@
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class aby implements zs<abx> {
-   public static final aby a = new aby();
-   public static final zj<ByteBuf, aby> b = zj.a(a);
-
-   private aby() {
-   }
-
-   @Override
-   public zu<aby> a() {
-      return abv.f;
-   }
-
-   public void a(abx $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aby {
 }

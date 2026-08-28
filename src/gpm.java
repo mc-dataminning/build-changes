@@ -1,17 +1,34 @@
-public class gpm extends gri<buw> {
-   private static final all a = all.b("textures/entity/squid/glow_squid.png");
+public class gpm extends gpj<cpf, gvq> {
+   private static final alj a = alj.b("textures/entity/illager/evoker_fangs.png");
+   private final fzk b;
 
-   public gpm(gpa.a $$0, gbd $$1, gbd $$2) {
-      super($$0, $$1, $$2);
+   public gpm(gpk.a $$0) {
+      super($$0);
+      this.b = new fzk($$0.a(gck.aI));
    }
 
-   @Override
-   public all a(gxb $$0) {
-      return a;
+   public void a(gvq $$0, fer $$1, gjg $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.b.a($$0);
+         fev $$5 = $$2.getBuffer(this.b.a(a));
+         this.b.a($$1, $$5, $$3, gyv.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   protected int a(buw $$0, jh $$1) {
-      int $$2 = (int)azn.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public gvq a() {
+      return new gvq();
+   }
+
+   public void a(cpf $$0, gvq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.dL();
+      $$1.b = $$0.a($$2);
    }
 }

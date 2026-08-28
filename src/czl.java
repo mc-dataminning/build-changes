@@ -1,45 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record czl(cwf c) {
-   public static final Codec<czl> a = cwf.b.xmap(czl::new, czl::a);
-   public static final zj<ww, czl> b = zj.a(cwf.i, czl::a, czl::new);
+public record czl(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<czl> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayv.y.optionalFieldOf("name").forGetter(czl::c),
+               kk.a.optionalFieldOf("id").forGetter(czl::d),
+               ayv.x.optionalFieldOf("properties", new PropertyMap()).forGetter(czl::e)
+            )
+            .apply($$0, czl::new)
+   );
+   public static final Codec<czl> a = Codec.withAlternative(g, ayv.y, $$0 -> new czl(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final zh<ByteBuf, czl> b = zh.a(zf.b(16).a(zf::a), czl::c, kk.g.a(zf::a), czl::d, zf.w, czl::e, czl::new);
 
-   public cwf a(bve $$0, cwf $$1, int $$2) {
-      boolean $$3 = $$0.fY();
-      cwf $$4 = this.c.v();
-      if ($$3) {
-         return $$1;
-      } else if ($$1.L() >= $$2) {
-         return $$1;
-      } else if ($$1.f()) {
-         return $$4;
+   public czl(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   }
+
+   public czl(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   }
+
+   public CompletableFuture<czl> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
       } else {
-         if (!$$0.dY().y_() && $$0 instanceof cor $$5 && !$$5.gl().f($$4)) {
-            $$5.a($$4, false);
-         }
-
-         return $$1;
+         return this.d.isPresent() ? dum.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new czl($$1);
+         }) : dum.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ae.e, this.c.get()));
+            return new czl($$1);
+         });
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         czl $$1 = (czl)$$0;
-         return cwf.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ae.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   @Override
-   public int hashCode() {
-      return cwf.a(this.c);
-   }
-
-   public cwf a() {
-      return this.c;
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

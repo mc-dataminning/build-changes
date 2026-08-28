@@ -1,22 +1,17 @@
-public class gof extends gnt<clf, gur> {
-   private static final all a = all.b("textures/entity/skeleton/bogged.png");
-   private static final all b = all.b("textures/entity/skeleton/bogged_overlay.png");
+@Deprecated
+public abstract class gof<T extends bvj, S extends gwm, M extends fzj<? super S>> extends gqq<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gof(gpa.a $$0) {
-      super($$0, gcb.x, gcb.y, new fyj($$0.a(gcb.w)));
-      this.a(new gtq<>(this, $$0.f(), gcb.z, b));
+   public gof(gpk.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public all a(gur $$0) {
-      return a;
-   }
-
-   public gur a() {
-      return new gur();
-   }
-
-   public void a(clf $$0, gur $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gz();
+   @Override
+   public void a(S $$0, fer $$1, gjg $$2, int $$3) {
+      this.h = $$0.ae ? this.b : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

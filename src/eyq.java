@@ -1,48 +1,53 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public record eyq(all b, fo.g c) implements eyn {
+public record eyq(eyu b, eyu c) implements eyu {
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(all.a.fieldOf("storage").forGetter(eyq::c), fo.g.a.fieldOf("path").forGetter(eyq::d)).apply($$0, eyq::new)
+      $$0 -> $$0.group(eyv.a.fieldOf("n").forGetter(eyq::c), eyv.a.fieldOf("p").forGetter(eyq::d)).apply($$0, eyq::new)
    );
 
    @Override
-   public eym b() {
-      return eyo.f;
+   public eyt b() {
+      return eyv.d;
    }
 
-   private Optional<vd> c(eug $$0) {
-      un $$1 = $$0.d().o().aK().a(this.b);
+   @Override
+   public int a(eun $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      azu $$3 = $$0.b();
+      int $$4 = 0;
 
-      try {
-         List<vk> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof vd $$3) {
-            return Optional.of($$3);
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
          }
-      } catch (CommandSyntaxException var6) {
       }
 
-      return Optional.empty();
+      return $$4;
    }
 
    @Override
-   public float b(eug $$0) {
-      return this.c($$0).map(vd::k).orElse(0.0F);
+   public float b(eun $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static eyq a(int $$0, float $$1) {
+      return new eyq(eyr.a((float)$$0), eyr.a($$1));
    }
 
    @Override
-   public int a(eug $$0) {
-      return this.c($$0).map(vd::g).orElse(0);
+   public Set<exg<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public all c() {
+   public eyu c() {
       return this.b;
    }
 
-   public fo.g d() {
+   public eyu d() {
       return this.c;
    }
 }

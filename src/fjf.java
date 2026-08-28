@@ -1,30 +1,36 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fjf implements azq {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fjf extends fjd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xj c = xj.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private static final IntFunction<fjf> d = aye.a(fjf::b, values(), aye.a.b);
-   private final int e;
-   private final String f;
-
-   private fjf(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fjf(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void run() {
+      ffh $$0 = ffh.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fhc var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fjf a(int $$0) {
-      return d.apply($$0);
+   public xj a() {
+      return c;
    }
 }

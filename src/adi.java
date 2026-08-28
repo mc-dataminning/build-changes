@@ -1,25 +1,21 @@
-public record adi(long[] b, bnc c) implements zs<ach> {
-   public static final zj<wi, adi> a = zs.a(adi::a, adi::new);
-
-   private adi(wi $$0) {
-      this($$0.d(), $$0.b(bnc.class));
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record adi(xj b, xf.a c) implements zq<acf> {
+   public static final zh<wu, adi> a = zh.a(xl.d, adi::b, xf.a.a, adi::e, adi::new);
 
    @Override
-   public zu<adi> a() {
-      return agw.A;
+   public zs<adi> a() {
+      return agu.C;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public bnc e() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public xf.a e() {
       return this.c;
    }
 }

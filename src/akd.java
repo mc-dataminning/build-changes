@@ -1,3 +1,8 @@
-public interface akd extends wr {
-   void a(ake var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akd {
 }

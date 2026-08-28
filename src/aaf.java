@@ -1,49 +1,33 @@
 import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
 
-public record aaf(UUID c, String d, String e, boolean f, Optional<xl> g) implements zs<zy> {
-   public static final int a = 40;
-   public static final zj<ByteBuf, aaf> b = zj.a(kk.g, aaf::b, zh.m, aaf::e, zh.b(40), aaf::f, zh.b, aaf::g, xn.f.a(zh::a), aaf::h, aaf::new);
+public record aaf(alj c, byte[] d) implements zq<zw> {
+   public static final zh<wg, aaf> a = zq.a(aaf::a, aaf::new);
+   private static final int e = 5120;
+   public static final zh<ByteBuf, byte[]> b = zf.a(5120);
 
-   public aaf(UUID c, String d, String e, boolean f, Optional<xl> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
+   private aaf(wg $$0) {
+      this($$0.q(), b.decode($$0));
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zu<aaf> a() {
-      return aak.g;
+   public zs<aaf> a() {
+      return aai.i;
    }
 
-   public void a(zy $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public UUID b() {
+   public alj b() {
       return this.c;
    }
 
-   public String e() {
+   public byte[] e() {
       return this.d;
-   }
-
-   public String f() {
-      return this.e;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public Optional<xl> h() {
-      return this.g;
    }
 }

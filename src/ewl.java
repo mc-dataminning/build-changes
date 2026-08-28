@@ -2,45 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class ewl extends evt {
+public class ewl extends ewa {
    public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(eyo.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  ali.a(ma.bd).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lz.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, ewl::new)
    );
-   private final eyn b;
-   private final boolean c;
+   private final ali<eus> b;
+   private final long c;
+   private final jq<dta<?>> d;
 
-   private ewl(List<exr> $$0, eyn $$1, boolean $$2) {
+   private ewl(List<exy> $$0, ali<eus> $$1, long $$2, jq<dta<?>> $$3) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public evv<ewl> b() {
-      return evw.e;
+   public ewc<ewl> b() {
+      return ewd.y;
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return this.b.a();
+   public cwm a(cwm $$0, eun $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         $$0.b(ku.ap, new czm(this.b, this.c));
+         return $$0;
+      }
    }
 
    @Override
-   public cwf a(cwf $$0, eug $$1) {
-      int $$2 = this.c ? $$0.L() : 0;
-      $$0.e($$2 + this.b.a($$1));
-      return $$0;
+   public void a(eut $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else {
+         if ($$0.a().c(this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
+         }
+      }
    }
 
-   public static evt.a<?> a(eyn $$0) {
-      return a($$1 -> new ewl($$1, $$0, false));
+   public static ewa.a<?> a(dta<?> $$0, ali<eus> $$1) {
+      return a($$2 -> new ewl($$2, $$1, 0L, $$0.a()));
    }
 
-   public static evt.a<?> a(eyn $$0, boolean $$1) {
-      return a($$2 -> new ewl($$2, $$0, $$1));
+   public static ewa.a<?> a(dta<?> $$0, ali<eus> $$1, long $$2) {
+      return a($$3 -> new ewl($$3, $$1, $$2, $$0.a()));
    }
 }

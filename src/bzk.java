@@ -1,29 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzk {
-   public static bwy<bve> a(int $$0, BiPredicate<bve, bve> $$1) {
-      return cak.a(
-         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$2 -> $$2.group($$2.b(cei.o), $$2.a(cei.ab), $$2.c(cei.ai), $$2.a(cei.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bve $$10 = $$2.b($$3);
-                     if (!$$10.eI()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+public class bzk extends bxa<bvh> {
+   public static final int c = 100;
+   private long d;
 
-                        $$5.a($$10.dy(), (long)$$0);
-                        if ($$10.ar() != bup.by || $$7.ac().b(dfb.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
+   public bzk() {
+      super(ImmutableMap.of(cel.b, cem.a, cel.I, cem.c));
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   protected boolean a(arp $$0, bvh $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         bwj<?> $$2 = $$1.eb();
+         jp $$3 = $$2.c(cel.b).get();
+         if ($$0.ag() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cel.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ab() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dvv $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axc.S) && !$$6.c(dij.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(arp $$0, bvh $$1, long $$2) {
+      Optional<jp> $$3 = $$1.eb().c(cel.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get().b();
+         return $$1.eb().c(cql.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(arp $$0, bvh $$1, long $$2) {
+      if ($$2 > this.d) {
+         bwj<?> $$3 = $$1.eb();
+         if ($$3.a(cel.v)) {
+            Set<jp> $$4 = $$3.c(cel.v).get();
+            Optional<List<bvh>> $$5;
+            if ($$3.a(cel.g)) {
+               $$5 = $$3.c(cel.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bxy.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.eb().c(cel.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(arp $$0, bvh $$1, long $$2) {
+      if ($$1.fP()) {
+         $$1.fQ();
+         this.d = $$2 + 40L;
+      }
    }
 }

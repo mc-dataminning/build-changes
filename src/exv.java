@@ -1,29 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class exv implements exr {
-   private static final exv b = new exv();
-   public static final MapCodec<exv> a = MapCodec.unit(b);
+public record exv(exy b) implements exy {
+   public static final MapCodec<exv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(exy.e.fieldOf("term").forGetter(exv::c)).apply($$0, exv::new));
 
-   private exv() {
+   @Override
+   public exz b() {
+      return eya.a;
+   }
+
+   public boolean a(eun $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public exs b() {
-      return ext.g;
+   public Set<exg<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return ImmutableSet.of(exc.b);
+   public void a(eut $$0) {
+      exy.super.a($$0);
+      this.b.a($$0);
    }
 
-   public boolean a(eug $$0) {
-      return $$0.a(exc.b);
+   public static exy.a a(exy.a $$0) {
+      exv $$1 = new exv($$0.build());
+      return () -> $$1;
    }
 
-   public static exr.a c() {
-      return () -> b;
+   public exy c() {
+      return this.b;
    }
 }

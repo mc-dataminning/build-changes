@@ -1,15 +1,22 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class eqa {
-   @Nullable
-   public eqd.c a(dfi $$0, jh $$1, jh $$2, eqd.c $$3, eqd.c $$4, epz $$5) {
-      return $$4;
+public class eqa extends eqh {
+   public final axs<diq> a;
+   public static final MapCodec<eqa> b = axs.b(ma.f).xmap(eqa::new, $$0 -> $$0.a).fieldOf("value");
+
+   public eqa(axs<diq> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract eqc<?> a();
+   @Nullable
+   @Override
+   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
+      return eew.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
 
-   public List<eqd.c> a(dfw $$0, jh $$1, jh $$2, List<eqd.c> $$3, List<eqd.c> $$4, epz $$5) {
-      return $$4;
+   @Override
+   protected eqj<?> a() {
+      return eqj.n;
    }
 }

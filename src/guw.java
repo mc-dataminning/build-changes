@@ -1,4 +1,5 @@
-public class guw extends gwb {
+public class guw extends gvo {
    public float a;
-   public boolean b;
+   public float b;
+   public float c;
 }

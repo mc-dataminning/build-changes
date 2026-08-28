@@ -1,172 +1,67 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class bqw<R extends Runnable> implements bqd, brc<R>, Executor {
-   public static final long k = 100000L;
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public class bqw<E extends bqu> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   protected bqw(String $$0) {
-      this.b = $$0;
-      bqb.a.a(this);
+   bqw(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bqv.a($$0);
    }
 
-   protected abstract boolean e(R var1);
-
-   public boolean bx() {
-      return Thread.currentThread() == this.ay();
+   public static <E extends bqu> bqw<E> c() {
+      return new bqw<>(ImmutableList.of());
    }
 
-   protected abstract Thread ay();
-
-   protected boolean ax() {
-      return !this.bx();
+   @SafeVarargs
+   public static <E extends bqu> bqw<E> a(E... $$0) {
+      return new bqw<>(ImmutableList.copyOf($$0));
    }
 
-   public int by() {
-      return this.d.size();
+   public static <E extends bqu> bqw<E> a(List<E> $$0) {
+      return new bqw<>($$0);
    }
 
-   @Override
-   public String x_() {
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(azu $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bqv.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
       return this.b;
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
-   }
-
-   private CompletableFuture<Void> b(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
-   }
-
-   @CheckReturnValue
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.ax()) {
-         return this.b($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bx()) {
-         this.b($$0).join();
-      } else {
-         $$0.run();
-      }
+   public static <E extends bqu> Codec<bqw<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bqw::a, bqw::e);
    }
 
    @Override
-   public void a_(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.ay());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.ax()) {
-         this.a_(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bz() {
-      this.d.clear();
-   }
-
-   protected void bA() {
-      while (this.B()) {
-      }
-   }
-
-   public boolean B() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
          return true;
-      }
-   }
-
-   public void b(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.B()) {
-               this.A();
-            }
-         }
-      } finally {
-         this.e--;
-      }
-   }
-
-   protected void A() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
-
-   protected void d(R $$0) {
-      try {
-         Zone $$1 = TracyClient.beginZone("Task", ab.aV);
-
-         try {
-            $$0.run();
-         } catch (Throwable var6) {
-            if ($$1 != null) {
-               try {
-                  $$1.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$1 != null) {
-            $$1.close();
-         }
-      } catch (Exception var7) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.x_(), var7);
-         throw var7;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bqw<?> $$1 = (bqw<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
       }
    }
 
    @Override
-   public List<bqa> bw() {
-      return ImmutableList.of(bqa.a(this.b + "-pending-tasks", bpz.b, this::by));
-   }
-
-   public static boolean a(Throwable $$0) {
-      return $$0 instanceof z $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

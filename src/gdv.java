@@ -1,119 +1,169 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gdv extends gdu {
-   static gdv.a a(GameProfile $$0, yb $$1, gdt $$2) {
-      return new gdv.a($$0, $$1, $$2);
+public class gdv {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xj c;
+   public xj d;
+   @Nullable
+   public akg.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xj h = xj.b(ab.b().c());
+   public List<xj> i = Collections.emptyList();
+   private gdv.a l = gdv.a.c;
+   @Nullable
+   private byte[] m;
+   private gdv.c n;
+   private gdv.b o = gdv.b.a;
+
+   public gdv(String $$0, String $$1, gdv.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   static gdv.b a(xl $$0, Instant $$1) {
-      return new gdv.b($$0, $$1);
+   public ul a() {
+      ul $$0 = new ul();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == gdv.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gdv.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   xl b();
-
-   default xl c() {
-      return this.b();
+   public gdv.a b() {
+      return this.l;
    }
 
-   boolean a(UUID var1);
+   public void a(gdv.a $$0) {
+      this.l = $$0;
+   }
 
-   public static record a(GameProfile c, yb d, gdt e) implements gdv {
-      public static final MapCodec<gdv.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayw.z.fieldOf("profile").forGetter(gdv.a::f), yb.a.forGetter(gdv.a::g), gdt.d.optionalFieldOf("trust_level", gdt.a).forGetter(gdv.a::h)
-               )
-               .apply($$0, gdv.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public xl b() {
-         if (!this.d.o().a()) {
-            xl $$0 = this.d.o().b(this.d.c());
-            return (xl)($$0 != null ? $$0 : xl.i());
-         } else {
-            return this.d.d();
+   public static gdv a(ul $$0) {
+      gdv $$1 = new gdv($$0.l("name"), $$0.l("ip"), gdv.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
 
-      @Override
-      public xl c() {
-         xl $$0 = this.b();
-         xl $$1 = this.i();
-         return xl.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gdv.a.a);
+         } else {
+            $$1.a(gdv.a.b);
+         }
+      } else {
+         $$1.a(gdv.a.c);
       }
 
-      public xl d() {
-         xl $$0 = this.i();
-         return xl.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == gdv.c.a;
+   }
+
+   public boolean e() {
+      return this.n == gdv.c.b;
+   }
+
+   public gdv.c f() {
+      return this.n;
+   }
+
+   public void a(gdv $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gdv $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gdv.b g() {
+      return this.o;
+   }
+
+   public void a(gdv.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azr $$1 = azr.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
       }
 
-      private xl i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return xl.b($$0.format(f)).a(n.u, n.h);
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xj d;
+
+      private a(final String $$0) {
+         this.d = xj.c("addServer.resourcePack." + $$0);
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gdu.a a() {
-         return gdu.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public yb g() {
+      public xj a() {
          return this.d;
-      }
-
-      public gdt h() {
-         return this.e;
       }
    }
 
-   public static record b(xl c, Instant d) implements gdv {
-      public static final MapCodec<gdv.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xn.a.fieldOf("message").forGetter(gdv.b::d), ayw.q.fieldOf("time_stamp").forGetter(gdv.b::e)).apply($$0, gdv.b::new)
-      );
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
 
-      @Override
-      public xl b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
-
-      @Override
-      public gdu.a a() {
-         return gdu.a.b;
-      }
-
-      public xl d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

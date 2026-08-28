@@ -1,149 +1,90 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cha extends cgv {
-   private static final bul cg = bup.t.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float ca;
-   public float cc;
-   public float cd = 1.0F;
-   private float ch = 1.0F;
-   public int ce = this.af.a(6000) + 6000;
-   public boolean cf;
+public interface cha {
+   boolean q();
 
-   public cha(bup<? extends cha> $$0, dff $$1) {
-      super($$0, $$1);
-      this.a(esf.j, 0.0F);
-   }
+   void x(boolean var1);
 
-   @Override
-   protected void D() {
-      this.bS.a(0, new cbw(this));
-      this.bS.a(1, new ccv(this, 1.4));
-      this.bS.a(2, new cbo(this, 1.0));
-      this.bS.a(3, new cdk(this, 1.0, $$0 -> $$0.a(axm.ao), false));
-      this.bS.a(4, new ccb(this, 1.1));
-      this.bS.a(5, new cdp(this, 1.0));
-      this.bS.a(6, new cck(this, cor.class, 6.0F));
-      this.bS.a(7, new ccx(this));
-   }
+   void i(cwm var1);
 
-   @Override
-   public bul e(bvq $$0) {
-      return this.p_() ? cg : super.e($$0);
-   }
+   void h(ul var1);
 
-   public static bwl.a q() {
-      return cgv.gA().a(bwm.s, 4.0).a(bwm.v, 0.25);
-   }
+   cwm V_();
 
-   @Override
-   public void n_() {
-      super.n_();
-      this.cc = this.bY;
-      this.ca = this.bZ;
-      this.bZ = this.bZ + (this.aL() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = azn.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aL() && this.cd < 1.0F) {
-         this.cd = 1.0F;
-      }
+   awm v();
 
-      this.cd *= 0.9F;
-      ezr $$0 = this.dB();
-      if (!this.aL() && $$0.e < 0.0) {
-         this.h($$0.d(1.0, 0.6, 1.0));
-      }
-
-      this.bY = this.bY + this.cd * 2.0F;
-      if (!this.dY().C && this.bN() && !this.p_() && !this.t() && --this.ce <= 0) {
-         if (this.a(euc.aI, this::b)) {
-            this.a(awo.eU, 1.0F, (this.af.i() - this.af.i()) * 0.2F + 1.0F);
-            this.a(eak.t);
+   @Deprecated
+   static void a(bvj $$0, cwm $$1) {
+      $$1.b(ku.g, $$0.an());
+      cyv.a(ku.X, $$1, $$1x -> {
+         if ($$0.fZ()) {
+            $$1x.a("NoAI", $$0.fZ());
          }
 
-         this.ce = this.af.a(6000) + 6000;
+         if ($$0.bb()) {
+            $$1x.a("Silent", $$0.bb());
+         }
+
+         if ($$0.bc()) {
+            $$1x.a("NoGravity", $$0.bc());
+         }
+
+         if ($$0.cn()) {
+            $$1x.a("Glowing", $$0.cn());
+         }
+
+         if ($$0.cC()) {
+            $$1x.a("Invulnerable", $$0.cC());
+         }
+
+         $$1x.a("Health", $$0.eD());
+      });
+   }
+
+   @Deprecated
+   static void a(bvj $$0, ul $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.u($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.x($$1.j("Health"));
       }
    }
 
-   @Override
-   protected boolean bc() {
-      return this.Z > this.ch;
-   }
+   static <T extends bvh & cha> Optional<bsk> a(cou $$0, bsj $$1, T $$2) {
+      cwm $$3 = $$0.b($$1);
+      if ($$3.h() == cwq.qA && $$2.bL()) {
+         $$2.a($$2.v(), 1.0F, 1.0F);
+         cwm $$4 = $$2.V_();
+         $$2.i($$4);
+         cwm $$5 = cwp.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dfm $$6 = $$2.dV();
+         if (!$$6.C) {
+            ao.k.a((arq)$$0, $$4);
+         }
 
-   @Override
-   protected void bb() {
-      this.ch = this.Z + this.bZ / 2.0F;
-   }
-
-   @Override
-   protected awn w() {
-      return awo.eS;
-   }
-
-   @Override
-   protected awn d(bsy $$0) {
-      return awo.eV;
-   }
-
-   @Override
-   protected awn o_() {
-      return awo.eT;
-   }
-
-   @Override
-   protected void b(jh $$0, dvo $$1) {
-      this.a(awo.eW, 0.15F, 1.0F);
-   }
-
-   @Nullable
-   public cha b(arq $$0, btz $$1) {
-      return bup.t.a($$0, buo.e);
-   }
-
-   @Override
-   public boolean l(cwf $$0) {
-      return $$0.a(axm.ao);
-   }
-
-   @Override
-   protected int er() {
-      return this.t() ? 10 : super.er();
-   }
-
-   @Override
-   public void a(un $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
+         $$2.at();
+         return Optional.of(bsk.a);
+      } else {
+         return Optional.empty();
       }
-   }
-
-   @Override
-   public void b(un $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return this.t();
-   }
-
-   @Override
-   protected void a(bui $$0, bui.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof bve) {
-         ((bve)$$0).aX = this.aX;
-      }
-   }
-
-   public boolean t() {
-      return this.cf;
-   }
-
-   public void x(boolean $$0) {
-      this.cf = $$0;
    }
 }

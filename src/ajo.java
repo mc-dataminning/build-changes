@@ -1,14 +1,27 @@
-public interface ajo extends ace {
-   @Override
-   default wg b() {
-      return wg.d;
+import java.util.UUID;
+
+public record ajo(String b, UUID c) implements zq<ajm> {
+   public static final zh<wg, ajo> a = zq.a(ajo::a, ajo::new);
+
+   private ajo(wg $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   void a(ajq var1);
+   private void a(wg $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
+   }
 
-   void a(ajr var1);
+   @Override
+   public zs<ajo> a() {
+      return ajk.g;
+   }
 
-   void a(ajp var1);
+   public void a(ajm $$0) {
+      $$0.a(this);
+   }
 
-   void a(ajs var1);
+   public UUID e() {
+      return this.c;
+   }
 }

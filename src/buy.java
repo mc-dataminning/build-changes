@@ -1,38 +1,44 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum buy implements azq, baj {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
-
-   public static final Codec<buy> c = baj.a(buy::values);
-   public static final IntFunction<buy> d = aye.a(buy::b, values(), aye.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private buy(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public buy e() {
-      return this == a ? b : a;
+public abstract class buy extends bvj {
+   protected buy(bus<? extends buy> $$0, dfm $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.e;
+   protected void a(double $$0, boolean $$1, dvv $$2, jh $$3) {
    }
 
    @Override
-   public String a() {
-      return this.g;
+   public void a_(ezy $$0) {
+      if (this.di()) {
+         if (this.bj()) {
+            this.a(0.02F, $$0);
+            this.a(bvl.a, this.dy());
+            this.h(this.dy().c(0.8F));
+         } else if (this.bx()) {
+            this.a(0.02F, $$0);
+            this.a(bvl.a, this.dy());
+            this.h(this.dy().c(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
+
+            this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bvl.a, this.dy());
+            this.h(this.dy().c((double)$$1));
+         }
+      }
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public boolean p_() {
+      return false;
    }
 }

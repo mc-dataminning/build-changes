@@ -1,197 +1,374 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class gjx {
-   private static final int a = 10;
-   private static final int b = 21;
-   private static final all c = all.b("textures/environment/rain.png");
-   private static final all d = all.b("textures/environment/snow.png");
-   private static final int e = 32;
-   private static final int f = 16;
-   private int g;
-   private final float[] h = new float[1024];
-   private final float[] i = new float[1024];
+public class gjx extends avi<gjx.c> implements AutoCloseable {
+   static final Logger d = LogUtils.getLogger();
+   public static final String a = "shaders";
+   public static final String b = "shaders/include/";
+   private static final alc e = alc.a("shaders");
+   private static final alc f = alc.a("post_effect");
+   public static final int c = 32768;
+   final gzf g;
+   private final Consumer<Exception> h;
+   private gjx.a i = new gjx.a(gjx.c.a);
 
-   public gjx() {
-      for (int $$0 = 0; $$0 < 32; $$0++) {
-         for (int $$1 = 0; $$1 < 32; $$1++) {
-            float $$2 = (float)($$1 - 16);
-            float $$3 = (float)($$0 - 16);
-            float $$4 = azn.f($$2, $$3);
-            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
-            this.i[$$0 * 32 + $$1] = $$2 / $$4;
+   public gjx(gzf $$0, Consumer<Exception> $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   protected gjx.c a(avd $$0, bou $$1) {
+      Builder<alj, gjz> $$2 = ImmutableMap.builder();
+      Builder<gjx.e, String> $$3 = ImmutableMap.builder();
+      Map<alj, avb> $$4 = $$0.b("shaders", $$0x -> a($$0x) || b($$0x));
+
+      for (Entry<alj, avb> $$5 : $$4.entrySet()) {
+         alj $$6 = $$5.getKey();
+         feg.a $$7 = feg.a.a($$6);
+         if ($$7 != null) {
+            a($$6, $$5.getValue(), $$7, $$4, $$3);
+         } else if (a($$6)) {
+            a($$6, $$5.getValue(), $$2);
          }
+      }
+
+      Builder<alj, gjl> $$8 = ImmutableMap.builder();
+
+      for (Entry<alj, avb> $$9 : f.a($$0).entrySet()) {
+         b($$9.getKey(), $$9.getValue(), $$8);
+      }
+
+      return new gjx.c($$2.build(), $$3.build(), $$8.build());
+   }
+
+   private static void a(alj $$0, avb $$1, feg.a $$2, Map<alj, avb> $$3, Builder<gjx.e, String> $$4) {
+      alj $$5 = $$2.c().b($$0);
+      fdx $$6 = a($$3, $$0);
+
+      try (Reader $$7 = $$1.e()) {
+         String $$8 = IOUtils.toString($$7);
+         $$4.put(new gjx.e($$5, $$2), String.join("", $$6.a($$8)));
+      } catch (IOException var12) {
+         d.error("Failed to load shader source at {}", $$0, var12);
       }
    }
 
-   public void a(dff $$0, giv $$1, int $$2, float $$3, ezr $$4) {
-      float $$5 = $$0.d($$3);
-      if (!($$5 <= 0.0F)) {
-         int $$6 = fjx.N() ? 10 : 5;
-         List<gjx.a> $$7 = new ArrayList<>();
-         List<gjx.a> $$8 = new ArrayList<>();
-         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
-         if (!$$7.isEmpty() || !$$8.isEmpty()) {
-            this.a($$1, $$4, $$6, $$5, $$7, $$8);
-         }
-      }
-   }
+   private static fdx a(final Map<alj, avb> $$0, alj $$1) {
+      final alj $$2 = $$1.a(v::b);
+      return new fdx() {
+         private final Set<alj> c = new ObjectArraySet();
 
-   private void a(dff $$0, int $$1, float $$2, ezr $$3, int $$4, List<gjx.a> $$5, List<gjx.a> $$6) {
-      int $$7 = azn.a($$3.d);
-      int $$8 = azn.a($$3.e);
-      int $$9 = azn.a($$3.f);
-      jh.a $$10 = new jh.a();
-      azv $$11 = azv.a();
-
-      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
-         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
-            int $$14 = $$0.a(ebj.a.e, $$13, $$12);
-            int $$15 = Math.max($$8 - $$4, $$14);
-            int $$16 = Math.max($$8 + $$4, $$14);
-            if ($$16 - $$15 != 0) {
-               dgh.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
-               if ($$17 != dgh.c.a) {
-                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
-                  $$11.b((long)$$18);
-                  int $$19 = Math.max($$8, $$14);
-                  int $$20 = git.a($$0, $$10.d($$13, $$19, $$12));
-                  if ($$17 == dgh.c.b) {
-                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  } else if ($$17 == dgh.c.c) {
-                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  }
+         @Override
+         public String a(boolean $$0x, String $$1) {
+            alj $$2;
+            try {
+               if ($$0) {
+                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> v.c($$1x + $$1)));
+               } else {
+                  $$2 = alj.a($$1).f("shaders/include/");
                }
+            } catch (aa var8) {
+               gjx.d.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
+               return "#error " + var8.getMessage();
             }
-         }
-      }
-   }
 
-   private void a(giv $$0, ezr $$1, int $$2, float $$3, List<gjx.a> $$4, List<gjx.a> $$5) {
-      $$0.c();
-      fem $$6 = fem.b();
-      RenderSystem.disableCull();
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      RenderSystem.depthMask(fjx.O());
-      RenderSystem.setShader(gih.c);
-      if (!$$4.isEmpty()) {
-         RenderSystem.setShaderTexture(0, c);
-         this.a($$6, $$4, $$1, 1.0F, $$2, $$3);
-      }
-
-      if (!$$5.isEmpty()) {
-         RenderSystem.setShaderTexture(0, d);
-         this.a($$6, $$5, $$1, 0.8F, $$2, $$3);
-      }
-
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.disableBlend();
-      $$0.b();
-   }
-
-   private gjx.a a(azv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      int $$8 = $$1 & 131071;
-      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
-      float $$10 = 3.0F + $$0.i();
-      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
-      float $$12 = $$11 % 32.0F;
-      return new gjx.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
-   }
-
-   private gjx.a b(azv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      float $$8 = (float)$$1 + $$7;
-      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
-      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
-      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
-      int $$12 = giv.a((giv.a($$6) * 3 + 15) / 4, (giv.b($$6) * 3 + 15) / 4);
-      return new gjx.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
-   }
-
-   private void a(fem $$0, List<gjx.a> $$1, ezr $$2, float $$3, int $$4, float $$5) {
-      fef $$6 = $$0.a(fep.c.h, fei.d);
-
-      for (gjx.a $$7 : $$1) {
-         float $$8 = (float)((double)$$7.a + 0.5 - $$2.d);
-         float $$9 = (float)((double)$$7.b + 0.5 - $$2.f);
-         float $$10 = (float)azn.e((double)$$8, (double)$$9);
-         float $$11 = azn.h($$10 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
-         int $$12 = axy.a($$11);
-         int $$13 = ($$7.b - azn.a($$2.f) + 16) * 32 + $$7.a - azn.a($$2.d) + 16;
-         float $$14 = this.h[$$13] / 2.0F;
-         float $$15 = this.i[$$13] / 2.0F;
-         float $$16 = $$8 - $$14;
-         float $$17 = $$8 + $$14;
-         float $$18 = (float)((double)$$7.d - $$2.e);
-         float $$19 = (float)((double)$$7.c - $$2.e);
-         float $$20 = $$9 - $$15;
-         float $$21 = $$9 + $$15;
-         float $$22 = $$7.e + 0.0F;
-         float $$23 = $$7.e + 1.0F;
-         float $$24 = (float)$$7.c * 0.25F + $$7.f;
-         float $$25 = (float)$$7.d * 0.25F + $$7.f;
-         $$6.a($$16, $$18, $$20).a($$22, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$18, $$21).a($$23, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$19, $$21).a($$23, $$25).a($$12).c($$7.g);
-         $$6.a($$16, $$19, $$20).a($$22, $$25).a($$12).c($$7.g);
-      }
-
-      feg.a($$6.b());
-   }
-
-   public void a(gcy $$0, fjg $$1, int $$2, arj $$3) {
-      float $$4 = $$0.d(1.0F) / (fjx.N() ? 1.0F : 2.0F);
-      if (!($$4 <= 0.0F)) {
-         azv $$5 = azv.a((long)$$2 * 312987231L);
-         jh $$6 = jh.a((ka)$$1.b());
-         jh $$7 = null;
-         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == arj.b ? 2 : 1);
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$5.a(21) - 10;
-            int $$11 = $$5.a(21) - 10;
-            jh $$12 = $$0.a(ebj.a.e, $$6.b($$10, 0, $$11));
-            if ($$12.v() > $$0.I_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dgh.c.b) {
-               $$7 = $$12.e();
-               if ($$3 == arj.c) {
-                  break;
-               }
-
-               double $$13 = $$5.j();
-               double $$14 = $$5.j();
-               dvo $$15 = $$0.a_($$7);
-               ero $$16 = $$0.b_($$7);
-               fal $$17 = $$15.g($$0, $$7);
-               double $$18 = $$17.b(jm.a.b, $$13, $$14);
-               double $$19 = (double)$$16.a($$0, $$7);
-               double $$20 = Math.max($$18, $$19);
-               lq $$21 = !$$16.a(axj.b) && !$$15.a(dil.kJ) && !dix.h($$15) ? ls.ad : ls.ae;
-               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if ($$7 != null && $$5.a(3) < this.g++) {
-            this.g = 0;
-            if ($$7.v() > $$6.v() + 1 && $$0.a(ebj.a.e, $$6).v() > azn.d((float)$$6.v())) {
-               $$0.a($$7, awo.Ci, awp.d, 0.1F, 0.5F, false);
+            if (!this.c.add($$2)) {
+               return null;
             } else {
-               $$0.a($$7, awo.Ch, awp.d, 0.2F, 1.0F, false);
+               try {
+                  String var5;
+                  try (Reader $$6 = $$0.get($$2).e()) {
+                     var5 = IOUtils.toString($$6);
+                  }
+
+                  return var5;
+               } catch (IOException var10) {
+                  gjx.d.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
+                  return "#error " + var10.getMessage();
+               }
             }
+         }
+      };
+   }
+
+   private static void a(alj $$0, avb $$1, Builder<alj, gjz> $$2) {
+      alj $$3 = e.b($$0);
+
+      try (Reader $$4 = $$1.e()) {
+         JsonElement $$5 = JsonParser.parseReader($$4);
+         gjz $$6 = (gjz)gjz.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
+         $$2.put($$3, $$6);
+      } catch (JsonParseException | IOException var9) {
+         d.error("Failed to parse shader config at {}", $$0, var9);
+      }
+   }
+
+   private static void b(alj $$0, avb $$1, Builder<alj, gjl> $$2) {
+      alj $$3 = f.b($$0);
+
+      try (Reader $$4 = $$1.e()) {
+         JsonElement $$5 = JsonParser.parseReader($$4);
+         $$2.put($$3, (gjl)gjl.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
+      } catch (JsonParseException | IOException var9) {
+         d.error("Failed to parse post chain at {}", $$0, var9);
+      }
+   }
+
+   private static boolean a(alj $$0) {
+      return $$0.a().endsWith(".json");
+   }
+
+   private static boolean b(alj $$0) {
+      return feg.a.a($$0) != null || $$0.a().endsWith(".glsl");
+   }
+
+   protected void a(gjx.c $$0, avd $$1, bou $$2) {
+      gjx.a $$3 = new gjx.a($$0);
+      Map<gjy, gjx.b> $$4 = new HashMap<>();
+
+      for (gjy $$5 : giq.a()) {
+         try {
+            $$3.c.put($$5, Optional.of($$3.b($$5)));
+         } catch (gjx.b var9) {
+            $$4.put($$5, var9);
+         }
+      }
+
+      if (!$$4.isEmpty()) {
+         $$3.close();
+         throw new RuntimeException(
+            "Failed to load required shader programs:\n"
+               + $$4.entrySet().stream().map($$0x -> " - " + $$0x.getKey() + ": " + ((gjx.b)$$0x.getValue()).getMessage()).collect(Collectors.joining("\n"))
+         );
+      } else {
+         this.i.close();
+         this.i = $$3;
+      }
+   }
+
+   @Override
+   public String c() {
+      return "Shader Loader";
+   }
+
+   public void a(avg $$0, gjy... $$1) throws IOException, gjx.b {
+      for (gjy $$2 : $$1) {
+         avb $$3 = $$0.getResourceOrThrow(e.a($$2.a()));
+
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = JsonParser.parseReader($$4);
+            gjz $$6 = (gjz)gjz.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
+            gjw $$7 = $$6.e().a($$2.c());
+            feg $$8 = this.a($$0, $$6.a(), feg.a.a, $$7);
+            feg $$9 = this.a($$0, $$6.b(), feg.a.b, $$7);
+            gip $$10 = a($$2, $$6, $$8, $$9);
+            this.i.c.put($$2, Optional.of($$10));
          }
       }
    }
 
-   private dgh.c a(dff $$0, jh $$1) {
-      if (!$$0.P().b(kj.a($$1.u()), kj.a($$1.w()))) {
-         return dgh.c.a;
-      } else {
-         dgh $$2 = $$0.t($$1).a();
-         return $$2.a($$1, $$0.N());
+   private feg a(avg $$0, alj $$1, feg.a $$2, gjw $$3) throws IOException, gjx.b {
+      alj $$4 = $$2.c().a($$1);
+
+      feg var10;
+      try (Reader $$5 = $$0.getResourceOrThrow($$4).e()) {
+         String $$6 = IOUtils.toString($$5);
+         String $$7 = fdx.a($$6, $$3);
+         feg $$8 = feg.a($$1, $$2, $$7);
+         this.i.d.put(new gjx.d($$1, $$2, $$3), $$8);
+         var10 = $$8;
+      }
+
+      return var10;
+   }
+
+   @Nullable
+   public gip a(gjy $$0) {
+      try {
+         return this.i.a($$0);
+      } catch (gjx.b var3) {
+         d.error("Failed to load shader program: {}", $$0, var3);
+         this.i.c.put($$0, Optional.empty());
+         this.h.accept(var3);
+         return null;
       }
    }
 
-   static record a(int a, int b, int c, int d, float e, float f, int g) {
+   public gip b(gjy $$0) throws gjx.b {
+      gip $$1 = this.i.a($$0);
+      if ($$1 == null) {
+         throw new gjx.b("Shader '" + $$0 + "' could not be found");
+      } else {
+         return $$1;
+      }
+   }
+
+   static gip a(gjy $$0, gjz $$1, feg $$2, feg $$3) throws gjx.b {
+      gip $$4 = gip.a($$2, $$3, $$0.b());
+      $$4.a($$1.d(), $$1.c());
+      return $$4;
+   }
+
+   @Nullable
+   public gjk a(alj $$0, Set<alj> $$1) {
+      try {
+         return this.i.a($$0, $$1);
+      } catch (gjx.b var4) {
+         d.error("Failed to load post chain: {}", $$0, var4);
+         this.i.e.put($$0, Optional.empty());
+         this.h.accept(var4);
+         return null;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.i.close();
+   }
+
+   class a implements AutoCloseable {
+      private final gjx.c b;
+      final Map<gjy, Optional<gip>> c = new HashMap<>();
+      final Map<gjx.d, feg> d = new HashMap<>();
+      final Map<alj, Optional<gjk>> e = new HashMap<>();
+
+      a(final gjx.c $$0) {
+         this.b = $$0;
+      }
+
+      @Nullable
+      public gip a(gjy $$0) throws gjx.b {
+         Optional<gip> $$1 = this.c.get($$0);
+         if ($$1 != null) {
+            return $$1.orElse(null);
+         } else {
+            gip $$2 = this.b($$0);
+            this.c.put($$0, Optional.of($$2));
+            return $$2;
+         }
+      }
+
+      gip b(gjy $$0) throws gjx.b {
+         gjz $$1 = this.b.b.get($$0.a());
+         if ($$1 == null) {
+            throw new gjx.b("Could not find program with id: " + $$0.a());
+         } else {
+            gjw $$2 = $$1.e().a($$0.c());
+            feg $$3 = this.a($$1.a(), feg.a.a, $$2);
+            feg $$4 = this.a($$1.b(), feg.a.b, $$2);
+            return gjx.a($$0, $$1, $$3, $$4);
+         }
+      }
+
+      private feg a(alj $$0, feg.a $$1, gjw $$2) throws gjx.b {
+         gjx.d $$3 = new gjx.d($$0, $$1, $$2);
+         feg $$4 = this.d.get($$3);
+         if ($$4 == null) {
+            $$4 = this.a($$3);
+            this.d.put($$3, $$4);
+         }
+
+         return $$4;
+      }
+
+      private feg a(gjx.d $$0) throws gjx.b {
+         String $$1 = this.b.c.get(new gjx.e($$0.a, $$0.b));
+         if ($$1 == null) {
+            throw new gjx.b("Could not find shader: " + $$0);
+         } else {
+            String $$2 = fdx.a($$1, $$0.c);
+            return feg.a($$0.a, $$0.b, $$2);
+         }
+      }
+
+      @Nullable
+      public gjk a(alj $$0, Set<alj> $$1) throws gjx.b {
+         Optional<gjk> $$2 = this.e.get($$0);
+         if ($$2 != null) {
+            return $$2.orElse(null);
+         } else {
+            gjk $$3 = this.b($$0, $$1);
+            this.e.put($$0, Optional.of($$3));
+            return $$3;
+         }
+      }
+
+      private gjk b(alj $$0, Set<alj> $$1) throws gjx.b {
+         gjl $$2 = this.b.d.get($$0);
+         if ($$2 == null) {
+            throw new gjx.b("Could not find post chain with id: " + $$0);
+         } else {
+            return gjk.a($$2, gjx.this.g, gjx.this, $$1);
+         }
+      }
+
+      @Override
+      public void close() {
+         RenderSystem.assertOnRenderThread();
+         this.c.values().forEach($$0 -> $$0.ifPresent(gip::close));
+         this.d.values().forEach(feg::close);
+         this.c.clear();
+         this.d.clear();
+         this.e.clear();
+      }
+   }
+
+   public static class b extends Exception {
+      public b(String $$0) {
+         super($$0);
+      }
+   }
+
+   public static record c(Map<alj, gjz> b, Map<gjx.e, String> c, Map<alj, gjl> d) {
+      public static final gjx.c a = new gjx.c(Map.of(), Map.of(), Map.of());
+
+      public Map<alj, gjz> a() {
+         return this.b;
+      }
+
+      public Map<gjx.e, String> b() {
+         return this.c;
+      }
+
+      public Map<alj, gjl> c() {
+         return this.d;
+      }
+   }
+
+   static record d(alj a, feg.a b, gjw c) {
+
+      @Override
+      public String toString() {
+         String $$0 = this.a + " (" + this.b + ")";
+         return !this.c.c() ? $$0 + " with " + this.c : $$0;
+      }
+   }
+
+   static record e(alj a, feg.a b) {
+      @Override
+      public String toString() {
+         return this.a + " (" + this.b + ")";
+      }
    }
 }

@@ -1,16 +1,29 @@
-public record ahn(int b, int c) implements zs<agy> {
-   public static final zj<wi, ahn> a = zj.a(zh.u, ahn::b, zh.h, ahn::e, ahn::new);
+public class ahn implements zq<agw> {
+   public static final zh<wg, ahn> a = zq.a(ahn::a, ahn::new);
+   private final int b;
 
-   @Override
-   public zu<ahn> a() {
-      return agw.bu;
+   public ahn(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agy $$0) {
+   private ahn(wg $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(wg $$0) {
+      $$0.f(this.b);
+   }
+
+   @Override
+   public zs<ahn> a() {
+      return agu.bw;
+   }
+
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

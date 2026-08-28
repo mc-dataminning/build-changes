@@ -1,27 +1,91 @@
-public class gab extends gax {
-   private final gcc a;
-   private final gcc b;
-   private final gcc c;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-   public gab(gcc $$0) {
+public class gab extends fzj<gwn> {
+   public static final gcu a = gab::a;
+   private final gcl b;
+   private final gcl c;
+   private final gcl d;
+   private final gcl e;
+   private final gcl f;
+   private final gcl g;
+   private final gcl i;
+
+   public gab(gcl $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_chest");
+      this.i = $$0.b("left_chest");
+      this.c = $$0.b("right_hind_leg");
+      this.d = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.f = $$0.b("left_front_leg");
    }
 
-   public static gck a() {
-      gck $$0 = new gck();
-      gac.a(gcg.a, $$0);
-      return $$0;
+   public static gcr a(gcp $$0) {
+      gct $$1 = new gct();
+      gcv $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gcq.c()
+            .a(0, 0)
+            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
+            .a(0, 14)
+            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
+            .a(17, 0)
+            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
+            .a(17, 0)
+            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
+         gcn.a(0.0F, 7.0F, -6.0F)
+      );
+      $$2.a("body", gcq.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gcn.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("right_chest", gcq.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gcn.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$2.a("left_chest", gcq.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gcn.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      int $$3 = 4;
+      int $$4 = 14;
+      gcq $$5 = gcq.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$5, gcn.a(-3.5F, 10.0F, 6.0F));
+      $$2.a("left_hind_leg", $$5, gcn.a(3.5F, 10.0F, 6.0F));
+      $$2.a("right_front_leg", $$5, gcn.a(-3.5F, 10.0F, -5.0F));
+      $$2.a("left_front_leg", $$5, gcn.a(3.5F, 10.0F, -5.0F));
+      return gcr.a($$1, 128, 64);
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   private static gct a(gct $$0) {
+      float $$1 = 2.0F;
+      float $$2 = 0.7F;
+      float $$3 = 1.1F;
+      UnaryOperator<gcn> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
+      UnaryOperator<gcn> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
+      UnaryOperator<gcn> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
+      gct $$7 = new gct();
+
+      for (Entry<String, gcv> $$8 : $$0.a().a()) {
+         String $$9 = $$8.getKey();
+         gcv $$10 = $$8.getValue();
+
+         UnaryOperator<gcn> $$11 = switch ($$9) {
+            case "head" -> $$4;
+            case "body" -> $$5;
+            default -> $$6;
+         };
+         $$7.a().a($$9, $$10.a($$11));
+      }
+
+      return $$7;
+   }
+
+   public void a(gwn $$0) {
+      super.a($$0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$1 = $$0.Y;
+      float $$2 = $$0.X;
+      this.c.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.d.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.f.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.g.k = $$0.b;
+      this.i.k = $$0.b;
    }
 }

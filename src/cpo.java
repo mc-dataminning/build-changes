@@ -1,57 +1,30 @@
-public class cpo extends cpe {
-   public cpo(bup<? extends cpo> $$0, dff $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cpo(dff $$0, bve $$1, ezr $$2) {
-      super(bup.aQ, $$1, $$2, $$0);
-   }
-
-   public cpo(dff $$0, double $$1, double $$2, double $$3, ezr $$4) {
-      super(bup.aQ, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(ezo $$0) {
-      super.a($$0);
-      if (this.dY() instanceof arq $$1) {
-         bui var7 = $$0.a();
-         bui $$4 = this.s();
-         int $$5 = var7.aI();
-         var7.d(5.0F);
-         bsy $$6 = this.dZ().a((cpe)this, $$4);
-         if (!var7.a($$6, 5.0F)) {
-            var7.h($$5);
-         } else {
-            dby.a($$1, var7, $$6);
-         }
+@FunctionalInterface
+public interface cpo {
+   cpo a = ($$0, $$1, $$2) -> {
+   };
+   cpo b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.h($$0.dy().c(-0.5));
+      $$0.v($$0.dL() + $$3);
+      $$0.N += $$3;
+      $$0.ar = true;
+   };
+   cpo c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ezy $$3 = $$1.bT().d();
+         $$0.h($$3);
+         $$0.ar = true;
       }
-   }
-
-   @Override
-   protected void a(ezn $$0) {
-      super.a($$0);
-      if (!this.dY().C) {
-         bui $$1 = this.s();
-         if (!($$1 instanceof bvg) || this.dY().ac().b(dfb.c)) {
-            jh $$2 = $$0.b().a($$0.c());
-            if (this.dY().u($$2)) {
-               this.dY().b($$2, dhw.a(this.dY(), $$2));
-            }
-         }
+   };
+   cpo d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ezy $$3 = $$1.dy().d();
+         $$0.h($$3);
+         $$0.ar = true;
       }
-   }
+   };
 
-   @Override
-   protected void a(ezp $$0) {
-      super.a($$0);
-      if (!this.dY().C) {
-         this.av();
-      }
-   }
-
-   @Override
-   public boolean a(bsy $$0, float $$1) {
-      return false;
-   }
+   void deflect(cpn var1, @Nullable bul var2, azu var3);
 }

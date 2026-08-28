@@ -1,42 +1,166 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adz(etg b, byte c, boolean d, Optional<List<etc>> e, Optional<eti.c> f) implements zs<ach> {
-   public static final zj<ww, adz> a = zj.a(etg.b, adz::b, zh.c, adz::e, zh.b, adz::f, etc.a.a(zh.a()).a(zh::a), adz::g, eti.c.a, adz::h, adz::new);
+public abstract class adz implements zq<acf> {
+   protected final int a;
+   protected final short b;
+   protected final short c;
+   protected final short d;
+   protected final byte e;
+   protected final byte f;
+   protected final boolean g;
+   protected final boolean h;
+   protected final boolean i;
 
-   public adz(etg $$0, byte $$1, boolean $$2, @Nullable Collection<etc> $$3, @Nullable eti.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   protected adz(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
    @Override
-   public zu<adz> a() {
-      return agw.P;
-   }
+   public abstract zs<? extends adz> a();
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public void a(eti $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   @Override
+   public String toString() {
+      return "Entity_" + super.toString();
    }
 
-   public byte e() {
+   @Nullable
+   public bul a(dfm $$0) {
+      return $$0.a(this.a);
+   }
+
+   public short b() {
+      return this.b;
+   }
+
+   public short e() {
       return this.c;
    }
 
-   public boolean f() {
+   public short f() {
       return this.d;
    }
 
-   public Optional<List<etc>> g() {
-      return this.e;
+   public float g() {
+      return azm.a(this.e);
    }
 
-   public Optional<eti.c> h() {
-      return this.f;
+   public float h() {
+      return azm.a(this.f);
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public boolean j() {
+      return this.i;
+   }
+
+   public boolean k() {
+      return this.g;
+   }
+
+   public static class a extends adz {
+      public static final zh<wg, adz.a> j = zq.a(adz.a::b, adz.a::a);
+
+      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
+         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
+      }
+
+      private static adz.a a(wg $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         boolean $$5 = $$0.readBoolean();
+         return new adz.a($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private void b(wg $$0) {
+         $$0.c(this.a);
+         $$0.m(this.b);
+         $$0.m(this.c);
+         $$0.m(this.d);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zs<adz.a> a() {
+         return agu.R;
+      }
+   }
+
+   public static class b extends adz {
+      public static final zh<wg, adz.b> j = zq.a(adz.b::b, adz.b::a);
+
+      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
+      }
+
+      private static adz.b a(wg $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         byte $$5 = $$0.readByte();
+         byte $$6 = $$0.readByte();
+         boolean $$7 = $$0.readBoolean();
+         return new adz.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      private void b(wg $$0) {
+         $$0.c(this.a);
+         $$0.m(this.b);
+         $$0.m(this.c);
+         $$0.m(this.d);
+         $$0.l(this.e);
+         $$0.l(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zs<adz.b> a() {
+         return agu.S;
+      }
+   }
+
+   public static class c extends adz {
+      public static final zh<wg, adz.c> j = zq.a(adz.c::b, adz.c::a);
+
+      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
+         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
+      }
+
+      private static adz.c a(wg $$0) {
+         int $$1 = $$0.l();
+         byte $$2 = $$0.readByte();
+         byte $$3 = $$0.readByte();
+         boolean $$4 = $$0.readBoolean();
+         return new adz.c($$1, $$2, $$3, $$4);
+      }
+
+      private void b(wg $$0) {
+         $$0.c(this.a);
+         $$0.l(this.e);
+         $$0.l(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zs<adz.c> a() {
+         return agu.U;
+      }
    }
 }

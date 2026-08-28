@@ -1,23 +1,21 @@
-import io.netty.buffer.ByteBuf;
-
-public class agg implements zs<ach> {
-   public static final agg a = new agg();
-   public static final zj<ByteBuf, agg> b = zj.a(a);
-
-   private agg() {
-   }
+public record agg(xj b, boolean c) implements zq<acf> {
+   public static final zh<wu, agg> a = zh.a(xl.d, agg::b, zf.b, agg::e, agg::new);
 
    @Override
-   public zu<agg> a() {
-      return agw.aU;
+   public zs<agg> a() {
+      return agu.aW;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
    @Override
-   public boolean d() {
+   public boolean c() {
       return true;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

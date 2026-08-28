@@ -1,126 +1,93 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class evm extends evt {
-   public static final axt<emb> a = axp.l;
-   public static final jq<etd> b = ete.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<evm> f = RecordCodecBuilder.mapCodec(
+public class evm extends ewa {
+   public static final MapCodec<evm> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  axt.a(ma.aS).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  etd.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  lz.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dwx::f).toList())
                )
             )
             .apply($$0, evm::new)
    );
-   private final axt<emb> h;
-   private final jq<etd> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jq<diq> b;
+   private final Set<dwx<?>> c;
 
-   evm(List<exr> $$0, axt<emb> $$1, jq<etd> $$2, byte $$3, int $$4, boolean $$5) {
+   evm(List<exy> $$0, jq<diq> $$1, Set<dwx<?>> $$2) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private evm(List<exy> $$0, jq<diq> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public evv<evm> b() {
-      return evw.q;
+   public ewc<evm> b() {
+      return ewd.D;
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return ImmutableSet.of(exc.f);
+   public Set<exg<?>> a() {
+      return ImmutableSet.of(exj.g);
    }
 
    @Override
-   public cwf a(cwf $$0, eug $$1) {
-      if (!$$0.a(cwj.uB)) {
-         return $$0;
-      } else {
-         ezr $$2 = $$1.c(exc.f);
-         if ($$2 != null) {
-            arq $$3 = $$1.d();
-            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cwf $$5 = cws.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cws.a($$3, $$5);
-               eti.a($$5, $$4, "+", this.i);
-               return $$5;
+   protected cwm a(cwm $$0, eun $$1) {
+      dvv $$2 = $$1.c(exj.g);
+      if ($$2 != null) {
+         $$0.a(ku.am, cyo.a, $$1x -> {
+            for (dwx<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
             }
-         }
 
-         return $$0;
+            return $$1x;
+         });
       }
+
+      return $$0;
    }
 
-   public static evm.a c() {
-      return new evm.a();
+   public static evm.a a(diq $$0) {
+      return new evm.a($$0);
    }
 
-   public static class a extends evt.a<evm.a> {
-      private axt<emb> a;
-      private jq<etd> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends ewa.a<evm.a> {
+      private final jq<diq> a;
+      private final Builder<dwx<?>> b = ImmutableSet.builder();
 
-      public a() {
-         this.a = evm.a;
-         this.b = evm.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      a(diq $$0) {
+         this.a = $$0.p();
+      }
+
+      public evm.a a(dwx<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected evm.a a() {
          return this;
       }
 
-      public evm.a a(axt<emb> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public evm.a a(jq<etd> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public evm.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public evm.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public evm.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public evu b() {
-         return new evm(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public ewb b() {
+         return new evm(this.g(), this.a, this.b.build());
       }
    }
 }

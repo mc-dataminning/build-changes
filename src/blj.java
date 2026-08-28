@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blj extends bjm {
+public class blj extends bjo {
    public blj(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -12,23 +12,10 @@ public class blj extends bjm {
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
-         false,
-         bhy.c,
+         true,
+         bia.F,
          () -> DSL.optionalFields(
-               "entities",
-               DSL.list(bhy.A.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(bhy.s.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", bhy.C.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(bhy.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bhy.u.in($$0)))
-                  )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(bhy.G.in($$0)))
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bia.A.in($$0)))), "SpawnData", DSL.fields("entity", bia.A.in($$0))
             )
       );
    }

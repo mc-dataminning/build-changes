@@ -1,62 +1,17 @@
-public class czx extends czw {
-   private final jm b;
+import com.mojang.serialization.MapCodec;
 
-   public czx(dff $$0, jh $$1, jm $$2, cwf $$3, jm $$4) {
-      super($$0, null, bsg.a, $$3, new ezn(ezr.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record czx() implements czy {
+   public static final czx a = new czx();
+   public static final MapCodec<czx> b = MapCodec.unit(a);
+   public static final zh<wu, czx> c = zh.a(a);
+
+   @Override
+   public czy.a<czx> a() {
+      return czy.a.c;
    }
 
    @Override
-   public jh a() {
-      return this.j().b();
-   }
-
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jm d() {
-      return jm.a;
-   }
-
-   @Override
-   public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
-      }
-   }
-
-   @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public boolean a(dfm $$0, cwm $$1, bvh $$2) {
+      return $$2.ez();
    }
 }

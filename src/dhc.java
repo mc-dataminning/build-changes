@@ -1,76 +1,89 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class dhc extends dij {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final fal h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final fal b = fai.a(
-      fai.b(), fai.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ezv.e
+public class dhc {
+   public static final Codec<dhc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhc.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), alh.c(ma.aG)).apply($$0, dhc::new)
    );
-   protected final kn.a c;
+   public static final Codec<jq<dhc>> b = alf.a(ma.ba, a);
+   private final dhc.a c;
+   private final dgx.c<jq<dgo>> d;
 
-   @Override
-   protected abstract MapCodec<? extends dhc> a();
-
-   public dhc(dvn.d $$0, kn.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public dhc(dhc.a $$0, jr<dgo> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   protected double b(dvo $$0) {
-      return 0.0;
+   public dgx.c<jq<dgo>> a() {
+      return this.d;
    }
 
-   protected boolean a(dvo $$0, jh $$1, bui $$2) {
-      return $$2.dF() < (double)$$1.v() + this.b($$0) && $$2.cT().e > (double)$$1.v() + 0.25;
+   public static Map<dhc.a, dgx.c<ali<dgo>>> b() {
+      return dhc.a.f.values().stream().collect(Collectors.toMap($$0 -> (dhc.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected bsh a(cwf $$0, dvo $$1, dff $$2, jh $$3, cor $$4, bsg $$5, ezn $$6) {
-      kn $$7 = this.c.b().get($$0.h());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
-   }
-
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return b;
-   }
-
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dvo $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dvo $$0, esd $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dvo var1);
-
-   @Override
-   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      jh $$4 = doa.a((dff)$$1, $$2);
-      if ($$4 != null) {
-         ern $$5 = doa.a($$1, $$4);
-         if ($$5 != erp.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
+   public static record a(alj d, dhc.a.a e) {
+      public static final dhc.a a = new dhc.a(
+         alj.b("nether"),
+         new dhc.a.a() {
+            @Override
+            public <T> dgx.c<T> apply(Function<ali<dgo>, T> $$0) {
+               return new dgx.c<>(
+                  List.of(
+                     Pair.of(dgx.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgv.ac)),
+                     Pair.of(dgx.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgv.af)),
+                     Pair.of(dgx.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgv.ae)),
+                     Pair.of(dgx.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dgv.ad)),
+                     Pair.of(dgx.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dgv.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final dhc.a b = new dhc.a(alj.b("overworld"), new dhc.a.a() {
+         @Override
+         public <T> dgx.c<T> apply(Function<ali<dgo>, T> $$0) {
+            return dhc.a.a($$0);
+         }
+      });
+      static final Map<alj, dhc.a> f = Stream.of(a, b).collect(Collectors.toMap(dhc.a::b, $$0 -> (dhc.a)$$0));
+      public static final Codec<dhc.a> c = alj.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dgx.c<T> a(Function<ali<dgo>, T> $$0) {
+         Builder<Pair<dgx.d, T>> $$1 = ImmutableList.builder();
+         new dhe().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dgx.c<>($$1.build());
       }
-   }
 
-   protected boolean a(ern $$0) {
-      return false;
-   }
+      public Stream<ali<dgo>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ali<dgo>>map(Pair::getSecond).distinct();
+      }
 
-   protected void a(dvo $$0, dff $$1, jh $$2, ern $$3) {
+      public alj b() {
+         return this.d;
+      }
+
+      public dhc.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> dgx.c<T> apply(Function<ali<dgo>, T> var1);
+      }
    }
 }

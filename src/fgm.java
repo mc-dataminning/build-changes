@@ -1,40 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fgm extends fgo {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fgm.a c = fgm.a.a;
+public class fgm {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static fgm a(String $$0) {
-      fgm $$1 = new fgm();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fik.a("startDate", $$3, 0L);
-         $$1.b = fik.a("daysLeft", $$3, 0);
-         $$1.c = b(fik.b("subscriptionType", $$3, fgm.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   private fgm(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static fgm.a b(String $$0) {
-      try {
-         return fgm.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fgm.a.a;
+   public xj a(xj $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public xj a() {
+      if (!hal.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? xj.c(this.c) : xj.a(this.c, this.d);
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   public static fgm a(JsonObject $$0) {
+      String $$1 = fir.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new fgm($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

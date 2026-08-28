@@ -1,27 +1,23 @@
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record ajq(String b, UUID c) implements zs<ajo> {
-   public static final zj<wi, ajq> a = zs.a(ajq::a, ajq::new);
+public class ajq implements zq<ajm> {
+   public static final ajq a = new ajq();
+   public static final zh<ByteBuf, ajq> b = zh.a(a);
 
-   private ajq(wi $$0) {
-      this($$0.d(16), $$0.n());
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private ajq() {
    }
 
    @Override
-   public zu<ajq> a() {
-      return ajm.g;
+   public zs<ajq> a() {
+      return ajk.i;
    }
 
-   public void a(ajo $$0) {
+   public void a(ajm $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

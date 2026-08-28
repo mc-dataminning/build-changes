@@ -1,33 +1,25 @@
+import javax.annotation.Nullable;
+
 public class cga {
-   public static boolean a(bvg $$0) {
-      return $$0.P() instanceof cep;
+   @Nullable
+   public static ezy a(bvp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cgd.a($$0, $$1);
+      return cgg.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public static boolean a(bvm $$0, int $$1) {
-      return $$0.gh() && $$0.ge().a($$0.dw(), (double)($$0.gf() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(jh $$0, bvm $$1) {
-      return $$1.dY().e($$0.v());
-   }
-
-   public static boolean a(boolean $$0, bvm $$1, jh $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(ceq $$0, jh $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bvm $$0, jh $$1) {
-      return $$0.dY().b_($$1).a(axj.a);
-   }
-
-   public static boolean b(bvm $$0, jh $$1) {
-      return $$0.a(esk.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bvm $$0, jh $$1) {
-      return $$0.dY().a_($$1).e();
+   @Nullable
+   public static jh a(bvp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      jh $$8 = cgg.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         jh $$9 = cgg.a($$0, $$1, $$0.dY(), $$8);
+         if (!cgd.a($$9, $$0) && !cgd.a($$7, $$0, $$9)) {
+            $$9 = cgg.a($$9, $$0.dV().al(), $$1x -> cgd.c($$0, $$1x));
+            return cgd.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

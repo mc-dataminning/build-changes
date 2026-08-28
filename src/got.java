@@ -1,12 +1,13 @@
-public class got extends gpo {
-   public static final all a = all.b("textures/entity/guardian_elder.png");
+public class got extends grs<clj> {
+   private static final alj a = alj.b("textures/entity/spider/cave_spider.png");
 
-   public got(gpa.a $$0) {
-      super($$0, 1.2F, gcb.aq);
+   public got(gpk.a $$0) {
+      super($$0, gck.P);
+      this.f = 0.56F;
    }
 
    @Override
-   public all a(gvq $$0) {
+   public alj b(gwm $$0) {
       return a;
    }
 }

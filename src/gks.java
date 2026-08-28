@@ -1,110 +1,314 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gks implements hbk {
-   private final all a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gks implements hbz {
+   private static final Logger g = LogUtils.getLogger();
+   private static final gku h = new gku();
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gks.class, new gks.a())
+      .registerTypeAdapter(gko.class, new gko.a())
+      .registerTypeAdapter(gkp.class, new gkp.a())
+      .registerTypeAdapter(gkr.class, new gkr.a())
+      .registerTypeAdapter(gkx.class, new gkx.a())
+      .registerTypeAdapter(gky.class, new gky.a())
+      .registerTypeAdapter(gkw.class, new gkw.a())
+      .create();
+   private static final char i = '#';
+   public static final String b = "particle";
+   private static final boolean j = true;
+   private final List<gko> k;
+   @Nullable
+   private final gks.b l;
+   @Nullable
+   private final Boolean m;
+   private final gky n;
+   private final List<gkw> o;
+   public String c = "";
+   @VisibleForTesting
+   protected final Map<String, Either<hbn, String>> d;
+   @Nullable
+   protected gks e;
+   @Nullable
+   protected alj f;
 
-   public gks(all $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static gks a(Reader $$0) {
+      return azc.a(a, $$0, gks.class);
    }
 
-   public all a() {
-      return this.a;
+   public gks(@Nullable alj $$0, List<gko> $$1, Map<String, Either<hbn, String>> $$2, @Nullable Boolean $$3, @Nullable gks.b $$4, gky $$5, List<gkw> $$6) {
+      this.k = $$1;
+      this.m = $$3;
+      this.l = $$4;
+      this.d = $$2;
+      this.f = $$0;
+      this.n = $$5;
+      this.o = $$6;
+   }
+
+   public List<gko> a() {
+      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
+   }
+
+   public boolean b() {
+      if (this.m != null) {
+         return this.m;
+      } else {
+         return this.e != null ? this.e.b() : true;
+      }
+   }
+
+   public gks.b c() {
+      if (this.l != null) {
+         return this.l;
+      } else {
+         return this.e != null ? this.e.c() : gks.b.b;
+      }
+   }
+
+   public boolean d() {
+      return this.f == null || this.e != null && this.e.d();
+   }
+
+   public List<gkw> e() {
+      return this.o;
    }
 
    @Override
-   public j b() {
-      return this.b;
+   public void a(hbz.a $$0) {
+      if (this.f != null) {
+         if (!($$0.a(this.f) instanceof gks $$2)) {
+            throw new IllegalStateException("BlockModel parent has to be a block model.");
+         }
+
+         this.e = $$2;
+      }
    }
 
    @Override
-   public boolean c() {
-      return this.c;
+   public hbg a(hbp $$0, Function<hbn, gze> $$1, hbv $$2) {
+      return this.a($$1, $$2, true);
    }
 
-   public int d() {
-      return this.d;
+   public hbg a(Function<hbn, gze> $$0, hbv $$1, boolean $$2) {
+      gze $$3 = $$0.apply(this.b("particle"));
+      if (this.f() == hby.d) {
+         return new hbj(this.g(), $$3, this.c().a());
+      } else {
+         hbx.a $$4 = new hbx.a(this, $$2).a($$3);
+
+         for (gko $$5 : this.a()) {
+            for (jm $$6 : $$5.c.keySet()) {
+               gkp $$7 = $$5.c.get($$6);
+               gze $$8 = $$0.apply(this.b($$7.c()));
+               if ($$7.a() == null) {
+                  $$4.a(a($$5, $$7, $$8, $$6, $$1));
+               } else {
+                  $$4.a(jm.a($$1.b().c(), $$7.a()), a($$5, $$7, $$8, $$6, $$1));
+               }
+            }
+         }
+
+         return $$4.b();
+      }
+   }
+
+   private static gkn a(gko $$0, gkp $$1, gze $$2, jm $$3, hbv $$4) {
+      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(String $$0) {
+      return !gyu.b().equals(this.b($$0).b());
+   }
+
+   public hbn b(String $$0) {
+      if (d($$0)) {
+         $$0 = $$0.substring(1);
+      }
+
+      List<String> $$1 = Lists.newArrayList();
+
+      while (true) {
+         Either<hbn, String> $$2 = this.c($$0);
+         Optional<hbn> $$3 = $$2.left();
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
+
+         $$0 = (String)$$2.right().get();
+         if ($$1.contains($$0)) {
+            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
+            return new hbn(gzd.d, gyu.b());
+         }
+
+         $$1.add($$0);
+      }
+   }
+
+   private Either<hbn, String> c(String $$0) {
+      for (gks $$1 = this; $$1 != null; $$1 = $$1.e) {
+         Either<hbn, String> $$2 = $$1.d.get($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return Either.left(new hbn(gzd.d, gyu.b()));
+   }
+
+   static boolean d(String $$0) {
+      return $$0.charAt(0) == '#';
+   }
+
+   public gks f() {
+      return this.e == null ? this : this.e.f();
+   }
+
+   public gky g() {
+      gkx $$0 = this.a(cwk.b);
+      gkx $$1 = this.a(cwk.c);
+      gkx $$2 = this.a(cwk.d);
+      gkx $$3 = this.a(cwk.e);
+      gkx $$4 = this.a(cwk.f);
+      gkx $$5 = this.a(cwk.g);
+      gkx $$6 = this.a(cwk.h);
+      gkx $$7 = this.a(cwk.i);
+      return new gky($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private gkx a(cwk $$0) {
+      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
    }
 
    @Override
    public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gks $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+      return this.c;
    }
 
    public static class a implements JsonDeserializer<gks> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
       public gks a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         all $$4 = this.b($$3);
-         haw $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gks($$4, $$5.b(), $$6, $$7);
+         List<gko> $$4 = this.b($$2, $$3);
+         String $$5 = this.c($$3);
+         Map<String, Either<hbn, String>> $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gky $$8 = gky.a;
+         if ($$3.has("display")) {
+            JsonObject $$9 = azc.u($$3, "display");
+            $$8 = (gky)$$2.deserialize($$9, gky.class);
+         }
+
+         List<gkw> $$10 = this.a($$2, $$3);
+         gks.b $$11 = null;
+         if ($$3.has("gui_light")) {
+            $$11 = gks.b.a(azc.i($$3, "gui_light"));
+         }
+
+         alj $$12 = $$5.isEmpty() ? null : alj.a($$5);
+         return new gks($$12, $$4, $$6, $$7, $$11, $$8, $$10);
       }
 
-      private boolean d(JsonObject $$0) {
-         return azd.a($$0, "uvlock", false);
+      protected List<gkw> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         List<gkw> $$2 = Lists.newArrayList();
+         if ($$1.has("overrides")) {
+            for (JsonElement $$4 : azc.v($$1, "overrides")) {
+               $$2.add((gkw)$$0.deserialize($$4, gkw.class));
+            }
+         }
+
+         return $$2;
       }
 
-      protected haw a(JsonObject $$0) {
-         int $$1 = azd.a($$0, "x", 0);
-         int $$2 = azd.a($$0, "y", 0);
-         haw $$3 = haw.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+      private Map<String, Either<hbn, String>> b(JsonObject $$0) {
+         alj $$1 = gzd.d;
+         Map<String, Either<hbn, String>> $$2 = Maps.newHashMap();
+         if ($$0.has("textures")) {
+            JsonObject $$3 = azc.u($$0, "textures");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
+            }
+         }
+
+         return $$2;
+      }
+
+      private static Either<hbn, String> a(alj $$0, String $$1) {
+         if (gks.d($$1)) {
+            return Either.right($$1.substring(1));
          } else {
-            return $$3;
+            alj $$2 = alj.c($$1);
+            if ($$2 == null) {
+               throw new JsonParseException($$1 + " is not valid resource location");
+            } else {
+               return Either.left(new hbn($$0, $$2));
+            }
          }
       }
 
-      protected all b(JsonObject $$0) {
-         return all.a(azd.i($$0, "model"));
+      private String c(JsonObject $$0) {
+         return azc.a($$0, "parent", "");
       }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = azd.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? azc.k($$0, "ambientocclusion") : null;
+      }
+
+      protected List<gko> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         List<gko> $$2 = Lists.newArrayList();
+         if ($$1.has("elements")) {
+            for (JsonElement $$3 : azc.v($$1, "elements")) {
+               $$2.add((gko)$$0.deserialize($$3, gko.class));
+            }
          }
+
+         return $$2;
+      }
+   }
+
+   public static enum b {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static gks.b a(String $$0) {
+         for (gks.b $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
       }
    }
 }

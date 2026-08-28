@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
 public interface fpu {
-   default void a(fpt $$0, xl $$1) {
-      this.a($$0, fpw.a($$1.getString()));
+   void m(int var1);
+
+   void n(int var1);
+
+   int D();
+
+   int E();
+
+   int y();
+
+   int w();
+
+   default fql H() {
+      return new fql(this.D(), this.E(), this.y(), this.w());
    }
 
-   default void a(fpt $$0, String $$1) {
-      this.a($$0, fpw.a($$1));
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
    }
 
-   default void a(fpt $$0, xl... $$1) {
-      this.a($$0, fpw.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fpt var1, fpw<?> var2);
-
-   fpu a();
+   void a(Consumer<fmb> var1);
 }

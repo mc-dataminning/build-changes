@@ -1,3 +1,7 @@
-public class gvl extends gvd {
-   public ezr a = ezr.c;
+import javax.annotation.Nullable;
+
+public class gvl extends gvo {
+   public boolean a = true;
+   @Nullable
+   public ezy b;
 }

@@ -1,48 +1,45 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class anx {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.help.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xj.b("commands.jfr.dump.failed", $$0));
+
+   private anx() {
+   }
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("help").executes($$1 -> {
-               Map<CommandNode<ew>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ew)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((ew)$$1.getSource()).a(() -> xl.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
-            .then(
-               ex.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ew> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ew)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ew>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ew)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((ew)$$1.getSource()).a(() -> xl.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
+            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
       );
+   }
+
+   private static int a(ew $$0) throws CommandSyntaxException {
+      bpa $$1 = bpa.a($$0.l());
+      if (!bpc.f.a($$1)) {
+         throw a.create();
+      } else {
+         $$0.a(() -> xj.c("commands.jfr.started"), false);
+         return 1;
+      }
+   }
+
+   private static int b(ew $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bpc.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
+         xj $$3 = xj.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xh(xh.a.f, $$2.toString())).a(new xp(xp.a.a, xj.c("chat.copy.click"))));
+         $$0.a(() -> xj.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
+      }
    }
 }

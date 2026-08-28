@@ -1,30 +1,12 @@
-import java.util.Optional;
-
-public record afy(String b, String c, int d, Optional<xl> e, Optional<zb> f) implements zs<ach> {
-   public static final zj<ww, afy> a = zj.a(zh.m, afy::b, zh.m, afy::e, zh.h, afy::f, xn.e, afy::g, zd.d, afy::h, afy::new);
+public record afy(xj b) implements zq<acf> {
+   public static final zh<wu, afy> a = zh.a(xl.d, afy::b, afy::new);
 
    @Override
-   public zu<afy> a() {
-      return agw.aM;
+   public zs<afy> a() {
+      return agu.aO;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xl> g() {
-      return this.e;
-   }
-
-   public Optional<zb> h() {
-      return this.f;
    }
 }

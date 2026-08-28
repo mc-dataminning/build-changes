@@ -1,94 +1,32 @@
-public class agr implements zs<ach> {
-   public static final zj<ww, agr> a = zs.a(agr::a, agr::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final jq<btl> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public agr(int $$0, btn $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
-      }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+public record agr(jq<dzq> a, ali<dfm> b, long c, dfj d, @Nullable dfj e, boolean f, boolean g, Optional<jp> h, int i, int j) {
+   public agr(wu $$0) {
+      this(
+         dzq.i.decode($$0),
+         $$0.a(ma.bb),
+         $$0.readLong(),
+         dfj.a($$0.readByte()),
+         dfj.b($$0.readByte()),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(wg::h),
+         $$0.l(),
+         $$0.l()
+      );
    }
 
-   private agr(ww $$0) {
-      this.f = $$0.l();
-      this.g = btl.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
-   }
-
-   private void a(ww $$0) {
-      $$0.c(this.f);
-      btl.b.encode($$0, this.g);
-      $$0.c(this.h);
+   public void a(wu $$0) {
+      dzq.i.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.l(this.d.a());
+      $$0.l(dfj.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, wg::a);
       $$0.c(this.i);
-      $$0.l(this.j);
-   }
-
-   @Override
-   public zu<agr> a() {
-      return agw.bd;
-   }
-
-   public void a(ach $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public jq<btl> e() {
-      return this.g;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      $$0.c(this.j);
    }
 }

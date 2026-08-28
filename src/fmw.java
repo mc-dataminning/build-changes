@@ -1,82 +1,139 @@
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fmw extends flu {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fmw.a n;
-   private final Supplier<gzu> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
-
-   public fmw(int $$0, int $$1, gby $$2, Supplier<gzu> $$3) {
-      super(0, 0, $$0, $$1, xk.a);
-      this.n = fmw.a.a($$2);
-      this.o = $$3;
-   }
-
-   @Override
-   protected void b(flj $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
-      float $$4 = (float)this.w() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.d();
-      fdg.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.d();
-      fdg.d();
-      $$0.c().b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = azn.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(hdv $$0) {
-   }
-
-   @Override
-   protected void a(fpu $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public flg a(fqa $$0) {
-      return null;
-   }
-
-   static record a(gaf a, gaf b) {
-      public static fmw.a a(gby $$0) {
-         gaf $$1 = new gaf($$0.a(gcb.bI), false);
-         gaf $$2 = new gaf($$0.a(gcb.bO), true);
-         return new fmw.a($$1, $$2);
+public interface fmw {
+   fmw a = new fmw() {
+      @Override
+      public void a(flq $$0, int $$1, int $$2) {
       }
 
-      public void a(flj $$0, gzu $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.501F, 0.0F);
-         gaf $$2 = $$1.e() == gzu.a.a ? this.b : this.a;
-         gjh $$3 = $$2.a($$1.a());
-         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, gyk.d));
-         $$0.c().b();
+      @Override
+      public void a(flq $$0, int $$1, int $$2, int $$3, int $$4) {
       }
+
+      @Override
+      public void b(flq $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public int c(flq $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fmw a(flo $$0, xj... $$1) {
+      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
+   }
+
+   static fmw a(flo $$0, int $$1, xj... $$2) {
+      return a($$0, $$1, Integer.MAX_VALUE, $$2);
+   }
+
+   static fmw a(flo $$0, xj $$1, int $$2) {
+      return a($$0, $$2, Integer.MAX_VALUE, $$1);
+   }
+
+   static fmw a(final flo $$0, final int $$1, final int $$2, final xj... $$3) {
+      return $$3.length == 0 ? a : new fmw() {
+         @Nullable
+         private List<fmw.a> f;
+         @Nullable
+         private ug g;
+
+         @Override
+         public void a(flq $$0x, int $$1x, int $$2x) {
+            this.a($$0, $$1, $$2, 9, -1);
+         }
+
+         @Override
+         public void a(flq $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fmw.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public void b(flq $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fmw.a $$6 : this.c()) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public int c(flq $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (fmw.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         private List<fmw.a> c() {
+            ug $$0 = ug.a();
+            if (this.f != null && $$0 == this.g) {
+               return this.f;
+            } else {
+               this.g = $$0;
+               List<ayy> $$1 = new ArrayList<>();
+
+               for (xj $$2 : $$3) {
+                  $$1.addAll($$0.c($$2, $$1));
+               }
+
+               this.f = new ArrayList<>();
+
+               for (ayy $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
+                  this.f.add(new fmw.a($$3, $$0.a($$3)));
+               }
+
+               return this.f;
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.c().size();
+         }
+
+         @Override
+         public int b() {
+            return Math.min($$1, this.c().stream().mapToInt(fmw.a::b).max().orElse(0));
+         }
+      };
+   }
+
+   void a(flq var1, int var2, int var3);
+
+   void a(flq var1, int var2, int var3, int var4, int var5);
+
+   void b(flq var1, int var2, int var3, int var4, int var5);
+
+   int c(flq var1, int var2, int var3, int var4, int var5);
+
+   int a();
+
+   int b();
+
+   public static record a(ayy a, int b) {
    }
 }

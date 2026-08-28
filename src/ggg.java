@@ -1,27 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class ggg extends gho {
+   private final ghj a;
 
-public class ggg {
-   private final List<all> a;
-
-   private ggg(List<all> $$0) {
-      this.a = $$0;
+   protected ggg(gdh $$0, double $$1, double $$2, double $$3, double $$4, ghj $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
-   public List<all> a() {
-      return this.a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static ggg a(JsonObject $$0) {
-      JsonArray $$1 = azd.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new ggg(List.of());
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         List<all> $$2 = Streams.stream($$1).map($$0x -> azd.a($$0x, "texture")).map(all::a).collect(ImmutableList.toImmutableList());
-         return new ggg($$2);
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public ggs b() {
+      return ggs.b;
+   }
+
+   public static class a implements ggr<lw> {
+      private final ghj a;
+
+      public a(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggg($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,45 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class cql {
-   private final cqk a;
-   private final List<cql.a> b = Lists.newArrayList();
+   public static final cql a = a("core");
+   public static final cql b = a("idle");
+   public static final cql c = a("work");
+   public static final cql d = a("play");
+   public static final cql e = a("rest");
+   public static final cql f = a("meet");
+   public static final cql g = a("panic");
+   public static final cql h = a("raid");
+   public static final cql i = a("pre_raid");
+   public static final cql j = a("hide");
+   public static final cql k = a("fight");
+   public static final cql l = a("celebrate");
+   public static final cql m = a("admire_item");
+   public static final cql n = a("avoid");
+   public static final cql o = a("ride");
+   public static final cql p = a("play_dead");
+   public static final cql q = a("long_jump");
+   public static final cql r = a("ram");
+   public static final cql s = a("tongue");
+   public static final cql t = a("swim");
+   public static final cql u = a("lay_spawn");
+   public static final cql v = a("sniff");
+   public static final cql w = a("investigate");
+   public static final cql x = a("roar");
+   public static final cql y = a("emerge");
+   public static final cql z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cql(cqk $$0) {
-      this.a = $$0;
+   private cql(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cql a(int $$0, cqi $$1) {
-      this.b.add(new cql.a($$0, $$1));
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public cqk a() {
-      this.b.stream().map(cql.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cqi $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   private static cql a(String $$0) {
+      return kd.a(lz.C, $$0, new cql($$0));
    }
 
-   static class a {
-      private final int a;
-      private final cqi b;
-
-      public a(int $$0, cqi $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cql $$1 = (cql)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
 
-      public cqi b() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gj extends gg<dnf> {
+public class gj extends gg<dnm> {
    private gj() {
-      super(dnf.d, dnf::values);
+      super(dnm.d, dnm::values);
    }
 
-   public static gg<dnf> a() {
+   public static gg<dnm> a() {
       return new gj();
    }
 
-   public static dnf a(CommandContext<ew> $$0, String $$1) {
-      return (dnf)$$0.getArgument($$1, dnf.class);
+   public static dnm a(CommandContext<ew> $$0, String $$1) {
+      return (dnm)$$0.getArgument($$1, dnm.class);
    }
 }

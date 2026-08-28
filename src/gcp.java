@@ -1,8 +1,24 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gcp {
+   public static final gcp a = new gcp(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gcp {
+   public gcp(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public gcp(float $$0) {
+      this($$0, $$0, $$0);
+   }
+
+   public gcp a(float $$0) {
+      return new gcp(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public gcp a(float $$0, float $$1, float $$2) {
+      return new gcp(this.b + $$0, this.c + $$1, this.d + $$2);
+   }
 }

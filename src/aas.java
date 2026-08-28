@@ -1,23 +1,19 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public record aas(aas.a c) implements aav {
-   public static final zj<wi, aas> a = aav.a(aas::a, aas::new);
-   public static final aav.b<aas> b = aav.a("debug/brain");
+public record aas(aas.a c) implements aat {
+   public static final zh<wg, aas> a = aat.a(aas::a, aas::new);
+   public static final aat.b<aas> b = aat.a("debug/breeze");
 
-   private aas(wi $$0) {
+   private aas(wg $$0) {
       this(new aas.a($$0));
    }
 
-   private void a(wi $$0) {
+   private void a(wg $$0) {
       this.c.a($$0);
    }
 
    @Override
-   public aav.b<aas> a() {
+   public aat.b<aas> a() {
       return b;
    }
 
@@ -25,76 +21,41 @@ public record aas(aas.a c) implements aav {
       return this.c;
    }
 
-   public static record a(
-      UUID a,
-      int b,
-      String c,
-      String d,
-      int e,
-      float f,
-      float g,
-      ezr h,
-      String i,
-      @Nullable esc j,
-      boolean k,
-      int l,
-      List<String> m,
-      List<String> n,
-      List<String> o,
-      List<String> p,
-      Set<jh> q,
-      Set<jh> r
-   ) {
-      public a(wi $$0) {
-         this(
-            $$0.n(),
-            $$0.readInt(),
-            $$0.p(),
-            $$0.p(),
-            $$0.readInt(),
-            $$0.readFloat(),
-            $$0.readFloat(),
-            $$0.k(),
-            $$0.p(),
-            $$0.c(esc::b),
-            $$0.readBoolean(),
-            $$0.readInt(),
-            $$0.a(wi::p),
-            $$0.a(wi::p),
-            $$0.a(wi::p),
-            $$0.a(wi::p),
-            $$0.a(HashSet::new, jh.b),
-            $$0.a(HashSet::new, jh.b)
-         );
+   public static record a(UUID a, int b, Integer c, jh d) {
+      public a(wg $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(wg::readInt), $$0.c(jh.b));
       }
 
-      public void a(wi $$0) {
+      public void a(wg $$0) {
          $$0.a(this.a);
          $$0.q(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.q(this.e);
-         $$0.a(this.f);
-         $$0.a(this.g);
-         $$0.a(this.h);
-         $$0.a(this.i);
-         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.k);
-         $$0.q(this.l);
-         $$0.a(this.m, wi::a);
-         $$0.a(this.n, wi::a);
-         $$0.a(this.o, wi::a);
-         $$0.a(this.p, wi::a);
-         $$0.a(this.q, jh.b);
-         $$0.a(this.r, jh.b);
+         $$0.a(this.c, wg::q);
+         $$0.a(this.d, jh.b);
       }
 
-      public boolean a(jh $$0) {
-         return this.q.contains($$0);
+      public String a() {
+         return ags.a(this.a);
       }
 
-      public boolean b(jh $$0) {
-         return this.r.contains($$0);
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public jh e() {
+         return this.d;
       }
    }
 }

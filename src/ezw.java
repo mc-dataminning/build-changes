@@ -1,30 +1,26 @@
-import java.util.Objects;
+public abstract class ezw {
+   protected final ezy a;
 
-public interface ezw {
-   static ezw a() {
-      return fab.a;
+   protected ezw(ezy $$0) {
+      this.a = $$0;
    }
 
-   static ezw a(bui $$0) {
-      Objects.requireNonNull($$0);
-
-      return (ezw)(switch ($$0) {
-         case cqo $$1 -> cqo.b($$1.dY()) ? new faf($$1, false) : new fab($$0, false);
-         default -> new fab($$0, false);
-      });
+   public double a(bul $$0) {
+      double $$1 = this.a.d - $$0.dA();
+      double $$2 = this.a.e - $$0.dC();
+      double $$3 = this.a.f - $$0.dG();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   static ezw a(bui $$0, boolean $$1) {
-      return new fab($$0, $$1);
+   public abstract ezw.a d();
+
+   public ezy g() {
+      return this.a;
    }
 
-   boolean b();
-
-   boolean a(fal var1, jh var2, boolean var3);
-
-   boolean a(cwb var1);
-
-   boolean a(ero var1, ero var2);
-
-   fal a(dvo var1, deo var2, jh var3);
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

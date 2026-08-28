@@ -1,23 +1,45 @@
-public class goq<T extends ciy> extends gnr<T, guz, fyu> {
-   public static final all a = all.b("textures/entity/horse/donkey.png");
-   public static final all b = all.b("textures/entity/horse/mule.png");
-   private final all k;
+public class goq extends gqq<cmu, gvd, fyu> {
+   private static final alj a = alj.b("textures/entity/breeze/breeze.png");
 
-   public goq(gpa.a $$0, float $$1, gca $$2, gca $$3, boolean $$4) {
-      super($$0, new fyu($$0.a($$2)), new fyu($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public goq(gpk.a $$0) {
+      super($$0, new fyu($$0.a(gck.H)), 0.5F);
+      this.a(new gsx($$0, this));
+      this.a(new gsw(this));
    }
 
-   public all a(guz $$0) {
-      return this.k;
+   public void a(gvd $$0, fer $$1, gjg $$2, int $$3) {
+      fyu $$4 = this.c();
+      a($$4, $$4.a(), $$4.c());
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public guz a() {
-      return new guz();
+   public alj a(gvd $$0) {
+      return a;
    }
 
-   public void a(T $$0, guz $$1, float $$2) {
+   public gvd a() {
+      return new gvd();
+   }
+
+   public void a(cmu $$0, gvd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a.a($$0.bY);
+      $$1.b.a($$0.b);
+      $$1.c.a($$0.c);
+      $$1.d.a($$0.bZ);
+      $$1.e.a($$0.d);
+   }
+
+   public static fyu a(fyu $$0, gcl... $$1) {
+      $$0.a().k = false;
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+
+      for (gcl $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

@@ -1,55 +1,56 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+public class fnk extends fma {
+   private float a = 0.5F;
 
-public class fnk {
-   @Nullable
-   private fnh a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
-
-   public void a(Duration $$0) {
-      this.b = $$0;
+   public fnk(xj $$0, flo $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   public void a(@Nullable fnh $$0) {
+   public fnk(int $$0, int $$1, xj $$2, flo $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public fnk(int $$0, int $$1, int $$2, int $$3, xj $$4, flo $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public fnk b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private fnk b(float $$0) {
       this.a = $$0;
+      return this;
    }
 
-   @Nullable
-   public fnh a() {
-      return this.a;
+   public fnk c() {
+      return this.b(0.0F);
    }
 
-   public void a(boolean $$0, boolean $$1, fqe $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && fjx.Q().aY().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = ae.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && ae.c() - this.c > this.b.toMillis()) {
-            frp $$4 = fjx.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
-      }
+   public fnk e() {
+      return this.b(0.5F);
    }
 
-   private ftz a(fqe $$0, boolean $$1, boolean $$2) {
-      return (ftz)(!$$1 && $$2 && fjx.Q().aY().b() ? new ftu($$0) : new fub($$0));
+   public fnk f() {
+      return this.b(1.0F);
    }
 
-   public void a(fpu $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   @Override
+   public void b(flq $$0, int $$1, int $$2, float $$3) {
+      xj $$4 = this.z();
+      flo $$5 = this.a();
+      int $$6 = this.y();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.E() + (this.w() - 9) / 2;
+      ayy $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
+
+   private ayy a(xj $$0, int $$1) {
+      flo $$2 = this.a();
+      xo $$3 = $$2.a($$0, $$1 - $$2.a(xi.u));
+      return ug.a().a(xo.a($$3, xi.u));
    }
 }

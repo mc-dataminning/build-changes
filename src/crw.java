@@ -1,43 +1,62 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class crw extends ctp {
-   private final bve a;
-   private final buq b;
-   @Nullable
-   private final all g;
-
-   public crw(bsa $$0, bve $$1, buq $$2, int $$3, int $$4, int $$5, @Nullable all $$6) {
-      super($$0, $$3, $$4, $$5);
-      this.a = $$1;
-      this.b = $$2;
-      this.g = $$6;
-   }
+public record crw(int c, float d, boolean e) implements cyt {
+   public static final Codec<crw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayv.l.fieldOf("nutrition").forGetter(crw::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(crw::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(crw::c)
+            )
+            .apply($$0, crw::new)
+   );
+   public static final zh<wu, crw> b = zh.a(zf.h, crw::a, zf.k, crw::b, zf.b, crw::c, crw::new);
 
    @Override
-   public void a(cwf $$0, cwf $$1) {
-      this.a.a(this.b, $$1, $$0);
-      super.a($$0, $$1);
+   public void a(dfm $$0, bvh $$1, cwm $$2, cys $$3) {
+      azu $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awo.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cou $$5) {
+         $$5.gr().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awn.ui, awo.h, 0.5F, azm.b($$4, 0.9F, 1.0F));
+      }
    }
 
-   @Override
    public int a() {
-      return 1;
+      return this.c;
    }
 
-   @Override
-   public boolean a(cwf $$0) {
-      return this.b == this.a.f($$0);
+   public float b() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(cor $$0) {
-      cwf $$1 = this.g();
-      return !$$1.f() && !$$0.f() && dby.a($$1, dbx.E) ? false : super.a($$0);
+   public boolean c() {
+      return this.e;
    }
 
-   @Override
-   public Pair<all, all> b() {
-      return this.g != null ? Pair.of(csv.B, this.g) : super.b();
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public crw.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public crw.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public crw.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public crw b() {
+         float $$0 = cru.a(this.a, this.b);
+         return new crw(this.a, $$0, this.c);
+      }
    }
 }

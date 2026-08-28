@@ -1,38 +1,37 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class aog {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.op.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.pardonip.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("op").requires($$0x -> $$0x.c(3))).then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
-            avr $$2 = ((ew)$$0x.getSource()).l().ag();
-            return fb.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gk())).map($$0xx -> $$0xx.gk().getName()), $$1);
-         }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ex.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().g().a(), $$1))
+                  .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+            )
       );
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avr $$2 = $$0.l().ag();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xl.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
+   private static int a(ew $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {
-         return $$3;
+         avn $$2 = $$0.l().ag().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
+         } else {
+            $$2.c($$1);
+            $$0.a(() -> xj.a("commands.pardonip.success", $$1), true);
+            return 1;
+         }
       }
    }
 }

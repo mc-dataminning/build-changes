@@ -1,15 +1,40 @@
-import java.lang.Thread.UncaughtExceptionHandler;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fgt implements UncaughtExceptionHandler {
-   private final Logger a;
+public class fgt extends fgv {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fgt.a c = fgt.a.a;
 
-   public fgt(Logger $$0) {
-      this.a = $$0;
+   public static fgt a(String $$0) {
+      fgt $$1 = new fgt();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fir.a("startDate", $$3, 0L);
+         $$1.b = fir.a("daysLeft", $$3, 0);
+         $$1.c = b(fir.b("subscriptionType", $$3, fgt.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   private static fgt.a b(String $$0) {
+      try {
+         return fgt.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fgt.a.a;
+      }
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

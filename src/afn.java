@@ -1,52 +1,61 @@
-import java.util.ArrayList;
-import java.util.List;
+public class afn implements zq<acf> {
+   public static final zh<wg, afn> a = zq.a(afn::a, afn::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-public record afn(int c, List<aks.c<?>> d) implements zs<ach> {
-   public static final zj<ww, afn> a = zs.a(afn::b, afn::new);
-   public static final int b = 255;
-
-   private afn(ww $$0) {
-      this($$0.l(), a($$0));
+   public afn(bul $$0) {
+      this($$0.ar(), $$0.dy());
    }
 
-   private static void a(List<aks.c<?>> $$0, ww $$1) {
-      for (aks.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.l(255);
+   public afn(int $$0, ezy $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = azm.a($$1.d, -3.9, 3.9);
+      double $$4 = azm.a($$1.e, -3.9, 3.9);
+      double $$5 = azm.a($$1.f, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private static List<aks.c<?>> a(ww $$0) {
-      List<aks.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aks.c.a($$0, $$2));
-      }
-
-      return $$1;
+   private afn(wg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void b(ww $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(wg $$0) {
+      $$0.c(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+      $$0.m(this.e);
    }
 
    @Override
-   public zu<afn> a() {
-      return agw.aC;
+   public zs<afn> a() {
+      return agu.aE;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<aks.c<?>> e() {
-      return this.d;
+   public double e() {
+      return (double)this.c / 8000.0;
+   }
+
+   public double f() {
+      return (double)this.d / 8000.0;
+   }
+
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

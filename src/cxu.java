@@ -1,27 +1,41 @@
-public class cxu extends cwz implements cxa {
-   public cxu(cwb.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cxu extends cus implements cvh {
+   private final awm a;
+
+   public cxu(diq $$0, awm $$1, cwi.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      cwf $$3 = $$1.b($$2);
-      if ($$0 instanceof arq $$4) {
-         cpk.a(cpw::new, $$4, $$3, $$1, -20.0F, 0.5F, 1.0F);
+   public bsk a(daf $$0) {
+      bsk $$1 = super.a($$0);
+      cou $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cuy.a($$0.n(), $$2));
       }
 
-      $$1.b(awy.c.b(this));
-      $$3.a(1, $$1);
-      return bsh.a;
+      return $$1;
    }
 
    @Override
-   public cpk a(dff $$0, ka $$1, cwf $$2, jm $$3) {
-      return new cpw($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   protected awm a(dvv $$0) {
+      return this.a;
    }
 
    @Override
-   public cxa.a b() {
-      return cxa.a.a().a(cxa.a.a.c() * 0.5F).b(cxa.a.a.d() * 1.25F).a();
+   public boolean a(@Nullable cou $$0, dfm $$1, jh $$2, @Nullable ezu $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().m(), 3);
+         }
+
+         $$1.a($$0, ear.z, $$2);
+         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

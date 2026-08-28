@@ -1,9 +1,19 @@
-public class csq extends cru {
-   public csq(int $$0, coq $$1) {
-      super(ctb.o, daz.b, cti.b, $$0, $$1);
+public class csq extends ctw {
+   private final csp a;
+
+   public csq(bsd $$0, int $$1, int $$2, int $$3, csp $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public csq(int $$0, coq $$1, bsa $$2, cse $$3) {
-      super(ctb.o, daz.b, cti.b, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cwm $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

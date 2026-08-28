@@ -1,92 +1,101 @@
-import java.util.Locale;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public interface ems {
-   ems a = a(eof.a::new, "MSCorridor");
-   ems b = a(eof.b::new, "MSCrossing");
-   ems c = a(eof.d::new, "MSRoom");
-   ems d = a(eof.e::new, "MSStairs");
-   ems e = a(eoh.a::new, "NeBCr");
-   ems f = a(eoh.b::new, "NeBEF");
-   ems g = a(eoh.c::new, "NeBS");
-   ems h = a(eoh.d::new, "NeCCS");
-   ems i = a(eoh.e::new, "NeCTB");
-   ems j = a(eoh.f::new, "NeCE");
-   ems k = a(eoh.g::new, "NeSCSC");
-   ems l = a(eoh.h::new, "NeSCLT");
-   ems m = a(eoh.i::new, "NeSC");
-   ems n = a(eoh.j::new, "NeSCRT");
-   ems o = a(eoh.k::new, "NeCSR");
-   ems p = a(eoh.l::new, "NeMT");
-   ems q = a(eoh.o::new, "NeRC");
-   ems r = a(eoh.p::new, "NeSR");
-   ems s = a(eoh.q::new, "NeStart");
-   ems t = a(eot.a::new, "SHCC");
-   ems u = a(eot.b::new, "SHFC");
-   ems v = a(eot.c::new, "SH5C");
-   ems w = a(eot.d::new, "SHLT");
-   ems x = a(eot.e::new, "SHLi");
-   ems y = a(eot.g::new, "SHPR");
-   ems z = a(eot.h::new, "SHPH");
-   ems A = a(eot.i::new, "SHRT");
-   ems B = a(eot.j::new, "SHRC");
-   ems C = a(eot.l::new, "SHSD");
-   ems D = a(eot.m::new, "SHStart");
-   ems E = a(eot.n::new, "SHS");
-   ems F = a(eot.o::new, "SHSSD");
-   ems G = a(eod::new, "TeJP");
-   ems H = a(eon.a::a, "ORP");
-   ems I = a(eoa.a::new, "Iglu");
-   ems J = a(eop::new, "RUPO");
-   ems K = a(eov::new, "TeSH");
-   ems L = a(enw::new, "TeDP");
-   ems M = a(eol.h::new, "OMB");
-   ems N = a(eol.j::new, "OMCR");
-   ems O = a(eol.k::new, "OMDXR");
-   ems P = a(eol.l::new, "OMDXYR");
-   ems Q = a(eol.m::new, "OMDYR");
-   ems R = a(eol.n::new, "OMDYZR");
-   ems S = a(eol.o::new, "OMDZR");
-   ems T = a(eol.p::new, "OMEntry");
-   ems U = a(eol.q::new, "OMPenthouse");
-   ems V = a(eol.s::new, "OMSimple");
-   ems W = a(eol.t::new, "OMSimpleT");
-   ems X = a(eol.u::new, "OMWR");
-   ems Y = a(eny.a::new, "ECP");
-   ems Z = a(eox.i::new, "WMP");
-   ems aa = a(enu.a::new, "BTP");
-   ems ab = a(eor.a::new, "Shipwreck");
-   ems ac = a(eoj.a::new, "NeFos");
-   ems ad = a(elx::new, "jigsaw");
+public abstract class ems extends emm {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected eqk b;
+   protected eqg c;
+   protected jh d;
 
-   emf load(emr var1, un var2);
-
-   private static ems a(ems $$0, String $$1) {
-      return kd.a(lz.Q, $$1.toLowerCase(Locale.ROOT), $$0);
+   public ems(emz $$0, int $$1, eql $$2, alj $$3, String $$4, eqg $$5, jh $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jm.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   private static ems a(ems.a $$0, String $$1) {
-      return a((ems)$$0, $$1);
+   public ems(emz $$0, ul $$1, eql $$2, Function<alj, eqg> $$3) {
+      super($$0, $$1);
+      this.a(jm.c);
+      this.a = $$1.l("Template");
+      this.d = new jh($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      alj $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   private static ems a(ems.b $$0, String $$1) {
-      return a((ems)$$0, $$1);
+   protected alj b() {
+      return alj.a(this.a);
    }
 
-   public interface a extends ems {
-      emf load(un var1);
+   @Override
+   protected void a(emy $$0, ul $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
 
-      @Override
-      default emf load(emr $$0, un $$1) {
-         return this.load($$1);
+   @Override
+   public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, des $$5, jh $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (eqk.c $$8 : this.b.a(this.d, this.c, dis.pa)) {
+            if ($$8.c() != null) {
+               dxe $$9 = dxe.valueOf($$8.c().l("mode"));
+               if ($$9 == dxe.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (eqk.c $$11 : this.b.a(this.d, this.c, dis.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dvv $$13 = dis.a.m();
+
+               try {
+                  $$13 = gq.a($$0.a(ma.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
       }
    }
 
-   public interface b extends ems {
-      emf load(eqe var1, un var2);
+   protected abstract void a(String var1, jh var2, dgd var3, azu var4, ema var5);
 
-      @Override
-      default emf load(emr $$0, un $$1) {
-         return this.load($$0.c(), $$1);
-      }
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dpd a() {
+      return this.c.d();
+   }
+
+   public eqk c() {
+      return this.b;
+   }
+
+   public jh d() {
+      return this.d;
+   }
+
+   public eqg e() {
+      return this.c;
    }
 }

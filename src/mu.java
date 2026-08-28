@@ -22,17 +22,17 @@ public class mu implements mg {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               alj<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               alh<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.d(ma.f)
                   .c()
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        dvp<dij, dvo> $$4x = ((dij)$$2x.a()).l();
+                        dvw<diq, dvv> $$4x = ((diq)$$2x.a()).l();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (dwq<?> $$6 : $$4x.d()) {
+                           for (dwx<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class mu implements mg {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           dvo $$10 = (dvo)var13.next();
+                           dvv $$10 = (dvv)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (dwq<?> $$13 : $$4x.d()) {
+                           for (dwx<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ae.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class mu implements mg {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dij.j($$10));
-                           if ($$10 == ((dij)$$2x.a()).m()) {
+                           $$11.addProperty("id", diq.j($$10));
+                           if ($$10 == ((diq)$$2x.a()).m()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class mu implements mg {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dik.a
+                        JsonElement $$15 = (JsonElement)dir.a
                            .codec()
-                           .encodeStart($$4, (dij)$$2x.a())
+                           .encodeStart($$4, (diq)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

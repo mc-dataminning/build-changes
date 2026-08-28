@@ -1,137 +1,97 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.Objects;
 
-public class ftp extends ftf<cts> {
-   private static final all G = all.b("container/smithing/error");
-   private static final all H = all.b("item/empty_slot_smithing_template_armor_trim");
-   private static final all I = all.b("item/empty_slot_smithing_template_netherite_upgrade");
-   private static final xl J = xl.c("container.upgrade.missing_template_tooltip");
-   private static final xl K = xl.c("container.upgrade.error_tooltip");
-   private static final List<all> L = List.of(H, I);
-   private static final int M = 44;
-   private static final int N = 15;
-   private static final int O = 28;
-   private static final int P = 21;
-   private static final int Q = 65;
-   private static final int R = 46;
-   private static final int S = 115;
-   private static final int T = 210;
-   private static final int U = 25;
-   private static final Vector3f V = new Vector3f();
-   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-   private static final int X = 25;
-   private static final int Y = 75;
-   private static final int Z = 141;
-   private final fsu aa = new fsu(0);
-   private final fsu ab = new fsu(1);
-   private final fsu ac = new fsu(2);
-   @Nullable
-   private cko ad;
-
-   public ftp(cts $$0, coq $$1, xl $$2) {
-      super($$0, $$1, $$2, all.b("textures/gui/container/smithing.png"));
-      this.v = 44;
-      this.w = 15;
-   }
-
-   @Override
-   protected void F() {
-      this.ad = new cko(this.m.s, 0.0, 0.0, 0.0);
-      this.ad.b(true);
-      this.ad.a(true);
-      this.ad.aX = 210.0F;
-      this.ad.w(25.0F);
-      this.ad.aZ = this.ad.dO();
-      this.ad.ba = this.ad.dO();
-      this.b(this.z.b(3).g());
-   }
-
-   @Override
-   public void D() {
-      super.D();
-      Optional<cxl> $$0 = this.G();
-      this.aa.a(L);
-      this.ab.a($$0.map(cxl::d).orElse(List.of()));
-      this.ac.a($$0.map(cxl::p).orElse(List.of()));
-   }
-
-   private Optional<cxl> G() {
-      cwf $$0 = this.z.b(0).g();
-      return !$$0.f() && $$0.h() instanceof cxl $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(flj $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.aa.a(this.z, $$0, $$1, this.C, this.D);
-      this.ab.a(this.z, $$0, $$1, this.C, this.D);
-      this.ac.a(this.z, $$0, $$1, this.C, this.D);
-      fte.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
-   }
-
-   @Override
-   public void a(crs $$0, int $$1, cwf $$2) {
-      if ($$1 == 3) {
-         this.b($$2);
+public class ftp extends fst implements ftr<ctf> {
+   private final ctf y;
+   private final csn z = new csn() {
+      @Override
+      public void a(crz $$0, int $$1, cwm $$2) {
+         ftp.this.N();
       }
-   }
 
-   private void b(cwf $$0) {
-      if (this.ad != null) {
-         for (buq $$1 : buq.i) {
-            this.ad.a($$1, cwf.k);
-         }
-
-         if (!$$0.f()) {
-            ddr $$2 = $$0.a(ku.D);
-            buq $$3 = $$2 != null ? $$2.a() : buq.b;
-            this.ad.a($$3, $$0.v());
+      @Override
+      public void a(crz $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            ftp.this.O();
          }
       }
+   };
+
+   public ftp(ctf $$0, cot $$1, xj $$2) {
+      this.y = $$0;
+   }
+
+   public ctf M() {
+      return this.y;
    }
 
    @Override
-   protected void c(flj $$0, int $$1, int $$2) {
-      if (this.J()) {
-         $$0.a(gjh::B, G, $$1 + 65, $$2 + 46, 28, 21);
+   protected void aR_() {
+      super.aR_();
+      this.y.a(this.z);
+   }
+
+   @Override
+   public void aO_() {
+      this.m.t.p();
+      super.aO_();
+   }
+
+   @Override
+   public void j() {
+      super.j();
+      this.y.b(this.z);
+   }
+
+   @Override
+   protected void m() {
+      if (this.m.t.gt()) {
+         this.c(fmd.a(xi.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fmd.a(xj.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
       }
    }
 
-   private void d(flj $$0, int $$1, int $$2) {
-      Optional<xl> $$3 = Optional.empty();
-      if (this.J() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
-         $$3 = Optional.of(K);
-      }
-
-      if (this.B != null) {
-         cwf $$4 = this.z.b(0).g();
-         cwf $$5 = this.B.g();
-         if ($$4.f()) {
-            if (this.B.d == 0) {
-               $$3 = Optional.of(J);
-            }
-         } else if ($$4.h() instanceof cxl $$6 && $$5.f()) {
-            if (this.B.d == 1) {
-               $$3 = Optional.of($$6.b());
-            } else if (this.B.d == 2) {
-               $$3 = Optional.of($$6.c());
-            }
-         }
-      }
-
-      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
+   @Override
+   protected void J() {
+      this.g(1);
    }
 
-   private boolean J() {
-      return this.z.b(0).h() && this.z.b(1).h() && this.z.b(2).h() && !this.z.b(this.z.o()).h();
+   @Override
+   protected void K() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.y.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.m.r.a(this.y.l, $$0);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   void N() {
+      cwm $$0 = this.y.l();
+      this.a(Objects.requireNonNullElse(fst.a.a($$0), fst.d));
+   }
+
+   void O() {
+      this.a(this.y.m());
+   }
+
+   @Override
+   protected void L() {
+      this.m.t.p();
    }
 }

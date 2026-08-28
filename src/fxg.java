@@ -1,7 +1,4 @@
-import java.util.List;
-
+@FunctionalInterface
 public interface fxg {
-   List<fxh> a();
-
-   xl b();
+   fxf apply(alu var1, jx<als> var2, fww var3);
 }

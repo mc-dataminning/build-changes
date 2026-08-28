@@ -1,150 +1,52 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
 import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public final class cyo {
-   private static final Logger e = LogUtils.getLogger();
-   public static final cyo a = new cyo(new un());
-   public static final Codec<cyo> b = Codec.withAlternative(un.a, vl.i).xmap(cyo::new, $$0 -> $$0.f);
-   public static final Codec<cyo> c = b.validate(
-      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final zj<ByteBuf, cyo> d = zh.p.a(cyo::new, $$0 -> $$0.f);
-   private final un f;
+public record cyo(Map<String, String> d) {
+   public static final cyo a = new cyo(Map.of());
+   public static final Codec<cyo> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cyo::new, cyo::b);
+   private static final zh<ByteBuf, Map<String, String>> e = zf.a(Object2ObjectOpenHashMap::new, zf.n, zf.n);
+   public static final zh<ByteBuf, cyo> c = e.a(cyo::new, cyo::b);
 
-   private cyo(un $$0) {
-      this.f = $$0;
+   public <T extends Comparable<T>> cyo a(dwx<T> $$0, T $$1) {
+      return new cyo(ae.a(this.d, $$0.f(), $$0.b($$1)));
    }
 
-   public static cyo a(un $$0) {
-      return new cyo($$0.i());
+   public <T extends Comparable<T>> cyo a(dwx<T> $$0, dvv $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   public static Predicate<cwf> a(kt<cyo> $$0, un $$1) {
-      return $$2 -> {
-         cyo $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   @Nullable
+   public <T extends Comparable<T>> T a(dwx<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   public boolean b(un $$0) {
-      return vc.a($$0, this.f, true);
-   }
+   public dvv a(dvv $$0) {
+      dvw<diq, dvv> $$1 = $$0.b().l();
 
-   public static void a(kt<cyo> $$0, cwf $$1, Consumer<un> $$2) {
-      cyo $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.f.g()) {
-         $$1.c($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(kt<cyo> $$0, cwf $$1, un $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
-   }
-
-   public cyo a(Consumer<un> $$0) {
-      un $$1 = this.f.i();
-      $$0.accept($$1);
-      return new cyo($$1);
-   }
-
-   public void a(bui $$0) {
-      un $$1 = $$0.f(new un());
-      UUID $$2 = $$0.cI();
-      $$1.a(this.f);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dsr $$0, js.a $$1) {
-      un $$2 = $$0.e($$1);
-      un $$3 = $$2.i();
-      $$2.a(this.f);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.aB_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.aB_(), var7);
-            }
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dwx<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
       }
 
-      return false;
+      return $$0;
    }
 
-   public <T> DataResult<cyo> a(DynamicOps<vk> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new cyo((un)$$0x));
+   private static <T extends Comparable<T>> dvv a(dvv $$0, dwx<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(vb.a, $$0);
+   public boolean a() {
+      return this.d.isEmpty();
    }
 
-   public <T> DataResult<T> a(DynamicOps<vk> $$0, MapDecoder<T> $$1) {
-      MapLike<vk> $$2 = (MapLike<vk>)$$0.getMap(this.f).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
-
-   public int a() {
-      return this.f.f();
-   }
-
-   public boolean b() {
-      return this.f.g();
-   }
-
-   public un c() {
-      return this.f.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.f.e($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof cyo $$1 ? this.f.equals($$1.f) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.f.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.f.toString();
-   }
-
-   @Deprecated
-   public un d() {
-      return this.f;
+   public Map<String, String> b() {
+      return this.d;
    }
 }

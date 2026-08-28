@@ -1,34 +1,37 @@
-public class ahj implements zs<agy> {
-   public static final zj<wi, ahj> a = zs.a(ahj::a, ahj::new);
-   private final ahj.a b;
+public class ahj implements zq<agw> {
+   public static final zh<wg, ahj> a = zq.a(ahj::a, ahj::new);
+   private final int b;
+   private final String c;
 
-   public ahj(ahj.a $$0) {
+   public ahj(int $$0, String $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahj(wi $$0) {
-      this.b = $$0.b(ahj.a.class);
+   private ahj(wg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
+   private void a(wg $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zu<ahj> a() {
-      return agw.bq;
+   public zs<ahj> a() {
+      return agu.bs;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public ahj.a b() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public String e() {
+      return this.c;
    }
 }

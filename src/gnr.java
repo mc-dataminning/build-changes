@@ -1,23 +1,41 @@
-public abstract class gnr<T extends ciz, S extends gve, M extends fza<? super S>> extends gnv<T, S, M> {
-   private final float a;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public gnr(gpa.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$2, 0.75F);
-      this.a = $$3;
+public class gnr implements gng.a {
+   public static final int a = 200;
+   private final fke b;
+   private final List<abh> c = Lists.newArrayList();
+
+   gnr(fke $$0) {
+      this.b = $$0;
    }
 
-   protected void a(S $$0, fek $$1) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1);
+   public void a(abh $$0) {
+      this.c.add($$0);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.i();
-      $$1.c = $$0.cc();
-      $$1.e = $$0.J($$2);
-      $$1.f = $$0.K($$2);
-      $$1.g = $$0.L($$2);
-      $$1.d = $$0.cq > 0;
+   @Override
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      fev $$5 = $$1.getBuffer(gjq.y());
+      long $$6 = this.b.s.ab();
+      Iterator<abh> $$7 = this.c.iterator();
+
+      while ($$7.hasNext()) {
+         abh $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (abh.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               etd $$12 = $$10.b();
+               gka.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gka.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gka.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
+      }
    }
 }

@@ -1,37 +1,18 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class faf extends fab {
-   @Nullable
-   private jh b;
-   @Nullable
-   private jh c;
-
-   protected faf(cqo $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
-   }
-
-   private void a(cqo $$0) {
-      jh $$1 = $$0.q();
-      dvo $$2 = $$0.dY().a_($$1);
-      boolean $$3 = dhy.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         dwr $$4 = $$2.c(((dhy)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
-         }
-      }
+public final class faf extends fas {
+   protected faf(fah $$0) {
+      super($$0);
    }
 
    @Override
-   public fal a(dvo $$0, deo $$1, jh $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fai.a();
+   public DoubleList a(jm.a $$0) {
+      return new fae(this.a.c($$0));
+   }
+
+   @Override
+   protected int a(jm.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return azm.a(azm.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

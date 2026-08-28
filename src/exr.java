@@ -1,27 +1,33 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public interface exr extends euh, Predicate<eug> {
-   Codec<exr> d = lz.F.q().dispatch("condition", exr::b, exs::a);
-   Codec<exr> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, exe.b));
-   Codec<jq<exr>> f = alh.a(ma.bf, e);
+public record exr(Optional<bl> b) implements exy {
+   public static final MapCodec<exr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bl.a.optionalFieldOf("predicate").forGetter(exr::c)).apply($$0, exr::new));
 
-   exs b();
+   @Override
+   public exz b() {
+      return eya.m;
+   }
 
-   @FunctionalInterface
-   public interface a {
-      exr build();
+   @Override
+   public Set<exg<?>> a() {
+      return ImmutableSet.of(exj.f, exj.c);
+   }
 
-      default exr.a invert() {
-         return exo.a(this);
-      }
+   public boolean a(eun $$0) {
+      btb $$1 = $$0.c(exj.c);
+      ezy $$2 = $$0.c(exj.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   }
 
-      default exf.a or(exr.a $$0) {
-         return exf.a(this, $$0);
-      }
+   public static exy.a a(bl.a $$0) {
+      return () -> new exr(Optional.of($$0.b()));
+   }
 
-      default exe.a and(exr.a $$0) {
-         return exe.a(this, $$0);
-      }
+   public Optional<bl> c() {
+      return this.b;
    }
 }

@@ -1,14 +1,15 @@
-public class cvu extends cxk {
-   public cvu(dij $$0, dij $$1, cwb.a $$2) {
-      super($$2, $$0, $$1, jm.b);
+import java.util.List;
+
+public class cvu extends cwi {
+   public cvu(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dfi $$0, dvo $$1, jh $$2) {
-      if ($$1.b() instanceof dri $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      czb $$4 = $$0.a(ku.ae);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,89 +1,36 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cfv {
-   public static final cfv a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<bve> g;
+public class cfv extends cfl {
+   private static final ImmutableMap<bus<?>, Float> a = ImmutableMap.builder()
+      .put(bus.J, 8.0F)
+      .put(bus.R, 12.0F)
+      .put(bus.al, 8.0F)
+      .put(bus.am, 12.0F)
+      .put(bus.aQ, 15.0F)
+      .put(bus.aV, 12.0F)
+      .put(bus.by, 8.0F)
+      .put(bus.bA, 10.0F)
+      .put(bus.bJ, 10.0F)
+      .put(bus.bK, 8.0F)
+      .put(bus.bM, 8.0F)
+      .build();
 
-   private cfv(boolean $$0) {
-      this.c = $$0;
+   @Override
+   protected boolean a(arp $$0, bvh $$1, bvh $$2) {
+      return this.b($$2) && this.a($$1, $$2);
    }
 
-   public static cfv a() {
-      return new cfv(true);
+   private boolean a(bvh $$0, bvh $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((bul)$$0) <= (double)($$2 * $$2);
    }
 
-   public static cfv b() {
-      return new cfv(false);
+   @Override
+   protected cel<bvh> b() {
+      return cel.A;
    }
 
-   public cfv c() {
-      cfv $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public cfv a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public cfv d() {
-      this.e = false;
-      return this;
-   }
-
-   public cfv e() {
-      this.f = false;
-      return this;
-   }
-
-   public cfv a(@Nullable Predicate<bve> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable bve $$0, bve $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.eB()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
-      } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.eA() || $$1.dY().ak() == bse.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ar()) || $$0.s($$1))) {
-               return false;
-            }
-
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.C($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.dD(), $$1.dF(), $$1.dJ());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$0 instanceof bvg $$5 && !$$5.Q().a($$1)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   private boolean b(bvh $$0) {
+      return a.containsKey($$0.aq());
    }
 }

@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class lw extends lr<lw> implements lq {
    private final MapCodec<lw> a = MapCodec.unit(this::e);
-   private final zj<ww, lw> b = zj.a(this);
+   private final zh<wu, lw> b = zh.a(this);
 
    protected lw(boolean $$0) {
       super($$0);
@@ -18,7 +18,7 @@ public class lw extends lr<lw> implements lq {
    }
 
    @Override
-   public zj<ww, lw> d() {
+   public zh<wu, lw> d() {
       return this.b;
    }
 }

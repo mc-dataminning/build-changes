@@ -51,7 +51,7 @@ public class bcx extends DataFix {
       return $$0.get("Properties").get($$1).asString("");
    }
 
-   public static int a(ayk<Dynamic<?>> $$0, Dynamic<?> $$1) {
+   public static int a(ayj<Dynamic<?>> $$0, Dynamic<?> $$1) {
       int $$2 = $$0.a($$1);
       if ($$2 == -1) {
          $$2 = $$0.d($$1);
@@ -66,8 +66,8 @@ public class bcx extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
-      Type<?> $$1 = this.getOutputSchema().getType(bhy.c);
+      Type<?> $$0 = this.getInputSchema().getType(bia.c);
+      Type<?> $$1 = this.getOutputSchema().getType(bia.c);
       return this.writeFixAndRead("ChunkPalettedStorageFix", $$0, $$1, this::b);
    }
 
@@ -177,39 +177,39 @@ public class bcx extends DataFix {
    static class c {
       static final BitSet a = new BitSet(256);
       static final BitSet b = new BitSet(256);
-      static final Dynamic<?> c = baz.a("minecraft:pumpkin");
-      static final Dynamic<?> d = baz.a("minecraft:podzol", Map.of("snowy", "true"));
-      static final Dynamic<?> e = baz.a("minecraft:grass_block", Map.of("snowy", "true"));
-      static final Dynamic<?> f = baz.a("minecraft:mycelium", Map.of("snowy", "true"));
-      static final Dynamic<?> g = baz.a("minecraft:sunflower", Map.of("half", "upper"));
-      static final Dynamic<?> h = baz.a("minecraft:lilac", Map.of("half", "upper"));
-      static final Dynamic<?> i = baz.a("minecraft:tall_grass", Map.of("half", "upper"));
-      static final Dynamic<?> j = baz.a("minecraft:large_fern", Map.of("half", "upper"));
-      static final Dynamic<?> k = baz.a("minecraft:rose_bush", Map.of("half", "upper"));
-      static final Dynamic<?> l = baz.a("minecraft:peony", Map.of("half", "upper"));
+      static final Dynamic<?> c = bay.a("minecraft:pumpkin");
+      static final Dynamic<?> d = bay.a("minecraft:podzol", Map.of("snowy", "true"));
+      static final Dynamic<?> e = bay.a("minecraft:grass_block", Map.of("snowy", "true"));
+      static final Dynamic<?> f = bay.a("minecraft:mycelium", Map.of("snowy", "true"));
+      static final Dynamic<?> g = bay.a("minecraft:sunflower", Map.of("half", "upper"));
+      static final Dynamic<?> h = bay.a("minecraft:lilac", Map.of("half", "upper"));
+      static final Dynamic<?> i = bay.a("minecraft:tall_grass", Map.of("half", "upper"));
+      static final Dynamic<?> j = bay.a("minecraft:large_fern", Map.of("half", "upper"));
+      static final Dynamic<?> k = bay.a("minecraft:rose_bush", Map.of("half", "upper"));
+      static final Dynamic<?> l = bay.a("minecraft:peony", Map.of("half", "upper"));
       static final Map<String, Dynamic<?>> m = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-         $$0.put("minecraft:air0", baz.a("minecraft:flower_pot"));
-         $$0.put("minecraft:red_flower0", baz.a("minecraft:potted_poppy"));
-         $$0.put("minecraft:red_flower1", baz.a("minecraft:potted_blue_orchid"));
-         $$0.put("minecraft:red_flower2", baz.a("minecraft:potted_allium"));
-         $$0.put("minecraft:red_flower3", baz.a("minecraft:potted_azure_bluet"));
-         $$0.put("minecraft:red_flower4", baz.a("minecraft:potted_red_tulip"));
-         $$0.put("minecraft:red_flower5", baz.a("minecraft:potted_orange_tulip"));
-         $$0.put("minecraft:red_flower6", baz.a("minecraft:potted_white_tulip"));
-         $$0.put("minecraft:red_flower7", baz.a("minecraft:potted_pink_tulip"));
-         $$0.put("minecraft:red_flower8", baz.a("minecraft:potted_oxeye_daisy"));
-         $$0.put("minecraft:yellow_flower0", baz.a("minecraft:potted_dandelion"));
-         $$0.put("minecraft:sapling0", baz.a("minecraft:potted_oak_sapling"));
-         $$0.put("minecraft:sapling1", baz.a("minecraft:potted_spruce_sapling"));
-         $$0.put("minecraft:sapling2", baz.a("minecraft:potted_birch_sapling"));
-         $$0.put("minecraft:sapling3", baz.a("minecraft:potted_jungle_sapling"));
-         $$0.put("minecraft:sapling4", baz.a("minecraft:potted_acacia_sapling"));
-         $$0.put("minecraft:sapling5", baz.a("minecraft:potted_dark_oak_sapling"));
-         $$0.put("minecraft:red_mushroom0", baz.a("minecraft:potted_red_mushroom"));
-         $$0.put("minecraft:brown_mushroom0", baz.a("minecraft:potted_brown_mushroom"));
-         $$0.put("minecraft:deadbush0", baz.a("minecraft:potted_dead_bush"));
-         $$0.put("minecraft:tallgrass2", baz.a("minecraft:potted_fern"));
-         $$0.put("minecraft:cactus0", baz.a("minecraft:potted_cactus"));
+         $$0.put("minecraft:air0", bay.a("minecraft:flower_pot"));
+         $$0.put("minecraft:red_flower0", bay.a("minecraft:potted_poppy"));
+         $$0.put("minecraft:red_flower1", bay.a("minecraft:potted_blue_orchid"));
+         $$0.put("minecraft:red_flower2", bay.a("minecraft:potted_allium"));
+         $$0.put("minecraft:red_flower3", bay.a("minecraft:potted_azure_bluet"));
+         $$0.put("minecraft:red_flower4", bay.a("minecraft:potted_red_tulip"));
+         $$0.put("minecraft:red_flower5", bay.a("minecraft:potted_orange_tulip"));
+         $$0.put("minecraft:red_flower6", bay.a("minecraft:potted_white_tulip"));
+         $$0.put("minecraft:red_flower7", bay.a("minecraft:potted_pink_tulip"));
+         $$0.put("minecraft:red_flower8", bay.a("minecraft:potted_oxeye_daisy"));
+         $$0.put("minecraft:yellow_flower0", bay.a("minecraft:potted_dandelion"));
+         $$0.put("minecraft:sapling0", bay.a("minecraft:potted_oak_sapling"));
+         $$0.put("minecraft:sapling1", bay.a("minecraft:potted_spruce_sapling"));
+         $$0.put("minecraft:sapling2", bay.a("minecraft:potted_birch_sapling"));
+         $$0.put("minecraft:sapling3", bay.a("minecraft:potted_jungle_sapling"));
+         $$0.put("minecraft:sapling4", bay.a("minecraft:potted_acacia_sapling"));
+         $$0.put("minecraft:sapling5", bay.a("minecraft:potted_dark_oak_sapling"));
+         $$0.put("minecraft:red_mushroom0", bay.a("minecraft:potted_red_mushroom"));
+         $$0.put("minecraft:brown_mushroom0", bay.a("minecraft:potted_brown_mushroom"));
+         $$0.put("minecraft:deadbush0", bay.a("minecraft:potted_dead_bush"));
+         $$0.put("minecraft:tallgrass2", bay.a("minecraft:potted_fern"));
+         $$0.put("minecraft:cactus0", bay.a("minecraft:potted_cactus"));
       });
       static final Map<String, Dynamic<?>> n = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
          a($$0, 0, "skeleton", "skull");
@@ -230,8 +230,8 @@ public class bcx extends DataFix {
       });
       static final Map<String, Dynamic<?>> p = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
          for (int $$1 = 0; $$1 < 26; $$1++) {
-            $$0.put("true" + $$1, baz.a("minecraft:note_block", Map.of("powered", "true", "note", String.valueOf($$1))));
-            $$0.put("false" + $$1, baz.a("minecraft:note_block", Map.of("powered", "false", "note", String.valueOf($$1))));
+            $$0.put("true" + $$1, bay.a("minecraft:note_block", Map.of("powered", "true", "note", String.valueOf($$1))));
+            $$0.put("false" + $$1, bay.a("minecraft:note_block", Map.of("powered", "false", "note", String.valueOf($$1))));
          }
       });
       private static final Int2ObjectMap<String> q = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
@@ -272,19 +272,19 @@ public class bcx extends DataFix {
             }
          }
       });
-      static final Dynamic<?> t = baz.a("minecraft:air");
+      static final Dynamic<?> t = bay.a("minecraft:air");
 
       private c() {
       }
 
       private static void a(Map<String, Dynamic<?>> $$0, int $$1, String $$2, String $$3) {
-         $$0.put($$1 + "north", baz.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "north")));
-         $$0.put($$1 + "east", baz.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "east")));
-         $$0.put($$1 + "south", baz.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "south")));
-         $$0.put($$1 + "west", baz.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "west")));
+         $$0.put($$1 + "north", bay.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "north")));
+         $$0.put($$1 + "east", bay.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "east")));
+         $$0.put($$1 + "south", bay.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "south")));
+         $$0.put($$1 + "west", bay.a("minecraft:" + $$2 + "_wall_" + $$3, Map.of("facing", "west")));
 
          for (int $$4 = 0; $$4 < 16; $$4++) {
-            $$0.put("" + $$1 + $$4, baz.a("minecraft:" + $$2 + "_" + $$3, Map.of("rotation", String.valueOf($$4))));
+            $$0.put("" + $$1 + $$4, bay.a("minecraft:" + $$2 + "_" + $$3, Map.of("rotation", String.valueOf($$4))));
          }
       }
 
@@ -292,286 +292,286 @@ public class bcx extends DataFix {
          String $$2 = "minecraft:" + $$1;
          $$0.put(
             "minecraft:" + $$1 + "eastlowerleftfalsefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerleftfalsetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerlefttruefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerlefttruetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerrightfalsefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerrightfalsetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerrighttruefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastlowerrighttruetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperleftfalsefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperleftfalsetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperlefttruefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperlefttruetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperrightfalsefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperrightfalsetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperrighttruefalse",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "eastupperrighttruetrue",
-            baz.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "east", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerleftfalsefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerleftfalsetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerlefttruefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerlefttruetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerrightfalsefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerrightfalsetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerrighttruefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northlowerrighttruetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperleftfalsefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperleftfalsetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperlefttruefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperlefttruetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperrightfalsefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperrightfalsetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperrighttruefalse",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "northupperrighttruetrue",
-            baz.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "north", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerleftfalsefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerleftfalsetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerlefttruefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerlefttruetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerrightfalsefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerrightfalsetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerrighttruefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southlowerrighttruetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperleftfalsefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperleftfalsetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperlefttruefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperlefttruetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperrightfalsefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperrightfalsetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperrighttruefalse",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "southupperrighttruetrue",
-            baz.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "south", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerleftfalsefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerleftfalsetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerlefttruefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerlefttruetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerrightfalsefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerrightfalsetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerrighttruefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westlowerrighttruetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "lower", "hinge", "right", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperleftfalsefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperleftfalsetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperlefttruefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperlefttruetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "left", "open", "true", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperrightfalsefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperrightfalsetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "false", "powered", "true"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperrighttruefalse",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "false"))
          );
          $$0.put(
             "minecraft:" + $$1 + "westupperrighttruetrue",
-            baz.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
+            bay.a($$2, Map.of("facing", "west", "half", "upper", "hinge", "right", "open", "true", "powered", "true"))
          );
       }
 
       private static void a(Map<String, Dynamic<?>> $$0, int $$1, String $$2) {
-         $$0.put("southfalsefoot" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "foot")));
-         $$0.put("westfalsefoot" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "foot")));
-         $$0.put("northfalsefoot" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "foot")));
-         $$0.put("eastfalsefoot" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "foot")));
-         $$0.put("southfalsehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "head")));
-         $$0.put("westfalsehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "head")));
-         $$0.put("northfalsehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "head")));
-         $$0.put("eastfalsehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "head")));
-         $$0.put("southtruehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "true", "part", "head")));
-         $$0.put("westtruehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "true", "part", "head")));
-         $$0.put("northtruehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "true", "part", "head")));
-         $$0.put("easttruehead" + $$1, baz.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "true", "part", "head")));
+         $$0.put("southfalsefoot" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "foot")));
+         $$0.put("westfalsefoot" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "foot")));
+         $$0.put("northfalsefoot" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "foot")));
+         $$0.put("eastfalsefoot" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "foot")));
+         $$0.put("southfalsehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "false", "part", "head")));
+         $$0.put("westfalsehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "false", "part", "head")));
+         $$0.put("northfalsehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "false", "part", "head")));
+         $$0.put("eastfalsehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "false", "part", "head")));
+         $$0.put("southtruehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "south", "occupied", "true", "part", "head")));
+         $$0.put("westtruehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "west", "occupied", "true", "part", "head")));
+         $$0.put("northtruehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "north", "occupied", "true", "part", "head")));
+         $$0.put("easttruehead" + $$1, bay.a("minecraft:" + $$2 + "_bed", Map.of("facing", "east", "occupied", "true", "part", "head")));
       }
 
       private static void b(Map<String, Dynamic<?>> $$0, int $$1, String $$2) {
          for (int $$3 = 0; $$3 < 16; $$3++) {
-            $$0.put($$3 + "_" + $$1, baz.a("minecraft:" + $$2 + "_banner", Map.of("rotation", String.valueOf($$3))));
+            $$0.put($$3 + "_" + $$1, bay.a("minecraft:" + $$2 + "_banner", Map.of("rotation", String.valueOf($$3))));
          }
 
-         $$0.put("north_" + $$1, baz.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "north")));
-         $$0.put("south_" + $$1, baz.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "south")));
-         $$0.put("west_" + $$1, baz.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "west")));
-         $$0.put("east_" + $$1, baz.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "east")));
+         $$0.put("north_" + $$1, bay.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "north")));
+         $$0.put("south_" + $$1, bay.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "south")));
+         $$0.put("west_" + $$1, bay.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "west")));
+         $$0.put("east_" + $$1, bay.a("minecraft:" + $$2 + "_wall_banner", Map.of("facing", "east")));
       }
 
       static {
@@ -639,7 +639,7 @@ public class bcx extends DataFix {
    }
 
    static class d {
-      private final ayk<Dynamic<?>> b = ayk.c(32);
+      private final ayj<Dynamic<?>> b = ayj.c(32);
       private final List<Dynamic<?>> c;
       private final Dynamic<?> d;
       private final boolean e;
@@ -702,7 +702,7 @@ public class bcx extends DataFix {
                   }
                }
 
-               this.a($$4, bck.b($$8));
+               this.a($$4, bcj.b($$8));
             }
 
             return $$0;
@@ -726,7 +726,7 @@ public class bcx extends DataFix {
          } else {
             $$0 = $$0.set("Palette", $$0.createList(this.c.stream()));
             int $$1 = Math.max(4, DataFixUtils.ceillog2(this.h.size()));
-            bbb $$2 = new bbb($$1, 4096);
+            bba $$2 = new bba($$1, 4096);
 
             for (int $$3 = 0; $$3 < this.i.length; $$3++) {
                $$2.a($$3, this.i[$$3]);

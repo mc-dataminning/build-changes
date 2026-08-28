@@ -1,28 +1,18 @@
-public class cvq<T extends bui & bvb> extends cwb {
-   private final bup<T> a;
-   private final int b;
-
-   public cvq(bup<T> $$0, int $$1, cwb.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+public class cvq extends cwi {
+   public cvq(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      cwf $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bsh.e;
-      } else {
-         bui $$4 = $$1.dn();
-         if ($$1.cb() && $$4 instanceof bvb $$5 && $$4.ar() == this.a && $$5.a()) {
-            buq $$6 = bve.d($$2);
-            cwf $$7 = $$3.a(this.b, cwj.rm, $$1, $$6);
-            return bsh.b.a($$7);
-         }
-
-         $$1.b(awy.c.b(this));
-         return bsh.e;
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      cwm $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.iu, awo.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arp $$4) {
+         cpn.a(cpx::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(awx.c.b(this));
+      $$3.a(1, $$1);
+      return bsk.a;
    }
 }

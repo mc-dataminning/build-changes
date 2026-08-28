@@ -1,276 +1,127 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.base.Preconditions;
 
-public class erz extends esk {
-   private final Long2ObjectMap<esf> l = new Long2ObjectOpenHashMap();
-   private static final float m = 1.0F;
-   private static final float n = 1.1F;
-   private static final int o = 10;
+public class erz {
+   private static final erz[] am = new erz[64];
+   public static final erz a = new erz(0, 0);
+   public static final erz b = new erz(1, 8368696);
+   public static final erz c = new erz(2, 16247203);
+   public static final erz d = new erz(3, 13092807);
+   public static final erz e = new erz(4, 16711680);
+   public static final erz f = new erz(5, 10526975);
+   public static final erz g = new erz(6, 10987431);
+   public static final erz h = new erz(7, 31744);
+   public static final erz i = new erz(8, 16777215);
+   public static final erz j = new erz(9, 10791096);
+   public static final erz k = new erz(10, 9923917);
+   public static final erz l = new erz(11, 7368816);
+   public static final erz m = new erz(12, 4210943);
+   public static final erz n = new erz(13, 9402184);
+   public static final erz o = new erz(14, 16776437);
+   public static final erz p = new erz(15, 14188339);
+   public static final erz q = new erz(16, 11685080);
+   public static final erz r = new erz(17, 6724056);
+   public static final erz s = new erz(18, 15066419);
+   public static final erz t = new erz(19, 8375321);
+   public static final erz u = new erz(20, 15892389);
+   public static final erz v = new erz(21, 5000268);
+   public static final erz w = new erz(22, 10066329);
+   public static final erz x = new erz(23, 5013401);
+   public static final erz y = new erz(24, 8339378);
+   public static final erz z = new erz(25, 3361970);
+   public static final erz A = new erz(26, 6704179);
+   public static final erz B = new erz(27, 6717235);
+   public static final erz C = new erz(28, 10040115);
+   public static final erz D = new erz(29, 1644825);
+   public static final erz E = new erz(30, 16445005);
+   public static final erz F = new erz(31, 6085589);
+   public static final erz G = new erz(32, 4882687);
+   public static final erz H = new erz(33, 55610);
+   public static final erz I = new erz(34, 8476209);
+   public static final erz J = new erz(35, 7340544);
+   public static final erz K = new erz(36, 13742497);
+   public static final erz L = new erz(37, 10441252);
+   public static final erz M = new erz(38, 9787244);
+   public static final erz N = new erz(39, 7367818);
+   public static final erz O = new erz(40, 12223780);
+   public static final erz P = new erz(41, 6780213);
+   public static final erz Q = new erz(42, 10505550);
+   public static final erz R = new erz(43, 3746083);
+   public static final erz S = new erz(44, 8874850);
+   public static final erz T = new erz(45, 5725276);
+   public static final erz U = new erz(46, 8014168);
+   public static final erz V = new erz(47, 4996700);
+   public static final erz W = new erz(48, 4993571);
+   public static final erz X = new erz(49, 5001770);
+   public static final erz Y = new erz(50, 9321518);
+   public static final erz Z = new erz(51, 2430480);
+   public static final erz aa = new erz(52, 12398641);
+   public static final erz ab = new erz(53, 9715553);
+   public static final erz ac = new erz(54, 6035741);
+   public static final erz ad = new erz(55, 1474182);
+   public static final erz ae = new erz(56, 3837580);
+   public static final erz af = new erz(57, 5647422);
+   public static final erz ag = new erz(58, 1356933);
+   public static final erz ah = new erz(59, 6579300);
+   public static final erz ai = new erz(60, 14200723);
+   public static final erz aj = new erz(61, 8365974);
+   public final int ak;
+   public final int al;
 
-   @Override
-   public void a(dfs $$0, bvg $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-      $$1.G();
-   }
-
-   @Override
-   public void b() {
-      this.b.I();
-      this.l.clear();
-      super.b();
-   }
-
-   @Override
-   public esa a() {
-      int $$0;
-      if (this.f() && this.b.bl()) {
-         $$0 = this.b.dE();
-         jh.a $$1 = new jh.a(this.b.dD(), (double)$$0, this.b.dJ());
-
-         for (dvo $$2 = this.a.a($$1); $$2.a(dil.G); $$2 = this.a.a($$1)) {
-            $$1.b(this.b.dD(), (double)(++$$0), this.b.dJ());
-         }
+   private erz(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 <= 63) {
+         this.al = $$0;
+         this.ak = $$1;
+         am[$$0] = this;
       } else {
-         $$0 = azn.a(this.b.dF() + 0.5);
+         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
       }
-
-      jh $$4 = jh.a(this.b.dD(), (double)$$0, this.b.dJ());
-      if (!this.a($$4)) {
-         for (jh $$5 : this.a(this.b)) {
-            if (this.a($$5)) {
-               return super.c($$5);
-            }
-         }
-      }
-
-      return super.c($$4);
    }
 
-   @Override
-   protected boolean a(jh $$0) {
-      esf $$1 = this.b($$0.u(), $$0.v(), $$0.w());
-      return this.b.a($$1) >= 0.0F;
+   public int a(erz.a $$0) {
+      return this == a ? 0 : axx.b(axx.f(this.ak), $$0.f);
    }
 
-   @Override
-   public esj a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   public static erz a(int $$0) {
+      Preconditions.checkPositionIndex($$0, am.length, "material id");
+      return c($$0);
    }
 
-   @Override
-   public int a(esa[] $$0, esa $$1) {
-      int $$2 = 0;
-      esa $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
-      if (this.c($$3)) {
-         $$0[$$2++] = $$3;
-      }
-
-      esa $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
-      if (this.c($$4)) {
-         $$0[$$2++] = $$4;
-      }
-
-      esa $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
-      if (this.c($$5)) {
-         $$0[$$2++] = $$5;
-      }
-
-      esa $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
-      if (this.c($$6)) {
-         $$0[$$2++] = $$6;
-      }
-
-      esa $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
-      if (this.c($$7)) {
-         $$0[$$2++] = $$7;
-      }
-
-      esa $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
-      if (this.c($$8)) {
-         $$0[$$2++] = $$8;
-      }
-
-      esa $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
-      if (this.c($$9) && this.b($$3) && this.b($$7)) {
-         $$0[$$2++] = $$9;
-      }
-
-      esa $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
-      if (this.c($$10) && this.b($$4) && this.b($$7)) {
-         $$0[$$2++] = $$10;
-      }
-
-      esa $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
-      if (this.c($$11) && this.b($$5) && this.b($$7)) {
-         $$0[$$2++] = $$11;
-      }
-
-      esa $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
-      if (this.c($$12) && this.b($$6) && this.b($$7)) {
-         $$0[$$2++] = $$12;
-      }
-
-      esa $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
-      if (this.c($$13) && this.b($$3) && this.b($$8)) {
-         $$0[$$2++] = $$13;
-      }
-
-      esa $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
-      if (this.c($$14) && this.b($$4) && this.b($$8)) {
-         $$0[$$2++] = $$14;
-      }
-
-      esa $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
-      if (this.c($$15) && this.b($$5) && this.b($$8)) {
-         $$0[$$2++] = $$15;
-      }
-
-      esa $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
-      if (this.c($$16) && this.b($$6) && this.b($$8)) {
-         $$0[$$2++] = $$16;
-      }
-
-      esa $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
-      if (this.c($$17) && this.b($$6) && this.b($$5)) {
-         $$0[$$2++] = $$17;
-      }
-
-      esa $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
-      if (this.c($$18) && this.b($$3) && this.b($$5)) {
-         $$0[$$2++] = $$18;
-      }
-
-      esa $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
-      if (this.c($$19) && this.b($$6) && this.b($$4)) {
-         $$0[$$2++] = $$19;
-      }
-
-      esa $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
-      if (this.c($$20) && this.b($$3) && this.b($$4)) {
-         $$0[$$2++] = $$20;
-      }
-
-      esa $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
-         $$0[$$2++] = $$21;
-      }
-
-      esa $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
-         $$0[$$2++] = $$22;
-      }
-
-      esa $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
-         $$0[$$2++] = $$23;
-      }
-
-      esa $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
-         $$0[$$2++] = $$24;
-      }
-
-      esa $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
-         $$0[$$2++] = $$25;
-      }
-
-      esa $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
-         $$0[$$2++] = $$26;
-      }
-
-      esa $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
-         $$0[$$2++] = $$27;
-      }
-
-      esa $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
-         $$0[$$2++] = $$28;
-      }
-
-      return $$2;
+   private static erz c(int $$0) {
+      erz $$1 = am[$$0];
+      return $$1 != null ? $$1 : a;
    }
 
-   private boolean b(@Nullable esa $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public static int b(int $$0) {
+      int $$1 = $$0 & 0xFF;
+      return c($$1 >> 2).a(erz.a.b($$1 & 3));
    }
 
-   private boolean c(@Nullable esa $$0) {
-      return $$0 != null && !$$0.i;
+   public byte b(erz.a $$0) {
+      return (byte)(this.al << 2 | $$0.e & 3);
    }
 
-   @Nullable
-   @Override
-   protected esa a(int $$0, int $$1, int $$2) {
-      esa $$3 = null;
-      esf $$4 = this.b($$0, $$1, $$2);
-      float $$5 = this.b.a($$4);
-      if ($$5 >= 0.0F) {
-         $$3 = this.c($$0, $$1, $$2);
-         $$3.l = $$4;
-         $$3.k = Math.max($$3.k, $$5);
-         if ($$4 == esf.c) {
-            $$3.k++;
-         }
+   public static enum a {
+      a(0, 180),
+      b(1, 220),
+      c(2, 255),
+      d(3, 135);
+
+      private static final erz.a[] g = new erz.a[]{a, b, c, d};
+      public final int e;
+      public final int f;
+
+      private a(final int $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      return $$3;
-   }
-
-   @Override
-   protected esf b(int $$0, int $$1, int $$2) {
-      return (esf)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2, this.b));
-   }
-
-   @Override
-   public esf a(esh $$0, int $$1, int $$2, int $$3) {
-      esf $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == esf.b && $$2 >= $$0.a().I_() + 1) {
-         jh $$5 = new jh($$1, $$2 - 1, $$3);
-         esf $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
-         if ($$6 == esf.o || $$6 == esf.i) {
-            $$4 = esf.o;
-         } else if ($$6 == esf.q) {
-            $$4 = esf.q;
-         } else if ($$6 == esf.x) {
-            $$4 = esf.x;
-         } else if ($$6 == esf.h) {
-            if (!$$5.equals($$0.b())) {
-               $$4 = esf.h;
-            }
-         } else {
-            $$4 = $$6 != esf.c && $$6 != esf.b && $$6 != esf.j ? esf.c : esf.b;
-         }
+      public static erz.a a(int $$0) {
+         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
+         return b($$0);
       }
 
-      if ($$4 == esf.c || $$4 == esf.b) {
-         $$4 = a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      return $$4;
-   }
-
-   private Iterable<jh> a(bvg $$0) {
-      ezm $$1 = $$0.cT();
-      boolean $$2 = $$1.a() < 1.0;
-      if (!$$2) {
-         return List.of(
-            jh.a($$1.a, (double)$$0.dE(), $$1.c),
-            jh.a($$1.a, (double)$$0.dE(), $$1.f),
-            jh.a($$1.d, (double)$$0.dE(), $$1.c),
-            jh.a($$1.d, (double)$$0.dE(), $$1.f)
-         );
-      } else {
-         double $$3 = Math.max(0.0, 1.1F - $$1.d());
-         double $$4 = Math.max(0.0, 1.1F - $$1.b());
-         double $$5 = Math.max(0.0, 1.1F - $$1.c());
-         ezm $$6 = $$1.c($$4, $$5, $$3);
-         return jh.a($$0.eb(), 10, azn.a($$6.a), azn.a($$6.b), azn.a($$6.c), azn.a($$6.d), azn.a($$6.e), azn.a($$6.f));
+      static erz.a b(int $$0) {
+         return g[$$0];
       }
    }
 }

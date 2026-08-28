@@ -1,274 +1,127 @@
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cuu {
-   static final all a = a("items");
-   private final xl b;
-   all c = a;
-   boolean d = true;
-   boolean e = true;
-   boolean f = false;
-   private final cuu.f g;
-   private final int h;
-   private final cuu.h i;
-   @Nullable
-   private cwf j;
-   private Collection<cwf> k = cwg.a();
-   private Set<cwf> l = cwg.a();
-   private final Supplier<cwf> m;
-   private final cuu.b n;
+public class cuu extends cwi {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   cuu(cuu.f $$0, int $$1, cuu.h $$2, xl $$3, Supplier<cwf> $$4, cuu.b $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.b = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.i = $$2;
+   public cuu(cwi.a $$0) {
+      super($$0);
    }
 
-   public static all a(String $$0) {
-      return all.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
-   }
+   @Override
+   public bsk a(daf $$0) {
+      dfm $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      jh $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.C) {
+            $$0.o().a(ear.C);
+            $$1.c(1505, $$2, 15);
+         }
 
-   public static cuu.a a(cuu.f $$0, int $$1) {
-      return new cuu.a($$0, $$1);
-   }
+         return bsk.a;
+      } else {
+         dvv $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.c($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.C) {
+               $$0.o().a(ear.C);
+               $$1.c(1505, $$3, 15);
+            }
 
-   public xl a() {
-      return this.b;
-   }
-
-   public cwf b() {
-      if (this.j == null) {
-         this.j = this.m.get();
-      }
-
-      return this.j;
-   }
-
-   public all c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public cuu.f g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return !this.k.isEmpty();
-   }
-
-   public boolean i() {
-      return this.i != cuu.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public cuu.h k() {
-      return this.i;
-   }
-
-   public void a(cuu.d $$0) {
-      cuu.c $$1 = new cuu.c(this, $$0.a);
-      alk<cuu> $$2 = lz.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.k = $$1.a;
-      this.l = $$1.b;
-   }
-
-   public Collection<cwf> l() {
-      return this.k;
-   }
-
-   public Collection<cwf> m() {
-      return this.l;
-   }
-
-   public boolean a(cwf $$0) {
-      return this.l.contains($$0);
-   }
-
-   public static class a {
-      private static final cuu.b a = ($$0, $$1) -> {
-      };
-      private final cuu.f b;
-      private final int c;
-      private xl d = xl.i();
-      private Supplier<cwf> e = () -> cwf.k;
-      private cuu.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cuu.h j = cuu.h.a;
-      private all k = cuu.a;
-
-      public a(cuu.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cuu.a a(xl $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cuu.a a(Supplier<cwf> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cuu.a a(cuu.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cuu.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cuu.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cuu.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cuu.a a(cuu.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cuu.a a(all $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cuu d() {
-         if ((this.j == cuu.h.c || this.j == cuu.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
+            return bsk.a;
          } else {
-            cuu $$0 = new cuu(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.f = this.i;
-            $$0.e = this.h;
-            $$0.d = this.g;
-            $$0.c = this.k;
-            return $$0;
+            return bsk.e;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(cuu.d var1, cuu.e var2);
-   }
+   public static boolean a(cwm $$0, dfm $$1, jh $$2) {
+      dvv $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dit $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof arp) {
+            if ($$4.a($$1, $$1.A, $$2, $$3)) {
+               $$4.a((arp)$$1, $$1.A, $$2, $$3);
+            }
 
-   static class c implements cuu.e {
-      public final Collection<cwf> a = cwg.a();
-      public final Set<cwf> b = cwg.a();
-      private final cuu c;
-      private final crj d;
+            $$0.h(1);
+         }
 
-      public c(cuu $$0, crj $$1) {
-         this.c = $$0;
-         this.d = $$1;
+         return true;
       }
 
-      @Override
-      public void a(cwf $$0, cuu.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
+      return false;
+   }
+
+   public static boolean a(cwm $$0, dfm $$1, jh $$2, @Nullable jm $$3) {
+      if ($$1.a_($$2).a(dis.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof arp)) {
+            return true;
          } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cuu.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.h().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+            azu $$4 = $$1.G_();
+
+            label80:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               jh $$6 = $$2;
+               dvv $$7 = dis.bw.m();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).m($$1, $$6)) {
+                     continue label80;
+                  }
+               }
+
+               jq<dgo> $$9 = $$1.t($$6);
+               if ($$9.a(axb.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = lz.e.a(axc.at, $$1.A).map($$0x -> ((diq)$$0x.a()).m()).orElse($$7);
+                     if ($$7.b(dib.c)) {
+                        $$7 = $$7.b(dib.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = lz.e.a(axc.ar, $$1.A).map($$0x -> ((diq)$$0x.a()).m()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(axc.at, $$0x -> $$0x.b(dib.c))) {
+                  for (int $$10 = 0; !$$7.a((dfp)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.b(dib.c, jm.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((dfp)$$1, $$6)) {
+                  dvv $$11 = $$1.a_($$6);
+                  if ($$11.a(dis.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dis.bw) && ((dit)dis.bw).b($$1, $$6, $$11) && $$4.a(10) == 0) {
+                     ((dit)dis.bw).a((arp)$$1, $$4, $$6, $$11);
                   }
                }
             }
+
+            $$0.h(1);
+            return true;
          }
+      } else {
+         return false;
       }
    }
 
-   public static record d(crj a, boolean b, js.a c) {
-
-      public boolean a(crj $$0, boolean $$1, js.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   public static void a(dfn $$0, jh $$1, int $$2) {
+      dvv $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dit $$4) {
+         jh $$5 = $$4.a($$1);
+         switch ($$4.aq_()) {
+            case a:
+               azq.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, ls.O);
+               break;
+            case b:
+               azq.a($$0, $$5, $$2, ls.O);
+         }
+      } else if ($$3.a(dis.G)) {
+         azq.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, ls.O);
       }
-   }
-
-   public interface e {
-      void a(cwf var1, cuu.g var2);
-
-      default void a(cwf $$0) {
-         this.a($$0, cuu.g.a);
-      }
-
-      default void a(dfe $$0, cuu.g $$1) {
-         this.a(new cwf($$0), $$1);
-      }
-
-      default void a(dfe $$0) {
-         this.a(new cwf($$0), cuu.g.a);
-      }
-
-      default void a(Collection<cwf> $$0, cuu.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cwf> $$0) {
-         this.a($$0, cuu.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

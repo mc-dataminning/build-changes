@@ -1,22 +1,48 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public record czs(jq<awn> c) implements czr {
-   public static final MapCodec<czs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awn.b.fieldOf("sound").forGetter(czs::b)).apply($$0, czs::new));
-   public static final zj<ww, czs> b = zj.a(awn.d, czs::b, czs::new);
+public record czs(cwm c) {
+   public static final Codec<czs> a = cwm.b.xmap(czs::new, czs::a);
+   public static final zh<wu, czs> b = zh.a(cwm.i, czs::a, czs::new);
 
-   @Override
-   public czr.a<czs> a() {
-      return czr.a.e;
+   public cwm a(cwm $$0, int $$1, boolean $$2, czs.a $$3) {
+      if ($$2) {
+         return $$0;
+      } else if ($$0.L() >= $$1) {
+         return $$0;
+      } else {
+         cwm $$4 = this.c.v();
+         if ($$0.f()) {
+            return $$4;
+         } else {
+            $$3.apply($$4);
+            return $$0;
+         }
+      }
    }
 
    @Override
-   public boolean a(dff $$0, cwf $$1, bve $$2) {
-      $$0.a(null, $$2.dy(), this.c.a(), $$2.do(), 1.0F, 1.0F);
-      return true;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         czs $$1 = (czs)$$0;
+         return cwm.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public jq<awn> b() {
+   @Override
+   public int hashCode() {
+      return cwm.a(this.c);
+   }
+
+   public cwm a() {
       return this.c;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(cwm var1);
    }
 }

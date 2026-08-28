@@ -2,22 +2,22 @@ public class la implements lb {
    private static final int c = 6;
 
    @Override
-   public final cwf dispense(ky $$0, cwf $$1) {
-      cwf $$2 = this.a($$0, $$1);
+   public final cwm dispense(ky $$0, cwm $$1) {
+      cwm $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.d().c(dko.b));
+      this.a($$0, $$0.d().c(dkv.b));
       return $$2;
    }
 
-   protected cwf a(ky $$0, cwf $$1) {
-      jm $$2 = $$0.d().c(dko.b);
-      ka $$3 = dko.a($$0);
-      cwf $$4 = $$1.a(1);
+   protected cwm a(ky $$0, cwm $$1) {
+      jm $$2 = $$0.d().c(dkv.b);
+      ka $$3 = dkv.a($$0);
+      cwm $$4 = $$1.a(1);
       a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(dff $$0, cwf $$1, int $$2, jm $$3, ka $$4) {
+   public static void a(dfm $$0, cwm $$1, int $$2, jm $$3, ka $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -27,7 +27,7 @@ public class la implements lb {
          $$6 -= 0.15625;
       }
 
-      ckz $$8 = new ckz($$0, $$5, $$6, $$7, $$1);
+      clc $$8 = new clc($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.A.j() * 0.1 + 0.2;
       $$8.n(
          $$0.A.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
@@ -53,7 +53,7 @@ public class la implements lb {
       $$0.b().c(2000, $$0.c(), $$1.d());
    }
 
-   protected cwf a(ky $$0, cwf $$1, cwf $$2) {
+   protected cwm a(ky $$0, cwm $$1, cwm $$2) {
       $$1.h(1);
       if ($$1.f()) {
          return $$2;
@@ -63,11 +63,11 @@ public class la implements lb {
       }
    }
 
-   private void b(ky $$0, cwf $$1) {
-      cwf $$2 = $$0.e().b($$1);
+   private void b(ky $$0, cwm $$1) {
+      cwm $$2 = $$0.e().b($$1);
       if (!$$2.f()) {
-         jm $$3 = $$0.d().c(dko.b);
-         a($$0.b(), $$2, 6, $$3, dko.a($$0));
+         jm $$3 = $$0.d().c(dkv.b);
+         a($$0.b(), $$2, 6, $$3, dkv.a($$0));
          b($$0);
          b($$0, $$3);
       }

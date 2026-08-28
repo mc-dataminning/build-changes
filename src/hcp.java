@@ -1,66 +1,123 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class hcp implements JsonDeserializer<hco> {
-   private static final brk a = bri.a(1.0F);
+public class hcp implements hcl {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gic c;
+   private final heg d;
+   private final dgq e;
+   private final azu f;
+   private final Object2ObjectArrayMap<dgo, hcp.a> g = new Object2ObjectArrayMap();
+   private Optional<dgm> h = Optional.empty();
+   private Optional<dgl> i = Optional.empty();
+   private float j;
+   @Nullable
+   private dgo k;
 
-   public hco a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = azd.m($$0, "entry");
-      boolean $$4 = azd.a($$3, "replace", false);
-      String $$5 = azd.a($$3, "subtitle", null);
-      List<hcn> $$6 = this.a($$3);
-      return new hco($$6, $$4, $$5);
+   public hcp(gic $$0, heg $$1, dgq $$2) {
+      this.f = $$0.dV().G_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private List<hcn> a(JsonObject $$0) {
-      List<hcn> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = azd.v($$0, "sounds");
+   public float b() {
+      return this.j;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (azd.a($$4)) {
-               all $$5 = all.a(azd.a($$4, "sound"));
-               $$1.add(new hcn($$5, a, a, 1, hcn.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(azd.m($$4, "sound")));
-            }
+   @Override
+   public void a() {
+      this.g.values().removeIf(hck::m);
+      dgo $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(hcp.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new hcp.a((awm)$$1.a());
+                  this.d.a((hdb)$$2);
+               }
+
+               $$2.p();
+               return $$2;
+            }));
+      }
+
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(hcw.b($$0x.a().a()));
          }
-      }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               dfm $$1 = this.c.dV();
+               int $$2 = $$0x.c() * 2 + 1;
+               jh $$3 = jh.a(
+                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(dfv.a, $$3);
+               if ($$4 > 0) {
+                  this.j -= (float)$$4 / 15.0F * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(dfv.b, $$3) - 1) / (float)$$0x.b();
+               }
 
-      return $$1;
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dA();
+                  double $$9 = $$6 - this.c.dE();
+                  double $$10 = $$7 - this.c.dG();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  hcw $$13 = hcw.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
    }
 
-   private hcn b(JsonObject $$0) {
-      all $$1 = all.a(azd.i($$0, "name"));
-      hcn.a $$2 = this.a($$0, hcn.a.a);
-      float $$3 = azd.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = azd.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = azd.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = azd.a($$0, "preload", false);
-      boolean $$7 = azd.a($$0, "stream", false);
-      int $$8 = azd.a($$0, "attenuation_distance", 16);
-      return new hcn($$1, bri.a($$3), bri.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
+   public static class a extends hck {
+      private int n;
+      private int o;
 
-   private hcn.a a(JsonObject $$0, hcn.a $$1) {
-      hcn.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = hcn.a.a(azd.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+      public a(awm $$0) {
+         super($$0, awo.i, hdb.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      return $$2;
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
+
+         this.o = this.o + this.n;
+         this.d = azm.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
+
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
+
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
+      }
    }
 }

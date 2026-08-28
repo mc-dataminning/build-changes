@@ -1,56 +1,172 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public abstract class fiw implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fiw {
+   private fiw() {
+   }
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
+   }
+
+   public static List<fiw.a> a(String $$0, fiw.b... $$1) {
+      return a($$0, Arrays.asList($$1));
+   }
+
+   private static List<fiw.a> a(String $$0, List<fiw.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
+   }
+
+   private static List<fiw.a> a(List<String> $$0, List<fiw.b> $$1) {
+      int $$2 = 0;
+      List<fiw.a> $$3 = Lists.newArrayList();
+
+      for (String $$4 : $$0) {
+         List<fiw.b> $$5 = Lists.newArrayList();
+
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
+            } else {
+               $$5.add(fiw.b.a($$7));
+            }
+         }
+
+         $$3.add(new fiw.a($$5));
       }
+
+      return $$3;
    }
 
-   public static void a(frp $$0) {
-      fjx $$1 = fjx.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(xl $$0) {
-      this.b();
-      fjx $$1 = fjx.Q();
-      $$1.execute(() -> $$1.a(new fhn($$0, new fev(new frr()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fgv $$1) {
-         this.a($$1.a.b());
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
       } else {
-         this.a(xl.b($$0.getMessage()));
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
+
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
+            }
+
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
+         }
+
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
+         }
+
+         return $$2;
       }
    }
 
-   protected void a(fgv $$0) {
-      this.a($$0.a.b());
+   public static class a {
+      public final List<fiw.b> a;
+
+      a(fiw.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<fiw.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fiw.a $$1 = (fiw.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
    }
 
-   public abstract xl a();
+   public static class b {
+      private final String a;
+      @Nullable
+      private final String b;
+      @Nullable
+      private final String c;
 
-   public boolean d() {
-      return this.c;
-   }
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
 
-   public void c() {
-   }
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public void e() {
-   }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fiw.b $$1 = (fiw.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
 
-   public void b() {
-      this.c = true;
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      }
+
+      public String a() {
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static fiw.b a(String $$0, String $$1) {
+         return new fiw.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static fiw.b a(String $$0) {
+         return new fiw.b($$0);
+      }
    }
 }

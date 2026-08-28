@@ -1,54 +1,39 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class etf {
-   private final jh a;
-   private final int b;
-   private final int c;
+public abstract class etf {
+   protected final dos a;
 
-   public etf(jh $$0, int $$1, int $$2) {
+   protected etf(dos $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   @Nullable
-   public static etf a(un $$0) {
-      Optional<jh> $$1 = vc.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new etf($$1.get(), $$2, $$3);
+   public abstract void a(dfm var1, jh var2, dvv var3, @Nullable etd var4, boolean var5);
+
+   protected int a(dfm $$0, jh $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   protected int a(jh $$0, dvv $$1) {
+      return $$1.a(this.a) ? $$1.c(dos.f) : 0;
+   }
+
+   protected int b(dfm $$0, jh $$1) {
+      int $$2 = 0;
+
+      for (jm $$3 : jm.c.a) {
+         jh $$4 = $$1.a($$3);
+         dvv $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         jh $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            jh $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            jh $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
       }
-   }
 
-   public un a() {
-      un $$0 = new un();
-      $$0.a("pos", vc.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
-   }
-
-   public jh b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(jh $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+      return Math.max(0, $$2 - 1);
    }
 }

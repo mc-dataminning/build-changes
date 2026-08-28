@@ -1,23 +1,23 @@
-import io.netty.buffer.ByteBuf;
+public interface zw extends abz {
+   void a(aaa var1);
 
-public class zw<B extends ByteBuf, L extends wr> {
-   private final zi.a<B, zs<? super L>, zu<? extends zs<? super L>>> a = zi.a(zs::a);
-   private final zt b;
+   void a(aab var1);
 
-   public zw(zt $$0) {
-      this.b = $$0;
-   }
+   void a(zx var1);
 
-   public <T extends zs<? super L>> zw<B, L> a(zu<T> $$0, zj<? super B, T> $$1) {
-      if ($$0.a() != this.b) {
-         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
-      } else {
-         this.a.a($$0, $$1);
-         return this;
-      }
-   }
+   void a(zz var1);
 
-   public zj<B, zs<? super L>> a() {
-      return this.a.a();
-   }
+   void a(aad var1);
+
+   void a(aac var1);
+
+   void a(aah var1);
+
+   void a(aaf var1);
+
+   void a(aag var1);
+
+   void a(zy var1);
+
+   void a(aae var1);
 }

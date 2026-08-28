@@ -1,65 +1,71 @@
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cut extends cwb {
-   private static final xl a = xl.c("item.minecraft.lodestone_compass");
+public class cut extends cwi {
+   private final bus<? extends cqr> a;
 
-   public cut(cwb.a $$0) {
-      super($$0);
+   public cut(bus<? extends cqr> $$0, cwi.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   @Override
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      cwm $$3 = $$1.b($$2);
+      ezw $$4 = a($$0, $$1, deu.b.c);
+      if ($$4.d() == ezw.a.a) {
+         return bsk.e;
+      } else {
+         ezy $$5 = $$1.g(1.0F);
+         double $$6 = 5.0;
+         List<bul> $$7 = $$0.a($$1, $$1.cR().b($$5.c(5.0)).g(1.0), buq.h);
+         if (!$$7.isEmpty()) {
+            ezy $$8 = $$1.bF();
+
+            for (bul $$9 : $$7) {
+               ezt $$10 = $$9.cR().g((double)$$9.bS());
+               if ($$10.d($$8)) {
+                  return bsk.e;
+               }
+            }
+         }
+
+         if ($$4.d() == ezw.a.b) {
+            cqr $$11 = this.a($$0, $$4, $$3, $$1);
+            if ($$11 == null) {
+               return bsk.d;
+            } else {
+               $$11.v($$1.dL());
+               if (!$$0.a($$11, $$11.cR())) {
+                  return bsk.d;
+               } else {
+                  if (!$$0.C) {
+                     $$0.b($$11);
+                     $$0.a($$1, ear.t, $$4.g());
+                     $$3.a(1, $$1);
+                  }
+
+                  $$1.b(awx.c.b(this));
+                  return bsk.a;
+               }
+            }
+         } else {
+            return bsk.e;
+         }
+      }
    }
 
    @Nullable
-   public static jp a(dff $$0) {
-      return $$0.D_().j() ? jp.a($$0.ag(), $$0.W()) : null;
-   }
-
-   @Override
-   public boolean c_(cwf $$0) {
-      return $$0.b(ku.ad) || super.c_($$0);
-   }
-
-   @Override
-   public void a(cwf $$0, dff $$1, bui $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof arq $$5) {
-         cyz $$6 = $$0.a(ku.ad);
-         if ($$6 != null) {
-            cyz $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(ku.ad, $$7);
-            }
+   private cqr a(dfm $$0, ezw $$1, cwm $$2, cou $$3) {
+      cqr $$4 = this.a.a($$0, bur.m);
+      if ($$4 != null) {
+         ezy $$5 = $$1.g();
+         $$4.p($$5.d, $$5.e, $$5.f);
+         if ($$0 instanceof arp $$6) {
+            bus.<cqr>a($$6, $$2, $$3).accept($$4);
          }
       }
-   }
 
-   @Override
-   public bsh a(czy $$0) {
-      jh $$1 = $$0.a();
-      dff $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dil.pq)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, awo.om, awp.h, 1.0F, 1.0F);
-         cor $$3 = $$0.o();
-         cwf $$4 = $$0.n();
-         boolean $$5 = !$$3.fY() && $$4.L() == 1;
-         cyz $$6 = new cyz(Optional.of(jp.a($$2.ag(), $$1)), true);
-         if ($$5) {
-            $$4.b(ku.ad, $$6);
-         } else {
-            cwf $$7 = $$4.a(cwj.qT, 1);
-            $$4.a(1, $$3);
-            $$7.b(ku.ad, $$6);
-            if (!$$3.gl().f($$7)) {
-               $$3.a($$7, false);
-            }
-         }
-
-         return bsh.a;
-      }
-   }
-
-   @Override
-   public xl a(cwf $$0) {
-      return $$0.b(ku.ad) ? a : super.a($$0);
+      return $$4;
    }
 }

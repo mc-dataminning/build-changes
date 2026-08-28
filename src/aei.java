@@ -1,88 +1,29 @@
-public class aei implements zs<ach> {
-   public static final zj<wi, aei> a = zs.a(aei::a, aei::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+public class aei implements zq<acf> {
+   public static final zh<wg, aei> a = zq.a(aei::a, aei::new);
+   private final int b;
 
-   public aei(com $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
+   public aei(bsy $$0) {
+      this($$0.b());
    }
 
-   private aei(wi $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
+   public aei(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wi $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
+   private aei(wg $$0) {
+      this.b = $$0.l();
+   }
 
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.l($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
+   private void a(wg $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zu<aei> a() {
-      return agw.aa;
+   public zs<aei> a() {
+      return agu.ac;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
    }
 }

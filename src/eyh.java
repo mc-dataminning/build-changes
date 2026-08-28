@@ -1,29 +1,36 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record eyh(all b) implements eyf {
-   public static final MapCodec<eyh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(all.a.fieldOf("source").forGetter(eyh::c)).apply($$0, eyh::new));
+public record eyh(eyu b, eum c) implements exy {
+   public static final MapCodec<eyh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eyv.a.fieldOf("value").forGetter(eyh::c), eum.a.fieldOf("range").forGetter(eyh::d)).apply($$0, eyh::new)
+   );
 
    @Override
-   public eye a() {
-      return eyg.b;
-   }
-
-   @Nullable
-   @Override
-   public vk a(eug $$0) {
-      return $$0.d().o().aK().a(this.b);
+   public exz b() {
+      return eya.r;
    }
 
    @Override
-   public Set<ewz<?>> b() {
-      return ImmutableSet.of();
+   public Set<exg<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public all c() {
+   public boolean a(eun $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
+
+   public static exy.a a(eyu $$0, eum $$1) {
+      return () -> new eyh($$0, $$1);
+   }
+
+   public eyu c() {
       return this.b;
+   }
+
+   public eum d() {
+      return this.c;
    }
 }

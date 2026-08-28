@@ -1,35 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.Set;
 
-public class bdw extends bgt {
+public class bdw extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
    public bdw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", bhy.B, "EntityHorse");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhy.D.typeName(), bjm.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(bhy.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(bhy.D.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
       } else {
-         return $$0;
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
+
+         $$3 = $$2.get().floatValue();
       }
+
+      return $$0.set("Health", $$0.createFloat($$3));
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bia.B), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

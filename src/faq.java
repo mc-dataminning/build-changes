@@ -1,46 +1,24 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-class faq {
-   private final Reference2ObjectOpenHashMap<fao, fat> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class faq extends fas {
+   private final fas b;
+   private final jm.a c;
+   private static final DoubleList d = new fae(1);
 
-   @Nullable
-   public fat a(fao $$0) {
-      return (fat)this.a.get($$0);
+   public faq(fas $$0, jm.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fat a(fao $$0, Consumer<fat> $$1) {
-      return (fat)this.a.computeIfAbsent($$0, $$1x -> {
-         fat $$2 = new fat();
-         $$1.accept($$2);
-         return $$2;
-      });
+   private static fah a(fah $$0, jm.a $$1, int $$2) {
+      return new far(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   public boolean b(fao $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<fao> b() {
-      Object2IntMap<fao> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(fao $$0, fat $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<fao, fat> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   public DoubleList a(jm.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

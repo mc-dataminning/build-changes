@@ -1,75 +1,49 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public sealed interface bsh permits bsh.d, bsh.a, bsh.c, bsh.f {
-   bsh.d a = new bsh.d(bsh.e.b, bsh.b.b);
-   bsh.d b = new bsh.d(bsh.e.c, bsh.b.b);
-   bsh.d c = new bsh.d(bsh.e.a, bsh.b.b);
-   bsh.a d = new bsh.a();
-   bsh.c e = new bsh.c();
-   bsh.f f = new bsh.f();
+public enum bsh implements bai {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   default boolean a() {
-      return false;
+   public static final bai.a<bsh> e = bai.a(bsh::values);
+   private static final IntFunction<bsh> f = ayd.a(bsh::a, values(), ayd.a.b);
+   private final int g;
+   private final String h;
+
+   private bsh(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static record a() implements bsh {
+   public int a() {
+      return this.g;
    }
 
-   public static record b(boolean c, @Nullable cwf d) {
-      static bsh.b a = new bsh.b(false, null);
-      static bsh.b b = new bsh.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cwf b() {
-         return this.d;
-      }
+   public xj b() {
+      return xj.c("options.difficulty." + this.h);
    }
 
-   public static record c() implements bsh {
+   public xj d() {
+      return xj.c("options.difficulty." + this.h + ".info");
    }
 
-   public static record d(bsh.e g, bsh.b h) implements bsh {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      public bsh.d a(cwf $$0) {
-         return new bsh.d(this.g, new bsh.b(true, $$0));
-      }
-
-      public bsh.d b() {
-         return new bsh.d(this.g, bsh.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cwf d() {
-         return this.h.d;
-      }
-
-      public bsh.e e() {
-         return this.g;
-      }
-
-      public bsh.b f() {
-         return this.h;
-      }
+   public static bsh a(int $$0) {
+      return f.apply($$0);
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
+   @Nullable
+   public static bsh a(String $$0) {
+      return e.a($$0);
    }
 
-   public static record f() implements bsh {
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

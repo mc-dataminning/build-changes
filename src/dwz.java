@@ -1,7 +1,7 @@
-public enum dwz implements baj {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dwz implements bai {
+   a("up"),
+   b("side"),
+   c("none");
 
    private final String d;
 
@@ -17,5 +17,9 @@ public enum dwz implements baj {
    @Override
    public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

@@ -1,7 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public record azg<A>(MapCodec<A> a) {
-   public static <A> azg<A> a(MapCodec<A> $$0) {
-      return new azg<>($$0);
+@Deprecated
+public class azg<T> {
+   private final Supplier<T> a;
+
+   public azg(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
+
+   public T a() {
+      return this.a.get();
    }
 }

@@ -1,138 +1,336 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.charset.StandardCharsets;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
 public class amr {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final int c;
-   private final avr d;
-   private final int e;
-   private volatile boolean f;
-   @Nullable
-   private ServerSocket g;
-   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (xj)$$0);
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> xj.b("commands.advancement.criterionNotFound", $$0, $$1)
+   );
+   private static final SuggestionProvider<ew> c = ($$0, $$1) -> {
+      Collection<ah> $$2 = ((ew)$$0.getSource()).l().aD().b();
+      return fb.a($$2.stream().map(ah::a), $$1);
+   };
 
-   public amr(String $$0, int $$1, avr $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("advancement").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ex.a("grant")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                                       .then(
+                                          ex.a("only")
+                                             .then(
+                                                ((RequiredArgumentBuilder)ex.a("advancement", fx.a())
+                                                      .suggests(c)
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               fj.f($$0x, "targets"),
+                                                               amr.a.a,
+                                                               a($$0x, fx.a($$0x, "advancement"), amr.b.a)
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      ex.a("criterion", StringArgumentType.greedyString())
+                                                         .suggests(($$0x, $$1) -> fb.b(fx.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (ew)$$0x.getSource(),
+                                                                  fj.f($$0x, "targets"),
+                                                                  amr.a.a,
+                                                                  fx.a($$0x, "advancement"),
+                                                                  StringArgumentType.getString($$0x, "criterion")
+                                                               )
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ex.a("from")
+                                          .then(
+                                             ex.a("advancement", fx.a())
+                                                .suggests(c)
+                                                .executes(
+                                                   $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.a, a($$0x, fx.a($$0x, "advancement"), amr.b.c))
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ex.a("until")
+                                       .then(
+                                          ex.a("advancement", fx.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.a, a($$0x, fx.a($$0x, "advancement"), amr.b.d))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ex.a("through")
+                                    .then(
+                                       ex.a("advancement", fx.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.a, a($$0x, fx.a($$0x, "advancement"), amr.b.b))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ex.a("everything").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.a, ((ew)$$0x.getSource()).l().aD().b()))
+                           )
+                     )
+               ))
+            .then(
+               ex.a("revoke")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                                    .then(
+                                       ex.a("only")
+                                          .then(
+                                             ((RequiredArgumentBuilder)ex.a("advancement", fx.a())
+                                                   .suggests(c)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.b, a($$0x, fx.a($$0x, "advancement"), amr.b.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ex.a("criterion", StringArgumentType.greedyString())
+                                                      .suggests(($$0x, $$1) -> fb.b(fx.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               fj.f($$0x, "targets"),
+                                                               amr.a.b,
+                                                               fx.a($$0x, "advancement"),
+                                                               StringArgumentType.getString($$0x, "criterion")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ex.a("from")
+                                       .then(
+                                          ex.a("advancement", fx.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.b, a($$0x, fx.a($$0x, "advancement"), amr.b.c))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ex.a("until")
+                                    .then(
+                                       ex.a("advancement", fx.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.b, a($$0x, fx.a($$0x, "advancement"), amr.b.d))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ex.a("through")
+                                 .then(
+                                    ex.a("advancement", fx.a())
+                                       .suggests(c)
+                                       .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.b, a($$0x, fx.a($$0x, "advancement"), amr.b.b)))
+                                 )
+                           ))
+                        .then(ex.a("everything").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), amr.a.b, ((ew)$$0x.getSource()).l().aD().b())))
+                  )
+            )
+      );
    }
 
-   public void a() throws IOException {
-      if (this.g != null && !this.g.isClosed()) {
-         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
+   private static int a(ew $$0, Collection<arq> $$1, amr.a $$2, Collection<ah> $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (arq $$5 : $$1) {
+         $$4 += $$2.a($$5, $$3);
+      }
+
+      if ($$4 == 0) {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               throw a.create(xj.a($$2.a() + ".one.to.one.failure", ag.a($$3.iterator().next()), $$1.iterator().next().o_()));
+            } else {
+               throw a.create(xj.a($$2.a() + ".one.to.many.failure", ag.a($$3.iterator().next()), $$1.size()));
+            }
+         } else if ($$1.size() == 1) {
+            throw a.create(xj.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().o_()));
+         } else {
+            throw a.create(xj.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
+         }
       } else {
-         this.f = true;
-         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
-         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
-         $$0.setDaemon(true);
-         $$0.start();
-         Thread $$1 = new Thread(this::c, "chase-server-sender");
-         $$1.setDaemon(true);
-         $$1.start();
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> xj.a($$2.a() + ".one.to.one.success", ag.a($$3.iterator().next()), $$1.iterator().next().o_()), true);
+            } else {
+               $$0.a(() -> xj.a($$2.a() + ".one.to.many.success", ag.a($$3.iterator().next()), $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> xj.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().o_()), true);
+         } else {
+            $$0.a(() -> xj.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
+         }
+
+         return $$4;
       }
    }
 
-   private void c() {
-      amr.a $$0 = null;
+   private static int a(ew $$0, Collection<arq> $$1, amr.a $$2, ah $$3, String $$4) throws CommandSyntaxException {
+      int $$5 = 0;
+      ag $$6 = $$3.b();
+      if (!$$6.e().containsKey($$4)) {
+         throw b.create(ag.a($$3), $$4);
+      } else {
+         for (arq $$7 : $$1) {
+            if ($$2.a($$7, $$3, $$4)) {
+               $$5++;
+            }
+         }
 
-      while (this.f) {
-         if (!this.h.isEmpty()) {
-            amr.a $$1 = this.e();
-            if ($$1 != null && !$$1.equals($$0)) {
-               $$0 = $$1;
-               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+         if ($$5 == 0) {
+            if ($$1.size() == 1) {
+               throw a.create(xj.a($$2.a() + ".criterion.to.one.failure", $$4, ag.a($$3), $$1.iterator().next().o_()));
+            } else {
+               throw a.create(xj.a($$2.a() + ".criterion.to.many.failure", $$4, ag.a($$3), $$1.size()));
+            }
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> xj.a($$2.a() + ".criterion.to.one.success", $$4, ag.a($$3), $$1.iterator().next().o_()), true);
+            } else {
+               $$0.a(() -> xj.a($$2.a() + ".criterion.to.many.success", $$4, ag.a($$3), $$1.size()), true);
+            }
 
-               for (Socket $$3 : this.h) {
-                  if (!$$3.isClosed()) {
-                     ae.h().execute(() -> {
-                        try {
-                           OutputStream $$2x = $$3.getOutputStream();
-                           $$2x.write($$2);
-                           $$2x.flush();
-                        } catch (IOException var3x) {
-                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
-                           IOUtils.closeQuietly($$3);
-                        }
-                     });
-                  }
+            return $$5;
+         }
+      }
+   }
+
+   private static List<ah> a(CommandContext<ew> $$0, ah $$1, amr.b $$2) {
+      am $$3 = ((ew)$$0.getSource()).l().aD().a();
+      ai $$4 = $$3.a($$1);
+      if ($$4 == null) {
+         return List.of($$1);
+      } else {
+         List<ah> $$5 = new ArrayList<>();
+         if ($$2.f) {
+            for (ai $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
+               $$5.add($$6.b());
+            }
+         }
+
+         $$5.add($$1);
+         if ($$2.g) {
+            a($$4, $$5);
+         }
+
+         return $$5;
+      }
+   }
+
+   private static void a(ai $$0, List<ah> $$1) {
+      for (ai $$2 : $$0.e()) {
+         $$1.add($$2.b());
+         a($$2, $$1);
+      }
+   }
+
+   static enum a {
+      a("grant") {
+         @Override
+         protected boolean a(arq $$0, ah $$1) {
+            aj $$2 = $$0.S().b($$1);
+            if ($$2.a()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.e()) {
+                  $$0.S().a($$1, $$3);
                }
-            }
 
-            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
-            this.h.removeAll($$4);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep((long)this.e);
-            } catch (InterruptedException var6) {
+               return true;
             }
          }
+
+         @Override
+         protected boolean a(arq $$0, ah $$1, String $$2) {
+            return $$0.S().a($$1, $$2);
+         }
+      },
+      b("revoke") {
+         @Override
+         protected boolean a(arq $$0, ah $$1) {
+            aj $$2 = $$0.S().b($$1);
+            if (!$$2.b()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.f()) {
+                  $$0.S().b($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(arq $$0, ah $$1, String $$2) {
+            return $$0.S().b($$1, $$2);
+         }
+      };
+
+      private final String c;
+
+      a(final String $$0) {
+         this.c = "commands.advancement." + $$0;
+      }
+
+      public int a(arq $$0, Iterable<ah> $$1) {
+         int $$2 = 0;
+
+         for (ah $$3 : $$1) {
+            if (this.a($$0, $$3)) {
+               $$2++;
+            }
+         }
+
+         return $$2;
+      }
+
+      protected abstract boolean a(arq var1, ah var2);
+
+      protected abstract boolean a(arq var1, ah var2, String var3);
+
+      protected String a() {
+         return this.c;
       }
    }
 
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-   }
+   static enum b {
+      a(false, false),
+      b(true, true),
+      c(false, true),
+      d(true, false),
+      e(true, true);
 
-   private void d() {
-      try {
-         while (this.f) {
-            if (this.g != null) {
-               a.info("Remote control server is listening for connections on port {}", this.c);
-               Socket $$0 = this.g.accept();
-               a.info("Remote control server received client connection on port {}", $$0.getPort());
-               this.h.add($$0);
-            }
-         }
-      } catch (ClosedByInterruptException var6) {
-         if (this.f) {
-            a.info("Remote control server closed by interrupt");
-         }
-      } catch (IOException var7) {
-         if (this.f) {
-            a.error("Remote control server closed because of an IO exception", var7);
-         }
-      } finally {
-         IOUtils.closeQuietly(this.g);
-      }
+      final boolean f;
+      final boolean g;
 
-      a.info("Remote control server is now stopped");
-      this.f = false;
-   }
-
-   @Nullable
-   private amr.a e() {
-      List<arr> $$0 = this.d.t();
-      if ($$0.isEmpty()) {
-         return null;
-      } else {
-         arr $$1 = $$0.get(0);
-         String $$2 = (String)amz.a.inverse().get($$1.dY().ag());
-         return $$2 == null ? null : new amr.a($$2, $$1.dD(), $$1.dF(), $$1.dJ(), $$1.dO(), $$1.dQ());
-      }
-   }
-
-   static record a(String a, double b, double c, double d, float e, float f) {
-      String g() {
-         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
+      private b(final boolean $$0, final boolean $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
    }
 }

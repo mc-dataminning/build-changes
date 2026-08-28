@@ -1,36 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class egy implements egt {
+public class egy implements eha {
    public static final Codec<egy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               lz.e.q().fieldOf("block").flatXmap(egy::a, DataResult::success).orElse((dni)dil.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kf.a(ma.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               brp.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               brp.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               brp.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               brn.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               brn.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
             )
             .apply($$0, egy::new)
    );
-   public final dni b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ju<dij> h;
-   private final ObjectArrayList<jm> i;
+   public final int b;
+   public final brp c;
+   public final brp d;
+   public final int e;
+   public final int f;
+   public final brp g;
+   public final brn h;
+   public final brn i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   private static DataResult<dni> a(dij $$0) {
-      return $$0 instanceof dni $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
-   }
-
-   public egy(dni $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ju<dij> $$6) {
+   public egy(int $$0, brp $$1, brp $$2, int $$3, int $$4, brp $$5, brn $$6, brn $$7, float $$8, int $$9, int $$10) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -38,25 +38,9 @@ public class egy implements egt {
       this.f = $$4;
       this.g = $$5;
       this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jm.b);
-      }
-
-      if ($$2) {
-         this.i.add(jm.a);
-      }
-
-      if ($$4) {
-         jm.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<jm> a(azv $$0, jm $$1) {
-      return ae.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<jm> a(azv $$0) {
-      return ae.a(this.i, $$0);
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

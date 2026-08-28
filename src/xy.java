@@ -1,63 +1,35 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+public interface xy {
+   xj a();
 
-public class xy {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xx[] c;
+   void a(arq var1, boolean var2, xf.a var3);
 
-   public xy(int $$0) {
-      this.c = new xx[$$0];
+   static xy a(xz $$0) {
+      return (xy)($$0.h() ? new xy.a($$0.d()) : new xy.b($$0));
    }
 
-   public static xy a() {
-      return new xy(128);
+   public static record a(xj a) implements xy {
+      @Override
+      public void a(arq $$0, boolean $$1, xf.a $$2) {
+         $$0.f.a(this.a, $$2);
+      }
    }
 
-   public int a(xx $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public static record b(xz a) implements xy {
+      @Override
+      public xj a() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(arq $$0, boolean $$1, xf.a $$2) {
+         xz $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.f.a($$3, $$2);
          }
       }
 
-      return -1;
-   }
-
-   @Nullable
-   public xx a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(ye $$0, @Nullable xx $$1) {
-      List<xx> $$2 = $$0.d().a();
-      ArrayDeque<xx> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<xx> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xx> $$0) {
-      Set<xx> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xx $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
+      public xz b() {
+         return this.a;
       }
    }
 }

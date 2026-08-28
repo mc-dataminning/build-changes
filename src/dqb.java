@@ -1,22 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqb extends dqv implements dia {
-   public static final MapCodec<dqb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvc.q.fieldOf("color").forGetter(dqb::b), t()).apply($$0, dqb::new));
-   private final cvc c;
+public class dqb extends did {
+   public static final MapCodec<dqb> c = b(dqb::new);
 
    @Override
    public MapCodec<dqb> a() {
-      return a;
+      return c;
    }
 
-   public dqb(cvc $$0, dvn.d $$1) {
-      super($$1);
-      this.c = $$0;
+   public dqb(dvu.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public cvc b() {
-      return this.c;
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      return this.a($$0, $$1, $$3) ? this.m() : dis.a.m();
+   }
+
+   @Override
+   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
+      return o($$1.a_($$2.e()));
+   }
+
+   public static boolean o(dvv $$0) {
+      return $$0.a(axc.aU);
+   }
+
+   @Override
+   protected boolean g(dvv $$0) {
+      return true;
    }
 }

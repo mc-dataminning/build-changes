@@ -1,29 +1,41 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
-public class hfg {
-   private final float a;
-   private final AtomicReference<hfg.a> b = new AtomicReference<>();
+public class hfg implements hfj {
+   private static final int a = 600;
+   private static final xj b = xj.c("tutorial.open_inventory.title");
+   private static final xj c = xj.a("tutorial.open_inventory.description", hfi.a("inventory"));
+   private final hfi d;
+   @Nullable
+   private fop e;
+   private int f;
 
-   public hfg(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public hfg(hfi $$0) {
+      this.d = $$0;
    }
 
-   public void a(fjo $$0, xl $$1) {
-      hfg.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hfg.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hfk.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fop(fop.a.d, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   static class a {
-      final xl a;
-      final RateLimiter b;
-
-      a(xl $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
       }
+   }
+
+   @Override
+   public void c() {
+      this.d.a(hfk.e);
    }
 }

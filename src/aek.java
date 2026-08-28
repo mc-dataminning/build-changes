@@ -1,29 +1,21 @@
-public class aek implements zs<ach> {
-   public static final zj<wi, aek> a = zs.a(aek::a, aek::new);
-   private final int b;
+public record aek(int b, xj c) implements zq<acf> {
+   public static final zh<wu, aek> a = zh.a(zf.h, aek::b, xl.d, aek::e, aek::new);
 
-   public aek(bsv $$0) {
-      this($$0.b());
+   @Override
+   public zs<aek> a() {
+      return agu.ae;
    }
 
-   public aek(int $$0) {
-      this.b = $$0;
-   }
-
-   private aek(wi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wi $$0) {
-      $$0.c(this.b);
+   public void a(acf $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zu<aek> a() {
-      return agw.ac;
+   public boolean c() {
+      return true;
    }
 
-   public void a(ach $$0) {
-      $$0.a(this);
+   public xj e() {
+      return this.c;
    }
 }

@@ -2,95 +2,95 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gkx implements gkr {
-   private final List<gkx.d> a;
+public class gkx {
+   public static final gkx a = new gkx(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   gkx(List<gkx.d> $$0) {
-      this.a = $$0;
+   public gkx(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   @Override
-   public Object a(dvo $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
+   public void a(boolean $$0, fer $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
          }
-      }
 
-      record a(gkx a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
       }
-
-      return new a($$1);
    }
 
    @Override
-   public void a(hbo.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         gkx $$1 = (gkx)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
    }
 
    @Override
-   public hav a(hbe $$0, Function<hbc, gyt> $$1, hbk $$2) {
-      List<hbl.a> $$3 = new ArrayList<>(this.a.size());
-
-      for (gkx.d $$4 : this.a) {
-         hav $$5 = $$4.b.a($$0, $$1, $$2);
-         $$3.add(new hbl.a($$4.a, $$5));
-      }
-
-      return new hbl($$3);
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
    }
 
-   public static record b(List<gkz> a) {
-      public gkx a(dvp<dij, dvo> $$0) {
-         List<gkx.d> $$1 = this.a.stream().map($$1x -> new gkx.d($$1x.a($$0), $$1x.a())).toList();
-         return new gkx($$1);
+   protected static class a implements JsonDeserializer<gkx> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public gkx a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(azm.a($$5.x, -5.0F, 5.0F), azm.a($$5.y, -5.0F, 5.0F), azm.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(azm.a($$6.x, -4.0F, 4.0F), azm.a($$6.y, -4.0F, 4.0F), azm.a($$6.z, -4.0F, 4.0F));
+         return new gkx($$4, $$5, $$6);
       }
 
-      public Set<gkq> a() {
-         return this.a.stream().map(gkz::a).collect(Collectors.toSet());
-      }
-
-      public List<gkz> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gkx.b> {
-      public gkx.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gkx.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<gkz> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gkz> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
-         } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((gkz)$$0.deserialize($$3, gkz.class));
-            }
-
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
             return $$2;
+         } else {
+            JsonArray $$3 = azc.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = azc.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
          }
       }
-   }
-
-   static record d(Predicate<dvo> a, gkq b) {
    }
 }

@@ -1,46 +1,44 @@
-import java.util.Arrays;
+import java.util.Set;
 
-public class fzq extends fza<gwz> {
-   private static final int a = 8;
-   private final gcc[] b = new gcc[8];
+public class fzq extends gat<gwa> {
+   public static final gcu a = new fyl(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
 
-   public fzq(gcc $$0) {
+   public fzq(gcl $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      gcv $$2 = $$1.a(
+         "head",
+         gcq.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         gcn.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", gcq.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gcn.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", gcq.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gcn.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", gcq.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gcn.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", gcq.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gcn.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", gcq.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gcn.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", gcq.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gcn.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", gcq.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gcn.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", gcq.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gcn.a(-3.0F, 14.0F, -6.0F));
+      return gcr.a($$0, 64, 64);
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), gch.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gce.a);
-      }
-
-      $$1.a("inside_cube", gch.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gce.a);
-      return gci.a($$0, 64, 32);
-   }
-
-   public void a(gwz $$0) {
+   public void a(gwa $$0) {
       super.a($$0);
-      float $$1 = Math.max(0.0F, $$0.a);
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      this.b.b("left_horn").k = $$0.a;
+      this.b.b("right_horn").k = $$0.b;
+      if ($$0.c != 0.0F) {
+         this.b.e = $$0.c;
       }
    }
 }

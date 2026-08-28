@@ -1,10 +1,11 @@
-public class axi {
-   public static final axt<ekc> a = a("visible");
+public final class axi {
+   public static final axs<eru> a = a("water");
+   public static final axs<eru> b = a("lava");
 
    private axi() {
    }
 
-   private static axt<ekc> a(String $$0) {
-      return axt.a(ma.aO, all.b($$0));
+   private static axs<eru> a(String $$0) {
+      return axs.a(ma.D, alj.b($$0));
    }
 }

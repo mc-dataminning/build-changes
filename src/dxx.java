@@ -1,114 +1,58 @@
 import java.util.List;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
 
-public class dxx<T> implements dxz<T> {
+public class dxx<T> implements dyg<T> {
    private final jv<T> a;
-   private final T[] b;
-   private final dya<T> c;
-   private final int d;
-   private int e;
 
-   private dxx(jv<T> $$0, int $$1, dya<T> $$2, List<T> $$3) {
+   public dxx(jv<T> $$0) {
       this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
    }
 
-   private dxx(jv<T> $$0, T[] $$1, dya<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dxz<A> a(int $$0, jv<A> $$1, dya<A> $$2, List<A> $$3) {
-      return new dxx<>($$1, $$0, $$2, $$3);
+   public static <A> dyg<A> a(int $$0, jv<A> $$1, dyh<A> $$2, List<A> $$3) {
+      return new dxx<>($$1);
    }
 
    @Override
    public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
-
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
-      } else {
-         return this.c.onResize(this.d + 1, $$0);
-      }
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
    }
 
    @Override
    public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
-
-      return false;
+      return true;
    }
 
    @Override
    public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new dyf($$0);
       } else {
-         throw new dxy($$0);
+         return $$1;
       }
    }
 
    @Override
-   public void a(wi $$0) {
-      this.e = $$0.l();
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.l());
-      }
+   public void a(wg $$0) {
    }
 
    @Override
-   public void b(wi $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
+   public void b(wg $$0) {
    }
 
    @Override
    public int a() {
-      int $$0 = xc.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += xc.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
+      return 0;
    }
 
    @Override
    public int b() {
-      return this.e;
+      return this.a.d();
    }
 
    @Override
-   public dxz<T> a(dya<T> $$0) {
-      return new dxx<>(this.a, (T[])((Object[])this.b.clone()), $$0, this.d, this.e);
+   public dyg<T> a(dyh<T> $$0) {
+      return this;
    }
 }

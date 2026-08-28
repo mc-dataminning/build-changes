@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+public class gwx extends gwm implements gxe {
+   public boolean a;
 
-public class gwx extends gwb {
-   public ezr a = ezr.c;
-   @Nullable
-   public cvc b;
-   public float c;
-   public float d;
-   public float e;
-   public jm f = jm.a;
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

@@ -1,28 +1,84 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
+
 public class ets {
-   public static final ets a = new ets("advancements");
-   public static final ets b = new ets("stats");
-   public static final ets c = new ets("playerdata");
-   public static final ets d = new ets("players");
-   public static final ets e = new ets("level.dat");
-   public static final ets f = new ets("level.dat_old");
-   public static final ets g = new ets("icon.png");
-   public static final ets h = new ets("session.lock");
-   public static final ets i = new ets("generated");
-   public static final ets j = new ets("datapacks");
-   public static final ets k = new ets("resources.zip");
-   public static final ets l = new ets(".");
-   private final String m;
+   private static final String a = "command_storage_";
+   private final Map<String, ets.a> b = Maps.newHashMap();
+   private final etv c;
 
-   private ets(String $$0) {
-      this.m = $$0;
+   public ets(etv $$0) {
+      this.c = $$0;
    }
 
-   public String a() {
-      return this.m;
+   private ets.a a(String $$0) {
+      ets.a $$1 = new ets.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   private eth.a<ets.a> b(String $$0) {
+      return new eth.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), baw.h);
+   }
+
+   public ul a(alj $$0) {
+      String $$1 = $$0.b();
+      ets.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ul();
+   }
+
+   public void a(alj $$0, ul $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<alj> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends eth {
+      private static final String a = "contents";
+      private final Map<String, ul> b = Maps.newHashMap();
+
+      ets.a a(ul $$0) {
+         ul $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
+      }
+
+      @Override
+      public ul a(ul $$0, js.a $$1) {
+         ul $$2 = new ul();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public ul a(String $$0) {
+         ul $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ul();
+      }
+
+      public void a(String $$0, ul $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<alj> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alj.a($$0, $$1));
+      }
    }
 }

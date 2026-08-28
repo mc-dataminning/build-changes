@@ -1,133 +1,51 @@
-public class dwe {
-   public static final dwf a = dwf.a("attached");
-   public static final dwf b = dwf.a("bottom");
-   public static final dwf c = dwf.a("conditional");
-   public static final dwf d = dwf.a("disarmed");
-   public static final dwf e = dwf.a("drag");
-   public static final dwf f = dwf.a("enabled");
-   public static final dwf g = dwf.a("extended");
-   public static final dwf h = dwf.a("eye");
-   public static final dwf i = dwf.a("falling");
-   public static final dwf j = dwf.a("hanging");
-   public static final dwf k = dwf.a("has_bottle_0");
-   public static final dwf l = dwf.a("has_bottle_1");
-   public static final dwf m = dwf.a("has_bottle_2");
-   public static final dwf n = dwf.a("has_record");
-   public static final dwf o = dwf.a("has_book");
-   public static final dwf p = dwf.a("inverted");
-   public static final dwf q = dwf.a("in_wall");
-   public static final dwf r = dwf.a("lit");
-   public static final dwf s = dwf.a("locked");
-   public static final dwf t = dwf.a("occupied");
-   public static final dwf u = dwf.a("open");
-   public static final dwf v = dwf.a("persistent");
-   public static final dwf w = dwf.a("powered");
-   public static final dwf x = dwf.a("short");
-   public static final dwf y = dwf.a("signal_fire");
-   public static final dwf z = dwf.a("snowy");
-   public static final dwf A = dwf.a("triggered");
-   public static final dwf B = dwf.a("unstable");
-   public static final dwf C = dwf.a("waterlogged");
-   public static final dwf D = dwf.a("berries");
-   public static final dwf E = dwf.a("bloom");
-   public static final dwf F = dwf.a("shrieking");
-   public static final dwf G = dwf.a("can_summon");
-   public static final dwl<jm.a> H = dwl.a("axis", jm.a.class, jm.a.a, jm.a.c);
-   public static final dwl<jm.a> I = dwl.a("axis", jm.a.class);
-   public static final dwf J = dwf.a("up");
-   public static final dwf K = dwf.a("down");
-   public static final dwf L = dwf.a("north");
-   public static final dwf M = dwf.a("east");
-   public static final dwf N = dwf.a("south");
-   public static final dwf O = dwf.a("west");
-   public static final dwl<jm> P = dwl.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
-   public static final dwl<jm> Q = dwl.a("facing", jm.class, $$0 -> $$0 != jm.b);
-   public static final dwl<jm> R = dwl.a("facing", jm.class, jm.c.a);
-   public static final dwn S = dwn.a("flower_amount", 1, 4);
-   public static final dwl<jo> T = dwl.a("orientation", jo.class);
-   public static final dwl<dvz> U = dwl.a("face", dvz.class);
-   public static final dwl<dwc> V = dwl.a("attachment", dwc.class);
-   public static final dwl<dwz> W = dwl.a("east", dwz.class);
-   public static final dwl<dwz> X = dwl.a("north", dwz.class);
-   public static final dwl<dwz> Y = dwl.a("south", dwz.class);
-   public static final dwl<dwz> Z = dwl.a("west", dwz.class);
-   public static final dwl<dws> aa = dwl.a("east", dws.class);
-   public static final dwl<dws> ab = dwl.a("north", dws.class);
-   public static final dwl<dws> ac = dwl.a("south", dws.class);
-   public static final dwl<dws> ad = dwl.a("west", dws.class);
-   public static final dwl<dwj> ae = dwl.a("half", dwj.class);
-   public static final dwl<dwm> af = dwl.a("half", dwm.class);
-   public static final dwl<dwr> ag = dwl.a("shape", dwr.class);
-   public static final dwl<dwr> ah = dwl.a("shape", dwr.class, $$0 -> $$0 != dwr.j && $$0 != dwr.i && $$0 != dwr.g && $$0 != dwr.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dwn aq = dwn.a("age", 0, 1);
-   public static final dwn ar = dwn.a("age", 0, 2);
-   public static final dwn as = dwn.a("age", 0, 3);
-   public static final dwn at = dwn.a("age", 0, 4);
-   public static final dwn au = dwn.a("age", 0, 5);
-   public static final dwn av = dwn.a("age", 0, 7);
-   public static final dwn aw = dwn.a("age", 0, 15);
-   public static final dwn ax = dwn.a("age", 0, 25);
-   public static final dwn ay = dwn.a("bites", 0, 6);
-   public static final dwn az = dwn.a("candles", 1, 4);
-   public static final dwn aA = dwn.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dwn aC = dwn.a("distance", 1, 7);
-   public static final dwn aD = dwn.a("eggs", 1, 4);
-   public static final dwn aE = dwn.a("hatch", 0, 2);
-   public static final dwn aF = dwn.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dwn aK = dwn.a("level", 1, 3);
-   public static final dwn aL = dwn.a("level", 0, 8);
-   public static final dwn aM = dwn.a("level", 1, 8);
-   public static final dwn aN = dwn.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dwn aP = dwn.a("level", 0, 15);
-   public static final dwn aQ = dwn.a("moisture", 0, 7);
-   public static final dwn aR = dwn.a("note", 0, 24);
-   public static final dwn aS = dwn.a("pickles", 1, 4);
-   public static final dwn aT = dwn.a("power", 0, 15);
-   public static final dwn aU = dwn.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dwn aW = dwn.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dwn aZ = dwn.a("charges", 0, 4);
-   public static final dwn ba = dwn.a("rotation", 0, dwt.a());
-   public static final dwl<dwb> bb = dwl.a("part", dwb.class);
-   public static final dwl<dwg> bc = dwl.a("type", dwg.class);
-   public static final dwl<dwh> bd = dwl.a("mode", dwh.class);
-   public static final dwl<dwi> be = dwl.a("hinge", dwi.class);
-   public static final dwl<dwo> bf = dwl.a("instrument", dwo.class);
-   public static final dwl<dwp> bg = dwl.a("type", dwp.class);
-   public static final dwl<dwv> bh = dwl.a("type", dwv.class);
-   public static final dwl<dww> bi = dwl.a("shape", dww.class);
-   public static final dwl<dwx> bj = dwl.a("mode", dwx.class);
-   public static final dwl<dwa> bk = dwl.a("leaves", dwa.class);
-   public static final dwl<dwy> bl = dwl.a("tilt", dwy.class);
-   public static final dwl<jm> bm = dwl.a("vertical_direction", jm.class, jm.b, jm.a);
-   public static final dwl<dwk> bn = dwl.a("thickness", dwk.class);
-   public static final dwl<dwu> bo = dwl.a("sculk_sensor_phase", dwu.class);
-   public static final dwf bp = dwf.a("slot_0_occupied");
-   public static final dwf bq = dwf.a("slot_1_occupied");
-   public static final dwf br = dwf.a("slot_2_occupied");
-   public static final dwf bs = dwf.a("slot_3_occupied");
-   public static final dwf bt = dwf.a("slot_4_occupied");
-   public static final dwf bu = dwf.a("slot_5_occupied");
-   public static final dwn bv = dwn.a("dusted", 0, 3);
-   public static final dwf bw = dwf.a("cracked");
-   public static final dwf bx = dwf.a("crafting");
-   public static final dwl<duu> by = dwl.a("trial_spawner_state", duu.class);
-   public static final dwl<dvb> bz = dwl.a("vault_state", dvb.class);
-   public static final dwf bA = dwf.a("ominous");
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class dwe implements Predicate<dvv> {
+   public static final Predicate<dvv> a = $$0 -> true;
+   private final dvw<diq, dvv> b;
+   private final Map<dwx<?>, Predicate<Object>> c = Maps.newHashMap();
+
+   private dwe(dvw<diq, dvv> $$0) {
+      this.b = $$0;
+   }
+
+   public static dwe a(diq $$0) {
+      return new dwe($$0.l());
+   }
+
+   public boolean a(@Nullable dvv $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dwx<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(dvv $$0, dwx<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dwe a(dwx<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
+   }
 }

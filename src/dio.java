@@ -1,104 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dio extends dhv implements dld {
-   public static final MapCodec<dio> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               lz.e.q().fieldOf("turns_into").forGetter(dio::b),
-               lz.b.q().fieldOf("brush_sound").forGetter(dio::c),
-               lz.b.q().fieldOf("brush_completed_sound").forGetter(dio::d),
-               t()
-            )
-            .apply($$0, dio::new)
-   );
-   private static final dwn c = dwe.bv;
-   public static final int b = 2;
-   private final dij d;
-   private final awn e;
-   private final awn f;
+public class dio extends dml implements dit, dpr {
+   public static final MapCodec<dio> a = b(dio::new);
+   private static final dwm f = dwl.C;
+   private static final int g = 6;
+   protected static final fas b = diq.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final fas c = diq.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final fas d = diq.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final fas e = diq.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dio> a() {
       return a;
    }
 
-   public dio(dij $$0, awn $$1, awn $$2, dvn.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   protected dio(dvu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jm.c));
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(c);
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
+      }
    }
 
    @Override
-   public dop a_(dvo $$0) {
-      return dop.c;
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(f, aF);
    }
 
    @Override
-   public void b(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
+   protected erv b_(dvv $$0) {
+      return $$0.c(f) ? erw.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      $$2.a($$3, this, 2);
+   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dvv $$4 = $$1.a_($$3);
+      dvv $$5 = $$1.a_($$2.d());
+      return ($$4.a(this) || $$4.a(axc.bz)) && ($$5.a(this) || $$5.a(dis.sD));
+   }
+
+   protected static boolean a(dfn $$0, jh $$1, erv $$2, jm $$3) {
+      dvv $$4 = dis.sE.m().b(f, Boolean.valueOf($$2.a(erw.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      if (($$4 == jm.a || $$4 == jm.b) && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      if ($$0.c(f)) {
+         $$2.a($$3, erw.c, erw.c.a($$1));
+      }
+
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if ($$1.c_($$2) instanceof dsv $$4) {
-         $$4.a($$1);
-      }
-
-      if (dle.n($$1.a_($$2.e())) && $$2.v() >= $$1.I_()) {
-         cky $$5 = cky.a($$1, $$2, $$0);
-         $$5.o();
+   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   public void a(dff $$0, jh $$1, cky $$2) {
-      ezr $$3 = $$2.cT().f();
-      $$0.c(2001, jh.a((ka)$$3), dij.j($$2.q()));
-      $$0.a($$2, eak.f, $$3);
-   }
-
-   @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      if ($$3.a(16) == 0) {
-         jh $$4 = $$2.e();
-         if (dle.n($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new lk(ls.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
+   public boolean b(dfp $$0, jh $$1, dvv $$2) {
+      Optional<jh> $$3 = l.a($$0, $$1, $$2.b(), jm.b, dis.sD);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get().d();
+         dvv $$5 = $$0.a_($$4);
+         return din.a($$0, $$4, $$5);
       }
    }
 
-   @Nullable
    @Override
-   public dsr a(jh $$0, dvo $$1) {
-      return new dsv($$0, $$1);
+   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
+      return true;
    }
 
-   public dij b() {
-      return this.d;
+   @Override
+   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
+      Optional<jh> $$4 = l.a($$0, $$2, $$3.b(), jm.b, dis.sD);
+      if (!$$4.isEmpty()) {
+         jh $$5 = $$4.get();
+         jh $$6 = $$5.d();
+         jm $$7 = $$3.c(aF);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         din.a($$0, $$6, $$0.b_($$6), $$7);
+      }
    }
 
-   public awn c() {
-      return this.e;
-   }
-
-   public awn d() {
-      return this.f;
+   @Override
+   public cwm a(dfp $$0, jh $$1, dvv $$2) {
+      return new cwm(dis.sD);
    }
 }

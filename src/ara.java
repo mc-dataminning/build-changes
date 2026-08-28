@@ -1,69 +1,33 @@
-public abstract class ara extends era {
-   protected ara(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+public record ara(String b, int c, cor d, boolean e, int f, bvb g, boolean h, boolean i, arh j) {
+   public static final int a = 16;
+
+   public ara(wg $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(cor.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bvb.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(arh.class)
+      );
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == del.c;
+   public void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         del $$3 = new del($$0);
-         int $$4 = $$3.g;
-         int $$5 = $$3.h;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = del.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      del $$4 = new del($$0);
-      int $$5 = $$4.g;
-      int $$6 = $$4.h;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = del.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = del.c;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == del.c ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(del.c, $$0, $$1, $$2);
+   public static ara a() {
+      return new ara("en_us", 2, cor.a, true, 0, cou.bG, false, false, arh.a);
    }
 }

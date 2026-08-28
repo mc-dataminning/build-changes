@@ -1,165 +1,274 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record heg<T>(String F, String G, Codec<T> H, heg.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final heg<String> a = b("user_id", "userId");
-   public static final heg<String> b = b("client_id", "clientId");
-   public static final heg<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final heg<String> d = b("game_version", "buildDisplayName");
-   public static final heg<String> e = b("operating_system", "buildPlatform");
-   public static final heg<String> f = b("platform", "platform");
-   public static final heg<Boolean> g = a("client_modded", "clientModded");
-   public static final heg<String> h = b("launcher_name", "launcherName");
-   public static final heg<UUID> i = e("world_session_id", "worldSessionId");
-   public static final heg<Boolean> j = a("server_modded", "serverModded");
-   public static final heg<heg.c> k = a("server_type", "serverType", heg.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final heg<Boolean> l = a("opt_in", "isOptional");
-   public static final heg<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ayw.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final heg<heg.b> n = a("game_mode", "playerGameMode", heg.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final heg<String> o = b("realms_map_content", "realmsMapContent");
-   public static final heg<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final heg<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final heg<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final heg<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final heg<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final heg<Integer> u = c("number_of_samples", "numSamples");
-   public static final heg<Integer> v = c("render_distance", "renderDistance");
-   public static final heg<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final heg<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final heg<Boolean> y = a("new_world", "newWorld");
-   public static final heg<hek.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final heg<hek.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final heg<hek.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final heg<hek.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final heg<String> D = b("advancement_id", "advancementId");
-   public static final heg<Long> E = d("advancement_game_time", "advancementGameTime");
+public class heg extends avi<heg.a> {
+   public static final alj a = alj.b("empty");
+   public static final hcy b = new hcy(a, brl.a(1.0F), brl.a(1.0F), 1, hcy.a.a, false, false, 16);
+   public static final alj c = alj.b("intentionally_empty");
+   public static final heh d = new heh(c, null);
+   public static final hcy e = new hcy(c, brl.a(1.0F), brl.a(1.0F), 1, hcy.a.a, false, false, 16);
+   static final Logger f = LogUtils.getLogger();
+   private static final String g = "sounds.json";
+   private static final Gson h = new GsonBuilder().registerTypeHierarchyAdapter(xj.class, new xj.b(ke.b)).registerTypeAdapter(hcz.class, new hda()).create();
+   private static final TypeToken<Map<String, hcz>> i = new TypeToken<Map<String, hcz>>() {
+   };
+   private final Map<alj, heh> j = Maps.newHashMap();
+   private final hed k;
+   private final Map<alj, avb> l = new HashMap<>();
 
-   public static <T> heg<T> a(String $$0, String $$1, Codec<T> $$2, heg.a<T> $$3) {
-      return new heg<>($$0, $$1, $$2, $$3);
+   public heg(fki $$0) {
+      this.k = new hed(this, $$0, avg.fromMap(this.l));
    }
 
-   public static heg<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   protected heg.a a(avd $$0, bou $$1) {
+      heg.a $$2 = new heg.a();
+
+      try (boz $$3 = $$1.d("list")) {
+         $$2.a($$0);
+      }
+
+      for (String $$4 : $$0.a()) {
+         try (boz $$5 = $$1.d($$4)) {
+            for (avb $$7 : $$0.a(alj.a($$4, "sounds.json"))) {
+               $$1.a($$7.b());
+
+               try (Reader $$8 = $$7.e()) {
+                  $$1.a("parse");
+                  Map<String, hcz> $$9 = azc.a(h, $$8, i);
+                  $$1.b("register");
+
+                  for (Entry<String, hcz> $$10 : $$9.entrySet()) {
+                     $$2.a(alj.a($$4, $$10.getKey()), $$10.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var19) {
+                  f.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$7.b(), var19});
+               }
+
+               $$1.c();
+            }
+         } catch (IOException var21) {
+         }
+      }
+
+      return $$2;
    }
 
-   public static heg<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   protected void a(heg.a $$0, avd $$1, bou $$2) {
+      $$0.a(this.j, this.l, this.k);
+      if (ab.aU) {
+         for (alj $$3 : this.j.keySet()) {
+            heh $$4 = this.j.get($$3);
+            if (!xm.b($$4.a()) && lz.b.d($$3)) {
+               f.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
+      }
+
+      if (f.isDebugEnabled()) {
+         for (alj $$5 : this.j.keySet()) {
+            if (!lz.b.d($$5)) {
+               f.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.k.a();
    }
 
-   public static heg<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<String> a() {
+      return this.k.h();
    }
 
-   public static heg<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   public fcg b() {
+      return this.k.i();
    }
 
-   public static heg<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kk.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static heg<hek.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hek.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static heg<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(heh $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+   static boolean a(hcy $$0, alj $$1, avg $$2) {
+      alj $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         f.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
       } else {
-         $$1.addNullProperty(this.G);
+         return true;
       }
    }
 
-   public xz a() {
-      return xl.c("telemetry.property." + this.F + ".title");
+   @Nullable
+   public heh a(alj $$0) {
+      return this.j.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public Collection<alj> d() {
+      return this.j.keySet();
    }
 
-   public String b() {
-      return this.F;
+   public void a(hdc $$0) {
+      this.k.a($$0);
    }
 
-   public String c() {
-      return this.G;
+   public void a(hdb $$0) {
+      this.k.c($$0);
    }
 
-   public Codec<T> d() {
-      return this.H;
+   public void a(hdb $$0, int $$1) {
+      this.k.a($$0, $$1);
    }
 
-   public heg.a<T> e() {
-      return this.I;
+   public void a(fjn $$0) {
+      this.k.a($$0);
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   public void e() {
+      this.k.e();
    }
 
-   public static enum b implements baj {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
+   public void f() {
+      this.k.d();
+   }
 
-      public static final Codec<heg.b> f = baj.a(heg.b::values);
-      private final String g;
-      private final int h;
+   public void g() {
+      this.k.b();
+   }
 
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void h() {
+      this.k.c();
+   }
+
+   public void a(boolean $$0) {
+      this.k.a($$0);
+   }
+
+   public void i() {
+      this.k.f();
+   }
+
+   public void a(awo $$0, float $$1) {
+      if ($$0 == awo.a && $$1 <= 0.0F) {
+         this.f();
       }
 
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+      this.k.a($$0, $$1);
    }
 
-   public static enum c implements baj {
-      a("realm"),
-      b("local"),
-      c("server");
+   public void b(hdb $$0) {
+      this.k.a($$0);
+   }
 
-      public static final Codec<heg.c> d = baj.a(heg.c::values);
-      private final String e;
+   public boolean c(hdb $$0) {
+      return this.k.b($$0);
+   }
 
-      private c(final String $$0) {
-         this.e = $$0;
+   public void a(hef $$0) {
+      this.k.a($$0);
+   }
+
+   public void b(hef $$0) {
+      this.k.b($$0);
+   }
+
+   public void a(@Nullable alj $$0, @Nullable awo $$1) {
+      this.k.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.k.g();
+   }
+
+   public void k() {
+      this.k.a();
+   }
+
+   protected static class a {
+      final Map<alj, heh> a = Maps.newHashMap();
+      private Map<alj, avb> b = Map.of();
+
+      void a(avd $$0) {
+         this.b = hcy.a.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      void a(alj $$0, hcz $$1) {
+         heh $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               heg.f.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new heh($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         avg $$4 = avg.fromMap(this.b);
+
+         for (final hcy $$5 : $$1.a()) {
+            final alj $$6 = $$5.a();
+            hei<hcy> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!heg.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new hei<hcy>() {
+                     @Override
+                     public int e() {
+                        heh $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public hcy a(azu $$0) {
+                        heh $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return heg.b;
+                        } else {
+                           hcy $$2 = $$1.a($$0);
+                           return new hcy($$2.a(), new brr($$2.c(), $$5.c()), new brr($$2.d(), $$5.d()), $$5.e(), hcy.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i());
+                        }
+                     }
+
+                     @Override
+                     public void a(hed $$0) {
+                        heh $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<alj, heh> $$0, Map<alj, avb> $$1, hed $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<alj, heh> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
       }
    }
 }

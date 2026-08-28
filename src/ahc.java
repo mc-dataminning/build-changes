@@ -1,29 +1,20 @@
-public class ahc implements zs<agy> {
-   public static final zj<wi, ahc> a = zs.a(ahc::a, ahc::new);
-   private final bse b;
+public record ahc(String b) implements zq<agw> {
+   public static final zh<wg, ahc> a = zq.a(ahc::a, ahc::new);
 
-   public ahc(bse $$0) {
-      this.b = $$0;
+   private ahc(wg $$0) {
+      this($$0.p());
    }
 
-   private ahc(wi $$0) {
-      this.b = bse.a($$0.readUnsignedByte());
-   }
-
-   private void a(wi $$0) {
-      $$0.l(this.b.a());
+   private void a(wg $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<ahc> a() {
-      return agw.bj;
+   public zs<ahc> a() {
+      return agu.bl;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
-   }
-
-   public bse b() {
-      return this.b;
    }
 }

@@ -1,56 +1,46 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dii extends dhe {
-   public static final MapCodec<dii> c = b(dii::new);
+public class dii extends dic implements dih {
+   public static final MapCodec<dii> a = b(dii::new);
 
    @Override
    public MapCodec<dii> a() {
-      return c;
+      return a;
    }
 
-   protected dii(dvn.d $$0) {
+   public dii(dvu.d $$0) {
       super($$0);
    }
 
    @Override
-   public dsr a(jh $$0, dvo $$1) {
-      return new dsq($$0, $$1);
+   public cvj b() {
+      return cvj.a;
+   }
+
+   @Override
+   public dsy a(jh $$0, dvv $$1) {
+      return new dst($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dsr> dss<T> a(dff $$0, dvo $$1, dst<T> $$2) {
-      return a($$0, $$2, dst.C);
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return a($$2, dta.o, dst::a);
    }
 
    @Override
-   protected void a(dff $$0, jh $$1, cor $$2) {
-      dsr $$3 = $$0.c_($$1);
-      if ($$3 instanceof dsq) {
-         $$2.a((bsj)$$3);
-         $$2.a(awy.as);
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dst $$5) {
+         $$3.a($$5);
+         $$3.a(awx.ab);
       }
+
+      return bsk.a;
    }
 
    @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awo.cA, awp.e, 1.0F, 1.0F, false);
-         }
-
-         jm $$7 = $$0.c(a);
-         jm.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jm.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == jm.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ls.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   protected dow a_(dvv $$0) {
+      return dow.c;
    }
 }

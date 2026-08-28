@@ -1,10 +1,8 @@
-public class dbz extends bqr.a {
-   public final jq<dbw> a;
-   public final int b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public dbz(jq<dbw> $$0, int $$1) {
-      super($$0.a().b());
-      this.a = $$0;
-      this.b = $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dbz {
 }

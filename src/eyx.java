@@ -1,16 +1,48 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class eyx {
-   private static final Codec<eyw> d = lz.I.q().dispatch(eyw::a, eyv::a);
-   public static final Codec<eyw> a = Codec.lazyInitialized(
-      () -> Codec.either(eyt.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyt $$1 ? Either.left($$1) : Either.right($$0))
+public record eyx(alj b, fo.g c) implements eyu {
+   public static final MapCodec<eyx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alj.a.fieldOf("storage").forGetter(eyx::c), fo.g.a.fieldOf("path").forGetter(eyx::d)).apply($$0, eyx::new)
    );
-   public static final eyv b = a("fixed", eyu.a);
-   public static final eyv c = a("context", eyt.a);
 
-   private static eyv a(String $$0, MapCodec<? extends eyw> $$1) {
-      return kd.a(lz.I, all.b($$0), new eyv($$1));
+   @Override
+   public eyt b() {
+      return eyv.f;
+   }
+
+   private Optional<vb> c(eun $$0) {
+      ul $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<vi> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vb $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public float b(eun $$0) {
+      return this.c($$0).map(vb::k).orElse(0.0F);
+   }
+
+   @Override
+   public int a(eun $$0) {
+      return this.c($$0).map(vb::g).orElse(0);
+   }
+
+   public alj c() {
+      return this.b;
+   }
+
+   public fo.g d() {
+      return this.c;
    }
 }

@@ -1,77 +1,54 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class czw extends czy {
-   private final jh b;
-   protected boolean a = true;
+public record czw(List<btq> c, float f) implements czy {
+   public static final MapCodec<czw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btq.d.listOf().fieldOf("effects").forGetter(czw::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czw::c))
+            .apply($$0, czw::new)
+   );
+   public static final zh<wu, czw> b = zh.a(btq.e.a(zf.a()), czw::b, zf.k, czw::c, czw::new);
 
-   public czw(cor $$0, bsg $$1, cwf $$2, ezn $$3) {
-      this($$0.dY(), $$0, $$1, $$2, $$3);
+   public czw(btq $$0, float $$1) {
+      this(List.of($$0), $$1);
    }
 
-   public czw(czy $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public czw(List<btq> $$0) {
+      this($$0, 1.0F);
    }
 
-   protected czw(dff $$0, @Nullable cor $$1, bsg $$2, cwf $$3, ezn $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
-   }
-
-   public static czw a(czw $$0, jh $$1, jm $$2) {
-      return new czw(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ezn(
-            new ezr((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public czw(btq $$0) {
+      this($$0, 1.0F);
    }
 
    @Override
-   public jh a() {
-      return this.a ? super.a() : this.b;
+   public czy.a<czw> a() {
+      return czy.a.a;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public jm d() {
-      return jm.a(this.o())[0];
-   }
-
-   public jm e() {
-      return jm.a(this.o(), jm.a.b);
-   }
-
-   public jm[] f() {
-      jm[] $$0 = jm.a(this.o());
-      if (this.a) {
-         return $$0;
+   @Override
+   public boolean a(dfm $$0, cwm $$1, bvh $$2) {
+      if ($$2.dY().i() >= this.f) {
+         return false;
       } else {
-         jm $$1 = this.k();
-         int $$2 = 0;
+         boolean $$3 = false;
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
+         for (btq $$4 : this.c) {
+            if ($$2.a(new btq($$4))) {
+               $$3 = true;
+            }
          }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+         return $$3;
       }
+   }
+
+   public List<btq> b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.f;
    }
 }

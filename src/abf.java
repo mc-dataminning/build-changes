@@ -1,19 +1,18 @@
-public record abf(jh c, String d, int e) implements aav {
-   public static final zj<wi, abf> a = aav.a(abf::a, abf::new);
-   public static final aav.b<abf> b = aav.a("debug/poi_added");
+public record abf(jh c, int d) implements aat {
+   public static final zh<wg, abf> a = aat.a(abf::a, abf::new);
+   public static final aat.b<abf> b = aat.a("debug/poi_ticket_count");
 
-   private abf(wi $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private abf(wg $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(wi $$0) {
+   private void a(wg $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+      $$0.q(this.d);
    }
 
    @Override
-   public aav.b<abf> a() {
+   public aat.b<abf> a() {
       return b;
    }
 
@@ -21,11 +20,7 @@ public record abf(jh c, String d, int e) implements aav {
       return this.c;
    }
 
-   public String c() {
+   public int c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

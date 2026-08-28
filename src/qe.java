@@ -1,14 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class qe extends qk<cvy> {
-   public qe(mi $$0, CompletableFuture<js.a> $$1) {
-      super($$0, ma.I, $$1);
+public abstract class qe extends qd<cwi> {
+   private final CompletableFuture<qi.c<diq>> d;
+   private final Map<axs<diq>, axs<cwi>> g = new HashMap<>();
+
+   public qe(mi $$0, CompletableFuture<js.a> $$1, CompletableFuture<qi.c<diq>> $$2) {
+      super($$0, ma.K, $$1, $$0x -> $$0x.f().h());
+      this.d = $$2;
+   }
+
+   public qe(mi $$0, CompletableFuture<js.a> $$1, CompletableFuture<qi.c<cwi>> $$2, CompletableFuture<qi.c<diq>> $$3) {
+      super($$0, ma.K, $$1, $$2, $$0x -> $$0x.f().h());
+      this.d = $$3;
+   }
+
+   protected void a(axs<diq> $$0, axs<cwi> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(js.a $$0) {
-      this.b(axl.a).a(cwa.c).a(cwa.d).a(cwa.e).a(cwa.f);
-      this.b(axl.b).a(cwa.g).a(cwa.h).a(cwa.i).a(cwa.j);
-      this.b(axl.c).b(axl.a).b(axl.b);
+   protected CompletableFuture<js.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axp $$3 = this.c((axs<cwi>)$$2);
+            Optional<axp> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (js.a)$$0;
+      });
    }
 }

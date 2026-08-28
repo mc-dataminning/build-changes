@@ -1,21 +1,19 @@
-import javax.annotation.Nullable;
-
-public class cxk extends cxs {
-   public cxk(dij $$0, dij $$1, cwb.a $$2) {
-      super($$0, $$1, jm.a, $$2);
-   }
-
-   public cxk(cwb.a $$0, dij $$1, dij $$2, jm $$3) {
-      super($$1, $$2, $$3, $$0);
+public class cxk extends cwi {
+   public cxk(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(jh $$0, dff $$1, @Nullable cor $$2, cwf $$3, dvo $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dud $$6 && $$1.a_($$0).b() instanceof dpj $$7) {
-         $$7.a($$2, $$6, true);
+   public bsk a(cwm $$0, cou $$1, bvh $$2, bsj $$3) {
+      if ($$2 instanceof bvx $$4 && $$2.bL() && !$$4.j() && $$4.f()) {
+         if (!$$1.dV().C) {
+            $$4.a($$0.a(1), awo.g);
+            $$2.dV().a($$2, ear.v, $$2.dt());
+         }
+
+         return bsk.a;
       }
 
-      return $$5;
+      return bsk.e;
    }
 }

@@ -8,7 +8,7 @@ public class el extends dy<el.a> {
       return el.a.a;
    }
 
-   public void a(arr $$0, cwf $$1) {
+   public void a(arq $$0, cwm $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class el extends dy<el.a> {
          return ao.C.a(new el.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public static ap<el.a> a(jr<cwb> $$0, dfe $$1) {
+      public static ap<el.a> a(jr<cwi> $$0, dfl $$1) {
          return ao.C.a(new el.a(Optional.empty(), Optional.of(cu.a.a().a($$0, $$1).b())));
       }
 
-      public boolean a(cwf $$0) {
+      public boolean a(cwm $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

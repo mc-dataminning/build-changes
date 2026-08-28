@@ -1,25 +1,33 @@
-public class gbf extends fza<gwb> {
-   private final gcc a;
+public class gbf extends gbg {
+   protected final gcl a;
 
-   public gbf(gcc $$0) {
-      super($$0, gjh::f);
-      this.a = $$0.b("tail");
+   public gbf(gcl $$0) {
+      super($$0);
+      this.a = $$0.b("head");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      float $$2 = 0.0F;
-      float $$3 = 22.0F;
-      float $$4 = -3.0F;
-      $$1.a("body", gch.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), gce.a(0.0F, 22.0F, -3.0F));
-      $$1.a("tail", gch.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), gce.a(0.0F, 22.0F, 0.0F));
-      return gci.a($$0, 16, 16);
+   public static gct a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("head", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gcn.a);
+      return $$0;
    }
 
-   public void a(gwb $$0) {
-      super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.25F * azn.a(0.3F * $$0.p);
+   public static gcr b() {
+      gct $$0 = a();
+      gcv $$1 = $$0.a();
+      $$1.b("head").a("hat", gcq.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gcp(0.25F)), gcn.a);
+      return gcr.a($$0, 64, 64);
+   }
+
+   public static gcr c() {
+      gct $$0 = a();
+      return gcr.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

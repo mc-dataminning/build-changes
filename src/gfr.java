@@ -1,76 +1,43 @@
-public class gfr extends ghf {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
+import org.joml.Vector3f;
 
-   gfr(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+public class gfr extends gft<lm> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gfr(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lm $$7, ghj $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public ggj b() {
-      return ggj.b;
+   public void a(fev $$0, fjn $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-   }
+   public static class a implements ggr<lm> {
+      private final ghj a;
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axy.a($$0, this.G, this.H);
-         this.a((float)axy.b($$2) / 255.0F, (float)axy.c($$2) / 255.0F, (float)axy.d($$2) / 255.0F);
-         this.e((float)axy.a($$2) / 255.0F);
-      }
-   }
-
-   public static class a implements ggi<lw> {
-      private final gha a;
-
-      public a(gha $$0) {
+      public a(ghj $$0) {
          this.a = $$0;
       }
 
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(azn.b($$1.E_(), 3.0F, 5.0F));
-         $$8.a(this.a);
-         return $$8;
+      public ggo a(lm $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

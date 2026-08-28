@@ -1,39 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class ewq extends evt {
-   static final MapCodec<ewq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eyo.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, ewq::new));
-   private final eyn b;
+public class ewq extends ewa {
+   public static final MapCodec<ewq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  evz.e.a(czb.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayv.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ewq::new)
+   );
+   public static final czc b = new czc(0, List.of());
+   private final Optional<evz.e<czb>> c;
+   private final Optional<Integer> d;
 
-   private ewq(List<exr> $$0, eyn $$1) {
+   protected ewq(List<exy> $$0, Optional<evz.e<czb>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public evv<ewq> b() {
-      return evw.Q;
-   }
-
-   @Override
-   public cwf a(cwf $$0, eug $$1) {
-      int $$2 = azn.a(this.b.a($$1), 0, 4);
-      $$0.b(ku.aa, new czd($$2));
+   protected cwm a(cwm $$0, eun $$1) {
+      $$0.a(ku.af, b, this::a);
       return $$0;
    }
 
-   public eyn c() {
-      return this.b;
+   private czc a(czc $$0) {
+      return new czc(this.d.orElseGet($$0::a), this.c.<List<czb>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static evt.a<?> a(eyn $$0) {
-      return a($$1 -> new ewq($$1, $$0));
+   @Override
+   public ewc<ewq> b() {
+      return ewd.K;
    }
 }

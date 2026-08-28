@@ -1,40 +1,17 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.IOException;
 
-public abstract class gzx implements auy, AutoCloseable {
-   private final gys a;
-   private final all b;
-   private final Set<auc<?>> c;
+public class gzx extends avi<int[]> {
+   private static final alj a = alj.b("textures/colormap/foliage.png");
 
-   public gzx(gyu $$0, all $$1, all $$2) {
-      this($$0, $$1, $$2, gyo.a);
-   }
-
-   public gzx(gyu $$0, all $$1, all $$2, Set<auc<?>> $$3) {
-      this.b = $$2;
-      this.a = new gys($$1);
-      $$0.a(this.a.h(), this.a);
-      this.c = $$3;
-   }
-
-   protected gyt a(all $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(auy.a $$0, ave $$1, Executor $$2, Executor $$3) {
-      return gyo.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(gyo.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
-   }
-
-   private void a(gyo.a $$0) {
-      try (bow $$1 = boq.a().d("upload")) {
-         this.a.a($$0);
+   protected int[] a(avd $$0, bou $$1) {
+      try {
+         return haa.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
       }
    }
 
-   @Override
-   public void close() {
-      this.a.g();
+   protected void a(int[] $$0, avd $$1, bou $$2) {
+      dfg.a($$0);
    }
 }

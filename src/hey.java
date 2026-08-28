@@ -1,25 +1,22 @@
-public interface hey {
-   default void b() {
+import java.time.Duration;
+import javax.annotation.Nullable;
+
+public class hey {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public hey(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   default void a() {
-   }
-
-   default void a(ghr $$0) {
-   }
-
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(gcy $$0, ezp $$1) {
-   }
-
-   default void a(gcy $$0, jh $$1, dvo $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(cwf $$0) {
+   public void a(heo $$0) {
+      if (this.b != null) {
+         $$0.send(hep.d, $$0x -> {
+            $$0x.a(her.x, (int)this.b.toMillis());
+            $$0x.a(her.y, this.a);
+         });
+      }
    }
 }

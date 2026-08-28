@@ -1,174 +1,139 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dth extends dsr implements bsn, fbd.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dth.a h;
-   private dtx k;
-   private cwf l = cwf.k;
-   @Nullable
-   protected alk<eul> i;
-   protected long j;
+public class dth extends dsy implements bsd {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jz<cwm> d = jz.a(6, cwm.k);
+   private int e = -1;
 
-   public dth(jh $$0, dvo $$1) {
-      super(dst.O, $$0, $$1);
-      this.k = dtx.a;
+   public dth(jh $$0, dvv $$1) {
+      super(dta.M, $$0, $$1);
    }
 
-   @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.c_($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
-      }
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dvv $$1 = this.m();
 
-   @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.k = dtx.b($$0);
-      if (!this.b_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cwf.a($$1, (vk)$$0.p("item")).orElse(cwf.k);
-         } else {
-            this.l = cwf.k;
+         for (int $$2 = 0; $$2 < dju.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dwm $$4 = dju.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(ear.c, this.p, ear.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
       }
    }
 
-   public aco j() {
-      return aco.a(this);
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bse.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
    @Override
-   public un a(js.a $$0) {
-      return this.e($$0);
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      bse.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
    }
 
-   public jm k() {
-      return this.m().c(dwe.R);
-   }
-
-   public dtx t() {
-      return this.k;
-   }
-
-   public void c(cwf $$0) {
-      this.a($$0);
-   }
-
-   public cwf u() {
-      cwf $$0 = cwj.eC.o();
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public static cwf a(dtx $$0) {
-      cwf $$1 = cwj.eC.o();
-      $$1.b(ku.ak, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public alk<eul> ax_() {
-      return this.i;
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cwm::f)).count();
    }
 
    @Override
-   public void a(@Nullable alk<eul> $$0) {
-      this.i = $$0;
+   public void a() {
+      this.d.clear();
    }
 
    @Override
-   public long aA_() {
-      return this.j;
+   public int b() {
+      return 6;
    }
 
    @Override
-   public void a(long $$0) {
-      this.j = $$0;
+   public boolean c() {
+      return this.d.stream().allMatch(cwm::f);
+   }
+
+   @Override
+   public cwm a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cwm a(int $$0, int $$1) {
+      cwm $$2 = Objects.requireNonNullElse(this.d.get($$0), cwm.k);
+      this.d.set($$0, cwm.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cwm b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cwm $$1) {
+      if ($$1.a(axl.ba)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bsd $$0, int $$1, cwm $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cwm.c($$2, $$2x) && $$2x.L() + $$2.L() <= $$0.e_($$2x));
+   }
+
+   @Override
+   public int an_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cou $$0) {
+      return bsd.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cwm $$1) {
+      return $$1.a(axl.ba) && this.a($$0).f() && $$1.L() == this.an_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dsy.b $$0) {
+      super.a($$0);
+      $$0.a(ku.al, cze.a).a(this.d);
    }
 
    @Override
    protected void a(kq.a $$0) {
       super.a($$0);
-      $$0.a(ku.ak, this.k);
-      $$0.a(ku.al, cyx.a(List.of(this.l)));
+      $$0.a(ku.al, cze.a(this.d));
    }
 
    @Override
-   protected void a(dsr.b $$0) {
-      super.a($$0);
-      this.k = $$0.a(ku.ak, dtx.a);
-      this.l = $$0.a(ku.al, cyx.a).a();
-   }
-
-   @Override
-   public void a(un $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cwf f() {
-      this.e_(null);
-      return this.l;
-   }
-
-   @Override
-   public cwf c(int $$0) {
-      this.e_(null);
-      cwf $$1 = this.l.a($$0);
-      if (this.l.f()) {
-         this.l = cwf.k;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cwf $$0) {
-      this.e_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dsr v() {
-      return this;
-   }
-
-   public void a(dth.a $$0) {
-      if (this.o != null && !this.o.y_()) {
-         this.o.a(this.aB_(), this.m().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dth.a.values().length) {
-         this.g = this.o.aa();
-         this.h = dth.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   public void a(ul $$0) {
+      $$0.r("Items");
    }
 }

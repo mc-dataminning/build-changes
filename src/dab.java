@@ -1,70 +1,62 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dab extends dak {
-   public dab(dah $$0) {
-      super($$0);
-   }
+public record dab(float c) implements czy {
+   private static final float f = 16.0F;
+   public static final MapCodec<dab> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayv.o.optionalFieldOf("diameter", 16.0F).forGetter(dab::b)).apply($$0, dab::new)
+   );
+   public static final zh<wu, dab> b = zh.a(zf.k, dab::b, dab::new);
 
-   public boolean a(dai $$0, dff $$1) {
-      cwf $$2 = cwf.k;
-      List<cwf> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwf $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axm.bQ)) {
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.h() instanceof cvd)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.isEmpty();
-   }
-
-   public cwf a(dai $$0, js.a $$1) {
-      List<cvd> $$2 = Lists.newArrayList();
-      cwf $$3 = cwf.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwf $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axm.bQ)) {
-               if (!$$3.f()) {
-                  return cwf.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cvd $$6)) {
-                  return cwf.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? cyt.a($$3, $$2) : cwf.k;
+   public dab() {
+      this(16.0F);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public czy.a<dab> a() {
+      return czy.a.d;
    }
 
    @Override
-   public day<?> aq_() {
-      return day.c;
+   public boolean a(dfm $$0, cwm $$1, bvh $$2) {
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
+         double $$6 = azm.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.K_(), (double)($$0.K_() + ((arp)$$0).l() - 1));
+         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
+         if ($$2.bZ()) {
+            $$2.ae();
+         }
+
+         ezy $$8 = $$2.dt();
+         if ($$2.b($$5, $$6, $$7, true)) {
+            $$0.a(ear.R, $$8, ear.a.a($$2));
+            awo $$10;
+            awm $$9;
+            if ($$2 instanceof chi) {
+               $$9 = awn.jq;
+               $$10 = awo.g;
+            } else {
+               $$9 = awn.fi;
+               $$10 = awo.h;
+            }
+
+            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
+            $$2.k();
+            $$3 = true;
+            break;
+         }
+      }
+
+      if ($$3 && $$2 instanceof cou $$13) {
+         $$13.gL();
+      }
+
+      return $$3;
+   }
+
+   public float b() {
+      return this.c;
    }
 }

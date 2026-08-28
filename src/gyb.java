@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gyb {
+public class gyb extends gvo {
+   public boolean a;
+   public float b;
+   public float c;
 }

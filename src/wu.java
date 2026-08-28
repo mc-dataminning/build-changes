@@ -1,18 +1,19 @@
-import io.netty.channel.ChannelHandlerContext;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Function;
 
-public interface wu {
-   static void a(ChannelHandlerContext $$0, zs<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new xa.a());
-         $$0.pipeline().remove($$0.name());
-      }
+public class wu extends wg {
+   private final ke d;
+
+   public wu(ByteBuf $$0, ke $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
-   static void b(ChannelHandlerContext $$0, zs<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new xa.c());
-         $$0.pipeline().remove($$0.name());
-      }
+   public ke H() {
+      return this.d;
+   }
+
+   public static Function<ByteBuf, wu> a(ke $$0) {
+      return $$1 -> new wu($$1, $$0);
    }
 }

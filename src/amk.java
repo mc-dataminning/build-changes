@@ -1,6 +1,8 @@
-public record amk(aut a, alw b, jx<alu> c, eua d) implements AutoCloseable {
-   @Override
-   public void close() {
-      this.a.close();
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface amk {
 }

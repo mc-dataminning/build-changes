@@ -1,15 +1,9 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+public class azh {
+   private static final long a = 6364136223846793005L;
+   private static final long b = 1442695040888963407L;
 
-@Deprecated
-public class azh<T> {
-   private final Supplier<T> a;
-
-   public azh(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
-   }
-
-   public T a() {
-      return this.a.get();
+   public static long a(long $$0, long $$1) {
+      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
+      return $$0 + $$1;
    }
 }

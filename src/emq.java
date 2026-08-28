@@ -1,78 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record emq(List<emf> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final all c = all.b("jigsaw");
-   private static final Map<all, all> d = ImmutableMap.builder()
-      .put(all.b("nvi"), c)
-      .put(all.b("pcp"), c)
-      .put(all.b("bastionremnant"), c)
-      .put(all.b("runtime"), c)
-      .build();
+public final class emq {
+   public static final String a = "INVALID";
+   public static final emq b = new emq(null, new des(0, 0), 0, new emx(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final emi d;
+   private final emx e;
+   private final des f;
+   private int g;
+   @Nullable
+   private volatile ema h;
 
-   public emq(final List<emf> a) {
-      this.a = List.copyOf(a);
+   public emq(emi $$0, des $$1, int $$2, emx $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(jh $$0) {
-      for (emf $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public vk a(emr $$0) {
-      ut $$1 = new ut();
-
-      for (emf $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static emq a(ut $$0, emr $$1) {
-      List<emf> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         un $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         all $$6 = all.a($$5);
-         all $$7 = d.getOrDefault($$6, $$6);
-         ems $$8 = lz.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
+   @Nullable
+   public static emq a(emy $$0, ul $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         kd<emi> $$4 = $$0.b().e(ma.aS);
+         emi $$5 = $$4.a(alj.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
          } else {
+            des $$6 = new des($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            ur $$8 = $$1.c("Children", 10);
+
             try {
-               emf $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+               emx $$9 = emx.a($$8, $$0);
+               if ($$5 instanceof eot) {
+                  $$9 = eot.a($$6, $$2, $$9);
+               }
+
+               return new emq($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
-
-      return new emq($$2);
    }
 
-   public elt b() {
-      return emf.a(this.a.stream());
+   public ema a() {
+      ema $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   public List<emf> c() {
-      return this.a;
+   public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, des $$5) {
+      List<emm> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         ema $$7 = $$6.get(0).f;
+         jh $$8 = $$7.g();
+         jh $$9 = new jh($$8.u(), $$7.i(), $$8.w());
+
+         for (emm $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public ul a(emy $$0, des $$1) {
+      ul $$2 = new ul();
+      if (this.b()) {
+         $$2.a("id", $$0.b().e(ma.aS).b(this.d).toString());
+         $$2.a("ChunkX", $$1.g);
+         $$2.a("ChunkZ", $$1.h);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public des c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public emi h() {
+      return this.d;
+   }
+
+   public List<emm> i() {
+      return this.e.c();
    }
 }

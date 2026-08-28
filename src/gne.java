@@ -1,59 +1,104 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class gne implements gmx.a {
-   private final fjx a;
-   private final Map<Long, Map<jh, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gne implements gng.a {
+   final fke a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gne.a d;
 
-   gne(fjx $$0) {
+   public gne(fke $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, jh $$1) {
-      Map<jh, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.aa();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<jh> $$8 = Sets.newHashSet();
-      Map<jh, Integer> $$9 = Maps.newHashMap();
-      feo $$10 = $$1.getBuffer(gjh.y());
-      Iterator<Entry<Long, Map<jh, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<jh, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<jh, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ae.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         hdp $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gne.a($$6, $$2, $$4);
          } else {
-            for (Entry<jh, Integer> $$16 : $$14.entrySet()) {
-               jh $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ezm $$19 = new ezm(jh.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gjr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+            this.d = null;
          }
       }
 
-      for (Entry<jh, Integer> $$20 : $$9.entrySet()) {
-         jh $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gmx.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      if (this.d != null) {
+         Map<des, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.k().b().e * 0.85;
+
+         for (Entry<des, String> $$9 : this.d.a.entrySet()) {
+            des $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gng.a($$0, $$1, $$14, (double)kj.a($$10.g, 8), $$8 + (double)$$13, (double)kj.a($$10.h, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
+      }
+   }
+
+   final class a {
+      final Map<des, String> a;
+      final CompletableFuture<Map<des, String>> b;
+
+      a(final hdp $$0, final double $$1, final double $$2) {
+         gdh $$3 = gne.this.a.s;
+         ali<dfm> $$4 = $$3.ag();
+         int $$5 = kj.a($$1);
+         int $$6 = kj.a($$2);
+         Builder<des, String> $$7 = ImmutableMap.builder();
+         gdd $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               des $$11 = new des($$9, $$10);
+               String $$12 = "";
+               dya $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.B() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            arp $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<des, String> $$5x = ImmutableMap.builder();
+               arm $$6x = $$4x.m();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     des $$9x = new des($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

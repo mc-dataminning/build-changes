@@ -1,21 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public record bz(ju<bup<?>> b) {
+public record bz(ju<bus<?>> b) {
    public static final Codec<bz> a = kf.a(ma.z).xmap(bz::new, bz::a);
 
-   public static bz a(jr<bup<?>> $$0, bup<?> $$1) {
+   public static bz a(jr<bus<?>> $$0, bus<?> $$1) {
       return new bz(ju.a($$1.r()));
    }
 
-   public static bz a(jr<bup<?>> $$0, axt<bup<?>> $$1) {
+   public static bz a(jr<bus<?>> $$0, axs<bus<?>> $$1) {
       return new bz($$0.b($$1));
    }
 
-   public boolean a(bup<?> $$0) {
+   public boolean a(bus<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public ju<bup<?>> a() {
+   public ju<bus<?>> a() {
       return this.b;
    }
 }

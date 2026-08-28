@@ -1,73 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dlw extends dlv implements dim {
-   protected dlw(dvn.d $$0, jm $$1, fal $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dlw extends dhl {
+   public static final MapCodec<dlw> c = b(dlw::new);
+
+   @Override
+   public MapCodec<dlw> a() {
+      return c;
+   }
+
+   protected dlw(dvu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dlw> a();
+   public dsy a(jh $$0, dvv $$1) {
+      return new dtw($$0, $$1);
+   }
 
-   protected dvo a(dvo $$0, dvo $$1) {
-      return $$1;
+   @Nullable
+   @Override
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return a($$0, $$2, dta.a);
    }
 
    @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   protected void a(dfm $$0, jh $$1, cou $$2) {
+      dsy $$3 = $$0.c_($$1);
+      if ($$3 instanceof dtw) {
+         $$2.a((bsm)$$3);
+         $$2.a(awx.am);
       }
+   }
 
-      dlx $$8 = this.c();
-      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
-         return this.a($$0, $$8.b($$7));
-      } else {
-         if (this.b) {
-            $$2.a($$3, erp.c, erp.c.a($$1));
+   @Override
+   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.jZ, awo.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         jm $$7 = $$0.c(a);
+         jm.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jm.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jm.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ls.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ls.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   public cwf a(dfi $$0, jh $$1, dvo $$2) {
-      return new cwf(this.c());
-   }
-
-   @Override
-   public boolean b(dfi $$0, jh $$1, dvo $$2) {
-      Optional<jh> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
-      Optional<jh> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dvo $$5 = $$0.a_($$4.get());
-         ((dlx)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<jh> a(dek $$0, jh $$1, dij $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   protected boolean a(dvo $$0, czw $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
-   }
-
-   @Override
-   protected dij b() {
-      return this;
    }
 }

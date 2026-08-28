@@ -1,16 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ekj<P extends eki> {
-   ekj<ekh> a = a("constant", ekh.b);
-   ekj<ekl> b = a("uniform", ekl.a);
-   ekj<ekg> c = a("biased_to_bottom", ekg.a);
-   ekj<ekm> d = a("very_biased_to_bottom", ekm.a);
-   ekj<ekk> e = a("trapezoid", ekk.a);
-   ekj<ekn> f = a("weighted_list", ekn.a);
+public record ekj(jq<cwi> c, ekl d) {
+   public static final Codec<ekj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alg.a(ma.K).fieldOf("display").forGetter($$0x -> $$0x.c), ekl.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, ekj::new)
+   );
+   public static final Codec<jq<ekj>> b = alf.a(ma.aO, a);
 
-   MapCodec<P> codec();
+   public jq<cwi> a() {
+      return this.c;
+   }
 
-   private static <P extends eki> ekj<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.L, $$0, () -> $$1);
+   public ekl b() {
+      return this.d;
    }
 }

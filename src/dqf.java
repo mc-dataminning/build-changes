@@ -1,112 +1,74 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dqf extends dis implements dim {
-   public static final MapCodec<dqf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alk.a(ma.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               alk.a(ma.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               alk.a(ma.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, dqf::new)
-   );
-   public static final int b = 7;
-   public static final dwn c = dwe.av;
-   protected static final float d = 1.0F;
-   protected static final fal[] e = new fal[]{
-      dij.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      dij.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final alk<dij> f;
-   private final alk<dij> g;
-   private final alk<cwb> h;
+public class dqf extends diq {
+   public static final MapCodec<dqf> a = b(dqf::new);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jm[] d = jm.values();
 
    @Override
    public MapCodec<dqf> a() {
       return a;
    }
 
-   protected dqf(alk<dij> $$0, alk<dij> $$1, alk<cwb> $$2, dvn.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   protected dqf(dvu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return e[$$0.c(c)];
+   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   protected boolean b(dvo $$0, dek $$1, jh $$2) {
-      return $$0.a(dil.cC);
+   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3, @Nullable etd $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dke.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
+   protected void a(dfm $$0, jh $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dis.aP.m(), 2);
+         $$0.a(null, $$1, awn.za, awo.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(dfm $$0, jh $$1) {
+      return jh.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jm $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dvv $$3 = $$0.a_($$2);
+            erv $$4 = $$0.b_($$2);
+            if (!$$4.a(axi.a)) {
+               return false;
             } else {
-               jm $$6 = jm.c.a.a($$3);
-               jh $$7 = $$2.a($$6);
-               dvo $$8 = $$1.a_($$7.e());
-               if ($$1.a_($$7).l() && ($$8.a(dil.cC) || $$8.a(axd.ag))) {
-                  kd<dij> $$9 = $$1.H_().e(ma.f);
-                  Optional<dij> $$10 = $$9.f(this.f);
-                  Optional<dij> $$11 = $$9.f(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().m());
-                     $$1.b($$2, $$11.get().m().b(dme.aF, $$6));
-                  }
+               if ($$3.b() instanceof dix $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return true;
                }
+
+               if ($$3.b() instanceof dnf) {
+                  $$0.a($$2, dis.a.m(), 3);
+               } else {
+                  if (!$$3.a(dis.mc) && !$$3.a(dis.md) && !$$3.a(dis.bw) && !$$3.a(dis.bx)) {
+                     return false;
+                  }
+
+                  dsy $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dis.a.m(), 3);
+               }
+
+               return true;
             }
          }
-      }
-   }
-
-   @Override
-   public cwf a(dfi $$0, jh $$1, dvo $$2) {
-      return new cwf((dfe)DataFixUtils.orElse($$0.H_().e(ma.K).f(this.h), this));
-   }
-
-   @Override
-   public boolean b(dfi $$0, jh $$1, dvo $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + azn.a($$0.A, 2, 5));
-      dvo $$5 = $$3.b(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.A);
-      }
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(c);
+      }) > 1;
    }
 }

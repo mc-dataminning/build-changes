@@ -1,15 +1,23 @@
 import io.netty.buffer.ByteBuf;
 
-public record ahk() implements zs<agy> {
+public class ahk implements zq<agw> {
    public static final ahk a = new ahk();
-   public static final zj<ByteBuf, ahk> b = zj.a(a);
+   public static final zh<ByteBuf, ahk> b = zh.a(a);
 
-   @Override
-   public zu<ahk> a() {
-      return agw.br;
+   private ahk() {
    }
 
-   public void a(agy $$0) {
+   @Override
+   public zs<ahk> a() {
+      return agu.bt;
+   }
+
+   public void a(agw $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

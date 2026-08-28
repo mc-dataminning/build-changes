@@ -1,95 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmr extends dhc {
-   public static final MapCodec<dmr> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgh.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kn.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, dmr::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dwn g = dwe.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dgh.c j;
+public class dmr extends diq implements dli, dlx {
+   public static final MapCodec<dmr> a = b(dmr::new);
+   public static final dws<jo> b = dwl.T;
 
    @Override
    public MapCodec<dmr> a() {
-      return d;
+      return a;
    }
 
-   public dmr(dgh.c $$0, kn.a $$1, dvn.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.l(this.F.b().b(g, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dvo $$0) {
-      return $$0.c(g) == 3;
+   protected dmr(dvu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jo.k));
    }
 
    @Override
-   protected boolean a(ern $$0) {
-      return $$0 == erp.c && this.j == dgh.c.b;
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected double b(dvo $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   protected dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   protected void a(dvo $$0, dff $$1, jh $$2, bui $$3) {
-      if (!$$1.C && $$3.ca() && this.a($$0, $$2, $$3)) {
-         $$3.aJ();
-         if ($$3.a($$1, $$2)) {
-            this.f($$0, $$1, $$2);
-         }
-      }
+   protected dvv a(dvv $$0, dnm $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
-   private void f(dvo $$0, dff $$1, jh $$2) {
-      if (this.j == dgh.c.c) {
-         e(dil.fu.m().b(g, $$0.c(g)), $$1, $$2);
+   @Override
+   public dvv a(dad $$0) {
+      jm $$1 = $$0.k();
+      jm $$2;
+      if ($$1.o() == jm.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         e($$0, $$1, $$2);
+         $$2 = jm.b;
+      }
+
+      return this.m().b(b, jo.a($$1, $$2));
+   }
+
+   @Override
+   public dsy a(jh $$0, dvv $$1) {
+      return new dua($$0, $$1);
+   }
+
+   @Override
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      dsy $$5 = $$1.c_($$2);
+      if ($$5 instanceof dua && $$3.gE()) {
+         $$3.a((dua)$$5);
+         return bsk.a;
+      } else {
+         return bsk.e;
       }
    }
 
-   public static void e(dvo $$0, dff $$1, jh $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dvo $$4 = $$3 == 0 ? dil.ft.m() : $$0.b(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(eak.c, $$2, eak.a.a($$4));
+   public static boolean a(eqk.c $$0, eqk.c $$1) {
+      jm $$2 = o($$0.b());
+      jm $$3 = o($$1.b());
+      jm $$4 = p($$0.b());
+      jm $$5 = p($$1.b());
+      dua.a $$6 = dua.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dua.a.b : dua.a.a);
+      boolean $$7 = $$6 == dua.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public void a(dvo $$0, dff $$1, jh $$2, dgh.c $$3) {
-      if (dje.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dvo $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(eak.c, $$2, eak.a.a($$4));
-      }
+   public static jm o(dvv $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected int a(dvo $$0, dff $$1, jh $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dvo $$0, dff $$1, jh $$2, ern $$3) {
-      if (!this.d($$0)) {
-         dvo $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(eak.c, $$2, eak.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public static jm p(dvv $$0) {
+      return $$0.c(b).b();
    }
 }

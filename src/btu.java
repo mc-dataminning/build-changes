@@ -1,14 +1,20 @@
-class btu extends btk {
-   protected btu(btm $$0, int $$1) {
+class btu extends bto {
+   protected btu(btp $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(bve $$0, int $$1) {
-      if (!$$0.dY().C && $$0 instanceof cor $$2) {
-         $$2.gw().a($$1 + 1, 1.0F);
+   public boolean a(arp $$0, bvh $$1, int $$2) {
+      if ($$1.eD() > 1.0F) {
+         $$1.a($$0, $$1.dW().q(), 1.0F);
       }
 
       return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

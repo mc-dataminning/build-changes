@@ -1,19 +1,19 @@
-public class rz {
-   public static final alk<eeb<?, ?>> a = sc.a("seagrass_short");
-   public static final alk<eeb<?, ?>> b = sc.a("seagrass_slightly_less_short");
-   public static final alk<eeb<?, ?>> c = sc.a("seagrass_mid");
-   public static final alk<eeb<?, ?>> d = sc.a("seagrass_tall");
-   public static final alk<eeb<?, ?>> e = sc.a("sea_pickle");
-   public static final alk<eeb<?, ?>> f = sc.a("kelp");
-   public static final alk<eeb<?, ?>> g = sc.a("warm_ocean_vegetation");
+import com.google.common.collect.ImmutableList;
 
-   public static void a(rb<eeb<?, ?>> $$0) {
-      sc.a($$0, a, eep.N, new ehd(0.3F));
-      sc.a($$0, b, eep.N, new ehd(0.4F));
-      sc.a($$0, c, eep.N, new ehd(0.6F));
-      sc.a($$0, d, eep.N, new ehd(0.8F));
-      sc.a($$0, e, eep.S, new ego(20));
-      sc.a($$0, f, eep.O);
-      sc.a($$0, g, eep.ah, new ehm(ju.a(sr.a(eep.P, egt.m), sr.a(eep.R, egt.m), sr.a(eep.Q, egt.m))));
+public class rz {
+   public static final ali<eei<?, ?>> a = sa.a("end_platform");
+   public static final ali<eei<?, ?>> b = sa.a("end_spike");
+   public static final ali<eei<?, ?>> c = sa.a("end_gateway_return");
+   public static final ali<eei<?, ?>> d = sa.a("end_gateway_delayed");
+   public static final ali<eei<?, ?>> e = sa.a("chorus_plant");
+   public static final ali<eei<?, ?>> f = sa.a("end_island");
+
+   public static void a(qz<eei<?, ?>> $$0) {
+      sa.a($$0, a, eew.J);
+      sa.a($$0, b, eew.K, new ehu(false, ImmutableList.of(), null));
+      sa.a($$0, c, eew.M, egz.a(arp.a, true));
+      sa.a($$0, d, eew.M, egz.a());
+      sa.a($$0, e, eew.l);
+      sa.a($$0, f, eew.L);
    }
 }

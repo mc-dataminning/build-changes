@@ -1,52 +1,127 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-public class arl {
-   @Nullable
-   protected static jh a(arq $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.D_().h();
-      dxt $$4 = $$0.d(kj.a($$1), kj.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(ebj.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.I_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(ebj.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(ebj.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            jh.a $$7 = new jh.a();
+public class arl extends bsa {
+   private final Set<arq> h = Sets.newHashSet();
+   private final Set<arq> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dvo $$9 = $$0.a_($$7);
-               if (!$$9.y().c()) {
-                  break;
-               }
+   public arl(xj $$0, bsa.a $$1, bsa.b $$2) {
+      super(azm.a(), $$0, $$1, $$2);
+   }
 
-               if (dij.a($$9.g($$0, $$7), jm.b)) {
-                  return $$7.d().j();
-               }
-            }
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(acp::b);
+      }
+   }
 
-            return null;
+   @Override
+   public void a(bsa.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(acp::d);
+      }
+   }
+
+   @Override
+   public void a(bsa.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(acp::d);
+      }
+   }
+
+   @Override
+   public bsa a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(acp::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bsa b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(acp::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bsa c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(acp::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(xj $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(acp::c);
+      }
+   }
+
+   private void a(Function<bsa, acp> $$0) {
+      if (this.j) {
+         acp $$1 = $$0.apply(this);
+
+         for (arq $$2 : this.h) {
+            $$2.f.b($$1);
          }
       }
    }
 
-   @Nullable
-   public static jh a(arq $$0, del $$1) {
-      if (ab.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               jh $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
-
-         return null;
+   public void a(arq $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.f.b(acp.a(this));
       }
+   }
+
+   public void b(arq $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.f.b(acp.a(this.h()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (arq $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean f() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (arq $$1 : this.h) {
+            $$1.f.b($$0 ? acp.a(this) : acp.a(this.h()));
+         }
+      }
+   }
+
+   public Collection<arq> g() {
+      return this.i;
    }
 }

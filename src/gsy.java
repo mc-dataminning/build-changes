@@ -1,65 +1,40 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class gsy extends gty<gwz, gao> {
+   private final fzw<gwz> a;
+   private final hbl b;
 
-public class gsy {
-   private static final int a = 0;
-   private final hba b;
-   private final Function<gsy.a, all> c;
-   private final Function<gsy.b, gyt> d;
-
-   public gsy(hba $$0, gys $$1) {
-      this.b = $$0;
-      this.c = ae.b($$0x -> $$0x.b.a($$0x.a));
-      this.d = ae.b($$1x -> {
-         all $$2 = $$1x.a.a($$1x.b, $$1x.c);
-         return $$1.a($$2);
-      });
+   public gsy(grh<gwz, gao> $$0, gch $$1, hbl $$2) {
+      super($$0);
+      this.a = new gam<>($$1.a(gck.bZ));
+      this.b = $$2;
    }
 
-   public void a(ddp.d $$0, all $$1, fzv $$2, cwf $$3, Function<all, gjh> $$4, fek $$5, gix $$6, int $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, null);
+   private boolean a(cwm $$0, ddw.d $$1) {
+      ddy $$2 = $$0.a(ku.D);
+      if ($$2 != null && !$$2.c().isEmpty()) {
+         ddw $$3 = this.b.a($$2.c().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
+      }
    }
 
-   public void a(ddp.d $$0, all $$1, fzv $$2, cwf $$3, Function<all, gjh> $$4, fek $$5, gix $$6, int $$7, @Nullable all $$8) {
-      List<ddp.c> $$9 = this.b.a($$1).a($$0);
-      if (!$$9.isEmpty()) {
-         int $$10 = $$3.a(axm.bQ) ? cyt.a($$3, 0) : 0;
-         boolean $$11 = $$3.B();
+   public void a(fer $$0, gjg $$1, int $$2, gwz $$3, float $$4, float $$5) {
+      if (!$$3.u && $$3.aw) {
+         haf $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.Q, ddw.d.c)) {
+               $$0.a();
+               if (this.a($$3.Q, ddw.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
 
-         for (ddp.c $$12 : $$9) {
-            int $$13 = a($$12, $$10);
-            if ($$13 != 0) {
-               all $$14 = $$12.c() && $$8 != null ? $$8 : this.c.apply(new gsy.a($$0, $$12));
-               feo $$15 = gpy.a($$6, $$4.apply($$14), $$11);
-               $$2.a($$5, $$15, $$7, gyk.d, $$13);
-               $$11 = false;
+               fev $$7 = $$1.getBuffer(gjq.c($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, gyv.d);
+               $$0.b();
             }
          }
-
-         ddt $$16 = $$3.a(ku.U);
-         if ($$16 != null) {
-            gyt $$17 = this.d.apply(new gsy.b($$16, $$0, $$1));
-            feo $$18 = $$17.a($$6.getBuffer(gjs.a($$16.b().a().d())));
-            $$2.a($$5, $$18, $$7, gyk.d);
-         }
       }
-   }
-
-   private static int a(ddp.c $$0, int $$1) {
-      Optional<ddp.b> $$2 = $$0.b();
-      if ($$2.isPresent()) {
-         int $$3 = $$2.get().a().map(axy::f).orElse(0);
-         return $$1 != 0 ? $$1 : $$3;
-      } else {
-         return -1;
-      }
-   }
-
-   static record a(ddp.d a, ddp.c b) {
-   }
-
-   static record b(ddt a, ddp.d b, all c) {
    }
 }

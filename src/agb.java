@@ -1,45 +1,45 @@
-public class agb implements zs<ach> {
-   public static final zj<wi, agb> a = zs.a(agb::a, agb::new);
-   private final long b;
-   private final long c;
+public class agb implements zq<acf> {
+   public static final zh<wg, agb> a = zq.a(agb::a, agb::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public agb(long $$0, long $$1, boolean $$2) {
+   public agb(int $$0, int $$1, int $$2) {
       this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agb(wi $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
+   private agb(wg $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(wi $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(wg $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zu<agb> a() {
-      return agw.aP;
+   public zs<agb> a() {
+      return agu.aR;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public long b() {
+   public int b() {
       return this.b;
    }
 
-   public long e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

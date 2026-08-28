@@ -1,33 +1,25 @@
-import java.util.List;
+public record adg(long[] b, bnf c) implements zq<acf> {
+   public static final zh<wg, adg> a = zq.a(adg::a, adg::new);
 
-public record adg(adg.a b, List<String> c) implements zs<ach> {
-   public static final zj<wi, adg> a = zs.a(adg::a, adg::new);
-
-   private adg(wi $$0) {
-      this($$0.b(adg.a.class), $$0.a(wi::p));
+   private adg(wg $$0) {
+      this($$0.d(), $$0.b(bnf.class));
    }
 
-   private void a(wi $$0) {
+   private void a(wg $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, wi::a);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<adg> a() {
-      return agw.y;
+   public zs<adg> a() {
+      return agu.A;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public bnf e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

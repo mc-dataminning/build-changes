@@ -1,29 +1,49 @@
-public class ain implements zs<agy> {
-   public static final zj<wi, ain> a = zs.a(ain::a, ain::new);
+import javax.annotation.Nullable;
+
+public class ain implements zq<agw> {
+   public static final zh<wg, ain> a = zq.a(ain::a, ain::new);
    private final int b;
+   private final String c;
+   private final boolean d;
 
-   public ain(int $$0) {
+   public ain(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ain(wi $$0) {
-      this.b = $$0.readShort();
+   private ain(wg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wi $$0) {
-      $$0.m(this.b);
+   private void a(wg $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zu<ain> a() {
-      return agw.bW;
+   public zs<ain> a() {
+      return agu.bY;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public dem a(dfm $$0) {
+      bul $$1 = $$0.a(this.b);
+      return $$1 instanceof crd ? ((crd)$$1).u() : null;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
    }
 }

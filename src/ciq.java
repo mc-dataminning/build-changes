@@ -5,135 +5,103 @@ import com.mojang.datafixers.util.Pair;
 import java.util.function.Predicate;
 
 public class ciq {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final brs e = brs.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final brv f = brv.a(5, 16);
+   private static final ImmutableList<cfs<? extends cfr<? super cip>>> g = ImmutableList.of(cfs.c, cfs.f, cfs.t, cfs.o);
+   private static final ImmutableList<cel<?>> h = ImmutableList.of(
+      cel.Z, cel.x, cel.y, cel.m, cel.n, cel.E, cel.t, cel.h, cel.O, cel.P, cel.Q, cel.R, new cel[]{cel.r, cel.K}
+   );
 
-   protected static void a(cip $$0, azv $$1) {
-      $$0.ee().a(cei.S, e.a($$1));
+   protected static void a(cip $$0, azu $$1) {
    }
 
-   protected static bwg<?> a(bwg<cip> $$0) {
+   public static bwj.b<cip> a() {
+      return bwj.a(h, g);
+   }
+
+   protected static bwj<?> a(bwj<cip> $$0) {
       b($$0);
       c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cqi.a));
-      $$0.b(cqi.b);
+      $$0.a(ImmutableSet.of(cql.a));
+      $$0.b(cql.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bwg<cip> $$0) {
-      $$0.a(cqi.a, 0, ImmutableList.of(new bws(2.0F), new byd(45, 90), new byh(), new bxd(cei.P), new bxd(cei.S)));
+   private static void b(bwj<cip> $$0) {
+      $$0.a(cql.a, 0, ImmutableList.of(new bzu(0.8F), new ciq.a(4.0F), new byg(45, 90), new byk(), new bxg(cel.P), new bxg(cel.Q)));
    }
 
-   private static void c(bwg<cip> $$0) {
+   private static void c(bwj<cip> $$0) {
       $$0.a(
-         cqi.b,
+         cql.b,
          ImmutableList.of(
-            Pair.of(0, byx.a(bup.by, 6.0F, brs.a(30, 60))),
-            Pair.of(0, new bwr(bup.R)),
-            Pair.of(1, new bxk($$0x -> 1.25F)),
-            Pair.of(2, bzj.a(ciq::b, $$0x -> $$0x.ee().c(cei.B))),
-            Pair.of(3, bzu.a(6, 1.0F)),
+            Pair.of(0, bza.a(bus.bO, 6.0F, brv.a(30, 60))),
+            Pair.of(1, new bwu(bus.t)),
+            Pair.of(
+               2,
+               new byx(
+                  ImmutableList.of(Pair.of(new bxn($$0x -> 2.5F, $$0x -> $$0x.e_() ? 2.5 : 3.5), 1), Pair.of(can.a(Predicate.not(cip::q), bwx.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new byr(brv.a(150, 250), 30.0F, 0.0F, 0.0F)),
             Pair.of(
                4,
-               new byu(
-                  ImmutableMap.of(cei.m, cej.b),
-                  ImmutableList.of(Pair.of(byp.a(1.0F), 1), Pair.of(bze.a(1.0F, 3), 1), Pair.of(new bxe(), 3), Pair.of(cak.a(bui::aL), 2))
+               new byx(
+                  ImmutableMap.of(cel.m, cem.b),
+                  ImmutableList.of(
+                     Pair.of(can.a(Predicate.not(cip::q), bys.a(2.0F)), 1),
+                     Pair.of(can.a(Predicate.not(cip::q), bzh.a(2.0F, 3)), 1),
+                     Pair.of(new ciq.b(20), 1),
+                     Pair.of(new bxk(30, 60), 1)
+                  )
                )
             )
-         ),
-         ImmutableSet.of(Pair.of(cei.T, cej.b), Pair.of(cei.X, cej.b))
+         )
       );
-   }
-
-   private static void d(bwg<cip> $$0) {
-      $$0.a(
-         cqi.t,
-         ImmutableList.of(
-            Pair.of(0, byx.a(bup.by, 6.0F, brs.a(30, 60))),
-            Pair.of(1, new bxk($$0x -> 1.25F)),
-            Pair.of(2, bzj.a(ciq::b, $$0x -> $$0x.ee().c(cei.B))),
-            Pair.of(3, bzu.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bxl(
-                  ImmutableMap.of(cei.m, cej.b),
-                  ImmutableSet.of(),
-                  bxl.a.a,
-                  bxl.b.b,
-                  ImmutableList.of(Pair.of(byp.c(0.75F), 1), Pair.of(byp.a(1.0F, true), 1), Pair.of(bze.a(1.0F, 3), 1), Pair.of(cak.a(bui::bo), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(cei.T, cej.b), Pair.of(cei.X, cej.a))
-      );
-   }
-
-   private static void e(bwg<cip> $$0) {
-      $$0.a(
-         cqi.u,
-         ImmutableList.of(
-            Pair.of(0, byx.a(bup.by, 6.0F, brs.a(30, 60))),
-            Pair.of(1, bzj.a(ciq::b, $$0x -> $$0x.ee().c(cei.B))),
-            Pair.of(2, bzv.a(8, 1.0F)),
-            Pair.of(3, bzx.a(dil.tn)),
-            Pair.of(4, new byu(ImmutableList.of(Pair.of(byp.a(1.0F), 2), Pair.of(bze.a(1.0F, 3), 1), Pair.of(new bxe(), 2), Pair.of(cak.a(bui::aL), 1))))
-         ),
-         ImmutableSet.of(Pair.of(cei.T, cej.b), Pair.of(cei.Y, cej.a))
-      );
-   }
-
-   private static void f(bwg<cip> $$0) {
-      $$0.a(
-         cqi.q,
-         ImmutableList.of(Pair.of(0, new bxy(e, awo.jS)), Pair.of(1, new bxz<>(e, 2, 4, 3.5714288F, $$0x -> awo.jR, axd.bS, 0.5F, ciq::a))),
-         ImmutableSet.of(Pair.of(cei.O, cej.b), Pair.of(cei.r, cej.b), Pair.of(cei.S, cej.b), Pair.of(cei.X, cej.b))
-      );
-   }
-
-   private static void g(bwg<cip> $$0) {
-      $$0.a(cqi.s, 0, ImmutableList.of(bzm.a(), new cir(awo.jT, awo.jO)), cei.o);
-   }
-
-   private static <E extends bvg> boolean a(E $$0, jh $$1) {
-      dff $$2 = $$0.dY();
-      jh $$3 = $$1.e();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
-         dvo $$4 = $$2.a_($$1);
-         dvo $$5 = $$2.a_($$3);
-         if (!$$4.a(axd.bS) && !$$5.a(axd.bS)) {
-            esh $$6 = new esh($$0.dY(), $$0);
-            esf $$7 = esk.a($$6, $$1.k());
-            esf $$8 = esk.a($$6, $$3.k());
-            return $$7 != esf.e && (!$$4.l() || $$8 != esf.e) ? bya.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static boolean b(cip $$0) {
-      return !bwz.a($$0);
    }
 
    public static void a(cip $$0) {
-      $$0.ee().a(ImmutableList.of(cqi.s, cqi.u, cqi.q, cqi.t, cqi.b));
+      $$0.eb().a(ImmutableList.of(cql.b));
    }
 
-   public static Predicate<cwf> a() {
-      return $$0 -> $$0.a(axm.ap);
+   public static Predicate<cwm> b() {
+      return $$0 -> $$0.a(axl.al);
+   }
+
+   public static class a extends bwv<cip> {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      protected void a(arp $$0, cip $$1, long $$2) {
+         $$1.gB();
+         super.b($$0, $$1, $$2);
+      }
+   }
+
+   public static class b extends bxa<cip> {
+      private final int c;
+
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
+      }
+
+      protected boolean a(arp $$0, cip $$1) {
+         return !$$1.bj() && $$1.gC() >= (long)this.c && !$$1.N_() && $$1.aJ() && !$$1.cY() && $$1.gm();
+      }
+
+      protected void a(arp $$0, cip $$1, long $$2) {
+         if ($$1.gp()) {
+            $$1.gA();
+         } else if (!$$1.gj()) {
+            $$1.gz();
+         }
+      }
    }
 }

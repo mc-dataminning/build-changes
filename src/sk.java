@@ -1,8 +1,65 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class sk {
+   public static final ali<elm> a = sp.a("monster_room");
+   public static final ali<elm> b = sp.a("monster_room_deep");
+   public static final ali<elm> c = sp.a("fossil_upper");
+   public static final ali<elm> d = sp.a("fossil_lower");
+   public static final ali<elm> e = sp.a("dripstone_cluster");
+   public static final ali<elm> f = sp.a("large_dripstone");
+   public static final ali<elm> g = sp.a("pointed_dripstone");
+   public static final ali<elm> h = sp.a("underwater_magma");
+   public static final ali<elm> i = sp.a("glow_lichen");
+   public static final ali<elm> j = sp.a("rooted_azalea_tree");
+   public static final ali<elm> k = sp.a("cave_vines");
+   public static final ali<elm> l = sp.a("lush_caves_vegetation");
+   public static final ali<elm> m = sp.a("lush_caves_clay");
+   public static final ali<elm> n = sp.a("lush_caves_ceiling_vegetation");
+   public static final ali<elm> o = sp.a("spore_blossom");
+   public static final ali<elm> p = sp.a("classic_vines_cave_feature");
+   public static final ali<elm> q = sp.a("amethyst_geode");
+   public static final ali<elm> r = sp.a("sculk_patch_deep_dark");
+   public static final ali<elm> s = sp.a("sculk_patch_ancient_city");
+   public static final ali<elm> t = sp.a("sculk_vein");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sk {
+   public static void a(qz<elm> $$0) {
+      jr<eei<?, ?>> $$1 = $$0.a(ma.aJ);
+      jq<eei<?, ?>> $$2 = $$1.b(ry.a);
+      jq<eei<?, ?>> $$3 = $$1.b(ry.b);
+      jq<eei<?, ?>> $$4 = $$1.b(ry.c);
+      jq<eei<?, ?>> $$5 = $$1.b(ry.d);
+      jq<eei<?, ?>> $$6 = $$1.b(ry.e);
+      jq<eei<?, ?>> $$7 = $$1.b(ry.f);
+      jq<eei<?, ?>> $$8 = $$1.b(ry.g);
+      jq<eei<?, ?>> $$9 = $$1.b(ry.h);
+      jq<eei<?, ?>> $$10 = $$1.b(ry.i);
+      jq<eei<?, ?>> $$11 = $$1.b(ry.j);
+      jq<eei<?, ?>> $$12 = $$1.b(ry.m);
+      jq<eei<?, ?>> $$13 = $$1.b(ry.r);
+      jq<eei<?, ?>> $$14 = $$1.b(ry.s);
+      jq<eei<?, ?>> $$15 = $$1.b(ry.t);
+      jq<eei<?, ?>> $$16 = $$1.b(sg.c);
+      jq<eei<?, ?>> $$17 = $$1.b(ry.u);
+      jq<eei<?, ?>> $$18 = $$1.b(ry.v);
+      jq<eei<?, ?>> $$19 = $$1.b(ry.w);
+      jq<eei<?, ?>> $$20 = $$1.b(ry.x);
+      sp.a($$0, a, $$2, ele.a(10), elj.a(), elh.a(eck.a(0), eck.b()), ela.a());
+      sp.a($$0, b, $$2, ele.a(4), elj.a(), elh.a(eck.b(6), eck.a(-1)), ela.a());
+      sp.a($$0, c, $$3, els.a(64), elj.a(), elh.a(eck.a(0), eck.b()), ela.a());
+      sp.a($$0, d, $$4, els.a(64), elj.a(), elh.a(eck.a(), eck.a(-8)), ela.a());
+      sp.a($$0, e, $$5, ele.a(brv.a(48, 96)), elj.a(), sp.i, ela.a());
+      sp.a($$0, f, $$6, ele.a(brv.a(10, 48)), elj.a(), sp.i, ela.a());
+      sp.a($$0, g, $$7, ele.a(brv.a(192, 256)), elj.a(), sp.i, ele.a(brv.a(1, 5)), elr.a(brk.a(0.0F, 3.0F, -10, 10), brk.a(0.0F, 0.6F, -2, 2)), ela.a());
+      sp.a($$0, h, $$8, ele.a(brv.a(44, 52)), elj.a(), sp.i, elu.a(ebq.a.c, Integer.MIN_VALUE, -2), ela.a());
+      sp.a($$0, i, $$9, ele.a(brv.a(104, 157)), sp.i, elj.a(), elu.a(ebq.a.c, Integer.MIN_VALUE, -13), ela.a());
+      sp.a($$0, j, $$10, ele.a(brv.a(1, 2)), elj.a(), sp.i, elf.a(jm.b, ecx.c(), ecx.c, 12), elr.a(brm.a(-1)), ela.a());
+      sp.a($$0, k, $$11, ele.a(188), elj.a(), sp.i, elf.a(jm.b, ecx.a(jm.a), ecx.c, 12), elr.a(brm.a(-1)), ela.a());
+      sp.a($$0, l, $$12, ele.a(125), elj.a(), sp.i, elf.a(jm.a, ecx.c(), ecx.c, 12), elr.a(brm.a(1)), ela.a());
+      sp.a($$0, m, $$13, ele.a(62), elj.a(), sp.i, elf.a(jm.a, ecx.c(), ecx.c, 12), elr.a(brm.a(1)), ela.a());
+      sp.a($$0, n, $$14, ele.a(125), elj.a(), sp.i, elf.a(jm.b, ecx.c(), ecx.c, 12), elr.a(brm.a(-1)), ela.a());
+      sp.a($$0, o, $$15, ele.a(25), elj.a(), sp.i, elf.a(jm.b, ecx.c(), ecx.c, 12), elr.a(brm.a(-1)), ela.a());
+      sp.a($$0, p, $$16, ele.a(256), elj.a(), sp.i, ela.a());
+      sp.a($$0, q, $$17, els.a(24), elj.a(), elh.a(eck.b(6), eck.a(30)), ela.a());
+      sp.a($$0, r, $$18, ele.a(brm.a(256)), elj.a(), sp.i, ela.a());
+      sp.a($$0, s, $$19);
+      sp.a($$0, t, $$20, ele.a(brv.a(204, 250)), elj.a(), sp.i, ela.a());
+   }
 }

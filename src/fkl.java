@@ -1,37 +1,51 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
 
-public record fkl(fkl.c a, fkn... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fkn[] var3, int var4, int var5, float var6);
+public enum fkl {
+   a(new cwm(cwq.qT)),
+   b(new cwm(dis.cj)),
+   c(new cwm(cwq.lH)),
+   d(new cwm(cwq.pf), new cwm(cwq.oX)),
+   e(new cwm(cwq.qB), new cwm(cwq.ov)),
+   f(new cwm(cwq.qT)),
+   g(new cwm(cwq.pY)),
+   h(new cwm(dis.b)),
+   i(new cwm(cwq.qB), new cwm(cwq.oB)),
+   j(new cwm(cwq.qT)),
+   k(new cwm(dis.dI)),
+   l(new cwm(cwq.pd), new cwm(cwq.pR)),
+   m(new cwm(cwq.qT)),
+   n(new cwm(cwq.pY)),
+   o(new cwm(cwq.fF)),
+   p(new cwm(cwq.pU)),
+   q(new cwm(cwq.pY)),
+   r(new cwm(cwq.hB));
+
+   public static final List<fkl> s = ImmutableList.of(m, n);
+   public static final List<fkl> t = ImmutableList.of(j, k, l);
+   public static final List<fkl> u = ImmutableList.of(f, g, h, i);
+   public static final List<fkl> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<fkl, List<fkl>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cwm> x;
+
+   private fkl(final cwm... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public static class b {
-      public static final fkl.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
+   public static List<fkl> a(ctp $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
       };
-      public static final fkl.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            azn.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            azn.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            azn.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
    }
 
-   public interface c {
-      void apply(gcc var1, Vector3f var2);
-   }
-
-   public static class d {
-      public static final fkl.c a = gcc::a;
-      public static final fkl.c b = gcc::b;
-      public static final fkl.c c = gcc::c;
+   public List<cwm> a() {
+      return this.x;
    }
 }

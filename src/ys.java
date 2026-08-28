@@ -1,53 +1,50 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ys extends xm {
-   MapCodec<ys> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(ys::b)).apply($$0, ys::a));
-   xm.a<ys> b = new xm.a<>(a, "text");
-   ys c = new ys() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static ys a(String $$0) {
-      return (ys)($$0.isEmpty() ? c : new ys.a($$0));
-   }
-
-   String b();
+public record ys(hn c, Optional<xj> d) implements xk {
+   public static final MapCodec<ys> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(hn.a.fieldOf("selector").forGetter(ys::b), xl.a.optionalFieldOf("separator").forGetter(ys::c)).apply($$0, ys::new)
+   );
+   public static final xk.a<ys> b = new xk.a<>(a, "selector");
 
    @Override
-   default xm.a<?> a() {
+   public xk.a<?> a() {
       return b;
    }
 
-   public static record a(String d) implements ys {
-      @Override
-      public <T> Optional<T> a(xq.a<T> $$0) {
-         return $$0.accept(this.d);
+   @Override
+   public xx a(@Nullable ew $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return xj.i();
+      } else {
+         Optional<? extends xj> $$3 = xm.a($$0, this.d, $$1, $$2);
+         return xm.a(this.c.b().b($$0), $$3, bul::o_);
       }
+   }
 
-      @Override
-      public <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
-         return $$0.accept($$1, this.d);
-      }
+   @Override
+   public <T> Optional<T> a(xo.b<T> $$0, yg $$1) {
+      return $$0.accept($$1, this.c.a());
+   }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
-      }
+   @Override
+   public <T> Optional<T> a(xo.a<T> $$0) {
+      return $$0.accept(this.c.a());
+   }
 
-      @Override
-      public String b() {
-         return this.d;
-      }
+   @Override
+   public String toString() {
+      return "pattern{" + this.c + "}";
+   }
+
+   public hn b() {
+      return this.c;
+   }
+
+   public Optional<xj> c() {
+      return this.d;
    }
 }

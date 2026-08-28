@@ -1,13 +1,26 @@
+import java.util.function.Function;
+
 public interface fcp {
-   <T> fdw<T> a(String var1, fdv<T> var2);
+   float getAdvance();
 
-   <T> void a(fdw<T> var1);
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
 
-   <T> fdw<T> b(fdw<T> var1);
+   default float a() {
+      return 1.0F;
+   }
 
-   void a(fcp var1);
+   default float b() {
+      return 1.0F;
+   }
 
-   void a();
+   fpa bake(Function<fcr, fpa> var1);
 
-   void a(Runnable var1);
+   public interface a extends fcp {
+      @Override
+      default fpa bake(Function<fcr, fpa> $$0) {
+         return fpb.a;
+      }
+   }
 }

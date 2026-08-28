@@ -1,156 +1,199 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class evz extends evt {
-   public static final MapCodec<evz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(evz.b.a.listOf().fieldOf("modifiers").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("replace", true).forGetter($$0x -> $$0x.c))
-            )
-            .apply($$0, evz::new)
-   );
-   private final List<evz.b> b;
-   private final boolean c;
+public interface evz {
+   MapCodec<evz> a = a(Integer.MAX_VALUE);
 
-   evz(List<exr> $$0, List<evz.b> $$1, boolean $$2) {
-      super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
+   static MapCodec<evz> a(int $$0) {
+      return evz.f.e.dispatchMap("mode", evz::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof evz.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public evv<evz> b() {
-      return evw.o;
+   evz.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   @Override
-   public Set<ewz<?>> a() {
-      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   @Override
-   public cwf a(cwf $$0, eug $$1) {
-      if (this.c) {
-         $$0.b(ku.o, this.a($$1, cyw.a));
-      } else {
-         $$0.a(ku.o, cyw.a, $$1x -> this.a($$1, $$1x));
-      }
+   public static class a implements evz {
+      private static final Logger d = LogUtils.getLogger();
+      public static final evz.a b = new evz.a();
+      public static final MapCodec<evz.a> c = MapCodec.unit(() -> b);
 
-      return $$0;
-   }
-
-   private cyw a(eug $$0, cyw $$1) {
-      azv $$2 = $$0.b();
-
-      for (evz.b $$3 : this.b) {
-         bur $$4 = ae.a($$3.f, $$2);
-         $$1 = $$1.a($$3.c, new bwk($$3.b, (double)$$3.e.b($$0), $$3.d), $$4);
-      }
-
-      return $$1;
-   }
-
-   public static evz.c a(all $$0, jq<bwh> $$1, bwk.a $$2, eyn $$3) {
-      return new evz.c($$0, $$1, $$2, $$3);
-   }
-
-   public static evz.a c() {
-      return new evz.a();
-   }
-
-   public static class a extends evt.a<evz.a> {
-      private final boolean a;
-      private final List<evz.b> b = Lists.newArrayList();
-
-      public a(boolean $$0) {
-         this.a = $$0;
-      }
-
-      public a() {
-         this(false);
-      }
-
-      protected evz.a a() {
-         return this;
-      }
-
-      public evz.a a(evz.c $$0) {
-         this.b.add($$0.a());
-         return this;
+      private a() {
       }
 
       @Override
-      public evu b() {
-         return new evz(this.g(), this.b, this.a);
+      public evz.f a() {
+         return evz.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
       }
    }
 
-   static record b(all b, jq<bwh> c, bwk.a d, eyn e, List<bur> f) {
-      private static final Codec<List<bur>> g = ayw.a(
-         Codec.either(bur.l, bur.l.listOf())
-            .xmap($$0 -> (List)$$0.map(List::of, Function.identity()), $$0 -> $$0.size() == 1 ? Either.left((bur)$$0.getFirst()) : Either.right($$0))
-      );
-      public static final Codec<evz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  all.a.fieldOf("id").forGetter(evz.b::a),
-                  bwh.a.fieldOf("attribute").forGetter(evz.b::b),
-                  bwk.a.f.fieldOf("operation").forGetter(evz.b::c),
-                  eyo.a.fieldOf("amount").forGetter(evz.b::d),
-                  g.fieldOf("slot").forGetter(evz.b::e)
-               )
-               .apply($$0, evz.b::new)
+   public static record b(int c) implements evz {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<evz.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayv.l.optionalFieldOf("offset", 0).forGetter(evz.b::b)).apply($$0, evz.b::new)
       );
 
-      public all a() {
-         return this.b;
+      @Override
+      public evz.f a() {
+         return evz.f.c;
       }
 
-      public jq<bwh> b() {
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements evz {
+      public static final evz.c b = new evz.c();
+      public static final MapCodec<evz.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public evz.f a() {
+         return evz.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements evz {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<evz.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayv.l.optionalFieldOf("offset", 0).forGetter(evz.d::b), ayv.l.optionalFieldOf("size").forGetter(evz.d::c)).apply($$0, evz.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public evz.f a() {
+         return evz.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
          return this.c;
       }
 
-      public bwk.a c() {
+      public Optional<Integer> c() {
          return this.d;
-      }
-
-      public eyn d() {
-         return this.e;
-      }
-
-      public List<bur> e() {
-         return this.f;
       }
    }
 
-   public static class c {
-      private final all a;
-      private final jq<bwh> b;
-      private final bwk.a c;
-      private final eyn d;
-      private final Set<bur> e = EnumSet.noneOf(bur.class);
-
-      public c(all $$0, jq<bwh> $$1, bwk.a $$2, eyn $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public static record e<T>(List<T> a, evz b) {
+      public static <T> Codec<evz.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), evz.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, evz.e::new)
+         );
       }
 
-      public evz.c a(bur $$0) {
-         this.e.add($$0);
-         return this;
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements bai {
+      a("replace_all", evz.c.c),
+      b("replace_section", evz.d.b),
+      c("insert", evz.b.b),
+      d("append", evz.a.c);
+
+      public static final Codec<evz.f> e = bai.a(evz.f::values);
+      private final String f;
+      final MapCodec<? extends evz> g;
+
+      private f(final String $$0, final MapCodec<? extends evz> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public evz.b a() {
-         return new evz.b(this.a, this.b, this.c, this.d, List.copyOf(this.e));
+      public MapCodec<? extends evz> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

@@ -1,25 +1,33 @@
-public class gqy extends gnv<chr, gwv, gaq> {
-   private static final all a = all.b("textures/entity/sheep/sheep.png");
+public class gqy extends gqq<cma, gww, gai> {
+   private static final alj a = alj.b("textures/entity/phantom.png");
 
-   public gqy(gpa.a $$0) {
-      super($$0, new gaq($$0.a(gcb.cd)), new gaq($$0.a(gcb.ce)), 0.7F);
-      this.a(new gtp(this, $$0.f()));
+   public gqy(gpk.a $$0) {
+      super($$0, new gai($$0.a(gck.bI)), 0.75F);
+      this.a(new gtw(this));
    }
 
-   public all a(gwv $$0) {
+   public alj a(gww $$0) {
       return a;
    }
 
-   public gwv c() {
-      return new gwv();
+   public gww b() {
+      return new gww();
    }
 
-   public void a(chr $$0, gwv $$1, float $$2) {
+   public void a(cma $$0, gww $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.K($$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.y();
-      $$1.d = $$0.t();
-      $$1.e = $$0.as();
+      $$1.a = (float)$$0.q() + $$1.p;
+      $$1.b = $$0.n();
+   }
+
+   protected void a(gww $$0, fer $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(gww $$0, fer $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.V));
    }
 }

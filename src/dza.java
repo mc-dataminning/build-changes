@@ -1,110 +1,114 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public final class dza implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dyz> c = new Long2ObjectLinkedOpenHashMap();
-   private final dzc d;
-   private final Path e;
-   private final boolean f;
+public class dza implements AutoCloseable {
+   public static final int d = 1493;
+   private final dzc a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile emd b;
 
-   dza(dzc $$0, Path $$1, boolean $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.d = $$0;
+   public dza(dzj $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dzc($$0, $$1, $$3);
    }
 
-   private dyz b(del $$0) throws IOException {
-      long $$1 = del.c($$0.h(), $$0.i());
-      dyz $$2 = (dyz)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
+   public boolean b(des $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public ul a(ali<dfm> $$0, Supplier<etv> $$1, ul $$2, Optional<ali<MapCodec<? extends dxr>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
          return $$2;
       } else {
-         if (this.c.size() >= 256) {
-            ((dyz)this.c.removeLast()).close();
-         }
+         try {
+            if ($$4 < 1493) {
+               $$2 = baw.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  emd $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
+               }
+            }
 
-         v.c(this.e);
-         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dyz $$4 = new dyz(this.d, $$3, this.e, this.f);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
-   }
-
-   @Nullable
-   public un a(del $$0) throws IOException {
-      dyz $$1 = this.b($$0);
-
-      un var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = va.a($$2);
-      }
-
-      return var4;
-   }
-
-   public void a(del $$0, vh $$1) throws IOException {
-      dyz $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            va.a((DataInput)$$3, $$1, uw.a());
+            a($$2, $$0, $$3);
+            $$2 = baw.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            va.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
          }
       }
    }
 
-   protected void a(del $$0, @Nullable un $$1) throws IOException {
-      dyz $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            va.a($$1, (DataOutput)$$3);
+   private emd a(ali<dfm> $$0, Supplier<etv> $$1) {
+      emd $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = emd.a($$0, $$1.get());
+            }
          }
       }
+
+      return $$2;
+   }
+
+   public static void a(ul $$0, ali<dfm> $$1, Optional<ali<MapCodec<? extends dxr>>> $$2) {
+      ul $$3 = new ul();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   private static void b(ul $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(ul $$0) {
+      return va.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<ul>> d(des $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(des $$0, Supplier<ul> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(des $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      ayv<IOException> $$0 = new ayv<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dyz $$1 = (dyz)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+      this.a.close();
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
-
-      while (var1.hasNext()) {
-         dyz $$0 = (dyz)var1.next();
-         $$0.b();
-      }
+   public dyz p() {
+      return this.a;
    }
 
-   public dzc b() {
-      return this.d;
+   protected dzj q() {
+      return this.a.a();
    }
 }

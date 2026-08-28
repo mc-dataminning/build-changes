@@ -1,43 +1,25 @@
-import java.util.List;
+public abstract class gty<S extends gvo, M extends fzj<? super S>> {
+   private final grh<S, M> a;
 
-public class gty extends gtn<gxn, gbn> {
-   private final all a;
-   private final gty.a b;
-   private final gty.b c;
-
-   public gty(gqw<gxn, gbn> $$0, all $$1, gty.a $$2, gty.b $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public gty(grh<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gxn $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         this.a();
-         feo $$6 = $$1.getBuffer(gjh.j(this.a));
-         float $$7 = this.b.apply($$3, $$3.p);
-         int $$8 = axy.a(azn.d($$7 * 255.0F), 255, 255, 255);
-         this.d().a($$0, $$6, $$2, gqb.a($$3, 0.0F), $$8);
-         this.b();
+   protected static <S extends gwm> void a(fzj<S> $$0, alj $$1, fer $$2, gjg $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.u) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   private void a() {
-      List<gcc> $$0 = this.c.getPartsToDraw(this.d());
-      this.d().f().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
+   protected static void b(fzj<?> $$0, alj $$1, fer $$2, gjg $$3, int $$4, gwm $$5, int $$6) {
+      fev $$7 = $$3.getBuffer(gjq.f($$1));
+      $$0.a($$2, $$7, $$4, gql.a($$5, 0.0F), $$6);
    }
 
-   private void b() {
-      this.d().f().forEach($$0 -> $$0.l = false);
+   public M d() {
+      return this.a.c();
    }
 
-   public interface a {
-      float apply(gxn var1, float var2);
-   }
-
-   public interface b {
-      List<gcc> getPartsToDraw(gbn var1);
-   }
+   public abstract void a(fer var1, gjg var2, int var3, S var4, float var5, float var6);
 }

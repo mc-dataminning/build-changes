@@ -1,62 +1,123 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record czu(float c) implements czr {
-   private static final float f = 16.0F;
-   public static final MapCodec<czu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayw.o.optionalFieldOf("diameter", 16.0F).forGetter(czu::b)).apply($$0, czu::new)
+public record czu(ash<String> k, String l, int m, List<ash<xj>> n, boolean o) implements cyp<xj, czu> {
+   public static final czu a = new czu(ash.a(""), "", 0, List.of(), true);
+   public static final int b = 32767;
+   public static final int c = 16;
+   public static final int d = 32;
+   public static final int e = 3;
+   public static final int f = 2;
+   public static final Codec<xj> g = xl.a(32767);
+   public static final Codec<List<ash<xj>>> h = a(g);
+   public static final Codec<czu> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ash.a(Codec.string(0, 32)).fieldOf("title").forGetter(czu::d),
+               Codec.STRING.fieldOf("author").forGetter(czu::e),
+               ayv.a(0, 3).optionalFieldOf("generation", 0).forGetter(czu::f),
+               h.optionalFieldOf("pages", List.of()).forGetter(czu::a),
+               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(czu::g)
+            )
+            .apply($$0, czu::new)
    );
-   public static final zj<ww, czu> b = zj.a(zh.j, czu::b, czu::new);
+   public static final zh<wu, czu> j = zh.a(ash.a(zf.b(32)), czu::d, zf.n, czu::e, zf.h, czu::f, ash.a(xl.b).a(zf.a()), czu::a, zf.b, czu::g, czu::new);
 
-   public czu() {
-      this(16.0F);
+   public czu(ash<String> k, String l, int m, List<ash<xj>> n, boolean o) {
+      if (m >= 0 && m <= 3) {
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+      } else {
+         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
+      }
    }
 
-   @Override
-   public czr.a<czu> a() {
-      return czr.a.d;
+   private static Codec<ash<xj>> b(Codec<xj> $$0) {
+      return ash.a($$0);
    }
 
-   @Override
-   public boolean a(dff $$0, cwf $$1, bve $$2) {
-      boolean $$3 = false;
+   public static Codec<List<ash<xj>>> a(Codec<xj> $$0) {
+      return b($$0).listOf();
+   }
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dD() + ($$2.eb().j() - 0.5) * (double)this.c;
-         double $$6 = azn.a($$2.dF() + ($$2.eb().j() - 0.5) * (double)this.c, (double)$$0.I_(), (double)($$0.I_() + ((arq)$$0).k() - 1));
-         double $$7 = $$2.dJ() + ($$2.eb().j() - 0.5) * (double)this.c;
-         if ($$2.cb()) {
-            $$2.af();
-         }
+   @Nullable
+   public czu b() {
+      return this.m >= 2 ? null : new czu(this.k, this.l, this.m + 1, this.n, this.o);
+   }
 
-         ezr $$8 = $$2.dw();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(eak.R, $$8, eak.a.a($$2));
-            awp $$10;
-            awn $$9;
-            if ($$2 instanceof chf) {
-               $$9 = awo.jq;
-               $$10 = awp.g;
-            } else {
-               $$9 = awo.fi;
-               $$10 = awp.h;
+   @Nullable
+   public czu a(ew $$0, @Nullable cou $$1) {
+      if (this.o) {
+         return null;
+      } else {
+         Builder<ash<xj>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
+
+         for (ash<xj> $$3 : this.n) {
+            Optional<ash<xj>> $$4 = a($$0, $$1, $$3);
+            if ($$4.isEmpty()) {
+               return null;
             }
 
-            $$0.a(null, $$2.dD(), $$2.dF(), $$2.dJ(), $$9, $$10);
-            $$2.n();
-            $$3 = true;
-            break;
+            $$2.add($$4.get());
          }
-      }
 
-      if ($$3 && $$2 instanceof cor $$13) {
-         $$13.gQ();
+         return new czu(this.k, this.l, this.m, $$2.build(), true);
       }
-
-      return $$3;
    }
 
-   public float b() {
-      return this.c;
+   public czu c() {
+      return new czu(this.k, this.l, this.m, this.n, true);
+   }
+
+   private static Optional<ash<xj>> a(ew $$0, @Nullable cou $$1, ash<xj> $$2) {
+      return $$2.b($$2x -> {
+         try {
+            xj $$3 = xm.a($$0, $$2x, $$1, 0);
+            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
+         } catch (Exception var4) {
+            return Optional.of($$2x);
+         }
+      });
+   }
+
+   private static boolean a(xj $$0, js.a $$1) {
+      return xj.a.a($$0, $$1).length() > 32767;
+   }
+
+   public List<xj> a(boolean $$0) {
+      return Lists.transform(this.n, $$1 -> (xj)$$1.a($$0));
+   }
+
+   public czu b(List<ash<xj>> $$0) {
+      return new czu(this.k, this.l, this.m, $$0, false);
+   }
+
+   public ash<String> d() {
+      return this.k;
+   }
+
+   public String e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.m;
+   }
+
+   @Override
+   public List<ash<xj>> a() {
+      return this.n;
+   }
+
+   public boolean g() {
+      return this.o;
    }
 }

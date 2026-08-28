@@ -1,8 +1,57 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dgz {
+public class dgz extends dgs implements dgq.a {
+   public static final MapCodec<dgz> b = dgo.c.fieldOf("biome").xmap(dgz::new, $$0 -> $$0.c).stable();
+   private final jq<dgo> c;
+
+   public dgz(jq<dgo> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   protected Stream<jq<dgo>> b() {
+      return Stream.of(this.c);
+   }
+
+   @Override
+   protected MapCodec<? extends dgs> a() {
+      return b;
+   }
+
+   @Override
+   public jq<dgo> getNoiseBiome(int $$0, int $$1, int $$2, dgx.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public jq<dgo> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<jh, jq<dgo>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jq<dgo>> $$5, azu $$6, boolean $$7, dgx.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new jh($$0, $$1, $$2), this.c) : Pair.of(new jh($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<jh, jq<dgo>> a(jh $$0, int $$1, int $$2, int $$3, Predicate<jq<dgo>> $$4, dgx.f $$5, dfp $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<jq<dgo>> a(int $$0, int $$1, int $$2, int $$3, dgx.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
+   }
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 public interface kd<T> extends Keyable, js.b<T>, jv<T> {
    @Override
-   alk<? extends kd<T>> g();
+   ali<? extends kd<T>> g();
 
    default Codec<T> q() {
       return this.b().flatComapMap(jq.c::a, $$0 -> this.a(this.e((T)$$0)));
@@ -27,14 +27,14 @@ public interface kd<T> extends Keyable, js.b<T>, jv<T> {
    }
 
    private Codec<jq.c<T>> b() {
-      Codec<jq.c<T>> $$0 = all.a
+      Codec<jq.c<T>> $$0 = alj.a
          .comapFlatMap(
             $$0x -> this.c($$0x)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.g() + ": " + $$0x)),
             $$0x -> $$0x.h().a()
          );
-      return ayw.a($$0, (Function<jq.c<T>, Lifecycle>)($$0x -> this.d($$0x.h()).map(kc::b).orElse(Lifecycle.experimental())));
+      return ayv.a($$0, (Function<jq.c<T>, Lifecycle>)($$0x -> this.d($$0x.h()).map(kc::b).orElse(Lifecycle.experimental())));
    }
 
    private DataResult<jq.c<T>> a(jq<T> $$0) {
@@ -46,32 +46,32 @@ public interface kd<T> extends Keyable, js.b<T>, jv<T> {
    }
 
    @Nullable
-   all b(T var1);
+   alj b(T var1);
 
-   Optional<alk<T>> d(T var1);
+   Optional<ali<T>> d(T var1);
 
    @Override
    int a(@Nullable T var1);
 
    @Nullable
-   T c(@Nullable alk<T> var1);
+   T c(@Nullable ali<T> var1);
 
    @Nullable
-   T a(@Nullable all var1);
+   T a(@Nullable alj var1);
 
-   Optional<kc> d(alk<T> var1);
+   Optional<kc> d(ali<T> var1);
 
-   default Optional<T> b(@Nullable all $$0) {
+   default Optional<T> b(@Nullable alj $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default Optional<T> f(@Nullable alk<T> $$0) {
+   default Optional<T> f(@Nullable ali<T> $$0) {
       return Optional.ofNullable(this.c($$0));
    }
 
    Optional<jq.c<T>> a();
 
-   default T g(alk<T> $$0) {
+   default T g(ali<T> $$0) {
       T $$1 = this.c($$0);
       if ($$1 == null) {
          throw new IllegalStateException("Missing key in " + this.g() + ": " + $$0);
@@ -80,41 +80,41 @@ public interface kd<T> extends Keyable, js.b<T>, jv<T> {
       }
    }
 
-   Set<all> i();
+   Set<alj> i();
 
-   Set<Entry<alk<T>, T>> k();
+   Set<Entry<ali<T>, T>> k();
 
-   Set<alk<T>> j();
+   Set<ali<T>> j();
 
-   Optional<jq.c<T>> a(azv var1);
+   Optional<jq.c<T>> a(azu var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
    }
 
-   boolean d(all var1);
+   boolean d(alj var1);
 
-   boolean e(alk<T> var1);
+   boolean e(ali<T> var1);
 
    static <T> T a(kd<? super T> $$0, String $$1, T $$2) {
-      return a($$0, all.a($$1), $$2);
+      return a($$0, alj.a($$1), $$2);
    }
 
-   static <V, T extends V> T a(kd<V> $$0, all $$1, T $$2) {
-      return a($$0, alk.a($$0.g(), $$1), $$2);
+   static <V, T extends V> T a(kd<V> $$0, alj $$1, T $$2) {
+      return a($$0, ali.a($$0.g(), $$1), $$2);
    }
 
-   static <V, T extends V> T a(kd<V> $$0, alk<V> $$1, T $$2) {
+   static <V, T extends V> T a(kd<V> $$0, ali<V> $$1, T $$2) {
       ((km)$$0).a($$1, (V)$$2, kc.a);
       return $$2;
    }
 
-   static <T> jq.c<T> b(kd<T> $$0, alk<T> $$1, T $$2) {
+   static <T> jq.c<T> b(kd<T> $$0, ali<T> $$1, T $$2) {
       return ((km)$$0).a($$1, $$2, kc.a);
    }
 
-   static <T> jq.c<T> b(kd<T> $$0, all $$1, T $$2) {
-      return b($$0, alk.a($$0.g(), $$1), $$2);
+   static <T> jq.c<T> b(kd<T> $$0, alj $$1, T $$2) {
+      return b($$0, ali.a($$0.g(), $$1), $$2);
    }
 
    kd<T> n();
@@ -123,15 +123,15 @@ public interface kd<T> extends Keyable, js.b<T>, jv<T> {
 
    Optional<jq.c<T>> c(int var1);
 
-   Optional<jq.c<T>> c(all var1);
+   Optional<jq.c<T>> c(alj var1);
 
    jq<T> e(T var1);
 
-   default Iterable<jq<T>> c(axt<T> $$0) {
+   default Iterable<jq<T>> c(axs<T> $$0) {
       return (Iterable<jq<T>>)DataFixUtils.orElse(this.a($$0), List.of());
    }
 
-   default Optional<jq<T>> a(axt<T> $$0, azv $$1) {
+   default Optional<jq<T>> a(axs<T> $$0, azu $$1) {
       return this.a($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
@@ -160,10 +160,10 @@ public interface kd<T> extends Keyable, js.b<T>, jv<T> {
       };
    }
 
-   kd.a<T> a(axu.b<T> var1);
+   kd.a<T> a(axt.b<T> var1);
 
    public interface a<T> {
-      alk<? extends kd<? extends T>> a();
+      ali<? extends kd<? extends T>> a();
 
       js.b<T> b();
 

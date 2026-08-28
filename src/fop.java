@@ -1,115 +1,103 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class fop extends gye implements gyf {
-   private static final int d = 256;
-   private final foq e;
-   private final boolean f;
-   private final fop.a g;
-
-   public fop(foq $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new fop.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fdk.b.a : fdk.b.d, this.a(), 256, 256);
-      this.e = $$0;
-   }
-
-   @Override
-   public void a(ave $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
-   }
-
+public class fop implements fon {
+   private static final alj h = alj.b("toast/tutorial");
+   public static final int a = 154;
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final int g = 28;
+   private final fop.a i;
+   private final xj j;
    @Nullable
-   public fot a(fck $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         fop.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
+   private final xj k;
+   private fon.a l = fon.a.a;
+   private long m;
+   private float n;
+   private float o;
+   private final boolean p;
+   private final int q;
+
+   public fop(fop.a $$0, xj $$1, @Nullable xj $$2, boolean $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.p = $$3;
+      this.q = $$4;
+   }
+
+   public fop(fop.a $$0, xj $$1, @Nullable xj $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3, 0);
+   }
+
+   @Override
+   public fon.a a() {
+      return this.l;
+   }
+
+   @Override
+   public void a(foo $$0, long $$1) {
+      if (this.q > 0) {
+         this.o = Math.min((float)$$1 / (float)this.q, 1.0F);
+         this.n = this.o;
+         this.m = $$1;
+         if ($$1 > (long)this.q) {
             this.d();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fot(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
          }
+      } else if (this.p) {
+         this.n = azm.b(this.n, this.o, (float)($$1 - this.m) / 100.0F);
+         this.m = $$1;
       }
    }
 
    @Override
-   public void a(all $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fop.a e;
-      @Nullable
-      private fop.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public void a(flq $$0, flo $$1, long $$2) {
+      $$0.a(gjq::B, h, 0, 0, this.b(), this.c());
+      this.i.a($$0, 6, 6);
+      if (this.k == null) {
+         $$0.a($$1, this.j, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1, this.j, 30, 7, -11534256, false);
+         $$0.a($$1, this.k, 30, 18, -16777216, false);
       }
 
-      @Nullable
-      fop.a a(fck $$0) {
-         if (this.e != null && this.f != null) {
-            fop.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
+      if (this.p) {
+         $$0.a(3, 28, 157, 29, -1);
+         int $$3;
+         if (this.o >= this.n) {
+            $$3 = -16755456;
          } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fop.a(this.a, this.b, $$2, this.d);
-                  this.f = new fop.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fop.a(this.a, this.b, this.c, $$3);
-                  this.f = new fop.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
+            $$3 = -11206656;
          }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * this.n), 29, $$3);
+      }
+   }
+
+   public void d() {
+      this.l = fon.a.b;
+   }
+
+   public void a(float $$0) {
+      this.o = $$0;
+   }
+
+   public static enum a {
+      a(alj.b("toast/movement_keys")),
+      b(alj.b("toast/mouse")),
+      c(alj.b("toast/tree")),
+      d(alj.b("toast/recipe_book")),
+      e(alj.b("toast/wooden_planks")),
+      f(alj.b("toast/social_interactions")),
+      g(alj.b("toast/right_click"));
+
+      private final alj h;
+
+      private a(final alj $$0) {
+         this.h = $$0;
+      }
+
+      public void a(flq $$0, int $$1, int $$2) {
+         $$0.a(gjq::B, this.h, $$1, $$2, 20, 20);
       }
    }
 }

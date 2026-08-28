@@ -1,26 +1,36 @@
-public record aax(alk<eak> c, ezr d) implements aav {
-   public static final zj<wi, aax> a = aav.a(aax::a, aax::new);
-   public static final aav.b<aax> b = aav.a("debug/game_event");
+public record aax(jh c, int d, String e, int f) implements aat {
+   public static final zh<wg, aax> a = aat.a(aax::a, aax::new);
+   public static final aat.b<aax> b = aat.a("debug/game_test_add_marker");
 
-   private aax(wi $$0) {
-      this($$0.a(ma.G), $$0.k());
+   private aax(wg $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(wi $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+   private void a(wg $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+      $$0.q(this.f);
    }
 
    @Override
-   public aav.b<aax> a() {
+   public aat.b<aax> a() {
       return b;
    }
 
-   public alk<eak> b() {
+   public jh b() {
       return this.c;
    }
 
-   public ezr c() {
+   public int c() {
       return this.d;
+   }
+
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

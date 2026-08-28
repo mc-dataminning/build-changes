@@ -1,60 +1,30 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public class gra extends gqb<cnh, gwy, gal> {
+   private static final alj b = alj.b("textures/entity/piglin/piglin.png");
+   private static final alj k = alj.b("textures/entity/piglin/piglin_brute.png");
+   public static final gtd.a a = new gtd.a(0.0F, 0.0F, 1.0019531F);
 
-public class gra extends gqg<cmb, gwx, gat> {
-   private static final all a = gjs.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final all[] b = gjs.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(all[]::new);
-
-   public gra(gpa.a $$0) {
-      super($$0, new gat($$0.a(gcb.ci)), 0.0F);
+   public gra(gpk.a $$0, gcj $$1, gcj $$2, gcj $$3, gcj $$4, gcj $$5, gcj $$6) {
+      super($$0, new gal($$0.a($$1)), new gal($$0.a($$2)), 0.5F, a);
+      this.a(new gto<>(this, new fzv($$0.a($$3)), new fzv($$0.a($$4)), new fzv($$0.a($$5)), new fzv($$0.a($$6)), $$0.h()));
    }
 
-   public ezr a(gwx $$0) {
-      return $$0.a;
+   public alj a(gwy $$0) {
+      return $$0.a ? k : b;
    }
 
-   public boolean a(cmb $$0, gmo $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         ezr $$5 = $$0.K(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bup<?> $$6 = $$0.ar();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            ezr $$9 = ezr.c($$0.dy());
-            return $$1.a(new ezm($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
-         }
-      }
+   public gwy b() {
+      return new gwy();
    }
 
-   public all b(gwx $$0) {
-      return a($$0.b);
-   }
-
-   public gwx c() {
-      return new gwx();
-   }
-
-   public void a(cmb $$0, gwx $$1, float $$2) {
+   public void a(cnh $$0, gwy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.K($$2), ezr.c);
-      $$1.b = $$0.gw();
-      $$1.c = $$0.J($$2);
-      $$1.d = $$0.aZ;
-      $$1.e = $$0.aX;
-      $$1.f = $$0.y();
+      $$1.a = $$0.aq() == bus.aP;
+      $$1.d = $$0.go();
+      $$1.c = (float)cvd.b($$0.fz(), $$0);
+      $$1.b = $$0.gm();
    }
 
-   public static all a(@Nullable cvc $$0) {
-      return $$0 == null ? a : b[$$0.a()];
-   }
-
-   protected void a(gwx $$0, fek $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+   protected boolean b(gwy $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

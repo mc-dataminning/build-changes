@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class ecw extends edb {
-   private final ju<dij> e;
-   public static final MapCodec<ecw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(ma.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, ecw::new)
-   );
+class ecw extends ecz {
+   public static final MapCodec<ecw> a = a(ecw::new);
 
-   public ecw(kl $$0, ju<dij> $$1) {
+   public ecw(List<ecx> $$0) {
       super($$0);
-      this.e = $$1;
+   }
+
+   public boolean a(dgk $$0, jh $$1) {
+      for (ecx $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(dvo $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public ecr<?> a() {
-      return ecr.a;
+   public ecy<?> a() {
+      return ecy.i;
    }
 }

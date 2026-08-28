@@ -1,3 +1,4 @@
-public interface bsj extends cta {
-   xl S_();
+public enum bsj {
+   a,
+   b;
 }

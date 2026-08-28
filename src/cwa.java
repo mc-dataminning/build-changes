@@ -1,32 +1,83 @@
-public interface cwa {
-   int a = 256;
-   float b = 7.0F;
-   alk<cvy> c = a("ponder_goat_horn");
-   alk<cvy> d = a("sing_goat_horn");
-   alk<cvy> e = a("seek_goat_horn");
-   alk<cvy> f = a("feel_goat_horn");
-   alk<cvy> g = a("admire_goat_horn");
-   alk<cvy> h = a("call_goat_horn");
-   alk<cvy> i = a("yearn_goat_horn");
-   alk<cvy> j = a("dream_goat_horn");
+import java.util.List;
+import java.util.Optional;
 
-   private static alk<cvy> a(String $$0) {
-      return alk.a(ma.I, all.b($$0));
+public class cwa extends cwi {
+   private static final xj a = xj.c("painting.random").a(n.h);
+   private final bus<? extends cku> b;
+
+   public cwa(bus<? extends cku> $$0, cwi.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   static void a(rb<cvy> $$0) {
-      a($$0, c, (jq<awn>)awo.mE.get(0), 7.0F, 256.0F);
-      a($$0, d, (jq<awn>)awo.mE.get(1), 7.0F, 256.0F);
-      a($$0, e, (jq<awn>)awo.mE.get(2), 7.0F, 256.0F);
-      a($$0, f, (jq<awn>)awo.mE.get(3), 7.0F, 256.0F);
-      a($$0, g, (jq<awn>)awo.mE.get(4), 7.0F, 256.0F);
-      a($$0, h, (jq<awn>)awo.mE.get(5), 7.0F, 256.0F);
-      a($$0, i, (jq<awn>)awo.mE.get(6), 7.0F, 256.0F);
-      a($$0, j, (jq<awn>)awo.mE.get(7), 7.0F, 256.0F);
+   @Override
+   public bsk a(daf $$0) {
+      jh $$1 = $$0.a();
+      jm $$2 = $$0.k();
+      jh $$3 = $$1.a($$2);
+      cou $$4 = $$0.o();
+      cwm $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bsk.d;
+      } else {
+         dfm $$6 = $$0.q();
+         cku $$8;
+         if (this.b == bus.aJ) {
+            Optional<ckx> $$7 = ckx.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bsk.c;
+            }
+
+            $$8 = $$7.get();
+         } else if (this.b == bus.ar) {
+            $$8 = new ckv($$6, $$3, $$2);
+         } else {
+            if (this.b != bus.ae) {
+               return bsk.a;
+            }
+
+            $$8 = new ckt($$6, $$3, $$2);
+         }
+
+         cyv $$12 = $$5.a(ku.W, cyv.a);
+         if (!$$12.b()) {
+            bus.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.l()) {
+            if (!$$6.C) {
+               $$8.y();
+               $$6.a($$4, ear.t, $$8.dt());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bsk.a;
+         } else {
+            return bsk.c;
+         }
+      }
    }
 
-   static void a(rb<cvy> $$0, alk<cvy> $$1, jq<awn> $$2, float $$3, float $$4) {
-      xz $$5 = xl.c(ae.a("instrument", $$1.a()));
-      $$0.a($$1, new cvy($$2, $$3, $$4, $$5));
+   protected boolean a(cou $$0, jm $$1, cwm $$2, jh $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      js.a $$4 = $$1.a();
+      if ($$4 != null && this.b == bus.aJ) {
+         cyv $$5 = $$0.a(ku.W, cyv.a);
+         if (!$$5.b()) {
+            $$5.a($$4.a(uz.a), ckx.d).result().ifPresentOrElse($$1x -> {
+               ((cky)$$1x.a()).e().ifPresent($$2::add);
+               ((cky)$$1x.a()).f().ifPresent($$2::add);
+               $$2.add(xj.a("painting.dimensions", ((cky)$$1x.a()).b(), ((cky)$$1x.a()).c()));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
+      }
    }
 }

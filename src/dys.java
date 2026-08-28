@@ -1,5 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
+@FunctionalInterface
 public interface dys {
-   CompletableFuture<Void> a(del var1, vh var2);
+   CompletableFuture<dxq> doWork(dyw var1, dyu var2, bag<arg> var3, dxq var4);
 }

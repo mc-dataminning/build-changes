@@ -1,32 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ezb implements ezc<MinecraftServer> {
-   final all a;
+public record ezb(String b) implements ezd {
+   public static final MapCodec<ezb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ezb::c)).apply($$0, ezb::new));
 
-   public ezb(all $$0) {
-      this.a = $$0;
+   public static ezd a(String $$0) {
+      return new ezb($$0);
    }
 
-   public void a(MinecraftServer $$0, eze<MinecraftServer> $$1, long $$2) {
-      ama $$3 = $$0.aE();
-
-      for (ik<ew> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public ezc a() {
+      return eze.b;
    }
 
-   public static class a extends ezc.a<MinecraftServer, ezb> {
-      public a() {
-         super(all.b("function_tag"), ezb.class);
-      }
+   @Override
+   public fbc a(eun $$0) {
+      return fbc.c(this.b);
+   }
 
-      public void a(un $$0, ezb $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<exg<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public ezb a(un $$0) {
-         all $$1 = all.a($$0.l("Name"));
-         return new ezb($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

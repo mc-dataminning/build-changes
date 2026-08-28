@@ -1,170 +1,137 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class gjs {
-   public static final all a = all.b("textures/atlas/shulker_boxes.png");
-   public static final all b = all.b("textures/atlas/beds.png");
-   public static final all c = all.b("textures/atlas/banner_patterns.png");
-   public static final all d = all.b("textures/atlas/shield_patterns.png");
-   public static final all e = all.b("textures/atlas/signs.png");
-   public static final all f = all.b("textures/atlas/chest.png");
-   public static final all g = all.b("textures/atlas/armor_trims.png");
-   public static final all h = all.b("textures/atlas/decorated_pot.png");
-   private static final gjh C = gjh.f(a);
-   private static final gjh D = gjh.c(b);
-   private static final gjh E = gjh.m(c);
-   private static final gjh F = gjh.m(d);
-   private static final gjh G = gjh.f(e);
-   private static final gjh H = gjh.e(f);
-   private static final gjh I = gjh.a(g);
-   private static final gjh J = gjh.b(g);
-   private static final gjh K = gjh.c(gys.d);
-   private static final gjh L = gjh.e(gys.d);
-   private static final gjh M = gjh.h(gys.d);
-   public static final hbc i = new hbc(a, all.b("entity/shulker/shulker"));
-   public static final List<hbc> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new hbc(a, all.b("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dxa, hbc> k = dxa.a().collect(Collectors.toMap(Function.identity(), gjs::c));
-   public static final Map<dxa, hbc> l = dxa.a().collect(Collectors.toMap(Function.identity(), gjs::d));
-   public static final hbc m = new hbc(c, all.b("entity/banner/base"));
-   public static final hbc n = new hbc(d, all.b("entity/shield/base"));
-   private static final Map<all, hbc> N = new HashMap<>();
-   private static final Map<all, hbc> O = new HashMap<>();
-   public static final Map<alk<dti>, hbc> o = lz.ak.c().collect(Collectors.toMap(jq.c::h, $$0 -> a($$0.a().a())));
-   public static final hbc p = a(all.b("decorated_pot_base"));
-   public static final hbc q = a(all.b("decorated_pot_side"));
-   public static final hbc[] r = Arrays.stream(cvc.values())
-      .sorted(Comparator.comparingInt(cvc::a))
-      .map($$0 -> new hbc(b, all.b("entity/bed/" + $$0.b())))
-      .toArray(hbc[]::new);
-   public static final hbc s = a("trapped");
-   public static final hbc t = a("trapped_left");
-   public static final hbc u = a("trapped_right");
-   public static final hbc v = a("christmas");
-   public static final hbc w = a("christmas_left");
-   public static final hbc x = a("christmas_right");
-   public static final hbc y = a("normal");
-   public static final hbc z = a("normal_left");
-   public static final hbc A = a("normal_right");
-   public static final hbc B = a("ender");
+   private static final alj a = alj.b("textures/misc/underwater.png");
 
-   public static gjh a() {
-      return E;
-   }
+   public static void a(fke $$0, fer $$1) {
+      cou $$2 = $$0.t;
+      if (!$$2.ad) {
+         dvv $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ap().a().a($$3), $$1);
+         }
+      }
 
-   public static gjh b() {
-      return F;
-   }
+      if (!$$0.t.Y_()) {
+         if ($$0.t.a(axi.a)) {
+            b($$0, $$1);
+         }
 
-   public static gjh c() {
-      return D;
-   }
-
-   public static gjh d() {
-      return C;
-   }
-
-   public static gjh e() {
-      return G;
-   }
-
-   public static gjh f() {
-      return G;
-   }
-
-   public static gjh g() {
-      return H;
-   }
-
-   public static gjh a(boolean $$0) {
-      return $$0 ? J : I;
-   }
-
-   public static gjh h() {
-      return K;
-   }
-
-   public static gjh i() {
-      return L;
-   }
-
-   public static gjh j() {
-      return M;
-   }
-
-   private static hbc c(dxa $$0) {
-      return new hbc(e, all.b("entity/signs/" + $$0.b()));
-   }
-
-   private static hbc d(dxa $$0) {
-      return new hbc(e, all.b("entity/signs/hanging/" + $$0.b()));
-   }
-
-   public static hbc a(dxa $$0) {
-      return k.get($$0);
-   }
-
-   public static hbc b(dxa $$0) {
-      return l.get($$0);
-   }
-
-   public static hbc a(jq<dsh> $$0) {
-      return N.computeIfAbsent($$0.a().a(), $$0x -> {
-         all $$1 = $$0x.f("entity/banner/");
-         return new hbc(c, $$1);
-      });
-   }
-
-   public static hbc b(jq<dsh> $$0) {
-      return O.computeIfAbsent($$0.a().a(), $$0x -> {
-         all $$1 = $$0x.f("entity/shield/");
-         return new hbc(d, $$1);
-      });
-   }
-
-   private static hbc a(String $$0) {
-      return new hbc(f, all.b("entity/chest/" + $$0));
-   }
-
-   private static hbc a(all $$0) {
-      return new hbc(h, $$0.f("entity/decorated_pot/"));
+         if ($$0.t.bY()) {
+            c($$0, $$1);
+         }
+      }
    }
 
    @Nullable
-   public static hbc a(@Nullable alk<dti> $$0) {
-      return $$0 == null ? null : o.get($$0);
+   private static dvv a(cou $$0) {
+      jh.a $$1 = new jh.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dA() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         double $$4 = $$0.dE() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ej());
+         double $$5 = $$0.dG() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dvv $$6 = $$0.dV().a_($$1);
+         if ($$6.o() != dow.a && $$6.k($$0.dV(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
    }
 
-   public static hbc a(dsr $$0, dwg $$1, boolean $$2) {
-      if ($$0 instanceof dtn) {
-         return B;
-      } else if ($$2) {
-         return a($$1, v, w, x);
-      } else {
-         return $$0 instanceof dum ? a($$1, s, t, u) : a($$1, y, z, A);
-      }
+   private static void a(gze $$0, fer $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(giq.i);
+      float $$2 = 0.1F;
+      float $$3 = -1.0F;
+      float $$4 = 1.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -0.5F;
+      float $$8 = $$0.c();
+      float $$9 = $$0.d();
+      float $$10 = $$0.g();
+      float $$11 = $$0.h();
+      Matrix4f $$12 = $$1.c().a();
+      fem $$13 = fet.b().a(few.c.h, fep.j);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a($$9, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a($$8, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a($$8, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a($$9, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      fen.a($$13.b());
    }
 
-   private static hbc a(dwg $$0, hbc $$1, hbc $$2, hbc $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+   private static void b(fke $$0, fer $$1) {
+      RenderSystem.setShader(giq.h);
+      RenderSystem.setShaderTexture(0, a);
+      jh $$2 = jh.a($$0.t.dA(), $$0.t.dE(), $$0.t.dG());
+      float $$3 = gje.a($$0.t.dV().F_(), $$0.t.dV().A($$2));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$3, $$3, $$3, 0.1F);
+      float $$4 = 4.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = -$$0.t.dL() / 64.0F;
+      float $$11 = $$0.t.dN() / 64.0F;
+      Matrix4f $$12 = $$1.c().a();
+      fem $$13 = fet.b().a(few.c.h, fep.i);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a(4.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a(0.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a(0.0F + $$10, 0.0F + $$11);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a(4.0F + $$10, 0.0F + $$11);
+      fen.a($$13.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
+
+   private static void c(fke $$0, fer $$1) {
+      RenderSystem.setShader(giq.i);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gze $$2 = hbq.b.c();
+      RenderSystem.setShaderTexture(0, $$2.i());
+      float $$3 = $$2.c();
+      float $$4 = $$2.d();
+      float $$5 = ($$3 + $$4) / 2.0F;
+      float $$6 = $$2.g();
+      float $$7 = $$2.h();
+      float $$8 = ($$6 + $$7) / 2.0F;
+      float $$9 = $$2.k();
+      float $$10 = azm.h($$9, $$3, $$5);
+      float $$11 = azm.h($$9, $$4, $$5);
+      float $$12 = azm.h($$9, $$6, $$8);
+      float $$13 = azm.h($$9, $$7, $$8);
+      float $$14 = 1.0F;
+
+      for (int $$15 = 0; $$15 < 2; $$15++) {
+         $$1.a();
+         float $$16 = -0.5F;
+         float $$17 = 0.5F;
+         float $$18 = -0.5F;
+         float $$19 = 0.5F;
+         float $$20 = -0.5F;
+         $$1.a((float)(-($$15 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$15 * 2 - 1) * 10.0F));
+         Matrix4f $$21 = $$1.c().a();
+         fem $$22 = fet.b().a(few.c.h, fep.j);
+         $$22.a($$21, -0.5F, -0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, -0.5F, -0.5F).a($$10, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, 0.5F, -0.5F).a($$10, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, -0.5F, 0.5F, -0.5F).a($$11, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         fen.a($$22.b());
+         $$1.b();
       }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

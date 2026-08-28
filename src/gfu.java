@@ -1,57 +1,30 @@
-public class gfu extends ghf {
-   private final gha a;
+public class gfu extends gfg {
+   private static final int a = 12235202;
 
-   protected gfu(gcy $$0, double $$1, double $$2, double $$3, gha $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
-   }
-
-   @Override
-   public ggj b() {
-      return ggj.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   protected gfu(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, ghj $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axx.b(12235202) / 255.0F - $$9;
+      this.w = (float)axx.c(12235202) / 255.0F - $$9;
+      this.x = (float)axx.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   public static class a implements ggi<lw> {
-      private final gha a;
+   public static class a implements ggr<lw> {
+      private final ghj a;
 
-      public a(gha $$0) {
+      public a(ghj $$0) {
          this.a = $$0;
       }
 
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfu($$1, $$2, $$3, $$4, this.a);
-      }
-   }
-
-   public static class b implements ggi<lw> {
-      private final gha a;
-
-      public b(gha $$0) {
-         this.a = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggf $$8 = new gfu($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfu($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

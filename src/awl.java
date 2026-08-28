@@ -1,41 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 public class awl {
-   public static final Codec<awl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awn.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, awl::new)
-   );
-   private final jq<awn> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final awk a = new awk(awn.qb, 20, 600, true);
+   public static final awk b = new awk(awn.pD, 12000, 24000, false);
+   public static final awk c = new awk(awn.pE, 0, 0, true);
+   public static final awk d = new awk(awn.pY, 0, 0, true);
+   public static final awk e = new awk(awn.pZ, 6000, 24000, true);
+   public static final awk f = a(awn.qA);
+   public static final awk g = a(awn.qa);
 
-   public awl(jq<awn> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public jq<awn> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
+   public static awk a(jq<awm> $$0) {
+      return new awk($$0, 12000, 24000, false);
    }
 }

@@ -1,34 +1,34 @@
 public interface ev {
    ev a = new ev() {
       @Override
-      public void a(xl $$0) {
+      public void a(xj $$0) {
       }
 
       @Override
-      public boolean l_() {
+      public boolean x_() {
          return false;
       }
 
       @Override
-      public boolean w_() {
+      public boolean y_() {
          return false;
       }
 
       @Override
-      public boolean L_() {
+      public boolean c() {
          return false;
       }
    };
 
-   void a(xl var1);
+   void a(xj var1);
 
-   boolean l_();
+   boolean x_();
 
-   boolean w_();
+   boolean y_();
 
-   boolean L_();
+   boolean c();
 
-   default boolean m_() {
+   default boolean s_() {
       return false;
    }
 }

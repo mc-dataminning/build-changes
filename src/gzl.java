@@ -1,45 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
 public class gzl {
-   private static final gzu[] a = new gzu[]{
-      a("textures/entity/player/slim/alex.png", gzu.a.a),
-      a("textures/entity/player/slim/ari.png", gzu.a.a),
-      a("textures/entity/player/slim/efe.png", gzu.a.a),
-      a("textures/entity/player/slim/kai.png", gzu.a.a),
-      a("textures/entity/player/slim/makena.png", gzu.a.a),
-      a("textures/entity/player/slim/noor.png", gzu.a.a),
-      a("textures/entity/player/slim/steve.png", gzu.a.a),
-      a("textures/entity/player/slim/sunny.png", gzu.a.a),
-      a("textures/entity/player/slim/zuri.png", gzu.a.a),
-      a("textures/entity/player/wide/alex.png", gzu.a.b),
-      a("textures/entity/player/wide/ari.png", gzu.a.b),
-      a("textures/entity/player/wide/efe.png", gzu.a.b),
-      a("textures/entity/player/wide/kai.png", gzu.a.b),
-      a("textures/entity/player/wide/makena.png", gzu.a.b),
-      a("textures/entity/player/wide/noor.png", gzu.a.b),
-      a("textures/entity/player/wide/steve.png", gzu.a.b),
-      a("textures/entity/player/wide/sunny.png", gzu.a.b),
-      a("textures/entity/player/wide/zuri.png", gzu.a.b)
-   };
+   private static final BiMap<alj, gzk> i = HashBiMap.create();
+   public static final gzk a = a("single", gzq.b);
+   public static final gzk b = a("directory", gzn.b);
+   public static final gzk c = a("filter", gzr.b);
+   public static final gzk d = a("unstitch", gzs.b);
+   public static final gzk e = a("paletted_permutations", gzp.b);
+   public static Codec<gzk> f = alj.a.flatXmap($$0 -> {
+      gzk $$1 = (gzk)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      alj $$1 = (alj)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gzi> g = f.dispatch(gzi::a, gzk::a);
+   public static Codec<List<gzi>> h = g.listOf().fieldOf("sources").codec();
 
-   public static all a() {
-      return b().a();
-   }
-
-   public static gzu b() {
-      return a[6];
-   }
-
-   public static gzu a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static gzu a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gzu a(String $$0, gzu.a $$1) {
-      return new gzu(all.b($$0), null, null, null, $$1, true);
+   private static gzk a(String $$0, MapCodec<? extends gzi> $$1) {
+      gzk $$2 = new gzk($$1);
+      alj $$3 = alj.b($$0);
+      gzk $$4 = (gzk)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
+      }
    }
 }

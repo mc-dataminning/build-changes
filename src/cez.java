@@ -1,22 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-public class cez extends cfi {
-   public static final float a = 10.0F;
+public class cez extends cfl {
+   public static final float a = 8.0F;
 
    @Override
-   protected boolean a(bve $$0, bve $$1) {
-      return !$$0.ee().a(cei.U) && cfo.c($$0, $$1) && cip.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   protected boolean a(arp $$0, bvh $$1, bvh $$2) {
+      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfr.c($$0, $$1, $$2);
    }
 
-   private boolean e(bve $$0, bve $$1) {
-      List<UUID> $$2 = $$0.ee().c(cei.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cI());
+   private boolean a(bvh $$0, bvh $$1) {
+      return !$$0.eb().a(cel.U) && $$1.aq().a(axg.j);
+   }
+
+   private boolean b(bvh $$0) {
+      return $$0.aq().a(axg.i);
+   }
+
+   private boolean b(bvh $$0, bvh $$1) {
+      return $$1.g((bul)$$0) <= 64.0;
    }
 
    @Override
-   protected cei<bve> b() {
-      return cei.B;
+   protected cel<bvh> b() {
+      return cel.B;
    }
 }

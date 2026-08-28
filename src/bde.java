@@ -2,9 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bde extends bgt {
+public class bde extends bgv {
    public bde(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", bhy.B, "minecraft:shulker");
+      super($$0, $$1, "Colorless shulker entity fix", bia.B, "minecraft:shulker");
    }
 
    @Override

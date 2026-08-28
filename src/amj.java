@@ -1,84 +1,72 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class amj {
-   private static final Logger a = LogUtils.getLogger();
+   private static final int a = 2;
 
-   public static <D, R> CompletableFuture<R> a(amj.c $$0, amj.f<D> $$1, amj.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<dgc, aut> $$5 = $$0.a.a();
-         aut $$6 = (aut)$$5.getSecond();
-         jx<alu> $$7 = alu.a();
-         List<kd.a<?>> $$8 = axu.a($$6, $$7.a(alu.a));
-         ke.b $$9 = $$7.b(alu.b);
-         List<js.b<?>> $$10 = axu.a($$9, $$8);
-         ke.b $$11 = alg.a($$6, $$10, alg.a);
-         List<js.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
-         ke.b $$13 = alg.a($$6, $$12, alg.b);
-         dgc $$14 = (dgc)$$5.getFirst();
-         js.a $$15 = js.a.a($$12.stream());
-         amj.b<D> $$16 = $$1.get(new amj.a($$6, $$14, $$15, $$13));
-         jx<alu> $$17 = $$7.a(alu.b, $$11, $$16.b);
-         return alw.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$4x -> {
-            $$4x.g();
-            return $$2.create($$6, $$4x, $$17, $$16.a);
-         }, $$4);
-      } catch (Exception var18) {
-         return CompletableFuture.failedFuture(var18);
+   private static amj.b a(ag $$0, boolean $$1) {
+      Optional<at> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return amj.b.b;
+      } else if ($$1) {
+         return amj.b.a;
+      } else {
+         return $$2.get().j() ? amj.b.b : amj.b.c;
       }
    }
 
-   public static record a(ave a, dgc b, js.a c, ke.b d) {
+   private static boolean a(Stack<amj.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         amj.b $$2 = (amj.b)$$0.peek($$1);
+         if ($$2 == amj.b.a) {
+            return true;
+         }
+
+         if ($$2 == amj.b.b) {
+            return false;
+         }
+      }
+
+      return false;
    }
 
-   public static record b<D>(D a, ke.b b) {
+   private static boolean a(ai $$0, Stack<amj.b> $$1, Predicate<ai> $$2, amj.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      amj.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ai $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
+      }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
    }
 
-   public static record c(amj.d a, ex.a b, int c) {
-   }
+   public static void a(ai $$0, Predicate<ai> $$1, amj.a $$2) {
+      ai $$3 = $$0.d();
+      Stack<amj.b> $$4 = new ObjectArrayList();
 
-   public static record d(auo a, dgc b, boolean c, boolean d) {
-      public Pair<dgc, aut> a() {
-         dgc $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
-         List<atp> $$1 = this.a.h();
-         aut $$2 = new auw(atr.b, $$1);
-         return Pair.of($$0, $$2);
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(amj.b.c);
       }
 
-      public auo b() {
-         return this.a;
-      }
-
-      public dgc c() {
-         return this.b;
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+      a($$3, $$4, $$1, $$2);
    }
 
    @FunctionalInterface
-   public interface e<D, R> {
-      R create(aut var1, alw var2, jx<alu> var3, D var4);
+   public interface a {
+      void accept(ai var1, boolean var2);
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      amj.b<D> get(amj.a var1);
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

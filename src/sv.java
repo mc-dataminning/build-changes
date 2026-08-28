@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sv {
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sv {
+   String a();
 }

@@ -1,28 +1,36 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class ewr extends evt {
-   public static final MapCodec<ewr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cyc.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, ewr::new));
-   private final jq<cyc> b;
+public class ewr extends ewa {
+   public static final MapCodec<ewr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axs.b(ma.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ewr::new)
+   );
+   private final axs<cwf> b;
 
-   private ewr(List<exr> $$0, jq<cyc> $$1) {
+   private ewr(List<exy> $$0, axs<cwf> $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public evv<ewr> b() {
-      return evw.F;
+   public ewc<ewr> b() {
+      return ewd.G;
    }
 
    @Override
-   public cwf a(cwf $$0, eug $$1) {
-      $$0.a(ku.Q, cye.a, this.b, cye::b);
+   public cwm a(cwm $$0, eun $$1) {
+      kd<cwf> $$2 = $$1.d().J_().e(ma.I);
+      Optional<jq<cwf>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(ku.Z, $$3.get());
+      }
+
       return $$0;
    }
 
-   public static evt.a<?> a(jq<cyc> $$0) {
+   public static ewa.a<?> a(axs<cwf> $$0) {
       return a($$1 -> new ewr($$1, $$0));
    }
 }

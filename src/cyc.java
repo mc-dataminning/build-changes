@@ -1,43 +1,28 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
 
-public class cyc implements crg {
-   public static final Codec<jq<cyc>> a = lz.h.r();
-   public static final zj<ww, jq<cyc>> b = zh.b(ma.ad);
-   private final String c;
-   private final List<btn> d;
-   private crj e = crl.h;
-
-   public cyc(String $$0, btn... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cyc a(crh... $$0) {
-      this.e = crl.f.a($$0);
-      return this;
+public class cyc extends cun {
+   public cyc(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   public crj i() {
-      return this.e;
+   public cwm o() {
+      cwm $$0 = super.o();
+      $$0.b(ku.Q, new cyl(cym.C));
+      return $$0;
    }
 
-   public List<btn> a() {
-      return this.d;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      for (btn $$0 : this.d) {
-         if ($$0.c().a().a()) {
-            return true;
-         }
+   @Override
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      cyl $$4 = $$0.a(ku.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
       }
+   }
 
-      return false;
+   @Override
+   public xj a(cwm $$0) {
+      cyl $$1 = $$0.a(ku.Q);
+      return $$1 != null ? $$1.a(this.k + ".effect.") : super.a($$0);
    }
 }

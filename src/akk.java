@@ -1,18 +1,8 @@
 import io.netty.buffer.ByteBuf;
 
-public class akk implements zs<akj> {
-   public static final akk a = new akk();
-   public static final zj<ByteBuf, akk> b = zj.a(a);
-
-   private akk() {
-   }
-
-   @Override
-   public zu<akk> a() {
-      return akl.b;
-   }
-
-   public void a(akj $$0) {
-      $$0.a(this);
-   }
+public class akk {
+   public static final wr.a<akh, ByteBuf> a = zv.a(we.c, $$0 -> $$0.a(akj.b, aki.b).a(aka.b, akc.a));
+   public static final wr<akh> b = a.a($$0 -> $$0);
+   public static final wr.a<ake, wg> c = zv.b(we.c, $$0 -> $$0.a(akj.a, akf.a).a(aka.a, ajz.a));
+   public static final wr<ake> d = c.a(wg::new);
 }

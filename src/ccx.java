@@ -1,42 +1,32 @@
-import java.util.EnumSet;
+public class ccx extends cbw {
+   private final boolean a;
+   private int b;
 
-public class ccx extends ccc {
-   private final bvg a;
-   private double b;
-   private double c;
-   private int d;
-
-   public ccx(bvg $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccc.a.a, ccc.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.eb().i() < 0.02F;
+   public ccx(bvj $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean c() {
-      return this.d >= 0;
+      return this.a && this.b > 0 && super.c();
    }
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.eb().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.eb().a(20);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.a(false);
    }
 
    @Override
    public void a() {
-      this.d--;
-      this.a.K().a(this.a.dD() + this.b, this.a.dH(), this.a.dJ() + this.c);
+      this.b--;
+      super.a();
    }
 }

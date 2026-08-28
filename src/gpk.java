@@ -1,21 +1,72 @@
-public class gpk extends gqg<clp, gvo, fzf> {
-   private static final all a = all.b("textures/entity/ghast/ghast.png");
-   private static final all b = all.b("textures/entity/ghast/ghast_shooting.png");
+@FunctionalInterface
+public interface gpk<T extends bul> {
+   gpj<T, ?> create(gpk.a var1);
 
-   public gpk(gpa.a $$0) {
-      super($$0, new fzf($$0.a(gcb.aD)), 1.5F);
-   }
+   public static class a {
+      private final gpi a;
+      private final gqi b;
+      private final gjf c;
+      private final gkj d;
+      private final avd e;
+      private final gch f;
+      private final hbl g;
+      private final flo h;
+      private final gtj i;
 
-   public all a(gvo $$0) {
-      return $$0.a ? b : a;
-   }
+      public a(gpi $$0, gqi $$1, gjf $$2, gkj $$3, avd $$4, gch $$5, hbl $$6, flo $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gtj($$6, this.i().a(gkb.g));
+      }
 
-   public gvo c() {
-      return new gvo();
-   }
+      public gpi a() {
+         return this.a;
+      }
 
-   public void a(clp $$0, gvo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+      public gqi b() {
+         return this.b;
+      }
+
+      public gjf c() {
+         return this.c;
+      }
+
+      public gkj d() {
+         return this.d;
+      }
+
+      public avd e() {
+         return this.e;
+      }
+
+      public gch f() {
+         return this.f;
+      }
+
+      public hbl g() {
+         return this.g;
+      }
+
+      public gtj h() {
+         return this.i;
+      }
+
+      public hbt i() {
+         return this.d.a().a();
+      }
+
+      public gcl a(gcj $$0) {
+         return this.f.a($$0);
+      }
+
+      public flo j() {
+         return this.h;
+      }
    }
 }

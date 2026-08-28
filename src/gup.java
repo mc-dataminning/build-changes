@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gup extends gux {
-   @Nullable
-   public bug.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gup {
 }

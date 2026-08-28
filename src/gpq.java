@@ -1,35 +1,34 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gpq extends gpj<cpi, gvv> {
+   private final gqi a;
 
-public final class gpq extends gnr<cjb, gvs, fzl> {
-   private static final Map<cji, all> a = ae.a(Maps.newEnumMap(cji.class), $$0 -> {
-      $$0.put(cji.a, all.b("textures/entity/horse/horse_white.png"));
-      $$0.put(cji.b, all.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cji.c, all.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cji.d, all.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(cji.e, all.b("textures/entity/horse/horse_black.png"));
-      $$0.put(cji.f, all.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(cji.g, all.b("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gpq(gpa.a $$0) {
-      super($$0, new fzl($$0.a(gcb.aP)), new fzl($$0.a(gcb.aQ)), 1.1F);
-      this.a(new gtc(this));
-      this.a(new gtb(this, $$0.f(), $$0.h()));
+   public gpq(gpk.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public all a(gvs $$0) {
-      return a.get($$0.a);
+   public void a(gvv $$0, fer $$1, gjg $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.e.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.c, cwk.h, false, $$1, $$2, $$3, gyv.d, $$0.b);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvs c() {
-      return new gvs();
+   public gvv a() {
+      return new gvv();
    }
 
-   public void a(cjb $$0, gvs $$1, float $$2) {
+   public void a(cpi $$0, gvv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.ak().v();
+      $$1.a = $$0.l();
+      cwm $$3 = $$0.j();
+      $$1.c = $$3.v();
+      $$1.b = !$$3.f() ? this.a.a($$3, $$0.dV(), null, $$0.ar()) : null;
    }
 }

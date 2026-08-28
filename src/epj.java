@@ -1,45 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class epj extends eqa {
-   public static final MapCodec<epj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebj.a.g.fieldOf("heightmap").orElse(ebj.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, epj::new)
-   );
-   private final ebj.a b;
-   private final int c;
+public class epj extends eqh {
+   public static final MapCodec<epj> a = MapCodec.unit(() -> epj.b);
+   public static final epj b = new epj();
+   private final Map<diq, diq> c = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dis.m, dis.pr);
+      $$0.put(dis.cn, dis.pr);
+      $$0.put(dis.b, dis.pv);
+      $$0.put(dis.eH, dis.pw);
+      $$0.put(dis.eI, dis.pw);
+      $$0.put(dis.cQ, dis.ps);
+      $$0.put(dis.ni, dis.ps);
+      $$0.put(dis.nk, dis.pD);
+      $$0.put(dis.fj, dis.pA);
+      $$0.put(dis.ng, dis.pA);
+      $$0.put(dis.jI, dis.pu);
+      $$0.put(dis.nw, dis.pu);
+      $$0.put(dis.jE, dis.pE);
+      $$0.put(dis.jD, dis.pE);
+      $$0.put(dis.jK, dis.pz);
+      $$0.put(dis.nu, dis.pz);
+      $$0.put(dis.nK, dis.pB);
+      $$0.put(dis.nI, dis.pB);
+      $$0.put(dis.fP, dis.pt);
+      $$0.put(dis.fQ, dis.pt);
+      $$0.put(dis.eK, dis.py);
+      $$0.put(dis.eJ, dis.px);
+      $$0.put(dis.eW, dis.eX);
+   });
 
-   public epj(ebj.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private epj() {
    }
 
-   @Nullable
    @Override
-   public eqd.c a(dfi $$0, jh $$1, jh $$2, eqd.c $$3, eqd.c $$4, epz $$5) {
-      ebj.a $$6;
-      if ($$0 instanceof arq) {
-         if (this.b == ebj.a.a) {
-            $$6 = ebj.a.b;
-         } else if (this.b == ebj.a.c) {
-            $$6 = ebj.a.d;
-         } else {
-            $$6 = this.b;
-         }
+   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
+      diq $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         $$6 = this.b;
-      }
+         dvv $$7 = $$4.b();
+         dvv $$8 = $$6.m();
+         if ($$7.b(dqk.b)) {
+            $$8 = $$8.b(dqk.b, $$7.c(dqk.b));
+         }
 
-      jh $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new eqd.c(new jh($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+         if ($$7.b(dqk.c)) {
+            $$8 = $$8.b(dqk.c, $$7.c(dqk.c));
+         }
+
+         if ($$7.b(dpt.b)) {
+            $$8 = $$8.b(dpt.b, $$7.c(dpt.b));
+         }
+
+         return new eqk.c($$4.a(), $$8, $$4.c());
+      }
    }
 
    @Override
-   protected eqc<?> a() {
-      return eqc.g;
+   protected eqj<?> a() {
+      return eqj.l;
    }
 }

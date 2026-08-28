@@ -1,42 +1,29 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 
 public class rg {
-   public static final alk<enl> a = ri.a("pillager_outpost/base_plates");
+   public static final ali<ens> a = a("empty");
 
-   public static void a(rb<enl> $$0) {
-      jr<eqb> $$1 = $$0.a(ma.aT);
-      jq<eqb> $$2 = $$1.b(rj.q);
-      jr<enl> $$3 = $$0.a(ma.aV);
-      jq<enl> $$4 = $$3.b(ri.a);
-      $$0.a(a, new enl($$4, ImmutableList.of(Pair.of(enj.a("pillager_outpost/base_plate"), 1)), enl.a.b));
-      ri.a(
-         $$0,
-         "pillager_outpost/towers",
-         new enl(
-            $$4,
-            ImmutableList.of(Pair.of(enj.b(ImmutableList.of(enj.a("pillager_outpost/watchtower"), enj.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            enl.a.b
-         )
-      );
-      ri.a($$0, "pillager_outpost/feature_plates", new enl($$4, ImmutableList.of(Pair.of(enj.a("pillager_outpost/feature_plate"), 1)), enl.a.a));
-      ri.a(
-         $$0,
-         "pillager_outpost/features",
-         new enl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(enj.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(enj.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(enj.h(), 6)
-            ),
-            enl.a.b
-         )
-      );
+   public static ali<ens> a(String $$0) {
+      return ali.a(ma.aV, alj.b($$0));
+   }
+
+   public static ali<ens> b(String $$0) {
+      return ali.a(ma.aV, alj.a($$0));
+   }
+
+   public static void a(qz<ens> $$0, String $$1, ens $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(qz<ens> $$0) {
+      jr<ens> $$1 = $$0.a(ma.aV);
+      jq<ens> $$2 = $$1.b(a);
+      $$0.a(a, new ens($$2, ImmutableList.of(), ens.a.b));
+      qv.a($$0);
+      re.a($$0);
+      rr.a($$0);
+      qq.a($$0);
+      rp.a($$0);
+      rq.a($$0);
    }
 }

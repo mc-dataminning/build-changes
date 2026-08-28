@@ -1,30 +1,48 @@
-public class cdm extends ccc {
-   private final bvm a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cdm(bvm $$0) {
+public class cdm extends ccf {
+   private final clk a;
+   @Nullable
+   private bvh b;
+
+   public cdm(clk $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(ccf.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.aL() && !this.a.dY().b_(this.a.dy()).a(axj.a);
+      bvh $$0 = this.a.aa_();
+      return this.a.v() > 0 || $$0 != null && this.a.g((bul)$$0) < 9.0;
    }
 
    @Override
    public void d() {
-      jh $$0 = null;
+      this.a.L().o();
+      this.b = this.a.aa_();
+   }
 
-      for (jh $$2 : jh.b(
-         azn.a(this.a.dD() - 2.0), azn.a(this.a.dF() - 2.0), azn.a(this.a.dJ() - 2.0), azn.a(this.a.dD() + 2.0), this.a.dE(), azn.a(this.a.dJ() + 2.0)
-      )) {
-         if (this.a.dY().b_($$2).a(axj.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void e() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.M().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bul)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.N().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

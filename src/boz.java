@@ -1,91 +1,51 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public interface boz {
-   boz f = (boz)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? boy.a() : new boz.a());
-
-   boolean a(box var1);
-
-   Path b();
-
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(wg var1, zu<?> var2, SocketAddress var3, int var4);
-
-   void b(wg var1, zu<?> var2, SocketAddress var3, int var4);
-
-   void a(dzc var1, del var2, dzb var3, int var4);
-
-   void b(dzc var1, del var2, dzb var3, int var4);
-
+public class boz implements AutoCloseable {
+   public static final boz a = new boz(null);
    @Nullable
-   bpc e();
+   private final bou b;
 
-   @Nullable
-   bpc a(del var1, alk<dff> var2, String var3);
+   boz(@Nullable bou $$0) {
+      this.b = $$0;
+   }
 
-   public static class a implements boz {
-      private static final Logger b = LogUtils.getLogger();
-      static final bpc a = () -> {
-      };
-
-      @Override
-      public boolean a(box $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+   public boz a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
       }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      return this;
+   }
+
+   public boz a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
       }
 
-      @Override
-      public boolean c() {
-         return false;
+      return this;
+   }
+
+   public boz a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      @Override
-      public boolean d() {
-         return false;
+      return this;
+   }
+
+   public boz a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      @Override
-      public void a(wg $$0, zu<?> $$1, SocketAddress $$2, int $$3) {
-      }
+      return this;
+   }
 
-      @Override
-      public void b(wg $$0, zu<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dzc $$0, del $$1, dzb $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dzc $$0, del $$1, dzb $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bpc e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bpc a(del $$0, alk<dff> $$1, String $$2) {
-         return null;
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
       }
    }
 }

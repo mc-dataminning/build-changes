@@ -1,7 +1,6 @@
-public interface hdx<T> {
-   int e();
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-   T b(azv var1);
-
-   void a(hds var1);
+public interface hdx extends hdu {
+   ByteBuffer b() throws IOException;
 }

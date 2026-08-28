@@ -1,100 +1,65 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 
-public class ayt implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public class ayt {
+   final LoadingCache<ayt.a<?, ?>, DataResult<?>> a;
 
-   public static ayt a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+   public ayt(int $$0) {
+      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<ayt.a<?, ?>, DataResult<?>>() {
+         public DataResult<?> a(ayt.a<?, ?> $$0) {
+            return $$0.a();
+         }
+      });
+   }
 
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw ayt.a.a($$1);
+   public <A> Codec<A> a(final Codec<A> $$0) {
+      return new Codec<A>() {
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
+            return $$0.decode($$0, $$1);
+         }
+
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
+            return ((DataResult)ayt.this.a.getUnchecked(new ayt.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof vi $$1x ? $$1x.d() : $$0xx);
+         }
+      };
+   }
+
+   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
+      public DataResult<T> a() {
+         return this.a.encodeStart(this.c, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            return new ayt($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
-   }
-
-   private ayt(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
+            return !($$0 instanceof ayt.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
          }
       }
-   }
 
-   public boolean a() {
-      return this.c.isValid();
-   }
-
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
-      }
-   }
-
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
-   }
-
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
+      @Override
+      public int hashCode() {
+         int $$0 = System.identityHashCode(this.a);
+         $$0 = 31 * $$0 + this.b.hashCode();
+         return 31 * $$0 + this.c.hashCode();
       }
 
-      public static ayt.a a(Path $$0) {
-         return new ayt.a($$0, "already locked (possibly by other Minecraft instance?)");
+      public Codec<A> b() {
+         return this.a;
+      }
+
+      public A c() {
+         return this.b;
+      }
+
+      public DynamicOps<T> d() {
+         return this.c;
       }
    }
 }

@@ -1,20 +1,20 @@
-public record afz(int b) implements zs<ach> {
-   public static final zj<wi, afz> a = zs.a(afz::a, afz::new);
-
-   private afz(wi $$0) {
-      this($$0.l());
-   }
-
-   private void a(wi $$0) {
-      $$0.c(this.b);
-   }
+public record afz(long b, long c, boolean d) implements zq<acf> {
+   public static final zh<wg, afz> a = zh.a(zf.i, afz::b, zf.i, afz::e, zf.b, afz::f, afz::new);
 
    @Override
-   public zu<afz> a() {
-      return agw.aN;
+   public zs<afz> a() {
+      return agu.aP;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public long e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

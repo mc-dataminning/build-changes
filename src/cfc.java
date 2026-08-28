@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class cfc extends cfo<bve> {
+public class cfc extends cfl {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cei<?>> a() {
-      return ImmutableSet.of(cei.x, cei.y);
+   protected boolean a(arp $$0, bvh $$1, bvh $$2) {
+      return !$$1.eb().a(cel.U) && cfr.c($$0, $$1, $$2) && cis.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
+   }
+
+   private boolean a(bvh $$0, bvh $$1) {
+      List<UUID> $$2 = $$0.eb().c(cel.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
    @Override
-   protected void a(arq $$0, bve $$1) {
-      bwg<?> $$2 = $$1.ee();
-      bsy $$3 = $$1.eJ();
-      if ($$3 != null) {
-         $$2.a(cei.x, $$1.eJ());
-         bui $$4 = $$3.d();
-         if ($$4 instanceof bve) {
-            $$2.a(cei.y, (bve)$$4);
-         }
-      } else {
-         $$2.b(cei.x);
-      }
-
-      $$2.c(cei.y).ifPresent($$2x -> {
-         if (!$$2x.bN() || $$2x.dY() != $$0) {
-            $$2.b(cei.y);
-         }
-      });
+   protected cel<bvh> b() {
+      return cel.B;
    }
 }

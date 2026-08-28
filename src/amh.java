@@ -1,78 +1,84 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class amh {
-   private static final int a = 8;
-   private final Queue<amh.a> b = new aya<>();
-   private final Object2IntLinkedOpenHashMap<amh.b> c = new Object2IntLinkedOpenHashMap();
+   private static final Logger a = LogUtils.getLogger();
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public static <D, R> CompletableFuture<R> a(amh.c $$0, amh.f<D> $$1, amh.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<dgj, aus> $$5 = $$0.a.a();
+         aus $$6 = (aus)$$5.getSecond();
+         jx<als> $$7 = als.a();
+         List<kd.a<?>> $$8 = axt.a($$6, $$7.a(als.a));
+         ke.b $$9 = $$7.b(als.b);
+         List<js.b<?>> $$10 = axt.a($$9, $$8);
+         ke.b $$11 = ale.a($$6, $$10, ale.a);
+         List<js.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
+         ke.b $$13 = ale.a($$6, $$12, ale.b);
+         dgj $$14 = (dgj)$$5.getFirst();
+         js.a $$15 = js.a.a($$12.stream());
+         amh.b<D> $$16 = $$1.get(new amh.a($$6, $$14, $$15, $$13));
+         jx<als> $$17 = $$7.a(als.b, $$11, $$16.b);
+         return alu.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$17, $$16.a);
+         }, $$4);
+      } catch (Exception var18) {
+         return CompletableFuture.failedFuture(var18);
+      }
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new amh.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
+   public static record a(avd a, dgj b, js.a c, ke.b d) {
+   }
 
-      while (this.b.size() > 8) {
-         this.b.remove();
+   public static record b<D>(D a, ke.b b) {
+   }
+
+   public static record c(amh.d a, ex.a b, int c) {
+   }
+
+   public static record d(aun a, dgj b, boolean c, boolean d) {
+      public Pair<dgj, aus> a() {
+         dgj $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+         List<ato> $$1 = this.a.h();
+         aus $$2 = new auv(atq.b, $$1);
+         return Pair.of($$0, $$2);
       }
 
-      amh.b $$4 = new amh.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
-   }
-
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (amh.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
-         }
+      public aun b() {
+         return this.a;
       }
 
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<amh.b> $$3 = (Entry<amh.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((amh.b)$$3.getKey()).a)
-               .append(":")
-               .append(((amh.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
-         }
+      public dgj c() {
+         return this.b;
       }
 
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(aus var1, alu var2, jx<als> var3, D var4);
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   @FunctionalInterface
+   public interface f<D> {
+      amh.b<D> get(amh.a var1);
    }
 }

@@ -1,38 +1,51 @@
-public class gbc extends fza<gwo> {
-   private static final int a = 2;
-   private final gcc[] b = new gcc[2];
+public class gbc extends fzj<gxi> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final gcl c;
+   private final gcl d;
 
-   public gbc(gcc $$0) {
-      super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+   public gbc(gcl $$0) {
+      super($$0, gjq::g);
+      this.c = $$0.b("lid");
+      this.d = $$0.b("head");
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   private static gct c() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("lid", gcq.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gcn.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", gcq.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gcn.a(0.0F, 24.0F, 0.0F));
+      return $$0;
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gch.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gce.a.a($$4));
-      }
-
-      return gci.a($$0, 64, 64);
+   public static gcr a() {
+      gct $$0 = c();
+      $$0.a().a("head", gcq.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gcn.a(0.0F, 12.0F, 0.0F));
+      return gcr.a($$0, 64, 64);
    }
 
-   public void a(gwo $$0) {
+   public static gcr b() {
+      gct $$0 = c();
+      return gcr.a($$0, 64, 64);
+   }
+
+   public void a(gxi $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.p * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azn.h($$2) * (float) (Math.PI / 180.0);
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azm.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azm.a($$0.p * 0.1F) * 0.7F;
       }
+
+      this.c.a(0.0F, 16.0F + azm.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.c.f = 0.0F;
+      }
+
+      this.d.e = $$0.V * (float) (Math.PI / 180.0);
+      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

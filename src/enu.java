@@ -1,53 +1,38 @@
-public class enu {
-   public static class a extends emf {
-      public a(jh $$0) {
-         super(ems.aa, 0, new elt($$0));
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-      public a(un $$0) {
-         super(ems.aa, $$0);
-      }
+public interface enu {
+   Codec<enu> b = lz.ah.q().dispatch(enu::b, Function.identity());
 
-      @Override
-      protected void a(emr $$0, un $$1) {
-      }
+   void a(azu var1, BiConsumer<ali<ens>, ali<ens>> var2);
 
-      @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         int $$7 = $$0.a(ebj.a.c, this.f.h(), this.f.j());
-         jh.a $$8 = new jh.a(this.f.h(), $$7, this.f.j());
+   Stream<ali<ens>> a();
 
-         while ($$8.v() > $$0.I_()) {
-            dvo $$9 = $$0.a_($$8);
-            dvo $$10 = $$0.a_($$8.e());
-            if ($$10 == dil.aV.m() || $$10 == dil.b.m() || $$10 == dil.g.m() || $$10 == dil.c.m() || $$10 == dil.e.m()) {
-               dvo $$11 = !$$9.l() && !this.b($$9) ? $$9 : dil.I.m();
-
-               for (jm $$12 : jm.values()) {
-                  jh $$13 = $$8.a($$12);
-                  dvo $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     jh $$15 = $$13.e();
-                     dvo $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != jm.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new elt($$8);
-               this.a($$0, $$4, $$3, $$8, euc.F, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(dvo $$0) {
-         return $$0 == dil.G.m() || $$0 == dil.H.m();
-      }
+   static ent a(String $$0, String $$1) {
+      return a(rg.a($$0), rg.a($$1));
    }
+
+   static ent a(ali<ens> $$0, ali<ens> $$1) {
+      return new ent($$0, $$1);
+   }
+
+   static enx a(String $$0, bqs<String> $$1) {
+      bqs.a<ali<ens>> $$2 = bqs.a();
+      $$1.e().forEach($$1x -> $$2.a(rg.a((String)$$1x.b()), $$1x.a().a()));
+      return a(rg.a($$0), $$2.a());
+   }
+
+   static enx a(ali<ens> $$0, bqs<ali<ens>> $$1) {
+      return new enx($$0, $$1);
+   }
+
+   static eny a(bqs<List<enu>> $$0) {
+      return new eny($$0);
+   }
+
+   MapCodec<? extends enu> b();
 }

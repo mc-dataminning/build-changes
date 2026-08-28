@@ -1,20 +1,21 @@
-public interface ezv {
-   ezv a = ($$0, $$1) -> false;
-   ezv b = ($$0, $$1) -> !$$0 && !$$1;
-   ezv c = ($$0, $$1) -> $$1 && !$$0;
-   ezv d = ($$0, $$1) -> !$$0;
-   ezv e = ($$0, $$1) -> $$0 && !$$1;
-   ezv f = ($$0, $$1) -> !$$1;
-   ezv g = ($$0, $$1) -> $$0 != $$1;
-   ezv h = ($$0, $$1) -> !$$0 || !$$1;
-   ezv i = ($$0, $$1) -> $$0 && $$1;
-   ezv j = ($$0, $$1) -> $$0 == $$1;
-   ezv k = ($$0, $$1) -> $$1;
-   ezv l = ($$0, $$1) -> !$$0 || $$1;
-   ezv m = ($$0, $$1) -> $$0;
-   ezv n = ($$0, $$1) -> $$0 || !$$1;
-   ezv o = ($$0, $$1) -> $$0 || $$1;
-   ezv p = ($$0, $$1) -> true;
+public class ezv extends ezw {
+   private final bul b;
 
-   boolean apply(boolean var1, boolean var2);
+   public ezv(bul $$0) {
+      this($$0, $$0.dt());
+   }
+
+   public ezv(bul $$0, ezy $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bul a() {
+      return this.b;
+   }
+
+   @Override
+   public ezw.a d() {
+      return ezw.a.c;
+   }
 }

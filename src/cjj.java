@@ -1,57 +1,87 @@
 import javax.annotation.Nullable;
 
-public class cjj extends ciz {
-   private static final bul bY = bup.bv.n().a(buk.a().a(buj.a, 0.0F, bup.bv.m() - 0.03125F, 0.0F)).a(0.5F);
+public class cjj extends ccf {
+   private final cji a;
 
-   public cjj(bup<? extends cjj> $$0, dff $$1) {
-      super($$0, $$1);
-   }
-
-   public static bwl.a q() {
-      return gX().a(bwm.s, 15.0).a(bwm.v, 0.2F);
-   }
-
-   public static boolean c(bup<? extends cgv> $$0, dfg $$1, buo $$2, jh $$3, azv $$4) {
-      return !buo.a($$2) ? cgv.b($$0, $$1, $$2, $$3, $$4) : buo.b($$2) || a($$1, $$3);
+   public cjj(cji $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(azv $$0) {
-      this.g(bwm.o).a(a($$0::j));
+   public boolean b() {
+      return this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), 10.0);
    }
 
    @Override
-   protected awn w() {
-      return awo.DE;
-   }
+   public void a() {
+      arp $$0 = (arp)this.a.dV();
+      bsi $$1 = $$0.d_(this.a.dv());
+      this.a.x(false);
+      this.a.y(true);
+      this.a.c_(0);
+      bvg $$2 = bus.av.a($$0, bur.k);
+      if ($$2 != null) {
+         $$2.e(this.a.dA(), this.a.dC(), this.a.dG());
+         $$2.a(true);
+         $$0.b($$2);
+         cmg $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-   @Override
-   protected awn o_() {
-      return awo.DF;
-   }
-
-   @Override
-   protected awn d(bsy $$0) {
-      return awo.DG;
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               cjc $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cmg $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.dY().a(0.0, 1.1485), 0.0, this.a.dY().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public btz a(arq $$0, btz $$1) {
-      return bup.bv.a($$0, buo.e);
+   private cjc a(bsi $$0) {
+      cji $$1 = bus.bc.a(this.a.dV(), bur.k);
+      if ($$1 != null) {
+         $$1.a((arp)this.a.dV(), $$0, bur.k, null);
+         $$1.a_(this.a.dA(), this.a.dC(), this.a.dG());
+         $$1.aj = 60;
+         $$1.ai();
+         $$1.y(true);
+         $$1.c_(0);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public bsh b(cor $$0, bsg $$1) {
-      return (bsh)(!this.gM() ? bsh.e : super.b($$0, $$1));
+   @Nullable
+   private cmg a(bsi $$0, cjc $$1) {
+      cmg $$2 = bus.bb.a($$1.dV(), bur.k);
+      if ($$2 != null) {
+         $$2.a((arp)$$1.dV(), $$0, bur.k, null);
+         $$2.a_($$1.dA(), $$1.dC(), $$1.dG());
+         $$2.aj = 60;
+         $$2.ai();
+         if ($$2.a(but.f).f()) {
+            $$2.a(but.f, new cwm(cwq.pH));
+         }
+
+         this.a($$2, but.a, $$0);
+         this.a($$2, but.f, $$0);
+      }
+
+      return $$2;
    }
 
-   @Override
-   protected void gN() {
-   }
-
-   @Override
-   public bul e(bvq $$0) {
-      return this.p_() ? bY : super.e($$0);
+   private void a(cmg $$0, but $$1, bsi $$2) {
+      cwm $$3 = $$0.a($$1);
+      $$3.b(ku.l, dcj.a);
+      dcf.a($$3, $$0.dV().J_(), ddr.a, $$2, $$0.dY());
+      $$0.a($$1, $$3);
    }
 }

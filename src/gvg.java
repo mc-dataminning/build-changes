@@ -1,3 +1,4 @@
-public class gvg extends gvu {
-   public boolean a;
+public class gvg extends gwm {
+   public float a;
+   public float b;
 }

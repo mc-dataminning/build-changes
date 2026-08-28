@@ -5,22 +5,22 @@ public interface eu {
    eu a = new eu() {
       @Nullable
       @Override
-      public yb a(String $$0) {
+      public xz a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   yb a(String var1);
+   xz a(String var1);
 
-   public static record a(Map<String, yb> b) implements eu {
+   public static record a(Map<String, xz> b) implements eu {
       @Nullable
       @Override
-      public yb a(String $$0) {
+      public xz a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, yb> a() {
+      public Map<String, xz> a() {
          return this.b;
       }
    }

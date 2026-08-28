@@ -1,5 +1,7 @@
-public class gwr extends gwb {
-   public float a;
-   public boolean b;
-   public chp.g c = chp.g.a;
+public class gwr extends gwm {
+   public chl.a a;
+
+   public gwr() {
+      this.a = chl.a.a;
+   }
 }

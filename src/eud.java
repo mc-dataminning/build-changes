@@ -1,38 +1,54 @@
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface eud<T> {
-   kt<T> a();
+public class eud {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final ett d;
+   private final boolean e;
 
-   T b();
-
-   T a(T var1, Stream<cwf> var2);
-
-   Stream<cwf> a(T var1);
-
-   default void a(cwf $$0, T $$1, Stream<cwf> $$2) {
-      T $$3 = $$0.a(this.a(), $$1);
-      T $$4 = this.a($$3, $$2);
-      $$0.b(this.a(), $$4);
+   private eud(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new ett($$3, $$4);
+      this.e = $$5;
    }
 
-   default void a(cwf $$0, Stream<cwf> $$1) {
-      this.a($$0, this.b(), $$1);
+   public static eud a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eud(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(ett.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new eud($$1, $$2, "", 0, ett.a, false);
    }
 
-   default void a(cwf $$0, UnaryOperator<cwf> $$1) {
-      T $$2 = $$0.a(this.a());
-      if ($$2 != null) {
-         UnaryOperator<cwf> $$3 = $$1x -> {
-            if ($$1x.f()) {
-               return $$1x;
-            } else {
-               cwf $$2x = $$1.apply($$1x);
-               $$2x.f($$2x.k());
-               return $$2x;
-            }
-         };
-         this.a($$0, this.a($$2).map($$3));
-      }
+   public int a() {
+      return this.a;
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public ett d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

@@ -1,65 +1,69 @@
 public class sm {
-   public static final alk<elf> a = sr.a("monster_room");
-   public static final alk<elf> b = sr.a("monster_room_deep");
-   public static final alk<elf> c = sr.a("fossil_upper");
-   public static final alk<elf> d = sr.a("fossil_lower");
-   public static final alk<elf> e = sr.a("dripstone_cluster");
-   public static final alk<elf> f = sr.a("large_dripstone");
-   public static final alk<elf> g = sr.a("pointed_dripstone");
-   public static final alk<elf> h = sr.a("underwater_magma");
-   public static final alk<elf> i = sr.a("glow_lichen");
-   public static final alk<elf> j = sr.a("rooted_azalea_tree");
-   public static final alk<elf> k = sr.a("cave_vines");
-   public static final alk<elf> l = sr.a("lush_caves_vegetation");
-   public static final alk<elf> m = sr.a("lush_caves_clay");
-   public static final alk<elf> n = sr.a("lush_caves_ceiling_vegetation");
-   public static final alk<elf> o = sr.a("spore_blossom");
-   public static final alk<elf> p = sr.a("classic_vines_cave_feature");
-   public static final alk<elf> q = sr.a("amethyst_geode");
-   public static final alk<elf> r = sr.a("sculk_patch_deep_dark");
-   public static final alk<elf> s = sr.a("sculk_patch_ancient_city");
-   public static final alk<elf> t = sr.a("sculk_vein");
+   public static final ali<elm> a = sp.a("ice_spike");
+   public static final ali<elm> b = sp.a("ice_patch");
+   public static final ali<elm> c = sp.a("forest_rock");
+   public static final ali<elm> d = sp.a("iceberg_packed");
+   public static final ali<elm> e = sp.a("iceberg_blue");
+   public static final ali<elm> f = sp.a("blue_ice");
+   public static final ali<elm> g = sp.a("lake_lava_underground");
+   public static final ali<elm> h = sp.a("lake_lava_surface");
+   public static final ali<elm> i = sp.a("disk_clay");
+   public static final ali<elm> j = sp.a("disk_gravel");
+   public static final ali<elm> k = sp.a("disk_sand");
+   public static final ali<elm> l = sp.a("disk_grass");
+   public static final ali<elm> m = sp.a("freeze_top_layer");
+   public static final ali<elm> n = sp.a("void_start_platform");
+   public static final ali<elm> o = sp.a("desert_well");
+   public static final ali<elm> p = sp.a("spring_lava");
+   public static final ali<elm> q = sp.a("spring_lava_frozen");
+   public static final ali<elm> r = sp.a("spring_water");
 
-   public static void a(rb<elf> $$0) {
-      jr<eeb<?, ?>> $$1 = $$0.a(ma.aJ);
-      jq<eeb<?, ?>> $$2 = $$1.b(sa.a);
-      jq<eeb<?, ?>> $$3 = $$1.b(sa.b);
-      jq<eeb<?, ?>> $$4 = $$1.b(sa.c);
-      jq<eeb<?, ?>> $$5 = $$1.b(sa.d);
-      jq<eeb<?, ?>> $$6 = $$1.b(sa.e);
-      jq<eeb<?, ?>> $$7 = $$1.b(sa.f);
-      jq<eeb<?, ?>> $$8 = $$1.b(sa.g);
-      jq<eeb<?, ?>> $$9 = $$1.b(sa.h);
-      jq<eeb<?, ?>> $$10 = $$1.b(sa.i);
-      jq<eeb<?, ?>> $$11 = $$1.b(sa.j);
-      jq<eeb<?, ?>> $$12 = $$1.b(sa.m);
-      jq<eeb<?, ?>> $$13 = $$1.b(sa.r);
-      jq<eeb<?, ?>> $$14 = $$1.b(sa.s);
-      jq<eeb<?, ?>> $$15 = $$1.b(sa.t);
-      jq<eeb<?, ?>> $$16 = $$1.b(si.c);
-      jq<eeb<?, ?>> $$17 = $$1.b(sa.u);
-      jq<eeb<?, ?>> $$18 = $$1.b(sa.v);
-      jq<eeb<?, ?>> $$19 = $$1.b(sa.w);
-      jq<eeb<?, ?>> $$20 = $$1.b(sa.x);
-      sr.a($$0, a, $$2, ekx.a(10), elc.a(), ela.a(ecd.a(0), ecd.b()), ekt.a());
-      sr.a($$0, b, $$2, ekx.a(4), elc.a(), ela.a(ecd.b(6), ecd.a(-1)), ekt.a());
-      sr.a($$0, c, $$3, ell.a(64), elc.a(), ela.a(ecd.a(0), ecd.b()), ekt.a());
-      sr.a($$0, d, $$4, ell.a(64), elc.a(), ela.a(ecd.a(), ecd.a(-8)), ekt.a());
-      sr.a($$0, e, $$5, ekx.a(brs.a(48, 96)), elc.a(), sr.i, ekt.a());
-      sr.a($$0, f, $$6, ekx.a(brs.a(10, 48)), elc.a(), sr.i, ekt.a());
-      sr.a($$0, g, $$7, ekx.a(brs.a(192, 256)), elc.a(), sr.i, ekx.a(brs.a(1, 5)), elk.a(brh.a(0.0F, 3.0F, -10, 10), brh.a(0.0F, 0.6F, -2, 2)), ekt.a());
-      sr.a($$0, h, $$8, ekx.a(brs.a(44, 52)), elc.a(), sr.i, eln.a(ebj.a.c, Integer.MIN_VALUE, -2), ekt.a());
-      sr.a($$0, i, $$9, ekx.a(brs.a(104, 157)), sr.i, elc.a(), eln.a(ebj.a.c, Integer.MIN_VALUE, -13), ekt.a());
-      sr.a($$0, j, $$10, ekx.a(brs.a(1, 2)), elc.a(), sr.i, eky.a(jm.b, ecq.c(), ecq.c, 12), elk.a(brj.a(-1)), ekt.a());
-      sr.a($$0, k, $$11, ekx.a(188), elc.a(), sr.i, eky.a(jm.b, ecq.a(jm.a), ecq.c, 12), elk.a(brj.a(-1)), ekt.a());
-      sr.a($$0, l, $$12, ekx.a(125), elc.a(), sr.i, eky.a(jm.a, ecq.c(), ecq.c, 12), elk.a(brj.a(1)), ekt.a());
-      sr.a($$0, m, $$13, ekx.a(62), elc.a(), sr.i, eky.a(jm.a, ecq.c(), ecq.c, 12), elk.a(brj.a(1)), ekt.a());
-      sr.a($$0, n, $$14, ekx.a(125), elc.a(), sr.i, eky.a(jm.b, ecq.c(), ecq.c, 12), elk.a(brj.a(-1)), ekt.a());
-      sr.a($$0, o, $$15, ekx.a(25), elc.a(), sr.i, eky.a(jm.b, ecq.c(), ecq.c, 12), elk.a(brj.a(-1)), ekt.a());
-      sr.a($$0, p, $$16, ekx.a(256), elc.a(), sr.i, ekt.a());
-      sr.a($$0, q, $$17, ell.a(24), elc.a(), ela.a(ecd.b(6), ecd.a(30)), ekt.a());
-      sr.a($$0, r, $$18, ekx.a(brj.a(256)), elc.a(), sr.i, ekt.a());
-      sr.a($$0, s, $$19);
-      sr.a($$0, t, $$20, ekx.a(brs.a(204, 250)), elc.a(), sr.i, ekt.a());
+   public static void a(qz<elm> $$0) {
+      jr<eei<?, ?>> $$1 = $$0.a(ma.aJ);
+      jq<eei<?, ?>> $$2 = $$1.b(sb.a);
+      jq<eei<?, ?>> $$3 = $$1.b(sb.b);
+      jq<eei<?, ?>> $$4 = $$1.b(sb.c);
+      jq<eei<?, ?>> $$5 = $$1.b(sb.d);
+      jq<eei<?, ?>> $$6 = $$1.b(sb.e);
+      jq<eei<?, ?>> $$7 = $$1.b(sb.f);
+      jq<eei<?, ?>> $$8 = $$1.b(sb.g);
+      jq<eei<?, ?>> $$9 = $$1.b(sb.h);
+      jq<eei<?, ?>> $$10 = $$1.b(sb.i);
+      jq<eei<?, ?>> $$11 = $$1.b(sb.j);
+      jq<eei<?, ?>> $$12 = $$1.b(sb.l);
+      jq<eei<?, ?>> $$13 = $$1.b(sb.k);
+      jq<eei<?, ?>> $$14 = $$1.b(sb.n);
+      jq<eei<?, ?>> $$15 = $$1.b(sb.o);
+      jq<eei<?, ?>> $$16 = $$1.b(sb.p);
+      jq<eei<?, ?>> $$17 = $$1.b(sb.q);
+      jq<eei<?, ?>> $$18 = $$1.b(sb.r);
+      sp.a($$0, a, $$2, ele.a(3), elj.a(), sp.a, ela.a());
+      sp.a($$0, b, $$3, ele.a(2), elj.a(), sp.a, elr.a(brm.a(-1)), elb.a(ecx.a(dis.dP)), ela.a());
+      sp.a($$0, c, $$4, ele.a(2), elj.a(), sp.a, ela.a());
+      sp.a($$0, e, $$6, els.a(200), elj.a(), ela.a());
+      sp.a($$0, d, $$5, els.a(16), elj.a(), ela.a());
+      sp.a($$0, f, $$7, ele.a(brv.a(0, 19)), elj.a(), elh.a(eck.a(30), eck.a(61)), ela.a());
+      sp.a(
+         $$0,
+         g,
+         $$8,
+         els.a(9),
+         elj.a(),
+         elh.a(eks.a(eck.a(0), eck.b())),
+         elf.a(jm.a, ecx.a(ecx.a(ecx.c), ecx.d(new jh(0, -5, 0))), 32),
+         elu.a(ebq.a.c, Integer.MIN_VALUE, -5),
+         ela.a()
+      );
+      sp.a($$0, h, $$8, els.a(200), elj.a(), sp.c, ela.a());
+      sp.a($$0, i, $$9, elj.a(), sp.b, elb.a(ecx.a(erw.c)), ela.a());
+      sp.a($$0, j, $$10, elj.a(), sp.b, elb.a(ecx.a(erw.c)), ela.a());
+      sp.a($$0, k, $$11, ele.a(3), elj.a(), sp.b, elb.a(ecx.a(erw.c)), ela.a());
+      sp.a($$0, l, $$12, ele.a(1), elj.a(), sp.b, elr.a(brm.a(-1)), elb.a(ecx.a(dis.sI)), ela.a());
+      sp.a($$0, m, $$13, ela.a());
+      sp.a($$0, n, $$14, ela.a());
+      sp.a($$0, o, $$15, els.a(1000), elj.a(), sp.a, ela.a());
+      sp.a($$0, p, $$16, ele.a(20), elj.a(), elh.a(ekt.a(eck.a(), eck.c(8), 8)), ela.a());
+      sp.a($$0, q, $$17, ele.a(20), elj.a(), elh.a(ekt.a(eck.a(), eck.c(8), 8)), ela.a());
+      sp.a($$0, r, $$18, ele.a(25), elj.a(), elh.a(eck.a(), eck.a(192)), ela.a());
    }
 }

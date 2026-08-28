@@ -1,21 +1,26 @@
-public record adk(xl b, xh.a c) implements zs<ach> {
-   public static final zj<ww, adk> a = zj.a(xn.d, adk::b, xh.a.a, adk::e, adk::new);
+import java.util.Optional;
+
+public record adk(ezy b, Optional<ezy> c, lq d, jq<awm> e) implements zq<acf> {
+   public static final zh<wu, adk> a = zh.a(ezy.b, adk::b, ezy.b.a(zf::a), adk::e, ls.bg, adk::f, awm.d, adk::g, adk::new);
 
    @Override
-   public zu<adk> a() {
-      return agw.C;
+   public zs<adk> a() {
+      return agu.E;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public Optional<ezy> e() {
+      return this.c;
    }
 
-   public xh.a e() {
-      return this.c;
+   public lq f() {
+      return this.d;
+   }
+
+   public jq<awm> g() {
+      return this.e;
    }
 }

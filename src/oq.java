@@ -52,31 +52,31 @@ public class oq {
       return this;
    }
 
-   public all a(dij $$0, BiConsumer<all, Supplier<JsonElement>> $$1) {
+   public alj a(diq $$0, BiConsumer<alj, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public all a(dij $$0, String $$1, BiConsumer<all, Supplier<JsonElement>> $$2) {
+   public alj a(diq $$0, String $$1, BiConsumer<alj, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static oq.a a(Function<dij, oo> $$0, om $$1) {
+   private static oq.a a(Function<diq, oo> $$0, om $$1) {
       return $$2 -> new oq($$0.apply($$2), $$1);
    }
 
-   public static oq a(all $$0) {
+   public static oq a(alj $$0) {
       return new oq(oo.b($$0), on.c);
    }
 
    @FunctionalInterface
    public interface a {
-      oq get(dij var1);
+      oq get(diq var1);
 
-      default all create(dij $$0, BiConsumer<all, Supplier<JsonElement>> $$1) {
+      default alj create(diq $$0, BiConsumer<alj, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default all createWithSuffix(dij $$0, String $$1, BiConsumer<all, Supplier<JsonElement>> $$2) {
+      default alj createWithSuffix(diq $$0, String $$1, BiConsumer<alj, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

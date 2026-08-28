@@ -1,226 +1,101 @@
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fql extends frp {
-   public static final double a = 7.0;
-   private static final xl c = xl.c("chat_screen.usage");
-   private static final int d = 210;
-   private String s = "";
-   private int u = -1;
-   protected fmf b;
-   private String v;
-   flz w;
+public record fql(fqk a, int b, int c) {
+   private static final fql d = new fql(0, 0, 0, 0);
 
-   public fql(String $$0) {
-      super(xl.c("chat_screen.title"));
-      this.v = $$0;
+   public fql(int $$0, int $$1, int $$2, int $$3) {
+      this(new fqk($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void aS_() {
-      this.u = this.m.m.d().c().size();
-      this.b = new fmf(this.m.i, 4, this.o - 12, this.n - 4, 12, xl.c("chat.editBox")) {
-         @Override
-         protected xz aO_() {
-            return super.aO_().b(fql.this.w.e());
-         }
+   public static fql a() {
+      return d;
+   }
+
+   public static fql a(fqi $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fql($$1, $$2, $$3, $$4);
+         case b -> new fql($$2, $$1, $$4, $$3);
       };
-      this.b.f(256);
-      this.b.d(false);
-      this.b.a(this.v);
-      this.b.b(this::b);
-      this.b.f(false);
-      this.d(this.b);
-      this.w = new flz(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
-      this.w.b(false);
-      this.w.d();
    }
 
-   @Override
-   protected void aG_() {
-      this.b(this.b);
+   public fql a(fqj $$0) {
+      return new fql(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   public void a(fjx $$0, int $$1, int $$2) {
-      String $$3 = this.b.a();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.w.d();
+   public int a(fqi $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   public void j() {
-      this.m.m.d().d();
+   public int b(fqj $$0) {
+      fqi $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   private void b(String $$0) {
-      String $$1 = this.b.a();
-      this.w.a(!$$1.equals(this.v));
-      this.w.d();
+   public fql c(fqj $$0) {
+      int $$1 = this.b($$0);
+      fqi $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.w.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.m.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         this.b(this.b.a(), true);
-         this.m.a(null);
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.m.m.d().a(this.m.m.d().j() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.m.m.d().a(-this.m.m.d().j() + 1);
-         return true;
-      } else {
-         return false;
-      }
+   public boolean a(fql $$0) {
+      return this.a($$0, fqi.a) && this.a($$0, fqi.b);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      $$3 = azn.a($$3, -1.0, 1.0);
-      if (this.w.a($$3)) {
-         return true;
-      } else {
-         if (!t()) {
-            $$3 *= 7.0;
-         }
-
-         this.m.m.d().a((int)$$3);
-         return true;
-      }
+   public boolean a(fql $$0, fqi $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.w.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            flx $$3 = this.m.m.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            yi $$4 = this.b($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.v = this.b.a();
-               return true;
-            }
-         }
-
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a_(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
-      }
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.u + $$0;
-      int $$2 = this.m.m.d().c().size();
-      $$1 = azn.a($$1, 0, $$2);
-      if ($$1 != this.u) {
-         if ($$1 == $$2) {
-            this.u = $$2;
-            this.b.a(this.s);
-         } else {
-            if (this.u == $$2) {
-               this.s = this.b.a();
-            }
-
-            this.b.a(this.m.m.d().c().get($$1));
-            this.w.a(false);
-            this.u = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      this.m.m.d().a($$0, this.m.m.e(), $$1, $$2, true);
-      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.n.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 200.0F);
-      this.w.a($$0, $$1, $$2);
-      $$0.c().b();
-      fjr $$4 = this.m.m.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.g() != null) {
-         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
-      } else {
-         yi $$5 = this.b((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.p, $$5, $$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(fpu $$0) {
-      $$0.a(fpt.a, this.n());
-      $$0.a(fpt.d, c);
-      String $$1 = this.b.a();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(fpt.a, xl.a("chat_screen.message", $$1));
-      }
+   public int b(fqi $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
    }
 
    @Nullable
-   private yi b(double $$0, double $$1) {
-      return this.m.m.d().b($$0, $$1);
+   public fql b(fql $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fql($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   public void b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if (!$$0.isEmpty()) {
-         if ($$1) {
-            this.m.m.d().a($$0);
-         }
-
-         if ($$0.startsWith("/")) {
-            this.m.t.j.c($$0.substring(1));
-         } else {
-            this.m.t.j.b($$0);
-         }
-      }
+   public int b() {
+      return this.a.b();
    }
 
-   public String a(String $$0) {
-      return bak.e(StringUtils.normalizeSpace($$0.trim()));
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fqk f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

@@ -1,23 +1,83 @@
-public class cve extends cwb implements cxa {
-   public cve(cwb.a $$0) {
+import java.util.Collection;
+import javax.annotation.Nullable;
+
+public class cve extends cwi {
+   public cve(cwi.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      cwf $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dD(), $$1.dF(), $$1.dJ(), awo.hO, awp.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arq $$4) {
-         cpk.a(cpt::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+   public boolean a(dvv $$0, dfm $$1, jh $$2, cou $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bsj.a));
       }
 
-      $$1.b(awy.c.b(this));
-      $$3.a(1, $$1);
-      return bsh.a;
+      return false;
    }
 
    @Override
-   public cpk a(dff $$0, ka $$1, cwf $$2, jm $$3) {
-      return new cpt($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public bsk a(daf $$0) {
+      cou $$1 = $$0.o();
+      dfm $$2 = $$0.q();
+      if (!$$2.C && $$1 != null) {
+         jh $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bsk.d;
+         }
+      }
+
+      return bsk.a;
+   }
+
+   private boolean a(cou $$0, dvv $$1, dfn $$2, jh $$3, boolean $$4, cwm $$5) {
+      if (!$$0.gE()) {
+         return false;
+      } else {
+         jq<diq> $$6 = $$1.c();
+         dvw<diq, dvv> $$7 = $$6.a().l();
+         Collection<dwx<?>> $$8 = $$7.d();
+         if ($$8.isEmpty()) {
+            a($$0, xj.a(this.k + ".empty", $$6.g()));
+            return false;
+         } else {
+            cyz $$9 = $$5.a(ku.V);
+            if ($$9 == null) {
+               return false;
+            } else {
+               dwx<?> $$10 = $$9.a().get($$6);
+               if ($$4) {
+                  if ($$10 == null) {
+                     $$10 = $$8.iterator().next();
+                  }
+
+                  dvv $$11 = a($$1, $$10, $$0.fW());
+                  $$2.a($$3, $$11, 18);
+                  a($$0, xj.a(this.k + ".update", $$10.f(), a($$11, $$10)));
+               } else {
+                  $$10 = a($$8, $$10, $$0.fW());
+                  $$5.b(ku.V, $$9.a($$6, $$10));
+                  a($$0, xj.a(this.k + ".select", $$10.f(), a($$1, $$10)));
+               }
+
+               return true;
+            }
+         }
+      }
+   }
+
+   private static <T extends Comparable<T>> dvv a(dvv $$0, dwx<T> $$1, boolean $$2) {
+      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ae.b($$0, $$1) : ae.a($$0, $$1);
+   }
+
+   private static void a(cou $$0, xj $$1) {
+      ((arq)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dvv $$0, dwx<T> $$1) {
+      return $$1.b($$0.c($$1));
    }
 }

@@ -1,32 +1,29 @@
-public class hcs implements hca {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final ght e;
-   private final hdv f;
-   private int g = 0;
+public class hcs extends hck {
+   private final bul n;
 
-   public hcs(ght $$0, hdv $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public hcs(awm $$0, awo $$1, float $$2, float $$3, bul $$4, long $$5) {
+      super($$0, $$1, azu.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bq()) {
-         float $$0 = this.e.dY().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hcq)(new hct.a(this.e, awo.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hcq)(new hct.a(this.e, awo.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hcq)(new hct.a(this.e, awo.A)));
-         }
+   public boolean s() {
+      return !this.n.bb();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dQ()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
       }
    }
 }

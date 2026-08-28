@@ -1,97 +1,169 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gix {
-   static gix.a a(feh $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+public class gix extends avi<gix.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alj b = alj.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
+
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   static gix.a a(SequencedMap<gjh, feh> $$0, feh $$1) {
-      return new gix.a($$1, $$0);
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   feo getBuffer(gjh var1);
+   public void d() {
+      this.d = true;
+   }
 
-   public static class a implements gix {
-      protected final feh a;
-      protected final SequencedMap<gjh, feh> b;
-      protected final Map<gjh, fef> c = new HashMap<>();
-      @Nullable
-      protected gjh d;
+   public void e() {
+      this.e = true;
+   }
 
-      protected a(feh $$0, SequencedMap<gjh, feh> $$1) {
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected gix.a a(avd $$0, bou $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (boz $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
+         }
+      }
+
+      return new gix.a($$2, $$3, $$4);
+   }
+
+   protected void a(gix.a $$0, avd $$1, bou $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(avd $$0, bou $$1) {
+      try {
+         JsonObject var4;
+         try (
+            boz $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
+         }
+
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
+      }
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public feo getBuffer(gjh $$0) {
-         fef $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.S()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
 
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            feh $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new fef($$2, $$0.O(), $$0.N());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
 
-               $$1 = new fef(this.a, $$0.O(), $$0.N());
-               this.d = $$0;
+            while ($$4.find()) {
+               $$2.add($$4.group());
             }
-
-            this.c.put($$0, $$1);
-            return $$1;
          }
+
+         return String.join(", ", $$2);
       }
 
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
-      }
-
-      public void b() {
-         this.a();
-
-         for (gjh $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gjh $$0) {
-         fef $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
-      }
-
-      private void a(gjh $$0, fef $$1) {
-         fej $$2 = $$1.a();
-         if ($$2 != null) {
-            if ($$0.T()) {
-               feh $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getVertexSorting());
-            }
-
-            $$0.a($$2);
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, fdk.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
          }
 
-         if ($$0.equals(this.d)) {
-            this.d = null;
+         String $$2 = a(this.b, fdk.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
          }
+
+         String $$3 = a(this.c, fdk.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

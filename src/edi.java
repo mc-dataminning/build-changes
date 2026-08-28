@@ -1,31 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class edi extends ehd {
-   public static final MapCodec<edi> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               eki.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               brk.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               ecd.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               edj.b.optionalFieldOf("debug_settings", edj.a).forGetter($$0x -> $$0x.h),
-               kf.a(ma.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, edi::new)
-   );
-   public final eki e;
-   public final brk f;
-   public final ecd g;
-   public final edj h;
-   public final ju<dij> i;
+public abstract class edi implements ecx {
+   protected final kl f;
 
-   public edi(float $$0, eki $$1, brk $$2, ecd $$3, edj $$4, ju<dij> $$5) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   protected static <P extends edi> P1<Mu<P>, kl> a(Instance<P> $$0) {
+      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.f));
    }
+
+   protected edi(kl $$0) {
+      this.f = $$0;
+   }
+
+   public final boolean a(dgk $$0, jh $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
+   }
+
+   protected abstract boolean a(dvv var1);
 }

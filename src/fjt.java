@@ -1,32 +1,38 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum fjt implements azq, baj {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class fjt {
+   private final gdi a;
+   private int b = -1;
+   @Nullable
+   private Consumer<ul> c;
 
-   public static final Codec<fjt> c = baj.a(fjt::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private fjt(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fjt(gdi $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   public boolean a(int $$0, @Nullable ul $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   private int a(Consumer<ul> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public void a(int $$0, Consumer<ul> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahr($$2, $$0));
+   }
+
+   public void a(jh $$0, Consumer<ul> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agz($$2, $$0));
    }
 }

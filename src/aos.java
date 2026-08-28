@@ -1,52 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class aos {
-   public static <T extends ey<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.save.failed"));
+
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aos.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aos.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aos.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ew)$$0x.getSource(), false)))
+            .then(ex.a("flush").executes($$0x -> a((ew)$$0x.getSource(), true)))
       );
    }
 
-   static class a<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         $$0.p().onFailure();
-         hy $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
-
-   static class b<T extends ey<T>> implements hu.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hr $$3, hx<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ih.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new ic.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
-   }
-
-   static class c<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hy $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int a(ew $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> xj.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
+      } else {
+         $$0.a(() -> xj.c("commands.save.success"), true);
+         return 1;
       }
    }
 }

@@ -1,75 +1,544 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class fkz {
-   private static final int a = -1;
-   private final jw<fky> b = new jw<>(32);
-   private final Map<dij, Set<dwq<?>>> c = Maps.newHashMap();
-
-   public static fkz a() {
-      fkz $$0 = new fkz();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gid.a($$1, $$0x.c(dkr.b) == dwj.a ? $$2.e() : $$2) : dfd.a(), dil.iI, dil.iH);
-      $$0.a(dkr.b, dil.iI, dil.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gid.a($$1, $$2) : dfd.a(), dil.i, dil.bu, dil.bt, dil.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? gid.a($$1, $$2) : dfd.a();
-         } else {
-            return -1;
-         }
-      }, dil.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dez.a(), dil.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dez.b(), dil.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gid.b($$1, $$2) : dez.c(), dil.aE, dil.aH, dil.aI, dil.aK, dil.ff, dil.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gid.c($$1, $$2) : -1, dil.G, dil.nd, dil.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dol.b($$0x.c(dol.f)), dil.cw);
-      $$0.a(dol.f, dil.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gid.a($$1, $$2) : -1, dil.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dil.fc, dil.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dqf.c);
-         return axy.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dil.fe, dil.fd);
-      $$0.a(dqf.c, dil.fe, dil.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dil.fm);
-      return $$0;
-   }
-
-   public int a(dvo $$0, dff $$1, jh $$2) {
-      fky $$3 = this.b.a(lz.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         ers $$4 = $$0.a((dek)$$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(dvo $$0, @Nullable deh $$1, @Nullable jh $$2, int $$3) {
-      fky $$4 = this.b.a(lz.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(fky $$0, dij... $$1) {
-      for (dij $$2 : $$1) {
-         this.b.a($$0, lz.e.a($$2));
-      }
-   }
-
-   private void a(Set<dwq<?>> $$0, dij... $$1) {
-      for (dij $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(dwq<?> $$0, dij... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<dwq<?>> a(dij $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final fkt a = fkt.a.a(1.5F)
+      .a()
+      .a(
+         "root",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 2.5F), fks.b.b),
+            new fku(1.0F, fkv.b(0.0F, 0.0F, -2.5F), fks.b.b),
+            new fku(1.5F, fkv.b(0.0F, 0.0F, 2.5F), fks.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(2.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(-2.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.b(2.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.125F, fkv.b(-2.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.b(2.5F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.b(-22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.4583F, fkv.a(0.0F, 4.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.b(-22.5F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.2083F, fkv.a(0.0F, 4.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-20.4F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.375F, fkv.b(-22.5F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-20.4F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, -0.21F, 0.0F), fks.b.b),
+            new fku(0.75F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.0833F, fkv.a(0.0F, 4.0F, 0.0F), fks.b.b),
+            new fku(1.375F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.a(0.0F, -0.21F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.625F, fkv.b(-22.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.b(22.5F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.a(0.0F, 4.0F, 0.0F), fks.b.b),
+            new fku(0.625F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.5F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(0.0F, 0.0F, -22.5F), fks.b.b),
+            new fku(0.75F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.125F, fkv.b(0.0F, 0.0F, -22.5F), fks.b.b),
+            new fku(1.5F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(0.0F, 0.0F, 22.5F), fks.b.b),
+            new fku(0.75F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.125F, fkv.b(0.0F, 0.0F, 22.5F), fks.b.b),
+            new fku(1.5F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(15.94102F, -8.42106F, 20.94102F), fks.b.b),
+            new fku(0.75F, fkv.b(15.94102F, 8.42106F, -20.94102F), fks.b.b),
+            new fku(1.5F, fkv.b(15.94102F, -8.42106F, 20.94102F), fks.b.b)
+         )
+      )
+      .b();
+   public static final fkt b = fkt.a.a(2.0F)
+      .a(
+         "body",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.3F, fkv.b(30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.8F, fkv.b(24.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.3F, fkv.a(0.0F, 0.0F, 1.0F), fks.b.a),
+            new fku(1.8F, fkv.a(0.0F, -6.0F, 1.0F), fks.b.a),
+            new fku(2.0F, fkv.a(0.0F, -19.9F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.0F, fkv.b(-30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(-90.0F, 10.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.0F, fkv.a(0.0F, -2.0F, 11.0F), fks.b.a),
+            new fku(1.5F, fkv.a(0.0F, -2.0F, 11.0F), fks.b.a),
+            new fku(1.7F, fkv.a(0.0F, -8.4F, 11.4F), fks.b.a),
+            new fku(2.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.0F, fkv.b(-30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(-90.0F, -10.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.0F, fkv.a(0.0F, -2.0F, 11.0F), fks.b.a),
+            new fku(1.5F, fkv.a(0.0F, -2.0F, 11.0F), fks.b.a),
+            new fku(1.7F, fkv.a(0.0F, -8.4F, 11.4F), fks.b.a),
+            new fku(2.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-10.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.7F, fkv.b(-15.0F, -3.0F, 0.0F), fks.b.a),
+            new fku(1.9F, fkv.b(-65.0F, -9.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(-90.0F, -15.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.a(0.0F, 0.0F, 1.0F), fks.b.a),
+            new fku(1.7F, fkv.a(1.0F, -0.62F, 0.25F), fks.b.a),
+            new fku(1.9F, fkv.a(0.5F, -11.25F, 2.5F), fks.b.a),
+            new fku(2.0F, fkv.a(1.0F, -20.5F, 5.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-10.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.7F, fkv.b(-15.0F, 3.0F, 0.0F), fks.b.a),
+            new fku(1.9F, fkv.b(-65.0F, 9.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(-90.0F, 15.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.a(0.0F, 0.0F, 1.0F), fks.b.a),
+            new fku(1.7F, fkv.a(-1.0F, -0.62F, 0.25F), fks.b.a),
+            new fku(1.9F, fkv.a(-0.5F, -11.25F, 2.5F), fks.b.a),
+            new fku(2.0F, fkv.a(-1.0F, -20.5F, 5.0F), fks.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.7F, fkv.b(-27.5F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(-21.25F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.7F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.9F, fkv.b(80.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(50.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .b();
+   public static final fkt c = fkt.a.a(1.0F)
+      .a("body", new fks(fks.d.b, new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)))
+      .a("body", new fks(fks.d.a, new fku(0.0F, fkv.a(0.0F, -19.9F, 0.0F), fks.b.a), new fku(1.0F, fkv.a(0.0F, -19.9F, 0.0F), fks.b.a)))
+      .a("right_front_leg", new fks(fks.d.b, new fku(0.0F, fkv.b(-90.0F, 10.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(-90.0F, 10.0F, 0.0F), fks.b.a)))
+      .a("right_front_leg", new fks(fks.d.a, new fku(0.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a), new fku(1.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a)))
+      .a("left_front_leg", new fks(fks.d.b, new fku(0.0F, fkv.b(-90.0F, -10.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(-90.0F, -10.0F, 0.0F), fks.b.a)))
+      .a("left_front_leg", new fks(fks.d.a, new fku(0.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a), new fku(1.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a)))
+      .a("left_hind_leg", new fks(fks.d.b, new fku(0.0F, fkv.b(-90.0F, -15.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(-90.0F, -15.0F, 0.0F), fks.b.a)))
+      .a("left_hind_leg", new fks(fks.d.a, new fku(0.0F, fkv.a(1.0F, -20.5F, 5.0F), fks.b.a), new fku(1.0F, fkv.a(1.0F, -20.5F, 5.0F), fks.b.a)))
+      .a("right_hind_leg", new fks(fks.d.b, new fku(0.0F, fkv.b(-90.0F, 15.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(-90.0F, 15.0F, 0.0F), fks.b.a)))
+      .a("right_hind_leg", new fks(fks.d.a, new fku(0.0F, fkv.a(-1.0F, -20.5F, 5.0F), fks.b.a), new fku(1.0F, fkv.a(-1.0F, -20.5F, 5.0F), fks.b.a)))
+      .a("head", new fks(fks.d.b, new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)))
+      .a("tail", new fks(fks.d.b, new fku(0.0F, fkv.b(50.0F, 0.0F, 0.0F), fks.b.a), new fku(1.0F, fkv.b(50.0F, 0.0F, 0.0F), fks.b.a)))
+      .b();
+   public static final fkt d = fkt.a.a(2.6F)
+      .a(
+         "body",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.7F, fkv.b(-17.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.8F, fkv.b(-17.83F, 0.0F, 0.0F), fks.b.b),
+            new fku(2.3F, fkv.b(-5.83F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, -19.9F, 0.0F), fks.b.a),
+            new fku(0.7F, fkv.a(0.0F, -19.9F, -3.0F), fks.b.a),
+            new fku(1.4F, fkv.a(0.0F, -12.76F, -4.0F), fks.b.b),
+            new fku(1.8F, fkv.a(0.0F, -10.1F, -4.0F), fks.b.b),
+            new fku(2.3F, fkv.a(0.0F, -2.9F, -2.0F), fks.b.a),
+            new fku(2.6F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-90.0F, 10.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.b(-90.0F, 10.0F, 0.0F), fks.b.a),
+            new fku(1.1F, fkv.b(-49.06F, 10.0F, 0.0F), fks.b.a),
+            new fku(1.8F, fkv.b(-22.5F, 10.0F, 0.0F), fks.b.a),
+            new fku(2.3F, fkv.b(-25.0F, 10.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a),
+            new fku(0.5F, fkv.a(0.0F, -20.6F, 8.0F), fks.b.a),
+            new fku(1.1F, fkv.a(0.0F, -7.14F, 4.42F), fks.b.a),
+            new fku(1.8F, fkv.a(0.0F, -1.27F, -1.33F), fks.b.a),
+            new fku(2.3F, fkv.a(0.0F, -1.27F, -0.33F), fks.b.a),
+            new fku(2.6F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-90.0F, -10.0F, 0.0F), fks.b.a),
+            new fku(0.5F, fkv.b(-90.0F, -10.0F, 0.0F), fks.b.a),
+            new fku(1.1F, fkv.b(-49.06F, -10.0F, 0.0F), fks.b.a),
+            new fku(1.8F, fkv.b(-22.5F, -10.0F, 0.0F), fks.b.a),
+            new fku(2.3F, fkv.b(-25.0F, -10.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(0.0F, -20.6F, 12.0F), fks.b.a),
+            new fku(0.5F, fkv.a(0.0F, -20.6F, 8.0F), fks.b.a),
+            new fku(1.1F, fkv.a(0.0F, -7.14F, 4.42F), fks.b.a),
+            new fku(1.8F, fkv.a(0.0F, -1.27F, -1.33F), fks.b.a),
+            new fku(2.3F, fkv.a(0.0F, -1.27F, -0.33F), fks.b.a),
+            new fku(2.6F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-90.0F, -15.0F, 0.0F), fks.b.a),
+            new fku(0.3F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.6F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.1F, fkv.b(-60.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.9F, fkv.b(35.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.2F, fkv.b(30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(1.0F, -20.5F, 5.0F), fks.b.a),
+            new fku(0.3F, fkv.a(-2.0F, -20.5F, 3.0F), fks.b.a),
+            new fku(0.6F, fkv.a(-2.0F, -20.5F, 3.0F), fks.b.a),
+            new fku(1.1F, fkv.a(-2.0F, -10.5F, 2.0F), fks.b.a),
+            new fku(1.5F, fkv.a(-2.0F, -0.4F, -3.9F), fks.b.a),
+            new fku(1.9F, fkv.a(-2.0F, -4.3F, -9.8F), fks.b.a),
+            new fku(2.2F, fkv.a(-1.0F, -2.5F, -5.0F), fks.b.a),
+            new fku(2.6F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-90.0F, 15.0F, 0.0F), fks.b.a),
+            new fku(0.3F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.6F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.1F, fkv.b(-60.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.9F, fkv.b(35.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.2F, fkv.b(30.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.a,
+            new fku(0.0F, fkv.a(-1.0F, -20.5F, 5.0F), fks.b.a),
+            new fku(0.3F, fkv.a(2.0F, -20.5F, 3.0F), fks.b.a),
+            new fku(0.6F, fkv.a(2.0F, -20.5F, 3.0F), fks.b.a),
+            new fku(1.1F, fkv.a(2.0F, -10.5F, 2.0F), fks.b.a),
+            new fku(1.5F, fkv.a(2.0F, -0.4F, -3.9F), fks.b.a),
+            new fku(1.9F, fkv.a(2.0F, -4.3F, -9.8F), fks.b.a),
+            new fku(2.2F, fkv.a(1.0F, -2.5F, -5.0F), fks.b.a),
+            new fku(2.6F, fkv.a(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.3F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.8F, fkv.b(55.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.0F, fkv.b(65.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.4F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(50.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.4F, fkv.b(55.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(0.9F, fkv.b(55.0F, 0.0F, 0.0F), fks.b.a),
+            new fku(1.5F, fkv.b(17.5F, 0.0F, 0.0F), fks.b.a),
+            new fku(2.6F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.a)
+         )
+      )
+      .b();
+   public static final fkt e = fkt.a.a(0.5F)
+      .a()
+      .a("body", new fks(fks.d.b, new fku(0.0F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.a), new fku(0.5F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.a)))
+      .a(
+         "tail",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(67.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.125F, fkv.b(112.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.25F, fkv.b(67.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(112.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.5F, fkv.b(67.5F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(10.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.125F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.25F, fkv.b(10.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.5F, fkv.b(10.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(44.97272F, 1.76749F, -1.76833F), fks.b.b),
+            new fku(0.125F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.25F, fkv.b(44.97272F, 1.76749F, -1.76833F), fks.b.b),
+            new fku(0.375F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.5F, fkv.b(44.97272F, 1.76749F, -1.76833F), fks.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.125F, fkv.b(44.97272F, -1.76749F, 1.76833F), fks.b.b),
+            new fku(0.25F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(44.97272F, -1.76749F, 1.76833F), fks.b.b),
+            new fku(0.5F, fkv.b(-90.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.125F, fkv.b(-45.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.25F, fkv.b(90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(-45.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.5F, fkv.b(90.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(-45.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.125F, fkv.b(90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.25F, fkv.b(-45.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.375F, fkv.b(90.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(0.5F, fkv.b(-45.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a("left_ear", new fks(fks.d.b, new fku(0.0F, fkv.b(0.0F, -67.5F, 0.0F), fks.b.a), new fku(0.5F, fkv.b(0.0F, -67.5F, 0.0F), fks.b.a)))
+      .a("right_ear", new fks(fks.d.b, new fku(0.0F, fkv.b(0.0F, 67.5F, 0.0F), fks.b.a), new fku(0.5F, fkv.b(0.0F, 67.5F, 0.0F), fks.b.a)))
+      .b();
+   public static final fkt f = fkt.a.a(4.0F)
+      .a(
+         "tail",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(1.0F, fkv.b(4.98107F, 0.43523F, -4.98107F), fks.b.b),
+            new fku(3.0F, fkv.b(4.9872F, -0.29424F, 3.36745F), fks.b.b),
+            new fku(4.0F, fkv.b(5.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fks(
+            fks.d.b,
+            new fku(0.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b),
+            new fku(2.0F, fkv.b(-2.5F, 0.0F, 0.0F), fks.b.b),
+            new fku(4.0F, fkv.b(0.0F, 0.0F, 0.0F), fks.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fks(
+            fks.d.b,
+            new fku(2.5F, fkv.b(0.0F, 0.0F, -45.0F), fks.b.b),
+            new fku(2.625F, fkv.b(0.0F, 0.0F, 22.5F), fks.b.b),
+            new fku(2.75F, fkv.b(0.0F, 0.0F, -45.0F), fks.b.b),
+            new fku(2.875F, fkv.b(0.0F, 0.0F, 22.5F), fks.b.b),
+            new fku(3.0F, fkv.b(0.0F, 0.0F, -45.0F), fks.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fks(
+            fks.d.b,
+            new fku(2.5F, fkv.b(0.0F, 0.0F, 45.0F), fks.b.b),
+            new fku(2.625F, fkv.b(0.0F, 0.0F, -22.5F), fks.b.b),
+            new fku(2.75F, fkv.b(0.0F, 0.0F, 45.0F), fks.b.b),
+            new fku(2.875F, fkv.b(0.0F, 0.0F, -22.5F), fks.b.b),
+            new fku(3.0F, fkv.b(0.0F, 0.0F, 45.0F), fks.b.b)
+         )
+      )
+      .b();
 }

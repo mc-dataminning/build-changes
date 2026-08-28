@@ -1,7 +1,4 @@
-public class gwg extends gwb {
-   public chi.a a;
-
-   public gwg() {
-      this.a = chi.a.a;
-   }
+public class gwg extends gwf {
+   public ezy[] a = new ezy[0];
+   public boolean i;
 }

@@ -1,25 +1,25 @@
+import javax.annotation.Nullable;
+
 public interface dfu {
-   <T> fbj<T> a(jh var1, T var2, int var3, fbn var4);
+   boolean a(jh var1, dvv var2, int var3, int var4);
 
-   <T> fbj<T> a(jh var1, T var2, int var3);
-
-   fbf<dij> R();
-
-   default void a(jh $$0, dij $$1, int $$2, fbn $$3) {
-      this.R().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(jh $$0, dvv $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(jh $$0, dij $$1, int $$2) {
-      this.R().a(this.a($$0, $$1, $$2));
+   boolean a(jh var1, boolean var2);
+
+   default boolean b(jh $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   fbf<ern> Q();
-
-   default void a(jh $$0, ern $$1, int $$2, fbn $$3) {
-      this.Q().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(jh $$0, boolean $$1, @Nullable bul $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(jh $$0, ern $$1, int $$2) {
-      this.Q().a(this.a($$0, $$1, $$2));
+   boolean a(jh var1, boolean var2, @Nullable bul var3, int var4);
+
+   default boolean b(bul $$0) {
+      return false;
    }
 }

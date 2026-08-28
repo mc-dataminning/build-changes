@@ -1,27 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxr {
-   public static bwy<bve> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
-   }
-
-   public static <E extends bve> bwy<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return cak.a((Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$4 -> {
-         cak<E, ? extends cal<? extends K1, cel>> $$5 = $$2 ? $$4.a(cei.m) : $$4.c(cei.m);
-         return $$4.group($$4.a(cei.n), $$5, $$4.b(cei.L), $$4.a(cei.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               ckz $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dY().C_().a($$11.dy()) && $$9.fQ()) {
-                  cel $$12 = new cel(new bxi($$11, false), $$1, 0);
-                  $$4x.a(new bxi($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
+   public static bxb<cof> a(float $$0, int $$1) {
+      return can.a((Function<can.b<cof>, ? extends App<can.c<cof>, caq<cof>>>)($$2 -> $$2.group($$2.c(cel.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
                   return false;
+               } else {
+                  cgl $$6 = $$3.z();
+                  int $$7 = $$6.a(kj.a($$4.dv()));
+                  ezy $$8 = null;
+
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     ezy $$10 = cgf.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kj.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kj.a(jh.a((ka)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
+
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new ceo($$8, $$0, $$1));
+                  }
+
+                  return true;
                }
-            });
-      }));
+            })));
    }
 }

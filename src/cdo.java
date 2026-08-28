@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cdo extends cdp {
-   public cdo(bvm $$0, double $$1) {
-      super($$0, $$1);
+public class cdo extends ccf {
+   private final coa a;
+
+   public cdo(coa $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccf.a.c, ccf.a.a));
    }
 
-   @Nullable
    @Override
-   protected ezr h() {
-      ezr $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      ezr $$2 = cgb.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cfx.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      if (!this.a.bL()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cou $$0 = this.a.gm();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cc != null;
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.L().o();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

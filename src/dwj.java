@@ -1,28 +1,17 @@
-public enum dwj implements baj {
-   a(jm.a),
-   b(jm.b);
+public enum dwj implements bai {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final jm c;
+   private final String e;
 
-   private dwj(final jm $$0) {
-      this.c = $$0;
-   }
-
-   public jm a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dwj(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dwj b() {
-      return this == a ? b : a;
+      return this.e;
    }
 }

@@ -1,35 +1,99 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class drq extends dkp implements dro {
-   public static final MapCodec<drq> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwd.a.fieldOf("block_set_type").forGetter(dkp::b), dro.a.e.fieldOf("weathering_state").forGetter(drq::q), t()).apply($$0, drq::new)
+public class drq extends dpq {
+   public static final MapCodec<drq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dxh.a.fieldOf("wood_type").forGetter(dpq::d), t()).apply($$0, drq::new));
+   public static final dws<jm> b = dml.aF;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jm, fas> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jm.c,
+         diq.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         jm.d,
+         diq.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         jm.f,
+         diq.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jm.e,
+         diq.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
    );
-   private final dro.a m;
 
    @Override
    public MapCodec<drq> a() {
-      return l;
+      return a;
    }
 
-   protected drq(dwd $$0, dro.a $$1, dvn.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
+   public drq(dxh $$0, dvu.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, jm.c).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if ($$0.c(dkp.f) == dwj.b) {
-         this.a_($$0, $$1, $$2, $$3);
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dvv a(dad $$0) {
+      dvv $$1 = this.m();
+      erv $$2 = $$0.q().b_($$0.a());
+      dfp $$3 = $$0.q();
+      jh $$4 = $$0.a();
+      jm[] $$5 = $$0.f();
+
+      for (jm $$6 : $$5) {
+         if ($$6.o().d()) {
+            jm $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == erw.c));
+            }
+         }
       }
+
+      return null;
    }
 
    @Override
-   protected boolean f(dvo $$0) {
-      return dro.c($$0.b()).isPresent();
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public dro.a q() {
-      return this.m;
+   @Override
+   public float h(dvv $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   public ezy o(dvv $$0) {
+      fas $$1 = i.get($$0.c(b));
+      return $$1.a().f();
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dnm $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(b, f);
    }
 }

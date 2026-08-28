@@ -1,94 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dkx extends dhv implements dob {
-   public static final MapCodec<dkx> a = b(dkx::new);
-   protected static final fal b = dij.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
-
-   @Override
-   public MapCodec<dkx> a() {
-      return a;
-   }
-
-   protected dkx(dvn.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dsr a(jh $$0, dvo $$1) {
-      return new duk($$0, $$1);
-   }
-
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return b;
-   }
-
-   @Override
-   protected fal a_(dvo $$0, dff $$1, jh $$2) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(dvo $$0, dff $$1, jh $$2, bui $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ag() == dff.k && $$3 instanceof arr $$4 && !$$4.j) {
-            $$4.q();
-            return;
-         }
-
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public esm a(arq $$0, bui $$1, jh $$2) {
-      alk<dff> $$3 = $$0.ag() == dff.k ? dff.i : dff.k;
-      arq $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
+public class dkx {
+   public static <S extends dsy> dkx.c<S> a(
+      dta<S> $$0, Function<dvv, dkx.a> $$1, Function<dvv, jm> $$2, dwx<jm> $$3, dvv $$4, dfn $$5, jh $$6, BiPredicate<dfn, jh> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dkx.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dkx.b::b;
       } else {
-         boolean $$5 = $$3 == dff.k;
-         jh $$6 = $$5 ? arq.a : $$4.W();
-         ezr $$7 = $$6.c();
-         float $$8;
-         Set<bvs> $$9;
-         if ($$5) {
-            een.a($$4, jh.a((ka)$$7).e(), true);
-            $$8 = jm.e.p();
-            $$9 = bvs.a(bvs.l, Set.of(bvs.e));
-            if ($$1 instanceof arr) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
+         dkx.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dkx.a.a;
+         boolean $$11 = $$9 == dkx.a.b;
+         if ($$10) {
+            return new dkx.c.b<>($$8);
          } else {
-            $$8 = 0.0F;
-            $$9 = bvs.a(bvs.l, bvs.k);
-            if ($$1 instanceof arr $$12) {
-               return $$12.a(false, esm.a);
+            jh $$12 = $$6.a($$2.apply($$4));
+            dvv $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dkx.a $$14 = $$1.apply($$13);
+               if ($$14 != dkx.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dkx.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dkx.c.a<>($$16, $$17);
+                  }
+               }
             }
 
-            $$7 = $$1.a($$4, $$6).c();
+            return new dkx.c.b<>($$8);
          }
-
-         return new esm($$4, $$7, ezr.c, $$8, 0.0F, $$9, esm.b.then(esm.c));
       }
    }
 
-   @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ls.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public cwf a(dfi $$0, jh $$1, dvo $$2) {
-      return cwf.k;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected boolean a(dvo $$0, ern $$1) {
-      return false;
+   public interface c<S> {
+      <T> T apply(dkx.b<? super S, T> var1);
+
+      public static final class a<S> implements dkx.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dkx.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements dkx.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dkx.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

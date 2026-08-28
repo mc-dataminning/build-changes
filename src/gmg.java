@@ -1,71 +1,73 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-class gmg {
-   private final Map<jh, dsr> a;
-   @Nullable
-   private final List<dyb<dvo>> b;
-   private final boolean c;
-   private final dxt d;
+public class gmg implements glr<dum> {
+   private final Map<dps.a, gbg> a;
+   private static final Map<dps.a, alj> b = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dps.b.c, alj.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(dps.b.d, alj.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(dps.b.f, alj.b("textures/entity/zombie/zombie.png"));
+      $$0.put(dps.b.g, alj.b("textures/entity/creeper/creeper.png"));
+      $$0.put(dps.b.i, alj.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(dps.b.h, alj.b("textures/entity/piglin/piglin.png"));
+      $$0.put(dps.b.e, gzw.a());
+   });
 
-   gmg(dxt $$0) {
-      this.d = $$0;
-      this.c = $$0.E().ah();
-      this.a = ImmutableMap.copyOf($$0.F());
-      if ($$0 instanceof dxp) {
-         this.b = null;
+   public static Map<dps.a, gbg> a(gch $$0) {
+      Builder<dps.a, gbg> $$1 = ImmutableMap.builder();
+      $$1.put(dps.b.c, new gbf($$0.a(gck.cH)));
+      $$1.put(dps.b.d, new gbf($$0.a(gck.dw)));
+      $$1.put(dps.b.e, new gbf($$0.a(gck.cb)));
+      $$1.put(dps.b.f, new gbf($$0.a(gck.dI)));
+      $$1.put(dps.b.g, new gbf($$0.a(gck.ag)));
+      $$1.put(dps.b.i, new gce($$0.a(gck.ar)));
+      $$1.put(dps.b.h, new gak($$0.a(gck.bR)));
+      return $$1.build();
+   }
+
+   public gmg(gls.a $$0) {
+      this.a = a($$0.e());
+   }
+
+   public void a(dum $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dvv $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof drr;
+      jm $$9 = $$8 ? $$7.c(drr.d) : null;
+      int $$10 = $$8 ? dxa.a($$9.g()) : $$7.c(dps.e);
+      float $$11 = dxa.b($$10);
+      dps.a $$12 = ((dhm)$$7.b()).b();
+      gbg $$13 = this.a.get($$12);
+      gjq $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   }
+
+   public static void a(@Nullable jm $$0, float $$1, float $$2, fer $$3, gjg $$4, int $$5, gbg $$6, gjq $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
       } else {
-         dxu[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dxu $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fev $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, gyv.d);
+      $$3.b();
    }
 
-   @Nullable
-   public dsr a(jh $$0) {
-      return this.a.get($$0);
-   }
-
-   public dvo b(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dvo $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dil.hW.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = eba.a($$1, $$3);
-         }
-
-         return $$4 == null ? dil.a.m() : $$4;
-      } else if (this.b == null) {
-         return dil.a.m();
+   public static gjq a(dps.a $$0, @Nullable czl $$1) {
+      alj $$2 = b.get($$0);
+      if ($$0 == dps.b.e && $$1 != null) {
+         hag $$3 = fke.Q().an();
+         return gjq.i($$3.b($$1.f()).a());
       } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dyb<dvo> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dil.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
+         return gjq.g($$2);
       }
    }
 }

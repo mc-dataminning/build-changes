@@ -1,76 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class daa implements dat<dbi> {
-   protected final daz<?> a;
-   protected final dag b;
-   protected final String c;
-   protected final dap d;
-   protected final cwf e;
-   protected final float f;
-   protected final int g;
-   @Nullable
-   private das j;
+public record daa(ju<bto> c) implements czy {
+   public static final MapCodec<daa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(ma.W).fieldOf("effects").forGetter(daa::b)).apply($$0, daa::new));
+   public static final zh<wu, daa> b = zh.a(zf.c(ma.W), daa::b, daa::new);
 
-   public daa(daz<?> $$0, String $$1, dag $$2, dap $$3, cwf $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-   }
-
-   public boolean a(dbi $$0, dff $$1) {
-      return this.d.a($$0.c());
-   }
-
-   public cwf a(dbi $$0, js.a $$1) {
-      return this.e.v();
+   public daa(jq<bto> $$0) {
+      this(ju.a($$0));
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public czy.a<daa> a() {
+      return czy.a.b;
    }
 
    @Override
-   public das a() {
-      if (this.j == null) {
-         this.j = das.a(this.d);
+   public boolean a(dfm $$0, cwm $$1, bvh $$2) {
+      boolean $$3 = false;
+
+      for (jq<bto> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
 
-      return this.j;
+      return $$3;
    }
 
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cwf a(js.a $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
+   public ju<bto> b() {
       return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public daz<?> e() {
-      return this.a;
-   }
-
-   public dag f() {
-      return this.b;
-   }
-
-   public interface a<T extends daa> {
-      T create(String var1, dag var2, dap var3, cwf var4, float var5, int var6);
    }
 }

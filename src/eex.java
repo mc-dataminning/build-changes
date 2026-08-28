@@ -1,46 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class eex extends edr {
-   public eex(Codec<egv> $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(dfg $$0, azv $$1, jh $$2, int $$3, jh.a $$4, egv $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dvo $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dmf.e) && $$19.b(dmf.c) && $$19.b(dmf.b) && $$19.b(dmf.d)) {
-                     $$19 = $$19.b(dmf.e, Boolean.valueOf($$15))
-                        .b(dmf.c, Boolean.valueOf($$16))
-                        .b(dmf.b, Boolean.valueOf($$17))
-                        .b(dmf.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
+public class eex {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<arp, eex.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<arp, eex.b>() {
+         public eex.b a(arp $$0) {
+            return new eex.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
+
+   public static void a(arp $$0) {
+      try {
+         ((eex.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public static void a(arp $$0, eei<?, ?> $$1, Optional<elm> $$2) {
+      try {
+         ((eex.b)b.get($$0)).a().computeInt(new eex.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ag().a().toString();
+               boolean $$3 = $$0.p().x();
+               kd<elm> $$4 = $$0.J_().e(ma.aR);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<alj>map(ali::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(eei<?, ?> a, Optional<elm> b) {
+   }
+
+   static record b(Object2IntMap<eex.a> a, MutableInt b) {
    }
 }

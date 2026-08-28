@@ -1,6 +1,4 @@
-import javax.annotation.Nullable;
-
-@Deprecated
-public interface gxz {
-   float call(cwf var1, @Nullable gcy var2, @Nullable bve var3, int var4);
+public class gxz extends gwm {
+   public int a;
+   public boolean b;
 }

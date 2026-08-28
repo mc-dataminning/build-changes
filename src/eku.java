@@ -1,27 +1,23 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eku extends elh {
+public class eku extends ekp {
    public static final MapCodec<eku> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ecq.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eku::new)
+      $$0 -> $$0.group(bqs.b(ekp.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eku::new)
    );
-   private final ecq c;
+   private final bqs<ekp> b;
 
-   private eku(ecq $$0) {
-      this.c = $$0;
-   }
-
-   public static eku a(ecq $$0) {
-      return new eku($$0);
+   public eku(bqs<ekp> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(elg $$0, azv $$1, jh $$2) {
-      return this.c.test($$0.d(), $$2);
+   public int a(azu $$0, ecn $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public elj<?> b() {
-      return elj.a;
+   public ekq<?> a() {
+      return ekq.f;
    }
 }

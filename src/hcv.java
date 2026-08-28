@@ -1,28 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class hcv extends hck {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cou p;
+   private final cqt q;
+   private final boolean r;
 
-public class hcv<T> extends hcw<T> {
-   private final hda<T> c;
-
-   public hcv(Function<T, Stream<String>> $$0, Function<T, Stream<all>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hda.plainText($$2, $$0);
+   public hcv(cou $$0, cqt $$1, boolean $$2) {
+      super($$2 ? awn.oK : awn.oL, awo.g, hdb.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = hdb.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   public boolean s() {
+      return !this.q.bb();
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hcy<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hcx<T>($$2.iterator(), $$5, this.a));
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bo()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dy().i();
+         boolean $$1 = !this.q.cq() && this.q.j() instanceof cri;
+         if ($$0 >= 0.01F && !$$1) {
+            this.d = azm.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
    }
 }

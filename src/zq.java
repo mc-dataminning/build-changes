@@ -1,14 +1,19 @@
-public abstract class zq<T extends wr> implements zs<T> {
-   private final Iterable<zs<? super T>> a;
+import io.netty.buffer.ByteBuf;
 
-   protected zq(Iterable<zs<? super T>> $$0) {
-      this.a = $$0;
+public interface zq<T extends wp> {
+   zs<? extends zq<T>> a();
+
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public final Iterable<zs<? super T>> b() {
-      return this.a;
+   default boolean d() {
+      return false;
    }
 
-   @Override
-   public abstract zu<? extends zq<T>> a();
+   static <B extends ByteBuf, T extends zq<?>> zh<B, T> a(zk<B, T> $$0, zi<B, T> $$1) {
+      return zh.a($$0, $$1);
+   }
 }

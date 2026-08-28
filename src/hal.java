@@ -1,14 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.IllegalFormatException;
 
-public record hal(ham d) {
-   public static final hal a = new hal(ham.b);
-   public static final Codec<hal> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ham.a.optionalFieldOf("scaling", ham.b).forGetter(hal::a)).apply($$0, hal::new)
-   );
-   public static final aud<hal> c = aud.a("gui", b);
+public class hal {
+   private static volatile ug a = ug.a();
 
-   public ham a() {
-      return this.d;
+   private hal() {
+   }
+
+   static void a(ug $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

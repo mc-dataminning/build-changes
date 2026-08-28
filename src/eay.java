@@ -1,55 +1,70 @@
-public interface eay extends azv {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   int c(int var1);
+public record eay(jq<ear> b, float c, ezy d, @Nullable UUID e, @Nullable UUID f, @Nullable bul g) {
+   public static final Codec<eay> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ear.aj.fieldOf("game_event").forGetter(eay::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(eay::b),
+               ezy.a.fieldOf("pos").forGetter(eay::c),
+               kk.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kk.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new eay($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   @Override
-   default int f() {
-      return this.c(32);
+   public eay(jq<ear> $$0, float $$1, ezy $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   public eay(jq<ear> $$0, float $$1, ezy $$2, @Nullable bul $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
+   }
 
-         return $$2;
+   @Nullable
+   private static UUID a(@Nullable bul $$0) {
+      if ($$0 instanceof cpn $$1 && $$1.p() != null) {
+         return $$1.p().cG();
       }
+
+      return null;
    }
 
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
+   public Optional<bul> a(arp $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
+   public Optional<bul> b(arp $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cpn).map($$0x -> (cpn)$$0x).map(cpn::p).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public jq<ear> a() {
+      return this.b;
    }
 
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
+   public float b() {
+      return this.c;
+   }
+
+   public ezy c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bul f() {
+      return this.g;
    }
 }

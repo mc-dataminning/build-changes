@@ -1,128 +1,124 @@
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ckw {
-   public static final alk<ckv> a = a("kebab");
-   public static final alk<ckv> b = a("aztec");
-   public static final alk<ckv> c = a("alban");
-   public static final alk<ckv> d = a("aztec2");
-   public static final alk<ckv> e = a("bomb");
-   public static final alk<ckv> f = a("plant");
-   public static final alk<ckv> g = a("wasteland");
-   public static final alk<ckv> h = a("pool");
-   public static final alk<ckv> i = a("courbet");
-   public static final alk<ckv> j = a("sea");
-   public static final alk<ckv> k = a("sunset");
-   public static final alk<ckv> l = a("creebet");
-   public static final alk<ckv> m = a("wanderer");
-   public static final alk<ckv> n = a("graham");
-   public static final alk<ckv> o = a("match");
-   public static final alk<ckv> p = a("bust");
-   public static final alk<ckv> q = a("stage");
-   public static final alk<ckv> r = a("void");
-   public static final alk<ckv> s = a("skull_and_roses");
-   public static final alk<ckv> t = a("wither");
-   public static final alk<ckv> u = a("fighters");
-   public static final alk<ckv> v = a("pointer");
-   public static final alk<ckv> w = a("pigscene");
-   public static final alk<ckv> x = a("burning_skull");
-   public static final alk<ckv> y = a("skeleton");
-   public static final alk<ckv> z = a("donkey_kong");
-   public static final alk<ckv> A = a("earth");
-   public static final alk<ckv> B = a("wind");
-   public static final alk<ckv> C = a("water");
-   public static final alk<ckv> D = a("fire");
-   public static final alk<ckv> E = a("baroque");
-   public static final alk<ckv> F = a("humble");
-   public static final alk<ckv> G = a("meditative");
-   public static final alk<ckv> H = a("prairie_ride");
-   public static final alk<ckv> I = a("unpacked");
-   public static final alk<ckv> J = a("backyard");
-   public static final alk<ckv> K = a("bouquet");
-   public static final alk<ckv> L = a("cavebird");
-   public static final alk<ckv> M = a("changing");
-   public static final alk<ckv> N = a("cotan");
-   public static final alk<ckv> O = a("endboss");
-   public static final alk<ckv> P = a("fern");
-   public static final alk<ckv> Q = a("finding");
-   public static final alk<ckv> R = a("lowmist");
-   public static final alk<ckv> S = a("orb");
-   public static final alk<ckv> T = a("owlemons");
-   public static final alk<ckv> U = a("passage");
-   public static final alk<ckv> V = a("pond");
-   public static final alk<ckv> W = a("sunflowers");
-   public static final alk<ckv> X = a("tides");
+public class ckw extends cks {
+   public static final double b = 0.375;
 
-   public static void a(rb<ckv> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2, false);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2, false);
-      a($$0, B, 2, 2, false);
-      a($$0, C, 2, 2, false);
-      a($$0, D, 2, 2, false);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+   public ckw(bus<? extends ckw> $$0, dfm $$1) {
+      super($$0, $$1);
    }
 
-   private static void a(rb<ckv> $$0, alk<ckv> $$1, int $$2, int $$3) {
-      a($$0, $$1, $$2, $$3, true);
+   public ckw(dfm $$0, jh $$1) {
+      super(bus.au, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
-   private static void a(rb<ckv> $$0, alk<ckv> $$1, int $$2, int $$3, boolean $$4) {
-      $$0.a(
-         $$1,
-         new ckv(
-            $$2,
-            $$3,
-            $$1.a(),
-            Optional.of(xl.c($$1.a().c("painting", "title")).a(n.o)),
-            $$4 ? Optional.of(xl.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
-         )
-      );
+   @Override
+   protected void a(akq.a $$0) {
    }
 
-   private static alk<ckv> a(String $$0) {
-      return alk.a(ma.X, all.b($$0));
+   @Override
+   protected void j() {
+      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
+      double $$0 = (double)this.aq().l() / 2.0;
+      double $$1 = (double)this.aq().m();
+      this.a(new ezt(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void a(arp $$0, @Nullable bul $$1) {
+      this.a(awn.nR, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ul $$0) {
+   }
+
+   @Override
+   public void a(ul $$0) {
+   }
+
+   @Override
+   public bsk a(cou $$0, bsj $$1) {
+      if (this.dV().C) {
+         return bsk.a;
+      } else {
+         boolean $$2 = false;
+         List<bvf> $$3 = cww.a(this.dV(), this.n(), $$1x -> {
+            bul $$2x = $$1x.A();
+            return $$2x == $$0 || $$2x == this;
+         });
+
+         for (bvf $$4 : $$3) {
+            if ($$4.A() == $$0) {
+               $$4.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$5 = false;
+         if (!$$2) {
+            this.at();
+            if ($$0.gh().d) {
+               for (bvf $$6 : $$3) {
+                  if ($$6.N_() && $$6.A() == this) {
+                     $$6.a(true, false);
+                     $$5 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$5) {
+            this.a(ear.b, $$0);
+         }
+
+         return bsk.a;
+      }
+   }
+
+   @Override
+   public boolean l() {
+      return this.dV().a_(this.a).a(axc.T);
+   }
+
+   public static ckw a(dfm $$0, jh $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (ckw $$6 : $$0.a(ckw.class, new ezt((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.n().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      ckw $$7 = new ckw($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   public void q() {
+      this.a(awn.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zq<acf> a(arn $$0) {
+      return new acg(this, 0, this.n());
+   }
+
+   @Override
+   public ezy u(float $$0) {
+      return this.o($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cwm dI() {
+      return new cwm(cwq.vc);
    }
 }

@@ -1,62 +1,48 @@
-import java.util.List;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cvm extends cwb implements cxa {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cvm(cwb.a $$0) {
-      super($$0);
+public record cvm<T>(Optional<jq<T>> a, ali<T> b) {
+   public cvm(jq<T> $$0) {
+      this(Optional.of($$0), $$0.e().orElseThrow());
    }
 
-   @Override
-   public bsh a(czy $$0) {
-      dff $$1 = $$0.q();
-      if ($$1 instanceof arq $$2) {
-         cwf $$3 = $$0.n();
-         ezr $$4 = $$0.l();
-         jm $$5 = $$0.k();
-         cpk.a(new cpf($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
-
-      return bsh.a;
+   public cvm(ali<T> $$0) {
+      this(Optional.empty(), $$0);
    }
 
-   @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      if ($$1.fM()) {
-         cwf $$3 = $$1.b($$2);
-         if ($$0 instanceof arq $$4) {
-            cpk.a(new cpf($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awy.c.b(this));
-         }
-
-         return bsh.a;
-      } else {
-         return bsh.e;
-      }
+   public static <T> Codec<cvm<T>> a(ali<kd<T>> $$0, Codec<jq<T>> $$1) {
+      return Codec.either($$1, ali.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cvm::a, cvm::a);
    }
 
-   @Override
-   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
-      cyv $$4 = $$0.a(ku.af);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
+   public static <T> zh<wu, cvm<T>> a(ali<kd<T>> $$0, zh<wu, jq<T>> $$1) {
+      return zh.a(zf.a($$1, ali.b($$0)), cvm::a, cvm::a);
    }
 
-   @Override
-   public cpk a(dff $$0, ka $$1, cwf $$2, jm $$3) {
-      return new cpf($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public Either<jq<T>, ali<T>> a() {
+      return this.a.<Either<jq<T>, ali<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
    }
 
-   @Override
-   public cxa.a b() {
-      return cxa.a.a().a(cvm::a).a(1.0F).b(0.5F).a(1004).a();
+   public static <T> cvm<T> a(Either<jq<T>, ali<T>> $$0) {
+      return (cvm<T>)$$0.map(cvm::new, cvm::new);
    }
 
-   private static ezr a(ky $$0, jm $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+   public Optional<T> a(kd<T> $$0) {
+      return this.a.<T>map(jq::a).or(() -> $$0.f(this.b));
+   }
+
+   public Optional<jq<T>> a(js.a $$0) {
+      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
+   }
+
+   public Optional<jq<T>> b() {
+      return this.a;
+   }
+
+   public ali<T> c() {
+      return this.b;
    }
 }

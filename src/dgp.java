@@ -1,35 +1,103 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class dgp extends dgl {
+public class dgp {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dgp a = new dgp(ju.a(), List.of());
    public static final MapCodec<dgp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgh.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+      $$0 -> $$0.group(
+               edu.c.promotePartial(ae.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               elm.d.promotePartial(ae.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, dgp::new)
    );
-   private final ju<dgh> c;
-   private final int d;
-   private final int e;
+   private final ju<edu<?>> d;
+   private final List<ju<elm>> e;
+   private final Supplier<List<eei<?, ?>>> f;
+   private final Supplier<Set<elm>> g;
 
-   public dgp(ju<dgh> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
+   dgp(ju<edu<?>> $$0, List<ju<elm>> $$1) {
+      this.d = $$0;
       this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ju::a).map(jq::a).flatMap(elm::a).filter($$0xx -> $$0xx.b() == eew.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ju::a).map(jq::a).collect(Collectors.toSet()));
    }
 
-   @Override
-   protected Stream<jq<dgh>> b() {
-      return this.c.a();
+   public Iterable<jq<edu<?>>> a() {
+      return this.d;
    }
 
-   @Override
-   protected MapCodec<? extends dgl> a() {
-      return b;
+   public List<eei<?, ?>> b() {
+      return this.f.get();
    }
 
-   @Override
-   public jq<dgh> getNoiseBiome(int $$0, int $$1, int $$2, dgq.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public List<ju<elm>> c() {
+      return this.e;
+   }
+
+   public boolean a(elm $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dgp.b {
+      private final jr<elm> a;
+      private final jr<edu<?>> b;
+
+      public a(jr<elm> $$0, jr<edu<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dgp.a a(ebm.a $$0, ali<elm> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dgp.a a(ali<edu<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jq<edu<?>>> a = new ArrayList<>();
+      private final List<List<jq<elm>>> b = new ArrayList<>();
+
+      public dgp.b a(ebm.a $$0, jq<elm> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dgp.b a(int $$0, jq<elm> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dgp.b a(jq<edu<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dgp a() {
+         return new dgp(ju.a(this.a), this.b.stream().map(ju::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

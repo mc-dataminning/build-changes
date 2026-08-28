@@ -1,145 +1,48 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+public interface vf {
+   vf.b a();
 
-public class vf extends vd {
-   private static final int b = 10;
-   public static final vm<vf> a = new vm.a<vf>() {
-      public vf a(DataInput $$0, uw $$1) throws IOException {
-         return vf.a(d($$0, $$1));
-      }
+   vf.b a(String var1);
 
-      @Override
-      public vh.b a(DataInput $$0, vh $$1, uw $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
+   vf.b a(byte var1);
 
-      private static short d(DataInput $$0, uw $$1) throws IOException {
-         $$1.b(10L);
-         return $$0.readShort();
-      }
+   vf.b a(short var1);
 
-      @Override
-      public int c() {
-         return 2;
-      }
+   vf.b a(int var1);
 
-      @Override
-      public String a() {
-         return "SHORT";
-      }
+   vf.b a(long var1);
 
-      @Override
-      public String b() {
-         return "TAG_Short";
-      }
+   vf.b a(float var1);
 
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final short c;
+   vf.b a(double var1);
 
-   vf(short $$0) {
-      this.c = $$0;
+   vf.b a(byte[] var1);
+
+   vf.b a(int[] var1);
+
+   vf.b a(long[] var1);
+
+   vf.b a(vk<?> var1, int var2);
+
+   vf.a a(vk<?> var1);
+
+   vf.a a(vk<?> var1, String var2);
+
+   vf.a b(vk<?> var1, int var2);
+
+   vf.b b();
+
+   vf.b b(vk<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   public static vf a(short $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? vf.a.a[$$0 - -128] : new vf($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeShort(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public byte b() {
-      return 2;
-   }
-
-   @Override
-   public vm<vf> c() {
-      return a;
-   }
-
-   public vf e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vf && this.c == ((vf)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(vo $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return this.c;
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 255);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public vh.b a(vh $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final vf[] a = new vf[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new vf((short)(-128 + $$0));
-         }
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

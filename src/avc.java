@@ -1,56 +1,23 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class avc {
-   private final atp a;
-   private final auv<InputStream> b;
-   private final auv<avg> c;
-   @Nullable
-   private avg d;
+   private static final Codec<avc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(azv.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avc::new)
+   );
+   public static final auc<avc> a = auc.a("filter", b);
+   private final List<azv> c;
 
-   public avc(atp $$0, auv<InputStream> $$1, auv<avg> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public avc(List<azv> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   public avc(atp $$0, auv<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = avg.b;
-      this.d = avg.a;
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   public atp a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.a.b();
-   }
-
-   public Optional<auk> c() {
-      return this.a.c();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public avg f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

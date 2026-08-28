@@ -1,194 +1,215 @@
-public class ftg extends frp {
-   private static final xl a = xl.c("jigsaw_block.joint_label");
-   private static final xl b = xl.c("jigsaw_block.pool");
-   private static final xl c = xl.c("jigsaw_block.name");
-   private static final xl d = xl.c("jigsaw_block.target");
-   private static final xl s = xl.c("jigsaw_block.final_state");
-   private static final xl u = xl.c("jigsaw_block.placement_priority");
-   private static final xl v = xl.c("jigsaw_block.placement_priority.tooltip");
-   private static final xl w = xl.c("jigsaw_block.selection_priority");
-   private static final xl x = xl.c("jigsaw_block.selection_priority.tooltip");
-   private final dtt y;
-   private fmf z;
-   private fmf A;
-   private fmf B;
-   private fmf C;
-   private fmf D;
-   private fmf E;
-   int F;
-   private boolean G = true;
-   private fmd<dtt.a> H;
-   private flw I;
-   private flw J;
-   private dtt.a K;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public ftg(dtt $$0) {
-      super(fjo.a);
-      this.y = $$0;
+public class ftg extends fsl<csv> {
+   private static final alj[] M = new alj[]{
+      alj.b("container/enchanting_table/level_1"), alj.b("container/enchanting_table/level_2"), alj.b("container/enchanting_table/level_3")
+   };
+   private static final alj[] N = new alj[]{
+      alj.b("container/enchanting_table/level_1_disabled"),
+      alj.b("container/enchanting_table/level_2_disabled"),
+      alj.b("container/enchanting_table/level_3_disabled")
+   };
+   private static final alj O = alj.b("container/enchanting_table/enchantment_slot_disabled");
+   private static final alj P = alj.b("container/enchanting_table/enchantment_slot_highlighted");
+   private static final alj Q = alj.b("container/enchanting_table/enchantment_slot");
+   private static final alj R = alj.b("textures/gui/container/enchanting_table.png");
+   private static final alj S = alj.b("textures/entity/enchanting_table_book.png");
+   private final azu T = azu.a();
+   private fyt U;
+   public float G;
+   public float H;
+   public float I;
+   public float J;
+   public float K;
+   public float L;
+   private cwm V = cwm.k;
+
+   public ftg(csv $$0, cot $$1, xj $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void m() {
-      this.E();
-      this.m.a(null);
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.U = new fyt(this.m.aS().a(gck.G));
    }
 
-   private void D() {
-      this.m.a(null);
+   @Override
+   public void F() {
+      super.F();
+      this.J();
    }
 
-   private void E() {
-      this.m.L().b(new air(this.y.aB_(), all.a(this.z.a()), all.a(this.A.a()), all.a(this.B.a()), this.C.a(), this.K, this.b(this.D.a()), this.b(this.E.a())));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = (this.n - this.s) / 2;
+      int $$4 = (this.o - this.u) / 2;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         double $$6 = $$0 - (double)($$3 + 60);
+         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
+         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.z.a(this.m.t, $$5)) {
+            this.m.r.a(this.z.l, $$5);
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   private int b(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   @Override
+   protected void a(flq $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gjq::B, R, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.d($$0, $$4, $$5, $$1);
+      ftf.a().a((long)this.z.m());
+      int $$6 = this.z.l();
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         int $$8 = $$4 + 60;
+         int $$9 = $$8 + 20;
+         int $$10 = this.z.m[$$7];
+         if ($$10 == 0) {
+            $$0.a(gjq::B, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+         } else {
+            String $$11 = $$10 + "";
+            int $$12 = 86 - this.p.b($$11);
+            xo $$13 = ftf.a().a(this.p, $$12);
+            int $$14 = 6839882;
+            if (($$6 < $$7 + 1 || this.m.t.cp < $$10) && !this.m.t.gh().d) {
+               $$0.a(gjq::B, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               $$0.a(gjq::B, N[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
+               $$14 = 4226832;
+            } else {
+               int $$15 = $$2 - ($$4 + 60);
+               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
+               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
+                  $$0.a(gjq::B, P, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+                  $$14 = 16777088;
+               } else {
+                  $$0.a(gjq::B, Q, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               }
+
+               $$0.a(gjq::B, M[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
+               $$14 = 8453920;
+            }
+
+            $$0.b(this.p, $$11, $$9 + 86 - this.p.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+         }
       }
    }
 
-   private void F() {
-      this.m.L().b(new ahv(this.y.aB_(), this.F, this.G));
-   }
-
-   @Override
-   public void aP_() {
-      this.D();
-   }
-
-   @Override
-   protected void aS_() {
-      this.B = new fmf(this.p, this.n / 2 - 153, 20, 300, 20, b);
-      this.B.f(128);
-      this.B.a(this.y.d().a().toString());
-      this.B.b($$0x -> this.G());
-      this.d(this.B);
-      this.z = new fmf(this.p, this.n / 2 - 153, 55, 300, 20, c);
-      this.z.f(128);
-      this.z.a(this.y.b().toString());
-      this.z.b($$0x -> this.G());
-      this.d(this.z);
-      this.A = new fmf(this.p, this.n / 2 - 153, 90, 300, 20, d);
-      this.A.f(128);
-      this.A.a(this.y.c().toString());
-      this.A.b($$0x -> this.G());
-      this.d(this.A);
-      this.C = new fmf(this.p, this.n / 2 - 153, 125, 300, 20, s);
-      this.C.f(256);
-      this.C.a(this.y.f());
-      this.d(this.C);
-      this.D = new fmf(this.p, this.n / 2 - 153, 160, 98, 20, w);
-      this.D.f(3);
-      this.D.a(Integer.toString(this.y.t()));
-      this.D.a(fnh.a(x));
-      this.d(this.D);
-      this.E = new fmf(this.p, this.n / 2 - 50, 160, 98, 20, u);
-      this.E.f(3);
-      this.E.a(Integer.toString(this.y.k()));
-      this.E.a(fnh.a(v));
-      this.d(this.E);
-      this.K = this.y.j();
-      this.H = this.c(fmd.<dtt.a>a(dtt.a::a).a(dtt.a.values()).a(this.K).a().a(this.n / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.K = $$1));
-      boolean $$0 = dmk.o(this.y.m()).o().b();
-      this.H.j = $$0;
-      this.H.k = $$0;
-      this.c(new fls(this.n / 2 - 154, 185, 100, 20, xk.a, 0.0) {
-         {
-            this.b();
-         }
-
-         @Override
-         protected void b() {
-            this.b(xl.a("jigsaw_block.levels", ftg.this.F));
-         }
-
-         @Override
-         protected void a() {
-            ftg.this.F = azn.a(azn.b(0.0, 20.0, this.c));
-         }
+   private void d(flq $$0, int $$1, int $$2, float $$3) {
+      float $$4 = azm.h($$3, this.L, this.K);
+      float $$5 = azm.h($$3, this.H, this.G);
+      $$0.d();
+      fdn.e();
+      $$0.c().a();
+      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
+      float $$6 = 40.0F;
+      $$0.c().b(-40.0F, 40.0F, 40.0F);
+      $$0.c().a(a.b.rotationDegrees(25.0F));
+      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
+      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
+      $$0.c().a(a.d.rotationDegrees($$7));
+      $$0.c().a(a.b.rotationDegrees(180.0F));
+      float $$8 = azm.a(azm.i($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      float $$9 = azm.a(azm.i($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      this.U.a(0.0F, $$8, $$9, $$4);
+      $$0.a($$1x -> {
+         fev $$2x = $$1x.getBuffer(this.U.a(S));
+         this.U.a($$0.c(), $$2x, 15728880, gyv.d);
       });
-      this.c(fmd.b(this.G).a(this.n / 2 - 50, 185, 100, 20, xl.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.G = $$1));
-      this.J = this.c((flw)flw.a(xl.c("jigsaw_block.generate"), $$0x -> {
-         this.m();
-         this.F();
-      }).a(this.n / 2 + 54, 185, 100, 20).a());
-      this.I = this.c((flw)flw.a(xk.d, $$0x -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c((flw)flw.a(xk.e, $$0x -> this.D()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.G();
+      $$0.d();
+      $$0.c().b();
+      fdn.d();
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.B);
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      float $$4 = this.m.av().a(false);
+      super.a($$0, $$1, $$2, $$4);
+      this.a($$0, $$1, $$2);
+      boolean $$5 = this.m.t.gh().d;
+      int $$6 = this.z.l();
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         int $$8 = this.z.m[$$7];
+         Optional<jq.c<dcd>> $$9 = this.m.s.J_().e(ma.aM).c(this.z.n[$$7]);
+         if (!$$9.isEmpty()) {
+            int $$10 = this.z.o[$$7];
+            int $$11 = $$7 + 1;
+            if (this.a(60, 14 + 19 * $$7, 108, 17, (double)$$1, (double)$$2) && $$8 > 0 && $$10 >= 0 && $$9 != null) {
+               List<xj> $$12 = Lists.newArrayList();
+               $$12.add(xj.a("container.enchant.clue", dcd.a($$9.get(), $$10)).a(n.p));
+               if (!$$5) {
+                  $$12.add(xi.a);
+                  if (this.m.t.cp < $$8) {
+                     $$12.add(xj.a("container.enchant.level.requirement", this.z.m[$$7]).a(n.m));
+                  } else {
+                     xx $$13;
+                     if ($$11 == 1) {
+                        $$13 = xj.c("container.enchant.lapis.one");
+                     } else {
+                        $$13 = xj.a("container.enchant.lapis.many", $$11);
+                     }
+
+                     $$12.add($$13.a($$6 >= $$11 ? n.h : n.m));
+                     xx $$15;
+                     if ($$11 == 1) {
+                        $$15 = xj.c("container.enchant.level.one");
+                     } else {
+                        $$15 = xj.a("container.enchant.level.many", $$11);
+                     }
+
+                     $$12.add($$15.a(n.h));
+                  }
+               }
+
+               $$0.a(this.p, $$12, $$1, $$2);
+               break;
+            }
+         }
+      }
    }
 
    @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
+   public void J() {
+      cwm $$0 = this.z.b(0).g();
+      if (!cwm.a($$0, this.V)) {
+         this.V = $$0;
 
-   public static boolean a(String $$0) {
-      return all.c($$0) != null;
-   }
+         do {
+            this.I = this.I + (float)(this.T.a(4) - this.T.a(4));
+         } while (this.G <= this.I + 1.0F && this.G >= this.I - 1.0F);
+      }
 
-   private void G() {
-      boolean $$0 = a(this.z.a()) && a(this.A.a()) && a(this.B.a());
-      this.I.j = $$0;
-      this.J.j = $$0;
-   }
+      this.H = this.G;
+      this.L = this.K;
+      boolean $$1 = false;
 
-   @Override
-   public void a(fjx $$0, int $$1, int $$2) {
-      String $$3 = this.z.a();
-      String $$4 = this.A.a();
-      String $$5 = this.B.a();
-      String $$6 = this.C.a();
-      String $$7 = this.D.a();
-      String $$8 = this.E.a();
-      int $$9 = this.F;
-      dtt.a $$10 = this.K;
-      this.b($$0, $$1, $$2);
-      this.z.a($$3);
-      this.A.a($$4);
-      this.B.a($$5);
-      this.C.a($$6);
-      this.F = $$9;
-      this.K = $$10;
-      this.H.a($$10);
-      this.D.a($$7);
-      this.E.a($$8);
-   }
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (this.z.m[$$2] != 0) {
+            $$1 = true;
+         }
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (!this.I.j || $$0 != 257 && $$0 != 335) {
-         return false;
+      if ($$1) {
+         this.K += 0.2F;
       } else {
-         this.m();
-         return true;
+         this.K -= 0.2F;
       }
-   }
 
-   @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, b, this.n / 2 - 153, 10, 10526880);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, c, this.n / 2 - 153, 45, 10526880);
-      this.z.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, d, this.n / 2 - 153, 80, 10526880);
-      this.A.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, s, this.n / 2 - 153, 115, 10526880);
-      this.C.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, w, this.n / 2 - 153, 150, 10526880);
-      this.E.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, u, this.n / 2 - 50, 150, 10526880);
-      this.D.a($$0, $$1, $$2, $$3);
-      if (dmk.o(this.y.m()).o().b()) {
-         $$0.b(this.p, a, this.n / 2 + 53, 150, 10526880);
-      }
+      this.K = azm.a(this.K, 0.0F, 1.0F);
+      float $$3 = (this.I - this.G) * 0.4F;
+      float $$4 = 0.2F;
+      $$3 = azm.a($$3, -0.2F, 0.2F);
+      this.J = this.J + ($$3 - this.J) * 0.9F;
+      this.G = this.G + this.J;
    }
 }

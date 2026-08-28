@@ -1,29 +1,23 @@
-public class aac implements zs<zy> {
-   public static final zj<wi, aac> a = zs.a(aac::a, aac::new);
-   private final long b;
+import java.util.Optional;
+import java.util.UUID;
 
-   public aac(long $$0) {
-      this.b = $$0;
+public record aac(Optional<UUID> b) implements zq<zw> {
+   public static final zh<wg, aac> a = zq.a(aac::a, aac::new);
+
+   private aac(wg $$0) {
+      this($$0.b(kk.g));
    }
 
-   private aac(wi $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wi $$0) {
-      $$0.b(this.b);
+   private void a(wg $$0) {
+      $$0.a(this.b, kk.g);
    }
 
    @Override
-   public zu<aac> a() {
-      return aak.d;
+   public zs<aac> a() {
+      return aai.f;
    }
 
-   public void a(zy $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

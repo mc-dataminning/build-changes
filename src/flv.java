@@ -1,160 +1,71 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class flv {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final all[] c = new all[]{
-      all.b("boss_bar/pink_background"),
-      all.b("boss_bar/blue_background"),
-      all.b("boss_bar/red_background"),
-      all.b("boss_bar/green_background"),
-      all.b("boss_bar/yellow_background"),
-      all.b("boss_bar/purple_background"),
-      all.b("boss_bar/white_background")
-   };
-   private static final all[] d = new all[]{
-      all.b("boss_bar/pink_progress"),
-      all.b("boss_bar/blue_progress"),
-      all.b("boss_bar/red_progress"),
-      all.b("boss_bar/green_progress"),
-      all.b("boss_bar/yellow_progress"),
-      all.b("boss_bar/purple_progress"),
-      all.b("boss_bar/white_progress")
-   };
-   private static final all[] e = new all[]{
-      all.b("boss_bar/notched_6_background"),
-      all.b("boss_bar/notched_10_background"),
-      all.b("boss_bar/notched_12_background"),
-      all.b("boss_bar/notched_20_background")
-   };
-   private static final all[] f = new all[]{
-      all.b("boss_bar/notched_6_progress"), all.b("boss_bar/notched_10_progress"), all.b("boss_bar/notched_12_progress"), all.b("boss_bar/notched_20_progress")
-   };
-   private final fjx g;
-   final Map<UUID, fmk> h = Maps.newLinkedHashMap();
+public abstract class flv extends fmb implements fnz {
+   @Nullable
+   private foa a;
+   private boolean b;
 
-   public flv(fjx $$0) {
-      this.g = $$0;
+   public flv(int $$0, int $$1, int $$2, int $$3, xj $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(flj $$0) {
-      if (!this.h.isEmpty()) {
-         bor $$1 = boq.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
-
-         for (fmk $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            xl $$7 = $$4.i();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         $$1.c();
-      }
+   @Override
+   public final boolean aJ_() {
+      return this.b;
    }
 
-   private void a(flj $$0, int $$1, int $$2, brx $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = azn.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   private void a(flj $$0, int $$1, int $$2, brx $$3, int $$4, all[] $$5, all[] $$6) {
-      $$0.a(gjh::B, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != brx.b.a) {
-         $$0.a(gjh::B, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
+   @Nullable
+   @Override
+   public foa aK_() {
+      return this.a;
    }
 
-   public void a(acr $$0) {
-      $$0.a(new acr.b() {
-         @Override
-         public void a(UUID $$0, xl $$1, float $$2, brx.a $$3, brx.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            flv.this.h.put($$0, new fmk($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            flv.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            flv.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, xl $$1) {
-            flv.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, brx.a $$1, brx.b $$2) {
-            fmk $$3 = flv.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fmk $$4 = flv.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
-   }
-
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (brx $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
+   @Override
+   public void a(@Nullable foa $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      return false;
-   }
-
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (brx $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
+      if ($$0 != null) {
+         $$0.a(true);
       }
 
-      return false;
+      this.a = $$0;
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (brx $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
+   @Nullable
+   @Override
+   public fln a(fqh $$0) {
+      return fnz.super.a($$0);
+   }
 
-      return false;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return fnz.super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return fnz.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return fnz.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aL_() {
+      return fnz.super.aL_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fnz.super.a($$0);
    }
 }

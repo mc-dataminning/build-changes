@@ -1,17 +1,8 @@
-public class gwj extends gwb {
-   public chk.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+import javax.annotation.Nullable;
 
-   public gwj() {
-      this.a = chk.a.a;
-   }
+public class gwj extends gvo {
+   public float a;
+   @Nullable
+   public hbg b;
+   public cwm c = cwm.k;
 }

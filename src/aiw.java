@@ -1,45 +1,51 @@
-public class aiw implements zs<agy> {
-   public static final zj<wi, aiw> a = zs.a(aiw::a, aiw::new);
-   private final ezn b;
-   private final bsg c;
-   private final int d;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public aiw(bsg $$0, ezn $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class aiw {
+   private static final double a = 4096.0;
+   private ezy b = ezy.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private aiw(wi $$0) {
-      this.c = $$0.b(bsg.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.c);
-      $$0.a(this.b);
-      $$0.c(this.d);
+   public ezy a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new ezy($$3, $$4, $$5);
+      }
    }
 
-   @Override
-   public zu<aiw> a() {
-      return agw.cf;
+   public long a(ezy $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public void a(agy $$0) {
-      $$0.a(this);
+   public long b(ezy $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public bsg b() {
-      return this.c;
+   public long c(ezy $$0) {
+      return a($$0.f) - a(this.b.f);
    }
 
-   public ezn e() {
+   public ezy d(ezy $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(ezy $$0) {
+      this.b = $$0;
+   }
+
+   public ezy a() {
       return this.b;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

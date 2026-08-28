@@ -3,26 +3,20 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bzc {
-   private static final int a = 1;
-
-   public static bwy<bvg> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bwy<bvg> a(Function<bve, Float> $$0) {
-      return cak.a(
-         (Function<cak.b<bvg>, ? extends App<cak.c<bvg>, can<bvg>>>)($$1 -> $$1.group($$1.a(cei.m), $$1.a(cei.n), $$1.b(cei.o), $$1.a(cei.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bve $$9 = $$1.b($$4);
-                     Optional<cek> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bwz.a($$7, $$9, 1)) {
-                        $$2.b();
+   public static bxb<bvh> a(bus<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2x -> $$2x.group($$2x.a(cel.n), $$2x.c(cel.q), $$2x.b(cel.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bvh> $$9 = $$2x.<cen>b($$5).a($$3xx -> $$3xx.g((bul)$$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
+                     if ($$9.isEmpty()) {
+                        return false;
                      } else {
-                        $$3.a(new bxi($$9, true));
-                        $$2.a(new cel(new bxi($$9, false), $$0.apply($$7), 0));
+                        bvh $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bxl($$10, true));
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

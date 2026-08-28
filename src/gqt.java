@@ -1,40 +1,21 @@
-public class gqt extends gqg<cho, gwq, fza<gvd>> {
-   private static final all a = all.b("textures/entity/fish/pufferfish.png");
-   private final fza<gvd> b;
-   private final fza<gvd> k;
-   private final fza<gvd> l = this.e();
+public class gqt extends gof<chm, gvu, gaf> {
+   private static final alj a = alj.b("textures/entity/cat/ocelot.png");
 
-   public gqt(gpa.a $$0) {
-      super($$0, new gah($$0.a(gcb.bU)), 0.2F);
-      this.k = new gai($$0.a(gcb.bV));
-      this.b = new gaj($$0.a(gcb.bW));
+   public gqt(gpk.a $$0) {
+      super($$0, new gaf($$0.a(gck.bD)), new gaf($$0.a(gck.bE)), 0.4F);
    }
 
-   public all a(gwq $$0) {
+   public alj a(gvu $$0) {
       return a;
    }
 
-   public gwq c() {
-      return new gwq();
+   public gvu b() {
+      return new gvu();
    }
 
-   public void a(gwq $$0, fek $$1, gix $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      this.f = 0.1F + 0.1F * (float)$$0.a;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cho $$0, gwq $$1, float $$2) {
+   public void a(chm $$0, gvu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gx();
-   }
-
-   protected void a(gwq $$0, fek $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azn.b($$0.p * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+      $$1.d = $$0.ci();
+      $$1.e = $$0.cj();
    }
 }

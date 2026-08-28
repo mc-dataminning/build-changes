@@ -1,54 +1,52 @@
-import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
 import org.slf4j.Logger;
 
-public class fjk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final aya<String> e = new aya<>(50);
+public class fjk extends fjd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xj c = xj.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public fjk(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+   public fjk(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public void run() {
+      ffh $$0 = ffh.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fhd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
       }
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
-   }
-
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
-   }
-
-   public Collection<String> a() {
-      return this.e;
+   @Override
+   public xj a() {
+      return c;
    }
 }

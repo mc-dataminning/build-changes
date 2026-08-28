@@ -1,5 +1,17 @@
-public class fpz {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+public interface fpz extends fnn, fqc {
+   fpz.a u();
+
+   default boolean C() {
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
 }

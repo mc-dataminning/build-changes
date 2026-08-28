@@ -1,38 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public interface dzy<B, T extends B> {
-   static <B, T extends B> dzy<B, T> a(final Class<T> $$0) {
-      return new dzy<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public interface dzy {
+   int ar();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   UUID cG();
 
-   static <B, T extends B> dzy<B, T> b(final Class<T> $$0) {
-      return new dzy<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
+   jh dv();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   ezt cR();
 
-   @Nullable
-   T a(B var1);
+   void a(dzz var1);
 
-   Class<? extends B> a();
+   Stream<? extends dzy> db();
+
+   Stream<? extends dzy> dc();
+
+   void b(bul.c var1);
+
+   boolean dT();
+
+   boolean dU();
 }

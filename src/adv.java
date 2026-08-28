@@ -1,101 +1,88 @@
-public class adv implements zs<ach> {
-   public static final zj<ww, adv> a = zs.a(adv::a, adv::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final lq k;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public <T extends lq> adv(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.k = $$0;
-      this.j = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
-      this.h = $$8;
-      this.i = $$9;
+public class adv {
+   private static final zh<ByteBuf, byte[]> a = zf.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public adv(des $$0, erk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dfv.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dfv.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   private adv(ww $$0) {
-      this.j = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.k = ls.bg.decode($$0);
+   public adv(wg $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(ww $$0) {
-      $$0.a(this.j);
+   public void a(wg $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.q(this.i);
-      ls.bg.encode($$0, this.k);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public zu<adv> a() {
-      return agw.M;
+   private void a(des $$0, erk $$1, dfv $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dxv $$7 = $$1.a($$2).a(kj.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(ach $$0) {
-      $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public double e() {
+   public BitSet a() {
       return this.b;
    }
 
-   public double f() {
-      return this.c;
-   }
-
-   public double g() {
+   public BitSet b() {
       return this.d;
    }
 
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
+   public List<byte[]> c() {
       return this.f;
    }
 
-   public float j() {
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
+      return this.e;
+   }
+
+   public List<byte[]> f() {
       return this.g;
-   }
-
-   public float k() {
-      return this.h;
-   }
-
-   public int l() {
-      return this.i;
-   }
-
-   public lq m() {
-      return this.k;
    }
 }

@@ -1,38 +1,24 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
-
-class btj extends btl {
-   private final float c;
-   private final ToIntFunction<azv> d;
-
-   protected btj(btm $$0, int $$1, float $$2, ToIntFunction<azv> $$3) {
-      super($$0, $$1, ls.G);
-      this.c = $$2;
-      this.d = $$3;
+class btj extends bto {
+   protected btj(btp $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(bve $$0, int $$1, bsy $$2, float $$3) {
-      if ($$0.eb().i() <= this.c) {
-         int $$4 = this.d.applyAsInt($$0.eb());
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.a($$0.dY(), $$0, $$0.dD(), $$0.dF() + (double)$$0.du() / 2.0, $$0.dJ());
-         }
-      }
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   private void a(dff $$0, bve $$1, double $$2, double $$3, double $$4) {
-      cmc $$5 = bup.aM.a($$0, buo.k);
-      if ($$5 != null) {
-         azv $$6 = $$1.eb();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = azn.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bV().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.E_().i() * 360.0F, 0.0F);
-         $$5.h(new ezr($$9));
-         $$0.b($$5);
-         $$5.a(awo.wY);
+   @Override
+   public boolean a(arp $$0, bvh $$1, int $$2) {
+      if ($$1 instanceof arq $$3 && !$$3.Y_() && $$0.ak() != bsh.a && $$0.c($$3.dv())) {
+         cqh $$4 = $$0.d($$3.dv());
+         if ($$4 == null || $$4.m() < $$4.l()) {
+            $$3.a(new btq(bts.I, 600, $$2));
+            $$3.c($$3.dv());
+            return false;
+         }
       }
+
+      return true;
    }
 }

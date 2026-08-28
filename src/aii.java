@@ -1,29 +1,25 @@
-public class aii implements zs<agy> {
-   public static final zj<wi, aii> a = zs.a(aii::a, aii::new);
-   private final String b;
+public record aii(int b, int c) implements zq<agw> {
+   public static final zh<wg, aii> a = zq.a(aii::a, aii::new);
 
-   public aii(String $$0) {
-      this.b = $$0;
+   private aii(wg $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private aii(wi $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b);
+   private void a(wg $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zu<aii> a() {
-      return agw.bS;
+   public zs<aii> a() {
+      return agu.bi;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

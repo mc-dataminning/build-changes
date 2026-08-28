@@ -1,220 +1,69 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class baf<T> extends AbstractSet<T> {
-   private static final int a = 10;
-   private final Comparator<T> b;
-   T[] c;
-   int d;
+public class baf {
+   public static <T extends bvj> Optional<T> a(bus<T> $$0, bur $$1, arp $$2, jh $$3, int $$4, int $$5, int $$6, baf.a $$7) {
+      jh.a $$8 = $$3.k();
 
-   private baf(int $$0, Comparator<T> $$1) {
-      this.b = $$1;
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
-      } else {
-         this.c = (T[])a(new Object[$$0]);
-      }
-   }
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = azm.b($$2.A, -$$5, $$5);
+         int $$11 = azm.b($$2.A, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.E_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a((dfp)$$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
+               }
 
-   public static <T extends Comparable<T>> baf<T> a() {
-      return a(10);
-   }
-
-   public static <T extends Comparable<T>> baf<T> a(int $$0) {
-      return new baf<>($$0, Comparator.naturalOrder());
-   }
-
-   public static <T> baf<T> a(Comparator<T> $$0) {
-      return a($$0, 10);
-   }
-
-   public static <T> baf<T> a(Comparator<T> $$0, int $$1) {
-      return new baf<>($$1, $$0);
-   }
-
-   private static <T> T[] a(Object[] $$0) {
-      return (T[])$$0;
-   }
-
-   private int c(T $$0) {
-      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
-   }
-
-   private static int b(int $$0) {
-      return -$$0 - 1;
-   }
-
-   @Override
-   public boolean add(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         this.a($$0, $$2);
-         return true;
-      }
-   }
-
-   private void c(int $$0) {
-      if ($$0 > this.c.length) {
-         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
-         } else if ($$0 < 10) {
-            $$0 = 10;
-         }
-
-         Object[] $$1 = new Object[$$0];
-         System.arraycopy(this.c, 0, $$1, 0, this.d);
-         this.c = (T[])a($$1);
-      }
-   }
-
-   private void a(T $$0, int $$1) {
-      this.c(this.d + 1);
-      if ($$1 != this.d) {
-         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
-      }
-
-      this.c[$$1] = $$0;
-      this.d++;
-   }
-
-   void d(int $$0) {
-      this.d--;
-      if ($$0 != this.d) {
-         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
-      }
-
-      this.c[this.d] = null;
-   }
-
-   private T e(int $$0) {
-      return this.c[$$0];
-   }
-
-   public T a(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return this.e($$1);
-      } else {
-         this.a($$0, b($$1));
-         return $$0;
-      }
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      if ($$1 >= 0) {
-         this.d($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public T b(T $$0) {
-      int $$1 = this.c($$0);
-      return $$1 >= 0 ? this.e($$1) : null;
-   }
-
-   public T b() {
-      return this.e(0);
-   }
-
-   public T c() {
-      return this.e(this.d - 1);
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      return $$1 >= 0;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return new baf.a();
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @Override
-   public Object[] toArray() {
-      return Arrays.copyOf(this.c, this.d, Object[].class);
-   }
-
-   @Override
-   public <U> U[] toArray(U[] $$0) {
-      if ($$0.length < this.d) {
-         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
-      } else {
-         System.arraycopy(this.c, 0, $$0, 0, this.d);
-         if ($$0.length > this.d) {
-            $$0[this.d] = null;
-         }
-
-         return $$0;
-      }
-   }
-
-   @Override
-   public void clear() {
-      Arrays.fill(this.c, 0, this.d, null);
-      this.d = 0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof baf<?> $$1 && this.b.equals($$1.b)) {
-            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
-         }
-
-         return super.equals($$0);
-      }
-   }
-
-   class a implements Iterator<T> {
-      private int b;
-      private int c = -1;
-
-      @Override
-      public boolean hasNext() {
-         return this.b < baf.this.d;
-      }
-
-      @Override
-      public T next() {
-         if (this.b >= baf.this.d) {
-            throw new NoSuchElementException();
-         } else {
-            this.c = this.b++;
-            return baf.this.c[this.c];
+               $$12.at();
+            }
          }
       }
 
-      @Override
-      public void remove() {
-         if (this.c == -1) {
-            throw new IllegalStateException();
-         } else {
-            baf.this.d(this.c);
-            this.b--;
-            this.c = -1;
+      return Optional.empty();
+   }
+
+   private static boolean a(arp $$0, int $$1, jh.a $$2, baf.a $$3) {
+      jh.a $$4 = new jh.a().g($$2);
+      dvv $$5 = $$0.a_($$4);
+
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(jm.a);
+         $$4.a($$2, jm.b);
+         dvv $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(jm.b);
+            return true;
          }
+
+         $$5 = $$7;
       }
+
+      return false;
+   }
+
+   public interface a {
+      @Deprecated
+      baf.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dis.bs)
+               && !$$2.a(dis.dQ)
+               && !$$2.a(dis.eY)
+               && !($$2.b() instanceof dqj)
+               && !($$2.b() instanceof dqi)
+               && !($$2.b() instanceof dmz)
+               && !$$2.a(dis.mX)
+               && !$$2.a(dis.dO)
+               && !$$2.a(dis.ck)
+               && !$$2.a(dis.ec)
+               && !$$2.a(dis.fO)
+               && !$$2.a(dis.ii)
+               && !$$2.a(dis.kI)
+               && !$$2.a(dis.qO)
+               && !$$2.a(dis.aQ)
+            ? ($$4.l() || $$4.n()) && ($$2.e() || $$2.a(dis.qP))
+            : false;
+      baf.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.g($$0, $$3).c() && diq.a($$2.g($$0, $$1), jm.b);
+
+      boolean canSpawnOn(arp var1, jh var2, dvv var3, jh var4, dvv var5);
    }
 }

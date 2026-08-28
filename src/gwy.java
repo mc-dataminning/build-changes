@@ -1,4 +1,6 @@
-public class gwy extends gvt {
+public class gwy extends gwe {
+   public boolean a;
    public boolean b;
-   public boolean c;
+   public float c;
+   public cnk d = cnk.f;
 }

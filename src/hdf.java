@@ -1,23 +1,8 @@
-public class hdf {
-   private final String a;
-   private final String b;
-   private long c;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public hdf(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ae.c();
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ae.c();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hdf {
 }

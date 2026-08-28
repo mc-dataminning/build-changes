@@ -1,34 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record exl(boolean b) implements exr {
-   public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(exl::e)).apply($$0, exl::new));
+public class exl extends exo {
+   public static final MapCodec<exl> a = a(exl::new);
+   public static final Codec<exl> b = b(exl::new);
 
-   public boolean a(eug $$0) {
-      return $$0.b(exc.l) == this.b;
+   exl(List<exy> $$0) {
+      super($$0, ae.a($$0));
+   }
+
+   public static exl a(List<exy> $$0) {
+      return new exl(List.copyOf($$0));
    }
 
    @Override
-   public exs b() {
-      return ext.s;
+   public exz b() {
+      return eya.c;
    }
 
-   @Override
-   public Set<ewz<?>> a() {
-      return Set.of(exc.l);
+   public static exl.a a(exy.a... $$0) {
+      return new exl.a($$0);
    }
 
-   public static exr.a c() {
-      return () -> new exl(true);
-   }
+   public static class a extends exo.a {
+      public a(exy.a... $$0) {
+         super($$0);
+      }
 
-   public static exr.a d() {
-      return () -> new exl(false);
-   }
+      @Override
+      public exl.a and(exy.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public boolean e() {
-      return this.b;
+      @Override
+      protected exy a(List<exy> $$0) {
+         return new exl($$0);
+      }
    }
 }

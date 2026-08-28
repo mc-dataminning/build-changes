@@ -1,133 +1,63 @@
-public class fzy extends fza<gwk> {
-   private static final String a = "feather";
-   private final gcc b;
-   private final gcc c;
-   private final gcc d;
-   private final gcc e;
-   private final gcc f;
-   private final gcc g;
-   private final gcc i;
+public class fzy extends fzj<gwh> {
+   private final gcl a;
+   private final gcl b;
+   private final gcl c;
+   private final gcl d;
+   private final gcl e;
 
-   public fzy(gcc $$0) {
+   public fzy(gcl $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = $$0.b("tail");
-      this.d = $$0.b("left_wing");
-      this.e = $$0.b("right_wing");
-      this.f = $$0.b("head");
-      this.g = $$0.b("left_leg");
-      this.i = $$0.b("right_leg");
+      this.a = $$0.b("head");
+      this.b = $$0.b("right_arm");
+      this.c = $$0.b("left_arm");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("body", gch.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gce.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
-      $$1.a("tail", gch.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gce.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
-      $$1.a("left_wing", gch.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gce.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      $$1.a("right_wing", gch.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gce.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      gcm $$2 = $$1.a("head", gch.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gce.a(0.0F, 15.69F, -2.76F));
-      $$2.a("head2", gch.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gce.a(0.0F, -2.0F, -1.0F));
-      $$2.a("beak1", gch.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gce.a(0.0F, -0.5F, -1.5F));
-      $$2.a("beak2", gch.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gce.a(0.0F, -1.75F, -2.45F));
-      $$2.a("feather", gch.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gce.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
-      gch $$3 = gch.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      $$1.a("left_leg", $$3, gce.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      $$1.a("right_leg", $$3, gce.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      return gci.a($$0, 32, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("head", gcq.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gcn.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         gcq.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gcp(0.5F)),
+         gcn.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", gcq.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gcn.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", gcq.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gcn.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", gcq.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gcn.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", gcq.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gcn.a(5.0F, 11.0F, 0.0F));
+      return gcr.a($$0, 128, 128);
    }
 
-   public void a(gwk $$0) {
+   public void a(gwh $$0) {
       super.a($$0);
-      this.a($$0.c);
-      this.f.e = $$0.V * (float) (Math.PI / 180.0);
-      this.f.f = $$0.U * (float) (Math.PI / 180.0);
-      switch ($$0.c) {
-         case b:
-            this.g.e = this.g.e + azn.b($$0.X * 0.6662F) * 1.4F * $$0.Y;
-            this.i.e = this.i.e + azn.b($$0.X * 0.6662F + (float) Math.PI) * 1.4F * $$0.Y;
-         case a:
-         case e:
-         default:
-            float $$3 = $$0.b * 0.3F;
-            this.f.c += $$3;
-            this.c.e = this.c.e + azn.b($$0.X * 0.6662F) * 0.3F * $$0.Y;
-            this.c.c += $$3;
-            this.b.c += $$3;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.c += $$3;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.c += $$3;
-            this.g.c += $$3;
-            this.i.c += $$3;
-         case c:
-            break;
-         case d:
-            float $$1 = azn.b($$0.p);
-            float $$2 = azn.a($$0.p);
-            this.f.b += $$1;
-            this.f.c += $$2;
-            this.f.e = 0.0F;
-            this.f.f = 0.0F;
-            this.f.g = azn.a($$0.p) * 0.4F;
-            this.b.b += $$1;
-            this.b.c += $$2;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.b += $$1;
-            this.d.c += $$2;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.b += $$1;
-            this.e.c += $$2;
-            this.c.b += $$1;
-            this.c.c += $$2;
-      }
-   }
-
-   private void a(fzy.a $$0) {
-      switch ($$0) {
-         case a:
-            this.g.e += (float) (Math.PI * 2.0 / 9.0);
-            this.i.e += (float) (Math.PI * 2.0 / 9.0);
-         case b:
-         case e:
-         default:
-            break;
-         case c:
-            float $$1 = 1.9F;
-            this.f.c++;
-            this.c.e += (float) (Math.PI / 6);
-            this.c.c++;
-            this.b.c++;
-            this.d.g = -0.0873F;
-            this.d.c++;
-            this.e.g = 0.0873F;
-            this.e.c++;
-            this.g.c++;
-            this.i.c++;
-            this.g.e++;
-            this.i.e++;
-            break;
-         case d:
-            this.g.g = (float) (-Math.PI / 9);
-            this.i.g = (float) (Math.PI / 9);
-      }
-   }
-
-   public static fzy.a a(chl $$0) {
-      if ($$0.gI()) {
-         return fzy.a.d;
-      } else if ($$0.y()) {
-         return fzy.a.c;
+      float $$1 = $$0.a;
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      if ($$1 > 0.0F) {
+         this.b.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
+         this.c.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
       } else {
-         return $$0.gK() ? fzy.a.a : fzy.a.b;
+         int $$4 = $$0.b;
+         if ($$4 > 0) {
+            this.b.e = -0.8F + 0.025F * azm.e((float)$$4, 70.0F);
+            this.c.e = 0.0F;
+         } else {
+            this.b.e = (-0.2F + 1.5F * azm.e($$3, 13.0F)) * $$2;
+            this.c.e = (-0.2F - 1.5F * azm.e($$3, 13.0F)) * $$2;
+         }
       }
+
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      this.d.e = -1.5F * azm.e($$3, 13.0F) * $$2;
+      this.e.e = 1.5F * azm.e($$3, 13.0F) * $$2;
+      this.d.f = 0.0F;
+      this.e.f = 0.0F;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public gcl b() {
+      return this.b;
    }
 }

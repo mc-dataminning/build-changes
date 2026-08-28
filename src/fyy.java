@@ -1,45 +1,57 @@
-public class fyy<T extends gvc> extends fzn<T> {
-   public fyy(gcc $$0) {
+import java.util.Set;
+
+public class fyy extends fzj<gvg> {
+   public static final String a = "red_thing";
+   public static final gcu b = new fyl(Set.of("head", "beak", "red_thing"));
+   private final gcl c;
+   private final gcl d;
+   private final gcl e;
+   private final gcl f;
+   private final gcl g;
+   private final gcl i;
+   private final gcl j;
+
+   public fyy(gcl $$0) {
       super($$0);
+      this.c = $$0.b("head");
+      this.i = $$0.b("beak");
+      this.j = $$0.b("red_thing");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
+      this.f = $$0.b("right_wing");
+      this.g = $$0.b("left_wing");
    }
 
-   public static gci a() {
-      float $$0 = -14.0F;
-      gck $$1 = fzn.a(gcg.a, -14.0F);
-      gcm $$2 = $$1.a();
-      gcm $$3 = $$2.a("head", gch.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gce.a(0.0F, -13.0F, 0.0F));
-      $$3.a("hat", gch.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gcg(-0.5F)), gce.a);
-      $$2.a("body", gch.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gce.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", gch.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gce.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", gch.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gce.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", gch.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gce.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", gch.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gce.a(2.0F, -5.0F, 0.0F));
-      return gci.a($$1, 64, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", gcq.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gcn.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", gcq.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gcn.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", gcq.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gcn.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", gcq.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gcn.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gcq $$3 = gcq.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, gcn.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, gcn.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", gcq.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gcn.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", gcq.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gcn.a(4.0F, 13.0F, 0.0F));
+      return gcr.a($$0, 64, 32);
    }
 
-   public void a(T $$0) {
+   public void a(gvg $$0) {
       super.a($$0);
-      this.o.k = true;
-      this.r.e *= 0.5F;
-      this.s.e *= 0.5F;
-      this.t.e *= 0.5F;
-      this.u.e *= 0.5F;
-      float $$1 = 0.4F;
-      this.r.e = azn.a(this.r.e, -0.4F, 0.4F);
-      this.s.e = azn.a(this.s.e, -0.4F, 0.4F);
-      this.t.e = azn.a(this.t.e, -0.4F, 0.4F);
-      this.u.e = azn.a(this.u.e, -0.4F, 0.4F);
-      if ($$0.b != null) {
-         this.r.e = -0.5F;
-         this.s.e = -0.5F;
-         this.r.g = 0.05F;
-         this.s.g = -0.05F;
-      }
-
-      if ($$0.a) {
-         float $$2 = 5.0F;
-         this.o.c -= 5.0F;
-         this.p.c += 5.0F;
-      }
+      float $$1 = (azm.a($$0.a) + 1.0F) * $$0.b;
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      this.i.e = this.c.e;
+      this.i.f = this.c.f;
+      this.j.e = this.c.e;
+      this.j.f = this.c.f;
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      this.d.e = azm.b($$3 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azm.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.g = $$1;
+      this.g.g = -$$1;
    }
 }

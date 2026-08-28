@@ -1,61 +1,23 @@
-import java.util.UUID;
-
-public record aau(aau.a c) implements aav {
-   public static final zj<wi, aau> a = aav.a(aau::a, aau::new);
-   public static final aav.b<aau> b = aav.a("debug/breeze");
-
-   private aau(wi $$0) {
-      this(new aau.a($$0));
-   }
-
-   private void a(wi $$0) {
-      this.c.a($$0);
+public record aau(alj a) implements aat {
+   public static <T extends wg> zh<T, aau> a(alj $$0, int $$1) {
+      return aat.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aau($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aav.b<aau> a() {
-      return b;
+   public aat.b<aau> a() {
+      return new aat.b<>(this.a);
    }
 
-   public aau.a b() {
-      return this.c;
-   }
-
-   public static record a(UUID a, int b, Integer c, jh d) {
-      public a(wi $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(wi::readInt), $$0.c(jh.b));
-      }
-
-      public void a(wi $$0) {
-         $$0.a(this.a);
-         $$0.q(this.b);
-         $$0.a(this.c, wi::q);
-         $$0.a(this.d, jh.b);
-      }
-
-      public String a() {
-         return agu.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public jh e() {
-         return this.d;
-      }
+   public alj b() {
+      return this.a;
    }
 }

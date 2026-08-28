@@ -1,37 +1,102 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdx<T extends bve> extends cdv<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class cdx extends cef {
+   private static final cfy a = cfy.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
 
-   public cdx(cqf $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bve> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public cdx(bvp $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(ccf.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.eb().h()) {
-         return false;
-      } else if (!((cqf)this.e).gM()) {
-         return false;
+      int $$0 = this.e.eq();
+      bvh $$1 = this.e.ep();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.aq() == bus.bO && a(this.e).N().b(dfi.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
       } else {
-         this.h();
-         return this.c != null;
+         return false;
       }
+   }
+
+   public cdx a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void d() {
-      this.j = b(200);
+      this.e.h(this.e.ep());
+      this.g = this.e.aa_();
+      this.d = this.e.eq();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
       super.d();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      ezt $$1 = ezt.a(this.e.dt()).c($$0, 10.0, $$0);
+      List<? extends bvj> $$2 = this.e.dV().a((Class<? extends bvj>)this.e.getClass(), $$1, buq.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bvj $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bvj)var5.next();
+            if (this.e != $$3 && $$3.aa_() == null && (!(this.e instanceof bwe) || ((bwe)this.e).ag_() == ((bwe)$$3).ag_()) && !$$3.s(this.e.ep())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.ep());
+      }
+   }
+
+   protected void a(bvj $$0, bvh $$1) {
+      $$0.h($$1);
    }
 }

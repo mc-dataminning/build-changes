@@ -1,29 +1,36 @@
-public class aia implements zs<agy> {
-   public static final zj<wi, aia> a = zs.a(aia::a, aia::new);
-   private final int b;
+public class aia implements zq<agw> {
+   public static final zh<wg, aia> a = zq.a(aia::a, aia::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public aia(int $$0) {
-      this.b = $$0;
+   public aia(coq $$0) {
+      this.c = $$0.b;
    }
 
-   private aia(wi $$0) {
-      this.b = $$0.l();
+   private aia(wg $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
+   private void a(wg $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public zu<aia> a() {
-      return agw.bK;
+   public zs<aia> a() {
+      return agu.bM;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.c;
    }
 }

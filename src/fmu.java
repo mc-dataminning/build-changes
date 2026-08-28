@@ -1,18 +1,35 @@
-public class fmu extends flw {
-   private final flh a;
-   private final xl b;
-   private final xl c;
+public class fmu {
+   public static final alj a = alj.b("textures/gui/title/minecraft.png");
+   public static final alj b = alj.b("textures/gui/title/minceraft.png");
+   public static final alj c = alj.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azu.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public fmu(int $$0, int $$1, int $$2, int $$3, xl $$4, flw.c $$5, flh $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xo.a($$4.f(), yi.a.c(true));
+   public fmu(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-      xl $$4 = this.B() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | azn.f(this.l * 255.0F) << 24);
+   public void a(flq $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
+   }
+
+   public void a(flq $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axx.a($$5);
+      $$0.a(gjq::B, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gjq::B, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

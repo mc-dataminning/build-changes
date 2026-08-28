@@ -1,75 +1,108 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record yd<S>(List<yd.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public class yd {
+   static final Logger a = LogUtils.getLogger();
+   @Nullable
+   ye b;
+   Instant c = Instant.EPOCH;
+
+   public yd(UUID $$0, UUID $$1) {
+      this.b = ye.a($$0, $$1);
    }
 
-   public static <S> yd<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<yd.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new yd<>($$4);
+   public yd.c a(baa $$0) {
+      return $$1 -> {
+         ye $$2 = this.b;
+         if ($$2 == null) {
+            return null;
+         } else {
+            this.b = $$2.a();
+            return new xv($$0.sign($$2x -> xz.a($$2x, $$2, $$1)));
+         }
+      };
    }
 
-   private static <S> List<yd.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<yd.a<S>> $$2 = new ArrayList<>();
+   public yd.b a(final cox $$0) {
+      final azz $$1 = $$0.a();
+      return new yd.b() {
+         @Override
+         public xz unpack(@Nullable xv $$0x, yc $$1x) throws yd.a {
+            if ($$0 == null) {
+               throw new yd.a(yd.a.a);
+            } else if ($$0.b().a()) {
+               throw new yd.a(yd.a.c);
+            } else {
+               ye $$2 = yd.this.b;
+               if ($$2 == null) {
+                  throw new yd.a(yd.a.b);
+               } else if ($$1.b().isBefore(yd.this.c)) {
+                  this.setChainBroken();
+                  throw new yd.a(yd.a.e);
+               } else {
+                  yd.this.c = $$1.b();
+                  xz $$3 = new xz($$2, $$0, $$1, null, xn.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new yd.a(yd.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        yd.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof gd) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new yd.a<>($$4, $$6));
+                     yd.this.b = $$2.a();
+                     return $$3;
+                  }
                }
             }
          }
-      }
 
-      return $$2;
-   }
-
-   @Nullable
-   public yd.a<S> a(String $$0) {
-      for (yd.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
+         @Override
+         public void setChainBroken() {
+            yd.this.b = null;
          }
-      }
-
-      return null;
+      };
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public static class a extends yj {
+      static final xj a = xj.c("chat.disabled.missingProfileKey");
+      static final xj b = xj.c("chat.disabled.chain_broken");
+      static final xj c = xj.c("chat.disabled.expiredProfileKey");
+      static final xj d = xj.c("chat.disabled.invalid_signature");
+      static final xj e = xj.c("chat.disabled.out_of_order_chat");
+
+      public a(xj $$0) {
+         super($$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      static yd.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new yd.a(yd.a.a);
+            } else {
+               return xz.a($$0, $$3.a());
+            }
+         };
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
+      xz unpack(@Nullable xv var1, yc var2) throws yd.a;
 
-      public String c() {
-         return this.b;
+      default void setChainBroken() {
       }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      yd.c a = $$0 -> null;
+
+      @Nullable
+      xv pack(yc var1);
    }
 }

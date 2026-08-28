@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cp implements dz<dcc> {
+public abstract class cp implements dz<dcj> {
    private final List<br> a;
 
    protected cp(List<br> $$0) {
@@ -17,7 +17,7 @@ public abstract class cp implements dz<dcc> {
       return this.a;
    }
 
-   public boolean a(cwf $$0, dcc $$1) {
+   public boolean a(cwm $$0, dcj $$1) {
       for (br $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,7 +43,7 @@ public abstract class cp implements dz<dcc> {
       }
 
       @Override
-      public kt<dcc> a() {
+      public kt<dcj> a() {
          return ku.l;
       }
    }
@@ -56,7 +56,7 @@ public abstract class cp implements dz<dcc> {
       }
 
       @Override
-      public kt<dcc> a() {
+      public kt<dcj> a() {
          return ku.I;
       }
    }

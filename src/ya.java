@@ -1,35 +1,44 @@
-public interface ya {
-   xl a();
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-   void a(arr var1, boolean var2, xh.a var3);
-
-   static ya a(yb $$0) {
-      return (ya)($$0.h() ? new ya.a($$0.d()) : new ya.b($$0));
+public record ya(UUID a, cox b) {
+   public yf a(Duration $$0) {
+      return new yf.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static record a(xl a) implements ya {
-      @Override
-      public void a(arr $$0, boolean $$1, xh.a $$2) {
-         $$0.g.a(this.a, $$2);
-      }
+   public yd.b a(UUID $$0) {
+      return new yd($$0, this.a).a(this.b);
    }
 
-   public static record b(yb a) implements ya {
-      @Override
-      public xl a() {
-         return this.a.d();
+   public ya.a a() {
+      return new ya.a(this.a, this.b.b());
+   }
+
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public cox d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cox.a b) {
+      public static ya.a a(wg $$0) {
+         return new ya.a($$0.n(), new cox.a($$0));
       }
 
-      @Override
-      public void a(arr $$0, boolean $$1, xh.a $$2) {
-         yb $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.g.a($$3, $$2);
-         }
+      public static void a(wg $$0, ya.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public yb b() {
-         return this.a;
+      public ya a(GameProfile $$0, azz $$1) throws cox.b {
+         return new ya(this.a, cox.a($$1, $$0.getId(), this.b));
       }
    }
 }

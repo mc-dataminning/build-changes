@@ -1,7 +1,11 @@
-public record fbz(ezr b, ezr c, ezr d) {
-   public static final fbz a = new fbz(ezr.c, new ezr(0.0, 0.0, -1.0), new ezr(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public ezr a() {
-      return this.c.c(this.d);
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface fbz {
 }

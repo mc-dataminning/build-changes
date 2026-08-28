@@ -1,197 +1,86 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class est extends esy {
-   private final Deque<jh> b = new ArrayDeque<>();
-   private final Deque<jh> c = new ArrayDeque<>();
-   private final Object2IntMap<jh> d = new Object2IntLinkedOpenHashMap();
+public record est(arp d, ezy e, ezy f, float g, float h, boolean i, Set<bvv> j, est.a k) {
+   public static final est.a a = $$0 -> {
+   };
+   public static final est.a b = est::a;
+   public static final est.a c = est::b;
 
-   public est(dol $$0) {
-      super($$0);
+   public est(arp $$0, ezy $$1, ezy $$2, float $$3, float $$4, est.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   @Override
-   public void a(dff $$0, jh $$1, dvo $$2, @Nullable esw $$3, boolean $$4) {
-      esw $$5 = a($$0, $$3);
-      this.a($$0, $$1, $$5);
-      ObjectIterator<Entry<jh>> $$6 = this.d.object2IntEntrySet().iterator();
-
-      for (boolean $$7 = true; $$6.hasNext(); $$7 = false) {
-         Entry<jh> $$8 = (Entry<jh>)$$6.next();
-         jh $$9 = (jh)$$8.getKey();
-         int $$10 = $$8.getIntValue();
-         int $$11 = b($$10);
-         dvo $$12 = $$0.a_($$9);
-         if ($$12.a(this.a) && !$$12.c(dol.f).equals($$11)) {
-            int $$13 = 2;
-            if (!$$4 || !$$7) {
-               $$13 |= 128;
-            }
-
-            $$0.a($$9, $$12.b(dol.f, Integer.valueOf($$11)), $$13);
-         } else {
-            $$6.remove();
-         }
-      }
-
-      this.a($$0);
+   public est(arp $$0, ezy $$1, ezy $$2, float $$3, float $$4, Set<bvv> $$5, est.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, $$5, $$6);
    }
 
-   private void a(dff $$0) {
-      this.d.forEach(($$1, $$2) -> {
-         esw $$3 = a($$2);
-         dvo $$4 = $$0.a_($$1);
-
-         for (jm $$5 : $$3.f()) {
-            if (a($$4, $$5)) {
-               jh $$6 = $$1.a($$5);
-               dvo $$7 = $$0.a_($$6);
-               esw $$8 = $$3.c($$5);
-               $$0.a($$7, $$6, this.a, $$8, false);
-               if ($$7.d($$0, $$6)) {
-                  for (jm $$9 : $$8.f()) {
-                     if ($$9 != $$5.g()) {
-                        $$0.b($$6.a($$9), this.a, $$8.c($$9));
-                     }
-                  }
-               }
-            }
-         }
-      });
+   public est(arp $$0, bul $$1, est.a $$2) {
+      this($$0, a($$0, $$1), ezy.c, 0.0F, 0.0F, false, Set.of(), $$2);
    }
 
-   private static boolean a(dvo $$0, jm $$1) {
-      dwl<dws> $$2 = dol.g.get($$1);
-      return $$2 == null ? $$1 == jm.a : $$0.c($$2).a();
-   }
-
-   private static esw a(dff $$0, @Nullable esw $$1) {
-      esw $$2;
-      if ($$1 != null) {
-         $$2 = $$1;
-      } else {
-         $$2 = esw.a($$0.A);
-      }
-
-      return $$2.a(jm.b).a(esw.a.a);
-   }
-
-   private void a(dff $$0, jh $$1, esw $$2) {
-      dvo $$3 = $$0.a_($$1);
-      if ($$3.a(this.a)) {
-         this.a($$1, $$3.c(dol.f), $$2);
-         this.b.add($$1);
-      } else {
-         this.a($$0, $$1, 0, $$2, true);
-      }
-
-      while (!this.b.isEmpty()) {
-         jh $$4 = this.b.removeFirst();
-         int $$5 = this.d.getInt($$4);
-         esw $$6 = a($$5);
-         int $$7 = b($$5);
-         int $$8 = this.a($$0, $$4);
-         int $$9 = this.b($$0, $$4);
-         int $$10 = Math.max($$8, $$9);
-         int $$11;
-         if ($$10 < $$7) {
-            if ($$8 > 0 && !this.c.contains($$4)) {
-               this.c.add($$4);
-            }
-
-            $$11 = 0;
-         } else {
-            $$11 = $$10;
-         }
-
-         if ($$11 != $$7) {
-            this.a($$4, $$11, $$6);
-         }
-
-         this.a($$0, $$4, $$11, $$6, $$7 > $$10);
-      }
-
-      while (!this.c.isEmpty()) {
-         jh $$13 = this.c.removeFirst();
-         int $$14 = this.d.getInt($$13);
-         int $$15 = b($$14);
-         int $$16 = this.a($$0, $$13);
-         int $$17 = this.b($$0, $$13);
-         int $$18 = Math.max($$16, $$17);
-         esw $$19 = a($$14);
-         if ($$18 > $$15) {
-            this.a($$13, $$18, $$19);
-         } else if ($$18 < $$15) {
-            throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
-         }
-
-         this.a($$0, $$13, $$18, $$19, false);
+   private static void a(bul $$0) {
+      if ($$0 instanceof arq $$1) {
+         $$1.f.b(new ads(1032, jh.c, 0, false));
       }
    }
 
-   private static int a(esw $$0, int $$1) {
-      return $$0.i() << 4 | $$1;
+   private static void b(bul $$0) {
+      $$0.f(jh.a((ka)$$0.dt()));
    }
 
-   private static esw a(int $$0) {
-      return esw.a($$0 >> 4);
+   public static est a(arp $$0, bul $$1, est.a $$2) {
+      return new est($$0, a($$0, $$1), ezy.c, 0.0F, 0.0F, true, Set.of(), $$2);
    }
 
-   private static int b(int $$0) {
-      return $$0 & 15;
+   private static ezy a(arp $$0, bul $$1) {
+      return $$1.a($$0, $$0.X()).c();
    }
 
-   private void a(jh $$0, int $$1, esw $$2) {
-      this.d.compute($$0, ($$2x, $$3) -> $$3 == null ? a($$2, $$1) : a(a($$3), $$1));
+   public est a(float $$0, float $$1) {
+      return new est(this.a(), this.b(), this.c(), $$0, $$1, this.f(), this.g(), this.h());
    }
 
-   private void a(dff $$0, jh $$1, int $$2, esw $$3, boolean $$4) {
-      for (jm $$5 : $$3.g()) {
-         jh $$6 = $$1.a($$5);
-         this.b($$0, $$6, $$2, $$3.b($$5), $$4);
+   public arp a() {
+      return this.d;
+   }
+
+   public ezy b() {
+      return this.e;
+   }
+
+   public ezy c() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public float e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public Set<bvv> g() {
+      return this.j;
+   }
+
+   public est.a h() {
+      return this.k;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bul var1);
+
+      default est.a then(est.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
-
-      for (jm $$7 : $$3.h()) {
-         jh $$8 = $$1.a($$7);
-         boolean $$9 = $$0.a_($$8).d($$0, $$8);
-
-         for (jm $$10 : $$3.g()) {
-            jh $$11 = $$1.a($$10);
-            if ($$7 == jm.b && !$$9) {
-               jh $$12 = $$8.a($$10);
-               this.b($$0, $$12, $$2, $$3.b($$10), $$4);
-            } else if ($$7 == jm.a && !$$0.a_($$11).d($$0, $$11)) {
-               jh $$13 = $$8.a($$10);
-               this.b($$0, $$13, $$2, $$3.b($$10), $$4);
-            }
-         }
-      }
-   }
-
-   private void b(dff $$0, jh $$1, int $$2, esw $$3, boolean $$4) {
-      dvo $$5 = $$0.a_($$1);
-      if ($$5.a(this.a)) {
-         int $$6 = this.a($$1, $$5);
-         if ($$6 < $$2 - 1 && !this.c.contains($$1)) {
-            this.c.add($$1);
-            this.a($$1, $$6, $$3);
-         }
-
-         if ($$4 && $$6 > $$2 && !this.b.contains($$1)) {
-            this.b.add($$1);
-            this.a($$1, $$6, $$3);
-         }
-      }
-   }
-
-   @Override
-   protected int a(jh $$0, dvo $$1) {
-      int $$2 = this.d.getOrDefault($$0, -1);
-      return $$2 != -1 ? b($$2) : super.a($$0, $$1);
    }
 }

@@ -1,120 +1,62 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class apy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xl.c("commands.whitelist.remove.failed"));
-
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ex.a("on").executes($$0x -> b((ew)$$0x.getSource()))))
-                        .then(ex.a("off").executes($$0x -> c((ew)$$0x.getSource()))))
-                     .then(ex.a("list").executes($$0x -> d((ew)$$0x.getSource()))))
-                  .then(ex.a("add").then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
-                     avr $$2 = ((ew)$$0x.getSource()).l().ag();
-                     return fb.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gk())).map($$0xx -> $$0xx.gk().getName()), $$1);
-                  }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))))
-               .then(
-                  ex.a("remove")
-                     .then(
-                        ex.a("targets", fl.a())
-                           .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().j(), $$1))
-                           .executes($$0x -> b((ew)$$0x.getSource(), fl.a($$0x, "targets")))
-                     )
-               ))
-            .then(ex.a("reload").executes($$0x -> a((ew)$$0x.getSource())))
-      );
-   }
-
-   private static int a(ew $$0) {
-      $$0.l().ag().a();
-      $$0.a(() -> xl.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
-   }
-
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avz $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            awa $$5 = new awa($$4);
-            $$2.a($$5);
-            $$0.a(() -> xl.a("commands.whitelist.add.success", xl.b($$4.getName())), true);
-            $$3++;
+public class apy implements apz {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.data.block.invalid"));
+   public static final Function<String, aqa.c> a = $$0 -> new aqa.c() {
+         @Override
+         public apz a(CommandContext<ew> $$0x) throws CommandSyntaxException {
+            jh $$1 = gs.a($$0, $$0 + "Pos");
+            dsy $$2 = ((ew)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw apy.b.create();
+            } else {
+               return new apy($$2, $$1);
+            }
          }
-      }
 
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   private static int b(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avz $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            awa $$5 = new awa($$4);
-            $$2.b($$5);
-            $$0.a(() -> xl.a("commands.whitelist.remove.success", xl.b($$4.getName())), true);
-            $$3++;
+         @Override
+         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
+            return $$0.then(ex.a("block").then($$1.apply(ex.a($$0 + "Pos", gs.a()))));
          }
-      }
+      };
+   private final dsy c;
+   private final jh d;
 
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
+   public apy(dsy $$0, jh $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static int b(ew $$0) throws CommandSyntaxException {
-      avr $$1 = $$0.l().ag();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> xl.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
+   @Override
+   public void a(ul $$0) {
+      dvv $$1 = this.c.i().a_(this.d);
+      this.c.c($$0, this.c.i().J_());
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
-   private static int c(ew $$0) throws CommandSyntaxException {
-      avr $$1 = $$0.l().ag();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> xl.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
+   @Override
+   public ul a() {
+      return this.c.b(this.c.i().J_());
    }
 
-   private static int d(ew $$0) {
-      String[] $$1 = $$0.l().ag().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> xl.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> xl.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
+   @Override
+   public xj b() {
+      return xj.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   }
 
-      return $$1.length;
+   @Override
+   public xj a(vi $$0) {
+      return xj.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), va.c($$0));
+   }
+
+   @Override
+   public xj a(fo.g $$0, double $$1, int $$2) {
+      return xj.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class od implements oa {
-   private final dij a;
+   private final diq a;
    private final List<og> b;
-   private final Set<dwq<?>> c = Sets.newHashSet();
+   private final Set<dwx<?>> c = Sets.newHashSet();
    private final List<oe> d = Lists.newArrayList();
 
-   private od(dij $$0, List<og> $$1) {
+   private od(diq $$0, List<og> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class od implements oa {
    }
 
    @Override
-   public dij a() {
+   public diq a() {
       return this.a;
    }
 
-   public static od a(dij $$0) {
+   public static od a(diq $$0) {
       return new od($$0, ImmutableList.of(og.a()));
    }
 
-   public static od a(dij $$0, og $$1) {
+   public static od a(diq $$0, og $$1) {
       return new od($$0, ImmutableList.of($$1));
    }
 
-   public static od a(dij $$0, og... $$1) {
+   public static od a(diq $$0, og... $$1) {
       return new od($$0, ImmutableList.copyOf($$1));
    }
 }

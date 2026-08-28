@@ -1,27 +1,11 @@
-public class gsq extends gsx<guw, fys> {
-   private static final all a = all.b("textures/entity/creeper/creeper_armor.png");
-   private final fys b;
+public class gsq extends goa<cmq> {
+   private static final alj a = alj.b("textures/entity/hoglin/zoglin.png");
 
-   public gsq(gqw<guw, fys> $$0, gby $$1) {
-      super($$0);
-      this.b = new fys($$1.a(gcb.X));
+   public gsq(gpk.a $$0) {
+      super($$0, gck.dC, gck.dD, 0.7F);
    }
 
-   protected boolean a(guw $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected all a() {
+   public alj a(gwc $$0) {
       return a;
-   }
-
-   protected fys b() {
-      return this.b;
    }
 }

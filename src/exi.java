@@ -1,59 +1,54 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public record exi(alk<exr> b) implements exr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<exi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alk.a(ma.bf).fieldOf("name").forGetter(exi::c)).apply($$0, exi::new));
+public class exi {
+   private static final BiMap<alj, exh> y = HashBiMap.create();
+   public static final Codec<exh> a = alj.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((exh)y.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         y.inverse()::get
+      );
+   public static final exh b = a("empty", $$0 -> {
+   });
+   public static final exh c = a("chest", $$0 -> $$0.a(exj.f).b(exj.a));
+   public static final exh d = a("command", $$0 -> $$0.a(exj.f).b(exj.a));
+   public static final exh e = a("selector", $$0 -> $$0.a(exj.f).a(exj.a));
+   public static final exh f = a("fishing", $$0 -> $$0.a(exj.f).a(exj.i).b(exj.a));
+   public static final exh g = a("entity", $$0 -> $$0.a(exj.a).a(exj.f).a(exj.c).b(exj.d).b(exj.e).b(exj.b));
+   public static final exh h = a("equipment", $$0 -> $$0.a(exj.f).a(exj.a));
+   public static final exh i = a("archaeology", $$0 -> $$0.a(exj.f).a(exj.a).a(exj.i));
+   public static final exh j = a("gift", $$0 -> $$0.a(exj.f).a(exj.a));
+   public static final exh k = a("barter", $$0 -> $$0.a(exj.a));
+   public static final exh l = a("vault", $$0 -> $$0.a(exj.f).b(exj.a).b(exj.i));
+   public static final exh m = a("advancement_reward", $$0 -> $$0.a(exj.a).a(exj.f));
+   public static final exh n = a("advancement_entity", $$0 -> $$0.a(exj.a).a(exj.f));
+   public static final exh o = a("advancement_location", $$0 -> $$0.a(exj.a).a(exj.f).a(exj.i).a(exj.g));
+   public static final exh p = a("block_use", $$0 -> $$0.a(exj.a).a(exj.f).a(exj.g));
+   public static final exh q = a("generic", $$0 -> $$0.a(exj.a).a(exj.b).a(exj.c).a(exj.d).a(exj.e).a(exj.f).a(exj.g).a(exj.h).a(exj.i).a(exj.j));
+   public static final exh r = a("block", $$0 -> $$0.a(exj.g).a(exj.f).a(exj.i).b(exj.a).b(exj.h).b(exj.j));
+   public static final exh s = a("shearing", $$0 -> $$0.a(exj.f).a(exj.a).a(exj.i));
+   public static final exh t = a("enchanted_damage", $$0 -> $$0.a(exj.a).a(exj.k).a(exj.f).a(exj.c).b(exj.e).b(exj.d));
+   public static final exh u = a("enchanted_item", $$0 -> $$0.a(exj.i).a(exj.k));
+   public static final exh v = a("enchanted_location", $$0 -> $$0.a(exj.a).a(exj.k).a(exj.f).a(exj.l));
+   public static final exh w = a("enchanted_entity", $$0 -> $$0.a(exj.a).a(exj.k).a(exj.f));
+   public static final exh x = a("hit_block", $$0 -> $$0.a(exj.a).a(exj.k).a(exj.f).a(exj.g));
 
-   @Override
-   public exs b() {
-      return ext.p;
-   }
-
-   @Override
-   public void a(eum $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
+   private static exh a(String $$0, Consumer<exh.a> $$1) {
+      exh.a $$2 = new exh.a();
+      $$1.accept($$2);
+      exh $$3 = $$2.a();
+      alj $$4 = alj.b($$0);
+      exh $$5 = (exh)y.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
       } else {
-         exr.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+         return $$3;
       }
-   }
-
-   public boolean a(eug $$0) {
-      exr $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         eug.c<?> $$2 = eug.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
-   }
-
-   public static exr.a a(alk<exr> $$0) {
-      return () -> new exi($$0);
-   }
-
-   public alk<exr> c() {
-      return this.b;
    }
 }

@@ -1,28 +1,37 @@
-import javax.annotation.Nullable;
+public class aev implements zq<acf> {
+   public static final zh<wg, aev> a = zq.a(aev::a, aev::new);
+   private final int b;
+   private final byte c;
 
-public record aev(String b, @Nullable String c) implements zs<ach> {
-   public static final zj<wi, aev> a = zs.a(aev::a, aev::new);
-
-   private aev(wi $$0) {
-      this($$0.p(), $$0.c(wi::p));
+   public aev(bul $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wi::a);
+   private aev(wg $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wg $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zu<aev> a() {
-      return agw.ch;
+   public zs<aev> a() {
+      return agu.an;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
-      return this.c;
+   public bul a(dfm $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azm.a(this.c);
    }
 }

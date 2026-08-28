@@ -1,89 +1,68 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ctr {
-   private static final List<ctq> b = ae.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = buq.a.a(98);
-      int $$2 = buq.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = buq.f.a(100);
-      $$2 = buq.e.a(100);
-      int $$5 = buq.d.a(100);
-      int $$6 = buq.c.a(100);
-      int $$7 = buq.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<ctq> a = baj.b(() -> b.toArray(new ctq[0]));
-   private static final Function<String, ctq> c = baj.a(b.toArray(new ctq[0]), $$0 -> $$0);
+public class ctr implements bsd, ctq {
+   private final jz<cwm> b = jz.a(1, cwm.k);
+   @Nullable
+   private dbc<?> c;
 
-   private static ctq a(String $$0, int $$1) {
-      return ctq.a($$0, IntLists.singleton($$1));
+   @Override
+   public int b() {
+      return 1;
    }
 
-   private static ctq a(String $$0, IntList $$1) {
-      return ctq.a($$0, IntLists.unmodifiable($$1));
-   }
-
-   private static ctq a(String $$0, int... $$1) {
-      return ctq.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<ctq> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<ctq> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public boolean c() {
+      for (cwm $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      return true;
    }
 
-   private static void a(List<ctq> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   public cwm a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cwm a(int $$0, int $$1) {
+      return bse.a(this.b, 0);
+   }
+
+   @Override
+   public cwm b(int $$0) {
+      return bse.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cwm $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cou $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dbc<?> $$0) {
+      this.c = $$0;
    }
 
    @Nullable
-   public static ctq a(String $$0) {
-      return c.apply($$0);
-   }
-
-   public static Stream<String> a() {
-      return b.stream().map(baj::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(baj::c);
+   @Override
+   public dbc<?> d() {
+      return this.c;
    }
 }

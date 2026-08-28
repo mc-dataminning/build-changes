@@ -1,28 +1,51 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record exw(eyn b) implements exr {
-   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eyo.a.fieldOf("chance").forGetter(exw::c)).apply($$0, exw::new));
+public record exw(Optional<dh> b, jh c) implements exy {
+   private static final MapCodec<jh> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kl::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kl::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kl::w)
+            )
+            .apply($$0, jh::new)
+   );
+   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dh.a.optionalFieldOf("predicate").forGetter(exw::c), g.forGetter(exw::d)).apply($$0, exw::new)
+   );
 
    @Override
-   public exs b() {
-      return ext.d;
+   public exz b() {
+      return eya.n;
    }
 
-   public boolean a(eug $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   public boolean a(eun $$0) {
+      ezy $$1 = $$0.c(exj.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public static exr.a a(float $$0) {
-      return () -> new exw(eyk.a($$0));
+   @Override
+   public Set<exg<?>> a() {
+      return Set.of(exj.f);
    }
 
-   public static exr.a a(eyn $$0) {
-      return () -> new exw($$0);
+   public static exy.a a(dh.a $$0) {
+      return () -> new exw(Optional.of($$0.b()), jh.c);
    }
 
-   public eyn c() {
+   public static exy.a a(dh.a $$0, jh $$1) {
+      return () -> new exw(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<dh> c() {
       return this.b;
+   }
+
+   public jh d() {
+      return this.c;
    }
 }

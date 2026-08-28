@@ -1,37 +1,16 @@
-public class ahl implements zs<agy> {
-   public static final zj<wi, ahl> a = zs.a(ahl::a, ahl::new);
-   private final int b;
-   private final String c;
-
-   public ahl(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private ahl(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
-   }
+public record ahl(int b, int c) implements zq<agw> {
+   public static final zh<wg, ahl> a = zh.a(zf.v, ahl::b, zf.h, ahl::e, ahl::new);
 
    @Override
-   public zu<ahl> a() {
-      return agw.bs;
+   public zs<ahl> a() {
+      return agu.bu;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
+   public int e() {
       return this.c;
    }
 }

@@ -1,3 +1,8 @@
-public interface hbe {
-   hav a(all var1, hbk var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hbe {
 }

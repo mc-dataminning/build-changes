@@ -1,76 +1,58 @@
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bpe extends Event {
-   @Name("regionPosX")
-   @Label("Region X Position")
-   public final int regionPosX;
-   @Name("regionPosZ")
-   @Label("Region Z Position")
-   public final int regionPosZ;
-   @Name("localPosX")
-   @Label("Local X Position")
-   public final int localChunkPosX;
-   @Name("localPosZ")
-   @Label("Local Z Position")
-   public final int localChunkPosZ;
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("level")
-   @Label("Level Id")
-   public final String levelId;
-   @Name("dimension")
-   @Label("Dimension")
-   public final String dimension;
-   @Name("type")
-   @Label("Type")
-   public final String type;
-   @Name("compression")
-   @Label("Compression")
-   public final String compression;
-   @Name("bytes")
-   @Label("Bytes")
-   public final int bytes;
+public class bpe {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
 
-   public bpe(dzc $$0, del $$1, dzb $$2, int $$3) {
-      this.regionPosX = $$1.h();
-      this.regionPosZ = $$1.i();
-      this.localChunkPosX = $$1.j();
-      this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.g;
-      this.chunkPosZ = $$1.h;
-      this.levelId = $$0.a();
-      this.dimension = $$0.b().a().toString();
-      this.type = $$0.c();
-      this.compression = "standard:" + $$2.b();
-      this.bytes = $$3;
+   protected bpe(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public static class a {
-      public static final String a = "regionPosX";
-      public static final String b = "regionPosZ";
-      public static final String c = "localPosX";
-      public static final String d = "localPosZ";
-      public static final String e = "chunkPosX";
-      public static final String f = "chunkPosZ";
-      public static final String g = "level";
-      public static final String h = "dimension";
-      public static final String i = "type";
-      public static final String j = "compression";
-      public static final String k = "bytes";
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
 
-      private a() {
+         bpm $$1;
+         try {
+            $$1 = bpl.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
+   }
+
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         all.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         all.a($$0.get());
+         $$1.printStackTrace(all.a);
       }
    }
 }

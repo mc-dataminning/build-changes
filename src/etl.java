@@ -1,84 +1,52 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
-
 public class etl {
-   private static final String a = "command_storage_";
-   private final Map<String, etl.a> b = Maps.newHashMap();
-   private final eto c;
+   private static final int J = 12741452;
+   public static final jq<etk> a = a("player", "player", false, true);
+   public static final jq<etk> b = a("frame", "frame", true, true);
+   public static final jq<etk> c = a("red_marker", "red_marker", false, true);
+   public static final jq<etk> d = a("blue_marker", "blue_marker", false, true);
+   public static final jq<etk> e = a("target_x", "target_x", true, false);
+   public static final jq<etk> f = a("target_point", "target_point", true, false);
+   public static final jq<etk> g = a("player_off_map", "player_off_map", false, true);
+   public static final jq<etk> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final jq<etk> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final jq<etk> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final jq<etk> k = a("banner_white", "white_banner", true, true);
+   public static final jq<etk> l = a("banner_orange", "orange_banner", true, true);
+   public static final jq<etk> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final jq<etk> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final jq<etk> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final jq<etk> p = a("banner_lime", "lime_banner", true, true);
+   public static final jq<etk> q = a("banner_pink", "pink_banner", true, true);
+   public static final jq<etk> r = a("banner_gray", "gray_banner", true, true);
+   public static final jq<etk> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final jq<etk> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final jq<etk> u = a("banner_purple", "purple_banner", true, true);
+   public static final jq<etk> v = a("banner_blue", "blue_banner", true, true);
+   public static final jq<etk> w = a("banner_brown", "brown_banner", true, true);
+   public static final jq<etk> x = a("banner_green", "green_banner", true, true);
+   public static final jq<etk> y = a("banner_red", "red_banner", true, true);
+   public static final jq<etk> z = a("banner_black", "black_banner", true, true);
+   public static final jq<etk> A = a("red_x", "red_x", true, false);
+   public static final jq<etk> B = a("village_desert", "desert_village", true, erz.w.ak, false, true);
+   public static final jq<etk> C = a("village_plains", "plains_village", true, erz.w.ak, false, true);
+   public static final jq<etk> D = a("village_savanna", "savanna_village", true, erz.w.ak, false, true);
+   public static final jq<etk> E = a("village_snowy", "snowy_village", true, erz.w.ak, false, true);
+   public static final jq<etk> F = a("village_taiga", "taiga_village", true, erz.w.ak, false, true);
+   public static final jq<etk> G = a("jungle_temple", "jungle_temple", true, erz.w.ak, false, true);
+   public static final jq<etk> H = a("swamp_hut", "swamp_hut", true, erz.w.ak, false, true);
+   public static final jq<etk> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-   public etl(eto $$0) {
-      this.c = $$0;
+   public static jq<etk> a(kd<etk> $$0) {
+      return a;
    }
 
-   private etl.a a(String $$0) {
-      etl.a $$1 = new etl.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   private static jq<etk> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   private eta.a<etl.a> b(String $$0) {
-      return new eta.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bax.h);
-   }
-
-   public un a(all $$0) {
-      String $$1 = $$0.b();
-      etl.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new un();
-   }
-
-   public void a(all $$0, un $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<all> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eta {
-      private static final String a = "contents";
-      private final Map<String, un> b = Maps.newHashMap();
-
-      etl.a a(un $$0) {
-         un $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
-      }
-
-      @Override
-      public un a(un $$0, js.a $$1) {
-         un $$2 = new un();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
-
-      public un a(String $$0) {
-         un $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new un();
-      }
-
-      public void a(String $$0, un $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<all> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> all.a($$0, $$1));
-      }
+   private static jq<etk> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      ali<etk> $$6 = ali.a(ma.aC, alj.b($$0));
+      etk $$7 = new etk(alj.b($$1), $$2, $$3, $$5, $$4);
+      return kd.b(lz.ar, $$6, $$7);
    }
 }

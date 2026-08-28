@@ -1,5 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fws(fwz.a a, Set<dfb.e<dfb.a>> b, @Nullable alk<ekc> c) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fws {
 }

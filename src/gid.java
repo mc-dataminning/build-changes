@@ -1,21 +1,82 @@
-public class gid {
-   public static final dep a = dgh::a;
-   public static final dep b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dep c = ($$0, $$1, $$2) -> $$0.i();
+import com.mojang.authlib.GameProfile;
 
-   private static int a(deh $$0, jh $$1, dep $$2) {
-      return $$0.a($$1, $$2);
+public class gid extends ghz {
+   private ezy h = ezy.c;
+   private int i;
+
+   public gid(gdh $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ad = true;
    }
 
-   public static int a(deh $$0, jh $$1) {
-      return a($$0, $$1, a);
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cR().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cK();
+      return $$0 < $$1 * $$1;
    }
 
-   public static int b(deh $$0, jh $$1) {
-      return a($$0, $$1, b);
+   @Override
+   public boolean b(btb $$0) {
+      return true;
    }
 
-   public static int c(deh $$0, jh $$1) {
-      return a($$0, $$1, c);
+   @Override
+   public void h() {
+      super.h();
+      this.s(false);
+   }
+
+   @Override
+   public void d_() {
+      if (this.bq > 0) {
+         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
+         this.bq--;
+      }
+
+      if (this.bx > 0) {
+         this.a(this.bx, this.bw);
+         this.bx--;
+      }
+
+      if (this.i > 0) {
+         this.i(new ezy((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
+         this.i--;
+      }
+
+      this.cf = this.cg;
+      this.eV();
+      float $$1;
+      if (this.aJ() && !this.eE()) {
+         $$1 = (float)Math.min(0.1, this.dy().i());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.cg = this.cg + ($$1 - this.cg) * 0.4F;
+
+      try (boz $$2 = bot.a().d("push")) {
+         this.o();
+      }
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.h = new ezy($$0, $$1, $$2);
+      this.i = this.aq().p() + 1;
+   }
+
+   @Override
+   protected void ga() {
+   }
+
+   @Override
+   public void a(acg $$0) {
+      super.a($$0);
+      this.bz();
    }
 }

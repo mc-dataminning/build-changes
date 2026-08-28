@@ -1,29 +1,19 @@
-public enum fqb {
-   a,
-   b;
+import com.google.common.collect.ImmutableList;
 
-   public fqb a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public interface fqb {
+   default void a(fqa $$0, xj $$1) {
+      this.a($$0, fqd.a($$1.getString()));
    }
 
-   public fqc b() {
-      return switch (this) {
-         case a -> fqc.d;
-         case b -> fqc.b;
-      };
+   default void a(fqa $$0, String $$1) {
+      this.a($$0, fqd.a($$1));
    }
 
-   public fqc c() {
-      return switch (this) {
-         case a -> fqc.c;
-         case b -> fqc.a;
-      };
+   default void a(fqa $$0, xj... $$1) {
+      this.a($$0, fqd.a(ImmutableList.copyOf($$1)));
    }
 
-   public fqc a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
-   }
+   void a(fqa var1, fqd<?> var2);
+
+   fqb a();
 }

@@ -1,40 +1,130 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aoh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.pardon.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("pardon").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("particle").requires($$0x -> $$0x.c(2)))
             .then(
-               ex.a("targets", fl.a())
-                  .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().f().a(), $$1))
-                  .executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets")))
+               ((RequiredArgumentBuilder)ex.a("name", ft.a($$1))
+                     .executes(
+                        $$0x -> a(
+                              (ew)$$0x.getSource(), ft.a($$0x, "name"), ((ew)$$0x.getSource()).d(), ezy.c, 0.0F, 0, false, ((ew)$$0x.getSource()).l().ag().t()
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("pos", gz.a())
+                           .executes(
+                              $$0x -> a((ew)$$0x.getSource(), ft.a($$0x, "name"), gz.a($$0x, "pos"), ezy.c, 0.0F, 0, false, ((ew)$$0x.getSource()).l().ag().t())
+                           ))
+                        .then(
+                           ex.a("delta", gz.a(false))
+                              .then(
+                                 ex.a("speed", FloatArgumentType.floatArg(0.0F))
+                                    .then(
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("count", IntegerArgumentType.integer(0))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ew)$$0x.getSource(),
+                                                         ft.a($$0x, "name"),
+                                                         gz.a($$0x, "pos"),
+                                                         gz.a($$0x, "delta"),
+                                                         FloatArgumentType.getFloat($$0x, "speed"),
+                                                         IntegerArgumentType.getInteger($$0x, "count"),
+                                                         false,
+                                                         ((ew)$$0x.getSource()).l().ag().t()
+                                                      )
+                                                ))
+                                             .then(
+                                                ((LiteralArgumentBuilder)ex.a("force")
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               ft.a($$0x, "name"),
+                                                               gz.a($$0x, "pos"),
+                                                               gz.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               true,
+                                                               ((ew)$$0x.getSource()).l().ag().t()
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      ex.a("viewers", fj.d())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (ew)$$0x.getSource(),
+                                                                  ft.a($$0x, "name"),
+                                                                  gz.a($$0x, "pos"),
+                                                                  gz.a($$0x, "delta"),
+                                                                  FloatArgumentType.getFloat($$0x, "speed"),
+                                                                  IntegerArgumentType.getInteger($$0x, "count"),
+                                                                  true,
+                                                                  fj.f($$0x, "viewers")
+                                                               )
+                                                         )
+                                                   )
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ex.a("normal")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ew)$$0x.getSource(),
+                                                            ft.a($$0x, "name"),
+                                                            gz.a($$0x, "pos"),
+                                                            gz.a($$0x, "delta"),
+                                                            FloatArgumentType.getFloat($$0x, "speed"),
+                                                            IntegerArgumentType.getInteger($$0x, "count"),
+                                                            false,
+                                                            ((ew)$$0x.getSource()).l().ag().t()
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ex.a("viewers", fj.d())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               ft.a($$0x, "name"),
+                                                               gz.a($$0x, "pos"),
+                                                               gz.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               false,
+                                                               fj.f($$0x, "viewers")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avx $$2 = $$0.l().ag().f();
-      int $$3 = 0;
+   private static int a(ew $$0, lq $$1, ezy $$2, ezy $$3, float $$4, int $$5, boolean $$6, Collection<arq> $$7) throws CommandSyntaxException {
+      int $$8 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> xl.a("commands.pardon.success", xl.b($$4.getName())), true);
+      for (arq $$9 : $$7) {
+         if ($$0.e().a($$9, $$1, $$6, $$2.d, $$2.e, $$2.f, $$5, $$3.d, $$3.e, $$3.f, (double)$$4)) {
+            $$8++;
          }
       }
 
-      if ($$3 == 0) {
+      if ($$8 == 0) {
          throw a.create();
       } else {
-         return $$3;
+         $$0.a(() -> xj.a("commands.particle.success", lz.i.b($$1.a()).toString()), true);
+         return $$8;
       }
    }
 }

@@ -1,51 +1,43 @@
 import com.mojang.serialization.Codec;
 
-public class edy extends eep<eha> {
-   public edy(Codec<eha> $$0) {
+public abstract class edy extends eew<ehc> {
+   public edy(Codec<ehc> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(eer<eha> $$0) {
-      jh $$1 = $$0.e();
-      dgd $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      if ($$1.v() > $$2.N() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dil.G) && !$$2.a_($$1.e()).a(dil.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
-
-         for (jm $$5 : jm.values()) {
-            if ($$5 != jm.a && $$2.a_($$1.a($$5)).a(dil.iC)) {
-               $$4 = true;
-               break;
-            }
+   protected void a(dfn $$0, azu $$1, jh $$2, ehc $$3, int $$4, jh.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jm.b, $$6);
+         if (!$$0.a_($$5).s()) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
+      }
+   }
 
-         if (!$$4) {
+   protected int a(azu $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dfn $$0, jh $$1, int $$2, jh.a $$3, ehc $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.K_() + 1 && $$5 + $$2 + 1 <= $$0.al()) {
+         dvv $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axc.bb)) {
             return false;
          } else {
-            $$2.a($$1, dil.mW.m(), 2);
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  jh $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dvo $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dil.G) || $$10.a(dil.iC) || $$10.a(dil.dO)) {
-                     for (jm $$11 : jm.values()) {
-                        dvo $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dil.mW)) {
-                           $$2.a($$9, dil.mW.m(), 2);
-                           break;
-                        }
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dvv $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axc.P)) {
+                        return false;
                      }
                   }
                }
@@ -53,6 +45,29 @@ public class edy extends eep<eha> {
 
             return true;
          }
+      } else {
+         return false;
       }
    }
+
+   @Override
+   public boolean a(eey<ehc> $$0) {
+      dgk $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azu $$3 = $$0.d();
+      ehc $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      jh.a $$6 = new jh.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dfn var1, azu var2, jh var3, int var4, jh.a var5, ehc var6);
 }

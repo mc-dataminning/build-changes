@@ -1,44 +1,21 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+public class ftv extends fsl<ctt> {
+   private static final alj G = alj.b("textures/gui/container/shulker_box.png");
 
-public class ftv implements fty {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
-
-   public ftv(ftv.a $$0) {
-      this.c = $$0.a();
+   public ftv(ctt $$0, cot $$1, xj $$2) {
+      super($$0, $$1, $$2);
+      this.u++;
    }
 
    @Override
-   public int a(flh $$0) {
-      return this.c.size() * 12 + 2;
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public int b(flh $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(flh $$0, int $$1, int $$2, int $$3, int $$4, flj $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fmv.a($$5, fjx.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements ctz {
+   protected void a(flq $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gjq::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

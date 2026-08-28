@@ -1,13 +1,26 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qq extends qk<elq> {
-   public qq(mi $$0, CompletableFuture<js.a> $$1) {
-      super($$0, ma.aZ, $$1);
-   }
+public class qq {
+   public static final ali<ens> a = rg.a("ancient_city/city_center");
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axw.a).a(elr.a).a(elr.b).a(elr.c).a(elr.d).a(elr.e);
-      this.b(axw.b).b(axw.a).a(elr.f);
+   public static void a(qz<ens> $$0) {
+      jr<eqi> $$1 = $$0.a(ma.aT);
+      jq<eqi> $$2 = $$1.b(rh.G);
+      jr<ens> $$3 = $$0.a(ma.aV);
+      jq<ens> $$4 = $$3.b(rg.a);
+      $$0.a(
+         a,
+         new ens(
+            $$4,
+            ImmutableList.of(
+               Pair.of(enq.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(enq.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(enq.b("ancient_city/city_center/city_center_3", $$2), 1)
+            ),
+            ens.a.b
+         )
+      );
+      qr.a($$0);
    }
 }

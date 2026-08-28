@@ -1,29 +1,19 @@
-public class ajk implements zs<ajg> {
-   public static final zj<wi, ajk> a = zs.a(ajk::a, ajk::new);
-   private final xl b;
+public class ajk {
+   public static final zs<ajf> a = a("custom_query");
+   public static final zs<ajj> b = a("login_finished");
+   public static final zs<ajg> c = a("hello");
+   public static final zs<ajh> d = a("login_compression");
+   public static final zs<aji> e = a("login_disconnect");
+   public static final zs<ajn> f = b("custom_query_answer");
+   public static final zs<ajo> g = b("hello");
+   public static final zs<ajp> h = b("key");
+   public static final zs<ajq> i = b("login_acknowledged");
 
-   public ajk(xl $$0) {
-      this.b = $$0;
+   private static <T extends zq<aje>> zs<T> a(String $$0) {
+      return new zs<>(zr.b, alj.b($$0));
    }
 
-   private ajk(wi $$0) {
-      this.b = xl.a.b($$0.d(262144), ke.b);
-   }
-
-   private void a(wi $$0) {
-      $$0.a(xl.a.a(this.b, ke.b));
-   }
-
-   @Override
-   public zu<ajk> a() {
-      return ajm.e;
-   }
-
-   public void a(ajg $$0) {
-      $$0.a(this);
-   }
-
-   public xl b() {
-      return this.b;
+   private static <T extends zq<ajm>> zs<T> b(String $$0) {
+      return new zs<>(zr.a, alj.b($$0));
    }
 }

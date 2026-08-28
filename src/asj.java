@@ -1,35 +1,24 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.nio.charset.StandardCharsets;
 
-public record asj(String b, xp c) {
-   public static final asj a = a("");
+public class asj {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   public static asj a(String $$0) {
-      return new asj($$0, xp.c);
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   public static asj b(String $$0) {
-      return new asj($$0, xp.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public xp e() {
-      return this.c;
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
    }
 }

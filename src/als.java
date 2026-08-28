@@ -1,29 +1,15 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class als extends PrintStream {
-   private static final Logger b = LogUtils.getLogger();
-   protected final String a;
+public enum als {
+   a,
+   b,
+   c,
+   d;
 
-   public als(String $$0, OutputStream $$1) {
-      super($$1);
-      this.a = $$0;
-   }
+   private static final List<als> e = List.of(values());
+   private static final ke.b f = ke.a(lz.az);
 
-   @Override
-   public void println(@Nullable String $$0) {
-      this.a($$0);
-   }
-
-   @Override
-   public void println(Object $$0) {
-      this.a(String.valueOf($$0));
-   }
-
-   protected void a(@Nullable String $$0) {
-      b.info("[{}]: {}", this.a, $$0);
+   public static jx<als> a() {
+      return new jx<>(e).a(a, f);
    }
 }

@@ -1,31 +1,44 @@
-public class cvo extends cwb {
-   public cvo(cwb.a $$0) {
+import java.util.List;
+
+public class cvo extends cwi {
+   public cvo(cwi.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      cwf $$3 = $$1.b($$2);
-      if ($$1.cv != null) {
-         if (!$$0.C) {
-            int $$4 = $$1.cv.a($$3);
-            $$3.a($$4, $$1, bve.d($$2));
-         }
-
-         $$0.a(null, $$1.dD(), $$1.dF(), $$1.dJ(), awo.iX, awp.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         $$1.a(eak.C);
+   public bsk a(daf $$0) {
+      dfm $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvv $$3 = $$1.a_($$2);
+      if (!$$3.a(dis.co) && !$$3.a(dis.F)) {
+         return bsk.d;
       } else {
-         $$0.a(null, $$1.dD(), $$1.dF(), $$1.dJ(), awo.iZ, awp.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-         if ($$0 instanceof arq $$5) {
-            int $$6 = (int)(dby.b($$5, $$3, $$1) * 20.0F);
-            int $$7 = dby.a($$5, $$3, $$1);
-            cpk.a(new cpg($$1, $$0, $$7, $$6, $$3), $$5, $$3);
+         jh $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return bsk.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bul> $$8 = $$1.a_(null, new ezt($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bsk.d;
+            } else {
+               if ($$1 instanceof arp) {
+                  cju $$9 = new cju($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), ear.t, $$4);
+                  dzt $$10 = ((arp)$$1).E();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bsk.a;
+            }
          }
-
-         $$1.b(awy.c.b(this));
-         $$1.a(eak.D);
       }
-
-      return bsh.a;
    }
 }

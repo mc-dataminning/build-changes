@@ -1,157 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public abstract class dvq<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<dwq<?>, Comparable<?>>, String> a = new Function<Entry<dwq<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dwq<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dwq<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
+public class dvq {
+   public static ezt a(ezt $$0, jm $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new ezt($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new ezt($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new ezt($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new ezt($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new ezt($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new ezt($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
       }
-
-      private <T extends Comparable<T>> String a(dwq<T> $$0, Comparable<?> $$1) {
-         return $$0.b((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<dwq<?>, Comparable<?>> f;
-   private Map<dwq<?>, S[]> g;
-   protected final MapCodec<S> e;
-
-   protected dvq(O $$0, Reference2ObjectArrayMap<dwq<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(dwq<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(List<T> $$0, T $$1) {
-      int $$2 = $$0.indexOf($$1) + 1;
-      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
-   }
-
-   public Collection<dwq<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dwq<T> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dwq<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dwq<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
-   }
-
-   public <T extends Comparable<T>> T a(dwq<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T e(dwq<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
-   }
-
-   public <T extends Comparable<T>, V extends T> S b(dwq<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   public <T extends Comparable<T>, V extends T> S c(dwq<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
-   }
-
-   private <T extends Comparable<T>, V extends T> S a(dwq<T> $$0, V $$1, Comparable<?> $$2) {
-      if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         int $$3 = $$0.a((T)$$1);
-         if ($$3 < 0) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return (S)this.g.get($$0)[$$3];
-         }
-      }
-   }
-
-   public void a(Map<Map<dwq<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Map<dwq<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
-         ObjectIterator var3 = this.f.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dwq<?>, Comparable<?>> $$2 = (Entry<dwq<?>, Comparable<?>>)var3.next();
-            dwq<?> $$3 = $$2.getKey();
-            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
-         }
-
-         this.g = $$1;
-      }
-   }
-
-   private Map<dwq<?>, Comparable<?>> d(dwq<?> $$0, Comparable<?> $$1) {
-      Map<dwq<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dwq<?>, Comparable<?>> G() {
-      return this.f;
-   }
-
-   protected static <O, S extends dvq<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
    }
 }

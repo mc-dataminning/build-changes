@@ -1,25 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnn extends dis {
+public class dnn extends diq implements dit {
    public static final MapCodec<dnn> a = b(dnn::new);
-   protected static final fal b = dij.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dnn> a() {
       return a;
    }
 
-   public dnn(dvn.d $$0) {
+   public dnn(dvu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return b;
+   public boolean b(dfp $$0, jh $$1, dvv $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   protected boolean b(dvo $$0, dek $$1, jh $$2) {
-      return $$0.a(axd.aN) || $$0.a(dil.dX) || super.b($$0, $$1, $$2);
+   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
+      $$0.J_().a(ma.aJ).flatMap($$0x -> $$0x.a(ry.n)).ifPresent($$3x -> ((eei)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
+   }
+
+   @Override
+   public dit.a aq_() {
+      return dit.a.a;
    }
 }

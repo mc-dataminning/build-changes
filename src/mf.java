@@ -55,7 +55,7 @@ public class mf {
    }
 
    static {
-      aln.a();
+      all.a();
    }
 
    public class a {

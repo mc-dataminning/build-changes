@@ -1,30 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drx extends dlx {
-   public static final MapCodec<drx> c = b(drx::new);
-   protected static final fal g = dij.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class drx extends dkw implements drv {
+   public static final MapCodec<drx> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwk.a.fieldOf("block_set_type").forGetter(dkw::b), drv.a.e.fieldOf("weathering_state").forGetter(drx::q), t()).apply($$0, drx::new)
+   );
+   private final drv.a m;
 
    @Override
    public MapCodec<drx> a() {
-      return c;
+      return l;
    }
 
-   public drx(dvn.d $$0) {
-      super($$0, jm.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return dno.a($$0);
+   protected drx(dwk $$0, drv.a $$1, dvu.d $$2) {
+      super($$0, $$2);
+      this.m = $$1;
    }
 
    @Override
-   protected dij b() {
-      return dil.oA;
+   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
+      if ($$0.c(dkw.f) == dwq.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected boolean h(dvo $$0) {
-      return dno.a($$0);
+   protected boolean f(dvv $$0) {
+      return drv.c($$0.b()).isPresent();
+   }
+
+   public drv.a q() {
+      return this.m;
    }
 }

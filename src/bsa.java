@@ -1,86 +1,147 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public interface bsa extends bry {
-   float q_ = 4.0F;
+public abstract class bsa {
+   private final UUID h;
+   protected xj a;
+   protected float b;
+   protected bsa.a c;
+   protected bsa.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean c();
-
-   cwf a(int var1);
-
-   cwf a(int var1, int var2);
-
-   cwf b(int var1);
-
-   void a(int var1, cwf var2);
-
-   default int am_() {
-      return 99;
+   public bsa(UUID $$0, xj $$1, bsa.a $$2, bsa.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   default int e_(cwf $$0) {
-      return Math.min(this.am_(), $$0.k());
+   public UUID h() {
+      return this.h;
    }
 
-   void e();
-
-   boolean a(cor var1);
-
-   default void d_(cor $$0) {
+   public xj i() {
+      return this.a;
    }
 
-   default void c(cor $$0) {
+   public void a(xj $$0) {
+      this.a = $$0;
    }
 
-   default boolean b(int $$0, cwf $$1) {
-      return true;
+   public float j() {
+      return this.b;
    }
 
-   default boolean a(bsa $$0, int $$1, cwf $$2) {
-      return true;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   default int a_(cwb $$0) {
-      int $$1 = 0;
+   public bsa.a k() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwf $$3 = this.a($$2);
-         if ($$3.h().equals($$0)) {
-            $$1 += $$3.L();
-         }
+   public void a(bsa.a $$0) {
+      this.c = $$0;
+   }
+
+   public bsa.b l() {
+      return this.d;
+   }
+
+   public void a(bsa.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bsa a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bsa b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bsa c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a(Set<cwb> $$0) {
-      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
-   }
-
-   default boolean a_(Predicate<cwf> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cwf $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
+      public n a() {
+         return this.i;
       }
 
-      return false;
+      public String b() {
+         return this.h;
+      }
+
+      public static bsa.a a(String $$0) {
+         for (bsa.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   static boolean a(dsr $$0, cor $$1) {
-      return a($$0, $$1, 4.0F);
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   static boolean a(dsr $$0, cor $$1, float $$2) {
-      dff $$3 = $$0.i();
-      jh $$4 = $$0.aB_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bsa.b a(String $$0) {
+         for (bsa.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

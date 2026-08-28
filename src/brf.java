@@ -1,53 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class brf extends brm {
-   public static final MapCodec<brf> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  brm.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, brf::new)
-      )
-      .validate(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0)
-      );
-   private final brm b;
-   private final int f;
-   private final int g;
+public interface brf<R extends Runnable> extends AutoCloseable {
+   String z_();
 
-   public static brf a(brm $$0, int $$1, int $$2) {
-      return new brf($$0, $$1, $$2);
-   }
-
-   public brf(brm $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   void a_(R var1);
 
    @Override
-   public int a(azv $$0) {
-      return azn.a(this.b.a($$0), this.f, this.g);
+   default void close() {
    }
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
+   R f(Runnable var1);
+
+   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      this.a_(this.f(() -> $$0.accept($$1)));
+      return $$1;
    }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
-   }
+   static brf<Runnable> a(final String $$0, final Executor $$1) {
+      return new brf<Runnable>() {
+         @Override
+         public String z_() {
+            return $$0;
+         }
 
-   @Override
-   public brn<?> c() {
-      return brn.d;
+         @Override
+         public void a_(Runnable $$0x) {
+            $$1.execute($$0);
+         }
+
+         @Override
+         public Runnable f(Runnable $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

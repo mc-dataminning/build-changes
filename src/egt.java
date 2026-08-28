@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface egt {
-   eha m = eha.b;
+public class egt implements eha {
+   public static final Codec<egt> a = dvv.a.fieldOf("state").xmap(egt::new, $$0 -> $$0.b).codec();
+   public final dvv b;
 
-   default Stream<eeb<?, ?>> e() {
-      return Stream.empty();
+   public egt(dvv $$0) {
+      this.b = $$0;
    }
 }

@@ -1,104 +1,120 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fhl extends hff {
-   private static final xl a = xl.c("mco.selectServer.create");
-   private static final xl b = xl.c("mco.configure.world.name");
-   private static final xl c = xl.c("mco.configure.world.description");
-   private static final int B = 10;
-   private static final int C = 210;
-   private final fev D;
-   private final fpl E = new fpl(this);
-   private fmf F;
-   private fmf G;
-   private final Runnable H;
+public class fhl extends hfq {
+   private static final xj a = xj.c("mco.selectServer.popup");
+   private static final xj b = xj.c("mco.selectServer.close");
+   private static final alj c = alj.b("popup/background");
+   private static final alj B = alj.b("icon/trial_available");
+   private static final fnq C = new fnq(alj.b("widget/cross_button"), alj.b("widget/cross_button_highlighted"));
+   private static final int D = 236;
+   private static final int E = 34;
+   private static final int F = 6;
+   private static final int G = 195;
+   private static final int H = 152;
+   private static final int I = 4;
+   private static final int J = 10;
+   private static final int K = 320;
+   private static final int L = 172;
+   private static final int M = 100;
+   private static final int N = 99;
+   private static final int O = 100;
+   private static List<alj> P = List.of();
+   private final frw Q;
+   private final boolean R;
+   @Nullable
+   private fmd S;
+   private int T;
+   private int U;
 
-   public fhl(fev $$0, fgb $$1, boolean $$2) {
+   public fhl(frw $$0, boolean $$1) {
       super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1, $$2);
+      this.Q = $$0;
+      this.R = $$1;
+   }
+
+   public static void a(avd $$0) {
+      Collection<alj> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aS_() {
-      this.E.a(this.l, this.p);
-      fpp $$0 = this.E.c(fpp.d()).a(10);
-      flw $$1 = flw.a(xk.j, $$0x -> this.H.run()).a();
-      $$1.j = false;
-      this.F = new fmf(this.p, 210, 20, b);
-      this.F.b($$1x -> $$1.j = !bak.h($$1x));
-      this.G = new fmf(this.p, 210, 20, c);
-      $$0.a(fph.a(this.p, this.F, b));
-      $$0.a(fph.a(this.p, this.G, c));
-      fpp $$2 = this.E.b(fpp.e().a(10));
-      $$2.a($$1);
-      $$2.a(flw.a(xk.k, $$0x -> this.aP_()).a());
-      this.E.a($$1x -> {
-         flu var10000 = this.c($$1x);
-      });
-      this.c();
+   protected void aR_() {
+      this.Q.a(this.m, this.n, this.o);
+      if (this.R) {
+         this.S = this.c(fmd.a(xj.c("mco.selectServer.trial"), fqt.b(this, ayi.q)).a(this.J() - 10 - 99, this.K() - 10 - 4 - 40, 99, 20).a());
+      }
+
+      this.c(fmd.a(xj.c("mco.selectServer.buy"), fqt.b(this, ayi.r)).a(this.J() - 10 - 99, this.K() - 10 - 20, 99, 20).a());
+      fmp $$0 = this.c(new fmp(this.F() + 4, this.G() + 4, 14, 14, C, $$0x -> this.aO_(), b));
+      $$0.a(fno.a(b));
+      int $$1 = 142 - (this.R ? 40 : 20);
+      fmn $$2 = new fmn(this.J() - 10 - 100, this.G() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.F);
-   }
-
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   private void a(fgb $$0, boolean $$1) {
-      if (!$$0.h() && $$1) {
-         AtomicBoolean $$2 = new AtomicBoolean();
-         this.m.a(new fqi(() -> {
-            $$2.set(true);
-            this.D.h();
-            this.m.a(this.D);
-         }, xl.c("mco.upload.preparing"), xl.i()));
-         CompletableFuture.<fgb>supplyAsync(() -> a($$0), ae.g()).thenAcceptAsync($$1x -> {
-            if (!$$2.get()) {
-               this.b($$1x);
-            }
-         }, this.m).exceptionallyAsync($$0x -> {
-            this.D.h();
-            xl $$3;
-            if ($$0x.getCause() instanceof fgv $$2x) {
-               $$3 = $$2x.a.b();
-            } else {
-               $$3 = xl.c("mco.errorMessage.initialize.failed");
-            }
-
-            this.m.a(new fhn($$3, this.D));
-            return null;
-         }, this.m);
-      } else {
-         this.b($$0);
+   public void e() {
+      super.e();
+      if (++this.U > 100) {
+         this.U = 0;
+         this.T = (this.T + 1) % P.size();
       }
    }
 
-   private static fgb a(fgb $$0) {
-      ffa $$1 = ffa.a();
-
-      try {
-         return $$1.a(Long.valueOf($$0.a));
-      } catch (fgv var3) {
-         throw new RuntimeException(var3);
+   @Override
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.S != null) {
+         a($$0, this.S);
       }
    }
 
-   private void b(fgb $$0) {
-      fiy $$1 = new fiy($$0.a, this.F.a(), this.G.a());
-      fhw $$2 = fhw.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            fev.g();
-            this.m.a(this.D);
-         }));
-      this.m.a($$2);
+   public static void a(flq $$0, fmd $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(gjq::B, B, $$1.D() + $$1.y() - 8 - 4, $$1.E() + $$1.w() / 2 - 4, 8, 8);
+      $$0.c().b();
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.D);
+   public void b(flq $$0, int $$1, int $$2, float $$3) {
+      this.Q.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.B();
+      this.b($$0);
+      $$0.a(gjq::B, c, this.F(), this.G(), 320, 172);
+      if (!P.isEmpty()) {
+         $$0.a(gjq::B, P.get(this.T), this.F() + 10, this.G() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
+      }
+   }
+
+   private int F() {
+      return (this.n - 320) / 2;
+   }
+
+   private int G() {
+      return (this.o - 172) / 2;
+   }
+
+   private int J() {
+      return this.F() + 320;
+   }
+
+   private int K() {
+      return this.G() + 172;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.Q);
    }
 }

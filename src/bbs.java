@@ -1,60 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.stream.LongStream;
 
-public class bbs {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:extreme_hills", "minecraft:mountains")
-      .put("minecraft:swampland", "minecraft:swamp")
-      .put("minecraft:hell", "minecraft:nether_wastes")
-      .put("minecraft:sky", "minecraft:the_end")
-      .put("minecraft:ice_flats", "minecraft:snowy_tundra")
-      .put("minecraft:ice_mountains", "minecraft:snowy_mountains")
-      .put("minecraft:mushroom_island", "minecraft:mushroom_fields")
-      .put("minecraft:mushroom_island_shore", "minecraft:mushroom_field_shore")
-      .put("minecraft:beaches", "minecraft:beach")
-      .put("minecraft:forest_hills", "minecraft:wooded_hills")
-      .put("minecraft:smaller_extreme_hills", "minecraft:mountain_edge")
-      .put("minecraft:stone_beach", "minecraft:stone_shore")
-      .put("minecraft:cold_beach", "minecraft:snowy_beach")
-      .put("minecraft:roofed_forest", "minecraft:dark_forest")
-      .put("minecraft:taiga_cold", "minecraft:snowy_taiga")
-      .put("minecraft:taiga_cold_hills", "minecraft:snowy_taiga_hills")
-      .put("minecraft:redwood_taiga", "minecraft:giant_tree_taiga")
-      .put("minecraft:redwood_taiga_hills", "minecraft:giant_tree_taiga_hills")
-      .put("minecraft:extreme_hills_with_trees", "minecraft:wooded_mountains")
-      .put("minecraft:savanna_rock", "minecraft:savanna_plateau")
-      .put("minecraft:mesa", "minecraft:badlands")
-      .put("minecraft:mesa_rock", "minecraft:wooded_badlands_plateau")
-      .put("minecraft:mesa_clear_rock", "minecraft:badlands_plateau")
-      .put("minecraft:sky_island_low", "minecraft:small_end_islands")
-      .put("minecraft:sky_island_medium", "minecraft:end_midlands")
-      .put("minecraft:sky_island_high", "minecraft:end_highlands")
-      .put("minecraft:sky_island_barren", "minecraft:end_barrens")
-      .put("minecraft:void", "minecraft:the_void")
-      .put("minecraft:mutated_plains", "minecraft:sunflower_plains")
-      .put("minecraft:mutated_desert", "minecraft:desert_lakes")
-      .put("minecraft:mutated_extreme_hills", "minecraft:gravelly_mountains")
-      .put("minecraft:mutated_forest", "minecraft:flower_forest")
-      .put("minecraft:mutated_taiga", "minecraft:taiga_mountains")
-      .put("minecraft:mutated_swampland", "minecraft:swamp_hills")
-      .put("minecraft:mutated_ice_flats", "minecraft:ice_spikes")
-      .put("minecraft:mutated_jungle", "minecraft:modified_jungle")
-      .put("minecraft:mutated_jungle_edge", "minecraft:modified_jungle_edge")
-      .put("minecraft:mutated_birch_forest", "minecraft:tall_birch_forest")
-      .put("minecraft:mutated_birch_forest_hills", "minecraft:tall_birch_hills")
-      .put("minecraft:mutated_roofed_forest", "minecraft:dark_forest_hills")
-      .put("minecraft:mutated_taiga_cold", "minecraft:snowy_taiga_mountains")
-      .put("minecraft:mutated_redwood_taiga", "minecraft:giant_spruce_taiga")
-      .put("minecraft:mutated_redwood_taiga_hills", "minecraft:giant_spruce_taiga_hills")
-      .put("minecraft:mutated_extreme_hills_with_trees", "minecraft:modified_gravelly_mountains")
-      .put("minecraft:mutated_savanna", "minecraft:shattered_savanna")
-      .put("minecraft:mutated_savanna_rock", "minecraft:shattered_savanna_plateau")
-      .put("minecraft:mutated_mesa", "minecraft:eroded_badlands")
-      .put("minecraft:mutated_mesa_rock", "minecraft:modified_wooded_badlands_plateau")
-      .put("minecraft:mutated_mesa_clear_rock", "minecraft:modified_badlands_plateau")
-      .put("minecraft:warm_deep_ocean", "minecraft:deep_warm_ocean")
-      .put("minecraft:lukewarm_deep_ocean", "minecraft:deep_lukewarm_ocean")
-      .put("minecraft:cold_deep_ocean", "minecraft:deep_cold_ocean")
-      .put("minecraft:frozen_deep_ocean", "minecraft:deep_frozen_ocean")
-      .build();
+public class bbs extends DataFix {
+   private static final int a = 6;
+   private static final int b = 16;
+   private static final int c = 16;
+   private static final int d = 4096;
+   private static final int e = 9;
+   private static final int f = 256;
+
+   public bbs(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bia.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      OpticFinder<?> $$3 = $$2.type().findField("Sections");
+      Type<?> $$4 = ((ListType)$$3.type()).getElement();
+      OpticFinder<?> $$5 = DSL.typeFinder($$4);
+      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(bia.u.typeName(), DSL.remainderType());
+      OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
+      return this.fixTypeEverywhereTyped(
+         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(bia.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
+      );
+   }
+
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(), $$0x -> $$0x.update("Heightmaps", $$1 -> $$1.updateMapValues($$1x -> $$1x.mapSecond($$1xx -> a($$0x, $$1xx, 256, 9))))
+      );
+   }
+
+   private static Typed<?> a(OpticFinder<?> $$0, OpticFinder<?> $$1, OpticFinder<List<Pair<String, Dynamic<?>>>> $$2, Typed<?> $$3) {
+      return $$3.updateTyped(
+         $$0,
+         $$2x -> $$2x.updateTyped(
+               $$1,
+               $$1xx -> {
+                  int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
+                  return $$2xx != 0 && !azm.d($$2xx)
+                     ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
+                     : $$1xx;
+               }
+            )
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, int $$2, int $$3) {
+      long[] $$4 = $$1.asLongStream().toArray();
+      long[] $$5 = a($$2, $$3, $$4);
+      return $$0.createLongList(LongStream.of($$5));
+   }
+
+   public static long[] a(int $$0, int $$1, long[] $$2) {
+      int $$3 = $$2.length;
+      if ($$3 == 0) {
+         return $$2;
+      } else {
+         long $$4 = (1L << $$1) - 1L;
+         int $$5 = 64 / $$1;
+         int $$6 = ($$0 + $$5 - 1) / $$5;
+         long[] $$7 = new long[$$6];
+         int $$8 = 0;
+         int $$9 = 0;
+         long $$10 = 0L;
+         int $$11 = 0;
+         long $$12 = $$2[0];
+         long $$13 = $$3 > 1 ? $$2[1] : 0L;
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            int $$15 = $$14 * $$1;
+            int $$16 = $$15 >> 6;
+            int $$17 = ($$14 + 1) * $$1 - 1 >> 6;
+            int $$18 = $$15 ^ $$16 << 6;
+            if ($$16 != $$11) {
+               $$12 = $$13;
+               $$13 = $$16 + 1 < $$3 ? $$2[$$16 + 1] : 0L;
+               $$11 = $$16;
+            }
+
+            long $$19;
+            if ($$16 == $$17) {
+               $$19 = $$12 >>> $$18 & $$4;
+            } else {
+               int $$20 = 64 - $$18;
+               $$19 = ($$12 >>> $$18 | $$13 << $$20) & $$4;
+            }
+
+            int $$22 = $$9 + $$1;
+            if ($$22 >= 64) {
+               $$7[$$8++] = $$10;
+               $$10 = $$19;
+               $$9 = $$1;
+            } else {
+               $$10 |= $$19 << $$9;
+               $$9 = $$22;
+            }
+         }
+
+         if ($$10 != 0L) {
+            $$7[$$8] = $$10;
+         }
+
+         return $$7;
+      }
+   }
 }

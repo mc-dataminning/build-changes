@@ -1,26 +1,17 @@
-public class gru extends gqg<cmj, gxk, gbk> {
-   private static final all a = all.b("textures/entity/illager/vex.png");
-   private static final all b = all.b("textures/entity/illager/vex_charging.png");
+public class gru extends god<cmk, gxj> {
+   private static final alj a = alj.b("textures/entity/skeleton/stray.png");
+   private static final alj b = alj.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gru(gpa.a $$0) {
-      super($$0, new gbk($$0.a(gcb.cS)), 0.3F);
-      this.a(new gtg<>(this, $$0.b()));
+   public gru(gpk.a $$0) {
+      super($$0, gck.cT, gck.cU, gck.cV);
+      this.a(new gub<>(this, $$0.f(), gck.cW, b));
    }
 
-   protected int a(cmj $$0, jh $$1) {
-      return 15;
+   public alj b(gxj $$0) {
+      return a;
    }
 
-   public all a(gxk $$0) {
-      return $$0.a ? b : a;
-   }
-
-   public gxk c() {
-      return new gxk();
-   }
-
-   public void a(cmj $$0, gxk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gv();
+   public gxj b() {
+      return new gxj();
    }
 }

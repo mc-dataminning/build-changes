@@ -157,14 +157,14 @@ public class on {
    }
 
    private static om a(String $$0, op... $$1) {
-      return new om(Optional.of(all.b("block/" + $$0)), Optional.empty(), $$1);
+      return new om(Optional.of(alj.b("block/" + $$0)), Optional.empty(), $$1);
    }
 
    private static om b(String $$0, op... $$1) {
-      return new om(Optional.of(all.b("item/" + $$0)), Optional.empty(), $$1);
+      return new om(Optional.of(alj.b("item/" + $$0)), Optional.empty(), $$1);
    }
 
    private static om a(String $$0, String $$1, op... $$2) {
-      return new om(Optional.of(all.b("block/" + $$0)), Optional.of($$1), $$2);
+      return new om(Optional.of(alj.b("block/" + $$0)), Optional.of($$1), $$2);
    }
 }

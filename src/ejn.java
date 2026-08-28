@@ -1,45 +1,75 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class ejn extends ejl {
-   public static final MapCodec<ejn> a = MapCodec.unit(() -> ejn.b);
-   public static final ejn b = new ejn();
+public class ejn extends ejs {
+   public static final MapCodec<ejn> a = ejb.a.fieldOf("provider").xmap(ejn::new, $$0 -> $$0.b);
+   private final ejb b;
 
-   @Override
-   protected ejm<?> a() {
-      return ejm.a;
+   public ejn(ejb $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ejl.a $$0) {
-      azv $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, drf.d);
+   protected ejt<?> a() {
+      return ejt.e;
+   }
+
+   @Override
+   public void a(ejs.a $$0) {
+      List<jh> $$1 = Lists.newArrayList();
+      List<jh> $$2 = $$0.e();
+      List<jh> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
+
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
             }
+         });
+      }
+   }
+
+   private void a(ejs.a $$0, jh $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(ejs.a $$0, jh $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         jh $$3 = $$1.b($$2);
+         if (eew.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
          }
 
-         if ($$1.a(3) > 0) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, drf.f);
-            }
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
          }
-
-         if ($$1.a(3) > 0) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, drf.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, drf.c);
-            }
-         }
-      });
+      }
    }
 }

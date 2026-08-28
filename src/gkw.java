@@ -1,59 +1,42 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class gkw implements gkv {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
-
-   public gkw(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public record gkw(alj a, List<gkw.b> b) {
+   public gkw(alj a, List<gkw.b> b) {
+      b = List.copyOf(b);
+      this.a = a;
+      this.b = b;
    }
 
-   @Override
-   public Predicate<dvo> getPredicate(dvp<dij, dvo> $$0) {
-      dwq<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
+   protected static class a implements JsonDeserializer<gkw> {
+      public gkw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         alj $$4 = alj.a(azc.i($$3, "model"));
+         List<gkw.b> $$5 = this.a($$3);
+         return new gkw($$4, $$5);
+      }
+
+      protected List<gkw.b> a(JsonObject $$0) {
+         Map<alj, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = azc.u($$0, "predicate");
+
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(alj.a($$3.getKey()), azc.e($$3.getValue(), $$3.getKey()));
          }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dvo> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               $$5 = ae.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
-            }
-
-            return $$3 ? $$5.negate() : $$5;
-         }
+         return $$1.entrySet().stream().map($$0x -> new gkw.b((alj)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
       }
    }
 
-   private Predicate<dvo> a(dvp<dij, dvo> $$0, dwq<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
-      }
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+   public static record b(alj a, float b) {
    }
 }

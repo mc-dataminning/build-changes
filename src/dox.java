@@ -1,63 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dox extends dis implements dim {
-   public static final MapCodec<dox> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dvd.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dox::new)
-   );
-   public static final dwn f = dwe.aU;
-   protected static final float g = 6.0F;
-   protected static final fal h = dij.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dvd i;
+public class dox extends dks {
+   public static final MapCodec<dox> a = b(dox::new);
+   public static final dwm b = dwl.s;
+   public static final dwu e = dwl.aA;
 
    @Override
-   public MapCodec<? extends dox> a() {
-      return e;
+   public MapCodec<dox> a() {
+      return a;
    }
 
-   protected dox(dvd $$0, dvn.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   protected dox(dvu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(aF, jm.c).b(e, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return h;
-   }
-
-   @Override
-   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(arq $$0, jh $$1, dvo $$2, azv $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      if (!$$3.gh().e) {
+         return bsk.e;
       } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+         $$1.a($$2, $$0.a(e), 3);
+         return bsk.a;
       }
    }
 
    @Override
-   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+   protected int h(dvv $$0) {
+      return $$0.c(e) * 2;
+   }
+
+   @Override
+   public dvv a(dad $$0) {
+      dvv $$1 = super.a($$0);
+      return $$1.b(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      if ($$4 == jm.a && !this.b($$1, $$5, $$6)) {
+         return dis.a.m();
+      } else {
+         return !$$1.A_() && $$4.o() != $$0.c(aF).o() ? $$0.b(b, Boolean.valueOf(this.c($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public boolean c(dfp $$0, jh $$1, dvv $$2) {
+      return this.a((dge)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
       return true;
    }
 
    @Override
-   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
-      return (double)$$0.A.i() < 0.45;
+   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
+      if ($$0.c(d)) {
+         jm $$4 = $$0.c(aF);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(ln.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(f);
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(aF, e, b, d);
    }
 }

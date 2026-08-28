@@ -11,13 +11,13 @@ public class nx implements mg {
 
    @Override
    public CompletableFuture<?> a(me $$0) {
-      Map<all, ddp> $$1 = new HashMap<>();
-      ddq.a(($$1x, $$2) -> {
+      Map<alj, ddw> $$1 = new HashMap<>();
+      ddx.a(($$1x, $$2) -> {
          if ($$1.putIfAbsent($$1x, $$2) != null) {
             throw new IllegalStateException("Tried to register equipment model twice for id: " + $$1x);
          }
       });
-      return mg.a($$0, ddp.a, this.d, $$1);
+      return mg.a($$0, ddw.a, this.d, $$1);
    }
 
    @Override

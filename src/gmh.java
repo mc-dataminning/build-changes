@@ -1,66 +1,36 @@
-import javax.annotation.Nullable;
+public class gmh implements glr<duo> {
+   private final gpi a;
 
-public class gmh implements deh {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gmg[] c;
-   protected final dff d;
-
-   gmh(dff $$0, int $$1, int $$2, gmg[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public gmh(gls.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Override
-   public dvo a_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0);
+   public void a(duo $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
+      dfm $$6 = $$0.i();
+      if ($$6 != null) {
+         den $$7 = $$0.c();
+         bul $$8 = $$7.b($$6, $$0.aA_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
    }
 
-   @Override
-   public ero b_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0).y();
-   }
+   public static void a(float $$0, fer $$1, gjg $$2, int $$3, bul $$4, gpi $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
 
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public erd z_() {
-      return this.d.z_();
-   }
-
-   @Nullable
-   @Override
-   public dsr c_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).a($$0);
-   }
-
-   private gmg a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
-
-   @Override
-   public int a(jh $$0, dep $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public int I_() {
-      return this.d.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.d.J_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azm.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

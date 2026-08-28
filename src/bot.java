@@ -1,25 +1,56 @@
-public final class bot implements Comparable<bot> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-   public bot(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public final class bot {
+   private static final ThreadLocal<boy> a = ThreadLocal.withInitial(boy::new);
+   private static final ThreadLocal<bou> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
+
+   private bot() {
    }
 
-   public int a(bot $$0) {
-      if ($$0.a < this.a) {
-         return -1;
+   public static bot.a a(bou $$0) {
+      b($$0);
+      return bot::b;
+   }
+
+   private static void b(bou $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
       } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
+         bou $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   private static void b() {
+      bou $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
+      }
+   }
+
+   private static bou c(bou $$0) {
+      return bou.a(c(), $$0);
+   }
+
+   public static bou a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bot::c);
+   }
+
+   private static bou c() {
+      return (bou)(TracyClient.isAvailable() ? a.get() : boq.a);
+   }
+
+   public interface a extends AutoCloseable {
+      @Override
+      void close();
    }
 }

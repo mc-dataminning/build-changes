@@ -1,17 +1,25 @@
-public class grj extends gnt<cmh, gwy> {
-   private static final all a = all.b("textures/entity/skeleton/stray.png");
-   private static final all b = all.b("textures/entity/skeleton/stray_overlay.png");
+public class grj extends gof<chu, gxg, gaz> {
+   private static final alj a = alj.b("textures/entity/sheep/sheep.png");
 
-   public grj(gpa.a $$0) {
-      super($$0, gcb.cB, gcb.cC, gcb.cD);
-      this.a(new gtq<>(this, $$0.f(), gcb.cE, b));
+   public grj(gpk.a $$0) {
+      super($$0, new gaz($$0.a(gck.ct)), new gaz($$0.a(gck.cu)), 0.7F);
+      this.a(new gua(this, $$0.f()));
    }
 
-   public all b(gwy $$0) {
+   public alj a(gxg $$0) {
       return a;
    }
 
-   public gwy c() {
-      return new gwy();
+   public gxg b() {
+      return new gxg();
+   }
+
+   public void a(chu $$0, gxg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.v();
+      $$1.d = $$0.q();
+      $$1.e = $$0.ar();
    }
 }

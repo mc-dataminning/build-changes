@@ -1,88 +1,93 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dln extends dmg {
-   public static final MapCodec<dln> a = b(dln::new);
-   public static final int b = 3;
-   public static final dwn c = dwe.as;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dln extends dkm {
+   public static final MapCodec<dln> i = b(dln::new);
+   private final fas[] j;
 
    @Override
    public MapCodec<dln> a() {
-      return a;
+      return i;
    }
 
-   public dln(dvn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   public dln(dvu.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   public void b(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
-      $$1.a($$2, this, azn.a($$1.E_(), 60, 120));
+   protected fas d_(dvv $$0) {
+      return this.j[this.h($$0)];
    }
 
    @Override
-   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
-         jh.a $$4 = new jh.a();
+   protected fas c(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return this.a($$0, $$1, $$2, $$3);
+   }
 
-         for (jm $$5 : jm.values()) {
-            $$4.a($$2, $$5);
-            dvo $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
-               $$1.a($$4, this, azn.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, azn.a($$3, 20, 40));
+   @Override
+   protected boolean a(dvv $$0, esk $$1) {
+      return false;
+   }
+
+   public boolean a(dvv $$0, boolean $$1, jm $$2) {
+      diq $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dlo && dlo.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(dvv $$0) {
+      return $$0.a(axc.T) && $$0.a(axc.l) == this.m().a(axc.l);
+   }
+
+   @Override
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      return (bsk)(!$$1.A_() ? cww.a($$3, $$1, $$2) : bsk.e);
+   }
+
+   @Override
+   public dvv a(dad $$0) {
+      der $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      erv $$3 = $$0.q().b_($$0.a());
+      jh $$4 = $$2.f();
+      jh $$5 = $$2.i();
+      jh $$6 = $$2.g();
+      jh $$7 = $$2.h();
+      dvv $$8 = $$1.a_($$4);
+      dvv $$9 = $$1.a_($$5);
+      dvv $$10 = $$1.a_($$6);
+      dvv $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jm.d), jm.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jm.e), jm.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jm.c), jm.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jm.f), jm.f)))
+         .b(e, Boolean.valueOf($$3.a() == erw.c));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, erw.c, erw.c.a($$1));
       }
-   }
 
-   private boolean f(dvo $$0, dff $$1, jh $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.e($$0, $$1, $$2);
-         return true;
-      }
+      return $$4.o().e() == jm.c.a
+         ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g())))
+         : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dvo $$0, dff $$1, jh $$2, dij $$3, @Nullable esw $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.e($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dek $$0, jh $$1, int $$2) {
-      int $$3 = 0;
-      jh.a $$4 = new jh.a();
-
-      for (jm $$5 : jm.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public cwf a(dfi $$0, jh $$1, dvo $$2) {
-      return cwf.k;
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

@@ -1,44 +1,31 @@
-import java.util.function.BiFunction;
-
-public class aco implements zs<ach> {
-   public static final zj<ww, aco> a = zj.a(jh.b, aco::b, zh.a(ma.h), aco::e, zh.q, aco::f, aco::new);
+public class aco implements zq<acf> {
+   public static final zh<wu, aco> a = zh.a(jh.b, aco::e, zf.a(diq.q), aco::b, aco::new);
    private final jh b;
-   private final dst<?> c;
-   private final un d;
+   private final dvv c;
 
-   public static aco a(dsr $$0, BiFunction<dsr, ke, un> $$1) {
-      ke $$2 = $$0.i().H_();
-      return new aco($$0.aB_(), $$0.q(), $$1.apply($$0, $$2));
-   }
-
-   public static aco a(dsr $$0) {
-      return a($$0, dsr::a);
-   }
-
-   private aco(jh $$0, dst<?> $$1, un $$2) {
+   public aco(jh $$0, dvv $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public aco(der $$0, jh $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public zu<aco> a() {
-      return agw.i;
+   public zs<aco> a() {
+      return agu.k;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
-   }
-
-   public dst<?> e() {
+   public dvv b() {
       return this.c;
    }
 
-   public un f() {
-      return this.d;
+   public jh e() {
+      return this.b;
    }
 }

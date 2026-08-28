@@ -1,19 +1,26 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
-public class bcb extends bgt {
-   public bcb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bhy.s, "DUMMY");
+public class bcb extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   private bcb(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("keepPacked", $$0.createBoolean(true));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bia.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bia.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bcb::a);
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new bcb($$0, $$1, $$2);
    }
 }

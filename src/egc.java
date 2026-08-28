@@ -1,79 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class egc extends eep<ehq> {
-   public egc(Codec<ehq> $$0) {
+public class egc extends eew<ehk> {
+   public egc(Codec<ehk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eer<ehq> $$0) {
-      dgd $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      if (a($$1, $$2)) {
-         return false;
-      } else {
-         azv $$3 = $$0.d();
-         ehq $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         jh.a $$8 = new jh.a();
-
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(azn.a($$3, -$$5, $$5), azn.a($$3, -$$6, $$6), azn.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (jh)$$8)) {
-               int $$10 = azn.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
+   public boolean a(eey<ehk> $$0) {
+      boolean $$1 = false;
+      azu $$2 = $$0.d();
+      dgk $$3 = $$0.b();
+      jh $$4 = $$0.e();
+      ehk $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(ebq.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      jh $$9 = new jh($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dis.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dvv $$11 = $$10 ? dis.bx.m() : dis.bw.m();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dvv $$12 = $$11.b(dqw.d, dwq.a);
+               jh $$13 = $$9.d();
+               if ($$3.a_($$13).a(dis.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
                }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean a(dfg $$0, jh.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.s($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).l());
-
-      $$1.e(0, 1, 0);
-      return true;
-   }
-
-   public static void a(dfg $$0, azv $$1, jh.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.d())) {
-               $$0.a($$2, dil.oB.m().b(dlx.e, Integer.valueOf(azn.a($$1, $$4, $$5))), 2);
-               break;
+            } else {
+               $$3.a($$9, $$11, 2);
             }
 
-            $$0.a($$2, dil.oC.m(), 2);
+            $$1 = true;
          }
-
-         $$2.c(jm.b);
       }
-   }
 
-   private static boolean a(dfg $$0, jh $$1) {
-      if (!$$0.u($$1)) {
-         return true;
-      } else {
-         dvo $$2 = $$0.a_($$1.e());
-         return !$$2.a(dil.dV) && !$$2.a(dil.on) && !$$2.a(dil.op);
-      }
+      return $$1;
    }
 }

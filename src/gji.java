@@ -1,35 +1,81 @@
-public class gji {
-   private final long[] a;
-   private int b;
-   private int c;
+import java.util.Optional;
 
-   public gji(int $$0) {
-      this.a = new long[$$0];
+public class gji implements gjg {
+   private final gjg.a a;
+   private final gjg.a b = gjg.a(new feo(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public gji(gjg.a $$0) {
+      this.a = $$0;
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
-
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
-
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
+   @Override
+   public fev getBuffer(gjq $$0) {
+      if ($$0.Q()) {
+         fev $$1 = this.b.getBuffer($$0);
+         return new gji.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+         fev $$2 = this.a.getBuffer($$0);
+         Optional<gjq> $$3 = $$0.P();
+         if ($$3.isPresent()) {
+            fev $$4 = this.b.getBuffer($$3.get());
+            gji.a $$5 = new gji.a($$4, this.c, this.d, this.e, this.f);
+            return fey.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static record a(fev a, int b) implements fev {
+      public a(fev $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axx.a($$4, $$1, $$2, $$3));
+      }
+
+      @Override
+      public fev a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fev a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fev a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fev a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fev b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fev b(float $$0, float $$1, float $$2) {
+         return this;
       }
    }
 }

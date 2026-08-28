@@ -1,36 +1,37 @@
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public enum hez {
-   a("movement", heu::new),
-   b("find_tree", het::new),
-   c("punch_tree", hew::new),
-   d("open_inventory", hev::new),
-   e("craft_planks", hes::new),
-   f("none", her::new);
+public class hez {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   private final String g;
-   private final Function<hex, ? extends hey> h;
-
-   private <T extends hey> hez(final String $$0, final Function<hex, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   public hey a(hex $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hez a(String $$0) {
-      for (hez $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
 
-      return f;
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(heo $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hep.e, $$1x -> {
+            $$1x.a(her.p, this.a($$1));
+            $$1x.a(her.q, (int)this.c);
+         }));
    }
 }

@@ -1,51 +1,130 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface djk<T extends Enum<T>> {
-   int z_ = 4;
+public class djk extends dml {
+   public static final MapCodec<djk> a = b(djk::new);
+   public static final dws<jm> b = dml.aF;
+   @Nullable
+   private dwa c;
+   @Nullable
+   private dwa d;
+   @Nullable
+   private dwa e;
+   @Nullable
+   private dwa f;
+   private static final Predicate<dvv> g = $$0 -> $$0 != null && ($$0.a(dis.ee) || $$0.a(dis.ef));
 
-   Optional<dvo> k_(dvo var1);
+   @Override
+   public MapCodec<? extends djk> a() {
+      return a;
+   }
 
-   float av_();
+   protected djk(dvu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.c));
+   }
 
-   default void a_(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   T c();
+   public boolean a(dfp $$0, jh $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
+   }
 
-   default Optional<dvo> c(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (jh $$7 : jh.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
+   private void a(dfm $$0, jh $$1) {
+      dwa.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         chw $$3 = bus.bh.a($$0, bur.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
          }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof djk<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
+      } else {
+         dwa.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            chk $$5 = bus.ao.a($$0, bur.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.av_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+   private static void a(dfm $$0, dwa.b $$1, bul $$2, jh $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (arq $$4 : $$0.a(arq.class, $$2.cR().g(5.0))) {
+         ao.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dfm $$0, dwa.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvz $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dis.a.m(), 2);
+            $$0.c(2001, $$4.d(), diq.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dfm $$0, dwa.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvz $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), dis.a);
+         }
+      }
+   }
+
+   @Override
+   public dvv a(dad $$0) {
+      return this.m().b(b, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(b);
+   }
+
+   private dwa b() {
+      if (this.c == null) {
+         this.c = dwb.a().a(" ", "#", "#").a('#', dvz.a(dwe.a(dis.dP))).b();
+      }
+
+      return this.c;
+   }
+
+   private dwa q() {
+      if (this.d == null) {
+         this.d = dwb.a().a("^", "#", "#").a('^', dvz.a(g)).a('#', dvz.a(dwe.a(dis.dP))).b();
+      }
+
+      return this.d;
+   }
+
+   private dwa r() {
+      if (this.e == null) {
+         this.e = dwb.a().a("~ ~", "###", "~#~").a('#', dvz.a(dwe.a(dis.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
+   }
+
+   private dwa y() {
+      if (this.f == null) {
+         this.f = dwb.a().a("~^~", "###", "~#~").a('^', dvz.a(g)).a('#', dvz.a(dwe.a(dis.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
    }
 }

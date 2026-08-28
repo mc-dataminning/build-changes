@@ -1,148 +1,56 @@
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public abstract class dkf extends dij implements dpk {
-   public static final dwf a = dnw.b;
-   public static final dwf b = dnw.c;
-   public static final dwf c = dnw.d;
-   public static final dwf d = dnw.e;
-   public static final dwf e = dwe.C;
-   protected static final Map<jm, dwf> f = dnw.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ae.a());
-   protected final fal[] g;
-   protected final fal[] h;
-   private final Object2IntMap<dvo> i = new Object2IntOpenHashMap();
+public class dkf extends diq {
+   public static final MapCodec<diq> a = lz.e.q().fieldOf("dead");
+   public static final MapCodec<dkf> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dkf::new));
+   private final diq c;
 
-   protected dkf(float $$0, float $$1, float $$2, float $$3, float $$4, dvn.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.F.a().iterator();
+   public dkf(diq $$0, dvu.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
-      while (var7.hasNext()) {
-         dvo $$6 = (dvo)var7.next();
-         this.h($$6);
+   @Override
+   public MapCodec<dkf> a() {
+      return b;
+   }
+
+   @Override
+   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.m(), 2);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dkf> a();
-
-   protected fal[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      fal $$9 = dij.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      fal $$10 = dij.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      fal $$11 = dij.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      fal $$12 = dij.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      fal $$13 = dij.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      fal $$14 = fai.a($$10, $$13);
-      fal $$15 = fai.a($$11, $$12);
-      fal[] $$16 = new fal[]{
-         fai.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         fai.a($$11, $$10),
-         fai.a($$12, $$10),
-         fai.a($$15, $$10),
-         $$13,
-         fai.a($$11, $$13),
-         fai.a($$12, $$13),
-         fai.a($$15, $$13),
-         $$14,
-         fai.a($$11, $$14),
-         fai.a($$12, $$14),
-         fai.a($$15, $$14)
-      };
-
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = fai.a($$9, $$16[$$17]);
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      if (!this.a($$1, $$3)) {
+         $$2.a($$3, this, 60 + $$7.a(40));
       }
 
-      return $$16;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected boolean e_(dvo $$0) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return this.h[this.h($$0)];
-   }
-
-   @Override
-   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return this.g[this.h($$0)];
-   }
-
-   private static int a(jm $$0) {
-      return 1 << $$0.e();
-   }
-
-   protected int h(dvo $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(jm.c);
+   protected boolean a(der $$0, jh $$1) {
+      for (jm $$2 : jm.values()) {
+         erv $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(axi.a)) {
+            return true;
          }
+      }
 
-         if ($$0x.c(b)) {
-            $$1 |= a(jm.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(jm.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(jm.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   protected ero b_(dvo $$0) {
-      return $$0.c(e) ? erp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvo $$0, esd $$1) {
       return false;
    }
 
+   @Nullable
    @Override
-   protected dvo a(dvo $$0, dow $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
-         case d:
-            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
-         case b:
-            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
-         default:
-            return $$0;
+   public dvv a(dad $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().G_().a(40));
       }
-   }
 
-   @Override
-   protected dvo a(dvo $$0, dnf $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
-         case c:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
-      }
+      return this.m();
    }
 }

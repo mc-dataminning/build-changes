@@ -1,57 +1,73 @@
-public class cte extends ctp {
-   private final ctc a;
-   private final cor b;
-   private int g;
-   private final deb h;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public cte(cor $$0, deb $$1, ctc $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public class cte {
+   private final List<cte.b> a;
+   private final cte.b b;
+
+   cte(List<cte.b> $$0, cte.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cte.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   @Override
-   public boolean a(cwf $$0) {
-      return false;
+   public static cte.a a() {
+      return new cte.a();
    }
 
-   @Override
-   public cwf a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().L());
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
+
+   public cte.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cte.b b() {
+      return this.b;
+   }
+
+   public List<cte.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cte.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cte.b> a = new ArrayList<>();
+      private cte.b b = cte.b.e;
+
+      public cte.a a(int $$0, int $$1, int $$2, Predicate<cwm> $$3) {
+         this.a.add(new cte.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cwf $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cwf $$0) {
-      $$0.a(this.b.dY(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(cor $$0, cwf $$1) {
-      this.b_($$1);
-      dec $$2 = this.a.g();
-      if ($$2 != null) {
-         cwf $$3 = this.a.a(0);
-         cwf $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awy.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
-
-         this.h.t(this.h.t() + $$2.q());
+      public cte.a a(int $$0, int $$1, int $$2) {
+         this.b = new cte.b($$0, $$1, $$2, $$0x -> false);
+         return this;
       }
+
+      public cte a() {
+         return new cte(this.a, this.b);
+      }
+   }
+
+   public static record b(int a, int b, int c, Predicate<cwm> d) {
+      static final cte.b e = new cte.b(0, 0, 0, $$0 -> true);
    }
 }

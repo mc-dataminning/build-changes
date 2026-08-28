@@ -1,4 +1,7 @@
-public class gxs extends gvt {
-   public boolean a;
-   public boolean b;
+import javax.annotation.Nullable;
+
+public class gxs extends gvo {
+   public float a;
+   @Nullable
+   public dvv b;
 }

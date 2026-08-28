@@ -1,20 +1,15 @@
-public record ahi(float b) implements zs<agy> {
-   public static final zj<wi, ahi> a = zs.a(ahi::a, ahi::new);
+import io.netty.buffer.ByteBuf;
 
-   private ahi(wi $$0) {
-      this($$0.readFloat());
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b);
-   }
+public record ahi() implements zq<agw> {
+   public static final ahi a = new ahi();
+   public static final zh<ByteBuf, ahi> b = zh.a(a);
 
    @Override
-   public zu<ahi> a() {
-      return agw.bp;
+   public zs<ahi> a() {
+      return agu.br;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 }

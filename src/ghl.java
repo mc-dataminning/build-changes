@@ -1,56 +1,99 @@
-public class ghl extends ghf {
-   private float a;
+import java.util.Optional;
 
-   ghl(gcy $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
+public class ghl extends gho {
+   ghl(gdh $$0, ghj $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
       this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
+
+   ghl(gdh $$0, ghj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public ggj b() {
-      return ggj.b;
+   public ggs b() {
+      return ggs.b;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * azn.b(this.a));
-         this.l = this.l + (double)(0.6F * azn.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(axj.a) || this.m) {
-            this.k();
-         }
+   public static class a implements ggr<lw> {
+      private final ghj a;
 
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements ggi<lw> {
-      private final gha a;
-
-      public a(gha $$0) {
+      public a(ghj $$0) {
          this.a = $$0;
       }
 
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghl $$8 = new ghl($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azu $$8 = $$1.A;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         ghl $$12 = new ghl($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements ggr<lw> {
+      private final ghj a;
+
+      public b(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghl $$8 = new ghl($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lp> o() {
+               return Optional.of(lp.a);
+            }
+         };
+         $$8.t = azm.b($$1.A, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
          return $$8;
+      }
+   }
+
+   public static class c implements ggr<lw> {
+      private final ghj a;
+
+      public c(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghl $$8 = new ghl($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements ggr<lw> {
+      private final ghj a;
+
+      public d(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
+         ghl $$9 = new ghl($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

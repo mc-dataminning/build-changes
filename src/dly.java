@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dly extends dij {
-   public static final MapCodec<dly> d = b(dly::new);
+public class dly extends dml {
+   public static final MapCodec<dly> a = b(dly::new);
 
    @Override
-   protected MapCodec<? extends dly> a() {
-      return d;
+   public MapCodec<dly> a() {
+      return a;
    }
 
-   protected dly(dvn.d $$0) {
+   public dly(dvu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean b(dvo $$0, dvo $$1, jm $$2) {
-      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(aF);
+   }
+
+   @Override
+   public dvv a(dad $$0) {
+      return this.m().b(aF, $$0.g().g());
    }
 }

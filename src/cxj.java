@@ -1,7 +1,32 @@
-public interface cxj {
-   boolean a(dff var1, dud var2, boolean var3, cor var4);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   default boolean a(due $$0, cor $$1) {
-      return $$0.a($$1);
+public enum cxj implements bai {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cxj> e = bai.b(cxj::values);
+   public static final IntFunction<cxj> f = ayd.a($$0 -> $$0.h, values(), ayd.a.a);
+   public static final zh<ByteBuf, cxj> g = zf.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cxj(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public n a() {
+      return this.j;
+   }
+
+   @Override
+   public String c() {
+      return this.i;
    }
 }

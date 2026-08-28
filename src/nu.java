@@ -14,7 +14,7 @@ public class nu implements mg {
       this.d = $$0;
    }
 
-   public <T> nu a(aud<T> $$0, T $$1) {
+   public <T> nu a(auc<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -31,11 +31,11 @@ public class nu implements mg {
       return "Pack Metadata";
    }
 
-   public static nu a(mi $$0, xl $$1) {
-      return new nu($$0).a(aue.b, new aue($$1, t.a.a(atr.b), Optional.empty()));
+   public static nu a(mi $$0, xj $$1) {
+      return new nu($$0).a(aud.b, new aud($$1, t.a.a(atq.b), Optional.empty()));
    }
 
-   public static nu a(mi $$0, xl $$1, crj $$2) {
-      return a($$0, $$1).a(atl.a, new atl($$2));
+   public static nu a(mi $$0, xj $$1, crq $$2) {
+      return a($$0, $$1).a(atk.a, new atk($$2));
    }
 }

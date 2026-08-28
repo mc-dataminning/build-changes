@@ -1,22 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ecy implements ecq {
-   public static final MapCodec<ecy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ecq.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ecy::new)
-   );
-   private final ecq e;
+public interface ecy<P extends ecx> {
+   ecy<edd> a = a("matching_blocks", edd.a);
+   ecy<edc> b = a("matching_block_tag", edc.e);
+   ecy<ede> c = a("matching_fluids", ede.a);
+   ecy<eda> d = a("has_sturdy_face", eda.a);
+   ecy<edh> e = a("solid", edh.a);
+   ecy<edg> f = a("replaceable", edg.a);
+   ecy<edl> g = a("would_survive", edl.a);
+   ecy<edb> h = a("inside_world_bounds", edb.a);
+   ecy<ecw> i = a("any_of", ecw.a);
+   ecy<ecv> j = a("all_of", ecv.a);
+   ecy<edf> k = a("not", edf.a);
+   ecy<edj> l = a("true", edj.e);
+   ecy<edk> m = a("unobstructed", edk.a);
 
-   public ecy(ecq $$0) {
-      this.e = $$0;
-   }
+   MapCodec<P> codec();
 
-   public boolean a(dgd $$0, jh $$1) {
-      return !this.e.test($$0, $$1);
-   }
-
-   @Override
-   public ecr<?> a() {
-      return ecr.k;
+   private static <P extends ecx> ecy<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.M, $$0, () -> $$1);
    }
 }

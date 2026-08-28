@@ -1,112 +1,69 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import javax.annotation.Nullable;
 
 public class gmo {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+   private static final int a = 2;
+   private int b = 2;
+   private final List<gmt.b.a> c = new ObjectArrayList();
 
-   public gmo(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   public synchronized void a(gmt.b.a $$0) {
+      this.c.add($$0);
    }
 
-   public gmo(gmo $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
-   }
+   @Nullable
+   public synchronized gmt.b.a a(ezy $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<gmt.b.a> $$5 = this.c.listIterator();
 
-   public gmo a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         gmt.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
 
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
+         }
       }
 
-      return this;
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
+      }
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public int a() {
+      return this.c.size();
    }
 
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   @Nullable
+   private gmt.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
    }
 
-   public boolean a(ezm $$0) {
-      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-      return $$1 == -2 || $$1 == -1;
-   }
-
-   public int a(elt $$0) {
-      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
-   }
-
-   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
-   }
-
-   public Vector4f[] a() {
-      Vector4f[] $$0 = new Vector4f[]{
-         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
-      };
-      Matrix4f $$1 = this.c.invert(new Matrix4f());
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         $$1.transform($$0[$$2]);
-         $$0[$$2].div($$0[$$2].w());
+   public synchronized void b() {
+      for (gmt.b.a $$0 : this.c) {
+         $$0.a();
       }
 
-      return $$0;
-   }
-
-   public double b() {
-      return this.e;
-   }
-
-   public double c() {
-      return this.f;
-   }
-
-   public double d() {
-      return this.g;
+      this.c.clear();
    }
 }

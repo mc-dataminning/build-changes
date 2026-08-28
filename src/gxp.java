@@ -1,6 +1,7 @@
-public class gxp extends gwb {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class gxp extends gvo {
+   @Nullable
+   public hbg a;
+   public cwm b = cwm.k;
 }

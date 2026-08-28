@@ -1,20 +1,8 @@
-public interface ffo {
-   ffe b();
+public class ffo extends ffp {
+   private static final xj a = xj.c("mco.upload.cancelled");
 
-   void d();
-
-   static ffo f() {
-      return new ffo() {
-         private final ffe a = new ffe();
-
-         @Override
-         public ffe b() {
-            return this.a;
-         }
-
-         @Override
-         public void d() {
-         }
-      };
+   @Override
+   public xj a() {
+      return a;
    }
 }

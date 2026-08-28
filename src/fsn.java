@@ -1,96 +1,111 @@
-import javax.annotation.Nullable;
+public abstract class fsn<T extends cto> extends fsl<T> implements fvz {
+   private final fvt<?> G;
+   private boolean H;
 
-public class fsn extends fse<csa> {
-   private static final all G = all.b("container/cartography_table/error");
-   private static final all H = all.b("container/cartography_table/scaled_map");
-   private static final all I = all.b("container/cartography_table/duplicated_map");
-   private static final all J = all.b("container/cartography_table/map");
-   private static final all K = all.b("container/cartography_table/locked");
-   private static final all L = all.b("textures/gui/container/cartography_table.png");
-   private final gyc M = new gyc();
-
-   public fsn(csa $$0, coq $$1, xl $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   public fsn(T $$0, fvt<?> $$1, cot $$2, xj $$3) {
+      super($$0, $$2, $$3);
+      this.G = $$1;
    }
 
    @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
+   protected void aR_() {
+      super.aR_();
+      this.H = this.n < 379;
+      this.G.a(this.n, this.o, this.m, this.H);
+      this.C = this.G.a(this.n, this.s);
+      this.O();
+   }
+
+   protected abstract fqk J();
+
+   private void O() {
+      fqk $$0 = this.J();
+      this.c(new fmp($$0.a(), $$0.b(), 20, 18, fvt.a, $$0x -> {
+         this.G.c();
+         this.C = this.G.a(this.n, this.s);
+         fqk $$1 = this.J();
+         $$0x.c($$1.a(), $$1.b());
+         this.K();
+      }));
+      this.d(this.G);
+   }
+
+   protected void K() {
+   }
+
+   @Override
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      if (this.G.d() && this.H) {
+         this.b($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+
+      this.G.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
+      this.G.a($$0, $$1, $$2, this.B);
    }
 
    @Override
-   protected void a(flj $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gjh::B, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      cwf $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(cwj.uB);
-      boolean $$8 = $$6.a(cwj.qP);
-      boolean $$9 = $$6.a(cwj.fT);
-      cwf $$10 = this.z.b(0).g();
-      etg $$11 = $$10.a(ku.L);
-      boolean $$12 = false;
-      eti $$13;
-      if ($$11 != null) {
-         $$13 = cws.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(gjh::B, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
-
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(gjh::B, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
-         }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+   protected void c(flq $$0) {
+      super.c($$0);
+      this.G.a($$0, this.L());
    }
 
-   private void a(flj $$0, @Nullable etg $$1, @Nullable eti $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(gjh::B, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(gjh::B, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gjh::B, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(gjh::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gjh::B, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
+   protected boolean L() {
+      return true;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.G.a($$0, $$1, $$2)) {
+         this.a(this.G);
+         return true;
       } else {
-         $$0.a(gjh::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
       }
    }
 
-   private void a(flj $$0, @Nullable etg $$1, @Nullable eti $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         giw $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
-      }
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(ctw $$0, int $$1, int $$2, csk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.G.b($$0);
+   }
+
+   @Override
+   public void F() {
+      super.F();
+      this.G.e();
+   }
+
+   @Override
+   public void M() {
+      this.G.f();
+   }
+
+   @Override
+   public fvt N() {
+      return this.G;
    }
 }

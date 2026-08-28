@@ -16,8 +16,8 @@ public class mt implements mg {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<js.a> f;
-   private static final MapCodec<alk<dgh>> g = alk.a(ma.aG).fieldOf("biome");
-   private static final Codec<dgq.c<alk<dgh>>> h = dgq.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<ali<dgo>> g = ali.a(ma.aG).fieldOf("biome");
+   private static final Codec<dgx.c<ali<dgo>>> h = dgx.c.a(g).fieldOf("biomes").codec();
 
    public mt(mi $$0, CompletableFuture<js.a> $$1) {
       this.e = $$0.a(mi.b.c).resolve("biome_parameters");
@@ -29,7 +29,7 @@ public class mt implements mg {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         dgv.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         dhc.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }
@@ -39,7 +39,7 @@ public class mt implements mg {
       return $$5.isPresent() ? mg.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
    }
 
-   private Path a(all $$0) {
+   private Path a(alj $$0) {
       return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 

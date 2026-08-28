@@ -1,8 +1,100 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bpm {
+public record bpm(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bpy> e,
+   List<bps> f,
+   bpu.a g,
+   bpx.a h,
+   bpv<bpw> i,
+   bpv<bpw> j,
+   bpv<bpr> k,
+   bpv<bpr> l,
+   bpt.a m,
+   bpt.a n,
+   List<bpq> o
+) {
+   public List<Pair<dyr, bqa<bpq>>> a() {
+      Map<dyr, List<bpq>> $$0 = this.o.stream().collect(Collectors.groupingBy(bpq::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dyr)$$0x.getKey(), bqa.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dyr, bqa<bpq>>, Duration>comparing($$0x -> ((bqa)$$0x.getSecond()).f()).reversed())
+         .toList();
+   }
+
+   public String b() {
+      return new bpo().a(this);
+   }
+
+   public Instant c() {
+      return this.a;
+   }
+
+   public Instant d() {
+      return this.b;
+   }
+
+   public Duration e() {
+      return this.c;
+   }
+
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bpy> g() {
+      return this.e;
+   }
+
+   public List<bps> h() {
+      return this.f;
+   }
+
+   public bpu.a i() {
+      return this.g;
+   }
+
+   public bpx.a j() {
+      return this.h;
+   }
+
+   public bpv<bpw> k() {
+      return this.i;
+   }
+
+   public bpv<bpw> l() {
+      return this.j;
+   }
+
+   public bpv<bpr> m() {
+      return this.k;
+   }
+
+   public bpv<bpr> n() {
+      return this.l;
+   }
+
+   public bpt.a o() {
+      return this.m;
+   }
+
+   public bpt.a p() {
+      return this.n;
+   }
+
+   public List<bpq> q() {
+      return this.o;
+   }
 }

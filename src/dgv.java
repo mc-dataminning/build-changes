@@ -1,89 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public abstract class dgv {
+   public static final ali<dgo> a = a("the_void");
+   public static final ali<dgo> b = a("plains");
+   public static final ali<dgo> c = a("sunflower_plains");
+   public static final ali<dgo> d = a("snowy_plains");
+   public static final ali<dgo> e = a("ice_spikes");
+   public static final ali<dgo> f = a("desert");
+   public static final ali<dgo> g = a("swamp");
+   public static final ali<dgo> h = a("mangrove_swamp");
+   public static final ali<dgo> i = a("forest");
+   public static final ali<dgo> j = a("flower_forest");
+   public static final ali<dgo> k = a("birch_forest");
+   public static final ali<dgo> l = a("dark_forest");
+   public static final ali<dgo> m = a("old_growth_birch_forest");
+   public static final ali<dgo> n = a("old_growth_pine_taiga");
+   public static final ali<dgo> o = a("old_growth_spruce_taiga");
+   public static final ali<dgo> p = a("taiga");
+   public static final ali<dgo> q = a("snowy_taiga");
+   public static final ali<dgo> r = a("savanna");
+   public static final ali<dgo> s = a("savanna_plateau");
+   public static final ali<dgo> t = a("windswept_hills");
+   public static final ali<dgo> u = a("windswept_gravelly_hills");
+   public static final ali<dgo> v = a("windswept_forest");
+   public static final ali<dgo> w = a("windswept_savanna");
+   public static final ali<dgo> x = a("jungle");
+   public static final ali<dgo> y = a("sparse_jungle");
+   public static final ali<dgo> z = a("bamboo_jungle");
+   public static final ali<dgo> A = a("badlands");
+   public static final ali<dgo> B = a("eroded_badlands");
+   public static final ali<dgo> C = a("wooded_badlands");
+   public static final ali<dgo> D = a("meadow");
+   public static final ali<dgo> E = a("cherry_grove");
+   public static final ali<dgo> F = a("grove");
+   public static final ali<dgo> G = a("snowy_slopes");
+   public static final ali<dgo> H = a("frozen_peaks");
+   public static final ali<dgo> I = a("jagged_peaks");
+   public static final ali<dgo> J = a("stony_peaks");
+   public static final ali<dgo> K = a("river");
+   public static final ali<dgo> L = a("frozen_river");
+   public static final ali<dgo> M = a("beach");
+   public static final ali<dgo> N = a("snowy_beach");
+   public static final ali<dgo> O = a("stony_shore");
+   public static final ali<dgo> P = a("warm_ocean");
+   public static final ali<dgo> Q = a("lukewarm_ocean");
+   public static final ali<dgo> R = a("deep_lukewarm_ocean");
+   public static final ali<dgo> S = a("ocean");
+   public static final ali<dgo> T = a("deep_ocean");
+   public static final ali<dgo> U = a("cold_ocean");
+   public static final ali<dgo> V = a("deep_cold_ocean");
+   public static final ali<dgo> W = a("frozen_ocean");
+   public static final ali<dgo> X = a("deep_frozen_ocean");
+   public static final ali<dgo> Y = a("mushroom_fields");
+   public static final ali<dgo> Z = a("dripstone_caves");
+   public static final ali<dgo> aa = a("lush_caves");
+   public static final ali<dgo> ab = a("deep_dark");
+   public static final ali<dgo> ac = a("nether_wastes");
+   public static final ali<dgo> ad = a("warped_forest");
+   public static final ali<dgo> ae = a("crimson_forest");
+   public static final ali<dgo> af = a("soul_sand_valley");
+   public static final ali<dgo> ag = a("basalt_deltas");
+   public static final ali<dgo> ah = a("the_end");
+   public static final ali<dgo> ai = a("end_highlands");
+   public static final ali<dgo> aj = a("end_midlands");
+   public static final ali<dgo> ak = a("small_end_islands");
+   public static final ali<dgo> al = a("end_barrens");
 
-public class dgv {
-   public static final Codec<dgv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dgv.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), alj.c(ma.aG)).apply($$0, dgv::new)
-   );
-   public static final Codec<jq<dgv>> b = alh.a(ma.ba, a);
-   private final dgv.a c;
-   private final dgq.c<jq<dgh>> d;
-
-   public dgv(dgv.a $$0, jr<dgh> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
-   }
-
-   public dgq.c<jq<dgh>> a() {
-      return this.d;
-   }
-
-   public static Map<dgv.a, dgq.c<alk<dgh>>> b() {
-      return dgv.a.f.values().stream().collect(Collectors.toMap($$0 -> (dgv.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
-
-   public static record a(all d, dgv.a.a e) {
-      public static final dgv.a a = new dgv.a(
-         all.b("nether"),
-         new dgv.a.a() {
-            @Override
-            public <T> dgq.c<T> apply(Function<alk<dgh>, T> $$0) {
-               return new dgq.c<>(
-                  List.of(
-                     Pair.of(dgq.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgo.ac)),
-                     Pair.of(dgq.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgo.af)),
-                     Pair.of(dgq.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dgo.ae)),
-                     Pair.of(dgq.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dgo.ad)),
-                     Pair.of(dgq.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dgo.ag))
-                  )
-               );
-            }
-         }
-      );
-      public static final dgv.a b = new dgv.a(all.b("overworld"), new dgv.a.a() {
-         @Override
-         public <T> dgq.c<T> apply(Function<alk<dgh>, T> $$0) {
-            return dgv.a.a($$0);
-         }
-      });
-      static final Map<all, dgv.a> f = Stream.of(a, b).collect(Collectors.toMap(dgv.a::b, $$0 -> (dgv.a)$$0));
-      public static final Codec<dgv.a> c = all.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> dgq.c<T> a(Function<alk<dgh>, T> $$0) {
-         Builder<Pair<dgq.d, T>> $$1 = ImmutableList.builder();
-         new dgx().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dgq.c<>($$1.build());
-      }
-
-      public Stream<alk<dgh>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<alk<dgh>>map(Pair::getSecond).distinct();
-      }
-
-      public all b() {
-         return this.d;
-      }
-
-      public dgv.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dgq.c<T> apply(Function<alk<dgh>, T> var1);
-      }
+   private static ali<dgo> a(String $$0) {
+      return ali.a(ma.aG, alj.b($$0));
    }
 }

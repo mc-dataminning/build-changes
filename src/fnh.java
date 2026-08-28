@@ -1,47 +1,23 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fnh {
+   public static final fnh a = new fnh("Merry X-mas!");
+   public static final fnh b = new fnh("Happy new year!");
+   public static final fnh c = new fnh("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class fnh implements fpv {
-   private static final int a = 170;
-   private final xl b;
-   @Nullable
-   private List<ayz> c;
-   @Nullable
-   private ui d;
-   @Nullable
-   private final xl e;
-
-   private fnh(xl $$0, @Nullable xl $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   public fnh(String $$0) {
+      this.f = $$0;
    }
 
-   public static fnh a(xl $$0, @Nullable xl $$1) {
-      return new fnh($$0, $$1);
-   }
-
-   public static fnh a(xl $$0) {
-      return new fnh($$0, $$0);
-   }
-
-   @Override
-   public void b(fpu $$0) {
-      if (this.e != null) {
-         $$0.a(fpt.c, this.e);
-      }
-   }
-
-   public List<ayz> a(fjx $$0) {
-      ui $$1 = ui.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
-   }
-
-   public static List<ayz> a(fjx $$0, xl $$1) {
-      return $$0.h.c($$1, 170);
+   public void a(flq $$0, int $$1, flo $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - azm.e(azm.a((float)(ae.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

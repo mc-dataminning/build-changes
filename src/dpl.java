@@ -1,82 +1,328 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dpl extends dhf {
-   public static final MapCodec<dpl> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dpl.a.b.fieldOf("kind").forGetter(dhf::b), t()).apply($$0, dpl::new));
-   public static final int d = dwt.a();
-   private static final int b = d + 1;
-   public static final dwn e = dwe.ba;
-   protected static final fal f = dij.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final fal g = dij.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dpl {
+   public static final int a = 24;
+   public static final int b = 1000;
+   public static final float c = 0.5F;
+   private static final int e = 32;
+   public static final int d = 11;
+   final boolean f;
+   private final axs<diq> g;
+   private final int h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private List<dpl.a> l = new ArrayList<>();
+   private static final Logger m = LogUtils.getLogger();
 
-   @Override
-   public MapCodec<? extends dpl> a() {
-      return c;
+   public dpl(boolean $$0, axs<diq> $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
    }
 
-   protected dpl(dpl.a $$0, dvn.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   public static dpl a() {
+      return new dpl(false, axc.bT, 10, 4, 10, 5);
    }
 
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return this.b() == dpl.b.h ? g : f;
+   public static dpl b() {
+      return new dpl(true, axc.bU, 50, 1, 5, 10);
    }
 
-   @Override
-   protected fal d_(dvo $$0) {
-      return fai.a();
+   public axs<diq> c() {
+      return this.g;
    }
 
-   @Override
-   public dvo a(czw $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dwt.a($$0.i())));
+   public int d() {
+      return this.h;
    }
 
-   @Override
-   protected dvo a(dvo $$0, dow $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   public int e() {
+      return this.i;
    }
 
-   @Override
-   protected dvo a(dvo $$0, dnf $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   public int f() {
+      return this.j;
    }
 
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      super.a($$0);
-      $$0.a(e);
+   public int g() {
+      return this.k;
    }
 
-   public interface a extends baj {
-      Map<String, dpl.a> a = new Object2ObjectArrayMap();
-      Codec<dpl.a> b = Codec.stringResolver(baj::c, a::get);
+   public boolean h() {
+      return this.f;
    }
 
-   public static enum b implements dpl.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
+   @VisibleForTesting
+   public List<dpl.a> i() {
+      return this.l;
+   }
 
-      private final String j;
+   public void j() {
+      this.l.clear();
+   }
 
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public void a(ul $$0) {
+      if ($$0.b("cursors", 9)) {
+         this.l.clear();
+         List<dpl.a> $$1 = (List<dpl.a>)dpl.a.b.listOf().parse(new Dynamic(uz.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
+         int $$2 = Math.min($$1.size(), 32);
+
+         for (int $$3 = 0; $$3 < $$2; $$3++) {
+            this.a($$1.get($$3));
+         }
+      }
+   }
+
+   public void b(ul $$0) {
+      dpl.a.b.listOf().encodeStart(uz.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
+   }
+
+   public void a(jh $$0, int $$1) {
+      while ($$1 > 0) {
+         int $$2 = Math.min($$1, 1000);
+         this.a(new dpl.a($$0, $$2));
+         $$1 -= $$2;
+      }
+   }
+
+   private void a(dpl.a $$0) {
+      if (this.l.size() < 32) {
+         this.l.add($$0);
+      }
+   }
+
+   public void a(dfn $$0, jh $$1, azu $$2, boolean $$3) {
+      if (!this.l.isEmpty()) {
+         List<dpl.a> $$4 = new ArrayList<>();
+         Map<jh, dpl.a> $$5 = new HashMap<>();
+         Object2IntMap<jh> $$6 = new Object2IntOpenHashMap();
+
+         for (dpl.a $$7 : this.l) {
+            $$7.a($$0, $$1, $$2, this, $$3);
+            if ($$7.e <= 0) {
+               $$0.c(3006, $$7.a(), 0);
+            } else {
+               jh $$8 = $$7.a();
+               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
+               dpl.a $$9 = $$5.get($$8);
+               if ($$9 == null) {
+                  $$5.put($$8, $$7);
+                  $$4.add($$7);
+               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
+                  $$9.a($$7);
+               } else {
+                  $$4.add($$7);
+                  if ($$7.e < $$9.e) {
+                     $$5.put($$8, $$7);
+                  }
+               }
+            }
+         }
+
+         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
+
+         while (var16.hasNext()) {
+            Entry<jh> $$10 = (Entry<jh>)var16.next();
+            jh $$11 = (jh)$$10.getKey();
+            int $$12 = $$10.getIntValue();
+            dpl.a $$13 = $$5.get($$11);
+            Collection<jm> $$14 = $$13 == null ? null : $$13.d();
+            if ($$12 > 0 && $$14 != null) {
+               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
+               int $$16 = ($$15 << 6) + dnp.a($$14);
+               $$0.c(3006, $$11, $$16);
+            }
+         }
+
+         this.l = $$4;
+      }
+   }
+
+   public static class a {
+      private static final ObjectArrayList<kl> c = ae.a(
+         new ObjectArrayList(18),
+         $$0 -> jh.d(new jh(-1, -1, -1), new jh(1, 1, 1))
+               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(jh.c))
+               .map(jh::j)
+               .forEach($$0::add)
+      );
+      public static final int a = 1;
+      private jh d;
+      int e;
+      private int f;
+      private int g;
+      @Nullable
+      private Set<jm> h;
+      private static final Codec<Set<jm>> i = jm.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, jm.class), Lists::newArrayList);
+      public static final Codec<dpl.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jh.a.fieldOf("pos").forGetter(dpl.a::a),
+                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dpl.a::b),
+                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dpl.a::c),
+                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
+                  i.lenientOptionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
+               )
+               .apply($$0, dpl.a::new)
+      );
+
+      private a(jh $$0, int $$1, int $$2, int $$3, Optional<Set<jm>> $$4) {
+         this.d = $$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.f = $$3;
+         this.h = $$4.orElse(null);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public a(jh $$0, int $$1) {
+         this($$0, $$1, 1, 0, Optional.empty());
+      }
+
+      public jh a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      @Nullable
+      public Set<jm> d() {
+         return this.h;
+      }
+
+      private boolean a(dfn $$0, jh $$1, boolean $$2) {
+         if (this.e <= 0) {
+            return false;
+         } else if ($$2) {
+            return true;
+         } else {
+            return $$0 instanceof arp $$3 ? $$3.n($$1) : false;
+         }
+      }
+
+      public void a(dfn $$0, jh $$1, azu $$2, dpl $$3, boolean $$4) {
+         if (this.a($$0, $$1, $$3.f)) {
+            if (this.f > 0) {
+               this.f--;
+            } else {
+               dvv $$5 = $$0.a_(this.d);
+               dpg $$6 = a($$5);
+               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
+                  if ($$6.d()) {
+                     $$5 = $$0.a_(this.d);
+                     $$6 = a($$5);
+                  }
+
+                  $$0.a(null, this.d, awn.vS, awo.e, 1.0F, 1.0F);
+               }
+
+               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
+               if (this.e <= 0) {
+                  $$6.a($$0, $$5, this.d, $$2);
+               } else {
+                  jh $$7 = a($$0, this.d, $$2);
+                  if ($$7 != null) {
+                     $$6.a($$0, $$5, this.d, $$2);
+                     this.d = $$7.j();
+                     if ($$3.h() && !this.d.a(new kl($$1.u(), this.d.v(), $$1.w()), 15.0)) {
+                        this.e = 0;
+                        return;
+                     }
+
+                     $$5 = $$0.a_($$7);
+                  }
+
+                  if ($$5.b() instanceof dpg) {
+                     this.h = dnp.o($$5);
+                  }
+
+                  this.g = $$6.j_(this.g);
+                  this.f = $$6.b();
+               }
+            }
+         }
+      }
+
+      void a(dpl.a $$0) {
+         this.e = this.e + $$0.e;
+         $$0.e = 0;
+         this.f = Math.min(this.f, $$0.f);
+      }
+
+      private static dpg a(dvv $$0) {
+         return $$0.b() instanceof dpg $$1 ? $$1 : dpg.u_;
+      }
+
+      private static List<kl> a(azu $$0) {
+         return ae.a(c, $$0);
+      }
+
+      @Nullable
+      private static jh a(dfn $$0, jh $$1, azu $$2) {
+         jh.a $$3 = $$1.k();
+         jh.a $$4 = $$1.k();
+
+         for (kl $$5 : a($$2)) {
+            $$4.a($$1, $$5);
+            dvv $$6 = $$0.a_($$4);
+            if ($$6.b() instanceof dpg && a($$0, $$1, $$4)) {
+               $$3.g($$4);
+               if (dpm.a($$0, $$6, $$4)) {
+                  break;
+               }
+            }
+         }
+
+         return $$3.equals($$1) ? null : $$3;
+      }
+
+      private static boolean a(dfn $$0, jh $$1, jh $$2) {
+         if ($$1.k($$2) == 1) {
+            return true;
+         } else {
+            jh $$3 = $$2.b($$1);
+            jm $$4 = jm.a(jm.a.a, $$3.u() < 0 ? jm.b.b : jm.b.a);
+            jm $$5 = jm.a(jm.a.b, $$3.v() < 0 ? jm.b.b : jm.b.a);
+            jm $$6 = jm.a(jm.a.c, $$3.w() < 0 ? jm.b.b : jm.b.a);
+            if ($$3.u() == 0) {
+               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
+            } else {
+               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
+            }
+         }
+      }
+
+      private static boolean a(dfn $$0, jh $$1, jm $$2) {
+         jh $$3 = $$1.a($$2);
+         return !$$0.a_($$3).c($$0, $$3, $$2.g());
       }
    }
 }

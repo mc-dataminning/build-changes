@@ -1,149 +1,169 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fwi extends flq {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final String d = "telemetry.event.optional.disabled";
-   private static final xl e = xl.c("telemetry_info.property_title").a(n.t);
-   private final flh f;
-   private fwi.a m;
+public class fwi extends frw {
+   private static final xj a = xj.c("gui.abuseReport.reason.title");
+   private static final xj b = xj.c("gui.abuseReport.reason.description");
+   private static final xj c = xj.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
    @Nullable
-   private DoubleConsumer n;
+   private final frw v;
+   @Nullable
+   private fwi.a w;
+   @Nullable
+   gen x;
+   private final Consumer<gen> y;
+   final fps z = new fps(this);
+   final geo A;
 
-   public fwi(int $$0, int $$1, int $$2, int $$3, flh $$4) {
-      super($$0, $$1, $$2, $$3, xl.i());
-      this.f = $$4;
-      this.m = this.c(fjx.Q().C());
+   public fwi(@Nullable frw $$0, @Nullable gen $$1, geo $$2, Consumer<gen> $$3) {
+      super(a);
+      this.v = $$0;
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
    }
 
-   public void b(boolean $$0) {
-      this.m = this.c($$0);
-      this.a(this.c());
+   @Override
+   protected void aR_() {
+      this.z.a(a, this.p);
+      fpw $$0 = this.z.c(fpw.d().a(4));
+      this.w = $$0.a(new fwi.a(this.m));
+      fwi.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(fpx.b(this.L()));
+      fpw $$2 = this.z.b(fpw.e().a(8));
+      $$2.a(fmd.a(c, fqt.b(this, ayi.m)).a());
+      $$2.a(fmd.a(xi.d, $$0x -> {
+         fwi.a.a $$1x = this.w.h();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
+         }
+
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fmb var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public void j() {
-      this.m = this.c(fjx.Q().C());
-      this.a(this.c());
+   @Override
+   protected void c() {
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.M(), this.z.c());
+      }
    }
 
-   private fwi.a c(boolean $$0) {
-      fwi.b $$1 = new fwi.b(this.k());
-      List<hee> $$2 = new ArrayList<>(hee.g());
-      $$2.sort(Comparator.comparing(hee::d));
+   @Override
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m(), this.G(), this.F(), this.J(), -16777216);
+      $$0.b(this.m(), this.G(), this.K(), this.L(), -1);
+      $$0.b(this.p, b, this.m() + 4, this.G() + 4, -1);
+      fwi.a.a $$4 = this.w.h();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.F() - 4;
+         int $$7 = this.G() + 4 + 9 + 2;
+         int $$8 = this.J() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
+   }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         hee $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+   private int m() {
+      return (this.n - 320) / 2;
+   }
+
+   private int F() {
+      return (this.n + 320) / 2;
+   }
+
+   private int G() {
+      return this.J() - this.L();
+   }
+
+   private int J() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int K() {
+      return 320;
+   }
+
+   private int L() {
+      return 62;
+   }
+
+   int M() {
+      return this.z.d() - this.L() - 8;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.v);
+   }
+
+   public class a extends fmz<fwi.a.a> {
+      public a(final fke $$1) {
+         super($$1, fwi.this.n, fwi.this.M(), fwi.this.z.c(), 18);
+
+         for (gen $$2 : gen.values()) {
+            if (!gen.a(fwi.this.A).contains($$2)) {
+               this.b(new fwi.a.a($$2));
+            }
          }
       }
 
-      return $$1.a();
-   }
-
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.n != null) {
-         this.n.accept(this.c());
-      }
-   }
-
-   @Override
-   protected int h() {
-      return this.m.a().w();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(flj $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.E() + this.a();
-      int $$5 = this.D() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fpu $$0) {
-      $$0.a(fpt.a, this.m.b());
-   }
-
-   private xl a(xl $$0, boolean $$1) {
-      return (xl)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(fwi.b $$0, hee $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.f, this.a(xl.a($$3, $$1.e()), $$2));
-      $$0.b(this.f, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.f, this.a(e, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(hee $$0, fwi.b $$1, boolean $$2) {
-      for (heg<?> $$3 : $$0.b()) {
-         $$1.a(this.f, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int k() {
-      return this.g - this.b();
-   }
-
-   static record a(fpm a, xl b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fpp b;
-      private final xz c = xl.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fpp.d();
-         this.b.c().a();
-         this.b.a(fpq.a($$0));
+      @Nullable
+      public fwi.a.a a(gen $$0) {
+         return this.aH_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
 
-      public void a(flh $$0, xl $$1) {
-         this.a($$0, $$1, 0);
+      @Override
+      public int b() {
+         return 320;
       }
 
-      public void a(flh $$0, xl $$1, int $$2) {
-         this.b.a(new fmq($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
+      public void a(@Nullable fwi.a.a $$0) {
+         super.a($$0);
+         fwi.this.x = $$0 != null ? $$0.b() : null;
       }
 
-      public void b(flh $$0, xl $$1) {
-         this.b.a(new fmq($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
+      public class a extends fmz.a<fwi.a.a> {
+         final gen b;
 
-      public void a(int $$0) {
-         this.b.a(fpq.b($$0));
-      }
+         public a(final gen $$1) {
+            this.b = $$1;
+         }
 
-      public fwi.a a() {
-         this.b.a();
-         return new fwi.a(this.b, this.c);
+         @Override
+         public void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fwi.this.p, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public xj a() {
+            return xj.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public gen b() {
+            return this.b;
+         }
       }
    }
 }

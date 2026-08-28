@@ -1,23 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class avd {
-   private static final Codec<avd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(azw.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avd::new)
-   );
-   public static final aud<avd> a = aud.a("filter", b);
-   private final List<azw> c;
+public interface avd extends avg {
+   Set<String> a();
 
-   public avd(List<azw> $$0) {
-      this.c = List.copyOf($$0);
-   }
+   List<avb> a(alj var1);
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
-   }
+   Map<alj, avb> b(String var1, Predicate<alj> var2);
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   Map<alj, List<avb>> c(String var1, Predicate<alj> var2);
+
+   Stream<ato> b();
+
+   public static enum a implements avd {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<avb> getResource(alj $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<avb> a(alj $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<alj, avb> b(String $$0, Predicate<alj> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<alj, List<avb>> c(String $$0, Predicate<alj> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<ato> b() {
+         return Stream.of();
+      }
    }
 }

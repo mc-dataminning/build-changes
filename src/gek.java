@@ -1,77 +1,66 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class gek implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<gek.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class gek extends gel {
+   private final String g;
 
-   public void a(jh $$0, dvo $$1, ght $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gek.a(this.b, $$1, $$2.dw()));
+   gek(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public boolean a(jh $$0, dvo $$1) {
-      gek.a $$2 = (gek.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
+   public String a() {
+      return this.g;
    }
 
-   public void a(int $$0, gcy $$1) {
-      ObjectIterator<Entry<gek.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<gek.a> $$3 = (Entry<gek.a>)$$2.next();
-         gek.a $$4 = (gek.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            jh $$5 = jh.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
-   }
-
-   public gek a() {
-      this.b++;
-      this.c = true;
-      return this;
+   public gek c() {
+      gek $$0 = new gek(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public void close() {
-      this.c = false;
+   public frw a(frw $$0, gep $$1) {
+      return new fwg($$0, $$1, this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final ezr a;
-      int b;
-      dvo c;
-
-      a(int $$0, dvo $$1, ezr $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+   public static class a extends gel.a<gek> {
+      public a(gek $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      gek.a a(int $$0) {
-         this.b = $$0;
-         return this;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gek(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
-      void a(dvo $$0) {
-         this.c = $$0;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public gel.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gel.b.d : super.c();
+      }
+
+      @Override
+      public Either<gel.c, gel.b> a(gep $$0) {
+         gel.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gel.c(this.a.a, geo.c, $$3));
+         }
       }
    }
 }

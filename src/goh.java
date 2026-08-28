@@ -1,27 +1,23 @@
-public class goh extends gnv<cim, gut, fym> {
-   private static final all a = all.b("textures/entity/camel/camel.png");
+public class goh extends gof<cih, guu, fyf> {
+   private static final alj a = alj.b("textures/entity/armadillo.png");
 
-   public goh(gpa.a $$0) {
-      super($$0, new fym($$0.a(gcb.H)), new fym($$0.a(gcb.I)), 0.7F);
+   public goh(gpk.a $$0) {
+      super($$0, new fyf($$0.a(gck.d)), new fyf($$0.a(gck.e)), 0.4F);
    }
 
-   public all a(gut $$0) {
+   public alj a(guu $$0) {
       return a;
    }
 
-   public gut a() {
-      return new gut();
+   public guu a() {
+      return new guu();
    }
 
-   public void a(cim $$0, gut $$1, float $$2) {
+   public void a(cih $$0, guu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.cc();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.a = $$0.v();
       $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
    }
 }

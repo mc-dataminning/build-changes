@@ -1,27 +1,50 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 import java.util.Map;
+import java.util.function.Function;
 
-public class bie {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-      .put("minecraft:red_coral", "minecraft:fire_coral_block")
-      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-      .build();
+public class bie extends DataFix {
+   final String a;
+   final Map<String, String> b;
+
+   public bie(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bia.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bjo.a($$1xx), $$1xx)))
+                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .mapOrElse(Function.identity(), $$1x -> $$0x)
+      );
+   }
 }

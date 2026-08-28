@@ -1,18 +1,21 @@
-public class gst extends gtn<gwo, gaf> {
-   private final fzn<gwo> a;
+public class gst extends gqb<cmt, gyf, gcd> {
+   private static final alj a = alj.b("textures/entity/piglin/zombified_piglin.png");
 
-   public gst(gqw<gwo, gaf> $$0, gby $$1) {
-      super($$0);
-      this.a = new gae($$1.a(gcb.bJ));
+   public gst(gpk.a $$0, gcj $$1, gcj $$2, gcj $$3, gcj $$4, gcj $$5, gcj $$6) {
+      super($$0, new gcd($$0.a($$1)), new gcd($$0.a($$2)), 0.5F, gra.a);
+      this.a(new gto<>(this, new fzv($$0.a($$3)), new fzv($$0.a($$4)), new fzv($$0.a($$5)), new fzv($$0.a($$5)), $$0.h()));
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gwo $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.u) {
-         feo $$6 = $$1.getBuffer(gjh.c($$3.a.a()));
-         int $$7 = gqb.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
-      }
+   public alj a(gyf $$0) {
+      return a;
+   }
+
+   public gyf b() {
+      return new gyf();
+   }
+
+   public void a(cmt $$0, gyf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gb();
    }
 }

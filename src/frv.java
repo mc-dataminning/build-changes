@@ -1,185 +1,132 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class frv {
-   private final fjx a;
-   private final frz b;
-   private final frw c;
-   private final int d;
-   private final ai e;
-   private final at f;
-   private final cwf g;
-   private final xl h;
-   private final frx i;
-   private final Map<ah, frx> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+public class frv extends frw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final xj c = xj.c("recover_world.title").a(n.r);
+   private static final xj d = xj.c("recover_world.bug_tracker");
+   private static final xj s = xj.c("recover_world.restore");
+   private static final xj u = xj.c("recover_world.no_fallback");
+   private static final xj v = xj.c("recover_world.done.title");
+   private static final xj w = xj.c("recover_world.done.success");
+   private static final xj x = xj.c("recover_world.done.failed");
+   private static final xj y = xj.c("recover_world.issue.none").a(n.k);
+   private static final xj z = xj.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fpw B = fpw.d().a(8);
+   private final xj C;
+   private final fmx D;
+   private final fmx E;
+   private final eub.c F;
 
-   public frv(fjx $$0, frz $$1, frw $$2, int $$3, ai $$4, at $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new frx(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public frv(fke $$0, BooleanConsumer $$1, eub.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = xj.a("recover_world.message", xj.b($$2.f()).a(n.h));
+      this.D = new fmx(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      xj $$5 = xj.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fmx($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fnk(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fpw $$7 = fpw.e().a(5);
+      $$7.a(fmd.a(d, fqt.b(this, ayi.j)).b(120, 20).a());
+      $$7.a(fmd.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fno.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(fmd.a(xi.k, $$0x -> this.aO_()).b(120, 20).a());
+      this.B.a(this::c);
    }
 
-   public frw a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ai c() {
-      return this.e;
-   }
-
-   public xl d() {
-      return this.h;
-   }
-
-   public at e() {
-      return this.f;
-   }
-
-   public void a(flj $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(flj $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(flj $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      all $$3 = this.f.d().orElse(gyu.a);
-      int $$4 = azn.a(this.k);
-      int $$5 = azn.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a(gjh::B, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+   private void a(fke $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new frh(xj.c("recover_world.restoring")));
+         fwy.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fqu(this.A, v, w, xi.j, xi.k));
+         } else {
+            $$0.a(new fqp(() -> this.A.accept(false), v, x));
          }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.e();
-   }
-
-   public void a(flj $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, azn.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = azn.a(this.k);
-      int $$7 = azn.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (frx $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = azn.a(this.q + 0.02F, 0.0F, 0.3F);
       } else {
-         this.q = azn.a(this.q - 0.04F, 0.0F, 1.0F);
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fqp(() -> this.A.accept(false), v, x));
       }
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
-   @Nullable
-   public static frv a(fjx $$0, frz $$1, int $$2, ai $$3) {
-      Optional<at> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
+   private xj a(eub.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return xj.i();
       } else {
-         for (frw $$5 : frw.values()) {
-            if ($$2 < $$5.a()) {
-               return new frv($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
-
-            $$2 -= $$5.a();
+         xx $$3 = xj.i();
+         Instant $$4 = $$0.a($$1);
+         xx $$5 = $$4 != null ? xj.b(fxj.a.format($$4)) : xj.c("recover_world.state_entry.unknown");
+         $$3.b(xj.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof vc) {
+            $$3.b(xj.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(xj.b($$2.toString()).a(n.m));
          }
 
-         return null;
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = azn.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = azn.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ai $$0) {
-      Optional<at> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         frx $$2 = new frx(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(frx $$0, ah $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (frx $$6 : this.j.values()) {
-         $$6.b();
+         return $$3;
       }
    }
 
    @Nullable
-   public frx a(ah $$0) {
-      return this.j.get($$0);
+   private Exception a(eub.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (uw | vc | IOException var4) {
+         return var4;
+      }
    }
 
-   public frz f() {
-      return this.b;
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      fpq.a(this.B, this.H());
+   }
+
+   @Override
+   public xj i() {
+      return xi.a(super.i(), this.C);
+   }
+
+   @Override
+   public void aO_() {
+      this.A.accept(false);
    }
 }

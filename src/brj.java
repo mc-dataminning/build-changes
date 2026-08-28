@@ -1,45 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brj extends brm {
-   public static final brj a = new brj(0);
-   public static final MapCodec<brj> b = Codec.INT.fieldOf("value").xmap(brj::a, brj::d);
-   private final int f;
+public class brj extends brn {
+   public static final MapCodec<brj> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, brj::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static brj a(int $$0) {
-      return $$0 == 0 ? a : new brj($$0);
+   public static brj a(float $$0, float $$1, float $$2, float $$3) {
+      return new brj($$0, $$1, $$2, $$3);
    }
 
-   private brj(int $$0) {
-      this.f = $$0;
+   private brj(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public int d() {
+   @Override
+   public float a(azu $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
+
+   public static float a(azu $$0, float $$1, float $$2, float $$3, float $$4) {
+      return azm.a(azm.c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   @Override
+   public float a() {
+      return this.e;
+   }
+
+   @Override
+   public float b() {
       return this.f;
    }
 
    @Override
-   public int a(azv $$0) {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public brn<?> c() {
-      return brn.a;
+   public bro<?> c() {
+      return bro.c;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

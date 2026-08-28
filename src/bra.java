@@ -1,27 +1,13 @@
-public abstract class bra<R extends Runnable> extends bqw<R> {
-   private int b;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
 
-   public bra(String $$0) {
-      super($$0);
+public class bra extends bqy<Runnable> {
+   public bra(Executor $$0, String $$1) {
+      super(new bre.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
    @Override
-   public boolean ax() {
-      return this.bB() || super.ax();
-   }
-
-   protected boolean bB() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 }

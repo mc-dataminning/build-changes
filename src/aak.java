@@ -1,26 +1,20 @@
-public class aak {
-   public static final zu<zz> a = a("custom_payload");
-   public static final zu<aaa> b = a("custom_report_details");
-   public static final zu<aab> c = a("disconnect");
-   public static final zu<aac> d = a("keep_alive");
-   public static final zu<aad> e = a("ping");
-   public static final zu<aae> f = a("resource_pack_pop");
-   public static final zu<aaf> g = a("resource_pack_push");
-   public static final zu<aag> h = a("server_links");
-   public static final zu<aah> i = a("store_cookie");
-   public static final zu<aai> j = a("transfer");
-   public static final zu<aaj> k = a("update_tags");
-   public static final zu<aam> l = b("client_information");
-   public static final zu<aan> m = b("custom_payload");
-   public static final zu<aao> n = b("keep_alive");
-   public static final zu<aap> o = b("pong");
-   public static final zu<aaq> p = b("resource_pack");
+public record aak(ara b) implements zq<aaj> {
+   public static final zh<wg, aak> a = zq.a(aak::a, aak::new);
 
-   private static <T extends zs<zy>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, all.b($$0));
+   private aak(wg $$0) {
+      this(new ara($$0));
    }
 
-   private static <T extends zs<aal>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, all.b($$0));
+   private void a(wg $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public zs<aak> a() {
+      return aai.l;
+   }
+
+   public void a(aaj $$0) {
+      $$0.a(this);
    }
 }

@@ -1,194 +1,181 @@
-import java.io.IOException;
-import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.nio.file.FileStore;
 import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
 import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-class aty extends FileSystemProvider {
-   public static final String a = "x-mc-link";
+public class aty extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new atx();
+   private final atw f;
 
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
+   aty(String $$0, aty.b $$1) {
+      this.d = new atv($$0);
+      this.f = a($$1, this, "", null);
+   }
+
+   private static atw a(aty.b $$0, aty $$1, String $$2, @Nullable atw $$3) {
+      Object2ObjectOpenHashMap<String, atw> $$4 = new Object2ObjectOpenHashMap();
+      atw $$5 = new atw($$1, $$2, $$3, new atz.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new atw($$1, $$3x, $$5, new atz.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
    }
 
    @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
+   public FileSystemProvider provider() {
+      return this.e;
    }
 
    @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
+   public void close() {
    }
 
    @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
+   public boolean isOpen() {
+      return true;
    }
 
    @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public String getSeparator() {
+      return "/";
+   }
+
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
+      }
+
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         atw $$4 = this.f;
+
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$4 = $$4.a($$5);
+         }
+
+         return $$4;
+      } else {
+         atw $$6 = null;
+
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$6 = new atw(this, $$7, $$6, atz.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
          } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final aua.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
-                  }
-               }).map($$0 -> (Path)$$0).iterator();
-            }
-
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof atx && $$1 instanceof atx && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
-      } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
-            }
+            return $$6;
          }
       }
    }
 
-   @Nullable
    @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      atx $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
-   }
-
-   @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      atx $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
-      } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
-      }
-   }
-
-   @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
+   public PathMatcher getPathMatcher(String $$0) {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
    }
 
-   private static atx a(@Nullable Path $$0) {
-      if ($$0 == null) {
-         throw new NullPointerException();
-      } else if ($$0 instanceof atx) {
-         return (atx)$$0;
-      } else {
-         throw new ProviderMismatchException();
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
+      return this.d;
+   }
+
+   public atw b() {
+      return this.f;
+   }
+
+   public static aty.a c() {
+      return new aty.a();
+   }
+
+   public static class a {
+      private final aty.b a = new aty.b();
+
+      public aty.a a(List<String> $$0, String $$1, Path $$2) {
+         aty.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new aty.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public aty.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
+         }
+      }
+
+      public FileSystem a(String $$0) {
+         return new aty($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, aty.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
       }
    }
 }

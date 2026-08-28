@@ -1,19 +1,40 @@
-public class gsm extends gtn<gus, fyl> {
-   private static final all a = all.b("textures/entity/breeze/breeze_wind.png");
-   private final fyl b;
+public class gsm extends gqq<ckp, gya, gbz> {
+   private static final alj a = alj.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alj b = alj.b("textures/entity/wither/wither.png");
 
-   public gsm(gpa.a $$0, gqw<gus, fyl> $$1) {
-      super($$1);
-      this.b = new fyl($$0.a(gcb.C));
+   public gsm(gpk.a $$0) {
+      super($$0, new gbz($$0.a(gck.dr)), 1.0F);
+      this.a(new gum(this, $$0.f()));
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gus $$3, float $$4, float $$5) {
-      feo $$6 = $$1.getBuffer(gjh.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gog.a(this.b, this.b.d()).a($$0, $$6, $$2, gyk.d);
+   protected int a(ckp $$0, jh $$1) {
+      return 15;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public alj a(gya $$0) {
+      int $$1 = azm.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   }
+
+   public gya b() {
+      return new gya();
+   }
+
+   protected void a(gya $$0, fer $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(ckp $$0, gya $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.gn();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.gm(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.v(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.go();
    }
 }

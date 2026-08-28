@@ -1,16 +1,61 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eyg {
-   private static final Codec<eyf> d = lz.H.q().dispatch(eyf::a, eye::a);
-   public static final Codec<eyf> a = Codec.lazyInitialized(
-      () -> Codec.either(eyd.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyd $$1 ? Either.left($$1) : Either.right($$0))
+public record eyg(Optional<Long> b, eum c) implements exy {
+   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(eyg::c), eum.a.fieldOf("value").forGetter(eyg::d)).apply($$0, eyg::new)
    );
-   public static final eye b = a("storage", eyh.a);
-   public static final eye c = a("context", eyd.b);
 
-   private static eye a(String $$0, MapCodec<? extends eyf> $$1) {
-      return kd.a(lz.H, all.b($$0), new eye($$1));
+   @Override
+   public exz b() {
+      return eya.q;
+   }
+
+   @Override
+   public Set<exg<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(eun $$0) {
+      arp $$1 = $$0.d();
+      long $$2 = $$1.ac();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static eyg.a a(eum $$0) {
+      return new eyg.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public eum d() {
+      return this.c;
+   }
+
+   public static class a implements exy.a {
+      private Optional<Long> a = Optional.empty();
+      private final eum b;
+
+      public a(eum $$0) {
+         this.b = $$0;
+      }
+
+      public eyg.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eyg a() {
+         return new eyg(this.a, this.b);
+      }
    }
 }

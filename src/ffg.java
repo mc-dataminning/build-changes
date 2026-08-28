@@ -1,78 +1,73 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
 public class ffg {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(fjx $$0, frp $$1, frp $$2, fgb $$3, @Nullable fiy $$4) {
-      fwn.a($$0, $$1, ($$5, $$6, $$7, $$8) -> {
-         Path $$9;
-         try {
-            $$9 = a($$6, $$7, $$8);
-         } catch (IOException var12) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new fhn(xl.c("mco.create.world.failed"), $$2));
-            return true;
-         }
-
-         fgg $$12 = fgg.a($$7.J(), ab.b().c());
-         ffn $$13 = new ffn($$9, $$12, $$0.X(), $$3.a, $$3.n, ffo.f());
-         $$0.d(new fqi($$13::b, xl.c("mco.create.world.reset.title"), xl.i(), xk.e, false));
-         if ($$4 != null) {
-            $$4.run();
-         }
-
-         $$13.a().handleAsync(($$6x, $$7x) -> {
-            if ($$7x != null) {
-               if ($$7x instanceof CompletionException $$8x) {
-                  $$7x = $$8x.getCause();
-               }
-
-               if ($$7x instanceof ffh) {
-                  $$0.d($$2);
-               } else {
-                  if ($$7x instanceof ffj $$9x) {
-                     a.warn("Failed to create realms world {}", $$9x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$7x.getMessage());
-                  }
-
-                  $$0.d(new fhn(xl.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof fhj $$10) {
-                  $$10.b($$12);
-               }
-
-               if ($$4 != null) {
-                  fev.a($$3, $$1);
-               } else {
-                  $$0.d($$1);
-               }
-            }
-
-            return null;
-         }, $$0);
-         return true;
-      });
-   }
-
-   private static Path a(jx<alu> $$0, ety $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
+   public static List<fgq> a(ffg.a... $$0) {
+      for (ffg.a $$1 : $$0) {
+         a($$1.j);
       }
 
-      un $$4 = $$1.a($$0.a(), null);
-      un $$5 = new un();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      va.a($$5, $$6);
-      return $$3;
+      List<fgq> $$2 = Lists.newArrayList();
+
+      for (ffg.a $$3 : $$0) {
+         $$2.add(new fgq($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fgq::a));
+      return $$2;
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return ae.c();
+   }
+
+   public static List<fgq> a() {
+      return a(ffg.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

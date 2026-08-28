@@ -1,84 +1,127 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class aok {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.playsound.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
-            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
-      );
+      RequiredArgumentBuilder<ew, alj> $$1 = (RequiredArgumentBuilder<ew, alj>)ex.a("sound", fx.a())
+         .suggests(iw.c)
+         .executes($$0x -> a((ew)$$0x.getSource(), a(((ew)$$0x.getSource()).i()), fx.c($$0x, "sound"), awo.a, ((ew)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+
+      for (awo $$2 : awo.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aT()) {
-         throw c.create();
+   private static LiteralArgumentBuilder<ew> a(awo $$0) {
+      return (LiteralArgumentBuilder<ew>)((LiteralArgumentBuilder)ex.a($$0.a())
+            .executes($$1 -> a((ew)$$1.getSource(), a(((ew)$$1.getSource()).i()), fx.c($$1, "sound"), $$0, ((ew)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+         .then(
+            ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                  .executes($$1 -> a((ew)$$1.getSource(), fj.f($$1, "targets"), fx.c($$1, "sound"), $$0, ((ew)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)ex.a("pos", gz.a())
+                        .executes($$1 -> a((ew)$$1.getSource(), fj.f($$1, "targets"), fx.c($$1, "sound"), $$0, gz.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (ew)$$1.getSource(),
+                                       fj.f($$1, "targets"),
+                                       fx.c($$1, "sound"),
+                                       $$0,
+                                       gz.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
+                           .then(
+                              ((RequiredArgumentBuilder)ex.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (ew)$$1.getSource(),
+                                             fj.f($$1, "targets"),
+                                             fx.c($$1, "sound"),
+                                             $$0,
+                                             gz.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    ex.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (ew)$$1.getSource(),
+                                                fj.f($$1, "targets"),
+                                                fx.c($$1, "sound"),
+                                                $$0,
+                                                gz.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               )
+         );
+   }
+
+   private static Collection<arq> a(@Nullable arq $$0) {
+      return $$0 != null ? List.of($$0) : List.of();
+   }
+
+   private static int a(ew $$0, Collection<arq> $$1, alj $$2, awo $$3, ezy $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      jq<awm> $$8 = jq.a(awm.a($$2));
+      double $$9 = (double)azm.l($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().G_().g();
+
+      for (arq $$12 : $$1) {
+         double $$13 = $$4.d - $$12.dA();
+         double $$14 = $$4.e - $$12.dC();
+         double $$15 = $$4.f - $$12.dG();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         ezy $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
+            }
+
+            double $$19 = Math.sqrt($$16);
+            $$17 = new ezy($$12.dA() + $$13 / $$19 * 2.0, $$12.dC() + $$14 / $$19 * 2.0, $$12.dG() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
+         }
+
+         $$12.f.b(new agd($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
+      }
+
+      if ($$10 == 0) {
+         throw a.create();
       } else {
-         Consumer<bop> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> xl.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
+         if ($$1.size() == 1) {
+            $$0.a(() -> xj.a("commands.playsound.success.single", xj.a($$2), $$1.iterator().next().o_()), true);
+         } else {
+            $$0.a(() -> xj.a("commands.playsound.success.multiple", xj.a($$2), $$1.size()), true);
+         }
 
-   private static int b(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aT()) {
-         throw b.create();
-      } else {
-         $$1.aV();
-         return 0;
-      }
-   }
-
-   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bql.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(xl.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (ayy $$7 = new ayy(bql.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> xl.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ew $$0, bop $$1) {
-      if ($$1 != bol.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)bap.a;
-         $$0.a(() -> xl.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$10;
       }
    }
 }

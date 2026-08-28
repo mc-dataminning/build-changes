@@ -1,40 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnh extends dij {
+public class dnh extends dml {
    public static final MapCodec<dnh> a = b(dnh::new);
-   protected static final fal b = dij.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final xj b = xj.c("container.loom");
 
    @Override
    public MapCodec<dnh> a() {
       return a;
    }
 
-   public dnh(dvn.d $$0) {
+   protected dnh(dvu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return b;
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awx.ax);
+      }
+
+      return bsk.a;
    }
 
    @Override
-   protected fal b_(dvo $$0, dek $$1, jh $$2) {
-      return fai.b();
+   protected bsm b(dvv $$0, dfm $$1, jh $$2) {
+      return new bss(($$2x, $$3, $$4) -> new ctg($$2x, $$3, csm.a($$1, $$2)), b);
    }
 
    @Override
-   protected fal c(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return fai.b();
+   public dvv a(dad $$0) {
+      return this.m().b(aF, $$0.g().g());
    }
 
    @Override
-   protected boolean a(dvo $$0, esd $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dvo $$0, dek $$1, jh $$2) {
-      return 0.2F;
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(aF);
    }
 }

@@ -1,101 +1,29 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public abstract class bwx<E extends bve> implements bwy<E> {
-   public static final int a = 60;
-   protected final Map<cei<?>, cej> b;
-   private bwx.a c = bwx.a.a;
-   private long d;
-   private final int e;
-   private final int f;
-
-   public bwx(Map<cei<?>, cej> $$0) {
-      this($$0, 60);
+public class bwx {
+   public static byl<buc> a(brv $$0, float $$1) {
+      return a($$0, $$1x -> $$1);
    }
 
-   public bwx(Map<cei<?>, cej> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bwx(Map<cei<?>, cej> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public bwx.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arq $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bwx.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(arq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(arq $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(arq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(arq $$0, E $$1, long $$2) {
-      this.c = bwx.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(arq $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(arq $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<cei<?>, cej> $$1 : this.b.entrySet()) {
-         cei<?> $$2 = $$1.getKey();
-         cej $$3 = $$1.getValue();
-         if (!$$0.ee().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+   public static byl<buc> a(brv $$0, Function<bvh, Float> $$1) {
+      return can.a(
+         (Function<can.b<buc>, ? extends App<can.c<buc>, caq<buc>>>)($$2 -> $$2.group($$2.b(cel.K), $$2.a(cel.n), $$2.c(cel.m))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     if (!$$7.e_()) {
+                        return false;
+                     } else {
+                        buc $$9 = $$2.b($$3);
+                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
+                           ceo $$10 = new ceo(new bxl($$9, false), $$1.apply($$7), $$0.a() - 1);
+                           $$4.a(new bxl($$9, true));
+                           $$5.a($$10);
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

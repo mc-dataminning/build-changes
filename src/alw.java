@@ -1,60 +1,57 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alw {
+public class alw extends avh<ag> {
    private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<bat> b = CompletableFuture.completedFuture(bat.a);
-   private final alv.a c;
-   private final ex d;
-   private final dax e;
-   private final aly f;
-   private final alz g;
-   private final List<kd.a<?>> h;
+   private Map<alj, ah> b = Map.of();
+   private am c = new am();
+   private final js.a d;
 
-   private alw(jx<alu> $$0, js.a $$1, crj $$2, ex.a $$3, List<kd.a<?>> $$4, int $$5) {
-      this.c = new alv.a($$0.a());
-      this.h = $$4;
-      this.e = new dax($$1);
-      this.d = new ex($$3, es.a($$1, $$2));
-      this.f = new aly($$1);
-      this.g = new alz($$5, this.d.a());
+   public alw(js.a $$0) {
+      super($$0, ag.a, ma.c(ma.bg));
+      this.d = $$0;
    }
 
-   public alz a() {
-      return this.g;
+   protected void a(Map<alj, ag> $$0, avd $$1, bou $$2) {
+      Builder<alj, ah> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new ah($$1x, $$2x));
+      });
+      this.b = $$3.buildOrThrow();
+      am $$4 = new am();
+      $$4.a(this.b.values());
+
+      for (ai $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            au.a($$5);
+         }
+      }
+
+      this.c = $$4;
    }
 
-   public alv.a b() {
+   private void a(alj $$0, ag $$1) {
+      azs.a $$2 = new azs.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
+   }
+
+   @Nullable
+   public ah a(alj $$0) {
+      return this.b.get($$0);
+   }
+
+   public am a() {
       return this.c;
    }
 
-   public dax c() {
-      return this.e;
-   }
-
-   public ex d() {
-      return this.d;
-   }
-
-   public aly e() {
-      return this.f;
-   }
-
-   public List<auy> f() {
-      return List.of(this.e, this.g, this.f);
-   }
-
-   public static CompletableFuture<alw> a(ave $$0, jx<alu> $$1, List<kd.a<?>> $$2, crj $$3, ex.a $$4, int $$5, Executor $$6, Executor $$7) {
-      return alv.a($$1, $$2, $$0, $$6).thenCompose($$7x -> {
-         alw $$8 = new alw($$7x.a(), $$7x.b(), $$3, $$4, $$2, $$5);
-         return avk.a($$0, $$8.f(), $$6, $$7, b, a.isDebugEnabled()).a().thenApply($$1xx -> $$8);
-      });
-   }
-
-   public void g() {
-      this.h.forEach(kd.a::c);
+   public Collection<ah> b() {
+      return this.b.values();
    }
 }

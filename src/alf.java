@@ -1,90 +1,71 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public class alf<E> implements Codec<ju<E>> {
-   private final alk<? extends kd<E>> a;
-   private final Codec<jq<E>> b;
-   private final Codec<List<jq<E>>> c;
-   private final Codec<Either<axt<E>, List<jq<E>>>> d;
+public final class alf<E> implements Codec<jq<E>> {
+   private final ali<? extends kd<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   private static <E> Codec<List<jq<E>>> a(Codec<jq<E>> $$0, boolean $$1) {
-      Codec<List<jq<E>>> $$2 = $$0.listOf().validate(ayw.b(jq::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((jq)$$0x.get(0)) : Either.left($$0x));
+   public static <E> alf<E> a(ali<? extends kd<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <E> Codec<ju<E>> a(alk<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
+   public static <E> alf<E> a(ali<? extends kd<E>> $$0, Codec<E> $$1, boolean $$2) {
       return new alf<>($$0, $$1, $$2);
    }
 
-   private alf(alk<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
+   private alf(ali<? extends kd<E>> $$0, Codec<E> $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(axt.b($$0), this.c);
+      this.c = $$2;
    }
 
-   public <T> DataResult<Pair<ju<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof alj<T> $$2) {
-         Optional<jr<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            jr<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<ju<E>> $$2x = (DataResult<ju<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(ju.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
-         }
-      }
-
-      return this.a($$0, $$1);
-   }
-
-   private static <E> DataResult<ju<E>> a(jr<E> $$0, axt<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<ju<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
-   }
-
-   public <T> DataResult<T> a(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof alj<T> $$3) {
+   public <T> DataResult<T> a(jq<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alh<?> $$3) {
          Optional<jt<E>> $$4 = $$3.a(this.a);
          if ($$4.isPresent()) {
             if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
             }
 
-            return this.d.encode($$0.d().mapRight(List::copyOf), $$1, $$2);
+            return (DataResult<T>)$$0.d().map($$2x -> alj.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
          }
       }
 
-      return this.b($$0, $$1, $$2);
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   private <T> DataResult<Pair<ju<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<jq.a<E>> $$1x = new ArrayList<>();
-
-         for (jq<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof jq.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+   public <T> DataResult<Pair<jq<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alh<?> $$2) {
+         Optional<jr<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            jr<E> $$4 = $$3.get();
+            DataResult<Pair<alj, T>> $$5 = alj.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jq::a));
+            } else {
+               Pair<alj, T> $$6 = (Pair<alj, T>)$$5.result().get();
+               ali<E> $$7 = ali.a(this.a, (alj)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
             }
-
-            $$1x.add($$3);
          }
-
-         return DataResult.success(new Pair(ju.a($$1x), $$0x.getSecond()));
-      });
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jq::a));
+      }
    }
 
-   private <T> DataResult<T> b(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

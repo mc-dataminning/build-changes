@@ -1,91 +1,61 @@
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class buw extends chu {
-   private static final ako<Integer> cg = aks.a(buw.class, akq.b);
+public interface buw {
+   void a(but var1, cwm var2);
 
-   public buw(bup<? extends buw> $$0, dff $$1) {
-      super($$0, $$1);
+   cwm a(but var1);
+
+   void a(but var1, float var2);
+
+   default void a(buv $$0, euq $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   @Override
-   protected lq q() {
-      return ls.aP;
+   default void a(ali<eus> $$0, euq $$1, Map<but, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   @Override
-   protected void a(aks.a $$0) {
-      super.a($$0);
-      $$0.a(cg, 0);
+   default void a(ali<eus> $$0, euq $$1, long $$2, Map<but, Float> $$3) {
+      eus $$4 = $$1.a().p().bc().b($$0);
+      if ($$4 != eus.a) {
+         List<cwm> $$5 = $$4.a($$1, $$2);
+         List<but> $$6 = new ArrayList<>();
+
+         for (cwm $$7 : $$5) {
+            but $$8 = this.a($$7, $$6);
+            if ($$8 != null) {
+               cwm $$9 = $$8.a($$7);
+               this.a($$8, $$9);
+               Float $$10 = $$3.get($$8);
+               if ($$10 != null) {
+                  this.a($$8, $$10);
+               }
+
+               $$6.add($$8);
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public btz a(arq $$0, btz $$1) {
-      return bup.W.a($$0, buo.e);
-   }
+   default but a(cwm $$0, List<but> $$1) {
+      if ($$0.f()) {
+         return null;
+      } else {
+         ddy $$2 = $$0.a(ku.D);
+         if ($$2 != null) {
+            but $$3 = $$2.a();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(but.a)) {
+            return but.a;
+         }
 
-   @Override
-   protected awn t() {
-      return awo.kK;
-   }
-
-   @Override
-   protected awn w() {
-      return awo.kH;
-   }
-
-   @Override
-   protected awn d(bsy $$0) {
-      return awo.kJ;
-   }
-
-   @Override
-   protected awn o_() {
-      return awo.kI;
-   }
-
-   @Override
-   public void b(un $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(un $$0) {
-      super.a($$0);
-      this.t($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.t($$0 - 1);
+         return null;
       }
-
-      this.dY().a(ls.aQ, this.d(0.6), this.dG(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bsy $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.t(100);
-      }
-
-      return $$2;
-   }
-
-   private void t(int $$0) {
-      this.am.a(cg, $$0);
-   }
-
-   public int y() {
-      return this.am.a(cg);
-   }
-
-   public static boolean a(bup<? extends bve> $$0, dfw $$1, buo $$2, jh $$3, azv $$4) {
-      return $$3.v() <= $$1.N() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dil.G);
    }
 }

@@ -1,45 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class edv extends eep<egm> {
-   public edv(Codec<egm> $$0) {
+public class edv extends edt {
+   public edv(Codec<eds> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(erw.e, erw.c);
    }
 
    @Override
-   public boolean a(eer<egm> $$0) {
-      jh $$1 = $$0.e();
-      dgd $$2 = $$0.b();
-      azv $$3 = $$0.d();
+   protected int a() {
+      return 10;
+   }
 
-      egm $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.e()) {
-         if (!$$2.u($$1.e())) {
-            dvo $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   @Override
+   protected float a(azu $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+   @Override
+   protected double b() {
+      return 5.0;
+   }
 
-            for (jh $$11 : jh.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+   protected boolean a(edr $$0, eds $$1, dxq $$2, Function<jh, jq<dgo>> $$3, dxp $$4, jh.a $$5, jh.a $$6, ebc $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dvv $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
+         $$2.a($$5, $$9, false);
          return true;
+      } else {
+         return false;
       }
    }
 }

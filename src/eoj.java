@@ -1,53 +1,84 @@
-public class eoj {
-   private static final all[] a = new all[]{
-      all.b("nether_fossils/fossil_1"),
-      all.b("nether_fossils/fossil_2"),
-      all.b("nether_fossils/fossil_3"),
-      all.b("nether_fossils/fossil_4"),
-      all.b("nether_fossils/fossil_5"),
-      all.b("nether_fossils/fossil_6"),
-      all.b("nether_fossils/fossil_7"),
-      all.b("nether_fossils/fossil_8"),
-      all.b("nether_fossils/fossil_9"),
-      all.b("nether_fossils/fossil_10"),
-      all.b("nether_fossils/fossil_11"),
-      all.b("nether_fossils/fossil_12"),
-      all.b("nether_fossils/fossil_13"),
-      all.b("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public static void a(eqe $$0, emg $$1, azv $$2, jh $$3) {
-      dow $$4 = dow.a($$2);
-      $$1.a(new eoj.a($$0, ae.a(a, $$2), $$3, $$4));
+public final class eoj extends emi {
+   public static final eni d = eni.b;
+   public static final epu e = epu.b;
+   public static final int f = 128;
+   public static final int g = 0;
+   public static final int h = 20;
+   public static final MapCodec<eoj> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  a($$0),
+                  ens.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
+                  alj.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
+                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
+                  ekp.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
+                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
+                  ebq.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
+                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
+                  Codec.list(enu.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
+                  eni.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
+                  epu.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
+               )
+               .apply($$0, eoj::new)
+      )
+      .validate(eoj::a);
+   private final jq<ens> j;
+   private final Optional<alj> k;
+   private final int l;
+   private final ekp m;
+   private final boolean n;
+   private final Optional<ebq.a> o;
+   private final int p;
+   private final List<enu> q;
+   private final eni r;
+   private final epu s;
+
+   private static DataResult<eoj> a(eoj $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d, e -> 12;
+      };
+      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
    }
 
-   public static class a extends eml {
-      public a(eqe $$0, all $$1, jh $$2, dow $$3) {
-         super(ems.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-      }
+   public eoj(emi.c $$0, jq<ens> $$1, Optional<alj> $$2, int $$3, ekp $$4, boolean $$5, Optional<ebq.a> $$6, int $$7, List<enu> $$8, eni $$9, epu $$10) {
+      super($$0);
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.q = $$8;
+      this.r = $$9;
+      this.s = $$10;
+   }
 
-      public a(eqe $$0, un $$1) {
-         super(ems.ac, $$1, $$0, $$1x -> a(dow.valueOf($$1.l("Rot"))));
-      }
+   public eoj(emi.c $$0, jq<ens> $$1, int $$2, ekp $$3, boolean $$4, ebq.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
+   }
 
-      private static epz a(dow $$0) {
-         return new epz().a($$0).a(dnf.a).a(epe.d);
-      }
+   public eoj(emi.c $$0, jq<ens> $$1, int $$2, ekp $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
+   }
 
-      @Override
-      protected void a(emr $$0, un $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   @Override
+   public Optional<emi.b> a(emi.a $$0) {
+      des $$1 = $$0.h();
+      int $$2 = this.m.a($$0.f(), new ecn($$0.b(), $$0.i()));
+      jh $$3 = new jh($$1.d(), $$2, $$1.e());
+      return enm.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, enw.create(this.q, $$3, $$0.g()), this.r, this.s);
+   }
 
-      @Override
-      protected void a(String $$0, jh $$1, dfw $$2, azv $$3, elt $$4) {
-      }
-
-      @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public emr<?> e() {
+      return emr.f;
    }
 }

@@ -1,108 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public class fwj extends frp {
-   private static final xl a = xl.c("telemetry_info.screen.title");
-   private static final xl b = xl.c("telemetry_info.screen.description").b(-4539718);
-   private static final xl c = xl.c("telemetry_info.button.privacy_statement");
-   private static final xl d = xl.c("telemetry_info.button.give_feedback");
-   private static final xl s = xl.c("telemetry_info.button.show_data");
-   private static final xl u = xl.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fjx.Q().D();
-   private final frp x;
-   private final fkb y;
-   private final fpl z = new fpl(this, 16 + 9 * 5 + 20, w ? 33 + fly.a(fjx.Q().h) : 33);
-   @Nullable
-   private fwi A;
-   @Nullable
-   private fmq B;
-   private double C;
+public class fwj extends fwc<geq.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final xj E = xj.c("gui.abuseReport.skin.title");
+   private fmv F;
+   private fmd G;
 
-   public fwj(frp $$0, fkb $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   private fwj(frw $$0, gep $$1, geq.a $$2) {
+      super(E, $$0, $$1, $$2);
+   }
+
+   public fwj(frw $$0, gep $$1, UUID $$2, Supplier<haf> $$3) {
+      this($$0, $$1, new geq.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fwj(frw $$0, gep $$1, geq $$2) {
+      this($$0, $$1, new geq.a($$2, $$1.a().b()));
    }
 
    @Override
-   public xl i() {
-      return xk.a(super.i(), b);
-   }
-
-   @Override
-   protected void aS_() {
-      fpp $$0 = this.z.a(fpp.d().a(4));
-      $$0.c().b();
-      $$0.a(new fnd(a, this.p));
-      this.B = $$0.a(new fmq(b, this.p).b(true));
-      fpp $$1 = $$0.a(fpp.e().a(8));
-      $$1.a(flw.a(c, this::a).a());
-      $$1.a(flw.a(d, this::b).a());
-      fpp $$2 = this.z.b(fpp.d().a(4));
-      if (w) {
-         $$2.a(this.m());
-      }
-
-      fpp $$3 = $$2.a(fpp.e().a(8));
-      $$3.a(flw.a(s, this::c).a());
-      $$3.a(flw.a(xk.d, $$0x -> this.aP_()).a());
-      fpp $$4 = this.z.c(fpp.d().a(8));
-      this.A = $$4.a(new fwi(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         flu var10000 = this.c($$1x);
+   protected void F() {
+      fpw $$0 = this.z.a(fpw.e().a(8));
+      $$0.c().e();
+      $$0.a(new fnd(85, 120, this.m.aS(), this.A.e().a()));
+      fpw $$1 = $$0.a(fpw.d().a(8));
+      this.G = fmd.a(c, $$0x -> this.m.a(new fwi(this, this.A.i(), geo.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.J();
+         }))).a(178).a();
+      $$1.a(fpo.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.J();
       });
-      this.c();
+      $$1.a(fpo.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
    }
 
    @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
+   protected void J() {
+      gen $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
+      } else {
+         this.G.b(c);
       }
 
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
+      super.J();
    }
 
    @Override
-   protected void aG_() {
-      if (this.A != null) {
-         this.b(this.A);
-      }
-   }
-
-   private flu m() {
-      fka<Boolean> $$0 = this.y.ak();
-      return fly.a(u, this.p).a($$0).a(this::a).a();
-   }
-
-   private void a(flu $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
-      }
-   }
-
-   private void a(flw $$0) {
-      fqm.a(this, ayj.c);
-   }
-
-   private void b(flw $$0) {
-      fqm.a(this, ayj.i);
-   }
-
-   private void c(flw $$0) {
-      ae.m().a(this.m.u().b());
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.x);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

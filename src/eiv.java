@@ -1,24 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiv<P extends eiu> {
-   public static final eiv<ejd> a = a("simple_state_provider", ejd.b);
-   public static final eiv<eje> b = a("weighted_state_provider", eje.b);
-   public static final eiv<eiz> c = a("noise_threshold_provider", eiz.b);
-   public static final eiv<eiy> d = a("noise_provider", eiy.g);
-   public static final eiv<eiw> e = a("dual_noise_provider", eiw.b);
-   public static final eiv<ejb> f = a("rotated_block_provider", ejb.b);
-   public static final eiv<eja> g = a("randomized_int_state_provider", eja.b);
-   private final MapCodec<P> h;
+public record eiv(ejb b, float c) {
+   public static final Codec<eiv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ejb.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eiv::new)
+   );
 
-   private static <P extends eiu> eiv<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.T, $$0, new eiv<>($$1));
+   public ejb a() {
+      return this.b;
    }
 
-   private eiv(MapCodec<P> $$0) {
-      this.h = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.h;
+   public float b() {
+      return this.c;
    }
 }

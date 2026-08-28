@@ -1,17 +1,18 @@
-public class yl extends Exception {
-   private final xl a;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-   public yl(xl $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
+public interface yl {
+   MapCodec<yl> c = xl.a(new yl.a[]{ym.b, yk.b, yt.b}, yl.a::a, yl::a, "source");
 
-   public yl(xl $$0, Throwable $$1) {
-      super($$0.getString(), $$1);
-      this.a = $$0;
-   }
+   Stream<ul> a(ew var1) throws CommandSyntaxException;
 
-   public xl a() {
-      return this.a;
+   yl.a<?> a();
+
+   public static record a<T extends yl>(MapCodec<T> a, String b) implements bai {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

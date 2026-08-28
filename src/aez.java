@@ -1,33 +1,12 @@
-import javax.annotation.Nullable;
-
-public class aez implements zs<ach> {
-   public static final zj<wi, aez> a = zs.a(aez::a, aez::new);
-   @Nullable
-   private final all b;
-
-   public aez(@Nullable all $$0) {
-      this.b = $$0;
-   }
-
-   private aez(wi $$0) {
-      this.b = $$0.c(wi::q);
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b, wi::a);
-   }
+public record aez(xj b) implements zq<acf> {
+   public static final zh<wu, aez> a = zh.a(xl.d, aez::b, aez::new);
 
    @Override
-   public zu<aez> a() {
-      return agw.ap;
+   public zs<aez> a() {
+      return agu.ar;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public all b() {
-      return this.b;
    }
 }

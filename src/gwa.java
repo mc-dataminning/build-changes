@@ -1,3 +1,5 @@
-public class gwa extends gvd {
-   public long a;
+public class gwa extends gwm {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

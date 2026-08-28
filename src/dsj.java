@@ -1,99 +1,77 @@
-public class dsj {
-   public static final alk<dsh> a = a("base");
-   public static final alk<dsh> b = a("square_bottom_left");
-   public static final alk<dsh> c = a("square_bottom_right");
-   public static final alk<dsh> d = a("square_top_left");
-   public static final alk<dsh> e = a("square_top_right");
-   public static final alk<dsh> f = a("stripe_bottom");
-   public static final alk<dsh> g = a("stripe_top");
-   public static final alk<dsh> h = a("stripe_left");
-   public static final alk<dsh> i = a("stripe_right");
-   public static final alk<dsh> j = a("stripe_center");
-   public static final alk<dsh> k = a("stripe_middle");
-   public static final alk<dsh> l = a("stripe_downright");
-   public static final alk<dsh> m = a("stripe_downleft");
-   public static final alk<dsh> n = a("small_stripes");
-   public static final alk<dsh> o = a("cross");
-   public static final alk<dsh> p = a("straight_cross");
-   public static final alk<dsh> q = a("triangle_bottom");
-   public static final alk<dsh> r = a("triangle_top");
-   public static final alk<dsh> s = a("triangles_bottom");
-   public static final alk<dsh> t = a("triangles_top");
-   public static final alk<dsh> u = a("diagonal_left");
-   public static final alk<dsh> v = a("diagonal_up_right");
-   public static final alk<dsh> w = a("diagonal_up_left");
-   public static final alk<dsh> x = a("diagonal_right");
-   public static final alk<dsh> y = a("circle");
-   public static final alk<dsh> z = a("rhombus");
-   public static final alk<dsh> A = a("half_vertical");
-   public static final alk<dsh> B = a("half_horizontal");
-   public static final alk<dsh> C = a("half_vertical_right");
-   public static final alk<dsh> D = a("half_horizontal_bottom");
-   public static final alk<dsh> E = a("border");
-   public static final alk<dsh> F = a("curly_border");
-   public static final alk<dsh> G = a("gradient");
-   public static final alk<dsh> H = a("gradient_up");
-   public static final alk<dsh> I = a("bricks");
-   public static final alk<dsh> J = a("globe");
-   public static final alk<dsh> K = a("creeper");
-   public static final alk<dsh> L = a("skull");
-   public static final alk<dsh> M = a("flower");
-   public static final alk<dsh> N = a("mojang");
-   public static final alk<dsh> O = a("piglin");
-   public static final alk<dsh> P = a("flow");
-   public static final alk<dsh> Q = a("guster");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static alk<dsh> a(String $$0) {
-      return alk.a(ma.d, all.b($$0));
+public class dsj extends dps {
+   public static final MapCodec<dsj> b = b(dsj::new);
+   @Nullable
+   private static dwa h;
+   @Nullable
+   private static dwa i;
+
+   @Override
+   public MapCodec<dsj> a() {
+      return b;
    }
 
-   public static void a(rb<dsh> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, F);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   protected dsj(dvu.d $$0) {
+      super(dps.b.d, $$0);
    }
 
-   public static void a(rb<dsh> $$0, alk<dsh> $$1) {
-      $$0.a($$1, new dsh($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   @Override
+   public void a(dfm $$0, jh $$1, dvv $$2, @Nullable bvh $$3, cwm $$4) {
+      a($$0, $$1);
+   }
+
+   public static void a(dfm $$0, jh $$1) {
+      if ($$0.c_($$1) instanceof dum $$2) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dfm $$0, jh $$1, dum $$2) {
+      if (!$$0.C) {
+         dvv $$3 = $$2.m();
+         boolean $$4 = $$3.a(dis.gG) || $$3.a(dis.gH);
+         if ($$4 && $$1.v() >= $$0.K_() && $$0.ak() != bsh.a) {
+            dwa.b $$5 = q().a($$0, $$1);
+            if ($$5 != null) {
+               ckp $$6 = bus.bF.a($$0, bur.k);
+               if ($$6 != null) {
+                  djk.a($$0, $$5);
+                  jh $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jm.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aW = $$5.b().o() == jm.a.a ? 0.0F : 90.0F;
+                  $$6.n();
+
+                  for (arq $$8 : $$0.a(arq.class, $$6.cR().g(50.0))) {
+                     ao.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  djk.b($$0, $$5);
+               }
+            }
+         }
+      }
+   }
+
+   public static boolean b(dfm $$0, jh $$1, cwm $$2) {
+      return $$2.a(cwq.uE) && $$1.v() >= $$0.K_() + 2 && $$0.ak() != bsh.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   }
+
+   private static dwa q() {
+      if (h == null) {
+         h = dwb.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(axc.aH)).a('^', dvz.a(dwe.a(dis.gG).or(dwe.a(dis.gH)))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return h;
+   }
+
+   private static dwa r() {
+      if (i == null) {
+         i = dwb.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(axc.aH)).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return i;
    }
 }

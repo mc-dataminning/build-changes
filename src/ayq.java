@@ -1,43 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ayq<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
+public class ayq implements DataOutput {
+   private final DataOutput a;
 
-   public ayq(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
+   public ayq(DataOutput $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0) {
-      int $$1 = this.a.length();
-
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
-
-      this.a.set($$3, $$0);
+   @Override
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
+   }
 
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
-         }
-      }
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
+   }
 
-      return $$1.build();
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
+
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
+
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
+
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

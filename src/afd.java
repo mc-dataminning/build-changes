@@ -1,45 +1,29 @@
-public class afd implements zs<ach> {
-   public static final zj<wi, afd> a = zs.a(afd::a, afd::new);
-   private final double b;
-   private final double c;
-   private final long d;
+public class afd implements zq<acf> {
+   public static final zh<wg, afd> a = zq.a(afd::a, afd::new);
+   private final int b;
 
-   public afd(dxe $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   public afd(dxl $$0) {
+      this.b = $$0.q();
    }
 
-   private afd(wi $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
+   private afd(wg $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(wg $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zu<afd> a() {
-      return agw.at;
+   public zs<afd> a() {
+      return agu.av;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

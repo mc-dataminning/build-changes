@@ -1,124 +1,143 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class dua extends dsr implements eam.b<eat.b>, eat {
-   private static final Logger b = LogUtils.getLogger();
-   private eat.a c;
-   private final eat.b d;
-   private final eat.d e = this.b();
-   private int h;
+public class dua extends dsy {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private alj h = alj.b("empty");
+   private alj i = alj.b("empty");
+   private ali<ens> j = ali.a(ma.aV, alj.b("empty"));
+   private dua.a k = dua.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   protected dua(dst<?> $$0, jh $$1, dvo $$2) {
-      super($$0, $$1, $$2);
-      this.c = new eat.a();
-      this.d = new eat.b(this);
+   public dua(jh $$0, dvv $$1) {
+      super(dta.F, $$0, $$1);
    }
 
-   public dua(jh $$0, dvo $$1) {
-      this(dst.I, $$0, $$1);
-   }
-
-   public eat.d b() {
-      return new dua.a(this.aB_());
-   }
-
-   @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      alj<vk> $$2 = $$1.a(vb.a);
-      if ($$0.b("listener", 10)) {
-         eat.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> b.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.c = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      alj<vk> $$2 = $$1.a(vb.a);
-      eat.a.a
-         .encodeStart($$2, this.c)
-         .resultOrPartial($$0x -> b.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Override
-   public eat.a gx() {
-      return this.c;
-   }
-
-   @Override
-   public eat.d gy() {
-      return this.e;
-   }
-
-   public int d() {
+   public alj b() {
       return this.h;
    }
 
-   public void a(int $$0) {
+   public alj c() {
+      return this.i;
+   }
+
+   public ali<ens> d() {
+      return this.j;
+   }
+
+   public String f() {
+      return this.l;
+   }
+
+   public dua.a j() {
+      return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int t() {
+      return this.n;
+   }
+
+   public void a(alj $$0) {
       this.h = $$0;
    }
 
-   public eat.b f() {
-      return this.d;
+   public void b(alj $$0) {
+      this.i = $$0;
    }
 
-   protected class a implements eat.d {
-      public static final int b = 8;
-      protected final jh c;
-      private final eao a;
+   public void a(ali<ens> $$0) {
+      this.j = $$0;
+   }
 
-      public a(final jh $$1) {
-         this.c = $$1;
-         this.a = new eag($$1);
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dua.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
+
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.h = alj.a($$0.l("name"));
+      this.i = alj.a($$0.l("target"));
+      this.j = ali.a(ma.aV, alj.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dua.a.a($$0.l("joint")).orElseGet(() -> dmr.o(this.m()).o().d() ? dua.a.b : dua.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public acm u() {
+      return acm.a(this);
+   }
+
+   @Override
+   public ul a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(arp $$0, int $$1, boolean $$2) {
+      jh $$3 = this.aA_().a(this.m().c(dmr.b).a());
+      kd<ens> $$4 = $$0.J_().e(ma.aV);
+      jq<ens> $$5 = $$4.b(this.j);
+      enm.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements bai {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
       @Override
-      public int a() {
-         return 8;
+      public String c() {
+         return this.c;
       }
 
-      @Override
-      public eao b() {
-         return this.a;
+      public static Optional<dua.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
 
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(arq $$0, jh $$1, jq<eak> $$2, @Nullable eak.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(eak.f) && !$$2.a(eak.i) ? dpc.q(dua.this.m()) : false;
-      }
-
-      @Override
-      public void a(arq $$0, jh $$1, jq<eak> $$2, @Nullable bui $$3, @Nullable bui $$4, float $$5) {
-         dvo $$6 = dua.this.m();
-         if (dpc.q($$6)) {
-            dua.this.a(eat.a_($$2));
-            int $$7 = eat.a_($$5, this.a());
-            if ($$6.b() instanceof dpc $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dua.this.d());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         dua.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      public xj a() {
+         return xj.c("jigsaw_block.joint." + this.c);
       }
    }
 }

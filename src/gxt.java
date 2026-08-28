@@ -1,8 +1,5 @@
-public class gxt extends gxs implements gxl {
-   public cod c = new cod(coh.c, cof.b, 1);
-
-   @Override
-   public cod a() {
-      return this.c;
-   }
+public class gxt extends gwm {
+   public chy.b a = chy.b.g;
+   public int b = -1;
+   public int c = -1;
 }

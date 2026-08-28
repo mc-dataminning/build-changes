@@ -1,8 +1,13 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bdl extends DataFix {
    public bdl(Schema $$0) {
@@ -10,12 +15,17 @@ public class bdl extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.x);
-      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
-         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bjm.a($$1.get("id").asString("minecraft:air"));
-         int $$3 = $$1.get("count").asInt(0);
-         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
-      });
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bia.t)
+      );
+      return this.fixTypeEverywhereTyped(
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bia.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
+                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
+                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
+                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
+                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
+               }))
+      );
    }
 }

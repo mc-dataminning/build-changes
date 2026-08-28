@@ -1,42 +1,144 @@
-public class bwm {
-   public static final jq<bwh> a = a("armor", new bwo("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
-   public static final jq<bwh> b = a("armor_toughness", new bwo("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final jq<bwh> c = a("attack_damage", new bwo("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
-   public static final jq<bwh> d = a("attack_knockback", new bwo("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
-   public static final jq<bwh> e = a("attack_speed", new bwo("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final jq<bwh> f = a("block_break_speed", new bwo("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final jq<bwh> g = a("block_interaction_range", new bwo("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final jq<bwh> h = a("burning_time", new bwo("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bwh.a.c));
-   public static final jq<bwh> i = a("explosion_knockback_resistance", new bwo("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwh> j = a("entity_interaction_range", new bwo("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final jq<bwh> k = a("fall_damage_multiplier", new bwo("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bwh.a.c));
-   public static final jq<bwh> l = a("flying_speed", new bwo("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
-   public static final jq<bwh> m = a("follow_range", new bwo("attribute.name.follow_range", 32.0, 0.0, 2048.0));
-   public static final jq<bwh> n = a("gravity", new bwo("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bwh.a.b));
-   public static final jq<bwh> o = a("jump_strength", new bwo("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final jq<bwh> p = a("knockback_resistance", new bwo("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final jq<bwh> q = a("luck", new bwo("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final jq<bwh> r = a("max_absorption", new bwo("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final jq<bwh> s = a("max_health", new bwo("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final jq<bwh> t = a("mining_efficiency", new bwo("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bwh> u = a("movement_efficiency", new bwo("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwh> v = a("movement_speed", new bwo("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
-   public static final jq<bwh> w = a("oxygen_bonus", new bwo("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bwh> x = a("safe_fall_distance", new bwo("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final jq<bwh> y = a("scale", new bwo("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bwh.a.b));
-   public static final jq<bwh> z = a("sneaking_speed", new bwo("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
-   public static final jq<bwh> A = a("spawn_reinforcements", new bwo("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final jq<bwh> B = a("step_height", new bwo("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
-   public static final jq<bwh> C = a("submerged_mining_speed", new bwo("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
-   public static final jq<bwh> D = a("sweeping_damage_ratio", new bwo("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwh> E = a("tempt_range", new bwo("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
-   public static final jq<bwh> F = a("water_movement_efficiency", new bwo("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static jq<bwh> a(String $$0, bwh $$1) {
-      return kd.b(lz.s, all.b($$0), $$1);
+public class bwm {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jq<bwk>, bwl> b = new Object2ObjectOpenHashMap();
+   private final Set<bwl> c = new ObjectOpenHashSet();
+   private final Set<bwl> d = new ObjectOpenHashSet();
+   private final bwo e;
+
+   public bwm(bwo $$0) {
+      this.e = $$0;
    }
 
-   public static jq<bwh> a(kd<bwh> $$0) {
-      return s;
+   private void a(bwl $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<bwl> a() {
+      return this.c;
+   }
+
+   public Set<bwl> b() {
+      return this.d;
+   }
+
+   public Collection<bwl> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   }
+
+   @Nullable
+   public bwl a(jq<bwk> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
+   }
+
+   public boolean b(jq<bwk> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
+
+   public boolean a(jq<bwk> $$0, alj $$1) {
+      bwl $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
+
+   public double c(jq<bwk> $$0) {
+      bwl $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
+   }
+
+   public double d(jq<bwk> $$0) {
+      bwl $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jq<bwk> $$0, alj $$1) {
+      bwl $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jq<bwk>, bwn> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bwl $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jq<bwk>, bwn> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bwl $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bwm $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwl $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public ur d() {
+      ur $$0 = new ur();
+
+      for (bwl $$1 : this.b.values()) {
+         $$0.add($$1.h());
+      }
+
+      return $$0;
+   }
+
+   public void a(ur $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ul $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         alj $$4 = alj.c($$3);
+         if ($$4 != null) {
+            ae.a(lz.s.c($$4), $$1x -> {
+               bwl $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
+      }
    }
 }

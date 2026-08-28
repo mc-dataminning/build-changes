@@ -1,33 +1,25 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dnu extends drk {
-   public static final MapCodec<dnu> b = b(dnu::new);
-   private static final Map<jm, fal> e = Maps.immutableEnumMap(
-      Map.of(
-         jm.c,
-         dij.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jm.d,
-         dij.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jm.f,
-         dij.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jm.e,
-         dij.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dnu extends diz {
+   public static final MapCodec<dnu> a = b(dnu::new);
+   protected static final fas b = diq.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dnu> a() {
-      return b;
+      return a;
    }
 
-   public dnu(dvn.d $$0) {
-      super(dpl.b.h, $$0);
+   public dnu(dvu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return e.get($$0.c(d));
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dvv $$0, der $$1, jh $$2) {
+      return $$0.a(axc.aN) || $$0.a(dis.dX) || super.b($$0, $$1, $$2);
    }
 }

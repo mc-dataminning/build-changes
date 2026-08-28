@@ -1,88 +1,56 @@
-import com.mojang.authlib.GameProfile;
+public class ghu extends gho {
+   private float a;
 
-public class ghu extends ghq {
-   private ezr i = ezr.c;
-   private int j;
-
-   public ghu(gcy $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ae = true;
+   ghu(gdh $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cT().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cM();
-      return $$0 < $$1 * $$1;
+   public ggs b() {
+      return ggs.b;
    }
 
    @Override
-   public boolean a(bsy $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.s(false);
-   }
-
-   @Override
-   public void n_() {
-      if (this.br > 0) {
-         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
-         this.br--;
-      }
-
-      if (this.by > 0) {
-         this.a(this.by, this.bx);
-         this.by--;
-      }
-
-      if (this.j > 0) {
-         this.i(new ezr((this.i.d - this.dB().d) / (double)this.j, (this.i.e - this.dB().e) / (double)this.j, (this.i.f - this.dB().f) / (double)this.j));
-         this.j--;
-      }
-
-      this.cg = this.ch;
-      this.fa();
-      float $$1;
-      if (this.aL() && !this.eI()) {
-         $$1 = (float)Math.min(0.1, this.dB().i());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * azm.b(this.a));
+         this.l = this.l + (double)(0.6F * azm.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(axi.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements ggr<lw> {
+      private final ghj a;
+
+      public a(ghj $$0) {
+         this.a = $$0;
       }
 
-      this.ch = this.ch + ($$1 - this.ch) * 0.4F;
-
-      try (bow $$2 = boq.a().d("push")) {
-         this.r();
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghu $$8 = new ghu($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.i = new ezr($$0, $$1, $$2);
-      this.j = this.ar().p() + 1;
-   }
-
-   @Override
-   protected void gf() {
-   }
-
-   @Override
-   public void a(xl $$0) {
-      fjx $$1 = fjx.Q();
-      $$1.m.d().a($$0);
-   }
-
-   @Override
-   public void a(aci $$0) {
-      super.a($$0);
-      this.bB();
    }
 }

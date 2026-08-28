@@ -1,11 +1,12 @@
-import javax.annotation.Nullable;
-
-public abstract class gux extends gvd {
-   @Nullable
-   public bug.k b;
+public class gux extends gwm {
+   public cik.e a;
+   public float b;
    public float c;
    public float d;
    public float e;
 
-   public abstract boolean a();
+   public gux() {
+      this.a = cik.e.a;
+      this.d = 1.0F;
+   }
 }

@@ -1,45 +1,39 @@
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class afm implements zs<ach> {
-   public static final zj<wi, afm> a = zs.a(afm::a, afm::new);
-   private final fan b;
-   private final String c;
+public class afm implements zq<acf> {
+   public static final zh<wg, afm> a = zq.a(afm::a, afm::new);
+   private final int b;
+   private final int c;
 
-   public afm(fan $$0, @Nullable fao $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+   public afm(bul $$0, @Nullable bul $$1) {
+      this.b = $$0.ar();
+      this.c = $$1 != null ? $$1.ar() : 0;
    }
 
-   private afm(wi $$0) {
-      this.b = $$0.a(fan.u);
-      this.c = $$0.p();
+   private afm(wg $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(wi $$0) {
-      $$0.a(fan::a, this.b);
-      $$0.a(this.c);
+   private void a(wg $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zu<afm> a() {
-      return agw.aB;
+   public zs<afm> a() {
+      return agu.aD;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public fan b() {
+   public int b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,73 +1,31 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public class cvv extends cuy {
-   protected static final Map<dij, Pair<Predicate<czy>, Consumer<czy>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dil.i,
-         Pair.of(cvv::b, a(dil.cC.m())),
-         dil.kE,
-         Pair.of(cvv::b, a(dil.cC.m())),
-         dil.j,
-         Pair.of(cvv::b, a(dil.cC.m())),
-         dil.k,
-         Pair.of(cvv::b, a(dil.j.m())),
-         dil.sH,
-         Pair.of((Predicate<czy>)$$0 -> true, a(dil.j.m(), cwj.dO))
-      )
-   );
-
-   public cvv(cxw $$0, float $$1, float $$2, cwb.a $$3) {
-      super($$0, axd.bC, $$1, $$2, $$3);
+public class cvv extends cwi {
+   public cvv(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsh a(czy $$0) {
-      dff $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      Pair<Predicate<czy>, Consumer<czy>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bsh.e;
-      } else {
-         Predicate<czy> $$4 = (Predicate<czy>)$$3.getFirst();
-         Consumer<czy> $$5 = (Consumer<czy>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cor $$6 = $$0.o();
-            $$1.a($$6, $$2, awo.mm, awp.e, 1.0F, 1.0F);
-            if (!$$1.C) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bve.d($$0.p()));
-               }
-            }
-
-            return bsh.a;
-         } else {
-            return bsh.e;
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      cwm $$3 = $$1.b($$2);
+      if ($$1.cu != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.cu.a($$3);
+            $$3.a($$4, $$1, bvh.d($$2));
          }
+
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.iX, awo.g, 1.0F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         $$1.a(ear.C);
+      } else {
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.iZ, awo.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof arp $$5) {
+            int $$6 = (int)(dcf.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dcf.a($$5, $$3, $$1);
+            cpn.a(new cpj($$1, $$0, $$7, $$6, $$3), $$5, $$3);
+         }
+
+         $$1.b(awx.c.b(this));
+         $$1.a(ear.D);
       }
-   }
 
-   public static Consumer<czy> a(dvo $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(eak.c, $$1.a(), eak.a.a($$1.o(), $$0));
-      };
-   }
-
-   public static Consumer<czy> a(dvo $$0, dfe $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(eak.c, $$2.a(), eak.a.a($$2.o(), $$0));
-         dij.a($$2.q(), $$2.a(), $$2.k(), new cwf($$1));
-      };
-   }
-
-   public static boolean b(czy $$0) {
-      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
+      return bsk.a;
    }
 }

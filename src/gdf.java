@@ -1,68 +1,106 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gdf extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final gep b;
-   private final gdf.a c;
+public class gdf extends gde implements abn, wx {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private crq n;
+   private final ke.b o;
+   private final gdu p = new gdu();
+   @Nullable
+   private gdn q;
+   @Nullable
+   protected fme.b k;
 
-   public gdf(gep $$0, gdf.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gdf(fke $$0, wd $$1, gdl $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
 
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         ask.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         ask.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
+   @Override
+   protected void a(aat $$0) {
+      this.b($$0);
+   }
+
+   private void b(aat $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abp $$0) {
+      zt.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aah $$0) {
+      zt.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(abs $$0) {
+      this.n = crs.e.a($$0.b());
+   }
+
+   @Override
+   public void a(abr $$0) {
+      zt.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gdn();
       }
+
+      List<auj> $$1 = this.q.a($$0.b());
+      this.b(new abx($$1));
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = ask.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = azn.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = azn.a($$4.get(4), -1);
-            int $$9 = azn.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+   @Override
+   public void a(abq $$0) {
+      this.k = null;
+   }
+
+   private <T> T a(Function<avg, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(avg.b);
+      } else {
+         Object var3;
+         try (aus $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
          }
+
+         return (T)var3;
       }
-
-      $$0.close();
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
+   @Override
+   public void a(abo $$0) {
+      zt.a($$0, this, this.a);
+      ke.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(agv.b.a(wu.a($$1)), new gdi(this.a, this.b, new gdl(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(abw.a);
+      this.b.a(agv.a.a(wu.a($$1)));
    }
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+   @Override
+   public void d() {
+      this.e();
+   }
+
+   @Override
+   public void a(wf $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

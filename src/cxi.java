@@ -1,59 +1,103 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cxi extends cuy {
-   protected static final Map<dij, dvo> a = Maps.newHashMap(
-      new Builder()
-         .put(dil.i, dil.kE.m())
-         .put(dil.j, dil.kE.m())
-         .put(dil.l, dil.kE.m())
-         .put(dil.k, dil.kE.m())
-         .put(dil.fl, dil.kE.m())
-         .put(dil.sH, dil.kE.m())
-         .build()
-   );
+public abstract class cxi extends cwi {
+   public static final Predicate<cwm> c = $$0 -> $$0.a(axl.aY);
+   public static final Predicate<cwm> d = c.or($$0 -> $$0.a(cwq.uM));
 
-   public cxi(cxw $$0, float $$1, float $$2, cwb.a $$3) {
-      super($$0, axd.bE, $$1, $$2, $$3);
+   public cxi(cwi.a $$0) {
+      super($$0);
    }
 
-   @Override
-   public bsh a(czy $$0) {
-      dff $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvo $$3 = $$1.a_($$2);
-      if ($$0.k() == jm.a) {
-         return bsh.e;
+   public Predicate<cwm> d() {
+      return this.b();
+   }
+
+   public abstract Predicate<cwm> b();
+
+   public static cwm a(bvh $$0, Predicate<cwm> $$1) {
+      if ($$1.test($$0.b(bsj.b))) {
+         return $$0.b(bsj.b);
       } else {
-         cor $$4 = $$0.o();
-         dvo $$5 = a.get($$3.b());
-         dvo $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awo.wJ, awp.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dix && $$3.c(dix.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+         return $$1.test($$0.b(bsj.a)) ? $$0.b(bsj.a) : cwm.k;
+      }
+   }
 
-            dix.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dix.c, Boolean.valueOf(false));
+   public abstract int c();
+
+   protected void a(arp $$0, bvh $$1, bsj $$2, cwm $$3, List<cwm> $$4, float $$5, float $$6, boolean $$7, @Nullable bvh $$8) {
+      float $$9 = dcf.a($$0, $$3, $$1, 0.0F);
+      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
+      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
+      float $$12 = 1.0F;
+
+      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
+         cwm $$14 = $$4.get($$13);
+         if (!$$14.f()) {
+            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
+            $$12 = -$$12;
+            int $$16 = $$13;
+            cpn.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
+            $$3.a(this.h($$14), $$1, bvh.d($$2));
+            if ($$3.f()) {
+               break;
+            }
+         }
+      }
+   }
+
+   protected int h(cwm $$0) {
+      return 1;
+   }
+
+   protected abstract void a(bvh var1, cpn var2, int var3, float var4, float var5, float var6, @Nullable bvh var7);
+
+   protected cpn a(dfm $$0, bvh $$1, cwm $$2, cwm $$3, boolean $$4) {
+      cun $$6 = $$3.h() instanceof cun $$5 ? $$5 : (cun)cwq.ox;
+      cpb $$7 = $$6.a($$0, $$3, $$1, $$2);
+      if ($$4) {
+         $$7.a(true);
+      }
+
+      return $$7;
+   }
+
+   protected static List<cwm> a(cwm $$0, cwm $$1, bvh $$2) {
+      if ($$1.f()) {
+         return List.of();
+      } else {
+         int $$4 = $$2.dV() instanceof arp $$3 ? dcf.a($$3, $$0, $$2, 1) : 1;
+         List<cwm> $$5 = new ArrayList<>($$4);
+         cwm $$6 = $$1.v();
+
+         for (int $$7 = 0; $$7 < $$4; $$7++) {
+            cwm $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
+            if (!$$8.f()) {
+               $$5.add($$8);
+            }
          }
 
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(eak.c, $$2, eak.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bve.d($$0.p()));
-               }
-            }
+         return $$5;
+      }
+   }
 
-            return bsh.a;
-         } else {
-            return bsh.e;
+   protected static cwm a(cwm $$0, cwm $$1, bvh $$2, boolean $$3) {
+      int $$5 = !$$3 && !$$2.fT() && $$2.dV() instanceof arp $$4 ? dcf.a($$4, $$0, $$1, 1) : 0;
+      if ($$5 > $$1.L()) {
+         return cwm.k;
+      } else if ($$5 == 0) {
+         cwm $$6 = $$1.c(1);
+         $$6.b(ku.v, bas.a);
+         return $$6;
+      } else {
+         cwm $$7 = $$1.a($$5);
+         if ($$1.f() && $$2 instanceof cou $$8) {
+            $$8.gg().h($$1);
          }
+
+         return $$7;
       }
    }
 }

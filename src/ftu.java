@@ -1,26 +1,33 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class ftu extends fmd {
+   private static final alj a = alj.b("widget/page_forward_highlighted");
+   private static final alj b = alj.b("widget/page_forward");
+   private static final alj c = alj.b("widget/page_backward_highlighted");
+   private static final alj d = alj.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public class ftu implements ftz {
-   private final fqe a;
-
-   public ftu(fqe $$0) {
-      this.a = $$0;
+   public ftu(int $$0, int $$1, boolean $$2, fmd.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xi.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
+   public void b(flq $$0, int $$1, int $$2, float $$3) {
+      alj $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
       }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+      $$0.a(gjq::B, $$4, this.D(), this.E(), 23, 13);
+   }
 
-      return $$6;
+   @Override
+   public void a(heg $$0) {
+      if (this.v) {
+         $$0.a(hcw.a(awn.cy, 1.0F));
+      }
    }
 }

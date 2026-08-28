@@ -1,13 +1,40 @@
-public abstract class ggn extends ghf {
-   protected ggn(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.j = this.j * 0.01F + $$4;
-      this.k = this.k * 0.01F + $$5;
-      this.l = this.l * 0.01F + $$6;
-      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+public class ggn extends gho {
+   ggn(gdh $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, azm.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, azm.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, azm.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
+   }
+
+   @Override
+   public ggs b() {
+      return ggs.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements ggr<lw> {
+      private final ghj a;
+
+      public a(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggn $$8 = new ggn($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

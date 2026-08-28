@@ -1,59 +1,94 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class agp implements zq<acf> {
+   public static final zh<wu, agp> a = zq.a(agp::a, agp::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final jq<bto> g;
+   private final int h;
+   private final int i;
+   private final byte j;
 
-public class agp implements zs<ach> {
-   public static final zj<ww, agp> a = zs.a(agp::a, agp::new);
-   private final boolean b;
-   private final List<ah> c;
-   private final Set<all> d;
-   private final Map<all, aj> e;
+   public agp(int $$0, btq $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
+      }
 
-   public agp(boolean $$0, Collection<ah> $$1, Set<all> $$2, Map<all, aj> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   private agp(ww $$0) {
-      this.b = $$0.readBoolean();
-      this.c = ah.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, wi::q);
-      this.e = $$0.a(wi::q, aj::b);
+   private agp(wu $$0) {
+      this.f = $$0.l();
+      this.g = bto.b.decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
    }
 
-   private void a(ww $$0) {
-      $$0.a(this.b);
-      ah.b.encode($$0, this.c);
-      $$0.a(this.d, wi::a);
-      $$0.a(this.e, wi::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wu $$0) {
+      $$0.c(this.f);
+      bto.b.encode($$0, this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
+      $$0.l(this.j);
    }
 
    @Override
-   public zu<agp> a() {
-      return agw.bb;
+   public zs<agp> a() {
+      return agu.bd;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public List<ah> b() {
-      return this.c;
+   public int b() {
+      return this.f;
    }
 
-   public Set<all> e() {
-      return this.d;
+   public jq<bto> e() {
+      return this.g;
    }
 
-   public Map<all, aj> f() {
-      return this.e;
+   public int f() {
+      return this.h;
    }
 
-   public boolean g() {
-      return this.b;
+   public int g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
+
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
    }
 }

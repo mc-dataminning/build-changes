@@ -1,34 +1,48 @@
 import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bxe extends bwx<cip> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+public class bxe extends bxa<cof> {
+   @Nullable
+   private cqh c;
 
-   public bxe() {
-      super(ImmutableMap.of(cei.m, cej.b), 100);
+   public bxe(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   protected boolean a(arq $$0, cip $$1) {
-      return $$1.ay() == bvq.a;
+   protected boolean a(arp $$0, cof $$1) {
+      jh $$2 = $$1.dv();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && byj.a($$0, $$1, $$2);
    }
 
-   protected boolean a(arq $$0, cip $$1, long $$2) {
-      return this.e < 60;
+   protected boolean a(arp $$0, cof $$1, long $$2) {
+      return this.c != null && !this.c.d();
    }
 
-   protected void b(arq $$0, cip $$1, long $$2) {
-      if (!$$1.bp()) {
-         $$1.b(bvq.i);
-         this.e = 0;
+   protected void b(arp $$0, cof $$1, long $$2) {
+      this.c = null;
+      $$1.eb().a($$0.ac(), $$0.ab());
+   }
+
+   protected void c(arp $$0, cof $$1, long $$2) {
+      azu $$3 = $$1.dY();
+      if ($$3.a(100) == 0) {
+         $$1.gr();
+      }
+
+      if ($$3.a(200) == 0 && byj.a($$0, $$1, $$1.dv())) {
+         cvj $$4 = ae.a(cvj.values(), $$3);
+         int $$5 = $$3.a(3);
+         cwm $$6 = this.a($$4, $$5);
+         cpn.a(new cpi($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
       }
    }
 
-   protected void c(arq $$0, cip $$1, long $$2) {
-      $$1.b(bvq.a);
-   }
-
-   protected void d(arq $$0, cip $$1, long $$2) {
-      this.e++;
+   private cwm a(cvj $$0, int $$1) {
+      cwm $$2 = new cwm(cwq.uM);
+      $$2.b(ku.af, new czc((byte)$$1, List.of(new czb(czb.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

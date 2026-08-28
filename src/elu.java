@@ -1,26 +1,40 @@
-public interface elu {
-   alk<emh> a = a("villages");
-   alk<emh> b = a("desert_pyramids");
-   alk<emh> c = a("igloos");
-   alk<emh> d = a("jungle_temples");
-   alk<emh> e = a("swamp_huts");
-   alk<emh> f = a("pillager_outposts");
-   alk<emh> g = a("ocean_monuments");
-   alk<emh> h = a("woodland_mansions");
-   alk<emh> i = a("buried_treasures");
-   alk<emh> j = a("mineshafts");
-   alk<emh> k = a("ruined_portals");
-   alk<emh> l = a("shipwrecks");
-   alk<emh> m = a("ocean_ruins");
-   alk<emh> n = a("nether_complexes");
-   alk<emh> o = a("nether_fossils");
-   alk<emh> p = a("end_cities");
-   alk<emh> q = a("ancient_cities");
-   alk<emh> r = a("strongholds");
-   alk<emh> s = a("trail_ruins");
-   alk<emh> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static alk<emh> a(String $$0) {
-      return alk.a(ma.aU, all.b($$0));
+public class elu extends elo {
+   public static final MapCodec<elu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ebq.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, elu::new)
+   );
+   private final ebq.a c;
+   private final int d;
+   private final int e;
+
+   private elu(ebq.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static elu a(ebq.a $$0, int $$1, int $$2) {
+      return new elu($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eln $$0, azu $$1, jh $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public elq<?> b() {
+      return elq.c;
    }
 }

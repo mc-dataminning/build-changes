@@ -1,103 +1,125 @@
-public interface btb {
-   alk<bta> a = alk.a(ma.s, all.b("in_fire"));
-   alk<bta> b = alk.a(ma.s, all.b("campfire"));
-   alk<bta> c = alk.a(ma.s, all.b("lightning_bolt"));
-   alk<bta> d = alk.a(ma.s, all.b("on_fire"));
-   alk<bta> e = alk.a(ma.s, all.b("lava"));
-   alk<bta> f = alk.a(ma.s, all.b("hot_floor"));
-   alk<bta> g = alk.a(ma.s, all.b("in_wall"));
-   alk<bta> h = alk.a(ma.s, all.b("cramming"));
-   alk<bta> i = alk.a(ma.s, all.b("drown"));
-   alk<bta> j = alk.a(ma.s, all.b("starve"));
-   alk<bta> k = alk.a(ma.s, all.b("cactus"));
-   alk<bta> l = alk.a(ma.s, all.b("fall"));
-   alk<bta> m = alk.a(ma.s, all.b("ender_pearl"));
-   alk<bta> n = alk.a(ma.s, all.b("fly_into_wall"));
-   alk<bta> o = alk.a(ma.s, all.b("out_of_world"));
-   alk<bta> p = alk.a(ma.s, all.b("generic"));
-   alk<bta> q = alk.a(ma.s, all.b("magic"));
-   alk<bta> r = alk.a(ma.s, all.b("wither"));
-   alk<bta> s = alk.a(ma.s, all.b("dragon_breath"));
-   alk<bta> t = alk.a(ma.s, all.b("dry_out"));
-   alk<bta> u = alk.a(ma.s, all.b("sweet_berry_bush"));
-   alk<bta> v = alk.a(ma.s, all.b("freeze"));
-   alk<bta> w = alk.a(ma.s, all.b("stalagmite"));
-   alk<bta> x = alk.a(ma.s, all.b("falling_block"));
-   alk<bta> y = alk.a(ma.s, all.b("falling_anvil"));
-   alk<bta> z = alk.a(ma.s, all.b("falling_stalactite"));
-   alk<bta> A = alk.a(ma.s, all.b("sting"));
-   alk<bta> B = alk.a(ma.s, all.b("mob_attack"));
-   alk<bta> C = alk.a(ma.s, all.b("mob_attack_no_aggro"));
-   alk<bta> D = alk.a(ma.s, all.b("player_attack"));
-   alk<bta> E = alk.a(ma.s, all.b("arrow"));
-   alk<bta> F = alk.a(ma.s, all.b("trident"));
-   alk<bta> G = alk.a(ma.s, all.b("mob_projectile"));
-   alk<bta> H = alk.a(ma.s, all.b("spit"));
-   alk<bta> I = alk.a(ma.s, all.b("wind_charge"));
-   alk<bta> J = alk.a(ma.s, all.b("fireworks"));
-   alk<bta> K = alk.a(ma.s, all.b("fireball"));
-   alk<bta> L = alk.a(ma.s, all.b("unattributed_fireball"));
-   alk<bta> M = alk.a(ma.s, all.b("wither_skull"));
-   alk<bta> N = alk.a(ma.s, all.b("thrown"));
-   alk<bta> O = alk.a(ma.s, all.b("indirect_magic"));
-   alk<bta> P = alk.a(ma.s, all.b("thorns"));
-   alk<bta> Q = alk.a(ma.s, all.b("explosion"));
-   alk<bta> R = alk.a(ma.s, all.b("player_explosion"));
-   alk<bta> S = alk.a(ma.s, all.b("sonic_boom"));
-   alk<bta> T = alk.a(ma.s, all.b("bad_respawn_point"));
-   alk<bta> U = alk.a(ma.s, all.b("outside_border"));
-   alk<bta> V = alk.a(ma.s, all.b("generic_kill"));
-   alk<bta> W = alk.a(ma.s, all.b("mace_smash"));
+import javax.annotation.Nullable;
 
-   static void a(rb<bta> $$0) {
-      $$0.a(a, new bta("inFire", 0.1F, bsw.d));
-      $$0.a(b, new bta("inFire", 0.1F, bsw.d));
-      $$0.a(c, new bta("lightningBolt", 0.1F));
-      $$0.a(d, new bta("onFire", 0.0F, bsw.d));
-      $$0.a(e, new bta("lava", 0.1F, bsw.d));
-      $$0.a(f, new bta("hotFloor", 0.1F, bsw.d));
-      $$0.a(g, new bta("inWall", 0.0F));
-      $$0.a(h, new bta("cramming", 0.0F));
-      $$0.a(i, new bta("drown", 0.0F, bsw.c));
-      $$0.a(j, new bta("starve", 0.0F));
-      $$0.a(k, new bta("cactus", 0.1F));
-      $$0.a(l, new bta("fall", bsx.b, 0.0F, bsw.a, btc.b));
-      $$0.a(m, new bta("fall", bsx.b, 0.0F, bsw.a, btc.b));
-      $$0.a(n, new bta("flyIntoWall", 0.0F));
-      $$0.a(o, new bta("outOfWorld", 0.0F));
-      $$0.a(p, new bta("generic", 0.0F));
-      $$0.a(q, new bta("magic", 0.0F));
-      $$0.a(r, new bta("wither", 0.0F));
-      $$0.a(s, new bta("dragonBreath", 0.0F));
-      $$0.a(t, new bta("dryout", 0.1F));
-      $$0.a(u, new bta("sweetBerryBush", 0.1F, bsw.e));
-      $$0.a(v, new bta("freeze", 0.0F, bsw.f));
-      $$0.a(w, new bta("stalagmite", 0.0F));
-      $$0.a(x, new bta("fallingBlock", 0.1F));
-      $$0.a(y, new bta("anvil", 0.1F));
-      $$0.a(z, new bta("fallingStalactite", 0.1F));
-      $$0.a(A, new bta("sting", 0.1F));
-      $$0.a(B, new bta("mob", 0.1F));
-      $$0.a(C, new bta("mob", 0.1F));
-      $$0.a(D, new bta("player", 0.1F));
-      $$0.a(E, new bta("arrow", 0.1F));
-      $$0.a(F, new bta("trident", 0.1F));
-      $$0.a(G, new bta("mob", 0.1F));
-      $$0.a(H, new bta("mob", 0.1F));
-      $$0.a(J, new bta("fireworks", 0.1F));
-      $$0.a(L, new bta("onFire", 0.1F, bsw.d));
-      $$0.a(K, new bta("fireball", 0.1F, bsw.d));
-      $$0.a(M, new bta("witherSkull", 0.1F));
-      $$0.a(N, new bta("thrown", 0.1F));
-      $$0.a(O, new bta("indirectMagic", 0.0F));
-      $$0.a(P, new bta("thorns", 0.1F, bsw.b));
-      $$0.a(Q, new bta("explosion", bsx.c, 0.1F));
-      $$0.a(R, new bta("explosion.player", bsx.c, 0.1F));
-      $$0.a(S, new bta("sonic_boom", bsx.c, 0.0F));
-      $$0.a(T, new bta("badRespawnPoint", bsx.c, 0.1F, bsw.a, btc.c));
-      $$0.a(U, new bta("outsideBorder", 0.0F));
-      $$0.a(V, new bta("genericKill", 0.0F));
-      $$0.a(I, new bta("mob", 0.1F));
-      $$0.a(W, new bta("mace_smash", 0.1F));
+public class btb {
+   private final jq<btd> a;
+   @Nullable
+   private final bul b;
+   @Nullable
+   private final bul c;
+   @Nullable
+   private final ezy d;
+
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
+   }
+
+   public float a() {
+      return this.k().c();
+   }
+
+   public boolean b() {
+      return this.b == this.c;
+   }
+
+   private btb(jq<btd> $$0, @Nullable bul $$1, @Nullable bul $$2, @Nullable ezy $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public btb(jq<btd> $$0, @Nullable bul $$1, @Nullable bul $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public btb(jq<btd> $$0, ezy $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public btb(jq<btd> $$0, @Nullable bul $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public btb(jq<btd> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bul c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bul d() {
+      return this.b;
+   }
+
+   @Nullable
+   public cwm e() {
+      return this.c != null ? this.c.dZ() : null;
+   }
+
+   public xj a(bvh $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         bvh $$5 = $$0.eQ();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? xj.a($$6, $$0.o_(), $$5.o_()) : xj.a($$1, $$0.o_());
+      } else {
+         xj $$2 = this.b == null ? this.c.o_() : this.b.o_();
+         cwm $$4 = this.b instanceof bvh $$3 ? $$3.eX() : cwm.k;
+         return !$$4.f() && $$4.b(ku.g) ? xj.a($$1 + ".item", $$0.o_(), $$2, $$4.J()) : xj.a($$1, $$0.o_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof bvh && !(this.b instanceof cou);
+         case c -> true;
+      };
+   }
+
+   public boolean h() {
+      if (this.d() instanceof cou $$0 && $$0.gh().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ezy i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dt() : null;
+      }
+   }
+
+   @Nullable
+   public ezy j() {
+      return this.d;
+   }
+
+   public boolean a(axs<btd> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(ali<btd> $$0) {
+      return this.a.a($$0);
+   }
+
+   public btd k() {
+      return this.a.a();
+   }
+
+   public jq<btd> l() {
+      return this.a;
    }
 }

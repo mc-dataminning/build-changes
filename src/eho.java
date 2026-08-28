@@ -1,28 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eho implements egt {
+public class eho implements eha {
    public static final Codec<eho> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ero.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kf.a(ma.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eho::new)
+      $$0 -> $$0.group(Codec.list(ehi.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eho::new)
    );
-   public final ero b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ju<dij> f;
+   public final List<ehi.a> b;
 
-   public eho(ero $$0, boolean $$1, int $$2, int $$3, ju<dij> $$4) {
+   public eho(dvv $$0, dvv $$1) {
+      this(ImmutableList.of(ehi.a(new epo($$0), $$1)));
+   }
+
+   public eho(List<ehi.a> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 }

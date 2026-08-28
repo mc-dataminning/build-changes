@@ -1,9 +1,41 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public record ato(String a, xl b, aup c, Optional<auk> d) {
-   public xl a(boolean $$0, xl $$1) {
-      return xo.a(this.c.a(xl.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xr(xr.a.a, xl.i().b(this.b).f("\n").b($$1))));
+public interface ato extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
+
+   @Nullable
+   auu<InputStream> a(String... var1);
+
+   @Nullable
+   auu<InputStream> a(atq var1, alj var2);
+
+   void a(atq var1, String var2, String var3, ato.a var4);
+
+   Set<String> a(atq var1);
+
+   @Nullable
+   <T> T a(aub<T> var1) throws IOException;
+
+   atn a();
+
+   default String b() {
+      return this.a().a();
+   }
+
+   default Optional<auj> c() {
+      return this.a().d();
+   }
+
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<alj, auu<InputStream>> {
    }
 }

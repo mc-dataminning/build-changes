@@ -1,36 +1,35 @@
-import javax.annotation.Nullable;
+public class fnc {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-public class fnc extends flu {
-   @Nullable
-   protected fnj a;
-   protected boolean b;
-
-   public fnc(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, xk.a);
-      this.b = $$4;
+   public static void a(flq $$0, haf $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   public void a(fnj $$0) {
-      this.a = $$0;
+   public static void a(flq $$0, haf $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(fpu $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         $$0.a(gjh::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
+   public static void a(flq $$0, alj $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gjq::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
+   }
+
+   private static void a(flq $$0, alj $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gjq::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

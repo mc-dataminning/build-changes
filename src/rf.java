@@ -1,72 +1,318 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class rf {
-   @Deprecated
-   public static final eqr.a a = new eqr.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final ali<ens> a = rg.a("village/plains/town_centers");
+   private static final ali<ens> b = rg.a("village/plains/terminators");
 
-   public static void a(rb<eqr.a> $$0) {
-      a($$0, 0, ebs.a, ebs.b, ebs.c, ebs.d);
-      a($$0, -2, ebs.e, ebs.f, ebs.g, ebs.h);
-      a($$0, ebs.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(ebs.j, a);
-      a($$0, ebs.k, -3, 1.0);
-      a($$0, ebs.l, -7, 1.0);
-      a($$0, ebs.m, -1, 1.0);
-      a($$0, ebs.n, -5, 1.0);
-      a($$0, ebs.o, -7, 1.0, 1.0);
-      a($$0, ebs.p, -8, 1.0);
-      a($$0, ebs.q, -8, 1.0);
-      a($$0, ebs.r, -7, 1.0);
-      a($$0, ebs.s, -8, 1.0);
-      a($$0, ebs.t, -11, 1.0);
-      a($$0, ebs.u, -11, 1.0);
-      a($$0, ebs.v, -7, 1.0);
-      a($$0, ebs.w, -7, 1.0);
-      a($$0, ebs.x, -11, 1.0);
-      a($$0, ebs.y, -8, 1.0);
-      a($$0, ebs.z, -5, 1.0);
-      a($$0, ebs.A, -8, 1.0);
-      a($$0, ebs.B, -7, 0.4, 0.5, 1.0);
-      a($$0, ebs.C, -8, 1.0);
-      a($$0, ebs.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, ebs.E, -8, 1.0);
-      a($$0, ebs.F, -7, 1.0);
-      a($$0, ebs.G, -7, 1.0);
-      a($$0, ebs.H, -5, 1.0);
-      a($$0, ebs.I, -8, 1.0);
-      a($$0, ebs.J, -8, 1.0);
-      a($$0, ebs.K, -7, 1.0);
-      a($$0, ebs.L, -7, 1.0);
-      a($$0, ebs.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.N, -6, 1.0, 1.0, 1.0);
-      a($$0, ebs.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, ebs.P, -8, 1.0);
-      a($$0, ebs.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.R, -8, 1.0);
-      a($$0, ebs.S, -6, 1.0, 1.0, 1.0);
-      a($$0, ebs.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.U, -3, 1.0);
-      a($$0, ebs.V, -6, 1.0, 1.0, 1.0);
-      a($$0, ebs.W, -2, 1.0);
-      a($$0, ebs.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebs.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebs.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebs.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebs.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, ebs.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, ebs.ah, -4, 1.0);
-   }
-
-   private static void a(rb<eqr.a> $$0, int $$1, alk<eqr.a> $$2, alk<eqr.a> $$3, alk<eqr.a> $$4, alk<eqr.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(rb<eqr.a> $$0, alk<eqr.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eqr.a($$2, $$3, $$4));
+   public static void a(qz<ens> $$0) {
+      jr<elm> $$1 = $$0.a(ma.aR);
+      jq<elm> $$2 = $$1.b(ss.f);
+      jq<elm> $$3 = $$1.b(ss.k);
+      jq<elm> $$4 = $$1.b(ss.a);
+      jr<eqi> $$5 = $$0.a(ma.aT);
+      jq<eqi> $$6 = $$5.b(rh.f);
+      jq<eqi> $$7 = $$5.b(rh.g);
+      jq<eqi> $$8 = $$5.b(rh.h);
+      jq<eqi> $$9 = $$5.b(rh.a);
+      jq<eqi> $$10 = $$5.b(rh.i);
+      jq<eqi> $$11 = $$5.b(rh.l);
+      jr<ens> $$12 = $$0.a(ma.aV);
+      jq<ens> $$13 = $$12.b(rg.a);
+      jq<ens> $$14 = $$12.b(b);
+      $$0.a(
+         a,
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(enq.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(enq.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(enq.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(enq.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(enq.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(enq.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(enq.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/streets",
+         new ens(
+            $$14,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(enq.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(enq.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(enq.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(enq.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(enq.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(enq.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(enq.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(enq.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(enq.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(enq.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(enq.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(enq.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(enq.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(enq.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            ens.a.a
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new ens(
+            $$14,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(enq.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(enq.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(enq.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(enq.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(enq.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(enq.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(enq.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(enq.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(enq.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            ens.a.a
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/houses",
+         new ens(
+            $$14,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(enq.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(enq.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(enq.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(enq.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(enq.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(enq.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(enq.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(enq.h(), 10)
+               }
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new ens(
+            $$14,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(enq.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(enq.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(enq.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(enq.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(enq.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(enq.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(enq.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(enq.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(enq.h(), 10)
+               }
+            ),
+            ens.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_04", $$10), 1)
+            ),
+            ens.a.a
+         )
+      );
+      rg.a($$0, "village/plains/trees", new ens($$13, ImmutableList.of(Pair.of(enq.a($$2), 1)), ens.a.b));
+      rg.a(
+         $$0,
+         "village/plains/decor",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/plains_lamp_1"), 2), Pair.of(enq.a($$2), 1), Pair.of(enq.a($$3), 1), Pair.of(enq.a($$4), 1), Pair.of(enq.h(), 2)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/zombie/decor",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(enq.a($$2), 1),
+               Pair.of(enq.a($$3), 1),
+               Pair.of(enq.a($$4), 1),
+               Pair.of(enq.h(), 2)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/villagers",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(enq.a("village/plains/villagers/baby"), 1),
+               Pair.of(enq.a("village/plains/villagers/unemployed"), 10)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/plains/zombie/villagers",
+         new ens(
+            $$13,
+            ImmutableList.of(Pair.of(enq.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(enq.a("village/plains/zombie/villagers/unemployed"), 10)),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/common/animals",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/common/animals/cows_1"), 7),
+               Pair.of(enq.a("village/common/animals/pigs_1"), 7),
+               Pair.of(enq.a("village/common/animals/horses_1"), 1),
+               Pair.of(enq.a("village/common/animals/horses_2"), 1),
+               Pair.of(enq.a("village/common/animals/horses_3"), 1),
+               Pair.of(enq.a("village/common/animals/horses_4"), 1),
+               Pair.of(enq.a("village/common/animals/horses_5"), 1),
+               Pair.of(enq.a("village/common/animals/sheep_1"), 1),
+               Pair.of(enq.a("village/common/animals/sheep_2"), 1),
+               Pair.of(enq.h(), 5)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/common/sheep",
+         new ens($$13, ImmutableList.of(Pair.of(enq.a("village/common/animals/sheep_1"), 1), Pair.of(enq.a("village/common/animals/sheep_2"), 1)), ens.a.b)
+      );
+      rg.a(
+         $$0,
+         "village/common/cats",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/common/animals/cat_black"), 1),
+               Pair.of(enq.a("village/common/animals/cat_british"), 1),
+               Pair.of(enq.a("village/common/animals/cat_calico"), 1),
+               Pair.of(enq.a("village/common/animals/cat_persian"), 1),
+               Pair.of(enq.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(enq.a("village/common/animals/cat_red"), 1),
+               Pair.of(enq.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(enq.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(enq.a("village/common/animals/cat_white"), 1),
+               Pair.of(enq.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(enq.h(), 3)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/common/butcher_animals",
+         new ens(
+            $$13,
+            ImmutableList.of(
+               Pair.of(enq.a("village/common/animals/cows_1"), 3),
+               Pair.of(enq.a("village/common/animals/pigs_1"), 3),
+               Pair.of(enq.a("village/common/animals/sheep_1"), 1),
+               Pair.of(enq.a("village/common/animals/sheep_2"), 1)
+            ),
+            ens.a.b
+         )
+      );
+      rg.a($$0, "village/common/iron_golem", new ens($$13, ImmutableList.of(Pair.of(enq.a("village/common/iron_golem"), 1)), ens.a.b));
+      rg.a($$0, "village/common/well_bottoms", new ens($$13, ImmutableList.of(Pair.of(enq.a("village/common/well_bottom"), 1)), ens.a.b));
    }
 }

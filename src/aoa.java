@@ -1,44 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class aoa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.kick.singleplayer.failed"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), xl.c("multiplayer.disconnect.kicked"))))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), fn.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("list").executes($$0x -> a((ew)$$0x.getSource())))
+            .then(ex.a("uuids").executes($$0x -> b((ew)$$0x.getSource())))
       );
    }
 
-   private static int a(ew $$0, Collection<arr> $$1, xl $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
-      } else {
-         int $$3 = 0;
+   private static int a(ew $$0) {
+      return a($$0, cou::o_);
+   }
 
-         for (arr $$4 : $$1) {
-            if (!$$0.l().a($$4.gk())) {
-               $$4.g.a($$2);
-               $$0.a(() -> xl.a("commands.kick.success", $$4.S_(), $$2), true);
-               $$3++;
-            }
-         }
+   private static int b(ew $$0) {
+      return a($$0, $$0x -> xj.a("commands.list.nameAndId", $$0x.al(), xj.a($$0x.gf().getId())));
+   }
 
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
-      }
+   private static int a(ew $$0, Function<arq, xj> $$1) {
+      avq $$2 = $$0.l().ag();
+      List<arq> $$3 = $$2.t();
+      xj $$4 = xm.b($$3, $$1);
+      $$0.a(() -> xj.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

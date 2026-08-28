@@ -10,284 +10,284 @@ import java.util.stream.IntStream;
 
 public abstract class nb implements ne {
    protected final js.a a;
-   protected final Set<cwb> b;
-   protected final crj c;
-   protected final Map<alk<eul>, eul.a> d;
+   protected final Set<cwi> b;
+   protected final crq c;
+   protected final Map<ali<eus>, eus.a> d;
    protected static final float[] e = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
    private static final float[] f = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
-   protected exr.a a() {
-      js.b<dbw> $$0 = this.a.d(ma.aM);
-      return exy.a(cu.a.a().a(cw.b, cp.a(List.of(new br($$0.b(dcb.v), dj.d.b(1))))));
+   protected exy.a a() {
+      js.b<dcd> $$0 = this.a.d(ma.aM);
+      return eyf.a(cu.a.a().a(cw.b, cp.a(List.of(new br($$0.b(dci.v), dj.d.b(1))))));
    }
 
-   protected exr.a b() {
+   protected exy.a b() {
       return this.a().invert();
    }
 
-   protected exr.a c() {
-      return exy.a(cu.a.a().a(this.a.d(ma.K), cwj.sm));
+   protected exy.a c() {
+      return eyf.a(cu.a.a().a(this.a.d(ma.K), cwq.sm));
    }
 
-   private exr.a f() {
+   private exy.a f() {
       return this.c().or(this.a());
    }
 
-   private exr.a g() {
+   private exy.a g() {
       return this.f().invert();
    }
 
-   protected nb(Set<cwb> $$0, crj $$1, js.a $$2) {
+   protected nb(Set<cwi> $$0, crq $$1, js.a $$2) {
       this($$0, $$1, new HashMap<>(), $$2);
    }
 
-   protected nb(Set<cwb> $$0, crj $$1, Map<alk<eul>, eul.a> $$2, js.a $$3) {
+   protected nb(Set<cwi> $$0, crq $$1, Map<ali<eus>, eus.a> $$2, js.a $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.a = $$3;
    }
 
-   protected <T extends evq<T>> T a(dfe $$0, evq<T> $$1) {
-      return !this.b.contains($$0.j()) ? $$1.b(eve.c()) : $$1.c();
+   protected <T extends evx<T>> T a(dfl $$0, evx<T> $$1) {
+      return !this.b.contains($$0.j()) ? $$1.b(evl.c()) : $$1.c();
    }
 
-   protected <T extends exj<T>> T a(dfe $$0, exj<T> $$1) {
-      return !this.b.contains($$0.j()) ? $$1.b(exn.c()) : $$1.d();
+   protected <T extends exq<T>> T a(dfl $$0, exq<T> $$1) {
+      return !this.b.contains($$0.j()) ? $$1.b(exu.c()) : $$1.d();
    }
 
-   public eul.a a(dfe $$0) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0))));
+   public eus.a a(dfl $$0) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0))));
    }
 
-   private static eul.a a(dij $$0, exr.a $$1, euw.a<?> $$2) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a($$1).a($$2)));
+   private static eus.a a(diq $$0, exy.a $$1, evd.a<?> $$2) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a($$1).a($$2)));
    }
 
-   protected eul.a a(dij $$0, euw.a<?> $$1) {
+   protected eus.a a(diq $$0, evd.a<?> $$1) {
       return a($$0, this.a(), $$1);
    }
 
-   protected eul.a b(dij $$0, euw.a<?> $$1) {
+   protected eus.a b(diq $$0, evd.a<?> $$1) {
       return a($$0, this.c(), $$1);
    }
 
-   protected eul.a c(dij $$0, euw.a<?> $$1) {
+   protected eus.a c(diq $$0, evd.a<?> $$1) {
       return a($$0, this.f(), $$1);
    }
 
-   protected eul.a a(dij $$0, dfe $$1) {
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a($$1)));
+   protected eus.a a(diq $$0, dfl $$1) {
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a($$1)));
    }
 
-   protected eul.a a(dfe $$0, eyn $$1) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a((euw.a<?>)this.a($$0, eut.a($$0).a(ewl.a($$1)))));
+   protected eus.a a(dfl $$0, eyu $$1) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a((evd.a<?>)this.a($$0, eva.a($$0).a(ews.a($$1)))));
    }
 
-   protected eul.a a(dij $$0, dfe $$1, eyn $$2) {
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a($$1).a(ewl.a($$2))));
+   protected eus.a a(diq $$0, dfl $$1, eyu $$2) {
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a($$1).a(ews.a($$2))));
    }
 
-   private eul.a c(dfe $$0) {
-      return eul.b().a(euk.a().a(this.a()).a(eyk.a(1.0F)).a(eut.a($$0)));
+   private eus.a c(dfl $$0) {
+      return eus.b().a(eur.a().a(this.a()).a(eyr.a(1.0F)).a(eva.a($$0)));
    }
 
-   private eul.a d(dfe $$0) {
-      return eul.b().a(this.a(dil.fR, euk.a().a(eyk.a(1.0F)).a(eut.a(dil.fR)))).a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0))));
+   private eus.a d(dfl $$0) {
+      return eus.b().a(this.a(dis.fR, eur.a().a(eyr.a(1.0F)).a(eva.a(dis.fR)))).a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0))));
    }
 
-   protected eul.a a(dij $$0) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a((euw.a<?>)this.a((dfe)$$0, eut.a($$0).a(ewl.a(eyk.a(2.0F)).a(exq.a($$0).a(ee.a.a().a(dpm.b, dwv.c)))))));
+   protected eus.a a(diq $$0) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a((evd.a<?>)this.a((dfl)$$0, eva.a($$0).a(ews.a(eyr.a(2.0F)).a(exx.a($$0).a(ee.a.a().a(dpt.b, dxc.c)))))));
    }
 
-   protected <T extends Comparable<T> & baj> eul.a a(dij $$0, dwq<T> $$1, T $$2) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a(exq.a($$0).a(ee.a.a().a($$1, $$2))))));
+   protected <T extends Comparable<T> & bai> eus.a a(diq $$0, dwx<T> $$1, T $$2) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a(exx.a($$0).a(ee.a.a().a($$1, $$2))))));
    }
 
-   protected eul.a b(dij $$0) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a(evg.a(evg.b.a).a(ku.g)))));
+   protected eus.a b(diq $$0) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a(evn.a(evn.b.a).a(ku.g)))));
    }
 
-   protected eul.a c(dij $$0) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a(evg.a(evg.b.a).a(ku.g).a(ku.al).a(ku.ao).a(ku.ap)))));
+   protected eus.a c(diq $$0) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a(evn.a(evn.b.a).a(ku.g).a(ku.al).a(ku.ao).a(ku.ap)))));
    }
 
-   protected eul.a d(dij $$0) {
-      js.b<dbw> $$1 = this.a.d(ma.aM);
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a(cwj.oH).a(ewl.a(eyr.a(2.0F, 5.0F))).a(evd.a($$1.b(dcb.x)))));
+   protected eus.a d(diq $$0) {
+      js.b<dcd> $$1 = this.a.d(ma.aM);
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a(cwq.oH).a(ews.a(eyy.a(2.0F, 5.0F))).a(evk.a($$1.b(dci.x)))));
    }
 
-   protected eul.a e(dij $$0) {
-      js.b<dbw> $$1 = this.a.d(ma.aM);
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a(cwj.oC).a(ewl.a(eyr.a(4.0F, 9.0F))).a(evd.a($$1.b(dcb.x)))));
+   protected eus.a e(diq $$0) {
+      js.b<dcd> $$1 = this.a.d(ma.aM);
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a(cwq.oC).a(ews.a(eyy.a(4.0F, 9.0F))).a(evk.a($$1.b(dci.x)))));
    }
 
-   protected eul.a f(dij $$0) {
-      js.b<dbw> $$1 = this.a.d(ma.aM);
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a(cwj.lH).a(ewl.a(eyr.a(4.0F, 5.0F))).a(evd.b($$1.b(dcb.x)))));
+   protected eus.a f(diq $$0) {
+      js.b<dcd> $$1 = this.a.d(ma.aM);
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a(cwq.lH).a(ews.a(eyy.a(4.0F, 5.0F))).a(evk.b($$1.b(dci.x)))));
    }
 
-   protected eul.a g(dij $$0) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a(evg.a(evg.b.a).a(ku.g).a(ku.h).a(ku.q).a(ku.ai).a(ku.k)))));
+   protected eus.a g(diq $$0) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a(evn.a(evn.b.a).a(ku.g).a(ku.h).a(ku.q).a(ku.ai).a(ku.k)))));
    }
 
-   protected eul.a h(dij $$0) {
-      return eul.b().a(euk.a().a(this.a()).a(eyk.a(1.0F)).a(eut.a($$0).a(evg.a(evg.b.a).a(ku.an)).a(evf.a($$0).a(did.c))));
+   protected eus.a h(diq $$0) {
+      return eus.b().a(eur.a().a(this.a()).a(eyr.a(1.0F)).a(eva.a($$0).a(evn.a(evn.b.a).a(ku.an)).a(evm.a($$0).a(dik.c))));
    }
 
-   protected eul.a i(dij $$0) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a(eut.a($$0).a(this.a()).a(evg.a(evg.b.a).a(ku.an)).a(evf.a($$0).a(did.c)).a(eut.a($$0))));
+   protected eus.a i(diq $$0) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a(eva.a($$0).a(this.a()).a(evn.a(evn.b.a).a(ku.an)).a(evm.a($$0).a(dik.c)).a(eva.a($$0))));
    }
 
-   protected eul.a j(dij $$0) {
-      return eul.b().a(euk.a().a(eut.a(cwj.wO)).a(exq.a($$0).a(ee.a.a().a(djf.v_, true))));
+   protected eus.a j(diq $$0) {
+      return eus.b().a(eur.a().a(eva.a(cwq.wO)).a(exx.a($$0).a(ee.a.a().a(djm.t_, true))));
    }
 
-   protected eul.a a(dij $$0, cwb $$1) {
-      js.b<dbw> $$2 = this.a.d(ma.aM);
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a($$1).a(evd.a($$2.b(dcb.x)))));
+   protected eus.a a(diq $$0, cwi $$1) {
+      js.b<dcd> $$2 = this.a.d(ma.aM);
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a($$1).a(evk.a($$2.b(dci.x)))));
    }
 
-   protected eul.a b(dij $$0, dfe $$1) {
-      return this.a($$0, (euw.a<?>)this.a((dfe)$$0, eut.a($$1).a(ewl.a(eyr.a(-6.0F, 2.0F))).a(evr.a(euf.b(0)))));
+   protected eus.a b(diq $$0, dfl $$1) {
+      return this.a($$0, (evd.a<?>)this.a((dfl)$$0, eva.a($$1).a(ews.a(eyy.a(-6.0F, 2.0F))).a(evy.a(eum.b(0)))));
    }
 
-   protected eul.a k(dij $$0) {
-      js.b<dbw> $$1 = this.a.d(ma.aM);
-      return this.b($$0, (euw.a<?>)this.a((dfe)$$0, eut.a(cwj.pw).a(exw.a(0.125F)).a(evd.a($$1.b(dcb.x), 2))));
+   protected eus.a k(diq $$0) {
+      js.b<dcd> $$1 = this.a.d(ma.aM);
+      return this.b($$0, (evd.a<?>)this.a((dfl)$$0, eva.a(cwq.pw).a(eyd.a(0.125F)).a(evk.a($$1.b(dci.x), 2))));
    }
 
-   public eul.a b(dij $$0, cwb $$1) {
-      return eul.b()
+   public eus.a b(diq $$0, cwi $$1) {
+      return eus.b()
          .a(
             this.a(
                $$0,
-               euk.a()
-                  .a(eyk.a(1.0F))
-                  .a(eut.a($$1).a(dqf.c.a(), $$1x -> ewl.a(eyj.a(3, (float)($$1x + 1) / 15.0F)).a(exq.a($$0).a(ee.a.a().a(dqf.c, $$1x.intValue())))))
+               eur.a()
+                  .a(eyr.a(1.0F))
+                  .a(eva.a($$1).a(dqm.c.a(), $$1x -> ews.a(eyq.a(3, (float)($$1x + 1) / 15.0F)).a(exx.a($$0).a(ee.a.a().a(dqm.c, $$1x.intValue())))))
             )
          );
    }
 
-   public eul.a c(dij $$0, cwb $$1) {
-      return eul.b().a(this.a($$0, euk.a().a(eyk.a(1.0F)).a(eut.a($$1).a(ewl.a(eyj.a(3, 0.53333336F))))));
+   public eus.a c(diq $$0, cwi $$1) {
+      return eus.b().a(this.a($$0, eur.a().a(eyr.a(1.0F)).a(eva.a($$1).a(ews.a(eyq.a(3, 0.53333336F))))));
    }
 
-   protected eul.a b(dfe $$0) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a(this.c()).a(eut.a($$0)));
+   protected eus.a b(dfl $$0) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a(this.c()).a(eva.a($$0)));
    }
 
-   protected eul.a a(dij $$0, exr.a $$1) {
-      return eul.b()
+   protected eus.a a(diq $$0, exy.a $$1) {
+      return eus.b()
          .a(
-            euk.a()
+            eur.a()
                .a(
-                  (euw.a<?>)this.a(
-                     (dfe)$$0,
-                     eut.a($$0)
+                  (evd.a<?>)this.a(
+                     (dfl)$$0,
+                     eva.a($$0)
                         .a($$1)
-                        .a(jm.values(), $$1x -> ewl.a(eyk.a(1.0F), true).a(exq.a($$0).a(ee.a.a().a(dni.b($$1x), true))))
-                        .a(ewl.a(eyk.a(-1.0F), true))
+                        .a(jm.values(), $$1x -> ews.a(eyr.a(1.0F), true).a(exx.a($$0).a(ee.a.a().a(dnp.b($$1x), true))))
+                        .a(ews.a(eyr.a(-1.0F), true))
                   )
                )
          );
    }
 
-   protected eul.a a(dij $$0, dij $$1, float... $$2) {
-      js.b<dbw> $$3 = this.a.d(ma.aM);
-      return this.c($$0, ((euy.a)this.a((dfe)$$0, eut.a($$1))).a(exg.a($$3.b(dcb.x), $$2)))
-         .a(euk.a().a(eyk.a(1.0F)).a(this.g()).a(((euy.a)this.a((dfe)$$0, eut.a(cwj.pr).a(ewl.a(eyr.a(1.0F, 2.0F))))).a(exg.a($$3.b(dcb.x), f))));
+   protected eus.a a(diq $$0, diq $$1, float... $$2) {
+      js.b<dcd> $$3 = this.a.d(ma.aM);
+      return this.c($$0, ((evf.a)this.a((dfl)$$0, eva.a($$1))).a(exn.a($$3.b(dci.x), $$2)))
+         .a(eur.a().a(eyr.a(1.0F)).a(this.g()).a(((evf.a)this.a((dfl)$$0, eva.a(cwq.pr).a(ews.a(eyy.a(1.0F, 2.0F))))).a(exn.a($$3.b(dci.x), f))));
    }
 
-   protected eul.a b(dij $$0, dij $$1, float... $$2) {
-      js.b<dbw> $$3 = this.a.d(ma.aM);
+   protected eus.a b(diq $$0, diq $$1, float... $$2) {
+      js.b<dcd> $$3 = this.a.d(ma.aM);
       return this.a($$0, $$1, $$2)
          .a(
-            euk.a()
-               .a(eyk.a(1.0F))
+            eur.a()
+               .a(eyr.a(1.0F))
                .a(this.g())
-               .a(((euy.a)this.a((dfe)$$0, eut.a(cwj.ov))).a(exg.a($$3.b(dcb.x), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)))
+               .a(((evf.a)this.a((dfl)$$0, eva.a(cwq.ov))).a(exn.a($$3.b(dci.x), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)))
          );
    }
 
-   protected eul.a l(dij $$0) {
-      js.b<dbw> $$1 = this.a.d(ma.aM);
-      return this.c($$0, ((euy.a)this.a((dfe)dil.aL, eut.a(cwj.pr).a(ewl.a(eyr.a(1.0F, 2.0F))))).a(exg.a($$1.b(dcb.x), f)));
+   protected eus.a l(diq $$0) {
+      js.b<dcd> $$1 = this.a.d(ma.aM);
+      return this.c($$0, ((evf.a)this.a((dfl)dis.aL, eva.a(cwq.pr).a(ews.a(eyy.a(1.0F, 2.0F))))).a(exn.a($$1.b(dci.x), f)));
    }
 
-   protected eul.a a(dij $$0, cwb $$1, cwb $$2, exr.a $$3) {
-      js.b<dbw> $$4 = this.a.d(ma.aM);
-      return this.a((dfe)$$0, eul.b().a(euk.a().a(eut.a($$1).a($$3).a(eut.a($$2)))).a(euk.a().a($$3).a(eut.a($$2).a(evd.a($$4.b(dcb.x), 0.5714286F, 3)))));
+   protected eus.a a(diq $$0, cwi $$1, cwi $$2, exy.a $$3) {
+      js.b<dcd> $$4 = this.a.d(ma.aM);
+      return this.a((dfl)$$0, eus.b().a(eur.a().a(eva.a($$1).a($$3).a(eva.a($$2)))).a(eur.a().a($$3).a(eva.a($$2).a(evk.a($$4.b(dci.x), 0.5714286F, 3)))));
    }
 
-   protected eul.a m(dij $$0) {
-      return eul.b().a(euk.a().a(this.c()).a(eut.a($$0).a(ewl.a(eyk.a(2.0F)))));
+   protected eus.a m(diq $$0) {
+      return eus.b().a(eur.a().a(this.c()).a(eva.a($$0).a(ews.a(eyr.a(2.0F)))));
    }
 
-   protected eul.a a(dij $$0, dij $$1) {
-      js.b<dij> $$2 = this.a.d(ma.f);
-      euw.a<?> $$3 = eut.a($$1).a(ewl.a(eyk.a(2.0F))).a(this.c()).a(((euy.a)this.a((dfe)$$0, eut.a(cwj.pw))).a(exw.a(0.125F)));
-      return eul.b()
-         .a(euk.a().a($$3).a(exq.a($$0).a(ee.a.a().a(dkr.b, dwj.b))).a(exp.a(dh.a.a().a(ax.a.a().a($$2, $$0).a(ee.a.a().a(dkr.b, dwj.a))), new jh(0, 1, 0))))
-         .a(euk.a().a($$3).a(exq.a($$0).a(ee.a.a().a(dkr.b, dwj.a))).a(exp.a(dh.a.a().a(ax.a.a().a($$2, $$0).a(ee.a.a().a(dkr.b, dwj.b))), new jh(0, -1, 0))));
+   protected eus.a a(diq $$0, diq $$1) {
+      js.b<diq> $$2 = this.a.d(ma.f);
+      evd.a<?> $$3 = eva.a($$1).a(ews.a(eyr.a(2.0F))).a(this.c()).a(((evf.a)this.a((dfl)$$0, eva.a(cwq.pw))).a(eyd.a(0.125F)));
+      return eus.b()
+         .a(eur.a().a($$3).a(exx.a($$0).a(ee.a.a().a(dky.b, dwq.b))).a(exw.a(dh.a.a().a(ax.a.a().a($$2, $$0).a(ee.a.a().a(dky.b, dwq.a))), new jh(0, 1, 0))))
+         .a(eur.a().a($$3).a(exx.a($$0).a(ee.a.a().a(dky.b, dwq.a))).a(exw.a(dh.a.a().a(ax.a.a().a($$2, $$0).a(ee.a.a().a(dky.b, dwq.b))), new jh(0, -1, 0))));
    }
 
-   protected eul.a n(dij $$0) {
-      return eul.b()
+   protected eus.a n(diq $$0) {
+      return eus.b()
          .a(
-            euk.a()
-               .a(eyk.a(1.0F))
+            eur.a()
+               .a(eyr.a(1.0F))
                .a(
-                  (euw.a<?>)this.a(
-                     $$0, eut.a($$0).a(List.of(2, 3, 4), $$1 -> ewl.a(eyk.a((float)$$1.intValue())).a(exq.a($$0).a(ee.a.a().a(diy.f, $$1.intValue()))))
+                  (evd.a<?>)this.a(
+                     $$0, eva.a($$0).a(List.of(2, 3, 4), $$1 -> ews.a(eyr.a((float)$$1.intValue())).a(exx.a($$0).a(ee.a.a().a(djf.f, $$1.intValue()))))
                   )
                )
          );
    }
 
-   protected eul.a o(dij $$0) {
-      return eul.b()
+   protected eus.a o(diq $$0) {
+      return eus.b()
          .a(
-            euk.a()
-               .a(eyk.a(1.0F))
+            eur.a()
+               .a(eyr.a(1.0F))
                .a(
-                  (euw.a<?>)this.a(
+                  (evd.a<?>)this.a(
                      $$0,
-                     eut.a($$0)
+                     eva.a($$0)
                         .a(
                            IntStream.rangeClosed(1, 4).boxed().toList(),
-                           $$1 -> ewl.a(eyk.a((float)$$1.intValue())).a(exq.a($$0).a(ee.a.a().a(dnv.e, $$1.intValue())))
+                           $$1 -> ews.a(eyr.a((float)$$1.intValue())).a(exx.a($$0).a(ee.a.a().a(doc.e, $$1.intValue())))
                         )
                   )
                )
          );
    }
 
-   protected static eul.a p(dij $$0) {
-      return eul.b().a(euk.a().a(eyk.a(1.0F)).a(eut.a($$0)));
+   protected static eus.a p(diq $$0) {
+      return eus.b().a(eur.a().a(eyr.a(1.0F)).a(eva.a($$0)));
    }
 
-   public static eul.a d() {
-      return eul.b();
+   public static eus.a d() {
+      return eus.b();
    }
 
    protected abstract void e();
 
    @Override
-   public void generate(BiConsumer<alk<eul>, eul.a> $$0) {
+   public void generate(BiConsumer<ali<eus>, eus.a> $$0) {
       this.e();
-      Set<alk<eul>> $$1 = new HashSet<>();
+      Set<ali<eus>> $$1 = new HashSet<>();
 
-      for (dij $$2 : lz.e) {
+      for (diq $$2 : lz.e) {
          if ($$2.a(this.c)) {
             $$2.u().ifPresent($$3 -> {
-               if ($$1.add((alk<eul>)$$3)) {
-                  eul.a $$4 = this.d.remove($$3);
+               if ($$1.add((ali<eus>)$$3)) {
+                  eus.a $$4 = this.d.remove($$3);
                   if ($$4 == null) {
                      throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$3.a(), lz.e.b($$2)));
                   }
 
-                  $$0.accept((alk<eul>)$$3, $$4);
+                  $$0.accept((ali<eus>)$$3, $$4);
                }
             });
          }
@@ -298,42 +298,42 @@ public abstract class nb implements ne {
       }
    }
 
-   protected void b(dij $$0, dij $$1) {
-      js.b<dbw> $$2 = this.a.d(ma.aM);
-      eul.a $$3 = this.c($$0, eut.a($$0).a(exg.a($$2.b(dcb.x), 0.33F, 0.55F, 0.77F, 1.0F)));
+   protected void b(diq $$0, diq $$1) {
+      js.b<dcd> $$2 = this.a.d(ma.aM);
+      eus.a $$3 = this.c($$0, eva.a($$0).a(exn.a($$2.b(dci.x), 0.33F, 0.55F, 0.77F, 1.0F)));
       this.a($$0, $$3);
       this.a($$1, $$3);
    }
 
-   protected eul.a q(dij $$0) {
-      return this.a($$0, dkp.f, dwj.b);
+   protected eus.a q(diq $$0) {
+      return this.a($$0, dkw.f, dwq.b);
    }
 
-   protected void r(dij $$0) {
-      this.a($$0, $$0x -> this.d((dfe)((dll)$$0x).b()));
+   protected void r(diq $$0) {
+      this.a($$0, $$0x -> this.d((dfl)((dls)$$0x).b()));
    }
 
-   protected void c(dij $$0, dij $$1) {
-      this.a($$0, this.c((dfe)$$1));
+   protected void c(diq $$0, diq $$1) {
+      this.a($$0, this.c((dfl)$$1));
    }
 
-   protected void c(dij $$0, dfe $$1) {
+   protected void c(diq $$0, dfl $$1) {
       this.a($$0, this.a($$1));
    }
 
-   protected void s(dij $$0) {
+   protected void s(diq $$0) {
       this.c($$0, $$0);
    }
 
-   protected void t(dij $$0) {
-      this.c($$0, (dfe)$$0);
+   protected void t(diq $$0) {
+      this.c($$0, (dfl)$$0);
    }
 
-   protected void a(dij $$0, Function<dij, eul.a> $$1) {
+   protected void a(diq $$0, Function<diq, eus.a> $$1) {
       this.a($$0, $$1.apply($$0));
    }
 
-   protected void a(dij $$0, eul.a $$1) {
+   protected void a(diq $$0, eus.a $$1) {
       this.d.put($$0.u().orElseThrow(() -> new IllegalStateException("Block " + $$0 + " does not have loot table")), $$1);
    }
 }

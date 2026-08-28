@@ -1,19 +1,23 @@
-public class gmc implements gli<dun> {
-   private final goy a;
+public class gmc implements glr<duc> {
+   private final fyt a;
 
-   public gmc(glj.a $$0) {
-      this.a = $$0.c();
+   public gmc(gls.a $$0) {
+      this.a = new fyt($$0.a(gck.G));
    }
 
-   public void a(dun $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
-      dff $$6 = $$0.i();
-      if ($$6 != null) {
-         duq $$7 = $$0.c();
-         dut $$8 = $$7.f();
-         bui $$9 = $$8.a($$7, $$6, $$7.i());
-         if ($$9 != null) {
-            gly.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.e(), $$8.d());
-         }
+   public void a(duc $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
+      dvv $$6 = $$0.m();
+      if ($$6.c(dna.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(dna.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fev $$8 = gma.a.a($$3, gjq::c);
+         this.a.a($$2, $$8, $$4, $$5);
+         $$2.b();
       }
    }
 }

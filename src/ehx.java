@@ -1,40 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class ehx extends ehu {
-   public static final MapCodec<ehx> d = RecordCodecBuilder.mapCodec(
+public record ehx(int b, int c, int d) implements eha {
+   public static final Codec<ehx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               ayv.m.fieldOf("spread_width").forGetter(ehx::a), ayv.m.fieldOf("spread_height").forGetter(ehx::b), ayv.m.fieldOf("max_height").forGetter(ehx::c)
             )
             .apply($$0, ehx::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
 
-   public ehx(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public int a() {
+      return this.b;
    }
 
-   public ehx(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected ehv<?> b() {
-      return ehv.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public int c() {
+      return this.d;
    }
 }

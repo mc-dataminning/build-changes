@@ -1,20 +1,7 @@
-public interface akp<T> {
-   zj<? super ww, T> codec();
+import java.util.List;
 
-   default ako<T> a(int $$0) {
-      return new ako<>($$0, this);
-   }
+public interface akp {
+   void a(akm<?> var1);
 
-   T copy(T var1);
-
-   static <T> akp<T> a(zj<? super ww, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends akp<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
-   }
+   void a(List<akq.c<?>> var1);
 }

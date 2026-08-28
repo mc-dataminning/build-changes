@@ -1,37 +1,41 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum ddo implements baj {
-   a(buq.f, 11, "helmet"),
-   b(buq.e, 16, "chestplate"),
-   c(buq.d, 15, "leggings"),
-   d(buq.c, 13, "boots"),
-   e(buq.g, 16, "body");
+public record ddo(ju<dcd> d, int e, int f) implements ddl {
+   public static final int b = 10000;
+   public static final MapCodec<ddo> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(ma.aM).fieldOf("enchantments").forGetter(ddo::b),
+               ayv.a(1, 10000).fieldOf("min_cost").forGetter(ddo::c),
+               ayv.a(0, 10000).fieldOf("max_cost_span").forGetter(ddo::d)
+            )
+            .apply($$0, ddo::new)
+   );
 
-   public static final Codec<ddo> f = baj.b(ddo::values);
-   private final buq g;
-   private final String h;
-   private final int i;
+   @Override
+   public void a(cwm $$0, dcj.a $$1, azu $$2, bsi $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azm.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
 
-   private ddo(final buq $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public buq a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
+      for (dcg $$7 : dcf.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.a, $$7.b);
+      }
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public MapCodec<ddo> a() {
+      return c;
+   }
+
+   public ju<dcd> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

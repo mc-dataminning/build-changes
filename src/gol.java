@@ -1,27 +1,22 @@
-public class gol extends gqg<chb, gwb, fyq> {
-   private static final all a = all.b("textures/entity/fish/cod.png");
+public class gol extends gqq<cgs, guy, fym> {
+   private static final alj a = alj.b("textures/entity/bat.png");
 
-   public gol(gpa.a $$0) {
-      super($$0, new fyq($$0.a(gcb.O)), 0.3F);
+   public gol(gpk.a $$0) {
+      super($$0, new fym($$0.a(gck.r)), 0.25F);
    }
 
-   @Override
-   public all b(gwb $$0) {
+   public alj a(guy $$0) {
       return a;
    }
 
-   public gwb a() {
-      return new gwb();
+   public guy a() {
+      return new guy();
    }
 
-   @Override
-   protected void a(gwb $$0, fek $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azn.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(cgs $$0, guy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.q();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

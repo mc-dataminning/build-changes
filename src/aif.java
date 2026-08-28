@@ -1,12 +1,29 @@
-public record aif(cop b) implements zs<agy> {
-   public static final zj<wi, aif> a = zj.a(cop.a, aif::b, aif::new);
+public class aif implements zq<agw> {
+   public static final zh<wg, aif> a = zq.a(aif::a, aif::new);
+   private final alj b;
 
-   @Override
-   public zu<aif> a() {
-      return agw.bP;
+   public aif(dbc<?> $$0) {
+      this.b = $$0.a();
    }
 
-   public void a(agy $$0) {
+   private aif(wg $$0) {
+      this.b = $$0.q();
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zs<aif> a() {
+      return agu.bR;
+   }
+
+   public void a(agw $$0) {
       $$0.a(this);
+   }
+
+   public alj b() {
+      return this.b;
    }
 }

@@ -1,26 +1,32 @@
-public record abh(jh c, int d) implements aav {
-   public static final zj<wi, abh> a = aav.a(abh::a, abh::new);
-   public static final aav.b<abh> b = aav.a("debug/poi_ticket_count");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private abh(wi $$0) {
-      this($$0.e(), $$0.readInt());
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-   }
+public record abh(long c, List<abh.a> d) implements aat {
+   public static final aat.b<abh> a = aat.a("debug/redstone_update_order");
+   public static final zh<wg, abh> b = zh.a(zf.j, abh::b, abh.a.a.a(zf.a()), abh::c, abh::new);
 
    @Override
-   public aav.b<abh> a() {
-      return b;
+   public aat.b<abh> a() {
+      return a;
    }
 
-   public jh b() {
+   public long b() {
       return this.c;
    }
 
-   public int c() {
+   public List<abh.a> c() {
       return this.d;
+   }
+
+   public static record a(jh b, etd c) {
+      public static final zh<ByteBuf, abh.a> a = zh.a(jh.b, abh.a::a, etd.a, abh.a::b, abh.a::new);
+
+      public jh a() {
+         return this.b;
+      }
+
+      public etd b() {
+         return this.c;
+      }
    }
 }

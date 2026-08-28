@@ -1,73 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Calendar;
 
-public class glx implements gli<duf> {
-   private final Map<dpl.a, gax> a;
-   private static final Map<dpl.a, all> b = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dpl.b.c, all.b("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dpl.b.d, all.b("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dpl.b.f, all.b("textures/entity/zombie/zombie.png"));
-      $$0.put(dpl.b.g, all.b("textures/entity/creeper/creeper.png"));
-      $$0.put(dpl.b.i, all.b("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dpl.b.h, all.b("textures/entity/piglin/piglin.png"));
-      $$0.put(dpl.b.e, gzl.a());
-   });
+public class glx<T extends dsy & dud> implements glr<T> {
+   private final fyx a;
+   private final fyx b;
+   private final fyx c;
+   private boolean d;
 
-   public static Map<dpl.a, gax> a(gby $$0) {
-      Builder<dpl.a, gax> $$1 = ImmutableMap.builder();
-      $$1.put(dpl.b.c, new gaw($$0.a(gcb.cr)));
-      $$1.put(dpl.b.d, new gaw($$0.a(gcb.de)));
-      $$1.put(dpl.b.e, new gaw($$0.a(gcb.bL)));
-      $$1.put(dpl.b.f, new gaw($$0.a(gcb.dn)));
-      $$1.put(dpl.b.g, new gaw($$0.a(gcb.Y)));
-      $$1.put(dpl.b.i, new gbv($$0.a(gcb.ah)));
-      $$1.put(dpl.b.h, new gab($$0.a(gcb.bB)));
-      return $$1.build();
-   }
-
-   public glx(glj.a $$0) {
-      this.a = a($$0.e());
-   }
-
-   public void a(duf $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dvo $$7 = $$0.m();
-      boolean $$8 = $$7.b() instanceof drk;
-      jm $$9 = $$8 ? $$7.c(drk.d) : null;
-      int $$10 = $$8 ? dwt.a($$9.g()) : $$7.c(dpl.e);
-      float $$11 = dwt.b($$10);
-      dpl.a $$12 = ((dhf)$$7.b()).b();
-      gax $$13 = this.a.get($$12);
-      gjh $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
-   }
-
-   public static void a(@Nullable jm $$0, float $$1, float $$2, fek $$3, gix $$4, int $$5, gax $$6, gjh $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   public glx(gls.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.d = true;
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      feo $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, gyk.d);
-      $$3.b();
+      this.a = new fyx($$0.a(gck.S));
+      this.b = new fyx($$0.a(gck.ap));
+      this.c = new fyx($$0.a(gck.aq));
    }
 
-   public static gjh a(dpl.a $$0, @Nullable cze $$1) {
-      all $$2 = b.get($$0);
-      if ($$0 == dpl.b.e && $$1 != null) {
-         gzv $$3 = fjx.Q().an();
-         return gjh.i($$3.b($$1.f()).a());
-      } else {
-         return gjh.g($$2);
+   @Override
+   public void a(T $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
+      dfm $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dvv $$8 = $$7 ? $$0.m() : dis.cv.m().b(djt.c, jm.d);
+      dwn $$9 = $$8.b(djt.d) ? $$8.c(djt.d) : dwn.a;
+      if ($$8.b() instanceof dhk<?> $$11) {
+         boolean $$12 = $$9 != dwn.a;
+         $$2.a();
+         float $$13 = $$8.c(djt.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         dkx.c<? extends dtf> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
+         } else {
+            $$14 = dkx.b::b;
+         }
+
+         float $$16 = $$14.apply(djt.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new glu<>()).applyAsInt($$4);
+         hbn $$18 = gkb.a($$0, $$9, this.d);
+         fev $$19 = $$18.a($$3, gjq::e);
+         if ($$12) {
+            if ($$9 == dwn.b) {
+               this.a($$2, $$19, this.b, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.c, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+         }
+
+         $$2.b();
       }
+   }
+
+   private void a(fer $$0, fev $$1, fyx $$2, float $$3, int $$4, int $$5) {
+      $$2.a($$3);
+      $$2.a($$0, $$1, $$4, $$5);
    }
 }

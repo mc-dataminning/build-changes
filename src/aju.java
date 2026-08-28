@@ -1,5 +1,5 @@
-public interface aju {
-   all a();
-
-   void a(wi var1);
+public record aju(alj a) implements ajs {
+   @Override
+   public void a(wg $$0) {
+   }
 }

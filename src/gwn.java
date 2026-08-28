@@ -1,6 +1,11 @@
-public class gwn extends gvt {
-   public boolean a;
+public class gwn extends gwm {
+   public cjf.d a;
    public boolean b;
-   public float c;
-   public cnh d = cnh.f;
+   public cwm c;
+   public boolean d;
+
+   public gwn() {
+      this.a = cjf.d.a;
+      this.c = cwm.k;
+   }
 }

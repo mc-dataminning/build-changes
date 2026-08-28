@@ -15,7 +15,7 @@ public class t implements af {
    private final String c;
    private final String d;
    private final boolean e;
-   private final etm f;
+   private final ett f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,25 +23,25 @@ public class t implements af {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w38a";
+      this.d = "24w39a";
       this.e = false;
-      this.f = new etm(4066, "main");
+      this.f = new ett(4069, "main");
       this.g = ab.c();
       this.h = 39;
-      this.i = 54;
+      this.i = 55;
       this.j = new Date();
    }
 
    private t(JsonObject $$0) {
-      this.c = azd.i($$0, "id");
-      this.d = azd.i($$0, "name");
-      this.e = azd.k($$0, "stable");
-      this.f = new etm(azd.o($$0, "world_version"), azd.a($$0, "series_id", etm.a));
-      this.g = azd.o($$0, "protocol_version");
-      JsonObject $$1 = azd.u($$0, "pack_version");
-      this.h = azd.o($$1, "resource");
-      this.i = azd.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(azd.i($$0, "build_time")).toInstant());
+      this.c = azc.i($$0, "id");
+      this.d = azc.i($$0, "name");
+      this.e = azc.k($$0, "stable");
+      this.f = new ett(azc.o($$0, "world_version"), azc.a($$0, "series_id", ett.a));
+      this.g = azc.o($$0, "protocol_version");
+      JsonObject $$1 = azc.u($$0, "pack_version");
+      this.h = azc.o($$1, "resource");
+      this.i = azc.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(azc.i($$0, "build_time")).toInstant());
    }
 
    public static af a() {
@@ -54,7 +54,7 @@ public class t implements af {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new t(azd.a($$1));
+               var2 = new t(azc.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class t implements af {
    }
 
    @Override
-   public etm d() {
+   public ett d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements af {
    }
 
    @Override
-   public int a(atr $$0) {
-      return $$0 == atr.b ? this.i : this.h;
+   public int a(atq $$0) {
+      return $$0 == atq.b ? this.i : this.h;
    }
 
    @Override

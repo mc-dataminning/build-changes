@@ -1,76 +1,66 @@
-public class gfz extends ggf {
-   private static final int a = 3;
-   private final gjf b;
-   private final bui D;
-   private final bui E;
-   private int F;
-   private final goy G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
-
-   public gfz(goy $$0, gjf $$1, gcy $$2, bui $$3, bui $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dB());
-   }
-
-   private gfz(goy $$0, gjf $$1, gcy $$2, bui $$3, bui $$4, ezr $$5) {
-      super($$2, $$3.dD(), $$3.dF(), $$3.dJ(), $$5.d, $$5.e, $$5.f);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bui a(bui $$0) {
-      return (bui)(!($$0 instanceof ckz) ? $$0 : ((ckz)$$0).A());
+public class gfz extends ggw {
+   gfz(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public ggj b() {
-      return ggj.d;
+   public ggs b() {
+      return ggs.b;
    }
 
    @Override
-   public void a(feo $$0, fjg $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = azn.d((double)$$2, this.K, this.H);
-      double $$5 = azn.d((double)$$2, this.L, this.I);
-      double $$6 = azn.d((double)$$2, this.M, this.J);
-      double $$7 = azn.d((double)$$3, this.D.dD(), $$4);
-      double $$8 = azn.d((double)$$3, this.D.dF(), $$5);
-      double $$9 = azn.d((double)$$3, this.D.dJ(), $$6);
-      gix.a $$10 = this.b.c();
-      ezr $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fek(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azm.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
 
-      this.d();
-      this.c();
+      return $$3 | $$4 << 16;
    }
 
-   private void c() {
-      this.H = this.E.dD();
-      this.I = (this.E.dF() + this.E.dH()) / 2.0;
-      this.J = this.E.dJ();
+   public static class a implements ggr<lw> {
+      private final ghj a;
+
+      public a(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfz $$8 = new gfz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+   public static class b implements ggr<lw> {
+      private final ghj a;
+
+      public b(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfz $$8 = new gfz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
+      }
    }
 }

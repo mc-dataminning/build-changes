@@ -1,59 +1,57 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dxh implements AutoCloseable {
-   private final dfg a;
-   private final Long2ObjectMap<dxu> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dxu c;
-   private long d;
+public record dxh(String m, dwk n, dqd o, dqd p, awm q, awm r) {
+   private static final Map<String, dxh> s = new Object2ObjectArrayMap();
+   public static final Codec<dxh> a = Codec.stringResolver(dxh::b, s::get);
+   public static final dxh b = a(new dxh("oak", dwk.g));
+   public static final dxh c = a(new dxh("spruce", dwk.h));
+   public static final dxh d = a(new dxh("birch", dwk.i));
+   public static final dxh e = a(new dxh("acacia", dwk.j));
+   public static final dxh f = a(new dxh("cherry", dwk.k, dqd.aU, dqd.aX, awn.eN, awn.eO));
+   public static final dxh g = a(new dxh("jungle", dwk.l));
+   public static final dxh h = a(new dxh("dark_oak", dwk.m));
+   public static final dxh i = a(new dxh("crimson", dwk.n, dqd.aT, dqd.aQ, awn.qV, awn.qW));
+   public static final dxh j = a(new dxh("warped", dwk.o, dqd.aT, dqd.aQ, awn.qV, awn.qW));
+   public static final dxh k = a(new dxh("mangrove", dwk.p));
+   public static final dxh l = a(new dxh("bamboo", dwk.q, dqd.aS, dqd.aR, awn.bw, awn.bx));
 
-   public dxh(dfg $$0) {
-      this.a = $$0;
+   public dxh(String $$0, dwk $$1) {
+      this($$0, $$1, dqd.b, dqd.aP, awn.iJ, awn.iK);
    }
 
-   @Nullable
-   public dxu a(jh $$0) {
-      int $$1 = this.a.f($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.am()) {
-         long $$2 = kj.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dxu)this.b.computeIfAbsent($$2, $$2x -> {
-               dxj $$3 = this.a.a(kj.a($$0.u()), kj.a($$0.w()));
-               dxu $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
+   private static dxh a(dxh $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public dvo b(jh $$0) {
-      dxu $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dil.a.m();
-      } else {
-         int $$2 = kj.b($$0.u());
-         int $$3 = kj.b($$0.v());
-         int $$4 = kj.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   public static Stream<dxh> a() {
+      return s.values().stream();
    }
 
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public String b() {
+      return this.m;
+   }
 
-      while (var1.hasNext()) {
-         dxu $$0 = (dxu)var1.next();
-         $$0.b();
-      }
+   public dwk c() {
+      return this.n;
+   }
+
+   public dqd d() {
+      return this.o;
+   }
+
+   public dqd e() {
+      return this.p;
+   }
+
+   public awm f() {
+      return this.q;
+   }
+
+   public awm g() {
+      return this.r;
    }
 }

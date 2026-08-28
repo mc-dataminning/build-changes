@@ -8,9 +8,9 @@ public class ek extends dy<ek.a> {
       return ek.a.a;
    }
 
-   public void a(arr $$0, jh $$1) {
-      double $$2 = $$0.dD() - (double)$$1.u();
-      double $$3 = $$0.dJ() - (double)$$1.w();
+   public void a(arq $$0, jh $$1) {
+      double $$2 = $$0.dA() - (double)$$1.u();
+      double $$3 = $$0.dG() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }

@@ -1,12 +1,31 @@
-public class akc {
-   public static final zu<akb> a = a("pong_response");
-   public static final zu<ake> b = b("ping_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zs<aka>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, all.b($$0));
+public class akc implements zq<akb> {
+   public static final zh<ByteBuf, akc> a = zq.a(akc::a, akc::new);
+   private final long b;
+
+   public akc(long $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zs<akd>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, all.b($$0));
+   private akc(ByteBuf $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
+   }
+
+   @Override
+   public zs<akc> a() {
+      return aka.b;
+   }
+
+   public void a(akb $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

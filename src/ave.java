@@ -1,52 +1,16 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public interface ave extends avh {
-   Set<String> a();
-
-   List<avc> a(all var1);
-
-   Map<all, avc> b(String var1, Predicate<all> var2);
-
-   Map<all, List<avc>> c(String var1, Predicate<all> var2);
-
-   Stream<atp> b();
-
-   public static enum a implements ave {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<avc> getResource(all $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<avc> a(all $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<all, avc> b(String $$0, Predicate<all> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<all, List<avc>> c(String $$0, Predicate<all> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<atp> b() {
-         return Stream.of();
-      }
+public interface ave extends auw {
+   @Override
+   default CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
+      return $$0.a(bas.a).thenRunAsync(() -> {
+         bou $$1x = bot.a();
+         $$1x.a("listener");
+         this.a($$1);
+         $$1x.c();
+      }, $$3);
    }
+
+   void a(avd var1);
 }

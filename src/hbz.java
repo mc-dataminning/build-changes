@@ -1,17 +1,11 @@
-public abstract class hbz extends hby implements hcr {
-   private boolean n;
+import java.util.function.Function;
 
-   protected hbz(awn $$0, awp $$1, azv $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface hbz {
+   void a(hbz.a var1);
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   hbg a(hbp var1, Function<hbn, gze> var2, hbv var3);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public interface a {
+      hbz a(alj var1);
    }
 }

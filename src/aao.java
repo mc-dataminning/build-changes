@@ -1,29 +1,42 @@
-public class aao implements zs<aal> {
-   public static final zj<wi, aao> a = zs.a(aao::a, aao::new);
-   private final long b;
+import java.util.UUID;
 
-   public aao(long $$0) {
-      this.b = $$0;
+public record aao(UUID b, aao.a c) implements zq<aaj> {
+   public static final zh<wg, aao> a = zq.a(aao::a, aao::new);
+
+   private aao(wg $$0) {
+      this($$0.n(), $$0.b(aao.a.class));
    }
 
-   private aao(wi $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wi $$0) {
-      $$0.b(this.b);
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<aao> a() {
-      return aak.n;
+   public zs<aao> a() {
+      return aai.p;
    }
 
-   public void a(aal $$0) {
+   public void a(aaj $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public aao.a e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

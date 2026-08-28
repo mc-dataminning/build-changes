@@ -1,74 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface cwu {
+   ali<cws> a = a("13");
+   ali<cws> b = a("cat");
+   ali<cws> c = a("blocks");
+   ali<cws> d = a("chirp");
+   ali<cws> e = a("far");
+   ali<cws> f = a("mall");
+   ali<cws> g = a("mellohi");
+   ali<cws> h = a("stal");
+   ali<cws> i = a("strad");
+   ali<cws> j = a("ward");
+   ali<cws> k = a("11");
+   ali<cws> l = a("wait");
+   ali<cws> m = a("pigstep");
+   ali<cws> n = a("otherside");
+   ali<cws> o = a("5");
+   ali<cws> p = a("relic");
+   ali<cws> q = a("precipice");
+   ali<cws> r = a("creator");
+   ali<cws> s = a("creator_music_box");
 
-public class cwu extends cur {
-   private static final MapCodec<chv.d> a = chv.d.a.fieldOf("BucketVariantTag");
-   private final bup<?> b;
-   private final awn c;
-
-   public cwu(bup<?> $$0, ern $$1, awn $$2, cwb.a $$3) {
-      super($$1, $$3);
-      this.b = $$0;
-      this.c = $$2;
+   private static ali<cws> a(String $$0) {
+      return ali.a(ma.L, alj.b($$0));
    }
 
-   @Override
-   public void a(@Nullable cor $$0, dff $$1, cwf $$2, jh $$3) {
-      if ($$1 instanceof arq) {
-         this.a((arq)$$1, $$2, $$3);
-         $$1.a($$0, eak.t, $$3);
-      }
+   private static void a(qz<cws> $$0, ali<cws> $$1, jq.c<awm> $$2, int $$3, int $$4) {
+      $$0.a($$1, new cws($$2, xj.c(ae.a("jukebox_song", $$1.a())), (float)$$3, $$4));
    }
 
-   @Override
-   protected void a(@Nullable cor $$0, dfg $$1, jh $$2) {
-      $$1.a($$0, $$2, this.c, awp.g, 1.0F, 1.0F);
-   }
-
-   private void a(arq $$0, cwf $$1, jh $$2) {
-      bui $$3 = this.b.b($$0, bup.a($$0, $$1, null), $$2, buo.l, true, false);
-      if ($$3 instanceof cgx $$4) {
-         cyo $$5 = $$1.a(ku.X, cyo.a);
-         $$4.h($$5.c());
-         $$4.x(true);
-      }
-
-      if ($$3 != null) {
-         $$0.a_($$3);
-      }
-   }
-
-   @Override
-   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
-      if (this.b == bup.bg) {
-         cyo $$4 = $$0.a(ku.X, cyo.a);
-         if ($$4.b()) {
-            return;
-         }
-
-         Optional<chv.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            chv.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = chv.c.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(xl.c(chv.b($$10)).a($$7));
-               return;
-            }
-
-            $$2.add($$6.b().d().e().a($$7));
-            xz $$11 = xl.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(xl.c($$9));
-            }
-
-            $$11.a($$7);
-            $$2.add($$11);
-         }
-      }
+   static void a(qz<cws> $$0) {
+      a($$0, a, awn.pH, 178, 1);
+      a($$0, b, awn.pJ, 185, 2);
+      a($$0, c, awn.pI, 345, 3);
+      a($$0, d, awn.pK, 185, 4);
+      a($$0, e, awn.pL, 174, 5);
+      a($$0, f, awn.pM, 197, 6);
+      a($$0, g, awn.pN, 96, 7);
+      a($$0, h, awn.pP, 150, 8);
+      a($$0, i, awn.pQ, 188, 9);
+      a($$0, j, awn.pS, 251, 10);
+      a($$0, k, awn.pG, 71, 11);
+      a($$0, l, awn.pR, 238, 12);
+      a($$0, m, awn.pO, 149, 13);
+      a($$0, n, awn.pT, 195, 14);
+      a($$0, o, awn.pF, 178, 15);
+      a($$0, p, awn.pU, 218, 14);
+      a($$0, q, awn.pX, 299, 13);
+      a($$0, r, awn.pV, 176, 12);
+      a($$0, s, awn.pW, 73, 11);
    }
 }

@@ -34,7 +34,7 @@ public class bcy extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
+      Type<?> $$0 = this.getInputSchema().getType(bia.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       OpticFinder<?> $$2 = $$1.type().findField("Sections");
       OpticFinder<?> $$3 = ((ListType)$$2.type()).getElement().finder();

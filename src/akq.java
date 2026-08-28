@@ -1,135 +1,242 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.UUID;
+import java.util.Locale;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import org.apache.commons.lang3.ObjectUtils;
+import org.slf4j.Logger;
 
 public class akq {
-   private static final ayk<akp<?>> F = ayk.c(16);
-   public static final akp<Byte> a = akp.a(zh.c);
-   public static final akp<Integer> b = akp.a(zh.h);
-   public static final akp<Long> c = akp.a(zh.i);
-   public static final akp<Float> d = akp.a(zh.j);
-   public static final akp<String> e = akp.a(zh.m);
-   public static final akp<xl> f = akp.a(xn.d);
-   public static final akp<Optional<xl>> g = akp.a(xn.e);
-   public static final akp<cwf> h = new akp<cwf>() {
-      @Override
-      public zj<? super ww, cwf> codec() {
-         return cwf.h;
-      }
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 254;
+   static final ayf c = new ayf();
+   private final akp d;
+   private final akq.b<?>[] e;
+   private boolean f;
 
-      public cwf a(cwf $$0) {
-         return $$0.v();
-      }
-   };
-   public static final akp<dvo> i = akp.a(zh.a(dij.q));
-   private static final zj<ByteBuf, Optional<dvo>> G = new zj<ByteBuf, Optional<dvo>>() {
-      public void a(ByteBuf $$0, Optional<dvo> $$1) {
-         if ($$1.isPresent()) {
-            xc.a($$0, dij.j($$1.get()));
-         } else {
-            xc.a($$0, 0);
+   akq(akp $$0, akq.b<?>[] $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static <T> akm<T> a(Class<? extends akp> $$0, akn<T> $$1) {
+      if (a.isDebugEnabled()) {
+         try {
+            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
+            if (!$$2.equals($$0)) {
+               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
+            }
+         } catch (ClassNotFoundException var3) {
          }
       }
 
-      public Optional<dvo> a(ByteBuf $$0) {
-         int $$1 = xc.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dij.a($$1));
+      int $$3 = c.c($$0);
+      if ($$3 > 254) {
+         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
+      } else {
+         return $$1.a($$3);
       }
-   };
-   public static final akp<Optional<dvo>> j = akp.a(G);
-   public static final akp<Boolean> k = akp.a(zh.b);
-   public static final akp<lq> l = akp.a(ls.bg);
-   public static final akp<List<lq>> m = akp.a(ls.bg.a(zh.a()));
-   public static final akp<ki> n = akp.a(ki.a);
-   public static final akp<jh> o = akp.a(jh.b);
-   public static final akp<Optional<jh>> p = akp.a(jh.b.a(zh::a));
-   public static final akp<jm> q = akp.a(jm.j);
-   public static final akp<Optional<UUID>> r = akp.a(kk.g.a(zh::a));
-   public static final akp<Optional<jp>> s = akp.a(jp.c.a(zh::a));
-   public static final akp<un> t = new akp<un>() {
-      @Override
-      public zj<? super ww, un> codec() {
-         return zh.q;
-      }
+   }
 
-      public un a(un $$0) {
-         return $$0.i();
-      }
-   };
-   public static final akp<cod> u = akp.a(cod.d);
-   private static final zj<ByteBuf, OptionalInt> H = new zj<ByteBuf, OptionalInt>() {
-      public OptionalInt a(ByteBuf $$0) {
-         int $$1 = xc.a($$0);
-         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
-      }
+   private <T> akq.b<T> b(akm<T> $$0) {
+      return (akq.b<T>)this.e[$$0.a()];
+   }
 
-      public void a(ByteBuf $$0, OptionalInt $$1) {
-         xc.a($$0, $$1.orElse(-1) + 1);
-      }
-   };
-   public static final akp<OptionalInt> v = akp.a(H);
-   public static final akp<bvq> w = akp.a(bvq.t);
-   public static final akp<jq<cgz>> x = akp.a(cgz.a);
-   public static final akp<jq<chz>> y = akp.a(chz.d);
-   public static final akp<jq<chg>> z = akp.a(chg.a);
-   public static final akp<jq<ckv>> A = akp.a(ckv.d);
-   public static final akp<cie.a> B = akp.a(cie.a.e);
-   public static final akp<cjm.a> C = akp.a(cjm.a.i);
-   public static final akp<Vector3f> D = akp.a(zh.s);
-   public static final akp<Quaternionf> E = akp.a(zh.t);
+   public <T> T a(akm<T> $$0) {
+      return this.b($$0).b();
+   }
 
-   public static void a(akp<?> $$0) {
-      F.d($$0);
+   public <T> void a(akm<T> $$0, T $$1) {
+      this.a($$0, $$1, false);
+   }
+
+   public <T> void a(akm<T> $$0, T $$1, boolean $$2) {
+      akq.b<T> $$3 = this.b($$0);
+      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
+         $$3.a($$1);
+         this.d.a($$0);
+         $$3.a(true);
+         this.f = true;
+      }
+   }
+
+   public boolean a() {
+      return this.f;
    }
 
    @Nullable
-   public static akp<?> a(int $$0) {
-      return F.a($$0);
+   public List<akq.c<?>> b() {
+      if (!this.f) {
+         return null;
+      } else {
+         this.f = false;
+         List<akq.c<?>> $$0 = new ArrayList<>();
+
+         for (akq.b<?> $$1 : this.e) {
+            if ($$1.c()) {
+               $$1.a(false);
+               $$0.add($$1.e());
+            }
+         }
+
+         return $$0;
+      }
    }
 
-   public static int b(akp<?> $$0) {
-      return F.a($$0);
+   @Nullable
+   public List<akq.c<?>> c() {
+      List<akq.c<?>> $$0 = null;
+
+      for (akq.b<?> $$1 : this.e) {
+         if (!$$1.d()) {
+            if ($$0 == null) {
+               $$0 = new ArrayList<>();
+            }
+
+            $$0.add($$1.e());
+         }
+      }
+
+      return $$0;
    }
 
-   private akq() {
+   public void a(List<akq.c<?>> $$0) {
+      for (akq.c<?> $$1 : $$0) {
+         akq.b<?> $$2 = this.e[$$1.a];
+         this.a($$2, $$1);
+         this.d.a($$2.a());
+      }
+
+      this.d.a($$0);
    }
 
-   static {
-      a(a);
-      a(b);
-      a(c);
-      a(d);
-      a(e);
-      a(f);
-      a(g);
-      a(h);
-      a(k);
-      a(n);
-      a(o);
-      a(p);
-      a(q);
-      a(r);
-      a(i);
-      a(j);
-      a(t);
-      a(l);
-      a(m);
-      a(u);
-      a(v);
-      a(w);
-      a(x);
-      a(y);
-      a(z);
-      a(s);
-      a(A);
-      a(C);
-      a(B);
-      a(D);
-      a(E);
+   private <T> void a(akq.b<T> $$0, akq.c<?> $$1) {
+      if (!Objects.equals($$1.b(), $$0.a.b())) {
+         throw new IllegalStateException(
+            String.format(
+               Locale.ROOT,
+               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
+               $$0.a.a(),
+               this.d,
+               $$0.b,
+               $$0.b.getClass(),
+               $$1.c,
+               $$1.c.getClass()
+            )
+         );
+      } else {
+         $$0.a((T)$$1.c);
+      }
+   }
+
+   public static class a {
+      private final akp a;
+      private final akq.b<?>[] b;
+
+      public a(akp $$0) {
+         this.a = $$0;
+         this.b = new akq.b[akq.c.b($$0.getClass())];
+      }
+
+      public <T> akq.a a(akm<T> $$0, T $$1) {
+         int $$2 = $$0.a();
+         if ($$2 > this.b.length) {
+            throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is " + this.b.length + ")");
+         } else if (this.b[$$2] != null) {
+            throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
+         } else if (ako.b($$0.b()) < 0) {
+            throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
+         } else {
+            this.b[$$0.a()] = new akq.b<>($$0, $$1);
+            return this;
+         }
+      }
+
+      public akq a() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            if (this.b[$$0] == null) {
+               throw new IllegalStateException("Entity " + this.a.getClass() + " has not defined synched data value " + $$0);
+            }
+         }
+
+         return new akq(this.a, this.b);
+      }
+   }
+
+   public static class b<T> {
+      final akm<T> a;
+      T b;
+      private final T c;
+      private boolean d;
+
+      public b(akm<T> $$0, T $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$1;
+      }
+
+      public akm<T> a() {
+         return this.a;
+      }
+
+      public void a(T $$0) {
+         this.b = $$0;
+      }
+
+      public T b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+
+      public void a(boolean $$0) {
+         this.d = $$0;
+      }
+
+      public boolean d() {
+         return this.c.equals(this.b);
+      }
+
+      public akq.c<T> e() {
+         return akq.c.a(this.a, this.b);
+      }
+   }
+
+   public static record c<T>(int a, akn<T> b, T c) {
+
+      public static <T> akq.c<T> a(akm<T> $$0, T $$1) {
+         akn<T> $$2 = $$0.b();
+         return new akq.c<>($$0.a(), $$2, $$2.copy($$1));
+      }
+
+      public void a(wu $$0) {
+         int $$1 = ako.b(this.b);
+         if ($$1 < 0) {
+            throw new EncoderException("Unknown serializer type " + this.b);
+         } else {
+            $$0.l(this.a);
+            $$0.c($$1);
+            this.b.codec().encode($$0, this.c);
+         }
+      }
+
+      public static akq.c<?> a(wu $$0, int $$1) {
+         int $$2 = $$0.l();
+         akn<?> $$3 = ako.a($$2);
+         if ($$3 == null) {
+            throw new DecoderException("Unknown serializer type " + $$2);
+         } else {
+            return a($$0, $$1, $$3);
+         }
+      }
+
+      private static <T> akq.c<T> a(wu $$0, int $$1, akn<T> $$2) {
+         return new akq.c<>($$1, $$2, $$2.codec().decode($$0));
+      }
    }
 }

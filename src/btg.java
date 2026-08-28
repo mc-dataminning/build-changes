@@ -1,27 +1,46 @@
-class btg extends btl {
-   protected btg(btm $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public record btg(String i) {
+   public static final btg a = new btg("generic");
+   public static final btg b = new btg("ladder");
+   public static final btg c = new btg("vines");
+   public static final btg d = new btg("weeping_vines");
+   public static final btg e = new btg("twisting_vines");
+   public static final btg f = new btg("scaffolding");
+   public static final btg g = new btg("other_climbable");
+   public static final btg h = new btg("water");
 
-   @Override
-   public boolean a(bve $$0, int $$1) {
-      if ($$0 instanceof arr $$2 && !$$2.R_()) {
-         arq $$3 = $$2.B();
-         if ($$3.ak() != bse.a && $$3.c($$2.dy())) {
-            cqe $$4 = $$3.d($$2.dy());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.a(new btn(btp.I, 600, $$1));
-               $$2.c($$2.dy());
-               return false;
-            }
-         }
+   public static btg a(dvv $$0) {
+      if ($$0.a(dis.cO) || $$0.a(axc.Q)) {
+         return b;
+      } else if ($$0.a(dis.ff)) {
+         return c;
+      } else if ($$0.a(dis.oz) || $$0.a(dis.oA)) {
+         return d;
+      } else if ($$0.a(dis.oB) || $$0.a(dis.oC)) {
+         return e;
+      } else {
+         return $$0.a(dis.nS) ? f : g;
       }
+   }
 
-      return true;
+   @Nullable
+   public static btg a(bvh $$0) {
+      Optional<jh> $$1 = $$0.eM();
+      if ($$1.isPresent()) {
+         dvv $$2 = $$0.dV().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bj() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

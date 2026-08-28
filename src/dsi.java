@@ -1,76 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public record dsi(List<dsi.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dsi a = new dsi(List.of());
-   public static final Codec<dsi> b = dsi.b.a.listOf().xmap(dsi::new, dsi::b);
-   public static final zj<ww, dsi> c = dsi.b.b.a(zh.a()).a(dsi::new, dsi::b);
+public class dsi extends dlr {
+   public static final MapCodec<dsi> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dlr::b), t()).apply($$0, dsi::new));
 
-   public dsi a() {
-      return new dsi(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<dsi> a() {
+      return e;
    }
 
-   public List<dsi.b> b() {
-      return this.d;
+   public dsi(jq<bto> $$0, float $$1, dvu.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   public static class a {
-      private final Builder<dsi.b> a = ImmutableList.builder();
+   public dsi(czn $$0, dvu.d $$1) {
+      super($$0, $$1);
+   }
 
-      @Deprecated
-      public dsi.a a(jr<dsh> $$0, alk<dsh> $$1, cvc $$2) {
-         Optional<jq.c<dsh>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dsi.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
+   @Override
+   protected boolean b(dvv $$0, der $$1, jh $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dis.dV) || $$0.a(dis.dW) || $$0.a(dis.dX);
+   }
+
+   @Override
+   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
+      fas $$4 = this.a($$0, $$1, $$2, fad.a());
+      ezy $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.d;
+      double $$7 = (double)$$2.w() + $$5.f;
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(ls.ae, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
-
-      public dsi.a a(jq<dsh> $$0, cvc $$1) {
-         return this.a(new dsi.b($$0, $$1));
-      }
-
-      public dsi.a a(dsi.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dsi.a a(dsi $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dsi a() {
-         return new dsi(this.a.build());
-      }
    }
 
-   public static record b(jq<dsh> c, cvc d) {
-      public static final Codec<dsi.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dsh.c.fieldOf("pattern").forGetter(dsi.b::b), cvc.q.fieldOf("color").forGetter(dsi.b::c)).apply($$0, dsi.b::new)
-      );
-      public static final zj<ww, dsi.b> b = zj.a(dsh.d, dsi.b::b, cvc.r, dsi.b::c, dsi.b::new);
-
-      public xz a() {
-         String $$0 = this.c.a().b();
-         return xl.c($$0 + "." + this.d.b());
-      }
-
-      public jq<dsh> b() {
-         return this.c;
-      }
-
-      public cvc c() {
-         return this.d;
+   @Override
+   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
+      if ($$1 instanceof arp $$4 && $$1.ak() != bsh.a && $$3 instanceof bvh $$5 && !$$5.a($$4, $$1.ai().r())) {
+         $$5.a(new btq(bts.t, 40));
       }
    }
 }

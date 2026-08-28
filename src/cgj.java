@@ -1,108 +1,122 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cgj {
-   private final jh a;
-   private final jq<cgl> b;
-   private int c;
-   private final Runnable d;
+public class cgj implements dey {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private cgj.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   cgj(jh $$0, jq<cgl> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.j();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public cgj(jh $$0, jq<cgl> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   public cgj.a a() {
-      return new cgj.a(this.a, this.b, this.c);
-   }
-
-   @Deprecated
-   @bau
-   public int b() {
-      return this.c;
-   }
-
-   protected boolean c() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean d() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean e() {
-      return this.c > 0;
-   }
-
-   public boolean f() {
-      return this.c != this.b.a().b();
-   }
-
-   public jh g() {
-      return this.a;
-   }
-
-   public jq<cgl> h() {
-      return this.b;
+   public cgj() {
+      this.c = cgj.a.c;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public int a(arp $$0, boolean $$1, boolean $$2) {
+      if (!$$0.T() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.A.a(10) == 0 ? cgj.a.b : cgj.a.c;
+         }
+
+         if (this.c == cgj.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = cgj.a.c;
+               }
+
+               return 1;
+            }
+         }
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cgj)$$0).a) : false;
+         this.c = cgj.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   private boolean a(arp $$0) {
+      for (cou $$1 : $$0.y()) {
+         if (!$$1.Y_()) {
+            jh $$2 = $$1.dv();
+            if ($$0.c($$2) && !$$0.t($$2).a(axb.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + azm.d(azm.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + azm.d(azm.a($$4) * 32.0F);
+                  if (this.a($$0, new jh(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public static record a(jh b, jq<cgl> c, int d) {
-      public static final Codec<cgj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jh.a.fieldOf("pos").forGetter(cgj.a::a),
-                  ali.a(ma.aa).fieldOf("type").forGetter(cgj.a::b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(cgj.a::c)
-               )
-               .apply($$0, cgj.a::new)
-      );
+   private void b(arp $$0) {
+      ezy $$1 = this.a($$0, new jh(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cmr $$2;
+         try {
+            $$2 = new cmr($$0);
+            $$2.a($$0, $$0.d_($$2.dv()), bur.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
 
-      public cgj a(Runnable $$0) {
-         return new cgj(this.b, this.c, this.d, $$0);
+         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
+   }
+
+   @Nullable
+   private ezy a(arp $$0, jh $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.A.a(16) - 8;
+         int $$4 = $$1.w() + $$0.A.a(16) - 8;
+         int $$5 = $$0.a(ebq.a.b, $$3, $$4);
+         jh $$6 = new jh($$3, $$5, $$4);
+         if ($$0.c($$6) && cly.b(bus.bK, $$0, bur.h, $$6, $$0.A)) {
+            return ezy.c($$6);
+         }
       }
 
-      public jh a() {
-         return this.b;
-      }
+      return null;
+   }
 
-      public jq<cgl> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

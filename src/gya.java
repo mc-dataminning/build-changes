@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gya {
+public class gya extends gwm {
+   public float[] a = new float[2];
+   public float[] b = new float[2];
+   public float c;
+   public boolean d;
 }

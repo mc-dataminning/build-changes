@@ -1,54 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drz extends dhx {
+public class drz extends dru implements drv {
    public static final MapCodec<drz> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dwd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, drz::new)
+      $$0 -> $$0.group(drv.a.e.fieldOf("weathering_state").forGetter(drz::q), t()).apply($$0, drz::new)
    );
-   public static final dwn f = dwe.aT;
-   private final int g;
+   private final drv.a f;
 
    @Override
-   public MapCodec<drz> a() {
+   protected MapCodec<drz> a() {
       return e;
    }
 
-   protected drz(int $$0, dwd $$1, dvn.d $$2) {
-      super($$2, $$1);
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
-      this.g = $$0;
+   protected drz(drv.a $$0, dvu.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected int b(dff $$0, jh $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), bui.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return azn.f($$3 * 15.0F);
-      } else {
-         return 0;
-      }
+   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int h(dvo $$0) {
-      return $$0.c(f);
+   protected boolean f(dvv $$0) {
+      return drv.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected dvo a(dvo $$0, int $$1) {
-      return $$0.b(f, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(f);
+   public drv.a q() {
+      return this.f;
    }
 }

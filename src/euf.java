@@ -1,109 +1,544 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class euf {
-   private static final Codec<euf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eyo.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               eyo.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, euf::new)
-   );
-   public static final Codec<euf> a = Codec.either(Codec.INT, b).xmap($$0 -> (euf)$$0.map(euf::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
+public class euf implements eug, euh {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private dfq g;
+   private final eco h;
+   private final euf.a i;
+   private final Lifecycle j;
+   private jh k;
+   private float l;
+   private long m;
+   private long n;
    @Nullable
-   private final eyn c;
+   private final ul o;
+   private final int p;
+   private int q;
+   private boolean r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private boolean w;
+   private dxl.c x;
+   private dzt.a y;
    @Nullable
-   private final eyn d;
-   private final euf.b e;
-   private final euf.a f;
+   private ul z;
+   private int A;
+   private int B;
+   @Nullable
+   private UUID C;
+   private final Set<String> D;
+   private boolean E;
+   private final Set<String> F;
+   private final ezl<MinecraftServer> G;
 
-   public Set<ewz<?>> a() {
-      Builder<ewz<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
+   private euf(
+      @Nullable ul $$0,
+      boolean $$1,
+      jh $$2,
+      float $$3,
+      long $$4,
+      long $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      boolean $$9,
+      int $$10,
+      boolean $$11,
+      boolean $$12,
+      boolean $$13,
+      dxl.c $$14,
+      int $$15,
+      int $$16,
+      @Nullable UUID $$17,
+      Set<String> $$18,
+      Set<String> $$19,
+      ezl<MinecraftServer> $$20,
+      @Nullable ul $$21,
+      dzt.a $$22,
+      dfq $$23,
+      eco $$24,
+      euf.a $$25,
+      Lifecycle $$26
+   ) {
+      this.E = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.p = $$6;
+      this.q = $$7;
+      this.s = $$8;
+      this.r = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.v = $$12;
+      this.w = $$13;
+      this.x = $$14;
+      this.A = $$15;
+      this.B = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.F = $$19;
+      this.o = $$0;
+      this.G = $$20;
+      this.z = $$21;
+      this.y = $$22;
+      this.g = $$23;
+      this.h = $$24;
+      this.i = $$25;
+      this.j = $$26;
+   }
+
+   public euf(dfq $$0, eco $$1, euf.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         jh.c,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         dxl.d,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new ezl<>(ezk.a),
+         null,
+         dzt.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
+      );
+   }
+
+   public static <T> euf a(Dynamic<T> $$0, dfq $$1, euf.a $$2, eco $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new euf(
+         (ul)$$0.get("Player").flatMap(ul.a::parse).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         new jh($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         eud.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         dxl.c.a($$0, dxl.d),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(kk.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new ezl<>(ezk.a, $$0.get("ScheduledEvents").asStream()),
+         (ul)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(dzt.a.a).resultOrPartial(f::error).orElse(dzt.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
+      );
+   }
+
+   @Override
+   public ul a(ke $$0, @Nullable ul $$1) {
+      if ($$1 == null) {
+         $$1 = this.o;
       }
 
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
+      ul $$2 = new ul();
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   private void a(ke $$0, ul $$1, @Nullable ul $$2) {
+      $$1.a("ServerBrands", a(this.D));
+      $$1.a("WasModded", this.E);
+      if (!this.F.isEmpty()) {
+         $$1.a("removed_features", a(this.F));
       }
 
-      return $$0.build();
-   }
+      ul $$3 = new ul();
+      $$3.a("Name", ab.b().c());
+      $$3.a("Id", ab.b().d().c());
+      $$3.a("Snapshot", !ab.b().g());
+      $$3.a("Series", ab.b().d().b());
+      $$1.a("Version", $$3);
+      va.e($$1);
+      DynamicOps<vi> $$4 = $$0.a(uz.a);
+      ecm.a($$4, this.h, $$0).resultOrPartial(ae.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k.u());
+      $$1.a("SpawnY", this.k.v());
+      $$1.a("SpawnZ", this.k.w());
+      $$1.a("SpawnAngle", this.l);
+      $$1.a("Time", this.m);
+      $$1.a("DayTime", this.n);
+      $$1.a("LastPlayed", ae.e());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.q);
+      $$1.a("rainTime", this.s);
+      $$1.a("raining", this.r);
+      $$1.a("thunderTime", this.u);
+      $$1.a("thundering", this.t);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.v);
+      this.x.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.w);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", (vi)dzt.a.a.encodeStart(uz.a, this.y).getOrThrow());
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
+      }
 
-   private euf(Optional<eyn> $$0, Optional<eyn> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
+      dgj.b.encodeStart(uz.a, this.g.g()).ifSuccess($$1x -> $$1.a((ul)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.z != null) {
+         $$1.a("CustomBossEvents", this.z);
+      }
 
-   private euf(@Nullable eyn $$0, @Nullable eyn $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> azn.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      $$1.a("ScheduledEvents", this.G.b());
+      $$1.a("WanderingTraderSpawnDelay", this.A);
+      $$1.a("WanderingTraderSpawnChance", this.B);
+      if (this.C != null) {
+         $$1.a("WanderingTraderId", this.C);
       }
    }
 
-   public static euf a(int $$0) {
-      eyk $$1 = eyk.a((float)$$0);
-      return new euf(Optional.of($$1), Optional.of($$1));
+   private static ur a(Set<String> $$0) {
+      ur $$1 = new ur();
+      $$0.stream().map(vg::a).forEach($$1::add);
+      return $$1;
    }
 
-   public static euf a(int $$0, int $$1) {
-      return new euf(Optional.of(eyk.a((float)$$0)), Optional.of(eyk.a((float)$$1)));
+   @Override
+   public jh a() {
+      return this.k;
    }
 
-   public static euf b(int $$0) {
-      return new euf(Optional.of(eyk.a((float)$$0)), Optional.empty());
+   @Override
+   public float b() {
+      return this.l;
    }
 
-   public static euf c(int $$0) {
-      return new euf(Optional.empty(), Optional.of(eyk.a((float)$$0)));
+   @Override
+   public long c() {
+      return this.m;
    }
 
-   public int a(eug $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   @Override
+   public long d() {
+      return this.n;
    }
 
-   public boolean b(eug $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   @Nullable
+   @Override
+   public ul w() {
+      return this.o;
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof eyk $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(eug var1, int var2);
+   @Override
+   public void b(long $$0) {
+      this.n = $$0;
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(eug var1, int var2);
+   @Override
+   public void a(jh $$0, float $$1) {
+      this.k = $$0.j();
+      this.l = $$1;
+   }
+
+   @Override
+   public String e() {
+      return this.g.a();
+   }
+
+   @Override
+   public int x() {
+      return this.p;
+   }
+
+   @Override
+   public int f() {
+      return this.q;
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public boolean g() {
+      return this.t;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.t = $$0;
+   }
+
+   @Override
+   public int h() {
+      return this.u;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.r;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.s;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public dfj k() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(dfj $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean l() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean m() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean n() {
+      return this.v;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public dfi o() {
+      return this.g.f();
+   }
+
+   @Override
+   public dxl.c p() {
+      return this.x;
+   }
+
+   @Override
+   public void a(dxl.c $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public bsh q() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(bsh $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean r() {
+      return this.w;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public ezl<MinecraftServer> s() {
+      return this.G;
+   }
+
+   @Override
+   public void a(p $$0, dfo $$1) {
+      eug.super.a($$0, $$1);
+      euh.super.a($$0);
+   }
+
+   @Override
+   public eco y() {
+      return this.h;
+   }
+
+   @Override
+   public boolean z() {
+      return this.i == euf.a.b;
+   }
+
+   @Override
+   public boolean A() {
+      return this.i == euf.a.c;
+   }
+
+   @Override
+   public Lifecycle B() {
+      return this.j;
+   }
+
+   @Override
+   public dzt.a C() {
+      return this.y;
+   }
+
+   @Override
+   public void a(dzt.a $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public dgj D() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(dgj $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public ul E() {
+      return this.z;
+   }
+
+   @Override
+   public void a(@Nullable ul $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public int t() {
+      return this.A;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public int u() {
+      return this.B;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.B = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID v() {
+      return this.C;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.D.add($$0);
+      this.E |= $$1;
+   }
+
+   @Override
+   public boolean F() {
+      return this.E;
+   }
+
+   @Override
+   public Set<String> G() {
+      return ImmutableSet.copyOf(this.D);
+   }
+
+   @Override
+   public Set<String> H() {
+      return Set.copyOf(this.F);
+   }
+
+   @Override
+   public eug I() {
+      return this;
+   }
+
+   @Override
+   public dfq J() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

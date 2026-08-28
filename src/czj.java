@@ -1,27 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public record czj(boolean c) implements czi {
-   public static final Codec<czj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czj::a)).apply($$0, czj::new)
-   );
-   public static final zj<ByteBuf, czj> b = zh.b.a(czj::new, czj::a);
-   private static final xl d = xl.c("item.unbreakable").a(n.j);
+public enum czj {
+   a(0),
+   b(1);
 
-   @Override
-   public void a(cwb.b $$0, Consumer<xl> $$1, cxx $$2) {
-      if (this.c) {
-         $$1.accept(d);
-      }
+   public static final IntFunction<czj> c = ayd.a(czj::a, values(), ayd.a.a);
+   public static final zh<ByteBuf, czj> d = zf.a(c, czj::a);
+   private final int e;
+
+   private czj(final int $$0) {
+      this.e = $$0;
    }
 
-   public czj a(boolean $$0) {
-      return new czj($$0);
-   }
-
-   public boolean a() {
-      return this.c;
+   public int a() {
+      return this.e;
    }
 }

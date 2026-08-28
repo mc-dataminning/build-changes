@@ -1,16 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.stream.Stream;
 
-public class ehm implements egt {
-   public static final Codec<ehm> a = ayw.b(elf.c).fieldOf("features").xmap(ehm::new, $$0 -> $$0.b).codec();
-   public final ju<elf> b;
+public class ehm implements eha {
+   public static final Codec<ehm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(ehm::new, egq.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), elm.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+   );
+   public final List<egq> b;
+   public final jq<elm> c;
 
-   public ehm(ju<elf> $$0) {
+   public ehm(List<egq> $$0, jq<elm> $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public Stream<eeb<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public Stream<eei<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

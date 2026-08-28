@@ -1,45 +1,38 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class gno implements gmx.a {
-   private final List<jh> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class gno {
+   private final fke a;
 
-   public void a(jh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gno(fke $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      feo $$5 = $$1.getBuffer(gjh.A());
+   public void a(fer $$0, gmx $$1, gjg $$2, double $$3, double $$4, double $$5) {
+      gjh $$6 = this.a.f.x().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   }
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         jh $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gjr.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+   private void a(gjh.d $$0, fer $$1, gjg $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      ezt $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gng.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
+
+      fev $$17 = $$2.getBuffer(gjq.y());
+      long $$18 = $$12 + 5L;
+      gka.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+   }
+
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azm.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

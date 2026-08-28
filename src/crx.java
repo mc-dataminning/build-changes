@@ -1,161 +1,46 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class crx {
+   public static final crw a = new crw.a().a(4).a(0.3F).b();
+   public static final crw b = new crw.a().a(5).a(0.6F).b();
+   public static final crw c = new crw.a().a(3).a(0.3F).b();
+   public static final crw d = new crw.a().a(1).a(0.6F).b();
+   public static final crw e = a(6).b();
+   public static final crw f = new crw.a().a(5).a(0.6F).b();
+   public static final crw g = new crw.a().a(3).a(0.6F).b();
+   public static final crw h = new crw.a().a(2).a(0.3F).b();
+   public static final crw i = new crw.a().a(4).a(0.3F).a().b();
+   public static final crw j = new crw.a().a(2).a(0.1F).b();
+   public static final crw k = new crw.a().a(8).a(0.8F).b();
+   public static final crw l = new crw.a().a(6).a(0.6F).b();
+   public static final crw m = new crw.a().a(5).a(0.6F).b();
+   public static final crw n = new crw.a().a(6).a(0.8F).b();
+   public static final crw o = new crw.a().a(8).a(0.8F).b();
+   public static final crw p = new crw.a().a(5).a(0.6F).b();
+   public static final crw q = new crw.a().a(6).a(0.8F).b();
+   public static final crw r = new crw.a().a(2).a(0.1F).b();
+   public static final crw s = new crw.a().a(1).a(0.3F).b();
+   public static final crw t = new crw.a().a(4).a(1.2F).a().b();
+   public static final crw u = new crw.a().a(4).a(1.2F).a().b();
+   public static final crw v = new crw.a().a(6).a(1.2F).b();
+   public static final crw w = new crw.a().a(6).a(0.1F).a().b();
+   public static final crw x = new crw.a().a(2).a(0.3F).b();
+   public static final crw y = a(6).b();
+   public static final crw z = new crw.a().a(2).a(0.3F).b();
+   public static final crw A = new crw.a().a(2).a(0.3F).b();
+   public static final crw B = new crw.a().a(3).a(0.3F).b();
+   public static final crw C = new crw.a().a(1).a(0.3F).b();
+   public static final crw D = new crw.a().a(1).a(0.1F).b();
+   public static final crw E = new crw.a().a(8).a(0.3F).b();
+   public static final crw F = new crw.a().a(3).a(0.3F).b();
+   public static final crw G = a(10).b();
+   public static final crw H = new crw.a().a(4).a(0.1F).b();
+   public static final crw I = new crw.a().a(2).a(0.1F).b();
+   public static final crw J = new crw.a().a(2).a(0.8F).b();
+   public static final crw K = a(6).a().b();
+   public static final crw L = new crw.a().a(2).a(0.1F).b();
+   public static final crw M = new crw.a().a(2).a(0.1F).b();
+   public static final crw N = new crw.a().a(1).a(0.1F).b();
 
-public class crx extends crs {
-   private static final int m = 0;
-   private static final int n = 1;
-   private static final int o = 3;
-   private static final int p = 1;
-   private static final int q = 28;
-   private static final int r = 28;
-   private static final int s = 37;
-   private static final int t = 0;
-   private final bsa u = new bso(1) {
-      @Override
-      public boolean b(int $$0, cwf $$1) {
-         return $$1.a(axm.bb);
-      }
-
-      @Override
-      public int am_() {
-         return 1;
-      }
-   };
-   private final crx.a v;
-   private final csf w;
-   private final cse x;
-
-   public crx(int $$0, bsa $$1) {
-      this($$0, $$1, new cto(3), csf.a);
-   }
-
-   public crx(int $$0, bsa $$1, cse $$2, csf $$3) {
-      super(ctb.j, $$0);
-      a($$2, 3);
-      this.x = $$2;
-      this.w = $$3;
-      this.v = new crx.a(this.u, 0, 136, 110);
-      this.a(this.v);
-      this.a($$2);
-      this.c($$1, 36, 137);
-   }
-
-   @Override
-   public void a(cor $$0) {
-      super.a($$0);
-      if (!$$0.dY().C) {
-         cwf $$1 = this.v.a(this.v.a());
-         if (!$$1.f()) {
-            $$0.a($$1, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean b(cor $$0) {
-      return a(this.w, $$0, dil.fO);
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public cwf b(cor $$0, int $$1) {
-      cwf $$2 = cwf.k;
-      ctp $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwf $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cwf.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cwf.k;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cwf.k;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cwf.k;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cwf.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cwf.k);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cwf.k;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.x.a(0);
-   }
-
-   public static int a(@Nullable jq<btl> $$0) {
-      return $$0 == null ? 0 : lz.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static jq<btl> e(int $$0) {
-      return $$0 == 0 ? null : lz.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public jq<btl> m() {
-      return e(this.x.a(1));
-   }
-
-   @Nullable
-   public jq<btl> n() {
-      return e(this.x.a(2));
-   }
-
-   public void a(Optional<jq<btl>> $$0, Optional<jq<btl>> $$1) {
-      if (this.v.h()) {
-         this.x.a(1, a($$0.orElse(null)));
-         this.x.a(2, a($$1.orElse(null)));
-         this.v.a(1);
-         this.w.a(dff::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.u.a(0).f();
-   }
-
-   class a extends ctp {
-      public a(final bsa $$0, final int $$1, final int $$2, final int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cwf $$0) {
-         return $$0.a(axm.bb);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   private static crw.a a(int $$0) {
+      return new crw.a().a($$0).a(0.6F);
    }
 }

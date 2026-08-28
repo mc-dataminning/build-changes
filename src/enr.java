@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record enr(bqp<List<enn>> c) implements enn {
-   static MapCodec<enr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bqp.b(Codec.list(enn.b)).fieldOf("groups").forGetter(enr::c)).apply($$0, enr::new));
+public interface enr<P extends enq> {
+   enr<enp> a = a("single_pool_element", enp.b);
+   enr<eno> b = a("list_pool_element", eno.a);
+   enr<enk> c = a("feature_pool_element", enk.a);
+   enr<enj> d = a("empty_pool_element", enj.a);
+   enr<enn> e = a("legacy_single_pool_element", enn.a);
 
-   @Override
-   public void a(azv $$0, BiConsumer<alk<enl>, alk<enl>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Stream<alk<enl>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(enn::a);
-   }
-
-   @Override
-   public MapCodec<enr> b() {
-      return a;
+   static <P extends enq> enr<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.ag, $$0, () -> $$1);
    }
 }

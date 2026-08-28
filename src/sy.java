@@ -1,5 +1,5 @@
-class sy extends Throwable {
-   public sy(int $$0, int $$1, ti $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.z() + ". max attempts: " + $$2.y() + ".", $$2.n());
+public class sy extends RuntimeException {
+   public sy(String $$0) {
+      super($$0);
    }
 }

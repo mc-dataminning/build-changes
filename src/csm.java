@@ -1,58 +1,34 @@
-public abstract class csm {
-   private int a;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-   public static csm a(final cse $$0, final int $$1) {
+public interface csm {
+   csm a = new csm() {
+      @Override
+      public <T> Optional<T> a(BiFunction<dfm, jh, T> $$0) {
+         return Optional.empty();
+      }
+   };
+
+   static csm a(final dfm $$0, final jh $$1) {
       return new csm() {
          @Override
-         public int b() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
+         public <T> Optional<T> a(BiFunction<dfm, jh, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
          }
       };
    }
 
-   public static csm a(final int[] $$0, final int $$1) {
-      return new csm() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
+   <T> Optional<T> a(BiFunction<dfm, jh, T> var1);
 
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
+   default <T> T a(BiFunction<dfm, jh, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
    }
 
-   public static csm a() {
-      return new csm() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
-   }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+   default void a(BiConsumer<dfm, jh> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
    }
 }

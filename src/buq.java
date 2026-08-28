@@ -1,88 +1,55 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 
-public enum buq implements baj {
-   a(buq.a.a, 0, 0, "mainhand"),
-   b(buq.a.a, 1, 5, "offhand"),
-   c(buq.a.b, 0, 1, 1, "feet"),
-   d(buq.a.b, 1, 1, 2, "legs"),
-   e(buq.a.b, 2, 1, 3, "chest"),
-   f(buq.a.b, 3, 1, 4, "head"),
-   g(buq.a.c, 0, 1, 6, "body");
+public final class buq {
+   public static final Predicate<bul> a = bul::bL;
+   public static final Predicate<bul> b = $$0 -> $$0.bL() && $$0 instanceof bvh;
+   public static final Predicate<bul> c = $$0 -> $$0.bL() && !$$0.ca() && !$$0.bZ();
+   public static final Predicate<bul> d = $$0 -> $$0 instanceof bsd && $$0.bL();
+   public static final Predicate<bul> e = $$0 -> !($$0 instanceof cou) || !$$0.Y_() && !((cou)$$0).b();
+   public static final Predicate<bul> f = $$0 -> !$$0.Y_();
+   public static final Predicate<bul> g = f.and(bul::bN);
+   public static final Predicate<bul> h = f.and(bul::bH);
 
-   public static final int h = 0;
-   public static final List<buq> i = List.of(values());
-   public static final IntFunction<buq> j = aye.a($$0 -> $$0.p, values(), aye.a.a);
-   public static final baj.a<buq> k = baj.a(buq::values);
-   public static final zj<ByteBuf, buq> l = zh.a(j, $$0 -> $$0.p);
-   private final buq.a m;
-   private final int n;
-   private final int o;
-   private final int p;
-   private final String q;
-
-   private buq(final buq.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
+   private buq() {
    }
 
-   private buq(final buq.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
+   public static Predicate<bul> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public buq.a a() {
-      return this.m;
+   public static Predicate<bul> a(bul $$0) {
+      fbf $$1 = $$0.cr();
+      fbf.a $$2 = $$1 == null ? fbf.a.a : $$1.l();
+      return (Predicate<bul>)($$2 == fbf.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bI()) {
+            return false;
+         } else if (!$$0.dV().C || $$3 instanceof cou && ((cou)$$3).c()) {
+            fbf $$4 = $$3.cr();
+            fbf.a $$5 = $$4 == null ? fbf.a.a : $$4.l();
+            if ($$5 == fbf.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == fbf.a.d || $$5 == fbf.a.d) && $$6 ? false : $$2 != fbf.a.c && $$5 != fbf.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int b() {
-      return this.n;
-   }
+   public static Predicate<bul> b(bul $$0) {
+      return $$1 -> {
+         while ($$1.bZ()) {
+            $$1 = $$1.dk();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
 
-   public int a(int $$0) {
-      return $$0 + this.n;
-   }
-
-   public cwf a(cwf $$0) {
-      return this.o > 0 ? $$0.a(this.o) : $$0;
-   }
-
-   public int d() {
-      return this.p;
-   }
-
-   public int b(int $$0) {
-      return this.p + $$0;
-   }
-
-   public String e() {
-      return this.q;
-   }
-
-   public boolean f() {
-      return this.m == buq.a.b || this.m == buq.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.q;
-   }
-
-   public static buq a(String $$0) {
-      buq $$1 = k.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+         return true;
+      };
    }
 }

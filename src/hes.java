@@ -1,68 +1,109 @@
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class hes implements hey {
-   private static final int a = 1200;
-   private static final xl b = xl.c("tutorial.craft_planks.title");
-   private static final xl c = xl.c("tutorial.craft_planks.description");
-   private final hex d;
-   @Nullable
-   private foi e;
-   private int f;
+public class hes {
+   final Map<her<?>, Object> a;
 
-   public hes(hex $$0) {
-      this.d = $$0;
+   hes(Map<her<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hez.f);
-      } else {
-         if (this.f == 1) {
-            ght $$0 = this.d.e().t;
-            if ($$0 != null) {
-               if ($$0.gl().a(axm.b)) {
-                  this.d.a(hez.f);
-                  return;
-               }
+   public static hes.a a() {
+      return new hes.a();
+   }
 
-               if (a($$0, axm.b)) {
-                  this.d.a(hez.f);
-                  return;
-               }
+   public static MapCodec<hes> a(final List<her<?>> $$0) {
+      return new MapCodec<hes>() {
+         public <T> RecordBuilder<T> a(hes $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (her<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(hes $$0x, RecordBuilder<T> $$1, her<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<hes> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<hes.a> $$2 = DataResult.success(new hes.a());
+
+            for (her<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(hes.a::a);
+         }
+
+         private <T, V> DataResult<hes.a> a(DataResult<hes.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, her<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
             }
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new foi(foi.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(her::b).map($$0::createString);
          }
-      }
+      };
+   }
+
+   @Nullable
+   public <T> T a(her<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
+   public String toString() {
+      return this.a.toString();
    }
 
-   @Override
-   public void a(cwf $$0) {
-      if ($$0.a(axm.b)) {
-         this.d.a(hez.f);
-      }
+   public Set<her<?>> b() {
+      return this.a.keySet();
    }
 
-   public static boolean a(ght $$0, axt<cwb> $$1) {
-      for (jq<cwb> $$2 : lz.g.c($$1)) {
-         if ($$0.i().a(awy.b.b($$2.a())) > 0) {
-            return true;
+   public static class a {
+      private final Map<her<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> hes.a a(her<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> hes.a b(her<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
          }
+
+         return this;
       }
 
-      return false;
+      public hes.a a(hes $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public hes a() {
+         return new hes(this.a);
+      }
    }
 }

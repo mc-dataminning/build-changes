@@ -1,10 +1,26 @@
-public class fma {
-   public static fnb a(int $$0, flw.c $$1, boolean $$2) {
-      return fnb.a(xl.c("options.language"), $$1, $$2).a($$0).a(all.b("icon/language"), 15, 15).a();
+public abstract class fma extends fmb {
+   private final flo a;
+   private int b = 16777215;
+
+   public fma(int $$0, int $$1, int $$2, int $$3, xj $$4, flo $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
-   public static fnb b(int $$0, flw.c $$1, boolean $$2) {
-      xl $$3 = $$2 ? xl.c("options.accessibility") : xl.c("accessibility.onboarding.accessibility.button");
-      return fnb.a($$3, $$1, $$2).a($$0).a(all.b("icon/accessibility"), 15, 15).a();
+   @Override
+   protected void a(fqb $$0) {
+   }
+
+   public fma a(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected final flo a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

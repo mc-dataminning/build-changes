@@ -1,178 +1,106 @@
-public class agw {
-   public static final zu<act> a = a("bundle");
-   public static final zu<acs> b = a("bundle_delimiter");
-   public static final zu<aci> c = a("add_entity");
-   public static final zu<acj> d = a("add_experience_orb");
-   public static final zu<ack> e = a("animate");
-   public static final zu<acl> f = a("award_stats");
-   public static final zu<acm> g = a("block_changed_ack");
-   public static final zu<acn> h = a("block_destruction");
-   public static final zu<aco> i = a("block_entity_data");
-   public static final zu<acp> j = a("block_event");
-   public static final zu<acq> k = a("block_update");
-   public static final zu<acr> l = a("boss_event");
-   public static final zu<acu> m = a("change_difficulty");
-   public static final zu<acv> n = a("chunk_batch_finished");
-   public static final zu<acw> o = a("chunk_batch_start");
-   public static final zu<acx> p = a("chunks_biomes");
-   public static final zu<acy> q = a("clear_titles");
-   public static final zu<acz> r = a("command_suggestions");
-   public static final zu<ada> s = a("commands");
-   public static final zu<adb> t = a("container_close");
-   public static final zu<adc> u = a("container_set_content");
-   public static final zu<add> v = a("container_set_data");
-   public static final zu<ade> w = a("container_set_slot");
-   public static final zu<adf> x = a("cooldown");
-   public static final zu<adg> y = a("custom_chat_completions");
-   public static final zu<adh> z = a("damage_event");
-   public static final zu<adi> A = a("debug_sample");
-   public static final zu<adj> B = a("delete_chat");
-   public static final zu<adk> C = a("disguised_chat");
-   public static final zu<adl> D = a("entity_event");
-   public static final zu<adm> E = a("explode");
-   public static final zu<adn> F = a("forget_level_chunk");
-   public static final zu<ado> G = a("game_event");
-   public static final zu<adp> H = a("horse_screen_open");
-   public static final zu<adq> I = a("hurt_animation");
-   public static final zu<adr> J = a("initialize_border");
-   public static final zu<adt> K = a("level_chunk_with_light");
-   public static final zu<adu> L = a("level_event");
-   public static final zu<adv> M = a("level_particles");
-   public static final zu<adw> N = a("light_update");
-   public static final zu<ady> O = a("login");
-   public static final zu<adz> P = a("map_item_data");
-   public static final zu<aea> Q = a("merchant_offers");
-   public static final zu<aeb.a> R = a("move_entity_pos");
-   public static final zu<aeb.b> S = a("move_entity_pos_rot");
-   public static final zu<aec> T = a("move_minecart_along_track");
-   public static final zu<aeb.c> U = a("move_entity_rot");
-   public static final zu<aed> V = a("move_vehicle");
-   public static final zu<aee> W = a("open_book");
-   public static final zu<aef> X = a("open_screen");
-   public static final zu<aeg> Y = a("open_sign_editor");
-   public static final zu<aeh> Z = a("place_ghost_recipe");
-   public static final zu<aei> aa = a("player_abilities");
-   public static final zu<aej> ab = a("player_chat");
-   public static final zu<aek> ac = a("player_combat_end");
-   public static final zu<ael> ad = a("player_combat_enter");
-   public static final zu<aem> ae = a("player_combat_kill");
-   public static final zu<aen> af = a("player_info_remove");
-   public static final zu<aeo> ag = a("player_info_update");
-   public static final zu<aep> ah = a("player_look_at");
-   public static final zu<aeq> ai = a("player_position");
-   public static final zu<aes> aj = a("recipe");
-   public static final zu<aet> ak = a("remove_entities");
-   public static final zu<aeu> al = a("remove_mob_effect");
-   public static final zu<aew> am = a("respawn");
-   public static final zu<aex> an = a("rotate_head");
-   public static final zu<aey> ao = a("section_blocks_update");
-   public static final zu<aez> ap = a("select_advancements_tab");
-   public static final zu<afa> aq = a("server_data");
-   public static final zu<afb> ar = a("set_action_bar_text");
-   public static final zu<afc> as = a("set_border_center");
-   public static final zu<afd> at = a("set_border_lerp_size");
-   public static final zu<afe> au = a("set_border_size");
-   public static final zu<aff> av = a("set_border_warning_delay");
-   public static final zu<afg> aw = a("set_border_warning_distance");
-   public static final zu<afh> ax = a("set_camera");
-   public static final zu<afi> ay = a("set_chunk_cache_center");
-   public static final zu<afj> az = a("set_chunk_cache_radius");
-   public static final zu<afl> aA = a("set_default_spawn_position");
-   public static final zu<afm> aB = a("set_display_objective");
-   public static final zu<afn> aC = a("set_entity_data");
-   public static final zu<afo> aD = a("set_entity_link");
-   public static final zu<afp> aE = a("set_entity_motion");
-   public static final zu<afq> aF = a("set_equipment");
-   public static final zu<afr> aG = a("set_experience");
-   public static final zu<afs> aH = a("set_health");
-   public static final zu<aft> aI = a("set_held_slot");
-   public static final zu<afu> aJ = a("set_objective");
-   public static final zu<afv> aK = a("set_passengers");
-   public static final zu<afx> aL = a("set_player_team");
-   public static final zu<afy> aM = a("set_score");
-   public static final zu<afz> aN = a("set_simulation_distance");
-   public static final zu<aga> aO = a("set_subtitle_text");
-   public static final zu<agb> aP = a("set_time");
-   public static final zu<agc> aQ = a("set_title_text");
-   public static final zu<agd> aR = a("set_titles_animation");
-   public static final zu<age> aS = a("sound_entity");
-   public static final zu<agf> aT = a("sound");
-   public static final zu<agg> aU = a("start_configuration");
-   public static final zu<agh> aV = a("stop_sound");
-   public static final zu<agi> aW = a("system_chat");
-   public static final zu<agj> aX = a("tab_list");
-   public static final zu<agk> aY = a("tag_query");
-   public static final zu<agl> aZ = a("take_item_entity");
-   public static final zu<agm> ba = a("teleport_entity");
-   public static final zu<agp> bb = a("update_advancements");
-   public static final zu<agq> bc = a("update_attributes");
-   public static final zu<agr> bd = a("update_mob_effect");
-   public static final zu<ags> be = a("update_recipes");
-   public static final zu<aer> bf = a("projectile_power");
-   public static final zu<aha> bg = b("accept_teleportation");
-   public static final zu<ahb> bh = b("block_entity_tag_query");
-   public static final zu<aik> bi = b("bundle_item_selected");
-   public static final zu<ahc> bj = b("change_difficulty");
-   public static final zu<ahd> bk = b("chat_ack");
-   public static final zu<ahe> bl = b("chat_command");
-   public static final zu<ahf> bm = b("chat_command_signed");
-   public static final zu<ahg> bn = b("chat");
-   public static final zu<ahh> bo = b("chat_session_update");
-   public static final zu<ahi> bp = b("chunk_batch_received");
-   public static final zu<ahj> bq = b("client_command");
-   public static final zu<ahk> br = b("client_tick_end");
-   public static final zu<ahl> bs = b("command_suggestion");
-   public static final zu<ahm> bt = b("configuration_acknowledged");
-   public static final zu<ahn> bu = b("container_button_click");
-   public static final zu<aho> bv = b("container_click");
-   public static final zu<ahp> bw = b("container_close");
-   public static final zu<ahq> bx = b("container_slot_state_changed");
-   public static final zu<ahr> by = b("debug_sample_subscription");
-   public static final zu<ahs> bz = b("edit_book");
-   public static final zu<aht> bA = b("entity_tag_query");
-   public static final zu<ahu> bB = b("interact");
-   public static final zu<ahv> bC = b("jigsaw_generate");
-   public static final zu<ahw> bD = b("lock_difficulty");
-   public static final zu<ahx.a> bE = b("move_player_pos");
-   public static final zu<ahx.b> bF = b("move_player_pos_rot");
-   public static final zu<ahx.c> bG = b("move_player_rot");
-   public static final zu<ahx.d> bH = b("move_player_status_only");
-   public static final zu<ahy> bI = b("move_vehicle");
-   public static final zu<ahz> bJ = b("paddle_boat");
-   public static final zu<aia> bK = b("pick_item");
-   public static final zu<aib> bL = b("place_recipe");
-   public static final zu<aic> bM = b("player_abilities");
-   public static final zu<aid> bN = b("player_action");
-   public static final zu<aie> bO = b("player_command");
-   public static final zu<aif> bP = b("player_input");
-   public static final zu<aig> bQ = b("recipe_book_change_settings");
-   public static final zu<aih> bR = b("recipe_book_seen_recipe");
-   public static final zu<aii> bS = b("rename_item");
-   public static final zu<aij> bT = b("seen_advancements");
-   public static final zu<ail> bU = b("select_trade");
-   public static final zu<aim> bV = b("set_beacon");
-   public static final zu<ain> bW = b("set_carried_item");
-   public static final zu<aio> bX = b("set_command_block");
-   public static final zu<aip> bY = b("set_command_minecart");
-   public static final zu<aiq> bZ = b("set_creative_mode_slot");
-   public static final zu<air> ca = b("set_jigsaw_block");
-   public static final zu<ais> cb = b("set_structure_block");
-   public static final zu<ait> cc = b("sign_update");
-   public static final zu<aiu> cd = b("swing");
-   public static final zu<aiv> ce = b("teleport_to_entity");
-   public static final zu<aiw> cf = b("use_item_on");
-   public static final zu<aix> cg = b("use_item");
-   public static final zu<aev> ch = a("reset_score");
-   public static final zu<agn> ci = a("ticking_state");
-   public static final zu<ago> cj = a("ticking_step");
-   public static final zu<afk> ck = a("set_cursor_item");
-   public static final zu<afw> cl = a("set_player_inventory");
-
-   private static <T extends zs<ach>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, all.b($$0));
+public interface agw extends aaj, akb {
+   @Override
+   default we b() {
+      return we.b;
    }
 
-   private static <T extends zs<agy>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, all.b($$0));
-   }
+   void a(ais var1);
+
+   void a(ahe var1);
+
+   void a(ahc var1);
+
+   void a(ahd var1);
+
+   void a(ahb var1);
+
+   void a(ahh var1);
+
+   void a(ahl var1);
+
+   void a(ahm var1);
+
+   void a(ahz var1);
+
+   void a(ahn var1);
+
+   void a(ahs var1);
+
+   void a(ahv var1);
+
+   void a(aia var1);
+
+   void a(aib var1);
+
+   void a(aic var1);
+
+   void a(aid var1);
+
+   void a(ail var1);
+
+   void a(aio var1);
+
+   void a(air var1);
+
+   void a(aiu var1);
+
+   void a(aiv var1);
+
+   void a(ait var1);
+
+   void a(ahx var1);
+
+   void a(ahw var1);
+
+   void a(agy var1);
+
+   void a(aif var1);
+
+   void a(aii var1);
+
+   void a(aie var1);
+
+   void a(aih var1);
+
+   void a(ahj var1);
+
+   void a(aim var1);
+
+   void a(ain var1);
+
+   void a(ahy var1);
+
+   void a(aig var1);
+
+   void a(aik var1);
+
+   void a(aiq var1);
+
+   void a(aij var1);
+
+   void a(ahq var1);
+
+   void a(ahr var1);
+
+   void a(aho var1);
+
+   void a(agz var1);
+
+   void a(aip var1);
+
+   void a(aht var1);
+
+   void a(aha var1);
+
+   void a(ahu var1);
+
+   void a(ahf var1);
+
+   void a(ahk var1);
+
+   void a(ahg var1);
+
+   void a(ahp var1);
+
+   void a(ahi var1);
 }

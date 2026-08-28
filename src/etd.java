@@ -1,31 +1,196 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public record etd(all d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jq<etd>> b = lz.ar.r();
-   public static final zj<ww, jq<etd>> c = zh.b(ma.aC);
+public class etd {
+   public static final zh<ByteBuf, etd> a = zf.a(etd::a, etd::i);
+   private static final etd[] b = ae.a(() -> {
+      etd[] $$0 = new etd[48];
+      a(new etd(jm.b, jm.c, etd.a.a), $$0);
+      return $$0;
+   });
+   private final jm c;
+   private final jm d;
+   private final jm e;
+   private final etd.a f;
+   private final int g;
+   private final List<jm> h;
+   private final List<jm> i;
+   private final List<jm> j;
+   private final Map<jm, etd> k = new EnumMap<>(jm.class);
+   private final Map<jm, etd> l = new EnumMap<>(jm.class);
+   private final Map<etd.a, etd> m = new EnumMap<>(etd.a.class);
 
-   public boolean a() {
-      return this.f != -1;
+   private etd(jm $$0, jm $$1, etd.a $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = b($$0, $$1, $$2);
+      kl $$3 = $$1.q().d($$0.q());
+      jm $$4 = jm.a($$3, null);
+      Objects.requireNonNull($$4);
+      if (this.f == etd.a.b) {
+         this.e = $$4;
+      } else {
+         this.e = $$4.g();
+      }
+
+      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
+      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
+      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
    }
 
-   public all b() {
+   public static etd a(jm $$0, jm $$1, etd.a $$2) {
+      return b[b($$0, $$1, $$2)];
+   }
+
+   public etd a(jm $$0) {
+      return this.l.get($$0);
+   }
+
+   public etd b(jm $$0) {
+      return this.k.get($$0);
+   }
+
+   public etd c(jm $$0) {
+      return $$0.o() == this.c.o() ? this : this.k.get($$0);
+   }
+
+   public etd d(jm $$0) {
+      etd $$1 = this.b($$0);
+      return this.d == $$1.e ? $$1.a() : $$1;
+   }
+
+   public etd a(etd.a $$0) {
+      return this.m.get($$0);
+   }
+
+   public etd a() {
+      return this.a(this.f.a());
+   }
+
+   public jm b() {
       return this.d;
    }
 
-   public boolean c() {
+   public jm c() {
+      return this.c;
+   }
+
+   public jm d() {
       return this.e;
    }
 
-   public int d() {
+   public etd.a e() {
       return this.f;
    }
 
-   public boolean e() {
+   public List<jm> f() {
+      return this.h;
+   }
+
+   public List<jm> g() {
+      return this.i;
+   }
+
+   public List<jm> h() {
+      return this.j;
+   }
+
+   @Override
+   public String toString() {
+      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   }
+
+   public int i() {
       return this.g;
    }
 
-   public boolean f() {
-      return this.h;
+   public static etd a(int $$0) {
+      return b[$$0];
+   }
+
+   public static etd a(azu $$0) {
+      return ae.a(b, $$0);
+   }
+
+   private static etd a(etd $$0, etd[] $$1) {
+      if ($$1[$$0.i()] != null) {
+         return $$1[$$0.i()];
+      } else {
+         $$1[$$0.i()] = $$0;
+
+         for (etd.a $$2 : etd.a.values()) {
+            $$0.m.put($$2, a(new etd($$0.c, $$0.d, $$2), $$1));
+         }
+
+         for (jm $$3 : jm.values()) {
+            jm $$4 = $$0.c;
+            if ($$3 == $$0.c) {
+               $$4 = $$0.d.g();
+            }
+
+            if ($$3 == $$0.c.g()) {
+               $$4 = $$0.d;
+            }
+
+            $$0.k.put($$3, a(new etd($$4, $$3, $$0.f), $$1));
+         }
+
+         for (jm $$5 : jm.values()) {
+            jm $$6 = $$0.d;
+            if ($$5 == $$0.d) {
+               $$6 = $$0.c.g();
+            }
+
+            if ($$5 == $$0.d.g()) {
+               $$6 = $$0.c;
+            }
+
+            $$0.l.put($$5, a(new etd($$5, $$6, $$0.f), $$1));
+         }
+
+         return $$0;
+      }
+   }
+
+   @VisibleForTesting
+   protected static int b(jm $$0, jm $$1, etd.a $$2) {
+      if ($$0.o() == $$1.o()) {
+         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
+      } else {
+         int $$3;
+         if ($$0.o() == jm.a.b) {
+            $$3 = $$1.o() == jm.a.a ? 1 : 0;
+         } else {
+            $$3 = $$1.o() == jm.a.b ? 1 : 0;
+         }
+
+         int $$5 = $$3 << 1 | $$1.f().ordinal();
+         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
+      }
+   }
+
+   public static enum a {
+      a("left"),
+      b("right");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public etd.a a() {
+         return this == a ? b : a;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
    }
 }

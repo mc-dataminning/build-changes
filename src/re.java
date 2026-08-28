@@ -1,24 +1,42 @@
-import java.util.OptionalLong;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class re {
-   public static void a(rb<dzj> $$0) {
-      $$0.a(
-         dzh.a,
-         new dzj(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, axd.bc, dzh.e, 0.0F, new dzj.a(false, true, brs.a(0, 7), 0))
-      );
-      $$0.a(
-         dzh.b,
-         new dzj(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, axd.bd, dzh.f, 0.1F, new dzj.a(true, false, brj.a(7), 15))
-      );
-      $$0.a(
-         dzh.c,
-         new dzj(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, axd.be, dzh.g, 0.0F, new dzj.a(false, true, brs.a(0, 7), 0)
+   public static final ali<ens> a = rg.a("pillager_outpost/base_plates");
+
+   public static void a(qz<ens> $$0) {
+      jr<eqi> $$1 = $$0.a(ma.aT);
+      jq<eqi> $$2 = $$1.b(rh.q);
+      jr<ens> $$3 = $$0.a(ma.aV);
+      jq<ens> $$4 = $$3.b(rg.a);
+      $$0.a(a, new ens($$4, ImmutableList.of(Pair.of(enq.a("pillager_outpost/base_plate"), 1)), ens.a.b));
+      rg.a(
+         $$0,
+         "pillager_outpost/towers",
+         new ens(
+            $$4,
+            ImmutableList.of(Pair.of(enq.b(ImmutableList.of(enq.a("pillager_outpost/watchtower"), enq.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            ens.a.b
          )
       );
-      $$0.a(
-         dzh.d,
-         new dzj(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, axd.bc, dzh.e, 0.0F, new dzj.a(false, true, brs.a(0, 7), 0))
+      rg.a($$0, "pillager_outpost/feature_plates", new ens($$4, ImmutableList.of(Pair.of(enq.a("pillager_outpost/feature_plate"), 1)), ens.a.a));
+      rg.a(
+         $$0,
+         "pillager_outpost/features",
+         new ens(
+            $$4,
+            ImmutableList.of(
+               Pair.of(enq.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(enq.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(enq.h(), 6)
+            ),
+            ens.a.b
+         )
       );
    }
 }

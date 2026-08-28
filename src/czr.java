@@ -1,31 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface czr {
-   Codec<czr> d = lz.ay.q().dispatch(czr::a, czr.a::a);
-   zj<ww, czr> e = zh.a(ma.aE).b(czr::a, czr.a::b);
+public record czr(float c, Optional<alj> d) {
+   public static final Codec<czr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayv.o.fieldOf("seconds").forGetter(czr::b), alj.a.optionalFieldOf("cooldown_group").forGetter(czr::c)).apply($$0, czr::new)
+   );
+   public static final zh<wu, czr> b = zh.a(zf.k, czr::b, alj.b.a(zf::a), czr::c, czr::new);
 
-   czr.a<? extends czr> a();
+   public czr(float $$0) {
+      this($$0, Optional.empty());
+   }
 
-   boolean a(dff var1, cwf var2, bve var3);
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
 
-   public static record a<T extends czr>(MapCodec<T> f, zj<ww, T> g) {
-      public static final czr.a<czp> a = a("apply_effects", czp.a, czp.b);
-      public static final czr.a<czt> b = a("remove_effects", czt.a, czt.b);
-      public static final czr.a<czq> c = a("clear_all_effects", czq.b, czq.c);
-      public static final czr.a<czu> d = a("teleport_randomly", czu.a, czu.b);
-      public static final czr.a<czs> e = a("play_sound", czs.a, czs.b);
-
-      private static <T extends czr> czr.a<T> a(String $$0, MapCodec<T> $$1, zj<ww, T> $$2) {
-         return kd.a(lz.ay, $$0, new czr.a<>($$1, $$2));
+   public void a(cwm $$0, bvh $$1) {
+      if ($$1 instanceof cou $$2) {
+         $$2.gC().a($$0, this.a());
       }
+   }
 
-      public MapCodec<T> a() {
-         return this.f;
-      }
+   public float b() {
+      return this.c;
+   }
 
-      public zj<ww, T> b() {
-         return this.g;
-      }
+   public Optional<alj> c() {
+      return this.d;
    }
 }

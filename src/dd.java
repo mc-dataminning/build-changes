@@ -8,7 +8,7 @@ public class dd extends dy<dd.a> {
       return dd.a.a;
    }
 
-   public void a(arr $$0, ezr $$1, int $$2) {
+   public void a(arq $$0, ezy $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,8 +26,8 @@ public class dd extends dy<dd.a> {
          return ao.v.a(new dd.a(Optional.empty(), Optional.of($$0), dj.d.c));
       }
 
-      public boolean a(arr $$0, ezr $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dD(), $$0.dF(), $$0.dJ()) ? false : this.d.d($$2);
+      public boolean a(arq $$0, ezy $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
       }
 
       @Override

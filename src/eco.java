@@ -1,25 +1,87 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-class eco extends ecs {
-   public static final MapCodec<eco> a = a(eco::new);
+public class eco {
+   public static final MapCodec<eco> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(eco::c),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(eco::d),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(eco::e),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(eco::new))
+   );
+   public static final eco b = new eco((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public eco(List<ecq> $$0) {
-      super($$0);
+   public eco(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public boolean a(dgd $$0, jh $$1) {
-      for (ecq $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
+   public static eco a() {
+      return new eco(g(), true, false);
+   }
+
+   public static eco b() {
+      return new eco(g(), false, false);
+   }
+
+   private eco(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f.isPresent();
+   }
+
+   public eco a(boolean $$0) {
+      return new eco(this.c, this.d, $$0, this.f);
+   }
+
+   public eco b(boolean $$0) {
+      return new eco(this.c, $$0, this.e, this.f);
+   }
+
+   public eco a(OptionalLong $$0) {
+      return new eco($$0.orElse(g()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
       }
-
-      return true;
    }
 
-   @Override
-   public ecr<?> a() {
-      return ecr.j;
+   public static long g() {
+      return azu.a().g();
    }
 }

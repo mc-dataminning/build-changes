@@ -1,6 +1,8 @@
-import java.util.stream.Stream;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface ue {
-   Stream<uc> findTestFunctions();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ue {
 }

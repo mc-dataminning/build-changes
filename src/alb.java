@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface alb<T, V> {
+   V get(ali<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface alb {
+   static <T, V> alb<T, V> fixed(V $$0) {
+      return $$1 -> $$0;
+   }
 }

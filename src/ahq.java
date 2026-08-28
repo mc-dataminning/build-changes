@@ -1,30 +1,30 @@
-public record ahq(int b, int c, boolean d) implements zs<agy> {
-   public static final zj<wi, ahq> a = zs.a(ahq::a, ahq::new);
+import java.util.List;
+import java.util.Optional;
 
-   private ahq(wi $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
-   }
+public record ahq(int b, List<String> c, Optional<String> d) implements zq<agw> {
+   public static final zh<wg, ahq> a = zh.a(zf.h, ahq::b, zf.b(1024).a(zf.c(100)), ahq::e, zf.b(32).a(zf::a), ahq::f, ahq::new);
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+   public ahq(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zu<ahq> a() {
-      return agw.bx;
+   public zs<ahq> a() {
+      return agu.bz;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public List<String> e() {
       return this.c;
    }
 
-   public boolean f() {
+   public Optional<String> f() {
       return this.d;
    }
 }

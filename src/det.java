@@ -1,46 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public enum det implements deh {
-   a;
+public class det {
+   private final ezy a;
+   private final ezy b;
+   private final Predicate<dvv> c;
 
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return 1.0F;
+   public det(ezy $$0, ezy $$1, Predicate<dvv> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public erd z_() {
-      return erd.c;
+   public ezy a() {
+      return this.b;
    }
 
-   @Override
-   public int a(jh $$0, dep $$1) {
-      return -1;
+   public ezy b() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public dsr c_(jh $$0) {
-      return null;
-   }
-
-   @Override
-   public dvo a_(jh $$0) {
-      return dil.a.m();
-   }
-
-   @Override
-   public ero b_(jh $$0) {
-      return erp.a.g();
-   }
-
-   @Override
-   public int J_() {
-      return 0;
-   }
-
-   @Override
-   public int I_() {
-      return 0;
+   public Predicate<dvv> c() {
+      return this.c;
    }
 }

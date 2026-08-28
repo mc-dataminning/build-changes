@@ -1,82 +1,75 @@
-public class gtd<S extends gvt, M extends fzn<S>, A extends fzn<S>> extends gtn<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final gsy e;
+import java.util.Map;
 
-   public gtd(gqw<S, M> $$0, A $$1, A $$2, gsy $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
+public class gtd<S extends gwm, M extends fzj<S> & fzs> extends gty<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gtd.a c;
+   private final Map<dps.a, gbg> d;
+   private final gqi e;
+
+   public gtd(grh<S, M> $$0, gch $$1, gqi $$2) {
+      this($$0, $$1, gtd.a.a, $$2);
    }
 
-   public gtd(gqw<S, M> $$0, A $$1, A $$2, A $$3, A $$4, gsy $$5) {
+   public gtd(grh<S, M> $$0, gch $$1, gtd.a $$2, gqi $$3) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.c = $$2;
+      this.d = gmg.a($$1);
+      this.e = $$3;
    }
 
-   public static boolean a(cwf $$0, buq $$1) {
-      ddr $$2 = $$0.a(ku.D);
-      return $$2 != null && a($$2, $$1);
-   }
+   public void a(fer $$0, gjg $$1, int $$2, S $$3, float $$4, float $$5) {
+      cwm $$6 = $$3.ao;
+      hbg $$7 = $$3.an;
+      if (!$$6.f() && $$7 != null) {
+         label17: {
+            cwi $$8 = $$6.h();
+            $$0.a();
+            $$0.b(this.c.c(), 1.0F, this.c.c());
+            M $$9 = this.d();
+            $$9.e().a($$0);
+            $$9.b().a($$0);
+            if ($$8 instanceof cus $$10 && $$10.d() instanceof dhm $$11) {
+               $$0.a(0.0F, this.c.b(), 0.0F);
+               $$0.b(1.1875F, -1.1875F, -1.1875F);
+               czl $$12 = $$6.a(ku.ag);
+               $$0.a(-0.5, 0.0, -0.5);
+               dps.a $$13 = $$11.b();
+               gbg $$14 = this.d.get($$13);
+               gjq $$15 = gmg.a($$13, $$12);
+               gmg.a(null, 180.0F, $$3.Z, $$0, $$1, $$2, $$14, $$15);
+               break label17;
+            }
 
-   private static boolean a(ddr $$0, buq $$1) {
-      return $$0.c().isPresent() && $$0.a() == $$1;
-   }
+            if (!gto.a($$6, but.f)) {
+               a($$0, this.c);
+               this.e.a($$6, cwk.f, false, $$0, $$1, $$2, gyv.d, $$7);
+            }
+         }
 
-   public void a(fek $$0, gix $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3.Q, buq.e, $$2, this.a($$3, buq.e));
-      this.a($$0, $$1, $$3.R, buq.d, $$2, this.a($$3, buq.d));
-      this.a($$0, $$1, $$3.S, buq.c, $$2, this.a($$3, buq.c));
-      this.a($$0, $$1, $$3.ao, buq.f, $$2, this.a($$3, buq.f));
-   }
-
-   private void a(fek $$0, gix $$1, cwf $$2, buq $$3, int $$4, A $$5) {
-      ddr $$6 = $$2.a(ku.D);
-      if ($$6 != null && a($$6, $$3)) {
-         this.d().a($$5);
-         this.a($$5, $$3);
-         all $$7 = $$6.c().orElseThrow();
-         ddp.d $$8 = this.a($$3) ? ddp.d.b : ddp.d.a;
-         this.e.a($$8, $$7, $$5, $$2, gjh::a, $$0, $$1, $$4);
+         $$0.b();
       }
    }
 
-   protected void a(A $$0, buq $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
-      }
+   public static void a(fer $$0, gtd.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
    }
 
-   private A a(S $$0, buq $$1) {
-      if (this.a($$1)) {
-         return $$0.ae ? this.c : this.a;
-      } else {
-         return $$0.ae ? this.d : this.b;
-      }
-   }
+   public static record a(float b, float c, float d) {
+      public static final gtd.a a = new gtd.a(0.0F, 0.0F, 1.0F);
 
-   private boolean a(buq $$0) {
-      return $$0 == buq.d;
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
    }
 }

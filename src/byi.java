@@ -1,37 +1,27 @@
-public abstract class byi<E extends bve> implements bwy<E>, can<E> {
-   private bwx.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public byi() {
-      this.a = bwx.a.a;
-   }
+public class byi {
+   private static final int a = 1;
 
-   @Override
-   public final bwx.a a() {
-      return this.a;
-   }
+   public static bxb<bvh> a(float $$0) {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$1 -> $$1.group($$1.a(cel.n), $$1.c(cel.m), $$1.b(cel.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bZ()) {
+                        return false;
+                     } else {
+                        bul $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bxl($$8, true));
+                           $$3.a(new ceo(new bxl($$8, false), $$0, 1));
+                        }
 
-   @Override
-   public final boolean e(arq $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bwx.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(arq $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(arq $$0, E $$1, long $$2) {
-      this.a = bwx.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

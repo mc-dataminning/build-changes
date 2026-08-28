@@ -1,13 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cda extends ccz {
-   public cda(bvm $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class cda extends ccf {
+   private final bvj a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cda(bvj $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
    }
 
-   @Nullable
    @Override
-   protected ezr h() {
-      return bwz.a(this.b, 10, 7);
+   public boolean b() {
+      return this.a.dY().i() < 0.02F;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.H().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

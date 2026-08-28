@@ -1,100 +1,60 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cxl extends cwb {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final xl c = xl.c(ae.a("item", all.b("smithing_template.ingredients"))).a(a);
-   private static final xl d = xl.c(ae.a("item", all.b("smithing_template.applies_to"))).a(a);
-   private static final xl l = xl.c(ae.a("item", all.b("smithing_template"))).a(a);
-   private static final xl m = xl.c(ae.a("item", all.b("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final xl n = xl.c(ae.a("item", all.b("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final xl o = xl.c(ae.a("item", all.b("smithing_template.armor_trim.base_slot_description")));
-   private static final xl p = xl.c(ae.a("item", all.b("smithing_template.armor_trim.additions_slot_description")));
-   private static final xl q = xl.c(ae.a("item", all.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final xl r = xl.c(ae.a("item", all.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final xl s = xl.c(ae.a("item", all.b("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final xl t = xl.c(ae.a("item", all.b("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final all u = all.b("item/empty_armor_slot_helmet");
-   private static final all v = all.b("item/empty_armor_slot_chestplate");
-   private static final all w = all.b("item/empty_armor_slot_leggings");
-   private static final all x = all.b("item/empty_armor_slot_boots");
-   private static final all y = all.b("item/empty_slot_hoe");
-   private static final all z = all.b("item/empty_slot_axe");
-   private static final all A = all.b("item/empty_slot_sword");
-   private static final all B = all.b("item/empty_slot_shovel");
-   private static final all C = all.b("item/empty_slot_pickaxe");
-   private static final all D = all.b("item/empty_slot_ingot");
-   private static final all E = all.b("item/empty_slot_redstone_dust");
-   private static final all F = all.b("item/empty_slot_quartz");
-   private static final all G = all.b("item/empty_slot_emerald");
-   private static final all H = all.b("item/empty_slot_diamond");
-   private static final all I = all.b("item/empty_slot_lapis_lazuli");
-   private static final all J = all.b("item/empty_slot_amethyst_shard");
-   private final xl K;
-   private final xl L;
-   private final xl M;
-   private final xl N;
-   private final List<all> O;
-   private final List<all> P;
-
-   public cxl(xl $$0, xl $$1, xl $$2, xl $$3, List<all> $$4, List<all> $$5, cwb.a $$6) {
-      super($$6);
-      this.K = $$0;
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
-      this.O = $$4;
-      this.P = $$5;
+public class cxl extends cus {
+   public cxl(diq $$0, cwi.a $$1) {
+      super($$0, $$1);
    }
 
-   public static cxl a(cwb.a $$0) {
-      return new cxl(m, n, o, p, q(), r(), $$0);
-   }
+   @Nullable
+   @Override
+   public dad b(dad $$0) {
+      jh $$1 = $$0.a();
+      dfm $$2 = $$0.q();
+      dvv $$3 = $$2.a_($$1);
+      diq $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dpf.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jm $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jm.b ? $$0.g() : jm.b;
+         }
 
-   public static cxl b(cwb.a $$0) {
-      return new cxl(q, r, s, t, s(), t(), $$0);
-   }
+         int $$7 = 0;
+         jh.a $$8 = $$1.k().c($$5);
 
-   private static List<all> q() {
-      return List.of(u, v, w, x);
-   }
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cou $$9 = $$0.o();
+               int $$10 = $$2.al();
+               if ($$9 instanceof arq && $$8.v() > $$10) {
+                  ((arq)$$9).b(xj.a("build.tooHigh", $$10).a(n.m), true);
+               }
+               break;
+            }
 
-   private static List<all> r() {
-      return List.of(D, E, I, F, H, G, J);
-   }
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return dad.a($$0, $$8, $$5);
+               }
+               break;
+            }
 
-   private static List<all> s() {
-      return List.of(u, A, v, C, w, z, x, y, B);
-   }
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
 
-   private static List<all> t() {
-      return List.of(D);
+         return null;
+      }
    }
 
    @Override
-   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(l);
-      $$2.add(xk.a);
-      $$2.add(d);
-      $$2.add(xk.a().b(this.K));
-      $$2.add(c);
-      $$2.add(xk.a().b(this.L));
-   }
-
-   public xl b() {
-      return this.M;
-   }
-
-   public xl c() {
-      return this.N;
-   }
-
-   public List<all> d() {
-      return this.O;
-   }
-
-   public List<all> p() {
-      return this.P;
+   protected boolean c() {
+      return false;
    }
 }

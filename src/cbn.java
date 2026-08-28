@@ -1,62 +1,64 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbn extends ccc {
-   private final bvm a;
+public class cbn extends ccf {
+   private final cib a;
+   @Nullable
+   private cou b;
+   private final arp c;
+   private final float d;
+   private int e;
+   private final cfy f;
 
-   public cbn(bvm $$0) {
+   public cbn(cib $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ccc.a.a, ccc.a.b));
+      this.c = a($$0);
+      this.d = $$1;
+      this.f = cfy.b().a((double)$$1);
+      this.a(EnumSet.of(ccf.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.cv() < 140;
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
+      if (!this.b.bL()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void d() {
-      this.h();
+      this.a.A(true);
+      this.e = this.a(40 + this.a.dY().a(40));
    }
 
-   private void h() {
-      Iterable<jh> $$0 = jh.b(
-         azn.a(this.a.dD() - 1.0), this.a.dE(), azn.a(this.a.dJ() - 1.0), azn.a(this.a.dD() + 1.0), azn.a(this.a.dF() + 8.0), azn.a(this.a.dJ() + 1.0)
-      );
-      jh $$1 = null;
-
-      for (jh $$2 : $$0) {
-         if (this.a(this.a.dY(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = jh.a(this.a.dD(), this.a.dF() + 8.0, this.a.dJ());
-      }
-
-      this.a.P().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      this.a.A(false);
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new ezr((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
-      this.a.a(bvi.a, this.a.dB());
+      this.a.H().a(this.b.dA(), this.b.dE(), this.b.dG(), 10.0F, (float)this.a.Z());
+      this.e--;
    }
 
-   private boolean a(dfi $$0, jh $$1) {
-      dvo $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dil.nd)) && $$2.a(esd.a);
+   private boolean a(cou $$0) {
+      for (bsj $$1 : bsj.values()) {
+         cwm $$2 = $$0.b($$1);
+         if ($$2.a(cwq.rQ) || this.a.j($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

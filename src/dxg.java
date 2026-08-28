@@ -1,5 +1,21 @@
-public interface dxg {
-   dvo a(int var1);
+public enum dxg implements bai {
+   a("none"),
+   b("low"),
+   c("tall");
 
-   void a(int var1, dvo var2);
+   private final String d;
+
+   private dxg(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

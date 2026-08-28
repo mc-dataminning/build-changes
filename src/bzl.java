@@ -1,24 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzl {
-   public static bwy<bve> a(Function<bve, Optional<byl>> $$0, Predicate<bve> $$1, int $$2, int $$3, float $$4) {
-      return cak.a(
-         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$5 -> $$5.group($$5.a(cei.n), $$5.a(cei.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<byl> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        byl $$11 = $$10.get();
-                        if ($$8.dw().a((ka)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           byl $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cel($$12, $$4, $$2));
-                           return true;
-                        }
+   private static final float a = 0.3F;
+
+   public static byl<bvh> a() {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.a(cel.m), $$0.a(cel.n), $$0.b(cel.e), $$0.b(cel.h), $$0.c(cel.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jp $$9 = $$0.b($$3);
+                     cen $$10 = $$0.b($$4);
+                     if ($$6.G_().a(100) == 0 && $$6.ag() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bus.bz.equals($$0xxx.aq()))) {
+                        $$10.a($$1xx -> bus.bz.equals($$1xx.aq()) && $$1xx.g((bul)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bxl($$3xx, true));
+                           $$1.a(new ceo(new bxl($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
                      } else {
                         return false;
                      }

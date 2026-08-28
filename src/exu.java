@@ -1,47 +1,36 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record exu(Optional<bw> b, eug.b c) implements exr {
-   public static final MapCodec<exu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(exu::c), eug.b.e.fieldOf("entity").forGetter(exu::d)).apply($$0, exu::new)
-   );
+public class exu implements exy {
+   private static final exu b = new exu();
+   public static final MapCodec<exu> a = MapCodec.unit(b);
 
-   @Override
-   public exs b() {
-      return ext.f;
+   private exu() {
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return ImmutableSet.of(exc.f, this.c.a());
+   public exz b() {
+      return eya.l;
    }
 
-   public boolean a(eug $$0) {
-      bui $$1 = $$0.c(this.c.a());
-      ezr $$2 = $$0.c(exc.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public Set<exg<?>> a() {
+      return ImmutableSet.of(exj.j);
    }
 
-   public static exr.a a(eug.b $$0) {
-      return a($$0, bw.a.a());
+   public boolean a(eun $$0) {
+      Float $$1 = $$0.c(exj.j);
+      if ($$1 != null) {
+         azu $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public static exr.a a(eug.b $$0, bw.a $$1) {
-      return () -> new exu(Optional.of($$1.b()), $$0);
-   }
-
-   public static exr.a a(eug.b $$0, bw $$1) {
-      return () -> new exu(Optional.of($$1), $$0);
-   }
-
-   public Optional<bw> c() {
-      return this.b;
-   }
-
-   public eug.b d() {
-      return this.c;
+   public static exy.a c() {
+      return () -> b;
    }
 }

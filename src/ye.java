@@ -1,71 +1,36 @@
 import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record ye(String b, Instant c, long d, xs e) {
-   public static final MapCodec<ye> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(ye::a),
-               ayw.q.fieldOf("time_stamp").forGetter(ye::b),
-               Codec.LONG.fieldOf("salt").forGetter(ye::c),
-               xs.a.optionalFieldOf("last_seen", xs.b).forGetter(ye::d)
-            )
+public record ye(int b, UUID c, UUID d) {
+   public static final Codec<ye> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayv.l.fieldOf("index").forGetter(ye::b), kk.a.fieldOf("sender").forGetter(ye::c), kk.a.fieldOf("session_id").forGetter(ye::d))
             .apply($$0, ye::new)
    );
 
-   public static ye a(String $$0) {
-      return new ye($$0, Instant.now(), 0L, xs.b);
+   public static ye a(UUID $$0) {
+      return a($$0, ae.e);
    }
 
-   public void a(azz.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public static ye a(UUID $$0, UUID $$1) {
+      return new ye(0, $$0, $$1);
    }
 
-   public ye.a a(xy $$0) {
-      return new ye.a(this.b, this.c, this.d, this.e.a($$0));
+   public void a(azy.a $$0) throws SignatureException {
+      $$0.update(kk.b(this.c));
+      $$0.update(kk.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
    }
 
-   public String a() {
-      return this.b;
+   public boolean a(ye $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
    }
 
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public xs d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, xs.a d) {
-      public a(wi $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new xs.a($$0));
-      }
-
-      public void a(wi $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
-      }
-
-      public Optional<ye> a(xy $$0) {
-         return this.d.a($$0).map($$0x -> new ye(this.a, this.b, this.c, $$0x));
-      }
+   @Nullable
+   public ye a() {
+      return this.b == Integer.MAX_VALUE ? null : new ye(this.b + 1, this.c, this.d);
    }
 }

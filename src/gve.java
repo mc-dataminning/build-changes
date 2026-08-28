@@ -1,8 +1,10 @@
-public class gve extends gwb {
+public class gve extends gwm {
+   public boolean a;
    public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+   public float c;
+   public final bud d = new bud();
+   public final bud e = new bud();
+   public final bud f = new bud();
+   public final bud g = new bud();
+   public final bud h = new bud();
 }

@@ -1,48 +1,67 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cdj extends ccc {
-   private final clh a;
-   @Nullable
-   private bve b;
+public class cdj extends ccf {
+   private final cjc a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public cdj(clh $$0) {
+   public cdj(cjc $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ccc.a.a));
+      this.b = $$1;
+      this.a(EnumSet.of(ccf.a.a));
    }
 
    @Override
    public boolean b() {
-      bve $$0 = this.a.m();
-      return this.a.y() > 0 || $$0 != null && this.a.g((bui)$$0) < 9.0;
+      if (!this.a.gD() && this.a.ca()) {
+         ezy $$0 = cgc.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      this.a.P().o();
-      this.b = this.a.m();
+      this.a.L().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+   public boolean c() {
+      return !this.a.gD() && !this.a.L().m() && this.a.ca();
    }
 
    @Override
    public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bui)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.Q().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      if (!this.a.gD() && this.a.dY().a(this.a(50)) == 0) {
+         bul $$0 = this.a.da();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cou $$1) {
+            int $$2 = this.a.gJ();
+            int $$3 = this.a.gP();
+            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
+               this.a.g($$1);
+               return;
+            }
+
+            this.a.u(5);
+         }
+
+         this.a.bP();
+         this.a.gT();
+         this.a.dV().a(this.a, (byte)6);
       }
    }
 }

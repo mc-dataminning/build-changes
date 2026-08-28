@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehc implements egt {
+public class ehc implements eha {
    public static final Codec<ehc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+               ejb.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               ejb.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, ehc::new)
    );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+   public final ejb b;
+   public final ejb c;
+   public final int d;
 
-   public ehc(float $$0, float $$1, float $$2, float $$3) {
+   public ehc(ejb $$0, ejb $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 }

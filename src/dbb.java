@@ -1,130 +1,80 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dbb implements daj {
-   final dbc a;
-   final cwf b;
-   final String c;
-   final dah d;
-   final boolean e;
-   @Nullable
-   private das f;
+public class dbb {
+   private final dbb.a[] a;
+   private WeakReference<dbe> b = new WeakReference<>(null);
 
-   public dbb(String $$0, dah $$1, dbc $$2, cwf $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public dbb(int $$0) {
+      this.a = new dbb.a[$$0];
    }
 
-   public dbb(String $$0, dah $$1, dbc $$2, cwf $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public Optional<dbc<daq>> a(dfm $$0, dap $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            dbb.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public day<?> aq_() {
-      return day.a;
+   private void a(dfm $$0) {
+      dbe $$1 = $$0.s();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private Optional<dbc<daq>> a(dap $$0, dfm $$1) {
+      Optional<dbc<daq>> $$2 = $$1.s().a(dbg.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
    }
 
-   @Override
-   public dah d() {
-      return this.d;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         dbb.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public cwf a(js.a $$0) {
-      return this.b;
-   }
+   private void a(dap $$0, @Nullable dbc<daq> $$1) {
+      jz<cwm> $$2 = jz.a($$0.a(), cwm.k);
 
-   @VisibleForTesting
-   public List<Optional<dap>> i() {
-      return this.a.c();
-   }
-
-   @Override
-   public das a() {
-      if (this.f == null) {
-         this.f = das.a(this.a.c());
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      return this.f;
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new dbb.a($$2, $$0.f(), $$0.g(), $$1);
    }
 
-   @Override
-   public boolean h() {
-      return this.e;
-   }
+   static record a(jz<cwm> a, int b, int c, @Nullable dbc<daq> d) {
+      public boolean a(dap $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cwm.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(dai $$0, dff $$1) {
-      return this.a.a($$0);
-   }
-
-   public cwf a(dai $$0, js.a $$1) {
-      return this.a($$1).v();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   public static class a implements day<dbb> {
-      public static final MapCodec<dbb> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dah.e.fieldOf("category").orElse(dah.d).forGetter($$0x -> $$0x.d),
-                  dbc.b.forGetter($$0x -> $$0x.a),
-                  cwf.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, dbb::new)
-      );
-      public static final zj<ww, dbb> x = zj.a(dbb.a::a, dbb.a::a);
-
-      @Override
-      public MapCodec<dbb> a() {
-         return w;
-      }
-
-      @Override
-      public zj<ww, dbb> b() {
-         return x;
-      }
-
-      private static dbb a(ww $$0) {
-         String $$1 = $$0.p();
-         dah $$2 = $$0.b(dah.class);
-         dbc $$3 = dbc.c.decode($$0);
-         cwf $$4 = cwf.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dbb($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(ww $$0, dbb $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         dbc.c.encode($$0, $$1.a);
-         cwf.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

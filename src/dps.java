@@ -1,124 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dps extends dij {
-   public static final MapCodec<dps> a = b(dps::new);
-   public static final int b = 8;
-   public static final dwn c = dwe.aF;
-   protected static final fal[] d = new fal[]{
-      fai.a(),
-      dij.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dij.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+public class dps extends dhm {
+   public static final MapCodec<dps> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dps.a.b.fieldOf("kind").forGetter(dhm::b), t()).apply($$0, dps::new));
+   public static final int d = dxa.a();
+   private static final int b = d + 1;
+   public static final dwu e = dwl.ba;
+   protected static final fas f = diq.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final fas g = diq.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dps> a() {
-      return a;
+   public MapCodec<? extends dps> a() {
+      return c;
    }
 
-   protected dps(dvn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(1)));
+   protected dps(dps.a $$0, dvu.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean a(dvo $$0, esd $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return this.b() == dps.b.h ? g : f;
+   }
+
+   @Override
+   protected fas d_(dvv $$0) {
+      return fap.a();
+   }
+
+   @Override
+   public dvv a(dad $$0) {
+      return super.a($$0).b(e, Integer.valueOf(dxa.a($$0.i())));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dnm $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bai {
+      Map<String, dps.a> a = new Object2ObjectArrayMap();
+      Codec<dps.a> b = Codec.stringResolver(bai::c, a::get);
+   }
+
+   public static enum b implements dps.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   protected fal b_(dvo $$0, dek $$1, jh $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected fal c(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean g_(dvo $$0) {
-      return true;
-   }
-
-   @Override
-   protected float c(dvo $$0, dek $$1, jh $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      dvo $$3 = $$1.a_($$2.e());
-      if ($$3.a(axd.cq)) {
-         return false;
-      } else {
-         return $$3.a(axd.cr) ? true : dij.a($$3.g($$1, $$2.e()), jm.b) || $$3.a(this) && $$3.c(c) == 8;
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      return !$$0.a($$1, $$3) ? dil.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if ($$1.a(dfo.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dvo $$0, czw $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.j()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jm.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dvo a(czw $$0) {
-      dvo $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(c);
    }
 }

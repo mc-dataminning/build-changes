@@ -1,58 +1,46 @@
 import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.nio.ByteBuffer;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.lwjgl.BufferUtils;
 
-public class hdw implements hdx<hcn> {
-   private final List<hdx<hcn>> a = Lists.newArrayList();
-   @Nullable
-   private final xl b;
+public class hdw implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public hdw(all $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : xl.c($$1);
+   public hdw(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hdx<hcn> $$1 : this.a) {
-         $$0 += $$1.e();
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
       }
 
-      return $$0;
+      int $$1 = azm.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
    }
 
-   public hcn a(azv $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (hdx<hcn> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return hdv.b;
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
       } else {
-         return hdv.b;
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
    }
 
-   public void a(hdx<hcn> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public xl a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(hds $$0) {
-      for (hdx<hcn> $$1 : this.a) {
-         $$1.a($$0);
-      }
+   public int b() {
+      return this.c;
    }
 }

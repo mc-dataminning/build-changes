@@ -1,49 +1,85 @@
-import javax.annotation.Nullable;
+public class aip implements zq<agw> {
+   public static final zh<wg, aip> a = zq.a(aip::a, aip::new);
+   private final jh b;
+   private final alj c;
+   private final alj d;
+   private final alj e;
+   private final String f;
+   private final dua.a g;
+   private final int h;
+   private final int i;
 
-public class aip implements zs<agy> {
-   public static final zj<wi, aip> a = zs.a(aip::a, aip::new);
-   private final int b;
-   private final String c;
-   private final boolean d;
-
-   public aip(int $$0, String $$1, boolean $$2) {
+   public aip(jh $$0, alj $$1, alj $$2, alj $$3, String $$4, dua.a $$5, int $$6, int $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private aip(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+   private aip(wg $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dua.a.a($$0.p()).orElse(dua.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
+   private void a(wg $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zu<aip> a() {
-      return agw.bY;
+   public zs<aip> a() {
+      return agu.ca;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public def a(dff $$0) {
-      bui $$1 = $$0.a(this.b);
-      return $$1 instanceof cqx ? ((cqx)$$1).F() : null;
+   public jh b() {
+      return this.b;
    }
 
-   public String b() {
+   public alj e() {
       return this.c;
    }
 
-   public boolean e() {
+   public alj f() {
       return this.d;
+   }
+
+   public alj g() {
+      return this.e;
+   }
+
+   public String h() {
+      return this.f;
+   }
+
+   public dua.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

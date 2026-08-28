@@ -1,147 +1,37 @@
-public class gft extends ghf {
-   static final azv a = azv.a();
-   private final gha b;
+public class gft<T extends lt> extends gho {
+   private final ghj a;
 
-   gft(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gha $$7) {
+   protected gft(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, ghj $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.D = this.D * 0.75F * $$7.d();
+      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public ggj b() {
-      return ggj.c;
+   public ggs b() {
+      return ggs.b;
    }
 
    @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azn.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements ggi<lw> {
-      private final double a = 0.25;
-      private final gha b;
-
-      public a(gha $$0) {
-         this.b = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.A.a(2) + 2);
-         return $$8;
-      }
-   }
-
-   public static class b implements ggi<lw> {
-      private final gha a;
-
-      public b(gha $$0) {
-         this.a = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, 0.5 - gft.a.j(), $$6, 0.5 - gft.a.j(), this.a);
-         if ($$1.A.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements ggi<lw> {
-      private final double a = 0.01;
-      private final gha b;
-
-      public c(gha $$0) {
-         this.b = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.A.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements ggi<lw> {
-      private final double a = 0.01;
-      private final gha b;
-
-      public d(gha $$0) {
-         this.b = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements ggi<lw> {
-      private final double a = 0.01;
-      private final gha b;
-
-      public e(gha $$0) {
-         this.b = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
+      this.b(this.a);
    }
 }

@@ -1,25 +1,18 @@
-public record aik(int b, int c) implements zs<agy> {
-   public static final zj<wi, aik> a = zs.a(aik::a, aik::new);
+import java.util.Optional;
 
-   private aik(wi $$0) {
-      this($$0.l(), $$0.l());
-   }
-
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-   }
+public record aik(Optional<jq<bto>> b, Optional<jq<bto>> c) implements zq<agw> {
+   public static final zh<wu, aik> a = zh.a(bto.b.a(zf::a), aik::b, bto.b.a(zf::a), aik::e, aik::new);
 
    @Override
-   public zu<aik> a() {
-      return agw.bi;
+   public zs<aik> a() {
+      return agu.bV;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public Optional<jq<bto>> e() {
       return this.c;
    }
 }

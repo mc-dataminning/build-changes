@@ -1,29 +1,145 @@
-public record adq(int b, float c) implements zs<ach> {
-   public static final zj<wi, adq> a = zs.a(adq::a, adq::new);
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public adq(bve $$0) {
-      this($$0.as(), $$0.eO());
+public class adq {
+   private static final int a = 2097152;
+   private final ul b;
+   private final byte[] c;
+   private final List<adq.a> d;
+
+   public adq(dya $$0) {
+      this.b = new ul();
+
+      for (Entry<ebq.a, ebq> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new us($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new wg(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<jh, dsy> $$2 : $$0.F().entrySet()) {
+         this.d.add(adq.a.a($$2.getValue()));
+      }
    }
 
-   private adq(wi $$0) {
-      this($$0.l(), $$0.readFloat());
+   public adq(wu $$0, int $$1, int $$2) {
+      this.b = $$0.o();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
+      } else {
+         int $$3 = $$0.l();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = adq.a.b.decode($$0);
+         }
+      }
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(wu $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      adq.a.b.encode($$0, this.d);
    }
 
-   @Override
-   public zu<adq> a() {
-      return agw.I;
+   private static int a(dya $$0) {
+      int $$1 = 0;
+
+      for (dyb $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
    }
 
-   public void a(ach $$0) {
-      $$0.a(this);
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
    }
 
-   public float e() {
-      return this.c;
+   public static void a(wg $$0, dya $$1) {
+      for (dyb $$2 : $$1.d()) {
+         $$2.c($$0);
+      }
+   }
+
+   public Consumer<adq.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
+   }
+
+   private void a(adq.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      jh.a $$5 = new jh.a();
+
+      for (adq.a $$6 : this.d) {
+         int $$7 = $$3 + kj.b($$6.c >> 4);
+         int $$8 = $$4 + kj.b($$6.c);
+         $$5.d($$7, $$6.d, $$8);
+         $$0.accept($$5, $$6.e, $$6.f);
+      }
+   }
+
+   public wg a() {
+      return new wg(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public ul b() {
+      return this.b;
+   }
+
+   static class a {
+      public static final zh<wu, adq.a> a = zh.a(adq.a::a, adq.a::new);
+      public static final zh<wu, List<adq.a>> b = a.a(zf.a());
+      final int c;
+      final int d;
+      final dta<?> e;
+      @Nullable
+      final ul f;
+
+      private a(int $$0, int $$1, dta<?> $$2, @Nullable ul $$3) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      private a(wu $$0) {
+         this.c = $$0.readByte();
+         this.d = $$0.readShort();
+         this.e = zf.a(ma.h).decode($$0);
+         this.f = $$0.o();
+      }
+
+      private void a(wu $$0) {
+         $$0.l(this.c);
+         $$0.m(this.d);
+         zf.a(ma.h).encode($$0, this.e);
+         $$0.a(this.f);
+      }
+
+      static adq.a a(dsy $$0) {
+         ul $$1 = $$0.a($$0.i().J_());
+         jh $$2 = $$0.aA_();
+         int $$3 = kj.b($$2.u()) << 4 | kj.b($$2.w());
+         return new adq.a($$3, $$2.v(), $$0.q(), $$1.g() ? null : $$1);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(jh var1, dta<?> var2, @Nullable ul var3);
    }
 }

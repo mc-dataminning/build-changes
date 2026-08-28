@@ -1,54 +1,28 @@
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface hcz<T> {
-   static <T> hcz<T> a() {
-      return new hcz<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public class hcz {
+   private final List<hcy> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public hcz(List<hcy> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   static <T> hcz<T> a(List<T> $$0, Function<T, Stream<all>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final hdb<T> $$2 = new hdb<>();
-         final hdb<T> $$3 = new hdb<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new hcz<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   public List<hcy> a() {
+      return this.a;
    }
 
-   List<T> a(String var1);
+   public boolean b() {
+      return this.b;
+   }
 
-   List<T> b(String var1);
+   @Nullable
+   public String c() {
+      return this.c;
+   }
 }

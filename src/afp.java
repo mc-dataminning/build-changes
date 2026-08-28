@@ -1,61 +1,45 @@
-public class afp implements zs<ach> {
-   public static final zj<wi, afp> a = zs.a(afp::a, afp::new);
-   private final int b;
+public class afp implements zq<acf> {
+   public static final zh<wg, afp> a = zq.a(afp::a, afp::new);
+   private final float b;
    private final int c;
    private final int d;
-   private final int e;
 
-   public afp(bui $$0) {
-      this($$0.as(), $$0.dB());
-   }
-
-   public afp(int $$0, ezr $$1) {
+   public afp(float $$0, int $$1, int $$2) {
       this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azn.a($$1.d, -3.9, 3.9);
-      double $$4 = azn.a($$1.e, -3.9, 3.9);
-      double $$5 = azn.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afp(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private afp(wg $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zu<afp> a() {
-      return agw.aE;
+   public zs<afp> a() {
+      return agu.aG;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public float b() {
       return this.b;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
+   public int e() {
+      return this.c;
    }
 
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public int f() {
+      return this.d;
    }
 }

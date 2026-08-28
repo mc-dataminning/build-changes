@@ -1,20 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
+public class aaa implements zq<zw> {
+   public static final zh<wg, aaa> a = zq.a(aaa::a, aaa::new);
+   private final long b;
 
-public record aaa(Map<String, String> b) implements zs<zy> {
-   private static final int c = 128;
-   private static final int d = 4096;
-   private static final int e = 32;
-   private static final zj<ByteBuf, Map<String, String>> f = zh.a(HashMap::new, zh.b(128), zh.b(4096), 32);
-   public static final zj<ByteBuf, aaa> a = zj.a(f, aaa::b, aaa::new);
-
-   @Override
-   public zu<aaa> a() {
-      return aak.b;
+   public aaa(long $$0) {
+      this.b = $$0;
    }
 
-   public void a(zy $$0) {
+   private aaa(wg $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(wg $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zs<aaa> a() {
+      return aai.d;
+   }
+
+   public void a(zw $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

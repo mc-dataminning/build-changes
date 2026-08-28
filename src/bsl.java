@@ -1,37 +1,35 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
 
-public class bsl {
-   public static final Codec<bsl> a = RecordCodecBuilder.create($$0 -> $$0.group(eck.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bsl::new));
-   private final eck b;
+public record bsl(cu d) {
+   public static final bsl a = new bsl(cu.a.a().b());
+   public static final Codec<bsl> b = cu.a.xmap(bsl::new, bsl::a);
+   public static final String c = "lock";
 
-   public bsl(eck $$0) {
-      this.b = $$0;
+   public boolean a(cwm $$0) {
+      return this.d.a($$0);
    }
 
-   public bsl(long $$0, all $$1) {
-      this(a($$0, Optional.of($$1)));
+   public void a(ul $$0) {
+      if (this != a) {
+         DataResult<vi> $$1 = b.encode(this, uz.a, new ul());
+         $$1.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+      }
    }
 
-   public bsl(long $$0, Optional<all> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static eck a(long $$0, Optional<all> $$1) {
-      eby.a $$2 = eby.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public static bsl b(ul $$0) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<bsl, vi>> $$1 = b.decode(uz.a, $$0.c("lock"));
+         if ($$1.isSuccess()) {
+            return (bsl)((Pair)$$1.getOrThrow()).getFirst();
+         }
       }
 
-      return new eck($$2.a());
+      return a;
    }
 
-   public static eby.a a(all $$0) {
-      return eby.a($$0.toString());
-   }
-
-   public azv a() {
-      return this.b;
+   public cu a() {
+      return this.d;
    }
 }

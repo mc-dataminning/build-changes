@@ -1,36 +1,67 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-public interface fes {
-   fes a = a(0.0F, 0.0F, 0.0F);
-   fes b = a((fes.a)($$0 -> -$$0.z()));
+public class fes implements fev {
+   private final fev a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   static fes a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   public fes(fev $$0, fer.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   static fes a(Vector3f $$0) {
-      return a($$0::distanceSquared);
+   @Override
+   public fev a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   static fes a(fes.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
-         }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+   @Override
+   public fev a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   int[] sort(Vector3f[] var1);
+   @Override
+   public fev a(float $$0, float $$1) {
+      return this;
+   }
 
-   public interface a {
-      float apply(Vector3f var1);
+   @Override
+   public fev a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public fev b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public fev b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      jm $$4 = jm.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

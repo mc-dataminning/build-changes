@@ -1,60 +1,59 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public class cek {
-   private static final cek a = new cek();
-   private final List<bve> b;
-   private final Predicate<bve> c;
+public class cek<T> {
+   private final T a;
+   private long b;
 
-   private cek() {
-      this.b = List.of();
-      this.c = $$0 -> false;
-   }
-
-   public cek(bve $$0, List<bve> $$1) {
+   public cek(T $$0, long $$1) {
+      this.a = $$0;
       this.b = $$1;
-      Object2BooleanOpenHashMap<bve> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bve> $$3 = $$1x -> cfo.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   public static cek a() {
-      return a;
-   }
-
-   public Optional<bve> a(Predicate<bve> $$0) {
-      for (bve $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
-
-      return Optional.empty();
    }
 
-   public Iterable<bve> b(Predicate<bve> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   public static <T> cek<T> a(T $$0) {
+      return new cek<>($$0, Long.MAX_VALUE);
    }
 
-   public Stream<bve> c(Predicate<bve> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   public static <T> cek<T> a(T $$0, long $$1) {
+      return new cek<>($$0, $$1);
    }
 
-   public boolean a(bve $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
+   public long b() {
+      return this.b;
    }
 
-   public boolean d(Predicate<bve> $$0) {
-      for (bve $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
+   public T c() {
+      return this.a;
+   }
 
-      return false;
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @bat
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<cek<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cek<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

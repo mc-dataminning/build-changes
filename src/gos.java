@@ -1,27 +1,39 @@
-public class gos extends gnu<clj, gxs, fyv> {
-   private static final all a = all.b("textures/entity/zombie/drowned.png");
-
-   public gos(gpa.a $$0) {
-      super($$0, new fyv($$0.a(gcb.ai)), new fyv($$0.a(gcb.am)), new fyv($$0.a(gcb.aj)), new fyv($$0.a(gcb.ak)), new fyv($$0.a(gcb.an)), new fyv($$0.a(gcb.ao)));
-      this.a(new gsv(this, $$0.f()));
+public class gos extends gof<chb, gvf, fyw> {
+   public gos(gpk.a $$0) {
+      super($$0, new fyw($$0.a(gck.L)), new fyw($$0.a(gck.M)), 0.4F);
+      this.a(new gta(this, $$0.f()));
    }
 
-   public gxs a() {
-      return new gxs();
+   public alj a(gvf $$0) {
+      return $$0.a;
    }
 
-   @Override
-   public all a(gxs $$0) {
-      return a;
+   public gvf a() {
+      return new gvf();
    }
 
-   protected void a(gxs $$0, fek $$1, float $$2, float $$3) {
+   public void a(chb $$0, gvf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gy().a().a();
+      $$1.d = $$0.ci();
+      $$1.e = $$0.cj();
+      $$1.f = $$0.v();
+      $$1.g = $$0.J($$2);
+      $$1.h = $$0.K($$2);
+      $$1.i = $$0.L($$2);
+      $$1.b = $$0.gD();
+      $$1.c = $$0.n() ? $$0.gA() : null;
+   }
+
+   protected void a(gvf $$0, fer $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
+      float $$4 = $$0.g;
       if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = azn.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
+         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
+         $$1.a(a.f.rotationDegrees(azm.i($$4, 0.0F, 90.0F)));
+         if ($$0.b) {
+            $$1.a(0.15F * $$4, 0.0F, 0.0F);
+         }
       }
    }
 }

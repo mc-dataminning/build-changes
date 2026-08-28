@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record dk(Map<jq<btl>, dk.b> b) {
-   public static final Codec<dk> a = Codec.unboundedMap(btl.a, dk.b.a).xmap(dk::new, dk::a);
+public record dk(Map<jq<bto>, dk.b> b) {
+   public static final Codec<dk> a = Codec.unboundedMap(bto.a, dk.b.a).xmap(dk::new, dk::a);
 
-   public boolean a(bui $$0) {
-      if ($$0 instanceof bve $$1 && this.a($$1.eF())) {
+   public boolean a(bul $$0) {
+      if ($$0 instanceof bvh $$1 && this.a($$1.eB())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bve $$0) {
-      return this.a($$0.eF());
+   public boolean a(bvh $$0) {
+      return this.a($$0.eB());
    }
 
-   public boolean a(Map<jq<btl>, btn> $$0) {
-      for (Entry<jq<btl>, dk.b> $$1 : this.b.entrySet()) {
-         btn $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jq<bto>, btq> $$0) {
+      for (Entry<jq<bto>, dk.b> $$1 : this.b.entrySet()) {
+         btq $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record dk(Map<jq<btl>, dk.b> b) {
       return true;
    }
 
-   public Map<jq<btl>, dk.b> a() {
+   public Map<jq<bto>, dk.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jq<btl>, dk.b> a = ImmutableMap.builder();
+      private final Builder<jq<bto>, dk.b> a = ImmutableMap.builder();
 
       public static dk.a a() {
          return new dk.a();
       }
 
-      public dk.a a(jq<btl> $$0) {
+      public dk.a a(jq<bto> $$0) {
          this.a.put($$0, new dk.b());
          return this;
       }
 
-      public dk.a a(jq<btl> $$0, dk.b $$1) {
+      public dk.a a(jq<bto> $$0, dk.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record dk(Map<jq<btl>, dk.b> b) {
          this(dj.d.c, dj.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable btn $$0) {
+      public boolean a(@Nullable btq $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

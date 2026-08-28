@@ -1,66 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class euw implements euo {
-   protected final List<exr> e;
-   private final Predicate<eug> a;
+public abstract class euw extends evd {
+   protected final List<evd> d;
+   private final euv a;
 
-   protected euw(List<exr> $$0) {
-      this.e = $$0;
-      this.a = ae.a($$0);
+   protected euw(List<evd> $$0, List<exy> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
-   protected static <T extends euw> P1<Mu<T>, List<exr>> a(Instance<T> $$0) {
-      return $$0.group(exr.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   @Override
+   public void a(eut $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
 
-   public void a(eum $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   protected final boolean a(eug $$0) {
-      return this.a.test($$0);
+   protected abstract euv a(List<? extends euv> var1);
+
+   @Override
+   public final boolean expand(eun $$0, Consumer<evc> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public abstract eux a();
+   public static <T extends euw> MapCodec<T> a(euw.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(evb.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
 
-   public abstract static class a<T extends euw.a<T>> implements exj<T> {
-      private final Builder<exr> a = ImmutableList.builder();
-
-      protected abstract T aF_();
-
-      public T a(exr.a $$0) {
-         this.a.add($$0.build());
-         return this.aF_();
-      }
-
-      public final T e() {
-         return this.aF_();
-      }
-
-      protected List<exr> f() {
-         return this.a.build();
-      }
-
-      public eun.a a(euw.a<?> $$0) {
-         return new eun.a(this, $$0);
-      }
-
-      public eus.a b(euw.a<?> $$0) {
-         return new eus.a(this, $$0);
-      }
-
-      public eva.a c(euw.a<?> $$0) {
-         return new eva.a(this, $$0);
-      }
-
-      public abstract euw b();
+   @FunctionalInterface
+   public interface a<T extends euw> {
+      T create(List<evd> var1, List<exy> var2);
    }
 }

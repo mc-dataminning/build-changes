@@ -1,28 +1,50 @@
-import java.util.Locale;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record hbj(all b, String c) {
-   public static final String a = "inventory";
+public class hbj implements hbg {
+   private final gky a;
+   private final gze b;
+   private final boolean c;
 
-   public hbj(all b, String c) {
-      c = a(c);
-      this.b = b;
-      this.c = c;
+   public hbj(gky $$0, gze $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static hbj a(all $$0) {
-      return new hbj($$0, "inventory");
+   @Override
+   public List<gkn> a(@Nullable dvv $$0, @Nullable jm $$1, azu $$2) {
+      return Collections.emptyList();
    }
 
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
+   @Override
+   public boolean a() {
+      return false;
    }
 
-   public String a() {
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
       return this.c;
    }
 
    @Override
-   public String toString() {
-      return this.b + "#" + this.c;
+   public boolean d() {
+      return true;
+   }
+
+   @Override
+   public gze e() {
+      return this.b;
+   }
+
+   @Override
+   public gky f() {
+      return this.a;
    }
 }

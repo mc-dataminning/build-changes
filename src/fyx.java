@@ -1,43 +1,45 @@
-import org.joml.Quaternionf;
+public class fyx extends gae {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final gcl d;
+   private final gcl e;
 
-public class fyx extends fza<gva> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final gcc a;
-   public final gcc b;
-   public final gcc c;
-   public final gcc d;
-
-   public fyx(gcc $$0) {
-      super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+   public fyx(gcl $$0) {
+      super($$0, gjq::c);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gch $$3 = gch.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      gcm $$4 = $$1.a("outer_glass", $$3, gce.a(0.0F, 24.0F, 0.0F));
-      gcm $$5 = $$4.a("inner_glass", $$3, gce.a.a(0.875F));
-      $$5.a("cube", gch.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gce.a.a(0.765625F));
-      $$1.a("base", gch.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gce.a);
-      return gci.a($$0, 64, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("bottom", gcq.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gcn.a);
+      $$1.a("lid", gcq.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gcq.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      return gcr.a($$0, 64, 64);
    }
 
-   public void a(gva $$0) {
-      super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.p * 3.0F;
-      float $$2 = gou.a($$0.p) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+   public static gcr b() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("bottom", gcq.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gcn.a);
+      $$1.a("lid", gcq.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gcq.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      return gcr.a($$0, 64, 64);
+   }
+
+   public static gcr c() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("bottom", gcq.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gcn.a);
+      $$1.a("lid", gcq.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gcq.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gcn.a(0.0F, 9.0F, 1.0F));
+      return gcr.a($$0, 64, 64);
+   }
+
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

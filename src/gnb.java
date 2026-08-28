@@ -1,64 +1,66 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class gnb implements gmx.a {
-   private final fjx a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class gnb {
+   private static final int a = axx.a(255, 255, 100, 255);
+   private static final int b = axx.a(255, 100, 255, 255);
+   private static final int c = axx.a(255, 0, 255, 0);
+   private static final int d = axx.a(255, 255, 165, 0);
+   private static final int e = axx.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fke h;
+   private final Map<Integer, aas.a> i = new HashMap<>();
 
-   public gnb(fjx $$0) {
-      this.a = $$0;
+   public gnb(fke $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      dfg $$5 = this.a.s;
-      feo $$6 = $$1.getBuffer(gjh.A());
-      jh $$7 = jh.a($$2, 0.0, $$4);
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      gic $$5 = this.h.t;
+      $$5.dV().a(bus.r, $$5.cR().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aas.a> $$7 = Optional.ofNullable(this.i.get($$6.ar()));
+         $$7.map(aas.a::d).map($$1xx -> $$5.dV().a($$1xx)).map($$0xx -> $$0xx.o(this.h.av().a(true))).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x, b);
+            ezy $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gjq.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gjq.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gjq.a(2.0)), $$7x, 24.0F, e);
+         });
+         $$7.map(aas.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x.b(), a);
+            gng.a($$0, $$1, ezt.a(ezy.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
+   }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dxj $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+   private static void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4, ezy $$5, ezy $$6, int $$7) {
+      fev $$8 = $$1.getBuffer(gjq.a(2.0));
+      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
+      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   }
 
-            for (Entry<ebj.a, ebj> $$11 : $$10.e()) {
-               ebj.a $$12 = $$11.getKey();
-               del $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kj.a($$13.g, $$15);
-                     int $$18 = kj.a($$13.h, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gjr.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fev $$4, ezy $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private Vector3f a(ebj.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fev $$5, ezy $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      ezy $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   }
+
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(aas.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

@@ -1,34 +1,43 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehz extends eif {
-   public static final MapCodec<ehz> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ehz::new));
+public class ehz implements eha {
+   public static final Codec<ehz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axs.b(ma.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               ejb.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               elm.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               elc.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               brp.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               brp.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ehz::new)
+   );
+   public final axs<diq> b;
+   public final ejb c;
+   public final jq<elm> d;
+   public final elc e;
+   public final brp f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final brp j;
+   public final float k;
 
-   public ehz(brm $$0, brm $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected eig<?> a() {
-      return eig.d;
-   }
-
-   @Override
-   protected void a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, int $$4, eif.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      jh $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, ehp $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public ehz(axs<diq> $$0, ejb $$1, jq<elm> $$2, elc $$3, brp $$4, float $$5, int $$6, float $$7, brp $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

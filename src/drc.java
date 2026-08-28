@@ -1,30 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class drc extends dlx {
-   public static final MapCodec<drc> c = b(drc::new);
-   public static final fal g = dij.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+public class drc extends dmf {
+   public static final MapCodec<drc> b = b(drc::new);
 
-   @Override
-   public MapCodec<drc> a() {
-      return c;
-   }
-
-   public drc(dvn.d $$0) {
-      super($$0, jm.b, g, false, 0.1);
+   protected drc(dvu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(azv $$0) {
-      return dno.a($$0);
+   protected MapCodec<? extends drc> a() {
+      return b;
    }
 
    @Override
-   protected dij b() {
-      return dil.oC;
+   protected fas c(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return fap.a();
    }
 
    @Override
-   protected boolean h(dvo $$0) {
-      return dno.a($$0);
+   protected float c(dvv $$0, der $$1, jh $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(dvv $$0) {
+      return true;
    }
 }

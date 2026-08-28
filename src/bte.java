@@ -1,8 +1,103 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bte {
+   ali<btd> a = ali.a(ma.s, alj.b("in_fire"));
+   ali<btd> b = ali.a(ma.s, alj.b("campfire"));
+   ali<btd> c = ali.a(ma.s, alj.b("lightning_bolt"));
+   ali<btd> d = ali.a(ma.s, alj.b("on_fire"));
+   ali<btd> e = ali.a(ma.s, alj.b("lava"));
+   ali<btd> f = ali.a(ma.s, alj.b("hot_floor"));
+   ali<btd> g = ali.a(ma.s, alj.b("in_wall"));
+   ali<btd> h = ali.a(ma.s, alj.b("cramming"));
+   ali<btd> i = ali.a(ma.s, alj.b("drown"));
+   ali<btd> j = ali.a(ma.s, alj.b("starve"));
+   ali<btd> k = ali.a(ma.s, alj.b("cactus"));
+   ali<btd> l = ali.a(ma.s, alj.b("fall"));
+   ali<btd> m = ali.a(ma.s, alj.b("ender_pearl"));
+   ali<btd> n = ali.a(ma.s, alj.b("fly_into_wall"));
+   ali<btd> o = ali.a(ma.s, alj.b("out_of_world"));
+   ali<btd> p = ali.a(ma.s, alj.b("generic"));
+   ali<btd> q = ali.a(ma.s, alj.b("magic"));
+   ali<btd> r = ali.a(ma.s, alj.b("wither"));
+   ali<btd> s = ali.a(ma.s, alj.b("dragon_breath"));
+   ali<btd> t = ali.a(ma.s, alj.b("dry_out"));
+   ali<btd> u = ali.a(ma.s, alj.b("sweet_berry_bush"));
+   ali<btd> v = ali.a(ma.s, alj.b("freeze"));
+   ali<btd> w = ali.a(ma.s, alj.b("stalagmite"));
+   ali<btd> x = ali.a(ma.s, alj.b("falling_block"));
+   ali<btd> y = ali.a(ma.s, alj.b("falling_anvil"));
+   ali<btd> z = ali.a(ma.s, alj.b("falling_stalactite"));
+   ali<btd> A = ali.a(ma.s, alj.b("sting"));
+   ali<btd> B = ali.a(ma.s, alj.b("mob_attack"));
+   ali<btd> C = ali.a(ma.s, alj.b("mob_attack_no_aggro"));
+   ali<btd> D = ali.a(ma.s, alj.b("player_attack"));
+   ali<btd> E = ali.a(ma.s, alj.b("arrow"));
+   ali<btd> F = ali.a(ma.s, alj.b("trident"));
+   ali<btd> G = ali.a(ma.s, alj.b("mob_projectile"));
+   ali<btd> H = ali.a(ma.s, alj.b("spit"));
+   ali<btd> I = ali.a(ma.s, alj.b("wind_charge"));
+   ali<btd> J = ali.a(ma.s, alj.b("fireworks"));
+   ali<btd> K = ali.a(ma.s, alj.b("fireball"));
+   ali<btd> L = ali.a(ma.s, alj.b("unattributed_fireball"));
+   ali<btd> M = ali.a(ma.s, alj.b("wither_skull"));
+   ali<btd> N = ali.a(ma.s, alj.b("thrown"));
+   ali<btd> O = ali.a(ma.s, alj.b("indirect_magic"));
+   ali<btd> P = ali.a(ma.s, alj.b("thorns"));
+   ali<btd> Q = ali.a(ma.s, alj.b("explosion"));
+   ali<btd> R = ali.a(ma.s, alj.b("player_explosion"));
+   ali<btd> S = ali.a(ma.s, alj.b("sonic_boom"));
+   ali<btd> T = ali.a(ma.s, alj.b("bad_respawn_point"));
+   ali<btd> U = ali.a(ma.s, alj.b("outside_border"));
+   ali<btd> V = ali.a(ma.s, alj.b("generic_kill"));
+   ali<btd> W = ali.a(ma.s, alj.b("mace_smash"));
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bte {
+   static void a(qz<btd> $$0) {
+      $$0.a(a, new btd("inFire", 0.1F, bsz.d));
+      $$0.a(b, new btd("inFire", 0.1F, bsz.d));
+      $$0.a(c, new btd("lightningBolt", 0.1F));
+      $$0.a(d, new btd("onFire", 0.0F, bsz.d));
+      $$0.a(e, new btd("lava", 0.1F, bsz.d));
+      $$0.a(f, new btd("hotFloor", 0.1F, bsz.d));
+      $$0.a(g, new btd("inWall", 0.0F));
+      $$0.a(h, new btd("cramming", 0.0F));
+      $$0.a(i, new btd("drown", 0.0F, bsz.c));
+      $$0.a(j, new btd("starve", 0.0F));
+      $$0.a(k, new btd("cactus", 0.1F));
+      $$0.a(l, new btd("fall", bta.b, 0.0F, bsz.a, btf.b));
+      $$0.a(m, new btd("fall", bta.b, 0.0F, bsz.a, btf.b));
+      $$0.a(n, new btd("flyIntoWall", 0.0F));
+      $$0.a(o, new btd("outOfWorld", 0.0F));
+      $$0.a(p, new btd("generic", 0.0F));
+      $$0.a(q, new btd("magic", 0.0F));
+      $$0.a(r, new btd("wither", 0.0F));
+      $$0.a(s, new btd("dragonBreath", 0.0F));
+      $$0.a(t, new btd("dryout", 0.1F));
+      $$0.a(u, new btd("sweetBerryBush", 0.1F, bsz.e));
+      $$0.a(v, new btd("freeze", 0.0F, bsz.f));
+      $$0.a(w, new btd("stalagmite", 0.0F));
+      $$0.a(x, new btd("fallingBlock", 0.1F));
+      $$0.a(y, new btd("anvil", 0.1F));
+      $$0.a(z, new btd("fallingStalactite", 0.1F));
+      $$0.a(A, new btd("sting", 0.1F));
+      $$0.a(B, new btd("mob", 0.1F));
+      $$0.a(C, new btd("mob", 0.1F));
+      $$0.a(D, new btd("player", 0.1F));
+      $$0.a(E, new btd("arrow", 0.1F));
+      $$0.a(F, new btd("trident", 0.1F));
+      $$0.a(G, new btd("mob", 0.1F));
+      $$0.a(H, new btd("mob", 0.1F));
+      $$0.a(J, new btd("fireworks", 0.1F));
+      $$0.a(L, new btd("onFire", 0.1F, bsz.d));
+      $$0.a(K, new btd("fireball", 0.1F, bsz.d));
+      $$0.a(M, new btd("witherSkull", 0.1F));
+      $$0.a(N, new btd("thrown", 0.1F));
+      $$0.a(O, new btd("indirectMagic", 0.0F));
+      $$0.a(P, new btd("thorns", 0.1F, bsz.b));
+      $$0.a(Q, new btd("explosion", bta.c, 0.1F));
+      $$0.a(R, new btd("explosion.player", bta.c, 0.1F));
+      $$0.a(S, new btd("sonic_boom", bta.c, 0.0F));
+      $$0.a(T, new btd("badRespawnPoint", bta.c, 0.1F, bsz.a, btf.c));
+      $$0.a(U, new btd("outsideBorder", 0.0F));
+      $$0.a(V, new btd("genericKill", 0.0F));
+      $$0.a(I, new btd("mob", 0.1F));
+      $$0.a(W, new btd("mace_smash", 0.1F));
+   }
 }

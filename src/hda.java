@@ -1,68 +1,66 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.Validate;
 
-@FunctionalInterface
-public interface hda<T> {
-   static <T> hda<T> empty() {
-      return $$0 -> List.of();
+public class hda implements JsonDeserializer<hcz> {
+   private static final brn a = brl.a(1.0F);
+
+   public hcz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = azc.m($$0, "entry");
+      boolean $$4 = azc.a($$3, "replace", false);
+      String $$5 = azc.a($$3, "subtitle", null);
+      List<hcy> $$6 = this.a($$3);
+      return new hcz($$6, $$4, $$5);
    }
 
-   static <T> hda<T> plainText(List<T> $$0, Function<T, Stream<String>> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokeinterface java/util/List.isEmpty ()Z 1
-      // 06: ifeq 0d
-      // 09: invokestatic hda.empty ()Lhda;
-      // 0c: areturn
-      // 0d: new hdb
-      // 10: dup
-      // 11: invokespecial hdb.<init> ()V
-      // 14: astore 2
-      // 15: aload 0
-      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 1b: astore 3
-      // 1c: aload 3
-      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 22: ifeq 48
-      // 25: aload 3
-      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 2b: astore 4
-      // 2d: aload 1
-      // 2e: aload 4
-      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
-      // 35: checkcast java/util/stream/Stream
-      // 38: aload 2
-      // 39: aload 4
-      // 3b: invokedynamic accept (Lhdb;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, hda.a (Lhdb;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
-      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
-      // 45: goto 1c
-      // 48: aload 2
-      // 49: invokevirtual hdb.a ()V
-      // 4c: aload 2
-      // 4d: dup
-      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 51: pop
-      // 52: invokedynamic search (Lhdb;)Lhda; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, hdb.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
-      // 57: areturn
+   private List<hcy> a(JsonObject $$0) {
+      List<hcy> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = azc.v($$0, "sounds");
+
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (azc.a($$4)) {
+               alj $$5 = alj.a(azc.a($$4, "sound"));
+               $$1.add(new hcy($$5, a, a, 1, hcy.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(azc.m($$4, "sound")));
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   List<T> search(String var1);
+   private hcy b(JsonObject $$0) {
+      alj $$1 = alj.a(azc.i($$0, "name"));
+      hcy.a $$2 = this.a($$0, hcy.a.a);
+      float $$3 = azc.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = azc.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = azc.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = azc.a($$0, "preload", false);
+      boolean $$7 = azc.a($$0, "stream", false);
+      int $$8 = azc.a($$0, "attenuation_distance", 16);
+      return new hcy($$1, brl.a($$3), brl.a($$4), $$5, $$2, $$7, $$6, $$8);
+   }
+
+   private hcy.a a(JsonObject $$0, hcy.a $$1) {
+      hcy.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = hcy.a.a(azc.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
+      }
+
+      return $$2;
+   }
 }

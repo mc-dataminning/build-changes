@@ -1,8 +1,3 @@
-public class gvj extends gwb {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class gvj extends gwm {
+   public boolean a;
 }

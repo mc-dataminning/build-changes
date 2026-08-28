@@ -1,47 +1,28 @@
-public class fyz extends fza<gvd> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final gcc[] d = new gcc[4];
+public class fyz extends fzj<gwm> {
+   private final gcl a;
 
-   public fyz(gcc $$0) {
+   public fyz(gcl $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.b(a($$1));
-      }
+      this.a = $$0.b("tail_fin");
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gcq.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gcn.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", gcq.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gcn.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", gcq.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gcn.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", gcq.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gcn.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", gcq.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gcn.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", gcq.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gcn.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", gcq.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gcn.a(0.0F, 20.0F, 0.0F));
+      return gcr.a($$0, 32, 32);
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            gch.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            gce.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return gci.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(gvd $$0) {
+   public void a(gwm $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         this.d[$$1].f = azn.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
-         this.d[$$1].b = azn.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
-      }
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.45F * azm.a(0.6F * $$0.p);
    }
 }

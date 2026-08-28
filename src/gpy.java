@@ -1,181 +1,143 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gpy implements avf {
-   public static final all a = all.b("textures/misc/enchanted_glint_entity.png");
-   public static final all b = all.b("textures/misc/enchanted_glint_item.png");
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 200;
-   public static final float f = 0.5F;
-   public static final float g = 0.75F;
-   public static final float h = 0.0078125F;
-   public static final hbj i = hbj.a(all.b("trident"));
-   public static final hbj j = hbj.a(all.b("spyglass"));
-   private final hbi k;
-   private final gir l;
-   private final fld m;
-   private final gie n;
+public class gpy extends gqq<clu, gwb, fzr> {
+   private static final alj a = alj.b("textures/entity/guardian.png");
+   private static final alj b = alj.b("textures/entity/guardian_beam.png");
+   private static final gjq k = gjq.f(b);
 
-   public gpy(hbi $$0, fld $$1, gie $$2) {
-      this.k = $$0;
-      this.l = new gir($$0);
-      this.n = $$2;
-      this.m = $$1;
+   public gpy(gpk.a $$0) {
+      this($$0, 0.5F, gck.aV);
    }
 
-   private void a(hav $$0, cwf $$1, int $$2, int $$3, fek $$4, feo $$5) {
-      azv $$6 = azv.a();
-      long $$7 = 42L;
-
-      for (jm $$8 : jm.values()) {
-         $$6.b(42L);
-         this.a($$4, $$5, $$0.a(null, $$8, $$6), $$1, $$2, $$3);
-      }
-
-      $$6.b(42L);
-      this.a($$4, $$5, $$0.a(null, null, $$6), $$1, $$2, $$3);
+   protected gpy(gpk.a $$0, float $$1, gcj $$2) {
+      super($$0, new fzr($$0.a($$2)), $$1);
    }
 
-   public void a(cwf $$0, cwd $$1, boolean $$2, fek $$3, gix $$4, int $$5, int $$6, hav $$7) {
-      if (!$$0.f()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, a($$1));
-      }
-   }
-
-   public void a(cwf $$0, cwd $$1, boolean $$2, fek $$3, gix $$4, int $$5, int $$6, hav $$7, @Nullable dff $$8, @Nullable bve $$9, int $$10) {
-      if ($$0.h() instanceof cus $$11) {
-         if (cus.g($$0)) {
-            boolean $$13 = a($$1);
-            hav $$14 = this.a(this.l.a($$11.c()), $$0, $$8, $$9, $$10);
-            this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$14, $$13, -1.5F);
-            cwf $$15 = cus.i($$0);
-            hav $$16 = this.a($$15, $$8, $$9, $$10);
-            this.a($$15, $$1, $$2, $$3, $$4, $$5, $$6, $$16, $$13);
-            hav $$17 = this.a(this.l.a($$11.b()), $$0, $$8, $$9, $$10);
-            this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$17, $$13, 0.5F);
-         } else {
-            this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         }
-      }
-   }
-
-   private void a(cwf $$0, cwd $$1, boolean $$2, fek $$3, gix $$4, int $$5, int $$6, hav $$7, boolean $$8) {
-      if ($$8) {
-         if ($$0.a(cwj.wk)) {
-            $$7 = this.k.a(i);
-         } else if ($$0.a(cwj.ro)) {
-            $$7 = this.k.a(j);
-         }
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, -0.5F);
-   }
-
-   private void a(cwf $$0, cwd $$1, boolean $$2, fek $$3, gix $$4, int $$5, int $$6, hav $$7, boolean $$8, float $$9) {
-      $$3.a();
-      $$7.f().a($$1).a($$2, $$3);
-      $$3.a(-0.5F, -0.5F, $$9);
-      this.a($$0, $$1, $$3, $$4, $$5, $$6, $$7, $$8);
-      $$3.b();
-   }
-
-   private void a(cwf $$0, cwd $$1, fek $$2, gix $$3, int $$4, int $$5, hav $$6, boolean $$7) {
-      if (!$$6.d() && (!$$0.a(cwj.wk) || $$7)) {
-         gjh $$8 = gip.a($$0);
-         feo $$10;
-         if (a($$0) && $$0.B()) {
-            fek.a $$9 = $$2.c().c();
-            if ($$1 == cwd.g) {
-               f.a($$9.a(), 0.5F);
-            } else if ($$1.b()) {
-               f.a($$9.a(), 0.75F);
+   public boolean a(clu $$0, gmx $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         if ($$0.go()) {
+            bvh $$5 = $$0.gp();
+            if ($$5 != null) {
+               ezy $$6 = this.a($$5, (double)$$5.dr() * 0.5, 1.0F);
+               ezy $$7 = this.a($$0, (double)$$0.cS(), 1.0F);
+               return $$1.a(new ezt($$7.d, $$7.e, $$7.f, $$6.d, $$6.e, $$6.f));
             }
-
-            $$10 = a($$3, $$8, $$9);
-         } else {
-            $$10 = a($$3, $$8, true, $$0.B());
          }
 
-         this.a($$6, $$0, $$4, $$5, $$2, $$10);
+         return false;
+      }
+   }
+
+   private ezy a(bvh $$0, double $$1, float $$2) {
+      double $$3 = azm.d((double)$$2, $$0.aa, $$0.dA());
+      double $$4 = azm.d((double)$$2, $$0.ab, $$0.dC()) + $$1;
+      double $$5 = azm.d((double)$$2, $$0.ac, $$0.dG());
+      return new ezy($$3, $$4, $$5);
+   }
+
+   public void a(gwb $$0, fer $$1, gjg $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ezy $$4 = $$0.f;
+      if ($$4 != null) {
+         float $$5 = $$0.g * 0.5F % 1.0F;
+         $$1.a();
+         $$1.a(0.0F, $$0.s, 0.0F);
+         a($$1, $$2.getBuffer(k), $$4.d($$0.c), $$0.g, $$0.h, $$5);
+         $$1.b();
+      }
+   }
+
+   private static void a(fer $$0, fev $$1, ezy $$2, float $$3, float $$4, float $$5) {
+      float $$6 = (float)($$2.g() + 1.0);
+      $$2 = $$2.d();
+      float $$7 = (float)Math.acos($$2.e);
+      float $$8 = (float) (Math.PI / 2) - (float)Math.atan2($$2.f, $$2.d);
+      $$0.a(a.d.rotationDegrees($$8 * (180.0F / (float)Math.PI)));
+      $$0.a(a.b.rotationDegrees($$7 * (180.0F / (float)Math.PI)));
+      float $$9 = $$3 * 0.05F * -1.5F;
+      float $$10 = $$4 * $$4;
+      int $$11 = 64 + (int)($$10 * 191.0F);
+      int $$12 = 32 + (int)($$10 * 191.0F);
+      int $$13 = 128 - (int)($$10 * 64.0F);
+      float $$14 = 0.2F;
+      float $$15 = 0.282F;
+      float $$16 = azm.b($$9 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
+      float $$17 = azm.a($$9 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
+      float $$18 = azm.b($$9 + (float) (Math.PI / 4)) * 0.282F;
+      float $$19 = azm.a($$9 + (float) (Math.PI / 4)) * 0.282F;
+      float $$20 = azm.b($$9 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
+      float $$21 = azm.a($$9 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
+      float $$22 = azm.b($$9 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
+      float $$23 = azm.a($$9 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
+      float $$24 = azm.b($$9 + (float) Math.PI) * 0.2F;
+      float $$25 = azm.a($$9 + (float) Math.PI) * 0.2F;
+      float $$26 = azm.b($$9 + 0.0F) * 0.2F;
+      float $$27 = azm.a($$9 + 0.0F) * 0.2F;
+      float $$28 = azm.b($$9 + (float) (Math.PI / 2)) * 0.2F;
+      float $$29 = azm.a($$9 + (float) (Math.PI / 2)) * 0.2F;
+      float $$30 = azm.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
+      float $$31 = azm.a($$9 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
+      float $$33 = 0.0F;
+      float $$34 = 0.4999F;
+      float $$35 = -1.0F + $$5;
+      float $$36 = $$35 + $$6 * 2.5F;
+      fer.a $$37 = $$0.c();
+      a($$1, $$37, $$24, $$6, $$25, $$11, $$12, $$13, 0.4999F, $$36);
+      a($$1, $$37, $$24, 0.0F, $$25, $$11, $$12, $$13, 0.4999F, $$35);
+      a($$1, $$37, $$26, 0.0F, $$27, $$11, $$12, $$13, 0.0F, $$35);
+      a($$1, $$37, $$26, $$6, $$27, $$11, $$12, $$13, 0.0F, $$36);
+      a($$1, $$37, $$28, $$6, $$29, $$11, $$12, $$13, 0.4999F, $$36);
+      a($$1, $$37, $$28, 0.0F, $$29, $$11, $$12, $$13, 0.4999F, $$35);
+      a($$1, $$37, $$30, 0.0F, $$31, $$11, $$12, $$13, 0.0F, $$35);
+      a($$1, $$37, $$30, $$6, $$31, $$11, $$12, $$13, 0.0F, $$36);
+      float $$38 = azm.d($$3) % 2 == 0 ? 0.5F : 0.0F;
+      a($$1, $$37, $$16, $$6, $$17, $$11, $$12, $$13, 0.5F, $$38 + 0.5F);
+      a($$1, $$37, $$18, $$6, $$19, $$11, $$12, $$13, 1.0F, $$38 + 0.5F);
+      a($$1, $$37, $$22, $$6, $$23, $$11, $$12, $$13, 1.0F, $$38);
+      a($$1, $$37, $$20, $$6, $$21, $$11, $$12, $$13, 0.5F, $$38);
+   }
+
+   private static void a(fev $$0, fer.a $$1, float $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9) {
+      $$0.a($$1, $$2, $$3, $$4).a($$5, $$6, $$7, 255).a($$8, $$9).b(gyv.d).c(15728880).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   public alj a(gwb $$0) {
+      return a;
+   }
+
+   public gwb b() {
+      return new gwb();
+   }
+
+   public void a(clu $$0, gwb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.K($$2);
+      $$1.b = $$0.J($$2);
+      $$1.c = $$0.m($$2);
+      bul $$3 = a($$0);
+      if ($$3 != null) {
+         $$1.d = $$0.g($$2);
+         $$1.e = $$3.m($$2);
       } else {
-         this.n.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.d = null;
+         $$1.e = null;
       }
-   }
 
-   private static boolean a(cwd $$0) {
-      return $$0 == cwd.g || $$0 == cwd.h || $$0 == cwd.i;
-   }
-
-   private static boolean a(cwf $$0) {
-      return $$0.a(axm.bu) || $$0.a(cwj.rn);
-   }
-
-   public static feo a(gix $$0, gjh $$1, boolean $$2) {
-      return $$2 ? fer.a($$0.getBuffer(gjh.j()), $$0.getBuffer($$1)) : $$0.getBuffer($$1);
-   }
-
-   public static feo a(gix $$0, gjh $$1, fek.a $$2) {
-      return fer.a(new fel($$0.getBuffer(gjh.l()), $$2, 0.0078125F), $$0.getBuffer($$1));
-   }
-
-   public static feo a(gix $$0, gjh $$1, boolean $$2, boolean $$3) {
-      if ($$3) {
-         return fjx.O() && $$1 == gjs.j()
-            ? fer.a($$0.getBuffer(gjh.k()), $$0.getBuffer($$1))
-            : fer.a($$0.getBuffer($$2 ? gjh.l() : gjh.m()), $$0.getBuffer($$1));
+      bvh $$4 = $$0.gp();
+      if ($$4 != null) {
+         $$1.h = $$0.L($$2);
+         $$1.g = $$0.gq() + $$2;
+         $$1.f = this.a($$4, (double)$$4.dr() * 0.5, $$2);
       } else {
-         return $$0.getBuffer($$1);
+         $$1.f = null;
       }
-   }
-
-   private void a(fek $$0, feo $$1, List<gke> $$2, cwf $$3, int $$4, int $$5) {
-      boolean $$6 = !$$3.f();
-      fek.a $$7 = $$0.c();
-
-      for (gke $$8 : $$2) {
-         int $$9 = -1;
-         if ($$6 && $$8.c()) {
-            $$9 = this.m.a($$3, $$8.d());
-         }
-
-         float $$10 = (float)axy.a($$9) / 255.0F;
-         float $$11 = (float)axy.b($$9) / 255.0F;
-         float $$12 = (float)axy.c($$9) / 255.0F;
-         float $$13 = (float)axy.d($$9) / 255.0F;
-         $$1.a($$7, $$8, $$11, $$12, $$13, $$10, $$4, $$5);
-      }
-   }
-
-   public hav a(cwf $$0, @Nullable dff $$1, @Nullable bve $$2, int $$3) {
-      hav $$4 = this.l.a($$0);
-      return this.a($$4, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(cwf $$0, cwd $$1, int $$2, int $$3, fek $$4, gix $$5, @Nullable dff $$6, int $$7) {
-      this.a(null, $$0, $$1, false, $$4, $$5, $$6, $$2, $$3, $$7);
-   }
-
-   public void a(@Nullable bve $$0, cwf $$1, cwd $$2, boolean $$3, fek $$4, gix $$5, @Nullable dff $$6, int $$7, int $$8, int $$9) {
-      if (!$$1.f()) {
-         hav $$10 = this.a($$1, $$6, $$0, $$9);
-         this.a($$1, $$2, $$3, $$4, $$5, $$7, $$8, $$10);
-      }
-   }
-
-   @Override
-   public void a(ave $$0) {
-      this.l.a();
    }
 
    @Nullable
-   public hav a(cwf $$0, bve $$1, cwd $$2) {
-      return $$0.f() ? null : this.a($$0, $$1.dY(), $$1, $$1.as() + $$2.ordinal());
-   }
-
-   private hav a(hav $$0, cwf $$1, @Nullable dff $$2, @Nullable bve $$3, int $$4) {
-      gcy $$5 = $$2 instanceof gcy ? (gcy)$$2 : null;
-      hav $$6 = $$0.g().a($$1, $$5, $$3, $$4);
-      return $$6 == null ? $$0 : $$6;
+   private static bul a(clu $$0) {
+      bul $$1 = fke.Q().ao();
+      return (bul)($$0.go() ? $$0.gp() : $$1);
    }
 }

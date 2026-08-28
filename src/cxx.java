@@ -1,32 +1,11 @@
-public interface cxx {
-   cxx.a a = new cxx.a(false, false);
-   cxx.a b = new cxx.a(true, false);
+public class cxx extends cyb {
+   public cxx(cwi.a $$0) {
+      super($$0);
+   }
 
-   boolean a();
-
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements cxx {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cxx.a c() {
-         return new cxx.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.yU, awo.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

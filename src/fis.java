@@ -1,53 +1,22 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public enum fis {
+   a(0, ely.a),
+   b(1, ely.b),
+   c(2, ely.c),
+   d(3, ely.d);
 
-public class fis extends fiw {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xl c = xl.c("mco.configure.world.closing");
-   private final fgb d;
-   private final fhj e;
+   private final int e;
+   private final xj f;
 
-   public fis(fgb $$0, fhj $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private fis(final int $$0, final ali<elx> $$1) {
+      this.e = $$0;
+      this.f = xj.c($$1.a().h("generator"));
    }
 
-   @Override
-   public void run() {
-      ffa $$0 = ffa.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fgb.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fgw var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
-      }
+   public xj a() {
+      return this.f;
    }
 
-   @Override
-   public xl a() {
-      return c;
+   public int b() {
+      return this.e;
    }
 }

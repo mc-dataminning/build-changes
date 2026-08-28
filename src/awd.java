@@ -1,33 +1,45 @@
-import java.nio.charset.StandardCharsets;
+import net.minecraft.server.MinecraftServer;
 
-public class awd {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+public class awd implements ev {
+   private static final String b = "Rcon";
+   private static final xj c = xj.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
-
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
-      }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+   public awd(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   public String f() {
+      return this.d.toString();
    }
 
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   public ew g() {
+      arp $$0 = this.e.J();
+      return new ew(this, ezy.a($$0.X()), ezx.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+   @Override
+   public void a(xj $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean x_() {
+      return true;
+   }
+
+   @Override
+   public boolean y_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e.m();
    }
 }

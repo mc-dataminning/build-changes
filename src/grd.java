@@ -1,37 +1,40 @@
-public class grd extends gqg<cme, gwz, gay> {
-   public static final all a = all.b("textures/entity/slime/slime.png");
+public class grd extends gqq<chr, gxb, fzj<gvo>> {
+   private static final alj a = alj.b("textures/entity/fish/pufferfish.png");
+   private final fzj<gvo> b;
+   private final fzj<gvo> k;
+   private final fzj<gvo> l = this.c();
 
-   public grd(gpa.a $$0) {
-      super($$0, new gay($$0.a(gcb.cs)), 0.25F);
-      this.a(new gtr(this, $$0.f()));
+   public grd(gpk.a $$0) {
+      super($$0, new gaq($$0.a(gck.ck)), 0.2F);
+      this.k = new gar($$0.a(gck.cl));
+      this.b = new gas($$0.a(gck.cm));
    }
 
-   public void a(gwz $$0, fek $$1, gix $$2, int $$3) {
-      this.f = 0.25F * (float)$$0.b;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(gwz $$0, fek $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
-   }
-
-   public all a(gwz $$0) {
+   public alj a(gxb $$0) {
       return a;
    }
 
-   public gwz c() {
-      return new gwz();
+   public gxb b() {
+      return new gxb();
    }
 
-   public void a(cme $$0, gwz $$1, float $$2) {
+   public void a(gxb $$0, fer $$1, gjg $$2, int $$3) {
+      this.h = switch ($$0.a) {
+         case 0 -> this.b;
+         case 1 -> this.k;
+         default -> this.l;
+      };
+      this.f = 0.1F + 0.1F * (float)$$0.a;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(chr $$0, gxb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azn.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gw();
+      $$1.a = $$0.go();
+   }
+
+   protected void a(gxb $$0, fer $$1, float $$2, float $$3) {
+      $$1.a(0.0F, azm.b($$0.p * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

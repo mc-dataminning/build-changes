@@ -4,87 +4,52 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-public class gkp {
-   public static final gkp a = new gkp();
-   public final gko b;
-   public final gko c;
-   public final gko d;
-   public final gko e;
-   public final gko f;
-   public final gko g;
-   public final gko h;
-   public final gko i;
+public record gkp(@Nullable jm b, int c, String d, gkr e) {
+   public static final int a = -1;
 
-   private gkp() {
-      this(gko.a, gko.a, gko.a, gko.a, gko.a, gko.a, gko.a, gko.a);
+   @Nullable
+   public jm a() {
+      return this.b;
    }
 
-   public gkp(gkp $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public int b() {
+      return this.c;
    }
 
-   public gkp(gko $$0, gko $$1, gko $$2, gko $$3, gko $$4, gko $$5, gko $$6, gko $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public String c() {
+      return this.d;
    }
 
-   public gko a(cwd $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gko.a;
-      };
-   }
-
-   public boolean b(cwd $$0) {
-      return this.a($$0) != gko.a;
+   public gkr d() {
+      return this.e;
    }
 
    protected static class a implements JsonDeserializer<gkp> {
+      private static final int a = -1;
+
       public gkp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         gko $$4 = this.a($$2, $$3, cwd.c);
-         gko $$5 = this.a($$2, $$3, cwd.b);
-         if ($$5 == gko.a) {
-            $$5 = $$4;
-         }
-
-         gko $$6 = this.a($$2, $$3, cwd.e);
-         gko $$7 = this.a($$2, $$3, cwd.d);
-         if ($$7 == gko.a) {
-            $$7 = $$6;
-         }
-
-         gko $$8 = this.a($$2, $$3, cwd.f);
-         gko $$9 = this.a($$2, $$3, cwd.g);
-         gko $$10 = this.a($$2, $$3, cwd.h);
-         gko $$11 = this.a($$2, $$3, cwd.i);
-         return new gkp($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+         jm $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         gkr $$7 = (gkr)$$2.deserialize($$3, gkr.class);
+         return new gkp($$4, $$5, $$6, $$7);
       }
 
-      private gko a(JsonDeserializationContext $$0, JsonObject $$1, cwd $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gko)$$0.deserialize($$1.get($$3), gko.class) : gko.a;
+      protected int a(JsonObject $$0) {
+         return azc.a($$0, "tintindex", -1);
+      }
+
+      private String b(JsonObject $$0) {
+         return azc.i($$0, "texture");
+      }
+
+      @Nullable
+      private jm c(JsonObject $$0) {
+         String $$1 = azc.a($$0, "cullface", "");
+         return jm.a($$1);
       }
    }
 }

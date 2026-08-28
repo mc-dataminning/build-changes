@@ -1,59 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class apt {
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.trigger.failed.invalid"));
+
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("title").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)ex.a("trigger")
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a(
-                                    "targets", fj.d()
-                                 )
-                                 .then(ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
-                              .then(ex.a("reset").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
-                           .then(
-                              ex.a("title")
-                                 .then(
-                                    ex.a("title", ff.a($$1))
-                                       .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "title", agc::new))
-                                 )
-                           ))
-                        .then(
-                           ex.a("subtitle")
-                              .then(
-                                 ex.a("title", ff.a($$1))
-                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "subtitle", aga::new))
-                              )
-                        ))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("objective", fq.a())
+                        .suggests(($$0x, $$1) -> a((ew)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"))))
                      .then(
-                        ex.a("actionbar")
+                        ex.a("add")
                            .then(
-                              ex.a("title", ff.a($$1))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "actionbar", afb::new))
+                              ex.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (ew)$$0x.getSource(),
+                                          ((ew)$$0x.getSource()).h(),
+                                          fq.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
                            )
                      ))
                   .then(
-                     ex.a("times")
+                     ex.a("set")
                         .then(
-                           ex.a("fadeIn", gl.a())
-                              .then(
-                                 ex.a("stay", gl.a())
-                                    .then(
-                                       ex.a("fadeOut", gl.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ew)$$0x.getSource(),
-                                                   fj.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
+                           ex.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
                                     )
                               )
                         )
@@ -62,65 +50,58 @@ public class apt {
       );
    }
 
-   private static int a(ew $$0, Collection<arr> $$1) {
-      acy $$2 = new acy(false);
+   public static CompletableFuture<Suggestions> a(ew $$0, SuggestionsBuilder $$1) {
+      fbc $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         fbd $$4 = $$0.l().aJ();
 
-      for (arr $$3 : $$1) {
-         $$3.g.b($$2);
+         for (fav $$5 : $$4.c()) {
+            if ($$5.c() == fbg.c) {
+               faz $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
+            }
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> xl.a("commands.title.cleared.single", $$1.iterator().next().S_()), true);
-      } else {
-         $$0.a(() -> xl.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      return fb.b($$3, $$1);
    }
 
-   private static int b(ew $$0, Collection<arr> $$1) {
-      acy $$2 = new acy(true);
-
-      for (arr $$3 : $$1) {
-         $$3.g.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xl.a("commands.title.reset.single", $$1.iterator().next().S_()), true);
-      } else {
-         $$0.a(() -> xl.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(ew $$0, arq $$1, fav $$2, int $$3) throws CommandSyntaxException {
+      fbb $$4 = a($$0.l().aJ(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> xj.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
    }
 
-   private static int a(ew $$0, Collection<arr> $$1, xl $$2, String $$3, Function<xl, zs<?>> $$4) throws CommandSyntaxException {
-      for (arr $$5 : $$1) {
-         $$5.g.b($$4.apply(xo.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xl.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().S_()), true);
-      } else {
-         $$0.a(() -> xl.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int b(ew $$0, arq $$1, fav $$2, int $$3) throws CommandSyntaxException {
+      fbb $$4 = a($$0.l().aJ(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> xj.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
    }
 
-   private static int a(ew $$0, Collection<arr> $$1, int $$2, int $$3, int $$4) {
-      agd $$5 = new agd($$2, $$3, $$4);
+   private static int a(ew $$0, arq $$1, fav $$2) throws CommandSyntaxException {
+      fbb $$3 = a($$0.l().aJ(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> xj.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
 
-      for (arr $$6 : $$1) {
-         $$6.g.b($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xl.a("commands.title.times.single", $$1.iterator().next().S_()), true);
+   private static fbb a(fbd $$0, fbc $$1, fav $$2) throws CommandSyntaxException {
+      if ($$2.c() != fbg.c) {
+         throw b.create();
       } else {
-         $$0.a(() -> xl.a("commands.title.times.multiple", $$1.size()), true);
+         faz $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            fbb $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
+         } else {
+            throw a.create();
+         }
       }
-
-      return $$1.size();
    }
 }

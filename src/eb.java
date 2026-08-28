@@ -12,8 +12,8 @@ public record eb(dj.d c) implements bx {
    }
 
    @Override
-   public boolean a(bui $$0, arq $$1, @Nullable ezr $$2) {
-      return $$0 instanceof cme $$3 ? this.c.d($$3.gw()) : false;
+   public boolean a(bul $$0, arp $$1, @Nullable ezy $$2) {
+      return $$0 instanceof cmh $$3 ? this.c.d($$3.gn()) : false;
    }
 
    @Override

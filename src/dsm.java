@@ -1,344 +1,348 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class dsm extends dsr implements bsj, bsk {
-   private static final int f = 4;
-   public static final List<List<jq<btl>>> a = List.of(List.of(btp.a, btp.c), List.of(btp.k, btp.h), List.of(btp.e), List.of(btp.j));
-   private static final Set<jq<btl>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   public static final int e = 3;
-   private static final int h = 10;
-   private static final xl i = xl.c("container.beacon");
-   private static final String j = "primary_effect";
-   private static final String k = "secondary_effect";
-   List<dsm.a> l = Lists.newArrayList();
-   private List<dsm.a> m = Lists.newArrayList();
-   int n;
-   private int r;
-   @Nullable
-   jq<btl> s;
-   @Nullable
-   jq<btl> t;
-   @Nullable
-   private xl u;
-   private bsi v = bsi.a;
-   private final cse w = new cse() {
+public abstract class dsm extends dss implements bsu, ctq, cub {
+   protected static final int b = 0;
+   protected static final int c = 1;
+   protected static final int d = 2;
+   public static final int e = 0;
+   private static final int[] r = new int[]{0};
+   private static final int[] s = new int[]{2, 1};
+   private static final int[] t = new int[]{1};
+   public static final int f = 1;
+   public static final int g = 2;
+   public static final int h = 3;
+   public static final int i = 4;
+   public static final int j = 200;
+   public static final int k = 2;
+   public static final int l = 0;
+   protected jz<cwm> m = jz.a(3, cwm.k);
+   int u;
+   int v = 0;
+   int w;
+   int x;
+   protected final csl n = new csl() {
       @Override
       public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dsm.this.n;
-            case 1 -> crx.a(dsm.this.s);
-            case 2 -> crx.a(dsm.this.t);
-            default -> 0;
-         };
+         switch ($$0) {
+            case 0:
+               return dsm.this.u;
+            case 1:
+               return dsm.this.v;
+            case 2:
+               return dsm.this.w;
+            case 3:
+               return dsm.this.x;
+            default:
+               return 0;
+         }
       }
 
       @Override
       public void a(int $$0, int $$1) {
          switch ($$0) {
             case 0:
-               dsm.this.n = $$1;
+               dsm.this.u = $$1;
                break;
             case 1:
-               if (!dsm.this.o.C && !dsm.this.l.isEmpty()) {
-                  dsm.a(dsm.this.o, dsm.this.p, awo.bN);
-               }
-
-               dsm.this.s = dsm.a(crx.e($$1));
+               dsm.this.v = $$1;
                break;
             case 2:
-               dsm.this.t = dsm.a(crx.e($$1));
+               dsm.this.w = $$1;
+               break;
+            case 3:
+               dsm.this.x = $$1;
          }
       }
 
       @Override
       public int a() {
-         return 3;
+         return 4;
       }
    };
+   private final Object2IntOpenHashMap<alj> y = new Object2IntOpenHashMap();
+   private final dbe.a<dbp, ? extends dah> z;
 
-   @Nullable
-   static jq<btl> a(@Nullable jq<btl> $$0) {
-      return g.contains($$0) ? $$0 : null;
+   protected dsm(dta<?> $$0, jh $$1, dvv $$2, dbg<? extends dah> $$3) {
+      super($$0, $$1, $$2);
+      this.z = dbe.b($$3);
    }
 
-   public dsm(jh $$0, dvo $$1) {
-      super(dst.o, $$0, $$1);
+   private boolean k() {
+      return this.u > 0;
    }
 
-   public static void a(dff $$0, jh $$1, dvo $$2, dsm $$3) {
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      jh $$7;
-      if ($$3.r < $$5) {
-         $$7 = $$1;
-         $$3.m = Lists.newArrayList();
-         $$3.r = $$1.v() - 1;
-      } else {
-         $$7 = new jh($$4, $$3.r + 1, $$6);
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.m = jz.a(this.b(), cwm.k);
+      bse.b($$0, this.m, $$1);
+      this.u = $$0.g("BurnTime");
+      this.w = $$0.g("CookTime");
+      this.x = $$0.g("CookTimeTotal");
+      this.v = 0;
+      ul $$2 = $$0.p("RecipesUsed");
+
+      for (String $$3 : $$2.e()) {
+         this.y.put(alj.a($$3), $$2.h($$3));
+      }
+   }
+
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BurnTime", (short)this.u);
+      $$0.a("CookTime", (short)this.w);
+      $$0.a("CookTimeTotal", (short)this.x);
+      bse.a($$0, this.m, $$1);
+      ul $$2 = new ul();
+      this.y.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), $$2x));
+      $$0.a("RecipesUsed", $$2);
+   }
+
+   public static void a(dfm $$0, jh $$1, dvv $$2, dsm $$3) {
+      boolean $$4 = $$3.k();
+      boolean $$5 = false;
+      if ($$3.k()) {
+         $$3.u--;
       }
 
-      dsm.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
-      int $$10 = $$0.a(ebj.a.b, $$4, $$6);
+      cwm $$6 = $$3.m.get(1);
+      cwm $$7 = $$3.m.get(0);
+      boolean $$8 = !$$7.f();
+      boolean $$9 = !$$6.f();
+      if ($$3.v == 0) {
+         $$3.v = $$3.a($$0.L(), $$6);
+      }
 
-      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
-         dvo $$12 = $$0.a_($$7);
-         if ($$12.b() instanceof dia $$14) {
-            int $$15 = $$14.b().d();
-            if ($$3.m.size() <= 1) {
-               $$9 = new dsm.a($$15);
-               $$3.m.add($$9);
-            } else if ($$9 != null) {
-               if ($$15 == $$9.a) {
-                  $$9.a();
-               } else {
-                  $$9 = new dsm.a(axy.d($$9.a, $$15));
-                  $$3.m.add($$9);
+      if ($$3.k() || $$9 && $$8) {
+         dbc<?> $$10;
+         if ($$8) {
+            $$10 = $$3.z.a(new dbp($$7), $$0).orElse(null);
+         } else {
+            $$10 = null;
+         }
+
+         int $$12 = $$3.an_();
+         if (!$$3.k() && a($$0.J_(), $$10, $$3.m, $$12)) {
+            $$3.u = $$3.a($$0.L(), $$6);
+            $$3.v = $$3.u;
+            if ($$3.k()) {
+               $$5 = true;
+               if ($$9) {
+                  cwi $$13 = $$6.h();
+                  $$6.h(1);
+                  if ($$6.f()) {
+                     cwi $$14 = $$13.k();
+                     $$3.m.set(1, $$14 == null ? cwm.k : new cwm($$14));
+                  }
                }
+            }
+         }
+
+         if ($$3.k() && a($$0.J_(), $$10, $$3.m, $$12)) {
+            $$3.w++;
+            if ($$3.w == $$3.x) {
+               $$3.w = 0;
+               $$3.x = a($$0, $$3);
+               if (b($$0.J_(), $$10, $$3.m, $$12)) {
+                  $$3.a($$10);
+               }
+
+               $$5 = true;
             }
          } else {
-            if ($$9 == null || $$12.g() >= 15 && !$$12.a(dil.F)) {
-               $$3.m.clear();
-               $$3.r = $$10;
-               break;
-            }
-
-            $$9.a();
+            $$3.w = 0;
          }
-
-         $$7 = $$7.d();
-         $$3.r++;
+      } else if (!$$3.k() && $$3.w > 0) {
+         $$3.w = azm.a($$3.w - 2, 0, $$3.x);
       }
 
-      int $$16 = $$3.n;
-      if ($$0.aa() % 80L == 0L) {
-         if (!$$3.l.isEmpty()) {
-            $$3.n = a($$0, $$4, $$5, $$6);
-         }
-
-         if ($$3.n > 0 && !$$3.l.isEmpty()) {
-            a($$0, $$1, $$3.n, $$3.s, $$3.t);
-            a($$0, $$1, awo.bL);
-         }
+      if ($$4 != $$3.k()) {
+         $$5 = true;
+         $$2 = $$2.b(dhl.b, Boolean.valueOf($$3.k()));
+         $$0.a($$1, $$2, 3);
       }
 
-      if ($$3.r >= $$10) {
-         $$3.r = $$0.I_() - 1;
-         boolean $$17 = $$16 > 0;
-         $$3.l = $$3.m;
-         if (!$$0.C) {
-            boolean $$18 = $$3.n > 0;
-            if (!$$17 && $$18) {
-               a($$0, $$1, awo.bK);
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
 
-               for (arr $$19 : $$0.a(arr.class, new ezm((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
-                  ao.m.a($$19, $$3.n);
-               }
-            } else if ($$17 && !$$18) {
-               a($$0, $$1, awo.bM);
+   private static boolean a(ke $$0, @Nullable dbc<?> $$1, jz<cwm> $$2, int $$3) {
+      if (!$$2.get(0).f() && $$1 != null) {
+         cwm $$4 = $$1.b().a($$0);
+         if ($$4.f()) {
+            return false;
+         } else {
+            cwm $$5 = $$2.get(2);
+            if ($$5.f()) {
+               return true;
+            } else if (!cwm.c($$5, $$4)) {
+               return false;
+            } else {
+               return $$5.L() < $$3 && $$5.L() < $$5.k() ? true : $$5.L() < $$4.k();
             }
          }
-      }
-   }
-
-   private static int a(dff $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
-         int $$6 = $$2 - $$5;
-         if ($$6 < $$0.I_()) {
-            break;
-         }
-
-         boolean $$7 = true;
-
-         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
-            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
-               if (!$$0.a_(new jh($$8, $$6, $$9)).a(axd.aO)) {
-                  $$7 = false;
-                  break;
-               }
-            }
-         }
-
-         if (!$$7) {
-            break;
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public void aw_() {
-      a(this.o, this.p, awo.bM);
-      super.aw_();
-   }
-
-   private static void a(dff $$0, jh $$1, int $$2, @Nullable jq<btl> $$3, @Nullable jq<btl> $$4) {
-      if (!$$0.C && $$3 != null) {
-         double $$5 = (double)($$2 * 10 + 10);
-         int $$6 = 0;
-         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
-            $$6 = 1;
-         }
-
-         int $$7 = (9 + $$2 * 2) * 20;
-         ezm $$8 = new ezm($$1).g($$5).b(0.0, (double)$$0.J_(), 0.0);
-         List<cor> $$9 = $$0.a(cor.class, $$8);
-
-         for (cor $$10 : $$9) {
-            $$10.a(new btn($$3, $$7, $$6, true, true));
-         }
-
-         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
-            for (cor $$11 : $$9) {
-               $$11.a(new btn($$4, $$7, 0, true, true));
-            }
-         }
-      }
-   }
-
-   public static void a(dff $$0, jh $$1, awn $$2) {
-      $$0.a(null, $$1, $$2, awp.e, 1.0F, 1.0F);
-   }
-
-   public List<dsm.a> b() {
-      return (List<dsm.a>)(this.n == 0 ? ImmutableList.of() : this.l);
-   }
-
-   public aco c() {
-      return aco.a(this);
-   }
-
-   @Override
-   public un a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   private static void a(un $$0, String $$1, @Nullable jq<btl> $$2) {
-      if ($$2 != null) {
-         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
-      }
-   }
-
-   @Nullable
-   private static jq<btl> a(un $$0, String $$1) {
-      if ($$0.b($$1, 8)) {
-         all $$2 = all.c($$0.l($$1));
-         return $$2 == null ? null : lz.d.c($$2).map(dsm::a).orElse(null);
       } else {
-         return null;
+         return false;
+      }
+   }
+
+   private static boolean b(ke $$0, @Nullable dbc<?> $$1, jz<cwm> $$2, int $$3) {
+      if ($$1 != null && a($$0, $$1, $$2, $$3)) {
+         cwm $$4 = $$2.get(0);
+         cwm $$5 = $$1.b().a($$0);
+         cwm $$6 = $$2.get(2);
+         if ($$6.f()) {
+            $$2.set(2, $$5.v());
+         } else if (cwm.c($$6, $$5)) {
+            $$6.g(1);
+         }
+
+         if ($$4.a(dis.aP.j()) && !$$2.get(1).f() && $$2.get(1).a(cwq.qz)) {
+            $$2.set(1, new cwm(cwq.qA));
+         }
+
+         $$4.h(1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected int a(dtv $$0, cwm $$1) {
+      return $$0.b($$1);
+   }
+
+   private static int a(dfm $$0, dsm $$1) {
+      dbp $$2 = new dbp($$1.a(0));
+      return $$1.z.a($$2, $$0).map($$0x -> ((dah)$$0x.b()).d()).orElse(200);
+   }
+
+   @Override
+   public int[] a(jm $$0) {
+      if ($$0 == jm.a) {
+         return s;
+      } else {
+         return $$0 == jm.b ? r : t;
       }
    }
 
    @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.s = a($$0, "primary_effect");
-      this.t = a($$0, "secondary_effect");
-      if ($$0.b("CustomName", 8)) {
-         this.u = a($$0.l("CustomName"), $$1);
-      }
-
-      this.v = bsi.b($$0);
+   public boolean a(int $$0, cwm $$1, @Nullable jm $$2) {
+      return this.b($$0, $$1);
    }
 
    @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      a($$0, "primary_effect", this.s);
-      a($$0, "secondary_effect", this.t);
-      $$0.a("Levels", this.n);
-      if (this.u != null) {
-         $$0.a("CustomName", xl.a.a(this.u, $$1));
-      }
-
-      this.v.a($$0);
+   public boolean b(int $$0, cwm $$1, jm $$2) {
+      return $$2 == jm.a && $$0 == 1 ? $$1.a(cwq.qA) || $$1.a(cwq.qz) : true;
    }
 
-   public void a(@Nullable xl $$0) {
-      this.u = $$0;
+   @Override
+   public int b() {
+      return this.m.size();
+   }
+
+   @Override
+   protected jz<cwm> f() {
+      return this.m;
+   }
+
+   @Override
+   protected void a(jz<cwm> $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public void a(int $$0, cwm $$1) {
+      cwm $$2 = this.m.get($$0);
+      boolean $$3 = !$$1.f() && cwm.c($$2, $$1);
+      this.m.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      if ($$0 == 0 && !$$3) {
+         this.x = a(this.o, this);
+         this.w = 0;
+         this.e();
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, cwm $$1) {
+      if ($$0 == 2) {
+         return false;
+      } else if ($$0 != 1) {
+         return true;
+      } else {
+         cwm $$2 = this.m.get(1);
+         return this.o.L().a($$1) || $$1.a(cwq.qz) && !$$2.a(cwq.qz);
+      }
+   }
+
+   @Override
+   public void a(@Nullable dbc<?> $$0) {
+      if ($$0 != null) {
+         alj $$1 = $$0.a();
+         this.y.addTo($$1, 1);
+      }
    }
 
    @Nullable
    @Override
-   public xl ao() {
-      return this.u;
-   }
-
-   @Nullable
-   @Override
-   public crs createMenu(int $$0, coq $$1, cor $$2) {
-      return dsl.a($$2, this.v, this.S_()) ? new crx($$0, $$1, this.w, csf.a(this.o, this.aB_())) : null;
+   public dbc<?> d() {
+      return null;
    }
 
    @Override
-   public xl S_() {
-      return this.am();
+   public void a(cou $$0, List<cwm> $$1) {
    }
 
-   @Override
-   public xl am() {
-      return this.u != null ? this.u : i;
-   }
+   public void a(arq $$0) {
+      List<dbc<?>> $$1 = this.a($$0.y(), $$0.dt());
+      $$0.a($$1);
 
-   @Override
-   protected void a(dsr.b $$0) {
-      super.a($$0);
-      this.u = $$0.a(ku.g);
-      this.v = $$0.a(ku.ao, bsi.a);
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.g, this.u);
-      if (!this.v.equals(bsi.a)) {
-         $$0.a(ku.ao, this.v);
-      }
-   }
-
-   @Override
-   public void a(un $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
-   }
-
-   @Override
-   public void a(dff $$0) {
-      super.a($$0);
-      this.r = $$0.I_() - 1;
-   }
-
-   public static class a {
-      final int a;
-      private int b;
-
-      public a(int $$0) {
-         this.a = $$0;
-         this.b = 1;
+      for (dbc<?> $$2 : $$1) {
+         if ($$2 != null) {
+            $$0.a($$2, this.m);
+         }
       }
 
-      protected void a() {
-         this.b++;
+      this.y.clear();
+   }
+
+   public List<dbc<?>> a(arp $$0, ezy $$1) {
+      List<dbc<?>> $$2 = Lists.newArrayList();
+      ObjectIterator var4 = this.y.object2IntEntrySet().iterator();
+
+      while (var4.hasNext()) {
+         Entry<alj> $$3 = (Entry<alj>)var4.next();
+         $$0.s().a((alj)$$3.getKey()).ifPresent($$4 -> {
+            $$2.add((dbc<?>)$$4);
+            a($$0, $$1, $$3.getIntValue(), ((dah)$$4.b()).b());
+         });
       }
 
-      public int b() {
-         return this.a;
+      return $$2;
+   }
+
+   private static void a(arp $$0, ezy $$1, int $$2, float $$3) {
+      int $$4 = azm.d((float)$$2 * $$3);
+      float $$5 = azm.i((float)$$2 * $$3);
+      if ($$5 != 0.0F && Math.random() < (double)$$5) {
+         $$4++;
       }
 
-      public int c() {
-         return this.b;
+      bux.a($$0, $$1, $$4);
+   }
+
+   @Override
+   public void fillStackedContents(coz $$0) {
+      for (cwm $$1 : this.m) {
+         $$0.b($$1);
       }
    }
 }

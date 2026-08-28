@@ -1,20 +1,14 @@
-public enum dwp implements baj {
-   a("normal"),
-   b("sticky");
-
-   private final String c;
-
-   private dwp(final String $$0) {
-      this.c = $$0;
-   }
+public enum dwp implements bai {
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this == a ? "left" : "right";
    }
 }

@@ -1,60 +1,42 @@
-import java.util.Objects;
+import java.util.Comparator;
 
-public final class arv<T> implements Comparable<arv<?>> {
-   private final arw<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public class arv<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final arv<bas> a = a("start", ($$0, $$1) -> 0);
+   public static final arv<bas> b = a("dragon", ($$0, $$1) -> 0);
+   public static final arv<des> c = a("player", Comparator.comparingLong(des::a));
+   public static final arv<des> d = a("forced", Comparator.comparingLong(des::a));
+   public static final arv<jh> e = a("portal", kl::i, 300);
+   public static final arv<des> f = a("ender_pearl", Comparator.comparingLong(des::a), 40);
+   public static final arv<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final arv<des> h = a("unknown", Comparator.comparingLong(des::a), 1);
 
-   protected arv(arw<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static <T> arv<T> a(String $$0, Comparator<T> $$1) {
+      return new arv<>($$0, $$1, 0L);
    }
 
-   public int a(arv<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
-      }
+   public static <T> arv<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new arv<>($$0, $$1, (long)$$2);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof arv<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   protected arv(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
    @Override
    public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+      return this.i;
    }
 
-   public arw<T> a() {
-      return this.a;
+   public Comparator<T> a() {
+      return this.j;
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   public long b() {
+      return this.k;
    }
 }

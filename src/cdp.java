@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cdp extends ccf {
+   private final bvp a;
 
-public class cdp extends ccz {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cdp(bvm $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cdp(bvp $$0) {
+      this.a = $$0;
    }
 
-   public cdp(bvm $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ezr h() {
-      if (this.b.bo()) {
-         ezr $$0 = cgc.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.eb().i() >= this.j ? cgc.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(axi.a);
+   }
+
+   @Override
+   public void d() {
+      jh $$0 = null;
+
+      for (jh $$2 : jh.b(
+         azm.a(this.a.dA() - 2.0), azm.a(this.a.dC() - 2.0), azm.a(this.a.dG() - 2.0), azm.a(this.a.dA() + 2.0), this.a.dB(), azm.a(this.a.dG() + 2.0)
+      )) {
+         if (this.a.dV().b_($$2).a(axi.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

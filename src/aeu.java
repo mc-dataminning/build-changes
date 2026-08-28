@@ -1,23 +1,36 @@
-import javax.annotation.Nullable;
+public record aeu(agr e, byte f) implements zq<acf> {
+   public static final zh<wu, aeu> a = zq.a(aeu::a, aeu::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-public record aeu(int b, jq<btl> c) implements zs<ach> {
-   public static final zj<ww, aeu> a = zj.a(zh.h, aeu::b, btl.b, aeu::e, aeu::new);
-
-   @Override
-   public zu<aeu> a() {
-      return agw.al;
+   private aeu(wu $$0) {
+      this(new agr($$0), $$0.readByte());
    }
 
-   public void a(ach $$0) {
+   private void a(wu $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
+   }
+
+   @Override
+   public zs<aeu> a() {
+      return agu.am;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bui a(dff $$0) {
-      return $$0.a(this.b);
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public jq<btl> e() {
-      return this.c;
+   public agr b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

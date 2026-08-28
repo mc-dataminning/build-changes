@@ -1,61 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class qd extends qk<eak> {
-   @VisibleForTesting
-   static final List<alk<eak>> d = List.of(
-      eak.b.h(),
-      eak.c.h(),
-      eak.d.h(),
-      eak.f.h(),
-      eak.g.h(),
-      eak.h.h(),
-      eak.i.h(),
-      eak.a.h(),
-      eak.e.h(),
-      eak.j.h(),
-      eak.k.h(),
-      eak.l.h(),
-      eak.m.h(),
-      eak.n.h(),
-      eak.o.h(),
-      eak.p.h(),
-      eak.q.h(),
-      eak.r.h(),
-      eak.s.h(),
-      eak.t.h(),
-      eak.u.h(),
-      eak.v.h(),
-      eak.w.h(),
-      eak.y.h(),
-      eak.z.h(),
-      eak.A.h(),
-      eak.B.h(),
-      eak.C.h(),
-      eak.G.h(),
-      eak.H.h(),
-      eak.I.h(),
-      eak.J.h(),
-      eak.K.h(),
-      eak.M.h(),
-      eak.O.h(),
-      eak.P.h(),
-      eak.Q.h(),
-      eak.R.h(),
-      eak.S.h()
-   );
+public abstract class qd<T> extends qi<T> {
+   private final Function<T, ali<T>> d;
 
-   public qd(mi $$0, CompletableFuture<js.a> $$1) {
-      super($$0, ma.G, $$1);
+   public qd(mi $$0, ali<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, Function<T, ali<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axk.a).a(d).a(eat.f_).a(eak.x.h());
-      this.b(axk.c).a(eak.L.h());
-      this.b(axk.b).a(d).a(eat.f_).a(eak.N.h()).b(axk.c);
-      this.b(axk.d).a(eak.A.h(), eak.K.h(), eak.P.h(), eak.Q.h(), eak.D.h(), eak.C.h());
-      this.b(axk.e).a(eak.H.h());
+   public qd(mi $$0, ali<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, CompletableFuture<qi.c<T>> $$3, Function<T, ali<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected qd.a<T> a(axs<T> $$0) {
+      axp $$1 = this.c($$0);
+      return new qd.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends qi.b<T> {
+      private final Function<T, ali<T>> a;
+
+      a(axp $$0, Function<T, ali<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public qd.a<T> a(axs<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final qd.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final qd.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

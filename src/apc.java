@@ -1,65 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public class apc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.setblock.failed"));
-
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ex.a("pos", gs.a())
+               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("block", gp.a($$1))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), apc.b.a, null)))
-                              .then(ex.a("destroy").executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), apc.b.b, null))))
-                           .then(
-                              ex.a("keep")
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), apc.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
-                           ))
-                        .then(ex.a("replace").executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "pos"), gp.a($$0x, "block"), apc.b.a, null)))
+                     ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), 0.0F)))
+                        .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
                   )
             )
       );
    }
 
-   private static int a(ew $$0, jh $$1, gn $$2, apc.b $$3, @Nullable Predicate<dvs> $$4) throws CommandSyntaxException {
-      arq $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dvs($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == apc.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().l() || !$$5.a_($$1).l();
-         } else {
-            dsr $$7 = $$5.c_($$1);
-            bry.a_($$7);
-            $$6 = true;
-         }
+   private static int a(ew $$0, Collection<arq> $$1, jh $$2, float $$3) {
+      ali<dfm> $$4 = $$0.e().ag();
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> xl.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+      for (arq $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
-   }
 
-   public interface a {
-      @Nullable
-      gn filter(elt var1, jh var2, gn var3, arq var4);
-   }
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().o_()), true);
+      } else {
+         $$0.a(() -> xj.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
 
-   public static enum b {
-      a,
-      b;
+      return $$1.size();
    }
 }

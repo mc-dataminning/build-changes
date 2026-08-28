@@ -1,27 +1,44 @@
-public class grx extends gqg<coi, gxm, gbm> {
-   private static final all a = all.b("textures/entity/wandering_trader.png");
+public class grx<T extends bul & cpk> extends gpj<T, gxp> {
+   private final gqi a;
+   private final float b;
+   private final boolean h;
 
-   public grx(gpa.a $$0) {
-      super($$0, new gbm($$0.a(gcb.cW)), 0.5F);
-      this.a(new gss<>(this, $$0.f(), $$0.b()));
-      this.a(new gsr<>(this, $$0.b()));
+   public grx(gpk.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public all a(gxm $$0) {
-      return a;
+   public grx(gpk.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   protected void a(gxm $$0, fek $$1) {
-      float $$2 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   @Override
+   protected int a(T $$0, jh $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public gxm c() {
-      return new gxm();
+   public void a(gxp $$0, fer $$1, gjg $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cwk.h, false, $$1, $$2, $$3, gyv.d, $$0.a);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(coi $$0, gxm $$1, float $$2) {
+   public gxp a() {
+      return new gxp();
+   }
+
+   public void a(T $$0, gxp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
+      cwm $$3 = $$0.j();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dV(), null, $$0.ar()) : null;
+      $$1.b = $$3.v();
    }
 }

@@ -1,90 +1,65 @@
 import java.util.EnumSet;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class ccv extends ccc {
-   public static final int b = 1;
-   protected final bvm c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bvm, axt<bta>> a;
+public class ccv extends ccf {
+   private final bvj a;
+   private bvh b;
+   private int c;
 
-   public ccv(bvm $$0, double $$1) {
-      this($$0, $$1, axf.F);
-   }
-
-   public ccv(bvm $$0, double $$1, axt<bta> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public ccv(bvm $$0, double $$1, Function<bvm, axt<bta>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(ccc.a.a));
+   public ccv(bvj $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.c.ca()) {
-            jh $$0 = this.a(this.c.dY(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.c.eJ() != null && this.c.eJ().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      ezr $$0 = cfz.a(this.c, 5, 4);
+      bvh $$0 = this.a.aa_();
       if ($$0 == null) {
          return false;
       } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
+         this.b = $$0;
          return true;
       }
    }
 
-   public boolean k() {
-      return this.h;
-   }
-
    @Override
-   public void d() {
-      this.c.P().a(this.e, this.f, this.g, this.d);
-      this.h = true;
+   public boolean c() {
+      if (!this.b.bL()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
+      }
    }
 
    @Override
    public void e() {
-      this.h = false;
+      this.b = null;
+      this.a.L().o();
    }
 
    @Override
-   public boolean c() {
-      return !this.c.P().m();
+   public boolean T_() {
+      return true;
    }
 
-   @Nullable
-   protected jh a(dek $$0, bui $$1, int $$2) {
-      jh $$3 = $$1.dy();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dy(), $$2, 1, $$1x -> $$0.b_($$1x).a(axj.a)).orElse(null);
+   @Override
+   public void a() {
+      this.a.H().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
+      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.L().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
+         }
+      }
    }
 }

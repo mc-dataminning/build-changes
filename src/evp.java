@@ -1,65 +1,62 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class evp extends evt {
-   private static final Logger b = LogUtils.getLogger();
+public class evp extends ewa {
    public static final MapCodec<evp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alk.a(ma.be).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, evp::new)
+      $$0 -> a($$0).and(evp.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, evp::new)
    );
-   private final alk<evu> c;
+   private final evp.a b;
 
-   private evp(List<exr> $$0, alk<evu> $$1) {
+   private evp(List<exy> $$0, evp.a $$1) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public evv<evp> b() {
-      return evw.H;
+   public ewc<evp> b() {
+      return ewd.s;
    }
 
    @Override
-   public void a(eum $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<exg<?>> a() {
+      return ImmutableSet.of(this.b.g);
+   }
+
+   @Override
+   public cwm a(cwm $$0, eun $$1) {
+      if ($$1.c(this.b.g) instanceof bsn $$3) {
+         $$0.b(ku.g, $$3.an());
       }
+
+      return $$0;
    }
 
-   @Override
-   protected cwf a(cwf $$0, eug $$1) {
-      evu $$2 = $$1.a().c(this.c).map(jq::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eug.c<?> $$3 = eug.a($$2);
-         if ($$1.b($$3)) {
-            cwf var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static evt.a<?> a(alk<evu> $$0) {
+   public static ewa.a<?> a(evp.a $$0) {
       return a($$1 -> new evp($$1, $$0));
+   }
+
+   public static enum a implements bai {
+      a("this", exj.a),
+      b("attacking_entity", exj.d),
+      c("last_damage_player", exj.b),
+      d("block_entity", exj.h);
+
+      public static final Codec<evp.a> e = bai.a(evp.a::values);
+      private final String f;
+      final exg<?> g;
+
+      private a(final String $$0, final exg<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

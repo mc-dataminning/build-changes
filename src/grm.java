@@ -1,44 +1,21 @@
-public class grm<T extends bui & cph> extends goz<T, gxe> {
-   private final gpy a;
-   private final float b;
-   private final boolean h;
+public class grm extends gqq<cmf, gwm, gbd> {
+   private static final alj a = alj.b("textures/entity/silverfish.png");
 
-   public grm(gpa.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
-   }
-
-   public grm(gpa.a $$0) {
-      this($$0, 1.0F, false);
+   public grm(gpk.a $$0) {
+      super($$0, new gbd($$0.a(gck.cB)), 0.3F);
    }
 
    @Override
-   protected int a(T $$0, jh $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected float aV_() {
+      return 180.0F;
    }
 
-   public void a(gxe $$0, fek $$1, gix $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      if ($$0.a != null) {
-         this.a.a($$0.b, cwd.h, false, $$1, $$2, $$3, gyk.d, $$0.a);
-      }
-
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public alj b(gwm $$0) {
+      return a;
    }
 
-   public gxe a() {
-      return new gxe();
-   }
-
-   public void a(T $$0, gxe $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cwf $$3 = $$0.m();
-      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dY(), null, $$0.as()) : null;
-      $$1.b = $$3.v();
+   public gwm b() {
+      return new gwm();
    }
 }

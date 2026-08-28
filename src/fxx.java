@@ -1,3 +1,9 @@
-public interface fxx {
-   void a(buy var1, fek var2);
+public class fxx extends RuntimeException {
+   public fxx(String $$0) {
+      super($$0);
+   }
+
+   public fxx(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

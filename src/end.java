@@ -1,61 +1,72 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public class end extends enj {
+public class end extends enf {
    public static final MapCodec<end> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(elf.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, end::new)
-   );
-   private final jq<elf> b;
-   private final un c;
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(end::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(end::b),
+                     ene.c.optionalFieldOf("spread_type", ene.a).forGetter(end::c)
+                  )
+               )
+               .apply($$0, end::new)
+      )
+      .validate(end::a);
+   private final int c;
+   private final int d;
+   private final ene e;
 
-   protected end(jq<elf> $$0, enl.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   private static DataResult<end> a(end $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   private un b() {
-      un $$0 = new un();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dtt.a.a.c());
-      return $$0;
+   public end(kl $$0, enf.c $$1, float $$2, int $$3, Optional<enf.a> $$4, int $$5, int $$6, ene $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public end(int $$0, int $$1, ene $$2, int $$3) {
+      this(kl.g, enf.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ene c() {
+      return this.e;
+   }
+
+   public des a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      ecp $$5 = new ecp(new ebr(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new des($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public kl a(eqe $$0, dow $$1) {
-      return kl.g;
+   protected boolean a(dxs $$0, int $$1, int $$2) {
+      des $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.g == $$1 && $$3.h == $$2;
    }
 
    @Override
-   public List<eqd.c> a(eqe $$0, jh $$1, dow $$2, azv $$3) {
-      List<eqd.c> $$4 = Lists.newArrayList();
-      $$4.add(new eqd.c($$1, dil.pb.m().b(dmk.b, jo.a(jm.a, jm.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public elt a(eqe $$0, jh $$1, dow $$2) {
-      kl $$3 = this.a($$0, $$2);
-      return new elt($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(eqe $$0, dgd $$1, dgb $$2, dxk $$3, jh $$4, jh $$5, dow $$6, elt $$7, azv $$8, epn $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public enk<?> a() {
-      return enk.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public eng<?> e() {
+      return eng.a;
    }
 }

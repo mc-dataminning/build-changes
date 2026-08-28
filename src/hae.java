@@ -1,22 +1,15 @@
-public class hae {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+public class hae extends hai {
+   private static final alj a = alj.b("back");
 
-   public hae(int $$0) {
-      this($$0, -1);
+   public hae(gzf $$0) {
+      super($$0, alj.b("textures/atlas/paintings.png"), alj.b("paintings"));
    }
 
-   public hae(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gze a(cky $$0) {
+      return this.a($$0.d());
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   public gze a() {
+      return this.a(a);
    }
 }

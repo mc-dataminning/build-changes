@@ -1,30 +1,35 @@
-public class gar extends fzv {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final gcc e;
-   private final gcc f;
+public class gar extends fzj<gvo> {
+   private final gcl a;
+   private final gcl b;
 
-   public gar(gcc $$0) {
-      super($$0, gjh::c);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+   public gar(gcl $$0) {
+      super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("plate", gch.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gce.a);
-      $$1.a("handle", gch.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gce.a);
-      return gci.a($$0, 64, 64);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gcq.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gcn.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gcq.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gcn.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", gcq.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gcn.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", gcq.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gcn.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", gcq.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gcn.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gcq.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gcn.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", gcq.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gcn.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gcq.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gcn.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gcq.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gcn.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", gcq.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gcn.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", gcq.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gcn.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return gcr.a($$0, 32, 32);
    }
 
-   public gcc b() {
-      return this.e;
-   }
-
-   public gcc c() {
-      return this.f;
+   @Override
+   public void a(gvo $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * azm.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.p * 0.2F);
    }
 }

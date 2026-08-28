@@ -1,11 +1,7 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+public interface fbs<T> {
+   void a(fbq<T> var1);
 
-@Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface fbs {
+   boolean a(jh var1, T var2);
+
+   int a();
 }

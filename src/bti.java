@@ -1,19 +1,21 @@
-class bti extends btl {
-   protected bti(btm $$0, int $$1) {
+class bti extends bto {
+   protected bti(btp $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(bve $$0, int $$1) {
-      if ($$0 instanceof cor $$2) {
-         $$2.G(0.005F * (float)($$1 + 1));
-      }
-
-      return true;
+   public boolean a(arp $$0, bvh $$1, int $$2) {
+      return $$1.fu() > 0.0F;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return true;
+   }
+
+   @Override
+   public void a(bvh $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.E(Math.max($$0.fu(), (float)(4 * (1 + $$1))));
    }
 }

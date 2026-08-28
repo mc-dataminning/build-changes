@@ -1,35 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ani {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.b("Target not reached"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xj.b("commands.difficulty.failure", $$0));
 
    public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ex.a("to", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "to"))))
-      );
+      LiteralArgumentBuilder<ew> $$1 = ex.a("difficulty");
+
+      for (bsh $$2 : bsh.values()) {
+         $$1.then(ex.a($$2.e()).executes($$1x -> a((ew)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bsh $$1x = ((ew)$$0x.getSource()).e().ak();
+         ((ew)$$0x.getSource()).a(() -> xj.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   private static int a(ew $$0, jh $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bvg $$3)) {
-         throw a.create();
+   public static int a(ew $$0, bsh $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.aZ().q() == $$1) {
+         throw a.create($$1.e());
       } else {
-         ceq $$4 = new cep($$3, $$0.e());
-         esc $$5 = $$4.a($$1, 0);
-         agv.a($$0.e(), $$3, $$5, $$4.r());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> xl.b("Made path"), true);
-            return 1;
-         }
+         $$2.a($$1, true);
+         $$0.a(() -> xj.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

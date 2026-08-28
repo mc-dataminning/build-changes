@@ -1,8 +1,23 @@
-import io.netty.buffer.ByteBuf;
+public record akm<T>(int a, akn<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akm<?> $$1 = (akm<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
 
-public class akm {
-   public static final wt.a<akj, ByteBuf> a = zx.a(wg.c, $$0 -> $$0.a(akl.b, akk.b).a(akc.b, ake.a));
-   public static final wt<akj> b = a.a($$0 -> $$0);
-   public static final wt.a<akg, wi> c = zx.b(wg.c, $$0 -> $$0.a(akl.a, akh.a).a(akc.a, akb.a));
-   public static final wt<akg> d = c.a(wi::new);
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
+   }
 }

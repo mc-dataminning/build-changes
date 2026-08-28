@@ -1,77 +1,13 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
-
-public class xt {
-   private final xv[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xx d;
-
-   public xt(int $$0) {
-      this.a = new xv[$$0];
+public record xt(xv a, boolean b) {
+   public xt a() {
+      return this.b ? new xt(this.a, false) : this;
    }
 
-   public boolean a(xx $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xv($$0, true) : null);
-         return true;
-      }
+   public xv b() {
+      return this.a;
    }
 
-   private void a(@Nullable xv $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
-
-   public void a(xx $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xv $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
-
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public xt.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xx> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xv $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      xs $$6 = new xs($$2);
-      xs.b $$7 = new xs.b($$0, $$1);
-      return new xt.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xs a, xs.b b) {
+   public boolean c() {
+      return this.b;
    }
 }

@@ -1,44 +1,81 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public class bxi implements byl {
-   private final bui a;
-   private final boolean b;
+public class bxi<E extends bvj & cll, T extends bvh> extends bxa<E> {
+   private static final int c = 1200;
+   private int d;
+   private bxi.a e = bxi.a.a;
 
-   public bxi(bui $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bxi() {
+      super(ImmutableMap.of(cel.n, cem.c, cel.o, cem.a), 1200);
    }
 
-   @Override
-   public ezr a() {
-      return this.b ? this.a.dw().b(0.0, (double)this.a.cU(), 0.0) : this.a.dw();
+   protected boolean a(arp $$0, E $$1) {
+      bvh $$2 = b($$1);
+      return $$1.b(cwq.wn) && bxc.b($$1, $$2) && bxc.a($$1, $$2, 0);
    }
 
-   @Override
-   public jh b() {
-      return this.a.dy();
+   protected boolean a(arp $$0, E $$1, long $$2) {
+      return $$1.eb().a(cel.o) && this.a($$0, $$1);
    }
 
-   @Override
-   public boolean a(bve $$0) {
-      if (this.a instanceof bve $$1) {
-         if (!$$1.bN()) {
-            return false;
-         } else {
-            Optional<cek> $$3 = $$0.ee().c(cei.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   protected void b(arp $$0, E $$1, long $$2) {
+      bvh $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
+   }
+
+   protected void c(arp $$0, E $$1, long $$2) {
+      if ($$1.fx()) {
+         $$1.fD();
+      }
+
+      if ($$1.b(cwq.wn)) {
+         $$1.b(false);
+         $$1.fz().b(ku.O, cyr.a);
       }
    }
 
-   public bui c() {
-      return this.a;
+   private void a(E $$0, bvh $$1) {
+      if (this.e == bxi.a.a) {
+         $$0.c(cpp.a($$0, cwq.wn));
+         this.e = bxi.a.b;
+         $$0.b(true);
+      } else if (this.e == bxi.a.b) {
+         if (!$$0.fx()) {
+            this.e = bxi.a.a;
+         }
+
+         int $$2 = $$0.fB();
+         cwm $$3 = $$0.fz();
+         if ($$2 >= cvd.b($$3, $$0)) {
+            $$0.fC();
+            this.e = bxi.a.c;
+            this.d = 20 + $$0.dY().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bxi.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bxi.a.d;
+         }
+      } else if (this.e == bxi.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = bxi.a.a;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   private void b(bvj $$0, bvh $$1) {
+      $$0.eb().a(cel.n, new bxl($$1, true));
+   }
+
+   private static bvh b(bvh $$0) {
+      return $$0.eb().c(cel.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

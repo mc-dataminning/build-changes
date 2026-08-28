@@ -1,5 +1,7 @@
-public interface fdv<T> {
-   T e();
+public interface fdv {
+   void a(boolean var1);
 
-   void a(T var1);
+   void a();
+
+   void b();
 }

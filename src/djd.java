@@ -1,130 +1,61 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class djd extends dme {
+public class djd extends dpj {
    public static final MapCodec<djd> a = b(djd::new);
-   public static final dwl<jm> b = dme.aF;
-   @Nullable
-   private dvt c;
-   @Nullable
-   private dvt d;
-   @Nullable
-   private dvt e;
-   @Nullable
-   private dvt f;
-   private static final Predicate<dvo> g = $$0 -> $$0 != null && ($$0.a(dil.ee) || $$0.a(dil.ef));
+   public static final dws<jm> b = dwl.R;
 
    @Override
-   public MapCodec<? extends djd> a() {
+   public MapCodec<djd> a() {
       return a;
    }
 
-   protected djd(dvn.d $$0) {
+   public djd(dvu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.c));
+      this.l(this.m().b(b, jm.c));
+   }
+
+   @Nullable
+   @Override
+   public dsy a(jh $$0, dvv $$1) {
+      return new dtd($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return !$$0.C ? a($$2, dta.J, ($$0x, $$1x, $$2x, $$3) -> eba.c.a($$0x, $$3.go(), $$3.gp())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dvv a(dad $$0) {
+      return super.a($$0).b(b, $$0.g());
    }
 
    @Override
-   protected void b(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public boolean a(dfi $$0, jh $$1) {
-      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
-   }
-
-   private void a(dff $$0, jh $$1) {
-      dvt.b $$2 = this.q().a($$0, $$1);
-      if ($$2 != null) {
-         cht $$3 = bup.aS.a($$0, buo.k);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
-      } else {
-         dvt.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            chh $$5 = bup.af.a($$0, buo.k);
-            if ($$5 != null) {
-               $$5.y(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(dff $$0, dvt.b $$1, bui $$2, jh $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (arr $$4 : $$0.a(arr.class, $$2.cT().g(5.0))) {
-         ao.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(dff $$0, dvt.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dvs $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dil.a.m(), 2);
-            $$0.c(2001, $$4.d(), dij.j($$4.a()));
-         }
-      }
-   }
-
-   public static void b(dff $$0, dvt.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dvs $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), dil.a);
-         }
-      }
+   public int a(dvv $$0, der $$1, jh $$2, jm $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   public dvo a(czw $$0) {
-      return this.m().b(b, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
+   protected void a(dvw.a<diq, dvv> $$0) {
+      super.a($$0);
       $$0.a(b);
    }
 
-   private dvt b() {
-      if (this.c == null) {
-         this.c = dvu.a().a(" ", "#", "#").a('#', dvs.a(dvx.a(dil.dP))).b();
-      }
-
-      return this.c;
+   @Override
+   public dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
-   private dvt q() {
-      if (this.d == null) {
-         this.d = dvu.a().a("^", "#", "#").a('^', dvs.a(g)).a('#', dvs.a(dvx.a(dil.dP))).b();
-      }
-
-      return this.d;
+   @Override
+   public dvv a(dvv $$0, dnm $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
-   private dvt r() {
-      if (this.e == null) {
-         this.e = dvu.a().a("~ ~", "###", "~#~").a('#', dvs.a(dvx.a(dil.ci))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.e;
-   }
-
-   private dvt y() {
-      if (this.f == null) {
-         this.f = dvu.a().a("~^~", "###", "~#~").a('^', dvs.a(g)).a('#', dvs.a(dvx.a(dil.ci))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.f;
+   @Override
+   public int c() {
+      return 10;
    }
 }

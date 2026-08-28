@@ -1,26 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fny implements fnz {
-   private final xl b;
-   protected final fpk a = new fpk();
-
-   public fny(xl $$0) {
-      this.b = $$0;
-   }
+public abstract class fny implements fnz {
+   @Nullable
+   private foa a;
+   private boolean b;
 
    @Override
-   public xl a() {
+   public final boolean aJ_() {
       return this.b;
    }
 
    @Override
-   public void a(Consumer<flu> $$0) {
-      this.a.a($$0);
+   public final void b_(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public foa aK_() {
+      return this.a;
    }
 
    @Override
-   public void a(fqe $$0) {
-      this.a.a();
-      fpj.a(this.a, $$0, 0.5F, 0.16666667F);
+   public void a(@Nullable foa $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 }

@@ -1,26 +1,43 @@
 import javax.annotation.Nullable;
 
-public interface ckc {
-   boolean a();
+public class ckc extends cjx {
+   @Nullable
+   private ezy b;
 
-   void b();
+   public ckc(cjv $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void a(arp $$0) {
+      if (this.b == null) {
+         this.b = this.a.dt();
+      }
+   }
 
-   void a(cjr var1, jh var2, bsy var3, @Nullable cor var4);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void d();
+   @Override
+   public void c() {
+      this.b = null;
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   cki<? extends ckc> i();
+   @Override
+   public float e() {
+      return 1.0F;
+   }
 
    @Nullable
-   ezr g();
+   @Override
+   public ezy f() {
+      return this.b;
+   }
 
-   float a(bsy var1, float var2);
+   @Override
+   public ckl<ckc> h() {
+      return ckl.k;
+   }
 }

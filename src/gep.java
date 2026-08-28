@@ -1,85 +1,73 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
 public final class gep {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gep c = new gep(HostAndPort.fromParts("server.invalid", 25565));
+   private static final int a = 1024;
+   private final geg b;
+   private final gem c;
+   private final geb d;
+   @Nullable
+   private gel e;
 
-   public gep(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
-
-   private gep(HostAndPort $$0) {
+   public gep(geg $$0, gem $$1, geb $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
+   public static gep a(gem $$0, UserApiService $$1) {
+      geb $$2 = new geb(1024);
+      geg $$3 = geg.a($$0, $$1);
+      return new gep($$3, $$0, $$2);
    }
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static gep a(String $$0) {
-      if ($$0 == null) {
-         return c;
+   public void a(fke $$0, frw $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gel $$4 = this.e.b();
+         $$0.a(
+            new fqu(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xj.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xj.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xj.c("gui.abuseReport.draft.edit"),
+               xj.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gep($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
+         $$2.run();
       }
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
+   public geg a() {
+      return this.b;
    }
 
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
+   public geb b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean a(gem $$0) {
+      return Objects.equals(this.c, $$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gep ? this.b.equals(((gep)$$0).b) : false;
-      }
+   public void a(@Nullable gel $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

@@ -1,29 +1,45 @@
-public class aiu implements zs<agy> {
-   public static final zj<wi, aiu> a = zs.a(aiu::a, aiu::new);
-   private final bsg b;
+public class aiu implements zq<agw> {
+   public static final zh<wg, aiu> a = zq.a(aiu::a, aiu::new);
+   private final ezu b;
+   private final bsj c;
+   private final int d;
 
-   public aiu(bsg $$0) {
-      this.b = $$0;
+   public aiu(bsj $$0, ezu $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private aiu(wi $$0) {
-      this.b = $$0.b(bsg.class);
+   private aiu(wg $$0) {
+      this.c = $$0.b(bsj.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(wi $$0) {
+   private void a(wg $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
+      $$0.c(this.d);
    }
 
    @Override
-   public zu<aiu> a() {
-      return agw.cd;
+   public zs<aiu> a() {
+      return agu.cf;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public bsg b() {
+   public bsj b() {
+      return this.c;
+   }
+
+   public ezu e() {
       return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

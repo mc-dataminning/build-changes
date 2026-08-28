@@ -1,61 +1,88 @@
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public interface but {
-   void a(buq var1, cwf var2);
+public enum but implements bai {
+   a(but.a.a, 0, 0, "mainhand"),
+   b(but.a.a, 1, 5, "offhand"),
+   c(but.a.b, 0, 1, 1, "feet"),
+   d(but.a.b, 1, 1, 2, "legs"),
+   e(but.a.b, 2, 1, 3, "chest"),
+   f(but.a.b, 3, 1, 4, "head"),
+   g(but.a.c, 0, 1, 6, "body");
 
-   cwf a(buq var1);
+   public static final int h = 0;
+   public static final List<but> i = List.of(values());
+   public static final IntFunction<but> j = ayd.a($$0 -> $$0.p, values(), ayd.a.a);
+   public static final bai.a<but> k = bai.a(but::values);
+   public static final zh<ByteBuf, but> l = zf.a(j, $$0 -> $$0.p);
+   private final but.a m;
+   private final int n;
+   private final int o;
+   private final int p;
+   private final String q;
 
-   void a(buq var1, float var2);
-
-   default void a(bus $$0, euj $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private but(final but.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
    }
 
-   default void a(alk<eul> $$0, euj $$1, Map<buq, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private but(final but.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
    }
 
-   default void a(alk<eul> $$0, euj $$1, long $$2, Map<buq, Float> $$3) {
-      eul $$4 = $$1.a().o().bc().b($$0);
-      if ($$4 != eul.a) {
-         List<cwf> $$5 = $$4.a($$1, $$2);
-         List<buq> $$6 = new ArrayList<>();
-
-         for (cwf $$7 : $$5) {
-            buq $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               cwf $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
-
-               $$6.add($$8);
-            }
-         }
-      }
+   public but.a a() {
+      return this.m;
    }
 
-   @Nullable
-   default buq a(cwf $$0, List<buq> $$1) {
-      if ($$0.f()) {
-         return null;
+   public int b() {
+      return this.n;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.n;
+   }
+
+   public cwm a(cwm $$0) {
+      return this.o > 0 ? $$0.a(this.o) : $$0;
+   }
+
+   public int d() {
+      return this.p;
+   }
+
+   public int b(int $$0) {
+      return this.p + $$0;
+   }
+
+   public String e() {
+      return this.q;
+   }
+
+   public boolean f() {
+      return this.m == but.a.b || this.m == but.a.c;
+   }
+
+   @Override
+   public String c() {
+      return this.q;
+   }
+
+   public static but a(String $$0) {
+      but $$1 = k.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         ddr $$2 = $$0.a(ku.D);
-         if ($$2 != null) {
-            buq $$3 = $$2.a();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(buq.a)) {
-            return buq.a;
-         }
-
-         return null;
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

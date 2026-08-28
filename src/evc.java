@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface evc {
+public interface evc {
+   int a(float var1);
+
+   void a(Consumer<cwm> var1, eun var2);
 }

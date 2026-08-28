@@ -1,284 +1,101 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class crv {
+   private int a = 20;
+   private float b = 5.0F;
+   private float c;
+   private int d;
 
-public class crv extends csw {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   private static final Logger u = LogUtils.getLogger();
-   private static final boolean v = false;
-   public static final int p = 50;
-   private int w;
-   @Nullable
-   private String x;
-   private final csm y = csm.a();
-   private boolean z = false;
-   private static final int A = 0;
-   private static final int B = 1;
-   private static final int C = 1;
-   private static final int D = 1;
-   private static final int E = 2;
-   private static final int F = 1;
-   private static final int G = 1;
-   private static final int H = 27;
-   private static final int I = 76;
-   private static final int J = 134;
-   private static final int K = 47;
-
-   public crv(int $$0, coq $$1) {
-      this($$0, $$1, csf.a);
+   private void b(int $$0, float $$1) {
+      this.a = azm.a($$0 + this.a, 0, 20);
+      this.b = azm.a($$1 + this.b, 0.0F, (float)this.a);
    }
 
-   public crv(int $$0, coq $$1, csf $$2) {
-      super(ctb.i, $$0, $$1, $$2);
-      this.a(this.y);
+   public void a(int $$0, float $$1) {
+      this.b($$0, cru.a($$0, $$1));
    }
 
-   @Override
-   protected csx l() {
-      return csx.a().a(0, 27, 47, $$0 -> true).a(1, 76, 47, $$0 -> true).a(2, 134, 47).a();
+   public void a(crw $$0) {
+      this.b($$0.a(), $$0.b());
    }
 
-   @Override
-   protected boolean a(dvo $$0) {
-      return $$0.a(axd.N);
-   }
-
-   @Override
-   protected boolean a(cor $$0, boolean $$1) {
-      return ($$0.fY() || $$0.cq >= this.y.b()) && this.y.b() > 0;
-   }
-
-   @Override
-   protected void a(cor $$0, cwf $$1) {
-      if (!$$0.gm().d) {
-         $$0.c(-this.y.b());
+   public void a(arq $$0) {
+      arp $$1 = $$0.y();
+      bsh $$2 = $$1.ak();
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$2 != bsh.a) {
+            this.a = Math.max(this.a - 1, 0);
+         }
       }
 
-      if (this.w > 0) {
-         cwf $$2 = this.s.a(1);
-         if (!$$2.f() && $$2.L() > this.w) {
-            $$2.h(this.w);
-            this.s.a(1, $$2);
-         } else {
-            this.s.a(1, cwf.k);
+      boolean $$3 = $$1.N().b(dfi.k);
+      if ($$3 && this.b > 0.0F && $$0.gs() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
          }
-      } else if (!this.z) {
-         this.s.a(1, cwf.k);
-      }
-
-      this.y.a(0);
-      this.s.a(0, cwf.k);
-      this.q.a(($$1x, $$2x) -> {
-         dvo $$3 = $$1x.a_($$2x);
-         if (!$$0.fY() && $$3.a(axd.N) && $$0.eb().i() < 0.12F) {
-            dvo $$4 = dhj.e($$3);
-            if ($$4 == null) {
-               $$1x.a($$2x, false);
-               $$1x.c(1029, $$2x, 0);
-            } else {
-               $$1x.a($$2x, $$4, 2);
-               $$1x.c(1030, $$2x, 0);
-            }
-         } else {
-            $$1x.c(1030, $$2x, 0);
+      } else if ($$3 && this.a >= 18 && $$0.gs()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
          }
-      });
-   }
-
-   @Override
-   public void m() {
-      cwf $$0 = this.s.a(0);
-      this.z = false;
-      this.y.a(1);
-      int $$1 = 0;
-      long $$2 = 0L;
-      int $$3 = 0;
-      if (!$$0.f() && dby.a($$0)) {
-         cwf $$4 = $$0.v();
-         cwf $$5 = this.s.a(1);
-         dcc.a $$6 = new dcc.a(dby.b($$4));
-         $$2 += (long)$$0.a(ku.s, Integer.valueOf(0)).intValue() + (long)$$5.a(ku.s, Integer.valueOf(0)).intValue();
-         this.w = 0;
-         if (!$$5.f()) {
-            boolean $$7 = $$5.b(ku.I);
-            if ($$4.m() && $$0.b($$5)) {
-               int $$8 = Math.min($$4.o(), $$4.p() / 4);
-               if ($$8 <= 0) {
-                  this.t.a(0, cwf.k);
-                  this.y.a(0);
-                  return;
-               }
-
-               int $$9;
-               for ($$9 = 0; $$8 > 0 && $$9 < $$5.L(); $$9++) {
-                  int $$10 = $$4.o() - $$8;
-                  $$4.b($$10);
-                  $$1++;
-                  $$8 = Math.min($$4.o(), $$4.p() / 4);
-               }
-
-               this.w = $$9;
-            } else {
-               if (!$$7 && (!$$4.a($$5.h()) || !$$4.m())) {
-                  this.t.a(0, cwf.k);
-                  this.y.a(0);
-                  return;
-               }
-
-               if ($$4.m() && !$$7) {
-                  int $$11 = $$0.p() - $$0.o();
-                  int $$12 = $$5.p() - $$5.o();
-                  int $$13 = $$12 + $$4.p() * 12 / 100;
-                  int $$14 = $$11 + $$13;
-                  int $$15 = $$4.p() - $$14;
-                  if ($$15 < 0) {
-                     $$15 = 0;
-                  }
-
-                  if ($$15 < $$4.o()) {
-                     $$4.b($$15);
-                     $$1 += 2;
-                  }
-               }
-
-               dcc $$16 = dby.b($$5);
-               boolean $$17 = false;
-               boolean $$18 = false;
-
-               for (Entry<jq<dbw>> $$19 : $$16.b()) {
-                  jq<dbw> $$20 = (jq<dbw>)$$19.getKey();
-                  int $$21 = $$6.a($$20);
-                  int $$22 = $$19.getIntValue();
-                  $$22 = $$21 == $$22 ? $$22 + 1 : Math.max($$22, $$21);
-                  dbw $$23 = $$20.a();
-                  boolean $$24 = $$23.c($$0);
-                  if (this.r.gm().d || $$0.a(cwj.uO)) {
-                     $$24 = true;
-                  }
-
-                  for (jq<dbw> $$25 : $$6.a()) {
-                     if (!$$25.equals($$20) && !dbw.a($$20, $$25)) {
-                        $$24 = false;
-                        $$1++;
-                     }
-                  }
-
-                  if (!$$24) {
-                     $$18 = true;
-                  } else {
-                     $$17 = true;
-                     if ($$22 > $$23.e()) {
-                        $$22 = $$23.e();
-                     }
-
-                     $$6.a($$20, $$22);
-                     int $$26 = $$23.c();
-                     if ($$7) {
-                        $$26 = Math.max(1, $$26 / 2);
-                     }
-
-                     $$1 += $$26 * $$22;
-                     if ($$0.L() > 1) {
-                        $$1 = 40;
-                     }
-                  }
-               }
-
-               if ($$18 && !$$17) {
-                  this.t.a(0, cwf.k);
-                  this.y.a(0);
-                  return;
-               }
-            }
-         }
-
-         if (this.x != null && !bak.h(this.x)) {
-            if (!this.x.equals($$0.y().getString())) {
-               $$3 = 1;
-               $$1 += $$3;
-               $$4.b(ku.g, xl.b(this.x));
-            }
-         } else if ($$0.b(ku.g)) {
-            $$3 = 1;
-            $$1 += $$3;
-            $$4.c(ku.g);
-         }
-
-         int $$27 = $$1 <= 0 ? 0 : (int)azn.a($$2 + (long)$$1, 0L, 2147483647L);
-         this.y.a($$27);
-         if ($$1 <= 0) {
-            $$4 = cwf.k;
-         }
-
-         if ($$3 == $$1 && $$3 > 0) {
-            if (this.y.b() >= 40) {
-               this.y.a(39);
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eD() > 10.0F || $$2 == bsh.d || $$0.eD() > 1.0F && $$2 == bsh.c) {
+               $$0.a($$1, $$0.dW().j(), 1.0F);
             }
 
-            this.z = true;
+            this.d = 0;
          }
-
-         if (this.y.b() >= 40 && !this.r.gm().d) {
-            $$4 = cwf.k;
-         }
-
-         if (!$$4.f()) {
-            int $$28 = $$4.a(ku.s, Integer.valueOf(0));
-            if ($$28 < $$5.a(ku.s, Integer.valueOf(0))) {
-               $$28 = $$5.a(ku.s, Integer.valueOf(0));
-            }
-
-            if ($$3 != $$1 || $$3 == 0) {
-               $$28 = e($$28);
-            }
-
-            $$4.b(ku.s, $$28);
-            dby.a($$4, $$6.b());
-         }
-
-         this.t.a(0, $$4);
-         this.d();
       } else {
-         this.t.a(0, cwf.k);
-         this.y.a(0);
+         this.d = 0;
       }
    }
 
-   public static int e(int $$0) {
-      return (int)Math.min((long)$$0 * 2L + 1L, 2147483647L);
-   }
-
-   public boolean a(String $$0) {
-      String $$1 = b($$0);
-      if ($$1 != null && !$$1.equals(this.x)) {
-         this.x = $$1;
-         if (this.b(2).h()) {
-            cwf $$2 = this.b(2).g();
-            if (bak.h($$1)) {
-               $$2.c(ku.g);
-            } else {
-               $$2.b(ku.g, xl.b($$1));
-            }
-         }
-
-         this.m();
-         return true;
-      } else {
-         return false;
+   public void a(ul $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
       }
    }
 
-   @Nullable
-   private static String b(String $$0) {
-      String $$1 = bak.g($$0);
-      return $$1.length() <= 50 ? $$1 : null;
+   public void b(ul $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   @Override
-   public int n() {
-      return this.y.b();
+   public int a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
    }
 }

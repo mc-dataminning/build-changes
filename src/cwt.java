@@ -1,47 +1,85 @@
-public class cwt extends cwb {
-   private final bup<? extends cqo> a;
+import javax.annotation.Nullable;
 
-   public cwt(bup<? extends cqo> $$0, cwb.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cwt {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jq<cws> c;
+   private final jh d;
+   private final cwt.a e;
+
+   public cwt(cwt.a $$0, jh $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public bsh a(czy $$0) {
-      dff $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvo $$3 = $$1.a_($$2);
-      if (!$$3.a(axd.O)) {
-         return bsh.d;
-      } else {
-         cwf $$4 = $$0.n();
-         dwr $$5 = $$3.b() instanceof dhy ? $$3.c(((dhy)$$3.b()).c()) : dwr.a;
-         double $$6 = 0.0;
-         if ($$5.b()) {
-            $$6 = 0.5;
-         }
+   public boolean a() {
+      return this.c != null;
+   }
 
-         ezr $$7 = new ezr((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
-         cqo $$8 = cqo.a($$1, $$7.d, $$7.e, $$7.f, this.a, buo.o, $$4, $$0.o());
-         if ($$8 == null) {
-            return bsh.d;
+   @Nullable
+   public cws b() {
+      return this.c == null ? null : this.c.a();
+   }
+
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jq<cws> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public void a(dfn $$0, jq<cws> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.J_().e(ma.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(dfn $$0, @Nullable dvv $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(ear.F, this.d, ear.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(dfn $$0, @Nullable dvv $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
          } else {
-            if (cqo.b($$1)) {
-               for (bui $$10 : $$1.a_(null, $$8.cT())) {
-                  if ($$10 instanceof cqo) {
-                     return bsh.d;
-                  }
-               }
+            if (this.d()) {
+               $$0.a(ear.E, this.d, ear.a.a($$1));
+               a($$0, this.d);
             }
 
-            if ($$1 instanceof arq $$11) {
-               $$11.b($$8);
-               $$11.a(eak.t, $$2, eak.a.a($$0.o(), $$11.a_($$2.e())));
-            }
-
-            $$4.h(1);
-            return bsh.a;
+            this.b++;
          }
       }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(dfn $$0, jh $$1) {
+      if ($$0 instanceof arp $$2) {
+         ezy $$3 = ezy.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.G_().a(4) / 24.0F;
+         $$2.a(ls.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

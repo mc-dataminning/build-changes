@@ -1,4 +1,8 @@
-public class gvv extends gvu {
-   public ezr[] a = new ezr[0];
-   public boolean i;
+import javax.annotation.Nullable;
+
+public class gvv extends gvo {
+   public boolean a;
+   @Nullable
+   public hbg b;
+   public cwm c = cwm.k;
 }

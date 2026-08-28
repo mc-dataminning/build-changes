@@ -1,55 +1,29 @@
-import java.security.PublicKey;
+public class aji implements zq<aje> {
+   public static final zh<wg, aji> a = zq.a(aji::a, aji::new);
+   private final xj b;
 
-public class aji implements zs<ajg> {
-   public static final zj<wi, aji> a = zs.a(aji::a, aji::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public aji(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+   public aji(xj $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   private aji(wi $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private aji(wg $$0) {
+      this.b = xj.a.b($$0.d(262144), ke.b);
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private void a(wg $$0) {
+      $$0.a(xj.a.a(this.b, ke.b));
    }
 
    @Override
-   public zu<aji> a() {
-      return ajm.c;
+   public zs<aji> a() {
+      return ajk.e;
    }
 
-   public void a(ajg $$0) {
+   public void a(aje $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public xj b() {
       return this.b;
-   }
-
-   public PublicKey e() throws aym {
-      return ayl.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
    }
 }

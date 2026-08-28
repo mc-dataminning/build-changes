@@ -1,88 +1,37 @@
-import java.util.Arrays;
-
-public class fyh extends fza<gwb> {
-   private final gcc[] a;
-   private final gcc b;
-
-   public fyh(gcc $$0) {
+public class fyh extends fzw<guv> {
+   public fyh(gcl $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.a = new gcc[12];
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public static gcr a(gcp $$0) {
+      gct $$1 = fzw.a($$0, 0.0F);
+      gcv $$2 = $$1.a();
+      gcv $$3 = $$2.a("head", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gcn.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", gcq.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gcn.a);
+      $$2.a("right_leg", gcq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", gcq.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(1.9F, 11.0F, 0.0F));
+      return gcr.a($$1, 64, 32);
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("head", gch.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gce.a);
-      float $$2 = 0.0F;
-      gch $$3 = gch.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = azn.b($$2) * 9.0F;
-         float $$6 = -2.0F + azn.b((float)($$4 * 2) * 0.25F);
-         float $$7 = azn.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, gce.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = azn.b($$2) * 7.0F;
-         float $$10 = 2.0F + azn.b((float)($$8 * 2) * 0.25F);
-         float $$11 = azn.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, gce.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = azn.b($$2) * 5.0F;
-         float $$14 = 11.0F + azn.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = azn.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, gce.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return gci.a($$0, 64, 32);
-   }
-
-   public void a(gwb $$0) {
+   public void a(guv $$0) {
       super.a($$0);
-      float $$1 = $$0.p * (float) Math.PI * -0.1F;
-
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.a[$$2].c = -2.0F + azn.b(((float)($$2 * 2) + $$0.p) * 0.25F);
-         this.a[$$2].b = azn.b($$1) * 9.0F;
-         this.a[$$2].d = azn.a($$1) * 9.0F;
-         $$1++;
-      }
-
-      $$1 = (float) (Math.PI / 4) + $$0.p * (float) Math.PI * 0.03F;
-
-      for (int $$3 = 4; $$3 < 8; $$3++) {
-         this.a[$$3].c = 2.0F + azn.b(((float)($$3 * 2) + $$0.p) * 0.25F);
-         this.a[$$3].b = azn.b($$1) * 7.0F;
-         this.a[$$3].d = azn.a($$1) * 7.0F;
-         $$1++;
-      }
-
-      $$1 = 0.47123894F + $$0.p * (float) Math.PI * -0.05F;
-
-      for (int $$4 = 8; $$4 < 12; $$4++) {
-         this.a[$$4].c = 11.0F + azn.b(((float)$$4 * 1.5F + $$0.p) * 0.5F);
-         this.a[$$4].b = azn.b($$1) * 5.0F;
-         this.a[$$4].d = azn.a($$1) * 5.0F;
-         $$1++;
-      }
-
-      this.b.f = $$0.U * (float) (Math.PI / 180.0);
-      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
    }
 }

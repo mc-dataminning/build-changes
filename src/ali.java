@@ -1,65 +1,64 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.MapMaker;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public final class ali<E> implements Codec<jq<E>> {
-   private final alk<? extends kd<E>> a;
+public class ali<T> {
+   private static final ConcurrentMap<ali.a, ali<?>> a = new MapMaker().weakValues().makeMap();
+   private final alj b;
+   private final alj c;
 
-   public static <E> ali<E> a(alk<? extends kd<E>> $$0) {
-      return new ali<>($$0);
+   public static <T> Codec<ali<T>> a(ali<? extends kd<T>> $$0) {
+      return alj.a.xmap($$1 -> a($$0, $$1), ali::a);
    }
 
-   private ali(alk<? extends kd<E>> $$0) {
-      this.a = $$0;
+   public static <T> zh<ByteBuf, ali<T>> b(ali<? extends kd<T>> $$0) {
+      return alj.b.a($$1 -> a($$0, $$1), ali::a);
    }
 
-   public <T> DataResult<T> a(jq<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof alj<?> $$3) {
-         Optional<jt<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
-            }
-
-            return (DataResult<T>)$$0.d()
-               .map(
-                  $$2x -> all.a.encode($$2x.a(), $$1, $$2),
-                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
-               );
-         }
-      }
-
-      return DataResult.error(() -> "Can't access registry " + this.a);
+   public static <T> ali<T> a(ali<? extends kd<T>> $$0, alj $$1) {
+      return a($$0.c, $$1);
    }
 
-   public <T> DataResult<Pair<jq<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof alj<?> $$2) {
-         Optional<jr<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            return all.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$1x -> {
-                     all $$2x = (all)$$1x.getFirst();
-                     return $$3.get()
-                        .a(alk.a(this.a, $$2x))
-                        .<DataResult>map(DataResult::success)
-                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
-                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
-                        .setLifecycle(Lifecycle.stable());
-                  }
-               );
-         }
-      }
+   public static <T> ali<kd<T>> a(alj $$0) {
+      return a(ma.a, $$0);
+   }
 
-      return DataResult.error(() -> "Can't access registry " + this.a);
+   private static <T> ali<T> a(alj $$0, alj $$1) {
+      return (ali<T>)a.computeIfAbsent(new ali.a($$0, $$1), $$0x -> new ali($$0x.a, $$0x.b));
+   }
+
+   private ali(alj $$0, alj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    public String toString() {
-      return "RegistryFixedCodec[" + this.a + "]";
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
+
+   public boolean c(ali<? extends kd<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<ali<E>> d(ali<? extends kd<E>> $$0) {
+      return this.c($$0) ? Optional.of((ali<E>)this) : Optional.empty();
+   }
+
+   public alj a() {
+      return this.c;
+   }
+
+   public alj b() {
+      return this.b;
+   }
+
+   public ali<kd<T>> c() {
+      return a(this.b);
+   }
+
+   static record a(alj a, alj b) {
    }
 }

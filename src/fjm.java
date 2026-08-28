@@ -1,38 +1,30 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class fjm {
-   private final gcz a;
-   private int b = -1;
-   @Nullable
-   private Consumer<un> c;
+public enum fjm implements azp {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public fjm(gcz $$0) {
-      this.a = $$0;
+   private static final IntFunction<fjm> d = ayd.a(fjm::b, values(), ayd.a.b);
+   private final int e;
+   private final String f;
+
+   private fjm(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(int $$0, @Nullable un $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   private int a(Consumer<un> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public void a(int $$0, Consumer<un> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aht($$2, $$0));
-   }
-
-   public void a(jh $$0, Consumer<un> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahb($$2, $$0));
+   public static fjm a(int $$0) {
+      return d.apply($$0);
    }
 }

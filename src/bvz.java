@@ -1,38 +1,82 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public interface bvz {
-   bvy a = ($$0, $$1, $$2) -> true;
-   bvy b = ($$0, $$1, $$2) -> {
-      if ($$2 != null && $$0.C_().a($$1)) {
-         jh $$3 = $$1.d();
-         return $$0.b_($$1).a(axj.a) && !$$0.a_($$3).d($$0, $$3);
-      } else {
+   bvz a = new bvz() {
+      @Override
+      public cwm a() {
+         return cwm.k;
+      }
+
+      @Override
+      public boolean a(cwm $$0) {
          return false;
       }
    };
-   bvy c = ($$0, $$1, $$2) -> $$2 != null && $$0.C_().a($$1) ? $$0.b_($$1).a(axj.b) : false;
-   bvy d = new bvy() {
-      @Override
-      public boolean isSpawnPositionOk(dfi $$0, jh $$1, @Nullable bup<?> $$2) {
-         if ($$2 != null && $$0.C_().a($$1)) {
-            jh $$3 = $$1.d();
-            jh $$4 = $$1.e();
-            dvo $$5 = $$0.a_($$4);
-            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
-         } else {
-            return false;
+
+   static bvz a(final Supplier<cwm> $$0, final Consumer<cwm> $$1) {
+      return new bvz() {
+         @Override
+         public cwm a() {
+            return $$0.get();
          }
-      }
 
-      private boolean a(dfi $$0, jh $$1, bup<?> $$2) {
-         dvo $$3 = $$0.a_($$1);
-         return dfq.a($$0, $$1, $$3, $$3.y(), $$2);
-      }
+         @Override
+         public boolean a(cwm $$0x) {
+            $$1.accept($$0);
+            return true;
+         }
+      };
+   }
 
-      @Override
-      public jh a(dfi $$0, jh $$1) {
-         jh $$2 = $$1.e();
-         return $$0.a_($$2).a(esd.a) ? $$2 : $$1;
-      }
-   };
+   static bvz a(final bsd $$0, final int $$1, final Predicate<cwm> $$2) {
+      return new bvz() {
+         @Override
+         public cwm a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cwm $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bvz a(bsd $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static bvz a(final bvh $$0, final but $$1, final Predicate<cwm> $$2) {
+      return new bvz() {
+         @Override
+         public cwm a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cwm $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bvz a(bvh $$0, but $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   cwm a();
+
+   boolean a(cwm var1);
 }

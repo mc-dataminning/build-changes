@@ -1,57 +1,101 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class adt implements zq<acf> {
+   public static final zh<wu, adt> a = zq.a(adt::a, adt::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final lq k;
 
-public class adt implements zs<ach> {
-   public static final zj<ww, adt> a = zs.a(adt::a, adt::new);
-   private final int b;
-   private final int c;
-   private final ads d;
-   private final adx e;
-
-   public adt(dxt $$0, erd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      del $$4 = $$0.f();
-      this.b = $$4.g;
-      this.c = $$4.h;
-      this.d = new ads($$0);
-      this.e = new adx($$4, $$1, $$2, $$3);
+   public <T extends lq> adt(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   private adt(ww $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new ads($$0, this.b, this.c);
-      this.e = new adx($$0, this.b, this.c);
+   private adt(wu $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = ls.bg.decode($$0);
    }
 
-   private void a(ww $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(wu $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.q(this.i);
+      ls.bg.encode($$0, this.k);
    }
 
    @Override
-   public zu<adt> a() {
-      return agw.K;
+   public zs<adt> a() {
+      return agu.M;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
       return this.b;
    }
 
-   public int e() {
+   public double f() {
       return this.c;
    }
 
-   public ads f() {
+   public double g() {
       return this.d;
    }
 
-   public adx g() {
+   public float h() {
       return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public lq m() {
+      return this.k;
    }
 }

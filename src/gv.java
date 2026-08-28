@@ -15,27 +15,27 @@ public class gv implements gu {
    }
 
    @Override
-   public ezr a(ew $$0) {
-      ezq $$1 = $$0.k();
-      ezr $$2 = $$0.m().a($$0);
-      float $$3 = azn.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = azn.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = azn.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = azn.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = azn.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = azn.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ezr $$9 = new ezr((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ezr $$10 = new ezr((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ezr $$11 = $$9.c($$10).c(-1.0);
+   public ezy a(ew $$0) {
+      ezx $$1 = $$0.k();
+      ezy $$2 = $$0.m().a($$0);
+      float $$3 = azm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azm.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = azm.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = azm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      ezy $$9 = new ezy((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ezy $$10 = new ezy((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ezy $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new ezr($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new ezy($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public ezq b(ew $$0) {
-      return ezq.a;
+   public ezx b(ew $$0) {
+      return ezx.a;
    }
 
    @Override

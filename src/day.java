@@ -1,34 +1,54 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public interface day<T extends dat<?>> {
-   day<dbb> a = a("crafting_shaped", new dbb.a());
-   day<dbd> b = a("crafting_shapeless", new dbd.a());
-   day<dab> c = a("crafting_special_armordye", new dbg<>(dab::new));
-   day<dae> d = a("crafting_special_bookcloning", new dbg<>(dae::new));
-   day<daq> e = a("crafting_special_mapcloning", new dbg<>(daq::new));
-   day<dar> f = a("crafting_special_mapextending", new dbg<>(dar::new));
-   day<dam> g = a("crafting_special_firework_rocket", new dbg<>(dam::new));
-   day<dao> h = a("crafting_special_firework_star", new dbg<>(dao::new));
-   day<dan> i = a("crafting_special_firework_star_fade", new dbg<>(dan::new));
-   day<dbq> j = a("crafting_special_tippedarrow", new dbg<>(dbq::new));
-   day<dac> k = a("crafting_special_bannerduplicate", new dbg<>(dac::new));
-   day<dbe> l = a("crafting_special_shielddecoration", new dbg<>(dbe::new));
-   day<dbr> m = a("crafting_transmute", new dbr.a());
-   day<dba> n = a("crafting_special_repairitem", new dbg<>(dba::new));
-   day<dbj> o = a("smelting", new dbf<>(dbj::new, 200));
-   day<dad> p = a("blasting", new dbf<>(dad::new, 100));
-   day<dbo> q = a("smoking", new dbf<>(dbo::new, 100));
-   day<daf> r = a("campfire_cooking", new dbf<>(daf::new, 100));
-   day<dbp> s = a("stonecutting", new dbh.b<>(dbp::new));
-   day<dbm> t = a("smithing_transform", new dbm.a());
-   day<dbn> u = a("smithing_trim", new dbn.a());
-   day<dal> v = a("crafting_decorated_pot", new dbg<>(dal::new));
+public class day extends dbi {
+   public day(dao $$0) {
+      super("", $$0, dbj.a(Map.of('#', daw.a(cwq.qP), 'x', daw.a(cwq.sl)), "###", "#x#", "###"), new cwm(cwq.uB));
+   }
 
-   MapCodec<T> a();
+   @Override
+   public boolean a(dap $$0, dfm $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cwm $$2 = a($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            etp $$3 = cwz.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
 
-   zj<ww, T> b();
+   @Override
+   public cwm a(dap $$0, js.a $$1) {
+      cwm $$2 = a($$0).c(1);
+      $$2.b(ku.N, czj.b);
+      return $$2;
+   }
 
-   static <S extends day<T>, T extends dat<?>> S a(String $$0, S $$1) {
-      return kd.a(lz.r, $$0, $$1);
+   private static cwm a(dap $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cwm $$2 = $$0.a($$1);
+         if ($$2.b(ku.L)) {
+            return $$2;
+         }
+      }
+
+      return cwm.k;
+   }
+
+   @Override
+   public boolean ao_() {
+      return true;
+   }
+
+   @Override
+   public dbf<?> ap_() {
+      return dbf.f;
    }
 }

@@ -2,44 +2,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
-public interface brc<R extends Runnable> extends AutoCloseable {
-   String x_();
-
-   void a_(R var1);
-
-   @Override
-   default void close() {
+public class brc extends bqy<bre.c> {
+   public brc(int $$0, Executor $$1, String $$2) {
+      super(new bre.a($$0), $$1, $$2);
+      bqe.a.a(this);
    }
 
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
+   public bre.c b(Runnable $$0) {
+      return new bre.c(0, $$0);
    }
 
-   static brc<Runnable> a(final String $$0, final Executor $$1) {
-      return new brc<Runnable>() {
-         @Override
-         public String x_() {
-            return $$0;
-         }
-
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new bre.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

@@ -1,5 +1,4 @@
-public class gxj extends gwb {
-   public boolean a;
+public class gxj extends gwe {
    public boolean b;
    public boolean c;
 }

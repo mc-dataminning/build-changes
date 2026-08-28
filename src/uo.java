@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uo extends vd {
-   private static final int c = 16;
-   public static final uo a = new uo(0.0);
-   public static final vm<uo> b = new vm.a<uo>() {
-      public uo a(DataInput $$0, uw $$1) throws IOException {
+public class uo extends vb {
+   private static final int c = 12;
+   public static final uo a = new uo(0.0F);
+   public static final vk<uo> b = new vk.a<uo>() {
+      public uo a(DataInput $$0, uu $$1) throws IOException {
          return uo.a(d($$0, $$1));
       }
 
       @Override
-      public vh.b a(DataInput $$0, vh $$1, uw $$2) throws IOException {
+      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static double d(DataInput $$0, uw $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
+      private static float d(DataInput $$0, uu $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "DOUBLE";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Double";
+         return "TAG_Float";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class uo extends vd {
          return true;
       }
    };
-   private final double w;
+   private final float w;
 
-   private uo(double $$0) {
+   private uo(float $$0) {
       this.w = $$0;
    }
 
-   public static uo a(double $$0) {
-      return $$0 == 0.0 ? a : new uo($$0);
+   public static uo a(float $$0) {
+      return $$0 == 0.0F ? a : new uo($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 6;
+      return 5;
    }
 
    @Override
-   public vm<uo> c() {
+   public vk<uo> c() {
       return b;
    }
 
@@ -81,43 +81,42 @@ public class uo extends vd {
 
    @Override
    public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(vo $$0) {
+   public void a(vm $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)Math.floor(this.w);
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return azn.a(this.w);
+      return azm.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(azn.a(this.w) & 65535);
+      return (short)(azm.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(azn.a(this.w) & 0xFF);
+      return (byte)(azm.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return this.w;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.w;
+      return this.w;
    }
 
    @Override
@@ -126,7 +125,7 @@ public class uo extends vd {
    }
 
    @Override
-   public vh.b a(vh $$0) {
+   public vf.b a(vf $$0) {
       return $$0.a(this.w);
    }
 }

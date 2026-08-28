@@ -1,147 +1,69 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class eug {
-   private final euj a;
-   private final azv b;
-   private final jr.a c;
-   private final Set<eug.c<?>> d = Sets.newLinkedHashSet();
+public interface eug extends eui {
+   @Override
+   String e();
 
-   eug(euj $$0, azv $$1, jr.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dfo $$1) {
+      eui.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   public boolean a(ewz<?> $$0) {
-      return this.a.a($$0);
-   }
+   int f();
 
-   public <T> T b(ewz<T> $$0) {
-      return this.a.b($$0);
-   }
+   void a(int var1);
 
-   public void a(all $$0, Consumer<cwf> $$1) {
-      this.a.a($$0, $$1);
-   }
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
 
    @Nullable
-   public <T> T c(ewz<T> $$0) {
-      return this.a.d($$0);
-   }
+   UUID v();
 
-   public boolean a(eug.c<?> $$0) {
-      return this.d.contains($$0);
-   }
+   void a(UUID var1);
 
-   public boolean b(eug.c<?> $$0) {
-      return this.d.add($$0);
-   }
+   dfj k();
 
-   public void c(eug.c<?> $$0) {
-      this.d.remove($$0);
-   }
+   void a(dxl.c var1);
 
-   public jr.a a() {
-      return this.c;
-   }
+   dxl.c p();
 
-   public azv b() {
-      return this.b;
-   }
+   boolean n();
 
-   public float c() {
-      return this.a.b();
-   }
+   void c(boolean var1);
 
-   public arq d() {
-      return this.a.a();
-   }
+   boolean m();
 
-   public static eug.c<eul> a(eul $$0) {
-      return new eug.c<>(eui.c, $$0);
-   }
+   void a(dfj var1);
 
-   public static eug.c<exr> a(exr $$0) {
-      return new eug.c<>(eui.a, $$0);
-   }
+   ezl<MinecraftServer> s();
 
-   public static eug.c<evu> a(evu $$0) {
-      return new eug.c<>(eui.b, $$0);
-   }
+   void a(long var1);
 
-   public static class a {
-      private final euj a;
-      @Nullable
-      private azv b;
+   void b(long var1);
 
-      public a(euj $$0) {
-         this.a = $$0;
-      }
-
-      public eug.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azv.a($$0);
-         }
-
-         return this;
-      }
-
-      public eug.a a(azv $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public arq a() {
-         return this.a.a();
-      }
-
-      public eug a(Optional<all> $$0) {
-         arq $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         azv $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new eug(this.a, $$3, $$2.bc().a());
-      }
-   }
-
-   public static enum b implements baj {
-      a("this", exc.a),
-      b("attacker", exc.d),
-      c("direct_attacker", exc.e),
-      d("attacking_player", exc.b);
-
-      public static final baj.a<eug.b> e = baj.a(eug.b::values);
-      private final String f;
-      private final ewz<? extends bui> g;
-
-      private b(final String $$0, final ewz<? extends bui> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public ewz<? extends bui> a() {
-         return this.g;
-      }
-
-      public static eug.b a(String $$0) {
-         eug.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static record c<T>(eui<T> a, T b) {
-   }
+   dfi o();
 }

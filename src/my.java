@@ -20,7 +20,7 @@ public class my implements mg {
 
    private JsonElement b() {
       JsonObject $$0 = new JsonObject();
-      Stream.of(ajd.a, akm.c, akm.a, ajn.c, ajn.a, abw.c, abw.a, agx.b, agx.a).collect(Collectors.groupingBy(wt.a::a)).forEach(($$1, $$2) -> {
+      Stream.of(ajb.a, akk.c, akk.a, ajl.c, ajl.a, abu.c, abu.a, agv.b, agv.a).collect(Collectors.groupingBy(wr.a::a)).forEach(($$1, $$2) -> {
          JsonObject $$3 = new JsonObject();
          $$0.add($$1.a(), $$3);
          $$2.forEach($$1x -> {

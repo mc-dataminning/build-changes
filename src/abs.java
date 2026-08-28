@@ -1,18 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
+import java.util.Set;
 
-public class abs implements zs<abp> {
-   public static final abs a = new abs();
-   public static final zj<ByteBuf, abs> b = zj.a(a);
+public record abs(Set<alj> b) implements zq<abn> {
+   public static final zh<wg, abs> a = zq.a(abs::a, abs::new);
 
-   private abs() {
+   private abs(wg $$0) {
+      this($$0.a(HashSet::new, wg::q));
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.b, wg::a);
    }
 
    @Override
-   public zu<abs> a() {
-      return abv.e;
+   public zs<abs> a() {
+      return abt.c;
    }
 
-   public void a(abp $$0) {
+   public void a(abn $$0) {
       $$0.a(this);
    }
 }

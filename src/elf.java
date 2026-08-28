@@ -1,57 +1,66 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record elf(jq<eeb<?, ?>> e, List<eli> f) {
-   public static final Codec<elf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eeb.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eli.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, elf::new)
+public class elf extends elp {
+   private final jm c;
+   private final ecx d;
+   private final ecx e;
+   private final int f;
+   public static final MapCodec<elf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jm.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               ecx.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               ecx.b.optionalFieldOf("allowed_search_condition", ecx.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elf::new)
    );
-   public static final Codec<jq<elf>> b = alh.a(ma.aR, a);
-   public static final Codec<ju<elf>> c = kf.a(ma.aR, a);
-   public static final Codec<List<ju<elf>>> d = kf.a(ma.aR, a, true).listOf();
 
-   public boolean a(dgd $$0, dxk $$1, azv $$2, jh $$3) {
-      return this.a(new elg($$0, $$1, Optional.empty()), $$2, $$3);
+   private elf(jm $$0, ecx $$1, ecx $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean b(dgd $$0, dxk $$1, azv $$2, jh $$3) {
-      return this.a(new elg($$0, $$1, Optional.of(this)), $$2, $$3);
+   public static elf a(jm $$0, ecx $$1, ecx $$2, int $$3) {
+      return new elf($$0, $$1, $$2, $$3);
    }
 
-   private boolean a(elg $$0, azv $$1, jh $$2) {
-      Stream<jh> $$3 = Stream.of($$2);
-
-      for (eli $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      eeb<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<eeb<?, ?>> a() {
-      return this.e.a().a();
+   public static elf a(jm $$0, ecx $$1, int $$2) {
+      return a($$0, $$1, ecx.e(), $$2);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   public Stream<jh> a_(eln $$0, azu $$1, jh $$2) {
+      jh.a $$3 = $$2.k();
+      dgk $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.e($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
-   public jq<eeb<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<eli> c() {
-      return this.f;
+   @Override
+   public elq<?> b() {
+      return elq.j;
    }
 }

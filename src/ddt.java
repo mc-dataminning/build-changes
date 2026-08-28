@@ -1,61 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+import java.util.Map;
 
-public record ddt(jq<ddu> c, jq<ddw> d, boolean e) implements czi {
-   public static final Codec<ddt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ddu.c.fieldOf("material").forGetter(ddt::a),
-               ddw.c.fieldOf("pattern").forGetter(ddt::b),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ddt::new)
-   );
-   public static final zj<ww, ddt> b = zj.a(ddu.d, ddt::a, ddw.d, ddt::b, zh.b, $$0 -> $$0.e, ddt::new);
-   private static final xl f = xl.c(ae.a("item", all.b("smithing_template.upgrade"))).a(n.h);
-
-   public ddt(jq<ddu> $$0, jq<ddw> $$1) {
-      this($$0, $$1, true);
+public record ddt(int a, Map<ddv, Integer> b, int c, jq<awm> d, float e, float f, axs<cwi> g, alj h) {
+   public cwi.a a(cwi.a $$0, ddv $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(ku.D, ddy.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
    }
 
-   private static String a(jq<ddu> $$0, all $$1) {
-      String $$2 = $$0.a().d().get($$1);
-      return $$2 != null ? $$2 : $$0.a().a();
+   public cwi.a a(cwi.a $$0, ju<bus<?>> $$1) {
+      return $$0.b(ddv.e.a(this.a)).a(this.a(ddv.e)).a(this.g).a(ku.D, ddy.a(but.g).a(this.d).a(this.h).a($$1).a());
    }
 
-   public boolean a(jq<ddw> $$0, jq<ddu> $$1) {
-      return $$0.equals(this.d) && $$1.equals(this.c);
+   public cwi.a a(cwi.a $$0, awm $$1, ju<bus<?>> $$2) {
+      return $$0.b(ddv.e.a(this.a)).a(this.a(ddv.e)).a(this.g).a(ku.D, ddy.a(but.g).a(jq.a($$1)).a(this.h).a($$2).a());
    }
 
-   public all a(ddp.d $$0, all $$1) {
-      all $$2 = this.d.a().a();
-      String $$3 = a(this.c, $$1);
-      return $$2.a((UnaryOperator<String>)($$2x -> "trims/entity/" + $$0.c() + "/" + $$2x + "_" + $$3));
-   }
-
-   @Override
-   public void a(cwb.b $$0, Consumer<xl> $$1, cxx $$2) {
-      if (this.e) {
-         $$1.accept(f);
-         $$1.accept(xk.a().b(this.d.a().a(this.c)));
-         $$1.accept(xk.a().b(this.c.a().e()));
+   private czd a(ddv $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      czd.a $$2 = czd.a();
+      buu $$3 = buu.a($$0.a());
+      alj $$4 = alj.b("armor." + $$0.b());
+      $$2.a(bwp.a, new bwn($$4, (double)$$1, bwn.a.a), $$3);
+      $$2.a(bwp.b, new bwn($$4, (double)this.e, bwn.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bwp.p, new bwn($$4, (double)this.f, bwn.a.a), $$3);
       }
-   }
 
-   public ddt a(boolean $$0) {
-      return new ddt(this.c, this.d, $$0);
-   }
-
-   public jq<ddu> a() {
-      return this.c;
-   }
-
-   public jq<ddw> b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
+      return $$2.a();
    }
 }

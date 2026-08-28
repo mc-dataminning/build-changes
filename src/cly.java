@@ -1,193 +1,114 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cly extends clc implements cli, coa {
-   private static final ako<Boolean> b = aks.a(cly.class, akq.k);
-   private static final int c = 5;
-   private static final int bY = 300;
-   private final bso bZ = new bso(5);
-
-   public cly(bup<? extends cly> $$0, dff $$1) {
+public abstract class cly extends bvp implements clq {
+   protected cly(bus<? extends cly> $$0, dfm $$1) {
       super($$0, $$1);
+      this.bN = 5;
    }
 
    @Override
-   protected void D() {
-      super.D();
-      this.bS.a(0, new cbw(this));
-      this.bS.a(2, new cqf.a(this, 10.0F));
-      this.bS.a(3, new cdd<>(this, 1.0, 8.0F));
-      this.bS.a(8, new ccz(this, 0.6));
-      this.bS.a(9, new cck(this, cor.class, 15.0F, 1.0F));
-      this.bS.a(10, new cck(this, bvg.class, 15.0F));
-      this.bT.a(1, new cdu(this, cqf.class).a());
-      this.bT.a(2, new cdv<>(this, cor.class, true));
-      this.bT.a(3, new cdv<>(this, cnx.class, false));
-      this.bT.a(3, new cdv<>(this, chh.class, true));
-   }
-
-   public static bwl.a t() {
-      return clv.gB().a(bwm.v, 0.35F).a(bwm.s, 24.0).a(bwm.c, 5.0).a(bwm.m, 32.0);
+   public awo dm() {
+      return awo.f;
    }
 
    @Override
-   protected void a(aks.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
+   public void d_() {
+      this.eV();
+      this.gr();
+      super.d_();
+   }
+
+   protected void gr() {
+      float $$0 = this.by();
+      if ($$0 > 0.5F) {
+         this.be += 2;
+      }
    }
 
    @Override
-   public boolean a(cxb $$0) {
-      return $$0 == cwj.wn;
-   }
-
-   public boolean gv() {
-      return this.am.a(b);
+   protected boolean X() {
+      return true;
    }
 
    @Override
-   public void b(boolean $$0) {
-      this.am.a(b, $$0);
+   protected awm aV() {
+      return awn.mX;
    }
 
    @Override
-   public void a() {
-      this.bf = 0;
+   protected awm aW() {
+      return awn.mW;
    }
 
    @Override
-   public void b(un $$0) {
-      super.b($$0);
-      this.b($$0, this.ea());
+   protected awm e(btb $$0) {
+      return awn.mU;
    }
 
    @Override
-   public clc.a q() {
-      if (this.gv()) {
-         return clc.a.f;
-      } else if (this.b(cwj.wn)) {
-         return clc.a.e;
+   protected awm n_() {
+      return awn.mT;
+   }
+
+   @Override
+   public bvh.a eL() {
+      return new bvh.a(awn.mV, awn.mS);
+   }
+
+   @Override
+   public float a(jh $$0, dfp $$1) {
+      return -$$1.w($$0);
+   }
+
+   public static boolean a(dgd $$0, jh $$1, azu $$2) {
+      if ($$0.a(dfv.a, $$1) > $$2.a(32)) {
+         return false;
       } else {
-         return this.gk() ? clc.a.b : clc.a.h;
-      }
-   }
-
-   @Override
-   public void a(un $$0) {
-      super.a($$0);
-      this.a($$0, this.ea());
-      this.a_(true);
-   }
-
-   @Override
-   public float a(jh $$0, dfi $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public int aj() {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public bvx a(dfw $$0, bsf $$1, buo $$2, @Nullable bvx $$3) {
-      azv $$4 = $$0.E_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(azv $$0, bsf $$1) {
-      this.a(buq.a, new cwf(cwj.wn));
-   }
-
-   @Override
-   protected void b(dfw $$0, azv $$1, bsf $$2) {
-      super.b($$0, $$1, $$2);
-      if ($$1.a(300) == 0) {
-         cwf $$3 = this.fc();
-         if ($$3.a(cwj.wn)) {
-            dby.a($$3, $$0.H_(), ddk.b, $$2, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected awn w() {
-      return awo.tU;
-   }
-
-   @Override
-   protected awn o_() {
-      return awo.tW;
-   }
-
-   @Override
-   protected awn d(bsy $$0) {
-      return awo.tX;
-   }
-
-   @Override
-   public void a(bve $$0, float $$1) {
-      this.b(this, 1.6F);
-   }
-
-   @Override
-   public bso y() {
-      return this.bZ;
-   }
-
-   @Override
-   protected void b(ckz $$0) {
-      cwf $$1 = $$0.m();
-      if ($$1.h() instanceof cui) {
-         super.b($$0);
-      } else if (this.k($$1)) {
-         this.a($$0);
-         cwf $$2 = this.bZ.b($$1);
-         if ($$2.f()) {
-            $$0.av();
+         dzq $$3 = $$0.F_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dfv.b, $$1) > $$4) {
+            return false;
          } else {
-            $$1.e($$2.L());
+            int $$5 = $$0.a().ad() ? $$0.c($$1, 10) : $$0.A($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
    }
 
-   private boolean k(cwf $$0) {
-      return this.gM() && $$0.a(cwj.vh);
+   public static boolean b(bus<? extends cly> $$0, dgd $$1, bur $$2, jh $$3, azu $$4) {
+      return $$1.ak() != bsh.a && (bur.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bus<? extends cly> $$0, dfn $$1, bur $$2, jh $$3, azu $$4) {
+      return $$1.ak() != bsh.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static bwo.a gs() {
+      return bvj.C().a(bwp.c);
    }
 
    @Override
-   public bvw a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bZ.b() ? bvw.a(this.bZ, $$1) : super.a_($$0);
+   public boolean em() {
+      return true;
    }
 
    @Override
-   public void a(arq $$0, int $$1, boolean $$2) {
-      cqe $$3 = this.gJ();
-      boolean $$4 = this.af.i() <= $$3.v();
-      if ($$4) {
-         cwf $$5 = new cwf(cwj.wn);
-         alk<dde> $$6;
-         if ($$1 > $$3.a(bse.c)) {
-            $$6 = ddk.d;
-         } else if ($$1 > $$3.a(bse.b)) {
-            $$6 = ddk.c;
-         } else {
-            $$6 = null;
-         }
+   protected boolean en() {
+      return true;
+   }
 
-         if ($$6 != null) {
-            dby.a($$5, $$0.H_(), $$6, $$0.d_(this.dy()), this.eb());
-            this.a(buq.a, $$5);
-         }
+   public boolean a(arp $$0, cou $$1) {
+      return true;
+   }
+
+   @Override
+   public cwm d(cwm $$0) {
+      if ($$0.h() instanceof cxi) {
+         Predicate<cwm> $$1 = ((cxi)$$0.h()).d();
+         cwm $$2 = cxi.a(this, $$1);
+         return $$2.f() ? new cwm(cwq.ox) : $$2;
+      } else {
+         return cwm.k;
       }
-   }
-
-   @Override
-   public awn aj_() {
-      return awo.tV;
    }
 }

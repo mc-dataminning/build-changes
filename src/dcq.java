@@ -1,53 +1,18 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record dcq(boolean d, Optional<jq<bta>> e, Optional<dcd> f, Optional<ju<dij>> g, ezr h, dcd i, boolean j, dff.a k, lq l, lq m, jq<awn> n) implements dcn {
+public record dcq(dck d, dck e, jq<btd> f) implements dcu {
    public static final MapCodec<dcq> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dcq::b),
-               bta.b.optionalFieldOf("damage_type").forGetter(dcq::c),
-               dcd.b.optionalFieldOf("knockback_multiplier").forGetter(dcq::d),
-               kf.a(ma.f).optionalFieldOf("immune_blocks").forGetter(dcq::e),
-               ezr.a.optionalFieldOf("offset", ezr.c).forGetter(dcq::f),
-               dcd.b.fieldOf("radius").forGetter(dcq::g),
-               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dcq::h),
-               dff.a.f.fieldOf("block_interaction").forGetter(dcq::i),
-               ls.bf.fieldOf("small_particle").forGetter(dcq::j),
-               ls.bf.fieldOf("large_particle").forGetter(dcq::k),
-               awn.b.fieldOf("sound").forGetter(dcq::l)
+               dck.b.fieldOf("min_damage").forGetter(dcq::b), dck.b.fieldOf("max_damage").forGetter(dcq::c), btd.b.fieldOf("damage_type").forGetter(dcq::d)
             )
             .apply($$0, dcq::new)
    );
 
    @Override
-   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
-      ezr $$5 = $$4.e(this.h);
-      $$0.a(
-         this.d ? $$3 : null,
-         this.a($$3, $$5),
-         new dfy(this.k != dff.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
-         $$5.a(),
-         $$5.b(),
-         $$5.c(),
-         Math.max(this.i.a($$1), 0.0F),
-         this.j,
-         this.k,
-         this.l,
-         this.m,
-         this.n
-      );
-   }
-
-   @Nullable
-   private bsy a(bui $$0, ezr $$1) {
-      if (this.e.isEmpty()) {
-         return null;
-      } else {
-         return this.d ? new bsy(this.e.get(), $$0) : new bsy(this.e.get(), $$1);
-      }
+   public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4) {
+      float $$5 = azm.b($$3.dY(), this.d.a($$1), this.e.a($$1));
+      $$3.a($$0, new btb(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -55,47 +20,15 @@ public record dcq(boolean d, Optional<jq<bta>> e, Optional<dcd> f, Optional<ju<d
       return a;
    }
 
-   public boolean b() {
+   public dck b() {
       return this.d;
    }
 
-   public Optional<jq<bta>> c() {
+   public dck c() {
       return this.e;
    }
 
-   public Optional<dcd> d() {
+   public jq<btd> d() {
       return this.f;
-   }
-
-   public Optional<ju<dij>> e() {
-      return this.g;
-   }
-
-   public ezr f() {
-      return this.h;
-   }
-
-   public dcd g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public dff.a i() {
-      return this.k;
-   }
-
-   public lq j() {
-      return this.l;
-   }
-
-   public lq k() {
-      return this.m;
-   }
-
-   public jq<awn> l() {
-      return this.n;
    }
 }

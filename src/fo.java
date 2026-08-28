@@ -22,11 +22,11 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class fo implements ArgumentType<fo.g> {
    private static final Collection<String> d = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("arguments.nbtpath.node.invalid"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("arguments.nbtpath.too_deep"));
-   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("arguments.nbtpath.nothing_found", $$0));
-   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xl.b("commands.data.modify.expected_list", $$0));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xl.b("commands.data.modify.invalid_index", $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("arguments.nbtpath.node.invalid"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("arguments.nbtpath.too_deep"));
+   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xj.b("arguments.nbtpath.nothing_found", $$0));
+   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xj.b("commands.data.modify.expected_list", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xj.b("commands.data.modify.invalid_index", $$0));
    private static final char g = '[';
    private static final char h = ']';
    private static final char i = '{';
@@ -71,7 +71,7 @@ public class fo implements ArgumentType<fo.g> {
             $$0.skip();
             int $$3 = $$0.peek();
             if ($$3 == 123) {
-               un $$4 = new vl($$0).f();
+               ul $$4 = new vj($$0).f();
                $$0.expect(']');
                yield new fo.d($$4);
             } else if ($$3 == 93) {
@@ -88,7 +88,7 @@ public class fo implements ArgumentType<fo.g> {
                throw a.createWithContext($$0);
             }
 
-            un $$2 = new vl($$0).f();
+            ul $$2 = new vj($$0).f();
             yield new fo.f($$2);
          }
          default -> a($$0, b($$0));
@@ -97,7 +97,7 @@ public class fo implements ArgumentType<fo.g> {
 
    private static fo.h a(StringReader $$0, String $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '{') {
-         un $$2 = new vl($$0).f();
+         ul $$2 = new vj($$0).f();
          return new fo.e($$1, $$2);
       } else {
          return new fo.b($$1);
@@ -126,8 +126,8 @@ public class fo implements ArgumentType<fo.g> {
       return $$0 != ' ' && $$0 != '"' && $$0 != '\'' && $$0 != '[' && $$0 != ']' && $$0 != '.' && $$0 != '{' && $$0 != '}';
    }
 
-   static Predicate<vk> a(un $$0) {
-      return $$1 -> vc.a($$0, $$1, true);
+   static Predicate<vi> a(ul $$0) {
+      return $$1 -> va.a($$0, $$1, true);
    }
 
    static class a implements fo.h {
@@ -137,34 +137,34 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof um) {
-            $$1.addAll((um)$$0);
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof uk) {
+            $$1.addAll((uk)$$0);
          }
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
-         if ($$0 instanceof um<?> $$3) {
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
+         if ($$0 instanceof uk<?> $$3) {
             if ($$3.isEmpty()) {
-               vk $$4 = $$1.get();
+               vi $$4 = $$1.get();
                if ($$3.b(0, $$4)) {
                   $$2.add($$4);
                }
             } else {
-               $$2.addAll((Collection<? extends vk>)$$3);
+               $$2.addAll((Collection<? extends vi>)$$3);
             }
          }
       }
 
       @Override
-      public vk a() {
-         return new ut();
+      public vi a() {
+         return new ur();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
-         if (!($$0 instanceof um<?> $$2)) {
+      public int a(vi $$0, Supplier<vi> $$1) {
+         if (!($$0 instanceof uk<?> $$2)) {
             return 0;
          } else {
             int $$3 = $$2.size();
@@ -172,7 +172,7 @@ public class fo implements ArgumentType<fo.g> {
                $$2.b(0, $$1.get());
                return 1;
             } else {
-               vk $$4 = $$1.get();
+               vi $$4 = $$1.get();
                int $$5 = $$3 - (int)$$2.stream().filter($$4::equals).count();
                if ($$5 == 0) {
                   return 0;
@@ -193,8 +193,8 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public int a(vk $$0) {
-         if ($$0 instanceof um<?> $$1) {
+      public int a(vi $$0) {
+         if ($$0 instanceof uk<?> $$1) {
             int $$2 = $$1.size();
             if ($$2 > 0) {
                $$1.clear();
@@ -214,9 +214,9 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof un) {
-            vk $$2 = ((un)$$0).c(this.a);
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof ul) {
+            vi $$2 = ((ul)$$0).c(this.a);
             if ($$2 != null) {
                $$1.add($$2);
             }
@@ -224,9 +224,9 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
-         if ($$0 instanceof un $$3) {
-            vk $$4;
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
+         if ($$0 instanceof ul $$3) {
+            vi $$4;
             if ($$3.e(this.a)) {
                $$4 = $$3.c(this.a);
             } else {
@@ -239,15 +239,15 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public vk a() {
-         return new un();
+      public vi a() {
+         return new ul();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
-         if ($$0 instanceof un $$2) {
-            vk $$3 = $$1.get();
-            vk $$4 = $$2.a(this.a, $$3);
+      public int a(vi $$0, Supplier<vi> $$1) {
+         if ($$0 instanceof ul $$2) {
+            vi $$3 = $$1.get();
+            vi $$4 = $$2.a(this.a, $$3);
             if (!$$3.equals($$4)) {
                return 1;
             }
@@ -257,8 +257,8 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public int a(vk $$0) {
-         if ($$0 instanceof un $$1 && $$1.e(this.a)) {
+      public int a(vi $$0) {
+         if ($$0 instanceof ul $$1 && $$1.e(this.a)) {
             $$1.r(this.a);
             return 1;
          }
@@ -275,8 +275,8 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof um<?> $$2) {
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof uk<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
@@ -286,23 +286,23 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public vk a() {
-         return new ut();
+      public vi a() {
+         return new ur();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
-         if ($$0 instanceof um<?> $$2) {
+      public int a(vi $$0, Supplier<vi> $$1) {
+         if ($$0 instanceof uk<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
-               vk $$5 = $$2.get($$4);
-               vk $$6 = $$1.get();
+               vi $$5 = $$2.get($$4);
+               vi $$6 = $$1.get();
                if (!$$6.equals($$5) && $$2.a($$4, $$6)) {
                   return 1;
                }
@@ -313,8 +313,8 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public int a(vk $$0) {
-         if ($$0 instanceof um<?> $$1) {
+      public int a(vi $$0) {
+         if ($$0 instanceof uk<?> $$1) {
             int $$2 = $$1.size();
             int $$3 = this.a < 0 ? $$2 + this.a : this.a;
             if (0 <= $$3 && $$3 < $$2) {
@@ -328,31 +328,31 @@ public class fo implements ArgumentType<fo.g> {
    }
 
    static class d implements fo.h {
-      private final un a;
-      private final Predicate<vk> b;
+      private final ul a;
+      private final Predicate<vi> b;
 
-      public d(un $$0) {
+      public d(ul $$0) {
          this.a = $$0;
          this.b = fo.a($$0);
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof ut $$2) {
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof ur $$2) {
             $$2.stream().filter(this.b).forEach($$1::add);
          }
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
          MutableBoolean $$3 = new MutableBoolean();
-         if ($$0 instanceof ut $$4) {
+         if ($$0 instanceof ur $$4) {
             $$4.stream().filter(this.b).forEach($$2x -> {
                $$2.add($$2x);
                $$3.setTrue();
             });
             if ($$3.isFalse()) {
-               un $$5 = this.a.i();
+               ul $$5 = this.a.i();
                $$4.add($$5);
                $$2.add($$5);
             }
@@ -360,23 +360,23 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public vk a() {
-         return new ut();
+      public vi a() {
+         return new ur();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
+      public int a(vi $$0, Supplier<vi> $$1) {
          int $$2 = 0;
-         if ($$0 instanceof ut $$3) {
+         if ($$0 instanceof ur $$3) {
             int $$4 = $$3.size();
             if ($$4 == 0) {
                $$3.add($$1.get());
                $$2++;
             } else {
                for (int $$5 = 0; $$5 < $$4; $$5++) {
-                  vk $$6 = $$3.k($$5);
+                  vi $$6 = $$3.k($$5);
                   if (this.b.test($$6)) {
-                     vk $$7 = $$1.get();
+                     vi $$7 = $$1.get();
                      if (!$$7.equals($$6) && $$3.a($$5, $$7)) {
                         $$2++;
                      }
@@ -389,9 +389,9 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public int a(vk $$0) {
+      public int a(vi $$0) {
          int $$1 = 0;
-         if ($$0 instanceof ut $$2) {
+         if ($$0 instanceof ur $$2) {
             for (int $$3 = $$2.size() - 1; $$3 >= 0; $$3--) {
                if (this.b.test($$2.k($$3))) {
                   $$2.c($$3);
@@ -406,19 +406,19 @@ public class fo implements ArgumentType<fo.g> {
 
    static class e implements fo.h {
       private final String a;
-      private final un b;
-      private final Predicate<vk> c;
+      private final ul b;
+      private final Predicate<vi> c;
 
-      public e(String $$0, un $$1) {
+      public e(String $$0, ul $$1) {
          this.a = $$0;
          this.b = $$1;
          this.c = fo.a($$1);
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof un) {
-            vk $$2 = ((un)$$0).c(this.a);
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof ul) {
+            vi $$2 = ((ul)$$0).c(this.a);
             if (this.c.test($$2)) {
                $$1.add($$2);
             }
@@ -426,11 +426,11 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
-         if ($$0 instanceof un $$3) {
-            vk $$4 = $$3.c(this.a);
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
+         if ($$0 instanceof ul $$3) {
+            vi $$4 = $$3.c(this.a);
             if ($$4 == null) {
-               vk var6 = this.b.i();
+               vi var6 = this.b.i();
                $$3.a(this.a, var6);
                $$2.add(var6);
             } else if (this.c.test($$4)) {
@@ -440,16 +440,16 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public vk a() {
-         return new un();
+      public vi a() {
+         return new ul();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
-         if ($$0 instanceof un $$2) {
-            vk $$3 = $$2.c(this.a);
+      public int a(vi $$0, Supplier<vi> $$1) {
+         if ($$0 instanceof ul $$2) {
+            vi $$3 = $$2.c(this.a);
             if (this.c.test($$3)) {
-               vk $$4 = $$1.get();
+               vi $$4 = $$1.get();
                if (!$$4.equals($$3)) {
                   $$2.a(this.a, $$4);
                   return 1;
@@ -461,9 +461,9 @@ public class fo implements ArgumentType<fo.g> {
       }
 
       @Override
-      public int a(vk $$0) {
-         if ($$0 instanceof un $$1) {
-            vk $$2 = $$1.c(this.a);
+      public int a(vi $$0) {
+         if ($$0 instanceof ul $$1) {
+            vi $$2 = $$1.c(this.a);
             if (this.c.test($$2)) {
                $$1.r(this.a);
                return 1;
@@ -475,36 +475,36 @@ public class fo implements ArgumentType<fo.g> {
    }
 
    static class f implements fo.h {
-      private final Predicate<vk> a;
+      private final Predicate<vi> a;
 
-      public f(un $$0) {
+      public f(ul $$0) {
          this.a = fo.a($$0);
       }
 
       @Override
-      public void a(vk $$0, List<vk> $$1) {
-         if ($$0 instanceof un && this.a.test($$0)) {
+      public void a(vi $$0, List<vi> $$1) {
+         if ($$0 instanceof ul && this.a.test($$0)) {
             $$1.add($$0);
          }
       }
 
       @Override
-      public void a(vk $$0, Supplier<vk> $$1, List<vk> $$2) {
+      public void a(vi $$0, Supplier<vi> $$1, List<vi> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public vk a() {
-         return new un();
+      public vi a() {
+         return new ul();
       }
 
       @Override
-      public int a(vk $$0, Supplier<vk> $$1) {
+      public int a(vi $$0, Supplier<vi> $$1) {
          return 0;
       }
 
       @Override
-      public int a(vk $$0) {
+      public int a(vi $$0) {
          return 0;
       }
    }
@@ -532,8 +532,8 @@ public class fo implements ArgumentType<fo.g> {
          this.c = $$2;
       }
 
-      public List<vk> a(vk $$0) throws CommandSyntaxException {
-         List<vk> $$1 = Collections.singletonList($$0);
+      public List<vi> a(vi $$0) throws CommandSyntaxException {
+         List<vi> $$1 = Collections.singletonList($$0);
 
          for (fo.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -545,8 +545,8 @@ public class fo implements ArgumentType<fo.g> {
          return $$1;
       }
 
-      public int b(vk $$0) {
-         List<vk> $$1 = Collections.singletonList($$0);
+      public int b(vi $$0) {
+         List<vi> $$1 = Collections.singletonList($$0);
 
          for (fo.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -558,8 +558,8 @@ public class fo implements ArgumentType<fo.g> {
          return $$1.size();
       }
 
-      private List<vk> d(vk $$0) throws CommandSyntaxException {
-         List<vk> $$1 = Collections.singletonList($$0);
+      private List<vi> d(vi $$0) throws CommandSyntaxException {
+         List<vi> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             fo.h $$3 = this.d[$$2];
@@ -573,29 +573,29 @@ public class fo implements ArgumentType<fo.g> {
          return $$1;
       }
 
-      public List<vk> a(vk $$0, Supplier<vk> $$1) throws CommandSyntaxException {
-         List<vk> $$2 = this.d($$0);
+      public List<vi> a(vi $$0, Supplier<vi> $$1) throws CommandSyntaxException {
+         List<vi> $$2 = this.d($$0);
          fo.h $$3 = this.d[this.d.length - 1];
          return $$3.a($$2, $$1);
       }
 
-      private static int a(List<vk> $$0, Function<vk, Integer> $$1) {
+      private static int a(List<vi> $$0, Function<vi, Integer> $$1) {
          return $$0.stream().map($$1).reduce(0, ($$0x, $$1x) -> $$0x + $$1x);
       }
 
-      public static boolean a(vk $$0, int $$1) {
+      public static boolean a(vi $$0, int $$1) {
          if ($$1 >= 512) {
             return true;
          } else {
-            if ($$0 instanceof un $$2) {
+            if ($$0 instanceof ul $$2) {
                for (String $$3 : $$2.e()) {
-                  vk $$4 = $$2.c($$3);
+                  vi $$4 = $$2.c($$3);
                   if ($$4 != null && a($$4, $$1 + 1)) {
                      return true;
                   }
                }
-            } else if ($$0 instanceof ut) {
-               for (vk $$6 : (ut)$$0) {
+            } else if ($$0 instanceof ur) {
+               for (vi $$6 : (ur)$$0) {
                   if (a($$6, $$1 + 1)) {
                      return true;
                   }
@@ -606,12 +606,12 @@ public class fo implements ArgumentType<fo.g> {
          }
       }
 
-      public int a(vk $$0, vk $$1) throws CommandSyntaxException {
+      public int a(vi $$0, vi $$1) throws CommandSyntaxException {
          if (a($$1, this.b())) {
             throw fo.b.create();
          } else {
-            vk $$2 = $$1.d();
-            List<vk> $$3 = this.d($$0);
+            vi $$2 = $$1.d();
+            List<vi> $$3 = this.d($$0);
             if ($$3.isEmpty()) {
                return 0;
             } else {
@@ -633,30 +633,30 @@ public class fo implements ArgumentType<fo.g> {
          return this.d.length;
       }
 
-      public int a(int $$0, un $$1, List<vk> $$2) throws CommandSyntaxException {
-         List<vk> $$3 = new ArrayList<>($$2.size());
+      public int a(int $$0, ul $$1, List<vi> $$2) throws CommandSyntaxException {
+         List<vi> $$3 = new ArrayList<>($$2.size());
 
-         for (vk $$4 : $$2) {
-            vk $$5 = $$4.d();
+         for (vi $$4 : $$2) {
+            vi $$5 = $$4.d();
             $$3.add($$5);
             if (a($$5, this.b())) {
                throw fo.b.create();
             }
          }
 
-         Collection<vk> $$6 = this.a($$1, ut::new);
+         Collection<vi> $$6 = this.a($$1, ur::new);
          int $$7 = 0;
          boolean $$8 = false;
 
-         for (vk $$9 : $$6) {
-            if (!($$9 instanceof um<?> $$10)) {
+         for (vi $$9 : $$6) {
+            if (!($$9 instanceof uk<?> $$10)) {
                throw fo.e.create($$9);
             }
 
             boolean $$11 = false;
             int $$12 = $$0 < 0 ? $$10.size() + $$0 + 1 : $$0;
 
-            for (vk $$13 : $$3) {
+            for (vi $$13 : $$3) {
                try {
                   if ($$10.b($$12, $$8 ? $$13.d() : $$13)) {
                      $$12++;
@@ -674,8 +674,8 @@ public class fo implements ArgumentType<fo.g> {
          return $$7;
       }
 
-      public int c(vk $$0) {
-         List<vk> $$1 = Collections.singletonList($$0);
+      public int c(vi $$0) {
+         List<vi> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             $$1 = this.d[$$2].a($$1);
@@ -701,28 +701,28 @@ public class fo implements ArgumentType<fo.g> {
    }
 
    interface h {
-      void a(vk var1, List<vk> var2);
+      void a(vi var1, List<vi> var2);
 
-      void a(vk var1, Supplier<vk> var2, List<vk> var3);
+      void a(vi var1, Supplier<vi> var2, List<vi> var3);
 
-      vk a();
+      vi a();
 
-      int a(vk var1, Supplier<vk> var2);
+      int a(vi var1, Supplier<vi> var2);
 
-      int a(vk var1);
+      int a(vi var1);
 
-      default List<vk> a(List<vk> $$0) {
+      default List<vi> a(List<vi> $$0) {
          return this.a($$0, this::a);
       }
 
-      default List<vk> a(List<vk> $$0, Supplier<vk> $$1) {
+      default List<vi> a(List<vi> $$0, Supplier<vi> $$1) {
          return this.a($$0, ($$1x, $$2) -> this.a($$1x, $$1, $$2));
       }
 
-      default List<vk> a(List<vk> $$0, BiConsumer<vk, List<vk>> $$1) {
-         List<vk> $$2 = Lists.newArrayList();
+      default List<vi> a(List<vi> $$0, BiConsumer<vi, List<vi>> $$1) {
+         List<vi> $$2 = Lists.newArrayList();
 
-         for (vk $$3 : $$0) {
+         for (vi $$3 : $$0) {
             $$1.accept($$3, $$2);
          }
 

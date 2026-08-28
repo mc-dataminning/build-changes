@@ -1,26 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eqc<P extends eqa> {
-   Codec<eqa> a = lz.af.q().dispatch("processor_type", eqa::a, eqc::codec);
-   Codec<eqb> b = a.listOf().xmap(eqb::new, eqb::a);
-   Codec<eqb> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jq<eqb>> d = alh.a(ma.aT, c);
-   eqc<epe> e = a("block_ignore", epe.a);
-   eqc<epg> f = a("block_rot", epg.a);
-   eqc<epj> g = a("gravity", epj.a);
-   eqc<epk> h = a("jigsaw_replacement", epk.a);
-   eqc<epw> i = a("rule", epw.a);
-   eqc<epo> j = a("nop", epo.a);
-   eqc<epd> k = a("block_age", epd.a);
-   eqc<epc> l = a("blackstone_replace", epc.a);
-   eqc<epl> m = a("lava_submerged_block", epl.a);
-   eqc<ept> n = a("protected_blocks", ept.b);
-   eqc<epi> o = a("capped", epi.a);
+public class eqc extends eqe {
+   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvv.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, eqc::new)
+   );
+   private final dvv b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public eqc(dvv $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends eqa> eqc<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.af, $$0, () -> $$1);
+   @Override
+   public boolean a(dvv $$0, azu $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
+
+   @Override
+   protected eqf<?> a() {
+      return eqf.f;
    }
 }

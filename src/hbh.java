@@ -1,63 +1,63 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.Set;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class hbh {
-   static final int a = -1;
-   private static final int b = 0;
+public enum hbh implements hbv {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public static Object2IntMap<dvo> a(fkz $$0, hax.c $$1) {
-      Map<dij, List<dwq<?>>> $$2 = new HashMap<>();
-      Map<hbh.a, Set<dvo>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<dwq<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hbh.a $$6x = hbh.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dvo> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
+   private static final int q = 360;
+   private static final Map<Integer, hbh> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hbh)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
 
-      for (Set<dvo> $$6 : $$3.values()) {
-         Iterator<dvo> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dvo $$8 = $$7.next();
-            if ($$8.o() != dop.c) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hbh.a a(dvo $$0, hbo $$1, List<dwq<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$5 = $$1 instanceof gkr $$4 ? $$4.a($$0) : $$1;
-         return new hbh.a($$5, $$3);
+   private hbh(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      private static List<Object> a(dvo $$0, List<dwq<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
-
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
-
-         return List.of($$2);
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static hbh a(int $$0, int $$1) {
+      return r.get(b(azm.b($$0, 360), azm.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

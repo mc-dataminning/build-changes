@@ -1,41 +1,21 @@
-public class cxr extends cwb {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cxr(cwb.a $$0) {
-      super($$0);
+public class cxr extends cxz {
+   public cxr(diq $$0, diq $$1, cwi.a $$2) {
+      super($$0, $$1, jm.a, $$2);
+   }
+
+   public cxr(cwi.a $$0, diq $$1, diq $$2, jm $$3) {
+      super($$1, $$2, $$3, $$0);
    }
 
    @Override
-   public int a(cwf $$0, bve $$1) {
-      return 1200;
-   }
+   protected boolean a(jh $$0, dfm $$1, @Nullable cou $$2, cwm $$3, dvv $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof duk $$6 && $$1.a_($$0).b() instanceof dpq $$7) {
+         $$7.a($$2, $$6, true);
+      }
 
-   @Override
-   public cwh b(cwf $$0) {
-      return cwh.h;
-   }
-
-   @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      $$1.a(awo.zb, 1.0F, 1.0F);
-      $$1.b(awy.c.b(this));
-      return cwi.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public cwf a(cwf $$0, dff $$1, bve $$2) {
-      this.b($$2);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cwf $$0, dff $$1, bve $$2, int $$3) {
-      this.b($$2);
-      return true;
-   }
-
-   private void b(bve $$0) {
-      $$0.a(awo.zc, 1.0F, 1.0F);
+      return $$5;
    }
 }

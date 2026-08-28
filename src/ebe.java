@@ -1,112 +1,97 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class ebe extends dxk {
-   public static final MapCodec<ebe> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eke.a.fieldOf("settings").forGetter(ebe::h)).apply($$0, $$0.stable(ebe::new))
+public final class ebe {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dyr> e = lz.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == dyr.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<ebe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(ebe::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, ebe::new)
    );
-   private final eke d;
+   private static final Set<ali<dgo>> f = Set.of(dgv.aa, dgv.Z, dgv.ab);
+   public static final dfo b = new dfo() {
+      @Override
+      public int L_() {
+         return 64;
+      }
 
-   public ebe(eke $$0) {
-      super(new dgs($$0.d()), ae.b($$0::a));
-      this.d = $$0;
+      @Override
+      public int K_() {
+         return -64;
+      }
+   };
+   private final dyr g;
+   private final BitSet h;
+
+   private ebe(dyr $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   @Override
-   public dxl a(js<emh> $$0, ebx $$1, long $$2) {
-      Stream<jq<emh>> $$3 = this.d.c().map(ju::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
-      return dxl.a($$1, $$2, this.b, $$3);
+   @Nullable
+   public static ebe a(ul $$0) {
+      dyr $$1 = dyr.a($$0.l("target_status"));
+      return $$1 == dyr.c ? null : new ebe($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
    }
 
-   @Override
-   protected MapCodec<? extends dxk> b() {
-      return c;
+   public static void a(dyk $$0) {
+      int $$1 = 4;
+      jh.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dis.F)) {
+            $$0.a($$1x, dis.sJ.m(), false);
+         }
+      });
    }
 
-   public eke h() {
-      return this.d;
-   }
+   public void b(dyk $$0) {
+      dfo $$1 = $$0.y();
+      int $$2 = $$1.K_();
+      int $$3 = $$1.al();
 
-   @Override
-   public void a(ary $$0, dgb $$1, ebx $$2, dxj $$3) {
-   }
-
-   @Override
-   public int a(dfh $$0) {
-      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
-   }
-
-   @Override
-   public CompletableFuture<dxj> a(ecl $$0, ebx $$1, dgb $$2, dxj $$3) {
-      List<dvo> $$4 = this.d.f();
-      jh.a $$5 = new jh.a();
-      ebj $$6 = $$3.a(ebj.a.c);
-      ebj $$7 = $$3.a(ebj.a.a);
-
-      for (int $$8 = 0; $$8 < Math.min($$3.J_(), $$4.size()); $$8++) {
-         dvo $$9 = $$4.get($$8);
-         if ($$9 != null) {
-            int $$10 = $$3.I_() + $$8;
-
-            for (int $$11 = 0; $$11 < 16; $$11++) {
-               for (int $$12 = 0; $$12 < 16; $$12++) {
-                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
-                  $$6.a($$11, $$10, $$12, $$9);
-                  $$7.a($$11, $$10, $$12, $$9);
-               }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               jh.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dis.a.m(), false));
             }
          }
       }
-
-      return CompletableFuture.completedFuture($$3);
    }
 
-   @Override
-   public int a(int $$0, int $$1, ebj.a $$2, dfh $$3, ebx $$4) {
-      List<dvo> $$5 = this.d.f();
+   public dyr a() {
+      return this.g;
+   }
 
-      for (int $$6 = Math.min($$5.size() - 1, $$3.al()); $$6 >= 0; $$6--) {
-         dvo $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.I_() + $$6 + 1;
-         }
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static dgr a(dgr $$0, dxq $$1) {
+      if (!$$1.x()) {
+         return $$0;
+      } else {
+         Predicate<ali<dgo>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jq<dgo> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
-
-      return $$3.I_();
-   }
-
-   @Override
-   public dfr a(int $$0, int $$1, dfh $$2, ebx $$3) {
-      return new dfr($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dil.a.m() : $$0x).toArray(dvo[]::new));
-   }
-
-   @Override
-   public void a(List<String> $$0, ebx $$1, jh $$2) {
-   }
-
-   @Override
-   public void a(ary $$0, long $$1, ebx $$2, dgj $$3, dgb $$4, dxj $$5) {
-   }
-
-   @Override
-   public void a(ary $$0) {
-   }
-
-   @Override
-   public int g() {
-      return 0;
-   }
-
-   @Override
-   public int e() {
-      return 384;
-   }
-
-   @Override
-   public int f() {
-      return -63;
    }
 }

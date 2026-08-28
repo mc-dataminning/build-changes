@@ -2,22 +2,21 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uq extends vd {
-   private static final int c = 12;
-   public static final uq a = new uq(0.0F);
-   public static final vm<uq> b = new vm.a<uq>() {
-      public uq a(DataInput $$0, uw $$1) throws IOException {
+public class uq extends vb {
+   private static final int b = 12;
+   public static final vk<uq> a = new vk.a<uq>() {
+      public uq a(DataInput $$0, uu $$1) throws IOException {
          return uq.a(d($$0, $$1));
       }
 
       @Override
-      public vh.b a(DataInput $$0, vh $$1, uw $$2) throws IOException {
+      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, uw $$1) throws IOException {
+      private static int d(DataInput $$0, uu $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readFloat();
+         return $$0.readInt();
       }
 
       @Override
@@ -27,12 +26,12 @@ public class uq extends vd {
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Int";
       }
 
       @Override
@@ -40,19 +39,19 @@ public class uq extends vd {
          return true;
       }
    };
-   private final float w;
+   private final int c;
 
-   private uq(float $$0) {
-      this.w = $$0;
+   uq(int $$0) {
+      this.c = $$0;
    }
 
-   public static uq a(float $$0) {
-      return $$0 == 0.0F ? a : new uq($$0);
+   public static uq a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? uq.a.a[$$0 - -128] : new uq($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeInt(this.c);
    }
 
    @Override
@@ -62,12 +61,12 @@ public class uq extends vd {
 
    @Override
    public byte b() {
-      return 5;
+      return 3;
    }
 
    @Override
-   public vm<uq> c() {
-      return b;
+   public vk<uq> c() {
+      return a;
    }
 
    public uq e() {
@@ -76,56 +75,71 @@ public class uq extends vd {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uq && this.w == ((uq)$$0).w;
+      return this == $$0 ? true : $$0 instanceof uq && this.c == ((uq)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      return this.c;
    }
 
    @Override
-   public void a(vo $$0) {
+   public void a(vm $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return azn.d(this.w);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)(azn.d(this.w) & 65535);
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(azn.d(this.w) & 0xFF);
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return (double)this.c;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.c;
    }
 
    @Override
    public Number l() {
-      return this.w;
+      return this.c;
    }
 
    @Override
-   public vh.b a(vh $$0) {
-      return $$0.a(this.w);
+   public vf.b a(vf $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final uq[] a = new uq[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new uq(-128 + $$0);
+         }
+      }
    }
 }

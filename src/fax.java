@@ -1,197 +1,46 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fax extends eta {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final faw c;
+class fax {
+   private final Reference2ObjectOpenHashMap<fav, fba> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   public fax(faw $$0) {
-      this.c = $$0;
+   @Nullable
+   public fba a(fav $$0) {
+      return (fba)this.a.get($$0);
    }
 
-   public fax b(un $$0, js.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
+   public fba a(fav $$0, Consumer<fba> $$1) {
+      return (fba)this.a.computeIfAbsent($$0, $$1x -> {
+         fba $$2 = new fba();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   private void a(ut $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         un $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         far $$5 = this.c.c($$4);
-         xl $$6 = xl.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            xl $$7 = xl.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
-            }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            xl $$8 = xl.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            fay.b $$9 = fay.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            fay.b $$10 = fay.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            fay.a $$11 = fay.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
+   public boolean b(fav $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   private void a(far $$0, ut $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   private void a(un $$0) {
-      for (String $$1 : $$0.e()) {
-         fan $$2 = fan.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            fao $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(ut $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         un $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         faz $$5 = faz.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, faz.b.d());
-            return faz.b;
-         });
-         String $$6 = $$3.l("Name");
-         xl $$7 = xl.a.a($$3.l("DisplayName"), $$1);
-         faz.a $$8 = faz.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         zb $$10 = (zb)zd.b.parse($$1.a(vb.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public un a(un $$0, js.a $$1) {
-      $$0.a("Objectives", this.c($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.b($$1));
-      this.b($$0);
+   public Object2IntMap<fav> b() {
+      Object2IntMap<fav> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
       return $$0;
    }
 
-   private ut b(js.a $$0) {
-      ut $$1 = new ut();
-
-      for (far $$3 : this.c.g()) {
-         un $$4 = new un();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", xl.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", xl.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", xl.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         ut $$5 = new ut();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(vi.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
+   void a(fav $$0, fba $$1) {
+      this.a.put($$0, $$1);
    }
 
-   private void b(un $$0) {
-      un $$1 = new un();
-
-      for (fan $$2 : fan.values()) {
-         fao $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
-   }
-
-   private ut c(js.a $$0) {
-      ut $$1 = new ut();
-
-      for (fao $$3 : this.c.c()) {
-         un $$4 = new un();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", xl.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         zb $$5 = $$3.f();
-         if ($$5 != null) {
-            zd.b.encodeStart($$0.a(vb.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
-         }
-
-         $$1.add($$4);
-      }
-
-      return $$1;
+   Map<fav, fba> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

@@ -1,23 +1,137 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
 
-public interface ecr<P extends ecq> {
-   ecr<ecw> a = a("matching_blocks", ecw.a);
-   ecr<ecv> b = a("matching_block_tag", ecv.e);
-   ecr<ecx> c = a("matching_fluids", ecx.a);
-   ecr<ect> d = a("has_sturdy_face", ect.a);
-   ecr<eda> e = a("solid", eda.a);
-   ecr<ecz> f = a("replaceable", ecz.a);
-   ecr<ede> g = a("would_survive", ede.a);
-   ecr<ecu> h = a("inside_world_bounds", ecu.a);
-   ecr<ecp> i = a("any_of", ecp.a);
-   ecr<eco> j = a("all_of", eco.a);
-   ecr<ecy> k = a("not", ecy.a);
-   ecr<edc> l = a("true", edc.e);
-   ecr<edd> m = a("unobstructed", edd.a);
+public class ecr implements azu {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<ecr> b = ecq.a.xmap($$0 -> new ecr($$0), $$0 -> $$0.e);
+   private ecq e;
+   private final ebs f = new ebs(this);
 
-   MapCodec<P> codec();
+   public ecr(long $$0) {
+      this.e = new ecq(ecf.c($$0));
+   }
 
-   private static <P extends ecq> ecr<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.M, $$0, () -> $$1);
+   public ecr(ecf.a $$0) {
+      this.e = new ecq($$0);
+   }
+
+   public ecr(long $$0, long $$1) {
+      this.e = new ecq($$0, $$1);
+   }
+
+   private ecr(ecq $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public azu d() {
+      return new ecr(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public ecd e() {
+      return new ecr.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new ecq(ecf.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements ecd {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public azu a(int $$0, int $$1, int $$2) {
+         long $$3 = azm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new ecr($$4, this.b);
+      }
+
+      @Override
+      public azu a(String $$0) {
+         ecf.a $$1 = ecf.a($$0);
+         return new ecr($$1.a(this.a, this.b));
+      }
+
+      @Override
+      public azu a(long $$0) {
+         return new ecr($$0 ^ this.a, $$0 ^ this.b);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

@@ -1,19 +1,29 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class beb extends bgt {
+public class beb extends bej {
    public beb(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", bhy.B, "minecraft:painting");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameField("Motive", "variant").renameField("Facing", "facing");
+      super("EntityMinecartIdentifiersFix", $$0, true);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Minecart")) {
+         return Pair.of($$0, $$1);
+      } else {
+         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+
+         String $$3 = switch ($$2) {
+            case 1 -> "MinecartChest";
+            case 2 -> "MinecartFurnace";
+            default -> "MinecartRideable";
+         };
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bia.B).types().get($$3);
+         return Pair.of($$3, ae.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+      }
    }
 }

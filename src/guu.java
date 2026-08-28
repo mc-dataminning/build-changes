@@ -1,9 +1,6 @@
-import javax.annotation.Nullable;
-
-public class guu extends gvj {
-   private static final all j = all.b("textures/entity/cat/tabby.png");
-   public all a = j;
-   public boolean b;
-   @Nullable
-   public cvc c;
+public class guu extends gwm {
+   public boolean a;
+   public final bud b = new bud();
+   public final bud c = new bud();
+   public final bud d = new bud();
 }

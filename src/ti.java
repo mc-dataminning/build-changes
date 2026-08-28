@@ -1,342 +1,148 @@
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
 public class ti {
-   private final uc a;
-   @Nullable
-   private jh b;
-   @Nullable
-   private jh c;
-   private final arq d;
-   private final Collection<tj> e = Lists.newArrayList();
-   private final int f;
-   private final Collection<tm> g = Lists.newCopyOnWriteArrayList();
-   private final Object2LongMap<Runnable> h = new Object2LongOpenHashMap();
-   private long i;
-   private int j = 20;
-   private boolean k;
-   private boolean l;
-   private long m;
-   private boolean n;
-   private final tv o;
-   private final Stopwatch p = Stopwatch.createUnstarted();
-   private boolean q;
-   private final dow r;
-   @Nullable
-   private Throwable s;
-   @Nullable
-   private dui t;
+   private static final Collection<ua> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<arp>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<arp>> d = Maps.newHashMap();
+   private static final Set<ua> e = Sets.newHashSet();
 
-   public ti(uc $$0, dow $$1, arq $$2, tv $$3) {
-      this.a = $$0;
-      this.d = $$2;
-      this.o = $$3;
-      this.f = $$0.f();
-      this.r = $$0.e().a($$1);
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(ti::a);
    }
 
-   void a(jh $$0) {
-      this.b = $$0;
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sx $$2 = $$0.getAnnotation(sx.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      te $$3 = $$0.getAnnotation(te.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, sv.class, sv::a, c);
+      a($$0, su.class, su::a, d);
    }
 
-   public ti a(int $$0) {
-      this.i = this.d.aa() + this.a.g() + (long)$$0;
-      this.p.start();
-      return this;
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arp>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<arp> $$6 = $$3.putIfAbsent($$5, (Consumer<arp>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
    }
 
-   public ti a() {
-      if (this.k) {
-         return this;
+   public static Stream<ua> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
+   }
+
+   public static Collection<ua> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<arp> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Consumer<arp> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Optional<ua> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static ua f(String $$0) {
+      Optional<ua> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
       } else {
-         this.j = 0;
-         this.k = true;
-         dui $$0 = this.f();
-         $$0.c(this.d);
-         elt $$1 = ty.b($$0);
-         this.d.m().a($$1);
-         this.d.a($$1);
-         return this;
+         return $$1.get();
       }
    }
 
-   private boolean E() {
-      if (this.k) {
-         return true;
-      } else if (this.j > 0) {
-         this.j--;
-         return false;
-      } else {
-         this.a().a(0);
-         return true;
+   private static Collection<ua> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<ua>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
       }
    }
 
-   public void a(tl $$0) {
-      if (!this.k()) {
-         if (this.t == null) {
-            this.a(new IllegalStateException("Running test without structure block entity"));
-         }
-
-         if (this.l || ty.b(this.t).b().allMatch($$0x -> this.d.f($$0x.l()))) {
-            this.l = true;
-            if (this.E()) {
-               this.F();
-               if (this.k()) {
-                  if (this.s != null) {
-                     this.e.forEach($$1 -> $$1.b(this, $$0));
-                  } else {
-                     this.e.forEach($$1 -> $$1.a(this, $$0));
-                  }
-               }
-            }
-         }
-      }
+   private static ua c(Method $$0) {
+      sx $$1 = $$0.getAnnotation(sx.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dpd $$7 = tw.a($$1.d());
+      return new ua($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<tf>)d($$0));
    }
 
-   private void F() {
-      this.m = this.d.aa() - this.i;
-      if (this.m >= 0L) {
-         if (!this.n) {
-            this.G();
-         }
-
-         ObjectIterator<Entry<Runnable>> $$0 = this.h.object2LongEntrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
-            if ($$1.getLongValue() <= this.m) {
-               try {
-                  ((Runnable)$$1.getKey()).run();
-               } catch (Exception var4) {
-                  this.a(var4);
-               }
-
-               $$0.remove();
-            }
-         }
-
-         if (this.m > (long)this.f) {
-            if (this.g.isEmpty()) {
-               this.a(new tp("Didn't succeed or fail within " + this.a.f() + " ticks"));
-            } else {
-               this.g.forEach($$0x -> $$0x.b(this.m));
-               if (this.s == null) {
-                  this.a(new tp("No sequences finished"));
-               }
-            }
-         } else {
-            this.g.forEach($$0x -> $$0x.a(this.m));
-         }
-      }
-   }
-
-   private void G() {
-      if (!this.n) {
-         this.n = true;
-
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
          try {
-            this.a.a(new th(this));
-         } catch (Exception var2) {
-            this.a(var2);
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
          }
-      }
+      };
    }
 
-   public void a(long $$0, Runnable $$1) {
-      this.h.put($$1, $$0);
+   private static boolean a(ua $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
    }
 
-   public String b() {
-      return this.a.c();
+   public static Stream<ua> c() {
+      return e.stream();
    }
 
-   @Nullable
-   public jh c() {
-      return this.b;
+   public static void a(ua $$0) {
+      e.add($$0);
    }
 
-   public jh d() {
-      return ty.c(this.t);
-   }
-
-   public ezm e() {
-      dui $$0 = this.f();
-      return ty.a($$0);
-   }
-
-   public dui f() {
-      if (this.t == null) {
-         if (this.b == null) {
-            throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
-         }
-
-         this.t = (dui)this.d.c_(this.b);
-         if (this.t == null) {
-            throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
-         }
-      }
-
-      return this.t;
-   }
-
-   public arq g() {
-      return this.d;
-   }
-
-   public boolean h() {
-      return this.q && this.s == null;
-   }
-
-   public boolean i() {
-      return this.s != null;
-   }
-
-   public boolean j() {
-      return this.n;
-   }
-
-   public boolean k() {
-      return this.q;
-   }
-
-   public long l() {
-      return this.p.elapsed(TimeUnit.MILLISECONDS);
-   }
-
-   private void H() {
-      if (!this.q) {
-         this.q = true;
-         if (this.p.isRunning()) {
-            this.p.stop();
-         }
-      }
-   }
-
-   public void m() {
-      if (this.s == null) {
-         this.H();
-         ezm $$0 = this.e();
-         List<bui> $$1 = this.g().a(bui.class, $$0.g(1.0), $$0x -> !($$0x instanceof cor));
-         $$1.forEach($$0x -> $$0x.a(bui.c.b));
-      }
-   }
-
-   public void a(Throwable $$0) {
-      this.s = $$0;
-      this.H();
-   }
-
-   @Nullable
-   public Throwable n() {
-      return this.s;
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   public void a(tj $$0) {
-      this.e.add($$0);
-   }
-
-   public ti o() {
-      jh $$0 = this.D();
-      this.t = ty.b(this, $$0, this.u(), this.d);
-      this.b = this.t.aB_();
-      ty.a(this.b, new jh(1, 0, -1), this.u(), this.d);
-      ty.a(this.e(), this.d, !this.a.l());
-      this.e.forEach($$0x -> $$0x.a(this));
-      return this;
-   }
-
-   long p() {
-      return this.m;
-   }
-
-   tm q() {
-      tm $$0 = new tm(this);
-      this.g.add($$0);
-      return $$0;
-   }
-
-   public boolean r() {
-      return this.a.h();
-   }
-
-   public boolean s() {
-      return !this.a.h();
-   }
-
-   public String t() {
-      return this.a.d();
-   }
-
-   public dow u() {
-      return this.r;
-   }
-
-   public uc v() {
-      return this.a;
-   }
-
-   public int w() {
-      return this.f;
-   }
-
-   public boolean x() {
-      return this.a.a();
-   }
-
-   public int y() {
-      return this.a.j();
-   }
-
-   public int z() {
-      return this.a.k();
-   }
-
-   public tv A() {
-      return this.o;
-   }
-
-   public Stream<tj> B() {
-      return this.e.stream();
-   }
-
-   public ti C() {
-      ti $$0 = new ti(this.a, this.r, this.d, this.A());
-      if (this.c != null) {
-         $$0.b(this.c);
-      }
-
-      if (this.b != null) {
-         $$0.a(this.b);
-      }
-
-      return $$0;
-   }
-
-   public jh D() {
-      if (this.c == null) {
-         elt $$0 = ty.b(this.f());
-         this.c = new jh($$0.h(), $$0.i(), $$0.j());
-      }
-
-      return this.c;
-   }
-
-   public void b(jh $$0) {
-      this.c = $$0;
+   public static void d() {
+      e.clear();
    }
 }

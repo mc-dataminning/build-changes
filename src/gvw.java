@@ -1,5 +1,3 @@
-public class gvw extends gwb {
-   public float a;
-   public int b;
-   public buf.a c = buf.a.a;
+public class gvw extends gvo {
+   public ezy a = ezy.c;
 }

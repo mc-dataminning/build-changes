@@ -1,38 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ele extends elm {
-   public static final MapCodec<ele> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ele::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class ele extends elt {
+   public static final MapCodec<ele> a = brp.b(0, 256).fieldOf("count").xmap(ele::new, $$0 -> $$0.c);
+   private final brp c;
 
-   private ele(double $$0, int $$1, int $$2) {
+   private ele(brp $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static ele a(double $$0, int $$1, int $$2) {
-      return new ele($$0, $$1, $$2);
+   public static ele a(brp $$0) {
+      return new ele($$0);
    }
 
-   @Override
-   protected int a(azv $$0, jh $$1) {
-      double $$2 = dgh.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public static ele a(int $$0) {
+      return a(brm.a($$0));
    }
 
    @Override
-   public elj<?> b() {
-      return elj.h;
+   protected int a(azu $$0, jh $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public elq<?> b() {
+      return elq.f;
    }
 }

@@ -1,47 +1,88 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fvh extends fvl<crt> {
-   private static final fnj h = new fnj(
-      all.b("recipe_book/filter_enabled"),
-      all.b("recipe_book/filter_disabled"),
-      all.b("recipe_book/filter_enabled_highlighted"),
-      all.b("recipe_book/filter_disabled_highlighted")
-   );
-   private static final xl i = xl.c("gui.recipebook.toggleRecipes.craftable");
+public class fvh extends fva {
+   private static final xj v = xj.c("controls.keybinds.title");
+   @Nullable
+   public fkc a;
+   public long u;
+   private fvg w;
+   private fmd x;
 
-   public fvh(crt $$0) {
-      super($$0);
+   public fvh(frw $$0, fki $$1) {
+      super($$0, $$1, v);
    }
 
    @Override
-   protected boolean a(ctp $$0) {
-      return this.f.m() == $$0 || this.f.n().contains($$0);
+   protected void G() {
+      this.w = this.s.c(new fvg(this, this.m));
    }
 
    @Override
-   protected void a(fvj $$0, dav<?> $$1) {
-      cwf $$2 = $$1.b().a(this.g.s.H_());
-      ctp $$3 = this.f.m();
-      $$0.a($$2, $$3);
-      List<ctp> $$4 = this.f.n();
-      akw.a(this.f.o(), this.f.p(), $$1, $$1.b().a().a(), ($$2x, $$3x, $$4x, $$5) -> $$2x.ifPresent($$3xx -> {
-            ctp $$4xx = $$4.get($$3x);
-            $$0.a($$3xx.a(), $$4xx);
-         }));
+   protected void m() {
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
+   protected void F() {
+      this.x = fmd.a(xj.c("controls.resetAll"), $$0x -> {
+         for (fkc $$1 : this.c.V) {
+            $$1.b($$1.i());
+         }
+
+         this.w.c();
+      }).a();
+      fpw $$0 = this.s.b(fpw.e().a(8));
+      $$0.a(this.x);
+      $$0.a(fmd.a(xi.d, $$0x -> this.aO_()).a());
    }
 
    @Override
-   protected xl b() {
-      return i;
+   protected void c() {
+      this.s.a();
+      this.w.a(this.n, this.s);
    }
 
    @Override
-   protected void a(fvp $$0, cow $$1, awr $$2) {
-      $$0.a($$1, this.f.o(), this.f.p(), $$2);
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.a.b(fdm.b.c.a($$2));
+         this.a = null;
+         this.w.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.a.b(fdm.bv);
+         } else {
+            this.a.b(fdm.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.u = ae.c();
+         this.w.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (fkc $$5 : this.c.V) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.x.j = $$4;
    }
 }

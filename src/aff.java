@@ -1,29 +1,32 @@
-public class aff implements zs<ach> {
-   public static final zj<wi, aff> a = zs.a(aff::a, aff::new);
+import javax.annotation.Nullable;
+
+public class aff implements zq<acf> {
+   public static final zh<wg, aff> a = zq.a(aff::a, aff::new);
    private final int b;
 
-   public aff(dxe $$0) {
-      this.b = $$0.q();
+   public aff(bul $$0) {
+      this.b = $$0.ar();
    }
 
-   private aff(wi $$0) {
+   private aff(wg $$0) {
       this.b = $$0.l();
    }
 
-   private void a(wi $$0) {
+   private void a(wg $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zu<aff> a() {
-      return agw.av;
+   public zs<aff> a() {
+      return agu.ax;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bul a(dfm $$0) {
+      return $$0.a(this.b);
    }
 }

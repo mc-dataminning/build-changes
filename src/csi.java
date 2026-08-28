@@ -1,116 +1,104 @@
-public class csi extends crs implements csg {
-   protected static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final ctk r = new ctk();
-   private final cse s;
-   private final cor t;
-   private final csk u;
+public class csi extends crz {
+   private final bsd m;
+   private final int n;
 
-   public csi(int $$0, coq $$1) {
-      super(ctb.h, $$0);
-      this.t = $$1.k;
-      this.s = new cto(10);
-      this.u = new ctw(this, 3, 3);
-      this.a($$1);
+   private csi(cti<?> $$0, int $$1, cot $$2, int $$3) {
+      this($$0, $$1, $$2, new bsr(9 * $$3), $$3);
    }
 
-   public csi(int $$0, coq $$1, csk $$2, cse $$3) {
-      super(ctb.h, $$0);
-      this.t = $$1.k;
-      this.s = $$3;
-      this.u = $$2;
-      a($$2, 9);
-      $$2.d_($$1.k);
-      this.a($$1);
-      this.a(this);
+   public static csi a(int $$0, cot $$1) {
+      return new csi(cti.a, $$0, $$1, 1);
    }
 
-   private void a(coq $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         for (int $$2 = 0; $$2 < 3; $$2++) {
-            int $$3 = $$2 + $$1 * 3;
-            this.a(new csj(this.u, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
+   public static csi b(int $$0, cot $$1) {
+      return new csi(cti.b, $$0, $$1, 2);
+   }
+
+   public static csi c(int $$0, cot $$1) {
+      return new csi(cti.c, $$0, $$1, 3);
+   }
+
+   public static csi d(int $$0, cot $$1) {
+      return new csi(cti.d, $$0, $$1, 4);
+   }
+
+   public static csi e(int $$0, cot $$1) {
+      return new csi(cti.e, $$0, $$1, 5);
+   }
+
+   public static csi f(int $$0, cot $$1) {
+      return new csi(cti.f, $$0, $$1, 6);
+   }
+
+   public static csi a(int $$0, cot $$1, bsd $$2) {
+      return new csi(cti.c, $$0, $$1, $$2, 3);
+   }
+
+   public static csi b(int $$0, cot $$1, bsd $$2) {
+      return new csi(cti.f, $$0, $$1, $$2, 6);
+   }
+
+   public csi(cti<?> $$0, int $$1, cot $$2, bsd $$3, int $$4) {
+      super($$0, $$1);
+      a($$3, $$4 * 9);
+      this.m = $$3;
+      this.n = $$4;
+      $$3.c_($$2.k);
+      int $$5 = 18;
+      this.d($$3, 8, 18);
+      int $$6 = 18 + this.n * 18 + 13;
+      this.c($$2, 8, $$6);
+   }
+
+   private void d(bsd $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.n; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new ctw($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
-
-      this.c($$0, 8, 84);
-      this.a(new ctf(this.r, 0, 134, 35));
-      this.a(this.s);
-      this.n();
-   }
-
-   public void a(int $$0, boolean $$1) {
-      csj $$2 = (csj)this.b($$0);
-      this.s.a($$2.d, $$1 ? 0 : 1);
-      this.d();
-   }
-
-   public boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 ? this.s.a($$0) == 1 : false;
-   }
-
-   public boolean l() {
-      return this.s.a(9) == 1;
    }
 
    @Override
-   public cwf b(cor $$0, int $$1) {
-      cwf $$2 = cwf.k;
-      ctp $$3 = this.k.get($$1);
+   public boolean b(cou $$0) {
+      return this.m.a($$0);
+   }
+
+   @Override
+   public cwm b(cou $$0, int $$1) {
+      cwm $$2 = cwm.k;
+      ctw $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwf $$4 = $$3.g();
+         cwm $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cwf.k;
+         if ($$1 < this.n * 9) {
+            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
+               return cwm.k;
             }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cwf.k;
+         } else if (!this.a($$4, 0, this.n * 9, false)) {
+            return cwm.k;
          }
 
          if ($$4.f()) {
-            $$3.f(cwf.k);
+            $$3.e(cwm.k);
          } else {
             $$3.c();
          }
-
-         if ($$4.L() == $$2.L()) {
-            return cwf.k;
-         }
-
-         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
    @Override
-   public boolean b(cor $$0) {
-      return this.u.a($$0);
+   public void a(cou $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 
-   private void n() {
-      if (this.t instanceof arr $$0) {
-         dff $$1 = $$0.dY();
-         dai $$2 = this.u.aC_();
-         cwf $$3 = dkc.a($$1, $$2).map($$2x -> ((daj)$$2x.b()).a($$2, $$1.H_())).orElse(cwf.k);
-         this.r.a(0, $$3);
-      }
+   public bsd l() {
+      return this.m;
    }
 
-   public bsa m() {
-      return this.u;
-   }
-
-   @Override
-   public void a(crs $$0, int $$1, cwf $$2) {
-      this.n();
-   }
-
-   @Override
-   public void a(crs $$0, int $$1, int $$2) {
+   public int m() {
+      return this.n;
    }
 }

@@ -1,297 +1,494 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import java.util.function.Supplier;
 
 public class gjb {
-   public static final all a = all.b("main");
-   private final List<gjd> b;
-   private final Map<all, gjc.d> c;
-   private final Set<all> d;
+   private final fke a;
+   private final dfm b;
+   private final gjc c;
+   private final Map<jh, hdb> d = new HashMap<>();
 
-   private gjb(List<gjd> $$0, Map<all, gjc.d> $$1, Set<all> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public gjb(fke $$0, dfm $$1, gjc $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static gjb a(gjc $$0, gyu $$1, gjo $$2, Set<all> $$3) throws gjo.b {
-      Stream<all> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
-      Set<all> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
-      Set<all> $$6 = Sets.difference($$5, $$3);
-      if (!$$6.isEmpty()) {
-         throw new gjo.b("Referenced external targets are not available in this context: " + $$6);
-      } else {
-         Builder<gjd> $$7 = ImmutableList.builder();
-
-         for (gjc.e $$8 : $$0.b()) {
-            $$7.add(a($$1, $$2, $$8));
-         }
-
-         return new gjb($$7.build(), $$0.a(), $$5);
-      }
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   private static gjd a(gyu $$0, gjo $$1, gjc.e $$2) throws gjo.b {
-      all $$3 = $$2.a();
-      gig $$4 = $$1.b(new gjp($$3, fei.e, gjn.a));
-
-      for (gjc.h $$5 : $$2.d()) {
-         String $$6 = $$5.a();
-         if ($$4.a($$6) == null) {
-            throw new gjo.b("Uniform '" + $$6 + "' does not exist for " + $$3);
-         }
-      }
-
-      String $$7 = $$3.toString();
-      gjd $$8 = new gjd($$7, $$4, $$2.c(), $$2.d());
-
-      for (gjc.c $$9 : $$2.b()) {
-         Objects.requireNonNull($$9);
-         Throwable var45;
-         switch ($$9) {
-            case gjc.g var11:
-               gjc.g var53 = var11;
-
-               try {
-                  var54 = var53.a();
-               } catch (Throwable var31) {
-                  var45 = var31;
-                  boolean var66 = false;
-                  break;
-               }
-
-               String var36 = var54;
-               gjc.g var55 = var11;
-
-               try {
-                  var56 = var55.c();
-               } catch (Throwable var30) {
-                  var45 = var30;
-                  boolean var67 = false;
-                  break;
-               }
-
-               all var37 = var56;
-               gjc.g var57 = var11;
-
-               try {
-                  var58 = var57.d();
-               } catch (Throwable var29) {
-                  var45 = var29;
-                  boolean var68 = false;
-                  break;
-               }
-
-               int var38 = var58;
-               gjc.g var59 = var11;
-
-               try {
-                  var60 = var59.e();
-               } catch (Throwable var28) {
-                  var45 = var28;
-                  boolean var69 = false;
-                  break;
-               }
-
-               int var39 = var60;
-               gjc.g var61 = var11;
-
-               try {
-                  var62 = var61.f();
-               } catch (Throwable var27) {
-                  var45 = var27;
-                  boolean var70 = false;
-                  break;
-               }
-
-               boolean var40 = var62;
-               gye $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
-               $$15x.a(var40, false);
-               $$8.a(new gjd.c(var36, $$15x, var38, var39));
-               continue;
-            case gjc.f $$15:
-               gjc.f var10000 = $$15;
-
-               try {
-                  var46 = var10000.a();
-               } catch (Throwable var26) {
-                  var45 = var26;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var22 = var46;
-               gjc.f var47 = $$15;
-
-               try {
-                  var48 = var47.c();
-               } catch (Throwable var25) {
-                  var45 = var25;
-                  boolean var63 = false;
-                  break;
-               }
-
-               all var42 = var48;
-               gjc.f var49 = $$15;
-
-               try {
-                  var50 = var49.d();
-               } catch (Throwable var24) {
-                  var45 = var24;
-                  boolean var64 = false;
-                  break;
-               }
-
-               boolean var43 = var50;
-               gjc.f var51 = $$15;
-
-               try {
-                  var52 = var51.e();
-               } catch (Throwable var23) {
-                  var45 = var23;
-                  boolean var65 = false;
-                  break;
-               }
-
-               boolean var44 = var52;
-               $$8.a(new gjd.b(var22, var42, var43, var44));
-               continue;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         Throwable var35 = var45;
-         throw new MatchException(var35.toString(), var35);
-      }
-
-      return $$8;
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fco $$0, int $$1, int $$2, gjb.a $$3) {
-      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
-      Map<all, fdw<fcu>> $$5 = new HashMap<>(this.c.size() + this.d.size());
-
-      for (all $$6 : this.d) {
-         $$5.put($$6, $$3.b($$6));
-      }
-
-      for (Entry<all, gjc.d> $$7 : this.c.entrySet()) {
-         all $$8 = $$7.getKey();
-         gjc.d var35;
-         Objects.requireNonNull(var35);
-         Object var11 = var35;
-
-         var35 = $$7.getValue();
-         fdu $$11 = switch (var11) {
-            case gjc.a var13 -> {
-               gjc.a var29 = var13;
-
-               int var26;
-               label56: {
-                  label76: {
-                     try {
-                        var31 = var29.a();
-                     } catch (Throwable var18) {
-                        var30 = var18;
-                        boolean var10001 = false;
-                        break label76;
-                     }
-
-                     var26 = var31;
-                     gjc.a var32 = var13;
-
-                     try {
-                        var33 = var32.b();
-                        break label56;
-                     } catch (Throwable var17) {
-                        var30 = var17;
-                        boolean var34 = false;
-                     }
-                  }
-
-                  Throwable var20 = var30;
-                  throw new MatchException(var20.toString(), var20);
-               }
-
-               int var27 = var33;
-               yield new fdu(var26, var27, true);
-            }
-            case gjc.b var16 -> new fdu($$1, $$2, true);
-            default -> throw new MatchException(null, null);
-         };
-         $$5.put($$8, $$0.a($$8.toString(), $$11));
-      }
-
-      for (gjd $$12 : this.b) {
-         $$12.a($$0, $$5, $$4);
-      }
-
-      for (all $$13 : this.d) {
-         $$3.a($$13, $$5.get($$13));
-      }
-   }
-
-   @Deprecated
-   public void a(fcu $$0, fdt $$1) {
-      fco $$2 = new fco();
-      gjb.a $$3 = gjb.a.b(a, $$2.a("main", $$0));
-      this.a($$2, $$0.c, $$0.d, $$3);
-      $$2.a($$1);
-   }
-
-   public void a(String $$0, float $$1) {
-      for (gjd $$2 : this.b) {
-         $$2.a().b($$0).a($$1);
-      }
-   }
-
-   public interface a {
-      static gjb.a b(final all $$0, final fdw<fcu> $$1) {
-         return new gjb.a() {
-            private fdw<fcu> c = $$1;
-
-            @Override
-            public void a(all $$0x, fdw<fcu> $$1x) {
-               if ($$0.equals($$0)) {
-                  this.c = $$1;
+   public void a(int $$0, jh $$1, int $$2) {
+      switch ($$0) {
+         case 1023:
+         case 1028:
+         case 1038:
+            fjn $$3 = this.a.j.k();
+            if ($$3.h()) {
+               ezy $$4 = ezy.b($$1).d($$3.b()).d();
+               ezy $$5 = $$3.b().e($$4.c(2.0));
+               if ($$0 == 1023) {
+                  this.b.a($$5.d, $$5.e, $$5.f, awn.CL, awo.f, 1.0F, 1.0F, false);
+               } else if ($$0 == 1038) {
+                  this.b.a($$5.d, $$5.e, $$5.f, awn.ix, awo.f, 1.0F, 1.0F, false);
                } else {
-                  throw new IllegalArgumentException("No target with id " + $$0);
+                  this.b.a($$5.d, $$5.e, $$5.f, awn.ic, awo.f, 5.0F, 1.0F, false);
+               }
+            }
+      }
+   }
+
+   public void b(int $$0, jh $$1, int $$2) {
+      azu $$3 = this.b.A;
+      switch ($$0) {
+         case 1000:
+            this.b.a($$1, awn.gT, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1001:
+            this.b.a($$1, awn.gU, awo.e, 1.0F, 1.2F, false);
+            break;
+         case 1002:
+            this.b.a($$1, awn.gV, awo.e, 1.0F, 1.2F, false);
+            break;
+         case 1004:
+            this.b.a($$1, awn.iR, awo.g, 1.0F, 1.2F, false);
+            break;
+         case 1009:
+            if ($$2 == 0) {
+               this.b.a($$1, awn.iV, awo.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
+            } else if ($$2 == 1) {
+               this.b.a($$1, awn.kg, awo.e, 0.7F, 1.6F + ($$3.i() - $$3.i()) * 0.4F, false);
+            }
+            break;
+         case 1010:
+            this.b.J_().e(ma.L).c($$2).ifPresent($$1x -> this.a($$1x, $$1));
+            break;
+         case 1011:
+            this.b($$1);
+            break;
+         case 1015:
+            this.b.a($$1, awn.kq, awo.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1016:
+            this.b.a($$1, awn.kp, awo.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1017:
+            this.b.a($$1, awn.ih, awo.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1018:
+            this.b.a($$1, awn.ck, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1019:
+            this.b.a($$1, awn.Dy, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1020:
+            this.b.a($$1, awn.Dz, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1021:
+            this.b.a($$1, awn.DA, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1022:
+            this.b.a($$1, awn.CD, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1024:
+            this.b.a($$1, awn.CG, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1025:
+            this.b.a($$1, awn.bJ, awo.g, 0.05F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1026:
+            this.b.a($$1, awn.DI, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1027:
+            this.b.a($$1, awn.DP, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1029:
+            this.b.a($$1, awn.V, awo.e, 1.0F, $$3.i() * 0.1F + 0.9F, false);
+            break;
+         case 1030:
+            this.b.a($$1, awn.ab, awo.e, 1.0F, $$3.i() * 0.1F + 0.9F, false);
+            break;
+         case 1031:
+            this.b.a($$1, awn.Y, awo.e, 0.3F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1032:
+            this.a.ak().a(hcw.b(awn.uH, $$3.i() * 0.4F + 0.8F, 0.25F));
+            break;
+         case 1033:
+            this.b.a($$1, awn.fh, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1034:
+            this.b.a($$1, awn.fg, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1035:
+            this.b.a($$1, awn.cR, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1039:
+            this.b.a($$1, awn.tu, awo.f, 0.3F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1040:
+            this.b.a($$1, awn.DB, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1041:
+            this.b.a($$1, awn.mZ, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1042:
+            this.b.a($$1, awn.ln, awo.e, 1.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1043:
+            this.b.a($$1, awn.cy, awo.e, 1.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1044:
+            this.b.a($$1, awn.yn, awo.e, 1.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1045:
+            this.b.a($$1, awn.hx, awo.e, 2.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1046:
+            this.b.a($$1, awn.hA, awo.e, 2.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1047:
+            this.b.a($$1, awn.hB, awo.e, 2.0F, this.b.A.i() * 0.1F + 0.9F, false);
+            break;
+         case 1048:
+            this.b.a($$1, awn.xb, awo.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
+            break;
+         case 1049:
+            this.b.a($$1, awn.gh, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1050:
+            this.b.a($$1, awn.gi, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 1051:
+            this.b.a($$1, awn.Cv, awo.e, 0.5F, 0.4F / (this.b.G_().i() * 0.4F + 0.8F), false);
+            break;
+         case 1500:
+            dkb.a(this.b, $$1, $$2 > 0);
+            break;
+         case 1501:
+            this.b.a($$1, awn.nP, awo.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
+
+            for (int $$60 = 0; $$60 < 8; $$60++) {
+               this.b.a(ls.X, (double)$$1.u() + $$3.j(), (double)$$1.v() + 1.2, (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+            }
+            break;
+         case 1502:
+            this.b.a($$1, awn.vu, awo.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
+
+            for (int $$61 = 0; $$61 < 5; $$61++) {
+               double $$62 = (double)$$1.u() + $$3.j() * 0.6 + 0.2;
+               double $$63 = (double)$$1.v() + $$3.j() * 0.6 + 0.2;
+               double $$64 = (double)$$1.w() + $$3.j() * 0.6 + 0.2;
+               this.b.a(ls.ae, $$62, $$63, $$64, 0.0, 0.0, 0.0);
+            }
+            break;
+         case 1503:
+            this.b.a($$1, awn.iw, awo.e, 1.0F, 1.0F, false);
+
+            for (int $$65 = 0; $$65 < 16; $$65++) {
+               double $$66 = (double)$$1.u() + (5.0 + $$3.j() * 6.0) / 16.0;
+               double $$67 = (double)$$1.v() + 0.8125;
+               double $$68 = (double)$$1.w() + (5.0 + $$3.j() * 6.0) / 16.0;
+               this.b.a(ls.ae, $$66, $$67, $$68, 0.0, 0.0, 0.0);
+            }
+            break;
+         case 1504:
+            doh.a(this.b, $$1, this.b.a_($$1));
+            break;
+         case 1505:
+            cuu.a(this.b, $$1, $$2);
+            this.b.a($$1, awn.cx, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 2000:
+            this.a($$2, $$1, $$3, ls.ae);
+            break;
+         case 2001:
+            dvv $$23 = diq.a($$2);
+            if (!$$23.l()) {
+               dqd $$24 = $$23.A();
+               this.b.a($$1, $$24.c(), awo.e, ($$24.a() + 1.0F) / 2.0F, $$24.b() * 0.8F, false);
+            }
+
+            this.b.a($$1, $$23);
+            break;
+         case 2002:
+         case 2007:
+            ezy $$9 = ezy.c($$1);
+
+            for (int $$10 = 0; $$10 < 8; $$10++) {
+               this.c.a(new lo(ls.S, new cwm(cwq.vG)), $$9.d, $$9.e, $$9.f, $$3.k() * 0.15, $$3.j() * 0.2, $$3.k() * 0.15);
+            }
+
+            float $$11 = (float)($$2 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$2 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$2 >> 0 & 0xFF) / 255.0F;
+            lq $$14 = $$0 == 2007 ? ls.R : ls.p;
+
+            for (int $$15 = 0; $$15 < 100; $$15++) {
+               double $$16 = $$3.j() * 4.0;
+               double $$17 = $$3.j() * Math.PI * 2.0;
+               double $$18 = Math.cos($$17) * $$16;
+               double $$19 = 0.01 + $$3.j() * 0.5;
+               double $$20 = Math.sin($$17) * $$16;
+               ggo $$21 = this.c.b($$14, $$14.a().b(), $$9.d + $$18 * 0.1, $$9.e + 0.3, $$9.f + $$20 * 0.1, $$18, $$19, $$20);
+               if ($$21 != null) {
+                  float $$22 = 0.75F + $$3.i() * 0.25F;
+                  $$21.a($$11 * $$22, $$12 * $$22, $$13 * $$22);
+                  $$21.c((float)$$16);
                }
             }
 
-            @Nullable
-            @Override
-            public fdw<fcu> a(all $$0x) {
-               return $$0.equals($$0) ? this.c : null;
+            this.b.a($$1, awn.yT, awo.g, 1.0F, $$3.i() * 0.1F + 0.9F, false);
+            break;
+         case 2003:
+            double $$4 = (double)$$1.u() + 0.5;
+            double $$5 = (double)$$1.v();
+            double $$6 = (double)$$1.w() + 0.5;
+
+            for (int $$7 = 0; $$7 < 8; $$7++) {
+               this.c.a(new lo(ls.S, new cwm(cwq.sJ)), $$4, $$5, $$6, $$3.k() * 0.15, $$3.j() * 0.2, $$3.k() * 0.15);
             }
-         };
+
+            for (double $$8 = 0.0; $$8 < Math.PI * 2; $$8 += Math.PI / 20) {
+               this.c.a(ls.ac, $$4 + Math.cos($$8) * 5.0, $$5 - 0.4, $$6 + Math.sin($$8) * 5.0, Math.cos($$8) * -5.0, 0.0, Math.sin($$8) * -5.0);
+               this.c.a(ls.ac, $$4 + Math.cos($$8) * 5.0, $$5 - 0.4, $$6 + Math.sin($$8) * 5.0, Math.cos($$8) * -7.0, 0.0, Math.sin($$8) * -7.0);
+            }
+            break;
+         case 2004:
+            for (int $$27 = 0; $$27 < 20; $$27++) {
+               double $$28 = (double)$$1.u() + 0.5 + ($$3.j() - 0.5) * 2.0;
+               double $$29 = (double)$$1.v() + 0.5 + ($$3.j() - 0.5) * 2.0;
+               double $$30 = (double)$$1.w() + 0.5 + ($$3.j() - 0.5) * 2.0;
+               this.b.a(ls.ae, $$28, $$29, $$30, 0.0, 0.0, 0.0);
+               this.b.a(ls.F, $$28, $$29, $$30, 0.0, 0.0, 0.0);
+            }
+            break;
+         case 2006:
+            for (int $$69 = 0; $$69 < 200; $$69++) {
+               float $$70 = $$3.i() * 4.0F;
+               float $$71 = $$3.i() * (float) (Math.PI * 2);
+               double $$72 = (double)(azm.b($$71) * $$70);
+               double $$73 = 0.01 + $$3.j() * 0.5;
+               double $$74 = (double)(azm.a($$71) * $$70);
+               ggo $$75 = this.c.b(ls.h, false, (double)$$1.u() + $$72 * 0.1, (double)$$1.v() + 0.3, (double)$$1.w() + $$74 * 0.1, $$72, $$73, $$74);
+               if ($$75 != null) {
+                  $$75.c($$70);
+               }
+            }
+
+            if ($$2 == 1) {
+               this.b.a($$1, awn.id, awo.f, 1.0F, $$3.i() * 0.1F + 0.9F, false);
+            }
+            break;
+         case 2008:
+            this.b.a(ls.w, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
+            break;
+         case 2009:
+            for (int $$76 = 0; $$76 < 8; $$76++) {
+               this.b.a(ls.e, (double)$$1.u() + $$3.j(), (double)$$1.v() + 1.2, (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+            }
+            break;
+         case 2010:
+            this.a($$2, $$1, $$3, ls.af);
+            break;
+         case 2011:
+            azq.a(this.b, $$1, $$2, ls.O);
+            break;
+         case 2012:
+            azq.a(this.b, $$1, $$2, ls.O);
+            break;
+         case 2013:
+            azq.a(this.b, $$1, $$2);
+            break;
+         case 3000:
+            this.b.a(ls.v, true, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
+            this.b.a($$1, awn.iv, awo.e, 10.0F, (1.0F + (this.b.A.i() - this.b.A.i()) * 0.2F) * 0.7F, false);
+            break;
+         case 3001:
+            this.b.a($$1, awn.if, awo.f, 64.0F, 0.8F + this.b.A.i() * 0.3F, false);
+            break;
+         case 3002:
+            if ($$2 >= 0 && $$2 < jm.a.d.length) {
+               azq.a(jm.a.d[$$2], this.b, $$1, 0.125, ls.aT, brv.a(10, 19));
+            } else {
+               azq.a(this.b, $$1, ls.aT, brv.a(3, 5));
+            }
+            break;
+         case 3003:
+            azq.a(this.b, $$1, ls.aR, brv.a(3, 5));
+            this.b.a($$1, awn.mB, awo.e, 1.0F, 1.0F, false);
+            break;
+         case 3004:
+            azq.a(this.b, $$1, ls.aS, brv.a(3, 5));
+            break;
+         case 3005:
+            azq.a(this.b, $$1, ls.aU, brv.a(3, 5));
+            break;
+         case 3006:
+            int $$36 = $$2 >> 6;
+            if ($$36 > 0) {
+               if ($$3.i() < 0.3F + (float)$$36 * 0.1F) {
+                  float $$37 = 0.15F + 0.02F * (float)$$36 * (float)$$36 * $$3.i();
+                  float $$38 = 0.4F + 0.3F * (float)$$36 * $$3.i();
+                  this.b.a($$1, awn.vT, awo.e, $$37, $$38, false);
+               }
+
+               byte $$39 = (byte)($$2 & 63);
+               brp $$40 = brv.a(0, $$36);
+               float $$41 = 0.005F;
+               Supplier<ezy> $$42 = () -> new ezy(azm.a($$3, -0.005F, 0.005F), azm.a($$3, -0.005F, 0.005F), azm.a($$3, -0.005F, 0.005F));
+               if ($$39 == 0) {
+                  for (jm $$43 : jm.values()) {
+                     float $$44 = $$43 == jm.a ? (float) Math.PI : 0.0F;
+                     double $$45 = $$43.o() == jm.a.b ? 0.65 : 0.57;
+                     azq.a(this.b, $$1, new lu($$44), $$40, $$43, $$42, $$45);
+                  }
+               } else {
+                  for (jm $$46 : dnp.a($$39)) {
+                     float $$47 = $$46 == jm.b ? (float) Math.PI : 0.0F;
+                     double $$48 = 0.35;
+                     azq.a(this.b, $$1, new lu($$47), $$40, $$46, $$42, 0.35);
+                  }
+               }
+            } else {
+               this.b.a($$1, awn.vT, awo.e, 1.0F, 1.0F, false);
+               boolean $$49 = this.b.a_($$1).m(this.b, $$1);
+               int $$50 = $$49 ? 40 : 20;
+               float $$51 = $$49 ? 0.45F : 0.25F;
+               float $$52 = 0.07F;
+
+               for (int $$53 = 0; $$53 < $$50; $$53++) {
+                  float $$54 = 2.0F * $$3.i() - 1.0F;
+                  float $$55 = 2.0F * $$3.i() - 1.0F;
+                  float $$56 = 2.0F * $$3.i() - 1.0F;
+                  this.b
+                     .a(
+                        ls.K,
+                        (double)$$1.u() + 0.5 + (double)($$54 * $$51),
+                        (double)$$1.v() + 0.5 + (double)($$55 * $$51),
+                        (double)$$1.w() + 0.5 + (double)($$56 * $$51),
+                        (double)($$54 * 0.07F),
+                        (double)($$55 * 0.07F),
+                        (double)($$56 * 0.07F)
+                     );
+               }
+            }
+            break;
+         case 3007:
+            for (int $$57 = 0; $$57 < 10; $$57++) {
+               this.b.a(new lv($$57 * 5), false, (double)$$1.u() + 0.5, (double)$$1.v() + dpk.f, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
+            }
+
+            dvv $$58 = this.b.a_($$1);
+            boolean $$59 = $$58.b(dwl.C) && $$58.c(dwl.C);
+            if (!$$59) {
+               this.b.a((double)$$1.u() + 0.5, (double)$$1.v() + dpk.f, (double)$$1.w() + 0.5, awn.wq, awo.e, 2.0F, 0.6F + this.b.A.i() * 0.4F, false);
+            }
+            break;
+         case 3008:
+            dvv $$25 = diq.a($$2);
+            if ($$25.b() instanceof div $$26) {
+               this.b.a($$1, $$26.d(), awo.h, 1.0F, 1.0F, false);
+            }
+
+            this.b.a($$1, $$25);
+            break;
+         case 3009:
+            azq.a(this.b, $$1, ls.aW, brv.a(3, 6));
+            break;
+         case 3011:
+            dux.a(this.b, $$1, $$3, dux.a.a($$2).c);
+            break;
+         case 3012:
+            this.b.a($$1, awn.mb, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.a(this.b, $$1, $$3, dux.a.a($$2).c);
+            break;
+         case 3013:
+            this.b.a($$1, awn.mf, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.a(this.b, $$1, $$3, $$2, ls.aY);
+            break;
+         case 3014:
+            this.b.a($$1, awn.ml, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.b(this.b, $$1, $$3);
+            break;
+         case 3015:
+            if (this.b.c_($$1) instanceof dvd $$31) {
+               dvd.a.a(this.b, $$31.aA_(), $$31.m(), $$31.c(), $$2 == 0 ? ls.aJ : ls.L);
+               this.b.a($$1, awn.AE, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            }
+            break;
+         case 3016:
+            dvd.a.a(this.b, $$1, $$2 == 0 ? ls.aJ : ls.L);
+            this.b.a($$1, awn.AI, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            break;
+         case 3017:
+            dux.b(this.b, $$1, $$3);
+            break;
+         case 3018:
+            for (int $$32 = 0; $$32 < 10; $$32++) {
+               double $$33 = $$3.k() * 0.02;
+               double $$34 = $$3.k() * 0.02;
+               double $$35 = $$3.k() * 0.02;
+               this.b.a(ls.ab, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), $$33, $$34, $$35);
+            }
+
+            this.b.a($$1, awn.fl, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            break;
+         case 3019:
+            this.b.a($$1, awn.mf, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.a(this.b, $$1, $$3, $$2, ls.aZ);
+            break;
+         case 3020:
+            this.b.a($$1, awn.mg, awo.e, $$2 == 0 ? 0.3F : 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.a(this.b, $$1, $$3, 0, ls.aZ);
+            dux.a(this.b, $$1, $$3);
+            break;
+         case 3021:
+            this.b.a($$1, awn.md, awo.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
+            dux.a(this.b, $$1, $$3, dux.a.a($$2).c);
       }
+   }
 
-      void a(all var1, fdw<fcu> var2);
+   private void a(int $$0, jh $$1, azu $$2, lw $$3) {
+      jm $$4 = jm.a($$0);
+      int $$5 = $$4.j();
+      int $$6 = $$4.k();
+      int $$7 = $$4.l();
 
-      @Nullable
-      fdw<fcu> a(all var1);
+      for (int $$8 = 0; $$8 < 10; $$8++) {
+         double $$9 = $$2.j() * 0.2 + 0.01;
+         double $$10 = (double)$$1.u() + (double)$$5 * 0.6 + 0.5 + (double)$$5 * 0.01 + ($$2.j() - 0.5) * (double)$$7 * 0.5;
+         double $$11 = (double)$$1.v() + (double)$$6 * 0.6 + 0.5 + (double)$$6 * 0.01 + ($$2.j() - 0.5) * (double)$$6 * 0.5;
+         double $$12 = (double)$$1.w() + (double)$$7 * 0.6 + 0.5 + (double)$$7 * 0.01 + ($$2.j() - 0.5) * (double)$$5 * 0.5;
+         double $$13 = (double)$$5 * $$9 + $$2.k() * 0.01;
+         double $$14 = (double)$$6 * $$9 + $$2.k() * 0.01;
+         double $$15 = (double)$$7 * $$9 + $$2.k() * 0.01;
+         this.c.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
+      }
+   }
 
-      default fdw<fcu> b(all $$0) {
-         fdw<fcu> $$1 = this.a($$0);
-         if ($$1 == null) {
-            throw new IllegalArgumentException("Missing target with id " + $$0);
-         } else {
-            return $$1;
-         }
+   private void a(jq<cws> $$0, jh $$1) {
+      this.a($$1);
+      cws $$2 = $$0.a();
+      awm $$3 = $$2.b().a();
+      hdb $$4 = hcw.a($$3, ezy.b($$1));
+      this.d.put($$1, $$4);
+      this.a.ak().a($$4);
+      this.a.m.a($$2.c());
+      this.a(this.b, $$1, true);
+   }
+
+   private void a(jh $$0) {
+      hdb $$1 = this.d.remove($$0);
+      if ($$1 != null) {
+         this.a.ak().b($$1);
+      }
+   }
+
+   private void b(jh $$0) {
+      this.a($$0);
+      this.a(this.b, $$0, false);
+   }
+
+   private void a(dfm $$0, jh $$1, boolean $$2) {
+      for (bvh $$4 : $$0.a(bvh.class, new ezt($$1).g(3.0))) {
+         $$4.a($$1, $$2);
       }
    }
 }

@@ -1,41 +1,26 @@
-public class gtp extends gtn<gwv, gaq> {
-   private static final all a = all.b("textures/entity/sheep/sheep_fur.png");
-   private final fza<gwv> b;
-   private final fza<gwv> c;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gtp(gqw<gwv, gaq> $$0, gby $$1) {
+public class gtp extends gty<gwh, fzy> {
+   private static final Map<bui.a, alj> a = ImmutableMap.of(
+      bui.a.b,
+      alj.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bui.a.c,
+      alj.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bui.a.d,
+      alj.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gtp(grh<gwh, fzy> $$0) {
       super($$0);
-      this.b = new gap($$1.a(gcb.cf));
-      this.c = new gap($$1.a(gcb.cg));
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gwv $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         fza<gwv> $$6 = $$3.ae ? this.c : this.b;
-         if ($$3.u) {
-            if ($$3.aj) {
-               $$6.a($$3);
-               feo $$7 = $$1.getBuffer(gjh.r(a));
-               $$6.a($$0, $$7, $$2, gqb.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            int $$17;
-            if ($$3.al != null && "jeb_".equals($$3.al.getString())) {
-               int $$8 = 25;
-               int $$9 = azn.d($$3.p);
-               int $$10 = $$9 / 25 + $$3.e;
-               int $$11 = cvc.values().length;
-               int $$12 = $$10 % $$11;
-               int $$13 = ($$10 + 1) % $$11;
-               float $$14 = ((float)($$9 % 25) + azn.i($$3.p)) / 25.0F;
-               int $$15 = chr.a(cvc.a($$12));
-               int $$16 = chr.a(cvc.a($$13));
-               $$17 = axy.a($$14, $$15, $$16);
-            } else {
-               $$17 = chr.a($$3.d);
-            }
-
-            a($$6, a, $$0, $$1, $$2, $$3, $$17);
+   public void a(fer $$0, gjg $$1, int $$2, gwh $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         bui.a $$6 = $$3.c;
+         if ($$6 != bui.a.a) {
+            alj $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
          }
       }
    }

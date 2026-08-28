@@ -1,21 +1,27 @@
-public class gsi extends gpr<cmq, gxu, gbu> {
-   private static final all a = all.b("textures/entity/piglin/zombified_piglin.png");
+public class gsi extends gqq<col, gxx, gbv> {
+   private static final alj a = alj.b("textures/entity/wandering_trader.png");
 
-   public gsi(gpa.a $$0, gca $$1, gca $$2, gca $$3, gca $$4, gca $$5, gca $$6) {
-      super($$0, new gbu($$0.a($$1)), new gbu($$0.a($$2)), 0.5F, gqq.a);
-      this.a(new gtd<>(this, new fzm($$0.a($$3)), new fzm($$0.a($$4)), new fzm($$0.a($$5)), new fzm($$0.a($$5)), $$0.h()));
+   public gsi(gpk.a $$0) {
+      super($$0, new gbv($$0.a(gck.dn)), 0.5F);
+      this.a(new gtd<>(this, $$0.f(), $$0.b()));
+      this.a(new gtc<>(this, $$0.b()));
    }
 
-   public all a(gxu $$0) {
+   public alj a(gxx $$0) {
       return a;
    }
 
-   public gxu c() {
-      return new gxu();
+   protected void a(gxx $$0, fer $$1) {
+      float $$2 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 
-   public void a(cmq $$0, gxu $$1, float $$2) {
+   public gxx b() {
+      return new gxx();
+   }
+
+   public void a(col $$0, gxx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gk();
+      $$1.a = $$0.n() > 0;
    }
 }

@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gn implements Predicate<dvs> {
-   private final dvo a;
-   private final Set<dwq<?>> b;
+public class gn implements Predicate<dvz> {
+   private final dvv a;
+   private final Set<dwx<?>> b;
    @Nullable
-   private final un c;
+   private final ul c;
 
-   public gn(dvo $$0, Set<dwq<?>> $$1, @Nullable un $$2) {
+   public gn(dvv $$0, Set<dwx<?>> $$1, @Nullable ul $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dvo a() {
+   public dvv a() {
       return this.a;
    }
 
-   public Set<dwq<?>> b() {
+   public Set<dwx<?>> b() {
       return this.b;
    }
 
-   public boolean a(dvs $$0) {
-      dvo $$1 = $$0.a();
+   public boolean a(dvz $$0) {
+      dvv $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dwq<?> $$2 : this.b) {
+         for (dwx<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class gn implements Predicate<dvs> {
          if (this.c == null) {
             return true;
          } else {
-            dsr $$3 = $$0.b();
-            return $$3 != null && vc.a(this.c, $$3.b($$0.c().H_()), true);
+            dsy $$3 = $$0.b();
+            return $$3 != null && va.a(this.c, $$3.b($$0.c().J_()), true);
          }
       }
    }
 
-   public boolean a(arq $$0, jh $$1) {
-      return this.a(new dvs($$0, $$1, false));
+   public boolean a(arp $$0, jh $$1) {
+      return this.a(new dvz($$0, $$1, false));
    }
 
-   public boolean a(arq $$0, jh $$1, int $$2) {
-      dvo $$3 = dij.b(this.a, $$0, $$1);
+   public boolean a(arp $$0, jh $$1, int $$2) {
+      dvv $$3 = diq.b(this.a, $$0, $$1);
       if ($$3.l()) {
          $$3 = this.a;
       }
@@ -56,9 +56,9 @@ public class gn implements Predicate<dvs> {
          return false;
       } else {
          if (this.c != null) {
-            dsr $$4 = $$0.c_($$1);
+            dsy $$4 = $$0.c_($$1);
             if ($$4 != null) {
-               $$4.c(this.c, $$0.H_());
+               $$4.c(this.c, $$0.J_());
             }
          }
 

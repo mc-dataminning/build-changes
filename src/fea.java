@@ -1,14 +1,17 @@
-public enum fea {
-   a(0),
-   b(1);
+public interface fea {
+   fea a = new fea() {
+      @Override
+      public <T> T a(fec<T> $$0) {
+         return $$0.e();
+      }
 
-   private final int c;
+      @Override
+      public <T> void a(fec<T> $$0, T $$1) {
+         $$0.a($$1);
+      }
+   };
 
-   private fea(final int $$0) {
-      this.c = $$0;
-   }
+   <T> T a(fec<T> var1);
 
-   public int a() {
-      return this.c;
-   }
+   <T> void a(fec<T> var1, T var2);
 }

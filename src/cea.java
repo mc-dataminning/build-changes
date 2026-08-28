@@ -1,40 +1,36 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cea extends cec {
-   private final bwb a;
-   private bve b;
-   private int c;
+public class cea<T extends bvh> extends cdy<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cea(bwb $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ccc.a.d));
+   public cea(cqi $$0, Class<T> $$1, boolean $$2, @Nullable cfy.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gv()) {
-         bve $$0 = this.a.T_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ev();
-            int $$1 = $$0.ew();
-            return $$1 != this.c && this.a(this.b, cfv.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.dY().h()) {
          return false;
+      } else if (!((cqi)this.e).gD()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      bve $$0 = this.a.T_();
-      if ($$0 != null) {
-         this.c = $$0.ew();
-      }
-
+      this.j = b(200);
       super.d();
    }
 }

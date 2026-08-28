@@ -1,67 +1,110 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class gds {
-   private final gdu[] a;
-   private int b;
+   private final GameProfile a;
+   private final Supplier<haf> b;
+   private dfj c = dfj.e;
+   private int d;
+   @Nullable
+   private xj e;
+   @Nullable
+   private ya f;
+   private yf g;
+   private int h;
 
-   public static Codec<gds> a(int $$0) {
-      return Codec.list(gdu.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new gds($$0, $$1));
-            },
-            gds::c
-         );
+   public gds(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<haf>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public gds(int $$0) {
-      this.a = new gdu[$$0];
+   private static Supplier<haf> a(GameProfile $$0) {
+      fke $$1 = fke.Q();
+      hag $$2 = $$1.an();
+      CompletableFuture<haf> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      haf $$5 = gzw.a($$0);
+      return () -> {
+         haf $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   private gds(int $$0, List<gdu> $$1) {
-      this.a = $$1.toArray(gdu[]::new);
-      this.b = $$1.size();
-   }
-
-   private List<gdu> c() {
-      List<gdu> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
-      }
-
-      return $$0;
-   }
-
-   public void a(gdu $$0) {
-      this.a[this.c(this.b++)] = $$0;
+   public GameProfile a() {
+      return this.a;
    }
 
    @Nullable
-   public gdu b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   public ya b() {
+      return this.f;
    }
 
-   private int c(int $$0) {
-      return $$0 % this.a.length;
+   public yf c() {
+      return this.g;
    }
 
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
+   public boolean d() {
+      return this.f != null;
    }
 
-   public int b() {
-      return this.b - 1;
+   protected void a(ya $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cox.b);
    }
 
-   private int d() {
-      return this.b() - this.a() + 1;
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static yf b(boolean $$0) {
+      return $$0 ? yf.c : yf.b;
+   }
+
+   public dfj e() {
+      return this.c;
+   }
+
+   protected void a(dfj $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public haf g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fay h() {
+      return fke.Q().s.P().e(this.a().getName());
+   }
+
+   public void a(@Nullable xj $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public xj i() {
+      return this.e;
+   }
+
+   public void b(int $$0) {
+      this.h = $$0;
+   }
+
+   public int j() {
+      return this.h;
    }
 }

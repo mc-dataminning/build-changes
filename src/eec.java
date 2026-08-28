@@ -1,54 +1,42 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class eec extends eed {
-   public eec(Codec<eha> $$0) {
+public class eec extends eew<egt> {
+   public eec(Codec<egt> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dfg $$0, azv $$1, jh $$2, dvo $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(eey<egt> $$0) {
+      jh $$1 = $$0.e();
+      dgk $$2 = $$0.b();
+      azu $$3 = $$0.d();
+
+      egt $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.K_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dvv $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
+
+      if ($$1.v() <= $$2.K_() + 3) {
          return false;
       } else {
-         jm $$4 = jm.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-         for (jm $$8 : $$6.subList(0, $$5)) {
-            jh.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jm $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jm.b);
-               jm[] $$13 = new jm[]{$$8, jm.b};
-               $$11 = ae.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jm.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jm.b);
+            for (jh $$11 : jh.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
                }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;

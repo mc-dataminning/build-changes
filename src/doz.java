@@ -1,52 +1,44 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface doz {
-   doz w_ = new doz() {
-      @Override
-      public boolean a(dfg $$0, jh $$1, dvo $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dpf)dil.qT).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(erp.c) ? false : dpf.a($$0, $$1, $$2, $$3);
-         } else {
-            return doz.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public abstract class doz extends dkt {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final fas h = diq.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fas i = diq.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final fas j = diq.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-      @Override
-      public int a(dpe.a $$0, dfg $$1, jh $$2, azv $$3, dpe $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   protected doz(dvu.d $$0) {
+      super($$0);
    }
 
-   default void a(dfg $$0, dvo $$1, jh $$2, azv $$3) {
+   @Override
+   protected abstract MapCodec<? extends doz> a();
+
+   @Override
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
-   default boolean a(dfg $$0, jh $$1, azv $$2) {
+   @Override
+   protected dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dnm $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dvv $$0, esk $$1) {
       return false;
    }
-
-   default boolean a(dfg $$0, jh $$1, dvo $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-      return ((dni)dil.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int j_(int $$0) {
-      return 1;
-   }
-
-   int a(dpe.a var1, dfg var2, jh var3, azv var4, dpe var5, boolean var6);
 }

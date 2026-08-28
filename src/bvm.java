@@ -1,64 +1,120 @@
-public abstract class bvm extends bvg {
-   protected static final float bX = 0.0F;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected bvm(bup<? extends bvm> $$0, dff $$1) {
-      super($$0, $$1);
+public interface bvm {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
+
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(ul $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
+      }
    }
 
-   public float c(jh $$0) {
-      return this.a($$0, this.dY());
-   }
+   default void a(dfm $$0, ul $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof arp) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bul $$3 = ((arp)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bvj $$4) {
+                  this.h($$4);
+                  this.a($$4);
+               }
 
-   public float a(jh $$0, dfi $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(dfg $$0, buo $$1) {
-      return this.a(this.dy(), $$0) >= 0.0F;
-   }
-
-   public boolean gr() {
-      return !this.P().m();
-   }
-
-   public boolean gs() {
-      if (this.bF.a(cei.Z)) {
-         return this.bF.c(cei.Z).isPresent();
-      } else {
-         for (cdq $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof ccv) {
-               return true;
+               if ($$3 instanceof cou $$5) {
+                  this.h($$5);
+                  this.c($$5);
+               }
             }
          }
+      }
+   }
 
+   default void a(arp $$0, boolean $$1) {
+      bvh $$2 = this.aa_();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eE()) && $$3 != null && $$0.a($$3) instanceof bvj) {
+         this.ae_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.aq() != bus.bO || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.ae_();
+            }
+         }
+      }
+   }
+
+   default boolean a(bvh $$0, arp $$1) {
+      if (!this.c($$0)) {
          return false;
+      } else {
+         return $$0.aq() == bus.bO && this.a_($$1) ? true : $$0.cG().equals(this.b());
       }
    }
 
-   protected boolean gt() {
-      return true;
+   default boolean a_(arp $$0) {
+      return $$0.N().b(dfi.O) && this.ac_() && this.b() == null;
    }
 
-   @Override
-   public void b(bui $$0) {
-      super.b($$0);
-      if (this.gt() && !this.gs()) {
-         this.bS.b(ccc.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         ezr $$3 = new ezr($$0.dD() - this.dD(), $$0.dF() - this.dF(), $$0.dJ() - this.dJ()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.P().a(this.dD() + $$3.d, this.dF() + $$3.e, this.dJ() + $$3.f, this.gu());
+   default boolean ac_() {
+      return this.a() > 0;
+   }
+
+   default void a_(arp $$0, cou $$1) {
+      if ($$0.N().b(dfi.N)) {
+         if ($$1.cG().equals(this.b())) {
+            this.ae_();
+         }
       }
    }
 
-   @Override
-   public boolean a(bui $$0, float $$1) {
-      this.a($$0.dy(), 5);
-      return true;
+   default void ad_() {
+      this.ae_();
+      this.c();
    }
 
-   protected double gu() {
-      return 1.0;
+   default void ae_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
    }
+
+   @Nullable
+   bvh ep();
+
+   void a(@Nullable bvh var1);
+
+   void c(@Nullable cou var1);
+
+   void h(@Nullable bvh var1);
+
+   boolean c(bvh var1);
+
+   @Nullable
+   bvh aa_();
 }

@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class eqf extends epx {
-   public static final MapCodec<eqf> a = axt.a(ma.f).fieldOf("tag").xmap(eqf::new, $$0 -> $$0.b);
-   private final axt<dij> b;
+public interface eqf<P extends eqe> {
+   eqf<eph> a = a("always_true", eph.a);
+   eqf<epm> b = a("block_match", epm.a);
+   eqf<epo> c = a("blockstate_match", epo.a);
+   eqf<eqm> d = a("tag_match", eqm.a);
+   eqf<eqb> e = a("random_block_match", eqb.a);
+   eqf<eqc> f = a("random_blockstate_match", eqc.a);
 
-   public eqf(axt<dij> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dvo $$0, azv $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected epy<?> a() {
-      return epy.d;
+   static <P extends eqe> eqf<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.m, $$0, () -> $$1);
    }
 }

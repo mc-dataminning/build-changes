@@ -1,37 +1,31 @@
 import com.mojang.serialization.Codec;
 
-public class eel extends eep<egs> {
-   public eel(Codec<egs> $$0) {
+public class eel extends eek {
+   public eel(Codec<ehh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eer<egs> $$0) {
-      jh $$1 = $$0.e();
-      dgd $$2 = $$0.b();
-      egs $$3 = $$0.f();
+   protected boolean a(dfn $$0, azu $$1, jh $$2, dvv $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      jh.a $$8 = $$2.k();
 
-      for (jh $$4 : jh.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            jh $$9 = $$4.j();
-            this.a($$2, $$9, dil.kF.m());
-            $$3.b().ifPresent($$3x -> {
-               if ($$2.c_($$9) instanceof duj $$5x) {
-                  $$5x.a($$3x, $$3.c());
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(jm.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dil.a.m());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dil.F.m());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dil.F.m());
-         } else {
-            this.a($$2, $$4, dil.a.m());
+            }
          }
       }
 

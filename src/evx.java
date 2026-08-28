@@ -1,40 +1,22 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public class evx extends evt {
-   public static final MapCodec<evx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eue.e.fieldOf("component").forGetter($$0x -> $$0x.b), evw.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, evx::new)
-   );
-   private final eud<?> b;
-   private final evu c;
+public interface evx<T extends evx<T>> {
+   T b(ewb.a var1);
 
-   private evx(List<exr> $$0, eud<?> $$1, evu $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
+   default <E> T a(Iterable<E> $$0, Function<E, ewb.a> $$1) {
+      T $$2 = this.c();
 
-   @Override
-   public evv<evx> b() {
-      return evw.u;
-   }
-
-   @Override
-   public cwf a(cwf $$0, eug $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
+
+      return $$2;
    }
 
-   @Override
-   public void a(eum $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   default <E> T a(E[] $$0, Function<E, ewb.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
+
+   T c();
 }

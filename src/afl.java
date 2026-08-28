@@ -1,37 +1,52 @@
-public class afl implements zs<ach> {
-   public static final zj<wi, afl> a = zs.a(afl::a, afl::new);
-   private final jh b;
-   private final float c;
+import java.util.ArrayList;
+import java.util.List;
 
-   public afl(jh $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record afl(int c, List<akq.c<?>> d) implements zq<acf> {
+   public static final zh<wu, afl> a = zq.a(afl::b, afl::new);
+   public static final int b = 255;
+
+   private afl(wu $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private afl(wi $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private static void a(List<akq.c<?>> $$0, wu $$1) {
+      for (akq.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.l(255);
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private static List<akq.c<?>> a(wu $$0) {
+      List<akq.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akq.c.a($$0, $$2));
+      }
+
+      return $$1;
+   }
+
+   private void b(wu $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zu<afl> a() {
-      return agw.aA;
+   public zs<afl> a() {
+      return agu.aC;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
+   public int b() {
+      return this.c;
    }
 
-   public float e() {
-      return this.c;
+   public List<akq.c<?>> e() {
+      return this.d;
    }
 }

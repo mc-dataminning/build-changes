@@ -1,2 +1,8 @@
-public record etr(eua a, ece.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface etr {
 }

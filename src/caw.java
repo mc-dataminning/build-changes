@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class caw<E extends cnt> extends bwx<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class caw extends bxa<cnw> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public caw(int $$0) {
-      super(ImmutableMap.of(cei.aB, cej.a, cei.o, cej.b, cei.m, cej.b, cei.n, cej.c, cei.B, cej.c, cei.az, cej.c, cei.aG, cej.c), $$0);
+   public caw() {
+      super(ImmutableMap.of(cel.ay, cem.a, cel.o, cem.b, cel.aF, cem.c, cel.aD, cem.c), cnx.b);
    }
 
-   protected boolean a(arq $$0, E $$1, long $$2) {
+   protected void a(arp $$0, cnw $$1, long $$2) {
+      bwj<cnw> $$3 = $$1.eb();
+      $$3.a(cel.aD, bas.a, 25L);
+      $$3.b(cel.m);
+      bvh $$4 = $$1.eb().c(cel.ay).get();
+      bxc.a($$1, $$4);
+      $$1.b(bvt.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(arp $$0, cnw $$1, long $$2) {
       return true;
    }
 
-   protected void b(arq $$0, E $$1, long $$2) {
-      $$1.a(awo.BZ, 5.0F, 1.0F);
+   protected void c(arp $$0, cnw $$1, long $$2) {
+      if (!$$1.eb().a(cel.aD) && !$$1.eb().a(cel.aF)) {
+         $$1.eb().a(cel.aF, bas.a, (long)(cnx.b - 25));
+         $$1.a(awn.BY, 3.0F, 1.0F);
+      }
    }
 
-   protected void c(arq $$0, E $$1, long $$2) {
-      if ($$1.c(bvq.m)) {
-         $$1.b(bvq.a);
+   protected void d(arp $$0, cnw $$1, long $$2) {
+      if ($$1.c(bvt.l)) {
+         $$1.b(bvt.a);
       }
 
-      $$1.ee().b(cei.aB);
-      $$1.ee().c(cei.B).filter($$1::c).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.e($$1x);
-         }
-
-         if (!$$1.ee().a(cei.az)) {
-            cnu.a($$1, $$1x.dy());
-         }
-      });
+      $$1.eb().c(cel.ay).ifPresent($$1::j);
+      $$1.eb().b(cel.ay);
    }
 }

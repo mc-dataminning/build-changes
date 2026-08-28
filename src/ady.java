@@ -1,53 +1,57 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class ady implements zq<acf> {
+   public static final zh<wu, ady> a = zq.a(ady::a, ady::new);
+   private final int b;
+   private final dek c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-public record ady(int b, boolean c, Set<alk<dff>> d, int e, int f, int g, boolean h, boolean i, boolean j, agt k, boolean l) implements zs<ach> {
-   public static final zj<ww, ady> a = zs.a(ady::a, ady::new);
-
-   private ady(ww $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(ma.bb)),
-         $$0.l(),
-         $$0.l(),
-         $$0.l(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new agt($$0),
-         $$0.readBoolean()
-      );
+   public ady(int $$0, dek $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private void a(ww $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, wi::b);
+   private ady(wu $$0) {
+      this.b = $$0.x();
+      this.c = dek.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
+   }
+
+   private void a(wu $$0) {
+      $$0.f(this.b);
+      dek.b.encode($$0, this.c);
+      $$0.c(this.d);
       $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
-      this.k.a($$0);
-      $$0.a(this.l);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public zu<ady> a() {
-      return agw.O;
+   public zs<ady> a() {
+      return agu.Q;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public dek e() {
       return this.c;
    }
 
-   public Set<alk<dff>> f() {
+   public int f() {
       return this.d;
    }
 
@@ -55,31 +59,11 @@ public record ady(int b, boolean c, Set<alk<dff>> d, int e, int f, int g, boolea
       return this.e;
    }
 
-   public int h() {
+   public boolean h() {
       return this.f;
    }
 
-   public int i() {
+   public boolean i() {
       return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public boolean l() {
-      return this.j;
-   }
-
-   public agt m() {
-      return this.k;
-   }
-
-   public boolean n() {
-      return this.l;
    }
 }

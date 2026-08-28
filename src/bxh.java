@@ -1,41 +1,34 @@
-public class bxh implements bwy<bve> {
-   private final int a;
-   private final int b;
-   private bwx.a c = bwx.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bxh(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bxh extends bxa<cis> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bxh() {
+      super(ImmutableMap.of(cel.m, cem.b), 100);
    }
 
-   @Override
-   public bwx.a a() {
-      return this.c;
+   protected boolean a(arp $$0, cis $$1) {
+      return $$1.aw() == bvt.a;
    }
 
-   @Override
-   public final boolean e(arq $$0, bve $$1, long $$2) {
-      this.c = bwx.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(arp $$0, cis $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(arq $$0, bve $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(arp $$0, cis $$1, long $$2) {
+      if (!$$1.bn()) {
+         $$1.b(bvt.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(arq $$0, bve $$1, long $$2) {
-      this.c = bwx.a.a;
+   protected void c(arp $$0, cis $$1, long $$2) {
+      $$1.b(bvt.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(arp $$0, cis $$1, long $$2) {
+      this.e++;
    }
 }

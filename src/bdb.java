@@ -28,10 +28,10 @@ public class bdb extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.c);
+      Type<?> $$0 = this.getInputSchema().getType(bia.c);
       Type<?> $$1 = $$0.findFieldType("Level");
       OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(bhy.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(bia.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
             Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
             String $$2x = $$1xx.get("Status").asString("empty");
             String $$3 = a.getOrDefault($$2x, "empty");

@@ -1,75 +1,49 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class dba extends dak {
-   public dba(dah $$0) {
-      super($$0);
-   }
+public interface dba<T extends dbd> {
+   Codec<dba<?>> h = lz.r.q().dispatch(dba::ap_, dbf::a);
+   zh<wu, dba<?>> i = zf.a(ma.ae).b(dba::ap_, dbf::b);
 
-   @Nullable
-   private Pair<cwf, cwf> a(dai $$0) {
-      cwf $$1 = null;
-      cwf $$2 = null;
+   boolean a(T var1, dfm var2);
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cwf $$4 = $$0.a($$3);
-         if (!$$4.f()) {
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else {
-               if ($$2 != null) {
-                  return null;
-               }
+   cwm a(T var1, js.a var2);
 
-               $$2 = $$4;
-            }
+   boolean a(int var1, int var2);
+
+   cwm a(js.a var1);
+
+   default jz<cwm> a(T $$0) {
+      jz<cwm> $$1 = jz.a($$0.a(), cwm.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwi $$3 = $$0.a($$2).h();
+         if ($$3.l()) {
+            $$1.set($$2, new cwm($$3.k()));
          }
       }
 
-      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
+      return $$1;
    }
 
-   private static boolean a(cwf $$0, cwf $$1) {
-      return $$1.a($$0.h()) && $$0.L() == 1 && $$1.L() == 1 && $$0.b(ku.d) && $$1.b(ku.d) && $$0.b(ku.e) && $$1.b(ku.e);
+   default boolean ao_() {
+      return false;
    }
 
-   public boolean a(dai $$0, dff $$1) {
-      return this.a($$0) != null;
+   default boolean h() {
+      return true;
    }
 
-   public cwf a(dai $$0, js.a $$1) {
-      Pair<cwf, cwf> $$2 = this.a($$0);
-      if ($$2 == null) {
-         return cwf.k;
-      } else {
-         cwf $$3 = (cwf)$$2.getFirst();
-         cwf $$4 = (cwf)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cwf $$9 = new cwf($$3.h());
-         $$9.b(ku.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         dcc $$10 = dby.b($$3);
-         dcc $$11 = dby.b($$4);
-         dby.a($$9, $$3x -> $$1.d(ma.aM).c().filter($$0xx -> $$0xx.a(axg.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
+   default String c() {
+      return "";
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   default cwm g() {
+      return new cwm(dis.cA);
    }
 
-   @Override
-   public day<?> aq_() {
-      return day.n;
-   }
+   dbf<?> ap_();
+
+   dbg<?> e();
+
+   daz a();
 }

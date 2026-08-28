@@ -1,231 +1,93 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.joml.Vector2i;
+public abstract class fns {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final flo d;
+   protected final bni e;
 
-public interface fns extends fnt {
-   List<? extends fnt> aI_();
+   protected fns(flo $$0, bni $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   default Optional<fnt> b_(double $$0, double $$1) {
-      for (fnt $$2 : this.aI_()) {
-         if ($$2.c($$0, $$1)) {
-            return Optional.of($$2);
-         }
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
+   }
+
+   public int a() {
+      return 60 + 9;
+   }
+
+   public void a(flq $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gjq.G(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      return Optional.empty();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (fnt $$3 : this.aI_()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b_(true);
-            }
-
-            return true;
-         }
+      $$0.a(gjq.G(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gjq.G(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gjq.G(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gjq.G(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      return false;
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0 && this.aK_()) {
-         this.b_(false);
-         if (this.aL_() != null) {
-            return this.aL_().b($$0, $$1, $$2);
-         }
-      }
-
-      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   protected void a(flq $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aL_() != null && this.aK_() && $$2 == 0 ? this.aL_().a($$0, $$1, $$2, $$3, $$4) : false;
+   protected void b(flq $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gjq.G(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   boolean aK_();
-
-   void b_(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   protected void c(flq $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.aL_() != null && this.aL_().a($$0, $$1, $$2);
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   @Override
-   default boolean c(int $$0, int $$1, int $$2) {
-      return this.aL_() != null && this.aL_().c($$0, $$1, $$2);
+   protected void d(flq $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.aL_() != null && this.aL_().a($$0, $$1);
+   protected void a(flq $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gjq.G(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 
-   @Nullable
-   fnt aL_();
+   protected abstract String a(double var1);
 
-   void a(@Nullable fnt var1);
+   protected abstract int b(double var1);
 
-   @Override
-   default void a(boolean $$0) {
-   }
+   protected abstract int a(long var1);
 
-   @Override
-   default boolean aM_() {
-      return this.aL_() != null;
-   }
-
-   @Nullable
-   @Override
-   default flg aN_() {
-      fnt $$0 = this.aL_();
-      return $$0 != null ? flg.a(this, $$0.aN_()) : null;
-   }
-
-   @Nullable
-   @Override
-   default flg a(fqa $$0) {
-      fnt $$1 = this.aL_();
-      if ($$1 != null) {
-         flg $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return flg.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof fqa.c $$3) {
-         return this.a($$3);
-      } else {
-         return $$0 instanceof fqa.a $$4 ? this.a($$4) : null;
-      }
-   }
-
-   @Nullable
-   private flg a(fqa.c $$0) {
-      boolean $$1 = $$0.b();
-      fnt $$2 = this.aL_();
-      List<? extends fnt> $$3 = new ArrayList<>(this.aI_());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.I()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
-      }
-
-      ListIterator<? extends fnt> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends fnt> $$10 = $$1 ? $$8::next : $$8::previous;
-
-      while ($$9.getAsBoolean()) {
-         fnt $$11 = $$10.get();
-         flg $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return flg.a(this, $$12);
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private flg a(fqa.a $$0) {
-      fnt $$1 = this.aL_();
-      if ($$1 == null) {
-         fqc $$2 = $$0.b();
-         fqe $$3 = this.H().c($$2.b());
-         return flg.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         fqe $$4 = $$1.H();
-         return flg.a(this, this.a($$4, $$0.b(), $$1, $$0));
-      }
-   }
-
-   @Nullable
-   private flg a(fqe $$0, fqc $$1, @Nullable fnt $$2, fqa $$3) {
-      fqb $$4 = $$1.a();
-      fqb $$5 = $$4.a();
-      fqc $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<fnt> $$8 = new ArrayList<>();
-
-      for (fnt $$9 : this.aI_()) {
-         if ($$9 != $$2) {
-            fqe $$10 = $$9.H();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
-               }
-            }
-         }
-      }
-
-      Comparator<fnt> $$12 = Comparator.comparing($$1x -> $$1x.H().b($$1.b()), $$1.d());
-      Comparator<fnt> $$13 = Comparator.comparing($$1x -> $$1x.H().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
-
-      for (fnt $$14 : $$8) {
-         flg $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
-      }
-
-      return this.b($$0, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   private flg b(fqe $$0, fqc $$1, @Nullable fnt $$2, fqa $$3) {
-      fqb $$4 = $$1.a();
-      fqb $$5 = $$4.a();
-      List<Pair<fnt, Long>> $$6 = new ArrayList<>();
-      fqd $$7 = fqd.a($$4, $$0.b($$1), $$0.b($$5));
-
-      for (fnt $$8 : this.aI_()) {
-         if ($$8 != $$2) {
-            fqe $$9 = $$8.H();
-            fqd $$10 = fqd.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
-            }
-         }
-      }
-
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<fnt, Long> $$12 : $$6) {
-         flg $$13 = ((fnt)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
-         }
-      }
-
-      return null;
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = azm.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axx.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axx.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

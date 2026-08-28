@@ -1,44 +1,86 @@
-public class bsd {
-   public static void a(dff $$0, jh $$1, bsa $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface bsd extends bsb {
+   float r_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cwm a(int var1);
+
+   cwm a(int var1, int var2);
+
+   cwm b(int var1);
+
+   void a(int var1, cwm var2);
+
+   default int an_() {
+      return 99;
    }
 
-   public static void a(dff $$0, bui $$1, bsa $$2) {
-      a($$0, $$1.dD(), $$1.dF(), $$1.dJ(), $$2);
+   default int e_(cwm $$0) {
+      return Math.min(this.an_(), $$0.k());
    }
 
-   private static void a(dff $$0, double $$1, double $$2, double $$3, bsa $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   void e();
+
+   boolean a(cou var1);
+
+   default void c_(cou $$0) {
    }
 
-   public static void a(dff $$0, jh $$1, jz<cwf> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default void c(cou $$0) {
    }
 
-   public static void a(dff $$0, double $$1, double $$2, double $$3, cwf $$4) {
-      double $$5 = (double)bup.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         ckz $$11 = new ckz($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   default boolean b(int $$0, cwm $$1) {
+      return true;
    }
 
-   public static void a(dvo $$0, dvo $$1, dff $$2, jh $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bsa $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   default boolean a(bsd $$0, int $$1, cwm $$2) {
+      return true;
+   }
+
+   default int a_(cwi $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cwm $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.L();
          }
+      }
+
+      return $$1;
+   }
+
+   default boolean a(Set<cwi> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
+
+   default boolean a_(Predicate<cwm> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cwm $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dsy $$0, cou $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dsy $$0, cou $$1, float $$2) {
+      dfm $$3 = $$0.i();
+      jh $$4 = $$0.aA_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

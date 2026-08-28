@@ -1,69 +1,66 @@
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class fmq extends flt {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final bad<fmq.a, fmp> c;
-   private boolean d = false;
-
-   public fmq(xl $$0, flh $$1) {
-      this(0, 0, $$0, $$1);
+public abstract class fmq extends fmb {
+   fmq(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, xi.a);
    }
 
-   public fmq(int $$0, int $$1, xl $$2, flh $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ae.a($$1x -> $$1x.c.isPresent() ? fmp.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fmp.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
+   public static fmq a(int $$0, int $$1, alj $$2, int $$3, int $$4) {
+      return new fmq.b(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public fmq c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fmq d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fmq e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fmq b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public static fmq a(int $$0, int $$1, alj $$2) {
+      return new fmq.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   public int y() {
-      return this.c.a(this.c()).b();
+   protected void a(fqb $$0) {
    }
 
    @Override
-   public int w() {
-      return this.c.a(this.c()).a() * 9;
+   public void a(heg $$0) {
    }
 
    @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-      fmp $$4 = this.c.a(this.c());
-      int $$5 = this.D();
-      int $$6 = this.E();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fln a(fqh $$0) {
+      return null;
+   }
+
+   static class a extends fmq {
+      private final alj a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, alj $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(flq $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gjq::B, this.a, this.D(), this.E(), this.y(), this.w());
       }
    }
 
-   private fmq.a c() {
-      return new fmq.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
-   }
+   static class b extends fmq {
+      private final alj a;
+      private final int b;
+      private final int c;
 
-   static record a(xl a, int b, OptionalInt c) {
+      public b(int $$0, int $$1, int $$2, int $$3, alj $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
+
+      @Override
+      protected void b(flq $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gjq::B, this.a, this.D(), this.E(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
+      }
    }
 }

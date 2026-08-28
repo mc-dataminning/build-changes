@@ -1,37 +1,23 @@
-public class fyj extends gav<gur> {
-   private final gcc a;
-
-   public fyj(gcc $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+public class fyj extends fzj<guw> {
+   public fyj(gcl $$0) {
+      super($$0, gjq::e);
    }
 
-   public static gci a() {
-      gck $$0 = fzn.a(gcg.a, 0.0F);
-      gcm $$1 = $$0.a();
-      gav.a($$1);
-      gcm $$2 = $$1.b("head").a("mushrooms");
-      $$2.a("red_mushroom_1", gch.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gce.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", gch.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gce.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", gch.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gce.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", gch.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gce.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         gch.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gce.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         gch.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gce.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return gci.a($$0, 64, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("back", gcq.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gcn.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      gcq $$2 = gcq.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, gcp.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, gcn.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gcn.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gcr.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   public void a(gur $$0) {
+   public void a(guw $$0) {
       super.a($$0);
-      this.a.k = !$$0.a;
+      if ($$0.c > 0.0F) {
+         float $$1 = -azm.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
+      }
    }
 }

@@ -1,65 +1,42 @@
-import java.util.List;
+import java.util.function.Consumer;
 
-public class cum extends cwb {
-   private final cqq.b a;
-   private final boolean b;
-
-   public cum(boolean $$0, cqq.b $$1, cwb.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.a = $$1;
+public class cum extends cwi {
+   public cum(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      cwf $$3 = $$1.b($$2);
-      ezp $$4 = a($$0, $$1, den.b.c);
-      if ($$4.d() == ezp.a.a) {
-         return bsh.e;
+   public bsk a(daf $$0) {
+      jm $$1 = $$0.k();
+      if ($$1 == jm.a) {
+         return bsk.d;
       } else {
-         ezr $$5 = $$1.g(1.0F);
-         double $$6 = 5.0;
-         List<bui> $$7 = $$0.a($$1, $$1.cT().b($$5.c(5.0)).g(1.0), bun.h);
-         if (!$$7.isEmpty()) {
-            ezr $$8 = $$1.bH();
-
-            for (bui $$9 : $$7) {
-               ezm $$10 = $$9.cT().g((double)$$9.bU());
-               if ($$10.d($$8)) {
-                  return bsh.e;
-               }
-            }
-         }
-
-         if ($$4.d() == ezp.a.b) {
-            cqq $$11 = this.a($$0, $$4, $$3, $$1);
-            $$11.a(this.a);
-            $$11.v($$1.dO());
-            if (!$$0.a($$11, $$11.cT())) {
-               return bsh.d;
-            } else {
-               if (!$$0.C) {
-                  $$0.b($$11);
-                  $$0.a($$1, eak.t, $$4.g());
-                  $$3.a(1, $$1);
+         dfm $$2 = $$0.q();
+         dad $$3 = new dad($$0);
+         jh $$4 = $$3.a();
+         cwm $$5 = $$0.n();
+         ezy $$6 = ezy.c($$4);
+         ezt $$7 = bus.f.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof arp $$8) {
+               Consumer<ckr> $$9 = bus.a($$8, $$5, $$0.o());
+               ckr $$10 = bus.f.b($$8, $$9, $$4, bur.m, true, true);
+               if ($$10 == null) {
+                  return bsk.d;
                }
 
-               $$1.b(awy.c.b(this));
-               return bsh.a;
+               float $$11 = (float)azm.d((azm.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), awn.aD, awo.e, 0.75F, 0.8F);
+               $$10.a(ear.t, $$0.o());
             }
+
+            $$5.h(1);
+            return bsk.a;
          } else {
-            return bsh.e;
+            return bsk.d;
          }
       }
-   }
-
-   private cqq a(dff $$0, ezp $$1, cwf $$2, cor $$3) {
-      ezr $$4 = $$1.g();
-      cqq $$5 = (cqq)(this.b ? new cqr($$0, $$4.d, $$4.e, $$4.f) : new cqq($$0, $$4.d, $$4.e, $$4.f));
-      if ($$0 instanceof arq $$6) {
-         bup.<cqq>a($$6, $$2, $$3).accept($$5);
-      }
-
-      return $$5;
    }
 }

@@ -1,77 +1,115 @@
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class tr implements uf {
-   private final Document a;
-   private final Element b;
-   private final Stopwatch c;
-   private final File d;
+public class tr {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<tg> f = Lists.newArrayList();
+   private final Collection<th> g = Lists.newArrayList();
 
-   public tr(File $$0) throws ParserConfigurationException {
-      this.d = $$0;
-      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      this.b = this.a.createElement("testsuite");
-      Element $$1 = this.a.createElement("testsuite");
-      $$1.appendChild(this.b);
-      this.a.appendChild($$1);
-      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-      this.c = Stopwatch.createStarted();
+   public tr() {
    }
 
-   private Element a(ti $$0, String $$1) {
-      Element $$2 = this.a.createElement("testcase");
-      $$2.setAttribute("name", $$1);
-      $$2.setAttribute("classname", $$0.t());
-      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
-      this.b.appendChild($$2);
-      return $$2;
+   public tr(Collection<tg> $$0) {
+      this.f.addAll($$0);
+   }
+
+   public void a(tg $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
+   }
+
+   public void a(th $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
+   }
+
+   public void a(final Consumer<tg> $$0) {
+      this.a(new th() {
+         @Override
+         public void a(tg $$0x) {
+         }
+
+         @Override
+         public void a(tg $$0x, tj $$1) {
+         }
+
+         @Override
+         public void b(tg $$0x, tj $$1) {
+            $$0.accept($$0);
+         }
+
+         @Override
+         public void a(tg $$0x, tg $$1, tj $$2) {
+         }
+      });
+   }
+
+   public int a() {
+      return (int)this.f.stream().filter(tg::i).filter(tg::r).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(tg::i).filter(tg::s).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(tg::k).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<tg> f() {
+      return this.f.stream().filter(tg::i).filter(tg::r).collect(Collectors.toList());
+   }
+
+   public Collection<tg> g() {
+      return this.f.stream().filter(tg::i).filter(tg::s).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.j()) {
+            $$0.append(' ');
+         } else if ($$1.h()) {
+            $$0.append('+');
+         } else if ($$1.i()) {
+            $$0.append((char)($$1.r() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
+         }
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
-   public void a(ti $$0) {
-      String $$1 = $$0.b();
-      String $$2 = $$0.n().getMessage();
-      Element $$3 = this.a.createElement($$0.r() ? "failure" : "skipped");
-      $$3.setAttribute("message", "(" + $$0.d().x() + ") " + $$2);
-      Element $$4 = this.a($$0, $$1);
-      $$4.appendChild($$3);
+   public String toString() {
+      return this.j();
    }
 
-   @Override
-   public void b(ti $$0) {
-      String $$1 = $$0.b();
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.stop();
-      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
-
-      try {
-         this.a(this.d);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
-      }
-   }
-
-   public void a(File $$0) throws TransformerException {
-      TransformerFactory $$1 = TransformerFactory.newInstance();
-      Transformer $$2 = $$1.newTransformer();
-      DOMSource $$3 = new DOMSource(this.a);
-      StreamResult $$4 = new StreamResult($$0);
-      $$2.transform($$3, $$4);
+   public void b(tg $$0) {
+      this.f.remove($$0);
    }
 }

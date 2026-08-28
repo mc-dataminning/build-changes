@@ -1,177 +1,206 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cpx extends coy {
-   private static final ako<Byte> g = aks.a(cpx.class, akq.a);
-   private static final ako<Boolean> h = aks.a(cpx.class, akq.k);
-   private boolean i;
-   public int f;
+public class cpx extends cpu {
+   private long a = 0L;
 
-   public cpx(bup<? extends cpx> $$0, dff $$1) {
+   public cpx(bus<? extends cpx> $$0, dfm $$1) {
       super($$0, $$1);
    }
 
-   public cpx(dff $$0, bve $$1, cwf $$2) {
-      super(bup.bf, $$1, $$0, $$2, null);
-      this.am.a(g, this.c($$2));
-      this.am.a(h, $$2.B());
-   }
-
-   public cpx(dff $$0, double $$1, double $$2, double $$3, cwf $$4) {
-      super(bup.bf, $$1, $$2, $$3, $$0, $$4, $$4);
-      this.am.a(g, this.c($$4));
-      this.am.a(h, $$4.B());
+   public cpx(dfm $$0, bvh $$1, cwm $$2) {
+      super(bus.P, $$1, $$0, $$2);
    }
 
    @Override
-   protected void a(aks.a $$0) {
-      super.a($$0);
-      $$0.a(g, (byte)0);
-      $$0.a(h, false);
+   protected cwi l() {
+      return cwq.sw;
    }
 
    @Override
-   public void l() {
-      if (this.c > 4) {
-         this.i = true;
-      }
-
-      bui $$0 = this.s();
-      int $$1 = this.am.a(g);
-      if ($$1 > 0 && (this.i || this.B()) && $$0 != null) {
-         if (!this.G()) {
-            if (!this.dY().C && this.d == coy.a.b) {
-               this.a(this.t(), 0.1F);
-            }
-
-            this.av();
-         } else {
-            this.b(true);
-            ezr $$2 = $$0.bH().d(this.dw());
-            this.o(this.dD(), this.dF() + $$2.e * 0.015 * (double)$$1, this.dJ());
-            double $$3 = 0.05 * (double)$$1;
-            this.h(this.dB().c(0.95).e($$2.d().c($$3)));
-            if (this.f == 0) {
-               this.a(awo.zG, 10.0F, 1.0F);
-            }
-
-            this.f++;
-         }
-      }
-
-      super.l();
+   protected void c(UUID $$0) {
+      this.n();
+      super.c($$0);
+      this.q();
    }
 
-   private boolean G() {
-      bui $$0 = this.s();
-      return $$0 == null || !$$0.bN() ? false : !($$0 instanceof arr) || !$$0.R_();
+   @Override
+   public void c(@Nullable bul $$0) {
+      this.n();
+      super.c($$0);
+      this.q();
    }
 
-   public boolean D() {
-      return this.am.a(h);
+   private void n() {
+      if (this.p() instanceof arq $$1) {
+         $$1.b(this);
+      }
+   }
+
+   private void q() {
+      if (this.p() instanceof arq $$1) {
+         $$1.a(this);
+      }
    }
 
    @Nullable
    @Override
-   protected ezo c(ezr $$0, ezr $$1) {
-      return this.i ? null : super.c($$0, $$1);
+   protected bul b(UUID $$0) {
+      if (this.dV() instanceof arp $$1) {
+         bul $$3 = super.b($$0);
+         if ($$3 != null) {
+            return $$3;
+         } else {
+            for (arp $$4 : $$1.p().L()) {
+               if ($$4 != $$1) {
+                  $$3 = $$4.a($$0);
+                  if ($$3 != null) {
+                     return $$3;
+                  }
+               }
+            }
+
+            return null;
+         }
+      } else {
+         return null;
+      }
    }
 
    @Override
-   protected void a(ezo $$0) {
-      bui $$1 = $$0.a();
-      float $$2 = 8.0F;
-      bui $$3 = this.s();
-      bsy $$4 = this.dZ().a(this, (bui)($$3 == null ? this : $$3));
-      if (this.dY() instanceof arq $$5) {
-         $$2 = dby.a($$5, this.ec(), $$1, $$4, $$2);
+   protected void a(ezv $$0) {
+      super.a($$0);
+      $$0.a().a(this.dW().b(this, this.p()), 0.0F);
+   }
+
+   @Override
+   protected void a(ezw $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dV().a(ls.ac, this.dA(), this.dC() + this.ae.j() * 2.0, this.dG(), this.ae.k(), 0.0, this.ae.k());
       }
 
-      this.i = true;
-      if ($$1.a($$4, $$2)) {
-         if ($$1.ar() == bup.H) {
+      if (this.dV() instanceof arp $$2 && !this.dQ()) {
+         bul $$4 = this.p();
+         if ($$4 != null && a($$4, $$2)) {
+            if ($$4.bZ()) {
+               $$4.ao();
+            }
+
+            ezy $$8;
+            if (this.dy().h() > 0.0) {
+               ezt $$5 = $$4.cR();
+               ezy $$6 = new ezy($$5.b(), $$5.c(), $$5.d()).c(0.5000099999997474);
+               ezy $$7 = new ezy(Math.signum(this.dy().d), Math.signum(this.dy().e), Math.signum(this.dy().f));
+               $$8 = $$7.h($$6).b(0.0, $$5.c() * 0.5, 0.0);
+            } else {
+               $$8 = ezy.c;
+            }
+
+            ezy $$10 = this.dt().d($$8);
+            if ($$4 instanceof arq $$11) {
+               if ($$11.f.c()) {
+                  if (this.ae.i() < 0.05F && $$2.N().b(dfi.e)) {
+                     clp $$12 = bus.N.a($$2, bur.k);
+                     if ($$12 != null) {
+                        $$12.b($$4.dA(), $$4.dC(), $$4.dG(), $$4.dL(), $$4.dN());
+                        $$2.b($$12);
+                     }
+                  }
+
+                  cou $$13 = $$11.a(new est($$2, $$10, ezy.c, 0.0F, 0.0F, bvv.a(bvv.k, bvv.l), est.a));
+                  if ($$13 != null) {
+                     $$13.k();
+                     $$13.gL();
+                     $$13.a($$11.y(), this.dW().m(), 5.0F);
+                  }
+
+                  this.a($$2, $$10);
+               }
+            } else {
+               bul $$14 = $$4.b(new est($$2, $$10, $$4.dy(), $$4.dL(), $$4.dN(), est.a));
+               if ($$14 != null) {
+                  $$14.k();
+               }
+
+               this.a($$2, $$10);
+            }
+
+            this.at();
             return;
          }
 
-         if (this.dY() instanceof arq $$6) {
-            dby.a($$6, $$1, $$4, this.ec(), $$0x -> this.au());
-         }
-
-         if ($$1 instanceof bve $$7) {
-            this.a($$7, $$4);
-            this.a($$7);
-         }
+         this.at();
+         return;
       }
-
-      this.a(cpl.b, $$1, this.s(), false);
-      this.h(this.dB().d(0.02, 0.2, 0.02));
-      this.a(awo.zE, 1.0F, 1.0F);
    }
 
-   @Override
-   protected void a(arq $$0, ezn $$1, cwf $$2) {
-      ezr $$3 = $$1.b().a($$1.g());
-      dby.a($$0, $$2, this.s() instanceof bve $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$0x -> this.au());
-   }
-
-   @Override
-   public cwf ec() {
-      return this.w();
-   }
-
-   @Override
-   protected boolean a(cor $$0) {
-      return super.a($$0) || this.B() && this.e($$0) && $$0.gl().f(this.t());
-   }
-
-   @Override
-   protected cwf v() {
-      return new cwf(cwj.wk);
-   }
-
-   @Override
-   protected awn o() {
-      return awo.zF;
-   }
-
-   @Override
-   public void b_(cor $$0) {
-      if (this.e($$0) || this.s() == null) {
-         super.b_($$0);
+   private static boolean a(bul $$0, dfm $$1) {
+      if ($$0.dV().ag() == $$1.ag()) {
+         return !($$0 instanceof bvh $$2) ? $$0.bL() : $$2.bL() && !$$2.fP();
+      } else {
+         return $$0.o(true);
       }
    }
 
    @Override
-   public void a(un $$0) {
+   public void h() {
+      int $$0;
+      int $$1;
+      bul $$2;
+      label26: {
+         $$0 = kj.b(this.dt().a());
+         $$1 = kj.b(this.dt().c());
+         $$2 = this.p();
+         if ($$2 instanceof arq $$3 && !$$2.bL() && $$3.y().N().b(dfi.Y)) {
+            this.at();
+            break label26;
+         }
+
+         super.h();
+      }
+
+      jh $$4 = jh.a((ka)this.dt());
+      if ((--this.a <= 0L || $$0 != kj.a($$4.u()) || $$1 != kj.a($$4.w())) && $$2 instanceof arq $$5) {
+         this.a = $$5.c(this);
+      }
+   }
+
+   private void a(dfm $$0, ezy $$1) {
+      $$0.a(null, $$1.d, $$1.e, $$1.f, awn.uu, awo.h);
+   }
+
+   @Nullable
+   @Override
+   public bul b(est $$0) {
+      bul $$1 = super.b($$0);
+      if ($$1 != null) {
+         $$1.f(jh.a((ka)$$1.dt()));
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(dfm $$0, dfm $$1) {
+      return $$0.ag() == dfm.k && $$1.ag() == dfm.i && this.p() instanceof arq $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dvv $$0) {
       super.a($$0);
-      this.i = $$0.q("DealtDamage");
-      this.am.a(g, this.c(this.w()));
-   }
-
-   @Override
-   public void b(un $$0) {
-      super.b($$0);
-      $$0.a("DealtDamage", this.i);
-   }
-
-   private byte c(cwf $$0) {
-      return this.dY() instanceof arq $$1 ? (byte)azn.a(dby.c($$1, $$0, this), 0, 127) : 0;
-   }
-
-   @Override
-   public void m() {
-      int $$0 = this.am.a(g);
-      if (this.d != coy.a.b || $$0 <= 0) {
-         super.m();
+      if ($$0.a(dis.kF) && this.p() instanceof arq $$1) {
+         $$1.a($$0);
       }
    }
 
    @Override
-   protected float A() {
-      return 0.99F;
-   }
+   public void a(bul.c $$0) {
+      if ($$0 != bul.c.d) {
+         this.n();
+      }
 
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return true;
+      super.a($$0);
    }
 }

@@ -1,134 +1,174 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dto {
-   private final Object2IntSortedMap<cwb> a;
+public class dto extends dsy implements bsq, fbk.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dto.a h;
+   private due k;
+   private cwm l = cwm.k;
+   @Nullable
+   protected ali<eus> i;
+   protected long j;
 
-   dto(Object2IntSortedMap<cwb> $$0) {
-      this.a = $$0;
+   public dto(jh $$0, dvv $$1) {
+      super(dta.O, $$0, $$1);
+      this.k = due.a;
    }
 
-   public boolean a(cwf $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cwb> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cwf $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dto a(js.a $$0, crj $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dto a(js.a $$0, crj $$1, int $$2) {
-      return new dto.a($$0, $$1)
-         .a(cwj.qB, $$2 * 100)
-         .a(dil.iB, $$2 * 8 * 10)
-         .a(cwj.sx, $$2 * 12)
-         .a(cwj.oy, $$2 * 8)
-         .a(cwj.oz, $$2 * 8)
-         .a(axm.r, $$2 * 3 / 2)
-         .a(axm.C, $$2 * 3 / 2)
-         .a(axm.b, $$2 * 3 / 2)
-         .a(dil.w, $$2 * 3 / 2)
-         .a(axm.i, $$2 * 3 / 2)
-         .a(dil.hU, $$2 * 3 / 2)
-         .a(axm.j, $$2 * 3 / 4)
-         .a(dil.jC, $$2 * 3 / 4)
-         .a(axm.n, $$2 * 3 / 2)
-         .a(axm.m, $$2 * 3 / 2)
-         .a(axm.k, $$2 * 3 / 2)
-         .a(axm.l, $$2 * 3 / 2)
-         .a(dil.aY, $$2 * 3 / 2)
-         .a(dil.cl, $$2 * 3 / 2)
-         .a(dil.cm, $$2 * 3 / 2)
-         .a(dil.oa, $$2 * 3 / 2)
-         .a(dil.dT, $$2 * 3 / 2)
-         .a(dil.cv, $$2 * 3 / 2)
-         .a(dil.gV, $$2 * 3 / 2)
-         .a(dil.cA, $$2 * 3 / 2)
-         .a(dil.gZ, $$2 * 3 / 2)
-         .a(axm.E, $$2 * 3 / 2)
-         .a(cwj.ow, $$2 * 3 / 2)
-         .a(cwj.rm, $$2 * 3 / 2)
-         .a(dil.cO, $$2 * 3 / 2)
-         .a(axm.aV, $$2)
-         .a(axm.bv, $$2 * 4)
-         .a(cwj.oO, $$2)
-         .a(cwj.oN, $$2)
-         .a(cwj.oR, $$2)
-         .a(cwj.oQ, $$2)
-         .a(cwj.oP, $$2)
-         .a(axm.h, $$2)
-         .a(axm.aS, $$2 * 6)
-         .a(axm.a, $$2 / 2)
-         .a(axm.d, $$2 / 2)
-         .a(cwj.pr, $$2 / 2)
-         .a(axm.p, $$2 / 2)
-         .a(cwj.ou, $$2 / 2)
-         .a(axm.g, 1 + $$2 / 3)
-         .a(dil.me, 1 + $$2 * 20)
-         .a(cwj.wn, $$2 * 3 / 2)
-         .a(dil.mZ, $$2 / 4)
-         .a(dil.bv, $$2 / 2)
-         .a(dil.nS, $$2 / 4)
-         .a(dil.nT, $$2 * 3 / 2)
-         .a(dil.nU, $$2 * 3 / 2)
-         .a(dil.nX, $$2 * 3 / 2)
-         .a(dil.nY, $$2 * 3 / 2)
-         .a(dil.ob, $$2 * 3 / 2)
-         .a(dil.pc, $$2 * 3 / 2)
-         .a(dil.sy, $$2 / 2)
-         .a(dil.sz, $$2 / 2)
-         .a(dil.ac, $$2 * 3 / 2)
-         .a(axm.aM)
-         .a();
-   }
-
-   public static class a {
-      private final js<cwb> a;
-      private final crj b;
-      private final Object2IntSortedMap<cwb> c = new Object2IntLinkedOpenHashMap();
-
-      public a(js.a $$0, crj $$1) {
-         this.a = $$0.d(ma.K);
-         this.b = $$1;
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      this.k.a($$0);
+      if (!this.c_($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
       }
+   }
 
-      public dto a() {
-         return new dto(this.c);
-      }
-
-      public dto.a a(axt<cwb> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
-         return this;
-      }
-
-      public dto.a a(axt<cwb> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jq<cwb> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dto.a a(dfe $$0, int $$1) {
-         cwb $$2 = $$0.j();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cwb $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.k = due.b($$0);
+      if (!this.b_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cwm.a($$1, (vi)$$0.p("item")).orElse(cwm.k);
+         } else {
+            this.l = cwm.k;
          }
+      }
+   }
+
+   public acm j() {
+      return acm.a(this);
+   }
+
+   @Override
+   public ul a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   public jm k() {
+      return this.m().c(dwl.R);
+   }
+
+   public due t() {
+      return this.k;
+   }
+
+   public void c(cwm $$0) {
+      this.a($$0);
+   }
+
+   public cwm u() {
+      cwm $$0 = cwq.eC.o();
+      $$0.b(this.r());
+      return $$0;
+   }
+
+   public static cwm a(due $$0) {
+      cwm $$1 = cwq.eC.o();
+      $$1.b(ku.ak, $$0);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public ali<eus> aw_() {
+      return this.i;
+   }
+
+   @Override
+   public void a(@Nullable ali<eus> $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public long az_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.ak, this.k);
+      $$0.a(ku.al, cze.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(dsy.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(ku.ak, due.a);
+      this.l = $$0.a(ku.al, cze.a).a();
+   }
+
+   @Override
+   public void a(ul $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cwm f() {
+      this.d_(null);
+      return this.l;
+   }
+
+   @Override
+   public cwm c(int $$0) {
+      this.d_(null);
+      cwm $$1 = this.l.a($$0);
+      if (this.l.f()) {
+         this.l = cwm.k;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cwm $$0) {
+      this.d_(null);
+      this.l = $$0;
+   }
+
+   @Override
+   public dsy v() {
+      return this;
+   }
+
+   public void a(dto.a $$0) {
+      if (this.o != null && !this.o.A_()) {
+         this.o.a(this.aA_(), this.m().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dto.a.values().length) {
+         this.g = this.o.ab();
+         this.h = dto.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static enum a {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

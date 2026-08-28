@@ -1,34 +1,27 @@
-public class gpc extends goz<cpc, gvf> {
-   private static final all a = all.b("textures/entity/illager/evoker_fangs.png");
-   private final fzb b;
+public class gpc extends goe<clm, gyd, fze> {
+   private static final alj a = alj.b("textures/entity/zombie/drowned.png");
 
-   public gpc(gpa.a $$0) {
-      super($$0);
-      this.b = new fzb($$0.a(gcb.ay));
+   public gpc(gpk.a $$0) {
+      super($$0, new fze($$0.a(gck.as)), new fze($$0.a(gck.at)), new fze($$0.a(gck.ax)), new fze($$0.a(gck.ay)), new fze($$0.a(gck.au)), new fze($$0.a(gck.av)));
+      this.a(new gtg(this, $$0.f()));
    }
 
-   public void a(gvf $$0, fek $$1, gix $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.b.a($$0);
-         feo $$5 = $$2.getBuffer(this.b.a(a));
-         this.b.a($$1, $$5, $$3, gyk.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+   public gyd a() {
+      return new gyd();
+   }
+
+   @Override
+   public alj a(gyd $$0) {
+      return a;
+   }
+
+   protected void a(gyd $$0, fer $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.B;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.V;
+         float $$6 = azm.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
       }
-   }
-
-   public gvf a() {
-      return new gvf();
-   }
-
-   public void a(cpc $$0, gvf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.dO();
-      $$1.b = $$0.a($$2);
    }
 }

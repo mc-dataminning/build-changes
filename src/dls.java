@@ -1,72 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dls extends dni implements dim, dpk {
-   public static final MapCodec<dls> a = b(dls::new);
-   private static final dwf c = dwe.C;
-   private final dnj d = new dnj(this);
+public class dls extends diq {
+   public static final MapCodec<dls> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lz.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), t()).apply($$0, dls::new)
+   );
+   private static final Map<diq, diq> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final fas c = diq.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final diq e;
 
    @Override
    public MapCodec<dls> a() {
       return a;
    }
 
-   public dls(dvn.d $$0) {
-      super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dvo> b(int $$0) {
-      return $$1 -> dni.q($$1) ? $$0 : 0;
+   public dls(diq $$0, dvu.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return c;
    }
 
    @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, erp.c, erp.c.a($$1));
+   protected bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
+      dvv $$8 = ($$0.h() instanceof cus $$7 ? d.getOrDefault($$7.d(), dis.a) : dis.a).m();
+      if ($$8.l()) {
+         return bsk.f;
+      } else if (!this.q()) {
+         return bsk.c;
+      } else {
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, ear.c, $$3);
+         $$4.a(awx.ah);
+         $$0.a(1, $$4);
+         return bsk.a;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dvo $$0, czw $$1) {
-      return !$$1.n().a(cwj.fW) || super.a($$0, $$1);
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      if (this.q()) {
+         return bsk.c;
+      } else {
+         cwm $$5 = new cwm(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
+         }
+
+         $$1.a($$2, dis.fR.m(), 3);
+         $$1.a($$3, ear.c, $$2);
+         return bsk.a;
+      }
    }
 
    @Override
-   public boolean b(dfi $$0, jh $$1, dvo $$2) {
-      return jm.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   public cwm a(dfp $$0, jh $$1, dvv $$2) {
+      return this.q() ? super.a($$0, $$1, $$2) : new cwm(this.e);
+   }
+
+   private boolean q() {
+      return this.e == dis.a;
    }
 
    @Override
-   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
-      return true;
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      return $$4 == jm.a && !$$0.a($$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public diq b() {
+      return this.e;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected ero b_(dvo $$0) {
-      return $$0.c(c) ? erp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean e_(dvo $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   public dnj c() {
-      return this.d;
+   protected boolean a(dvv $$0, esk $$1) {
+      return false;
    }
 }

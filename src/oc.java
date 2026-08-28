@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class oc implements oa {
-   private final dij a;
+   private final diq a;
    private final List<oc.b> b = Lists.newArrayList();
 
-   private oc(dij $$0) {
+   private oc(diq $$0) {
       this.a = $$0;
    }
 
    @Override
-   public dij a() {
+   public diq a() {
       return this.a;
    }
 
-   public static oc a(dij $$0) {
+   public static oc a(diq $$0) {
       return new oc($$0);
    }
 
@@ -46,7 +46,7 @@ public class oc implements oa {
    }
 
    public JsonElement b() {
-      dvp<dij, dvo> $$0 = this.a.l();
+      dvw<diq, dvv> $$0 = this.a.l();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(oc.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class oc implements oa {
       }
 
       @Override
-      public void a(dvp<?, ?> $$0) {
+      public void a(dvw<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class oc implements oa {
          this.a = $$0;
       }
 
-      public void a(dvp<?, ?> $$0) {
+      public void a(dvw<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

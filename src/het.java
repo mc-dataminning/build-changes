@@ -1,76 +1,65 @@
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class het implements hey {
-   private static final int a = 6000;
-   private static final xl b = xl.c("tutorial.find_tree.title");
-   private static final xl c = xl.c("tutorial.find_tree.description");
-   private final hex d;
-   @Nullable
-   private foi e;
-   private int f;
+public class het {
+   private final UUID a = UUID.randomUUID();
+   private final heo b;
+   private final hex c;
+   private final hez d = new hez();
+   private final hew e;
+   private final hey f;
 
-   public het(hex $$0) {
-      this.d = $$0;
+   public het(heo $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hex($$3);
+      this.e = new hew();
+      this.f = new hey($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(her.i, this.a);
+      });
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hez.f);
-      } else {
-         if (this.f == 1) {
-            ght $$0 = this.d.e().t;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(hez.e);
-               return;
-            }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new foi(foi.a.c, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
-      }
+      this.e.a(this.b);
    }
 
-   @Override
+   public void a(dfj $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   @Override
-   public void a(gcy $$0, ezp $$1) {
-      if ($$1.d() == ezp.a.b) {
-         dvo $$2 = $$0.a_(((ezn)$$1).b());
-         if ($$2.a(axd.ak)) {
-            this.d.a(hez.c);
-         }
-      }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
    }
 
-   @Override
-   public void a(cwf $$0) {
-      if ($$0.a(axm.aR)) {
-         this.d.a(hez.e);
+   public void a(dfm $$0, ah $$1) {
+      alj $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.ab();
+         this.b.send(hep.f, $$2x -> {
+            $$2x.a(her.D, $$2.toString());
+            $$2x.a(her.E, $$3);
+         });
       }
-   }
-
-   private static boolean b(ght $$0) {
-      return $$0.gl().a_($$0x -> $$0x.a(axm.aR));
-   }
-
-   public static boolean a(ght $$0) {
-      for (jq<dij> $$1 : lz.e.c(axd.ak)) {
-         dij $$2 = $$1.a();
-         if ($$0.i().a(awy.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

@@ -1,32 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface fac {
+   fac a = ($$0, $$1) -> false;
+   fac b = ($$0, $$1) -> !$$0 && !$$1;
+   fac c = ($$0, $$1) -> $$1 && !$$0;
+   fac d = ($$0, $$1) -> !$$0;
+   fac e = ($$0, $$1) -> $$0 && !$$1;
+   fac f = ($$0, $$1) -> !$$1;
+   fac g = ($$0, $$1) -> $$0 != $$1;
+   fac h = ($$0, $$1) -> !$$0 || !$$1;
+   fac i = ($$0, $$1) -> $$0 && $$1;
+   fac j = ($$0, $$1) -> $$0 == $$1;
+   fac k = ($$0, $$1) -> $$1;
+   fac l = ($$0, $$1) -> !$$0 || $$1;
+   fac m = ($$0, $$1) -> $$0;
+   fac n = ($$0, $$1) -> $$0 || !$$1;
+   fac o = ($$0, $$1) -> $$0 || $$1;
+   fac p = ($$0, $$1) -> true;
 
-public class fac implements fad {
-   private final DoubleList a;
-
-   public fac(DoubleList $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(fad.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

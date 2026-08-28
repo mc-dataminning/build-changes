@@ -1,71 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class czy {
-   @Nullable
-   private final cor a;
-   private final bsg b;
-   private final ezn c;
-   private final dff d;
-   private final cwf e;
+public interface czy {
+   Codec<czy> d = lz.ay.q().dispatch(czy::a, czy.a::a);
+   zh<wu, czy> e = zf.a(ma.aE).b(czy::a, czy.a::b);
 
-   public czy(cor $$0, bsg $$1, ezn $$2) {
-      this($$0.dY(), $$0, $$1, $$0.b($$1), $$2);
-   }
+   czy.a<? extends czy> a();
 
-   protected czy(dff $$0, @Nullable cor $$1, bsg $$2, cwf $$3, ezn $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
+   boolean a(dfm var1, cwm var2, bvh var3);
 
-   protected final ezn j() {
-      return this.c;
-   }
+   public static record a<T extends czy>(MapCodec<T> f, zh<wu, T> g) {
+      public static final czy.a<czw> a = a("apply_effects", czw.a, czw.b);
+      public static final czy.a<daa> b = a("remove_effects", daa.a, daa.b);
+      public static final czy.a<czx> c = a("clear_all_effects", czx.b, czx.c);
+      public static final czy.a<dab> d = a("teleport_randomly", dab.a, dab.b);
+      public static final czy.a<czz> e = a("play_sound", czz.a, czz.b);
 
-   public jh a() {
-      return this.c.b();
-   }
+      private static <T extends czy> czy.a<T> a(String $$0, MapCodec<T> $$1, zh<wu, T> $$2) {
+         return kd.a(lz.ay, $$0, new czy.a<>($$1, $$2));
+      }
 
-   public jm k() {
-      return this.c.c();
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   public ezr l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cwf n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cor o() {
-      return this.a;
-   }
-
-   public bsg p() {
-      return this.b;
-   }
-
-   public dff q() {
-      return this.d;
-   }
-
-   public jm g() {
-      return this.a == null ? jm.c : this.a.cQ();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.gb();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dO();
+      public zh<wu, T> b() {
+         return this.g;
+      }
    }
 }

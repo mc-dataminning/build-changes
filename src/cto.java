@@ -1,22 +1,16 @@
-public class cto implements cse {
-   private final int[] a;
-
-   public cto(int $$0) {
-      this.a = new int[$$0];
+public abstract class cto extends crz {
+   public cto(cti<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
+   public abstract cto.a a(boolean var1, boolean var2, dbc<?> var3, cot var4);
 
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
+   public abstract void a(coz var1);
 
-   @Override
-   public int a() {
-      return this.a.length;
+   public abstract ctp am_();
+
+   public static enum a {
+      a,
+      b;
    }
 }

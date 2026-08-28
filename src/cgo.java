@@ -1,10 +1,29 @@
-public abstract class cgo extends bvg {
-   protected cgo(bup<? extends cgo> $$0, dff $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cgo(Set<dvv> b, int c, int d) {
+   public static final Predicate<jq<cgo>> a = $$0 -> false;
+
+   public cgo(Set<dvv> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public boolean A() {
-      return false;
+   public boolean a(dvv $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<dvv> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

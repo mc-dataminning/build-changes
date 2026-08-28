@@ -1,12 +1,28 @@
-public class acd {
-   public static final zu<acc> a = a("cookie_request");
-   public static final zu<acf> b = b("cookie_response");
+import javax.annotation.Nullable;
 
-   private static <T extends zs<acb>> zu<T> a(String $$0) {
-      return new zu<>(zt.b, all.b($$0));
+public record acd(alj b, @Nullable byte[] c) implements zq<acc> {
+   public static final zh<wg, acd> a = zq.a(acd::a, acd::new);
+
+   private acd(wg $$0) {
+      this($$0.q(), $$0.c(aaf.b));
    }
 
-   private static <T extends zs<ace>> zu<T> b(String $$0) {
-      return new zu<>(zt.a, all.b($$0));
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, aaf.b);
+   }
+
+   @Override
+   public zs<acd> a() {
+      return acb.b;
+   }
+
+   public void a(acc $$0) {
+      $$0.a(this);
+   }
+
+   @Nullable
+   public byte[] e() {
+      return this.c;
    }
 }

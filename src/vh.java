@@ -1,48 +1,138 @@
-public interface vh {
-   vh.b a();
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-   vh.b a(String var1);
+public class vh implements vm {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   vh.b a(byte var1);
-
-   vh.b a(short var1);
-
-   vh.b a(int var1);
-
-   vh.b a(long var1);
-
-   vh.b a(float var1);
-
-   vh.b a(double var1);
-
-   vh.b a(byte[] var1);
-
-   vh.b a(int[] var1);
-
-   vh.b a(long[] var1);
-
-   vh.b a(vm<?> var1, int var2);
-
-   vh.a a(vm<?> var1);
-
-   vh.a a(vm<?> var1, String var2);
-
-   vh.a b(vm<?> var1, int var2);
-
-   vh.b b();
-
-   vh.b b(vm<?> var1);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public String a(vi $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public void a(vg $$0) {
+      this.b.append(vg.b($$0.t_()));
+   }
+
+   @Override
+   public void a(uj $$0) {
+      this.b.append($$0.l()).append('b');
+   }
+
+   @Override
+   public void a(vd $$0) {
+      this.b.append($$0.l()).append('s');
+   }
+
+   @Override
+   public void a(uq $$0) {
+      this.b.append($$0.l());
+   }
+
+   @Override
+   public void a(ut $$0) {
+      this.b.append($$0.l()).append('L');
+   }
+
+   @Override
+   public void a(uo $$0) {
+      this.b.append($$0.k()).append('f');
+   }
+
+   @Override
+   public void a(um $$0) {
+      this.b.append($$0.j()).append('d');
+   }
+
+   @Override
+   public void a(ui $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('B');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(up $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(us $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ur $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new vh().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ul $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new vh().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : vg.b($$0);
+   }
+
+   @Override
+   public void a(un $$0) {
+      this.b.append("END");
    }
 }

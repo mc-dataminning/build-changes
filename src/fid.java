@@ -1,256 +1,180 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import java.nio.file.Path;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fid extends hff implements ffo {
-   private static final int b = 200;
-   private static final int c = 80;
-   private static final int B = 95;
-   private static final int C = 1;
-   private static final String[] D = new String[]{"", ".", ". .", ". . ."};
-   private static final xl E = xl.c("mco.upload.verifying");
-   private final fhw F;
-   private final etv G;
+public class fid extends hfq {
+   static final Logger c = LogUtils.getLogger();
+   private static final xj B = xj.c("mco.selectServer.create");
+   private static final xj C = xj.c("mco.selectServer.create.subtitle");
+   private static final xj D = xj.c("mco.configure.world.switch.slot");
+   private static final xj E = xj.c("mco.configure.world.switch.slot.subtitle");
+   private static final xj F = xj.c("mco.reset.world.generate");
+   private static final xj G = xj.c("mco.reset.world.title");
+   private static final xj H = xj.c("mco.reset.world.warning");
+   public static final xj a = xj.c("mco.create.world.reset.title");
+   private static final xj I = xj.c("mco.reset.world.resetting.screen.title");
+   private static final xj J = xj.c("mco.reset.world.template");
+   private static final xj K = xj.c("mco.reset.world.adventure");
+   private static final xj L = xj.c("mco.reset.world.experience");
+   private static final xj M = xj.c("mco.reset.world.inspiration");
+   private final frw N;
+   private final fgi O;
+   private final xj P;
+   private final int Q;
+   private final xj R;
+   private static final alj S = alj.b("textures/gui/realms/upload.png");
+   private static final alj T = alj.b("textures/gui/realms/adventure.png");
+   private static final alj U = alj.b("textures/gui/realms/survival_spawn.png");
+   private static final alj V = alj.b("textures/gui/realms/new_world.png");
+   private static final alj W = alj.b("textures/gui/realms/experience.png");
+   private static final alj X = alj.b("textures/gui/realms/inspiration.png");
+   fgy Y;
+   fgy Z;
+   fgy aa;
+   fgy ab;
+   public final int b;
    @Nullable
-   private final fiy H;
-   private final long I;
-   private final int J;
-   final AtomicReference<ffn> a = new AtomicReference<>();
-   private final ffe K;
-   private final RateLimiter L;
-   @Nullable
-   private volatile xl[] M;
-   private volatile xl N = xl.c("mco.upload.preparing");
-   @Nullable
-   private volatile String O;
-   private volatile boolean P;
-   private volatile boolean Q;
-   private volatile boolean R = true;
-   private volatile boolean S;
-   @Nullable
-   private flw T;
-   @Nullable
-   private flw U;
-   private int V;
-   private final fpl W = new fpl(this);
+   private final fjf ac;
+   private final Runnable ad;
+   private final fps ae = new fps(this);
 
-   public fid(@Nullable fiy $$0, long $$1, int $$2, fhw $$3, etv $$4) {
-      super(fjo.a);
-      this.H = $$0;
-      this.I = $$1;
-      this.J = $$2;
-      this.F = $$3;
-      this.G = $$4;
-      this.K = new ffe();
-      this.L = RateLimiter.create(0.1F);
+   private fid(frw $$0, fgi $$1, int $$2, xj $$3, xj $$4, int $$5, xj $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   }
+
+   public fid(frw $$0, fgi $$1, int $$2, xj $$3, xj $$4, int $$5, xj $$6, @Nullable fjf $$7, Runnable $$8) {
+      super($$3);
+      this.N = $$0;
+      this.O = $$1;
+      this.b = $$2;
+      this.P = $$4;
+      this.Q = $$5;
+      this.R = $$6;
+      this.ac = $$7;
+      this.ad = $$8;
+   }
+
+   public static fid a(frw $$0, fgi $$1, fjf $$2, Runnable $$3) {
+      return new fid($$0, $$1, $$1.n, B, C, -6250336, a, $$2, $$3);
+   }
+
+   public static fid a(frw $$0, int $$1, fgi $$2, Runnable $$3) {
+      return new fid($$0, $$2, $$1, D, E, -6250336, a, $$3);
+   }
+
+   public static fid a(frw $$0, fgi $$1, Runnable $$2) {
+      return new fid($$0, $$1, $$1.n, G, H, -65536, I, $$2);
    }
 
    @Override
-   public void aS_() {
-      this.T = this.W.b(flw.a(xk.k, $$0x -> this.D()).a());
-      this.T.k = false;
-      this.U = this.W.b(flw.a(xk.e, $$0x -> this.E()).a());
-      if (!this.S) {
-         if (this.F.b == -1) {
-            this.S = true;
-            this.G();
-         } else {
-            List<fiw> $$0 = new ArrayList<>();
-            if (this.H != null) {
-               $$0.add(this.H);
+   public void aR_() {
+      fpw $$0 = this.ae.a(fpw.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new fnk(this.l, this.p), fpv::b);
+      $$0.a(new fnk(this.P, this.p).b(this.Q), fpv::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            ffh $$0 = ffh.a();
+
+            try {
+               fgy $$1 = $$0.a(1, 10, fgi.d.a);
+               fgy $$2 = $$0.a(1, 10, fgi.d.c);
+               fgy $$3 = $$0.a(1, 10, fgi.d.d);
+               fgy $$4 = $$0.a(1, 10, fgi.d.e);
+               fid.this.m.execute(() -> {
+                  fid.this.Y = $$1;
+                  fid.this.Z = $$2;
+                  fid.this.aa = $$3;
+                  fid.this.ab = $$4;
+               });
+            } catch (fhc var6) {
+               fid.c.error("Couldn't fetch templates in reset world", var6);
             }
-
-            $$0.add(new fjd(this.I, this.F.b, () -> {
-               if (!this.S) {
-                  this.S = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.G();
-                  });
-               }
-            }));
-            this.m.a(new fhp(this.F, $$0.toArray(new fiw[0])));
          }
-      }
-
-      this.W.a($$1 -> {
-         flu var10000 = this.c($$1);
+      }).start();
+      fpr $$1 = this.ae.c(new fpr());
+      fpr.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fid.a(this.m.h, F, V, $$0x -> ffn.a(this.m, this.N, this, this.b, this.O, this.ac)));
+      $$2.a(new fid.a(this.m.h, fie.a, S, $$0x -> this.m.a(new fie(this.ac, this.O.a, this.b, this))));
+      $$2.a(new fid.a(this.m.h, J, U, $$0x -> this.m.a(new fif(J, this::a, fgi.d.a, this.Y))));
+      $$2.a(fpx.b(16), 3);
+      $$2.a(new fid.a(this.m.h, K, T, $$0x -> this.m.a(new fif(K, this::a, fgi.d.c, this.Z))));
+      $$2.a(new fid.a(this.m.h, L, W, $$0x -> this.m.a(new fif(L, this::a, fgi.d.d, this.aa))));
+      $$2.a(new fid.a(this.m.h, M, X, $$0x -> this.m.a(new fif(M, this::a, fgi.d.e, this.ab))));
+      this.ae.b(fmd.a(xi.k, $$0x -> this.aO_()).a());
+      this.ae.a($$1x -> {
+         fmb var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.W.a();
+      this.ae.a();
    }
 
-   private void D() {
-      this.m.a(new fhj(new fev(new frr()), this.I));
+   @Override
+   public xj i() {
+      return xi.a(this.n(), this.P);
    }
 
-   private void E() {
-      this.P = true;
-      ffn $$0 = this.a.get();
+   @Override
+   public void aO_() {
+      this.m.a(this.N);
+   }
+
+   private void a(@Nullable fgx $$0) {
+      this.m.a(this);
       if ($$0 != null) {
-         $$0.b();
-      } else {
-         this.m.a(this.F);
+         this.a(new fjg($$0, this.O.a, this.R, this.ad));
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         if (this.R) {
-            this.E();
-         } else {
-            this.D();
+   private void a(fjd $$0) {
+      List<fjd> $$1 = new ArrayList<>();
+      if (this.ac != null) {
+         $$1.add(this.ac);
+      }
+
+      if (this.b != this.O.n) {
+         $$1.add(new fjk(this.O.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.m.a(new fhw(this.N, $$1.toArray(new fjd[0])));
+   }
+
+   class a extends fmd {
+      private static final alj b = alj.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final alj v;
+
+      a(final flo $$0, final xj $$1, final alj $$2, final fmd.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
+      }
+
+      @Override
+      public void b(flq $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.B();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = axx.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
 
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+         int $$6 = this.D();
+         int $$7 = this.E();
+         $$0.a(gjq::B, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(gjq::B, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fid.this.p, this.z(), $$6 + 28, $$7 - 14, $$8);
       }
-   }
-
-   @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!this.Q && this.K.c() && this.K.d() && this.U != null) {
-         this.N = E;
-         this.U.j = false;
-      }
-
-      $$0.a(this.p, this.N, this.n / 2, 50, -1);
-      if (this.R) {
-         $$0.a(this.p, D[this.V / 10 % D.length], this.n / 2 + this.p.a(this.N) / 2 + 5, 50, -1, false);
-      }
-
-      if (this.K.c() && !this.P) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      xl[] $$4 = this.M;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
-         }
-      }
-   }
-
-   private void c(flj $$0) {
-      double $$1 = this.K.e();
-      this.O = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, xl.a("mco.upload.percent", this.O), this.n / 2, 84, -1);
-   }
-
-   private void d(flj $$0) {
-      this.a($$0, this.K.g());
-   }
-
-   private void a(flj $$0, long $$1) {
-      String $$2 = this.O;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + few.b($$1) + "/s)";
-         $$0.a(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1, false);
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.V++;
-      this.K.f();
-      if (this.L.tryAcquire(1)) {
-         xl $$0 = this.F();
-         this.m.aZ().c($$0);
-      }
-   }
-
-   private xl F() {
-      List<xl> $$0 = Lists.newArrayList();
-      $$0.add(this.N);
-      if (this.O != null) {
-         $$0.add(xl.a("mco.upload.percent", this.O));
-      }
-
-      xl[] $$1 = this.M;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return xk.a($$0);
-   }
-
-   private void G() {
-      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.G.a());
-      fgg $$1 = fgg.a(this.G.g(), this.G.l().c());
-      ffn $$2 = new ffn($$0, $$1, this.m.X(), this.I, this.J, this);
-      if (!this.a.compareAndSet(null, $$2)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         $$2.a().handleAsync(($$0x, $$1x) -> {
-            if ($$1x != null) {
-               if ($$1x instanceof CompletionException $$2x) {
-                  $$1x = $$2x.getCause();
-               }
-
-               if ($$1x instanceof ffi $$3) {
-                  if ($$3.a() != null) {
-                     this.N = $$3.a();
-                  }
-
-                  this.a($$3.b());
-               } else {
-                  this.N = xl.a("mco.upload.failed", $$1x.getMessage());
-               }
-            } else {
-               this.N = xl.c("mco.upload.done");
-               if (this.T != null) {
-                  this.T.b(xk.d);
-               }
-            }
-
-            this.Q = true;
-            this.R = false;
-            if (this.T != null) {
-               this.T.k = true;
-            }
-
-            if (this.U != null) {
-               this.U.k = false;
-            }
-
-            this.a.set(null);
-            return null;
-         }, this.m);
-      }
-   }
-
-   private void a(@Nullable xl... $$0) {
-      this.M = $$0;
-   }
-
-   @Override
-   public ffe b() {
-      return this.K;
-   }
-
-   @Override
-   public void d() {
-      this.N = xl.a("mco.upload.uploading", this.G.b());
    }
 }

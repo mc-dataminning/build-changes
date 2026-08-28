@@ -1,17 +1,19 @@
-public class cwx extends cul {
-   public cwx(dij $$0, cwb.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class cwx extends cyb {
+   public cwx(cwi.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsh a(czy $$0) {
-      return bsh.e;
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      cyl $$4 = $$0.a(ku.Q, cyl.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
    }
 
    @Override
-   public bsh a(dff $$0, cor $$1, bsg $$2) {
-      ezn $$3 = a($$0, $$1, den.b.b);
-      ezn $$4 = $$3.a($$3.b().d());
-      return super.a(new czy($$1, $$2, $$4));
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.nW, awo.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

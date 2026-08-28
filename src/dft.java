@@ -1,41 +1,15 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public interface dft extends dfp {
+   long aj();
 
-public class dft {
-   private final List<dft.a> a = Lists.newArrayList();
-
-   public void a(jh $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dft.a($$0, $$1));
-      }
+   default float ap() {
+      return dzq.j[this.F_().b(this.aj())];
    }
 
-   public double b(jh $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (dft.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   default float f(float $$0) {
+      return this.F_().a(this.aj());
    }
 
-   static class a {
-      private final jh a;
-      private final double b;
-
-      public a(jh $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(jh $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   default int aq() {
+      return this.F_().b(this.aj());
    }
 }

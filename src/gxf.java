@@ -1,5 +1,3 @@
-public class gxf extends gvd {
-   public float a;
-   public float b;
-   public boolean c;
+public class gxf extends gwm {
+   public cht.a a = cht.a.b;
 }

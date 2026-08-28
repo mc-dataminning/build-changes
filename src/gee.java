@@ -1,47 +1,119 @@
-import java.util.List;
-import java.util.Locale;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.UUID;
 
-public enum gee {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
-
-   private final String l;
-   private final xl m;
-   private final xl n;
-
-   private gee(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xl.c($$1);
-      this.n = xl.c($$1 + ".description");
+public interface gee extends ged {
+   static gee.a a(GameProfile $$0, xz $$1, gec $$2) {
+      return new gee.a($$0, $$1, $$2);
    }
 
-   public String a() {
-      return this.l;
+   static gee.b a(xj $$0, Instant $$1) {
+      return new gee.b($$0, $$1);
    }
 
-   public xl b() {
-      return this.m;
+   xj b();
+
+   default xj c() {
+      return this.b();
    }
 
-   public xl c() {
-      return this.n;
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, xz d, gec e) implements gee {
+      public static final MapCodec<gee.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ayv.z.fieldOf("profile").forGetter(gee.a::f), xz.a.forGetter(gee.a::g), gec.d.optionalFieldOf("trust_level", gec.a).forGetter(gee.a::h)
+               )
+               .apply($$0, gee.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public xj b() {
+         if (!this.d.o().a()) {
+            xj $$0 = this.d.o().b(this.d.c());
+            return (xj)($$0 != null ? $$0 : xj.i());
+         } else {
+            return this.d.d();
+         }
+      }
+
+      @Override
+      public xj c() {
+         xj $$0 = this.b();
+         xj $$1 = this.i();
+         return xj.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public xj d() {
+         xj $$0 = this.i();
+         return xj.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private xj i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return xj.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public ged.a a() {
+         return ged.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xz g() {
+         return this.d;
+      }
+
+      public gec h() {
+         return this.e;
+      }
    }
 
-   public static List<gee> a(gef $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   public static record b(xj c, Instant d) implements gee {
+      public static final MapCodec<gee.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(xl.a.fieldOf("message").forGetter(gee.b::d), ayv.q.fieldOf("time_stamp").forGetter(gee.b::e)).apply($$0, gee.b::new)
+      );
+
+      @Override
+      public xj b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public ged.a a() {
+         return ged.a.b;
+      }
+
+      public xj d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
+      }
    }
 }

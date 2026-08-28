@@ -1,19 +1,19 @@
-public class cxf extends cwc {
-   private final arr a;
-
-   public cxf(arr $$0) {
-      this.a = $$0;
+public class cxf extends cxz {
+   public cxf(diq $$0, diq $$1, cwi.a $$2) {
+      super($$0, $$1, jm.a, $$2);
    }
 
    @Override
-   protected void b(all $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.g.b(new adf($$0, $$1));
+   public xj a(cwm $$0) {
+      czl $$1 = $$0.a(ku.ag);
+      return (xj)($$1 != null && $$1.c().isPresent() ? xj.a(this.k + ".named", $$1.c().get()) : super.a($$0));
    }
 
    @Override
-   protected void b(all $$0) {
-      super.b($$0);
-      this.a.g.b(new adf($$0, 0));
+   public void l(cwm $$0) {
+      czl $$1 = $$0.a(ku.ag);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(ku.ag, $$1x), dum.a);
+      }
    }
 }

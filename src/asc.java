@@ -1,61 +1,43 @@
-import com.mojang.logging.LogUtils;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class asc implements asa {
-   private static final Logger a = LogUtils.getLogger();
-   private final int b;
-   private int c;
-   private long d;
-   private long e = Long.MAX_VALUE;
+public class asc implements arz {
+   private final arz a;
+   private final bra b;
+   private boolean c;
 
-   private asc(int $$0) {
-      this.b = $$0;
+   private asc(arz $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = new bra($$1, "progressListener");
    }
 
-   public static asc b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
-   }
-
-   public static asc c(int $$0) {
-      int $$1 = asa.a($$0);
-      return new asc($$1 * $$1);
-   }
-
-   public static asc c() {
-      return new asc(0);
+   public static asc a(arz $$0, Executor $$1) {
+      asc $$2 = new asc($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
    @Override
-   public void a(del $$0) {
-      this.e = ae.c();
-      this.d = this.e;
+   public void a(des $$0) {
+      this.b.a_(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(del $$0, @Nullable dyk $$1) {
-      if ($$1 == dyk.n) {
-         this.c++;
-      }
-
-      int $$2 = this.d();
-      if (ae.c() > this.e) {
-         this.e += 500L;
-         a.info(xl.a("menu.preparingSpawn", azn.a($$2, 0, 100)).getString());
+   public void a(des $$0, @Nullable dyr $$1) {
+      if (this.c) {
+         this.b.a_(() -> this.a.a($$0, $$1));
       }
    }
 
    @Override
    public void a() {
+      this.c = true;
+      this.b.a_(this.a::a);
    }
 
    @Override
    public void b() {
-      a.info("Time elapsed: {} ms", ae.c() - this.d);
-      this.e = Long.MAX_VALUE;
-   }
-
-   public int d() {
-      return this.b == 0 ? 100 : azn.d((float)this.c * 100.0F / (float)this.b);
+      this.c = false;
+      this.b.a_(this.a::b);
    }
 }

@@ -1,69 +1,57 @@
-public abstract class cpe extends coz implements cph {
-   private static final float e = 12.25F;
-   private static final ako<cwf> f = aks.a(cpe.class, akq.h);
+import java.util.List;
 
-   public cpe(bup<? extends cpe> $$0, dff $$1) {
+public class cpe extends cpc {
+   public static final float d = 4.0F;
+
+   public cpe(bus<? extends cpe> $$0, dfm $$1) {
       super($$0, $$1);
    }
 
-   public cpe(bup<? extends cpe> $$0, double $$1, double $$2, double $$3, ezr $$4, dff $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cpe(bup<? extends cpe> $$0, bve $$1, ezr $$2, dff $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cwf $$0) {
-      if ($$0.f()) {
-         this.aw().a(f, this.w());
-      } else {
-         this.aw().a(f, $$0.c(1));
-      }
+   public cpe(dfm $$0, bvh $$1, ezy $$2) {
+      super(bus.I, $$1, $$2, $$0);
    }
 
    @Override
-   public cwf m() {
-      return this.aw().a(f);
-   }
-
-   @Override
-   protected void a(aks.a $$0) {
-      $$0.a(f, this.w());
-   }
-
-   @Override
-   public void b(un $$0) {
-      super.b($$0);
-      $$0.a("Item", this.m().a(this.ea()));
-   }
-
-   @Override
-   public void a(un $$0) {
+   protected void a(ezw $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cwf.a(this.ea(), (vk)$$0.p("Item")).orElse(this.w()));
-      } else {
-         this.a(this.w());
+      if ($$0.d() != ezw.a.c || !this.e(((ezv)$$0).a())) {
+         if (!this.dV().C) {
+            List<bvh> $$1 = this.dV().a(bvh.class, this.cR().c(4.0, 2.0, 4.0));
+            bue $$2 = new bue(this.dV(), this.dA(), this.dC(), this.dG());
+            bul $$3 = this.p();
+            if ($$3 instanceof bvh) {
+               $$2.a((bvh)$$3);
+            }
+
+            $$2.a(ls.h);
+            $$2.a(3.0F);
+            $$2.a(600);
+            $$2.c((7.0F - $$2.c()) / (float)$$2.g());
+            $$2.a(new btq(bts.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bvh $$4 : $$1) {
+                  double $$5 = this.g($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.dA(), $$4.dC(), $$4.dG());
+                     break;
+                  }
+               }
+            }
+
+            this.dV().c(2006, this.dv(), this.bb() ? -1 : 1);
+            this.dV().b($$2);
+            this.at();
+         }
       }
    }
 
-   private cwf w() {
-      return new cwf(cwj.uo);
+   @Override
+   protected lq n() {
+      return ls.h;
    }
 
    @Override
-   public bvw a_(int $$0) {
-      return $$0 == 0 ? bvw.a(this::m, this::a) : super.a_($$0);
-   }
-
-   @Override
-   public boolean a(bsy $$0, float $$1) {
+   protected boolean l() {
       return false;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.ag < 2 && $$0 < 12.25 ? false : super.a($$0);
    }
 }

@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class acw implements zq<acf> {
+   public static final zh<wg, acw> a = zq.a(acw::a, acw::new);
+   private final boolean b;
 
-public class acw implements zs<ach> {
-   public static final acw a = new acw();
-   public static final zj<ByteBuf, acw> b = zj.a(a);
+   public acw(boolean $$0) {
+      this.b = $$0;
+   }
 
-   private acw() {
+   private acw(wg $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zu<acw> a() {
-      return agw.o;
+   public zs<acw> a() {
+      return agu.q;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.b;
    }
 }

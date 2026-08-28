@@ -15,12 +15,12 @@ public class db extends dy<db.a> {
       return db.a.a;
    }
 
-   public void a(arr $$0, Collection<bui> $$1, @Nullable cwf $$2) {
-      List<eug> $$3 = Lists.newArrayList();
-      Set<bup<?>> $$4 = Sets.newHashSet();
+   public void a(arq $$0, Collection<bul> $$1, @Nullable cwm $$2) {
+      List<eun> $$3 = Lists.newArrayList();
+      Set<bus<?>> $$4 = Sets.newHashSet();
 
-      for (bui $$5 : $$1) {
-         $$4.add($$5.ar());
+      for (bul $$5 : $$1) {
+         $$4.add($$5.aq());
          $$3.add(bw.b($$0, $$5));
       }
 
@@ -38,25 +38,25 @@ public class db extends dy<db.a> {
                .apply($$0, db.a::new)
       );
 
-      public static ap<db.a> a(jr<cwb> $$0, bw.a... $$1) {
-         return ao.H.a(new db.a(Optional.empty(), bw.a($$1), dj.d.c, Optional.of(cu.a.a().a($$0, cwj.wn).b())));
+      public static ap<db.a> a(jr<cwi> $$0, bw.a... $$1) {
+         return ao.H.a(new db.a(Optional.empty(), bw.a($$1), dj.d.c, Optional.of(cu.a.a().a($$0, cwq.wn).b())));
       }
 
-      public static ap<db.a> a(jr<cwb> $$0, dj.d $$1) {
-         return ao.H.a(new db.a(Optional.empty(), List.of(), $$1, Optional.of(cu.a.a().a($$0, cwj.wn).b())));
+      public static ap<db.a> a(jr<cwi> $$0, dj.d $$1) {
+         return ao.H.a(new db.a(Optional.empty(), List.of(), $$1, Optional.of(cu.a.a().a($$0, cwq.wn).b())));
       }
 
-      public boolean a(Collection<eug> $$0, int $$1, @Nullable cwf $$2) {
+      public boolean a(Collection<eun> $$0, int $$1, @Nullable cwm $$2) {
          if (!this.e.isPresent() || $$2 != null && this.e.get().a($$2)) {
             if (!this.c.isEmpty()) {
-               List<eug> $$3 = Lists.newArrayList($$0);
+               List<eun> $$3 = Lists.newArrayList($$0);
 
                for (bh $$4 : this.c) {
                   boolean $$5 = false;
-                  Iterator<eug> $$6 = $$3.iterator();
+                  Iterator<eun> $$6 = $$3.iterator();
 
                   while ($$6.hasNext()) {
-                     eug $$7 = $$6.next();
+                     eun $$7 = $$6.next();
                      if ($$4.a($$7)) {
                         $$6.remove();
                         $$5 = true;

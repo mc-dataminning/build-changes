@@ -1,78 +1,8 @@
-public interface ddj {
-   alk<dde> a = ddk.a("trades/desert_armorer_boots_4");
-   alk<dde> b = ddk.a("trades/desert_armorer_leggings_4");
-   alk<dde> c = ddk.a("trades/desert_armorer_chestplate_4");
-   alk<dde> d = ddk.a("trades/desert_armorer_helmet_4");
-   alk<dde> e = ddk.a("trades/desert_armorer_leggings_5");
-   alk<dde> f = ddk.a("trades/desert_armorer_chestplate_5");
-   alk<dde> g = ddk.a("trades/plains_armorer_boots_4");
-   alk<dde> h = ddk.a("trades/plains_armorer_leggings_4");
-   alk<dde> i = ddk.a("trades/plains_armorer_chestplate_4");
-   alk<dde> j = ddk.a("trades/plains_armorer_helmet_4");
-   alk<dde> k = ddk.a("trades/plains_armorer_boots_5");
-   alk<dde> l = ddk.a("trades/plains_armorer_leggings_5");
-   alk<dde> m = ddk.a("trades/savanna_armorer_boots_4");
-   alk<dde> n = ddk.a("trades/savanna_armorer_leggings_4");
-   alk<dde> o = ddk.a("trades/savanna_armorer_chestplate_4");
-   alk<dde> p = ddk.a("trades/savanna_armorer_helmet_4");
-   alk<dde> q = ddk.a("trades/savanna_armorer_chestplate_5");
-   alk<dde> r = ddk.a("trades/savanna_armorer_helmet_5");
-   alk<dde> s = ddk.a("trades/snow_armorer_boots_4");
-   alk<dde> t = ddk.a("trades/snow_armorer_helmet_4");
-   alk<dde> u = ddk.a("trades/snow_armorer_boots_5");
-   alk<dde> v = ddk.a("trades/snow_armorer_helmet_5");
-   alk<dde> w = ddk.a("trades/jungle_armorer_boots_4");
-   alk<dde> x = ddk.a("trades/jungle_armorer_leggings_4");
-   alk<dde> y = ddk.a("trades/jungle_armorer_chestplate_4");
-   alk<dde> z = ddk.a("trades/jungle_armorer_helmet_4");
-   alk<dde> A = ddk.a("trades/jungle_armorer_boots_5");
-   alk<dde> B = ddk.a("trades/jungle_armorer_helmet_5");
-   alk<dde> C = ddk.a("trades/swamp_armorer_boots_4");
-   alk<dde> D = ddk.a("trades/swamp_armorer_leggings_4");
-   alk<dde> E = ddk.a("trades/swamp_armorer_chestplate_4");
-   alk<dde> F = ddk.a("trades/swamp_armorer_helmet_4");
-   alk<dde> G = ddk.a("trades/swamp_armorer_boots_5");
-   alk<dde> H = ddk.a("trades/swamp_armorer_helmet_5");
-   alk<dde> I = ddk.a("trades/taiga_armorer_leggings_5");
-   alk<dde> J = ddk.a("trades/taiga_armorer_chestplate_5");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static void a(rb<dde> $$0) {
-      jr<dbw> $$1 = $$0.a(ma.aM);
-      $$0.a(a, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(b, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(c, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(d, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(e, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(f, new ddi($$1.b(dcb.h), brj.a(1)));
-      $$0.a(g, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(h, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(i, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(j, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(k, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(l, new ddi($$1.b(dcb.a), brj.a(1)));
-      $$0.a(m, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(n, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(o, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(p, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(q, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(r, new ddi($$1.b(dcb.k), brj.a(1)));
-      $$0.a(s, new ddi($$1.b(dcb.j), brj.a(1)));
-      $$0.a(t, new ddi($$1.b(dcb.g), brj.a(1)));
-      $$0.a(u, new ddi($$1.b(dcb.j), brj.a(1)));
-      $$0.a(v, new ddi($$1.b(dcb.g), brj.a(1)));
-      $$0.a(w, new ddi($$1.b(dcb.w), brj.a(1)));
-      $$0.a(x, new ddi($$1.b(dcb.w), brj.a(1)));
-      $$0.a(y, new ddi($$1.b(dcb.w), brj.a(1)));
-      $$0.a(z, new ddi($$1.b(dcb.w), brj.a(1)));
-      $$0.a(A, new ddi($$1.b(dcb.c), brj.a(1)));
-      $$0.a(B, new ddi($$1.b(dcb.e), brj.a(1)));
-      $$0.a(C, new ddi($$1.b(dcb.O), brj.a(1)));
-      $$0.a(D, new ddi($$1.b(dcb.O), brj.a(1)));
-      $$0.a(E, new ddi($$1.b(dcb.O), brj.a(1)));
-      $$0.a(F, new ddi($$1.b(dcb.O), brj.a(1)));
-      $$0.a(G, new ddi($$1.b(dcb.i), brj.a(1)));
-      $$0.a(H, new ddi($$1.b(dcb.f), brj.a(1)));
-      $$0.a(I, new ddi($$1.b(dcb.d), brj.a(1)));
-      $$0.a(J, new ddi($$1.b(dcb.d), brj.a(1)));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ddj {
 }

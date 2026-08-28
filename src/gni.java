@@ -1,41 +1,61 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gni implements gmx.a {
-   public static final int a = 200;
-   private final fjx b;
-   private final List<abj> c = Lists.newArrayList();
+public class gni implements gng.a {
+   private static final float a = 0.02F;
+   private final Map<jh, gni.a> b = Maps.newHashMap();
 
-   gni(fjx $$0) {
-      this.b = $$0;
-   }
-
-   public void a(abj $$0) {
-      this.c.add($$0);
+   public void a(jh $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gni.a($$1, $$2, ae.c() + (long)$$3));
    }
 
    @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      feo $$5 = $$1.getBuffer(gjh.y());
-      long $$6 = this.b.s.aa();
-      Iterator<abj> $$7 = this.c.iterator();
+   public void a() {
+      this.b.clear();
+   }
 
-      while ($$7.hasNext()) {
-         abj $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (abj.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               esw $$12 = $$10.b();
-               gjr.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gjr.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gjr.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
-            }
-         }
+   @Override
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ae.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gni.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(fer $$0, gjg $$1, jh $$2, gni.a $$3) {
+      gng.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gng.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

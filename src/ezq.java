@@ -1,60 +1,103 @@
-public class ezq {
-   public static final ezq a = new ezq(0.0F, 0.0F);
-   public static final ezq b = new ezq(1.0F, 1.0F);
-   public static final ezq c = new ezq(1.0F, 0.0F);
-   public static final ezq d = new ezq(-1.0F, 0.0F);
-   public static final ezq e = new ezq(0.0F, 1.0F);
-   public static final ezq f = new ezq(0.0F, -1.0F);
-   public static final ezq g = new ezq(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final ezq h = new ezq(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-   public ezq(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public class ezq implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<ezq.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+
+   public ezq(List<ezq.a> $$0) {
+      this.c = $$0;
    }
 
-   public ezq a(float $$0) {
-      return new ezq(this.i * $$0, this.j * $$0);
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
+
+            return false;
+         };
+         };
+      });
    }
 
-   public float a(ezq $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   @Override
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
    }
 
-   public ezq b(ezq $$0) {
-      return new ezq(this.i + $$0.i, this.j + $$0.j);
+   public static ezq a(BufferedReader $$0) {
+      return new ezq($$0.lines().flatMap($$0x -> ezq.a.a($$0x).stream()).toList());
    }
 
-   public ezq b(float $$0) {
-      return new ezq(this.i + $$0, this.j + $$0);
+   public static record a(ezq.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<ezq.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new ezq.a(ezq.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new ezq.a(ezq.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new ezq.a(ezq.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static ezq.a b(String $$0) {
+         return new ezq.a(ezq.b.a, "glob:" + $$0);
+      }
+
+      static ezq.a c(String $$0) {
+         return new ezq.a(ezq.b.a, "regex:" + $$0);
+      }
+
+      static ezq.a d(String $$0) {
+         return new ezq.a(ezq.b.b, $$0);
+      }
    }
 
-   public boolean c(ezq $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
+   @FunctionalInterface
+   public interface b {
+      ezq.b a = FileSystem::getPathMatcher;
+      ezq.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
 
-   public ezq a() {
-      float $$0 = azn.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new ezq(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return azn.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(ezq $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public ezq d() {
-      return new ezq(-this.i, -this.j);
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

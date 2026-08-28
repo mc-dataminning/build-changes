@@ -1,27 +1,15 @@
-public abstract class dak implements daj {
-   private final dah a;
-
-   public dak(dah $$0) {
-      this.a = $$0;
+public class dak extends dah {
+   public dak(String $$0, dan $$1, daw $$2, cwm $$3, float $$4, int $$5) {
+      super(dbg.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean ap_() {
-      return true;
+   public cwm g() {
+      return new cwm(dis.nW);
    }
 
    @Override
-   public cwf a(js.a $$0) {
-      return cwf.k;
-   }
-
-   @Override
-   public dah d() {
-      return this.a;
-   }
-
-   @Override
-   public das a() {
-      return das.a;
+   public dbf<?> ap_() {
+      return dbf.p;
    }
 }

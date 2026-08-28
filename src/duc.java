@@ -1,227 +1,221 @@
-import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class duc extends dty implements bsr {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private jz<cwf> n = jz.a(27, cwf.k);
-   private int r;
-   private duc.a s = duc.a.a;
-   private float t;
-   private float u;
-   @Nullable
-   private final cvc v;
+public class duc extends dsy implements bsb, bsm {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bsd e = new bsd() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   public duc(@Nullable cvc $$0, jh $$1, dvo $$2) {
-      super(dst.x, $$1, $$2);
-      this.v = $$0;
+      @Override
+      public boolean c() {
+         return duc.this.g.f();
+      }
+
+      @Override
+      public cwm a(int $$0) {
+         return $$0 == 0 ? duc.this.g : cwm.k;
+      }
+
+      @Override
+      public cwm a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cwm $$2 = duc.this.g.a($$1);
+            if (duc.this.g.f()) {
+               duc.this.k();
+            }
+
+            return $$2;
+         } else {
+            return cwm.k;
+         }
+      }
+
+      @Override
+      public cwm b(int $$0) {
+         if ($$0 == 0) {
+            cwm $$1 = duc.this.g;
+            duc.this.g = cwm.k;
+            duc.this.k();
+            return $$1;
+         } else {
+            return cwm.k;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cwm $$1) {
+      }
+
+      @Override
+      public int an_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         duc.this.e();
+      }
+
+      @Override
+      public boolean a(cou $$0) {
+         return bsd.a(duc.this, $$0) && duc.this.c();
+      }
+
+      @Override
+      public boolean b(int $$0, cwm $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final csl f = new csl() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? duc.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            duc.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   cwm g = cwm.k;
+   int h;
+   private int i;
+
+   public duc(jh $$0, dvv $$1) {
+      super(dta.D, $$0, $$1);
    }
 
-   public duc(jh $$0, dvo $$1) {
-      super(dst.x, $$0, $$1);
-      this.v = dpi.a($$1.b());
+   public cwm b() {
+      return this.g;
    }
 
-   public static void a(dff $$0, jh $$1, dvo $$2, duc $$3) {
-      $$3.b($$0, $$1, $$2);
+   public boolean c() {
+      return this.g.b(ku.S) || this.g.b(ku.T);
    }
 
-   private void b(dff $$0, jh $$1, dvo $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
+   public void b(cwm $$0) {
+      this.a($$0, null);
+   }
 
-            if (this.t >= 1.0F) {
-               this.s = duc.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
+   void k() {
+      this.h = 0;
+      this.i = 0;
+      dna.a(null, this.i(), this.aA_(), this.m(), false);
+   }
 
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
+   public void a(cwm $$0, @Nullable cou $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = c(this.g);
+      this.e();
+   }
 
-            if (this.t <= 0.0F) {
-               this.s = duc.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
+   void a(int $$0) {
+      int $$1 = azm.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dna.a(this.i(), this.aA_(), this.m());
       }
    }
 
-   public duc.a k() {
-      return this.s;
+   public int f() {
+      return this.h;
    }
 
-   public ezm a(dvo $$0) {
-      return cmb.a(1.0F, $$0.c(dpi.b), 0.5F * this.a(1.0F));
+   public int j() {
+      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
+      return azm.d($$0 * 14.0F) + (this.c() ? 1 : 0);
    }
 
-   private void c(dff $$0, jh $$1, dvo $$2) {
-      if ($$2.b() instanceof dpi) {
-         jm $$3 = $$2.c(dpi.b);
-         ezm $$4 = cmb.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<bui> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bui $$6 : $$5) {
-               if ($$6.k_() != ert.d) {
-                  $$6.a(bvi.d, new ezr(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
+   private cwm b(cwm $$0, @Nullable cou $$1) {
+      if (this.o instanceof arp $$2) {
+         cyi.a($$0, this.a($$1, $$2), $$1);
       }
+
+      return $$0;
    }
 
-   @Override
-   public int b() {
-      return this.n.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = duc.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = duc.a.b;
-         }
-
-         return true;
+   private ew a(@Nullable cou $$0, arp $$1) {
+      String $$2;
+      xj $$3;
+      if ($$0 == null) {
+         $$2 = "Lectern";
+         $$3 = xj.b("Lectern");
       } else {
-         return super.a_($$0, $$1);
+         $$2 = $$0.al().getString();
+         $$3 = $$0.o_();
       }
-   }
 
-   private static void d(dff $$0, jh $$1, dvo $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cor $$0) {
-      if (!this.q && !$$0.R_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r == 1) {
-            this.o.a($$0, eak.k, this.p);
-            this.o.a(null, this.p, awo.wM, awp.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
-         }
-      }
+      ezy $$6 = ezy.b(this.p);
+      return new ew(ev.a, $$6, ezx.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
    }
 
    @Override
-   public void c(cor $$0) {
-      if (!this.q && !$$0.R_()) {
-         this.r--;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.o.a($$0, eak.j, this.p);
-            this.o.a(null, this.p, awo.wL, awp.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected xl j() {
-      return xl.c("container.shulkerBox");
-   }
-
-   @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.e($$0, $$1);
-   }
-
-   @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsb.a($$0, this.n, false, $$1);
-      }
-   }
-
-   public void e(un $$0, js.a $$1) {
-      this.n = jz.a(this.b(), cwf.k);
-      if (!this.b_($$0) && $$0.b("Items", 9)) {
-         bsb.b($$0, this.n, $$1);
-      }
-   }
-
-   @Override
-   protected jz<cwf> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(jz<cwf> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int[] a(jm $$0) {
-      return k;
-   }
-
-   @Override
-   public boolean a(int $$0, cwf $$1, @Nullable jm $$2) {
-      return !(dij.a($$1.h()) instanceof dpi);
-   }
-
-   @Override
-   public boolean b(int $$0, cwf $$1, jm $$2) {
+   public boolean p() {
       return true;
    }
 
-   public float a(float $$0) {
-      return azn.h($$0, this.u, this.t);
-   }
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cwm.a($$1, (vi)$$0.p("Book")).orElse(cwm.k), null);
+      } else {
+         this.g = cwm.k;
+      }
 
-   @Nullable
-   public cvc t() {
-      return this.v;
+      this.i = c(this.g);
+      this.h = azm.a($$0.h("Page"), 0, this.i - 1);
    }
 
    @Override
-   protected crs a(int $$0, coq $$1) {
-      return new ctm($$0, $$1, this);
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b().f()) {
+         $$0.a("Book", this.b().a($$1));
+         $$0.a("Page", this.h);
+      }
    }
 
-   public boolean u() {
-      return this.s == duc.a.a;
+   @Override
+   public void a() {
+      this.b(cwm.k);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public crz createMenu(int $$0, cot $$1, cou $$2) {
+      return new ctf($$0, this.e, this.f);
+   }
+
+   @Override
+   public xj o_() {
+      return xj.c("container.lectern");
+   }
+
+   private static int c(cwm $$0) {
+      czu $$1 = $$0.a(ku.T);
+      if ($$1 != null) {
+         return $$1.a().size();
+      } else {
+         czt $$2 = $$0.a(ku.S);
+         return $$2 != null ? $$2.a().size() : 0;
+      }
    }
 }

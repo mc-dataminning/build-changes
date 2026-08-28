@@ -1,25 +1,25 @@
-public class ail implements zs<agy> {
-   public static final zj<wi, ail> a = zs.a(ail::a, ail::new);
+public class ail implements zq<agw> {
+   public static final zh<wg, ail> a = zq.a(ail::a, ail::new);
    private final int b;
 
    public ail(int $$0) {
       this.b = $$0;
    }
 
-   private ail(wi $$0) {
-      this.b = $$0.l();
+   private ail(wg $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
+   private void a(wg $$0) {
+      $$0.m(this.b);
    }
 
    @Override
-   public zu<ail> a() {
-      return agw.bU;
+   public zs<ail> a() {
+      return agu.bW;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 

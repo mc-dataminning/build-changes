@@ -1,44 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gyw {
-   Logger a = LogUtils.getLogger();
+public class gyw extends gyx {
+   @Nullable
+   private CompletableFuture<gyx.a> e;
 
-   static gyw create(Collection<auc<?>> $$0) {
-      return ($$1, $$2) -> {
-         avg $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fdk $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fdk.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         haf $$11 = $$3.a(haf.a).orElse(haf.e);
-         hah $$12 = $$11.a($$7.a(), $$7.b());
-         if (azn.c($$7.a(), $$12.a()) && azn.c($$7.b(), $$12.b())) {
-            return new gyn($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public gyw(avd $$0, alj $$1, Executor $$2) {
+      super($$1);
+      this.e = CompletableFuture.supplyAsync(() -> gyx.a.a($$0, $$1), $$2);
    }
 
-   @Nullable
-   gyn loadSprite(all var1, avc var2);
+   @Override
+   protected gyx.a b(avd $$0) {
+      if (this.e != null) {
+         gyx.a $$1 = this.e.join();
+         this.e = null;
+         return $$1;
+      } else {
+         return gyx.a.a($$0, this.d);
+      }
+   }
+
+   public CompletableFuture<Void> e() {
+      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
+   }
+
+   @Override
+   public void a(gzf $$0, avd $$1, alj $$2, Executor $$3) {
+      this.e = CompletableFuture.supplyAsync(() -> gyx.a.a($$1, this.d), ae.g());
+      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   }
 }

@@ -1,18 +1,51 @@
-public class awm {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final awl a = new awl(awo.qb, 20, 600, true);
-   public static final awl b = new awl(awo.pD, 12000, 24000, false);
-   public static final awl c = new awl(awo.pE, 0, 0, true);
-   public static final awl d = new awl(awo.pY, 0, 0, true);
-   public static final awl e = new awl(awo.pZ, 6000, 24000, true);
-   public static final awl f = a(awo.qA);
-   public static final awl g = a(awo.qa);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public static awl a(jq<awn> $$0) {
-      return new awl($$0, 12000, 24000, false);
+public class awm {
+   public static final Codec<awm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alj.a.fieldOf("sound_id").forGetter(awm::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awm::b)).apply($$0, awm::a)
+   );
+   public static final Codec<jq<awm>> b = alf.a(ma.al, a);
+   public static final zh<ByteBuf, awm> c = zh.a(alj.b, awm::a, zf.k.a(zf::a), awm::b, awm::a);
+   public static final zh<wu, jq<awm>> d = zf.a(ma.al, c);
+   private static final float e = 16.0F;
+   private final alj f;
+   private final float g;
+   private final boolean h;
+
+   private static awm a(alj $$0, Optional<Float> $$1) {
+      return $$1.<awm>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   }
+
+   public static awm a(alj $$0) {
+      return new awm($$0, 16.0F, false);
+   }
+
+   public static awm a(alj $$0, float $$1) {
+      return new awm($$0, $$1, true);
+   }
+
+   private awm(alj $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public alj a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
+   }
+
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
    }
 }

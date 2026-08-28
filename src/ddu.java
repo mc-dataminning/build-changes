@@ -1,46 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.EnumMap;
 
-public record ddu(String e, jq<cwb> f, float g, Map<all, String> h, xl i) {
-   public static final Codec<ddu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayw.C.fieldOf("asset_name").forGetter(ddu::a),
-               ali.a(ma.K).fieldOf("ingredient").forGetter(ddu::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(ddu::c),
-               Codec.unboundedMap(all.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(ddu::d),
-               xn.a.fieldOf("description").forGetter(ddu::e)
-            )
-            .apply($$0, ddu::new)
-   );
-   public static final zj<ww, ddu> b = zj.a(
-      zh.m, ddu::a, zh.b(ma.K), ddu::b, zh.j, ddu::c, zh.a(Object2ObjectOpenHashMap::new, all.b, zh.m), ddu::d, xn.b, ddu::e, ddu::new
-   );
-   public static final Codec<jq<ddu>> c = alh.a(ma.aX, a);
-   public static final zj<ww, jq<ddu>> d = zh.a(ma.aX, b);
-
-   public static ddu a(String $$0, cwb $$1, float $$2, xl $$3, Map<all, String> $$4) {
-      return new ddu($$0, lz.g.e($$1), $$2, $$4, $$3);
-   }
-
-   public String a() {
-      return this.e;
-   }
-
-   public jq<cwb> b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
-   }
-
-   public Map<all, String> d() {
-      return this.h;
-   }
-
-   public xl e() {
-      return this.i;
-   }
+public interface ddu {
+   ddt a = new ddt(5, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 1);
+      $$0.put(ddv.c, 2);
+      $$0.put(ddv.b, 3);
+      $$0.put(ddv.a, 1);
+      $$0.put(ddv.e, 3);
+   }), 15, awn.av, 0.0F, 0.0F, axl.bi, ddx.a);
+   ddt b = new ddt(15, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 1);
+      $$0.put(ddv.c, 4);
+      $$0.put(ddv.b, 5);
+      $$0.put(ddv.a, 2);
+      $$0.put(ddv.e, 4);
+   }), 12, awn.ap, 0.0F, 0.0F, axl.bj, ddx.b);
+   ddt c = new ddt(15, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 2);
+      $$0.put(ddv.c, 5);
+      $$0.put(ddv.b, 6);
+      $$0.put(ddv.a, 2);
+      $$0.put(ddv.e, 5);
+   }), 9, awn.au, 0.0F, 0.0F, axl.bk, ddx.c);
+   ddt d = new ddt(7, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 1);
+      $$0.put(ddv.c, 3);
+      $$0.put(ddv.b, 5);
+      $$0.put(ddv.a, 2);
+      $$0.put(ddv.e, 7);
+   }), 25, awn.at, 0.0F, 0.0F, axl.bl, ddx.d);
+   ddt e = new ddt(33, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 3);
+      $$0.put(ddv.c, 6);
+      $$0.put(ddv.b, 8);
+      $$0.put(ddv.a, 3);
+      $$0.put(ddv.e, 11);
+   }), 10, awn.aq, 2.0F, 0.0F, axl.bm, ddx.e);
+   ddt f = new ddt(25, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 2);
+      $$0.put(ddv.c, 5);
+      $$0.put(ddv.b, 6);
+      $$0.put(ddv.a, 2);
+      $$0.put(ddv.e, 5);
+   }), 9, awn.ax, 0.0F, 0.0F, axl.bo, ddx.f);
+   ddt g = new ddt(37, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 3);
+      $$0.put(ddv.c, 6);
+      $$0.put(ddv.b, 8);
+      $$0.put(ddv.a, 3);
+      $$0.put(ddv.e, 11);
+   }), 15, awn.aw, 3.0F, 0.1F, axl.bn, ddx.g);
+   ddt h = new ddt(4, ae.a(new EnumMap<>(ddv.class), $$0 -> {
+      $$0.put(ddv.d, 3);
+      $$0.put(ddv.c, 6);
+      $$0.put(ddv.b, 8);
+      $$0.put(ddv.a, 3);
+      $$0.put(ddv.e, 11);
+   }), 10, awn.ay, 0.0F, 0.0F, axl.bp, ddx.h);
 }

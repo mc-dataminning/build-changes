@@ -1,103 +1,52 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ewp extends evt {
-   private static final Logger b = LogUtils.getLogger();
+public class ewp extends ewa {
    public static final MapCodec<ewp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xn.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  eug.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  ewp.a.c.optionalFieldOf("target", ewp.a.a).forGetter($$0x -> $$0x.e)
+                  czb.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  czb.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  czb.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, ewp::new)
    );
-   private final Optional<xl> c;
-   private final Optional<eug.b> d;
-   private final ewp.a e;
+   public static final czb b = new czb(czb.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<czb.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private ewp(List<exr> $$0, Optional<xl> $$1, Optional<eug.b> $$2, ewp.a $$3) {
+   public ewp(List<exy> $$0, Optional<czb.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public evv<ewp> b() {
-      return evw.p;
-   }
-
-   @Override
-   public Set<ewz<?>> a() {
-      return this.d.<Set<ewz<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<xl> a(eug $$0, @Nullable eug.b $$1) {
-      if ($$1 != null) {
-         bui $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ew $$3 = $$2.dq().a(2);
-            return $$2x -> {
-               try {
-                  return xo.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public cwf a(cwf $$0, eug $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   protected cwm a(cwm $$0, eun $$1) {
+      $$0.a(ku.ae, b, this::a);
       return $$0;
    }
 
-   public static evt.a<?> a(xl $$0, ewp.a $$1) {
-      return a($$2 -> new ewp($$2, Optional.of($$0), Optional.empty(), $$1));
+   private czb a(czb $$0) {
+      return new czb(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static evt.a<?> a(xl $$0, ewp.a $$1, eug.b $$2) {
-      return a($$3 -> new ewp($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
-
-   public static enum a implements baj {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<ewp.a> c = baj.a(ewp.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public kt<xl> a() {
-         return switch (this) {
-            case a -> ku.g;
-            case b -> ku.h;
-         };
-      }
+   @Override
+   public ewc<ewp> b() {
+      return ewd.L;
    }
 }

@@ -1,19 +1,40 @@
-public class dno {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dvo $$0) {
-      return $$0.l();
+public class dno extends diq {
+   public static final MapCodec<dno> a = b(dno::new);
+   protected static final fas b = diq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+
+   @Override
+   public MapCodec<dno> a() {
+      return a;
    }
 
-   public static int a(azv $$0) {
-      double $$1 = 1.0;
+   public dno(dvu.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected fas b(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected fas b_(dvv $$0, der $$1, jh $$2) {
+      return fap.b();
+   }
+
+   @Override
+   protected fas c(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return fap.b();
+   }
+
+   @Override
+   protected boolean a(dvv $$0, esk $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dvv $$0, der $$1, jh $$2) {
+      return 0.2F;
    }
 }

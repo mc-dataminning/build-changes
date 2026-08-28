@@ -1,23 +1,17 @@
-public record aaw(all a) implements aav {
-   public static <T extends wi> zj<T, aaw> a(all $$0, int $$1) {
-      return aav.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new aaw($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
-   }
+public record aaw(eav c, int d) implements aat {
+   public static final zh<wu, aaw> a = zh.a(eav.d, aaw::b, zf.h, aaw::c, aaw::new);
+   public static final aat.b<aaw> b = aat.a("debug/game_event_listeners");
 
    @Override
-   public aav.b<aaw> a() {
-      return new aav.b<>(this.a);
+   public aat.b<aaw> a() {
+      return b;
    }
 
-   public all b() {
-      return this.a;
+   public eav b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

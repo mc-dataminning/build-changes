@@ -1,132 +1,61 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.net.URI;
 
-public class fro extends frp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xl c = xl.c("recover_world.title").a(n.r);
-   private static final xl d = xl.c("recover_world.bug_tracker");
-   private static final xl s = xl.c("recover_world.restore");
-   private static final xl u = xl.c("recover_world.no_fallback");
-   private static final xl v = xl.c("recover_world.done.title");
-   private static final xl w = xl.c("recover_world.done.success");
-   private static final xl x = xl.c("recover_world.done.failed");
-   private static final xl y = xl.c("recover_world.issue.none").a(n.k);
-   private static final xl z = xl.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final fpp B = fpp.d().a(8);
-   private final xl C;
-   private final fmq D;
-   private final fmq E;
-   private final etu.c F;
+public class fro extends frw {
+   private static final xj a = xj.c("symlink_warning.title.world").a(n.r);
+   private static final xj b = xj.a("symlink_warning.message.world", xj.a(ayi.p));
+   private static final xj c = xj.c("symlink_warning.title.pack").a(n.r);
+   private static final xj d = xj.a("symlink_warning.message.pack", xj.a(ayi.p));
+   private final xj s;
+   private final URI u;
+   private final Runnable v;
+   private final fpr w = new fpr().b(10);
 
-   public fro(fjx $$0, BooleanConsumer $$1, etu.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xl.a("recover_world.message", xl.b($$2.f()).a(n.h));
-      this.D = new fmq(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xl $$5 = xl.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new fmq($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new fnd(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      fpp $$7 = fpp.e().a(5);
-      $$7.a(flw.a(d, fqm.b(this, ayj.j)).b(120, 20).a());
-      $$7.a(flw.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fnh.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(flw.a(xk.k, $$0x -> this.aP_()).b(120, 20).a());
-      this.B.a(this::c);
+   public fro(xj $$0, xj $$1, URI $$2, Runnable $$3) {
+      super($$0);
+      this.s = $$1;
+      this.u = $$2;
+      this.v = $$3;
    }
 
-   private void a(fjx $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fra(xl.c("recover_world.restoring")));
-         fwq.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fqn(this.A, v, w, xk.j, xk.k));
-         } else {
-            $$0.a(new fqi(() -> this.A.accept(false), v, x));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fqi(() -> this.A.accept(false), v, x));
-      }
+   public static frw a(Runnable $$0) {
+      return new fro(a, b, ayi.p, $$0);
    }
 
-   private xl a(etu.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xl.i();
-      } else {
-         xz $$3 = xl.i();
-         Instant $$4 = $$0.a($$1);
-         xz $$5 = $$4 != null ? xl.b(fxb.a.format($$4)) : xl.c("recover_world.state_entry.unknown");
-         $$3.b(xl.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof ve) {
-            $$3.b(xl.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xl.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
-   @Nullable
-   private Exception a(etu.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
-
-         return null;
-      } catch (uy | ve | IOException var4) {
-         return var4;
-      }
+   public static frw b(Runnable $$0) {
+      return new fro(c, d, ayi.p, $$0);
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
+   protected void aR_() {
+      super.aR_();
+      this.w.c().b();
+      fpr.b $$0 = this.w.d(1);
+      $$0.a(new fnk(this.l, this.p));
+      $$0.a(new fmx(this.s, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fpr $$2 = new fpr().a(5);
+      fpr.b $$3 = $$2.d(3);
+      $$3.a(fmd.a(xi.n, $$0x -> ae.m().a(this.u)).b(120, 20).a());
+      $$3.a(fmd.a(xi.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
+      $$3.a(fmd.a(xi.k, $$0x -> this.aO_()).b(120, 20).a());
+      $$0.a($$2);
       this.c();
+      this.w.a(this::c);
    }
 
    @Override
    protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      fpj.a(this.B, this.H());
+      this.w.a();
+      fpq.a(this.w, this.H());
    }
 
    @Override
-   public xl i() {
-      return xk.a(super.i(), this.C);
+   public xj i() {
+      return xi.a(super.i(), this.s);
    }
 
    @Override
-   public void aP_() {
-      this.A.accept(false);
+   public void aO_() {
+      this.v.run();
    }
 }

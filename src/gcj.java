@@ -1,9 +1,6 @@
-public class gcj {
-   final int a;
-   final int b;
-
-   public gcj(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record gcj(alj a, String b) {
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

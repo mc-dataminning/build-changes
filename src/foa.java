@@ -1,48 +1,58 @@
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class foa {
-   private final Consumer<flu> a;
-   private final Consumer<flu> b;
-   @Nullable
-   private fnz c;
-   @Nullable
-   private fqe d;
+public interface foa extends fnn {
+   long t = 250L;
 
-   public foa(Consumer<flu> $$0, Consumer<flu> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default void f(double $$0, double $$1) {
    }
 
-   public void a(fqe $$0) {
-      this.d = $$0;
-      fnz $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public void a(fnz $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
 
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
 
-         if ($$1) {
-            fjx.Q().ak().a(hcl.a(awo.Av, 1.0F));
-         }
-      }
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
    }
 
    @Nullable
-   public fnz a() {
-      return this.c;
+   default fln a(fqh $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aL_();
+
+   @Nullable
+   default fln aM_() {
+      return this.aL_() ? fln.a(this) : null;
+   }
+
+   default fql H() {
+      return fql.a();
    }
 }

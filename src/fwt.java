@@ -1,103 +1,132 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fwt extends frp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<alk<dff>> b = ae.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dff.i, -13408734);
-      $$0.put(dff.j, -10075085);
-      $$0.put(dff.k, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final brv d;
+public class fwt extends frw {
+   private static final xj a = xj.c("selectWorld.experimental.title");
+   private static final xj b = xj.c("selectWorld.experimental.message");
+   private static final xj c = xj.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<auk> v;
+   private final fpr w = new fpr().a(10).b(20);
 
-   @Nullable
-   public static fwt a(fjx $$0, BooleanConsumer $$1, DataFixer $$2, etu.c $$3, boolean $$4) {
-      try {
-         fxa $$5 = $$0.x();
-         auo $$6 = aur.a($$3);
+   public fwt(Collection<auk> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
+   }
 
-         fwt var10;
-         try (amk $$7 = $$5.a($$3.h(), false, $$6)) {
-            eua $$8 = $$7.d();
-            ke.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fwt($$1, $$2, $$3, $$8.J(), $$4, $$9);
+   @Override
+   public xj i() {
+      return xi.a(super.i(), b);
+   }
+
+   @Override
+   protected void aR_() {
+      super.aR_();
+      fpr.b $$0 = this.w.d(2);
+      fpv $$1 = $$0.b().b();
+      $$0.a(new fnk(this.l, this.p), 2, $$1);
+      fmx $$2 = $$0.a(new fmx(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fmd.a(c, $$0x -> this.m.a(new fwt.a())).a(100).a(), 2, $$1);
+      $$0.a(fmd.a(xi.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fmd.a(xi.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fmb var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fpq.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void aO_() {
+      this.u.accept(false);
+   }
+
+   class a extends frw {
+      private static final xj b = xj.c("selectWorld.experimental.details.title");
+      final fps c = new fps(this);
+      @Nullable
+      private fwt.a.a d;
+
+      a() {
+         super(b);
+      }
+
+      @Override
+      protected void aR_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new fwt.a.a(this.m, fwt.this.v));
+         this.c.b(fmd.a(xi.k, $$0 -> this.aO_()).a());
+         this.c.a($$1 -> {
+            fmb var10000 = this.c($$1);
+         });
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
          }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
+         this.c.a();
       }
-   }
 
-   private fwt(BooleanConsumer $$0, DataFixer $$1, etu.c $$2, dfj $$3, boolean $$4, ke $$5) {
-      super(xl.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new brv($$2, $$1, $$5, $$4, false);
-   }
-
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.c(flw.a(xk.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
+      @Override
+      public void aO_() {
+         this.m.a(fwt.this);
       }
-   }
 
-   @Override
-   public void aP_() {
-      this.c.accept(false);
-   }
+      class a extends fmz<fwt.a.b> {
+         public a(final fke $$0, final Collection<auk> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
 
-   @Override
-   public void j() {
-      this.d.a();
-      this.d.close();
-   }
-
-   @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, xl.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, xl.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, xl.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (alk<dff> $$9 : this.d.c()) {
-            int $$10 = azn.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+            for (auk $$2 : $$1) {
+               String $$3 = crs.a(crs.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xj $$4 = xm.a($$2.b().f(), yg.a.a(true));
+                  xj $$5 = xj.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fmw.a(a.this.p, $$5, this.b())));
+               }
+            }
          }
 
-         int $$11 = this.d.f() + this.d.g();
-         xl $$12 = xl.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         xl $$13 = xl.a("optimizeWorld.progress.percentage", azn.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends fmz.a<fwt.a.b> {
+         private final xj b;
+         private final xj c;
+         private final fmw d;
+
+         b(final xj $$0, final xj $$1, final fmw $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public xj a() {
+            return xj.a("narrator.select", xi.a(this.b, this.c));
+         }
       }
    }
 }

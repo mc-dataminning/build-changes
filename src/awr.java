@@ -1,89 +1,153 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-public class awr {
-   protected final Set<all> a = Sets.newHashSet();
-   protected final Set<all> b = Sets.newHashSet();
-   private final aws c = new aws();
+public final class awr {
+   private static final Map<ctp, Pair<String, String>> a = ImmutableMap.of(
+      ctp.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      ctp.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      ctp.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      ctp.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<ctp, awr.a> b;
 
-   public void a(awr $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private awr(Map<ctp, awr.a> $$0) {
+      this.b = $$0;
    }
 
-   public void a(dav<?> $$0) {
-      if (!$$0.b().ap_()) {
-         this.a($$0.a());
+   public awr() {
+      this(ae.a(Maps.newEnumMap(ctp.class), $$0 -> {
+         for (ctp $$1 : ctp.values()) {
+            $$0.put($$1, new awr.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(ctp $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(ctp $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(ctp $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(ctp $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static awr a(wg $$0) {
+      Map<ctp, awr.a> $$1 = Maps.newEnumMap(ctp.class);
+
+      for (ctp $$2 : ctp.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new awr.a($$3, $$4));
+      }
+
+      return new awr($$1);
+   }
+
+   public void b(wg $$0) {
+      for (ctp $$1 : ctp.values()) {
+         awr.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
       }
    }
 
-   protected void a(all $$0) {
-      this.a.add($$0);
+   public static awr a(ul $$0) {
+      Map<ctp, awr.a> $$1 = Maps.newEnumMap(ctp.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new awr.a($$4, $$5));
+      });
+      return new awr($$1);
    }
 
-   public boolean b(@Nullable dav<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
+   public void b(ul $$0) {
+      a.forEach(($$1, $$2) -> {
+         awr.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
    }
 
-   public boolean b(all $$0) {
-      return this.a.contains($$0);
+   public awr a() {
+      Map<ctp, awr.a> $$0 = Maps.newEnumMap(ctp.class);
+
+      for (ctp $$1 : ctp.values()) {
+         awr.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new awr($$0);
    }
 
-   public void c(dav<?> $$0) {
-      this.c($$0.a());
+   public void a(awr $$0) {
+      this.b.clear();
+
+      for (ctp $$1 : ctp.values()) {
+         awr.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
    }
 
-   protected void c(all $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awr && this.b.equals(((awr)$$0).b);
    }
 
-   public boolean d(dav<?> $$0) {
-      return this.b.contains($$0.a());
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   public void e(dav<?> $$0) {
-      this.b.remove($$0.a());
-   }
+   static final class a {
+      boolean a;
+      boolean b;
 
-   public void f(dav<?> $$0) {
-      this.d($$0.a());
-   }
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   protected void d(all $$0) {
-      this.b.add($$0);
-   }
+      public awr.a a() {
+         return new awr.a(this.a, this.b);
+      }
 
-   public boolean a(cti $$0) {
-      return this.c.a($$0);
-   }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof awr.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
 
-   public void a(cti $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
 
-   public boolean b(cti $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(cti $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(aws $$0) {
-      this.c.a($$0);
-   }
-
-   public aws a() {
-      return this.c.a();
-   }
-
-   public void a(cti $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

@@ -1,88 +1,45 @@
-public class csy extends crs {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final bsa s;
-   private final cse t;
+public class csy extends ctw {
+   private final cou a;
+   private int b;
 
-   public csy(int $$0) {
-      this($$0, new bso(1), new cto(1));
-   }
-
-   public csy(int $$0, bsa $$1, cse $$2) {
-      super(ctb.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new ctp($$1, 0, 0, 0) {
-         @Override
-         public void c() {
-            super.c();
-            csy.this.a(this.c);
-         }
-      });
-      this.a($$2);
+   public csy(cou $$0, bsd $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cor $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gy()) {
-                  return false;
-               }
+   public boolean a(cwm $$0) {
+      return false;
+   }
 
-               cwf $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gl().f($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
-         }
+   @Override
+   public cwm a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().L());
       }
+
+      return super.a($$0);
    }
 
    @Override
-   public cwf b(cor $$0, int $$1) {
-      return cwf.k;
+   public void a(cou $$0, cwm $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   protected void a(cwm $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public boolean b(cor $$0) {
-      return this.s.a($$0);
-   }
+   protected void b_(cwm $$0) {
+      $$0.a(this.a.dV(), this.a, this.b);
+      if (this.a instanceof arq $$1 && this.c instanceof dsm $$2) {
+         $$2.a($$1);
+      }
 
-   public cwf l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+      this.b = 0;
    }
 }

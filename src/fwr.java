@@ -1,81 +1,108 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fwr extends frp {
-   private static final xl a = xl.c("selectWorld.experiments");
-   private static final xl b = xl.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final fpl d = new fpl(this);
-   private final frp s;
-   private final auo u;
-   private final Consumer<auo> v;
-   private final Object2BooleanMap<aul> w = new Object2BooleanLinkedOpenHashMap();
+public class fwr extends frw {
+   private static final xj a = xj.c("telemetry_info.screen.title");
+   private static final xj b = xj.c("telemetry_info.screen.description").b(-4539718);
+   private static final xj c = xj.c("telemetry_info.button.privacy_statement");
+   private static final xj d = xj.c("telemetry_info.button.give_feedback");
+   private static final xj s = xj.c("telemetry_info.button.show_data");
+   private static final xj u = xj.c("telemetry_info.opt_in.description");
+   private static final int v = 8;
+   private static final boolean w = fke.Q().D();
+   private final frw x;
+   private final fki y;
+   private final fps z = new fps(this, 16 + 9 * 5 + 20, w ? 33 + fmf.a(fke.Q().h) : 33);
+   @Nullable
+   private fwq A;
+   @Nullable
+   private fmx B;
+   private double C;
 
-   public fwr(frp $$0, auo $$1, Consumer<auo> $$2) {
+   public fwr(frw $$0, fki $$1) {
       super(a);
-      this.s = $$0;
-      this.u = $$1;
-      this.v = $$2;
-
-      for (aul $$3 : $$1.d()) {
-         if ($$3.l() == aup.d) {
-            this.w.put($$3, $$1.g().contains($$3));
-         }
-      }
+      this.x = $$0;
+      this.y = $$1;
    }
 
    @Override
-   protected void aS_() {
-      this.d.a(a, this.p);
-      fpp $$0 = this.d.c(fpp.d());
-      $$0.a(new fmq(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fww.a $$1 = fww.a(310).a(2, true).b(4);
-      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fpp $$2 = this.d.b(fpp.e().a(8));
-      $$2.a(flw.a(xk.d, $$0x -> this.m()).a());
-      $$2.a(flw.a(xk.e, $$0x -> this.aP_()).a());
-      this.d.a($$1x -> {
-         flu var10000 = this.c($$1x);
+   public xj i() {
+      return xi.a(super.i(), b);
+   }
+
+   @Override
+   protected void aR_() {
+      fpw $$0 = this.z.a(fpw.d().a(4));
+      $$0.c().b();
+      $$0.a(new fnk(a, this.p));
+      this.B = $$0.a(new fmx(b, this.p).b(true));
+      fpw $$1 = $$0.a(fpw.e().a(8));
+      $$1.a(fmd.a(c, this::a).a());
+      $$1.a(fmd.a(d, this::b).a());
+      fpw $$2 = this.z.b(fpw.d().a(4));
+      if (w) {
+         $$2.a(this.m());
+      }
+
+      fpw $$3 = $$2.a(fpw.e().a(8));
+      $$3.a(fmd.a(s, this::c).a());
+      $$3.a(fmd.a(xi.d, $$0x -> this.aO_()).a());
+      fpw $$4 = this.z.c(fpw.d().a(8));
+      this.A = $$4.a(new fwq(0, 0, this.n - 40, this.z.d(), this.p));
+      this.A.a($$0x -> this.C = $$0x);
+      this.z.a($$1x -> {
+         fmb var10000 = this.c($$1x);
       });
       this.c();
    }
 
-   private static xl a(aul $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (xl)(haa.a($$1) ? xl.c($$1) : $$0.b());
-   }
-
    @Override
    protected void c() {
-      this.d.a();
+      if (this.A != null) {
+         this.A.a(this.C);
+         this.A.k(this.n - 40);
+         this.A.l(this.z.d());
+         this.A.j();
+      }
+
+      if (this.B != null) {
+         this.B.d(this.n - 16);
+      }
+
+      this.z.a();
    }
 
    @Override
-   public xl i() {
-      return xk.a(super.i(), b);
+   protected void aF_() {
+      if (this.A != null) {
+         this.b(this.A);
+      }
+   }
+
+   private fmb m() {
+      fkh<Boolean> $$0 = this.y.ak();
+      return fmf.a(u, this.p).a($$0).a(this::a).a();
+   }
+
+   private void a(fmb $$0, boolean $$1) {
+      if (this.A != null) {
+         this.A.b($$1);
+      }
+   }
+
+   private void a(fmd $$0) {
+      fqt.a(this, ayi.c);
+   }
+
+   private void b(fmd $$0) {
+      fqt.a(this, ayi.i);
+   }
+
+   private void c(fmd $$0) {
+      ae.m().a(this.m.u().b());
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.s);
-   }
-
-   private void m() {
-      List<aul> $$0 = new ArrayList<>(this.u.g());
-      List<aul> $$1 = new ArrayList<>();
-      this.w.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.u.b($$0.stream().map(aul::g).toList());
-      this.v.accept(this.u);
+   public void aO_() {
+      this.m.a(this.x);
    }
 }

@@ -1,33 +1,37 @@
-public class aef implements zs<ach> {
-   public static final zj<ww, aef> a = zj.a(zh.u, aef::b, zh.a(ma.V), aef::e, xn.d, aef::f, aef::new);
+public class aef implements zq<acf> {
+   public static final zh<wg, aef> a = zq.a(aef::a, aef::new);
    private final int b;
-   private final ctb<?> c;
-   private final xl d;
+   private final alj c;
 
-   public aef(int $$0, ctb<?> $$1, xl $$2) {
+   public aef(int $$0, dbc<?> $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      this.c = $$1.a();
+   }
+
+   private aef(wg $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
+   }
+
+   private void a(wg $$0) {
+      $$0.f(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<aef> a() {
-      return agw.X;
+   public zs<aef> a() {
+      return agu.Z;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ctb<?> e() {
+   public alj b() {
       return this.c;
    }
 
-   public xl f() {
-      return this.d;
+   public int e() {
+      return this.b;
    }
 }

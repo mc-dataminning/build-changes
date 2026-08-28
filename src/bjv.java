@@ -4,14 +4,27 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjv extends bjm {
+public class bjv extends Schema {
    public bjv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:trapped_chest", () -> DSL.optionalFields("Items", DSL.list(bhy.t.in($$0))));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bia.b,
+         () -> DSL.optionalFields(
+               "RootVehicle",
+               DSL.optionalFields("Entity", bia.A.in($$0)),
+               "ender_pearls",
+               DSL.list(bia.A.in($$0)),
+               "Inventory",
+               DSL.list(bia.t.in($$0)),
+               "EnderItems",
+               DSL.list(bia.t.in($$0))
+            )
+      );
+      $$0.registerType(true, bia.A, () -> DSL.optionalFields("Passengers", DSL.list(bia.A.in($$0)), bia.B.in($$0)));
    }
 }

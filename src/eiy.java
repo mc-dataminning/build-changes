@@ -1,41 +1,61 @@
-import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class eiy extends eix {
-   public static final MapCodec<eiy> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eiy::new));
-   protected final List<dvo> h;
+public abstract class eiy {
+   public static final Codec<eiy> d = lz.W.q().dispatch(eiy::a, eiz::a);
+   protected final brp e;
+   protected final ejb f;
+   protected final Optional<eiv> g;
 
-   protected static <P extends eiy> P4<Mu<P>, Long, eqr.a, Float, List<dvo>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dvo.a).fieldOf("states").forGetter($$0x -> $$0x.h));
+   protected static <P extends eiy> P3<Mu<P>, brp, ejb, Optional<eiv>> a(Instance<P> $$0) {
+      return $$0.group(
+         brp.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         ejb.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         eiv.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public eiy(long $$0, eqr.a $$1, float $$2, List<dvo> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public eiy(brp $$0, ejb $$1, Optional<eiv> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   protected eiv<?> a() {
-      return eiv.d;
+   protected abstract eiz<?> a();
+
+   public abstract boolean a(dfs var1, BiConsumer<jh, dvv> var2, azu var3, jh var4, jh var5, ehw var6);
+
+   protected boolean a(dfs $$0, jh $$1) {
+      return egi.c($$0, $$1);
    }
 
-   @Override
-   public dvo a(azv $$0, jh $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dfs $$0, BiConsumer<jh, dvv> $$1, azu $$2, jh $$3, ehw $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            eiv $$5 = this.g.get();
+            jh $$6 = $$3.d();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dvu.a::l)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
+      }
    }
 
-   protected dvo a(List<dvo> $$0, jh $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   protected dvv a(dfs $$0, jh $$1, dvv $$2) {
+      if ($$2.b(dwl.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axi.a));
+         return $$2.b(dwl.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
    }
 
-   protected dvo a(List<dvo> $$0, double $$1) {
-      double $$2 = azn.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public jh a(jh $$0, azu $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

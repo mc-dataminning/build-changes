@@ -8,12 +8,12 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak g, boolean h, Optional<xl> i) {
+public record ag(Optional<alj> c, Optional<at> d, al e, Map<String, ap<?>> f, ak g, boolean h, Optional<xj> i) {
    private static final Codec<Map<String, ap<?>>> j = Codec.unboundedMap(Codec.STRING, ap.a)
       .validate($$0 -> $$0.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success($$0));
    public static final Codec<ag> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  all.a.optionalFieldOf("parent").forGetter(ag::b),
+                  alj.a.optionalFieldOf("parent").forGetter(ag::b),
                   at.a.optionalFieldOf("display").forGetter(ag::c),
                   al.a.optionalFieldOf("rewards", al.b).forGetter(ag::d),
                   j.fieldOf("criteria").forGetter(ag::e),
@@ -26,9 +26,9 @@ public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak
                })
       )
       .validate(ag::a);
-   public static final zj<ww, ag> b = zj.a(ag::a, ag::b);
+   public static final zh<wu, ag> b = zh.a(ag::a, ag::b);
 
-   public ag(Optional<all> $$0, Optional<at> $$1, al $$2, Map<String, ap<?>> $$3, ak $$4, boolean $$5) {
+   public ag(Optional<alj> $$0, Optional<at> $$1, al $$2, Map<String, ap<?>> $$3, ak $$4, boolean $$5) {
       this($$0, $$1, $$2, Map.copyOf($$3), $$4, $$5, $$1.map(ag::a));
    }
 
@@ -36,41 +36,41 @@ public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak
       return $$0.f().a($$0.e().keySet()).map($$1 -> $$0);
    }
 
-   private static xl a(at $$0) {
-      xl $$1 = $$0.a();
+   private static xj a(at $$0) {
+      xj $$1 = $$0.a();
       n $$2 = $$0.e().a();
-      xl $$3 = xo.a($$1.f(), yi.a.a($$2)).f("\n").b($$0.b());
-      xl $$4 = $$1.f().a($$1x -> $$1x.a(new xr(xr.a.a, $$3)));
-      return xo.a($$4).a($$2);
+      xj $$3 = xm.a($$1.f(), yg.a.a($$2)).f("\n").b($$0.b());
+      xj $$4 = $$1.f().a($$1x -> $$1x.a(new xp(xp.a.a, $$3)));
+      return xm.a($$4).a($$2);
    }
 
-   public static xl a(ah $$0) {
-      return $$0.b().h().orElseGet(() -> xl.b($$0.a().toString()));
+   public static xj a(ah $$0) {
+      return $$0.b().h().orElseGet(() -> xj.b($$0.a().toString()));
    }
 
-   private void a(ww $$0) {
-      $$0.a(this.c, wi::a);
-      at.b.a(zh::a).encode($$0, this.d);
+   private void a(wu $$0) {
+      $$0.a(this.c, wg::a);
+      at.b.a(zf::a).encode($$0, this.d);
       this.g.a($$0);
       $$0.a(this.h);
    }
 
-   private static ag b(ww $$0) {
-      return new ag($$0.b(wi::q), (Optional<at>)at.b.a(zh::a).decode($$0), al.b, Map.of(), new ak($$0), $$0.readBoolean());
+   private static ag b(wu $$0) {
+      return new ag($$0.b(wg::q), (Optional<at>)at.b.a(zf::a).decode($$0), al.b, Map.of(), new ak($$0), $$0.readBoolean());
    }
 
    public boolean a() {
       return this.c.isEmpty();
    }
 
-   public void a(azt $$0, jr.a $$1) {
+   public void a(azs $$0, jr.a $$1) {
       this.f.forEach(($$2, $$3) -> {
          bi $$4 = new bi($$0.a($$2), $$1);
          $$3.b().a($$4);
       });
    }
 
-   public Optional<all> b() {
+   public Optional<alj> b() {
       return this.c;
    }
 
@@ -94,12 +94,12 @@ public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak
       return this.h;
    }
 
-   public Optional<xl> h() {
+   public Optional<xj> h() {
       return this.i;
    }
 
    public static class a {
-      private Optional<all> a = Optional.empty();
+      private Optional<alj> a = Optional.empty();
       private Optional<at> b = Optional.empty();
       private al c = al.b;
       private final Builder<String, ap<?>> d = ImmutableMap.builder();
@@ -123,17 +123,17 @@ public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak
       @Deprecated(
          forRemoval = true
       )
-      public ag.a a(all $$0) {
+      public ag.a a(alj $$0) {
          this.a = Optional.of($$0);
          return this;
       }
 
-      public ag.a a(cwf $$0, xl $$1, xl $$2, @Nullable all $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ag.a a(cwm $$0, xj $$1, xj $$2, @Nullable alj $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new at($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ag.a a(dfe $$0, xl $$1, xl $$2, @Nullable all $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new at(new cwf($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ag.a a(dfl $$0, xj $$1, xj $$2, @Nullable alj $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new at(new cwm($$0.j()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ag.a a(at $$0) {
@@ -170,14 +170,14 @@ public record ag(Optional<all> c, Optional<at> d, al e, Map<String, ap<?>> f, ak
          return this;
       }
 
-      public ah b(all $$0) {
+      public ah b(alj $$0) {
          Map<String, ap<?>> $$1 = this.d.buildOrThrow();
          ak $$2 = this.e.orElseGet(() -> this.f.create($$1.keySet()));
          return new ah($$0, new ag(this.a, this.b, this.c, $$1, $$2, this.g));
       }
 
       public ah a(Consumer<ah> $$0, String $$1) {
-         ah $$2 = this.b(all.a($$1));
+         ah $$2 = this.b(alj.a($$1));
          $$0.accept($$2);
          return $$2;
       }

@@ -4,15 +4,15 @@ import javax.annotation.Nullable;
 public interface jl<T> extends kd<T> {
    @Nonnull
    @Override
-   all b(T var1);
+   alj b(T var1);
 
    @Nonnull
    @Override
-   T a(@Nullable all var1);
+   T a(@Nullable alj var1);
 
    @Nonnull
    @Override
    T a(int var1);
 
-   all b();
+   alj b();
 }

@@ -1,20 +1,40 @@
-public record adj(xx.a b) implements zs<ach> {
-   public static final zj<wi, adj> a = zs.a(adj::a, adj::new);
+import javax.annotation.Nullable;
 
-   private adj(wi $$0) {
-      this(xx.a.a($$0));
+public class adj implements zq<acf> {
+   public static final zh<wg, adj> a = zq.a(adj::a, adj::new);
+   private final int b;
+   private final byte c;
+
+   public adj(bul $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private void a(wi $$0) {
-      xx.a.a($$0, this.b);
+   private adj(wg $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wg $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zu<adj> a() {
-      return agw.B;
+   public zs<adj> a() {
+      return agu.D;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public bul a(dfm $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

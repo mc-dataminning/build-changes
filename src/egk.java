@@ -1,53 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public record egk(List<egk.a> b, jm c, ecq d, boolean e) implements egt {
-   public static final Codec<egk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egk.a.a.listOf().fieldOf("layers").forGetter(egk::a),
-               jm.g.fieldOf("direction").forGetter(egk::b),
-               ecq.b.fieldOf("allowed_placement").forGetter(egk::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(egk::d)
-            )
-            .apply($$0, egk::new)
-   );
-
-   public static egk.a a(brm $$0, eiu $$1) {
-      return new egk.a($$0, $$1);
+public class egk extends eew<ehy> {
+   public egk(Codec<ehy> $$0) {
+      super($$0);
    }
 
-   public static egk b(brm $$0, eiu $$1) {
-      return new egk(List.of(a($$0, $$1)), jm.b, ecq.c, false);
-   }
-
-   public List<egk.a> a() {
-      return this.b;
-   }
-
-   public jm b() {
-      return this.c;
-   }
-
-   public ecq c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(brm b, eiu c) {
-      public static final Codec<egk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brm.d.fieldOf("height").forGetter(egk.a::a), eiu.a.fieldOf("provider").forGetter(egk.a::b)).apply($$0, egk.a::new)
-      );
-
-      public brm a() {
-         return this.b;
+   @Override
+   public boolean a(eey<ehy> $$0) {
+      dgk $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      ehy $$3 = $$0.f();
+      azu $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jh $$6 = $$2.h($$5.getAsInt());
+         kl $$7 = new kl($$3.c, $$3.c, $$3.c);
+         ema $$8 = ema.a($$6.b($$7), $$6.a($$7));
+         return jh.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dis.kJ.m(), 2);
+            return 1;
+         }).sum() > 0;
       }
+   }
 
-      public eiu b() {
-         return this.c;
+   private static OptionalInt a(dgk $$0, jh $$1, ehy $$2) {
+      Predicate<dvv> $$3 = $$0x -> $$0x.a(dis.G);
+      Predicate<dvv> $$4 = $$0x -> !$$0x.a(dis.G);
+      Optional<ebg> $$5 = ebg.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(ebg::c).orElseGet(OptionalInt::empty);
+   }
+
+   private boolean b(dgk $$0, jh $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jm $$2 : jm.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   private boolean a(dfn $$0, jh $$1) {
+      dvv $$2 = $$0.a_($$1);
+      return $$2.a(dis.G) || $$2.l();
    }
 }

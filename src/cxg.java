@@ -1,59 +1,57 @@
 import java.util.List;
 
-public class cxg extends cwb {
-   public cxg(cwb.a $$0) {
+public class cxg extends cwi {
+   public cxg(cwi.a $$0) {
       super($$0);
    }
 
-   public static czh b() {
-      jr<dij> $$0 = lz.a(lz.e);
-      return new czh(
-         List.of(czh.a.a(ju.a(dil.bs.p()), 15.0F), czh.a.b($$0.b(axd.P), 15.0F), czh.a.b($$0.b(axd.a), 5.0F), czh.a.b(ju.a(dil.ff.p(), dil.fg.p()), 2.0F)),
-         1.0F,
-         1
-      );
+   @Override
+   public cwm o() {
+      cwm $$0 = super.o();
+      $$0.b(ku.Q, new cyl(cym.a));
+      return $$0;
    }
 
    @Override
-   public boolean a(cwf $$0, dff $$1, dvo $$2, jh $$3, bve $$4) {
-      if (!$$1.C && !$$2.a(axd.aM)) {
-         $$0.a(1, $$4, buq.a);
-      }
-
-      return $$2.a(axd.P)
-         || $$2.a(dil.bs)
-         || $$2.a(dil.bt)
-         || $$2.a(dil.bu)
-         || $$2.a(dil.bv)
-         || $$2.a(dil.sG)
-         || $$2.a(dil.ff)
-         || $$2.a(dil.fI)
-         || $$2.a(axd.a);
-   }
-
-   @Override
-   public bsh a(czy $$0) {
-      dff $$1 = $$0.q();
+   public bsk a(daf $$0) {
+      dfm $$1 = $$0.q();
       jh $$2 = $$0.a();
-      dvo $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dlx $$5 && !$$5.q($$3)) {
-         cor $$6 = $$0.o();
-         cwf $$7 = $$0.n();
-         if ($$6 instanceof arr) {
-            ao.N.a((arr)$$6, $$2, $$7);
+      cou $$3 = $$0.o();
+      cwm $$4 = $$0.n();
+      cyl $$5 = $$4.a(ku.Q, cyl.a);
+      dvv $$6 = $$1.a_($$2);
+      if ($$0.k() != jm.a && $$6.a(axc.ck) && $$5.a(cym.a)) {
+         $$1.a(null, $$2, awn.kj, awo.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cwp.a($$4, $$3, new cwm(cwq.sB)));
+         $$3.b(awx.c.b($$4.h()));
+         if (!$$1.C) {
+            arp $$7 = (arp)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(ls.am, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
          }
 
-         $$1.a($$6, $$2, awo.lo, awp.e, 1.0F, 1.0F);
-         dvo $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(eak.c, $$2, eak.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bve.d($$0.p()));
-         }
-
-         return bsh.a;
+         $$1.a(null, $$2, awn.cB, awo.e, 1.0F, 1.0F);
+         $$1.a(null, ear.z, $$2);
+         $$1.b($$2, dis.sI.m());
+         return bsk.a;
+      } else {
+         return bsk.e;
       }
+   }
 
-      return super.a($$0);
+   @Override
+   public xj a(cwm $$0) {
+      cyl $$1 = $$0.a(ku.Q);
+      return $$1 != null ? $$1.a(this.k + ".effect.") : super.a($$0);
+   }
+
+   @Override
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      cyl $$4 = $$0.a(ku.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1.b());
+      }
    }
 }

@@ -1,5 +1,5 @@
-public class gxq extends gvd {
-   public boolean a;
+public class gxq extends gvo {
+   public float a;
    public float b;
-   public float c;
+   public boolean c;
 }

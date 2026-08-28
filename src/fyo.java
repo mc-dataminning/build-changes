@@ -1,45 +1,14 @@
-public class fyo extends fzv {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final gcc d;
-   private final gcc e;
-
-   public fyo(gcc $$0) {
-      super($$0, gjh::c);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
+public class fyo extends gae {
+   public fyo(gcl $$0) {
+      super($$0, gjq::e);
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("bottom", gch.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gce.a);
-      $$1.a("lid", gch.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gce.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gch.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gce.a(0.0F, 9.0F, 1.0F));
-      return gci.a($$0, 64, 64);
-   }
-
-   public static gci b() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("bottom", gch.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gce.a);
-      $$1.a("lid", gch.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gce.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gch.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gce.a(0.0F, 9.0F, 1.0F));
-      return gci.a($$0, 64, 64);
-   }
-
-   public static gci c() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a("bottom", gch.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gce.a);
-      $$1.a("lid", gch.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gce.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gch.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gce.a(0.0F, 9.0F, 1.0F));
-      return gci.a($$0, 64, 64);
-   }
-
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      gcq $$2 = gcq.c().a(0, 0).a(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
+      $$1.a("cross_1", $$2, gcn.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gcn.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gcr.a($$0, 16, 16);
    }
 }

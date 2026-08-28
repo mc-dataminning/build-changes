@@ -1,86 +1,79 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fdz implements AutoCloseable {
-   private static final int a = -1;
-   private final all b;
-   private int c;
+public class fdz implements fea, AutoCloseable {
+   private final int b;
+   private final Deque<fdz.a<?>> c = new ArrayDeque<>();
 
-   private fdz(int $$0, all $$1) {
-      this.b = $$1;
-      this.c = $$0;
+   public fdz(int $$0) {
+      this.b = $$0;
    }
 
-   public static fdz a(all $$0, fdz.a $$1, String $$2) throws gjo.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader($$1.b());
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gjo.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
-      } else {
-         return new fdz($$3, $$0);
+   public void a() {
+      Iterator<? extends fdz.a<?>> $$0 = this.c.iterator();
+
+      while ($$0.hasNext()) {
+         fdz.a<?> $$1 = (fdz.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
+         }
       }
    }
 
    @Override
-   public void close() {
-      if (this.c == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.c);
-         this.c = -1;
+   public <T> T a(fec<T> $$0) {
+      Iterator<? extends fdz.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fdz.a<?> $$2 = (fdz.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
       }
+
+      return $$0.e();
    }
 
-   public all a() {
-      return this.b;
+   @Override
+   public <T> void a(fec<T> $$0, T $$1) {
+      this.c.addFirst(new fdz.a<>($$0, $$1, this.b));
    }
 
-   public int b() {
+   public void b() {
+      this.c.forEach(fdz.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<fdz.a<?>> c() {
       return this.c;
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fec<T> a;
+      final T b;
+      int c;
 
-      private static final fdz.a[] c = values();
-      private final String d;
-      private final String e;
-      private final int f;
-
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
+      a(fec<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      @Nullable
-      public static fdz.a a(all $$0) {
-         for (fdz.a $$1 : c) {
-            if ($$0.a().endsWith($$1.e)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public ale c() {
-         return new ale("shaders", this.e);
+      @Override
+      public void close() {
+         this.a.a(this.b);
       }
    }
 }

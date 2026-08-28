@@ -1,13 +1,18 @@
+import java.net.Proxy;
 import javax.annotation.Nullable;
 
-public abstract class ffi extends RuntimeException {
+public class ffi {
    @Nullable
-   public xl a() {
-      return null;
-   }
+   private static Proxy a;
 
    @Nullable
-   public xl[] b() {
-      return null;
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

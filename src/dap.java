@@ -1,76 +1,150 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public final class dap implements Predicate<cwf> {
-   public static final zj<ww, dap> a = zh.c(ma.K).a(dap::new, $$0 -> $$0.e);
-   public static final zj<ww, Optional<dap>> b = zh.c(ma.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dap((ju<cwb>)$$0)), $$0 -> $$0.<ju.a<cwb>>map($$0x -> $$0x.e).orElse(ju.a()));
-   public static final Codec<ju<cwb>> c = alf.a(ma.K, cwf.a, false);
-   public static final Codec<dap> d = ayw.b(c).xmap(dap::new, $$0 -> $$0.e);
-   private final ju<cwb> e;
-   @Nullable
-   private List<jq<cwb>> f;
+public class dap implements dbd {
+   public static final dap a = new dap(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<cwm> d;
+   private final coz e = new coz();
+   private final int f;
 
-   private dap(ju<cwb> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cwj.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
+   private dap(int $$0, int $$1, List<cwm> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
+
+      for (cwm $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
          }
-      });
-      this.e = $$0;
-   }
-
-   public static boolean a(Optional<dap> $$0, cwf $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
-   }
-
-   public List<jq<cwb>> a() {
-      if (this.f == null) {
-         this.f = ImmutableList.copyOf(this.e);
       }
 
+      this.f = $$3;
+   }
+
+   public static dap a(int $$0, int $$1, List<cwm> $$2) {
+      return b($$0, $$1, $$2).a();
+   }
+
+   public static dap.a b(int $$0, int $$1, List<cwm> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               cwm $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
+               }
+            }
+
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
+            }
+         }
+
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return dap.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new dap.a(new dap($$0, $$1, $$2), $$3, $$5);
+         } else {
+            List<cwm> $$13 = new ArrayList<>($$11 * $$12);
+
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new dap.a(new dap($$11, $$12, $$13), $$3, $$5);
+         }
+      } else {
+         return dap.a.a;
+      }
+   }
+
+   @Override
+   public cwm a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   public cwm a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public coz c() {
+      return this.e;
+   }
+
+   public List<cwm> d() {
+      return this.d;
+   }
+
+   public int e() {
       return this.f;
    }
 
-   public boolean a(cwf $$0) {
-      List<jq<cwb>> $$1 = this.a();
+   public int f() {
+      return this.b;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$0.a($$1.get($$2))) {
-            return true;
-         }
-      }
-
-      return false;
+   public int g() {
+      return this.c;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return $$0 instanceof dap $$1 ? Objects.equals(this.e, $$1.e) : false;
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof dap $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cwm.a(this.d, $$1.d);
+      }
    }
 
-   public static dap a(dfe $$0) {
-      return new dap(ju.a($$0.j().f()));
+   @Override
+   public int hashCode() {
+      int $$0 = cwm.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
    }
 
-   public static dap a(dfe... $$0) {
-      return a(Arrays.stream($$0));
-   }
+   public static record a(dap b, int c, int d) {
+      public static final dap.a a = new dap.a(dap.a, 0, 0);
 
-   public static dap a(Stream<? extends dfe> $$0) {
-      return new dap(ju.a($$0.map($$0x -> $$0x.j().f()).toList()));
-   }
+      public dap a() {
+         return this.b;
+      }
 
-   public static dap a(ju<cwb> $$0) {
-      return new dap($$0);
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

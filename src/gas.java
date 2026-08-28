@@ -1,32 +1,30 @@
-public class gas extends fza<gww> {
-   private static final String a = "main";
-   private final gcc b;
+public class gas extends fzj<gvo> {
+   private final gcl a;
+   private final gcl b;
 
-   public gas(gcc $$0) {
+   public gas(gcl $$0) {
       super($$0);
-      this.b = $$0.b("main");
+      this.a = $$0.b("left_fin");
+      this.b = $$0.b("right_fin");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      $$1.a(
-         "main",
-         gch.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         gce.a
-      );
-      return gci.a($$0, 64, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", gcq.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gcn.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", gcq.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gcn.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", gcq.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gcn.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", gcq.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gcn.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", gcq.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gcn.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", gcq.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gcn.a(1.5F, 22.0F, -1.5F));
+      return gcr.a($$0, 32, 32);
    }
 
-   public void a(gww $$0) {
+   @Override
+   public void a(gvo $$0) {
       super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+      this.b.g = -0.2F + 0.4F * azm.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.p * 0.2F);
    }
 }

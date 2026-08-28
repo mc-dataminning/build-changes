@@ -1,63 +1,72 @@
-import java.util.Arrays;
+import java.util.Set;
 
-public class gau extends fza<gvd> {
-   private static final int a = 7;
-   private final gcc[] b = new gcc[7];
-   private final gcc[] c = new gcc[3];
-   private static final int[][] d = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] e = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+public class gau extends fzj<gxc> {
+   private static final float a = 50.0F;
+   private static final float b = -40.0F;
+   private static final float c = 0.6F;
+   private static final gcu d = gcu.scaling(0.6F);
+   private static final gcu e = new fyl(true, 22.0F, 2.0F, 2.65F, 2.5F, 36.0F, Set.of("head", "left_ear", "right_ear", "nose"));
+   private static final String f = "left_haunch";
+   private static final String g = "right_haunch";
+   private final gcl i;
+   private final gcl j;
+   private final gcl k;
+   private final gcl l;
+   private final gcl m;
+   private final gcl n;
+   private final gcl o;
+   private final gcl p;
+   private final gcl q;
+   private final gcl r;
 
-   public gau(gcc $$0) {
+   public gau(gcl $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
+      this.i = $$0.b("left_hind_foot");
+      this.j = $$0.b("right_hind_foot");
+      this.k = $$0.b("left_haunch");
+      this.l = $$0.b("right_haunch");
+      this.m = $$0.b("left_front_leg");
+      this.n = $$0.b("right_front_leg");
+      this.o = $$0.b("head");
+      this.p = $$0.b("right_ear");
+      this.q = $$0.b("left_ear");
+      this.r = $$0.b("nose");
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static gcr a(boolean $$0) {
+      gct $$1 = new gct();
+      gcv $$2 = $$1.a();
+      $$2.a("left_hind_foot", gcq.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gcn.a(3.0F, 17.5F, 3.7F));
+      $$2.a("right_hind_foot", gcq.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gcn.a(-3.0F, 17.5F, 3.7F));
+      $$2.a("left_haunch", gcq.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gcn.a(3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$2.a("right_haunch", gcq.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gcn.a(-3.0F, 17.5F, 3.7F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$2.a("body", gcq.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), gcn.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
+      $$2.a("left_front_leg", gcq.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gcn.a(3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$2.a("right_front_leg", gcq.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gcn.a(-3.0F, 17.0F, -1.0F, (float) (-Math.PI / 18), 0.0F, 0.0F));
+      $$2.a("head", gcq.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), gcn.a(0.0F, 16.0F, -1.0F));
+      $$2.a("right_ear", gcq.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gcn.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
+      $$2.a("left_ear", gcq.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gcn.a(0.0F, 16.0F, -1.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
+      $$2.a("tail", gcq.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), gcn.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
+      $$2.a("nose", gcq.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), gcn.a(0.0F, 16.0F, -1.0F));
+      return gcr.a($$1, 64, 32).a($$0 ? e : d);
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            gch.c().a(e[$$4][0], e[$$4][1]).a((float)d[$$4][0] * -0.5F, 0.0F, (float)d[$$4][2] * -0.5F, (float)d[$$4][0], (float)d[$$4][1], (float)d[$$4][2]),
-            gce.a(0.0F, (float)(24 - d[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(d[$$4][2] + d[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), gch.c().a(20, 0).a(-5.0F, 0.0F, (float)d[2][2] * -0.5F, 10.0F, 8.0F, (float)d[2][2]), gce.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), gch.c().a(20, 11).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 4.0F, (float)d[4][2]), gce.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), gch.c().a(20, 18).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 5.0F, (float)d[1][2]), gce.a(0.0F, 19.0F, $$2[1]));
-      return gci.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(gvd $$0) {
+   public void a(gxc $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1].f = azn.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
-         this.b[$$1].b = azn.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
-      }
-
-      this.c[0].f = this.b[2].f;
-      this.c[1].f = this.b[4].f;
-      this.c[1].b = this.b[4].b;
-      this.c[2].f = this.b[1].f;
-      this.c[2].b = this.b[1].b;
+      this.r.e = $$0.V * (float) (Math.PI / 180.0);
+      this.o.e = $$0.V * (float) (Math.PI / 180.0);
+      this.p.e = $$0.V * (float) (Math.PI / 180.0);
+      this.q.e = $$0.V * (float) (Math.PI / 180.0);
+      this.r.f = $$0.U * (float) (Math.PI / 180.0);
+      this.o.f = $$0.U * (float) (Math.PI / 180.0);
+      this.p.f = this.r.f - (float) (Math.PI / 12);
+      this.q.f = this.r.f + (float) (Math.PI / 12);
+      float $$1 = azm.a($$0.a * (float) Math.PI);
+      this.k.e = ($$1 * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.l.e = ($$1 * 50.0F - 21.0F) * (float) (Math.PI / 180.0);
+      this.i.e = $$1 * 50.0F * (float) (Math.PI / 180.0);
+      this.j.e = $$1 * 50.0F * (float) (Math.PI / 180.0);
+      this.m.e = ($$1 * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
+      this.n.e = ($$1 * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
    }
 }

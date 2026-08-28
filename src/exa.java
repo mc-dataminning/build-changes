@@ -1,74 +1,33 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class exa {
-   private final Set<ewz<?>> a;
-   private final Set<ewz<?>> b;
+public class exa extends ewa {
+   public static final MapCodec<exa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(czt.d.fieldOf("pages").forGetter($$0x -> $$0x.b), evz.a(100).forGetter($$0x -> $$0x.c))).apply($$0, exa::new)
+   );
+   private final List<ash<String>> b;
+   private final evz c;
 
-   exa(Set<ewz<?>> $$0, Set<ewz<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(ewz<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<ewz<?>> a() {
-      return this.a;
-   }
-
-   public Set<ewz<?>> b() {
-      return this.b;
+   protected exa(List<exy> $$0, List<ash<String>> $$1, evz $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   protected cwm a(cwm $$0, eun $$1) {
+      $$0.a(ku.S, czt.a, this::a);
+      return $$0;
    }
 
-   public void a(eum $$0, euh $$1) {
-      this.a($$0.c(), $$1);
+   public czt a(czt $$0) {
+      List<ash<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
-   public void a(azt $$0, euh $$1) {
-      Set<ewz<?>> $$2 = $$1.a();
-      Set<ewz<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static exa.a c() {
-      return new exa.a();
-   }
-
-   public static class a {
-      private final Set<ewz<?>> a = Sets.newIdentityHashSet();
-      private final Set<ewz<?>> b = Sets.newIdentityHashSet();
-
-      public exa.a a(ewz<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public exa.a b(ewz<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public exa a() {
-         return new exa(this.a, this.b);
-      }
+   @Override
+   public ewc<exa> b() {
+      return ewd.O;
    }
 }

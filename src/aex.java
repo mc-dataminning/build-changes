@@ -1,37 +1,33 @@
-public class aex implements zs<ach> {
-   public static final zj<wi, aex> a = zs.a(aex::a, aex::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public aex(bui $$0, byte $$1) {
-      this.b = $$0.as();
-      this.c = $$1;
+public class aex implements zq<acf> {
+   public static final zh<wg, aex> a = zq.a(aex::a, aex::new);
+   @Nullable
+   private final alj b;
+
+   public aex(@Nullable alj $$0) {
+      this.b = $$0;
    }
 
-   private aex(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   private aex(wg $$0) {
+      this.b = $$0.c(wg::q);
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
+   private void a(wg $$0) {
+      $$0.a(this.b, wg::a);
    }
 
    @Override
-   public zu<aex> a() {
-      return agw.an;
+   public zs<aex> a() {
+      return agu.ap;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public bui a(dff $$0) {
-      return $$0.a(this.b);
-   }
-
-   public float b() {
-      return azn.a(this.c);
+   @Nullable
+   public alj b() {
+      return this.b;
    }
 }

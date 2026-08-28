@@ -1,132 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public class evg extends evt {
+public class evg extends evf {
    public static final MapCodec<evg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  evg.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kt.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kt.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, evg::new)
+      $$0 -> $$0.group(Codec.either(ali.a(ma.bd), eus.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, evg::new)
    );
-   private final evg.b b;
-   private final Optional<List<kt<?>>> c;
-   private final Optional<List<kt<?>>> d;
-   private final Predicate<kt<?>> e;
+   private final Either<ali<eus>, eus> j;
 
-   evg(List<exr> $$0, evg.b $$1, Optional<List<kt<?>>> $$2, Optional<List<kt<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kt<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ae.a($$4);
+   private evg(Either<ali<eus>, eus> $$0, int $$1, int $$2, List<exy> $$3, List<ewb> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public evv<evg> b() {
-      return evw.J;
+   public eve a() {
+      return evb.d;
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return this.b.a();
+   public void a(Consumer<cwm> $$0, eun $$1) {
+      ((eus)this.j.map($$1x -> $$1.a().c($$1x).map(jq::a).orElse(eus.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   public cwf a(cwf $$0, eug $$1) {
-      kq $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
+   public void a(eut $$0) {
+      Optional<ali<eus>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         ali<eus> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
+         }
+
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
+         }
+      }
+
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((eus)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   public static evg.a a(evg.b $$0) {
-      return new evg.a($$0);
+   public static evf.a<?> a(ali<eus> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new evg(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends evt.a<evg.a> {
-      private final evg.b a;
-      private Optional<Builder<kt<?>>> b = Optional.empty();
-      private Optional<Builder<kt<?>>> c = Optional.empty();
-
-      a(evg.b $$0) {
-         this.a = $$0;
-      }
-
-      public evg.a a(kt<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
-         }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public evg.a b(kt<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
-      }
-
-      protected evg.a a() {
-         return this;
-      }
-
-      @Override
-      public evu b() {
-         return new evg(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements baj {
-      a("block_entity");
-
-      public static final Codec<evg.b> b = baj.b(evg.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kq a(eug $$0) {
-         switch (this) {
-            case a:
-               dsr $$1 = $$0.c(exc.h);
-               return $$1 != null ? $$1.r() : kq.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<ewz<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(exc.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   public static evf.a<?> a(eus $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new evg(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

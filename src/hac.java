@@ -1,78 +1,94 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public class hac implements avf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hab b = new hab("US", "English", false);
-   private Map<String, hab> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<gzy> e;
+public class hac implements AutoCloseable {
+   private final Int2ObjectMap<hac.a> a = new Int2ObjectOpenHashMap();
+   final gzf b;
 
-   public hac(String $$0, Consumer<gzy> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public hac(gzf $$0) {
+      this.b = $$0;
    }
 
-   private static Map<String, hab> a(Stream<atp> $$0) {
-      Map<String, hab> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            hao $$2 = $$1x.a(hao.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+   public void a(etn $$0, etp $$1) {
+      this.c($$0, $$1).a();
+   }
+
+   public alj b(etn $$0, etp $$1) {
+      hac.a $$2 = this.c($$0, $$1);
+      $$2.b();
+      return $$2.d;
+   }
+
+   public void a() {
+      ObjectIterator var1 = this.a.values().iterator();
+
+      while (var1.hasNext()) {
+         hac.a $$0 = (hac.a)var1.next();
+         $$0.close();
+      }
+
+      this.a.clear();
+   }
+
+   private hac.a c(etn $$0, etp $$1) {
+      return (hac.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new hac.a($$1x, $$1);
+         } else {
+            $$2.a($$1);
+            return $$2;
          }
       });
-      return ImmutableMap.copyOf($$1);
    }
 
    @Override
-   public void a(ave $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         hab $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
+   public void close() {
+      this.a();
+   }
+
+   class a implements AutoCloseable {
+      private etp a;
+      private final gyr b;
+      private boolean c = true;
+      final alj d;
+
+      a(final int $$0, final etp $$1) {
+         this.a = $$1;
+         this.b = new gyr(128, 128, true);
+         this.d = hac.this.b.a("map/" + $$0, this.b);
+      }
+
+      void a(etp $$0) {
+         boolean $$1 = this.a != $$0;
+         this.a = $$0;
+         this.c |= $$1;
+      }
+
+      public void a() {
+         this.c = true;
+      }
+
+      void b() {
+         if (this.c) {
+            fdr $$0 = this.b.f();
+            if ($$0 != null) {
+               for (int $$1 = 0; $$1 < 128; $$1++) {
+                  for (int $$2 = 0; $$2 < 128; $$2++) {
+                     int $$3 = $$2 + $$1 * 128;
+                     $$0.a($$2, $$1, erz.b(this.a.g[$$3]));
+                  }
+               }
+            }
+
+            this.b.e();
+            this.c = false;
          }
       }
 
-      gzy $$4 = gzy.a($$0, $$1, $$2);
-      haa.a($$4);
-      ui.a($$4);
-      this.e.accept($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, hab> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public hab b(String $$0) {
-      return this.c.get($$0);
+      @Override
+      public void close() {
+         this.b.close();
+      }
    }
 }

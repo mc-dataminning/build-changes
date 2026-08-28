@@ -1,36 +1,27 @@
-public class gor extends goz<cpb, gvd> {
-   private static final all a = all.b("textures/entity/enderdragon/dragon_fireball.png");
-   private static final gjh b = gjh.f(a);
+public class gor extends gof<cip, gve, fyv> {
+   private static final alj a = alj.b("textures/entity/camel/camel.png");
 
-   public gor(gpa.a $$0) {
-      super($$0);
+   public gor(gpk.a $$0) {
+      super($$0, new fyv($$0.a(gck.J)), new fyv($$0.a(gck.K)), 0.7F);
    }
 
-   protected int a(cpb $$0, jh $$1) {
-      return 15;
+   public alj a(gve $$0) {
+      return a;
    }
 
-   @Override
-   public void a(gvd $$0, fek $$1, gix $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(this.e.b());
-      fek.a $$4 = $$1.c();
-      feo $$5 = $$2.getBuffer(b);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public gve a() {
+      return new gve();
    }
 
-   private static void a(feo $$0, fek.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(gyk.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public gvd b() {
-      return new gvd();
+   public void a(cip $$0, gve $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.j();
+      $$1.b = $$0.ca();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f.a($$0.cg);
+      $$1.g.a($$0.ch);
+      $$1.h.a($$0.ci);
    }
 }

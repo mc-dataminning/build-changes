@@ -1,16 +1,7 @@
-public abstract class cth extends crs {
-   public cth(ctb<?> $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public abstract cth.a a(boolean var1, boolean var2, dav<?> var3, coq var4);
-
-   public abstract void a(cow var1);
-
-   public abstract cti ao_();
-
-   public static enum a {
-      a,
-      b;
-   }
+@FunctionalInterface
+public interface cth {
+   @Nullable
+   crz createMenu(int var1, cot var2, cou var3);
 }

@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class gw implements ArgumentType<gu> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("argument.rotation.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("argument.rotation.incomplete"));
 
    public static gw a() {
       return new gw();

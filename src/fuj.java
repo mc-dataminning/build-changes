@@ -1,63 +1,39 @@
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public abstract class fuj extends frp {
-   private static final int b = 100;
-   private final xl c;
-   @Nullable
-   private final xl d;
-   private final xl s;
-   @Nullable
-   protected fly a;
-   @Nullable
-   private fmh u;
-   private final fpj v;
+public class fuj implements fuh {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fql e;
 
-   protected fuj(xl $$0, xl $$1, xl $$2) {
-      this($$0, $$1, null, $$2);
+   public fuj(fql $$0) {
+      this.e = $$0;
    }
-
-   protected fuj(xl $$0, xl $$1, @Nullable xl $$2, xl $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fpj(0, 0, this.n, this.o);
-   }
-
-   protected abstract fpm m();
 
    @Override
-   protected void aS_() {
-      fpp $$0 = this.v.a(fpp.d().a(8));
-      $$0.c().b();
-      $$0.a(new fnd(this.n(), this.p));
-      this.u = $$0.a(new fmh(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fpp $$1 = $$0.a(fpp.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fly.a(this.d, this.p).a());
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
       }
 
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         flu var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
       }
 
-      this.v.a();
-      fpj.a(this.v, this.H());
+      return $$6;
    }
 
-   @Override
-   public xl i() {
-      return this.s;
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(azm.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

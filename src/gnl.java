@@ -1,74 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class gnl implements gmx.a {
-   private final fjx a;
-   private double b = Double.MIN_VALUE;
-   private List<bui> c = Collections.emptyList();
+public class gnl implements gng.a {
+   private final fke a;
+   private static final int b = 10;
 
-   public gnl(fjx $$0) {
+   public gnl(fke $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bui $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dY().a_($$6, $$6.cT().g(16.0)));
-      }
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      dfm $$5 = this.a.s;
+      jh $$6 = jh.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      cor $$7 = this.a.t;
-      if ($$7 != null && $$7.ay.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+      for (jh $$8 : jh.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dfv.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azm.g($$10, 0.9F, 0.9F);
+         long $$12 = kj.e($$8.a());
+         if ($$7.add($$12)) {
+            gng.a(
+               $$0,
+               $$1,
+               $$5.Q().p().a(dfv.a, kj.a($$12)),
+               (double)kj.a(kj.b($$12), 8),
+               (double)kj.a(kj.c($$12), 8),
+               (double)kj.a(kj.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-      for (bui $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         if ($$9 != 15) {
+            gng.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   private void a(fek $$0, gix $$1, double $$2, double $$3, double $$4, bui $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ay.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         jh $$12 = $$5.aT();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         jh $$13 = $$5.aR();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bui $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.as() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(jh $$0, fek $$1, double $$2, double $$3, double $$4, gix $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gjr.a($$1, $$5.getBuffer(gjh.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gmx.a(
-         $$1,
-         $$5.getBuffer(gjh.y()),
-         this.a.s.a_($$0).b(this.a.s, $$0, ezw.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
    }
 }

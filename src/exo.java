@@ -1,36 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record exo(exr b) implements exr {
-   public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(exr.e.fieldOf("term").forGetter(exo::c)).apply($$0, exo::new));
+public abstract class exo implements exy {
+   protected final List<exy> c;
+   private final Predicate<eun> a;
+
+   protected exo(List<exy> $$0, Predicate<eun> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends exo> MapCodec<T> a(Function<List<exy>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(exy.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends exo> Codec<T> b(Function<List<exy>, T> $$0) {
+      return exy.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eun $$0) {
+      return this.a.test($$0);
+   }
 
    @Override
-   public exs b() {
-      return ext.a;
+   public void a(eut $$0) {
+      exy.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(eug $$0) {
-      return !this.b.test($$0);
-   }
+   public abstract static class a implements exy.a {
+      private final Builder<exy> a = ImmutableList.builder();
 
-   @Override
-   public Set<ewz<?>> a() {
-      return this.b.a();
-   }
+      protected a(exy.a... $$0) {
+         for (exy.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   @Override
-   public void a(eum $$0) {
-      exr.super.a($$0);
-      this.b.a($$0);
-   }
+      public void a(exy.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public static exr.a a(exr.a $$0) {
-      exo $$1 = new exo($$0.build());
-      return () -> $$1;
-   }
+      @Override
+      public exy build() {
+         return this.a(this.a.build());
+      }
 
-   public exr c() {
-      return this.b;
+      protected abstract exy a(List<exy> var1);
    }
 }

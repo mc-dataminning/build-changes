@@ -1,22 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bzn {
-   public static bwy<bve> a() {
-      return cak.a(
-         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$0 -> $$0.group($$0.b(cei.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bve $$1xx ? $$1xx : null)
-                           .filter(bve::eI)
-                           .filter($$1xx -> $$1xx.ar() != bup.by || $$2.ac().b(dfb.N))
-                           .ifPresent($$1xx -> $$1.b());
+   public static bxb<bvh> a(int $$0, BiPredicate<bvh, bvh> $$1) {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2 -> $$2.group($$2.b(cel.o), $$2.a(cel.ab), $$2.c(cel.ai), $$2.a(cel.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bvh $$10 = $$2.b($$3);
+                     if (!$$10.eE()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
+
+                        $$5.a($$10.dv(), (long)$$0);
+                        if ($$10.aq() != bus.bO || $$7.N().b(dfi.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
                         return true;
                      }
-               ))
+                  }))
       );
    }
 }

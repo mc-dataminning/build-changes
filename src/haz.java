@@ -1,45 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public abstract class haz implements hav {
-   protected final hav a;
+public record haz(Map<String, ham> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<haz> b = Codec.unboundedMap(a, ham.a).xmap(haz::new, haz::a);
+   public static final auc<haz> c = auc.a("language", b);
 
-   public haz(hav $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public List<gke> a(@Nullable dvo $$0, @Nullable jm $$1, azv $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.a.d();
-   }
-
-   @Override
-   public gyt e() {
-      return this.a.e();
-   }
-
-   @Override
-   public gkp f() {
-      return this.a.f();
+   public Map<String, ham> a() {
+      return this.d;
    }
 }

@@ -1,103 +1,74 @@
-import java.util.ArrayList;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class cxb extends cwb {
-   public static final Predicate<cwf> c = $$0 -> $$0.a(axm.aY);
-   public static final Predicate<cwf> d = c.or($$0 -> $$0.a(cwj.uM));
+public class cxb extends cuy {
+   private static final MapCodec<chy.d> a = chy.d.a.fieldOf("BucketVariantTag");
+   private final bus<?> b;
+   private final awm c;
 
-   public cxb(cwb.a $$0) {
-      super($$0);
+   public cxb(bus<?> $$0, eru $$1, awm $$2, cwi.a $$3) {
+      super($$1, $$3);
+      this.b = $$0;
+      this.c = $$2;
    }
 
-   public Predicate<cwf> d() {
-      return this.b();
-   }
-
-   public abstract Predicate<cwf> b();
-
-   public static cwf a(bve $$0, Predicate<cwf> $$1) {
-      if ($$1.test($$0.b(bsg.b))) {
-         return $$0.b(bsg.b);
-      } else {
-         return $$1.test($$0.b(bsg.a)) ? $$0.b(bsg.a) : cwf.k;
+   @Override
+   public void a(@Nullable cou $$0, dfm $$1, cwm $$2, jh $$3) {
+      if ($$1 instanceof arp) {
+         this.a((arp)$$1, $$2, $$3);
+         $$1.a($$0, ear.t, $$3);
       }
    }
 
-   public abstract int c();
+   @Override
+   protected void a(@Nullable cou $$0, dfn $$1, jh $$2) {
+      $$1.a($$0, $$2, this.c, awo.g, 1.0F, 1.0F);
+   }
 
-   protected void a(arq $$0, bve $$1, bsg $$2, cwf $$3, List<cwf> $$4, float $$5, float $$6, boolean $$7, @Nullable bve $$8) {
-      float $$9 = dby.a($$0, $$3, $$1, 0.0F);
-      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
-      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
-      float $$12 = 1.0F;
+   private void a(arp $$0, cwm $$1, jh $$2) {
+      bul $$3 = this.b.b($$0, bus.a($$0, $$1, null), $$2, bur.l, true, false);
+      if ($$3 instanceof cha $$4) {
+         cyv $$5 = $$1.a(ku.X, cyv.a);
+         $$4.h($$5.c());
+         $$4.x(true);
+      }
 
-      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
-         cwf $$14 = $$4.get($$13);
-         if (!$$14.f()) {
-            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
-            $$12 = -$$12;
-            int $$16 = $$13;
-            cpk.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
-            $$3.a(this.h($$14), $$1, bve.d($$2));
-            if ($$3.f()) {
-               break;
+      if ($$3 != null) {
+         $$0.a_($$3);
+      }
+   }
+
+   @Override
+   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
+      if (this.b == bus.bw) {
+         cyv $$4 = $$0.a(ku.X, cyv.a);
+         if ($$4.b()) {
+            return;
+         }
+
+         Optional<chy.d> $$5 = $$4.a(a).result();
+         if ($$5.isPresent()) {
+            chy.d $$6 = $$5.get();
+            n[] $$7 = new n[]{n.u, n.h};
+            String $$8 = "color.minecraft." + $$6.c();
+            String $$9 = "color.minecraft." + $$6.d();
+            int $$10 = chy.b.indexOf($$6);
+            if ($$10 != -1) {
+               $$2.add(xj.c(chy.b($$10)).a($$7));
+               return;
             }
-         }
-      }
-   }
 
-   protected int h(cwf $$0) {
-      return 1;
-   }
-
-   protected abstract void a(bve var1, cpk var2, int var3, float var4, float var5, float var6, @Nullable bve var7);
-
-   protected cpk a(dff $$0, bve $$1, cwf $$2, cwf $$3, boolean $$4) {
-      cug $$6 = $$3.h() instanceof cug $$5 ? $$5 : (cug)cwj.ox;
-      coy $$7 = $$6.a($$0, $$3, $$1, $$2);
-      if ($$4) {
-         $$7.a(true);
-      }
-
-      return $$7;
-   }
-
-   protected static List<cwf> a(cwf $$0, cwf $$1, bve $$2) {
-      if ($$1.f()) {
-         return List.of();
-      } else {
-         int $$4 = $$2.dY() instanceof arq $$3 ? dby.a($$3, $$0, $$2, 1) : 1;
-         List<cwf> $$5 = new ArrayList<>($$4);
-         cwf $$6 = $$1.v();
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            cwf $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
-            if (!$$8.f()) {
-               $$5.add($$8);
+            $$2.add($$6.b().d().e().a($$7));
+            xx $$11 = xj.c($$8);
+            if (!$$8.equals($$9)) {
+               $$11.f(", ").b(xj.c($$9));
             }
+
+            $$11.a($$7);
+            $$2.add($$11);
          }
-
-         return $$5;
-      }
-   }
-
-   protected static cwf a(cwf $$0, cwf $$1, bve $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fY() && $$2.dY() instanceof arq $$4 ? dby.a($$4, $$0, $$1, 1) : 0;
-      if ($$5 > $$1.L()) {
-         return cwf.k;
-      } else if ($$5 == 0) {
-         cwf $$6 = $$1.c(1);
-         $$6.b(ku.v, bat.a);
-         return $$6;
-      } else {
-         cwf $$7 = $$1.a($$5);
-         if ($$1.f() && $$2 instanceof cor $$8) {
-            $$8.gl().h($$1);
-         }
-
-         return $$7;
       }
    }
 }

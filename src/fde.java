@@ -1,40 +1,22 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.io.File;
+import java.time.Duration;
 
-public enum fde {
-   a("icons"),
-   b("icons", "snapshot");
+public class fde {
+   private static final Duration a = Duration.ofSeconds(15L);
 
-   private final String[] c;
+   public static void a(File $$0, long $$1) {
+      Thread $$2 = new Thread(() -> {
+         try {
+            Thread.sleep(a);
+         } catch (InterruptedException var4) {
+            return;
+         }
 
-   private fde(final String... $$0) {
-      this.c = $$0;
-   }
-
-   public List<auv<InputStream>> a(atp $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
-   }
-
-   public auv<InputStream> b(atp $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
-
-   private auv<InputStream> a(atp $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      auv<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
-      }
+         o $$3 = aqj.a("Client shutdown", $$1);
+         fke.a($$0, $$3);
+      });
+      $$2.setDaemon(true);
+      $$2.setName("Client shutdown watchdog");
+      $$2.start();
    }
 }

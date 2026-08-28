@@ -1,113 +1,78 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dpo extends dkr implements dim, dpk {
-   public static final MapCodec<dpo> c = b(dpo::new);
-   private static final dwf g = dwe.C;
-   public static final dwl<jm> d = dwe.R;
-   protected static final float e = 6.0F;
-   protected static final fal f = dij.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dpo extends diz implements dit, dng {
+   public static final MapCodec<dpo> a = b(dpo::new);
+   protected static final float b = 6.0F;
+   protected static final fas c = diq.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<dpo> a() {
+      return a;
+   }
+
+   protected dpo(dvu.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
       return c;
    }
 
-   public dpo(dvn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dwj.b).b(g, Boolean.valueOf(false)).b(d, jm.c));
-   }
-
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(dvo $$0, dek $$1, jh $$2) {
-      return $$0.a(axd.by) || $$1.b_($$2.d()).a(erp.c) && super.b($$0, $$1, $$2);
+   protected boolean b(dvv $$0, der $$1, jh $$2) {
+      return $$0.c($$1, $$2, jm.b) && !$$0.a(dis.kJ);
    }
 
    @Nullable
    @Override
-   public dvo a(czw $$0) {
-      dvo $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   public dvv a(dad $$0) {
+      erv $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axi.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   public void a(dff $$0, jh $$1, dvo $$2, bve $$3, cwf $$4) {
-      if (!$$0.y_()) {
-         jh $$5 = $$1.d();
-         dvo $$6 = dkr.c($$0, $$5, this.m().b(b, dwj.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   protected ero b_(dvo $$0) {
-      return $$0.c(g) ? erp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      if ($$0.c(b) == dwj.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         jh $$3 = $$2.e();
-         dvo $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
-      }
-   }
-
-   @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      if ($$0.c(g)) {
-         $$2.a($$3, erp.c, erp.c.a($$1));
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      dvv $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, erw.c, erw.c.a($$1));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$8;
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(b, g, d);
+   public boolean b(dfp $$0, jh $$1, dvv $$2) {
+      return $$0.a_($$1.d()).a(dis.G);
    }
 
    @Override
-   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
       return true;
    }
 
    @Override
-   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
-      return true;
+   protected erv b_(dvv $$0) {
+      return erw.c.a(false);
    }
 
    @Override
-   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
-      if ($$3.c(dkr.b) == dwj.b) {
-         jh $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dig.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         jh $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
-      }
+   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
+      dvv $$4 = dis.bx.m();
+      dvv $$5 = $$4.b(dqw.d, dwq.a);
+      jh $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
    }
 
    @Override
-   protected dvo a(dvo $$0, dow $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   public boolean a(@Nullable cou $$0, der $$1, jh $$2, dvv $$3, eru $$4) {
+      return false;
    }
 
    @Override
-   protected dvo a(dvo $$0, dnf $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float au_() {
-      return 0.1F;
+   public boolean a(dfn $$0, jh $$1, dvv $$2, erv $$3) {
+      return false;
    }
 }

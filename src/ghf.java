@@ -1,45 +1,56 @@
-public abstract class ghf extends ggs {
-   protected gyt E;
+public class ghf extends ggw {
+   private final ghj b;
+   protected boolean a;
 
-   protected ghf(gcy $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected ghf(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   ghf(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ghj $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gyt $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public ggs b() {
+      return ggs.c;
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public void a() {
+      super.a();
+      this.b(this.b);
    }
 
-   public void a(gha $$0) {
-      this.a($$0.a(this.r));
+   public static class a implements ggr<lw> {
+      private final ghj a;
+
+      public a(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghf $$8 = new ghf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
    }
 
-   public void b(gha $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   public static class b implements ggr<lw> {
+      private final ghj a;
+
+      public b(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghf $$8 = new ghf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

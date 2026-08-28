@@ -1,4 +1,10 @@
-@FunctionalInterface
-public interface ctu {
-   void fillStackedContents(cow var1);
+public class ctu extends ctw {
+   public ctu(bsd $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(cwm $$0) {
+      return $$0.h().e();
+   }
 }

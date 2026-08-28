@@ -1,34 +1,46 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class dfa extends eta {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum dfa implements deo {
+   a;
 
-   public static eta.a<dfa> a() {
-      return new eta.a<>(dfa::new, dfa::b, bax.i);
-   }
-
-   private dfa(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public dfa() {
-      this(new LongOpenHashSet());
-   }
-
-   public static dfa b(un $$0, js.a $$1) {
-      return new dfa(new LongOpenHashSet($$0.o("Forced")));
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return 1.0F;
    }
 
    @Override
-   public un a(un $$0, js.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public erk B_() {
+      return erk.c;
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public int a(jh $$0, dew $$1) {
+      return -1;
+   }
+
+   @Nullable
+   @Override
+   public dsy c_(jh $$0) {
+      return null;
+   }
+
+   @Override
+   public dvv a_(jh $$0) {
+      return dis.a.m();
+   }
+
+   @Override
+   public erv b_(jh $$0) {
+      return erw.a.g();
+   }
+
+   @Override
+   public int L_() {
+      return 0;
+   }
+
+   @Override
+   public int K_() {
+      return 0;
    }
 }

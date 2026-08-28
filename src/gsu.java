@@ -1,27 +1,10 @@
-public class gsu extends gtn<guy, fyt> {
-   private final gpy a;
-
-   public gsu(gqw<guy, fyt> $$0, gpy $$1) {
-      super($$0);
-      this.a = $$1;
+public class gsu<M extends gao> extends gug<M> {
+   public gsu(gql<?, gwz, M> $$0, gpk.a $$1) {
+      super($$0, new fyj($$1.a(gck.l)), grz.a, gug.a.a);
    }
 
-   public void a(fek $$0, gix $$1, int $$2, guy $$3, float $$4, float $$5) {
-      cwf $$6 = $$3.aX_();
-      hav $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = azn.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
-
-         this.a.a($$6, cwd.h, false, $$0, $$1, $$2, gyk.d, $$7);
-         $$0.b();
-      }
+   @Override
+   protected int a(gwz $$0) {
+      return $$0.e;
    }
 }

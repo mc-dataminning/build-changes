@@ -1,84 +1,58 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dbm implements dbk {
-   final Optional<dap> a;
-   final Optional<dap> b;
-   final Optional<dap> c;
-   final cwf d;
-   @Nullable
-   private das e;
+public class dbm<T extends dah> implements dbf<T> {
+   private final dah.a<T> w;
+   private final MapCodec<T> x;
+   private final zh<wu, T> y;
 
-   public dbm(Optional<dap> $$0, Optional<dap> $$1, Optional<dap> $$2, cwf $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public cwf a(dbl $$0, js.a $$1) {
-      cwf $$2 = $$0.d().a(this.d.h(), this.d.L());
-      $$2.b(this.d.e());
-      return $$2;
-   }
-
-   @Override
-   public cwf a(js.a $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(cwf $$0) {
-      return dap.a(this.a, $$0);
-   }
-
-   @Override
-   public boolean b(cwf $$0) {
-      return dap.a(this.b, $$0);
-   }
-
-   @Override
-   public boolean c(cwf $$0) {
-      return dap.a(this.c, $$0);
-   }
-
-   @Override
-   public day<?> aq_() {
-      return day.t;
-   }
-
-   @Override
-   public das a() {
-      if (this.e == null) {
-         this.e = das.a(List.of(this.a, this.b, this.c));
-      }
-
-      return this.e;
-   }
-
-   public static class a implements day<dbm> {
-      private static final MapCodec<dbm> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dap.d.optionalFieldOf("template").forGetter($$0x -> $$0x.a),
-                  dap.d.optionalFieldOf("base").forGetter($$0x -> $$0x.b),
-                  dap.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.c),
-                  cwf.d.fieldOf("result").forGetter($$0x -> $$0x.d)
+   public dbm(dah.a<T> $$0, int $$1) {
+      this.w = $$0;
+      this.x = RecordCodecBuilder.mapCodec(
+         $$2 -> $$2.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
+                  dan.d.fieldOf("category").orElse(dan.c).forGetter($$0xx -> $$0xx.b),
+                  daw.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  cwm.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
                )
-               .apply($$0, dbm::new)
+               .apply($$2, $$0::create)
       );
-      public static final zj<ww, dbm> w = zj.a(dap.b, $$0 -> $$0.a, dap.b, $$0 -> $$0.b, dap.b, $$0 -> $$0.c, cwf.i, $$0 -> $$0.d, dbm::new);
+      this.y = zh.a(this::a, this::a);
+   }
 
-      @Override
-      public MapCodec<dbm> a() {
-         return x;
-      }
+   @Override
+   public MapCodec<T> a() {
+      return this.x;
+   }
 
-      @Override
-      public zj<ww, dbm> b() {
-         return w;
-      }
+   @Override
+   public zh<wu, T> b() {
+      return this.y;
+   }
+
+   private T a(wu $$0) {
+      String $$1 = $$0.p();
+      dan $$2 = $$0.b(dan.class);
+      daw $$3 = daw.a.decode($$0);
+      cwm $$4 = cwm.i.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.w.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private void a(wu $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      daw.a.encode($$0, $$1.d);
+      cwm.i.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public dah a(String $$0, dan $$1, daw $$2, cwm $$3, float $$4, int $$5) {
+      return this.w.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

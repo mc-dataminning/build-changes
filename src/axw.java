@@ -1,11 +1,8 @@
-public class axw {
-   public static final axt<elq> a = a("normal");
-   public static final axt<elq> b = a("extended");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private axw() {
-   }
-
-   private static axt<elq> a(String $$0) {
-      return axt.a(ma.aZ, all.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface axw {
 }

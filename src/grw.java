@@ -1,22 +1,16 @@
-public class grw extends gpt<cmk, gvu> {
-   private static final all a = all.b("textures/entity/illager/vindicator.png");
+public class grw extends gqq<civ, gwm, gbo> {
+   private static final alj a = alj.b("textures/entity/tadpole/tadpole.png");
 
-   public grw(gpa.a $$0) {
-      super($$0, new fzo<>($$0.a(gcb.cU)), 0.5F);
-      this.a(new gtg<gvu, fzo<gvu>>(this, $$0.b()) {
-         public void a(fek $$0, gix $$1, int $$2, gvu $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public grw(gpk.a $$0) {
+      super($$0, new gbo($$0.a(gck.cZ)), 0.14F);
    }
 
-   public all a(gvu $$0) {
+   @Override
+   public alj b(gwm $$0) {
       return a;
    }
 
-   public gvu c() {
-      return new gvu();
+   public gwm b() {
+      return new gwm();
    }
 }

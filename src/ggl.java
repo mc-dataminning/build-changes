@@ -1,91 +1,39 @@
-public class ggl extends ghf {
-   private final double a;
-   private final double b;
-   private final double F;
+public class ggl extends ggo {
+   private final gae a;
+   private final gjq b = gjq.i(gpd.a);
 
-   protected ggl(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   ggl(gdh $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.a = this.g;
-      this.b = this.h;
-      this.F = this.i;
-      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$7 * 0.9F;
-      this.w = $$7 * 0.3F;
-      this.x = $$7;
-      this.t = (int)(Math.random() * 10.0) + 40;
+      this.a = new fzr(fke.Q().aS().a(gck.aA));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public ggj b() {
-      return ggj.b;
+   public ggs b() {
+      return ggs.d;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a(fev $$0, fjn $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * azm.a($$3 * (float) Math.PI);
+      int $$5 = axx.a($$4, 1.0F, 1.0F, 1.0F);
+      fer $$6 = new fer();
+      $$6.a($$1.f());
+      $$6.a(a.b.rotationDegrees(60.0F - 150.0F * $$3));
+      float $$7 = 0.42553192F;
+      $$6.b(0.42553192F, -0.42553192F, -0.42553192F);
+      $$6.a(0.0F, -0.56F, 3.5F);
+      gjg.a $$8 = fke.Q().aR().c();
+      fev $$9 = $$8.getBuffer(this.b);
+      this.a.a($$6, $$9, 15728880, gyv.d, $$5);
+      $$8.b();
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = 1.0F - $$1;
-      $$1 *= $$1;
-      $$1 = 1.0F - $$1;
-      return this.D * $$1;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float var3 = -$$0 + $$0 * $$0 * 2.0F;
-         float var4 = 1.0F - var3;
-         this.g = this.a + this.j * (double)var4;
-         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
-         this.i = this.F + this.l * (double)var4;
-      }
-   }
-
-   public static class a implements ggi<lw> {
-      private final gha a;
-
-      public a(gha $$0) {
-         this.a = $$0;
-      }
-
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggl $$8 = new ggl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements ggr<lw> {
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggl($$1, $$2, $$3, $$4);
       }
    }
 }

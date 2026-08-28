@@ -1,33 +1,31 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Map;
 
-public record aah(all c, byte[] d) implements zs<zy> {
-   public static final zj<wi, aah> a = zs.a(aah::a, aah::new);
-   private static final int e = 5120;
-   public static final zj<ByteBuf, byte[]> b = zh.a(5120);
+public class aah implements zq<zw> {
+   public static final zh<wg, aah> a = zq.a(aah::a, aah::new);
+   private final Map<ali<? extends kd<?>>, axu.a> b;
 
-   private aah(wi $$0) {
-      this($$0.q(), b.decode($$0));
+   public aah(Map<ali<? extends kd<?>>, axu.a> $$0) {
+      this.b = $$0;
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private aah(wg $$0) {
+      this.b = $$0.a(wg::r, axu.a::b);
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.b, wg::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zu<aah> a() {
-      return aak.i;
+   public zs<aah> a() {
+      return aai.k;
    }
 
-   public void a(zy $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public all b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
+   public Map<ali<? extends kd<?>>, axu.a> b() {
+      return this.b;
    }
 }

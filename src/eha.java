@@ -1,6 +1,9 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eha implements egt {
-   public static final Codec<eha> a = Codec.unit(() -> eha.b);
-   public static final eha b = new eha();
+public interface eha {
+   ehh m = ehh.b;
+
+   default Stream<eei<?, ?>> e() {
+      return Stream.empty();
+   }
 }

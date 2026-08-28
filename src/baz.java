@@ -1,77 +1,42 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.BitSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.schemas.Schema;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class baz {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public class baz extends bgv {
+   private static final String a = "minecraft:wolf";
+   private static final String b = "minecraft:generic.max_health";
+
+   public baz(Schema $$0) {
+      super($$0, false, "FixWolfHealth", bia.B, "minecraft:wolf");
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
-   }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            MutableBoolean $$1 = new MutableBoolean(false);
+            $$0x = $$0x.update(
+               "Attributes",
+               $$1x -> $$1x.createList(
+                     $$1x.asStream()
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bjo.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                              if ($$1xxx.asDouble(0.0) == 20.0) {
+                                 $$1.setTrue();
+                                 return $$1xxx.createDouble(40.0);
+                              } else {
+                                 return $$1xxx;
+                              }
+                           }) : $$1xx)
+                  )
+            );
+            if ($$1.isTrue()) {
+               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
+            }
 
-   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
-      return $$0.all(a($$1, $$2), true, false).view().newType();
-   }
-
-   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
-      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
-      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
-   }
-
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+            return $$0x;
          }
-
-         return $$1;
-      };
-   }
-
-   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
-      Dynamic<vk> $$2 = new Dynamic(vb.a, new un());
-      Dynamic<vk> $$3 = $$2.set("Name", $$2.createString($$0));
-      if (!$$1.isEmpty()) {
-         $$3 = $$3.set(
-            "Properties",
-            $$2.createMap(
-               $$1.entrySet()
-                  .stream()
-                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
-            )
-         );
-      }
-
-      return $$3;
-   }
-
-   public static Dynamic<?> a(String $$0) {
-      return a($$0, Map.of());
-   }
-
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
-      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
+      );
    }
 }

@@ -1,42 +1,118 @@
-import java.util.Comparator;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.List;
 
-public class arw<T> {
-   private final String i;
-   private final Comparator<T> j;
-   private final long k;
-   public static final arw<bat> a = a("start", ($$0, $$1) -> 0);
-   public static final arw<bat> b = a("dragon", ($$0, $$1) -> 0);
-   public static final arw<del> c = a("player", Comparator.comparingLong(del::a));
-   public static final arw<del> d = a("forced", Comparator.comparingLong(del::a));
-   public static final arw<jh> e = a("portal", kl::i, 300);
-   public static final arw<del> f = a("ender_pearl", Comparator.comparingLong(del::a), 40);
-   public static final arw<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final arw<del> h = a("unknown", Comparator.comparingLong(del::a), 1);
+public class arw extends aqy {
+   public static final int a = 33;
+   private static final int c = 4;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final Long2ObjectOpenHashMap<bae<aru<?>>> d = new Long2ObjectOpenHashMap();
 
-   public static <T> arw<T> a(String $$0, Comparator<T> $$1) {
-      return new arw<>($$0, $$1, 0L);
+   public arw() {
+      super(34, 16, 256);
+      this.b.defaultReturnValue((byte)33);
    }
 
-   public static <T> arw<T> a(String $$0, Comparator<T> $$1, int $$2) {
-      return new arw<>($$0, $$1, (long)$$2);
+   private bae<aru<?>> g(long $$0) {
+      return (bae<aru<?>>)this.d.computeIfAbsent($$0, $$0x -> bae.a(4));
    }
 
-   protected arw(String $$0, Comparator<T> $$1, long $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
+   private int a(bae<aru<?>> $$0) {
+      return $$0.isEmpty() ? 34 : $$0.b().b();
+   }
+
+   public void a(long $$0, aru<?> $$1) {
+      bae<aru<?>> $$2 = this.g($$0);
+      int $$3 = this.a($$2);
+      $$2.add($$1);
+      if ($$1.b() < $$3) {
+         this.b($$0, $$1.b(), true);
+      }
+   }
+
+   public void b(long $$0, aru<?> $$1) {
+      bae<aru<?>> $$2 = this.g($$0);
+      $$2.remove($$1);
+      if ($$2.isEmpty()) {
+         this.d.remove($$0);
+      }
+
+      this.b($$0, this.a($$2), false);
+   }
+
+   public <T> void a(arv<T> $$0, des $$1, int $$2, T $$3) {
+      this.a($$1.a(), new aru<>($$0, $$2, $$3));
+   }
+
+   public <T> void b(arv<T> $$0, des $$1, int $$2, T $$3) {
+      aru<T> $$4 = new aru<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
+   }
+
+   public void a(int $$0) {
+      List<Pair<aru<des>, Long>> $$1 = new ArrayList<>();
+      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<bae<aru<?>>> $$2 = (Entry<bae<aru<?>>>)var3.next();
+
+         for (aru<?> $$3 : (bae)$$2.getValue()) {
+            if ($$3.a() == arv.c) {
+               $$1.add(Pair.of($$3, $$2.getLongKey()));
+            }
+         }
+      }
+
+      for (Pair<aru<des>, Long> $$4 : $$1) {
+         Long $$5 = (Long)$$4.getSecond();
+         aru<des> $$6 = (aru<des>)$$4.getFirst();
+         this.b($$5, $$6);
+         des $$7 = new des($$5);
+         arv<des> $$8 = $$6.a();
+         this.a($$8, $$7, $$0, $$7);
+      }
    }
 
    @Override
-   public String toString() {
-      return this.i;
+   protected int b(long $$0) {
+      bae<aru<?>> $$1 = (bae<aru<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public Comparator<T> a() {
-      return this.j;
+   public int a(des $$0) {
+      return this.c($$0.a());
    }
 
-   public long b() {
-      return this.k;
+   @Override
+   protected int c(long $$0) {
+      return this.b.get($$0);
+   }
+
+   @Override
+   protected void a(long $$0, int $$1) {
+      if ($$1 >= 33) {
+         this.b.remove($$0);
+      } else {
+         this.b.put($$0, (byte)$$1);
+      }
+   }
+
+   public LongSet a() {
+      return this.b.keySet();
+   }
+
+   public void b() {
+      this.b(Integer.MAX_VALUE);
+   }
+
+   public String d(long $$0) {
+      bae<aru<?>> $$1 = (bae<aru<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 }

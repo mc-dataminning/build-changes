@@ -1,4 +1,4 @@
-public class gww extends gvd {
+public class gww extends gwm {
    public float a;
-   public float b;
+   public int b;
 }

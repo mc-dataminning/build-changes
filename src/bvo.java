@@ -1,13 +1,15 @@
-public interface bvo extends bvn {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bvo {
+   @Nullable
+   UUID Z_();
 
-   void c(int var1);
+   dfd e();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default bvh ag_() {
+      UUID $$0 = this.Z_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

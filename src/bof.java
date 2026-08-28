@@ -1,50 +1,33 @@
+import com.mojang.brigadier.ImmutableStringReader;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public interface bof {
-   static bnz<StringReader> a(String $$0) {
-      return new bof.b($$0);
+public abstract class bof<C, V> implements bnz<StringReader, V>, bog {
+   private final bnt<alj> b;
+   protected final C a;
+
+   protected bof(bnt<alj> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   static bnz<StringReader> a(char $$0) {
-      return new bof.a($$0);
-   }
-
-   public static record a(char a) implements bnz<StringReader> {
-      @Override
-      public boolean a(bnv<StringReader> $$0, bnx $$1, bnr $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
+   @Override
+   public Optional<V> a(bny<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<alj> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
          }
-      }
-
-      public char c() {
-         return this.a;
-      }
-   }
-
-   public static record b(String a) implements bnz<StringReader> {
-      @Override
-      public boolean a(bnv<StringReader> $$0, bnx $$1, bnr $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      public String c() {
-         return this.a;
+      } else {
+         $$0.a().a($$1, this, alj.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
+
+   protected abstract V a(ImmutableStringReader var1, alj var2) throws Exception;
 }

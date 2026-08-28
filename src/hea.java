@@ -1,29 +1,58 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record hea(hee b, heh c) {
-   public static final Codec<hea> a = hee.a.dispatchStable(hea::a, hee::c);
+public class hea implements hdu {
+   private final hea.a a;
+   private hdu b;
+   private final BufferedInputStream c;
 
-   public hea(hee b, heh c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
+   public hea(hea.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hea.b(this.c));
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public hee a() {
-      return this.b;
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hea.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
    }
 
-   public heh b() {
-      return this.c;
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hdu create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
    }
 }

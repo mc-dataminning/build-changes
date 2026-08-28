@@ -1,32 +1,16 @@
-public class cdr extends ccm {
-   private final cmo b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cdr(cmo $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cdr extends cds {
+   public cdr(bvp $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void d() {
-      super.d();
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
-      }
+   protected ezy h() {
+      ezy $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      ezy $$2 = cge.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cga.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

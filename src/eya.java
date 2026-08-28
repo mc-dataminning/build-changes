@@ -1,36 +1,27 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record eya(eyn b, euf c) implements exr {
-   public static final MapCodec<eya> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eyo.a.fieldOf("value").forGetter(eya::c), euf.a.fieldOf("range").forGetter(eya::d)).apply($$0, eya::new)
-   );
+public class eya {
+   public static final exz a = a("inverted", exv.a);
+   public static final exz b = a("any_of", exm.a);
+   public static final exz c = a("all_of", exl.a);
+   public static final exz d = a("random_chance", eyd.a);
+   public static final exz e = a("random_chance_with_enchanted_bonus", eye.a);
+   public static final exz f = a("entity_properties", eyb.a);
+   public static final exz g = a("killed_by_player", eyc.a);
+   public static final exz h = a("entity_scores", ext.a);
+   public static final exz i = a("block_state_property", exx.a);
+   public static final exz j = a("match_tool", eyf.a);
+   public static final exz k = a("table_bonus", exn.a);
+   public static final exz l = a("survives_explosion", exu.a);
+   public static final exz m = a("damage_source_properties", exr.a);
+   public static final exz n = a("location_check", exw.a);
+   public static final exz o = a("weather_check", eyi.a);
+   public static final exz p = a("reference", exp.a);
+   public static final exz q = a("time_check", eyg.a);
+   public static final exz r = a("value_check", eyh.a);
+   public static final exz s = a("enchantment_active_check", exs.a);
 
-   @Override
-   public exs b() {
-      return ext.r;
-   }
-
-   @Override
-   public Set<ewz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public boolean a(eug $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
-
-   public static exr.a a(eyn $$0, euf $$1) {
-      return () -> new eya($$0, $$1);
-   }
-
-   public eyn c() {
-      return this.b;
-   }
-
-   public euf d() {
-      return this.c;
+   private static exz a(String $$0, MapCodec<? extends exy> $$1) {
+      return kd.a(lz.F, alj.b($$0), new exz($$1));
    }
 }

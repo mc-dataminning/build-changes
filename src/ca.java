@@ -9,10 +9,10 @@ public class ca extends dy<ca.a> {
       return ca.a.a;
    }
 
-   public void a(arr $$0, ezr $$1, @Nullable bui $$2) {
-      ezr $$3 = $$0.dw();
-      eug $$4 = $$2 != null ? bw.b($$0, $$2) : null;
-      this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
+   public void a(arq $$0, ezy $$1, @Nullable bul $$2) {
+      ezy $$3 = $$0.dt();
+      eun $$4 = $$2 != null ? bw.b($$0, $$2) : null;
+      this.a($$0, $$4x -> $$4x.a($$0.y(), $$1, $$3, $$4));
    }
 
    public static record a(Optional<bh> b, Optional<dh> c, Optional<bn> d, Optional<bh> e) implements dy.a {
@@ -36,7 +36,7 @@ public class ca extends dy<ca.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arq $$0, ezr $$1, ezr $$2, @Nullable eug $$3) {
+      public boolean a(arp $$0, ezy $$1, ezy $$2, @Nullable eun $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

@@ -1,66 +1,66 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
-public class gkz {
-   private final gkv a;
-   private final gkq b;
-
-   public gkz(gkv $$0, gkq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record gkz(List<glb> a) implements gla {
+   public gkz(List<glb> a) {
+      if (a.isEmpty()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
-   public gkq a() {
-      return this.b;
+   @Override
+   public Object a(dvv $$0) {
+      return this;
    }
 
-   public Predicate<dvo> a(dvp<dij, dvo> $$0) {
-      return this.a.getPredicate($$0);
+   @Override
+   public void a(hbz.a $$0) {
+      this.a.forEach($$1 -> $$0.a($$1.a()));
+   }
+
+   @Override
+   public hbg a(hbp $$0, Function<hbn, gze> $$1, hbv $$2) {
+      if (this.a.size() == 1) {
+         glb $$3 = this.a.getFirst();
+         return $$0.a($$3.a(), $$3);
+      } else {
+         bqs.a<hbg> $$4 = bqs.a();
+
+         for (glb $$5 : this.a) {
+            hbg $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return new hca($$4.a());
+      }
    }
 
    public static class a implements JsonDeserializer<gkz> {
       public gkz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gkz(this.b($$3), (gkq)$$2.deserialize($$3.get("apply"), gkq.class));
-      }
+         List<glb> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.isEmpty()) {
+               throw new JsonParseException("Empty variant array");
+            }
 
-      private gkv b(JsonObject $$0) {
-         return $$0.has("when") ? a(azd.u($$0, "when")) : gkv.b;
-      }
-
-      @VisibleForTesting
-      static gkv a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gkv> $$2 = Streams.stream(azd.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gky($$2);
-            } else if ($$0.has("AND")) {
-               List<gkv> $$3 = Streams.stream(azd.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gku($$3);
-            } else {
-               return a($$1.iterator().next());
+            for (JsonElement $$5 : $$4) {
+               $$3.add((glb)$$2.deserialize($$5, glb.class));
             }
          } else {
-            return new gku($$1.stream().map(gkz.a::a).collect(Collectors.toList()));
+            $$3.add((glb)$$2.deserialize($$0, glb.class));
          }
-      }
 
-      private static gkv a(Entry<String, JsonElement> $$0) {
-         return new gkw($$0.getKey(), $$0.getValue().getAsString());
+         return new gkz($$3);
       }
    }
 }

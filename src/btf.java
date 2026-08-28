@@ -1,21 +1,19 @@
-class btf extends btl {
-   protected btf(btm $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum btf implements bai {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<btf> d = bai.a(btf::values);
+   private final String e;
+
+   private btf(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(bve $$0, int $$1) {
-      return $$0.fz() > 0.0F || $$0.dY().C;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(bve $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.E(Math.max($$0.fz(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

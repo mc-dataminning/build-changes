@@ -1,21 +1,9 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bob implements bnw<StringReader, all> {
-   public static final bnw<StringReader, all> a = new bob();
+public interface bob<S> {
+   Stream<String> possibleValues(bny<S> var1);
 
-   private bob() {
-   }
-
-   @Override
-   public Optional<all> a(bnv<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-
-      try {
-         return Optional.of(all.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
-      }
+   static <S> bob<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

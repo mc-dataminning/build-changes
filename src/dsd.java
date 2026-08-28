@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsd extends drk {
-   public static final MapCodec<dsd> b = b(dsd::new);
+public class dsd extends diq {
+   public static final MapCodec<dsd> a = b(dsd::new);
 
    @Override
    public MapCodec<dsd> a() {
-      return b;
+      return a;
    }
 
-   protected dsd(dvn.d $$0) {
-      super(dpl.b.d, $$0);
+   public dsd(dvu.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dff $$0, jh $$1, dvo $$2, @Nullable bve $$3, cwf $$4) {
-      dsc.a($$0, $$1);
+   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
+      ezy $$4 = new ezy(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bvh $$5 && $$5.b(bts.K)) {
+         $$4 = new ezy(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$4);
    }
 }

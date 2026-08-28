@@ -1,31 +1,21 @@
-public record abe(int c, esc d, float e) implements aav {
-   public static final zj<wi, abe> a = aav.a(abe::a, abe::new);
-   public static final aav.b<abe> b = aav.a("debug/path");
+public record abe(jh c) implements aat {
+   public static final zh<wg, abe> a = aat.a(abe::a, abe::new);
+   public static final aat.b<abe> b = aat.a("debug/poi_removed");
 
-   private abe(wi $$0) {
-      this($$0.readInt(), esc.b($$0), $$0.readFloat());
+   private abe(wg $$0) {
+      this($$0.e());
    }
 
-   private void a(wi $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(wg $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aav.b<abe> a() {
+   public aat.b<abe> a() {
       return b;
    }
 
-   public int b() {
+   public jh b() {
       return this.c;
-   }
-
-   public esc c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

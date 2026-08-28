@@ -1,20 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byz {
-   public static bwy<bve> a(bup<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return cak.a(
-         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$2x -> $$2x.group($$2x.a(cei.n), $$2x.c(cei.q), $$2x.b(cei.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bve> $$9 = $$2x.<cek>b($$5).a($$3xx -> $$3xx.g((bui)$$7) <= (double)$$2 && $$0.equals($$3xx.ar()));
-                     if ($$9.isEmpty()) {
+   public static bxb<bvh> a(bvk $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
+   }
+
+   public static byl<bvh> a(bus<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq()), $$1);
+   }
+
+   public static byl<bvh> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static byl<bvh> a(Predicate<bvh> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2x -> $$2x.group($$2x.c(cel.n), $$2x.b(cel.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bvh> $$8 = $$2x.<cen>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bul)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        bve $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bxi($$10, true));
+                        $$3.a(new bxl($$8.get(), true));
                         return true;
                      }
                   }))

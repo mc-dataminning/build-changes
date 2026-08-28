@@ -1,21 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class ejb extends eiu {
-   public static final MapCodec<ejb> b = dvo.a.fieldOf("state").xmap(dvn.a::b, dij::m).xmap(ejb::new, $$0 -> $$0.c);
-   private final dij c;
+public abstract class ejb {
+   public static final Codec<ejb> a = lz.T.q().dispatch(ejb::a, ejc::a);
 
-   public ejb(dij $$0) {
-      this.c = $$0;
+   public static ejk a(dvv $$0) {
+      return new ejk($$0);
    }
 
-   @Override
-   protected eiv<?> a() {
-      return eiv.f;
+   public static ejk a(diq $$0) {
+      return new ejk($$0.m());
    }
 
-   @Override
-   public dvo a(azv $$0, jh $$1) {
-      jm.a $$2 = jm.a.a($$0);
-      return this.c.m().c(dov.i, $$2);
-   }
+   protected abstract ejc<?> a();
+
+   public abstract dvv a(azu var1, jh var2);
 }

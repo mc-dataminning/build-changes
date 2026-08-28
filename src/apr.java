@@ -1,158 +1,126 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
-import java.util.Locale;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class apr {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
-
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ex.a("query").executes($$0x -> a((ew)$$0x.getSource()))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a(
+                                    "targets", fj.d()
+                                 )
+                                 .then(ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
+                              .then(ex.a("reset").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
+                           .then(
+                              ex.a("title")
+                                 .then(
+                                    ex.a("title", ff.a($$1))
+                                       .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "title", aga::new))
+                                 )
+                           ))
                         .then(
-                           ex.a("rate")
+                           ex.a("subtitle")
                               .then(
-                                 ex.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> fb.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ew)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
+                                 ex.a("title", ff.a($$1))
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "subtitle", afy::new))
                               )
                         ))
                      .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("step").executes($$0x -> b((ew)$$0x.getSource(), 1)))
-                              .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource()))))
+                        ex.a("actionbar")
                            .then(
-                              ex.a("time", gl.a(1))
-                                 .suggests(($$0x, $$1) -> fb.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                              ex.a("title", ff.a($$1))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "actionbar", aez::new))
                            )
                      ))
                   .then(
-                     ((LiteralArgumentBuilder)ex.a("sprint").then(ex.a("stop").executes($$0x -> c((ew)$$0x.getSource()))))
+                     ex.a("times")
                         .then(
-                           ex.a("time", gl.a(1))
-                              .suggests(($$0x, $$1) -> fb.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           ex.a("fadeIn", gl.a())
+                              .then(
+                                 ex.a("stay", gl.a())
+                                    .then(
+                                       ex.a("fadeOut", gl.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   fj.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
                         )
-                  ))
-               .then(ex.a("unfreeze").executes($$0x -> a((ew)$$0x.getSource(), false))))
-            .then(ex.a("freeze").executes($$0x -> a((ew)$$0x.getSource(), true)))
+                  )
+            )
       );
    }
 
-   private static String a(long $$0) {
-      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)bap.b);
-   }
+   private static int a(ew $$0, Collection<arq> $$1) {
+      acw $$2 = new acw(false);
 
-   private static int a(ew $$0, float $$1) {
-      amf $$2 = $$0.l().aP();
-      $$2.a($$1);
-      String $$3 = String.format(Locale.ROOT, "%.1f", $$1);
-      $$0.a(() -> xl.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
+      for (arq $$3 : $$1) {
+         $$3.f.b($$2);
+      }
 
-   private static int a(ew $$0) {
-      amf $$1 = $$0.l().aP();
-      String $$2 = a($$0.l().aQ());
-      float $$3 = $$1.f();
-      String $$4 = String.format(Locale.ROOT, "%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> xl.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> xl.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.title.cleared.single", $$1.iterator().next().o_()), true);
       } else {
-         if ($$1.l()) {
-            $$0.a(() -> xl.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aQ()) {
-            $$0.a(() -> xl.c("commands.tick.status.lagging"), false);
-         } else {
-            $$0.a(() -> xl.c("commands.tick.status.running"), false);
-         }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> xl.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+         $$0.a(() -> xj.a("commands.title.cleared.multiple", $$1.size()), true);
       }
 
-      long[] $$6 = Arrays.copyOf($$0.l().aR(), $$0.l().aR().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> xl.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
+      return $$1.size();
    }
 
-   private static int a(ew $$0, int $$1) {
-      boolean $$2 = $$0.l().aP().b($$1);
-      if ($$2) {
-         $$0.a(() -> xl.c("commands.tick.sprint.stop.success"), true);
+   private static int b(ew $$0, Collection<arq> $$1) {
+      acw $$2 = new acw(true);
+
+      for (arq $$3 : $$1) {
+         $$3.f.b($$2);
       }
 
-      $$0.a(() -> xl.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(ew $$0, boolean $$1) {
-      amf $$2 = $$0.l().aP();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> xl.c("commands.tick.status.frozen"), true);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.title.reset.single", $$1.iterator().next().o_()), true);
       } else {
-         $$0.a(() -> xl.c("commands.tick.status.running"), true);
+         $$0.a(() -> xj.a("commands.title.reset.multiple", $$1.size()), true);
       }
 
-      return $$1 ? 1 : 0;
+      return $$1.size();
    }
 
-   private static int b(ew $$0, int $$1) {
-      amf $$2 = $$0.l().aP();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> xl.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(xl.c("commands.tick.step.fail"));
+   private static int a(ew $$0, Collection<arq> $$1, xj $$2, String $$3, Function<xj, zq<?>> $$4) throws CommandSyntaxException {
+      for (arq $$5 : $$1) {
+         $$5.f.b($$4.apply(xm.a($$0, $$2, $$5, 0)));
       }
 
-      return 1;
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().o_()), true);
+      } else {
+         $$0.a(() -> xj.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int b(ew $$0) {
-      amf $$1 = $$0.l().aP();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> xl.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(xl.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
+   private static int a(ew $$0, Collection<arq> $$1, int $$2, int $$3, int $$4) {
+      agb $$5 = new agb($$2, $$3, $$4);
 
-   private static int c(ew $$0) {
-      amf $$1 = $$0.l().aP();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> xl.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(xl.c("commands.tick.sprint.stop.fail"));
-         return 0;
+      for (arq $$6 : $$1) {
+         $$6.f.b($$5);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.title.times.single", $$1.iterator().next().o_()), true);
+      } else {
+         $$0.a(() -> xj.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gxh extends gvd {
+public class gxh extends gvo {
    public float a;
-   @Nullable
-   public dvo b;
+   public float b;
 }

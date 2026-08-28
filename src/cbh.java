@@ -1,68 +1,102 @@
-public class cbh extends cbf {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import java.util.Optional;
 
-   public cbh(bvg $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public class cbh implements cbe {
+   protected final bvj a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
+
+   public cbh(bvj $$0) {
+      this.a = $$0;
    }
 
-   @Override
+   public void a(ezy $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void a(bul $$0) {
+      this.a($$0.dA(), b($$0), $$0.dG());
+   }
+
+   public void a(bul $$0, float $$1, float $$2) {
+      this.a($$0.dA(), b($$0), $$0.dG(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ac(), (float)this.a.Z());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
    public void a() {
-      if (this.r && this.d.bl()) {
-         this.d.h(this.d.dB().b(0.0, 0.005, 0.0));
+      if (this.c()) {
+         this.a.w(0.0F);
       }
 
-      if (this.k == cbf.a.b && !this.d.P().m()) {
-         double $$0 = this.e - this.d.dD();
-         double $$1 = this.f - this.d.dF();
-         double $$2 = this.g - this.d.dJ();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.G(0.0F);
-         } else {
-            float $$4 = (float)(azn.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.v(this.b(this.d.dO(), $$4, (float)this.o));
-            this.d.aX = this.d.dO();
-            this.d.aZ = this.d.dO();
-            float $$5 = (float)(this.h * this.d.h(bwm.v));
-            if (this.d.bl()) {
-               this.d.C($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(azn.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = azn.a(azn.h($$7), (float)(-this.n), (float)this.n);
-                  this.d.w(this.a(this.d.dQ(), $$7, 5.0F));
-               }
-
-               float $$8 = azn.b(this.d.dQ() * (float) (Math.PI / 180.0));
-               float $$9 = azn.a(this.d.dQ() * (float) (Math.PI / 180.0));
-               this.d.bq = $$8 * $$5;
-               this.d.bp = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(azn.h(this.d.dO() - $$4));
-               float $$11 = a($$10);
-               this.d.C($$5 * this.q * $$11);
-            }
-         }
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aY = this.a(this.a.aY, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.w(this.a(this.a.dN(), $$0, this.c)));
       } else {
-         this.d.C(0.0F);
-         this.d.I(0.0F);
-         this.d.H(0.0F);
-         this.d.G(0.0F);
+         this.a.aY = this.a(this.a.aY, this.a.aW, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.L().m()) {
+         this.a.aY = azm.c(this.a.aY, this.a.aW, (float)this.a.aa());
       }
    }
 
-   private static float a(float $$0) {
-      return 1.0F - azn.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.f - this.a.dE();
+      double $$2 = this.g - this.a.dG();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azm.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.g - this.a.dG();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(azm.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   private static double b(bul $$0) {
+      return $$0 instanceof bvh ? $$0.dE() : ($$0.cR().b + $$0.cR().e) / 2.0;
    }
 }

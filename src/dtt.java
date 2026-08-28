@@ -1,143 +1,127 @@
-import java.util.Arrays;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dtt extends dsr {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private all h = all.b("empty");
-   private all i = all.b("empty");
-   private alk<enl> j = alk.a(ma.aV, all.b("empty"));
-   private dtt.a k = dtt.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int n;
+public class dtt extends dsy implements bsn {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azu k = azu.a();
+   @Nullable
+   private xj l;
 
-   public dtt(jh $$0, dvo $$1) {
-      super(dst.F, $$0, $$1);
+   public dtt(jh $$0, dvv $$1) {
+      super(dta.m, $$0, $$1);
    }
 
-   public all b() {
-      return this.h;
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (this.k_()) {
+         $$0.a("CustomName", xj.a.a(this.l, $$1));
+      }
    }
 
-   public all c() {
-      return this.i;
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = a($$0.l("CustomName"), $$1);
+      }
    }
 
-   public alk<enl> d() {
-      return this.j;
+   public static void a(dfm $$0, jh $$1, dvv $$2, dtt $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cou $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dA() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dG() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)azm.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
+
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
+         }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
+      }
+
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
+      }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = azm.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = azm.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
    }
 
-   public String f() {
-      return this.l;
+   @Override
+   public xj al() {
+      return (xj)(this.l != null ? this.l : xj.c("container.enchant"));
    }
 
-   public dtt.a j() {
-      return this.k;
-   }
-
-   public int k() {
-      return this.m;
-   }
-
-   public int t() {
-      return this.n;
-   }
-
-   public void a(all $$0) {
-      this.h = $$0;
-   }
-
-   public void b(all $$0) {
-      this.i = $$0;
-   }
-
-   public void a(alk<enl> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
+   public void a(@Nullable xj $$0) {
       this.l = $$0;
    }
 
-   public void a(dtt.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
+   @Nullable
+   @Override
+   public xj an() {
+      return this.l;
    }
 
    @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.n);
+   protected void a(dsy.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(ku.g);
    }
 
    @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = all.a($$0.l("name"));
-      this.i = all.a($$0.l("target"));
-      this.j = alk.a(ma.aV, all.a($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = dtt.a.a($$0.l("joint")).orElseGet(() -> dmk.o(this.m()).o().d() ? dtt.a.b : dtt.a.a);
-      this.m = $$0.h("placement_priority");
-      this.n = $$0.h("selection_priority");
-   }
-
-   public aco u() {
-      return aco.a(this);
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.g, this.l);
    }
 
    @Override
-   public un a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(arq $$0, int $$1, boolean $$2) {
-      jh $$3 = this.aB_().a(this.m().c(dmk.b).a());
-      kd<enl> $$4 = $$0.H_().e(ma.aV);
-      jq<enl> $$5 = $$4.b(this.j);
-      enf.a($$0, $$5, this.i, $$1, $$3, $$2);
-   }
-
-   public static enum a implements baj {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
-
-      public static Optional<dtt.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
-      }
-
-      public xl a() {
-         return xl.c("jigsaw_block.joint." + this.c);
-      }
+   public void a(ul $$0) {
+      $$0.r("CustomName");
    }
 }

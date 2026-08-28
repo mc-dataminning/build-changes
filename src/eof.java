@@ -1,790 +1,264 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class eof {
-   static final Logger b = LogUtils.getLogger();
-   private static final int c = 3;
-   private static final int d = 3;
-   private static final int e = 5;
-   private static final int f = 20;
-   private static final int g = 50;
-   private static final int h = 8;
-   public static final int a = 50;
-
-   private static eof.c a(emg $$0, azv $$1, int $$2, int $$3, int $$4, @Nullable jm $$5, int $$6, eog.a $$7) {
-      int $$8 = $$1.a(100);
-      if ($$8 >= 80) {
-         elt $$9 = eof.b.a($$0, $$1, $$2, $$3, $$4, $$5);
-         if ($$9 != null) {
-            return new eof.b($$6, $$9, $$5, $$7);
-         }
-      } else if ($$8 >= 70) {
-         elt $$10 = eof.e.a($$0, $$1, $$2, $$3, $$4, $$5);
-         if ($$10 != null) {
-            return new eof.e($$6, $$10, $$5, $$7);
-         }
-      } else {
-         elt $$11 = eof.a.a($$0, $$1, $$2, $$3, $$4, $$5);
-         if ($$11 != null) {
-            return new eof.a($$6, $$1, $$11, $$5, $$7);
-         }
-      }
-
-      return null;
-   }
-
-   static eof.c a(emf $$0, emg $$1, azv $$2, int $$3, int $$4, int $$5, jm $$6, int $$7) {
-      if ($$7 > 8) {
-         return null;
-      } else if (Math.abs($$3 - $$0.f().h()) <= 80 && Math.abs($$5 - $$0.f().j()) <= 80) {
-         eog.a $$8 = ((eof.c)$$0).a;
-         eof.c $$9 = a($$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1, $$8);
-         if ($$9 != null) {
-            $$1.a($$9);
-            $$9.a($$0, $$1, $$2);
-         }
-
-         return $$9;
-      } else {
-         return null;
-      }
-   }
-
-   public static class a extends eof.c {
-      private final boolean b;
-      private final boolean c;
-      private boolean d;
-      private final int h;
-
-      public a(un $$0) {
-         super(ems.a, $$0);
-         this.b = $$0.q("hr");
-         this.c = $$0.q("sc");
-         this.d = $$0.q("hps");
-         this.h = $$0.h("Num");
+   private static final int a = 8;
+   static final eof.b b = new eof.b() {
+      @Override
+      public void a() {
       }
 
       @Override
-      protected void a(emr $$0, un $$1) {
-         super.a($$0, $$1);
-         $$1.a("hr", this.b);
-         $$1.a("sc", this.c);
-         $$1.a("hps", this.d);
-         $$1.a("Num", this.h);
-      }
-
-      public a(int $$0, azv $$1, elt $$2, jm $$3, eog.a $$4) {
-         super(ems.a, $$0, $$4, $$2);
-         this.a($$3);
-         this.b = $$1.a(3) == 0;
-         this.c = !this.b && $$1.a(23) == 0;
-         if (this.i().o() == jm.a.c) {
-            this.h = $$2.f() / 5;
+      public boolean a(eql $$0, int $$1, eof.a $$2, jh $$3, List<emm> $$4, azu $$5) {
+         if ($$1 > 8) {
+            return false;
          } else {
-            this.h = $$2.d() / 5;
-         }
-      }
-
-      @Nullable
-      public static elt a(emg $$0, azv $$1, int $$2, int $$3, int $$4, jm $$5) {
-         for (int $$6 = $$1.a(3) + 2; $$6 > 0; $$6--) {
-            int $$7 = $$6 * 5;
-
-            elt $$11 = switch ($$5) {
-               default -> new elt(0, 0, -($$7 - 1), 2, 2, 0);
-               case d -> new elt(0, 0, 0, 2, 2, $$7 - 1);
-               case e -> new elt(-($$7 - 1), 0, 0, 0, 2, 2);
-               case f -> new elt(0, 0, 0, $$7 - 1, 2, 2);
-            };
-            $$11.a($$2, $$3, $$4);
-            if ($$0.a($$11) == null) {
-               return $$11;
-            }
-         }
-
-         return null;
-      }
-
-      @Override
-      public void a(emf $$0, emg $$1, azv $$2) {
-         int $$3 = this.g();
-         int $$4 = $$2.a(4);
-         jm $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-               default:
-                  if ($$4 <= 1) {
-                     eof.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, $$5, $$3);
-                  } else if ($$4 == 2) {
-                     eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jm.e, $$3);
-                  } else {
-                     eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jm.f, $$3);
-                  }
-                  break;
-               case d:
-                  if ($$4 <= 1) {
-                     eof.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, $$5, $$3);
-                  } else if ($$4 == 2) {
-                     eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jm.e, $$3);
-                  } else {
-                     eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jm.f, $$3);
-                  }
-                  break;
-               case e:
-                  if ($$4 <= 1) {
-                     eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
-                  } else if ($$4 == 2) {
-                     eof.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jm.c, $$3);
-                  } else {
-                     eof.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jm.d, $$3);
-                  }
-                  break;
-               case f:
-                  if ($$4 <= 1) {
-                     eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
-                  } else if ($$4 == 2) {
-                     eof.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jm.c, $$3);
-                  } else {
-                     eof.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jm.d, $$3);
-                  }
-            }
-         }
-
-         if ($$3 < 8) {
-            if ($$5 != jm.c && $$5 != jm.d) {
-               for (int $$8 = this.f.h() + 3; $$8 + 3 <= this.f.k(); $$8 += 5) {
-                  int $$9 = $$2.a(5);
-                  if ($$9 == 0) {
-                     eof.a($$0, $$1, $$2, $$8, this.f.i(), this.f.j() - 1, jm.c, $$3 + 1);
-                  } else if ($$9 == 1) {
-                     eof.a($$0, $$1, $$2, $$8, this.f.i(), this.f.m() + 1, jm.d, $$3 + 1);
-                  }
-               }
-            } else {
-               for (int $$6 = this.f.j() + 3; $$6 + 3 <= this.f.m(); $$6 += 5) {
-                  int $$7 = $$2.a(5);
-                  if ($$7 == 0) {
-                     eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), $$6, jm.e, $$3 + 1);
-                  } else if ($$7 == 1) {
-                     eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), $$6, jm.f, $$3 + 1);
-                  }
-               }
-            }
-         }
-      }
-
-      @Override
-      protected boolean a(dgd $$0, elt $$1, azv $$2, int $$3, int $$4, int $$5, alk<eul> $$6) {
-         jh $$7 = this.b($$3, $$4, $$5);
-         if ($$1.b($$7) && $$0.a_($$7).l() && !$$0.a_($$7.e()).l()) {
-            dvo $$8 = dil.cP.m().b(doi.e, $$2.h() ? dwr.a : dwr.b);
-            this.a($$0, $$8, $$3, $$4, $$5, $$1);
-            cqw $$9 = bup.s.a($$0.E(), buo.b);
-            if ($$9 != null) {
-               $$9.p((double)$$7.u() + 0.5, (double)$$7.v() + 0.5, (double)$$7.w() + 0.5);
-               $$9.a($$6, $$2.g());
-               $$0.b($$9);
+            dpd $$6 = $$2.e().d();
+            eof.a $$7 = eof.a($$4, eof.a($$0, $$2, $$3, "base_floor", $$6, true));
+            int $$8 = $$5.a(3);
+            if ($$8 == 0) {
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 4, -1), "base_roof", $$6, true));
+            } else if ($$8 == 1) {
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 8, -1), "second_roof", $$6, false));
+               eof.a($$0, eof.d, $$1 + 1, $$7, null, $$4, $$5);
+            } else if ($$8 == 2) {
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 4, -1), "third_floor_2", $$6, false));
+               $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 8, -1), "third_roof", $$6, true));
+               eof.a($$0, eof.d, $$1 + 1, $$7, null, $$4, $$5);
             }
 
             return true;
+         }
+      }
+   };
+   static final List<bar<dpd, jh>> c = Lists.newArrayList(
+      new bar[]{new bar<>(dpd.a, new jh(1, -1, 0)), new bar<>(dpd.b, new jh(6, -1, 1)), new bar<>(dpd.d, new jh(0, -1, 5)), new bar<>(dpd.c, new jh(5, -1, 6))}
+   );
+   static final eof.b d = new eof.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(eql $$0, int $$1, eof.a $$2, jh $$3, List<emm> $$4, azu $$5) {
+         dpd $$6 = $$2.e().d();
+         eof.a $$7 = eof.a($$4, eof.a($$0, $$2, new jh(3 + $$5.a(2), -3, 3 + $$5.a(2)), "tower_base", $$6, true));
+         $$7 = eof.a($$4, eof.a($$0, $$7, new jh(0, 7, 0), "tower_piece", $$6, true));
+         eof.a $$8 = $$5.a(3) == 0 ? $$7 : null;
+         int $$9 = 1 + $$5.a(3);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            $$7 = eof.a($$4, eof.a($$0, $$7, new jh(0, 4, 0), "tower_piece", $$6, true));
+            if ($$10 < $$9 - 1 && $$5.h()) {
+               $$8 = $$7;
+            }
+         }
+
+         if ($$8 != null) {
+            for (bar<dpd, jh> $$11 : eof.c) {
+               if ($$5.h()) {
+                  eof.a $$12 = eof.a($$4, eof.a($$0, $$8, $$11.b(), "bridge_end", $$6.a($$11.a()), true));
+                  eof.a($$0, eof.e, $$1 + 1, $$12, null, $$4, $$5);
+               }
+            }
+
+            $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 4, -1), "tower_top", $$6, true));
          } else {
+            if ($$1 != 7) {
+               return eof.a($$0, eof.g, $$1 + 1, $$7, null, $$4, $$5);
+            }
+
+            $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-1, 4, -1), "tower_top", $$6, true));
+         }
+
+         return true;
+      }
+   };
+   static final eof.b e = new eof.b() {
+      public boolean a;
+
+      @Override
+      public void a() {
+         this.a = false;
+      }
+
+      @Override
+      public boolean a(eql $$0, int $$1, eof.a $$2, jh $$3, List<emm> $$4, azu $$5) {
+         dpd $$6 = $$2.e().d();
+         int $$7 = $$5.a(4) + 1;
+         eof.a $$8 = eof.a($$4, eof.a($$0, $$2, new jh(0, 0, -4), "bridge_piece", $$6, true));
+         $$8.a(-1);
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < $$7; $$10++) {
+            if ($$5.h()) {
+               $$8 = eof.a($$4, eof.a($$0, $$8, new jh(0, $$9, -4), "bridge_piece", $$6, true));
+               $$9 = 0;
+            } else {
+               if ($$5.h()) {
+                  $$8 = eof.a($$4, eof.a($$0, $$8, new jh(0, $$9, -4), "bridge_steep_stairs", $$6, true));
+               } else {
+                  $$8 = eof.a($$4, eof.a($$0, $$8, new jh(0, $$9, -8), "bridge_gentle_stairs", $$6, true));
+               }
+
+               $$9 = 4;
+            }
+         }
+
+         if (!this.a && $$5.a(10 - $$1) == 0) {
+            eof.a($$4, eof.a($$0, $$8, new jh(-8 + $$5.a(8), $$9, -70 + $$5.a(10)), "ship", $$6, true));
+            this.a = true;
+         } else if (!eof.a($$0, eof.b, $$1 + 1, $$8, new jh(-3, $$9 + 1, -11), $$4, $$5)) {
             return false;
          }
+
+         $$8 = eof.a($$4, eof.a($$0, $$8, new jh(4, $$9, 0), "bridge_end", $$6.a(dpd.c), true));
+         $$8.a(-1);
+         return true;
+      }
+   };
+   static final List<bar<dpd, jh>> f = Lists.newArrayList(
+      new bar[]{
+         new bar<>(dpd.a, new jh(4, -1, 0)), new bar<>(dpd.b, new jh(12, -1, 4)), new bar<>(dpd.d, new jh(0, -1, 8)), new bar<>(dpd.c, new jh(8, -1, 12))
+      }
+   );
+   static final eof.b g = new eof.b() {
+      @Override
+      public void a() {
       }
 
       @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         if (!this.a($$0, $$4)) {
-            int $$7 = 0;
-            int $$8 = 2;
-            int $$9 = 0;
-            int $$10 = 2;
-            int $$11 = this.h * 5 - 1;
-            dvo $$12 = this.a.d();
-            this.a($$0, $$4, 0, 0, 0, 2, 1, $$11, e, e, false);
-            this.a($$0, $$4, $$3, 0.8F, 0, 2, 0, 2, 2, $$11, e, e, false, false);
-            if (this.c) {
-               this.a($$0, $$4, $$3, 0.6F, 0, 0, 0, 2, 1, $$11, dil.bs.m(), e, false, true);
-            }
+      public boolean a(eql $$0, int $$1, eof.a $$2, jh $$3, List<emm> $$4, azu $$5) {
+         dpd $$6 = $$2.e().d();
+         eof.a $$7 = eof.a($$4, eof.a($$0, $$2, new jh(-3, 4, -3), "fat_tower_base", $$6, true));
+         $$7 = eof.a($$4, eof.a($$0, $$7, new jh(0, 4, 0), "fat_tower_middle", $$6, true));
 
-            for (int $$13 = 0; $$13 < this.h; $$13++) {
-               int $$14 = 2 + $$13 * 5;
-               this.a($$0, $$4, 0, 0, $$14, 2, 2, $$3);
-               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 - 1);
-               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 - 1);
-               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 + 1);
-               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 + 1);
-               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 - 2);
-               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 - 2);
-               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 + 2);
-               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 + 2);
-               if ($$3.a(100) == 0) {
-                  this.a($$0, $$4, $$3, 2, 0, $$14 - 1, euc.t);
-               }
+         for (int $$8 = 0; $$8 < 2 && $$5.a(3) != 0; $$8++) {
+            $$7 = eof.a($$4, eof.a($$0, $$7, new jh(0, 8, 0), "fat_tower_middle", $$6, true));
 
-               if ($$3.a(100) == 0) {
-                  this.a($$0, $$4, $$3, 0, 0, $$14 + 1, euc.t);
-               }
-
-               if (this.c && !this.d) {
-                  int $$15 = 1;
-                  int $$16 = $$14 - 1 + $$3.a(3);
-                  jh $$17 = this.b(1, 0, $$16);
-                  if ($$4.b($$17) && this.b($$0, 1, 0, $$16, $$4)) {
-                     this.d = true;
-                     $$0.a($$17, dil.ct.m(), 2);
-                     if ($$0.c_($$17) instanceof duh $$19) {
-                        $$19.a(bup.q, $$3);
-                     }
-                  }
-               }
-            }
-
-            for (int $$20 = 0; $$20 <= 2; $$20++) {
-               for (int $$21 = 0; $$21 <= $$11; $$21++) {
-                  this.a($$0, $$4, $$12, $$20, -1, $$21);
-               }
-            }
-
-            int $$22 = 2;
-            this.a($$0, $$4, 0, -1, 2);
-            if (this.h > 1) {
-               int $$23 = $$11 - 2;
-               this.a($$0, $$4, 0, -1, $$23);
-            }
-
-            if (this.b) {
-               dvo $$24 = dil.cP.m().b(doi.e, dwr.a);
-
-               for (int $$25 = 0; $$25 <= $$11; $$25++) {
-                  dvo $$26 = this.a($$0, 1, -1, $$25, $$4);
-                  if (!$$26.l() && $$26.s()) {
-                     float $$27 = this.b($$0, 1, 0, $$25, $$4) ? 0.7F : 0.9F;
-                     this.a($$0, $$4, $$3, $$27, 1, 0, $$25, $$24);
-                  }
+            for (bar<dpd, jh> $$9 : eof.f) {
+               if ($$5.h()) {
+                  eof.a $$10 = eof.a($$4, eof.a($$0, $$7, $$9.b(), "bridge_end", $$6.a($$9.a()), true));
+                  eof.a($$0, eof.e, $$1 + 1, $$10, null, $$4, $$5);
                }
             }
          }
+
+         $$7 = eof.a($$4, eof.a($$0, $$7, new jh(-2, 8, -2), "fat_tower_top", $$6, true));
+         return true;
       }
+   };
 
-      private void a(dgd $$0, elt $$1, int $$2, int $$3, int $$4) {
-         dvo $$5 = this.a.b();
-         dvo $$6 = this.a.d();
-         if (this.a($$0, $$2, $$3, $$4, $$1).a($$6.b())) {
-            this.c($$0, $$5, $$2, $$3, $$4, $$1);
-         }
+   static eof.a a(eql $$0, eof.a $$1, jh $$2, String $$3, dpd $$4, boolean $$5) {
+      eof.a $$6 = new eof.a($$0, $$3, $$1.d(), $$4, $$5);
+      jh $$7 = $$1.c().a($$1.e(), $$2, $$6.e(), jh.c);
+      $$6.a($$7.u(), $$7.v(), $$7.w());
+      return $$6;
+   }
 
-         if (this.a($$0, $$2 + 2, $$3, $$4, $$1).a($$6.b())) {
-            this.c($$0, $$5, $$2 + 2, $$3, $$4, $$1);
-         }
-      }
+   public static void a(eql $$0, jh $$1, dpd $$2, List<emm> $$3, azu $$4) {
+      g.a();
+      b.a();
+      e.a();
+      d.a();
+      eof.a $$5 = a($$3, new eof.a($$0, "base_floor", $$1, $$2, true));
+      $$5 = a($$3, a($$0, $$5, new jh(-1, 0, -1), "second_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new jh(-1, 4, -1), "third_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new jh(-1, 8, -1), "third_roof", $$2, true));
+      a($$0, d, 1, $$5, null, $$3, $$4);
+   }
 
-      @Override
-      protected void b(dgd $$0, dvo $$1, int $$2, int $$3, int $$4, elt $$5) {
-         jh.a $$6 = this.b($$2, $$3, $$4);
-         if ($$5.b($$6)) {
-            int $$7 = $$6.v();
+   static eof.a a(List<emm> $$0, eof.a $$1) {
+      $$0.add($$1);
+      return $$1;
+   }
 
-            while (this.a($$0.a_($$6)) && $$6.v() > $$0.I_() + 1) {
-               $$6.c(jm.a);
-            }
+   static boolean a(eql $$0, eof.b $$1, int $$2, eof.a $$3, jh $$4, List<emm> $$5, azu $$6) {
+      if ($$2 > 8) {
+         return false;
+      } else {
+         List<emm> $$7 = Lists.newArrayList();
+         if ($$1.a($$0, $$2, $$3, $$4, $$7, $$6)) {
+            boolean $$8 = false;
+            int $$9 = $$6.f();
 
-            if (this.a($$0, $$6, $$0.a_($$6))) {
-               while ($$6.v() < $$7) {
-                  $$6.c(jm.b);
-                  $$0.a($$6, $$1, 2);
-               }
-            }
-         }
-      }
-
-      protected void c(dgd $$0, dvo $$1, int $$2, int $$3, int $$4, elt $$5) {
-         jh.a $$6 = this.b($$2, $$3, $$4);
-         if ($$5.b($$6)) {
-            int $$7 = $$6.v();
-            int $$8 = 1;
-            boolean $$9 = true;
-
-            for (boolean $$10 = true; $$9 || $$10; $$8++) {
-               if ($$9) {
-                  $$6.q($$7 - $$8);
-                  dvo $$11 = $$0.a_($$6);
-                  boolean $$12 = this.a($$11) && !$$11.a(dil.H);
-                  if (!$$12 && this.a($$0, $$6, $$11)) {
-                     a($$0, $$1, $$6, $$7 - $$8 + 1, $$7);
-                     return;
-                  }
-
-                  $$9 = $$8 <= 20 && $$12 && $$6.v() > $$0.I_() + 1;
-               }
-
-               if ($$10) {
-                  $$6.q($$7 + $$8);
-                  dvo $$13 = $$0.a_($$6);
-                  boolean $$14 = this.a($$13);
-                  if (!$$14 && this.b($$0, $$6, $$13)) {
-                     $$0.a($$6.q($$7 + 1), this.a.e(), 2);
-                     a($$0, dil.eX.m(), $$6, $$7 + 2, $$7 + $$8);
-                     return;
-                  }
-
-                  $$10 = $$8 <= 50 && $$14 && $$6.v() < $$0.al();
-               }
-            }
-         }
-      }
-
-      private static void a(dgd $$0, dvo $$1, jh.a $$2, int $$3, int $$4) {
-         for (int $$5 = $$3; $$5 < $$4; $$5++) {
-            $$0.a($$2.q($$5), $$1, 2);
-         }
-      }
-
-      private boolean a(dfi $$0, jh $$1, dvo $$2) {
-         return $$2.c($$0, $$1, jm.b);
-      }
-
-      private boolean b(dfi $$0, jh $$1, dvo $$2) {
-         return dij.a($$0, $$1, jm.a) && !($$2.b() instanceof dle);
-      }
-
-      private void a(dgd $$0, elt $$1, int $$2, int $$3, int $$4, int $$5, int $$6, azv $$7) {
-         if (this.a($$0, $$1, $$2, $$6, $$5, $$4)) {
-            dvo $$8 = this.a.d();
-            dvo $$9 = this.a.e();
-            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5 - 1, $$4, $$9.b(dlg.d, Boolean.valueOf(true)), e, false);
-            this.a($$0, $$1, $$6, $$3, $$4, $$6, $$5 - 1, $$4, $$9.b(dlg.b, Boolean.valueOf(true)), e, false);
-            if ($$7.a(4) == 0) {
-               this.a($$0, $$1, $$2, $$5, $$4, $$2, $$5, $$4, $$8, e, false);
-               this.a($$0, $$1, $$6, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
-            } else {
-               this.a($$0, $$1, $$2, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
-               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 - 1, dil.cq.m().b(drl.g, jm.d));
-               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 + 1, dil.cq.m().b(drl.g, jm.c));
-            }
-         }
-      }
-
-      private void a(dgd $$0, elt $$1, azv $$2, float $$3, int $$4, int $$5, int $$6) {
-         if (this.b($$0, $$4, $$5, $$6, $$1) && $$2.i() < $$3 && this.a($$0, $$1, $$4, $$5, $$6, 2)) {
-            this.a($$0, dil.bs.m(), $$4, $$5, $$6, $$1);
-         }
-      }
-
-      private boolean a(dgd $$0, elt $$1, int $$2, int $$3, int $$4, int $$5) {
-         jh.a $$6 = this.b($$2, $$3, $$4);
-         int $$7 = 0;
-
-         for (jm $$8 : jm.values()) {
-            $$6.c($$8);
-            if ($$1.b($$6) && $$0.a_($$6).c($$0, $$6, $$8.g())) {
-               if (++$$7 >= $$5) {
-                  return true;
+            for (emm $$10 : $$7) {
+               $$10.a($$9);
+               emm $$11 = emm.a($$5, $$10.f());
+               if ($$11 != null && $$11.g() != $$3.g()) {
+                  $$8 = true;
+                  break;
                }
             }
 
-            $$6.c($$8.g());
+            if (!$$8) {
+               $$5.addAll($$7);
+               return true;
+            }
          }
 
          return false;
       }
    }
 
-   public static class b extends eof.c {
-      private final jm b;
-      private final boolean c;
+   public static class a extends ems {
+      public a(eql $$0, String $$1, jh $$2, dpd $$3, boolean $$4) {
+         super(emz.Y, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
+      }
 
-      public b(un $$0) {
-         super(ems.b, $$0);
-         this.c = $$0.q("tf");
-         this.b = jm.b($$0.h("D"));
+      public a(eql $$0, ul $$1) {
+         super(emz.Y, $$1, $$0, $$1x -> a($$1.q("OW"), dpd.valueOf($$1.l("Rot"))));
+      }
+
+      private static eqg a(boolean $$0, dpd $$1) {
+         epl $$2 = $$0 ? epl.b : epl.d;
+         return new eqg().a(true).a($$2).a($$1);
       }
 
       @Override
-      protected void a(emr $$0, un $$1) {
+      protected alj b() {
+         return a(this.a);
+      }
+
+      private static alj a(String $$0) {
+         return alj.b("end_city/" + $$0);
+      }
+
+      @Override
+      protected void a(emy $$0, ul $$1) {
          super.a($$0, $$1);
-         $$1.a("tf", this.c);
-         $$1.a("D", this.b.e());
-      }
-
-      public b(int $$0, elt $$1, @Nullable jm $$2, eog.a $$3) {
-         super(ems.b, $$0, $$3, $$1);
-         this.b = $$2;
-         this.c = $$1.e() > 3;
-      }
-
-      @Nullable
-      public static elt a(emg $$0, azv $$1, int $$2, int $$3, int $$4, jm $$5) {
-         int $$6;
-         if ($$1.a(4) == 0) {
-            $$6 = 6;
-         } else {
-            $$6 = 2;
-         }
-         elt $$11 = switch ($$5) {
-            default -> new elt(-1, 0, -4, 3, $$6, 0);
-            case d -> new elt(-1, 0, 0, 3, $$6, 4);
-            case e -> new elt(-4, 0, -1, 0, $$6, 3);
-            case f -> new elt(0, 0, -1, 4, $$6, 3);
-         };
-         $$11.a($$2, $$3, $$4);
-         return $$0.a($$11) != null ? null : $$11;
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("OW", this.c.i().get(0) == epl.b);
       }
 
       @Override
-      public void a(emf $$0, emg $$1, azv $$2) {
-         int $$3 = this.g();
-         switch (this.b) {
-            case c:
-            default:
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
-               eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
-               eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
-               break;
-            case d:
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
-               eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
-               eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
-               break;
-            case e:
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
-               eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jm.e, $$3);
-               break;
-            case f:
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jm.c, $$3);
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jm.d, $$3);
-               eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jm.f, $$3);
-         }
-
-         if (this.c) {
-            if ($$2.h()) {
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.j() - 1, jm.c, $$3);
+      protected void a(String $$0, jh $$1, dgd $$2, azu $$3, ema $$4) {
+         if ($$0.startsWith("Chest")) {
+            jh $$5 = $$1.e();
+            if ($$4.b($$5)) {
+               bsq.a($$2, $$3, $$5, euj.b);
             }
-
-            if ($$2.h()) {
-               eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + 3 + 1, this.f.j() + 1, jm.e, $$3);
-            }
-
-            if ($$2.h()) {
-               eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + 3 + 1, this.f.j() + 1, jm.f, $$3);
-            }
-
-            if ($$2.h()) {
-               eof.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.m() + 1, jm.d, $$3);
-            }
-         }
-      }
-
-      @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         if (!this.a($$0, $$4)) {
-            dvo $$7 = this.a.d();
-            if (this.c) {
-               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.i() + 3 - 1, this.f.m(), e, e, false);
-               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.i() + 3 - 1, this.f.m() - 1, e, e, false);
-               this.a($$0, $$4, this.f.h() + 1, this.f.l() - 2, this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
-               this.a($$0, $$4, this.f.h(), this.f.l() - 2, this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
-               this.a($$0, $$4, this.f.h() + 1, this.f.i() + 3, this.f.j() + 1, this.f.k() - 1, this.f.i() + 3, this.f.m() - 1, e, e, false);
-            } else {
-               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
-               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
-            }
-
-            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j() + 1, this.f.l());
-            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.m() - 1, this.f.l());
-            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.j() + 1, this.f.l());
-            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.m() - 1, this.f.l());
-            int $$8 = this.f.i() - 1;
-
-            for (int $$9 = this.f.h(); $$9 <= this.f.k(); $$9++) {
-               for (int $$10 = this.f.j(); $$10 <= this.f.m(); $$10++) {
-                  this.a($$0, $$4, $$7, $$9, $$8, $$10);
+         } else if ($$4.b($$1) && dfm.l($$1)) {
+            if ($$0.startsWith("Sentry")) {
+               cme $$6 = bus.aY.a($$2.a(), bur.d);
+               if ($$6 != null) {
+                  $$6.a_((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5);
+                  $$2.b($$6);
                }
-            }
-         }
-      }
-
-      private void a(dgd $$0, elt $$1, int $$2, int $$3, int $$4, int $$5) {
-         if (!this.a($$0, $$2, $$5 + 1, $$4, $$1).l()) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5, $$4, this.a.d(), e, false);
-         }
-      }
-   }
-
-   abstract static class c extends emf {
-      protected eog.a a;
-
-      public c(ems $$0, int $$1, eog.a $$2, elt $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
-
-      public c(ems $$0, un $$1) {
-         super($$0, $$1);
-         this.a = eog.a.a($$1.h("MST"));
-      }
-
-      @Override
-      protected boolean a(dfi $$0, int $$1, int $$2, int $$3, elt $$4) {
-         dvo $$5 = this.a($$0, $$1, $$2, $$3, $$4);
-         return !$$5.a(this.a.d().b()) && !$$5.a(this.a.b().b()) && !$$5.a(this.a.e().b()) && !$$5.a(dil.eX);
-      }
-
-      @Override
-      protected void a(emr $$0, un $$1) {
-         $$1.a("MST", this.a.ordinal());
-      }
-
-      protected boolean a(dek $$0, elt $$1, int $$2, int $$3, int $$4, int $$5) {
-         for (int $$6 = $$2; $$6 <= $$3; $$6++) {
-            if (this.a($$0, $$6, $$4 + 1, $$5, $$1).l()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      protected boolean a(dfg $$0, elt $$1) {
-         int $$2 = Math.max(this.f.h() - 1, $$1.h());
-         int $$3 = Math.max(this.f.i() - 1, $$1.i());
-         int $$4 = Math.max(this.f.j() - 1, $$1.j());
-         int $$5 = Math.min(this.f.k() + 1, $$1.k());
-         int $$6 = Math.min(this.f.l() + 1, $$1.l());
-         int $$7 = Math.min(this.f.m() + 1, $$1.m());
-         jh.a $$8 = new jh.a(($$2 + $$5) / 2, ($$3 + $$6) / 2, ($$4 + $$7) / 2);
-         if ($$0.t($$8).a(axc.Y)) {
-            return true;
-         } else {
-            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
-               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
-                  if ($$0.a_($$8.d($$9, $$3, $$10)).n()) {
-                     return true;
-                  }
-
-                  if ($$0.a_($$8.d($$9, $$6, $$10)).n()) {
-                     return true;
-                  }
-               }
-            }
-
-            for (int $$11 = $$2; $$11 <= $$5; $$11++) {
-               for (int $$12 = $$3; $$12 <= $$6; $$12++) {
-                  if ($$0.a_($$8.d($$11, $$12, $$4)).n()) {
-                     return true;
-                  }
-
-                  if ($$0.a_($$8.d($$11, $$12, $$7)).n()) {
-                     return true;
-                  }
-               }
-            }
-
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               for (int $$14 = $$3; $$14 <= $$6; $$14++) {
-                  if ($$0.a_($$8.d($$2, $$14, $$13)).n()) {
-                     return true;
-                  }
-
-                  if ($$0.a_($$8.d($$5, $$14, $$13)).n()) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
-         }
-      }
-
-      protected void a(dgd $$0, elt $$1, dvo $$2, int $$3, int $$4, int $$5) {
-         if (this.b($$0, $$3, $$4, $$5, $$1)) {
-            jh $$6 = this.b($$3, $$4, $$5);
-            dvo $$7 = $$0.a_($$6);
-            if (!$$7.c($$0, $$6, jm.b)) {
-               $$0.a($$6, $$2, 2);
+            } else if ($$0.startsWith("Elytra")) {
+               ckv $$7 = new ckv($$2.a(), $$1, this.c.d().a(jm.d));
+               $$7.a(new cwm(cwq.nU), false);
+               $$2.b($$7);
             }
          }
       }
    }
 
-   public static class d extends eof.c {
-      private final List<elt> b = Lists.newLinkedList();
+   interface b {
+      void a();
 
-      public d(int $$0, azv $$1, int $$2, int $$3, eog.a $$4) {
-         super(ems.c, $$0, $$4, new elt($$2, 50, $$3, $$2 + 7 + $$1.a(6), 54 + $$1.a(6), $$3 + 7 + $$1.a(6)));
-         this.a = $$4;
-      }
-
-      public d(un $$0) {
-         super(ems.c, $$0);
-         elt.a.listOf().parse(vb.a, $$0.c("Entrances", 11)).resultOrPartial(eof.b::error).ifPresent(this.b::addAll);
-      }
-
-      @Override
-      public void a(emf $$0, emg $$1, azv $$2) {
-         int $$3 = this.g();
-         int $$4 = this.f.e() - 3 - 1;
-         if ($$4 <= 0) {
-            $$4 = 1;
-         }
-
-         int $$5 = 0;
-
-         while ($$5 < this.f.d()) {
-            $$5 += $$2.a(this.f.d());
-            if ($$5 + 3 > this.f.d()) {
-               break;
-            }
-
-            eof.c $$6 = eof.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.j() - 1, jm.c, $$3);
-            if ($$6 != null) {
-               elt $$7 = $$6.f();
-               this.b.add(new elt($$7.h(), $$7.i(), this.f.j(), $$7.k(), $$7.l(), this.f.j() + 1));
-            }
-
-            $$5 += 4;
-         }
-
-         $$5 = 0;
-
-         while ($$5 < this.f.d()) {
-            $$5 += $$2.a(this.f.d());
-            if ($$5 + 3 > this.f.d()) {
-               break;
-            }
-
-            eof.c $$8 = eof.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.m() + 1, jm.d, $$3);
-            if ($$8 != null) {
-               elt $$9 = $$8.f();
-               this.b.add(new elt($$9.h(), $$9.i(), this.f.m() - 1, $$9.k(), $$9.l(), this.f.m()));
-            }
-
-            $$5 += 4;
-         }
-
-         $$5 = 0;
-
-         while ($$5 < this.f.f()) {
-            $$5 += $$2.a(this.f.f());
-            if ($$5 + 3 > this.f.f()) {
-               break;
-            }
-
-            eof.c $$10 = eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jm.e, $$3);
-            if ($$10 != null) {
-               elt $$11 = $$10.f();
-               this.b.add(new elt(this.f.h(), $$11.i(), $$11.j(), this.f.h() + 1, $$11.l(), $$11.m()));
-            }
-
-            $$5 += 4;
-         }
-
-         $$5 = 0;
-
-         while ($$5 < this.f.f()) {
-            $$5 += $$2.a(this.f.f());
-            if ($$5 + 3 > this.f.f()) {
-               break;
-            }
-
-            emf $$12 = eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jm.f, $$3);
-            if ($$12 != null) {
-               elt $$13 = $$12.f();
-               this.b.add(new elt(this.f.k() - 1, $$13.i(), $$13.j(), this.f.k(), $$13.l(), $$13.m()));
-            }
-
-            $$5 += 4;
-         }
-      }
-
-      @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         if (!this.a($$0, $$4)) {
-            this.a($$0, $$4, this.f.h(), this.f.i() + 1, this.f.j(), this.f.k(), Math.min(this.f.i() + 3, this.f.l()), this.f.m(), e, e, false);
-
-            for (elt $$7 : this.b) {
-               this.a($$0, $$4, $$7.h(), $$7.l() - 2, $$7.j(), $$7.k(), $$7.l(), $$7.m(), e, e, false);
-            }
-
-            this.a($$0, $$4, this.f.h(), this.f.i() + 4, this.f.j(), this.f.k(), this.f.l(), this.f.m(), e, false);
-         }
-      }
-
-      @Override
-      public void a(int $$0, int $$1, int $$2) {
-         super.a($$0, $$1, $$2);
-
-         for (elt $$3 : this.b) {
-            $$3.a($$0, $$1, $$2);
-         }
-      }
-
-      @Override
-      protected void a(emr $$0, un $$1) {
-         super.a($$0, $$1);
-         elt.a.listOf().encodeStart(vb.a, this.b).resultOrPartial(eof.b::error).ifPresent($$1x -> $$1.a("Entrances", $$1x));
-      }
-   }
-
-   public static class e extends eof.c {
-      public e(int $$0, elt $$1, jm $$2, eog.a $$3) {
-         super(ems.d, $$0, $$3, $$1);
-         this.a($$2);
-      }
-
-      public e(un $$0) {
-         super(ems.d, $$0);
-      }
-
-      @Nullable
-      public static elt a(emg $$0, azv $$1, int $$2, int $$3, int $$4, jm $$5) {
-         elt $$9 = switch ($$5) {
-            default -> new elt(0, -5, -8, 2, 2, 0);
-            case d -> new elt(0, -5, 0, 2, 2, 8);
-            case e -> new elt(-8, -5, 0, 0, 2, 2);
-            case f -> new elt(0, -5, 0, 8, 2, 2);
-         };
-         $$9.a($$2, $$3, $$4);
-         return $$0.a($$9) != null ? null : $$9;
-      }
-
-      @Override
-      public void a(emf $$0, emg $$1, azv $$2) {
-         int $$3 = this.g();
-         jm $$4 = this.i();
-         if ($$4 != null) {
-            switch ($$4) {
-               case c:
-               default:
-                  eof.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.j() - 1, jm.c, $$3);
-                  break;
-               case d:
-                  eof.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.m() + 1, jm.d, $$3);
-                  break;
-               case e:
-                  eof.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j(), jm.e, $$3);
-                  break;
-               case f:
-                  eof.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j(), jm.f, $$3);
-            }
-         }
-      }
-
-      @Override
-      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
-         if (!this.a($$0, $$4)) {
-            this.a($$0, $$4, 0, 5, 0, 2, 7, 1, e, e, false);
-            this.a($$0, $$4, 0, 0, 7, 2, 2, 8, e, e, false);
-
-            for (int $$7 = 0; $$7 < 5; $$7++) {
-               this.a($$0, $$4, 0, 5 - $$7 - ($$7 < 4 ? 1 : 0), 2 + $$7, 2, 7 - $$7, 2 + $$7, e, e, false);
-            }
-         }
-      }
+      boolean a(eql var1, int var2, eof.a var3, jh var4, List<emm> var5, azu var6);
    }
 }

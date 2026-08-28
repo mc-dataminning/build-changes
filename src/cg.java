@@ -2,15 +2,15 @@ import com.mojang.serialization.Codec;
 
 public class cg implements ar<cg.a> {
    @Override
-   public void a(alt $$0, ar.a<cg.a> $$1) {
+   public void a(alr $$0, ar.a<cg.a> $$1) {
    }
 
    @Override
-   public void b(alt $$0, ar.a<cg.a> $$1) {
+   public void b(alr $$0, ar.a<cg.a> $$1) {
    }
 
    @Override
-   public void a(alt $$0) {
+   public void a(alr $$0) {
    }
 
    @Override

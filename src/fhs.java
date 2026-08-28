@@ -1,50 +1,104 @@
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class fhs extends hff {
-   private static final xl a = xl.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fpp c = fpp.d();
-   private final frp B;
-   @Nullable
-   private fmq C;
+public class fhs extends hfq {
+   private static final xj a = xj.c("mco.selectServer.create");
+   private static final xj b = xj.c("mco.configure.world.name");
+   private static final xj c = xj.c("mco.configure.world.description");
+   private static final int B = 10;
+   private static final int C = 210;
+   private final ffc D;
+   private final fps E = new fps(this);
+   private fmm F;
+   private fmm G;
+   private final Runnable H;
 
-   public fhs(frp $$0) {
-      super(fjo.a);
-      this.B = $$0;
+   public fhs(ffc $$0, fgi $$1, boolean $$2) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1, $$2);
    }
 
    @Override
-   public void aS_() {
-      this.c.a(15).c().b();
-      this.C = new fmq(a, this.p).b(true);
-      this.c.a(this.C);
-      fpp $$0 = this.c.a(fpp.e().a(8));
-      xl $$1 = xl.c("mco.account.privacy.info.button");
-      $$0.a(flw.a($$1, fqm.b(this, ayj.a)).a());
-      $$0.a(flw.a(xk.k, $$0x -> this.aP_()).a());
-      this.c.a($$1x -> {
-         flu var10000 = this.c($$1x);
+   public void aR_() {
+      this.E.a(this.l, this.p);
+      fpw $$0 = this.E.c(fpw.d()).a(10);
+      fmd $$1 = fmd.a(xi.j, $$0x -> this.H.run()).a();
+      $$1.j = false;
+      this.F = new fmm(this.p, 210, 20, b);
+      this.F.b($$1x -> $$1.j = !baj.h($$1x));
+      this.G = new fmm(this.p, 210, 20, c);
+      $$0.a(fpo.a(this.p, this.F, b));
+      $$0.a(fpo.a(this.p, this.G, c));
+      fpw $$2 = this.E.b(fpw.e().a(10));
+      $$2.a($$1);
+      $$2.a(fmd.a(xi.k, $$0x -> this.aO_()).a());
+      this.E.a($$1x -> {
+         fmb var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.B);
+   protected void aF_() {
+      this.b(this.F);
    }
 
    @Override
    protected void c() {
-      if (this.C != null) {
-         this.C.d(this.n - 15);
-      }
+      this.E.a();
+   }
 
-      this.c.a();
-      fpj.a(this.c, this.H());
+   private void a(fgi $$0, boolean $$1) {
+      if (!$$0.h() && $$1) {
+         AtomicBoolean $$2 = new AtomicBoolean();
+         this.m.a(new fqp(() -> {
+            $$2.set(true);
+            this.D.h();
+            this.m.a(this.D);
+         }, xj.c("mco.upload.preparing"), xj.i()));
+         CompletableFuture.<fgi>supplyAsync(() -> a($$0), ae.g()).thenAcceptAsync($$1x -> {
+            if (!$$2.get()) {
+               this.b($$1x);
+            }
+         }, this.m).exceptionallyAsync($$0x -> {
+            this.D.h();
+            xj $$3;
+            if ($$0x.getCause() instanceof fhc $$2x) {
+               $$3 = $$2x.a.b();
+            } else {
+               $$3 = xj.c("mco.errorMessage.initialize.failed");
+            }
+
+            this.m.a(new fhu($$3, this.D));
+            return null;
+         }, this.m);
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private static fgi a(fgi $$0) {
+      ffh $$1 = ffh.a();
+
+      try {
+         return $$1.a(Long.valueOf($$0.a));
+      } catch (fhc var3) {
+         throw new RuntimeException(var3);
+      }
+   }
+
+   private void b(fgi $$0) {
+      fjf $$1 = new fjf($$0.a, this.F.a(), this.G.a());
+      fid $$2 = fid.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            ffc.g();
+            this.m.a(this.D);
+         }));
+      this.m.a($$2);
    }
 
    @Override
-   public xl i() {
-      return a;
+   public void aO_() {
+      this.m.a(this.D);
    }
 }

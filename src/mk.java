@@ -4,6 +4,6 @@ public interface mk {
    void a(js.a var1, Consumer<ah> var2);
 
    static ah a(String $$0) {
-      return ag.a.a().b(all.a($$0));
+      return ag.a.a().b(alj.a($$0));
    }
 }

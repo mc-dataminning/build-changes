@@ -1,122 +1,91 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class esi extends esb {
-   private final boolean k;
-   private final Long2ObjectMap<esf> l = new Long2ObjectOpenHashMap();
+public abstract class esi {
+   protected eso a;
+   protected bvj b;
+   protected final Int2ObjectMap<esh> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public esi(boolean $$0) {
-      this.k = $$0;
+   public void a(dfz $$0, bvj $$1) {
+      this.a = new eso($$0, $$1);
+      this.b = $$1;
+      this.c.clear();
+      this.d = azm.d($$1.dq() + 1.0F);
+      this.e = azm.d($$1.dr() + 1.0F);
+      this.f = azm.d($$1.dq() + 1.0F);
    }
 
-   @Override
-   public void a(dfs $$0, bvg $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-   }
-
-   @Override
    public void b() {
-      super.b();
-      this.l.clear();
+      this.a = null;
+      this.b = null;
    }
 
-   @Override
-   public esa a() {
-      return this.c(azn.a(this.b.cT().a), azn.a(this.b.cT().b + 0.5), azn.a(this.b.cT().c));
+   protected esh b(jh $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public esj a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   protected esh c(int $$0, int $$1, int $$2) {
+      return (esh)this.c.computeIfAbsent(esh.b($$0, $$1, $$2), $$3 -> new esh($$0, $$1, $$2));
    }
 
-   @Override
-   public int a(esa[] $$0, esa $$1) {
-      int $$2 = 0;
-      Map<jm, esa> $$3 = Maps.newEnumMap(jm.class);
+   public abstract esh a();
 
-      for (jm $$4 : jm.values()) {
-         esa $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
+   public abstract esq a(double var1, double var3, double var5);
 
-      for (jm $$6 : jm.c.a) {
-         jm $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            esa $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
+   protected esq b(double $$0, double $$1, double $$2) {
+      return new esq(this.c(azm.a($$0), azm.a($$1), azm.a($$2)));
    }
 
-   protected boolean a(@Nullable esa $$0) {
-      return $$0 != null && !$$0.i;
+   public abstract int a(esh[] var1, esh var2);
+
+   public abstract esm a(eso var1, int var2, int var3, int var4, bvj var5);
+
+   public abstract esm a(eso var1, int var2, int var3, int var4);
+
+   public esm a(bvj $$0, jh $$1) {
+      return this.a(new eso($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   private static boolean b(@Nullable esa $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Nullable
-   protected esa a(int $$0, int $$1, int $$2) {
-      esa $$3 = null;
-      esf $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == esf.u || $$4 == esf.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new jh($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
+   public void b(boolean $$0) {
+      this.h = $$0;
    }
 
-   protected esf b(int $$0, int $$1, int $$2) {
-      return (esf)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   public void c(boolean $$0) {
+      this.i = $$0;
    }
 
-   @Override
-   public esf a(esh $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public void d(boolean $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public esf a(esh $$0, int $$1, int $$2, int $$3, bvg $$4) {
-      jh.a $$5 = new jh.a();
+   public boolean d() {
+      return this.g;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dvo $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               ero $$10 = $$9.y();
-               if ($$10.c() && $$9.a(esd.b) && $$9.l()) {
-                  return esf.u;
-               }
+   public boolean e() {
+      return this.h;
+   }
 
-               if (!$$10.a(axj.a)) {
-                  return esf.a;
-               }
-            }
-         }
-      }
+   public boolean f() {
+      return this.i;
+   }
 
-      dvo $$11 = $$0.a($$5);
-      return $$11.a(esd.b) ? esf.j : esf.a;
+   public boolean g() {
+      return this.j;
+   }
+
+   public static boolean a(dvv $$0) {
+      return $$0.a(axc.aM) || $$0.a(dis.H) || $$0.a(dis.kJ) || dje.h($$0) || $$0.a(dis.fv);
    }
 }

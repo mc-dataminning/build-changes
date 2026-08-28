@@ -1,268 +1,153 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
 import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public interface xl extends Message, xq {
-   yi a();
+public class xl {
+   public static final Codec<xj> a = Codec.recursive("Component", xl::a);
+   public static final zh<wu, xj> b = zf.d(a);
+   public static final zh<wu, Optional<xj>> c = b.a(zf::a);
+   public static final zh<wu, xj> d = zf.c(a);
+   public static final zh<wu, Optional<xj>> e = d.a(zf::a);
+   public static final zh<ByteBuf, xj> f = zf.a(a);
+   public static final Codec<xj> g = a(Integer.MAX_VALUE);
 
-   xm b();
-
-   @Override
-   default String getString() {
-      return xq.super.getString();
-   }
-
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((xq.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
+   public static Codec<xj> a(int $$0) {
+      final Codec<String> $$1 = Codec.string(0, $$0);
+      return new Codec<xj>() {
+         public <T> DataResult<Pair<xj, T>> decode(DynamicOps<T> $$0, T $$1x) {
+            DynamicOps<JsonElement> $$2 = a($$0);
+            return $$1.decode($$0, $$1).flatMap($$1xxx -> {
+               try {
+                  JsonElement $$2x = JsonParser.parseString((String)$$1xxx.getFirst());
+                  return xl.a.parse($$2, $$2x).map($$1xxxxx -> Pair.of($$1xxxxx, $$1xxx.getSecond()));
+               } catch (JsonParseException var3x) {
+                  return DataResult.error(var3x::getMessage);
+               }
+            });
          }
-      }));
-      return $$1.toString();
+
+         public <T> DataResult<T> a(xj $$0, DynamicOps<T> $$1x, T $$2) {
+            DynamicOps<JsonElement> $$3 = a($$1);
+            return xl.a.encodeStart($$3, $$0).flatMap($$2x -> {
+               try {
+                  return $$1.encodeStart($$1, azc.e($$2x));
+               } catch (IllegalArgumentException var4x) {
+                  return DataResult.error(var4x::getMessage);
+               }
+            });
+         }
+
+         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
+            return (DynamicOps<JsonElement>)($$0 instanceof alh<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+         }
+      };
    }
 
-   List<xl> c();
+   private static xx a(List<xj> $$0) {
+      xx $$1 = $$0.get(0).f();
 
-   @Nullable
-   default String d() {
-      if (this.b() instanceof ys $$0 && this.c().isEmpty() && this.a().g()) {
-         return $$0.b();
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
 
-      return null;
-   }
-
-   default xz e() {
-      return xz.a(this.b());
-   }
-
-   default xz f() {
-      return new xz(this.b(), new ArrayList<>(this.c()), this.a());
-   }
-
-   ayz g();
-
-   @Override
-   default <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
-      yi $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (xl $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   default <T> Optional<T> a(xq.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (xl $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   default List<xl> h() {
-      return this.a(yi.a);
-   }
-
-   default List<xl> a(yi $$0) {
-      List<xl> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
-
-         return Optional.empty();
-      }, $$0);
       return $$1;
    }
 
-   default boolean a(xl $$0) {
-      if (this.equals($$0)) {
-         return true;
-      } else {
-         List<xl> $$1 = this.h();
-         List<xl> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
-      }
+   public static <T extends bai, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new xl.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = bai.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
+      MapCodec<E> $$7 = new xl.b($$3, $$6, $$4);
+      return ayv.a($$7, $$6);
    }
 
-   static xl a(@Nullable String $$0) {
-      return (xl)($$0 != null ? b($$0) : xk.a);
+   private static Codec<xj> a(Codec<xj> $$0) {
+      xk.a<?>[] $$1 = new xk.a[]{yq.b, yu.c, yn.b, yr.c, ys.b, yp.b};
+      MapCodec<xk> $$2 = a($$1, xk.a::a, xk::a, "type");
+      Codec<xj> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(xj::b), ayv.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xj::c), yg.b.a.forGetter(xj::a))
+               .apply($$2x, xx::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, ayv.a($$0.listOf())), $$3)
+         .xmap($$0x -> (xj)$$0x.map($$0xx -> (xj)$$0xx.map(xj::b, xl::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
    }
 
-   static xz b(String $$0) {
-      return xz.a(ys.a($$0));
-   }
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
 
-   static xz c(String $$0) {
-      return xz.a(new yw($$0, null, yw.a));
-   }
-
-   static xz a(String $$0, Object... $$1) {
-      return xz.a(new yw($$0, null, $$1));
-   }
-
-   static xz b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!yw.a($$3) && !($$3 instanceof xl)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
-      }
-
-      return a($$0, $$1);
-   }
-
-   static xz a(String $$0, @Nullable String $$1) {
-      return xz.a(new yw($$0, $$1, yw.a));
-   }
-
-   static xz a(String $$0, @Nullable String $$1, Object... $$2) {
-      return xz.a(new yw($$0, $$1, $$2));
-   }
-
-   static xz i() {
-      return xz.a(ys.c);
-   }
-
-   static xz d(String $$0) {
-      return xz.a(new yp($$0));
-   }
-
-   static xz a(String $$0, boolean $$1, Optional<xl> $$2, yn $$3) {
-      return xz.a(new yr($$0, $$1, $$2, $$3));
-   }
-
-   static xz a(hn $$0, String $$1) {
-      return xz.a(new yt(Either.left($$0), $$1));
-   }
-
-   static xz b(String $$0, String $$1) {
-      return xz.a(new yt(Either.right($$0), $$1));
-   }
-
-   static xz a(hn $$0, Optional<xl> $$1) {
-      return xz.a(new yu($$0, $$1));
-   }
-
-   static xl a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static xl a(Message $$0) {
-      return (xl)($$0 instanceof xl $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static xl a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static xl a(all $$0) {
-      return b($$0.toString());
-   }
-
-   static xl a(del $$0) {
-      return b($$0.toString());
-   }
-
-   static xl a(URI $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
-      }
-
-      static xz b(JsonElement $$0, js.a $$1) {
-         return (xz)xn.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
-      }
-
-      static JsonElement b(xl $$0, js.a $$1) {
-         return (JsonElement)xn.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
-      }
-
-      public static String a(xl $$0, js.a $$1) {
-         return a.toJson(b($$0, $$1));
-      }
-
-      @Nullable
-      public static xz a(String $$0, js.a $$1) {
-         JsonElement $$2 = JsonParser.parseString($$0);
-         return $$2 == null ? null : b($$2, $$1);
-      }
-
-      @Nullable
-      public static xz a(@Nullable JsonElement $$0, js.a $$1) {
-         return $$0 == null ? null : b($$0, $$1);
-      }
-
-      @Nullable
-      public static xz b(String $$0, js.a $$1) {
-         JsonReader $$2 = new JsonReader(new StringReader($$0));
-         $$2.setLenient(true);
-         JsonElement $$3 = JsonParser.parseReader($$2);
-         return $$3 == null ? null : b($$3, $$1);
-      }
-   }
-
-   public static class b implements JsonDeserializer<xz>, JsonSerializer<xl> {
-      private final js.a a;
-
-      public b(js.a $$0) {
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      public xz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return xl.a.b($$0, this.a);
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
+            }
+         }
+
+         return DataResult.error(() -> "No matching codec found");
       }
 
-      public JsonElement a(xl $$0, Type $$1, JsonSerializationContext $$2) {
-         return xl.a.b($$0, this.a);
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
+
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
+      }
+   }
+
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
+
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      }
+
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
+      }
+
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
       }
    }
 }

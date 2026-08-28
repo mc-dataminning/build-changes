@@ -1,47 +1,31 @@
-import javax.annotation.Nullable;
+public class hcq implements hcl {
+   private final gic a;
+   private boolean b;
+   private boolean c = true;
 
-public interface hcq {
-   all a();
-
-   @Nullable
-   hdw a(hdv var1);
-
-   hcn b();
-
-   awp c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hcq.a k();
-
-   default boolean r() {
-      return false;
+   public hcq(gic $$0) {
+      this.a = $$0;
    }
 
-   default boolean s() {
-      return true;
-   }
+   @Override
+   public void a() {
+      dfm $$0 = this.a.dV();
+      dvv $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dis.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dis.nd) && !this.a.Y_()) {
+            boolean $$2 = $$1.c(diw.b);
+            if ($$2) {
+               this.a.a(awn.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awn.cZ, 1.0F, 1.0F);
+            }
+         }
 
-   static azv t() {
-      return azv.a();
-   }
+         this.b = true;
+      } else {
+         this.b = false;
+      }
 
-   public static enum a {
-      a,
-      b;
+      this.c = false;
    }
 }

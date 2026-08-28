@@ -1,33 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.Locale;
 
-public interface gen {
-   boolean a(geo var1);
+public enum gen {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
 
-   boolean a(gep var1);
+   private final String l;
+   private final xj m;
+   private final xj n;
 
-   static gen a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new gen() {
-         @Override
-         public boolean a(geo $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
-         }
+   private gen(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = xj.c($$1);
+      this.n = xj.c($$1 + ".description");
+   }
 
-         @Override
-         public boolean a(gep $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
-         }
+   public String a() {
+      return this.l;
+   }
+
+   public xj b() {
+      return this.m;
+   }
+
+   public xj c() {
+      return this.n;
+   }
+
+   public static List<gen> a(geo $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
       };
    }
 }

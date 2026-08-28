@@ -1,73 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-public class csx {
-   private final List<csx.b> a;
-   private final csx.b b;
-
-   csx(List<csx.b> $$0, csx.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(csx.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
+public class csx extends csb {
+   public csx(int $$0, cot $$1) {
+      super(cti.o, dbg.b, ctp.b, $$0, $$1);
    }
 
-   public static csx.a a() {
-      return new csx.a();
-   }
-
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
-
-   public csx.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public csx.b b() {
-      return this.b;
-   }
-
-   public List<csx.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(csx.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<csx.b> a = new ArrayList<>();
-      private csx.b b = csx.b.e;
-
-      public csx.a a(int $$0, int $$1, int $$2, Predicate<cwf> $$3) {
-         this.a.add(new csx.b($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      public csx.a a(int $$0, int $$1, int $$2) {
-         this.b = new csx.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public csx a() {
-         return new csx(this.a, this.b);
-      }
-   }
-
-   public static record b(int a, int b, int c, Predicate<cwf> d) {
-      static final csx.b e = new csx.b(0, 0, 0, $$0 -> true);
+   public csx(int $$0, cot $$1, bsd $$2, csl $$3) {
+      super(cti.o, dbg.b, ctp.b, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,49 +1,76 @@
-import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 
-public interface dat<T extends daw> {
-   Codec<dat<?>> h = lz.r.q().dispatch(dat::aq_, day::a);
-   zj<ww, dat<?>> i = zh.a(ma.ae).b(dat::aq_, day::b);
+public class dat extends dar {
+   private static final daw a = daw.a(cwq.qP);
+   private static final daw b = daw.a(cwq.pv);
+   private static final daw c = daw.a(cwq.uN);
 
-   boolean a(T var1, dff var2);
+   public dat(dao $$0) {
+      super($$0);
+   }
 
-   cwf a(T var1, js.a var2);
+   public boolean a(dap $$0, dfm $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   boolean a(int var1, int var2);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwm $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   cwf a(js.a var1);
-
-   default jz<cwf> a(T $$0) {
-      jz<cwf> $$1 = jz.a($$0.a(), cwf.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwb $$3 = $$0.a($$2).h();
-         if ($$3.l()) {
-            $$1.set($$2, new cwf($$3.k()));
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
          }
       }
 
-      return $$1;
+      return $$2 && $$3 >= 1;
    }
 
-   default boolean ap_() {
-      return false;
+   public cwm a(dap $$0, js.a $$1) {
+      List<czb> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwm $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               czb $$6 = $$5.a(ku.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
+
+      cwm $$7 = new cwm(cwq.uM, 3);
+      $$7.b(ku.af, new czc($$3, $$2));
+      return $$7;
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   default String c() {
-      return "";
+   @Override
+   public cwm a(js.a $$0) {
+      return new cwm(cwq.uM);
    }
 
-   default cwf g() {
-      return new cwf(dil.cA);
+   @Override
+   public dbf<?> ap_() {
+      return dbf.g;
    }
-
-   day<?> aq_();
-
-   daz<?> e();
-
-   das a();
 }

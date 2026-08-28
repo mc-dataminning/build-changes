@@ -1,48 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bzb {
-   public static bwy<bvm> a(cei<jh> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ezr::c);
-   }
+   private static final int a = 300;
 
-   public static byi<bvm> b(cei<? extends bui> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bui::dw);
-   }
-
-   private static <T> byi<bvm> a(cei<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ezr> $$4) {
-      return cak.a(
-         (Function<cak.b<bvm>, ? extends App<cak.c<bvm>, can<bvm>>>)($$5 -> $$5.group($$5.a(cei.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cel> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ezr $$11 = $$8.dw();
-                     ezr $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((ka)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ezr $$13 = $$10.get().a().a().d($$11);
-                           ezr $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ezr $$16 = cgc.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cel($$16, $$1, 0));
-                              break;
-                           }
+   public static bxb<bvh> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$3x -> $$3x.group($$3x.b(cel.C), $$3x.b(cel.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        jh $$11 = $$3x.<jp>b($$4).b();
+                        if ($$11.a($$7.dv(), (double)$$1)) {
+                           $$3.increment();
                         }
 
                         return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.eb().a($$6.ac(), $$6.ab());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

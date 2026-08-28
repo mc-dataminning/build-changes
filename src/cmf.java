@@ -1,195 +1,199 @@
 import java.util.EnumSet;
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public abstract class cmf extends clc {
-   private static final ako<Byte> b = aks.a(cmf.class, akq.a);
-   protected int c;
-   private cmf.a bY = cmf.a.a;
+public class cmf extends cly {
+   @Nullable
+   private cmf.b a;
 
-   protected cmf(bup<? extends cmf> $$0, dff $$1) {
+   public cmf(bus<? extends cmf> $$0, dfm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(aks.a $$0) {
-      super.a($$0);
-      $$0.a(b, (byte)0);
+   protected void B() {
+      this.a = new cmf.b(this);
+      this.bS.a(1, new cbz(this));
+      this.bS.a(1, new cbu(this, this.dV()));
+      this.bS.a(3, this.a);
+      this.bS.a(4, new ccp(this, 1.0, false));
+      this.bS.a(5, new cmf.a(this));
+      this.bT.a(1, new cdx(this).a());
+      this.bT.a(2, new cdy<>(this, cou.class, true));
+   }
+
+   public static bwo.a n() {
+      return cly.gs().a(bwp.s, 8.0).a(bwp.v, 0.25).a(bwp.c, 1.0);
    }
 
    @Override
-   public void a(un $$0) {
-      super.a($$0);
-      this.c = $$0.h("SpellTicks");
+   protected bul.b bg() {
+      return bul.b.c;
    }
 
    @Override
-   public void b(un $$0) {
-      super.b($$0);
-      $$0.a("SpellTicks", this.c);
+   protected awm t() {
+      return awn.wW;
    }
 
    @Override
-   public clc.a q() {
-      if (this.gF()) {
-         return clc.a.c;
+   protected awm e(btb $$0) {
+      return awn.wY;
+   }
+
+   @Override
+   protected awm n_() {
+      return awn.wX;
+   }
+
+   @Override
+   protected void b(jh $$0, dvv $$1) {
+      this.a(awn.wZ, 0.15F, 1.0F);
+   }
+
+   @Override
+   public boolean a(arp $$0, btb $$1, float $$2) {
+      if (this.a($$0, $$1)) {
+         return false;
       } else {
-         return this.gO() ? clc.a.g : clc.a.a;
-      }
-   }
-
-   public boolean gF() {
-      return this.dY().C ? this.am.a(b) > 0 : this.c > 0;
-   }
-
-   public void a(cmf.a $$0) {
-      this.bY = $$0;
-      this.am.a(b, (byte)$$0.h);
-   }
-
-   protected cmf.a gG() {
-      return !this.dY().C ? this.bY : cmf.a.a(this.am.a(b));
-   }
-
-   @Override
-   protected void ac() {
-      super.ac();
-      if (this.c > 0) {
-         this.c--;
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dY().C && this.gF()) {
-         cmf.a $$0 = this.gG();
-         float $$1 = (float)$$0.i[0];
-         float $$2 = (float)$$0.i[1];
-         float $$3 = (float)$$0.i[2];
-         float $$4 = this.aX * (float) (Math.PI / 180.0) + azn.b((float)this.ag * 0.6662F) * 0.25F;
-         float $$5 = azn.b($$4);
-         float $$6 = azn.a($$4);
-         double $$7 = 0.6 * (double)this.em();
-         double $$8 = 1.8 * (double)this.em();
-         this.dY().a(ll.a(ls.u, $$1, $$2, $$3), this.dD() + (double)$$5 * $$7, this.dF() + $$8, this.dJ() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
-         this.dY().a(ll.a(ls.u, $$1, $$2, $$3), this.dD() - (double)$$5 * $$7, this.dF() + $$8, this.dJ() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
-      }
-   }
-
-   protected int gH() {
-      return this.c;
-   }
-
-   protected abstract awn gv();
-
-   protected static enum a {
-      a(0, 0.0, 0.0, 0.0),
-      b(1, 0.7, 0.7, 0.8),
-      c(2, 0.4, 0.3, 0.35),
-      d(3, 0.7, 0.5, 0.2),
-      e(4, 0.3, 0.3, 0.8),
-      f(5, 0.1, 0.1, 0.2);
-
-      private static final IntFunction<cmf.a> g = aye.a($$0 -> $$0.h, values(), aye.a.a);
-      final int h;
-      final double[] i;
-
-      private a(final int $$0, final double $$1, final double $$2, final double $$3) {
-         this.h = $$0;
-         this.i = new double[]{$$1, $$2, $$3};
-      }
-
-      public static cmf.a a(int $$0) {
-         return g.apply($$0);
-      }
-   }
-
-   protected class b extends ccc {
-      public b() {
-         this.a(EnumSet.of(ccc.a.a, ccc.a.b));
-      }
-
-      @Override
-      public boolean b() {
-         return cmf.this.gH() > 0;
-      }
-
-      @Override
-      public void d() {
-         super.d();
-         cmf.this.bR.o();
-      }
-
-      @Override
-      public void e() {
-         super.e();
-         cmf.this.a(cmf.a.a);
-      }
-
-      @Override
-      public void a() {
-         if (cmf.this.m() != null) {
-            cmf.this.K().a(cmf.this.m(), (float)cmf.this.ae(), (float)cmf.this.ad());
+         if (($$1.d() != null || $$1.a(axe.x)) && this.a != null) {
+            this.a.h();
          }
+
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   protected abstract class c extends ccc {
-      protected int b;
-      protected int c;
+   @Override
+   public void h() {
+      this.aW = this.dL();
+      super.h();
+   }
+
+   @Override
+   public void r(float $$0) {
+      this.v($$0);
+      super.r($$0);
+   }
+
+   @Override
+   public float a(jh $$0, dfp $$1) {
+      return dmo.o($$1.a_($$0.e())) ? 10.0F : super.a($$0, $$1);
+   }
+
+   public static boolean b(bus<cmf> $$0, dfn $$1, bur $$2, jh $$3, azu $$4) {
+      if (!c($$0, $$1, $$2, $$3, $$4)) {
+         return false;
+      } else if (bur.a($$2)) {
+         return true;
+      } else {
+         cou $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      }
+   }
+
+   static class a extends cdc {
+      @Nullable
+      private jm i;
+      private boolean j;
+
+      public a(cmf $$0) {
+         super($$0, 1.0, 10);
+         this.a(EnumSet.of(ccf.a.a));
+      }
 
       @Override
       public boolean b() {
-         bve $$0 = cmf.this.m();
-         if ($$0 == null || !$$0.bN()) {
+         if (this.b.aa_() != null) {
+            return false;
+         } else if (!this.b.L().m()) {
             return false;
          } else {
-            return cmf.this.gF() ? false : cmf.this.ag >= this.c;
+            azu $$0 = this.b.dY();
+            if (a(this.b).N().b(dfi.c) && $$0.a(b(10)) == 0) {
+               this.i = jm.b($$0);
+               jh $$1 = jh.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
+               dvv $$2 = this.b.dV().a_($$1);
+               if (dmo.o($$2)) {
+                  this.j = true;
+                  return true;
+               }
+            }
+
+            this.j = false;
+            return super.b();
          }
       }
 
       @Override
       public boolean c() {
-         bve $$0 = cmf.this.m();
-         return $$0 != null && $$0.bN() && this.b > 0;
+         return this.j ? false : super.c();
       }
 
       @Override
       public void d() {
-         this.b = this.a(this.n());
-         cmf.this.c = this.h();
-         this.c = cmf.this.ag + this.i();
-         awn $$0 = this.l();
-         if ($$0 != null) {
-            cmf.this.a($$0, 1.0F, 1.0F);
+         if (!this.j) {
+            super.d();
+         } else {
+            dfn $$0 = this.b.dV();
+            jh $$1 = jh.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
+            dvv $$2 = $$0.a_($$1);
+            if (dmo.o($$2)) {
+               $$0.a($$1, dmo.p($$2), 3);
+               this.b.S();
+               this.b.at();
+            }
          }
+      }
+   }
 
-         cmf.this.a(this.m());
+   static class b extends ccf {
+      private final cmf a;
+      private int b;
+
+      public b(cmf $$0) {
+         this.a = $$0;
+      }
+
+      public void h() {
+         if (this.b == 0) {
+            this.b = this.a(20);
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b > 0;
       }
 
       @Override
       public void a() {
          this.b--;
-         if (this.b == 0) {
-            this.k();
-            cmf.this.a(cmf.this.gv(), 1.0F, 1.0F);
+         if (this.b <= 0) {
+            dfm $$0 = this.a.dV();
+            azu $$1 = this.a.dY();
+            jh $$2 = this.a.dv();
+
+            for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
+               for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {
+                  for (int $$5 = 0; $$5 <= 10 && $$5 >= -10; $$5 = ($$5 <= 0 ? 1 : 0) - $$5) {
+                     jh $$6 = $$2.b($$4, $$3, $$5);
+                     dvv $$7 = $$0.a_($$6);
+                     diq $$8 = $$7.b();
+                     if ($$8 instanceof dmo) {
+                        if (a($$0).N().b(dfi.c)) {
+                           $$0.a($$6, true, this.a);
+                        } else {
+                           $$0.a($$6, ((dmo)$$8).q($$0.a_($$6)), 3);
+                        }
+
+                        if ($$1.h()) {
+                           return;
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
-
-      protected abstract void k();
-
-      protected int n() {
-         return 20;
-      }
-
-      protected abstract int h();
-
-      protected abstract int i();
-
-      @Nullable
-      protected abstract awn l();
-
-      protected abstract cmf.a m();
    }
 }

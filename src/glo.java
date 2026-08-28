@@ -1,64 +1,53 @@
-import java.util.Calendar;
+public class glo implements glr<dsu> {
+   private final gae a;
+   private final gae b;
 
-public class glo<T extends dsr & dtw> implements gli<T> {
-   private final fyo a;
-   private final fyo b;
-   private final fyo c;
-   private boolean d;
-
-   public glo(glj.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.d = true;
-      }
-
-      this.a = new fyo($$0.a(gcb.K));
-      this.b = new fyo($$0.a(gcb.af));
-      this.c = new fyo($$0.a(gcb.ag));
+   public glo(gls.a $$0) {
+      this.a = new gae.a($$0.a(gck.t), gjq::c);
+      this.b = new gae.a($$0.a(gck.s), gjq::c);
    }
 
-   @Override
-   public void a(T $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
-      dff $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dvo $$8 = $$7 ? $$0.m() : dil.cv.m().b(djm.c, jm.d);
-      dwg $$9 = $$8.b(djm.d) ? $$8.c(djm.d) : dwg.a;
-      if ($$8.b() instanceof dhd<?> $$11) {
-         boolean $$12 = $$9 != dwg.a;
-         $$2.a();
-         float $$13 = $$8.c(djm.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dkq.c<? extends dsy> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aB_(), true);
-         } else {
-            $$14 = dkq.b::b;
-         }
+   public static gcr b() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("main", gcq.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gcn.a);
+      $$1.a("left_leg", gcq.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gcn.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gcq.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gcn.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gcr.a($$0, 64, 64);
+   }
 
-         float $$16 = $$14.apply(djm.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gll<>()).applyAsInt($$4);
-         hbc $$18 = gjs.a($$0, $$9, this.d);
-         feo $$19 = $$18.a($$3, gjh::e);
-         if ($$12) {
-            if ($$9 == dwg.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
-         }
+   public static gcr c() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("main", gcq.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gcn.a);
+      $$1.a("left_leg", gcq.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gcn.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gcq.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gcn.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gcr.a($$0, 64, 64);
+   }
 
-         $$2.b();
+   public void a(dsu $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
+      hbn $$6 = gkb.r[$$0.c().a()];
+      dfm $$7 = $$0.i();
+      if ($$7 != null) {
+         dvv $$8 = $$0.m();
+         dkx.c<? extends dsu> $$9 = dkx.a(dta.y, dij::i, dij::h, djt.c, $$8, $$7, $$0.aA_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new glu<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dij.b) == dwi.a ? this.a : this.b, $$8.c(dij.aF), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, jm.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, jm.d, $$6, $$4, $$5, true);
       }
    }
 
-   private void a(fek $$0, feo $$1, fyo $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   private void a(fer $$0, gjg $$1, gae $$2, jm $$3, hbn $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fev $$8 = $$4.a($$1, gjq::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

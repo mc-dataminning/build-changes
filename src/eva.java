@@ -1,64 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class eva extends eup {
-   public static final MapCodec<eva> a = a(eva::new);
+public class eva extends evf {
+   public static final MapCodec<eva> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lz.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eva::new)
+   );
+   private final jq<cwi> j;
 
-   eva(List<euw> $$0, List<exr> $$1) {
-      super($$0, $$1);
+   private eva(jq<cwi> $$0, int $$1, int $$2, List<exy> $$3, List<ewb> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eux a() {
-      return euu.h;
+   public eve a() {
+      return evb.c;
    }
 
    @Override
-   protected euo a(List<? extends euo> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (euo)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (euo $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cwm> $$0, eun $$1) {
+      $$0.accept(new cwm(this.j));
    }
 
-   public static eva.a a(euw.a<?>... $$0) {
-      return new eva.a($$0);
-   }
-
-   public static class a extends euw.a<eva.a> {
-      private final Builder<euw> a = ImmutableList.builder();
-
-      public a(euw.a<?>... $$0) {
-         for (euw.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected eva.a a() {
-         return this;
-      }
-
-      @Override
-      public eva.a c(euw.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public euw b() {
-         return new eva(this.a.build(), this.f());
-      }
+   public static evf.a<?> a(dfl $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eva($$0.j().f(), $$1, $$2, $$3, $$4));
    }
 }

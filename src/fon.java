@@ -1,48 +1,42 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+public interface fon {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-public enum fon implements baj {
-   a("uniform"),
-   b("jp");
+   fon.a a();
 
-   public static final Codec<fon> c = baj.a(fon::values);
-   private final String d;
+   void a(foo var1, long var2);
 
-   private fon(final String $$0) {
-      this.d = $$0;
+   void a(flq var1, flo var2, long var3);
+
+   default Object f() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   default int b() {
+      return 160;
    }
 
-   public static class a {
-      private final Map<fon, Boolean> c;
-      public static final Codec<fon.a> a = Codec.unboundedMap(fon.c, Codec.BOOL).xmap(fon.a::new, $$0 -> $$0.c);
-      public static final fon.a b = new fon.a(Map.of());
+   default int c() {
+      return 32;
+   }
 
-      public a(Map<fon, Boolean> $$0) {
+   default int g() {
+      return azm.e(this.c(), 32);
+   }
+
+   public static enum a {
+      a(awn.AC),
+      b(awn.AD);
+
+      private final awm c;
+
+      private a(final awm $$0) {
          this.c = $$0;
       }
 
-      public boolean a(Set<fon> $$0) {
-         for (Entry<fon, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public fon.a a(fon.a $$0) {
-         Map<fon, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fon.a(Map.copyOf($$1));
+      public void a(heg $$0) {
+         $$0.a(hcw.a(this.c, 1.0F, 1.0F));
       }
    }
 }

@@ -1,21 +1,32 @@
-public class gfx extends ghf {
-   private final gha a;
+import javax.annotation.Nullable;
 
-   protected gfx(gcy $$0, double $$1, double $$2, double $$3, double $$4, gha $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
+public class gfx extends gho {
+   private final float a;
+   private final ghj b;
+
+   gfx(gdh $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, ghj $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
       this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public ggs b() {
+      return ggs.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -26,24 +37,43 @@ public class gfx extends ghf {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   @Override
-   public ggj b() {
-      return ggj.b;
-   }
+   public static class a implements ggr<lk> {
+      private final ghj a;
 
-   public static class a implements ggi<lw> {
-      private final gha a;
-
-      public a(gha $$0) {
+      public a(ghj $$0) {
          this.a = $$0;
       }
 
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfx($$1, $$2, $$3, $$4, $$5, this.a);
+      @Nullable
+      public ggo a(lk $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dvv $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dow.a) {
+            return null;
+         } else {
+            jh $$9 = jh.a($$2, $$3, $$4);
+            int $$10 = fke.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dll) {
+               $$10 = ((dll)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gfx($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

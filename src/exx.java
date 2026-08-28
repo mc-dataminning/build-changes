@@ -1,50 +1,65 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record exx(float b, dcd c, jq<dbw> g) implements exr {
+public record exx(jq<diq> b, Optional<ee> c) implements exy {
    public static final MapCodec<exx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(exx::c),
-               dcd.b.fieldOf("enchanted_chance").forGetter(exx::d),
-               dbw.c.fieldOf("enchantment").forGetter(exx::e)
-            )
-            .apply($$0, exx::new)
-   );
+         $$0 -> $$0.group(lz.e.r().fieldOf("block").forGetter(exx::c), ee.a.optionalFieldOf("properties").forGetter(exx::d)).apply($$0, exx::new)
+      )
+      .validate(exx::a);
 
-   @Override
-   public exs b() {
-      return ext.e;
+   private static DataResult<exx> a(exx $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return ImmutableSet.of(exc.d);
+   public exz b() {
+      return eya.i;
    }
 
-   public boolean a(eug $$0) {
-      bui $$1 = $$0.c(exc.d);
-      int $$3 = $$1 instanceof bve $$2 ? dby.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
+   @Override
+   public Set<exg<?>> a() {
+      return Set.of(exj.g);
    }
 
-   public static exr.a a(js.a $$0, float $$1, float $$2) {
-      js.b<dbw> $$3 = $$0.d(ma.aM);
-      return () -> new exx($$1, new dcd.e($$1 + $$2, $$2), $$3.b(dcb.s));
+   public boolean a(eun $$0) {
+      dvv $$1 = $$0.c(exj.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public float c() {
+   public static exx.a a(diq $$0) {
+      return new exx.a($$0);
+   }
+
+   public jq<diq> c() {
       return this.b;
    }
 
-   public dcd d() {
+   public Optional<ee> d() {
       return this.c;
    }
 
-   public jq<dbw> e() {
-      return this.g;
+   public static class a implements exy.a {
+      private final jq<diq> a;
+      private Optional<ee> b = Optional.empty();
+
+      public a(diq $$0) {
+         this.a = $$0.p();
+      }
+
+      public exx.a a(ee.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public exy build() {
+         return new exx(this.a, this.b);
+      }
    }
 }

@@ -1,62 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class evi extends evt {
+public class evi extends evf {
    public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(evi.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, evi::new)
+      $$0 -> $$0.group(axs.a(ma.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, evi::new)
    );
-   private final evi.a b;
+   private final axs<cwi> j;
+   private final boolean k;
 
-   private evi(List<exr> $$0, evi.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private evi(axs<cwi> $$0, boolean $$1, int $$2, int $$3, List<exy> $$4, List<ewb> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public evv<evi> b() {
-      return evw.s;
+   public eve a() {
+      return evb.f;
    }
 
    @Override
-   public Set<ewz<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<cwm> $$0, eun $$1) {
+      lz.g.c(this.j).forEach($$1x -> $$0.accept(new cwm($$1x)));
+   }
+
+   private boolean a(eun $$0, Consumer<evc> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final jq<cwi> $$2 : lz.g.c(this.j)) {
+            $$1.accept(new evf.c() {
+               @Override
+               public void a(Consumer<cwm> $$0, eun $$1) {
+                  $$0.accept(new cwm($$2));
+               }
+            });
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public cwf a(cwf $$0, eug $$1) {
-      if ($$1.c(this.b.g) instanceof bsk $$3) {
-         $$0.b(ku.g, $$3.ao());
-      }
-
-      return $$0;
+   public boolean expand(eun $$0, Consumer<evc> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static evt.a<?> a(evi.a $$0) {
-      return a($$1 -> new evi($$1, $$0));
+   public static evf.a<?> a(axs<cwi> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new evi($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static enum a implements baj {
-      a("this", exc.a),
-      b("attacking_entity", exc.d),
-      c("last_damage_player", exc.b),
-      d("block_entity", exc.h);
-
-      public static final Codec<evi.a> e = baj.a(evi.a::values);
-      private final String f;
-      final ewz<?> g;
-
-      private a(final String $$0, final ewz<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static evf.a<?> b(axs<cwi> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new evi($$0, true, $$1, $$2, $$3, $$4));
    }
 }

@@ -1,32 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public record abj(long c, List<abj.a> d) implements aav {
-   public static final aav.b<abj> a = aav.a("debug/redstone_update_order");
-   public static final zj<wi, abj> b = zj.a(zh.i, abj::b, abj.a.a.a(zh.a()), abj::c, abj::new);
+public record abj(Set<kj> c, Set<kj> d) implements aat {
+   public static final zh<wg, abj> a = aat.a(abj::a, abj::new);
+   public static final aat.b<abj> b = aat.a("debug/village_sections");
 
-   @Override
-   public aav.b<abj> a() {
-      return a;
+   private abj(wg $$0) {
+      this($$0.a(HashSet::new, wg::g), $$0.a(HashSet::new, wg::g));
    }
 
-   public long b() {
+   private void a(wg $$0) {
+      $$0.a(this.c, wg::a);
+      $$0.a(this.d, wg::a);
+   }
+
+   @Override
+   public aat.b<abj> a() {
+      return b;
+   }
+
+   public Set<kj> b() {
       return this.c;
    }
 
-   public List<abj.a> c() {
+   public Set<kj> c() {
       return this.d;
-   }
-
-   public static record a(jh b, esw c) {
-      public static final zj<ByteBuf, abj.a> a = zj.a(jh.b, abj.a::a, esw.a, abj.a::b, abj.a::new);
-
-      public jh a() {
-         return this.b;
-      }
-
-      public esw b() {
-         return this.c;
-      }
    }
 }

@@ -1,60 +1,41 @@
-import java.util.ArrayList;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class tx implements tl.c {
-   private static final int c = 5;
-   private static final int d = 6;
-   private final int e;
-   private int f;
-   private ezm g;
-   private final jh.a h;
-   private final jh i;
-   private final boolean j;
-   private float k = -1.0F;
-   private final Collection<ti> l = new ArrayList<>();
+public class tx implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   public tx(jh $$0, int $$1, boolean $$2) {
-      this.e = $$1;
-      this.h = $$0.k();
-      this.g = new ezm(this.h);
-      this.i = $$0;
-      this.j = $$2;
-   }
-
-   @Override
-   public void a(arq $$0) {
-      if (this.j) {
-         this.l.forEach($$1 -> {
-            elt $$2 = ty.b($$1.f());
-            ty.a($$2, $$0);
-         });
-         this.l.clear();
-         this.g = new ezm(this.i);
-         this.h.g(this.i);
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (ti.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xj.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }
 
-   @Override
-   public Optional<ti> spawnStructure(ti $$0) {
-      jh $$1 = new jh(this.h);
-      $$0.b($$1);
-      $$0.o();
-      ezm $$2 = ty.a($$0.f());
-      this.g = this.g.b($$2);
-      this.h.e((int)$$2.b() + 5, 0, 0);
-      if ((float)this.h.u() > this.k) {
-         this.k = (float)this.h.u();
-      }
+   public static tx a() {
+      return new tx();
+   }
 
-      if (++this.f >= this.e) {
-         this.f = 0;
-         this.h.e(0, 0, (int)this.g.d() + 6);
-         this.h.p(this.i.u());
-         this.g = new ezm(this.h);
-      }
+   public static String a(CommandContext<ew> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
+   }
 
-      this.l.add($$0);
-      return Optional.of($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fb.b(ti.b().stream(), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

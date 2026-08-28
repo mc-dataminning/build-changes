@@ -1,22 +1,45 @@
-public class gho extends gex {
-   private static final int a = 12235202;
+public abstract class gho extends ghb {
+   protected gze E;
 
-   protected gho(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gha $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   protected gho(gdh $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static class a implements ggi<lw> {
-      private final gha a;
+   protected gho(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public a(gha $$0) {
-         this.a = $$0;
-      }
+   protected void a(gze $$0) {
+      this.E = $$0;
+   }
 
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gho($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(ghj $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(ghj $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

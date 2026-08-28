@@ -1,65 +1,75 @@
-public class cra extends cqo {
-   private final deg c = new deg() {
-      @Override
-      public void a(dff $$0, jh $$1, int $$2) {
-         $$0.a(cra.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class cra extends cqt {
+   private float b;
+   private float c;
 
-   public cra(bup<? extends cra> $$0, dff $$1) {
+   public cra(bus<?> $$0, dfm $$1) {
       super($$0, $$1);
-      this.d = this.c($$1);
    }
 
    @Override
-   protected cwb al_() {
-      return cwj.nM;
+   public bsk a(cou $$0, bsj $$1) {
+      if (!$$0.fW() && !this.ca() && (this.dV().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dV().C) {
+            return (bsk)($$0.n(this) ? bsk.c : bsk.e);
+         } else {
+            return bsk.a;
+         }
+      } else {
+         return bsk.e;
+      }
    }
 
    @Override
-   public cwf dL() {
-      return new cwf(cwj.nM);
-   }
-
-   private Runnable c(dff $$0) {
-      return $$0 instanceof arq ? () -> this.c.a((arq)$$0, this.dy()) : () -> this.c.a($$0, this.dy());
+   protected cwi t() {
+      return cwq.nM;
    }
 
    @Override
-   public dvo z() {
-      return dil.ct.m();
+   public cwm dI() {
+      return new cwm(cwq.nM);
    }
 
    @Override
-   protected void a(un $$0) {
-      super.a($$0);
-      this.c.a(this.dY(), this.dy(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.ca()) {
+            this.bP();
+         }
+
+         if (this.L() == 0) {
+            this.l(-this.N());
+            this.d(10);
+            this.b(50.0F);
+            this.bD();
+         }
+      }
    }
 
    @Override
-   protected void b(un $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dY(), $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public deg F() {
-      return this.c;
-   }
-
-   @Override
-   public boolean cY() {
+   public boolean A() {
       return true;
+   }
+
+   @Override
+   public void h() {
+      double $$0 = (double)this.dL();
+      ezy $$1 = this.dt();
+      super.h();
+      double $$2 = ((double)this.dL() - $$0) % 360.0;
+      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
+      }
+   }
+
+   @Override
+   protected void a(bul $$0, bul.a $$1) {
+      super.a($$0, $$1);
+      if (this.dV().C && $$0 instanceof cou $$2 && $$2.gM() && b(this.dV())) {
+         float $$3 = (float)azm.e(0.5, (double)this.c, (double)this.b);
+         $$2.v($$2.dL() - ($$3 - this.c));
+         this.c = $$3;
+      }
    }
 }

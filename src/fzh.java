@@ -1,44 +1,45 @@
-import java.util.Set;
-
-public class fzh extends gak<gvp> {
-   public static final gcl a = new fyc(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public fzh(gcc $$0) {
+public class fzh<T extends gvn> extends fzw<T> {
+   public fzh(gcl $$0) {
       super($$0);
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      gcm $$2 = $$1.a(
-         "head",
-         gch.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gce.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", gch.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gce.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", gch.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gce.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", gch.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gce.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", gch.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gce.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", gch.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gce.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", gch.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gce.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", gch.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gce.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", gch.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gce.a(-3.0F, 14.0F, -6.0F));
-      return gci.a($$0, 64, 64);
+   public static gcr a() {
+      float $$0 = -14.0F;
+      gct $$1 = fzw.a(gcp.a, -14.0F);
+      gcv $$2 = $$1.a();
+      gcv $$3 = $$2.a("head", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gcn.a(0.0F, -13.0F, 0.0F));
+      $$3.a("hat", gcq.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gcp(-0.5F)), gcn.a);
+      $$2.a("body", gcq.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gcn.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", gcq.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gcn.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", gcq.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gcn.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", gcq.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gcn.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", gcq.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gcn.a(2.0F, -5.0F, 0.0F));
+      return gcr.a($$1, 64, 32);
    }
 
-   public void a(gvp $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
+      this.o.k = true;
+      this.r.e *= 0.5F;
+      this.s.e *= 0.5F;
+      this.t.e *= 0.5F;
+      this.u.e *= 0.5F;
+      float $$1 = 0.4F;
+      this.r.e = azm.a(this.r.e, -0.4F, 0.4F);
+      this.s.e = azm.a(this.s.e, -0.4F, 0.4F);
+      this.t.e = azm.a(this.t.e, -0.4F, 0.4F);
+      this.u.e = azm.a(this.u.e, -0.4F, 0.4F);
+      if ($$0.b != null) {
+         this.r.e = -0.5F;
+         this.s.e = -0.5F;
+         this.r.g = 0.05F;
+         this.s.g = -0.05F;
+      }
+
+      if ($$0.a) {
+         float $$2 = 5.0F;
+         this.o.c -= 5.0F;
+         this.p.c += 5.0F;
       }
    }
 }

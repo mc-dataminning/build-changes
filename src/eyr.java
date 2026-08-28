@@ -1,42 +1,36 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record eyr(eyn b, eyn c) implements eyn {
-   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eyo.a.fieldOf("min").forGetter(eyr::c), eyo.a.fieldOf("max").forGetter(eyr::d)).apply($$0, eyr::new)
-   );
+public record eyr(float c) implements eyu {
+   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eyr::c)).apply($$0, eyr::new));
+   public static final Codec<eyr> b = Codec.FLOAT.xmap(eyr::new, eyr::c);
 
    @Override
-   public eym b() {
-      return eyo.c;
-   }
-
-   public static eyr a(float $$0, float $$1) {
-      return new eyr(eyk.a($$0), eyk.a($$1));
+   public eyt b() {
+      return eyv.b;
    }
 
    @Override
-   public int a(eug $$0) {
-      return azn.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(eug $$0) {
-      return azn.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<ewz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eyn c() {
-      return this.b;
-   }
-
-   public eyn d() {
+   public float b(eun $$0) {
       return this.c;
+   }
+
+   public static eyr a(float $$0) {
+      return new eyr($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eyr)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

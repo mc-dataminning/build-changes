@@ -1,76 +1,117 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public abstract class ejx {
-   public static final Codec<ejx> c = lz.V.q().dispatch(ejx::a, ejy::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends ejx> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+public class ejx extends eke {
+   private static final Codec<brv> b = brv.a
+      .codec()
+      .validate(
+         $$0 -> $$0.b() - $$0.a() < 1
+               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+               : DataResult.success($$0)
       );
+   public static final MapCodec<ejx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  brp.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  brp.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  brp.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  brp.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, ejx::new)
+   );
+   private final brp h;
+   private final brp i;
+   private final brv j;
+   private final brv k;
+   private final brp l;
+
+   public ejx(int $$0, int $$1, int $$2, brp $$3, brp $$4, brv $$5, brp $$6) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = brv.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
    }
 
-   public ejx(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ekf<?> a() {
+      return ekf.i;
    }
 
-   protected abstract ejy<?> a();
-
-   public abstract List<eif.a> a(dfl var1, BiConsumer<jh, dvo> var2, azv var3, int var4, jh var5, ehp var6);
-
-   public int a(azv $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(dfl $$0, jh $$1) {
-      return $$0.a($$1, $$0x -> eep.b($$0x) && !$$0x.a(dil.i) && !$$0x.a(dil.fl));
-   }
-
-   protected static void a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, ehp $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+   @Override
+   public List<eim.a> a(dfs $$0, BiConsumer<jh, dvv> $$1, azu $$2, int $$3, jh $$4, ehw $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
       }
-   }
 
-   protected boolean b(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, ehp $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, ehp $$4, Function<dvo, dvo> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
       } else {
-         return false;
+         $$11 = $$6 + 1;
       }
-   }
 
-   protected void a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh.a $$3, ehp $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
       }
+
+      List<eim.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new eim.a($$4.b($$11), 0, false));
+      }
+
+      jh.a $$16 = new jh.a();
+      jm $$17 = jm.c.a.a($$2);
+      Function<dvv, dvv> $$18 = $$1x -> $$1x.c(dpc.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
    }
 
-   protected boolean a(dfl $$0, jh $$1) {
-      return egb.c($$0, $$1);
-   }
+   private eim.a a(dfs $$0, BiConsumer<jh, dvv> $$1, azu $$2, int $$3, jh $$4, ehw $$5, Function<dvv, dvv> $$6, jm $$7, int $$8, boolean $$9, jh.a $$10) {
+      $$10.g($$4).c(jm.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      jh $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
 
-   public boolean b(dfl $$0, jh $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axd.u));
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      }
+
+      jm $$17 = $$14.v() > $$10.v() ? jm.b : jm.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new eim.a($$14.d(), 0, false);
+         }
+
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.c($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+      }
    }
 }

@@ -1,59 +1,34 @@
-public interface dfh {
-   int J_();
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   int I_();
+public class dfh extends eth {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   default int al() {
-      return this.I_() + this.J_() - 1;
+   public static eth.a<dfh> a() {
+      return new eth.a<>(dfh::new, dfh::b, baw.i);
    }
 
-   default int am() {
-      return this.ao() - this.an() + 1;
+   private dfh(LongSet $$0) {
+      this.c = $$0;
    }
 
-   default int an() {
-      return kj.a(this.I_());
+   public dfh() {
+      this(new LongOpenHashSet());
    }
 
-   default int ao() {
-      return kj.a(this.al());
+   public static dfh b(ul $$0, js.a $$1) {
+      return new dfh(new LongOpenHashSet($$0.o("Forced")));
    }
 
-   default boolean d(int $$0) {
-      return $$0 >= this.I_() && $$0 <= this.al();
+   @Override
+   public ul a(ul $$0, js.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
    }
 
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.I_() || $$0 > this.al();
-   }
-
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static dfh e(final int $$0, final int $$1) {
-      return new dfh() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
-
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public LongSet b() {
+      return this.c;
    }
 }

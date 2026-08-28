@@ -1,32 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzq {
-   public static bwy<coc> a(cei<List<jp>> $$0, float $$1, int $$2, int $$3, cei<jp> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return cak.a(
-         (Function<cak.b<coc>, ? extends App<cak.c<coc>, can<coc>>>)($$6 -> $$6.group($$6.a(cei.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jp> $$11 = $$6.b($$6x);
-                     jp $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jp $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.ag() == $$13.a() && $$12.b().a($$9.dw(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cel($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static bxb<bvh> a() {
+      return can.a(
+         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.b(cel.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bvh $$1xx ? $$1xx : null)
+                           .filter(bvh::eE)
+                           .filter($$1xx -> $$1xx.aq() != bus.bO || $$2.N().b(dfi.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

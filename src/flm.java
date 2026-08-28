@@ -1,38 +1,58 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import org.joml.Vector2i;
 
-public class flm {
-   public static final float a = 200.0F;
-   private final List<flm.a> b = new ArrayList<>();
+public class flm implements fls {
+   private final fke a;
+   private final fko b;
 
-   public flm a(flm.a $$0) {
-      this.b.add($$0);
-      return this;
+   public flm(fke $$0) {
+      this.a = $$0;
+      this.b = new fko();
    }
 
-   public flm a(flm $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
+   @Override
+   public boolean a(ctw $$0) {
+      return $$0.g().a(axl.bS);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, cwm $$3) {
+      int $$4 = cuz.j($$3);
+      if ($$4 == 0) {
+         return false;
+      } else {
+         Vector2i $$5 = this.b.a($$0, $$1);
+         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
+         if ($$6 != 0) {
+            int $$7 = cuz.h($$3);
+            $$7 = fko.a((double)$$6, $$7, $$4);
+            this.a($$3, $$2, $$7);
          }
-      });
-   }
 
-   public void a(flj $$0, fjn $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(flj $$0, fjn $$1) {
-      for (flm.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
+         return true;
       }
    }
 
-   public interface a {
-      void render(flj var1, fjn var2);
+   @Override
+   public void b(ctw $$0) {
+      this.a($$0.g(), $$0.d);
+   }
+
+   @Override
+   public void a(ctw $$0, csk $$1) {
+      if ($$1 == csk.b) {
+         this.a($$0.g(), $$0.d);
+      }
+   }
+
+   private void a(cwm $$0, int $$1, int $$2) {
+      if (this.a.L() != null && $$2 < cuz.j($$0)) {
+         gdi $$3 = this.a.L();
+         cuz.a($$0, $$2);
+         $$3.b(new aii($$1, $$2));
+      }
+   }
+
+   public void a(cwm $$0, int $$1) {
+      this.a($$0, $$1, -1);
    }
 }

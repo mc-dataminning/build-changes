@@ -1,29 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record fjq(int a, xl b, @Nullable xx c, @Nullable fjr d) {
-   @Nullable
-   public fjr.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum fjq implements azp, bai {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<fjq> d = bai.a(fjq::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fjq(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
+   @Override
+   public String c() {
+      return this.f;
+   }
+
+   @Override
    public int b() {
-      return this.a;
+      return this.e;
    }
 
-   public xl c() {
-      return this.b;
-   }
-
-   @Nullable
-   public xx d() {
-      return this.c;
-   }
-
-   @Nullable
-   public fjr e() {
-      return this.d;
-   }
-
-   public static record a(int a, ayz b, @Nullable fjr c, boolean d) {
+   @Override
+   public String a() {
+      return this.g;
    }
 }

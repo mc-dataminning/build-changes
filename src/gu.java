@@ -1,7 +1,7 @@
 public interface gu {
-   ezr a(ew var1);
+   ezy a(ew var1);
 
-   ezq b(ew var1);
+   ezx b(ew var1);
 
    default jh c(ew $$0) {
       return jh.a((ka)this.a($$0));

@@ -1,16 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxj {
-   public static <E extends bve> bwy<E> a(Predicate<E> $$0, cei<?> $$1) {
-      return cak.a((Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
+   public static <E extends bvh> bxb<E> a(int $$0, BiPredicate<E, bul> $$1) {
+      return can.a((Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$2 -> $$2.group($$2.a(cel.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bul $$7 = $$5.dk();
+               bul $$8 = $$2.<bul>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
                   return false;
+               } else {
+                  bul $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.ae();
+                     $$3.b();
+                     return true;
+                  }
                }
             })));
+   }
+
+   private static boolean a(bvh $$0, bul $$1, int $$2) {
+      return $$1.bL() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
    }
 }

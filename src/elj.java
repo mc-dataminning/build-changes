@@ -1,25 +1,23 @@
 import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public interface elj<P extends eli> {
-   elj<eku> a = a("block_predicate_filter", eku.a);
-   elj<ell> b = a("rarity_filter", ell.a);
-   elj<eln> c = a("surface_relative_threshold_filter", eln.a);
-   elj<elo> d = a("surface_water_depth_filter", elo.a);
-   elj<ekt> e = a("biome", ekt.a);
-   elj<ekx> f = a("count", ekx.a);
-   elj<eld> g = a("noise_based_count", eld.a);
-   elj<ele> h = a("noise_threshold_count", ele.a);
-   elj<ekw> i = a("count_on_every_layer", ekw.a);
-   elj<eky> j = a("environment_scan", eky.a);
-   elj<elb> k = a("heightmap", elb.a);
-   elj<ela> l = a("height_range", ela.a);
-   elj<elc> m = a("in_square", elc.a);
-   elj<elk> n = a("random_offset", elk.a);
-   elj<ekz> o = a("fixed_placement", ekz.a);
+public class elj extends elp {
+   private static final elj c = new elj();
+   public static final MapCodec<elj> a = MapCodec.unit(() -> c);
 
-   MapCodec<P> codec();
+   public static elj a() {
+      return c;
+   }
 
-   private static <P extends eli> elj<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.S, $$0, () -> $$1);
+   @Override
+   public Stream<jh> a_(eln $$0, azu $$1, jh $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new jh($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public elq<?> b() {
+      return elq.m;
    }
 }

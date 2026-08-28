@@ -1,80 +1,85 @@
-import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cca extends ccc {
-   private final bwb a;
+public class cca extends ccf {
+   private int a;
+   private final bvp b;
    @Nullable
-   private bve b;
-   private final double c;
-   private final ceq d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
+   private cou c;
+   private cbo d;
 
-   public cca(bwb $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.P();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(ccc.a.a, ccc.a.b));
-      if (!($$0.P() instanceof cep) && !($$0.P() instanceof ceo)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public cca(bvp $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean b() {
-      bve $$0 = this.a.T_();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gy()) {
-         return false;
-      } else if (this.a.g((bui)$$0) < (double)(this.g * this.g)) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
+      List<cqr> $$0 = this.b.dV().a(cqr.class, this.b.cR().g(5.0));
+      boolean $$1 = false;
+
+      for (cqr $$2 : $$0) {
+         bul $$3 = $$2.cX();
+         if ($$3 instanceof cou && (azm.e(((cou)$$3).bn) > 0.0F || azm.e(((cou)$$3).bp) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
       }
+
+      return this.c != null && (azm.e(this.c.bn) > 0.0F || azm.e(this.c.bp) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean S_() {
+      return true;
    }
 
    @Override
    public boolean c() {
-      if (this.d.m()) {
-         return false;
-      } else {
-         return this.a.gy() ? false : !(this.a.g((bui)this.b) <= (double)(this.f * this.f));
-      }
+      return this.c != null && this.c.bZ() && (azm.e(this.c.bn) > 0.0F || azm.e(this.c.bp) > 0.0F);
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.h = this.a.a(esf.j);
-      this.a.a(esf.j, 0.0F);
+      for (cqr $$1 : this.b.dV().a(cqr.class, this.b.cR().g(5.0))) {
+         if ($$1.cX() instanceof cou $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cbo.a;
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.d.o();
-      this.a.a(esf.j, this.h);
+      this.c = null;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.gx();
-      if (!$$0) {
-         this.a.K().a(this.b, 10.0F, (float)this.a.ad());
-      }
-
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gw();
-         } else {
-            this.d.a(this.b, this.c);
+      boolean $$0 = azm.e(this.c.bn) > 0.0F || azm.e(this.c.bp) > 0.0F;
+      float $$1 = this.d == cbo.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new ezy((double)this.b.bn, (double)this.b.bo, (double)this.b.bp));
+      this.b.a(bvl.a, this.b.dy());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cbo.a) {
+            jh $$2 = this.c.dv().a(this.c.cO().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cbo.b;
+            }
+         } else if (this.d == cbo.b) {
+            jm $$3 = this.c.cP();
+            jh $$4 = this.c.dv().a($$3, 10);
+            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cbo.a;
+            }
          }
       }
    }

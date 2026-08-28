@@ -1,44 +1,25 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public class elq {
-   public static final Codec<elq> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(alk.a(ma.bc), dzk.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, elq::new)
-      )
-      .validate(elq::a);
-   public static final Codec<jq<elq>> b = alh.a(ma.aZ, a);
-   private final Map<alk<dzk>, dzk> c;
+public interface elq<P extends elp> {
+   elq<elb> a = a("block_predicate_filter", elb.a);
+   elq<els> b = a("rarity_filter", els.a);
+   elq<elu> c = a("surface_relative_threshold_filter", elu.a);
+   elq<elv> d = a("surface_water_depth_filter", elv.a);
+   elq<ela> e = a("biome", ela.a);
+   elq<ele> f = a("count", ele.a);
+   elq<elk> g = a("noise_based_count", elk.a);
+   elq<ell> h = a("noise_threshold_count", ell.a);
+   elq<eld> i = a("count_on_every_layer", eld.a);
+   elq<elf> j = a("environment_scan", elf.a);
+   elq<eli> k = a("heightmap", eli.a);
+   elq<elh> l = a("height_range", elh.a);
+   elq<elj> m = a("in_square", elj.a);
+   elq<elr> n = a("random_offset", elr.a);
+   elq<elg> o = a("fixed_placement", elg.a);
 
-   public elq(Map<alk<dzk>, dzk> $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   private ImmutableMap<alk<dzk>, dzk> c() {
-      Builder<alk<dzk>, dzk> $$0 = ImmutableMap.builder();
-      ece.a(this.c.keySet().stream()).forEach($$1 -> {
-         dzk $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
-   }
-
-   public ece a() {
-      return new ece(this.c());
-   }
-
-   public Optional<dzk> b() {
-      return Optional.ofNullable(this.c.get(dzk.b));
-   }
-
-   private static DataResult<elq> a(elq $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   private static <P extends elp> elq<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.S, $$0, () -> $$1);
    }
 }

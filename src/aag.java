@@ -1,15 +1,25 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record aag(String b, int c) implements zq<zw> {
+   public static final zh<wg, aag> a = zq.a(aag::a, aag::new);
 
-public record aag(List<amd.c> b) implements zs<zy> {
-   public static final zj<ByteBuf, aag> a = zj.a(amd.c, aag::b, aag::new);
-
-   @Override
-   public zu<aag> a() {
-      return aak.h;
+   private aag(wg $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   public void a(zy $$0) {
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zs<aag> a() {
+      return aai.j;
+   }
+
+   public void a(zw $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

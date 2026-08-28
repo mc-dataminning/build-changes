@@ -1,32 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bxu {
-   public static <T extends bve> bwy<bve> a(bup<? extends T> $$0, int $$1, cei<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   public static bxb<bvh> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   public static <E extends bve, T extends bve> bwy<E> a(bup<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cei<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bve> $$8 = $$2x -> $$0.equals($$2x.ar()) && $$3.test((T)$$2x);
-      return cak.a(
-         (Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cei.n), $$6x.c(cei.m), $$6x.b(cei.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     cek $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bve> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bui)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bxi($$5xxxx, true));
-                           $$8x.a(new cel(new bxi($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public static <E extends bvh> bxb<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return can.a((Function<can.b<E>, ? extends App<can.c<E>, caq<E>>>)($$4 -> {
+         can<E, ? extends cao<? extends K1, ceo>> $$5 = $$2 ? $$4.a(cel.m) : $$4.c(cel.m);
+         return $$4.group($$4.a(cel.n), $$5, $$4.b(cel.L), $$4.a(cel.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               clc $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dV().E_().a($$11.dv()) && $$9.fL()) {
+                  ceo $$12 = new ceo(new bxl($$11, false), $$1, 0);
+                  $$4x.a(new bxl($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

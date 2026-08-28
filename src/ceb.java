@@ -1,39 +1,20 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ceb<T extends bvg & bvj> extends ccc {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class ceb<T extends bvh> extends cdy<T> {
+   private final bwe i;
 
-   public ceb(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ceb(bwe $$0, Class<T> $$1, boolean $$2, @Nullable cfy.a $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.b.dY().ac().b(dfb.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.et() != null && this.b.et().ar() == bup.by && this.b.eu() > this.d;
+      return !this.i.n() && super.b();
    }
 
    @Override
-   public void d() {
-      this.d = this.b.eu();
-      this.b.af_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bvj)$$0).forEach(bvj::af_);
-      }
-
-      super.d();
-   }
-
-   private List<? extends bvg> i() {
-      double $$0 = this.b.h(bwm.m);
-      ezm $$1 = ezm.a(this.b.dw()).c($$0, 10.0, $$0);
-      return this.b.dY().a((Class<? extends bvg>)this.b.getClass(), $$1, bun.f);
+   public boolean c() {
+      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
    }
 }

@@ -8,17 +8,17 @@ public record fd(List<fd.a> b) {
    private static final int c = 8;
    private static final int d = 16;
 
-   public fd(wi $$0) {
-      this($$0.a(wi.a(ArrayList::new, 8), fd.a::new));
+   public fd(wg $$0) {
+      this($$0.a(wg.a(ArrayList::new, 8), fd.a::new));
    }
 
-   public void a(wi $$0) {
+   public void a(wg $$0) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static fd a(yd<?> $$0, fd.b $$1) {
+   public static fd a(yb<?> $$0, fd.b $$1) {
       List<fd.a> $$2 = $$0.a().stream().map($$1x -> {
-         xx $$2x = $$1.sign($$1x.c());
+         xv $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new fd.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new fd($$2);
@@ -28,20 +28,20 @@ public record fd(List<fd.a> b) {
       return this.b;
    }
 
-   public static record a(String a, xx b) {
-      public a(wi $$0) {
-         this($$0.d(16), xx.a($$0));
+   public static record a(String a, xv b) {
+      public a(wg $$0) {
+         this($$0.d(16), xv.a($$0));
       }
 
-      public void a(wi $$0) {
+      public void a(wg $$0) {
          $$0.a(this.a, 16);
-         xx.a($$0, this.b);
+         xv.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      xx sign(String var1);
+      xv sign(String var1);
    }
 }

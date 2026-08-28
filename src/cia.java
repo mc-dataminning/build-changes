@@ -1,48 +1,58 @@
-public class cia {
-   public static final alk<chz> a = a("pale");
-   public static final alk<chz> b = a("spotted");
-   public static final alk<chz> c = a("snowy");
-   public static final alk<chz> d = a("black");
-   public static final alk<chz> e = a("ashen");
-   public static final alk<chz> f = a("rusty");
-   public static final alk<chz> g = a("woods");
-   public static final alk<chz> h = a("chestnut");
-   public static final alk<chz> i = a("striped");
-   public static final alk<chz> j = a;
+public abstract class cia extends bvp {
+   public static final int d = 120;
 
-   private static alk<chz> a(String $$0) {
-      return alk.a(ma.m, all.b($$0));
+   protected cia(bus<? extends cia> $$0, dfm $$1) {
+      super($$0, $$1);
+      this.a(esm.j, 0.0F);
    }
 
-   static void a(rb<chz> $$0, alk<chz> $$1, String $$2, alk<dgh> $$3) {
-      a($$0, $$1, $$2, ju.a($$0.a(ma.aG).b($$3)));
+   @Override
+   public boolean a(dfp $$0) {
+      return $$0.f(this);
    }
 
-   static void a(rb<chz> $$0, alk<chz> $$1, String $$2, axt<dgh> $$3) {
-      a($$0, $$1, $$2, $$0.a(ma.aG).b($$3));
+   @Override
+   public int Q() {
+      return 120;
    }
 
-   static void a(rb<chz> $$0, alk<chz> $$1, String $$2, ju<dgh> $$3) {
-      all $$4 = all.b("entity/wolf/" + $$2);
-      all $$5 = all.b("entity/wolf/" + $$2 + "_tame");
-      all $$6 = all.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new chz($$4, $$5, $$6, $$3));
+   @Override
+   protected int e(arp $$0) {
+      return 1 + this.ae.a(3);
    }
 
-   public static jq<chz> a(ke $$0, jq<dgh> $$1) {
-      kd<chz> $$2 = $$0.e(ma.m);
-      return $$2.c().filter($$1x -> ((chz)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.a(j)).or($$2::a).orElseThrow();
+   protected void t(int $$0) {
+      if (this.bL() && !this.bm()) {
+         this.j($$0 - 1);
+         if (this.ct() == -20) {
+            this.j(0);
+            this.a(this.dW().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
    }
 
-   public static void a(rb<chz> $$0) {
-      a($$0, a, "wolf", dgo.p);
-      a($$0, b, "wolf_spotted", axc.k);
-      a($$0, c, "wolf_snowy", dgo.F);
-      a($$0, d, "wolf_black", dgo.n);
-      a($$0, e, "wolf_ashen", dgo.q);
-      a($$0, f, "wolf_rusty", axc.i);
-      a($$0, g, "wolf_woods", dgo.i);
-      a($$0, h, "wolf_chestnut", dgo.o);
-      a($$0, i, "wolf_striped", axc.f);
+   @Override
+   public void az() {
+      int $$0 = this.ct();
+      super.az();
+      this.t($$0);
+   }
+
+   @Override
+   public boolean cJ() {
+      return false;
+   }
+
+   @Override
+   public boolean y() {
+      return false;
+   }
+
+   public static boolean c(bus<? extends cia> $$0, dfn $$1, bur $$2, jh $$3, azu $$4) {
+      int $$5 = $$1.O();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axi.a) && $$1.a_($$3.d()).a(dis.G);
    }
 }

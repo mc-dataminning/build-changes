@@ -1,49 +1,37 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public class dzf implements AutoCloseable {
-   private final dyv a;
-   private final DataFixer b;
-   private final bax c;
+public class dzf {
+   private final BitSet a = new BitSet();
 
-   public dzf(dzc $$0, Path $$1, DataFixer $$2, boolean $$3, bax $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dyv($$0, $$1, $$3);
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
    }
 
-   public CompletableFuture<Optional<un>> a(del $$0) {
-      return this.a.a($$0);
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
    }
 
-   public CompletableFuture<Void> a(del $$0, @Nullable un $$1) {
-      return this.a.a($$0, $$1);
+   public int a(int $$0) {
+      int $$1 = 0;
+
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
+         }
+
+         $$1 = $$3;
+      }
    }
 
-   public un a(un $$0, int $$1) {
-      int $$2 = vc.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
-
-   public Dynamic<vk> a(Dynamic<vk> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dzc a() {
-      return this.a.a();
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

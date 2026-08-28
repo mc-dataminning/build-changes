@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.authlib.GameProfile;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface asf {
+public record asf(GameProfile a, int b, ara c, boolean d) {
+   public static asf a(GameProfile $$0, boolean $$1) {
+      return new asf($$0, 0, ara.a(), $$1);
+   }
 }

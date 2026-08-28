@@ -1,158 +1,111 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public record feq(int i, int j, feq.a k, feq.b l, int m) {
-   public static final int a = 32;
-   private static final feq[] n = new feq[32];
-   private static final List<feq> o = new ArrayList<>(32);
-   public static final feq b = a(0, 0, feq.a.a, feq.b.a, 3);
-   public static final feq c = a(1, 0, feq.a.b, feq.b.c, 4);
-   public static final feq d = a(2, 0, feq.a.a, feq.b.d, 2);
-   public static final feq e = d;
-   public static final feq f = a(3, 1, feq.a.e, feq.b.d, 2);
-   public static final feq g = a(4, 2, feq.a.e, feq.b.d, 2);
-   public static final feq h = a(5, 0, feq.a.c, feq.b.b, 3);
+public class feq implements AutoCloseable {
+   private final feo.a a;
+   @Nullable
+   private feo.a b;
+   private final feq.a c;
 
-   public feq(int i, int j, feq.a k, feq.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+   public feq(feo.a $$0, feq.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
+   }
+
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, few $$2) {
+      int $$3 = $$2.a(fex.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
       } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
       }
    }
 
-   public static feq a(int $$0, int $$1, feq.a $$2, feq.b $$3, int $$4) {
-      feq $$5 = new feq($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
-   }
-
-   private boolean a(int $$0, feq.b $$1) {
-      return $$0 == 0 || $$1 == feq.b.d;
-   }
-
-   @Override
-   public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
-   }
-
-   public int a() {
-      return 1 << this.i;
-   }
-
-   public int b() {
-      return this.k.a() * this.m;
-   }
-
-   public void a(int $$0, long $$1, int $$2) {
-      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   public ByteBuffer a() {
+      return this.a.a();
    }
 
    @Nullable
-   public static feq a(int $$0) {
-      return n[$$0];
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
    }
 
-   public static Stream<feq> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   public feq.a c() {
+      return this.c;
    }
 
-   public int c() {
-      return this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public feq.a e() {
-      return this.k;
-   }
-
-   public feq.b f() {
-      return this.l;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public int b() {
-         return this.j;
-      }
-
-      @Override
-      public String toString() {
-         return this.i;
+   @Nullable
+   public feq.b a(feo $$0, fez $$1) {
+      if (this.c.d() != few.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         feq.b $$3 = new feq.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
       }
    }
 
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
+   }
+
+   public static record a(few a, int b, int c, few.c d, few.b e) {
+   }
+
+   public static record b(Vector3f[] a, few.b b) {
+      @Nullable
+      public feo.a a(feo $$0, fez $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
+
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
          }
-      }),
-      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
 
-      private final String f;
-      final feq.b.a g;
-
-      private b(final String $$0, final feq.b.a $$1) {
-         this.f = $$0;
-         this.g = $$1;
+         return $$0.a();
       }
 
-      @Override
-      public String toString() {
-         return this.f;
-      }
+      private IntConsumer a(long $$0, few.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
 
-      @FunctionalInterface
-      interface a {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
       }
    }
 }

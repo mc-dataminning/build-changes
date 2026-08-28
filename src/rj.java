@@ -1,500 +1,248 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 
 public class rj {
-   private static final alk<eqb> N = a("empty");
-   public static final alk<eqb> a = a("zombie_plains");
-   public static final alk<eqb> b = a("zombie_savanna");
-   public static final alk<eqb> c = a("zombie_snowy");
-   public static final alk<eqb> d = a("zombie_taiga");
-   public static final alk<eqb> e = a("zombie_desert");
-   public static final alk<eqb> f = a("mossify_10_percent");
-   public static final alk<eqb> g = a("mossify_20_percent");
-   public static final alk<eqb> h = a("mossify_70_percent");
-   public static final alk<eqb> i = a("street_plains");
-   public static final alk<eqb> j = a("street_savanna");
-   public static final alk<eqb> k = a("street_snowy_or_taiga");
-   public static final alk<eqb> l = a("farm_plains");
-   public static final alk<eqb> m = a("farm_savanna");
-   public static final alk<eqb> n = a("farm_snowy");
-   public static final alk<eqb> o = a("farm_taiga");
-   public static final alk<eqb> p = a("farm_desert");
-   public static final alk<eqb> q = a("outpost_rot");
-   public static final alk<eqb> r = a("bottom_rampart");
-   public static final alk<eqb> s = a("treasure_rooms");
-   public static final alk<eqb> t = a("housing");
-   public static final alk<eqb> u = a("side_wall_degradation");
-   public static final alk<eqb> v = a("stable_degradation");
-   public static final alk<eqb> w = a("bastion_generic_degradation");
-   public static final alk<eqb> x = a("rampart_degradation");
-   public static final alk<eqb> y = a("entrance_replacement");
-   public static final alk<eqb> z = a("bridge");
-   public static final alk<eqb> A = a("roof");
-   public static final alk<eqb> B = a("high_wall");
-   public static final alk<eqb> C = a("high_rampart");
-   public static final alk<eqb> D = a("fossil_rot");
-   public static final alk<eqb> E = a("fossil_coal");
-   public static final alk<eqb> F = a("fossil_diamonds");
-   public static final alk<eqb> G = a("ancient_city_start_degradation");
-   public static final alk<eqb> H = a("ancient_city_generic_degradation");
-   public static final alk<eqb> I = a("ancient_city_walls_degradation");
-   public static final alk<eqb> J = a("trail_ruins_houses_archaeology");
-   public static final alk<eqb> K = a("trail_ruins_roads_archaeology");
-   public static final alk<eqb> L = a("trail_ruins_tower_top_archaeology");
-   public static final alk<eqb> M = a("trial_chambers_copper_bulb_degradation");
+   public static final ali<ens> a = rg.a("village/snowy/town_centers");
+   private static final ali<ens> b = rg.a("village/snowy/terminators");
 
-   private static alk<eqb> a(String $$0) {
-      return alk.a(ma.aT, all.b($$0));
-   }
-
-   private static void a(rb<eqb> $$0, alk<eqb> $$1, List<eqa> $$2) {
-      $$0.a($$1, new eqb($$2));
-   }
-
-   public static void a(rb<eqb> $$0) {
-      jr<dij> $$1 = $$0.a(ma.f);
-      eps $$2 = new eps(new epu(dil.pr, 0.01F), epa.b, dil.pC.m());
-      eps $$3 = new eps(new epu(dil.pC, 0.5F), epa.b, dil.pr.m());
-      a($$0, N, ImmutableList.of());
-      a(
-         $$0,
+   public static void a(qz<ens> $$0) {
+      jr<elm> $$1 = $$0.a(ma.aR);
+      jq<elm> $$2 = $$1.b(ss.h);
+      jq<elm> $$3 = $$1.b(ss.c);
+      jq<elm> $$4 = $$1.b(ss.d);
+      jr<eqi> $$5 = $$0.a(ma.aT);
+      jq<eqi> $$6 = $$5.b(rh.k);
+      jq<eqi> $$7 = $$5.b(rh.n);
+      jq<eqi> $$8 = $$5.b(rh.c);
+      jr<ens> $$9 = $$0.a(ma.aV);
+      jq<ens> $$10 = $$9.b(rg.a);
+      jq<ens> $$11 = $$9.b(b);
+      $$0.a(
          a,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.m, 0.8F), epa.b, dil.cn.m()),
-                  new eps(new eqf(axd.q), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cp), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cq), epa.b, dil.a.m()),
-                  new eps(new epu(dil.m, 0.07F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.cn, 0.07F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.hj, 0.07F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.U, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.n, 0.1F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.cu, 0.1F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.al, 0.02F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.eY, 0.5F), epa.b, dil.bs.m()),
-                  new eps[]{
-                     new eps(
-                        new eph(dil.eY.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))),
-                        epa.b,
-                        dil.hL.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))
-                     ),
-                     new eps(
-                        new eph(dil.eY.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))),
-                        epa.b,
-                        dil.hL.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))
-                     ),
-                     new eps(new epu(dil.cB, 0.3F), epa.b, dil.gt.m()),
-                     new eps(new epu(dil.cB, 0.2F), epa.b, dil.gu.m()),
-                     new eps(new epu(dil.cB, 0.1F), epa.b, dil.kD.m())
-                  }
-               )
-            )
+         new ens(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(enq.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(enq.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(enq.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(enq.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(enq.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
+            ),
+            ens.a.b
          )
       );
-      a(
+      rg.a(
          $$0,
+         "village/snowy/streets",
+         new ens(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(enq.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(enq.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(enq.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(enq.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(enq.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(enq.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(enq.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(enq.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(enq.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(enq.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(enq.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(enq.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(enq.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(enq.a("village/snowy/streets/turn_01", $$6), 3)
+               }
+            ),
+            ens.a.a
+         )
+      );
+      rg.a(
+         $$0,
+         "village/snowy/zombie/streets",
+         new ens(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(enq.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(enq.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(enq.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(enq.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(enq.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(enq.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(enq.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(enq.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(enq.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
+            ),
+            ens.a.a
+         )
+      );
+      rg.a(
+         $$0,
+         "village/snowy/houses",
+         new ens(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(enq.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(enq.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(enq.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(enq.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(enq.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(enq.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(enq.h(), 6)
+               }
+            ),
+            ens.a.b
+         )
+      );
+      rg.a(
+         $$0,
+         "village/snowy/zombie/houses",
+         new ens(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(enq.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(enq.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(enq.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(enq.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(enq.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(enq.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(enq.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(enq.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(enq.h(), 6)
+               }
+            ),
+            ens.a.b
+         )
+      );
+      $$0.a(
          b,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new eqf(axd.q), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cp), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cq), epa.b, dil.a.m()),
-                  new eps(new epu(dil.r, 0.2F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.hP, 0.2F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.Y, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.as, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.hk, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.hn, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.hx, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.eY, 0.5F), epa.b, dil.bs.m()),
-                  new eps(
-                     new eph(dil.eY.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))),
-                     epa.b,
-                     dil.hL.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))
-                  ),
-                  new eps[]{
-                     new eps(
-                        new eph(dil.eY.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))),
-                        epa.b,
-                        dil.hL.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))
-                     ),
-                     new eps(new epu(dil.cB, 0.1F), epa.b, dil.fe.m())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new eqf(axd.q), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cp), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cq), epa.b, dil.a.m()),
-                  new eps(new epf(dil.oe), epa.b, dil.a.m()),
-                  new eps(new epu(dil.o, 0.2F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.ju, 0.4F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.af, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.ax, 0.05F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.eY, 0.5F), epa.b, dil.bs.m()),
-                  new eps(
-                     new eph(dil.eY.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))),
-                     epa.b,
-                     dil.hL.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))
-                  ),
-                  new eps(
-                     new eph(dil.eY.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))),
-                     epa.b,
-                     dil.hL.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))
-                  ),
-                  new eps(new epu(dil.cB, 0.1F), epa.b, dil.gt.m()),
-                  new eps[]{new eps(new epu(dil.cB, 0.8F), epa.b, dil.gu.m())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.m, 0.8F), epa.b, dil.cn.m()),
-                  new eps(new eqf(axd.q), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cp), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cq), epa.b, dil.a.m()),
-                  new eps(new epf(dil.og), epa.b, dil.og.m().b(dix.c, Boolean.valueOf(false))),
-                  new eps(new epu(dil.m, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.V, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.eY, 0.5F), epa.b, dil.bs.m()),
-                  new eps(
-                     new eph(dil.eY.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))),
-                     epa.b,
-                     dil.hL.m().b(dmj.a, Boolean.valueOf(true)).b(dmj.c, Boolean.valueOf(true))
-                  ),
-                  new eps(
-                     new eph(dil.eY.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))),
-                     epa.b,
-                     dil.hL.m().b(dmj.b, Boolean.valueOf(true)).b(dmj.d, Boolean.valueOf(true))
-                  ),
-                  new eps(new epu(dil.cB, 0.3F), epa.b, dil.fd.m()),
-                  new eps(new epu(dil.cB, 0.2F), epa.b, dil.gu.m()),
-                  new eps[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new eqf(axd.q), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cp), epa.b, dil.a.m()),
-                  new eps(new epf(dil.cq), epa.b, dil.a.m()),
-                  new eps(new epu(dil.jS, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.aX, 0.1F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.iA, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.nl, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.ny, 0.08F), epa.b, dil.bs.m()),
-                  new eps(new epu(dil.cB, 0.2F), epa.b, dil.kD.m()),
-                  new eps(new epu(dil.cB, 0.1F), epa.b, dil.fe.m())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.m, 0.1F), epa.b, dil.cn.m())))));
-      a($$0, g, ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.m, 0.2F), epa.b, dil.cn.m())))));
-      a($$0, h, ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.m, 0.7F), epa.b, dil.cn.m())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epf(dil.kE), new epf(dil.G), dil.n.m()),
-                  new eps(new epu(dil.kE, 0.1F), epa.b, dil.i.m()),
-                  new eps(new epf(dil.i), new epf(dil.G), dil.G.m()),
-                  new eps(new epf(dil.j), new epf(dil.G), dil.G.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epf(dil.kE), new epf(dil.G), dil.r.m()),
-                  new eps(new epu(dil.kE, 0.2F), epa.b, dil.i.m()),
-                  new eps(new epf(dil.i), new epf(dil.G), dil.G.m()),
-                  new eps(new epf(dil.j), new epf(dil.G), dil.G.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epf(dil.kE), new epf(dil.G), dil.o.m()),
-                  new eps(new epf(dil.kE), new epf(dil.dO), dil.o.m()),
-                  new eps(new epu(dil.kE, 0.2F), epa.b, dil.i.m()),
-                  new eps(new epf(dil.i), new epf(dil.G), dil.G.m()),
-                  new eps(new epf(dil.j), new epf(dil.G), dil.G.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.cB, 0.3F), epa.b, dil.gt.m()),
-                  new eps(new epu(dil.cB, 0.2F), epa.b, dil.gu.m()),
-                  new eps(new epu(dil.cB, 0.1F), epa.b, dil.kD.m())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.cB, 0.1F), epa.b, dil.fe.m())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.cB, 0.1F), epa.b, dil.gt.m()), new eps(new epu(dil.cB, 0.8F), epa.b, dil.gu.m()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.cB, 0.3F), epa.b, dil.fd.m()), new eps(new epu(dil.cB, 0.2F), epa.b, dil.gu.m()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.cB, 0.2F), epa.b, dil.kD.m()), new eps(new epu(dil.cB, 0.1F), epa.b, dil.fe.m()))))
-      );
-      a($$0, q, ImmutableList.of(new epg(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.kJ, 0.75F), epa.b, dil.px.m()), new eps(new epu(dil.px, 0.15F), epa.b, dil.pw.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.pw, 0.35F), epa.b, dil.px.m()), new eps(new epu(dil.py, 0.1F), epa.b, dil.px.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.pw, 0.3F), epa.b, dil.px.m()), new eps(new epu(dil.pr, 1.0E-4F), epa.b, dil.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.py, 0.5F), epa.b, dil.a.m()), new eps(new epu(dil.ch, 0.1F), epa.b, dil.px.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.pw, 0.1F), epa.b, dil.px.m()), new eps(new epu(dil.pr, 1.0E-4F), epa.b, dil.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.pw, 0.3F), epa.b, dil.px.m()),
-                  new eps(new epu(dil.pr, 1.0E-4F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.ch, 0.3F), epa.b, dil.px.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.pw, 0.4F), epa.b, dil.px.m()),
-                  new eps(new epu(dil.pr, 0.01F), epa.b, dil.px.m()),
-                  new eps(new epu(dil.pw, 1.0E-4F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.pr, 1.0E-4F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.ch, 0.3F), epa.b, dil.px.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new epw(ImmutableList.of(new eps(new epu(dil.py, 0.5F), epa.b, dil.a.m()), new eps(new epu(dil.ch, 0.6F), epa.b, dil.px.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new epw(ImmutableList.of(new eps(new epu(dil.pw, 0.3F), epa.b, dil.px.m()), new eps(new epu(dil.pr, 1.0E-4F), epa.b, dil.a.m()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.pw, 0.3F), epa.b, dil.px.m()),
-                  new eps(new epu(dil.pw, 0.15F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.pw, 0.3F), epa.b, dil.pr.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.pw, 0.01F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.pw, 0.5F), epa.b, dil.px.m()),
-                  new eps(new epu(dil.pw, 0.3F), epa.b, dil.pr.m()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(new eps(new epu(dil.ch, 0.3F), epa.b, dil.px.m()), new eps(epa.b, epa.b, new epb(0.0F, 0.05F, 0, 100, jm.a.b), dil.a.m()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new epg(0.9F), new ept(axd.bP)));
-      a($$0, E, ImmutableList.of(new epg(0.1F), new ept(axd.bP)));
-      a($$0, F, ImmutableList.of(new epg(0.1F), new epw(ImmutableList.of(new eps(new epf(dil.R), epa.b, dil.cy.m()))), new ept(axd.bP)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.sW, 0.3F), epa.b, dil.tb.m()),
-                  new eps(new epu(dil.sS, 0.3F), epa.b, dil.tc.m()),
-                  new eps(new epu(dil.of, 0.05F), epa.b, dil.a.m())
-               )
+         new ens(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enq.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(enq.a("village/plains/terminators/terminator_04", $$6), 1)
             ),
-            new ept(axd.bP)
+            ens.a.a
          )
       );
-      a(
+      rg.a($$0, "village/snowy/trees", new ens($$10, ImmutableList.of(Pair.of(enq.a($$2), 1)), ens.a.b));
+      rg.a(
          $$0,
-         H,
-         ImmutableList.of(
-            new epg($$1.b(axd.bV), 0.95F),
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.sW, 0.3F), epa.b, dil.tb.m()),
-                  new eps(new epu(dil.sS, 0.3F), epa.b, dil.tc.m()),
-                  new eps(new epu(dil.of, 0.05F), epa.b, dil.a.m())
-               )
+         "village/snowy/decor",
+         new ens(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(enq.a($$2), 4),
+               Pair.of(enq.a($$3), 4),
+               Pair.of(enq.a($$4), 1),
+               Pair.of(enq.h(), 9)
             ),
-            new ept(axd.bP)
+            ens.a.b
          )
       );
-      a(
+      rg.a(
          $$0,
-         I,
-         ImmutableList.of(
-            new epg($$1.b(axd.bV), 0.95F),
-            new epw(
-               ImmutableList.of(
-                  new eps(new epu(dil.sW, 0.3F), epa.b, dil.tb.m()),
-                  new eps(new epu(dil.sS, 0.3F), epa.b, dil.tc.m()),
-                  new eps(new epu(dil.sU, 0.3F), epa.b, dil.a.m()),
-                  new eps(new epu(dil.of, 0.05F), epa.b, dil.a.m())
-               )
+         "village/snowy/zombie/decor",
+         new ens(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(enq.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(enq.a($$2), 4),
+               Pair.of(enq.a($$3), 4),
+               Pair.of(enq.a($$4), 4),
+               Pair.of(enq.h(), 7)
             ),
-            new ept(axd.bP)
+            ens.a.b
          )
       );
-      a(
+      rg.a(
          $$0,
-         J,
-         List.of(
-            new epw(
-               List.of(
-                  new eps(new epu(dil.L, 0.2F), epa.b, dil.j.m()),
-                  new eps(new epu(dil.L, 0.1F), epa.b, dil.k.m()),
-                  new eps(new epu(dil.eM, 0.1F), epa.b, dil.eL.m())
-               )
+         "village/snowy/villagers",
+         new ens(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enq.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(enq.a("village/snowy/villagers/baby"), 1),
+               Pair.of(enq.a("village/snowy/villagers/unemployed"), 10)
             ),
-            a(euc.aZ, 6),
-            a(euc.ba, 3)
+            ens.a.b
          )
       );
-      a(
+      rg.a(
          $$0,
-         K,
-         List.of(
-            new epw(
-               List.of(
-                  new eps(new epu(dil.L, 0.2F), epa.b, dil.j.m()),
-                  new eps(new epu(dil.L, 0.1F), epa.b, dil.k.m()),
-                  new eps(new epu(dil.eM, 0.1F), epa.b, dil.eL.m())
-               )
-            ),
-            a(euc.aZ, 2)
+         "village/snowy/zombie/villagers",
+         new ens(
+            $$10,
+            ImmutableList.of(Pair.of(enq.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(enq.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            ens.a.b
          )
       );
-      a($$0, L, List.of(a(euc.aZ, 2)));
-      a(
-         $$0,
-         M,
-         List.of(
-            new epw(
-               List.of(
-                  new eps(new epu(dil.so, 0.1F), epa.b, dil.sr.m().b(djx.c, Boolean.valueOf(true))),
-                  new eps(new epu(dil.so, 0.33333334F), epa.b, dil.sq.m().b(djx.c, Boolean.valueOf(true))),
-                  new eps(new epu(dil.so, 0.5F), epa.b, dil.sp.m().b(djx.c, Boolean.valueOf(true)))
-               )
-            ),
-            new ept(axd.bP)
-         )
-      );
-   }
-
-   private static epi a(alk<eul> $$0, int $$1) {
-      return new epi(new epw(List.of(new eps(new eqf(axd.cv), epa.b, epp.b, dil.M.m(), new eqh($$0)))), brj.a($$1));
    }
 }

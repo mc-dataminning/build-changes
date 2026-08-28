@@ -1,38 +1,30 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface enn {
-   Codec<enn> b = lz.ah.q().dispatch(enn::b, Function.identity());
+public class enn extends enp {
+   public static final MapCodec<enn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, enn::new));
 
-   void a(azv var1, BiConsumer<alk<enl>, alk<enl>> var2);
-
-   Stream<alk<enl>> a();
-
-   static enm a(String $$0, String $$1) {
-      return a(ri.a($$0), ri.a($$1));
+   protected enn(Either<alj, eqk> $$0, jq<eqi> $$1, ens.a $$2, Optional<epu> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   static enm a(alk<enl> $$0, alk<enl> $$1) {
-      return new enm($$0, $$1);
+   @Override
+   protected eqg a(dpd $$0, ema $$1, epu $$2, boolean $$3) {
+      eqg $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(epl.b);
+      $$4.a(epl.d);
+      return $$4;
    }
 
-   static enq a(String $$0, bqp<String> $$1) {
-      bqp.a<alk<enl>> $$2 = bqp.a();
-      $$1.e().forEach($$1x -> $$2.a(ri.a((String)$$1x.b()), $$1x.a().a()));
-      return a(ri.a($$0), $$2.a());
+   @Override
+   public enr<?> a() {
+      return enr.e;
    }
 
-   static enq a(alk<enl> $$0, bqp<alk<enl>> $$1) {
-      return new enq($$0, $$1);
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
-
-   static enr a(bqp<List<enn>> $$0) {
-      return new enr($$0);
-   }
-
-   MapCodec<? extends enn> b();
 }

@@ -1,96 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djp extends dnw {
-   public static final MapCodec<djp> a = b(djp::new);
+public class djp extends dpq {
+   public static final MapCodec<djp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dxh.a.fieldOf("wood_type").forGetter(dpq::d), t()).apply($$0, djp::new));
+   public static final dwu b = dwl.ba;
+   public static final dwm c = dwl.a;
+   protected static final float d = 5.0F;
+   protected static final fas e = diq.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, fas> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         diq.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         diq.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         diq.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         diq.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
+   );
 
    @Override
    public MapCodec<djp> a() {
       return a;
    }
 
-   protected djp(dvn.d $$0) {
-      super(0.3125F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   public djp(dxh $$0, dvu.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dvo a(czw $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dvo a(dek $$0, jh $$1, dvo $$2) {
-      dvo $$3 = $$0.a_($$1.e());
-      dvo $$4 = $$0.a_($$1.d());
-      dvo $$5 = $$0.a_($$1.f());
-      dvo $$6 = $$0.a_($$1.i());
-      dvo $$7 = $$0.a_($$1.g());
-      dvo $$8 = $$0.a_($$1.h());
-      dij $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dil.kv) || $$3.a(dil.fz)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dil.kv)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dil.kv)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dil.kv)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dil.kv)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dil.kv)));
-   }
-
-   @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$8 = $$6.a(this) || $$6.a(dil.kv) || $$4 == jm.a && $$6.a(dil.fz);
-         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+   protected bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
+      if ($$2.c_($$3) instanceof duk $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bsk.e;
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private boolean a(cou $$0, ezu $$1, duk $$2, cwm $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof cwb && $$1.c().equals(jm.a);
    }
 
    @Override
-   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
+      return $$1.a_($$2.d()).a($$1, $$2.d(), jm.a, dqr.b);
    }
 
    @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      dvo $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
-
-      for (jm $$5 : jm.c.a) {
-         jh $$6 = $$2.a($$5);
-         dvo $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
+   public dvv a(dad $$0) {
+      dfm $$1 = $$0.q();
+      erv $$2 = $$1.b_($$0.a());
+      jh $$3 = $$0.a().d();
+      dvv $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(axc.aC);
+      jm $$6 = jm.a((double)$$0.i());
+      boolean $$7 = !diq.a($$4.g($$1, $$3), jm.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(drp.b)) {
+            jm $$8 = $$4.c(drp.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
             }
-
-            dvo $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dil.fz)) {
-               return true;
+         } else if ($$4.b(b)) {
+            Optional<jm> $$9 = dxa.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
             }
          }
       }
 
-      return $$3.a(this) || $$3.a(dil.fz);
+      int $$10 = !$$7 ? dxa.a($$6.g()) : dxa.a($$0.i() + 180.0F);
+      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(f, Boolean.valueOf($$2.a() == erw.c));
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      fas $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
    }
 
    @Override
-   protected boolean a(dvo $$0, esd $$1) {
-      return false;
+   protected fas b_(dvv $$0, der $$1, jh $$2) {
+      return this.a($$0, $$1, $$2, fad.a());
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public float h(dvv $$0) {
+      return dxa.b($$0.c(b));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dnm $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(b, c, f);
+   }
+
+   @Override
+   public dsy a(jh $$0, dvv $$1) {
+      return new dtx($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return a($$2, dta.i, duk::a);
    }
 }

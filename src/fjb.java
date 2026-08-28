@@ -1,22 +1,24 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fjb extends fiw {
+public class fjb extends fjd {
    private static final Logger b = LogUtils.getLogger();
-   private static final xl c = xl.c("mco.backup.restoring");
-   private final ffq d;
-   private final long e;
-   private final fhj f;
+   private static final xj c = xj.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final frw f;
+   private final String g;
 
-   public fjb(ffq $$0, long $$1, fhj $$2) {
+   public fjb(long $$0, int $$1, String $$2, frw $$3) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      ffa $$0 = ffa.a();
+      ffh $$0 = ffh.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -25,35 +27,36 @@ public class fjb extends fiw {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
+            fgw $$2 = $$0.b(this.d, this.e);
             a(1L);
             if (this.d()) {
                return;
             }
 
-            a(this.f.g());
+            a(new fht(this.f, $$2, this.g, $$0x -> {
+            }));
             return;
-         } catch (fgw var4) {
+         } catch (fhd var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (fgv var5) {
+         } catch (fhc var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new fhn(var5, this.f));
+            b.error("Couldn't download world data", var5);
+            a(new fhu(var5, this.f));
             return;
          } catch (Exception var6) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var6);
+            b.error("Couldn't download world data", var6);
             this.a(var6);
             return;
          }
@@ -61,7 +64,7 @@ public class fjb extends fiw {
    }
 
    @Override
-   public xl a() {
+   public xj a() {
       return c;
    }
 }

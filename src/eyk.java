@@ -1,36 +1,93 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eyk(float c) implements eyn {
-   public static final MapCodec<eyk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eyk::c)).apply($$0, eyk::new));
-   public static final Codec<eyk> b = Codec.FLOAT.xmap(eyk::new, eyk::c);
-
-   @Override
-   public eym b() {
-      return eyo.b;
-   }
-
-   @Override
-   public float b(eug $$0) {
-      return this.c;
-   }
-
-   public static eyk a(float $$0) {
-      return new eyk($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eyk)$$0).c, this.c) == 0 : false;
+public class eyk implements eym {
+   private static final String d = "block_entity";
+   private static final eyk.a e = new eyk.a() {
+      @Override
+      public vi a(eun $$0) {
+         dsy $$1 = $$0.c(exj.h);
+         return $$1 != null ? $$1.b($$1.i().J_()) : null;
       }
+
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<exg<?>> b() {
+         return ImmutableSet.of(exj.h);
+      }
+   };
+   public static final eyk a = new eyk(e);
+   private static final Codec<eyk.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         eun.b $$1 = eun.b.a($$0);
+         return b($$1);
+      }
+   }, eyk.a::a);
+   public static final MapCodec<eyk> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eyk::new));
+   public static final Codec<eyk> c = f.xmap(eyk::new, $$0 -> $$0.g);
+   private final eyk.a g;
+
+   private static eyk.a b(final eun.b $$0) {
+      return new eyk.a() {
+         @Nullable
+         @Override
+         public vi a(eun $$0x) {
+            bul $$1 = $$0.c($$0.a());
+            return $$1 != null ? dm.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<exg<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
+   }
+
+   private eyk(eyk.a $$0) {
+      this.g = $$0;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public eyl a() {
+      return eyn.c;
+   }
+
+   @Nullable
+   @Override
+   public vi a(eun $$0) {
+      return this.g.a($$0);
+   }
+
+   @Override
+   public Set<exg<?>> b() {
+      return this.g.b();
+   }
+
+   public static eym a(eun.b $$0) {
+      return new eyk(b($$0));
+   }
+
+   interface a {
+      @Nullable
+      vi a(eun var1);
+
+      String a();
+
+      Set<exg<?>> b();
    }
 }

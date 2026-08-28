@@ -1,221 +1,134 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dtv extends dsr implements bry, bsj {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bsa e = new bsa() {
-      @Override
-      public int b() {
-         return 1;
+public class dtv {
+   private final Object2IntSortedMap<cwi> a;
+
+   dtv(Object2IntSortedMap<cwi> $$0) {
+      this.a = $$0;
+   }
+
+   public boolean a(cwm $$0) {
+      return this.a.containsKey($$0.h());
+   }
+
+   public SequencedSet<cwi> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
+   }
+
+   public int b(cwm $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
+   }
+
+   public static dtv a(js.a $$0, crq $$1) {
+      return a($$0, $$1, 200);
+   }
+
+   public static dtv a(js.a $$0, crq $$1, int $$2) {
+      return new dtv.a($$0, $$1)
+         .a(cwq.qB, $$2 * 100)
+         .a(dis.iB, $$2 * 8 * 10)
+         .a(cwq.sx, $$2 * 12)
+         .a(cwq.oy, $$2 * 8)
+         .a(cwq.oz, $$2 * 8)
+         .a(axl.r, $$2 * 3 / 2)
+         .a(axl.C, $$2 * 3 / 2)
+         .a(axl.b, $$2 * 3 / 2)
+         .a(dis.w, $$2 * 3 / 2)
+         .a(axl.i, $$2 * 3 / 2)
+         .a(dis.hU, $$2 * 3 / 2)
+         .a(axl.j, $$2 * 3 / 4)
+         .a(dis.jC, $$2 * 3 / 4)
+         .a(axl.n, $$2 * 3 / 2)
+         .a(axl.m, $$2 * 3 / 2)
+         .a(axl.k, $$2 * 3 / 2)
+         .a(axl.l, $$2 * 3 / 2)
+         .a(dis.aY, $$2 * 3 / 2)
+         .a(dis.cl, $$2 * 3 / 2)
+         .a(dis.cm, $$2 * 3 / 2)
+         .a(dis.oa, $$2 * 3 / 2)
+         .a(dis.dT, $$2 * 3 / 2)
+         .a(dis.cv, $$2 * 3 / 2)
+         .a(dis.gV, $$2 * 3 / 2)
+         .a(dis.cA, $$2 * 3 / 2)
+         .a(dis.gZ, $$2 * 3 / 2)
+         .a(axl.E, $$2 * 3 / 2)
+         .a(cwq.ow, $$2 * 3 / 2)
+         .a(cwq.rm, $$2 * 3 / 2)
+         .a(dis.cO, $$2 * 3 / 2)
+         .a(axl.aV, $$2)
+         .a(axl.bv, $$2 * 4)
+         .a(cwq.oO, $$2)
+         .a(cwq.oN, $$2)
+         .a(cwq.oR, $$2)
+         .a(cwq.oQ, $$2)
+         .a(cwq.oP, $$2)
+         .a(axl.h, $$2)
+         .a(axl.aS, $$2 * 6)
+         .a(axl.a, $$2 / 2)
+         .a(axl.d, $$2 / 2)
+         .a(cwq.pr, $$2 / 2)
+         .a(axl.p, $$2 / 2)
+         .a(cwq.ou, $$2 / 2)
+         .a(axl.g, 1 + $$2 / 3)
+         .a(dis.me, 1 + $$2 * 20)
+         .a(cwq.wn, $$2 * 3 / 2)
+         .a(dis.mZ, $$2 / 4)
+         .a(dis.bv, $$2 / 2)
+         .a(dis.nS, $$2 / 4)
+         .a(dis.nT, $$2 * 3 / 2)
+         .a(dis.nU, $$2 * 3 / 2)
+         .a(dis.nX, $$2 * 3 / 2)
+         .a(dis.nY, $$2 * 3 / 2)
+         .a(dis.ob, $$2 * 3 / 2)
+         .a(dis.pc, $$2 * 3 / 2)
+         .a(dis.sy, $$2 / 2)
+         .a(dis.sz, $$2 / 2)
+         .a(dis.ac, $$2 * 3 / 2)
+         .a(axl.aM)
+         .a();
+   }
+
+   public static class a {
+      private final js<cwi> a;
+      private final crq b;
+      private final Object2IntSortedMap<cwi> c = new Object2IntLinkedOpenHashMap();
+
+      public a(js.a $$0, crq $$1) {
+         this.a = $$0.d(ma.K);
+         this.b = $$1;
       }
 
-      @Override
-      public boolean c() {
-         return dtv.this.g.f();
+      public dtv a() {
+         return new dtv(this.c);
       }
 
-      @Override
-      public cwf a(int $$0) {
-         return $$0 == 0 ? dtv.this.g : cwf.k;
+      public dtv.a a(axs<cwi> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
+         return this;
       }
 
-      @Override
-      public cwf a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cwf $$2 = dtv.this.g.a($$1);
-            if (dtv.this.g.f()) {
-               dtv.this.k();
+      public dtv.a a(axs<cwi> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jq<cwi> $$2 : $$1x) {
+               this.a($$1, $$2.a());
             }
+         });
+         return this;
+      }
 
-            return $$2;
-         } else {
-            return cwf.k;
+      public dtv.a a(dfl $$0, int $$1) {
+         cwi $$2 = $$0.j();
+         this.a($$1, $$2);
+         return this;
+      }
+
+      private void a(int $$0, cwi $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
          }
-      }
-
-      @Override
-      public cwf b(int $$0) {
-         if ($$0 == 0) {
-            cwf $$1 = dtv.this.g;
-            dtv.this.g = cwf.k;
-            dtv.this.k();
-            return $$1;
-         } else {
-            return cwf.k;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cwf $$1) {
-      }
-
-      @Override
-      public int am_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dtv.this.e();
-      }
-
-      @Override
-      public boolean a(cor $$0) {
-         return bsa.a(dtv.this, $$0) && dtv.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cwf $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cse f = new cse() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dtv.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dtv.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cwf g = cwf.k;
-   int h;
-   private int i;
-
-   public dtv(jh $$0, dvo $$1) {
-      super(dst.D, $$0, $$1);
-   }
-
-   public cwf b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.b(ku.S) || this.g.b(ku.T);
-   }
-
-   public void b(cwf $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      dmt.a(null, this.i(), this.aB_(), this.m(), false);
-   }
-
-   public void a(cwf $$0, @Nullable cor $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = azn.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         dmt.a(this.i(), this.aB_(), this.m());
-      }
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return azn.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cwf b(cwf $$0, @Nullable cor $$1) {
-      if (this.o instanceof arq $$2) {
-         cyb.a($$0, this.a($$1, $$2), $$1);
-      }
-
-      return $$0;
-   }
-
-   private ew a(@Nullable cor $$0, arq $$1) {
-      String $$2;
-      xl $$3;
-      if ($$0 == null) {
-         $$2 = "Lectern";
-         $$3 = xl.b("Lectern");
-      } else {
-         $$2 = $$0.am().getString();
-         $$3 = $$0.S_();
-      }
-
-      ezr $$6 = ezr.b(this.p);
-      return new ew(ev.a, $$6, ezq.a, $$1, 2, $$2, $$3, $$1.o(), $$0);
-   }
-
-   @Override
-   public boolean p() {
-      return true;
-   }
-
-   @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cwf.a($$1, (vk)$$0.p("Book")).orElse(cwf.k), null);
-      } else {
-         this.g = cwf.k;
-      }
-
-      this.i = c(this.g);
-      this.h = azn.a($$0.h("Page"), 0, this.i - 1);
-   }
-
-   @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b().f()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b(cwf.k);
-   }
-
-   @Override
-   public crs createMenu(int $$0, coq $$1, cor $$2) {
-      return new csy($$0, this.e, this.f);
-   }
-
-   @Override
-   public xl S_() {
-      return xl.c("container.lectern");
-   }
-
-   private static int c(cwf $$0) {
-      czn $$1 = $$0.a(ku.T);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         czm $$2 = $$0.a(ku.S);
-         return $$2 != null ? $$2.a().size() : 0;
       }
    }
 }

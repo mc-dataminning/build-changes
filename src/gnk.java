@@ -1,107 +1,64 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gnk implements gmx.a {
-   private final fjx a;
-   private final Map<alk<dff>, Map<String, elt>> b = Maps.newIdentityHashMap();
-   private final Map<alk<dff>, Map<String, abk.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class gnk implements gng.a {
+   private final fke a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public gnk(fjx $$0) {
+   public gnk(fke $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
-      fjg $$5 = this.a.j.k();
-      alk<dff> $$6 = this.a.s.ag();
-      jh $$7 = jh.a($$5.b().d, 0.0, $$5.b().f);
-      feo $$8 = $$1.getBuffer(gjh.y());
-      if (this.b.containsKey($$6)) {
-         for (elt $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gjr.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      dfn $$5 = this.a.s;
+      fev $$6 = $$1.getBuffer(gjq.A());
+      jh $$7 = jh.a($$2, 0.0, $$4);
 
-      Map<String, abk.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (abk.a $$11 : $$10.values()) {
-            elt $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gjr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gjr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dxq $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<ebq.a, ebq> $$11 : $$10.e()) {
+               ebq.a $$12 = $$11.getKey();
+               des $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kj.a($$13.g, $$15);
+                     int $$18 = kj.a($$13.h, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gka.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
                }
             }
          }
       }
    }
 
-   public void a(elt $$0, List<abk.a> $$1, alk<dff> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, abk.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (abk.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   private Vector3f a(ebq.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

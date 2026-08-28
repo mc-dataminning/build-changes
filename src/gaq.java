@@ -1,23 +1,37 @@
-import java.util.Set;
+public class gaq extends fzj<gvo> {
+   private final gcl a;
+   private final gcl b;
 
-public class gaq extends gak<gwv> {
-   public static final gcl a = new fyc(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
-
-   public gaq(gcc $$0) {
+   public gaq(gcl $$0) {
       super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gci a() {
-      gck $$0 = gak.a(12, gcg.a);
-      gcm $$1 = $$0.a();
-      $$1.a("head", gch.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gce.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", gch.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gce.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return gci.a($$0, 64, 32);
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gcn.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gcq.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gcn.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gcq.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gcn.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gcq.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gcn.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gcq.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gcn.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gcq.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gcn.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gcq.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gcn.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gcq.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gcn.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gcq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gcn.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gcq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gcn.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gcq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gcn.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gcq.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gcn.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gcq.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gcn.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gcr.a($$0, 32, 32);
    }
 
-   public void a(gwv $$0) {
+   @Override
+   public void a(gvo $$0) {
       super.a($$0);
-      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ab;
-      this.b.e = $$0.b;
+      this.b.g = -0.2F + 0.4F * azm.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.p * 0.2F);
    }
 }

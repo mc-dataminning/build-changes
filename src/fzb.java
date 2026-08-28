@@ -1,44 +1,42 @@
-public class fzb extends fza<gvf> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gcc d;
-   private final gcc e;
-   private final gcc f;
+public class fzb extends fzj<gvh> {
+   private final gcl a;
+   private final gcl b;
+   private final gcl c;
+   private final gcl d;
+   private final gcl e;
+   private static final int f = 6;
 
-   public fzb(gcc $$0) {
+   public fzb(gcl $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      this.a = $$0.b("head");
+      this.c = $$0.b("right_hind_leg");
+      this.b = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.d = $$0.b("left_front_leg");
    }
 
-   public static gci a() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      gcm $$2 = $$1.a("base", gch.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gce.a(-5.0F, 24.0F, -5.0F));
-      gch $$3 = gch.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gce.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gce.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gci.a($$0, 64, 32);
+   public static gcr a(gcp $$0) {
+      gct $$1 = new gct();
+      gcv $$2 = $$1.a();
+      $$2.a("head", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gcn.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", gcq.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gcn.a(0.0F, 6.0F, 0.0F));
+      gcq $$3 = gcq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, gcn.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, gcn.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, gcn.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, gcn.a(2.0F, 18.0F, -4.0F));
+      return gcr.a($$1, 64, 32);
    }
 
-   public void a(gvf $$0) {
+   public void a(gvh $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azn.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.Y;
+      float $$2 = $$0.X;
+      this.b.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.c.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.d.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
    }
 }

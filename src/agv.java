@@ -1,151 +1,195 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class agv {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(arq $$0, jh $$1, String $$2, int $$3, int $$4) {
-      a($$0, (aav)(new aaz($$1, $$3, $$2, $$4)));
-   }
-
-   public static void a(arq $$0) {
-      a($$0, (aav)(new aba()));
-   }
-
-   public static void a(arq $$0, del $$1) {
-   }
-
-   public static void a(arq $$0, jh $$1) {
-      d($$0, $$1);
-   }
-
-   public static void b(arq $$0, jh $$1) {
-      d($$0, $$1);
-   }
-
-   public static void c(arq $$0, jh $$1) {
-      d($$0, $$1);
-   }
-
-   private static void d(arq $$0, jh $$1) {
-   }
-
-   public static void a(dff $$0, bvg $$1, @Nullable esc $$2, float $$3) {
-   }
-
-   public static void a(dff $$0, jh $$1) {
-   }
-
-   public static void a(dff $$0, abj $$1) {
-      if ($$0 instanceof arq $$2) {
-         a($$2, (aav)$$1);
-      }
-   }
-
-   public static void a(dgd $$0, emj $$1) {
-   }
-
-   public static void a(dff $$0, bvg $$1, ccd $$2) {
-   }
-
-   public static void a(arq $$0, Collection<cqe> $$1) {
-   }
-
-   public static void a(bve $$0) {
-   }
-
-   public static void a(cgw $$0) {
-   }
-
-   public static void a(cmr $$0) {
-   }
-
-   public static void a(dff $$0, jq<eak> $$1, ezr $$2) {
-   }
-
-   public static void a(dff $$0, eam $$1) {
-   }
-
-   public static void a(dff $$0, jh $$1, dvo $$2, dso $$3) {
-   }
-
-   private static List<String> a(bve $$0, long $$1) {
-      Map<cei<?>, Optional<? extends ceh<?>>> $$2 = $$0.ee().b();
-      List<String> $$3 = Lists.newArrayList();
-
-      for (Entry<cei<?>, Optional<? extends ceh<?>>> $$4 : $$2.entrySet()) {
-         cei<?> $$5 = $$4.getKey();
-         Optional<? extends ceh<?>> $$6 = $$4.getValue();
-         String $$10;
-         if ($$6.isPresent()) {
-            ceh<?> $$7 = (ceh<?>)$$6.get();
-            Object $$8 = $$7.c();
-            if ($$5 == cei.D) {
-               long $$9 = $$1 - (Long)$$8;
-               $$10 = $$9 + " ticks ago";
-            } else if ($$7.e()) {
-               $$10 = a((arq)$$0.dY(), $$8) + " (ttl: " + $$7.b() + ")";
-            } else {
-               $$10 = a((arq)$$0.dY(), $$8);
-            }
-         } else {
-            $$10 = "-";
-         }
-
-         $$3.add(lz.z.b($$5).a() + ": " + $$10);
-      }
-
-      $$3.sort(String::compareTo);
-      return $$3;
-   }
-
-   private static String a(arq $$0, @Nullable Object $$1) {
-      if ($$1 == null) {
-         return "-";
-      } else if ($$1 instanceof UUID) {
-         return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof bve) {
-         bui $$2 = (bui)$$1;
-         return agu.a($$2);
-      } else if ($$1 instanceof bsk) {
-         return ((bsk)$$1).am().getString();
-      } else if ($$1 instanceof cel) {
-         return a($$0, ((cel)$$1).a());
-      } else if ($$1 instanceof bxi) {
-         return a($$0, ((bxi)$$1).c());
-      } else if ($$1 instanceof jp) {
-         return a($$0, ((jp)$$1).b());
-      } else if ($$1 instanceof bxa) {
-         return a($$0, ((bxa)$$1).b());
-      } else if ($$1 instanceof bsy) {
-         bui $$3 = ((bsy)$$1).d();
-         return $$3 == null ? $$1.toString() : a($$0, $$3);
-      } else if (!($$1 instanceof Collection)) {
-         return $$1.toString();
-      } else {
-         List<String> $$4 = Lists.newArrayList();
-
-         for (Object $$5 : (Iterable)$$1) {
-            $$4.add(a($$0, $$5));
-         }
-
-         return $$4.toString();
-      }
-   }
-
-   private static void a(arq $$0, aav $$1) {
-      zs<?> $$2 = new zz($$1);
-
-      for (arr $$3 : $$0.x()) {
-         $$3.g.b($$2);
-      }
-   }
+   public static final wr.a<agw, wu> a = zv.a(
+      we.b,
+      $$0 -> $$0.a(agu.bg, agy.a)
+            .a(agu.bh, agz.a)
+            .a(agu.bi, aii.a)
+            .a(agu.bj, aha.a)
+            .a(agu.bk, ahb.a)
+            .a(agu.bl, ahc.a)
+            .a(agu.bm, ahd.a)
+            .a(agu.bn, ahe.a)
+            .a(agu.bo, ahf.a)
+            .a(agu.bp, ahg.a)
+            .a(agu.bq, ahh.a)
+            .a(agu.br, ahi.b)
+            .a(aai.l, aak.a)
+            .a(agu.bs, ahj.a)
+            .a(agu.bt, ahk.b)
+            .a(agu.bu, ahl.a)
+            .a(agu.bv, ahm.a)
+            .a(agu.bw, ahn.a)
+            .a(agu.bx, aho.a)
+            .a(acb.b, acd.a)
+            .a(aai.m, aal.a)
+            .a(agu.by, ahp.a)
+            .a(agu.bz, ahq.a)
+            .a(agu.bA, ahr.a)
+            .a(agu.bB, ahs.a)
+            .a(agu.bC, aht.a)
+            .a(aai.n, aam.a)
+            .a(agu.bD, ahu.a)
+            .a(agu.bE, ahv.a.j)
+            .a(agu.bF, ahv.b.j)
+            .a(agu.bG, ahv.c.j)
+            .a(agu.bH, ahv.d.j)
+            .a(agu.bI, ahw.a)
+            .a(agu.bJ, ahx.a)
+            .a(agu.bK, ahy.a)
+            .a(aka.b, akc.a)
+            .a(agu.bL, ahz.a)
+            .a(agu.bM, aia.a)
+            .a(agu.bN, aib.a)
+            .a(agu.bO, aic.a)
+            .a(agu.bP, aid.a)
+            .a(aai.o, aan.a)
+            .a(agu.bQ, aie.a)
+            .a(agu.bR, aif.a)
+            .a(agu.bS, aig.a)
+            .a(aai.p, aao.a)
+            .a(agu.bT, aih.a)
+            .a(agu.bU, aij.a)
+            .a(agu.bV, aik.a)
+            .a(agu.bW, ail.a)
+            .a(agu.bX, aim.a)
+            .a(agu.bY, ain.a)
+            .a(agu.bZ, aio.a)
+            .a(agu.ca, aip.a)
+            .a(agu.cb, aiq.a)
+            .a(agu.cc, air.a)
+            .a(agu.cd, ais.a)
+            .a(agu.ce, ait.a)
+            .a(agu.cf, aiu.a)
+            .a(agu.cg, aiv.a)
+   );
+   public static final wr.a<acf, wu> b = zv.b(
+      we.b,
+      $$0 -> $$0.a(agu.a, acr::new, new acq())
+            .a(agu.c, acg.a)
+            .a(agu.d, ach.a)
+            .a(agu.e, aci.a)
+            .a(agu.f, acj.a)
+            .a(agu.g, ack.a)
+            .a(agu.h, acl.a)
+            .a(agu.i, acm.a)
+            .a(agu.j, acn.a)
+            .a(agu.k, aco.a)
+            .a(agu.l, acp.a)
+            .a(agu.m, acs.a)
+            .a(agu.n, act.a)
+            .a(agu.o, acu.b)
+            .a(agu.p, acv.a)
+            .a(agu.q, acw.a)
+            .a(agu.r, acx.a)
+            .a(agu.s, acy.a)
+            .a(agu.t, acz.a)
+            .a(agu.u, ada.a)
+            .a(agu.v, adb.a)
+            .a(agu.w, adc.a)
+            .a(acb.a, aca.a)
+            .a(agu.x, add.a)
+            .a(agu.y, ade.a)
+            .a(aai.a, zx.a)
+            .a(agu.z, adf.a)
+            .a(agu.A, adg.a)
+            .a(agu.B, adh.a)
+            .a(aai.c, zz.a)
+            .a(agu.C, adi.a)
+            .a(agu.D, adj.a)
+            .a(agu.E, adk.a)
+            .a(agu.F, adl.a)
+            .a(agu.G, adm.a)
+            .a(agu.H, adn.a)
+            .a(agu.I, ado.a)
+            .a(agu.J, adp.a)
+            .a(aai.d, aaa.a)
+            .a(agu.K, adr.a)
+            .a(agu.L, ads.a)
+            .a(agu.M, adt.a)
+            .a(agu.N, adu.a)
+            .a(agu.O, adw.a)
+            .a(agu.P, adx.a)
+            .a(agu.Q, ady.a)
+            .a(agu.R, adz.a.j)
+            .a(agu.S, adz.b.j)
+            .a(agu.T, aea.a)
+            .a(agu.U, adz.c.j)
+            .a(agu.V, aeb.a)
+            .a(agu.W, aec.a)
+            .a(agu.X, aed.a)
+            .a(agu.Y, aee.a)
+            .a(aai.e, aab.a)
+            .a(aka.a, ajz.a)
+            .a(agu.Z, aef.a)
+            .a(agu.aa, aeg.a)
+            .a(agu.ab, aeh.a)
+            .a(agu.ac, aei.a)
+            .a(agu.ad, aej.b)
+            .a(agu.ae, aek.a)
+            .a(agu.af, ael.a)
+            .a(agu.ag, aem.a)
+            .a(agu.ah, aen.a)
+            .a(agu.ai, aeo.a)
+            .a(agu.aj, aeq.a)
+            .a(agu.ak, aer.a)
+            .a(agu.al, aes.a)
+            .a(agu.ch, aet.a)
+            .a(aai.f, aac.a)
+            .a(aai.g, aad.b)
+            .a(agu.am, aeu.a)
+            .a(agu.an, aev.a)
+            .a(agu.ao, aew.a)
+            .a(agu.ap, aex.a)
+            .a(agu.aq, aey.a)
+            .a(agu.ar, aez.a)
+            .a(agu.as, afa.a)
+            .a(agu.at, afb.a)
+            .a(agu.au, afc.a)
+            .a(agu.av, afd.a)
+            .a(agu.aw, afe.a)
+            .a(agu.ax, aff.a)
+            .a(agu.ay, afg.a)
+            .a(agu.az, afh.a)
+            .a(agu.ck, afi.a)
+            .a(agu.aA, afj.a)
+            .a(agu.aB, afk.a)
+            .a(agu.aC, afl.a)
+            .a(agu.aD, afm.a)
+            .a(agu.aE, afn.a)
+            .a(agu.aF, afo.a)
+            .a(agu.aG, afp.a)
+            .a(agu.aH, afq.a)
+            .a(agu.aI, afr.a)
+            .a(agu.aJ, afs.a)
+            .a(agu.aK, aft.a)
+            .a(agu.cl, afu.a)
+            .a(agu.aL, afv.a)
+            .a(agu.aM, afw.a)
+            .a(agu.aN, afx.a)
+            .a(agu.aO, afy.a)
+            .a(agu.aP, afz.a)
+            .a(agu.aQ, aga.a)
+            .a(agu.aR, agb.a)
+            .a(agu.aS, agc.a)
+            .a(agu.aT, agd.a)
+            .a(agu.aU, age.b)
+            .a(agu.aV, agf.a)
+            .a(aai.i, aaf.a)
+            .a(agu.aW, agg.a)
+            .a(agu.aX, agh.a)
+            .a(agu.aY, agi.a)
+            .a(agu.aZ, agj.a)
+            .a(agu.ba, agk.a)
+            .a(agu.ci, agl.a)
+            .a(agu.cj, agm.a)
+            .a(aai.j, aag.a)
+            .a(agu.bb, agn.a)
+            .a(agu.bc, ago.a)
+            .a(agu.bd, agp.a)
+            .a(agu.be, agq.a)
+            .a(aai.k, aah.a)
+            .a(agu.bf, aep.a)
+            .a(aai.b, zy.a)
+            .a(aai.h, aae.a)
+   );
 }

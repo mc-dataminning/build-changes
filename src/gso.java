@@ -1,24 +1,46 @@
-public class gso extends gtn<gvc, fyy<gvc>> {
-   private final gka a;
+public class gso extends gpj<cqb, gyb> {
+   private static final alj a = alj.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alj b = alj.b("textures/entity/wither/wither.png");
+   private final gbf h;
 
-   public gso(gqw<gvc, fyy<gvc>> $$0, gka $$1) {
+   public gso(gpk.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.h = new gbf($$0.a(gck.dx));
    }
 
-   public void a(fek $$0, gix $$1, int $$2, gvc $$3, float $$4, float $$5) {
-      dvo $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, gyk.d);
-         $$0.b();
-      }
+   public static gcr a() {
+      gct $$0 = new gct();
+      gcv $$1 = $$0.a();
+      $$1.a("head", gcq.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gcn.a);
+      return gcr.a($$0, 64, 64);
+   }
+
+   protected int a(cqb $$0, jh $$1) {
+      return 15;
+   }
+
+   public void a(gyb $$0, fer $$1, gjg $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fev $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, gyv.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private alj a(gyb $$0) {
+      return $$0.a ? a : b;
+   }
+
+   public gyb b() {
+      return new gyb();
+   }
+
+   public void a(cqb $$0, gyb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.c = $$0.k($$2);
+      $$1.b = $$0.j($$2);
    }
 }

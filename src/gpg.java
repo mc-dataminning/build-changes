@@ -1,34 +1,35 @@
-public class gpg extends goz<cpf, gvk> {
-   private final gpy a;
+public class gpg extends gqq<clo, gvn, fzh<gvn>> {
+   private static final alj a = alj.b("textures/entity/enderman/enderman.png");
+   private final azu b = azu.a();
 
-   public gpg(gpa.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public gpg(gpk.a $$0) {
+      super($$0, new fzh<>($$0.a(gck.aD)), 0.5F);
+      this.a(new gth(this));
+      this.a(new gsz(this, $$0.d()));
    }
 
-   public void a(gvk $$0, fek $$1, gix $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.e.b());
+   public ezy a(gvn $$0) {
+      ezy $$1 = super.a($$0);
       if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
+         double $$2 = 0.02 * (double)$$0.aa;
+         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
+      } else {
+         return $$1;
       }
-
-      this.a.a($$0.c, cwd.h, false, $$1, $$2, $$3, gyk.d, $$0.b);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvk a() {
-      return new gvk();
+   public alj b(gvn $$0) {
+      return a;
    }
 
-   public void a(cpf $$0, gvk $$1, float $$2) {
+   public gvn a() {
+      return new gvn();
+   }
+
+   public void a(clo $$0, gvn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
-      cwf $$3 = $$0.m();
-      $$1.c = $$3.v();
-      $$1.b = !$$3.f() ? this.a.a($$3, $$0.dY(), null, $$0.as()) : null;
+      gqb.a($$0, $$1, $$2);
+      $$1.a = $$0.gn();
+      $$1.b = $$0.gm();
    }
 }

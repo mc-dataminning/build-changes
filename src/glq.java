@@ -1,111 +1,95 @@
-import java.util.EnumSet;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class glq implements gli<dth> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final gcc h;
-   private final gcc i;
-   private final gcc j;
-   private final gcc k;
-   private final gcc l;
-   private final gcc m;
-   private final gcc n;
-   private static final float o = 0.125F;
+public class glq implements ave {
+   private Map<dta<?>, glr<?>> d = ImmutableMap.of();
+   private final flo e;
+   private final gch f;
+   public dfm a;
+   public fjn b;
+   public ezw c;
+   private final Supplier<gkj> g;
+   private final Supplier<gqi> h;
+   private final Supplier<gpi> i;
 
-   public glq(glj.a $$0) {
-      gcc $$1 = $$0.a(gcb.Z);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      gcc $$2 = $$0.a(gcb.aa);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public glq(flo $$0, gch $$1, Supplier<gkj> $$2, Supplier<gqi> $$3, Supplier<gpi> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static gci b() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      gcg $$2 = new gcg(0.2F);
-      gcg $$3 = new gcg(-0.1F);
-      $$1.a(
-         "neck",
-         gch.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         gce.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      gch $$4 = gch.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, gce.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, gce.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return gci.a($$0, 32, 32);
+   @Nullable
+   public <E extends dsy> glr<E> a(E $$0) {
+      return (glr<E>)this.d.get($$0.q());
    }
 
-   public static gci c() {
-      gck $$0 = new gck();
-      gcm $$1 = $$0.a();
-      gch $$2 = gch.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jm.c));
-      $$1.a("back", $$2, gce.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, gce.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, gce.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, gce.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return gci.a($$0, 16, 16);
-   }
-
-   private static hbc a(Optional<cwb> $$0) {
-      if ($$0.isPresent()) {
-         hbc $$1 = gjs.a(dtj.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
-         }
+   public void a(dfm $$0, fjn $$1, ezw $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
 
-      return gjs.q;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(dth $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
-      $$2.a();
-      jm $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dth.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().aa() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dth.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (azn.b($$10) + 0.5F) * azn.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = azn.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = azn.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+   public <E extends dsy> void a(E $$0, float $$1, fer $$2, gjg $$3) {
+      glr<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.q().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
          }
       }
-
-      feo $$15 = gjs.p.a($$3, gjh::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dtx $$16 = $$0.t();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
    }
 
-   private void a(gcc $$0, fek $$1, gix $$2, int $$3, int $$4, hbc $$5) {
-      $$0.a($$1, $$5.a($$2, gjh::c), $$3, $$4);
+   private static <T extends dsy> void a(glr<T> $$0, T $$1, float $$2, fer $$3, gjg $$4) {
+      dfm $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = gjc.a($$5, $$1.aA_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, gyv.d);
+   }
+
+   public <E extends dsy> boolean a(E $$0, fer $$1, gjg $$2, int $$3, int $$4) {
+      glr<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dsy $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new z($$3);
+      }
+   }
+
+   public void a(@Nullable dfm $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(avd $$0) {
+      gls.a $$1 = new gls.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = glt.a($$1);
    }
 }

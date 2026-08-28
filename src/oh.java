@@ -3,7 +3,7 @@ import com.google.gson.JsonPrimitive;
 public class oh {
    public static final oi<oh.a> a = new oi<>("x", $$0 -> new JsonPrimitive($$0.e));
    public static final oi<oh.a> b = new oi<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final oi<all> c = new oi<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final oi<alj> c = new oi<>("model", $$0 -> new JsonPrimitive($$0.toString()));
    public static final oi<Boolean> d = new oi<>("uvlock", JsonPrimitive::new);
    public static final oi<Integer> e = new oi<>("weight", JsonPrimitive::new);
 

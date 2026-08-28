@@ -1,13 +1,8 @@
-public interface bqh {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bor f();
-
-   void d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bqh {
 }

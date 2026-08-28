@@ -1,10 +1,5 @@
-public class gxc extends gwb implements gwt {
-   public boolean a;
+public class gxc extends gwm {
+   public float a;
    public boolean b;
-   public boolean c;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+   public chs.g c = chs.g.a;
 }

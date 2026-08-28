@@ -1,63 +1,51 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.List;
 
 public class apu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.transfer.error.no_players"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("transfer").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).h())))))
             .then(
-               ((RequiredArgumentBuilder)ex.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ew)$$0x.getSource()).h()))))
+               ex.a("set")
                   .then(
-                     ((RequiredArgumentBuilder)ex.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (ew)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((ew)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           ex.a("players", fj.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       fj.f($$0x, "players")
-                                    )
-                              )
+                     ex.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
                         )
                   )
             )
       );
    }
 
-   private static int a(ew $$0, String $$1, int $$2, Collection<arr> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (arr $$4 : $$3) {
-            $$4.g.b(new aai($$1, $$2));
-         }
-
-         if ($$3.size() == 1) {
-            $$0.a(() -> xl.a("commands.transfer.success.single", $$3.iterator().next().S_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xl.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
-
-         return $$3.size();
+   private static int a(ew $$0, Collection<? extends cou> $$1, int $$2) {
+      for (cou $$3 : $$1) {
+         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().o_()), true);
+      } else {
+         $$0.a(() -> xj.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ew $$0, Collection<? extends cou> $$1) {
+      for (cou $$2 : $$1) {
+         $$2.ac().ifPresent(cny::b);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xj.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().o_()), true);
+      } else {
+         $$0.a(() -> xj.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

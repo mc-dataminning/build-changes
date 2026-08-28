@@ -1,80 +1,121 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ati implements atp {
-   private final atp c;
-   private final List<atp> d;
+public class ati {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ati(atp $$0, List<atp> $$1) {
-      this.c = $$0;
-      List<atp> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
-   }
-
-   @Nullable
-   @Override
-   public auv<InputStream> a(String... $$0) {
-      return this.c.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public auv<InputStream> a(atr $$0, all $$1) {
-      for (atp $$2 : this.d) {
-         auv<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<ati.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
          }
-      }
 
-      return null;
+         $$2.sort(ati.b.a);
+         List<ati.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(ati.a.a);
+         Set<Path> $$5 = new HashSet<>();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            ati.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
+
+            try {
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
+               }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
+            }
+         }
+
+         $$5.remove($$0);
+
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
+      }
    }
 
-   @Override
-   public void a(atr $$0, String $$1, String $$2, atp.a $$3) {
-      Map<all, auv<InputStream>> $$4 = new HashMap<>();
+   private static List<ati.b> a(final Path $$0) throws IOException {
+      try {
+         final List<ati.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new ati.b($$0, $$2));
+               }
 
-      for (atp $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+               return FileVisitResult.CONTINUE;
+            }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
+         return List.of();
       }
-
-      $$4.forEach($$3);
    }
 
-   @Override
-   public Set<String> a(atr $$0) {
-      Set<String> $$1 = new HashSet<>();
+   private static List<ati.a> a(List<ati.b> $$0) {
+      List<ati.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
 
-      for (atp $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
+      for (ati.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new ati.a($$3.b, $$4));
       }
 
       return $$1;
    }
 
-   @Nullable
-   @Override
-   public <T> T a(auc<T> $$0) throws IOException {
-      return this.c.a($$0);
+   static record a(Path b, int c) {
+      public static final Comparator<ati.a> a = Comparator.comparing(ati.a::b).reversed();
+
+      public Path a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public ato a() {
-      return this.c.a();
-   }
+   static record b(Path b, FileTime c) {
+      public static final Comparator<ati.b> a = Comparator.comparing(ati.b::b).reversed();
 
-   @Override
-   public void close() {
-      this.d.forEach(atp::close);
+      public Path a() {
+         return this.b;
+      }
+
+      public FileTime b() {
+         return this.c;
+      }
    }
 }

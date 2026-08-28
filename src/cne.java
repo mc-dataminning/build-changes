@@ -1,115 +1,43 @@
-import com.google.common.annotations.VisibleForTesting;
-import javax.annotation.Nullable;
+public interface cne {
+   int m_ = 10;
+   float n_ = 0.2F;
 
-public abstract class cne extends clv {
-   protected static final ako<Boolean> b = aks.a(cne.class, akq.k);
-   public static final int c = 300;
-   protected int d;
+   int gm();
 
-   public cne(bup<? extends cne> $$0, dff $$1) {
-      super($$0, $$1);
-      this.a_(true);
-      this.y();
-      this.a(esf.n, 16.0F);
-      this.a(esf.o, -1.0F);
-   }
-
-   private void y() {
-      if (cga.a(this)) {
-         ((cep)this.P()).b(true);
-      }
-   }
-
-   @Override
-   protected abstract boolean q();
-
-   public void x(boolean $$0) {
-      this.aw().a(b, $$0);
-   }
-
-   protected boolean t() {
-      return this.aw().a(b);
-   }
-
-   @Override
-   protected void a(aks.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
-   }
-
-   @Override
-   public void b(un $$0) {
-      super.b($$0);
-      if (this.t()) {
-         $$0.a("IsImmuneToZombification", true);
-      }
-
-      $$0.a("TimeInOverworld", this.d);
-   }
-
-   @Override
-   public void a(un $$0) {
-      super.a($$0);
-      this.x($$0.q("IsImmuneToZombification"));
-      this.d = $$0.h("TimeInOverworld");
-   }
-
-   @Override
-   protected void ac() {
-      super.ac();
-      if (this.gv()) {
-         this.d++;
+   static boolean a(arp $$0, bvh $$1, bvh $$2) {
+      float $$3 = (float)$$1.h(bwp.c);
+      float $$4;
+      if (!$$1.e_() && (int)$$3 > 0) {
+         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
       } else {
-         this.d = 0;
+         $$4 = $$3;
       }
 
-      if (this.d > 300) {
-         this.gz();
-         this.a((arq)this.dY());
+      btb $$6 = $$1.dW().b($$1);
+      boolean $$7 = $$2.a($$0, $$6, $$4);
+      if ($$7) {
+         dcf.a($$0, (bul)$$2, $$6);
+         if (!$$1.e_()) {
+            a($$1, $$2);
+         }
+      }
+
+      return $$7;
+   }
+
+   static void a(bvh $$0, bvh $$1) {
+      double $$2 = $$0.h(bwp.d);
+      double $$3 = $$1.h(bwp.p);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dA() - $$0.dA();
+         double $$6 = $$1.dG() - $$0.dG();
+         float $$7 = (float)($$0.dV().A.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
+         ezy $$9 = new ezy($$5, 0.0, $$6).d().c($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
+         $$1.j($$9.d, $$10, $$9.f);
+         $$1.T = true;
       }
    }
-
-   @VisibleForTesting
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public boolean gv() {
-      return !this.dY().D_().b() && !this.t() && !this.gi();
-   }
-
-   protected void a(arq $$0) {
-      this.a(bup.bx, bud.a(this, true, true), $$0x -> $$0x.a(new btn(btp.i, 200, 0)));
-   }
-
-   public boolean gw() {
-      return !this.p_();
-   }
-
-   public abstract cnh gx();
-
-   @Nullable
-   @Override
-   public bve m() {
-      return this.R();
-   }
-
-   protected boolean gy() {
-      return this.fc().b(ku.B);
-   }
-
-   @Override
-   public void U() {
-      if (cng.d(this)) {
-         super.U();
-      }
-   }
-
-   @Override
-   protected void ab() {
-      super.ab();
-      agv.a(this);
-   }
-
-   protected abstract void gz();
 }

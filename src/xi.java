@@ -1,95 +1,76 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record xi(String c, List<xi.a> d, yi e) {
-   public static final Codec<xi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xi::a),
-               xi.a.d.listOf().fieldOf("parameters").forGetter(xi::b),
-               yi.b.b.optionalFieldOf("style", yi.a).forGetter(xi::c)
-            )
-            .apply($$0, xi::new)
-   );
-   public static final zj<ww, xi> b = zj.a(zh.m, xi::a, xi.a.e.a(zh.a()), xi::b, yi.b.c, xi::c, xi::new);
+public class xi {
+   public static final xj a = xj.i();
+   public static final xj b = xj.c("options.on");
+   public static final xj c = xj.c("options.off");
+   public static final xj d = xj.c("gui.done");
+   public static final xj e = xj.c("gui.cancel");
+   public static final xj f = xj.c("gui.yes");
+   public static final xj g = xj.c("gui.no");
+   public static final xj h = xj.c("gui.ok");
+   public static final xj i = xj.c("gui.proceed");
+   public static final xj j = xj.c("gui.continue");
+   public static final xj k = xj.c("gui.back");
+   public static final xj l = xj.c("gui.toTitle");
+   public static final xj m = xj.c("gui.acknowledge");
+   public static final xj n = xj.c("chat.link.open");
+   public static final xj o = xj.c("gui.copy_link_to_clipboard");
+   public static final xj p = xj.c("menu.disconnect");
+   public static final xj q = xj.c("connect.failed.transfer");
+   public static final xj r = xj.c("connect.failed");
+   public static final xj s = xj.b("\n");
+   public static final xj t = xj.b(". ");
+   public static final xj u = xj.b("...");
+   public static final xj v = a();
 
-   public static xi a(String $$0) {
-      return new xi($$0, List.of(xi.a.a, xi.a.c), yi.a);
+   public static xx a() {
+      return xj.b(" ");
    }
 
-   public static xi b(String $$0) {
-      yi $$1 = yi.a.a(n.h).b(true);
-      return new xi($$0, List.of(xi.a.a, xi.a.c), $$1);
+   public static xx a(long $$0) {
+      return xj.a("gui.days", $$0);
    }
 
-   public static xi c(String $$0) {
-      yi $$1 = yi.a.a(n.h).b(true);
-      return new xi($$0, List.of(xi.a.b, xi.a.c), $$1);
+   public static xx b(long $$0) {
+      return xj.a("gui.hours", $$0);
    }
 
-   public static xi d(String $$0) {
-      return new xi($$0, List.of(xi.a.b, xi.a.a, xi.a.c), yi.a);
+   public static xx c(long $$0) {
+      return xj.a("gui.minutes", $$0);
    }
 
-   public xl a(xl $$0, xh.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xl.a(this.c, $$2).c(this.e);
+   public static xj a(boolean $$0) {
+      return $$0 ? b : c;
    }
 
-   private xl[] b(xl $$0, xh.a $$1) {
-      xl[] $$2 = new xl[this.d.size()];
+   public static xx a(xj $$0, boolean $$1) {
+      return xj.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xi.a $$4 = this.d.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public static xx a(xj $$0, xj $$1) {
+      return xj.a("options.generic_value", $$0, $$1);
+   }
+
+   public static xx a(xj... $$0) {
+      xx $$1 = xj.i();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(t);
+         }
       }
 
-      return $$2;
+      return $$1;
    }
 
-   public String a() {
-      return this.c;
+   public static xj b(xj... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public List<xi.a> b() {
-      return this.d;
-   }
-
-   public yi c() {
-      return this.e;
-   }
-
-   public static enum a implements baj {
-      a(0, "sender", ($$0, $$1) -> $$1.b()),
-      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xk.a)),
-      c(2, "content", ($$0, $$1) -> $$0);
-
-      private static final IntFunction<xi.a> f = aye.a($$0 -> $$0.g, values(), aye.a.a);
-      public static final Codec<xi.a> d = baj.a(xi.a::values);
-      public static final zj<ByteBuf, xi.a> e = zh.a(f, $$0 -> $$0.g);
-      private final int g;
-      private final String h;
-      private final xi.a.a i;
-
-      private a(final int $$0, final String $$1, final xi.a.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      public xl a(xl $$0, xh.a $$1) {
-         return this.i.select($$0, $$1);
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-
-      public interface a {
-         xl select(xl var1, xh.a var2);
-      }
+   public static xj a(Collection<? extends xj> $$0) {
+      return xm.a($$0, s);
    }
 }

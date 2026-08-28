@@ -1,29 +1,84 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bwu {
-   public static byi<btz> a(brs $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
+public class bwu extends bxa<cgy> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bus<? extends cgy> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
+
+   public bwu(bus<? extends cgy> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public static byi<btz> a(brs $$0, Function<bve, Float> $$1) {
-      return cak.a(
-         (Function<cak.b<btz>, ? extends App<cak.c<btz>, can<btz>>>)($$2 -> $$2.group($$2.b(cei.K), $$2.a(cei.n), $$2.c(cei.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.p_()) {
-                        return false;
-                     } else {
-                        btz $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           cel $$10 = new cel(new bxi($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bxi($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   public bwu(bus<? extends cgy> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cel.h, cem.a, cel.r, cem.b, cel.m, cem.c, cel.n, cem.c, cel.Z, cem.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   protected boolean a(arp $$0, cgy $$1) {
+      return $$1.gw() && this.c($$1).isPresent();
+   }
+
+   protected void a(arp $$0, cgy $$1, long $$2) {
+      cgy $$3 = this.c($$1).get();
+      $$1.eb().a(cel.r, $$3);
+      $$3.eb().a(cel.r, $$1);
+      bxc.a($$1, (bvh)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dY().a(50);
+      this.j = $$2 + (long)$$4;
+   }
+
+   protected boolean b(arp $$0, cgy $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
+      } else {
+         cgy $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && bxc.a($$1.eb(), $$3) && $$2 <= this.j && !$$1.gj() && !$$3.gj();
+      }
+   }
+
+   protected void c(arp $$0, cgy $$1, long $$2) {
+      cgy $$3 = this.a($$1);
+      bxc.a($$1, (bvh)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.eb().b(cel.r);
+            $$3.eb().b(cel.r);
+         }
+      }
+   }
+
+   protected void d(arp $$0, cgy $$1, long $$2) {
+      $$1.eb().b(cel.r);
+      $$1.eb().b(cel.m);
+      $$1.eb().b(cel.n);
+      this.j = 0L;
+   }
+
+   private cgy a(cgy $$0) {
+      return (cgy)$$0.eb().c(cel.r).get();
+   }
+
+   private boolean b(cgy $$0) {
+      bwj<?> $$1 = $$0.eb();
+      return $$1.a(cel.r) && $$1.c(cel.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends cgy> c(cgy $$0) {
+      return $$0.eb().c(cel.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof cgy $$2 && $$0.a($$2) && !$$2.gj()) {
+            return true;
+         }
+
+         return false;
+      }).map(cgy.class::cast);
    }
 }

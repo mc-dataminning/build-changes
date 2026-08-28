@@ -1,44 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record emh(List<emh.a> c, emy d) {
-   public static final Codec<emh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emh.a.a.listOf().fieldOf("structures").forGetter(emh::a), emy.b.fieldOf("placement").forGetter(emh::b)).apply($$0, emh::new)
-   );
-   public static final Codec<jq<emh>> b = alh.a(ma.aU, a);
+public abstract class emh extends emi {
+   private final emh.a d;
+   private final int e;
+   private final int f;
 
-   public emh(jq<emb> $$0, emy $$1) {
-      this(List.of(new emh.a($$0, 1)), $$1);
+   protected emh(emh.a $$0, int $$1, int $$2, emi.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static emh.a a(jq<emb> $$0, int $$1) {
-      return new emh.a($$0, $$1);
+   @Override
+   public Optional<emi.b> a(emi.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ebq.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static emh.a a(jq<emb> $$0) {
-      return new emh.a($$0, 1);
+   private void a(ena $$0, emi.a $$1) {
+      des $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
    }
 
-   public List<emh.a> a() {
-      return this.c;
-   }
-
-   public emy b() {
-      return this.d;
-   }
-
-   public static record a(jq<emb> b, int c) {
-      public static final Codec<emh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(emb.b.fieldOf("structure").forGetter(emh.a::a), ayw.m.fieldOf("weight").forGetter(emh.a::b)).apply($$0, emh.a::new)
-      );
-
-      public jq<emb> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface a {
+      emm construct(ecp var1, int var2, int var3);
    }
 }

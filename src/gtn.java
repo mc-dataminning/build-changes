@@ -1,25 +1,24 @@
-public abstract class gtn<S extends gvd, M extends fza<? super S>> {
-   private final gqw<S, M> a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gtn(gqw<S, M> $$0) {
-      this.a = $$0;
+public class gtn extends gty<gwd, fzu> {
+   private static final Map<cjg, alj> a = ae.a(Maps.newEnumMap(cjg.class), $$0 -> {
+      $$0.put(cjg.a, null);
+      $$0.put(cjg.b, alj.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cjg.c, alj.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cjg.d, alj.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cjg.e, alj.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gtn(grh<gwd, fzu> $$0) {
+      super($$0);
    }
 
-   protected static <S extends gwb> void a(fza<S> $$0, all $$1, fek $$2, gix $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fer $$0, gjg $$1, int $$2, gwd $$3, float $$4, float $$5) {
+      alj $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.u) {
+         fev $$7 = $$1.getBuffer(gjq.i($$6));
+         this.d().a($$0, $$7, $$2, gql.a($$3, 0.0F));
       }
    }
-
-   protected static void b(fza<?> $$0, all $$1, fek $$2, gix $$3, int $$4, gwb $$5, int $$6) {
-      feo $$7 = $$3.getBuffer(gjh.f($$1));
-      $$0.a($$2, $$7, $$4, gqb.a($$5, 0.0F), $$6);
-   }
-
-   public M d() {
-      return this.a.e();
-   }
-
-   public abstract void a(fek var1, gix var2, int var3, S var4, float var5, float var6);
 }

@@ -1,5 +1,11 @@
-public class gxi extends gwb {
-   public chv.b a = chv.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class gxi extends gwm {
+   public ezy a = ezy.c;
+   @Nullable
+   public cvj b;
+   public float c;
+   public float d;
+   public float e;
+   public jm f = jm.a;
 }

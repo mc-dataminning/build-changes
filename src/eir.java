@@ -1,61 +1,50 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eir {
-   public static final Codec<eir> d = lz.W.q().dispatch(eir::a, eis::a);
-   protected final brm e;
-   protected final eiu f;
-   protected final Optional<eio> g;
+public class eir extends eim {
+   public static final MapCodec<eir> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  brp.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eir::new)
+   );
+   private final brp b;
+   private final int c;
 
-   protected static <P extends eir> P3<Mu<P>, brm, eiu, Optional<eio>> a(Instance<P> $$0) {
-      return $$0.group(
-         brm.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eiu.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eio.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public eir(brp $$0, brp $$1, brp $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public eir(brm $$0, eiu $$1, Optional<eio> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ein<?> a() {
+      return ein.j;
    }
 
-   protected abstract eis<?> a();
+   @Override
+   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      jh.a $$10 = $$9.k();
 
-   public abstract boolean a(dfl var1, BiConsumer<jh, dvo> var2, azv var3, jh var4, jh var5, ehp var6);
-
-   protected boolean a(dfl $$0, jh $$1) {
-      return egb.c($$0, $$1);
-   }
-
-   protected void a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, ehp $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eio $$5 = this.g.get();
-            jh $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dvn.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
    }
 
-   protected dvo a(dfl $$0, jh $$1, dvo $$2) {
-      if ($$2.b(dwe.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axj.a));
-         return $$2.b(dwe.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   @Override
+   public int a(azu $$0, int $$1, ehw $$2) {
+      return this.b.a($$0);
    }
 
-   public jh a(jh $$0, azv $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

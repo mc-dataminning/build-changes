@@ -1,35 +1,17 @@
-import java.net.InetSocketAddress;
+import java.util.Locale;
 
-public interface geo {
-   String a();
+public enum geo {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   String b();
+   private final String d;
 
-   int c();
+   private geo(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
 
-   InetSocketAddress d();
-
-   static geo a(final InetSocketAddress $$0) {
-      return new geo() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   public String a() {
+      return this.d;
    }
 }

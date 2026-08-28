@@ -1,7 +1,3 @@
-import javax.annotation.Nullable;
-
-public class gvc extends gvt {
+public class gvc extends gxj {
    public boolean a;
-   @Nullable
-   public dvo b;
 }

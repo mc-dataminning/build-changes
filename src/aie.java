@@ -1,61 +1,45 @@
-public class aie implements zs<agy> {
-   public static final zj<wi, aie> a = zs.a(aie::a, aie::new);
-   private final int b;
-   private final aie.a c;
-   private final int d;
+public class aie implements zq<agw> {
+   public static final zh<wg, aie> a = zq.a(aie::a, aie::new);
+   private final ctp b;
+   private final boolean c;
+   private final boolean d;
 
-   public aie(bui $$0, aie.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aie(bui $$0, aie.a $$1, int $$2) {
-      this.b = $$0.as();
+   public aie(ctp $$0, boolean $$1, boolean $$2) {
+      this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   private aie(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(aie.a.class);
-      this.d = $$0.l();
+   private aie(wg $$0) {
+      this.b = $$0.b(ctp.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
+   private void a(wg $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.a(this.d);
    }
 
    @Override
-   public zu<aie> a() {
-      return agw.bO;
+   public zs<aie> a() {
+      return agu.bQ;
    }
 
-   public void a(agy $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ctp b() {
       return this.b;
    }
 
-   public aie.a e() {
+   public boolean e() {
       return this.c;
    }
 
-   public int f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

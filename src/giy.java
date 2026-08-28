@@ -1,250 +1,373 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
 public class giy {
-   private final giy.b a;
-   final jh b;
+   private static final Map<diq, gjq> a = ae.a(Maps.newHashMap(), $$0 -> {
+      gjq $$1 = gjq.s();
+      $$0.put(dis.fI, $$1);
+      gjq $$2 = gjq.d();
+      $$0.put(dis.i, $$2);
+      $$0.put(dis.eW, $$2);
+      $$0.put(dis.eY, $$2);
+      $$0.put(dis.fH, $$2);
+      $$0.put(dis.hc, $$2);
+      $$0.put(dis.eX, $$2);
+      $$0.put(dis.aH, $$2);
+      $$0.put(dis.aE, $$2);
+      $$0.put(dis.aF, $$2);
+      $$0.put(dis.aI, $$2);
+      $$0.put(dis.aJ, $$2);
+      $$0.put(dis.aG, $$2);
+      $$0.put(dis.aK, $$2);
+      $$0.put(dis.aM, $$2);
+      $$0.put(dis.aN, $$2);
+      $$0.put(dis.ac, $$2);
+      $$0.put(dis.aL, $$2);
+      gjq $$3 = gjq.e();
+      $$0.put(dis.x, $$3);
+      $$0.put(dis.y, $$3);
+      $$0.put(dis.z, $$3);
+      $$0.put(dis.A, $$3);
+      $$0.put(dis.B, $$3);
+      $$0.put(dis.C, $$3);
+      $$0.put(dis.D, $$3);
+      $$0.put(dis.aQ, $$3);
+      $$0.put(dis.aZ, $$3);
+      $$0.put(dis.ba, $$3);
+      $$0.put(dis.bb, $$3);
+      $$0.put(dis.bc, $$3);
+      $$0.put(dis.bd, $$3);
+      $$0.put(dis.be, $$3);
+      $$0.put(dis.bf, $$3);
+      $$0.put(dis.bg, $$3);
+      $$0.put(dis.bh, $$3);
+      $$0.put(dis.bi, $$3);
+      $$0.put(dis.bj, $$3);
+      $$0.put(dis.bk, $$3);
+      $$0.put(dis.bl, $$3);
+      $$0.put(dis.bm, $$3);
+      $$0.put(dis.bn, $$3);
+      $$0.put(dis.bo, $$3);
+      $$0.put(dis.bp, $$3);
+      $$0.put(dis.bq, $$3);
+      $$0.put(dis.bs, $$3);
+      $$0.put(dis.bt, $$3);
+      $$0.put(dis.bu, $$3);
+      $$0.put(dis.bv, $$3);
+      $$0.put(dis.bw, $$3);
+      $$0.put(dis.bx, $$3);
+      $$0.put(dis.bR, $$3);
+      $$0.put(dis.bT, $$3);
+      $$0.put(dis.bU, $$3);
+      $$0.put(dis.bV, $$3);
+      $$0.put(dis.bW, $$3);
+      $$0.put(dis.bX, $$3);
+      $$0.put(dis.bY, $$3);
+      $$0.put(dis.bZ, $$3);
+      $$0.put(dis.ca, $$3);
+      $$0.put(dis.cb, $$3);
+      $$0.put(dis.cc, $$3);
+      $$0.put(dis.cd, $$3);
+      $$0.put(dis.ce, $$3);
+      $$0.put(dis.cf, $$3);
+      $$0.put(dis.cg, $$3);
+      $$0.put(dis.cp, $$3);
+      $$0.put(dis.cq, $$3);
+      $$0.put(dis.ea, $$3);
+      $$0.put(dis.eb, $$3);
+      $$0.put(dis.cr, $$3);
+      $$0.put(dis.cs, $$3);
+      $$0.put(dis.ct, $$3);
+      $$0.put(dis.tr, $$3);
+      $$0.put(dis.ts, $$3);
+      $$0.put(dis.cw, $$3);
+      $$0.put(dis.cB, $$3);
+      $$0.put(dis.cN, $$3);
+      $$0.put(dis.cO, $$3);
+      $$0.put(dis.cP, $$3);
+      $$0.put(dis.dy, $$3);
+      $$0.put(dis.dK, $$3);
+      $$0.put(dis.dL, $$3);
+      $$0.put(dis.dQ, $$3);
+      $$0.put(dis.dS, $$3);
+      $$0.put(dis.eh, $$3);
+      $$0.put(dis.ey, $$3);
+      $$0.put(dis.ez, $$3);
+      $$0.put(dis.eA, $$3);
+      $$0.put(dis.eB, $$3);
+      $$0.put(dis.eC, $$3);
+      $$0.put(dis.eD, $$3);
+      $$0.put(dis.eE, $$3);
+      $$0.put(dis.oM, $$3);
+      $$0.put(dis.oN, $$3);
+      $$0.put(dis.eF, $$3);
+      $$0.put(dis.eG, $$3);
+      $$0.put(dis.rU, $$3);
+      $$0.put(dis.rV, $$3);
+      $$0.put(dis.rX, $$3);
+      $$0.put(dis.rW, $$3);
+      $$0.put(dis.rY, $$3);
+      $$0.put(dis.rZ, $$3);
+      $$0.put(dis.sb, $$3);
+      $$0.put(dis.sa, $$3);
+      $$0.put(dis.fb, $$3);
+      $$0.put(dis.fc, $$3);
+      $$0.put(dis.fd, $$3);
+      $$0.put(dis.fe, $$3);
+      $$0.put(dis.ff, $$3);
+      $$0.put(dis.fg, $$3);
+      $$0.put(dis.fm, $$3);
+      $$0.put(dis.fq, $$3);
+      $$0.put(dis.fs, $$3);
+      $$0.put(dis.fC, $$3);
+      $$0.put(dis.fO, $$3);
+      $$0.put(dis.fR, $$3);
+      $$0.put(dis.fT, $$3);
+      $$0.put(dis.fU, $$3);
+      $$0.put(dis.fV, $$3);
+      $$0.put(dis.fW, $$3);
+      $$0.put(dis.fX, $$3);
+      $$0.put(dis.fY, $$3);
+      $$0.put(dis.fZ, $$3);
+      $$0.put(dis.ga, $$3);
+      $$0.put(dis.gb, $$3);
+      $$0.put(dis.gc, $$3);
+      $$0.put(dis.gd, $$3);
+      $$0.put(dis.ge, $$3);
+      $$0.put(dis.gf, $$3);
+      $$0.put(dis.gg, $$3);
+      $$0.put(dis.gh, $$3);
+      $$0.put(dis.gi, $$3);
+      $$0.put(dis.gj, $$3);
+      $$0.put(dis.gk, $$3);
+      $$0.put(dis.gl, $$3);
+      $$0.put(dis.gm, $$3);
+      $$0.put(dis.gn, $$3);
+      $$0.put(dis.go, $$3);
+      $$0.put(dis.gp, $$3);
+      $$0.put(dis.gq, $$3);
+      $$0.put(dis.gr, $$3);
+      $$0.put(dis.gs, $$3);
+      $$0.put(dis.ti, $$3);
+      $$0.put(dis.tj, $$3);
+      $$0.put(dis.fS, $$3);
+      $$0.put(dis.gt, $$3);
+      $$0.put(dis.gu, $$3);
+      $$0.put(dis.gY, $$3);
+      $$0.put(dis.hh, $$3);
+      $$0.put(dis.hY, $$3);
+      $$0.put(dis.iD, $$3);
+      $$0.put(dis.iE, $$3);
+      $$0.put(dis.iF, $$3);
+      $$0.put(dis.iG, $$3);
+      $$0.put(dis.iH, $$3);
+      $$0.put(dis.iI, $$3);
+      $$0.put(dis.kl, $$3);
+      $$0.put(dis.km, $$3);
+      $$0.put(dis.kn, $$3);
+      $$0.put(dis.ko, $$3);
+      $$0.put(dis.kp, $$3);
+      $$0.put(dis.kq, $$3);
+      $$0.put(dis.kr, $$3);
+      $$0.put(dis.ks, $$3);
+      $$0.put(dis.rM, $$3);
+      $$0.put(dis.rN, $$3);
+      $$0.put(dis.rP, $$3);
+      $$0.put(dis.rO, $$3);
+      $$0.put(dis.rQ, $$3);
+      $$0.put(dis.rR, $$3);
+      $$0.put(dis.rT, $$3);
+      $$0.put(dis.rS, $$3);
+      $$0.put(dis.kt, $$3);
+      $$0.put(dis.ku, $$3);
+      $$0.put(dis.kv, $$3);
+      $$0.put(dis.bS, $$3);
+      $$0.put(dis.kA, $$3);
+      $$0.put(dis.kC, $$3);
+      $$0.put(dis.kB, $$3);
+      $$0.put(dis.kD, $$3);
+      $$0.put(dis.mc, $$3);
+      $$0.put(dis.md, $$3);
+      $$0.put(dis.mf, $$3);
+      $$0.put(dis.mr, $$3);
+      $$0.put(dis.ms, $$3);
+      $$0.put(dis.mt, $$3);
+      $$0.put(dis.mu, $$3);
+      $$0.put(dis.mv, $$3);
+      $$0.put(dis.mw, $$3);
+      $$0.put(dis.mx, $$3);
+      $$0.put(dis.my, $$3);
+      $$0.put(dis.mz, $$3);
+      $$0.put(dis.mA, $$3);
+      $$0.put(dis.mB, $$3);
+      $$0.put(dis.mC, $$3);
+      $$0.put(dis.mD, $$3);
+      $$0.put(dis.mE, $$3);
+      $$0.put(dis.mF, $$3);
+      $$0.put(dis.mG, $$3);
+      $$0.put(dis.mH, $$3);
+      $$0.put(dis.mI, $$3);
+      $$0.put(dis.mJ, $$3);
+      $$0.put(dis.mK, $$3);
+      $$0.put(dis.mL, $$3);
+      $$0.put(dis.mM, $$3);
+      $$0.put(dis.mN, $$3);
+      $$0.put(dis.mO, $$3);
+      $$0.put(dis.mP, $$3);
+      $$0.put(dis.mQ, $$3);
+      $$0.put(dis.mR, $$3);
+      $$0.put(dis.mS, $$3);
+      $$0.put(dis.mT, $$3);
+      $$0.put(dis.mU, $$3);
+      $$0.put(dis.mV, $$3);
+      $$0.put(dis.mX, $$3);
+      $$0.put(dis.mY, $$3);
+      $$0.put(dis.mZ, $$3);
+      $$0.put(dis.na, $$3);
+      $$0.put(dis.nS, $$3);
+      $$0.put(dis.oc, $$3);
+      $$0.put(dis.oe, $$3);
+      $$0.put(dis.of, $$3);
+      $$0.put(dis.og, $$3);
+      $$0.put(dis.oh, $$3);
+      $$0.put(dis.oi, $$3);
+      $$0.put(dis.oz, $$3);
+      $$0.put(dis.oA, $$3);
+      $$0.put(dis.oB, $$3);
+      $$0.put(dis.oC, $$3);
+      $$0.put(dis.or, $$3);
+      $$0.put(dis.ox, $$3);
+      $$0.put(dis.oo, $$3);
+      $$0.put(dis.oD, $$3);
+      $$0.put(dis.oq, $$3);
+      $$0.put(dis.pm, $$3);
+      $$0.put(dis.pn, $$3);
+      $$0.put(dis.po, $$3);
+      $$0.put(dis.pp, $$3);
+      $$0.put(dis.oU, $$3);
+      $$0.put(dis.oV, $$3);
+      $$0.put(dis.st, $$3);
+      $$0.put(dis.qy, $$3);
+      $$0.put(dis.qx, $$3);
+      $$0.put(dis.qw, $$3);
+      $$0.put(dis.qv, $$3);
+      $$0.put(dis.ss, $$3);
+      $$0.put(dis.sv, $$3);
+      $$0.put(dis.sw, $$3);
+      $$0.put(dis.sx, $$3);
+      $$0.put(dis.sz, $$3);
+      $$0.put(dis.sy, $$3);
+      $$0.put(dis.sB, $$3);
+      $$0.put(dis.sD, $$3);
+      $$0.put(dis.sE, $$3);
+      $$0.put(dis.sF, $$3);
+      $$0.put(dis.sG, $$3);
+      $$0.put(dis.qQ, $$3);
+      $$0.put(dis.qR, $$3);
+      $$0.put(dis.qT, $$3);
+      $$0.put(dis.qV, $$3);
+      $$0.put(dis.E, $$3);
+      $$0.put(dis.tn, $$3);
+      $$0.put(dis.sc, $$3);
+      $$0.put(dis.sd, $$3);
+      $$0.put(dis.se, $$3);
+      $$0.put(dis.sf, $$3);
+      $$0.put(dis.sg, $$3);
+      $$0.put(dis.sh, $$3);
+      $$0.put(dis.si, $$3);
+      $$0.put(dis.sj, $$3);
+      gjq $$4 = gjq.f();
+      $$0.put(dis.dO, $$4);
+      $$0.put(dis.ed, $$4);
+      $$0.put(dis.ei, $$4);
+      $$0.put(dis.ej, $$4);
+      $$0.put(dis.ek, $$4);
+      $$0.put(dis.el, $$4);
+      $$0.put(dis.em, $$4);
+      $$0.put(dis.en, $$4);
+      $$0.put(dis.eo, $$4);
+      $$0.put(dis.ep, $$4);
+      $$0.put(dis.eq, $$4);
+      $$0.put(dis.er, $$4);
+      $$0.put(dis.es, $$4);
+      $$0.put(dis.et, $$4);
+      $$0.put(dis.eu, $$4);
+      $$0.put(dis.ev, $$4);
+      $$0.put(dis.ew, $$4);
+      $$0.put(dis.ex, $$4);
+      $$0.put(dis.hz, $$4);
+      $$0.put(dis.hA, $$4);
+      $$0.put(dis.hB, $$4);
+      $$0.put(dis.hC, $$4);
+      $$0.put(dis.hD, $$4);
+      $$0.put(dis.hE, $$4);
+      $$0.put(dis.hF, $$4);
+      $$0.put(dis.hG, $$4);
+      $$0.put(dis.hH, $$4);
+      $$0.put(dis.hI, $$4);
+      $$0.put(dis.hJ, $$4);
+      $$0.put(dis.hK, $$4);
+      $$0.put(dis.hL, $$4);
+      $$0.put(dis.hM, $$4);
+      $$0.put(dis.hN, $$4);
+      $$0.put(dis.hO, $$4);
+      $$0.put(dis.hV, $$4);
+      $$0.put(dis.pg, $$4);
+      $$0.put(dis.kI, $$4);
+      $$0.put(dis.nd, $$4);
+      $$0.put(dis.qO, $$4);
+   });
+   private static final Map<eru, gjq> b = ae.a(Maps.newHashMap(), $$0 -> {
+      gjq $$1 = gjq.f();
+      $$0.put(erw.b, $$1);
+      $$0.put(erw.c, $$1);
+   });
+   private static boolean c;
 
-   public giy(kj $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = azn.c($$4);
-      int $$6 = $$1 * 16;
-      jh $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new giy.b(new elt($$8, $$10, $$12, $$9, $$11, $$13));
-   }
-
-   public boolean a(gmk.b $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(giy.e $$0, gmo $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
-   }
-
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
-   }
-
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+   public static gjq a(dvv $$0) {
+      diq $$1 = $$0.b();
+      if ($$1 instanceof dmz) {
+         return c ? gjq.d() : gjq.c();
+      } else {
+         gjq $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gjq.c();
       }
+   }
 
-      public static giy.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
+   public static gjq b(dvv $$0) {
+      diq $$1 = $$0.b();
+      if ($$1 instanceof dmz) {
+         return c ? gjq.d() : gjq.c();
+      } else {
+         gjq $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gjq.f() ? gjq.g() : $$2;
          } else {
-            return $$0 > $$1 ? e : f;
+            return gjq.c();
          }
       }
    }
 
-   class b implements giy.d {
-      private final giy.d[] b = new giy.d[8];
-      private final elt c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final giy.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
+   public static gjq c(dvv $$0) {
+      gjq $$1 = a($$0);
+      return $$1 == gjq.f() ? gkb.j() : gkb.i();
+   }
 
-      public b(final elt $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = giy.this.b.u() - this.d;
-         int $$2 = giy.this.b.v() - this.e;
-         int $$3 = giy.this.b.w() - this.f;
-         this.g = giy.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
-      }
-
-      public boolean a(gmk.b $$0) {
-         boolean $$1 = $$0.f().u() - this.d < 0;
-         boolean $$2 = $$0.f().v() - this.e < 0;
-         boolean $$3 = $$0.f().w() - this.f < 0;
-         boolean $$4 = $$1 != this.h;
-         boolean $$5 = $$2 != this.i;
-         boolean $$6 = $$3 != this.j;
-         int $$7 = a(this.g, $$4, $$5, $$6);
-         if (this.c()) {
-            boolean $$8 = this.b[$$7] != null;
-            this.b[$$7] = giy.this.new c($$0);
-            return !$$8;
-         } else if (this.b[$$7] != null) {
-            giy.b $$9 = (giy.b)this.b[$$7];
-            return $$9.a($$0);
-         } else {
-            elt $$10 = this.a($$1, $$2, $$3);
-            giy.b $$11 = giy.this.new b($$10);
-            this.b[$$7] = $$11;
-            return $$11.a($$0);
-         }
-      }
-
-      private static int a(giy.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
-         }
-
-         if ($$2) {
-            $$4 += $$0.h;
-         }
-
-         if ($$3) {
-            $$4 += $$0.i;
-         }
-
-         return $$4;
-      }
-
-      private boolean c() {
-         return this.c.d() == 32;
-      }
-
-      private elt a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
-
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
-
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
-
-         return new elt($$3, $$7, $$11, $$4, $$8, $$12);
-      }
-
-      @Override
-      public void a(giy.e $$0, boolean $$1, gmo $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
-         }
-
-         if ($$6) {
-            $$5 = $$5
-               && giy.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (giy.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
-               }
-            }
-         }
-      }
-
-      @Nullable
-      @Override
-      public gmk.b a() {
-         return null;
-      }
-
-      @Override
-      public ezm b() {
-         return new ezm(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
+   public static gjq a(cwm $$0) {
+      if ($$0.h() instanceof cus $$2) {
+         diq $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return gkb.j();
       }
    }
 
-   final class c implements giy.d {
-      private final gmk.b b;
-
-      c(final gmk.b $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(giy.e $$0, boolean $$1, gmo $$2, int $$3, int $$4, boolean $$5) {
-         ezm $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && giy.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-         }
-      }
-
-      @Override
-      public gmk.b a() {
-         return this.b;
-      }
-
-      @Override
-      public ezm b() {
-         return this.b.b();
-      }
+   public static gjq a(erv $$0) {
+      gjq $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gjq.c();
    }
 
-   public interface d {
-      void a(giy.e var1, boolean var2, gmo var3, int var4, int var5, boolean var6);
-
-      @Nullable
-      gmk.b a();
-
-      ezm b();
-   }
-
-   @FunctionalInterface
-   public interface e {
-      void visit(giy.d var1, boolean var2, int var3, boolean var4);
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

@@ -1,37 +1,32 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+public class hdd implements hcl {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final gic e;
+   private final heg f;
+   private int g = 0;
 
-public class hdd extends avr {
-   @Nullable
-   private un h;
-
-   public hdd(hde $$0, jx<alu> $$1, etx $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hdd(gic $$0, heg $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void b(arr $$0) {
-      if (this.b().a($$0.gk())) {
-         this.h = $$0.f(new un());
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bo()) {
+         float $$0 = this.e.dV().A.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((hdb)(new hde.a(this.e, awn.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((hdb)(new hde.a(this.e, awn.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((hdb)(new hde.a(this.e, awn.A)));
+         }
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public xl a(SocketAddress $$0, GameProfile $$1) {
-      return (xl)(this.b().a($$1) && this.a($$1.getName()) != null ? xl.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hde b() {
-      return (hde)super.c();
-   }
-
-   @Nullable
-   @Override
-   public un r() {
-      return this.h;
    }
 }

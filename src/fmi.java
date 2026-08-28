@@ -1,22 +1,25 @@
-public class fmi extends flw {
-   protected final fnj a;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fmi(int $$0, int $$1, int $$2, int $$3, fnj $$4, flw.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, xk.a);
+public class fmi {
+   private static final ayy a = ayy.codepoint(32, yg.a);
+
+   private static String a(String $$0) {
+      return fke.Q().n.M().c() ? $$0 : n.a($$0);
    }
 
-   public fmi(int $$0, int $$1, int $$2, int $$3, fnj $$4, flw.c $$5, xl $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
-   }
-
-   public fmi(int $$0, int $$1, fnj $$2, flw.c $$3, xl $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void b(flj $$0, int $$1, int $$2, float $$3) {
-      all $$4 = this.a.a(this.C(), this.B());
-      $$0.a(gjh::B, $$4, this.D(), this.E(), this.g, this.h);
+   public static List<ayy> a(xo $$0, int $$1, flo $$2) {
+      fjs $$3 = new fjs();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xo.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, yg.a);
+      List<ayy> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, yg.a, ($$1x, $$2x) -> {
+         ayy $$3x = ug.a().a($$1x);
+         $$4.add($$2x ? ayy.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayy>)($$4.isEmpty() ? Lists.newArrayList(new ayy[]{ayy.a}) : $$4);
    }
 }

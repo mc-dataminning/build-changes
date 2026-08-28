@@ -1,3 +1,13 @@
-public interface dgk {
-   jq<dgh> getNoiseBiome(int var1, int var2, int var3, dgq.f var4);
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public interface dgk extends dgd {
+   long D();
+
+   default boolean f_(jh $$0) {
+      return true;
+   }
+
+   default void a(@Nullable Supplier<String> $$0) {
+   }
 }

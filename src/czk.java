@@ -1,32 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record czk(float c, Optional<all> d) {
-   public static final Codec<czk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayw.o.fieldOf("seconds").forGetter(czk::b), all.a.optionalFieldOf("cooldown_group").forGetter(czk::c)).apply($$0, czk::new)
-   );
-   public static final zj<ww, czk> b = zj.a(zh.j, czk::b, all.b.a(zh::a), czk::c, czk::new);
+public record czk(int f) implements cyt, czp {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<czk> d = ayv.a(0, 4).xmap(czk::new, czk::a);
+   public static final zh<wu, czk> e = zh.a(zf.h, czk::a, czk::new);
 
-   public czk(float $$0) {
-      this($$0, Optional.empty());
+   @Override
+   public void a(dfm $$0, bvh $$1, cwm $$2, cys $$3) {
+      $$1.a(new btq(bts.E, 120000, this.f, false, false, true));
+   }
+
+   @Override
+   public void a(cwi.b $$0, Consumer<xj> $$1, cye $$2) {
+      List<btq> $$3 = List.of(new btq(bts.E, 120000, this.f, false, false, true));
+      cyl.a($$3, $$1, 1.0F, $$0.b());
    }
 
    public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(cwf $$0, bve $$1) {
-      if ($$1 instanceof cor $$2) {
-         $$2.gH().a($$0, this.a());
-      }
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public Optional<all> c() {
-      return this.d;
+      return this.f;
    }
 }

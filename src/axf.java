@@ -1,40 +1,42 @@
 public interface axf {
-   axt<bta> a = a("damages_helmet");
-   axt<bta> b = a("bypasses_armor");
-   axt<bta> c = a("bypasses_shield");
-   axt<bta> d = a("bypasses_invulnerability");
-   axt<bta> e = a("bypasses_cooldown");
-   axt<bta> f = a("bypasses_effects");
-   axt<bta> g = a("bypasses_resistance");
-   axt<bta> h = a("bypasses_enchantments");
-   axt<bta> i = a("is_fire");
-   axt<bta> j = a("is_projectile");
-   axt<bta> k = a("witch_resistant_to");
-   axt<bta> l = a("is_explosion");
-   axt<bta> m = a("is_fall");
-   axt<bta> n = a("is_drowning");
-   axt<bta> o = a("is_freezing");
-   axt<bta> p = a("is_lightning");
-   axt<bta> q = a("no_anger");
-   axt<bta> r = a("no_impact");
-   axt<bta> s = a("always_most_significant_fall");
-   axt<bta> t = a("wither_immune_to");
-   axt<bta> u = a("ignites_armor_stands");
-   axt<bta> v = a("burns_armor_stands");
-   axt<bta> w = a("avoids_guardian_thorns");
-   axt<bta> x = a("always_triggers_silverfish");
-   axt<bta> y = a("always_hurts_ender_dragons");
-   axt<bta> z = a("no_knockback");
-   axt<bta> A = a("always_kills_armor_stands");
-   axt<bta> B = a("can_break_armor_stand");
-   axt<bta> C = a("bypasses_wolf_armor");
-   axt<bta> D = a("is_player_attack");
-   axt<bta> E = a("burn_from_stepping");
-   axt<bta> F = a("panic_causes");
-   axt<bta> G = a("panic_environmental_causes");
-   axt<bta> H = a("mace_smash");
+   axs<dcd> a = a("tooltip_order");
+   axs<dcd> b = a("exclusive_set/armor");
+   axs<dcd> c = a("exclusive_set/boots");
+   axs<dcd> d = a("exclusive_set/bow");
+   axs<dcd> e = a("exclusive_set/crossbow");
+   axs<dcd> f = a("exclusive_set/damage");
+   axs<dcd> g = a("exclusive_set/mining");
+   axs<dcd> h = a("exclusive_set/riptide");
+   axs<dcd> i = a("tradeable");
+   axs<dcd> j = a("double_trade_price");
+   axs<dcd> k = a("in_enchanting_table");
+   axs<dcd> l = a("on_mob_spawn_equipment");
+   axs<dcd> m = a("on_traded_equipment");
+   axs<dcd> n = a("on_random_loot");
+   axs<dcd> o = a("curse");
+   axs<dcd> p = a("smelts_loot");
+   axs<dcd> q = a("prevents_bee_spawns_when_mining");
+   axs<dcd> r = a("prevents_decorated_pot_shattering");
+   axs<dcd> s = a("prevents_ice_melting");
+   axs<dcd> t = a("prevents_infested_spawns");
+   axs<dcd> u = a("treasure");
+   axs<dcd> v = a("non_treasure");
+   axs<dcd> w = a("trades/desert_common");
+   axs<dcd> x = a("trades/jungle_common");
+   axs<dcd> y = a("trades/plains_common");
+   axs<dcd> z = a("trades/savanna_common");
+   axs<dcd> A = a("trades/snow_common");
+   axs<dcd> B = a("trades/swamp_common");
+   axs<dcd> C = a("trades/taiga_common");
+   axs<dcd> D = a("trades/desert_special");
+   axs<dcd> E = a("trades/jungle_special");
+   axs<dcd> F = a("trades/plains_special");
+   axs<dcd> G = a("trades/savanna_special");
+   axs<dcd> H = a("trades/snow_special");
+   axs<dcd> I = a("trades/swamp_special");
+   axs<dcd> J = a("trades/taiga_special");
 
-   private static axt<bta> a(String $$0) {
-      return axt.a(ma.s, all.b($$0));
+   private static axs<dcd> a(String $$0) {
+      return axs.a(ma.aM, alj.b($$0));
    }
 }

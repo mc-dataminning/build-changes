@@ -4,23 +4,26 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmd extends bjm {
+public class bmd extends bjo {
    public bmd(int $$0, Schema $$1) {
       super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:breeze", () -> bjp.a($$0));
+      $$0.registerSimple($$1, "minecraft:wind_charge");
+      $$0.registerSimple($$1, "minecraft:breeze_wind_charge");
+      return $$1;
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
       $$0.register(
          $$1,
-         "minecraft:vault",
+         "minecraft:trial_spawner",
          () -> DSL.optionalFields(
-               "config",
-               DSL.optionalFields("key_item", bhy.t.in($$0)),
-               "server_data",
-               DSL.optionalFields("items_to_eject", DSL.list(bhy.t.in($$0))),
-               "shared_data",
-               DSL.optionalFields("display_item", bhy.t.in($$0))
+               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bia.A.in($$0)))), "spawn_data", DSL.fields("entity", bia.A.in($$0))
             )
       );
       return $$1;

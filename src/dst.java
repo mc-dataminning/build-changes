@@ -1,208 +1,344 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dst<T extends dsr> {
-   private static final Logger S = LogUtils.getLogger();
-   public static final dst<dtp> a = a("furnace", dtp::new, dil.cD);
-   public static final dst<dsy> b = a("chest", dsy::new, dil.cv);
-   public static final dst<dum> c = a("trapped_chest", dum::new, dil.gV);
-   public static final dst<dtn> d = a("ender_chest", dtn::new, dil.fG);
-   public static final dst<dtu> e = a("jukebox", dtu::new, dil.dT);
-   public static final dst<dtk> f = a("dispenser", dtk::new, dil.aU);
-   public static final dst<dtl> g = a("dropper", dtl::new, dil.hi);
-   public static final dst<dud> h = a(
-      "sign",
-      dud::new,
-      dil.cE,
-      dil.cF,
-      dil.cG,
-      dil.cH,
-      dil.cI,
-      dil.cJ,
-      dil.cK,
-      dil.cR,
-      dil.cS,
-      dil.cT,
-      dil.cU,
-      dil.cV,
-      dil.cW,
-      dil.cX,
-      dil.oW,
-      dil.oY,
-      dil.oX,
-      dil.oZ,
-      dil.cL,
-      dil.cY,
-      dil.cM,
-      dil.cZ
-   );
-   public static final dst<dtq> i = a(
-      "hanging_sign",
-      dtq::new,
-      dil.da,
-      dil.db,
-      dil.dc,
-      dil.dd,
-      dil.de,
-      dil.df,
-      dil.dg,
-      dil.dh,
-      dil.di,
-      dil.dj,
-      dil.dk,
-      dil.dl,
-      dil.dm,
-      dil.dn,
-      dil.do,
-      dil.dp,
-      dil.dq,
-      dil.dr,
-      dil.dt,
-      dil.du,
-      dil.ds,
-      dil.dv
-   );
-   public static final dst<duh> j = a("mob_spawner", duh::new, dil.ct);
-   public static final dst<dvk> k = a("piston", dvk::new, dil.bQ);
-   public static final dst<dsu> l = a("brewing_stand", dsu::new, dil.fs);
-   public static final dst<dtm> m = a("enchanting_table", dtm::new, dil.fr);
-   public static final dst<duk> n = a("end_portal", duk::new, dil.fx);
-   public static final dst<dsm> o = a("beacon", dsm::new, dil.fO);
-   public static final dst<duf> p = a(
-      "skull", duf::new, dil.gE, dil.gF, dil.gM, dil.gN, dil.gO, dil.gP, dil.gI, dil.gJ, dil.gG, dil.gH, dil.gK, dil.gL, dil.gQ, dil.gR
-   );
-   public static final dst<dtg> q = a("daylight_detector", dtg::new, dil.gZ);
-   public static final dst<dts> r = a("hopper", dts::new, dil.hc);
-   public static final dst<dtc> s = a("comparator", dtc::new, dil.gY);
-   public static final dst<dsg> t = a(
-      "banner",
-      dsg::new,
-      dil.iJ,
-      dil.iK,
-      dil.iL,
-      dil.iM,
-      dil.iN,
-      dil.iO,
-      dil.iP,
-      dil.iQ,
-      dil.iR,
-      dil.iS,
-      dil.iT,
-      dil.iU,
-      dil.iV,
-      dil.iW,
-      dil.iX,
-      dil.iY,
-      dil.iZ,
-      dil.ja,
-      dil.jb,
-      dil.jc,
-      dil.jd,
-      dil.je,
-      dil.jf,
-      dil.jg,
-      dil.jh,
-      dil.ji,
-      dil.jj,
-      dil.jk,
-      dil.jl,
-      dil.jm,
-      dil.jn,
-      dil.jo
-   );
-   public static final dst<dui> u = a("structure_block", dui::new, dil.pa);
-   public static final dst<duj> v = a("end_gateway", duj::new, dil.kF);
-   public static final dst<dtb> w = a("command_block", dtb::new, dil.fN, dil.kH, dil.kG);
-   public static final dst<duc> x = a(
-      "shulker_box",
-      duc::new,
-      dil.kP,
-      dil.lf,
-      dil.lb,
-      dil.lc,
-      dil.kZ,
-      dil.kX,
-      dil.ld,
-      dil.kT,
-      dil.kY,
-      dil.kV,
-      dil.kS,
-      dil.kR,
-      dil.kW,
-      dil.la,
-      dil.le,
-      dil.kQ,
-      dil.kU
-   );
-   public static final dst<dsn> y = a(
-      "bed", dsn::new, dil.bn, dil.bo, dil.bk, dil.bl, dil.bi, dil.bg, dil.bm, dil.bc, dil.bh, dil.be, dil.bb, dil.ba, dil.bf, dil.bj, dil.aZ, dil.bd
-   );
-   public static final dst<dtd> z = a("conduit", dtd::new, dil.mX);
-   public static final dst<dsk> A = a("barrel", dsk::new, dil.nU);
-   public static final dst<dug> B = a("smoker", dug::new, dil.nV);
-   public static final dst<dsq> C = a("blast_furnace", dsq::new, dil.nW);
-   public static final dst<dtv> D = a("lectern", dtv::new, dil.oa);
-   public static final dst<dsp> E = a("bell", dsp::new, dil.od);
-   public static final dst<dtt> F = a("jigsaw", dtt::new, dil.pb);
-   public static final dst<dsx> G = a("campfire", dsx::new, dil.og, dil.oh);
-   public static final dst<dso> H = a("beehive", dso::new, dil.pe, dil.pf);
-   public static final dst<dua> I = a("sculk_sensor", dua::new, dil.qQ);
-   public static final dst<dsw> J = a("calibrated_sculk_sensor", dsw::new, dil.qR);
-   public static final dst<dtz> K = a("sculk_catalyst", dtz::new, dil.qU);
-   public static final dst<dub> L = a("sculk_shrieker", dub::new, dil.qV);
-   public static final dst<dta> M = a("chiseled_bookshelf", dta::new, dil.cm);
-   public static final dst<dsv> N = a("brushable_block", dsv::new, dil.J, dil.M);
-   public static final dst<dth> O = a("decorated_pot", dth::new, dil.tp);
-   public static final dst<dtf> P = a("crafter", dtf::new, dil.tq);
-   public static final dst<dun> Q = a("trial_spawner", dun::new, dil.tr);
-   public static final dst<duw> R = a("vault", duw::new, dil.ts);
-   private final dst.a<? extends T> T;
-   private final Set<dij> U;
-   private final jq.c<dst<?>> V = lz.j.f(this);
-
+public class dst extends dsy implements bsm, bsn {
+   private static final int f = 4;
+   public static final List<List<jq<bto>>> a = List.of(List.of(bts.a, bts.c), List.of(bts.k, bts.h), List.of(bts.e), List.of(bts.j));
+   private static final Set<jq<bto>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   public static final int e = 3;
+   private static final int h = 10;
+   private static final xj i = xj.c("container.beacon");
+   private static final String j = "primary_effect";
+   private static final String k = "secondary_effect";
+   List<dst.a> l = Lists.newArrayList();
+   private List<dst.a> m = Lists.newArrayList();
+   int n;
+   private int r;
    @Nullable
-   public static all a(dst<?> $$0) {
-      return lz.j.b($$0);
-   }
-
-   private static <T extends dsr> dst<T> a(String $$0, dst.a<? extends T> $$1, dij... $$2) {
-      if ($$2.length == 0) {
-         S.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+   jq<bto> s;
+   @Nullable
+   jq<bto> t;
+   @Nullable
+   private xj u;
+   private bsl v = bsl.a;
+   private final csl w = new csl() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dst.this.n;
+            case 1 -> cse.a(dst.this.s);
+            case 2 -> cse.a(dst.this.t);
+            default -> 0;
+         };
       }
 
-      ae.a(bhy.s, $$0);
-      return kd.a(lz.j, $$0, new dst<>($$1, Set.of($$2)));
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dst.this.n = $$1;
+               break;
+            case 1:
+               if (!dst.this.o.C && !dst.this.l.isEmpty()) {
+                  dst.a(dst.this.o, dst.this.p, awn.bN);
+               }
+
+               dst.this.s = dst.a(cse.e($$1));
+               break;
+            case 2:
+               dst.this.t = dst.a(cse.e($$1));
+         }
+      }
+
+      @Override
+      public int a() {
+         return 3;
+      }
+   };
+
+   @Nullable
+   static jq<bto> a(@Nullable jq<bto> $$0) {
+      return g.contains($$0) ? $$0 : null;
    }
 
-   private dst(dst.a<? extends T> $$0, Set<dij> $$1) {
-      this.T = $$0;
-      this.U = $$1;
+   public dst(jh $$0, dvv $$1) {
+      super(dta.o, $$0, $$1);
+   }
+
+   public static void a(dfm $$0, jh $$1, dvv $$2, dst $$3) {
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      jh $$7;
+      if ($$3.r < $$5) {
+         $$7 = $$1;
+         $$3.m = Lists.newArrayList();
+         $$3.r = $$1.v() - 1;
+      } else {
+         $$7 = new jh($$4, $$3.r + 1, $$6);
+      }
+
+      dst.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
+      int $$10 = $$0.a(ebq.a.b, $$4, $$6);
+
+      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
+         dvv $$12 = $$0.a_($$7);
+         if ($$12.b() instanceof dih $$14) {
+            int $$15 = $$14.b().d();
+            if ($$3.m.size() <= 1) {
+               $$9 = new dst.a($$15);
+               $$3.m.add($$9);
+            } else if ($$9 != null) {
+               if ($$15 == $$9.a) {
+                  $$9.a();
+               } else {
+                  $$9 = new dst.a(axx.d($$9.a, $$15));
+                  $$3.m.add($$9);
+               }
+            }
+         } else {
+            if ($$9 == null || $$12.g() >= 15 && !$$12.a(dis.F)) {
+               $$3.m.clear();
+               $$3.r = $$10;
+               break;
+            }
+
+            $$9.a();
+         }
+
+         $$7 = $$7.d();
+         $$3.r++;
+      }
+
+      int $$16 = $$3.n;
+      if ($$0.ab() % 80L == 0L) {
+         if (!$$3.l.isEmpty()) {
+            $$3.n = a($$0, $$4, $$5, $$6);
+         }
+
+         if ($$3.n > 0 && !$$3.l.isEmpty()) {
+            a($$0, $$1, $$3.n, $$3.s, $$3.t);
+            a($$0, $$1, awn.bL);
+         }
+      }
+
+      if ($$3.r >= $$10) {
+         $$3.r = $$0.K_() - 1;
+         boolean $$17 = $$16 > 0;
+         $$3.l = $$3.m;
+         if (!$$0.C) {
+            boolean $$18 = $$3.n > 0;
+            if (!$$17 && $$18) {
+               a($$0, $$1, awn.bK);
+
+               for (arq $$19 : $$0.a(arq.class, new ezt((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
+                  ao.m.a($$19, $$3.n);
+               }
+            } else if ($$17 && !$$18) {
+               a($$0, $$1, awn.bM);
+            }
+         }
+      }
+   }
+
+   private static int a(dfm $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
+         int $$6 = $$2 - $$5;
+         if ($$6 < $$0.K_()) {
+            break;
+         }
+
+         boolean $$7 = true;
+
+         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
+            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
+               if (!$$0.a_(new jh($$8, $$6, $$9)).a(axc.aO)) {
+                  $$7 = false;
+                  break;
+               }
+            }
+         }
+
+         if (!$$7) {
+            break;
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   public void av_() {
+      a(this.o, this.p, awn.bM);
+      super.av_();
+   }
+
+   private static void a(dfm $$0, jh $$1, int $$2, @Nullable jq<bto> $$3, @Nullable jq<bto> $$4) {
+      if (!$$0.C && $$3 != null) {
+         double $$5 = (double)($$2 * 10 + 10);
+         int $$6 = 0;
+         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
+            $$6 = 1;
+         }
+
+         int $$7 = (9 + $$2 * 2) * 20;
+         ezt $$8 = new ezt($$1).g($$5).b(0.0, (double)$$0.L_(), 0.0);
+         List<cou> $$9 = $$0.a(cou.class, $$8);
+
+         for (cou $$10 : $$9) {
+            $$10.a(new btq($$3, $$7, $$6, true, true));
+         }
+
+         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
+            for (cou $$11 : $$9) {
+               $$11.a(new btq($$4, $$7, 0, true, true));
+            }
+         }
+      }
+   }
+
+   public static void a(dfm $$0, jh $$1, awm $$2) {
+      $$0.a(null, $$1, $$2, awo.e, 1.0F, 1.0F);
+   }
+
+   public List<dst.a> b() {
+      return (List<dst.a>)(this.n == 0 ? ImmutableList.of() : this.l);
+   }
+
+   public acm c() {
+      return acm.a(this);
+   }
+
+   @Override
+   public ul a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   private static void a(ul $$0, String $$1, @Nullable jq<bto> $$2) {
+      if ($$2 != null) {
+         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
+      }
    }
 
    @Nullable
-   public T a(jh $$0, dvo $$1) {
-      return (T)this.T.create($$0, $$1);
+   private static jq<bto> a(ul $$0, String $$1) {
+      if ($$0.b($$1, 8)) {
+         alj $$2 = alj.c($$0.l($$1));
+         return $$2 == null ? null : lz.d.c($$2).map(dst::a).orElse(null);
+      } else {
+         return null;
+      }
    }
 
-   public boolean a(dvo $$0) {
-      return this.U.contains($$0.b());
+   @Override
+   protected void a(ul $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.s = a($$0, "primary_effect");
+      this.t = a($$0, "secondary_effect");
+      if ($$0.b("CustomName", 8)) {
+         this.u = a($$0.l("CustomName"), $$1);
+      }
+
+      this.v = bsl.b($$0);
    }
 
-   @Deprecated
-   public jq.c<dst<?>> a() {
-      return this.V;
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      a($$0, "primary_effect", this.s);
+      a($$0, "secondary_effect", this.t);
+      $$0.a("Levels", this.n);
+      if (this.u != null) {
+         $$0.a("CustomName", xj.a.a(this.u, $$1));
+      }
+
+      this.v.a($$0);
+   }
+
+   public void a(@Nullable xj $$0) {
+      this.u = $$0;
    }
 
    @Nullable
-   public T a(dek $$0, jh $$1) {
-      dsr $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.q() == this ? $$2 : null);
+   @Override
+   public xj an() {
+      return this.u;
    }
 
-   @FunctionalInterface
-   interface a<T extends dsr> {
-      T create(jh var1, dvo var2);
+   @Nullable
+   @Override
+   public crz createMenu(int $$0, cot $$1, cou $$2) {
+      return dss.a($$2, this.v, this.o_()) ? new cse($$0, $$1, this.w, csm.a(this.o, this.aA_())) : null;
+   }
+
+   @Override
+   public xj o_() {
+      return this.al();
+   }
+
+   @Override
+   public xj al() {
+      return this.u != null ? this.u : i;
+   }
+
+   @Override
+   protected void a(dsy.b $$0) {
+      super.a($$0);
+      this.u = $$0.a(ku.g);
+      this.v = $$0.a(ku.ao, bsl.a);
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.g, this.u);
+      if (!this.v.equals(bsl.a)) {
+         $$0.a(ku.ao, this.v);
+      }
+   }
+
+   @Override
+   public void a(ul $$0) {
+      $$0.r("CustomName");
+      $$0.r("lock");
+   }
+
+   @Override
+   public void a(dfm $$0) {
+      super.a($$0);
+      this.r = $$0.K_() - 1;
+   }
+
+   public static class a {
+      final int a;
+      private int b;
+
+      public a(int $$0) {
+         this.a = $$0;
+         this.b = 1;
+      }
+
+      protected void a() {
+         this.b++;
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
    }
 }

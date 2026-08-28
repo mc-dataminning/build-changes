@@ -1,23 +1,51 @@
-public class glt implements gli<dtv> {
-   private final fyk a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public glt(glj.a $$0) {
-      this.a = new fyk($$0.a(gcb.A));
+public class glt {
+   private static final Map<dta<?>, gls<?>> a = Maps.newHashMap();
+
+   private static <T extends dsy> void a(dta<? extends T> $$0, gls<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dtv $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
-      dvo $$6 = $$0.m();
-      if ($$6.c(dmt.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dmt.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         feo $$8 = glr.a.a($$3, gjh::c);
-         this.a.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      }
+   public static Map<dta<?>, glr<?>> a(gls.a $$0) {
+      Builder<dta<?>, glr<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lz.j.b((dta<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
+   }
+
+   static {
+      a(dta.h, gmf::new);
+      a(dta.i, gmb::new);
+      a(dta.j, gmh::new);
+      a(dta.k, gmd::new);
+      a(dta.b, glx::new);
+      a(dta.d, glx::new);
+      a(dta.c, glx::new);
+      a(dta.m, gma::new);
+      a(dta.D, gmc::new);
+      a(dta.n, gmk::new);
+      a(dta.v, gmj::new);
+      a(dta.o, gln::new);
+      a(dta.p, gmg::new);
+      a(dta.t, glm::new);
+      a(dta.u, gmi::new);
+      a(dta.x, gme::new);
+      a(dta.y, glo::new);
+      a(dta.z, gly::new);
+      a(dta.E, glp::new);
+      a(dta.G, glw::new);
+      a(dta.N, glv::new);
+      a(dta.O, glz::new);
+      a(dta.Q, gml::new);
+      a(dta.R, gmm::new);
    }
 }

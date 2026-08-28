@@ -1,91 +1,69 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class aqy implements aqu.a, AutoCloseable {
-   public static final int a = 4;
-   private static final Logger c = LogUtils.getLogger();
-   private final aqz d;
-   private final brc<Runnable> e;
-   private final bqz f;
-   protected boolean b;
-
-   public aqy(brc<Runnable> $$0, Executor $$1) {
-      this.d = new aqz($$0.x_() + "_queue");
-      this.e = $$0;
-      this.f = new bqz(4, $$1, "dispatcher");
-      this.b = true;
-   }
-
-   public boolean a() {
-      return this.f.c() || this.d.b();
+public abstract class aqy extends erh {
+   protected aqy(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void onLevelChange(del $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new brb.c(0, () -> {
-         int $$4 = $$1.getAsInt();
-         this.d.a($$4, $$0, $$2);
-         $$3.accept($$2);
-      }));
-   }
-
-   public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new brb.c(1, () -> {
-         this.d.a($$0, $$2);
-         this.a($$0);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
-
-         $$1.run();
-      }));
-   }
-
-   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new brb.c(2, () -> {
-         int $$3 = $$2.getAsInt();
-         this.d.a($$0, $$1, $$3);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
-      }));
-   }
-
-   protected void b() {
-      this.f.a_(new brb.c(3, () -> {
-         aqz.a $$0 = this.c();
-         if ($$0 == null) {
-            this.b = true;
-         } else {
-            this.a($$0);
-         }
-      }));
-   }
-
-   protected void a(aqz.a $$0) {
-      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
-            $$0x.run();
-            $$1.complete(bat.a);
-         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
-   }
-
-   protected void a(long $$0) {
-   }
-
-   @Nullable
-   protected aqz.a c() {
-      return this.d.a();
+   protected boolean a(long $$0) {
+      return $$0 == des.c;
    }
 
    @Override
-   public void close() {
-      this.e.close();
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         des $$3 = new des($$0);
+         int $$4 = $$3.g;
+         int $$5 = $$3.h;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = des.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      des $$4 = new des($$0);
+      int $$5 = $$4.g;
+      int $$6 = $$4.h;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = des.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = des.c;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == des.c ? this.b($$1) : $$2 + 1;
+   }
+
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(des.c, $$0, $$1, $$2);
    }
 }

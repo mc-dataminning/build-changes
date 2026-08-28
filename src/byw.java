@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class byw {
-   public static bwy<bve> a(bvh $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ar().f()), $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static byi<bve> a(bup<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ar()), $$1);
-   }
-
-   public static byi<bve> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static byi<bve> a(Predicate<bve> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return cak.a(
-         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$2x -> $$2x.group($$2x.c(cei.n), $$2x.b(cei.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bve> $$8 = $$2x.<cek>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bui)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bxi($$8.get(), true));
-                        return true;
+   public static bxb<bvh> a() {
+      return can.a((Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.b(cel.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  jh $$5 = $$0.<jp>b($$1).b();
+                  if ($$5.a($$3.dv(), 3.0)) {
+                     dvv $$6 = $$2.a_($$5);
+                     if ($$6.a(dis.od)) {
+                        dim $$7 = (dim)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

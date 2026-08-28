@@ -1,23 +1,20 @@
-public interface zy extends acb {
-   void a(aac var1);
+import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-   void a(aad var1);
+public record zy(Map<String, String> b) implements zq<zw> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final zh<ByteBuf, Map<String, String>> f = zf.a(HashMap::new, zf.b(128), zf.b(4096), 32);
+   public static final zh<ByteBuf, zy> a = zh.a(f, zy::b, zy::new);
 
-   void a(zz var1);
+   @Override
+   public zs<zy> a() {
+      return aai.b;
+   }
 
-   void a(aab var1);
-
-   void a(aaf var1);
-
-   void a(aae var1);
-
-   void a(aaj var1);
-
-   void a(aah var1);
-
-   void a(aai var1);
-
-   void a(aaa var1);
-
-   void a(aag var1);
+   public void a(zw $$0) {
+      $$0.a(this);
+   }
 }

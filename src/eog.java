@@ -1,97 +1,31 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
 
-public class eog extends emb {
-   public static final MapCodec<eog> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), eog.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, eog::new)
-   );
-   private final eog.a e;
+public class eog extends emi {
+   public static final MapCodec<eog> d = a(eog::new);
 
-   public eog(emb.c $$0, eog.a $$1) {
+   public eog(emi.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<emb.b> a(emb.a $$0) {
-      $$0.f().j();
-      del $$1 = $$0.h();
-      jh $$2 = new jh($$1.b(), 50, $$1.e());
-      emt $$3 = new emt();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new emb.b($$2.b(0, $$4, 0), Either.right($$3)));
+   public Optional<emi.b> a(emi.a $$0) {
+      dpd $$1 = dpd.a($$0.f());
+      jh $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new emi.b($$2, (Consumer<ena>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private int a(emt $$0, emb.a $$1) {
-      del $$2 = $$1.h();
-      eci $$3 = $$1.f();
-      dxk $$4 = $$1.b();
-      eof.d $$5 = new eof.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.f();
-      if (this.e == eog.a.b) {
-         jh $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), ebj.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : azn.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
-      } else {
-         return $$0.a($$6, $$4.g(), $$3, 10);
-      }
+   private void a(ena $$0, jh $$1, dpd $$2, emi.a $$3) {
+      List<emm> $$4 = Lists.newArrayList();
+      eof.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public emk<?> e() {
-      return emk.h;
-   }
-
-   public static enum a implements baj {
-      a("normal", dil.U, dil.n, dil.dU),
-      b("mesa", dil.aa, dil.t, dil.ki);
-
-      public static final Codec<eog.a> c = baj.a(eog.a::values);
-      private static final IntFunction<eog.a> d = aye.a(Enum::ordinal, values(), aye.a.a);
-      private final String e;
-      private final dvo f;
-      private final dvo g;
-      private final dvo h;
-
-      private a(final String $$0, final dij $$1, final dij $$2, final dij $$3) {
-         this.e = $$0;
-         this.f = $$1.m();
-         this.g = $$2.m();
-         this.h = $$3.m();
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static eog.a a(int $$0) {
-         return d.apply($$0);
-      }
-
-      public dvo b() {
-         return this.f;
-      }
-
-      public dvo d() {
-         return this.g;
-      }
-
-      public dvo e() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   public emr<?> e() {
+      return emr.c;
    }
 }

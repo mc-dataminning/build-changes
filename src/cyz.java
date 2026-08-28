@@ -1,32 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public record cyz(Optional<jp> c, boolean d) {
-   public static final Codec<cyz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(cyz::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cyz::b)).apply($$0, cyz::new)
-   );
-   public static final zj<ByteBuf, cyz> b = zj.a(jp.c.a(zh::a), cyz::a, zh.b, cyz::b, cyz::new);
+public record cyz(Map<jq<diq>, dwx<?>> c) {
+   public static final cyz a = new cyz(Map.of());
+   public static final Codec<cyz> b = Codec.dispatchedMap(lz.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dwx<?> $$2 = ((diq)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dwx::f)).xmap(cyz::new, cyz::a);
 
-   public cyz a(arq $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ag()) {
-            return this;
-         } else {
-            jh $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.y().a(cgm.s, $$1) ? this : new cyz(Optional.empty(), true);
-         }
-      } else {
-         return this;
-      }
+   public cyz a(jq<diq> $$0, dwx<?> $$1) {
+      return new cyz(ae.a(this.c, $$0, $$1));
    }
 
-   public Optional<jp> a() {
+   public Map<jq<diq>, dwx<?>> a() {
       return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
    }
 }

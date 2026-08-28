@@ -1,76 +1,33 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public abstract class cfo<E extends bve> {
-   private static final azv a = azv.b();
-   private static final int b = 20;
-   private static final int c = 16;
-   private static final cfv d = cfv.b().a(16.0);
-   private static final cfv e = cfv.b().a(16.0).e();
-   private static final cfv f = cfv.a().a(16.0);
-   private static final cfv g = cfv.a().a(16.0).e();
-   private static final cfv h = cfv.a().a(16.0).d();
-   private static final cfv i = cfv.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cfo(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cfo extends cfr<bvh> {
+   @Override
+   public Set<cel<?>> a() {
+      return ImmutableSet.of(cel.j, cel.k, cel.l);
    }
 
-   public cfo() {
-      this(20);
+   @Override
+   protected void a(arp $$0, bvh $$1) {
+      List<cou> $$2 = $$0.y()
+         .stream()
+         .filter(buq.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bwj<?> $$3 = $$1.eb();
+      $$3.a(cel.j, $$2);
+      List<cou> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cel.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cou> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
+      $$3.a(cel.l, $$5);
    }
 
-   public final void b(arq $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$1);
-         this.a($$0, $$1);
-      }
-   }
-
-   private void a(E $$0) {
-      double $$1 = $$0.h(bwm.m);
-      d.a($$1);
-      e.a($$1);
-      f.a($$1);
-      g.a($$1);
-      h.a($$1);
-      i.a($$1);
-   }
-
-   protected abstract void a(arq var1, E var2);
-
-   public abstract Set<cei<?>> a();
-
-   public static boolean b(bve $$0, bve $$1) {
-      return $$0.ee().b(cei.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(bve $$0, bve $$1) {
-      return $$0.ee().b(cei.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static Predicate<bve> a(bve $$0, int $$1) {
-      return a($$1, $$1x -> c($$0, $$1x));
-   }
-
-   public static boolean d(bve $$0, bve $$1) {
-      return $$0.ee().b(cei.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
-   }
-
-   static <T> Predicate<T> a(int $$0, Predicate<T> $$1) {
-      AtomicInteger $$2 = new AtomicInteger(0);
-      return $$3 -> {
-         if ($$1.test($$3)) {
-            $$2.set($$0);
-            return true;
-         } else {
-            return $$2.decrementAndGet() >= 0;
-         }
-      };
+   protected double a(bvh $$0) {
+      return $$0.h(bwp.m);
    }
 }

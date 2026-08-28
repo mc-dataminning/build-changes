@@ -1,57 +1,47 @@
-import java.util.OptionalInt;
+public class cxa extends cwi {
+   private final bus<? extends cqt> a;
 
-public interface cxa {
-   cpk a(dff var1, ka var2, cwf var3, jm var4);
-
-   default cxa.a b() {
-      return cxa.a.a;
+   public cxa(bus<? extends cqt> $$0, cwi.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   default void a(cpk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(cxa.b b, float c, float d, OptionalInt e) {
-      public static final cxa.a a = a().a();
-
-      public static cxa.a.a a() {
-         return new cxa.a.a();
-      }
-
-      public static class a {
-         private cxa.b a = ($$0, $$1) -> dko.a($$0, 0.7, new ezr(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cxa.a.a a(cxa.b $$0) {
-            this.a = $$0;
-            return this;
+   @Override
+   public bsk a(daf $$0) {
+      dfm $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvv $$3 = $$1.a_($$2);
+      if (!$$3.a(axc.O)) {
+         return bsk.d;
+      } else {
+         cwm $$4 = $$0.n();
+         dwy $$5 = $$3.b() instanceof dif ? $$3.c(((dif)$$3.b()).c()) : dwy.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
          }
 
-         public cxa.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
+         ezy $$7 = new ezy((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         cqt $$8 = cqt.a($$1, $$7.d, $$7.e, $$7.f, this.a, bur.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bsk.d;
+         } else {
+            if (cqt.b($$1)) {
+               for (bul $$10 : $$1.a_(null, $$8.cR())) {
+                  if ($$10 instanceof cqt) {
+                     return bsk.d;
+                  }
+               }
+            }
 
-         public cxa.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
+            if ($$1 instanceof arp $$11) {
+               $$11.b($$8);
+               $$11.a(ear.t, $$2, ear.a.a($$0.o(), $$11.a_($$2.e())));
+            }
 
-         public cxa.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cxa.a a() {
-            return new cxa.a(this.a, this.b, this.c, this.d);
+            $$4.h(1);
+            return bsk.a;
          }
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      ka getDispensePosition(ky var1, jm var2);
    }
 }

@@ -1,24 +1,19 @@
-public abstract class gsx<S extends gvd, M extends fza<S>> extends gtn<S, M> {
-   public gsx(gqw<S, M> $$0) {
-      super($$0);
+public class gsx extends gty<gvd, fyu> {
+   private static final alj a = alj.b("textures/entity/breeze/breeze_wind.png");
+   private final fyu b;
+
+   public gsx(gpk.a $$0, grh<gvd, fyu> $$1) {
+      super($$1);
+      this.b = new fyu($$0.a(gck.I));
    }
 
-   @Override
-   public void a(fek $$0, gix $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         feo $$8 = $$1.getBuffer(gjh.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gyk.d, -8355712);
-      }
+   public void a(fer $$0, gjg $$1, int $$2, gvd $$3, float $$4, float $$5) {
+      fev $$6 = $$1.getBuffer(gjq.a(a, this.a($$3.p) % 1.0F, 0.0F));
+      this.b.a($$3);
+      goq.a(this.b, this.b.d()).a($$0, $$6, $$2, gyv.d);
    }
 
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract all a();
-
-   protected abstract M c();
+   private float a(float $$0) {
+      return $$0 * 0.02F;
+   }
 }

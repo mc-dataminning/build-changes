@@ -1,39 +1,147 @@
-public class ggc extends ggf {
-   private final fzv a;
-   private final gjh b = gjh.i(got.a);
+public class ggc extends gho {
+   static final azu a = azu.a();
+   private final ghj b;
 
-   ggc(gcy $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fzi(fjx.Q().aS().a(gcb.aq));
-      this.u = 0.0F;
-      this.t = 30;
+   ggc(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ghj $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public ggj b() {
-      return ggj.d;
+   public ggs b() {
+      return ggs.c;
    }
 
    @Override
-   public void a(feo $$0, fjg $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * azn.a($$3 * (float) Math.PI);
-      int $$5 = axy.a($$4, 1.0F, 1.0F, 1.0F);
-      fek $$6 = new fek();
-      $$6.a($$1.f());
-      $$6.a(a.b.rotationDegrees(60.0F - 150.0F * $$3));
-      float $$7 = 0.42553192F;
-      $$6.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$6.a(0.0F, -0.56F, 3.5F);
-      gix.a $$8 = fjx.Q().aR().c();
-      feo $$9 = $$8.getBuffer(this.b);
-      this.a.a($$6, $$9, 15728880, gyk.d, $$5);
-      $$8.b();
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azm.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   public static class a implements ggi<lw> {
-      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ggc($$1, $$2, $$3, $$4);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements ggr<lw> {
+      private final double a = 0.25;
+      private final ghj b;
+
+      public a(ghj $$0) {
+         this.b = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggc $$8 = new ggc($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.A.a(2) + 2);
+         return $$8;
+      }
+   }
+
+   public static class b implements ggr<lw> {
+      private final ghj a;
+
+      public b(ghj $$0) {
+         this.a = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggc $$8 = new ggc($$1, $$2, $$3, $$4, 0.5 - ggc.a.j(), $$6, 0.5 - ggc.a.j(), this.a);
+         if ($$1.A.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements ggr<lw> {
+      private final double a = 0.01;
+      private final ghj b;
+
+      public c(ghj $$0) {
+         this.b = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggc $$8 = new ggc($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.A.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements ggr<lw> {
+      private final double a = 0.01;
+      private final ghj b;
+
+      public d(ghj $$0) {
+         this.b = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggc $$8 = new ggc($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements ggr<lw> {
+      private final double a = 0.01;
+      private final ghj b;
+
+      public e(ghj $$0) {
+         this.b = $$0;
+      }
+
+      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggc $$8 = new ggc($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
       }
    }
 }

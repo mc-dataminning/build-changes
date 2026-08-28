@@ -1,20 +1,29 @@
-public record aam(arc b) implements zs<aal> {
-   public static final zj<wi, aam> a = zs.a(aam::a, aam::new);
+public class aam implements zq<aaj> {
+   public static final zh<wg, aam> a = zq.a(aam::a, aam::new);
+   private final long b;
 
-   private aam(wi $$0) {
-      this(new arc($$0));
+   public aam(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(wi $$0) {
-      this.b.a($$0);
+   private aam(wg $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(wg $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zu<aam> a() {
-      return aak.l;
+   public zs<aam> a() {
+      return aai.n;
    }
 
-   public void a(aal $$0) {
+   public void a(aaj $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

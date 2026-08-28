@@ -1,61 +1,65 @@
-public class erl extends ern {
-   @Override
-   public cwb a() {
-      return cwj.a;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+
+public class erl {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
+
+   public erl(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   @Override
-   public boolean a(ero $$0, dek $$1, jh $$2, ern $$3, jm $$4) {
-      return true;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public ezr a(dek $$0, jh $$1, ero $$2) {
-      return ezr.c;
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   @Override
-   public int a(dfi $$0) {
-      return 0;
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
    }
 
-   @Override
-   protected boolean b() {
-      return true;
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
 
-   @Override
-   public float a(ero $$0, dek $$1, jh $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(ero $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dvo b(ero $$0) {
-      return dil.a.m();
-   }
-
-   @Override
-   public boolean c(ero $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(ero $$0) {
-      return 0;
-   }
-
-   @Override
-   public fal b(ero $$0, dek $$1, jh $$2) {
-      return fai.a();
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

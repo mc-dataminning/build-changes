@@ -1,222 +1,386 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dsv extends dsr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "LootTable";
-   private static final String c = "LootTableSeed";
-   private static final String d = "hit_direction";
-   private static final String e = "item";
-   private static final int f = 10;
-   private static final int g = 40;
-   private static final int h = 10;
-   private int i;
-   private long j;
-   private long k;
-   private cwf l = cwf.k;
+public class dsv extends dsy {
+   private static final Logger c = LogUtils.getLogger();
+   private static final String d = "flower_pos";
+   private static final String e = "bees";
+   static final List<String> f = Arrays.asList(
+      "Air",
+      "ArmorDropChances",
+      "ArmorItems",
+      "Brain",
+      "CanPickUpLoot",
+      "DeathTime",
+      "FallDistance",
+      "FallFlying",
+      "Fire",
+      "HandDropChances",
+      "HandItems",
+      "HurtByTimestamp",
+      "HurtTime",
+      "LeftHanded",
+      "Motion",
+      "NoGravity",
+      "OnGround",
+      "PortalCooldown",
+      "Pos",
+      "Rotation",
+      "SleepingX",
+      "SleepingY",
+      "SleepingZ",
+      "CannotEnterHiveTicks",
+      "TicksSincePollination",
+      "CropsGrownSincePollination",
+      "hive_pos",
+      "Passengers",
+      "leash",
+      "UUID"
+   );
+   public static final int a = 3;
+   private static final int g = 400;
+   private static final int h = 2400;
+   public static final int b = 600;
+   private final List<dsv.a> i = Lists.newArrayList();
    @Nullable
-   private jm m;
-   @Nullable
-   private alk<eul> n;
-   private long r;
+   private jh j;
 
-   public dsv(jh $$0, dvo $$1) {
-      super(dst.N, $$0, $$1);
+   public dsv(jh $$0, dvv $$1) {
+      super(dta.H, $$0, $$1);
    }
 
-   public boolean a(long $$0, arq $$1, cor $$2, jm $$3, cwf $$4) {
-      if (this.m == null) {
-         this.m = $$3;
+   @Override
+   public void e() {
+      if (this.b()) {
+         this.a(null, this.o.a_(this.aA_()), dsv.b.c);
       }
 
-      this.j = $$0 + 40L;
-      if ($$0 < this.k) {
+      super.e();
+   }
+
+   public boolean b() {
+      if (this.o == null) {
          return false;
       } else {
-         this.k = $$0 + 10L;
-         this.a($$1, $$2, $$4);
-         int $$5 = this.f();
-         if (++this.i >= 10) {
-            this.b($$1, $$2, $$4);
-            return true;
-         } else {
-            $$1.a(this.aB_(), this.m().b(), 2);
-            int $$6 = this.f();
-            if ($$5 != $$6) {
-               dvo $$7 = this.m();
-               dvo $$8 = $$7.b(dwe.bv, Integer.valueOf($$6));
-               $$1.a(this.aB_(), $$8, 3);
+         for (jh $$0 : jh.c(this.p.b(-1, -1, -1), this.p.b(1, 1, 1))) {
+            if (this.o.a_($$0).b() instanceof dlp) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean c() {
+      return this.i.isEmpty();
+   }
+
+   public boolean d() {
+      return this.i.size() == 3;
+   }
+
+   public void a(@Nullable cou $$0, dvv $$1, dsv.b $$2) {
+      List<bul> $$3 = this.a($$1, $$2);
+      if ($$0 != null) {
+         for (bul $$4 : $$3) {
+            if ($$4 instanceof cgz) {
+               cgz $$5 = (cgz)$$4;
+               if ($$0.dt().g($$4.dt()) <= 16.0) {
+                  if (!this.j()) {
+                     $$5.h($$0);
+                  } else {
+                     $$5.s(400);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private List<bul> a(dvv $$0, dsv.b $$1) {
+      List<bul> $$2 = Lists.newArrayList();
+      this.i.removeIf($$3 -> a(this.o, this.p, $$0, $$3.b(), $$2, $$1, this.j));
+      if (!$$2.isEmpty()) {
+         super.e();
+      }
+
+      return $$2;
+   }
+
+   @bat
+   public int f() {
+      return this.i.size();
+   }
+
+   public static int a(dvv $$0) {
+      return $$0.c(dik.c);
+   }
+
+   @bat
+   public boolean j() {
+      return dje.a(this.o, this.aA_());
+   }
+
+   public void a(bul $$0) {
+      if (this.i.size() < 3) {
+         $$0.ae();
+         $$0.bP();
+         this.a(dsv.c.a($$0));
+         if (this.o != null) {
+            if ($$0 instanceof cgz $$1 && $$1.q() && (!this.k() || this.o.A.h())) {
+               this.j = $$1.n();
             }
 
+            jh $$2 = this.aA_();
+            this.o.a(null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.bV, awo.e, 1.0F, 1.0F);
+            this.o.a(ear.c, $$2, ear.a.a($$0, this.m()));
+         }
+
+         $$0.at();
+         super.e();
+      }
+   }
+
+   public void a(dsv.c $$0) {
+      this.i.add(new dsv.a($$0));
+   }
+
+   private static boolean a(dfm $$0, jh $$1, dvv $$2, dsv.c $$3, @Nullable List<bul> $$4, dsv.b $$5, @Nullable jh $$6) {
+      if (cgz.c($$0) && $$5 != dsv.b.c) {
+         return false;
+      } else {
+         jm $$7 = $$2.c(dik.b);
+         jh $$8 = $$1.a($$7);
+         boolean $$9 = !$$0.a_($$8).g($$0, $$8).c();
+         if ($$9 && $$5 != dsv.b.c) {
             return false;
-         }
-      }
-   }
+         } else {
+            bul $$10 = $$3.a($$0, $$1);
+            if ($$10 != null) {
+               if ($$10 instanceof cgz $$11) {
+                  if ($$6 != null && !$$11.q() && $$0.A.i() < 0.9F) {
+                     $$11.h($$6);
+                  }
 
-   private void a(arq $$0, cor $$1, cwf $$2) {
-      if (this.n != null) {
-         eul $$3 = $$0.o().bc().b(this.n);
-         if ($$1 instanceof arr $$4) {
-            ao.Q.a($$4, this.n);
-         }
+                  if ($$5 == dsv.b.a) {
+                     $$11.gC();
+                     if ($$2.a(axc.aI, $$0x -> $$0x.b(dik.c))) {
+                        int $$12 = a($$2);
+                        if ($$12 < 5) {
+                           int $$13 = $$0.A.a(100) == 0 ? 2 : 1;
+                           if ($$12 + $$13 > 5) {
+                              $$13--;
+                           }
 
-         euj $$5 = new euj.a($$0).a(exc.f, ezr.b(this.p)).a($$1.gI()).a(exc.a, $$1).a(exc.i, $$2).a(exb.i);
-         ObjectArrayList<cwf> $$6 = $$3.a($$5, this.r);
+                           $$0.b($$1, $$2.b(dik.c, Integer.valueOf($$12 + $$13)));
+                        }
+                     }
+                  }
 
-         this.l = switch ($$6.size()) {
-            case 0 -> cwf.k;
-            case 1 -> (cwf)$$6.getFirst();
-            default -> {
-               a.warn("Expected max 1 loot from loot table {}, but got {}", this.n.a(), $$6.size());
-               yield (cwf)$$6.getFirst();
+                  if ($$4 != null) {
+                     $$4.add($$11);
+                  }
+
+                  float $$14 = $$10.dq();
+                  double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
+                  double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
+                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dr() / 2.0F);
+                  double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
+                  $$10.b($$16, $$17, $$18, $$10.dL(), $$10.dN());
+               }
+
+               $$0.a(null, $$1, awn.bW, awo.e, 1.0F, 1.0F);
+               $$0.a(ear.c, $$1, ear.a.a($$10, $$0.a_($$1)));
+               return $$0.b($$10);
+            } else {
+               return false;
             }
-         };
-         this.n = null;
-         this.e();
-      }
-   }
-
-   private void b(arq $$0, cor $$1, cwf $$2) {
-      this.c($$0, $$1, $$2);
-      dvo $$3 = this.m();
-      $$0.c(3008, this.aB_(), dij.j($$3));
-      dij $$6;
-      if (this.m().b() instanceof dio $$5) {
-         $$6 = $$5.b();
-      } else {
-         $$6 = dil.a;
-      }
-
-      $$0.a(this.p, $$6.m(), 3);
-   }
-
-   private void c(arq $$0, cor $$1, cwf $$2) {
-      this.a($$0, $$1, $$2);
-      if (!this.l.f()) {
-         double $$3 = (double)bup.ag.l();
-         double $$4 = 1.0 - $$3;
-         double $$5 = $$3 / 2.0;
-         jm $$6 = Objects.requireNonNullElse(this.m, jm.b);
-         jh $$7 = this.p.a($$6, 1);
-         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
-         double $$9 = (double)$$7.v() + 0.5 + (double)(bup.ag.m() / 2.0F);
-         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
-         ckz $$11 = new ckz($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
-         $$11.h(ezr.c);
-         $$0.b($$11);
-         this.l = cwf.k;
-      }
-   }
-
-   public void a(arq $$0) {
-      if (this.i != 0 && $$0.aa() >= this.j) {
-         int $$1 = this.f();
-         this.i = Math.max(0, this.i - 2);
-         int $$2 = this.f();
-         if ($$1 != $$2) {
-            $$0.a(this.aB_(), this.m().b(dwe.bv, Integer.valueOf($$2)), 3);
          }
-
-         int $$3 = 4;
-         this.j = $$0.aa() + 4L;
-      }
-
-      if (this.i == 0) {
-         this.m = null;
-         this.j = 0L;
-         this.k = 0L;
-      } else {
-         $$0.a(this.aB_(), this.m().b(), 2);
       }
    }
 
-   private boolean c(un $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.n = alk.a(ma.bd, all.a($$0.l("LootTable")));
-         this.r = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
-      }
+   private boolean k() {
+      return this.j != null;
    }
 
-   private boolean d(un $$0) {
-      if (this.n == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.n.a().toString());
-         if (this.r != 0L) {
-            $$0.a("LootTableSeed", this.r);
+   private static void a(dfm $$0, jh $$1, dvv $$2, List<dsv.a> $$3, @Nullable jh $$4) {
+      boolean $$5 = false;
+      Iterator<dsv.a> $$6 = $$3.iterator();
+
+      while ($$6.hasNext()) {
+         dsv.a $$7 = $$6.next();
+         if ($$7.a()) {
+            dsv.b $$8 = $$7.c() ? dsv.b.a : dsv.b.b;
+            if (a($$0, $$1, $$2, $$7.b(), null, $$8, $$4)) {
+               $$5 = true;
+               $$6.remove();
+            }
          }
-
-         return true;
       }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dfm $$0, jh $$1, dvv $$2, dsv $$3) {
+      a($$0, $$1, $$2, $$3.i, $$3.j);
+      if (!$$3.i.isEmpty() && $$0.G_().j() < 0.005) {
+         double $$4 = (double)$$1.u() + 0.5;
+         double $$5 = (double)$$1.v();
+         double $$6 = (double)$$1.w() + 0.5;
+         $$0.a(null, $$4, $$5, $$6, awn.bY, awo.e, 1.0F, 1.0F);
+      }
+
+      agt.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public un a(js.a $$0) {
-      un $$1 = super.a($$0);
-      if (this.m != null) {
-         $$1.a("hit_direction", this.m.ordinal());
-      }
-
-      if (!this.l.f()) {
-         $$1.a("item", this.l.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public aco b() {
-      return aco.a(this);
-   }
-
-   @Override
-   protected void a(un $$0, js.a $$1) {
+   protected void a(ul $$0, js.a $$1) {
       super.a($$0, $$1);
-      if (!this.c($$0) && $$0.e("item")) {
-         this.l = cwf.a($$1, (vk)$$0.p("item")).orElse(cwf.k);
-      } else {
-         this.l = cwf.k;
+      this.i.clear();
+      if ($$0.e("bees")) {
+         dsv.c.b.parse(uz.a, $$0.c("bees")).resultOrPartial($$0x -> c.error("Failed to parse bees: '{}'", $$0x)).ifPresent($$0x -> $$0x.forEach(this::a));
       }
 
-      if ($$0.e("hit_direction")) {
-         this.m = jm.values()[$$0.h("hit_direction")];
+      this.j = va.a($$0, "flower_pos").orElse(null);
+   }
+
+   @Override
+   protected void b(ul $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("bees", (vi)dsv.c.b.encodeStart(uz.a, this.t()).getOrThrow());
+      if (this.k()) {
+         $$0.a("flower_pos", va.a(this.j));
       }
    }
 
    @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.d($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
+   protected void a(dsy.b $$0) {
+      super.a($$0);
+      this.i.clear();
+      List<dsv.c> $$1 = $$0.a(ku.an, List.of());
+      $$1.forEach(this::a);
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.an, this.t());
+   }
+
+   @Override
+   public void a(ul $$0) {
+      super.a($$0);
+      $$0.r("bees");
+   }
+
+   private List<dsv.c> t() {
+      return this.i.stream().map(dsv.a::b).toList();
+   }
+
+   static class a {
+      private final dsv.c a;
+      private int b;
+
+      a(dsv.c $$0) {
+         this.a = $$0;
+         this.b = $$0.b();
+      }
+
+      public boolean a() {
+         return this.b++ > this.a.f;
+      }
+
+      public dsv.c b() {
+         return new dsv.c(this.a.d, this.b, this.a.f);
+      }
+
+      public boolean c() {
+         return this.a.d.d().q("HasNectar");
       }
    }
 
-   public void a(alk<eul> $$0, long $$1) {
-      this.n = $$0;
-      this.r = $$1;
+   public static enum b {
+      a,
+      b,
+      c;
    }
 
-   private int f() {
-      if (this.i == 0) {
-         return 0;
-      } else if (this.i < 3) {
-         return 1;
-      } else {
-         return this.i < 6 ? 2 : 3;
+   public static record c(cyv d, int e, int f) {
+      public static final Codec<dsv.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cyv.b.optionalFieldOf("entity_data", cyv.a).forGetter(dsv.c::a),
+                  Codec.INT.fieldOf("ticks_in_hive").forGetter(dsv.c::b),
+                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(dsv.c::c)
+               )
+               .apply($$0, dsv.c::new)
+      );
+      public static final Codec<List<dsv.c>> b = a.listOf();
+      public static final zh<ByteBuf, dsv.c> c = zh.a(cyv.d, dsv.c::a, zf.h, dsv.c::b, zf.h, dsv.c::c, dsv.c::new);
+
+      public static dsv.c a(bul $$0) {
+         ul $$1 = new ul();
+         $$0.e($$1);
+         dsv.f.forEach($$1::r);
+         boolean $$2 = $$1.q("HasNectar");
+         return new dsv.c(cyv.a($$1), 0, $$2 ? 2400 : 600);
       }
-   }
 
-   @Nullable
-   public jm c() {
-      return this.m;
-   }
+      public static dsv.c a(int $$0) {
+         ul $$1 = new ul();
+         $$1.a("id", lz.f.b(bus.l).toString());
+         return new dsv.c(cyv.a($$1), $$0, 600);
+      }
 
-   public cwf d() {
-      return this.l;
+      @Nullable
+      public bul a(dfm $$0, jh $$1) {
+         ul $$2 = this.d.c();
+         dsv.f.forEach($$2::r);
+         bul $$3 = bus.a($$2, $$0, bur.r, $$0x -> $$0x);
+         if ($$3 != null && $$3.aq().a(axg.e)) {
+            $$3.f(true);
+            if ($$3 instanceof cgz $$4) {
+               $$4.i($$1);
+               a(this.e, $$4);
+            }
+
+            return $$3;
+         } else {
+            return null;
+         }
+      }
+
+      private static void a(int $$0, cgz $$1) {
+         int $$2 = $$1.X_();
+         if ($$2 < 0) {
+            $$1.c_(Math.min(0, $$2 + $$0));
+         } else if ($$2 > 0) {
+            $$1.c_(Math.max(0, $$2 - $$0));
+         }
+
+         $$1.r(Math.max(0, $$1.gu() - $$0));
+      }
+
+      public cyv a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.f;
+      }
    }
 }

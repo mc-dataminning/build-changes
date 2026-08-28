@@ -23,37 +23,37 @@ public class nz implements mg {
 
    @Override
    public CompletableFuture<?> a(me $$0) {
-      Map<dij, oa> $$1 = Maps.newHashMap();
+      Map<diq, oa> $$1 = Maps.newHashMap();
       Consumer<oa> $$2 = $$1x -> {
-         dij $$2x = $$1x.a();
+         diq $$2x = $$1x.a();
          oa $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
-      Map<all, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cwb> $$4 = Sets.newHashSet();
-      BiConsumer<all, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
+      Map<alj, Supplier<JsonElement>> $$3 = Maps.newHashMap();
+      Set<cwi> $$4 = Sets.newHashSet();
+      BiConsumer<alj, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cwb> $$6 = $$4::add;
+      Consumer<cwi> $$6 = $$4::add;
       new nw($$2, $$5, $$6).a();
       new ny($$5).a();
-      List<dij> $$7 = lz.e.k().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<diq> $$7 = lz.e.k().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          lz.e.forEach($$2x -> {
-            cwb $$3x = cwb.e.get($$2x);
+            cwi $$3x = cwi.e.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;
                }
 
-               all $$4x = ol.a($$3x);
+               alj $$4x = ol.a($$3x);
                if (!$$3.containsKey($$4x)) {
                   $$3.put($$4x, new ok(ol.a($$2x)));
                }

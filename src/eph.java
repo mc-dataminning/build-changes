@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class eph extends epx {
-   public static final MapCodec<eph> a = dvo.a.fieldOf("block_state").xmap(eph::new, $$0 -> $$0.b);
-   private final dvo b;
+public class eph extends eqe {
+   public static final MapCodec<eph> a = MapCodec.unit(() -> eph.b);
+   public static final eph b = new eph();
 
-   public eph(dvo $$0) {
-      this.b = $$0;
+   private eph() {
    }
 
    @Override
-   public boolean a(dvo $$0, azv $$1) {
-      return $$0 == this.b;
+   public boolean a(dvv $$0, azu $$1) {
+      return true;
    }
 
    @Override
-   protected epy<?> a() {
-      return epy.c;
+   protected eqf<?> a() {
+      return eqf.a;
    }
 }

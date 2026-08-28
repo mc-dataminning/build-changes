@@ -1,142 +1,149 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class fwq extends frp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xl b = xl.c("selectWorld.enterName").a(n.h);
-   private static final xl c = xl.c("selectWorld.edit.resetIcon");
-   private static final xl d = xl.c("selectWorld.edit.openFolder");
-   private static final xl s = xl.c("selectWorld.edit.backup");
-   private static final xl u = xl.c("selectWorld.edit.backupFolder");
-   private static final xl v = xl.c("selectWorld.edit.optimize");
-   private static final xl w = xl.c("optimizeWorld.confirm.title");
-   private static final xl x = xl.c("optimizeWorld.confirm.description");
-   private static final xl y = xl.c("optimizeWorld.confirm.proceed");
-   private static final xl z = xl.c("selectWorld.edit.save");
-   private static final int A = 200;
-   private static final int B = 4;
-   private static final int C = 98;
-   private final fpp D = fpp.d().a(5);
-   private final BooleanConsumer E;
-   private final etu.c F;
-   private final fmf G;
+public class fwq extends flx {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xj e = xj.c("telemetry_info.property_title").a(n.t);
+   private final flo f;
+   private fwq.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public static fwq a(fjx $$0, etu.c $$1, BooleanConsumer $$2) throws IOException {
-      etv $$3 = $$1.a($$1.h());
-      return new fwq($$0, $$1, $$3.b(), $$2);
+   public fwq(int $$0, int $$1, int $$2, int $$3, flo $$4) {
+      super($$0, $$1, $$2, $$3, xj.i());
+      this.f = $$4;
+      this.m = this.c(fke.Q().C());
    }
 
-   private fwq(fjx $$0, etu.c $$1, String $$2, BooleanConsumer $$3) {
-      super(xl.c("selectWorld.edit.title"));
-      this.E = $$3;
-      this.F = $$1;
-      flh $$4 = $$0.h;
-      this.D.a(new fpq(200, 20));
-      this.D.a(new fnd(b, $$4));
-      this.G = this.D.a(new fmf($$4, 200, 20, b));
-      this.G.a($$2);
-      fpp $$5 = fpp.e().a(4);
-      flw $$6 = $$5.a(flw.a(z, $$0x -> this.a(this.G.a())).a(98).a());
-      $$5.a(flw.a(xk.e, $$0x -> this.aP_()).a(98).a());
-      this.G.b($$1x -> $$6.j = !bak.h($$1x));
-      this.D.a(flw.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.D.a(flw.a(d, $$1x -> ae.m().a($$1.a(ets.l))).a(200).a());
-      this.D.a(flw.a(s, $$1x -> {
-         boolean $$2x = a($$1);
-         this.E.accept(!$$2x);
-      }).a(200).a());
-      this.D.a(flw.a(u, $$1x -> {
-         etu $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   public void j() {
+      this.m = this.c(fke.Q().C());
+      this.a(this.c());
+   }
+
+   private fwq.a c(boolean $$0) {
+      fwq.b $$1 = new fwq.b(this.k());
+      List<hep> $$2 = new ArrayList<>(hep.g());
+      $$2.sort(Comparator.comparing(hep::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hep $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
-
-         ae.m().a($$3x);
-      }).a(200).a());
-      this.D.a(flw.a(v, $$2x -> $$0.a(new fqj(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
-            }
-
-            $$0.a(fwt.a($$0, this.E, $$0.au(), $$1, $$3x));
-         }, w, x, y, true))).a(200).a());
-      this.D.a(new fpq(200, 20));
-      this.D.a($$5);
-      this.D.a($$1x -> {
-         flu var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aG_() {
-      this.b(this.G);
-   }
-
-   @Override
-   protected void aS_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      fpj.a(this.D, this.H());
-   }
-
-   @Override
-   public void aP_() {
-      this.E.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.F.a($$0);
-      } catch (uy | ve | IOException var3) {
-         a.error("Failed to access world '{}'", this.F.f(), var3);
-         fof.a(this.m, this.F.f());
       }
 
-      this.E.accept(true);
+      return $$1.a();
    }
 
-   public static boolean a(etu.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
 
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         xl $$4 = xl.c("selectWorld.edit.backupFailed");
-         xl $$5 = xl.b($$2.getMessage());
-         fjx.Q().aA().a(new fof(fof.a.b, $$4, $$5));
-         return false;
-      } else {
-         xl $$6 = xl.a("selectWorld.edit.backupCreated", $$0.f());
-         xl $$7 = xl.a("selectWorld.edit.backupSize", azn.c((double)$$1 / 1048576.0));
-         fjx.Q().aA().a(new fof(fof.a.b, $$6, $$7));
-         return true;
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
    @Override
-   public void a(flj $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
+   protected int h() {
+      return this.m.a().w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(flq $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.E() + this.a();
+      int $$5 = this.D() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fqb $$0) {
+      $$0.a(fqa.a, this.m.b());
+   }
+
+   private xj a(xj $$0, boolean $$1) {
+      return (xj)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fwq.b $$0, hep $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xj.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(hep $$0, fwq.b $$1, boolean $$2) {
+      for (her<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fpt a, xj b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fpw b;
+      private final xx c = xj.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fpw.d();
+         this.b.c().a();
+         this.b.a(fpx.a($$0));
+      }
+
+      public void a(flo $$0, xj $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(flo $$0, xj $$1, int $$2) {
+         this.b.a(new fmx($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(flo $$0, xj $$1) {
+         this.b.a(new fmx($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fpx.b($$0));
+      }
+
+      public fwq.a a() {
+         this.b.a();
+         return new fwq.a(this.b, this.c);
+      }
    }
 }

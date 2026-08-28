@@ -1,37 +1,18 @@
-public class acu implements zs<ach> {
-   public static final zj<wi, acu> a = zs.a(acu::a, acu::new);
-   private final bse b;
-   private final boolean c;
+import io.netty.buffer.ByteBuf;
 
-   public acu(bse $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class acu implements zq<acf> {
+   public static final acu a = new acu();
+   public static final zh<ByteBuf, acu> b = zh.a(a);
 
-   private acu(wi $$0) {
-      this.b = bse.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(wi $$0) {
-      $$0.l(this.b.a());
-      $$0.a(this.c);
+   private acu() {
    }
 
    @Override
-   public zu<acu> a() {
-      return agw.m;
+   public zs<acu> a() {
+      return agu.o;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public bse e() {
-      return this.b;
    }
 }

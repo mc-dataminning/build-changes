@@ -1,17 +1,23 @@
-public abstract class gpt<T extends clc, S extends gvu> extends gqg<T, S, fzo<S>> {
-   protected gpt(gpa.a $$0, fzo<S> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gss<>(this, $$0.f(), $$0.b()));
+public class gpt extends gqq<cis, gvy, fzn> {
+   public gpt(gpk.a $$0) {
+      super($$0, new fzn($$0.a(gck.aL)), 0.3F);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public alj a(gvy $$0) {
+      return $$0.f;
+   }
+
+   public gvy b() {
+      return new gvy();
+   }
+
+   public void a(cis $$0, gvy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.cb();
-      $$1.d = $$0.fB();
-      $$1.e = $$0.q();
-      $$1.f = $$1.e == clc.a.f ? cuw.b($$0.fE(), $$0) : 0;
-      $$1.g = $$0.fG();
-      $$1.h = $$0.D($$2);
-      $$1.c = $$0.gk();
+      $$1.a = $$0.bm();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f = $$0.v().a().a();
    }
 }

@@ -19,11 +19,11 @@ public class mi {
       return new mi.a(this, $$0, $$1);
    }
 
-   public mi.a a(alk<? extends kd<?>> $$0) {
+   public mi.a a(ali<? extends kd<?>> $$0) {
       return this.a(mi.b.a, ma.c($$0));
    }
 
-   public mi.a b(alk<? extends kd<?>> $$0) {
+   public mi.a b(ali<? extends kd<?>> $$0) {
       return this.a(mi.b.a, ma.d($$0));
    }
 
@@ -36,11 +36,11 @@ public class mi {
          this.b = $$2;
       }
 
-      public Path a(all $$0, String $$1) {
+      public Path a(alj $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(all $$0) {
+      public Path a(alj $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
    }

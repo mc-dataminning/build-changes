@@ -1,67 +1,28 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class etz {
+   public static final etz a = new etz("advancements");
+   public static final etz b = new etz("stats");
+   public static final etz c = new etz("playerdata");
+   public static final etz d = new etz("players");
+   public static final etz e = new etz("level.dat");
+   public static final etz f = new etz("level.dat_old");
+   public static final etz g = new etz("icon.png");
+   public static final etz h = new etz("session.lock");
+   public static final etz i = new etz("generated");
+   public static final etz j = new etz("datapacks");
+   public static final etz k = new etz("resources.zip");
+   public static final etz l = new etz(".");
+   private final String m;
 
-public interface etz extends eub {
-   @Override
-   String e();
-
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dfh $$1) {
-      eub.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   private etz(String $$0) {
+      this.m = $$0;
    }
 
-   int f();
+   public String a() {
+      return this.m;
+   }
 
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   dfc k();
-
-   void a(dxe.c var1);
-
-   dxe.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(dfc var1);
-
-   eze<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+   @Override
+   public String toString() {
+      return "/" + this.m;
+   }
 }

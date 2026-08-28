@@ -1,19 +1,66 @@
-public class bnd extends bmz {
-   private final bna c;
-   private final bnc d;
+import com.google.common.collect.Maps;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-   public bnd(int $$0, bna $$1, bnc $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bnd {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final avq c;
+   private final EnumMap<bnf, Map<arq, bnd.b>> d;
+   private final Queue<bnd.a> e = new LinkedList<>();
+
+   public bnd(avq $$0) {
+      this.c = $$0;
+      this.d = new EnumMap<>(bnf.class);
+
+      for (bnf $$1 : bnf.values()) {
+         this.d.put($$1, Maps.newHashMap());
+      }
    }
 
-   public bnd(int $$0, bna $$1, bnc $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   public boolean a(bnf $$0) {
+      return !this.d.get($$0).isEmpty();
    }
 
-   @Override
-   protected void a() {
-      this.c.a(new adi((long[])this.b.clone(), this.d));
+   public void a(adg $$0) {
+      for (arq $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.f.b($$0);
+      }
+   }
+
+   public void a(arq $$0, bnf $$1) {
+      if (this.c.f($$0.gf())) {
+         this.e.add(new bnd.a($$0, $$1));
+      }
+   }
+
+   public void a(int $$0) {
+      long $$1 = ae.c();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (bnd.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new bnd.b($$0, $$1));
+      }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<arq, bnd.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((arq)$$2x.getKey()).gf());
+            bnd.b $$4 = (bnd.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(arq a, bnf b) {
+   }
+
+   static record b(long a, int b) {
    }
 }

@@ -1,21 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record cyr(List<czr> d) {
-   public static final Codec<cyr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(czr.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(cyr::a)).apply($$0, cyr::new)
-   );
-   public static final zj<ww, cyr> b = zj.a(czr.e.a(zh.a()), cyr::a, cyr::new);
-   public static final cyr c = new cyr(List.of(new czq(), new czp(List.of(new btn(btp.j, 900, 1), new btn(btp.v, 100, 1), new btn(btp.l, 800, 0)))));
+public final class cyr {
+   public static final cyr a = new cyr(List.of());
+   public static final Codec<cyr> b = cwm.b.listOf().xmap(cyr::new, $$0 -> $$0.d);
+   public static final zh<wu, cyr> c = cwm.i.a(zf.a()).a(cyr::new, $$0 -> $$0.d);
+   private final List<cwm> d;
 
-   public void a(cwf $$0, bve $$1) {
-      for (czr $$2 : this.d) {
-         $$2.a($$1.dY(), $$0, $$1);
+   private cyr(List<cwm> $$0) {
+      this.d = $$0;
+   }
+
+   public static cyr a(cwm $$0) {
+      return new cyr(List.of($$0.v()));
+   }
+
+   public static cyr a(List<cwm> $$0) {
+      return new cyr(List.copyOf(Lists.transform($$0, cwm::v)));
+   }
+
+   public boolean a(cwi $$0) {
+      for (cwm $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<cwm> a() {
+      return Lists.transform(this.d, cwm::v);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cyr $$1 && cwm.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public List<czr> a() {
-      return this.d;
+   @Override
+   public int hashCode() {
+      return cwm.a(this.d);
+   }
+
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

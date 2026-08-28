@@ -1,27 +1,30 @@
-public class grs extends gnv<chw, gxj, gbj> {
-   private static final all a = all.b("textures/entity/turtle/big_sea_turtle.png");
+public class grs<T extends cmj> extends gqq<T, gwm, gbk> {
+   private static final alj a = alj.b("textures/entity/spider/spider.png");
 
-   public grs(gpa.a $$0) {
-      super($$0, new gbj($$0.a(gcb.cQ)), new gbj($$0.a(gcb.cR)), 0.7F);
+   public grs(gpk.a $$0) {
+      this($$0, gck.cO);
    }
 
-   protected float a(gxj $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.83F : $$1;
+   public grs(gpk.a $$0, gcj $$1) {
+      super($$0, new gbk($$0.a($$1)), 0.8F);
+      this.a(new gue<>(this));
    }
 
-   public gxj c() {
-      return new gxj();
+   @Override
+   protected float aV_() {
+      return 180.0F;
    }
 
-   public void a(chw $$0, gxj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bl() && $$0.aL();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.p_() && $$0.q();
-   }
-
-   public all b(gxj $$0) {
+   @Override
+   public alj b(gwm $$0) {
       return a;
+   }
+
+   public gwm b() {
+      return new gwm();
+   }
+
+   public void a(T $$0, gwm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

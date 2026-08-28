@@ -1,21 +1,23 @@
-public record abg(jh c) implements aav {
-   public static final zj<wi, abg> a = aav.a(abg::a, abg::new);
-   public static final aav.b<abg> b = aav.a("debug/poi_removed");
+import java.util.List;
 
-   private abg(wi $$0) {
-      this($$0.e());
+public record abg(List<jh> c) implements aat {
+   public static final zh<wg, abg> a = aat.a(abg::a, abg::new);
+   public static final aat.b<abg> b = aat.a("debug/raids");
+
+   private abg(wg $$0) {
+      this($$0.a(jh.b));
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.c);
+   private void a(wg $$0) {
+      $$0.a(this.c, jh.b);
    }
 
    @Override
-   public aav.b<abg> a() {
+   public aat.b<abg> a() {
       return b;
    }
 
-   public jh b() {
+   public List<jh> b() {
       return this.c;
    }
 }

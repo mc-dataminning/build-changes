@@ -1,78 +1,61 @@
+import com.mojang.datafixers.DataFixUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class ccb extends ccc {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cgv d;
-   @Nullable
-   private cgv e;
-   private final double f;
-   private int g;
+public class ccb extends ccf {
+   private static final int a = 200;
+   private final cgw b;
+   private int c;
+   private int d;
 
-   public ccb(cgv $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public ccb(cgw $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(cgw $$0) {
+      return b(200 + $$0.dY().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
+      if (this.b.gs()) {
+         return false;
+      } else if (this.b.gp()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
          return false;
       } else {
-         List<? extends cgv> $$0 = this.d.dY().a((Class<? extends cgv>)this.d.getClass(), this.d.cT().c(8.0, 4.0, 8.0));
-         cgv $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cgv $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
+         this.d = this.a(this.b);
+         Predicate<cgw> $$0 = $$0x -> $$0x.gr() || !$$0x.gp();
+         List<? extends cgw> $$1 = this.b.dV().a((Class<? extends cgw>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
+         cgw $$2 = (cgw)DataFixUtils.orElse($$1.stream().filter(cgw::gr).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gp()));
+         return this.b.gp();
       }
    }
 
    @Override
    public boolean c() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bN()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      return this.b.gp() && this.b.gt();
    }
 
    @Override
    public void d() {
-      this.g = 0;
+      this.c = 0;
    }
 
    @Override
    public void e() {
-      this.e = null;
+      this.b.gq();
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.P().a(this.e, this.f);
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gu();
       }
    }
 }

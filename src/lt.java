@@ -9,7 +9,7 @@ public abstract class lt implements lq {
    private final float a;
 
    public lt(float $$0) {
-      this.a = azn.a($$0, 0.01F, 4.0F);
+      this.a = azm.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

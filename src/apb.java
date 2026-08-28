@@ -1,60 +1,23 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
 
 public class apb {
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ex.a("push")
-                     .then(
-                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
-                              .then(
-                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
-                                       .then(
-                                          ex.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ew)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(gm.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
-                              ))
-                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
-                     )
-               ))
-            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("setidletimeout").requires($$0x -> $$0x.c(3)))
+            .then(ex.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
       );
    }
 
-   private static void a(ew $$0, zs<?> $$1) {
-      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
-   }
+   private static int a(ew $$0, int $$1) {
+      $$0.l().c($$1);
+      if ($$1 > 0) {
+         $$0.a(() -> xj.a("commands.setidletimeout.success", $$1), true);
+      } else {
+         $$0.a(() -> xj.c("commands.setidletimeout.success.disabled"), true);
+      }
 
-   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      aaf $$6 = new aaf($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
-   }
-
-   private static int a(ew $$0, UUID $$1) {
-      aae $$2 = new aae(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+      return $$1;
    }
 }

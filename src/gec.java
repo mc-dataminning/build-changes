@@ -1,101 +1,60 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import java.time.Instant;
-import java.util.UUID;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class gec {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
+public enum gec implements bai {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<gec> d = bai.a(gec::values);
+   private final String e;
+
+   private gec(final String $$0) {
+      this.e = $$0;
+   }
+
+   public static gec a(xz $$0, xj $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(xz $$0, xj $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xj $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(xj $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), yg.a).orElse(false);
+   }
+
+   private static boolean a(yg $$0) {
+      return !$$0.k().equals(yg.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
    @Nullable
-   protected gee e;
-   protected boolean f;
-
-   public gec(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fjy a(xz $$0) {
+      return switch (this) {
+         case b -> fjy.a($$0.c());
+         case c -> fjy.c();
+         default -> null;
+      };
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
-   }
-
-   public abstract gec b();
-
-   public abstract frp a(frp var1, geg var2);
-
-   public abstract static class a<R extends gec> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public gee i() {
-         return this.a.e;
-      }
-
-      public void a(gee $$0) {
-         this.a.e = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public gec.b c() {
-         return !this.e().f ? gec.b.e : null;
-      }
-
-      public abstract Either<gec.c, gec.b> a(geg var1);
-   }
-
-   public static record b(xl f) {
-      public static final gec.b a = new gec.b(xl.c("gui.abuseReport.send.no_reason"));
-      public static final gec.b b = new gec.b(xl.c("gui.chatReport.send.no_reported_messages"));
-      public static final gec.b c = new gec.b(xl.c("gui.chatReport.send.too_many_messages"));
-      public static final gec.b d = new gec.b(xl.c("gui.abuseReport.send.comment_too_long"));
-      public static final gec.b e = new gec.b(xl.c("gui.abuseReport.send.not_attested"));
-
-      public fnh a() {
-         return fnh.a(this.f);
-      }
-
-      public xl b() {
-         return this.f;
-      }
-   }
-
-   public static record c(UUID a, gef b, AbuseReport c) {
+   @Override
+   public String c() {
+      return this.e;
    }
 }

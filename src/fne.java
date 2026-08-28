@@ -1,166 +1,338 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fne implements hdu {
-   private static final long a = 3000L;
-   private final fjx b;
-   private final List<fne.b> c = Lists.newArrayList();
-   private boolean d;
-   private final List<fne.b> e = new ArrayList<>();
+public class fne {
+   private static final alj b = alj.b("icon/ping_unknown");
+   private static final alj c = alj.b("icon/ping_1");
+   private static final alj d = alj.b("icon/ping_2");
+   private static final alj e = alj.b("icon/ping_3");
+   private static final alj f = alj.b("icon/ping_4");
+   private static final alj g = alj.b("icon/ping_5");
+   private static final alj h = alj.b("hud/heart/container_blinking");
+   private static final alj i = alj.b("hud/heart/container");
+   private static final alj j = alj.b("hud/heart/full_blinking");
+   private static final alj k = alj.b("hud/heart/half_blinking");
+   private static final alj l = alj.b("hud/heart/absorbing_full_blinking");
+   private static final alj m = alj.b("hud/heart/full");
+   private static final alj n = alj.b("hud/heart/absorbing_half_blinking");
+   private static final alj o = alj.b("hud/heart/half");
+   private static final Comparator<gds> p = Comparator.<gds>comparingInt($$0 -> -$$0.j())
+      .thenComparingInt($$0 -> $$0.e() == dfj.d ? 1 : 0)
+      .thenComparing($$0 -> x.a($$0.h(), fay::b, ""))
+      .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
+   public static final int a = 20;
+   private final fke q;
+   private final flp r;
+   @Nullable
+   private xj s;
+   @Nullable
+   private xj t;
+   private boolean u;
+   private final Map<UUID, fne.a> v = new Object2ObjectOpenHashMap();
 
-   public fne(fjx $$0) {
-      this.b = $$0;
+   public fne(fke $$0, flp $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   public void a(flj $$0) {
-      hdv $$1 = this.b.ak();
-      if (!this.d && this.b.n.Y().c()) {
-         $$1.a(this);
-         this.d = true;
-      } else if (this.d && !this.b.n.Y().c()) {
-         $$1.b(this);
-         this.d = false;
+   public xj a(gds $$0) {
+      return $$0.i() != null ? this.a($$0, $$0.i().f()) : this.a($$0, fay.a($$0.h(), xj.b($$0.a().getName())));
+   }
+
+   private xj a(gds $$0, xx $$1) {
+      return $$0.e() == dfj.d ? $$1.a(n.u) : $$1;
+   }
+
+   public void a(boolean $$0) {
+      if (this.u != $$0) {
+         this.v.clear();
+         this.u = $$0;
+         if ($$0) {
+            xj $$1 = xm.a(this.b(), xj.b(", "), this::a);
+            this.q.aZ().c(xj.a("multiplayer.player.list.narration", $$1));
+         }
       }
+   }
 
-      if (this.d) {
-         fbz $$2 = $$1.b();
-         ezr $$3 = $$2.b();
-         ezr $$4 = $$2.c();
-         ezr $$5 = $$2.a();
-         this.e.clear();
+   private List<gds> b() {
+      return this.q.t.i.l().stream().sorted(p).limit(80L).toList();
+   }
 
-         for (fne.b $$6 : this.c) {
-            if ($$6.c($$3)) {
-               this.e.add($$6);
+   public void a(flq $$0, int $$1, fbd $$2, @Nullable fav $$3) {
+      List<gds> $$4 = this.b();
+      List<fne.b> $$5 = new ArrayList<>($$4.size());
+      int $$6 = this.q.h.b(" ");
+      int $$7 = 0;
+      int $$8 = 0;
+
+      for (gds $$9 : $$4) {
+         xj $$10 = this.a($$9);
+         $$7 = Math.max($$7, this.q.h.a($$10));
+         int $$11 = 0;
+         xj $$12 = null;
+         int $$13 = 0;
+         if ($$3 != null) {
+            fbc $$14 = fbc.a($$9.a());
+            faz $$15 = $$2.d($$14, $$3);
+            if ($$15 != null) {
+               $$11 = $$15.a();
+            }
+
+            if ($$3.h() != fbg.a.b) {
+               yz $$16 = $$3.a(zc.d);
+               $$12 = faz.a($$15, $$16);
+               $$13 = this.q.h.a($$12);
+               $$8 = Math.max($$8, $$13 > 0 ? $$6 + $$13 : 0);
             }
          }
 
-         if (!this.e.isEmpty()) {
-            int $$7 = 0;
-            int $$8 = 0;
-            double $$9 = this.b.n.C().c();
-            Iterator<fne.b> $$10 = this.e.iterator();
+         $$5.add(new fne.b($$10, $$11, $$12, $$13));
+      }
 
-            while ($$10.hasNext()) {
-               fne.b $$11 = $$10.next();
-               $$11.a(3000.0 * $$9);
-               if (!$$11.b()) {
-                  $$10.remove();
-               } else {
-                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+      if (!this.v.isEmpty()) {
+         Set<UUID> $$17 = $$4.stream().map($$0x -> $$0x.a().getId()).collect(Collectors.toSet());
+         this.v.keySet().removeIf($$1x -> !$$17.contains($$1x));
+      }
+
+      int $$18 = $$4.size();
+      int $$19 = $$18;
+
+      int $$20;
+      for ($$20 = 1; $$19 > 20; $$19 = ($$18 + $$20 - 1) / $$20) {
+         $$20++;
+      }
+
+      boolean $$21 = this.q.T() || this.q.L().k().h();
+      int $$22;
+      if ($$3 != null) {
+         if ($$3.h() == fbg.a.b) {
+            $$22 = 90;
+         } else {
+            $$22 = $$8;
+         }
+      } else {
+         $$22 = 0;
+      }
+
+      int $$25 = Math.min($$20 * (($$21 ? 9 : 0) + $$7 + $$22 + 13), $$1 - 50) / $$20;
+      int $$26 = $$1 / 2 - ($$25 * $$20 + ($$20 - 1) * 5) / 2;
+      int $$27 = 10;
+      int $$28 = $$25 * $$20 + ($$20 - 1) * 5;
+      List<ayy> $$29 = null;
+      if (this.t != null) {
+         $$29 = this.q.h.c(this.t, $$1 - 50);
+
+         for (ayy $$30 : $$29) {
+            $$28 = Math.max($$28, this.q.h.a($$30));
+         }
+      }
+
+      List<ayy> $$31 = null;
+      if (this.s != null) {
+         $$31 = this.q.h.c(this.s, $$1 - 50);
+
+         for (ayy $$32 : $$31) {
+            $$28 = Math.max($$28, this.q.h.a($$32));
+         }
+      }
+
+      if ($$29 != null) {
+         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$29.size() * 9, Integer.MIN_VALUE);
+
+         for (ayy $$33 : $$29) {
+            int $$34 = this.q.h.a($$33);
+            $$0.b(this.q.h, $$33, $$1 / 2 - $$34 / 2, $$27, -1);
+            $$27 += 9;
+         }
+
+         $$27++;
+      }
+
+      $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$19 * 9, Integer.MIN_VALUE);
+      int $$35 = this.q.n.a(553648127);
+
+      for (int $$36 = 0; $$36 < $$18; $$36++) {
+         int $$37 = $$36 / $$19;
+         int $$38 = $$36 % $$19;
+         int $$39 = $$26 + $$37 * $$25 + $$37 * 5;
+         int $$40 = $$27 + $$38 * 9;
+         $$0.a($$39, $$40, $$39 + $$25, $$40 + 8, $$35);
+         if ($$36 < $$4.size()) {
+            gds $$41 = $$4.get($$36);
+            fne.b $$42 = $$5.get($$36);
+            GameProfile $$43 = $$41.a();
+            if ($$21) {
+               cou $$44 = this.q.s.b($$43.getId());
+               boolean $$45 = $$44 != null && gql.b($$44);
+               boolean $$46 = $$44 != null && $$44.a(cov.g);
+               fnc.a($$0, $$41.g().a(), $$39, $$40, 8, $$46, $$45, -1);
+               $$39 += 9;
+            }
+
+            $$0.b(this.q.h, $$42.a, $$39, $$40, $$41.e() == dfj.d ? -1862270977 : -1);
+            if ($$3 != null && $$41.e() != dfj.d) {
+               int $$47 = $$39 + $$7 + 1;
+               int $$48 = $$47 + $$22;
+               if ($$48 - $$47 > 5) {
+                  this.a($$3, $$40, $$42, $$47, $$48, $$43.getId(), $$0);
                }
             }
 
-            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+            this.a($$0, $$25, $$39 - ($$21 ? 9 : 0), $$40, $$41);
+         }
+      }
 
-            for (fne.b $$12 : this.e) {
-               int $$13 = 255;
-               xl $$14 = $$12.a();
-               fne.a $$15 = $$12.a($$3);
-               if ($$15 != null) {
-                  ezr $$16 = $$15.a.d($$3).d();
-                  double $$17 = $$5.b($$16);
-                  double $$18 = $$4.b($$16);
-                  boolean $$19 = $$18 > 0.5;
-                  int $$20 = $$8 / 2;
-                  int $$21 = 9;
-                  int $$22 = $$21 / 2;
-                  float $$23 = 1.0F;
-                  int $$24 = this.b.h.a($$14);
-                  int $$25 = azn.d(azn.b(255.0F, 75.0F, (float)(ae.c() - $$15.b) / (float)(3000.0 * $$9)));
-                  $$0.c().a();
-                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
-                  $$0.c().b(1.0F, 1.0F, 1.0F);
-                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
-                  int $$26 = axy.a(255, $$25, $$25, $$25);
-                  if (!$$19) {
-                     if ($$17 > 0.0) {
-                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
-                     } else if ($$17 < 0.0) {
-                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
-                     }
+      if ($$31 != null) {
+         $$27 += $$19 * 9 + 1;
+         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$31.size() * 9, Integer.MIN_VALUE);
+
+         for (ayy $$49 : $$31) {
+            int $$50 = this.q.h.a($$49);
+            $$0.b(this.q.h, $$49, $$1 / 2 - $$50 / 2, $$27, -1);
+            $$27 += 9;
+         }
+      }
+   }
+
+   protected void a(flq $$0, int $$1, int $$2, int $$3, gds $$4) {
+      alj $$5;
+      if ($$4.f() < 0) {
+         $$5 = b;
+      } else if ($$4.f() < 150) {
+         $$5 = g;
+      } else if ($$4.f() < 300) {
+         $$5 = f;
+      } else if ($$4.f() < 600) {
+         $$5 = e;
+      } else if ($$4.f() < 1000) {
+         $$5 = d;
+      } else {
+         $$5 = c;
+      }
+
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a(gjq::B, $$5, $$2 + $$1 - 11, $$3, 10, 8);
+      $$0.c().b();
+   }
+
+   private void a(fav $$0, int $$1, fne.b $$2, int $$3, int $$4, UUID $$5, flq $$6) {
+      if ($$0.h() == fbg.a.b) {
+         this.a($$1, $$3, $$4, $$5, $$6, $$2.b);
+      } else if ($$2.c != null) {
+         $$6.b(this.q.h, $$2.c, $$4 - $$2.d, $$1, 16777215);
+      }
+   }
+
+   private void a(int $$0, int $$1, int $$2, UUID $$3, flq $$4, int $$5) {
+      fne.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new fne.a($$5));
+      $$6.a($$5, (long)this.r.e());
+      int $$7 = azm.e(Math.max($$5, $$6.a()), 2);
+      int $$8 = Math.max($$5, Math.max($$6.a(), 20)) / 2;
+      boolean $$9 = $$6.a((long)this.r.e());
+      if ($$7 > 0) {
+         int $$10 = azm.d(Math.min((float)($$2 - $$1 - 4) / (float)$$8, 9.0F));
+         if ($$10 <= 3) {
+            float $$11 = azm.a((float)$$5 / 20.0F, 0.0F, 1.0F);
+            int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
+            float $$13 = (float)$$5 / 2.0F;
+            xj $$14 = xj.a("multiplayer.player.list.hp", $$13);
+            xj $$15;
+            if ($$2 - this.q.h.a($$14) >= $$1) {
+               $$15 = $$14;
+            } else {
+               $$15 = xj.b(Float.toString($$13));
+            }
+
+            $$4.b(this.q.h, $$15, ($$2 + $$1 - this.q.h.a($$15)) / 2, $$0, $$12);
+         } else {
+            alj $$17 = $$9 ? h : i;
+
+            for (int $$18 = $$7; $$18 < $$8; $$18++) {
+               $$4.a(gjq::B, $$17, $$1 + $$18 * $$10, $$0, 9, 9);
+            }
+
+            for (int $$19 = 0; $$19 < $$7; $$19++) {
+               $$4.a(gjq::B, $$17, $$1 + $$19 * $$10, $$0, 9, 9);
+               if ($$9) {
+                  if ($$19 * 2 + 1 < $$6.a()) {
+                     $$4.a(gjq::B, j, $$1 + $$19 * $$10, $$0, 9, 9);
                   }
 
-                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
-                  $$0.c().b();
-                  $$7++;
+                  if ($$19 * 2 + 1 == $$6.a()) {
+                     $$4.a(gjq::B, k, $$1 + $$19 * $$10, $$0, 9, 9);
+                  }
+               }
+
+               if ($$19 * 2 + 1 < $$5) {
+                  $$4.a(gjq::B, $$19 >= 10 ? l : m, $$1 + $$19 * $$10, $$0, 9, 9);
+               }
+
+               if ($$19 * 2 + 1 == $$5) {
+                  $$4.a(gjq::B, $$19 >= 10 ? n : o, $$1 + $$19 * $$10, $$0, 9, 9);
                }
             }
          }
       }
    }
 
-   @Override
-   public void a(hcq $$0, hdw $$1, float $$2) {
-      if ($$1.a() != null) {
-         xl $$3 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (fne.b $$4 : this.c) {
-               if ($$4.a().equals($$3)) {
-                  $$4.b(new ezr($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
+   public void a(@Nullable xj $$0) {
+      this.s = $$0;
+   }
+
+   public void b(@Nullable xj $$0) {
+      this.t = $$0;
+   }
+
+   public void a() {
+      this.t = null;
+      this.s = null;
+   }
+
+   static class a {
+      private static final long a = 20L;
+      private static final long b = 20L;
+      private static final long c = 10L;
+      private int d;
+      private int e;
+      private long f;
+      private long g;
+
+      public a(int $$0) {
+         this.e = $$0;
+         this.d = $$0;
+      }
+
+      public void a(int $$0, long $$1) {
+         if ($$0 != this.d) {
+            long $$2 = $$0 < this.d ? 20L : 10L;
+            this.g = $$1 + $$2;
+            this.d = $$0;
+            this.f = $$1;
          }
 
-         this.c.add(new fne.b($$3, $$2, new ezr($$0.h(), $$0.i(), $$0.j())));
+         if ($$1 - this.f > 20L) {
+            this.e = $$0;
+         }
+      }
+
+      public int a() {
+         return this.e;
+      }
+
+      public boolean a(long $$0) {
+         return this.g > $$0 && (this.g - $$0) % 6L >= 3L;
       }
    }
 
-   static record a(ezr a, long b) {
-   }
-
-   static class b {
-      private final xl a;
-      private final float b;
-      private final List<fne.a> c = new ArrayList<>();
-
-      public b(xl $$0, float $$1, ezr $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c.add(new fne.a($$2, ae.c()));
-      }
-
-      public xl a() {
-         return this.a;
-      }
-
-      @Nullable
-      public fne.a a(ezr $$0) {
-         if (this.c.isEmpty()) {
-            return null;
-         } else {
-            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
-         }
-      }
-
-      public void b(ezr $$0) {
-         this.c.removeIf($$1 -> $$0.equals($$1.a()));
-         this.c.add(new fne.a($$0, ae.c()));
-      }
-
-      public boolean c(ezr $$0) {
-         if (Float.isInfinite(this.b)) {
-            return true;
-         } else if (this.c.isEmpty()) {
-            return false;
-         } else {
-            fne.a $$1 = this.a($$0);
-            return $$1 == null ? false : $$0.a((ka)$$1.a, (double)this.b);
-         }
-      }
-
-      public void a(double $$0) {
-         long $$1 = ae.c();
-         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
-      }
-
-      public boolean b() {
-         return !this.c.isEmpty();
-      }
+   static record b(xj a, int b, @Nullable xj c, int d) {
    }
 }

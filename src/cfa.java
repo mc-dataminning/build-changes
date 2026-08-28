@@ -1,41 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cfa extends cfo<bve> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cfa() {
-      this(200);
-   }
-
-   public cfa(int $$0) {
-      super($$0);
-   }
-
+public class cfa extends cfk<cmu> {
    @Override
-   protected void a(arq $$0, bve $$1) {
-      a($$1);
+   public Set<cel<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cel.B)));
    }
 
-   @Override
-   public Set<cei<?>> a() {
-      return ImmutableSet.of(cei.g);
-   }
-
-   public static void a(bve $$0) {
-      Optional<List<bve>> $$1 = $$0.ee().c(cei.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ar().equals(bup.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bve $$0) {
-      $$0.ee().a(cei.F, true, 599L);
+   protected void a(arp $$0, cmu $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cel.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(buq.e)
+         .filter($$2 -> cfr.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cel.B, $$1x), () -> $$1.eb().b(cel.B));
    }
 }

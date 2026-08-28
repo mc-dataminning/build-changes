@@ -1,17 +1,37 @@
-@Deprecated
-public abstract class gnv<T extends bvg, S extends gwb, M extends fza<? super S>> extends gqg<T, S, M> {
-   private final M a;
-   private final M b;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gnv(gpa.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$3);
-      this.a = $$1;
-      this.b = $$2;
+public class gnv implements gng.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gnv() {
    }
 
    @Override
-   public void a(S $$0, fek $$1, gix $$2, int $$3) {
-      this.h = $$0.ae ? this.b : this.a;
-      super.a($$0, $$1, $$2, $$3);
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(kj $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fer $$0, gjg $$1, kj $$2) {
+      gng.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

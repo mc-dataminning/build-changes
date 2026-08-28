@@ -118,7 +118,7 @@ public class bdc extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhy.G);
+      Type<?> $$0 = this.getInputSchema().getType(bia.G);
       return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 

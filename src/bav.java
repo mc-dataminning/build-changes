@@ -1,63 +1,81 @@
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bav implements ayc {
-   public static final long[] a = new long[0];
-   private final int b;
+public class bav {
+   private static final String a = b("");
 
-   public bav(int $$0) {
-      this.b = $$0;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-      return 0;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return azc.e($$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      return 0;
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(azc.e($$2)));
    }
 
-   @Override
-   public long[] a() {
-      return a;
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
 
-   @Override
-   public int b() {
-      return this.b;
-   }
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
 
-   @Override
-   public int c() {
-      return 0;
-   }
+                  return $$0.createString(azc.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
 
-   @Override
-   public void a(IntConsumer $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         $$0.accept(0);
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
+         }
       }
    }
 
-   @Override
-   public void a(int[] $$0) {
-      Arrays.fill($$0, 0, this.b, 0);
-   }
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
 
-   @Override
-   public ayc d() {
-      return this;
+      return Optional.empty();
    }
 }

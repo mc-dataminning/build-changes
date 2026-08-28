@@ -1,74 +1,31 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public class fqz extends frw {
+   private fmw a;
+   private final Runnable b;
+   private final Runnable c;
 
-public class fqz implements AutoCloseable {
-   private static final all a = all.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gyu d;
-   private final all e;
-   @Nullable
-   private gyg f;
-   private boolean g;
-
-   private fqz(gyu $$0, all $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fqz a(gyu $$0, String $$1) {
-      return new fqz($$0, all.b("worlds/" + ae.a($$1, all::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fqz b(gyu $$0, String $$1) {
-      return new fqz($$0, all.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fdk $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gyg($$0);
-            } else {
-               this.f.a($$0);
-               this.f.e();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.b(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public all b() {
-      return this.f != null ? this.e : a;
+   public fqz(Runnable $$0, Runnable $$1) {
+      super(xj.c("datapackFailure.title"));
+      this.a = fmw.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aR_() {
+      super.aR_();
+      this.a = fmw.a(this.p, this.n(), this.n - 50);
+      this.c(fmd.a(xj.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(fmd.a(xi.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   public void a(flq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
+   }
+
+   @Override
+   public boolean aG_() {
+      return false;
    }
 }

@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum jo implements baj {
+public enum jo implements bai {
    a("down_east", jm.a, jm.f),
    b("down_north", jm.a, jm.c),
    c("down_south", jm.a, jm.d),

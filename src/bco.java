@@ -21,6 +21,6 @@ public class bco extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bhy.u), $$0 -> $$0.update(DSL.remainderFinder(), bco::a));
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bia.u), $$0 -> $$0.update(DSL.remainderFinder(), bco::a));
    }
 }

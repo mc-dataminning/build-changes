@@ -1,28 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class eib extends eia {
-   public static final MapCodec<eib> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eib::new));
+public abstract class eib {
+   public static final Codec<eib> a = lz.Y.q().dispatch(eib::b, eic::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public eib(brm $$0, brm $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <S extends eib> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected eig<?> a() {
-      return eig.e;
+   public eib(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, int $$4, eif.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
+   protected abstract eic<?> b();
 
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

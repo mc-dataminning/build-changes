@@ -1,34 +1,76 @@
-public class cpv extends cpr {
-   public cpv(bup<? extends cpv> $$0, dff $$1) {
+public abstract class cpv extends cpn {
+   private static final float a = 12.25F;
+
+   protected cpv(bus<? extends cpv> $$0, dfm $$1) {
       super($$0, $$1);
    }
 
-   public cpv(dff $$0, bve $$1, cwf $$2) {
-      super(bup.L, $$1, $$0, $$2);
-   }
-
-   public cpv(dff $$0, double $$1, double $$2, double $$3, cwf $$4) {
-      super(bup.L, $$1, $$2, $$3, $$0, $$4);
+   protected cpv(bus<? extends cpv> $$0, double $$1, double $$2, double $$3, dfm $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected cwb o() {
-      return cwj.un;
-   }
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
 
-   @Override
-   protected double bf() {
-      return 0.07;
-   }
-
-   @Override
-   protected void a(ezp $$0) {
-      super.a($$0);
-      if (this.dY() instanceof arq) {
-         this.dY().c(2002, this.dy(), cye.c(cyf.a));
-         int $$1 = 3 + this.dY().A.a(5) + this.dY().A.a(5);
-         buu.a((arq)this.dY(), this.dw(), $$1);
-         this.av();
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
       }
+   }
+
+   @Override
+   public boolean o(boolean $$0) {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      ezw $$0 = cpp.a(this, this::b);
+      this.bf();
+      this.l();
+      ezy $$1;
+      if ($$0.d() != ezw.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.dt().e(this.dy());
+      }
+
+      this.b($$1);
+      this.C();
+      this.aK();
+      super.h();
+      if ($$0.d() != ezw.a.a && this.bL()) {
+         this.b($$0);
+      }
+   }
+
+   private void l() {
+      ezy $$0 = this.dy();
+      ezy $$1 = this.dt();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
+      }
+
+      this.h($$0.c((double)$$4));
+   }
+
+   @Override
+   protected double bd() {
+      return 0.03;
    }
 }

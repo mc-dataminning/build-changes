@@ -1,121 +1,151 @@
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
+import java.net.Proxy;
+import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.time.Instant;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atj {
+public class atj implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bnm<atj.e> d;
+   private final bra e = new bra(ae.i(), "download-queue");
 
-   public static void a(Path $$0, int $$1) {
-      try {
-         List<atj.b> $$2 = a($$0);
-         int $$3 = $$2.size() - $$1;
-         if ($$3 <= 0) {
-            return;
-         }
+   public atj(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bnm.a(atj.e.a, $$0.resolve("log.json"));
+      ati.a($$0, 20);
+   }
 
-         $$2.sort(atj.b.a);
-         List<atj.a> $$4 = a($$2);
-         Collections.reverse($$4);
-         $$4.sort(atj.a.a);
-         Set<Path> $$5 = new HashSet<>();
-
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            atj.a $$7 = $$4.get($$6);
-            Path $$8 = $$7.b;
+   private atj.b b(atj.a $$0, Map<UUID, atj.c> $$1) {
+      atj.b $$2 = new atj.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
             try {
-               Files.delete($$8);
-               if ($$7.c == 0) {
-                  $$5.add($$8.getParent());
-               }
-            } catch (IOException var12) {
-               a.warn("Failed to delete cache file {}", $$8, var12);
+               $$5 = azd.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
             }
-         }
 
-         $$5.remove($$0);
-
-         for (Path $$10 : $$5) {
             try {
-               Files.delete($$10);
-            } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+               this.d
+                  .a(
+                     new atj.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
-      } catch (UncheckedIOException | IOException var13) {
-         a.error("Failed to vacuum cache dir {}", $$0, var13);
-      }
+      );
+      return $$2;
    }
 
-   private static List<atj.b> a(final Path $$0) throws IOException {
+   private Either<String, atj.d> a(Path $$0) {
       try {
-         final List<atj.b> $$1 = new ArrayList<>();
-         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
-               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
-                  FileTime $$2 = $$1.lastModifiedTime();
-                  $$1.add(new atj.b($$0, $$2));
-               }
-
-               return FileVisitResult.CONTINUE;
-            }
-         });
-         return $$1;
-      } catch (NoSuchFileException var2) {
-         return List.of();
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new atj.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   private static List<atj.a> a(List<atj.b> $$0) {
-      List<atj.a> $$1 = new ArrayList<>();
-      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
-
-      for (atj.b $$3 : $$0) {
-         int $$4 = $$2.addTo($$3.b.getParent(), 1);
-         $$1.add(new atj.a($$3.b, $$4));
-      }
-
-      return $$1;
+   public CompletableFuture<atj.b> a(atj.a $$0, Map<UUID, atj.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
    }
 
-   static record a(Path b, int c) {
-      public static final Comparator<atj.a> a = Comparator.comparing(atj.a::b).reversed();
+   @Override
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
+   }
 
-      public Path a() {
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, azd.a e) {
+   }
+
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
+      }
+   }
+
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<atj.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(atj.d::a), Codec.LONG.fieldOf("size").forGetter(atj.d::b)).apply($$0, atj.d::new)
+      );
+
+      public String a() {
          return this.b;
       }
 
-      public int b() {
+      public long b() {
          return this.c;
       }
    }
 
-   static record b(Path b, FileTime c) {
-      public static final Comparator<atj.b> a = Comparator.comparing(atj.b::b).reversed();
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atj.d> f) {
+      public static final Codec<atj.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kk.d.fieldOf("id").forGetter(atj.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(atj.e::b),
+                  ayv.q.fieldOf("time").forGetter(atj.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(atj.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), atj.d.a.fieldOf("file")).forGetter(atj.e::e)
+               )
+               .apply($$0, atj.e::new)
+      );
 
-      public Path a() {
+      public UUID a() {
          return this.b;
       }
 
-      public FileTime b() {
+      public String b() {
          return this.c;
+      }
+
+      public Instant c() {
+         return this.d;
+      }
+
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, atj.d> e() {
+         return this.f;
       }
    }
 }

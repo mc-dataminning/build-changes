@@ -1,108 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class drl extends dqt {
-   public static final MapCodec<drl> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, drl::new));
-   public static final dwl<jm> g = dme.aF;
-   protected static final float h = 2.5F;
-   private static final Map<jm, fal> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         dij.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
-         jm.d,
-         dij.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         jm.e,
-         dij.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
-         jm.f,
-         dij.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
-      )
-   );
+public class drl extends dic {
+   public static final MapCodec<drl> a = b(drl::new);
+   public static final dwx<dvi> b = dwl.bz;
+   public static final dws<jm> c = dml.aF;
+   public static final dwm d = dwl.bA;
 
    @Override
    public MapCodec<drl> a() {
-      return f;
+      return a;
    }
 
-   protected drl(lw $$0, dvn.d $$1) {
-      super($$0, $$1);
-      this.l(this.F.b().b(g, jm.c));
-   }
-
-   @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return o($$0);
-   }
-
-   public static fal o(dvo $$0) {
-      return i.get($$0.c(g));
+   public drl(dvu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, jm.c).b(b, dvi.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      return b($$1, $$2, $$0.c(g));
-   }
+   public bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
+      if (!$$0.f() && $$1.c(b) == dvi.b) {
+         if ($$2 instanceof arp $$7) {
+            if (!($$7.c_($$3) instanceof dvd $$8)) {
+               return bsk.f;
+            }
 
-   public static boolean b(dfi $$0, jh $$1, jm $$2) {
-      jh $$3 = $$1.a($$2.g());
-      dvo $$4 = $$0.a_($$3);
-      return $$4.c($$0, $$3, $$2);
+            dvd.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
+         }
+
+         return bsk.b;
+      } else {
+         return bsk.f;
+      }
    }
 
    @Nullable
    @Override
-   public dvo a(czw $$0) {
-      dvo $$1 = this.m();
-      dfi $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      jm[] $$4 = $$0.f();
-
-      for (jm $$5 : $$4) {
-         if ($$5.o().d()) {
-            jm $$6 = $$5.g();
-            $$1 = $$1.b(g, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   public dsy a(jh $$0, dvv $$1) {
+      return new dvd($$0, $$1);
    }
 
    @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dil.a.m() : $$0;
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return $$0 instanceof arp $$3
+         ? a($$2, dta.R, ($$1x, $$2x, $$3x, $$4) -> dvd.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dta.R, ($$0x, $$1x, $$2x, $$3x) -> dvd.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      jm $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      jm $$10 = $$4.g();
-      $$1.a(ls.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   public dvv a(dad $$0) {
+      return this.m().b(c, $$0.g().g());
    }
 
    @Override
-   protected dvo a(dvo $$0, dow $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
+   public dvv a(dvv $$0, dpd $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   protected dvo a(dvo $$0, dnf $$1) {
-      return $$0.a($$1.a($$0.c(g)));
+   public dvv a(dvv $$0, dnm $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(g);
+   public dow a_(dvv $$0) {
+      return dow.c;
    }
 }

@@ -1,43 +1,46 @@
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class wn extends MessageToMessageDecoder<zs<?>> {
-   private final zr a;
-   @Nullable
-   private zr.a b;
+public class wn<T extends wp> extends ByteToMessageDecoder implements ws {
+   private static final Logger a = LogUtils.getLogger();
+   private final wr<T> b;
 
-   public wn(zr $$0) {
-      this.a = $$0;
+   public wn(wr<T> $$0) {
+      this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zs<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         zs<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         zr.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         zq<? super T> $$4 = this.b.c().decode($$1);
+         zs<? extends zq<? super T>> $$5 = $$4.a();
+         bpc.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
          } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(wd.c, " IN: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName(), $$3});
             }
-         }
-      }
-   }
 
-   private static void a(zs<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
+            ws.a($$0, $$4);
+         }
       }
    }
 }

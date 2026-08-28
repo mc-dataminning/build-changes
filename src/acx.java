@@ -1,79 +1,60 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
 import java.util.List;
+import java.util.Optional;
 
-public record acx(List<acx.a> b) implements zs<ach> {
-   public static final zj<wi, acx> a = zs.a(acx::a, acx::new);
-   private static final int c = 2097152;
+public record acx(int b, int c, int d, List<acx.a> e) implements zq<acf> {
+   public static final zh<wu, acx> a = zh.a(zf.h, acx::e, zf.h, acx::f, zf.h, acx::g, acx.a.a.a(zf.a()), acx::h, acx::new);
 
-   private acx(wi $$0) {
-      this($$0.a(acx.a::new));
-   }
-
-   public static acx a(List<dxt> $$0) {
-      return new acx($$0.stream().map(acx.a::new).toList());
-   }
-
-   private void a(wi $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public acx(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new acx.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xm::a))).toList()
+      );
    }
 
    @Override
-   public zu<acx> a() {
-      return agw.p;
+   public zs<acx> a() {
+      return agu.r;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public static record a(del a, byte[] b) {
-      public a(dxt $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new wi(this.d()), $$0);
-      }
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   }
 
-      public a(wi $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
+   public int e() {
+      return this.b;
+   }
 
-      private static int a(dxt $$0) {
-         int $$1 = 0;
+   public int f() {
+      return this.c;
+   }
 
-         for (dxu $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
+   public int g() {
+      return this.d;
+   }
 
-         return $$1;
-      }
+   public List<acx.a> h() {
+      return this.e;
+   }
 
-      public wi a() {
-         return new wi(Unpooled.wrappedBuffer(this.b));
-      }
+   public static record a(String b, Optional<xj> c) {
+      public static final zh<wu, acx.a> a = zh.a(zf.n, acx.a::a, xl.e, acx.a::b, acx.a::new);
 
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(wi $$0, dxt $$1) {
-         for (dxu $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(wi $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public del b() {
-         return this.a;
-      }
-
-      public byte[] c() {
+      public String a() {
          return this.b;
+      }
+
+      public Optional<xj> b() {
+         return this.c;
       }
    }
 }

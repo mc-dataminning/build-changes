@@ -21,7 +21,7 @@ public class mz implements mg {
    private static <T> JsonElement a(kd<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof jl) {
-         all $$2 = ((jl)$$0).b();
+         alj $$2 = ((jl)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 

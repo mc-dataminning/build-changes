@@ -1,32 +1,17 @@
-public class cbg extends cbe {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+public class cbg implements cbe {
+   private final bvj b;
+   protected boolean a;
 
-   public cbg(bvg $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+   public cbg(bvj $$0) {
+      this.b = $$0;
    }
 
-   @Override
    public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dQ(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.P().m()) {
-            this.a.w(this.a(this.a.dQ(), 0.0F, 5.0F));
-         }
+      this.a = true;
+   }
 
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
-      }
-
-      float $$0 = azn.h(this.a.aZ - this.a.aX);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aX -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aX += 4.0F;
-      }
+   public void b() {
+      this.b.t(this.a);
+      this.a = false;
    }
 }

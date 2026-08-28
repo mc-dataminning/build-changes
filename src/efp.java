@@ -1,54 +1,37 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class efp extends eep<ehi> {
-   public efp(Codec<ehi> $$0) {
+public class efp extends eew<ehg> {
+   public efp(Codec<ehg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eer<ehi> $$0) {
-      ehi $$1 = $$0.f();
-      dgd $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      dij $$4 = $$1.b.b();
-      jh $$5 = a($$2, $$0.e().k().a(jm.a.b, $$2.I_() + 1, $$2.al()), $$4);
-      if ($$5 == null) {
+   public boolean a(eey<ehg> $$0) {
+      dgk $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      dvv $$3 = $$1.a_($$2.e());
+      ehg $$4 = $$0.f();
+      azu $$5 = $$0.d();
+      if (!$$3.a(axc.aN)) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.K_() + 1 && $$6 + 1 <= $$1.al()) {
+            int $$7 = 0;
 
-         for (jh $$11 : jh.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               jh $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dvv $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.K_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
             }
 
-            dvo $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+            return $$7 > 0;
+         } else {
+            return false;
          }
-
-         return $$10;
       }
-   }
-
-   @Nullable
-   private static jh a(dfg $$0, jh.a $$1, dij $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dvo $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(jm.a);
-      }
-
-      return null;
    }
 }

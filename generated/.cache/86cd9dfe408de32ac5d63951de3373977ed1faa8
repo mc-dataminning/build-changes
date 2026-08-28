@@ -1,4 +1,4 @@
-// 24w38a	2026-08-28T02:32:17.719330726	vanilla/Tags for minecraft:block
+// 24w39a	2026-08-28T02:34:36.169712048	vanilla/Tags for minecraft:block
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 1dfe6273688ebbb262b42c16e2c05f6c27e6d54b data/minecraft/tags/block/flower_pots.json
 2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data/minecraft/tags/block/rails.json
@@ -10,8 +10,8 @@ e85d473045cf55c6f706798af73a74b69875c186 data/minecraft/tags/block/smelts_to_gla
 3e070569b31d1100ac334efd44a58e52df25df1a data/minecraft/tags/block/flowers.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data/minecraft/tags/block/stone_ore_replaceables.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data/minecraft/tags/block/standing_signs.json
-837bf053d44a820743fe76f981febdde02bc78a2 data/minecraft/tags/block/underwater_bonemeals.json
 37c1e07dffc966dafe0401977955eba42bfaeccf data/minecraft/tags/block/copper_ores.json
+837bf053d44a820743fe76f981febdde02bc78a2 data/minecraft/tags/block/underwater_bonemeals.json
 6d8c49aebfc6e8906a021084112fa9efdc950177 data/minecraft/tags/block/azalea_root_replaceable.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data/minecraft/tags/block/stone_bricks.json
 f8376cab397acf16d638e5a8595dc07d123925c5 data/minecraft/tags/block/planks.json
@@ -120,8 +120,8 @@ f7ec61aaf7fd6e33b399721bc6d5aa2bc2e814ff data/minecraft/tags/block/fall_damage_r
 9fa8e169d8e22baeaa4b0c96ba6ab87ab881a4cd data/minecraft/tags/block/wolves_spawnable_on.json
 31c793313c9b85d3bd3d53198d21098ea2adaf78 data/minecraft/tags/block/camel_sand_step_sound_blocks.json
 0a5b887d102211a1506d0ee422fae14d13a014f3 data/minecraft/tags/block/trapdoors.json
-c7ea382c3711cc470f33079f0c7c3413eddaa0fd data/minecraft/tags/block/convertable_to_mud.json
 da8b8f8686a75b8cf996f5f2752a61934cf2dfaa data/minecraft/tags/block/mineable/shovel.json
+c7ea382c3711cc470f33079f0c7c3413eddaa0fd data/minecraft/tags/block/convertable_to_mud.json
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data/minecraft/tags/block/spruce_logs.json
 ed3052eb0c49103d4cdd5f410d09b189a33c80b9 data/minecraft/tags/block/concrete_powder.json
 da1d12f678963493519caaff63a76241b220579f data/minecraft/tags/block/axolotls_spawnable_on.json
@@ -134,8 +134,8 @@ da1d12f678963493519caaff63a76241b220579f data/minecraft/tags/block/axolotls_spaw
 4161727d1e5d26faf957fabebe6b6c8cc6e884f2 data/minecraft/tags/block/leaves.json
 f8f437f299af14e5c9c0453089d4e03d42015d2e data/minecraft/tags/block/terracotta.json
 090e10929cf921bcfe7ca9e263679610ff359335 data/minecraft/tags/block/wart_blocks.json
-c9aa61b07ecba39e82b67d0fa0ebbcf0f82b45f5 data/minecraft/tags/block/needs_stone_tool.json
 b5b3e2fe97bef01741a9b3e3b0aeb5aaac962f4b data/minecraft/tags/block/mineable/pickaxe.json
+c9aa61b07ecba39e82b67d0fa0ebbcf0f82b45f5 data/minecraft/tags/block/needs_stone_tool.json
 031ce19c9707a4d8e85bc799d69543917c962fad data/minecraft/tags/block/pressure_plates.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/block/wither_summon_base_blocks.json
 158a4877fad0ee79d00e8c9f641ad661e822cdb5 data/minecraft/tags/block/sniffer_egg_hatch_boost.json

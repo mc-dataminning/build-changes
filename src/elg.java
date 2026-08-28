@@ -1,42 +1,44 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class elg extends ecg {
-   private final dgd a;
-   private final dxk b;
-   private final Optional<elf> c;
+public class elg extends elp {
+   public static final MapCodec<elg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jh.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, elg::new)
+   );
+   private final List<jh> c;
 
-   public elg(dgd $$0, dxk $$1, Optional<elf> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static elg a(jh... $$0) {
+      return new elg(List.of($$0));
    }
 
-   public int a(ebj.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   private elg(List<jh> $$0) {
+      this.c = $$0;
    }
 
-   public dxi a(del $$0) {
-      return ((dyd)this.a.a($$0.g, $$0.h)).C();
+   @Override
+   public Stream<jh> a_(eln $$0, azu $$1, jh $$2) {
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      boolean $$5 = false;
+
+      for (jh $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
    }
 
-   public dvo a(jh $$0) {
-      return this.a.a_($$0);
+   private static boolean a(int $$0, int $$1, jh $$2) {
+      return $$0 == kj.a($$2.u()) && $$1 == kj.a($$2.w());
    }
 
-   public int c() {
-      return this.a.I_();
-   }
-
-   public dgd d() {
-      return this.a;
-   }
-
-   public Optional<elf> e() {
-      return this.c;
-   }
-
-   public dxk f() {
-      return this.b;
+   @Override
+   public elq<?> b() {
+      return elq.o;
    }
 }

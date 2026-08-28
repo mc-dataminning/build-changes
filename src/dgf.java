@@ -1,42 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dgf {
-   public static final Codec<dgf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awn.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dgf::new)
-   );
-   public static final dgf b = new dgf(awo.h, 6000, 8, 2.0);
-   private final jq<awn> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public class dgf extends dff {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<ju<diq>> d;
 
-   public dgf(jq<awn> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public dgf(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ju<diq>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public jq<awn> a() {
-      return this.c;
+   @Override
+   public Optional<Float> a(dfe $$0, der $$1, jh $$2, dvv $$3, erv $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public int b() {
-      return this.d;
+   @Override
+   public boolean a(dfe $$0, der $$1, jh $$2, dvv $$3, float $$4) {
+      return this.a;
    }
 
-   public int c() {
-      return this.e;
+   @Override
+   public boolean a(dfe $$0, bul $$1) {
+      return this.b;
    }
 
-   public double d() {
-      return this.f;
+   @Override
+   public float a(bul $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof cou $$1 && $$1.gh().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

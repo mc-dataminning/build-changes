@@ -8,5 +8,5 @@ public interface bx {
 
    MapCodec<? extends bx> a();
 
-   boolean a(bui var1, arq var2, @Nullable ezr var3);
+   boolean a(bul var1, arp var2, @Nullable ezy var3);
 }

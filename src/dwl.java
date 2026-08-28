@@ -1,92 +1,133 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-public final class dwl<T extends Enum<T> & baj> extends dwq<T> {
-   private final List<T> a;
-   private final Map<String, T> b;
-   private final int[] c;
-
-   private dwl(String $$0, Class<T> $$1, List<T> $$2) {
-      super($$0, $$1);
-      if ($$2.isEmpty()) {
-         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
-      } else {
-         this.a = List.copyOf($$2);
-         T[] $$3 = $$1.getEnumConstants();
-         this.c = new int[$$3.length];
-
-         for (T $$4 : $$3) {
-            this.c[$$4.ordinal()] = $$2.indexOf($$4);
-         }
-
-         Builder<String, T> $$5 = ImmutableMap.builder();
-
-         for (T $$6 : $$2) {
-            String $$7 = $$6.c();
-            $$5.put($$7, $$6);
-         }
-
-         this.b = $$5.buildOrThrow();
-      }
-   }
-
-   @Override
-   public List<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   public int b(T $$0) {
-      return this.c[$$0.ordinal()];
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dwl<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      return 31 * $$0 + this.a.hashCode();
-   }
-
-   public static <T extends Enum<T> & baj> dwl<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   public static <T extends Enum<T> & baj> dwl<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
-
-   @SafeVarargs
-   public static <T extends Enum<T> & baj> dwl<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, List.of($$2));
-   }
-
-   public static <T extends Enum<T> & baj> dwl<T> a(String $$0, Class<T> $$1, List<T> $$2) {
-      return new dwl<>($$0, $$1, $$2);
-   }
+public class dwl {
+   public static final dwm a = dwm.a("attached");
+   public static final dwm b = dwm.a("bottom");
+   public static final dwm c = dwm.a("conditional");
+   public static final dwm d = dwm.a("disarmed");
+   public static final dwm e = dwm.a("drag");
+   public static final dwm f = dwm.a("enabled");
+   public static final dwm g = dwm.a("extended");
+   public static final dwm h = dwm.a("eye");
+   public static final dwm i = dwm.a("falling");
+   public static final dwm j = dwm.a("hanging");
+   public static final dwm k = dwm.a("has_bottle_0");
+   public static final dwm l = dwm.a("has_bottle_1");
+   public static final dwm m = dwm.a("has_bottle_2");
+   public static final dwm n = dwm.a("has_record");
+   public static final dwm o = dwm.a("has_book");
+   public static final dwm p = dwm.a("inverted");
+   public static final dwm q = dwm.a("in_wall");
+   public static final dwm r = dwm.a("lit");
+   public static final dwm s = dwm.a("locked");
+   public static final dwm t = dwm.a("occupied");
+   public static final dwm u = dwm.a("open");
+   public static final dwm v = dwm.a("persistent");
+   public static final dwm w = dwm.a("powered");
+   public static final dwm x = dwm.a("short");
+   public static final dwm y = dwm.a("signal_fire");
+   public static final dwm z = dwm.a("snowy");
+   public static final dwm A = dwm.a("triggered");
+   public static final dwm B = dwm.a("unstable");
+   public static final dwm C = dwm.a("waterlogged");
+   public static final dwm D = dwm.a("berries");
+   public static final dwm E = dwm.a("bloom");
+   public static final dwm F = dwm.a("shrieking");
+   public static final dwm G = dwm.a("can_summon");
+   public static final dws<jm.a> H = dws.a("axis", jm.a.class, jm.a.a, jm.a.c);
+   public static final dws<jm.a> I = dws.a("axis", jm.a.class);
+   public static final dwm J = dwm.a("up");
+   public static final dwm K = dwm.a("down");
+   public static final dwm L = dwm.a("north");
+   public static final dwm M = dwm.a("east");
+   public static final dwm N = dwm.a("south");
+   public static final dwm O = dwm.a("west");
+   public static final dws<jm> P = dws.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
+   public static final dws<jm> Q = dws.a("facing", jm.class, $$0 -> $$0 != jm.b);
+   public static final dws<jm> R = dws.a("facing", jm.class, jm.c.a);
+   public static final dwu S = dwu.a("flower_amount", 1, 4);
+   public static final dws<jo> T = dws.a("orientation", jo.class);
+   public static final dws<dwg> U = dws.a("face", dwg.class);
+   public static final dws<dwj> V = dws.a("attachment", dwj.class);
+   public static final dws<dxg> W = dws.a("east", dxg.class);
+   public static final dws<dxg> X = dws.a("north", dxg.class);
+   public static final dws<dxg> Y = dws.a("south", dxg.class);
+   public static final dws<dxg> Z = dws.a("west", dxg.class);
+   public static final dws<dwz> aa = dws.a("east", dwz.class);
+   public static final dws<dwz> ab = dws.a("north", dwz.class);
+   public static final dws<dwz> ac = dws.a("south", dwz.class);
+   public static final dws<dwz> ad = dws.a("west", dwz.class);
+   public static final dws<dwq> ae = dws.a("half", dwq.class);
+   public static final dws<dwt> af = dws.a("half", dwt.class);
+   public static final dws<dwy> ag = dws.a("shape", dwy.class);
+   public static final dws<dwy> ah = dws.a("shape", dwy.class, $$0 -> $$0 != dwy.j && $$0 != dwy.i && $$0 != dwy.g && $$0 != dwy.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dwu aq = dwu.a("age", 0, 1);
+   public static final dwu ar = dwu.a("age", 0, 2);
+   public static final dwu as = dwu.a("age", 0, 3);
+   public static final dwu at = dwu.a("age", 0, 4);
+   public static final dwu au = dwu.a("age", 0, 5);
+   public static final dwu av = dwu.a("age", 0, 7);
+   public static final dwu aw = dwu.a("age", 0, 15);
+   public static final dwu ax = dwu.a("age", 0, 25);
+   public static final dwu ay = dwu.a("bites", 0, 6);
+   public static final dwu az = dwu.a("candles", 1, 4);
+   public static final dwu aA = dwu.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dwu aC = dwu.a("distance", 1, 7);
+   public static final dwu aD = dwu.a("eggs", 1, 4);
+   public static final dwu aE = dwu.a("hatch", 0, 2);
+   public static final dwu aF = dwu.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dwu aK = dwu.a("level", 1, 3);
+   public static final dwu aL = dwu.a("level", 0, 8);
+   public static final dwu aM = dwu.a("level", 1, 8);
+   public static final dwu aN = dwu.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dwu aP = dwu.a("level", 0, 15);
+   public static final dwu aQ = dwu.a("moisture", 0, 7);
+   public static final dwu aR = dwu.a("note", 0, 24);
+   public static final dwu aS = dwu.a("pickles", 1, 4);
+   public static final dwu aT = dwu.a("power", 0, 15);
+   public static final dwu aU = dwu.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dwu aW = dwu.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dwu aZ = dwu.a("charges", 0, 4);
+   public static final dwu ba = dwu.a("rotation", 0, dxa.a());
+   public static final dws<dwi> bb = dws.a("part", dwi.class);
+   public static final dws<dwn> bc = dws.a("type", dwn.class);
+   public static final dws<dwo> bd = dws.a("mode", dwo.class);
+   public static final dws<dwp> be = dws.a("hinge", dwp.class);
+   public static final dws<dwv> bf = dws.a("instrument", dwv.class);
+   public static final dws<dww> bg = dws.a("type", dww.class);
+   public static final dws<dxc> bh = dws.a("type", dxc.class);
+   public static final dws<dxd> bi = dws.a("shape", dxd.class);
+   public static final dws<dxe> bj = dws.a("mode", dxe.class);
+   public static final dws<dwh> bk = dws.a("leaves", dwh.class);
+   public static final dws<dxf> bl = dws.a("tilt", dxf.class);
+   public static final dws<jm> bm = dws.a("vertical_direction", jm.class, jm.b, jm.a);
+   public static final dws<dwr> bn = dws.a("thickness", dwr.class);
+   public static final dws<dxb> bo = dws.a("sculk_sensor_phase", dxb.class);
+   public static final dwm bp = dwm.a("slot_0_occupied");
+   public static final dwm bq = dwm.a("slot_1_occupied");
+   public static final dwm br = dwm.a("slot_2_occupied");
+   public static final dwm bs = dwm.a("slot_3_occupied");
+   public static final dwm bt = dwm.a("slot_4_occupied");
+   public static final dwm bu = dwm.a("slot_5_occupied");
+   public static final dwu bv = dwu.a("dusted", 0, 3);
+   public static final dwm bw = dwm.a("cracked");
+   public static final dwm bx = dwm.a("crafting");
+   public static final dws<dvb> by = dws.a("trial_spawner_state", dvb.class);
+   public static final dws<dvi> bz = dws.a("vault_state", dvi.class);
+   public static final dwm bA = dwm.a("ominous");
 }

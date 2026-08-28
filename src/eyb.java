@@ -1,52 +1,47 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record eyb(Optional<Boolean> b, Optional<Boolean> c) implements exr {
+public record eyb(Optional<bw> b, eun.b c) implements exy {
    public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(eyb::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(eyb::e))
-            .apply($$0, eyb::new)
+      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(eyb::c), eun.b.e.fieldOf("entity").forGetter(eyb::d)).apply($$0, eyb::new)
    );
 
    @Override
-   public exs b() {
-      return ext.o;
+   public exz b() {
+      return eya.f;
    }
 
-   public boolean a(eug $$0) {
-      arq $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ae() ? false : !this.c.isPresent() || this.c.get() == $$1.ad();
+   @Override
+   public Set<exg<?>> a() {
+      return ImmutableSet.of(exj.f, this.c.a());
    }
 
-   public static eyb.a c() {
-      return new eyb.a();
+   public boolean a(eun $$0) {
+      bul $$1 = $$0.c(this.c.a());
+      ezy $$2 = $$0.c(exj.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public Optional<Boolean> d() {
+   public static exy.a a(eun.b $$0) {
+      return a($$0, bw.a.a());
+   }
+
+   public static exy.a a(eun.b $$0, bw.a $$1) {
+      return () -> new eyb(Optional.of($$1.b()), $$0);
+   }
+
+   public static exy.a a(eun.b $$0, bw $$1) {
+      return () -> new eyb(Optional.of($$1), $$0);
+   }
+
+   public Optional<bw> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public eun.b d() {
       return this.c;
-   }
-
-   public static class a implements exr.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eyb.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eyb.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eyb a() {
-         return new eyb(this.a, this.b);
-      }
    }
 }

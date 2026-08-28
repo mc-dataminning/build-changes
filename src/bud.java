@@ -1,12 +1,53 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public record bud(bue a, boolean b, boolean c, @Nullable far d) {
-   public static bud a(bvg $$0, boolean $$1, boolean $$2) {
-      return new bud(bue.a, $$1, $$2, $$0.ct());
+public class bud {
+   private static final int a = Integer.MIN_VALUE;
+   private int b = Integer.MIN_VALUE;
+
+   public void a(int $$0) {
+      this.b = $$0;
    }
 
-   @FunctionalInterface
-   public interface a<T extends bvg> {
-      void finalizeConversion(T var1);
+   public void b(int $$0) {
+      if (!this.b()) {
+         this.a($$0);
+      }
+   }
+
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
+   }
+
+   public void a() {
+      this.b = Integer.MIN_VALUE;
+   }
+
+   public void a(Consumer<bud> $$0) {
+      if (this.b()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.b()) {
+         this.b -= (int)((float)$$0 * $$1);
+      }
+   }
+
+   public long a(float $$0) {
+      float $$1 = $$0 - (float)this.b;
+      return (long)($$1 * 50.0F);
+   }
+
+   public boolean b() {
+      return this.b != Integer.MIN_VALUE;
+   }
+
+   public void a(bud $$0) {
+      this.b = $$0.b;
    }
 }

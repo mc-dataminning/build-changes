@@ -1,27 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dbg<T extends dba<?>> {
+   dbg<daq> a = a("crafting");
+   dbg<dbq> b = a("smelting");
+   dbg<dak> c = a("blasting");
+   dbg<dbv> d = a("smoking");
+   dbg<dam> e = a("campfire_cooking");
+   dbg<dbw> f = a("stonecutting");
+   dbg<dbr> g = a("smithing");
 
-public class dbg<T extends daj> implements day<T> {
-   private final MapCodec<T> w;
-   private final zj<ww, T> x;
-
-   public dbg(dbg.a<T> $$0) {
-      this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dah.e.fieldOf("category").orElse(dah.d).forGetter(daj::d)).apply($$1, $$0::create));
-      this.x = zj.a(dah.g, daj::d, $$0::create);
-   }
-
-   @Override
-   public MapCodec<T> a() {
-      return this.w;
-   }
-
-   @Override
-   public zj<ww, T> b() {
-      return this.x;
-   }
-
-   @FunctionalInterface
-   public interface a<T extends daj> {
-      T create(dah var1);
+   static <T extends dba<?>> dbg<T> a(final String $$0) {
+      return kd.a(lz.q, alj.b($$0), new dbg<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

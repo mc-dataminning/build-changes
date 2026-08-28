@@ -1,45 +1,29 @@
-public class agl implements zs<ach> {
-   public static final zj<wi, agl> a = zs.a(agl::a, agl::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public record agl(float b, boolean c) implements zq<acf> {
+   public static final zh<wg, agl> a = zq.a(agl::a, agl::new);
 
-   public agl(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private agl(wg $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   private agl(wi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+   public static agl a(bst $$0) {
+      return new agl($$0.f(), $$0.l());
    }
 
-   private void a(wi $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zu<agl> a() {
-      return agw.aZ;
+   public zs<agl> a() {
+      return agu.ci;
    }
 
-   public void a(ach $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

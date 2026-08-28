@@ -1,42 +1,104 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class edo extends edm {
-   public edo(Codec<edl> $$0) {
+public class edo extends edw<edn> {
+   public edo(Codec<edn> $$0) {
       super($$0);
-      this.h = ImmutableSet.of(erp.e, erp.c);
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public boolean a(edn $$0, azu $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   @Override
-   protected float a(azv $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   public boolean a(edr $$0, edn $$1, dxq $$2, Function<jh, jq<dgo>> $$3, azu $$4, ebc $$5, des $$6, dxp $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
+   private void a(
+      edr $$0,
+      edn $$1,
+      dxq $$2,
+      Function<jh, jq<dgo>> $$3,
+      long $$4,
+      ebc $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      dxp $$15
+   ) {
+      azu $$16 = azu.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
+
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(azm.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = azm.b($$11);
+         float $$24 = azm.a($$11);
+         $$6 += (double)(azm.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(azm.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
+            }
+
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
+         }
+      }
    }
 
-   protected boolean a(edk $$0, edl $$1, dxj $$2, Function<jh, jq<dgh>> $$3, dxi $$4, jh.a $$5, jh.a $$6, eav $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dvo $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
+   private float[] a(edr $$0, edn $$1, azu $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
          }
 
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
+         $$4[$$6] = $$5 * $$5;
       }
+
+      return $$4;
+   }
+
+   private double a(edn $$0, azu $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - azm.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)azm.b($$1, 0.75F, 1.0F);
+   }
+
+   private boolean a(edr $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

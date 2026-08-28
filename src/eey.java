@@ -1,31 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eey implements egt {
-   public static final Codec<eey> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvo.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dvo.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dvo.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dvo.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               ecq.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eey::new)
-   );
-   public final dvo b;
-   public final dvo c;
-   public final dvo d;
-   public final dvo e;
-   public final ecq f;
-   public final boolean g;
+public class eey<FC extends eha> {
+   private final Optional<eei<?, ?>> a;
+   private final dgk b;
+   private final dxr c;
+   private final azu d;
+   private final jh e;
+   private final FC f;
 
-   public eey(dvo $$0, dvo $$1, dvo $$2, dvo $$3, ecq $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public eey(Optional<eei<?, ?>> $$0, dgk $$1, dxr $$2, azu $$3, jh $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public Optional<eei<?, ?>> a() {
+      return this.a;
+   }
+
+   public dgk b() {
+      return this.b;
+   }
+
+   public dxr c() {
+      return this.c;
+   }
+
+   public azu d() {
+      return this.d;
+   }
+
+   public jh e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

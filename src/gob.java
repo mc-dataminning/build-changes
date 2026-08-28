@@ -1,22 +1,23 @@
-public class gob extends gqg<cgp, gun, fyd> {
-   private static final all a = all.b("textures/entity/bat.png");
+public abstract class gob<T extends cjc, S extends gvp, M extends fzj<? super S>> extends gof<T, S, M> {
+   private final float a;
 
-   public gob(gpa.a $$0) {
-      super($$0, new fyd($$0.a(gcb.n)), 0.25F);
+   public gob(gpk.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$2, 0.75F);
+      this.a = $$3;
    }
 
-   public all a(gun $$0) {
-      return a;
+   protected void a(S $$0, fer $$1) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1);
    }
 
-   public gun a() {
-      return new gun();
-   }
-
-   public void a(cgp $$0, gun $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.d);
-      $$1.c.a($$0.e);
+      $$1.b = $$0.j();
+      $$1.c = $$0.ca();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.cq > 0;
    }
 }

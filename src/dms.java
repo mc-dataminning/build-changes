@@ -1,124 +1,103 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dms extends dij implements dpk {
-   public static final MapCodec<dms> b = b(dms::new);
-   public static final int c = 7;
-   public static final dwn d = dwe.aC;
-   public static final dwf e = dwe.v;
-   public static final dwf f = dwe.C;
-   private static final int a = 1;
+public class dms extends dic {
+   public static final MapCodec<dms> a = b(dms::new);
+   public static final dwm b = dwl.n;
 
    @Override
-   public MapCodec<? extends dms> a() {
-      return b;
+   public MapCodec<dms> a() {
+      return a;
    }
 
-   public dms(dvn.d $$0) {
+   protected dms(dvu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(d, Integer.valueOf(7)).b(e, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fal b_(dvo $$0, dek $$1, jh $$2) {
-      return fai.a();
-   }
-
-   @Override
-   protected boolean f(dvo $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
-   }
-
-   @Override
-   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if (this.o($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   public void a(dfm $$0, jh $$1, dvv $$2, @Nullable bvh $$3, cwm $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cyv $$5 = $$4.a(ku.Y, cyv.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   protected boolean o(dvo $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
-
    @Override
-   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   protected int i_(dvo $$0) {
-      return 1;
-   }
-
-   @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      if ($$0.c(f)) {
-         $$2.a($$3, erp.c, erp.c.a($$1));
-      }
-
-      int $$8 = r($$6) + 1;
-      if ($$8 != 1 || $$0.c(d) != $$8) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dvo a(dvo $$0, dfg $$1, jh $$2) {
-      int $$3 = 7;
-      jh.a $$4 = new jh.a();
-
-      for (jm $$5 : jm.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.b(d, Integer.valueOf($$3));
-   }
-
-   private static int r(dvo $$0) {
-      return q($$0).orElse(7);
-   }
-
-   public static OptionalInt q(dvo $$0) {
-      if ($$0.a(axd.u)) {
-         return OptionalInt.of(0);
+   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dub $$5) {
+         $$5.t();
+         return bsk.a;
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+         return bsk.e;
       }
    }
 
    @Override
-   protected ero b_(dvo $$0) {
-      return $$0.c(f) ? erp.c.a(false) : super.b_($$0);
+   protected bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
+      if ($$1.c(b)) {
+         return bsk.f;
+      } else {
+         cwm $$7 = $$4.b($$5);
+         bsk $$8 = cwr.a($$2, $$3, $$7, $$4);
+         return (bsk)(!$$8.a() ? bsk.f : $$8);
+      }
    }
 
    @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      if ($$1.r($$2.d())) {
-         if ($$3.a(15) == 1) {
-            jh $$4 = $$2.e();
-            dvo $$5 = $$1.a_($$4);
-            if (!$$5.t() || !$$5.c($$1, $$4, jm.b)) {
-               azr.a($$1, $$2, $$3, ls.l);
-            }
+   protected void a(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dub $$5) {
+            $$5.t();
          }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void a(dvp.a<dij, dvo> $$0) {
-      $$0.a(d, e, f);
+   public dsy a(jh $$0, dvv $$1) {
+      return new dub($$0, $$1);
    }
 
    @Override
-   public dvo a(czw $$0) {
-      ero $$1 = $$0.q().b_($$0.a());
-      dvo $$2 = this.m().b(e, Boolean.valueOf(true)).b(f, Boolean.valueOf($$1.a() == erp.c));
-      return a($$2, $$0.q(), $$0.a());
+   public boolean f_(dvv $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dvv $$0, der $$1, jh $$2, jm $$3) {
+      if ($$1.c_($$2) instanceof dub $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dvv $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvv $$0, dfm $$1, jh $$2) {
+      return $$1.c_($$2) instanceof dub $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected dow a_(dvv $$0) {
+      return dow.c;
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
+      return $$1.c(b) ? a($$2, dta.e, dub::a) : null;
    }
 }

@@ -1,30 +1,62 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class eut extends euy {
-   public static final MapCodec<eut> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lz.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eut::new)
-   );
-   private final jq<cwb> j;
+public class eut {
+   private final azs a;
+   private final exh b;
+   private final Optional<jr.a> c;
+   private final Set<ali<?>> d;
 
-   private eut(jq<cwb> $$0, int $$1, int $$2, List<exr> $$3, List<evu> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public eut(azs $$0, exh $$1, jr.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public eux a() {
-      return euu.c;
+   public eut(azs $$0, exh $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   public void a(Consumer<cwf> $$0, eug $$1) {
-      $$0.accept(new cwf(this.j));
+   private eut(azs $$0, exh $$1, Optional<jr.a> $$2, Set<ali<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static euy.a<?> a(dfe $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eut($$0.j().f(), $$1, $$2, $$3, $$4));
+   public eut a(String $$0) {
+      return new eut(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public eut a(String $$0, ali<?> $$1) {
+      Set<ali<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new eut(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(ali<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(euo $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jr.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public eut a(exh $$0) {
+      return new eut(this.a, $$0, this.c, this.d);
+   }
+
+   public azs c() {
+      return this.a;
    }
 }

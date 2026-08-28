@@ -1,7 +1,7 @@
-public enum dwg implements baj {
-   a("single"),
-   b("left"),
-   c("right");
+public enum dwg implements bai {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
@@ -12,13 +12,5 @@ public enum dwg implements baj {
    @Override
    public String c() {
       return this.d;
-   }
-
-   public dwg a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
    }
 }

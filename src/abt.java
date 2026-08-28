@@ -1,15 +1,17 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public class abt {
+   public static final zs<abo> a = a("finish_configuration");
+   public static final zs<abp> b = a("registry_data");
+   public static final zs<abs> c = a("update_enabled_features");
+   public static final zs<abr> d = a("select_known_packs");
+   public static final zs<abq> e = a("reset_chat");
+   public static final zs<abw> f = b("finish_configuration");
+   public static final zs<abx> g = b("select_known_packs");
 
-public record abt(List<auk> b) implements zs<abp> {
-   public static final zj<ByteBuf, abt> a = zj.a(auk.a.a(zh.a()), abt::b, abt::new);
-
-   @Override
-   public zu<abt> a() {
-      return abv.d;
+   private static <T extends zq<abn>> zs<T> a(String $$0) {
+      return new zs<>(zr.b, alj.b($$0));
    }
 
-   public void a(abp $$0) {
-      $$0.a(this);
+   private static <T extends zq<abv>> zs<T> b(String $$0) {
+      return new zs<>(zr.a, alj.b($$0));
    }
 }

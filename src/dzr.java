@@ -1,24 +1,19 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dzr {
-   int as();
+public record dzr(jq<dzq> e, dxr f) {
+   public static final Codec<dzr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dzq.k.fieldOf("type").forGetter(dzr::a), dxr.a.fieldOf("generator").forGetter(dzr::b)).apply($$0, $$0.stable(dzr::new))
+   );
+   public static final ali<dzr> b = ali.a(ma.bc, alj.b("overworld"));
+   public static final ali<dzr> c = ali.a(ma.bc, alj.b("the_nether"));
+   public static final ali<dzr> d = ali.a(ma.bc, alj.b("the_end"));
 
-   UUID cI();
+   public jq<dzq> a() {
+      return this.e;
+   }
 
-   jh dy();
-
-   ezm cT();
-
-   void a(dzs var1);
-
-   Stream<? extends dzr> dd();
-
-   Stream<? extends dzr> de();
-
-   void b(bui.c var1);
-
-   boolean dW();
-
-   boolean dX();
+   public dxr b() {
+      return this.f;
+   }
 }

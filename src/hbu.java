@@ -1,20 +1,28 @@
-import java.util.UUID;
+import java.util.Locale;
 
-public interface hbu {
-   void a(UUID var1, hbu.b var2);
+public record hbu(alj b, String c) {
+   public static final String a = "inventory";
 
-   void a(UUID var1, hbu.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public hbu(alj b, String c) {
+      c = a(c);
+      this.b = b;
+      this.c = c;
    }
 
-   public static enum b {
-      a,
-      b;
+   public static hbu a(alj $$0) {
+      return new hbu($$0, "inventory");
+   }
+
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.b + "#" + this.c;
    }
 }

@@ -1,20 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class epl extends eqa {
-   public static final MapCodec<epl> a = MapCodec.unit(() -> epl.b);
-   public static final epl b = new epl();
+public class epl extends eqh {
+   public static final MapCodec<epl> a = dvv.a.xmap(dvu.a::b, diq::m).listOf().fieldOf("blocks").xmap(epl::new, $$0 -> $$0.e);
+   public static final epl b = new epl(ImmutableList.of(dis.pa));
+   public static final epl c = new epl(ImmutableList.of(dis.a));
+   public static final epl d = new epl(ImmutableList.of(dis.a, dis.pa));
+   private final ImmutableList<diq> e;
+
+   public epl(List<diq> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
 
    @Nullable
    @Override
-   public eqd.c a(dfi $$0, jh $$1, jh $$2, eqd.c $$3, eqd.c $$4, epz $$5) {
-      jh $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dil.H);
-      return $$7 && !dij.a($$4.b().f($$0, $$6)) ? new eqd.c($$6, dil.H.m(), $$4.c()) : $$4;
+   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected eqc<?> a() {
-      return eqc.m;
+   protected eqj<?> a() {
+      return eqj.e;
    }
 }

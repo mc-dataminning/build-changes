@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hdc extends hdb {
+   boolean m();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hdc {
+   void q();
 }

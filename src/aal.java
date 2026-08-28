@@ -1,11 +1,16 @@
-public interface aal extends ace {
-   void a(aao var1);
+import com.google.common.collect.Lists;
 
-   void a(aap var1);
+public record aal(aat b) implements zq<aaj> {
+   private static final int c = 32767;
+   public static final zh<wg, aal> a = aat.<wg>a($$0 -> aau.a($$0, 32767), ae.a(Lists.newArrayList(new aat.c[]{new aat.c<>(aar.b, aar.a)}), $$0 -> {
+   })).a(aal::new, aal::b);
 
-   void a(aan var1);
+   @Override
+   public zs<aal> a() {
+      return aai.m;
+   }
 
-   void a(aaq var1);
-
-   void a(aam var1);
+   public void a(aaj $$0) {
+      $$0.a(this);
+   }
 }

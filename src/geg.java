@@ -1,73 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
 import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public final class geg {
-   private static final int a = 1024;
-   private final gdx b;
-   private final ged c;
-   private final gds d;
-   @Nullable
-   private gec e;
-
-   public geg(gdx $$0, ged $$1, gds $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public interface geg {
+   static geg a(gem $$0, UserApiService $$1) {
+      return new geg.b($$0, $$1);
    }
 
-   public static geg a(ged $$0, UserApiService $$1) {
-      gds $$2 = new gds(1024);
-      gdx $$3 = gdx.a($$0, $$1);
-      return new geg($$3, $$0, $$2);
+   CompletableFuture<Unit> a(UUID var1, geo var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public void a(fjx $$0, frp $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gec $$4 = this.e.b();
-         $$0.a(
-            new fqn(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xl.c("gui.abuseReport.draft.edit"),
-               xl.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   public static class a extends yj {
+      public a(xj $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   public gdx a() {
-      return this.b;
-   }
+   public static record b(gem a, UserApiService b) implements geg {
+      private static final xj c = xj.c("gui.abuseReport.send.service_unavailable");
+      private static final xj d = xj.c("gui.abuseReport.send.http_error");
+      private static final xj e = xj.c("gui.abuseReport.send.json_error");
 
-   public gds b() {
-      return this.d;
-   }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, geo $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-   public boolean a(ged $$0) {
-      return Objects.equals(this.c, $$0);
-   }
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xj $$5 = this.a(var7);
+               throw new CompletionException(new geg.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xj $$7 = this.a(var8);
+               throw new CompletionException(new geg.a($$7, var8));
+            }
+         }, ae.h());
+      }
 
-   public void a(@Nullable gec $$0) {
-      this.e = $$0;
-   }
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
 
-   public boolean c() {
-      return this.e != null;
-   }
+      private xj a(MinecraftClientHttpException $$0) {
+         return xj.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
 
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      private xj a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gem c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

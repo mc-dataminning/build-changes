@@ -1,57 +1,46 @@
-import java.util.List;
+public record abk(jh c, float d, float e, float f, float g, float h) implements aat {
+   public static final zh<wg, abk> a = aat.a(abk::a, abk::new);
+   public static final aat.b<abk> b = aat.a("debug/worldgen_attempt");
 
-public record abk(alk<dff> c, elt d, List<abk.a> e) implements aav {
-   public static final zj<wi, abk> a = aav.a(abk::a, abk::new);
-   public static final aav.b<abk> b = aav.a("debug/structures");
-
-   private abk(wi $$0) {
-      this($$0.a(ma.bb), b($$0), $$0.a(abk.a::new));
+   private abk(wg $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   private void a(wi $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(wg $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public aav.b<abk> a() {
+   public aat.b<abk> a() {
       return b;
    }
 
-   static elt b(wi $$0) {
-      return new elt($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(wi $$0, elt $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public alk<dff> b() {
+   public jh b() {
       return this.c;
    }
 
-   public elt c() {
+   public float c() {
       return this.d;
    }
 
-   public List<abk.a> d() {
+   public float d() {
       return this.e;
    }
 
-   public static record a(elt a, boolean b) {
-      public a(wi $$0) {
-         this(abk.b($$0), $$0.readBoolean());
-      }
+   public float e() {
+      return this.f;
+   }
 
-      public void a(wi $$0) {
-         abk.a($$0, this.a);
-         $$0.a(this.b);
-      }
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

@@ -1,56 +1,101 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class hdr {
-   private final avh a;
-   private final Map<all, CompletableFuture<fcb>> b = Maps.newHashMap();
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public hdr(avh $$0) {
-      this.a = $$0;
-   }
+   public static class a extends Thread {
+      private final hdr.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public CompletableFuture<fcb> a(all $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+      public a(hdr.b $$0) throws IOException {
+         super("LanServerDetector #" + hdr.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(hdr.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
+
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
             try {
-               fcb var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hdm $$2 = new hdo($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fcb($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hdr.b.error("Couldn't ping server", var6);
+               break;
             }
-         }, ae.i()));
-   }
 
-   public CompletableFuture<hdj> a(all $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hdj)($$1 ? new hdp(hdo::new, $$2) : new hdo($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hdr.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
          }
-      }, ae.i());
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
+      }
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fcb::b));
-      this.b.clear();
-   }
+   public static class b {
+      private final List<hdq> a = Lists.newArrayList();
+      private boolean b;
 
-   public CompletableFuture<?> a(Collection<hcn> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+      @Nullable
+      public synchronized List<hdq> a() {
+         if (this.b) {
+            List<hdq> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
+
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hds.a($$0);
+         String $$3 = hds.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hdq $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hdq($$2, $$3));
+               this.b = true;
+            }
+         }
+      }
    }
 }

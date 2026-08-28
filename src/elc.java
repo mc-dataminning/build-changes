@@ -1,23 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class elc extends eli {
-   private static final elc c = new elc();
-   public static final MapCodec<elc> a = MapCodec.unit(() -> c);
+public enum elc implements bai {
+   a(jm.b, 1, "ceiling"),
+   b(jm.a, -1, "floor");
 
-   public static elc a() {
-      return c;
+   public static final Codec<elc> c = bai.a(elc::values);
+   private final jm d;
+   private final int e;
+   private final String f;
+
+   private elc(final jm $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public jm a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public Stream<jh> a_(elg $$0, azv $$1, jh $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new jh($$3, $$2.v(), $$4));
-   }
-
-   @Override
-   public elj<?> b() {
-      return elj.m;
+   public String c() {
+      return this.f;
    }
 }

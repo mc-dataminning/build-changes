@@ -1,54 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eei extends eep<egq> {
-   public eei(Codec<egq> $$0) {
-      super($$0);
+public record eei<FC extends eha, F extends eew<FC>>(F d, FC e) {
+   public static final Codec<eei<?, ?>> a = lz.O.q().dispatch($$0 -> $$0.d, eew::a);
+   public static final Codec<jq<eei<?, ?>>> b = alf.a(ma.aJ, a);
+   public static final Codec<ju<eei<?, ?>>> c = kf.a(ma.aJ, a);
+
+   public boolean a(dgk $$0, dxr $$1, azu $$2, jh $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<eei<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(eer<egq> $$0) {
-      egq $$1 = $$0.f();
-      jh $$2 = $$0.e();
-      dgd $$3 = $$0.b();
-      azv $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      jh.a $$10 = new jh.a();
-
-      for (jh $$11 : jh.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   protected boolean a(egq $$0, dgd $$1, azv $$2, int $$3, int $$4, jh.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
+   public F b() {
+      return this.d;
+   }
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dvo $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
-      }
-
-      return $$6;
+   public FC c() {
+      return this.e;
    }
 }

@@ -1,123 +1,136 @@
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class anq {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("commands.fillbiome.toobig", $$0, $$1));
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xj.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xj.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xj.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xj.c("commands.forceload.removed.failure"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("fillbiome").requires($$0x -> $$0x.c(2)))
-            .then(
-               ex.a("from", gs.a())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("forceload").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ex.a("to", gs.a())
+                     ex.a("add")
                         .then(
-                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, ma.aG))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", ma.aG), $$0xx -> true)))
-                              .then(
-                                 ex.a("replace")
-                                    .then(
-                                       ex.a("filter", fz.a($$1, ma.aG))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ew)$$0x.getSource(),
-                                                   gs.a($$0x, "from"),
-                                                   gs.a($$0x, "to"),
-                                                   fv.a($$0x, "biome", ma.aG),
-                                                   fz.a($$0x, "filter", ma.aG)::test
-                                                )
-                                          )
-                                    )
-                              )
+                           ((RequiredArgumentBuilder)ex.a("from", gt.a())
+                                 .executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "from"), true)))
+                              .then(ex.a("to", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), true)))
                         )
-                  )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ex.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("from", gt.a())
+                                 .executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "from"), false)))
+                              .then(ex.a("to", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), false)))
+                        ))
+                     .then(ex.a("all").executes($$0x -> b((ew)$$0x.getSource())))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)ex.a("query").executes($$0x -> a((ew)$$0x.getSource())))
+                  .then(ex.a("pos", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "pos"))))
             )
       );
    }
 
-   private static int a(int $$0) {
-      return kb.c(kb.a($$0));
-   }
-
-   private static jh a(jh $$0) {
-      return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static dgk a(MutableInt $$0, dxj $$1, elt $$2, jq<dgh> $$3, Predicate<jq<dgh>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = kb.c($$5);
-         int $$10 = kb.c($$6);
-         int $$11 = kb.c($$7);
-         jq<dgh> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, jh $$1, jh $$2, jq<dgh> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, jh $$1, jh $$2, jq<dgh> $$3, Predicate<jq<dgh>> $$4, Consumer<Supplier<xl>> $$5) {
-      jh $$6 = a($$1);
-      jh $$7 = a($$2);
-      elt $$8 = elt.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.ac().c(dfb.z);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+   private static int a(ew $$0, arb $$1) throws CommandSyntaxException {
+      des $$2 = $$1.a();
+      arp $$3 = $$0.e();
+      ali<dfm> $$4 = $$3.ag();
+      boolean $$5 = $$3.x().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> xj.a("commands.forceload.query.success", xj.a($$2), xj.a($$4.a())), false);
+         return 1;
       } else {
-         List<dxj> $$11 = new ArrayList<>();
-
-         for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
-            for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
-               dxj $$14 = $$0.a($$13, $$12, dyk.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
-               }
-
-               $$11.add($$14);
-            }
-         }
-
-         MutableInt $$15 = new MutableInt(0);
-
-         for (dxj $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
-            $$16.a(true);
-         }
-
-         $$0.l().a.a($$11);
-         $$5.accept(() -> xl.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
+         throw c.create($$2, $$4.a());
       }
    }
 
-   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dgh> $$3, Predicate<jq<dgh>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
+   private static int a(ew $$0) {
+      arp $$1 = $$0.e();
+      ali<dfm> $$2 = $$1.ag();
+      LongSet $$3 = $$1.x();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(des::new).map(des::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> xj.a("commands.forceload.list.single", xj.a($$2.a()), $$5), false);
+         } else {
+            $$0.a(() -> xj.a("commands.forceload.list.multiple", $$4, xj.a($$2.a()), $$5), false);
+         }
       } else {
-         return (Integer)$$5.left().get();
+         $$0.b(xj.a("commands.forceload.added.none", xj.a($$2.a())));
+      }
+
+      return $$4;
+   }
+
+   private static int b(ew $$0) {
+      arp $$1 = $$0.e();
+      ali<dfm> $$2 = $$1.ag();
+      LongSet $$3 = $$1.x();
+      $$3.forEach($$1x -> $$1.a(des.a($$1x), des.b($$1x), false));
+      $$0.a(() -> xj.a("commands.forceload.removed.all", xj.a($$2.a())), true);
+      return 0;
+   }
+
+   private static int a(ew $$0, arb $$1, arb $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = kj.a($$4);
+         int $$9 = kj.a($$5);
+         int $$10 = kj.a($$6);
+         int $$11 = kj.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
+         } else {
+            arp $$13 = $$0.e();
+            ali<dfm> $$14 = $$13.ag();
+            des $$15 = null;
+            int $$16 = 0;
+
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
+                     $$16++;
+                     if ($$15 == null) {
+                        $$15 = new des($$17, $$18);
+                     }
+                  }
+               }
+            }
+
+            des $$20 = $$15;
+            int $$21 = $$16;
+            if ($$21 == 0) {
+               throw ($$3 ? d : e).create();
+            } else {
+               if ($$21 == 1) {
+                  $$0.a(() -> xj.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xj.a($$20), xj.a($$14.a())), true);
+               } else {
+                  des $$22 = new des($$8, $$9);
+                  des $$23 = new des($$10, $$11);
+                  $$0.a(() -> xj.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xj.a($$14.a()), xj.a($$22), xj.a($$23)), true);
+               }
+
+               return $$21;
+            }
+         }
+      } else {
+         throw gs.b.create();
       }
    }
 }

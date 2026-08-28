@@ -1,40 +1,67 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdl extends ccc {
-   private final cnx a;
+public class cdl extends ccf {
+   private static final int a = 10;
+   private final bvp b;
+   private final int c;
+   @Nullable
+   private jh d;
 
-   public cdl(cnx $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccc.a.c, ccc.a.a));
+   public cdl(bvp $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(ccf.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.bN()) {
+      if (this.b.cY()) {
          return false;
-      } else if (this.a.bl()) {
+      } else if (this.b.dV().T()) {
          return false;
-      } else if (!this.a.aL()) {
-         return false;
-      } else if (this.a.U) {
+      } else if (this.b.dY().a(this.c) != 0) {
          return false;
       } else {
-         cor $$0 = this.a.gv();
-         if ($$0 == null) {
+         arp $$0 = (arp)this.b.dV();
+         jh $$1 = this.b.dv();
+         if (!$$0.a($$1, 6)) {
             return false;
          } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+            ezy $$2 = cgf.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kj.a($$1x))));
+            this.d = $$2 == null ? null : jh.a((ka)$$2);
+            return this.d != null;
          }
       }
    }
 
    @Override
-   public void d() {
-      this.a.P().o();
+   public boolean c() {
+      return this.d != null && !this.b.L().m() && this.b.L().i().equals(this.d);
    }
 
    @Override
-   public void e() {
-      this.a.a(null);
+   public void a() {
+      if (this.d != null) {
+         cet $$0 = this.b.L();
+         if ($$0.m() && !this.d.a(this.b.dt(), 10.0)) {
+            ezy $$1 = ezy.c(this.d);
+            ezy $$2 = this.b.dt();
+            ezy $$3 = $$2.d($$1);
+            $$1 = $$3.c(0.4).e($$1);
+            ezy $$4 = $$1.d($$2).d().c(10.0).e($$2);
+            jh $$5 = jh.a((ka)$$4);
+            $$5 = this.b.dV().a(ebq.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
+      }
+   }
+
+   private void h() {
+      azu $$0 = this.b.dY();
+      jh $$1 = this.b.dV().a(ebq.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.L().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

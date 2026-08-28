@@ -1,47 +1,60 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class qf<T> extends qk<T> {
-   private final Function<T, alk<T>> d;
-
-   public qf(mi $$0, alk<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, Function<T, alk<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+public class qf extends qi<cky> {
+   public qf(mi $$0, CompletableFuture<js.a> $$1) {
+      super($$0, ma.X, $$1);
    }
 
-   public qf(mi $$0, alk<? extends kd<T>> $$1, CompletableFuture<js.a> $$2, CompletableFuture<qk.c<T>> $$3, Function<T, alk<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected qf.a<T> a(axt<T> $$0) {
-      axq $$1 = this.c($$0);
-      return new qf.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends qk.b<T> {
-      private final Function<T, alk<T>> a;
-
-      a(axq $$0, Function<T, alk<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public qf.a<T> a(axt<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final qf.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final qf.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(js.a $$0) {
+      this.b(axm.a)
+         .a(
+            ckz.a,
+            ckz.b,
+            ckz.c,
+            ckz.d,
+            ckz.e,
+            ckz.f,
+            ckz.g,
+            ckz.h,
+            ckz.i,
+            ckz.j,
+            ckz.k,
+            ckz.l,
+            ckz.m,
+            ckz.n,
+            ckz.o,
+            ckz.p,
+            ckz.q,
+            ckz.r,
+            ckz.s,
+            ckz.t,
+            ckz.u,
+            ckz.v,
+            ckz.w,
+            ckz.x,
+            ckz.y,
+            ckz.z,
+            ckz.E,
+            ckz.F,
+            ckz.G,
+            ckz.H,
+            ckz.I,
+            ckz.J,
+            ckz.K,
+            ckz.L,
+            ckz.M,
+            ckz.N,
+            ckz.O,
+            ckz.P,
+            ckz.Q,
+            ckz.R,
+            ckz.S,
+            ckz.T,
+            ckz.U,
+            ckz.V,
+            ckz.W,
+            ckz.X
+         );
    }
 }

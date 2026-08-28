@@ -14,11 +14,11 @@ public class mw implements mg {
    private static final mw.b f = new mw.b(true, true, true);
    private static final mw.b g = new mw.b(true, true, false);
    private static final mw.b h = new mw.b(false, true, true);
-   private static final Map<alk<? extends kd<?>>, mw.b> i = Map.of(ma.bh, e, ma.bg, e, ma.bd, f, ma.be, f, ma.bf, f);
+   private static final Map<ali<? extends kd<?>>, mw.b> i = Map.of(ma.bh, e, ma.bg, e, ma.bd, f, ma.be, f, ma.bf, f);
    private static final Map<String, mw.a> j = Map.of(
       "structure", new mw.a(mw.c.a, new mw.b(true, false, true)), "function", new mw.a(mw.c.b, new mw.b(true, true, true))
    );
-   static final Codec<alk<? extends kd<?>>> k = all.a.xmap(alk::a, alk::a);
+   static final Codec<ali<? extends kd<?>>> k = alj.a.xmap(ali::a, ali::a);
 
    public mw(mi $$0) {
       this.d = $$0;
@@ -36,19 +36,19 @@ public class mw implements mg {
       return "Datapack Structure";
    }
 
-   private void a(Map<alk<? extends kd<?>>, mw.b> $$0, alk<? extends kd<?>> $$1, mw.b $$2) {
+   private void a(Map<ali<? extends kd<?>>, mw.b> $$0, ali<? extends kd<?>> $$1, mw.b $$2) {
       mw.b $$3 = $$0.putIfAbsent($$1, $$2);
       if ($$3 != null) {
          throw new IllegalStateException("Duplicate entry for key " + $$1.a());
       }
    }
 
-   private Map<alk<? extends kd<?>>, mw.b> b() {
-      Map<alk<? extends kd<?>>, mw.b> $$0 = new HashMap<>();
+   private Map<ali<? extends kd<?>>, mw.b> b() {
+      Map<ali<? extends kd<?>>, mw.b> $$0 = new HashMap<>();
       lz.az.forEach($$1 -> this.a($$0, $$1.g(), h));
-      alg.a.forEach($$1 -> this.a($$0, $$1.a(), g));
-      alg.b.forEach($$1 -> this.a($$0, $$1.a(), g));
-      i.forEach(($$1, $$2) -> this.a($$0, (alk<? extends kd<?>>)$$1, $$2));
+      ale.a.forEach($$1 -> this.a($$0, $$1.a(), g));
+      ale.b.forEach($$1 -> this.a($$0, $$1.a(), g));
+      i.forEach(($$1, $$2) -> this.a($$0, (ali<? extends kd<?>>)$$1, $$2));
       return $$0;
    }
 
@@ -90,11 +90,11 @@ public class mw implements mg {
       }
    }
 
-   static enum c implements baj {
+   static enum c implements bai {
       a("structure"),
       b("mcfunction");
 
-      public static final Codec<mw.c> c = baj.a(mw.c::values);
+      public static final Codec<mw.c> c = bai.a(mw.c::values);
       private final String d;
 
       private c(final String $$0) {
@@ -107,7 +107,7 @@ public class mw implements mg {
       }
    }
 
-   static record d(Map<alk<? extends kd<?>>, mw.b> b, Map<String, mw.a> c) {
+   static record d(Map<ali<? extends kd<?>>, mw.b> b, Map<String, mw.a> c) {
       public static final Codec<mw.d> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   Codec.unboundedMap(mw.k, mw.b.b).fieldOf("registries").forGetter(mw.d::a),
@@ -116,7 +116,7 @@ public class mw implements mg {
                .apply($$0, mw.d::new)
       );
 
-      public Map<alk<? extends kd<?>>, mw.b> a() {
+      public Map<ali<? extends kd<?>>, mw.b> a() {
          return this.b;
       }
 

@@ -1,6 +1,3 @@
-public interface wx extends wr {
-   @Override
-   default zt a() {
-      return zt.a;
-   }
+public interface wx extends wp {
+   void d();
 }

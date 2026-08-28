@@ -1,32 +1,24 @@
-public class fuf extends fuj {
-   private static final xl b = xl.c("multiplayerWarning.header").a(n.r);
-   private static final xl c = xl.c("multiplayerWarning.message");
-   private static final xl d = xl.c("multiplayerWarning.check");
-   private static final xl s = b.f().f("\n").b(c);
-   private final frp u;
+import org.joml.Matrix4f;
 
-   public fuf(frp $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class fuf implements fug {
+   private final ayy a;
+
+   public fuf(ayy $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected fpm m() {
-      fpp $$0 = fpp.e().a(8);
-      $$0.a(flw.a(xk.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.ay();
-         }
-
-         this.m.a(new fue(this.u));
-      }).a());
-      $$0.a(flw.a(xk.k, $$0x -> this.aP_()).a());
-      return $$0;
+   public int b(flo $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.u);
+   public int a(flo $$0) {
+      return 10;
+   }
+
+   @Override
+   public void a(flo $$0, int $$1, int $$2, Matrix4f $$3, gjg.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, flo.a.a, 0, 15728880);
    }
 }

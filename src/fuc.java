@@ -1,34 +1,26 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fuc {
-   private static final all f = all.b("tooltip/background");
-   private static final all g = all.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public class fuc implements fuh {
+   private final fql a;
 
-   public static void a(flj $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable all $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(gjh::B, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(gjh::B, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public fuc(fql $$0) {
+      this.a = $$0;
    }
 
-   private static all a(@Nullable all $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
-   }
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-   private static all b(@Nullable all $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

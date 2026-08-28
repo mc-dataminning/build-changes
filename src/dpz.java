@@ -1,53 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpz extends dij {
+public class dpz extends diq {
    public static final MapCodec<dpz> a = b(dpz::new);
-   private static final fal b = dij.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 8;
+   public static final dwu c = dwl.aF;
+   protected static final fas[] d = new fas[]{
+      fap.a(),
+      diq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      diq.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dpz> a() {
       return a;
    }
 
-   public dpz(dvn.d $$0) {
+   protected dpz(dvu.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      return dij.a($$1, $$2.d(), jm.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
-      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dil.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(ls.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      jh.a $$10 = new jh.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + azn.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azn.a($$3, -10, 10));
-         dvo $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(ls.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected boolean a(dvv $$0, esk $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return b;
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected fas b(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected fas b_(dvv $$0, der $$1, jh $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected fas c(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean g_(dvv $$0) {
+      return true;
+   }
+
+   @Override
+   protected float c(dvv $$0, der $$1, jh $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
+      dvv $$3 = $$1.a_($$2.e());
+      if ($$3.a(axc.cq)) {
+         return false;
+      } else {
+         return $$3.a(axc.cr) ? true : diq.a($$3.g($$1, $$2.e()), jm.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
+      return !$$0.a($$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
+      if ($$1.a(dfv.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dvv $$0, dad $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.j()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == jm.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dvv a(dad $$0) {
+      dvv $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,14 +1,32 @@
-public class fun extends fus {
-   private static fka<?>[] a(fkb $$0) {
-      return new fka[]{$$0.R(), $$0.S()};
-   }
+public class fun extends fur {
+   private static final xj b = xj.c("multiplayerWarning.header").a(n.r);
+   private static final xj c = xj.c("multiplayerWarning.message");
+   private static final xj d = xj.c("multiplayerWarning.check");
+   private static final xj s = b.f().f("\n").b(c);
+   private final frw u;
 
-   public fun(frp $$0, fkb $$1) {
-      super($$0, $$1, xl.c("options.font.title"));
+   public fun(frw $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   protected fpt m() {
+      fpw $$0 = fpw.e().a(8);
+      $$0.a(fmd.a(xi.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.ay();
+         }
+
+         this.m.a(new fum(this.u));
+      }).a());
+      $$0.a(fmd.a(xi.k, $$0x -> this.aO_()).a());
+      return $$0;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.u);
    }
 }

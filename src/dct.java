@@ -1,22 +1,44 @@
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dct(jq<awn> d, brk e, brk f) implements dcn {
+public record dct(alj b, jq<bwk> d, dck e, bwn.a f) implements dcv {
    public static final MapCodec<dct> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               awn.b.fieldOf("sound").forGetter(dct::b),
-               brk.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dct::c),
-               brk.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dct::d)
+               alj.a.fieldOf("id").forGetter(dct::b),
+               bwk.a.fieldOf("attribute").forGetter(dct::c),
+               dck.b.fieldOf("amount").forGetter(dct::d),
+               bwn.a.f.fieldOf("operation").forGetter(dct::e)
             )
             .apply($$0, dct::new)
    );
 
+   private alj a(bai $$0) {
+      return this.b.g("/" + $$0.c());
+   }
+
+   public bwn a(int $$0, bai $$1) {
+      return new bwn(this.a($$1), (double)this.d().a($$0), this.e());
+   }
+
    @Override
-   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
-      azv $$5 = $$3.eb();
-      if (!$$3.bd()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.do(), this.e.a($$5), this.f.a($$5));
+   public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof bvh $$6) {
+         $$6.eW().a(this.a($$1, $$2.b()));
       }
+   }
+
+   @Override
+   public void a(dcc $$0, bul $$1, ezy $$2, int $$3) {
+      if ($$1 instanceof bvh $$4) {
+         $$4.eW().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<jq<bwk>, bwn> a(int $$0, but $$1) {
+      HashMultimap<jq<bwk>, bwn> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (bai)$$1));
+      return $$2;
    }
 
    @Override
@@ -24,15 +46,15 @@ public record dct(jq<awn> d, brk e, brk f) implements dcn {
       return a;
    }
 
-   public jq<awn> b() {
+   public jq<bwk> c() {
       return this.d;
    }
 
-   public brk c() {
+   public dck d() {
       return this.e;
    }
 
-   public brk d() {
+   public bwn.a e() {
       return this.f;
    }
 }

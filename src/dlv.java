@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class dlv extends dij {
-   protected final jm a;
-   protected final boolean b;
-   protected final fal d;
+public class dlv extends diz implements dit {
+   public static final MapCodec<dlv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ali.a(ma.aJ).fieldOf("feature").forGetter($$0x -> $$0x.e), lz.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dlv::new)
+   );
+   protected static final fas b = diq.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final diq d;
+   private final ali<eei<?, ?>> e;
 
-   protected dlv(dvn.d $$0, jm $$1, fal $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<dlv> a() {
+      return a;
+   }
+
+   protected dlv(ali<eei<?, ?>> $$0, diq $$1, dvu.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dlv> a();
-
-   @Nullable
-   @Override
-   public dvo a(czw $$0) {
-      dvo $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dvo b(azv $$0) {
-      return this.m();
+   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
-      jh $$3 = $$2.a(this.a.g());
-      dvo $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected boolean b(dvv $$0, der $$1, jh $$2) {
+      return $$0.a(axc.aN) || $$0.a(dis.fl) || $$0.a(dis.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends jq<eei<?, ?>>> a(dfp $$0) {
+      return $$0.J_().e(ma.aJ).a(this.e);
    }
 
    @Override
-   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean o(dvo $$0) {
-      return true;
+   public boolean b(dfp $$0, jh $$1, dvv $$2) {
+      dvv $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
-      return this.d;
+   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
-   protected abstract dlx c();
-
-   protected abstract dij b();
+   @Override
+   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
+      this.a($$0).ifPresent($$3x -> ((eei)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   }
 }

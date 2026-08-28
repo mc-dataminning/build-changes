@@ -1,53 +1,43 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class cfe<T extends bve> extends cfo<T> {
-   private final BiPredicate<T, bve> a;
-   private final Predicate<T> b;
-   private final cei<Boolean> c;
-   private final int d;
-
-   public cfe(int $$0, BiPredicate<T, bve> $$1, Predicate<T> $$2, cei<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+public class cfe extends cfr<cnc> {
+   @Override
+   public Set<cel<?>> a() {
+      return ImmutableSet.of(cel.h, cel.aw, cel.aq, cel.ap, cel.as, cel.at, new cel[0]);
    }
 
-   @Override
-   protected void a(arq $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
+   protected void a(arp $$0, cnc $$1) {
+      bwj<?> $$2 = $$1.eb();
+      $$2.a(cel.aw, this.b($$0, $$1));
+      Optional<cni> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cnc> $$5 = Lists.newArrayList();
+      cen $$6 = $$2.c(cel.h).orElse(cen.a());
 
-   @Override
-   public Set<cei<?>> a() {
-      return Set.of(cei.g);
-   }
+      for (bvh $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cni || $$0x instanceof cnc))) {
+         if ($$7 instanceof cni $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bve>> $$1 = $$0.ee().c(cei.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+         if ($$7 instanceof cnc $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(cel.aq, $$3);
+      $$2.a(cel.ap, $$5);
+      $$2.a(cel.as, $$4);
+      $$2.a(cel.at, $$5.size());
    }
 
-   public void b(T $$0) {
-      $$0.ee().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.ee().b(this.c);
+   private Optional<jh> b(arp $$0, cnc $$1) {
+      return jh.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(axc.aT));
    }
 }

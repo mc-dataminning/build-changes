@@ -1,97 +1,176 @@
-import com.google.common.collect.ImmutableList;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
+import java.io.DataInput;
+import java.io.DataOutput;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
 
-public abstract class ui {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new Gson();
-   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
-   public static final String a = "en_us";
-   private static volatile ui e = c();
+public class ui extends uk<uj> {
+   private static final int b = 24;
+   public static final vk<ui> a = new vk.b<ui>() {
+      public ui a(DataInput $$0, uu $$1) throws IOException {
+         return new ui(d($$0, $$1));
+      }
 
-   private static ui c() {
-      uh $$0 = uh.a();
-      Map<String, String> $$1 = new HashMap<>();
-      BiConsumer<String, String> $$2 = $$1::put;
-      a($$2, "/assets/minecraft/lang/en_us.json");
-      $$0.a($$1);
-      final Map<String, String> $$3 = Map.copyOf($$1);
-      return new ui() {
-         @Override
-         public String a(String $$0, String $$1) {
-            return $$3.getOrDefault($$0, $$1);
-         }
+      @Override
+      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
 
-         @Override
-         public boolean b(String $$0) {
-            return $$3.containsKey($$0);
-         }
+      private static byte[] d(DataInput $$0, uu $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(1L, (long)$$2);
+         byte[] $$3 = new byte[$$2];
+         $$0.readFully($$3);
+         return $$3;
+      }
 
-         @Override
-         public boolean b() {
-            return false;
-         }
+      @Override
+      public void b(DataInput $$0, uu $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 1);
+      }
 
-         @Override
-         public ayz a(xq $$0) {
-            return $$1 -> $$0.a(($$1x, $$2) -> bai.c($$2, $$1x, $$1) ? Optional.empty() : xq.a, yi.a).isPresent();
-         }
-      };
+      @Override
+      public String a() {
+         return "BYTE[]";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Byte_Array";
+      }
+   };
+   private byte[] c;
+
+   public ui(byte[] $$0) {
+      this.c = $$0;
    }
 
-   private static void a(BiConsumer<String, String> $$0, String $$1) {
-      try (InputStream $$2 = ui.class.getResourceAsStream($$1)) {
-         a($$2, $$0);
-      } catch (JsonParseException | IOException var7) {
-         b.error("Couldn't read strings from {}", $$1, var7);
+   public ui(List<Byte> $$0) {
+      this(a($$0));
+   }
+
+   private static byte[] a(List<Byte> $$0) {
+      byte[] $$1 = new byte[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Byte $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0 : $$3;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+      $$0.write(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 24 + 1 * this.c.length;
+   }
+
+   @Override
+   public byte b() {
+      return 7;
+   }
+
+   @Override
+   public vk<ui> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.t_();
+   }
+
+   @Override
+   public vi d() {
+      byte[] $$0 = new byte[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new ui($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ui && Arrays.equals(this.c, ((ui)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public void a(vm $$0) {
+      $$0.a(this);
+   }
+
+   public byte[] e() {
+      return this.c;
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public uj a(int $$0) {
+      return uj.a(this.c[$$0]);
+   }
+
+   public uj a(int $$0, uj $$1) {
+      byte $$2 = this.c[$$0];
+      this.c[$$0] = $$1.i();
+      return uj.a($$2);
+   }
+
+   public void b(int $$0, uj $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
+   }
+
+   @Override
+   public boolean a(int $$0, vi $$1) {
+      if ($$1 instanceof vb) {
+         this.c[$$0] = ((vb)$$1).i();
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
-      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
-
-      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(azd.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
-         $$1.accept($$3.getKey(), $$4);
+   @Override
+   public boolean b(int $$0, vi $$1) {
+      if ($$1 instanceof vb) {
+         this.c = ArrayUtils.add(this.c, $$0, ((vb)$$1).i());
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static ui a() {
-      return e;
+   public uj b(int $$0) {
+      byte $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return uj.a($$1);
    }
 
-   public static void a(ui $$0) {
-      e = $$0;
+   @Override
+   public byte f() {
+      return 1;
    }
 
-   public String a(String $$0) {
-      return this.a($$0, $$0);
+   @Override
+   public void clear() {
+      this.c = new byte[0];
    }
 
-   public abstract String a(String var1, String var2);
-
-   public abstract boolean b(String var1);
-
-   public abstract boolean b();
-
-   public abstract ayz a(xq var1);
-
-   public List<ayz> a(List<xq> $$0) {
-      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
+   @Override
+   public vf.b a(vf $$0) {
+      return $$0.a(this.c);
    }
 }

@@ -1,25 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ede implements ecq {
+class ede extends edi {
+   private final ju<eru> e;
    public static final MapCodec<ede> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), dvo.a.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, ede::new)
+      $$0 -> a($$0).and(kf.a(ma.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ede::new)
    );
-   private final kl e;
-   private final dvo f;
 
-   protected ede(kl $$0, dvo $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(dgd $$0, jh $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public ede(kl $$0, ju<eru> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public ecr<?> a() {
-      return ecr.g;
+   protected boolean a(dvv $$0) {
+      return $$0.y().a(this.e);
+   }
+
+   @Override
+   public ecy<?> a() {
+      return ecy.c;
    }
 }

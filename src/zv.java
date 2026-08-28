@@ -1,54 +1,100 @@
-import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class zv {
-   private static final Logger a = LogUtils.getLogger();
+public class zv<T extends wp, B extends ByteBuf> {
+   final we a;
+   final zr b;
+   private final List<zv.a<T, ?, B>> c = new ArrayList<>();
+   @Nullable
+   private zp d;
 
-   public static <T extends wr> void a(zs<T> $$0, T $$1, arq $$2) throws alx {
-      a($$0, $$1, $$2.o());
+   public zv(we $$0, zr $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static <T extends wr> void a(zs<T> $$0, T $$1, bqw<?> $$2) throws alx {
-      if (!$$2.bx()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
-                     throw a(var4, $$0, $$1);
-                  }
+   public <P extends zq<? super T>> zv<T, B> a(zs<P> $$0, zh<? super B, P> $$1) {
+      this.c.add(new zv.a<>($$0, $$1));
+      return this;
+   }
 
-                  $$1.a($$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
+   public <P extends zo<? super T>, D extends zn<? super T>> zv<T, B> a(zs<P> $$0, Function<Iterable<zq<? super T>>, P> $$1, D $$2) {
+      zh<ByteBuf, D> $$3 = zh.a($$2);
+      zs<D> $$4 = (zs<D>)$$2.a();
+      this.c.add(new zv.a<>($$4, $$3));
+      this.d = zp.a($$0, $$1, $$2);
+      return this;
+   }
+
+   zh<ByteBuf, zq<? super T>> a(Function<ByteBuf, B> $$0, List<zv.a<T, ?, B>> $$1) {
+      zu<ByteBuf, T> $$2 = new zu<>(this.b);
+
+      for (zv.a<T, ?, B> $$3 : $$1) {
+         $$3.a($$2, $$0);
+      }
+
+      return $$2.a();
+   }
+
+   public wr<T> a(Function<ByteBuf, B> $$0) {
+      return new zv.b<>(this.a, this.b, this.a($$0, this.c), this.d);
+   }
+
+   public wr.a<T, B> a() {
+      final List<zv.a<T, ?, B>> $$0 = List.copyOf(this.c);
+      final zp $$1 = this.d;
+      return new wr.a<T, B>() {
+         @Override
+         public wr<T> a(Function<ByteBuf, B> $$0x) {
+            return new zv.b<>(zv.this.a, zv.this.b, zv.this.a($$0, $$0), $$1);
+         }
+
+         @Override
+         public we a() {
+            return zv.this.a;
+         }
+
+         @Override
+         public zr b() {
+            return zv.this.b;
+         }
+
+         @Override
+         public void a(wr.a.a $$0x) {
+            for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+               zv.a<T, ?, B> $$2 = $$0.get($$1);
+               $$0.accept($$2.a, $$1);
             }
-         });
-         throw alx.a;
+         }
+      };
+   }
+
+   private static <L extends wp, B extends ByteBuf> wr.a<L, B> a(we $$0, zr $$1, Consumer<zv<L, B>> $$2) {
+      zv<L, B> $$3 = new zv<>($$0, $$1);
+      $$2.accept($$3);
+      return $$3.a();
+   }
+
+   public static <T extends wv, B extends ByteBuf> wr.a<T, B> a(we $$0, Consumer<zv<T, B>> $$1) {
+      return a($$0, zr.a, $$1);
+   }
+
+   public static <T extends wa, B extends ByteBuf> wr.a<T, B> b(we $$0, Consumer<zv<T, B>> $$1) {
+      return a($$0, zr.b, $$1);
+   }
+
+   static record a<T extends wp, P extends zq<? super T>, B extends ByteBuf>(zs<P> a, zh<? super B, P> b) {
+
+      public void a(zu<ByteBuf, T> $$0, Function<ByteBuf, B> $$1) {
+         zh<ByteBuf, P> $$2 = this.b.b($$1);
+         $$0.a(this.a, $$2);
       }
    }
 
-   public static <T extends wr> z a(Exception $$0, zs<T> $$1, T $$2) {
-      if ($$0 instanceof z $$3) {
-         a($$3.a(), $$2, $$1);
-         return $$3;
-      } else {
-         o $$4 = o.a($$0, "Main thread packet handler");
-         a($$4, $$2, $$1);
-         return new z($$4);
-      }
-   }
-
-   public static <T extends wr> void a(o $$0, T $$1, @Nullable zs<T> $$2) {
-      if ($$2 != null) {
-         p $$3 = $$0.a("Incoming Packet");
-         $$3.a("Type", () -> $$2.a().toString());
-         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
-         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
-      }
-
-      $$1.a($$0);
+   static record b<L extends wp>(we a, zr b, zh<ByteBuf, zq<? super L>> c, @Nullable zp d) implements wr<L> {
    }
 }

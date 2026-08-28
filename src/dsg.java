@@ -1,109 +1,54 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsg extends dsr implements bsk {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
-   @Nullable
-   private xl d;
-   private cvc e;
-   private dsi f = dsi.a;
+public class dsg extends die {
+   public static final MapCodec<dsg> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dwk.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dsg::new)
+   );
+   public static final dwu f = dwl.aT;
+   private final int g;
 
-   public dsg(jh $$0, dvo $$1) {
-      super(dst.t, $$0, $$1);
-      this.e = ((dha)$$1.b()).b();
+   @Override
+   public MapCodec<dsg> a() {
+      return e;
    }
 
-   public dsg(jh $$0, dvo $$1, cvc $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cwf $$0, cvc $$1) {
-      this.e = $$1;
-      this.a($$0);
+   protected dsg(int $$0, dwk $$1, dvu.d $$2) {
+      super($$2, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   public xl am() {
-      return (xl)(this.d != null ? this.d : xl.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public xl ao() {
-      return this.d;
-   }
-
-   @Override
-   protected void b(un $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dsi.a)) {
-         $$0.a("patterns", (vk)dsi.b.encodeStart($$1.a(vb.a), this.f).getOrThrow());
-      }
-
-      if (this.d != null) {
-         $$0.a("CustomName", xl.a.a(this.d, $$1));
+   protected int b(dfm $$0, jh $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bul.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return azm.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   protected void a(un $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dsi.b
-            .parse($$1.a(vb.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public aco a() {
-      return aco.a(this);
+   protected int h(dvv $$0) {
+      return $$0.c(f);
    }
 
    @Override
-   public un a(js.a $$0) {
-      return this.d($$0);
-   }
-
-   public dsi b() {
-      return this.f;
-   }
-
-   public cwf c() {
-      cwf $$0 = new cwf(dho.a(this.e));
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public cvc f() {
-      return this.e;
+   protected dvv a(dvv $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
    }
 
    @Override
-   protected void a(dsr.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(ku.ai, dsi.a);
-      this.d = $$0.a(ku.g);
+   protected int b() {
+      return 10;
    }
 
    @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.ai, this.f);
-      $$0.a(ku.g, this.d);
-   }
-
-   @Override
-   public void a(un $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   protected void a(dvw.a<diq, dvv> $$0) {
+      $$0.a(f);
    }
 }

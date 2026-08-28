@@ -1,93 +1,166 @@
-public abstract class fnl {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final flh d;
-   protected final bnf e;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected fnl(flh $$0, bnf $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class fnl implements hef {
+   private static final long a = 3000L;
+   private final fke b;
+   private final List<fnl.b> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fnl.b> e = new ArrayList<>();
+
+   public fnl(fke $$0) {
+      this.b = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
-   }
-
-   public int a() {
-      return 60 + 9;
-   }
-
-   public void a(flj $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gjh.G(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   public void a(flq $$0) {
+      heg $$1 = this.b.ak();
+      if (!this.d && this.b.n.Y().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.n.Y().c()) {
+         $$1.b(this);
+         this.d = false;
       }
 
-      $$0.a(gjh.G(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gjh.G(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gjh.G(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gjh.G(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      if (this.d) {
+         fcg $$2 = $$1.b();
+         ezy $$3 = $$2.b();
+         ezy $$4 = $$2.c();
+         ezy $$5 = $$2.a();
+         this.e.clear();
+
+         for (fnl.b $$6 : this.c) {
+            if ($$6.c($$3)) {
+               this.e.add($$6);
+            }
+         }
+
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.n.C().c();
+            Iterator<fnl.b> $$10 = this.e.iterator();
+
+            while ($$10.hasNext()) {
+               fnl.b $$11 = $$10.next();
+               $$11.a(3000.0 * $$9);
+               if (!$$11.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (fnl.b $$12 : this.e) {
+               int $$13 = 255;
+               xj $$14 = $$12.a();
+               fnl.a $$15 = $$12.a($$3);
+               if ($$15 != null) {
+                  ezy $$16 = $$15.a.d($$3).d();
+                  double $$17 = $$5.b($$16);
+                  double $$18 = $$4.b($$16);
+                  boolean $$19 = $$18 > 0.5;
+                  int $$20 = $$8 / 2;
+                  int $$21 = 9;
+                  int $$22 = $$21 / 2;
+                  float $$23 = 1.0F;
+                  int $$24 = this.b.h.a($$14);
+                  int $$25 = azm.d(azm.b(255.0F, 75.0F, (float)(ae.c() - $$15.b) / (float)(3000.0 * $$9)));
+                  $$0.c().a();
+                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
+                  $$0.c().b(1.0F, 1.0F, 1.0F);
+                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
+                  int $$26 = axx.a(255, $$25, $$25, $$25);
+                  if (!$$19) {
+                     if ($$17 > 0.0) {
+                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
+                     } else if ($$17 < 0.0) {
+                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
+                     }
+                  }
+
+                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
+                  $$0.c().b();
+                  $$7++;
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(hdb $$0, heh $$1, float $$2) {
+      if ($$1.a() != null) {
+         xj $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fnl.b $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.b(new ezy($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new fnl.b($$3, $$2, new ezy($$0.h(), $$0.i(), $$0.j())));
+      }
+   }
+
+   static record a(ezy a, long b) {
+   }
+
+   static class b {
+      private final xj a;
+      private final float b;
+      private final List<fnl.a> c = new ArrayList<>();
+
+      public b(xj $$0, float $$1, ezy $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c.add(new fnl.a($$2, ae.c()));
       }
 
-      this.d($$0, $$1, $$2, $$3);
-   }
+      public xj a() {
+         return this.a;
+      }
 
-   protected void a(flj $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
-   }
+      @Nullable
+      public fnl.a a(ezy $$0) {
+         if (this.c.isEmpty()) {
+            return null;
+         } else {
+            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
+         }
+      }
 
-   protected void b(flj $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gjh.G(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
+      public void b(ezy $$0) {
+         this.c.removeIf($$1 -> $$0.equals($$1.a()));
+         this.c.add(new fnl.a($$0, ae.c()));
+      }
 
-   protected void c(flj $$0, int $$1, int $$2, int $$3) {
-   }
+      public boolean c(ezy $$0) {
+         if (Float.isInfinite(this.b)) {
+            return true;
+         } else if (this.c.isEmpty()) {
+            return false;
+         } else {
+            fnl.a $$1 = this.a($$0);
+            return $$1 == null ? false : $$0.a((ka)$$1.a, (double)this.b);
+         }
+      }
 
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
+      public void a(double $$0) {
+         long $$1 = ae.c();
+         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
+      }
 
-   protected void d(flj $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(flj $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gjh.G(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = azn.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axy.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axy.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+      public boolean b() {
+         return !this.c.isEmpty();
+      }
    }
 }

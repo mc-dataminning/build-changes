@@ -1,27 +1,14 @@
-public class gub extends gsx<gxp, gbq> {
-   private static final all a = all.b("textures/entity/wither/wither_armor.png");
-   private final gbq b;
+public class gub<S extends gxj, M extends fzj<S>> extends gty<S, M> {
+   private final gbe<S> a;
+   private final alj b;
 
-   public gub(gqw<gxp, gbq> $$0, gby $$1) {
+   public gub(grh<S, M> $$0, gch $$1, gcj $$2, alj $$3) {
       super($$0);
-      this.b = new gbq($$1.a(gcb.da));
+      this.b = $$3;
+      this.a = new gbe<>($$1.a($$2));
    }
 
-   protected boolean a(gxp $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return azn.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected all a() {
-      return a;
-   }
-
-   protected gbq b() {
-      return this.b;
+   public void a(fer $$0, gjg $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

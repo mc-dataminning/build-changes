@@ -1,56 +1,123 @@
-public class cyf {
-   public static final jq<cyc> a = a("water", new cyc("water"));
-   public static final jq<cyc> b = a("mundane", new cyc("mundane"));
-   public static final jq<cyc> c = a("thick", new cyc("thick"));
-   public static final jq<cyc> d = a("awkward", new cyc("awkward"));
-   public static final jq<cyc> e = a("night_vision", new cyc("night_vision", new btn(btp.p, 3600)));
-   public static final jq<cyc> f = a("long_night_vision", new cyc("night_vision", new btn(btp.p, 9600)));
-   public static final jq<cyc> g = a("invisibility", new cyc("invisibility", new btn(btp.n, 3600)));
-   public static final jq<cyc> h = a("long_invisibility", new cyc("invisibility", new btn(btp.n, 9600)));
-   public static final jq<cyc> i = a("leaping", new cyc("leaping", new btn(btp.h, 3600)));
-   public static final jq<cyc> j = a("long_leaping", new cyc("leaping", new btn(btp.h, 9600)));
-   public static final jq<cyc> k = a("strong_leaping", new cyc("leaping", new btn(btp.h, 1800, 1)));
-   public static final jq<cyc> l = a("fire_resistance", new cyc("fire_resistance", new btn(btp.l, 3600)));
-   public static final jq<cyc> m = a("long_fire_resistance", new cyc("fire_resistance", new btn(btp.l, 9600)));
-   public static final jq<cyc> n = a("swiftness", new cyc("swiftness", new btn(btp.a, 3600)));
-   public static final jq<cyc> o = a("long_swiftness", new cyc("swiftness", new btn(btp.a, 9600)));
-   public static final jq<cyc> p = a("strong_swiftness", new cyc("swiftness", new btn(btp.a, 1800, 1)));
-   public static final jq<cyc> q = a("slowness", new cyc("slowness", new btn(btp.b, 1800)));
-   public static final jq<cyc> r = a("long_slowness", new cyc("slowness", new btn(btp.b, 4800)));
-   public static final jq<cyc> s = a("strong_slowness", new cyc("slowness", new btn(btp.b, 400, 3)));
-   public static final jq<cyc> t = a("turtle_master", new cyc("turtle_master", new btn(btp.b, 400, 3), new btn(btp.k, 400, 2)));
-   public static final jq<cyc> u = a("long_turtle_master", new cyc("turtle_master", new btn(btp.b, 800, 3), new btn(btp.k, 800, 2)));
-   public static final jq<cyc> v = a("strong_turtle_master", new cyc("turtle_master", new btn(btp.b, 400, 5), new btn(btp.k, 400, 3)));
-   public static final jq<cyc> w = a("water_breathing", new cyc("water_breathing", new btn(btp.m, 3600)));
-   public static final jq<cyc> x = a("long_water_breathing", new cyc("water_breathing", new btn(btp.m, 9600)));
-   public static final jq<cyc> y = a("healing", new cyc("healing", new btn(btp.f, 1)));
-   public static final jq<cyc> z = a("strong_healing", new cyc("healing", new btn(btp.f, 1, 1)));
-   public static final jq<cyc> A = a("harming", new cyc("harming", new btn(btp.g, 1)));
-   public static final jq<cyc> B = a("strong_harming", new cyc("harming", new btn(btp.g, 1, 1)));
-   public static final jq<cyc> C = a("poison", new cyc("poison", new btn(btp.s, 900)));
-   public static final jq<cyc> D = a("long_poison", new cyc("poison", new btn(btp.s, 1800)));
-   public static final jq<cyc> E = a("strong_poison", new cyc("poison", new btn(btp.s, 432, 1)));
-   public static final jq<cyc> F = a("regeneration", new cyc("regeneration", new btn(btp.j, 900)));
-   public static final jq<cyc> G = a("long_regeneration", new cyc("regeneration", new btn(btp.j, 1800)));
-   public static final jq<cyc> H = a("strong_regeneration", new cyc("regeneration", new btn(btp.j, 450, 1)));
-   public static final jq<cyc> I = a("strength", new cyc("strength", new btn(btp.e, 3600)));
-   public static final jq<cyc> J = a("long_strength", new cyc("strength", new btn(btp.e, 9600)));
-   public static final jq<cyc> K = a("strong_strength", new cyc("strength", new btn(btp.e, 1800, 1)));
-   public static final jq<cyc> L = a("weakness", new cyc("weakness", new btn(btp.r, 1800)));
-   public static final jq<cyc> M = a("long_weakness", new cyc("weakness", new btn(btp.r, 4800)));
-   public static final jq<cyc> N = a("luck", new cyc("luck", new btn(btp.z, 6000)));
-   public static final jq<cyc> O = a("slow_falling", new cyc("slow_falling", new btn(btp.B, 1800)));
-   public static final jq<cyc> P = a("long_slow_falling", new cyc("slow_falling", new btn(btp.B, 4800)));
-   public static final jq<cyc> Q = a("wind_charged", new cyc("wind_charged", new btn(btp.J, 3600)));
-   public static final jq<cyc> R = a("weaving", new cyc("weaving", new btn(btp.K, 3600)));
-   public static final jq<cyc> S = a("oozing", new cyc("oozing", new btn(btp.L, 3600)));
-   public static final jq<cyc> T = a("infested", new cyc("infested", new btn(btp.M, 3600)));
+import java.util.List;
 
-   private static jq<cyc> a(String $$0, cyc $$1) {
-      return kd.b(lz.h, all.b($$0), $$1);
+public class cyf extends cwi implements cxh {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+
+   public cyf(cwi.a $$0) {
+      super($$0);
    }
 
-   public static jq<cyc> a(kd<cyc> $$0) {
-      return a;
+   public static czd c() {
+      return czd.a().a(bwp.c, new bwn(f, 8.0, bwn.a.a), buu.b).a(bwp.e, new bwn(g, -2.9F, bwn.a.a), buu.b).a();
+   }
+
+   public static czo d() {
+      return new czo(List.of(), 1.0F, 2);
+   }
+
+   @Override
+   public boolean a(dvv $$0, dfm $$1, jh $$2, cou $$3) {
+      return !$$3.b();
+   }
+
+   @Override
+   public cwo b(cwm $$0) {
+      return cwo.f;
+   }
+
+   @Override
+   public int a(cwm $$0, bvh $$1) {
+      return 72000;
+   }
+
+   @Override
+   public boolean a(cwm $$0, dfm $$1, bvh $$2, int $$3) {
+      if ($$2 instanceof cou $$4) {
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 < 10) {
+            return false;
+         } else {
+            float $$7 = dcf.a($$0, $$4);
+            if ($$7 > 0.0F && !$$4.bk()) {
+               return false;
+            } else if ($$0.r()) {
+               return false;
+            } else {
+               jq<awm> $$8 = dcf.b($$0, dce.C).orElse(awn.zK);
+               if ($$1 instanceof arp $$9) {
+                  $$0.a(1, $$4);
+                  if ($$7 == 0.0F) {
+                     cqa $$10 = cpn.a(cqa::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
+                     if ($$4.fT()) {
+                        $$10.c = cpb.a.c;
+                     } else {
+                        $$4.gg().h($$0);
+                     }
+
+                     $$1.a(null, $$10, $$8.a(), awo.h, 1.0F, 1.0F);
+                     return true;
+                  }
+               }
+
+               $$4.b(awx.c.b(this));
+               if ($$7 > 0.0F) {
+                  float $$11 = $$4.dL();
+                  float $$12 = $$4.dN();
+                  float $$13 = -azm.a($$11 * (float) (Math.PI / 180.0)) * azm.b($$12 * (float) (Math.PI / 180.0));
+                  float $$14 = -azm.a($$12 * (float) (Math.PI / 180.0));
+                  float $$15 = azm.b($$11 * (float) (Math.PI / 180.0)) * azm.b($$12 * (float) (Math.PI / 180.0));
+                  float $$16 = azm.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
+                  $$13 *= $$7 / $$16;
+                  $$14 *= $$7 / $$16;
+                  $$15 *= $$7 / $$16;
+                  $$4.j((double)$$13, (double)$$14, (double)$$15);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aJ()) {
+                     float $$17 = 1.1999999F;
+                     $$4.a(bvl.a, new ezy(0.0, 1.1999999F, 0.0));
+                  }
+
+                  $$1.a(null, $$4, $$8.a(), awo.h, 1.0F, 1.0F);
+                  return true;
+               } else {
+                  return false;
+               }
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public bsk a(dfm $$0, cou $$1, bsj $$2) {
+      cwm $$3 = $$1.b($$2);
+      if ($$3.r()) {
+         return bsk.d;
+      } else if (dcf.a($$3, $$1) > 0.0F && !$$1.bk()) {
+         return bsk.d;
+      } else {
+         $$1.c($$2);
+         return bsk.c;
+      }
+   }
+
+   @Override
+   public boolean a(cwm $$0, bvh $$1, bvh $$2) {
+      return true;
+   }
+
+   @Override
+   public void b(cwm $$0, bvh $$1, bvh $$2) {
+      $$0.a(1, $$2, but.a);
+   }
+
+   @Override
+   public cpn a(dfm $$0, ka $$1, cwm $$2, jm $$3) {
+      cqa $$4 = new cqa($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.c = cpb.a.b;
+      return $$4;
    }
 }

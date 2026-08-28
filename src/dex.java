@@ -1,50 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public interface dex {
-   static bsy a(dff $$0, @Nullable bui $$1) {
-      return $$0.ai().d($$1, a($$1));
+public interface dex extends dfd, dfp, dfr {
+   @Override
+   default <T extends dsy> Optional<T> a(jh $$0, dta<T> $$1) {
+      return dfp.super.a($$0, $$1);
    }
 
-   @Nullable
-   static bve a(@Nullable bui $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case cla $$1 -> $$1.m();
-         case bve $$2 -> $$2;
-         case cpk $$3 when $$3.s() instanceof bve $$4 -> $$4;
-      };
+   @Override
+   default List<fas> c(@Nullable bul $$0, ezt $$1) {
+      return dfd.super.c($$0, $$1);
    }
 
-   dex.a a();
+   @Override
+   default boolean a(@Nullable bul $$0, fas $$1) {
+      return dfd.super.a($$0, $$1);
+   }
 
-   @Nullable
-   bve b();
-
-   @Nullable
-   bui c();
-
-   float d();
-
-   ezr e();
-
-   boolean f();
-
-   boolean g();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   @Override
+   default jh a(ebq.a $$0, jh $$1) {
+      return dfp.super.a($$0, $$1);
    }
 }

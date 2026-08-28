@@ -1,17 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byr {
-   public static bwy<coc> a() {
-      return cak.a((Function<cak.b<coc>, ? extends App<cak.c<coc>, can<coc>>>)($$0 -> $$0.group($$0.c(cei.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cod $$3 = $$1.gF();
-               if ($$3.b() != cof.b && $$3.b() != cof.m && $$1.t() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gF().a(cof.b));
-                  $$1.a($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class byr extends bxa<bvj> {
+   private final brp c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public byr(brp $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cel.n, cem.b, cel.Q, cem.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(arp $$0, bvj $$1, long $$2) {
+      azu $$3 = $$1.dY();
+      float $$4 = azm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = azm.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
+      ezy $$6 = ezy.a($$4, $$5);
+      $$1.eb().a(cel.n, new bxd($$1.bF().e($$6)));
+      $$1.eb().a(cel.Q, this.c.a($$3));
    }
 }

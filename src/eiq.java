@@ -1,108 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class eiq extends eir {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<eiq> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(eip.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eiq::new)
+public class eiq extends eim {
+   public static final MapCodec<eiq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(brp.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eiq::new)
    );
-   private final eip h;
+   private final brp b;
 
-   public eiq(brm $$0, eiu $$1, Optional<eio> $$2, eip $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public eiq(brp $$0, brp $$1, brp $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, jh $$4, ehp $$5) {
-      List<jh> $$6 = Lists.newArrayList();
-      jh.a $$7 = $$3.k();
+   protected ein<?> a() {
+      return ein.c;
+   }
 
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
+   @Override
+   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
          }
-
-         $$7.c(jm.b);
-      }
-
-      $$6.add($$4.e());
-
-      for (jm $$8 : jm.c.a) {
-         jh $$9 = $$4.a($$8);
-         List<jh> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (jh $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
-   }
-
-   private boolean a(dfl $$0, azv $$1, jh $$2, jm $$3, jh $$4, List<jh> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (jh $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<jh> a(jh $$0, jm $$1, azv $$2, jh $$3) {
-      jh $$4 = $$0.e();
-      jh $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
       }
    }
 
    @Override
-   protected boolean a(dfl $$0, jh $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public int a(azu $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
    }
 
    @Override
-   protected void a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, jh $$3, ehp $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dvo $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public int a(azu $$0, int $$1, ehw $$2) {
+      return this.b.a($$0);
    }
 
    @Override
-   protected eis<?> a() {
-      return eis.a;
+   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

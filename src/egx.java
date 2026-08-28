@@ -1,16 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egx implements egt {
+public record egx(ejj b, ecx c, brp d, int e) implements eha {
    public static final Codec<egx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dzj.c).fieldOf("height").forGetter($$0x -> $$0x.b), dvo.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               ejj.a.fieldOf("state_provider").forGetter(egx::a),
+               ecx.b.fieldOf("target").forGetter(egx::b),
+               brp.b(0, 8).fieldOf("radius").forGetter(egx::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(egx::d)
+            )
             .apply($$0, egx::new)
    );
-   public final int b;
-   public final dvo c;
 
-   public egx(int $$0, dvo $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ejj a() {
+      return this.b;
+   }
+
+   public ecx b() {
+      return this.c;
+   }
+
+   public brp c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }
