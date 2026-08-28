@@ -37,7 +37,7 @@ public record gaf(String a, @Nullable gaf.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w21a");
+      $$0.append("24w21b");
       if (fgi.e().a()) {
          $$0.append(" (modded)");
       }

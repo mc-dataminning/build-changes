@@ -1,4 +1,4 @@
-// 24w21a	2026-08-28T01:55:46.091707401	vanilla/Tags for minecraft:worldgen/biome
+// 24w21b	2026-08-28T01:58:12.62923611	vanilla/Tags for minecraft:worldgen/biome
 cfdcb319da5d14a39f3b32e5f0e83e496eee9e43 data/minecraft/tags/worldgen/biome/snow_golem_melts.json
 f813468c93191d40d0ec09e399b71a5f9c33ce5d data/minecraft/tags/worldgen/biome/has_structure/ocean_ruin_warm.json
 0f241c94b10e4b16b4304f66ad949bb089955b1e data/minecraft/tags/worldgen/biome/allows_tropical_fish_spawns_at_any_height.json
@@ -50,8 +50,8 @@ a24545b58f3f91c6c033586e2b2ae12f1e8131b1 data/minecraft/tags/worldgen/biome/has_
 91b0eb2c9a1bca9eaa7aeb065cf6566cc9ef4ef6 data/minecraft/tags/worldgen/biome/has_structure/end_city.json
 de5384c32afb2e47687069231890d76a1c6681c4 data/minecraft/tags/worldgen/biome/stronghold_biased_to.json
 3fa322f81d21600f5bd69c9cc2d314568a07b192 data/minecraft/tags/worldgen/biome/spawns_warm_variant_frogs.json
-a24545b58f3f91c6c033586e2b2ae12f1e8131b1 data/minecraft/tags/worldgen/biome/has_structure/nether_fortress.json
 0fe03fb805c66095bbe64ae76f2d001d923a86e3 data/minecraft/tags/worldgen/biome/has_structure/trail_ruins.json
+a24545b58f3f91c6c033586e2b2ae12f1e8131b1 data/minecraft/tags/worldgen/biome/has_structure/nether_fortress.json
 f3ef2895c49e29111297e950661e5bc71a79989e data/minecraft/tags/worldgen/biome/has_structure/desert_pyramid.json
 7ab168754d6e78ecef39a6d1baa046622304b683 data/minecraft/tags/worldgen/biome/polar_bears_spawn_on_alternate_blocks.json
 068e9616fd14b1280352ffc9d66cc3846c00a5e4 data/minecraft/tags/worldgen/biome/is_ocean.json

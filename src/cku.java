@@ -10,20 +10,21 @@ public class cku extends ckb {
    private static final akq d = akq.b("reinforcement_caller_charge");
    private static final bus cd = new bus(akq.b("reinforcement_callee_charge"), -0.05F, bus.a.a);
    private static final akq ce = akq.b("leader_zombie_bonus");
-   private static final ajv<Boolean> cf = ajz.a(cku.class, ajx.k);
-   private static final ajv<Integer> cg = ajz.a(cku.class, ajx.b);
-   private static final ajv<Boolean> ch = ajz.a(cku.class, ajx.k);
+   private static final akq cf = akq.b("zombie_random_spawn_bonus");
+   private static final ajv<Boolean> cg = ajz.a(cku.class, ajx.k);
+   private static final ajv<Integer> ch = ajz.a(cku.class, ajx.b);
+   private static final ajv<Boolean> ci = ajz.a(cku.class, ajx.k);
    public static final float e = 0.05F;
    public static final int ca = 50;
    public static final int cb = 40;
    public static final int cc = 7;
-   private static final bst ci = bsw.bu.n().a(0.5F).b(0.93F);
-   private static final float cj = 0.1F;
-   private static final Predicate<bqn> ck = $$0 -> $$0 == bqn.d;
-   private final bzu cl = new bzu(this, ck);
-   private boolean cm;
-   private int cn;
+   private static final bst cj = bsw.bu.n().a(0.5F).b(0.93F);
+   private static final float ck = 0.1F;
+   private static final Predicate<bqn> cl = $$0 -> $$0 == bqn.d;
+   private final bzu cm = new bzu(this, cl);
+   private boolean cn;
    private int co;
+   private int cp;
 
    public cku(bsw<? extends cku> $$0, dcu $$1) {
       super($$0, $$1);
@@ -59,33 +60,33 @@ public class cku extends ckb {
    @Override
    protected void a(ajz.a $$0) {
       super.a($$0);
-      $$0.a(cf, false);
-      $$0.a(cg, 0);
-      $$0.a(ch, false);
+      $$0.a(cg, false);
+      $$0.a(ch, 0);
+      $$0.a(ci, false);
    }
 
    public boolean gt() {
-      return this.ar().a(ch);
+      return this.ar().a(ci);
    }
 
    public boolean gu() {
-      return this.cm;
+      return this.cn;
    }
 
    public void x(boolean $$0) {
       if (this.x() && cei.a(this)) {
-         if (this.cm != $$0) {
-            this.cm = $$0;
+         if (this.cn != $$0) {
+            this.cn = $$0;
             ((ccx)this.J()).b($$0);
             if ($$0) {
-               this.bU.a(1, this.cl);
+               this.bU.a(1, this.cm);
             } else {
-               this.bU.a(this.cl);
+               this.bU.a(this.cm);
             }
          }
-      } else if (this.cm) {
-         this.bU.a(this.cl);
-         this.cm = false;
+      } else if (this.cn) {
+         this.bU.a(this.cm);
+         this.cn = false;
       }
    }
 
@@ -95,7 +96,7 @@ public class cku extends ckb {
 
    @Override
    public boolean o_() {
-      return this.ar().a(cf);
+      return this.ar().a(cg);
    }
 
    @Override
@@ -109,7 +110,7 @@ public class cku extends ckb {
 
    @Override
    public void a(boolean $$0) {
-      this.ar().a(cf, $$0);
+      this.ar().a(cg, $$0);
       if (this.dQ() != null && !this.dQ().B) {
          buq $$1 = this.f(buu.v);
          $$1.c(b);
@@ -121,7 +122,7 @@ public class cku extends ckb {
 
    @Override
    public void a(ajv<?> $$0) {
-      if (cf.equals($$0)) {
+      if (cg.equals($$0)) {
          this.i_();
       }
 
@@ -136,18 +137,18 @@ public class cku extends ckb {
    public void l() {
       if (!this.dQ().B && this.bE() && !this.gb()) {
          if (this.gt()) {
-            this.co--;
-            if (this.co < 0) {
+            this.cp--;
+            if (this.cp < 0) {
                this.ac_();
             }
          } else if (this.go()) {
             if (this.a(awj.a)) {
-               this.cn++;
-               if (this.cn >= 600) {
+               this.co++;
+               if (this.co >= 600) {
                   this.b(300);
                }
             } else {
-               this.cn = -1;
+               this.co = -1;
             }
          }
       }
@@ -184,8 +185,8 @@ public class cku extends ckb {
    }
 
    private void b(int $$0) {
-      this.co = $$0;
-      this.ar().a(ch, true);
+      this.cp = $$0;
+      this.ar().a(ci, true);
    }
 
    protected void ac_() {
@@ -308,8 +309,8 @@ public class cku extends ckb {
       super.b($$0);
       $$0.a("IsBaby", this.o_());
       $$0.a("CanBreakDoors", this.gu());
-      $$0.a("InWaterTime", this.bf() ? this.cn : -1);
-      $$0.a("DrownedConversionTime", this.gt() ? this.co : -1);
+      $$0.a("InWaterTime", this.bf() ? this.co : -1);
+      $$0.a("DrownedConversionTime", this.gt() ? this.cp : -1);
    }
 
    @Override
@@ -317,7 +318,7 @@ public class cku extends ckb {
       super.a($$0);
       this.a($$0.q("IsBaby"));
       this.x($$0.q("CanBreakDoors"));
-      this.cn = $$0.h("InWaterTime");
+      this.co = $$0.h("InWaterTime");
       if ($$0.b("DrownedConversionTime", 99) && $$0.h("DrownedConversionTime") > -1) {
          this.b($$0.h("DrownedConversionTime"));
       }
@@ -351,7 +352,7 @@ public class cku extends ckb {
 
    @Override
    public bst e(bty $$0) {
-      return this.o_() ? ci : super.e($$0);
+      return this.o_() ? cj : super.e($$0);
    }
 
    @Override
@@ -427,7 +428,7 @@ public class cku extends ckb {
       this.f(buu.p).c(new bus(bN, this.ah.j() * 0.05F, bus.a.a));
       double $$1 = this.ah.j() * 1.5 * (double)$$0;
       if ($$1 > 1.0) {
-         this.f(buu.m).c(new bus(bN, $$1, bus.a.c));
+         this.f(buu.m).c(new bus(cf, $$1, bus.a.c));
       }
 
       if (this.ah.i() < $$0 * 0.05F) {

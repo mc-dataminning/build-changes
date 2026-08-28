@@ -1,4 +1,4 @@
-// 24w21a	2026-08-28T01:55:46.083907778	vanilla/Loot Tables
+// 24w21b	2026-08-28T01:58:12.622489983	vanilla/Loot Tables
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
 bf2ee99f956011096a90610e6c8abc0f8ff658d7 data/minecraft/loot_table/blocks/birch_stairs.json
@@ -49,8 +49,8 @@ ea09f8b9741125e6dbd0a6a70d2d936973990f1c data/minecraft/loot_table/blocks/bamboo
 95609ef263dafb864a0ddc30a75f6e2c6e2d860a data/minecraft/loot_table/entities/tadpole.json
 079832d247ddc961b84ff05a2061fb59d05a465d data/minecraft/loot_table/blocks/prismarine_brick_stairs.json
 afcaca5cc83858570bcb95eb7c9f4b9d820cc8f6 data/minecraft/loot_table/blocks/light_blue_banner.json
-616c273ae200d421040a8f89aa829e1112b8bdf5 data/minecraft/loot_table/blocks/deepslate_tile_wall.json
 d77c3558531a5c919aa4747a6f9c22790260e9d7 data/minecraft/loot_table/blocks/green_carpet.json
+616c273ae200d421040a8f89aa829e1112b8bdf5 data/minecraft/loot_table/blocks/deepslate_tile_wall.json
 f63f799b91f3f7e1074cdb74b2c591d1d47d277c data/minecraft/loot_table/entities/ravager.json
 c0de71ef178535403775bb21d405098be8e368b3 data/minecraft/loot_table/blocks/yellow_bed.json
 2acffb083a5d526bfdfab985c7c753946fb8a987 data/minecraft/loot_table/blocks/nether_wart_block.json
@@ -339,8 +339,8 @@ bb683140baa0f715ee985774c06b949b2d64d424 data/minecraft/loot_table/blocks/blacks
 3ca0c1a1992edd1b0d1ef757149018ce64196b37 data/minecraft/loot_table/blocks/nether_brick_stairs.json
 5123f74656be7ef14362439d0925106af83fb9dd data/minecraft/loot_table/blocks/rooted_dirt.json
 7537bec8d7d9f8c067e6c74c38e609c8bee0ddec data/minecraft/loot_table/blocks/oxidized_cut_copper.json
-7beafd87ca8b522d7c6b03423cff4d31feb99ac8 data/minecraft/loot_table/blocks/purple_banner.json
 0d20bf5b2ccdce813e43c334ae1b58f76e2169ba data/minecraft/loot_table/blocks/dried_kelp_block.json
+7beafd87ca8b522d7c6b03423cff4d31feb99ac8 data/minecraft/loot_table/blocks/purple_banner.json
 dc88c688443d8c09c0ca495977f9ca1a60c3238b data/minecraft/loot_table/blocks/zombie_head.json
 809e55eb74880ca16c89bc30d6d90d48ae8fb82b data/minecraft/loot_table/blocks/blue_candle_cake.json
 e301e3f675d47d607acb5df7c981b802d2145da6 data/minecraft/loot_table/blocks/potted_flowering_azalea_bush.json
