@@ -8,15 +8,15 @@ public class ab {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 4182;
+   public static final int b = 4183;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21.4-pre2";
+   public static final String d = "1.21.4-pre3";
    @Deprecated
    public static final int e = 769;
    @Deprecated
-   public static final int f = 224;
+   public static final int f = 225;
    public static final int g = 4173;
    private static final int bl = 30;
    public static final boolean h = true;
@@ -156,7 +156,7 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742048;
+      return 1073742049;
    }
 
    public static boolean a(dfo $$0) {

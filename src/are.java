@@ -993,6 +993,13 @@ public class are extends cox {
    }
 
    @Override
+   protected void b(ard $$0, ji $$1) {
+      if (!this.Z_()) {
+         super.b($$0, $$1);
+      }
+   }
+
+   @Override
    protected void a(double $$0, boolean $$1, dwx $$2, ji $$3) {
       if (this.ds && $$1 && this.Z > 0.0F) {
          fba $$4 = $$3.b().b(0.0, 0.5, 0.0);
@@ -1002,13 +1009,6 @@ public class are extends cox {
       }
 
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void b(ard $$0, ji $$1) {
-      if (!this.Z_()) {
-         super.b($$0, $$1);
-      }
    }
 
    @Override

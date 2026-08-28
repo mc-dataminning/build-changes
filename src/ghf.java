@@ -37,7 +37,7 @@ public record ghf(String a, @Nullable ghf.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.4-pre2");
+      $$0.append("1.21.4-pre3");
       if (flj.e().a()) {
          $$0.append(" (modded)");
       }

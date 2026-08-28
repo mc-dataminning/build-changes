@@ -569,7 +569,7 @@ public abstract class bul implements akb, bsn, eba, fce {
 
          ji $$8 = this.aP();
          dwx $$9 = this.dV().a_($$8);
-         if ((!this.dV().B_() || this.dh()) && !$$0.equals(bvl.b)) {
+         if ((!this.dV().B_() || this.dh()) && !this.di()) {
             this.a($$3.e, this.aJ(), $$9, $$8);
          }
 
@@ -1118,7 +1118,7 @@ public abstract class bul implements akb, bsn, eba, fce {
       return false;
    }
 
-   public void a(double $$0, double $$1, double $$2, boolean $$3) {
+   public final void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.do()) {
          this.b($$3, new fba($$0, $$1, $$2));
          ji $$4 = this.aP();

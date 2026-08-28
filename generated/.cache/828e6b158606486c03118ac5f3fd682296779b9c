@@ -1,4 +1,4 @@
-// 1.21.4 Pre-Release 2	2026-08-28T03:11:30.775040862	vanilla/Loot Tables
+// 1.21.4 Pre-Release 3	2026-08-28T03:14:19.897703216	vanilla/Loot Tables
 6a9c523b197b53b50ee100e38af9bba416c8381d data/minecraft/loot_table/gameplay/chicken_lay.json
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
@@ -759,8 +759,8 @@ a7b2d77b278f2baf5a4f5cd4c06a72adbcdf9205 data/minecraft/loot_table/blocks/magent
 a5e806001f54d4131c8a4832f16b142b841c8860 data/minecraft/loot_table/entities/creeper.json
 dfc21865bb97a0de84183293fbd18f783f624898 data/minecraft/loot_table/blocks/lily_pad.json
 71c7db189114350a09317607bf79edfa7c14bbbe data/minecraft/loot_table/blocks/spruce_sapling.json
-d6f542f15c028612ec722124b7dbe6b7a2e06d40 data/minecraft/loot_table/blocks/reinforced_deepslate.json
 ebfa0012e1ac6b74de8736be386c0b7049dff592 data/minecraft/loot_table/blocks/resin_clump.json
+d6f542f15c028612ec722124b7dbe6b7a2e06d40 data/minecraft/loot_table/blocks/reinforced_deepslate.json
 e2861e67339220a60e3bd637b4959a590ac3403a data/minecraft/loot_table/blocks/potted_azure_bluet.json
 38fac668c130ed0bc0806a92ccf1af98e0787c01 data/minecraft/loot_table/blocks/oak_hanging_sign.json
 973aee4ba0dfcbb0840a35cfdb47652ca5619380 data/minecraft/loot_table/blocks/spore_blossom.json

@@ -20,18 +20,20 @@ public class eks extends ekw {
       azh $$1 = $$0.b();
       if (!($$1.i() >= this.b)) {
          List<ji> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (jn $$3x : jn.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  jn $$4 = $$3x.g();
-                  ji $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, djo.fX.m().b(dkt.c, Integer.valueOf($$1.a(3))).b(dkt.aF, $$3x));
+         if (!$$2.isEmpty()) {
+            int $$3 = $$2.getFirst().v();
+            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+               for (jn $$3x : jn.c.a) {
+                  if ($$1.i() <= 0.25F) {
+                     jn $$4 = $$3x.g();
+                     ji $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                     if ($$0.a($$5)) {
+                        $$0.a($$5, djo.fX.m().b(dkt.c, Integer.valueOf($$1.a(3))).b(dkt.aF, $$3x));
+                     }
                   }
                }
-            }
-         });
+            });
+         }
       }
    }
 }

@@ -226,7 +226,7 @@ public class doo extends djm implements dqs {
 
    private static dwx a(dwx $$0, dxo $$1) {
       dwx $$2 = $$0.b($$1, Boolean.valueOf(false));
-      return q($$2) ? $$2 : $$0.y().g();
+      return q($$2) ? $$2 : djo.a.m();
    }
 
    public static dxo b(jn $$0) {

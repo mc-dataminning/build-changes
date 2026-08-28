@@ -397,8 +397,8 @@ public class gga extends gfw implements abl, wd {
          a($$0.e(), $$0.f(), $$1, false);
       }
 
-      this.b.a(new ahf.b($$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN(), false, false));
       this.b.a(new agi($$0.b()));
+      this.b.a(new ahf.b($$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN(), false, false));
    }
 
    private static boolean a(bvu $$0, Set<bvv> $$1, bul $$2, boolean $$3) {
