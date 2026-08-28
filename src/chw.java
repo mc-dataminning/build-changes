@@ -1,63 +1,264 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class chw extends bsq {
-   public final chy b;
-   public final String c;
-   private final bst d;
+public class chw {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 6;
+   static final List<cdz<? extends cdy<? super chv>>> a = ImmutableList.of(cdz.c, cdz.f, cdz.d, cdz.y);
+   static final List<ccs<?>> b = ImmutableList.of(
+      ccs.n, ccs.m, ccs.E, ccs.t, ccs.Z, ccs.aR, ccs.aS, ccs.aT, ccs.aG, ccs.aQ, ccs.h, ccs.r, new ccs[]{ccs.O, ccs.P, ccs.R}
+   );
+   private static final int e = 9600;
+   private static final float f = 1.0F;
+   private static final float g = 2.0F;
+   private static final float h = 1.25F;
+   private static final float i = 1.25F;
 
-   public chw(chy $$0, String $$1, float $$2, float $$3) {
-      super($$0.am(), $$0.dQ());
-      this.d = bst.b($$2, $$3);
-      this.i_();
-      this.b = $$0;
-      this.c = $$1;
+   public static Predicate<cuq> a() {
+      return $$0 -> $$0.a(awn.X);
    }
 
-   @Override
-   protected void a(ajz.a $$0) {
+   protected static buq<?> a(buq<chv> $$0) {
+      b($$0);
+      e($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(com.a));
+      $$0.b(com.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected void a(ua $$0) {
+   static chv b(chv $$0) {
+      $$0.dU().b(ccs.aS);
+      $$0.dU().b(ccs.aR);
+      return $$0.a(chv.a.a);
    }
 
-   @Override
-   protected void b(ua $$0) {
+   private static void b(buq<chv> $$0) {
+      $$0.a(com.a, 0, ImmutableList.of(new byb(0.8F), new bvc<chv>(2.0F) {
+         protected void a(aqu $$0, chv $$1, long $$2) {
+            chw.b($$1);
+            super.b($$0, $$1, $$2);
+         }
+      }, new bwr(500, 700), new bvn(ccs.P)));
    }
 
-   @Override
-   public boolean bA() {
-      return true;
+   private static void c(buq<chv> $$0) {
+      $$0.a(com.v, ImmutableList.of(Pair.of(0, new chw.e())), Set.of(Pair.of(ccs.Z, cct.b), Pair.of(ccs.aR, cct.a), Pair.of(ccs.m, cct.a)));
    }
 
-   @Nullable
-   @Override
-   public cuo dD() {
-      return this.b.dD();
+   private static void d(buq<chv> $$0) {
+      $$0.a(
+         com.z,
+         ImmutableList.of(Pair.of(0, new chw.a(160, 180)), Pair.of(0, new chw.c(40))),
+         Set.of(Pair.of(ccs.Z, cct.b), Pair.of(ccs.m, cct.b), Pair.of(ccs.aS, cct.a))
+      );
    }
 
-   @Override
-   public boolean a(brj $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   private static void e(buq<chv> $$0) {
+      $$0.a(
+         com.b,
+         ImmutableList.of(
+            Pair.of(0, new bvb(bsx.aR) {
+               @Override
+               protected void a(aqu $$0, cfe $$1, long $$2) {
+                  chw.b((chv)$$1);
+                  super.a($$0, $$1, $$2);
+               }
+            }),
+            Pair.of(1, new bvu($$0x -> 1.25F, $$0x -> $$0x.o_() ? 2.5 : 3.5) {
+               @Override
+               protected void b(aqu $$0, btw $$1, long $$2) {
+                  chw.b((chv)$$1);
+                  super.b($$0, $$1, $$2);
+               }
+            }),
+            Pair.of(2, new bwn(45, 90)),
+            Pair.of(3, new chw.b(40, 100)),
+            Pair.of(
+               4,
+               new bxe(
+                  ImmutableList.of(
+                     Pair.of(bxo.a(1.0F, 3), 2),
+                     Pair.of(new chw.d(40, 80), 1),
+                     Pair.of(new chw.f(40, 80), 1),
+                     Pair.of(bxg.a(bsx.by, 6.0F), 1),
+                     Pair.of(bwz.a(1.0F), 1),
+                     Pair.of(new bvr(5, 20), 2)
+                  )
+               )
+            )
+         ),
+         Set.of(Pair.of(ccs.aS, cct.b))
+      );
    }
 
-   @Override
-   public boolean t(bsq $$0) {
-      return this == $$0 || this.b == $$0;
+   static void a(chv $$0) {
+      $$0.dU().a(ImmutableList.of(com.z, com.v, com.b));
    }
 
-   @Override
-   public zf<abt> dm() {
-      throw new UnsupportedOperationException();
+   static class a extends bvh<chv> {
+      a(int $$0, int $$1) {
+         super(Map.of(ccs.Z, cct.b, ccs.m, cct.b, ccs.aS, cct.a, ccs.aG, cct.b), $$0, $$1);
+      }
+
+      protected boolean a(aqu $$0, chv $$1) {
+         return $$1.gl();
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         return $$1.dU().c(ccs.aS).isPresent() && $$1.go() && !$$1.gt();
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.f);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         if ($$3) {
+            $$1.dU().a(ccs.aG, azs.a, 9600L);
+         } else {
+            chw.b($$1);
+         }
+      }
    }
 
-   @Override
-   public bst a(bty $$0) {
-      return this.d;
+   static class b extends bvh<chv> {
+      b(int $$0, int $$1) {
+         super(Map.of(ccs.aT, cct.a), $$0, $$1);
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         return true;
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.b);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.a);
+         $$1.dU().b(ccs.aT);
+      }
    }
 
-   @Override
-   public boolean dO() {
-      return false;
+   static class c extends bvh<chv> {
+      c(int $$0) {
+         super(Map.of(ccs.Z, cct.b, ccs.m, cct.b, ccs.aS, cct.a, ccs.aG, cct.a), $$0, $$0);
+      }
+
+      protected boolean a(aqu $$0, chv $$1) {
+         return true;
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         return $$1.dU().c(ccs.aS).isPresent();
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.g);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         $$1.a(chv.a.a).w($$3);
+         $$1.dU().b(ccs.aS);
+         $$1.dU().a(ccs.aT, true);
+      }
+   }
+
+   static class d extends bvh<chv> {
+      d(int $$0, int $$1) {
+         super(Map.of(ccs.Z, cct.b, ccs.aS, cct.b, ccs.aR, cct.b, ccs.aT, cct.b, ccs.r, cct.b), $$0, $$1);
+      }
+
+      protected boolean a(aqu $$0, chv $$1) {
+         return !$$1.x();
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         return true;
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.c);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.a);
+      }
+   }
+
+   static class e extends bvh<chv> {
+      e() {
+         super(Map.of(ccs.m, cct.a, ccs.Z, cct.b, ccs.aR, cct.a), 600);
+      }
+
+      protected boolean a(aqu $$0, chv $$1) {
+         return $$1.gl();
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         if (!$$1.gl()) {
+            $$1.a(chv.a.a);
+            return false;
+         } else {
+            Optional<jd> $$3 = $$1.dU().c(ccs.m).map(ccv::a).map(bwv::b);
+            Optional<jd> $$4 = $$1.dU().c(ccs.aR);
+            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
+         }
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.e);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         if ($$1.go() && $$1.gl()) {
+            $$1.dU().a(ccs.aS, true);
+         }
+
+         $$1.dU().b(ccs.m);
+         $$1.dU().b(ccs.aR);
+      }
+   }
+
+   static class f extends bvh<chv> {
+      f(int $$0, int $$1) {
+         super(Map.of(ccs.m, cct.b, ccs.aR, cct.b, ccs.aG, cct.b), $$0, $$1);
+      }
+
+      protected boolean a(aqu $$0, chv $$1) {
+         return !$$1.o_() && $$1.gl();
+      }
+
+      protected boolean a(aqu $$0, chv $$1, long $$2) {
+         return $$1.gl();
+      }
+
+      protected void b(aqu $$0, chv $$1, long $$2) {
+         $$1.a(chv.a.d);
+      }
+
+      protected void c(aqu $$0, chv $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         $$1.a(chv.a.a);
+         if ($$3) {
+            $$1.gn().ifPresent($$1x -> {
+               $$1.dU().a(ccs.aR, $$1x);
+               $$1.dU().a(ccs.m, new ccv($$1x, 1.25F, 0));
+            });
+         }
+      }
    }
 }

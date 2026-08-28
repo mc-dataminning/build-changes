@@ -1,30 +1,17 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class egi extends egf {
-   protected final long c;
-   protected final eob.a d;
-   protected final float e;
-   protected final eob f;
+public abstract class egi {
+   public static final Codec<egi> a = lt.T.r().dispatch(egi::a, egj::a);
 
-   protected static <P extends egi> P3<Mu<P>, Long, eob.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         eob.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         axv.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public static egr a(dtc $$0) {
+      return new egr($$0);
    }
 
-   protected egi(long $$0, eob.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = eob.b(new dzu(new dyw($$0)), $$1);
+   public static egr a(dfy $$0) {
+      return new egr($$0.o());
    }
 
-   protected double a(jd $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
-   }
+   protected abstract egj<?> a();
+
+   public abstract dtc a(ayw var1, jd var2);
 }

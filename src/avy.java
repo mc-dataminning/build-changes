@@ -1,98 +1,45 @@
-public class avy {
-   public static final avx<dfw> a = a("mined", lt.e);
-   public static final avx<cuj> b = a("crafted", lt.g);
-   public static final avx<cuj> c = a("used", lt.g);
-   public static final avx<cuj> d = a("broken", lt.g);
-   public static final avx<cuj> e = a("picked_up", lt.g);
-   public static final avx<cuj> f = a("dropped", lt.g);
-   public static final avx<bsw<?>> g = a("killed", lt.f);
-   public static final avx<bsw<?>> h = a("killed_by", lt.f);
-   public static final avx<akq> i = a("custom", lt.k);
-   public static final akq j = a("leave_game", avw.b);
-   public static final akq k = a("play_time", avw.e);
-   public static final akq l = a("total_world_time", avw.e);
-   public static final akq m = a("time_since_death", avw.e);
-   public static final akq n = a("time_since_rest", avw.e);
-   public static final akq o = a("sneak_time", avw.e);
-   public static final akq p = a("walk_one_cm", avw.d);
-   public static final akq q = a("crouch_one_cm", avw.d);
-   public static final akq r = a("sprint_one_cm", avw.d);
-   public static final akq s = a("walk_on_water_one_cm", avw.d);
-   public static final akq t = a("fall_one_cm", avw.d);
-   public static final akq u = a("climb_one_cm", avw.d);
-   public static final akq v = a("fly_one_cm", avw.d);
-   public static final akq w = a("walk_under_water_one_cm", avw.d);
-   public static final akq x = a("minecart_one_cm", avw.d);
-   public static final akq y = a("boat_one_cm", avw.d);
-   public static final akq z = a("pig_one_cm", avw.d);
-   public static final akq A = a("horse_one_cm", avw.d);
-   public static final akq B = a("aviate_one_cm", avw.d);
-   public static final akq C = a("swim_one_cm", avw.d);
-   public static final akq D = a("strider_one_cm", avw.d);
-   public static final akq E = a("jump", avw.b);
-   public static final akq F = a("drop", avw.b);
-   public static final akq G = a("damage_dealt", avw.c);
-   public static final akq H = a("damage_dealt_absorbed", avw.c);
-   public static final akq I = a("damage_dealt_resisted", avw.c);
-   public static final akq J = a("damage_taken", avw.c);
-   public static final akq K = a("damage_blocked_by_shield", avw.c);
-   public static final akq L = a("damage_absorbed", avw.c);
-   public static final akq M = a("damage_resisted", avw.c);
-   public static final akq N = a("deaths", avw.b);
-   public static final akq O = a("mob_kills", avw.b);
-   public static final akq P = a("animals_bred", avw.b);
-   public static final akq Q = a("player_kills", avw.b);
-   public static final akq R = a("fish_caught", avw.b);
-   public static final akq S = a("talked_to_villager", avw.b);
-   public static final akq T = a("traded_with_villager", avw.b);
-   public static final akq U = a("eat_cake_slice", avw.b);
-   public static final akq V = a("fill_cauldron", avw.b);
-   public static final akq W = a("use_cauldron", avw.b);
-   public static final akq X = a("clean_armor", avw.b);
-   public static final akq Y = a("clean_banner", avw.b);
-   public static final akq Z = a("clean_shulker_box", avw.b);
-   public static final akq aa = a("interact_with_brewingstand", avw.b);
-   public static final akq ab = a("interact_with_beacon", avw.b);
-   public static final akq ac = a("inspect_dropper", avw.b);
-   public static final akq ad = a("inspect_hopper", avw.b);
-   public static final akq ae = a("inspect_dispenser", avw.b);
-   public static final akq af = a("play_noteblock", avw.b);
-   public static final akq ag = a("tune_noteblock", avw.b);
-   public static final akq ah = a("pot_flower", avw.b);
-   public static final akq ai = a("trigger_trapped_chest", avw.b);
-   public static final akq aj = a("open_enderchest", avw.b);
-   public static final akq ak = a("enchant_item", avw.b);
-   public static final akq al = a("play_record", avw.b);
-   public static final akq am = a("interact_with_furnace", avw.b);
-   public static final akq an = a("interact_with_crafting_table", avw.b);
-   public static final akq ao = a("open_chest", avw.b);
-   public static final akq ap = a("sleep_in_bed", avw.b);
-   public static final akq aq = a("open_shulker_box", avw.b);
-   public static final akq ar = a("open_barrel", avw.b);
-   public static final akq as = a("interact_with_blast_furnace", avw.b);
-   public static final akq at = a("interact_with_smoker", avw.b);
-   public static final akq au = a("interact_with_lectern", avw.b);
-   public static final akq av = a("interact_with_campfire", avw.b);
-   public static final akq aw = a("interact_with_cartography_table", avw.b);
-   public static final akq ax = a("interact_with_loom", avw.b);
-   public static final akq ay = a("interact_with_stonecutter", avw.b);
-   public static final akq az = a("bell_ring", avw.b);
-   public static final akq aA = a("raid_trigger", avw.b);
-   public static final akq aB = a("raid_win", avw.b);
-   public static final akq aC = a("interact_with_anvil", avw.b);
-   public static final akq aD = a("interact_with_grindstone", avw.b);
-   public static final akq aE = a("target_hit", avw.b);
-   public static final akq aF = a("interact_with_smithing_table", avw.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static akq a(String $$0, avw $$1) {
-      akq $$2 = akq.b($$0);
-      jz.a(lt.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class avy<T> implements Iterable<avw<T>> {
+   private final jz<T> a;
+   private final Map<T, avw<T>> b = new IdentityHashMap<>();
+   private final wz c;
+   private final yx<wk, avw<T>> d;
+
+   public avy(jz<T> $$0, wz $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = yv.a($$0.d()).a(this::b, avw::b);
    }
 
-   private static <T> avx<T> a(String $$0, jz<T> $$1) {
-      wy $$2 = wy.c("stat_type.minecraft." + $$0);
-      return jz.a(lt.v, $$0, new avx<>($$1, $$2));
+   public yx<wk, avw<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public avw<T> a(T $$0, avx $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new avw<>(this, (T)$$1x, $$1));
+   }
+
+   public jz<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<avw<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public avw<T> b(T $$0) {
+      return this.a($$0, avx.b);
+   }
+
+   public wz c() {
+      return this.c;
    }
 }

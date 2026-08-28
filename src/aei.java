@@ -1,37 +1,36 @@
-public class aei implements zf<abt> {
-   public static final yw<vv, aei> a = zf.a(aei::a, aei::new);
-   private final int b;
-   private final byte c;
+public record aei(agd e, byte f) implements zg<abu> {
+   public static final yx<wk, aei> a = zg.a(aei::a, aei::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aei(bsq $$0, byte $$1) {
-      this.b = $$0.an();
-      this.c = $$1;
+   private aei(wk $$0) {
+      this(new agd($$0), $$0.readByte());
    }
 
-   private aei(vv $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vv $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private void a(wk $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public zh<aei> a() {
-      return agf.am;
+   public zi<aei> a() {
+      return agg.al;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public bsq a(dcu $$0) {
-      return $$0.a(this.b);
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public byte b() {
-      return this.c;
+   public agd b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

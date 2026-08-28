@@ -1,30 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-public class gat {
-   public static final gat a = new gat(gas.b, gau.createDnsSrvRedirectHandler(), gap.a());
-   private final gas b;
-   private final gau c;
-   private final gap d;
+public interface gat {
+   boolean a(gau var1);
 
-   @VisibleForTesting
-   gat(gas $$0, gau $$1, gap $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   boolean a(gav var1);
 
-   public Optional<gaq> a(gar $$0) {
-      Optional<gaq> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gar> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+   static gat a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new gat() {
+         @Override
+         public boolean a(gau $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
          }
 
-         return $$1;
-      } else {
-         return Optional.empty();
-      }
+         @Override
+         public boolean a(gav $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

@@ -8,7 +8,7 @@ public class ca extends dv<ca.a> {
       return ca.a.a;
    }
 
-   public void a(aqu $$0, cuo $$1) {
+   public void a(aqv $$0, cuq $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class ca extends dv<ca.a> {
          return an.k.a(new ca.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cuo $$0) {
+      public boolean a(cuq $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

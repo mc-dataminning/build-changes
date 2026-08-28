@@ -1,34 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dku extends dfw implements dfz {
+public class dku extends dfy implements dna {
    public static final MapCodec<dku> a = b(dku::new);
+   public static final dtt b = dts.C;
 
    @Override
    public MapCodec<dku> a() {
       return a;
    }
 
-   public dku(dsz.d $$0) {
+   protected dku(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return $$0.a_($$1.c()).i();
+   protected boolean a(dtc $$0, dtc $$1, ji $$2) {
+      return $$1.a(dga.ac) && $$2.o() == ji.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == epd.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
-      return true;
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      $$0.H_().c(lu.aI).flatMap($$0x -> $$0x.b(ro.n)).ifPresent($$3x -> ((ebn)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   protected epc b_(dtc $$0) {
+      return $$0.c(b) ? epd.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public dfz.a aq_() {
-      return dfz.a.a;
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b);
    }
 }

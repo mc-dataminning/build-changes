@@ -1,24 +1,25 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface ela {
-   ela a = $$0 -> $$0;
+record ela(akq<ekz> c, akq<ekz> d) implements elb {
+   static MapCodec<ela> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akq.a(lu.aU).fieldOf("alias").forGetter(ela::c), akq.a(lu.aU).fieldOf("target").forGetter(ela::d)).apply($$0, ela::new)
+   );
 
-   akp<ekw> lookup(akp<ekw> var1);
+   @Override
+   public void a(ayw $$0, BiConsumer<akq<ekz>, akq<ekz>> $$1) {
+      $$1.accept(this.c, this.d);
+   }
 
-   static ela create(List<eky> $$0, jd $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         ayv $$3 = ayv.a($$2).e().a($$1);
-         Builder<akp<ekw>, akp<ekw>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<akp<ekw>, akp<ekw>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   @Override
+   public Stream<akq<ekz>> a() {
+      return Stream.of(this.d);
+   }
+
+   @Override
+   public MapCodec<ela> b() {
+      return a;
    }
 }

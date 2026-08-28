@@ -1,84 +1,54 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fkr implements fkp {
-   private static final akq g = akq.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fkr.a h;
-   private final wy i;
-   @Nullable
-   private final wy j;
-   private fkp.a k = fkp.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fkr implements fkt {
+   private static final akr a = akr.b("toast/recipe");
+   private static final long d = 5000L;
+   private static final wz e = wz.c("recipe.toast.title");
+   private static final wz f = wz.c("recipe.toast.description");
+   private final List<czb<?>> g = Lists.newArrayList();
+   private long h;
+   private boolean i;
 
-   public fkr(fkr.a $$0, wy $$1, @Nullable wy $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public fkr(czb<?> $$0) {
+      this.g.add($$0);
    }
 
    @Override
-   public fkp.a a(fht $$0, fkq $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+   public fkt.a a(fhx $$0, fku $$1, long $$2) {
+      if (this.i) {
+         this.h = $$2;
+         this.i = false;
+      }
+
+      if (this.g.isEmpty()) {
+         return fkt.a.b;
       } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+         $$0.a(a, 0, 0, this.a(), this.b());
+         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
+         czb<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
+         cuq $$4 = $$3.b().g();
+         $$0.c().a();
+         $$0.c().b(0.6F, 0.6F, 1.0F);
+         $$0.b($$4, 3, 3);
+         $$0.c().b();
+         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
+         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? fkt.a.b : fkt.a.a;
       }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = ayn.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
    }
 
-   public void c() {
-      this.k = fkp.a.b;
+   private void a(czb<?> $$0) {
+      this.g.add($$0);
+      this.i = true;
    }
 
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(akq.b("toast/movement_keys")),
-      b(akq.b("toast/mouse")),
-      c(akq.b("toast/tree")),
-      d(akq.b("toast/recipe_book")),
-      e(akq.b("toast/wooden_planks")),
-      f(akq.b("toast/social_interactions")),
-      g(akq.b("toast/right_click"));
-
-      private final akq h;
-
-      private a(final akq $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fht $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+   public static void a(fku $$0, czb<?> $$1) {
+      fkr $$2 = $$0.a(fkr.class, b);
+      if ($$2 == null) {
+         $$0.a(new fkr($$1));
+      } else {
+         $$2.a($$1);
       }
    }
 }

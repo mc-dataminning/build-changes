@@ -1,39 +1,50 @@
-import javax.annotation.Nullable;
+public class fiv extends fje {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fiv extends fie {
-   private final fhr a;
+   public fiv(int $$0, wz $$1, fhv $$2) {
+      this($$0, $$1, $$2, 4);
+   }
 
-   public fiv(fhr $$0, wy $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fiv(int $$0, wz $$1, fhv $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public fiv(int $$0, wz $$1, fhv $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   protected void b(fht $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.y() / 2;
-      int $$5 = this.E() + this.w() / 2;
-      wy $$6 = this.z();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fnm.a(ad.c());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   protected void a(fmg $$0) {
+      $$0.a(fmf.a, this.z());
    }
 
    @Override
-   protected void a(fmc $$0) {
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      if (this.aO_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aO_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(guy $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fhq a(fmi $$0) {
-      return null;
+   public void a(gvd $$0) {
    }
 }

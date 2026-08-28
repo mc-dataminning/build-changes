@@ -1,50 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dhn extends dfg {
-   public static final MapCodec<dhn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dhl.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dhn::new));
-   private final dfw e;
-   protected static final float b = 6.0F;
-   protected static final exp c = dfw.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class dhn extends dfy {
+   public static final MapCodec<dfy> a = lt.e.r().fieldOf("dead");
+   public static final MapCodec<dhn> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dhn::new));
+   private final dfy c;
+
+   public dhn(dfy $$0, dtb.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<dhn> a() {
-      return a;
-   }
-
-   protected dhn(dfw $$0, dsz.d $$1) {
-      super($$1);
-      this.e = $$0;
+      return b;
    }
 
    @Override
-   protected void b(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
-      this.a($$0, (dcv)$$1, $$2);
-   }
-
-   @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.o().a(d, Boolean.valueOf(false)), 2);
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.o(), 2);
       }
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      if ($$1 == ji.a && !$$0.a($$3, $$4)) {
-         return dfy.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, eoz.c, eoz.c.a($$3));
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.E_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(dcc $$0, jd $$1) {
+      for (ji $$2 : ji.values()) {
+         epc $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(awk.a)) {
+            return true;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return false;
    }
 
+   @Nullable
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return c;
+   public dtc a(cyd $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+      }
+
+      return this.o();
    }
 }

@@ -1,117 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public class ehb extends ehi {
-   private static final Codec<bqb> b = bqb.a
-      .codec()
-      .validate(
-         $$0 -> $$0.b() - $$0.a() < 1
-               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-               : DataResult.success($$0)
-      );
-   public static final MapCodec<ehb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bpv.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bpv.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bpv.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bpv.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, ehb::new)
-   );
-   private final bpv h;
-   private final bpv i;
-   private final bqb j;
-   private final bqb k;
-   private final bpv l;
+public class ehb extends egz {
+   public static final MapCodec<ehb> a = MapCodec.unit(() -> ehb.b);
+   public static final ehb b = new ehb();
 
-   public ehb(int $$0, int $$1, int $$2, bpv $$3, bpv $$4, bqb $$5, bpv $$6) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bqb.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
+   @Override
+   protected eha<?> a() {
+      return eha.a;
    }
 
    @Override
-   protected ehj<?> a() {
-      return ehj.i;
-   }
-
-   @Override
-   public List<efq.a> a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
-      }
-
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
-      }
-
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<efq.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new efq.a($$4.b($$11), 0, false));
-      }
-
-      jd.a $$16 = new jd.a();
-      ji $$17 = ji.c.a.a($$2);
-      Function<dta, dta> $$18 = $$1x -> $$1x.b(dmj.i, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
-   }
-
-   private efq.a a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5, Function<dta, dta> $$6, ji $$7, int $$8, boolean $$9, jd.a $$10) {
-      $$10.g($$4).c(ji.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      jd $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
-
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
-      }
-
-      ji $$17 = $$14.v() > $$10.v() ? ji.b : ji.a;
-
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new efq.a($$14.c(), 0, false);
+   public void a(egz.a $$0) {
+      ayw $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            jd $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dov.d);
+            }
          }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
-      }
+         if ($$1.a(3) > 0) {
+            jd $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dov.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jd $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dov.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jd $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dov.c);
+            }
+         }
+      });
    }
 }

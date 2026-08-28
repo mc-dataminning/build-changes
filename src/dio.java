@@ -1,16 +1,39 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dio {
-   @Nullable
-   dqf a(jd var1, dta var2);
+public class dio extends dmi {
+   public static final MapCodec<dio> b = b(dio::new);
 
-   @Nullable
-   default <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<dio> a() {
+      return b;
    }
 
-   @Nullable
-   default <T extends dqf> dxy a(aqt $$0, T $$1) {
-      return $$1 instanceof dxy.b<?> $$2 ? $$2.c() : null;
+   protected dio(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ji.b));
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      ji $$1 = $$0.k();
+      dtc $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
+   }
+
+   @Override
+   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
+      ji $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lm.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(a);
    }
 }

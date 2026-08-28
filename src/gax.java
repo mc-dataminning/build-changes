@@ -1,17 +1,30 @@
-public class gax extends gaz {
-   protected gax(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdc $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class gax {
+   public static final gax a = new gax(gaw.b, gay.createDnsSrvRedirectHandler(), gat.a());
+   private final gaw b;
+   private final gay c;
+   private final gat d;
+
+   @VisibleForTesting
+   gax(gaw $$0, gay $$1, gat $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static class a implements gck<lq> {
-      private final gdc a;
+   public Optional<gau> a(gav $$0) {
+      Optional<gau> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gav> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-      public a(gdc $$0) {
-         this.a = $$0;
-      }
-
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gax($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

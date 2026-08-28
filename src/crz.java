@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface crz {
+public record crz(cxf a) implements csa {
 }

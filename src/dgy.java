@@ -1,26 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgy extends dkg {
+public class dgy extends dml implements dna {
    public static final MapCodec<dgy> a = b(dgy::new);
+   public static final dtt b = dts.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final ext e = dfy.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final ext f = dfy.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final ext g = dfy.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
    @Override
    public MapCodec<dgy> a() {
       return a;
    }
 
-   public dgy(dsz.d $$0) {
+   public dgy(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ji.a.b));
    }
 
    @Override
-   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         jd $$4 = $$2.d();
-         dta $$5 = $$1.a_($$4);
-         if (!a($$5.k($$1, $$4), ji.b)) {
-            ayr.a($$1, $$2, $$3, lm.H);
-         }
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      switch ((ji.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == epd.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b).a(i);
+   }
+
+   @Override
+   protected epc b_(dtc $$0) {
+      return $$0.c(b) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

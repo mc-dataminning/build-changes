@@ -1,25 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class een implements eee {
-   public static final Codec<een> a = RecordCodecBuilder.create(
+public class een extends edz {
+   public static final Codec<een> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+               egi.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               axw.l.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               axw.l.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, een::new)
    );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+   public final int d;
+   public final int e;
 
-   public een(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public een(egi $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

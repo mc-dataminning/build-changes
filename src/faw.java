@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface faw {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eyx
-@eyw
-interface faw {
+   void b();
+
+   fau c();
+
+   fau d();
+
+   void e();
 }

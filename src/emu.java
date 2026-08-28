@@ -1,45 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class emu extends enk {
+public class emu extends eno {
    public static final MapCodec<emu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyv.a.g.fieldOf("heightmap").orElse(dyv.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               kb.a(lu.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
             .apply($$0, emu::new)
    );
-   private final dyv.a b;
-   private final int c;
+   private final Optional<jq<dfy>> b;
+   private final float c;
 
-   public emu(dyv.a $$0, int $$1) {
-      this.b = $$0;
+   public emu(jq<dfy> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public emu(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private emu(Optional<jq<dfy>> $$0, float $$1) {
       this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
-      dyv.a $$6;
-      if ($$0 instanceof aqt) {
-         if (this.b == dyv.a.a) {
-            $$6 = dyv.a.b;
-         } else if (this.b == dyv.a.c) {
-            $$6 = dyv.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
-      }
-
-      jd $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new enn.c(new jd($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
+      ayw $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected enm<?> a() {
-      return enm.g;
+   protected enq<?> a() {
+      return enq.f;
    }
 }

@@ -1,59 +1,66 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class ffm extends ffh {
+public class ffm extends ffl {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wy d;
-   private final Runnable e;
+   private static final wz c = wz.c("mco.configure.world.opening");
+   private final fcn d;
+   private final fob e;
+   private final boolean f;
+   private final fgm g;
 
-   public ffm(long $$0, wy $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ffm(fcn $$0, fob $$1, boolean $$2, fgm $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
-
-   protected abstract void a(fbs var1, long var2) throws fdd;
 
    @Override
    public void run() {
-      fbs $$0 = fbs.a();
-      int $$1 = 0;
+      fbw $$0 = fbw.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (fde var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fdv) {
+                     ((fdv)this.e).f();
+                  }
+
+                  this.d.e = fcn.c.b;
+                  if (this.f) {
+                     fbr.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fdi var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
+            b.error("Failed to open server", var5);
             this.a(var5);
-            return;
          }
       }
    }
 
    @Override
-   public wy a() {
-      return this.d;
+   public wz a() {
+      return c;
    }
 }

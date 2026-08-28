@@ -1,59 +1,59 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class afz implements zf<abt> {
-   public static final yw<wj, afz> a = yw.a(yu.g, afz::b, afz.a.b.a(yu.a()), afz::e, afz::new);
-   private final int b;
-   private final List<afz.a> c;
+public class afz implements zg<abu> {
+   public static final yx<wk, afz> a = zg.a(afz::a, afz::new);
+   private final boolean b;
+   private final List<ag> c;
+   private final Set<akr> d;
+   private final Map<akr, ai> e;
 
-   public afz(int $$0, Collection<buq> $$1) {
+   public afz(boolean $$0, Collection<ag> $$1, Set<akr> $$2, Map<akr, ai> $$3) {
       this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (buq $$2 : $$1) {
-         this.c.add(new afz.a($$2.a(), $$2.b(), $$2.c()));
-      }
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   private afz(int $$0, List<afz.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private afz(wk $$0) {
+      this.b = $$0.readBoolean();
+      this.c = ag.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vw::q);
+      this.e = $$0.a(vw::q, ai::b);
+   }
+
+   private void a(wk $$0) {
+      $$0.a(this.b);
+      ag.b.encode($$0, this.c);
+      $$0.a(this.d, vw::a);
+      $$0.a(this.e, vw::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zh<afz> a() {
-      return agf.bb;
+   public zi<afz> a() {
+      return agg.ba;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public List<afz.a> e() {
+   public List<ag> b() {
       return this.c;
    }
 
-   public static record a(jm<bup> c, double d, Collection<bus> e) {
-      public static final yw<ByteBuf, bus> a = yw.a(akq.b, bus::b, yu.j, bus::c, bus.a.e, bus::d, bus::new);
-      public static final yw<wj, afz.a> b = yw.a(bup.b, afz.a::a, yu.j, afz.a::b, a.a(yu.a(ArrayList::new)), afz.a::c, afz.a::new);
+   public Set<akr> e() {
+      return this.d;
+   }
 
-      public jm<bup> a() {
-         return this.c;
-      }
+   public Map<akr, ai> f() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.d;
-      }
-
-      public Collection<bus> c() {
-         return this.e;
-      }
+   public boolean g() {
+      return this.b;
    }
 }

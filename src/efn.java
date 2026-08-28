@@ -1,70 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efn extends efq {
-   public static final MapCodec<efn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bpv.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
-            )
-            .apply($$0, efn::new)
-   );
-   private final bpv b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
+public class efn extends eft {
+   public static final MapCodec<efn> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efn::new));
 
-   public efn(bpv $$0, bpv $$1, bpv $$2, float $$3, float $$4, float $$5, float $$6) {
+   public efn(bpw $$0, bpw $$1) {
       super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
    }
 
    @Override
-   protected efr<?> a() {
-      return efr.k;
+   protected efu<?> a() {
+      return efu.d;
    }
 
    @Override
-   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
+   protected void a(ddc $$0, eft.b $$1, ayw $$2, efd $$3, int $$4, eft.a $$5, int $$6, int $$7, int $$8) {
       boolean $$9 = $$5.c();
       jd $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
-
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
    }
 
    @Override
-   public int a(ayv $$0, int $$1, efa $$2) {
-      return this.b.a($$0);
+   public int a(ayw $$0, int $$1, efd $$2) {
+      return 0;
    }
 
    @Override
-   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
-      }
+   protected boolean a(ayw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,19 +1,33 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ael(wy b, Optional<byte[]> c) implements zf<abt> {
-   public static final yw<ByteBuf, ael> a = yw.a(xa.f, ael::b, yu.k.a(yu::a), ael::e, ael::new);
+public class ael implements zg<abu> {
+   public static final yx<vw, ael> a = zg.a(ael::a, ael::new);
+   @Nullable
+   private final akr b;
 
-   @Override
-   public zh<ael> a() {
-      return agf.ap;
+   public ael(@Nullable akr $$0) {
+      this.b = $$0;
    }
 
-   public void a(abt $$0) {
+   private ael(vw $$0) {
+      this.b = $$0.c(vw::q);
+   }
+
+   private void a(vw $$0) {
+      $$0.a(this.b, vw::a);
+   }
+
+   @Override
+   public zi<ael> a() {
+      return agg.ao;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   @Nullable
+   public akr b() {
+      return this.b;
    }
 }

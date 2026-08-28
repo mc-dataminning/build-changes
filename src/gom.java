@@ -1,25 +1,39 @@
-public class gom<T extends cmv> extends gop<T, fwj<T>> {
-   private final fwe a;
+public class gom<T extends btn, M extends fvi<T> & fuh> extends got<T, M> {
+   private final get a;
 
-   public gom(glz<T, fwj<T>> $$0, fya $$1) {
+   public gom(gmd<T, M> $$0, get $$1) {
       super($$0);
-      this.a = new fwe($$1.a(fyd.aH));
+      this.a = $$1;
    }
 
-   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      ua $$9 = $$8 ? $$3.gq() : $$3.gr();
-      bsw.a($$9.l("id")).filter($$0x -> $$0x == bsw.ax).ifPresent($$10 -> {
+   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == btg.b;
+      cuq $$11 = $$10 ? $$3.eV() : $$3.eU();
+      cuq $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.e() || !$$12.e()) {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.cb() ? -1.3F : -1.5F, 0.0F);
-         cfs.b $$11 = cfs.b.a($$9.h("Variant"));
-         fbg $$12 = $$1.getBuffer(this.a.a(glq.a($$11)));
-         this.a.a($$0, $$12, $$2, gpw.d, $$4, $$5, $$6, $$7, $$3.ai);
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
+
+         this.a($$3, $$12, cun.c, btg.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cun.b, btg.a, $$0, $$1, $$2);
          $$0.b();
-      });
+      }
+   }
+
+   protected void a(btn $$0, cuq $$1, cun $$2, btg $$3, fbg $$4, gex $$5, int $$6) {
+      if (!$$1.e()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == btg.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
 }

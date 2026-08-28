@@ -1,21 +1,65 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class bmp implements bmk<StringReader, akq> {
-   public static final bmk<StringReader, akq> a = new bmp();
-
-   private bmp() {
+public record bmp<T>(bmh<StringReader> a, bmf<T> b) {
+   public Optional<T> a(bmk<StringReader> $$0) {
+      return $$0.a(this.b);
    }
 
-   @Override
-   public Optional<akq> a(bmj<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   public T a(StringReader $$0) throws CommandSyntaxException {
+      bmi.a<StringReader> $$1 = new bmi.a<>();
+      bmt $$2 = new bmt(this.a(), $$1, $$0);
+      Optional<T> $$3 = this.a($$2);
+      if ($$3.isPresent()) {
+         return $$3.get();
+      } else {
+         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
+            if ($$0x.c() instanceof Exception $$3x) {
+               $$1x.accept($$3x);
+            }
+         }).toList();
 
-      try {
-         return Optional.of(akq.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
+         for (Exception $$5 : $$4) {
+            if ($$5 instanceof CommandSyntaxException $$6) {
+               throw $$6;
+            }
+         }
+
+         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
+            throw $$7;
+         } else {
+            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bmj::toString).collect(Collectors.joining(", ")));
+         }
+      }
+   }
+
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      StringReader $$1 = new StringReader($$0.getInput());
+      $$1.setCursor($$0.getStart());
+      bmi.a<StringReader> $$2 = new bmi.a<>();
+      bmt $$3 = new bmt(this.a(), $$2, $$1);
+      this.a($$3);
+      List<bmj<StringReader>> $$4 = $$2.a();
+      if ($$4.isEmpty()) {
+         return $$0.buildFuture();
+      } else {
+         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+
+         for (bmj<StringReader> $$6 : $$4) {
+            if ($$6.b() instanceof bms $$7) {
+               ey.a($$7.a(), $$5);
+            } else {
+               ey.b($$6.b().possibleValues($$3), $$5);
+            }
+         }
+
+         return $$5.buildFuture();
       }
    }
 }

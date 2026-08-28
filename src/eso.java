@@ -1,102 +1,93 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class eso extends esy {
-   private static final Logger b = LogUtils.getLogger();
+public class eso extends etc {
    public static final MapCodec<eso> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  kb.a(lu.aL).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+                  lt.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(duf::f).toList())
                )
             )
             .apply($$0, eso::new)
    );
-   private final Optional<jq<daa>> c;
-   private final boolean d;
+   private final jm<dfy> b;
+   private final Set<duf<?>> c;
 
-   eso(List<euw> $$0, Optional<jq<daa>> $$1, boolean $$2) {
+   eso(List<eva> $$0, jm<dfy> $$1, Set<duf<?>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private eso(List<eva> $$0, jm<dfy> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public eta<eso> b() {
-      return etb.h;
+   public ete<eso> b() {
+      return etf.D;
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      ayv $$2 = $$1.b();
-      boolean $$3 = $$0.a(cur.qP);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jm<daa>> $$5 = this.c
-         .<Stream<jm<daa>>>map(jq::a)
-         .orElseGet(() -> $$1.d().H_().d(lu.aL).i().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((daa)$$2x.a()).c($$0));
-      List<jm<daa>> $$6 = $$5.toList();
-      Optional<jm<daa>> $$7 = ad.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<eui<?>> a() {
+      return ImmutableSet.of(eul.g);
    }
 
-   private static cuo a(cuo $$0, jm<daa> $$1, ayv $$2) {
-      int $$3 = ayn.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cur.qP)) {
-         $$0 = new cuo(cur.uw);
+   @Override
+   protected cuq a(cuq $$0, erp $$1) {
+      dtc $$2 = $$1.c(eul.g);
+      if ($$2 != null) {
+         $$0.a(kq.ac, cxd.a, $$1x -> {
+            for (duf<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static eso.a c() {
-      return new eso.a();
+   public static eso.a a(dfy $$0) {
+      return new eso.a($$0);
    }
 
-   public static eso.a a(jo.a $$0) {
-      return c().a($$0.b(lu.aL).b(awg.n));
-   }
+   public static class a extends etc.a<eso.a> {
+      private final jm<dfy> a;
+      private final Builder<duf<?>> b = ImmutableSet.builder();
 
-   public static class a extends esy.a<eso.a> {
-      private Optional<jq<daa>> a = Optional.empty();
-      private boolean b = true;
+      a(dfy $$0) {
+         this.a = $$0.s();
+      }
+
+      public eso.a a(duf<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
       protected eso.a a() {
          return this;
       }
 
-      public eso.a a(jm<daa> $$0) {
-         this.a = Optional.of(jq.a($$0));
-         return this;
-      }
-
-      public eso.a a(jq<daa> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eso.a e() {
-         this.b = false;
-         return this;
-      }
-
       @Override
-      public esz b() {
-         return new eso(this.g(), this.a, this.b);
+      public etd b() {
+         return new eso(this.g(), this.a, this.b.build());
       }
    }
 }

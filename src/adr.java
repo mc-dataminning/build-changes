@@ -1,37 +1,33 @@
-public class adr implements zf<abt> {
-   public static final yw<vv, adr> a = zf.a(adr::a, adr::new);
-   private final jd b;
-   private final boolean c;
+public class adr implements zg<abu> {
+   public static final yx<wk, adr> a = yx.a(yv.g, adr::b, yv.a(lu.V), adr::e, xb.d, adr::f, adr::new);
+   private final int b;
+   private final crc<?> c;
+   private final wz d;
 
-   public adr(jd $$0, boolean $$1) {
+   public adr(int $$0, crc<?> $$1, wz $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   private adr(vv $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      this.d = $$2;
    }
 
    @Override
-   public zh<adr> a() {
-      return agf.X;
+   public zi<adr> a() {
+      return agg.W;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public crc<?> e() {
       return this.c;
+   }
+
+   public wz f() {
+      return this.d;
    }
 }

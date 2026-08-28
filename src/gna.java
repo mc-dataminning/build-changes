@@ -1,18 +1,17 @@
-public class gna extends glj<cmo, fxp<cmo>> {
-   private static final akq a = akq.b("textures/entity/wandering_trader.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gna(gkd.a $$0) {
-      super($$0, new fxp<>($$0.a(fyd.bT)), 0.5F);
-      this.a(new gnu<>(this, $$0.f(), $$0.d()));
-      this.a(new gnt<>(this, $$0.d()));
+public class gna extends gjb<chi, fvt<chi>> {
+   private static final Map<bsx<?>, akr> a = Maps.newHashMap(
+      ImmutableMap.of(bsx.bv, akr.b("textures/entity/horse/horse_zombie.png"), bsx.aO, akr.b("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gna(gkh.a $$0, fyg $$1) {
+      super($$0, new fvt<>($$0.a($$1)), 1.0F);
    }
 
-   public akq a(cmo $$0) {
-      return a;
-   }
-
-   protected void a(cmo $$0, fbc $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public akr a(chi $$0) {
+      return a.get($$0.am());
    }
 }

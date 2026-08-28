@@ -1,21 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eam extends ean {
-   public static final MapCodec<eam> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eam::new));
+class eam extends eaq {
+   private final jq<epb> e;
+   public static final MapCodec<eam> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kb.a(lu.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eam::new)
+   );
 
-   public eam(kh $$0) {
+   public eam(kh $$0, jq<epb> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected boolean a(dta $$0) {
-      return $$0.e();
+   protected boolean a(dtc $$0) {
+      return $$0.u().a(this.e);
    }
 
    @Override
-   public ead<?> a() {
-      return ead.e;
+   public eag<?> a() {
+      return eag.c;
    }
 }

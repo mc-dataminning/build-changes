@@ -1,82 +1,108 @@
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
-public class mv implements ma {
-   private static final Logger d = LogUtils.getLogger();
-   private final mc.a e;
-   private final Set<akp<erq>> f;
-   private final List<mv.a> g;
-   private final CompletableFuture<jo.a> h;
+public abstract class mv implements mx {
+   private static final Set<bsx<?>> b = ImmutableSet.of(bsx.by, bsx.d, bsx.af, bsx.aS, bsx.bj);
+   protected final jo.a a;
+   private final cpl c;
+   private final cpl d;
+   private final Map<bsx<?>, Map<akq<eru>, eru.a>> e = Maps.newHashMap();
 
-   public mv(mc $$0, Set<akp<erq>> $$1, List<mv.a> $$2, CompletableFuture<jo.a> $$3) {
-      this.e = $$0.a(lu.bc);
-      this.g = $$2;
-      this.f = $$1;
-      this.h = $$3;
+   protected final euo.a a() {
+      jo.b<dac> $$0 = this.a.b(lu.aL);
+      return euo.a(
+         evd.a(erp.b.a, bv.a.a().a(bt.a.a().b(true))), evd.a(erp.b.c, bv.a.a().a(bs.a.a().f(cs.a.a().a(cu.b, cn.a(List.of(new bq($$0.b(awh.p), dh.d.c)))))))
+      );
    }
+
+   protected mv(cpl $$0, jo.a $$1) {
+      this($$0, $$0, $$1);
+   }
+
+   protected mv(cpl $$0, cpl $$1, jo.a $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+   }
+
+   protected static eru.a a(dcv $$0) {
+      return eru.b().a(ert.a().a(evt.a(1.0F)).a(esc.a($$0))).a(ert.a().a(evt.a(1.0F)).a(esi.a(bsx.aJ.k())));
+   }
+
+   public abstract void b();
 
    @Override
-   public CompletableFuture<?> a(ly $$0) {
-      return this.h.thenCompose($$1 -> this.a($$0, $$1));
-   }
+   public void generate(BiConsumer<akq<eru>, eru.a> $$0) {
+      this.b();
+      Set<akq<eru>> $$1 = new HashSet<>();
+      lt.f
+         .i()
+         .forEach(
+            $$2 -> {
+               bsx<?> $$3 = $$2.a();
+               if ($$3.a(this.c)) {
+                  if (a($$3)) {
+                     Map<akq<eru>, eru.a> $$4 = this.e.remove($$3);
+                     akq<eru> $$5 = $$3.k();
+                     if ($$5 != erl.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.h().a()));
+                     }
 
-   private CompletableFuture<?> a(ly $$0, jo.a $$1) {
-      ki<erq> $$2 = new ju<>(lu.bc, Lifecycle.experimental());
-      Map<dzk.a, akq> $$3 = new Object2ObjectOpenHashMap();
-      this.g.forEach($$3x -> $$3x.a().apply($$1).generate(($$3xx, $$4x) -> {
-            akq $$5x = a($$3xx);
-            akq $$6x = $$3.put(bqw.a($$5x), $$5x);
-            if ($$6x != null) {
-               ad.a("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
+                     if ($$4 != null) {
+                        $$4.forEach(($$3x, $$4x) -> {
+                           if (!$$1.add($$3x)) {
+                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2.h().a()));
+                           } else {
+                              $$0.accept($$3x, $$4x);
+                           }
+                        });
+                     }
+                  } else {
+                     Map<akq<eru>, eru.a> $$6 = this.e.remove($$3);
+                     if ($$6 != null) {
+                        throw new IllegalStateException(
+                           String.format(
+                              Locale.ROOT,
+                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
+                              $$6.keySet().stream().map($$0xx -> $$0xx.a().toString()).collect(Collectors.joining(",")),
+                              $$2.h().a()
+                           )
+                        );
+                     }
+                  }
+               }
             }
-
-            $$4x.a($$5x);
-            erq $$7 = $$4x.a($$3x.b).b();
-            $$2.a($$3xx, $$7, jy.a);
-         }));
-      $$2.m();
-      ayt.a $$4 = new ayt.a();
-      jn.a $$5 = new ka.c(List.of($$2)).d().b();
-      err $$6 = new err($$4, eug.q, $$5);
-
-      for (akp<erq> $$8 : Sets.difference(this.f, $$2.g())) {
-         $$4.b("Missing built-in table: " + $$8.a());
-      }
-
-      $$2.i().forEach($$1x -> ((erq)$$1x.a()).a($$6.a(((erq)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
-      Multimap<String, String> $$9 = $$4.a();
-      if (!$$9.isEmpty()) {
-         $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf($$2.h().stream().map($$2x -> {
-            akp<erq> $$3x = (akp<erq>)$$2x.getKey();
-            erq $$4x = (erq)$$2x.getValue();
-            Path $$5x = this.e.a($$3x.a());
-            return ma.a($$0, $$1, erq.d, $$4x, $$5x);
-         }).toArray(CompletableFuture[]::new));
+         );
+      if (!this.e.isEmpty()) {
+         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
       }
    }
 
-   private static akq a(akp<erq> $$0) {
-      return $$0.a();
+   private static boolean a(bsx<?> $$0) {
+      return b.contains($$0) || $$0.f() != btq.h;
    }
 
-   @Override
-   public final String a() {
-      return "Loot Tables";
+   protected eva.a c() {
+      return eut.a(bk.a.a().b(bv.a.a().a(bsx.R)));
    }
 
-   public static record a(Function<jo.a, mw> a, euf b) {
+   protected eva.a a(akq<cfp> $$0) {
+      return eut.a(bk.a.a().b(bv.a.a().a(bsx.R).a(bx.b(lt.aj.g($$0)))));
+   }
+
+   protected void a(bsx<?> $$0, eru.a $$1) {
+      this.a($$0, $$0.k(), $$1);
+   }
+
+   protected void a(bsx<?> $$0, akq<eru> $$1, eru.a $$2) {
+      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

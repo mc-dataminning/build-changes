@@ -1,63 +1,43 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bta {
-   void a(bsx var1, cuo var2);
+public record bta(akq<eru> c, Map<bsy, Float> d) {
+   public static final Codec<Map<bsy, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsy.i, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bta::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bsy.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bta> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akq.a(lu.bc).fieldOf("loot_table").forGetter(bta::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bta::b))
+            .apply($$0, bta::new)
+   );
 
-   cuo a(bsx var1);
-
-   void a(bsx var1, float var2);
-
-   default void a(bsz $$0, ero $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private static Map<bsy, Float> a(float $$0) {
+      return a(List.of(bsy.values()), $$0);
    }
 
-   default void a(akp<erq> $$0, ero $$1, Map<bsx, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
-   }
+   private static Map<bsy, Float> a(List<bsy> $$0, float $$1) {
+      Map<bsy, Float> $$2 = Maps.newHashMap();
 
-   default void a(akp<erq> $$0, ero $$1, long $$2, Map<bsx, Float> $$3) {
-      if (!$$0.equals(erh.a)) {
-         erq $$4 = $$1.a().o().be().b($$0);
-         if ($$4 != erq.a) {
-            List<cuo> $$5 = $$4.a($$1, $$2);
-            List<bsx> $$6 = new ArrayList<>();
-
-            for (cuo $$7 : $$5) {
-               bsx $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  cuo $$9 = $$8.a($$7);
-                  this.a($$8, $$9);
-                  Float $$10 = $$3.get($$8);
-                  if ($$10 != null) {
-                     this.a($$8, $$10);
-                  }
-
-                  $$6.add($$8);
-               }
-            }
-         }
+      for (bsy $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Nullable
-   default bsx a(cuo $$0, List<bsx> $$1) {
-      if ($$0.e()) {
-         return null;
-      } else {
-         ctq $$2 = ctq.c_($$0);
-         if ($$2 != null) {
-            bsx $$3 = $$2.m();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bsx.a)) {
-            return bsx.a;
-         }
+   public akq<eru> a() {
+      return this.c;
+   }
 
-         return null;
-      }
+   public Map<bsy, Float> b() {
+      return this.d;
    }
 }

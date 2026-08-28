@@ -1,20 +1,11 @@
-public record zz(aqg b) implements zf<zy> {
-   public static final yw<vv, zz> a = zf.a(zz::a, zz::new);
+public interface zz extends abr, agj {
+   void a(aac var1);
 
-   private zz(vv $$0) {
-      this(new aqg($$0));
-   }
+   void a(aad var1);
 
-   private void a(vv $$0) {
-      this.b.a($$0);
-   }
+   void a(aab var1);
 
-   @Override
-   public zh<zz> a() {
-      return zx.l;
-   }
+   void a(aae var1);
 
-   public void a(zy $$0) {
-      $$0.a(this);
-   }
+   void a(aaa var1);
 }

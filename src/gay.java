@@ -1,49 +1,48 @@
-public class gay extends gdh {
-   private final gdc a;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   gay(fyz $$0, double $$1, double $$2, double $$3, double $$4, gdc $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
+@FunctionalInterface
+public interface gay {
+   Logger a = LogUtils.getLogger();
+   gay b = $$0 -> Optional.empty();
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   Optional<gav> lookupRedirect(gav var1);
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gcl b() {
-      return gcl.d;
-   }
-
-   public static class a implements gck<lq> {
-      private final gdc a;
-
-      public a(gdc $$0) {
-         this.a = $$0;
+   static gay createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gay($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new gav($$4x[3], gav.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
+
+         return Optional.empty();
+      };
    }
 }

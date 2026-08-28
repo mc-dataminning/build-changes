@@ -1,81 +1,102 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public class eks extends eku {
-   public static final MapCodec<eks> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eku.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, eks::new)
-   );
-   private final List<eku> b;
+public class eks {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final ekz.a e;
 
-   public eks(List<eku> $$0, ekw.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public eks(int $$0, int $$1, int $$2, int $$3, ekz.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public ekz.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> eks a(Dynamic<T> $$0) {
+      return new eks(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         ekz.a.a($$0.get("dest_proj").asString(""))
+      );
    }
 
    @Override
-   public kh a(eno $$0, dmk $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (eku $$5 : this.b) {
-         kh $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new kh($$2, $$3, $$4);
-   }
-
-   @Override
-   public List<enn.c> a(eno $$0, jd $$1, dmk $$2, ayv $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public eje a(eno $$0, jd $$1, dmk $$2) {
-      Stream<eje> $$3 = this.b.stream().filter($$0x -> $$0x != ekn.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return eje.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(eno $$0, ddq $$1, ddo $$2, dux $$3, jd $$4, jd $$5, dmk $$6, eje $$7, ayv $$8, boolean $$9) {
-      for (eku $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eks $$1 = (eks)$$0;
+         if (this.a != $$1.a) {
             return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
          }
+      } else {
+         return false;
       }
-
-      return true;
    }
 
    @Override
-   public ekv<?> a() {
-      return ekv.b;
-   }
-
-   @Override
-   public eku a(ekw.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
    }
 
    @Override
    public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(ekw.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

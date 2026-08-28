@@ -1,50 +1,99 @@
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fea extends gwj {
-   private static final wy a = wy.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final flx c = flx.d();
-   private final fnx A;
+public class fea extends gwo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wz b = wz.c("mco.configure.world.buttons.invite");
+   private static final wz c = wz.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final wz B = wz.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final wz C = wz.c("mco.configure.world.players.error").b(-65536);
+   private final flx D = new flx(this);
+   private fit E;
+   private fik F;
+   private final fcn G;
+   private final fdv H;
+   private final fob I;
    @Nullable
-   private fja B;
+   private wz J;
 
-   public fea(fnx $$0) {
-      super(fga.a);
-      this.A = $$0;
+   public fea(fdv $$0, fob $$1, fcn $$2) {
+      super(b);
+      this.H = $$0;
+      this.I = $$1;
+      this.G = $$2;
    }
 
    @Override
-   public void aP_() {
-      this.c.a(15).c().b();
-      this.B = new fja(a, this.o).b(true);
-      this.c.a(this.B);
-      flx $$0 = this.c.a(flx.e().a(8));
-      wy $$1 = wy.c("mco.account.privacy.info.button");
-      $$0.a(fig.a($$1, fmu.b(this, "https://aka.ms/MinecraftGDPR")).a());
-      $$0.a(fig.a(wx.k, $$0x -> this.d()).a());
-      this.c.a($$1x -> {
-         fie var10000 = this.c($$1x);
+   public void aT_() {
+      this.D.a(b, this.o);
+      fmb $$0 = this.D.c(fmb.d().a(8));
+      this.E = new fit(this.l.h, 200, 20, wz.c("mco.configure.world.invite.profile.name"));
+      $$0.a(flt.a(this.o, this.E, c));
+      this.F = $$0.a(fik.a(b, $$0x -> this.C()).a(200).a());
+      this.D.b(fik.a(wy.k, $$0x -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         fii var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
-   public void d() {
-      this.l.a(this.A);
-   }
-
-   @Override
    protected void c() {
-      if (this.B != null) {
-         this.B.d(this.m - 15);
-      }
-
-      this.c.a();
-      flr.a(this.c, this.H());
+      this.D.a();
    }
 
    @Override
-   public wy i() {
-      return a;
+   protected void aI_() {
+      this.b(this.E);
+   }
+
+   private void C() {
+      if (azl.h(this.E.a())) {
+         this.a(C);
+      } else {
+         long $$0 = this.G.a;
+         String $$1 = this.E.a().trim();
+         this.F.j = false;
+         this.E.e(false);
+         this.a(B);
+         CompletableFuture.<fcn>supplyAsync(() -> {
+            try {
+               return fbw.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ad.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.G.h = $$0x.h;
+               this.l.a(new feg(this.H, this.G));
+            } else {
+               this.a(C);
+            }
+
+            this.E.e(true);
+            this.F.j = true;
+         }, this.q);
+      }
+   }
+
+   private void a(wz $$0) {
+      this.J = $$0;
+      this.l.aV().c($$0);
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.I);
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J != null) {
+         $$0.a(this.o, this.J, this.m / 2, this.F.E() + this.F.w() + 8, -1);
+      }
    }
 }

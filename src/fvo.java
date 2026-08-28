@@ -1,79 +1,41 @@
-import com.google.common.collect.ImmutableList;
-
-public class fvo<T extends btn & clh> extends ftz<T> {
-   private static final float a = 0.87266463F;
-   private static final float b = (float) (-Math.PI / 9);
-   private final fye f;
-   private final fye g;
-   private final fye h;
-   private final fye i;
-   private final fye j;
-   private final fye k;
-   private final fye l;
-   private final fye m;
-   private final fye n;
-
-   public fvo(fye $$0) {
-      super(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F);
-      this.i = $$0.b("body");
-      this.n = this.i.b("mane");
-      this.f = $$0.b("head");
-      this.g = this.f.b("right_ear");
-      this.h = this.f.b("left_ear");
-      this.j = $$0.b("right_front_leg");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_hind_leg");
-      this.m = $$0.b("left_hind_leg");
+public class fvo<T extends che> extends fws<T> {
+   public fvo(fyi $$0) {
+      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
    }
 
-   public static fyk c() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      fyn $$2 = $$1.a("body", fyj.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), fyg.a(0.0F, 7.0F, 0.0F));
-      $$2.a("mane", fyj.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new fyi(0.001F)), fyg.a(0.0F, -14.0F, -5.0F));
-      fyn $$3 = $$1.a("head", fyj.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), fyg.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
-      $$3.a("right_ear", fyj.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fyg.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
-      $$3.a("left_ear", fyj.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fyg.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
-      $$3.a("right_horn", fyj.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fyg.a(-7.0F, 2.0F, -12.0F));
-      $$3.a("left_horn", fyj.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fyg.a(7.0F, 2.0F, -12.0F));
-      int $$4 = 14;
-      int $$5 = 11;
-      $$1.a("right_front_leg", fyj.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fyg.a(-4.0F, 10.0F, -8.5F));
-      $$1.a("left_front_leg", fyj.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fyg.a(4.0F, 10.0F, -8.5F));
-      $$1.a("right_hind_leg", fyj.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fyg.a(-5.0F, 13.0F, 10.0F));
-      $$1.a("left_hind_leg", fyj.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fyg.a(5.0F, 13.0F, 10.0F));
-      return fyk.a($$0, 128, 64);
-   }
-
-   @Override
-   protected Iterable<fye> a() {
-      return ImmutableList.of(this.f);
-   }
-
-   @Override
-   protected Iterable<fye> b() {
-      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m);
+   public static fyo c() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      fyr $$2 = $$1.a(
+         "head",
+         fyn.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         fyk.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", fyn.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fyk.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", fyn.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fyk.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", fyn.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fyk.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", fyn.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fyk.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", fyn.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fyk.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", fyn.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fyk.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", fyn.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fyk.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", fyn.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fyk.a(-3.0F, 14.0F, -6.0F));
+      return fyo.a($$0, 64, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.g = (float) (-Math.PI * 2.0 / 9.0) - $$2 * ayn.a($$1);
-      this.h.g = (float) (Math.PI * 2.0 / 9.0) + $$2 * ayn.a($$1);
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      int $$6 = $$0.gm();
-      float $$7 = 1.0F - (float)ayn.a(10 - 2 * $$6) / 10.0F;
-      this.f.e = ayn.i($$7, 0.87266463F, (float) (-Math.PI / 9));
-      if ($$0.o_()) {
-         this.f.c = ayn.i($$7, 2.0F, 5.0F);
-         this.n.d = -3.0F;
-      } else {
-         this.f.c = 2.0F;
-         this.n.d = -7.0F;
+      this.a.b("left_horn").k = $$0.gl();
+      this.a.b("right_horn").k = $$0.gm();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.gw();
+      if ($$6 != 0.0F) {
+         this.a.e = $$6;
       }
-
-      float $$8 = 1.2F;
-      this.j.e = ayn.b($$1) * 1.2F * $$2;
-      this.k.e = ayn.b($$1 + (float) Math.PI) * 1.2F * $$2;
-      this.l.e = this.k.e;
-      this.m.e = this.j.e;
    }
 }

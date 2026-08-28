@@ -1,45 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class gip implements gig.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fgi c;
-   private Collection<jd> d = Lists.newArrayList();
+public class gip implements gik.a {
+   private final fgm a;
+   private static final int b = 10;
 
-   public gip(fgi $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<jd> $$0) {
-      this.d = $$0;
+   public gip(fgm $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      jd $$5 = this.b().c();
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      dcw $$5 = this.a.r;
+      jd $$6 = jd.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (jd $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      for (jd $$8 : jd.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(ddf.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = ayo.h($$10, 0.9F, 0.9F);
+         long $$12 = kf.e($$8.a());
+         if ($$7.add($$12)) {
+            gik.a(
+               $$0,
+               $$1,
+               $$5.N().p().a(ddf.a, kf.a($$12)),
+               (double)kf.a(kf.b($$12), 8),
+               (double)kf.a(kf.c($$12), 8),
+               (double)kf.a(kf.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gik.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   private static void a(fbc $$0, get $$1, jd $$2) {
-      gig.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(fbc $$0, get $$1, String $$2, jd $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gig.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private ffs b() {
-      return this.c.j.l();
    }
 }

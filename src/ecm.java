@@ -1,89 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecm extends eca<eel> {
-   public ecm(Codec<eel> $$0) {
-      super($$0);
-   }
+public class ecm implements eeh {
+   public static final Codec<ecm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dtc.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dtc.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dtc.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dtc.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               eaf.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ecm::new)
+   );
+   public final dtc b;
+   public final dtc c;
+   public final dtc d;
+   public final dtc e;
+   public final eaf f;
+   public final boolean g;
 
-   @Override
-   public boolean a(ecc<eel> $$0) {
-      jd $$1 = $$0.e();
-      ayv $$2 = $$0.d();
-      ddq $$3 = $$0.b();
-
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(dfy.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = ayn.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)ayn.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)ayn.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dta $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dfy.dP) || $$13.a(dfy.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dfy.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dfy.dP) || $$13.a(dfy.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dfy.iC.o());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jd $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dta $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dfy.dP) && !$$19.a(dfy.dO) && !$$19.a(dfy.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dfy.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public ecm(dtc $$0, dtc $$1, dtc $$2, dtc $$3, eaf $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

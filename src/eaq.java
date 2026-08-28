@@ -1,25 +1,21 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eaq implements eac {
-   public static final MapCodec<eaq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kh.v(16).optionalFieldOf("offset", kh.g).forGetter($$0x -> $$0x.e), dta.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, eaq::new)
-   );
-   private final kh e;
-   private final dta f;
+public abstract class eaq implements eaf {
+   protected final kh f;
 
-   protected eaq(kh $$0, dta $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static <P extends eaq> P1<Mu<P>, kh> a(Instance<P> $$0) {
+      return $$0.group(kh.v(16).optionalFieldOf("offset", kh.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(ddq $$0, jd $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   protected eaq(kh $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public ead<?> a() {
-      return ead.g;
+   public final boolean a(dds $$0, jd $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dtc var1);
 }

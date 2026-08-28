@@ -1,12 +1,20 @@
-public record afj(wy b) implements zf<abt> {
-   public static final yw<wj, afj> a = yw.a(xa.d, afj::b, afj::new);
+public record afj(int b) implements zg<abu> {
+   public static final yx<vw, afj> a = zg.a(afj::a, afj::new);
 
-   @Override
-   public zh<afj> a() {
-      return agf.aN;
+   private afj(vw $$0) {
+      this($$0.l());
    }
 
-   public void a(abt $$0) {
+   private void a(vw $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zi<afj> a() {
+      return agg.aM;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
    }
 }

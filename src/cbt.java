@@ -1,40 +1,48 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbt extends cak {
-   private final cmd a;
+public class cbt extends cam {
+   private final cjp a;
+   @Nullable
+   private btn b;
 
-   public cbt(cmd $$0) {
+   public cbt(cjp $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cak.a.c, cak.a.a));
+      this.a(EnumSet.of(cam.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.bE()) {
-         return false;
-      } else if (this.a.bf()) {
-         return false;
-      } else if (!this.a.aF()) {
-         return false;
-      } else if (this.a.U) {
-         return false;
-      } else {
-         cmv $$0 = this.a.gm();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
-         }
-      }
+      btn $$0 = this.a.p();
+      return this.a.t() > 0 || $$0 != null && this.a.g((bsr)$$0) < 9.0;
    }
 
    @Override
    public void d() {
-      this.a.J().n();
+      this.a.N().n();
+      this.b = this.a.p();
    }
 
    @Override
    public void e() {
-      this.a.f(null);
+      this.b = null;
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bsr)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

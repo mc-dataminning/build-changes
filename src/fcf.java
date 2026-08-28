@@ -1,55 +1,28 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-public class fcf extends fcw implements fcq {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class fcf extends fda {
+   public Set<String> a = Sets.newHashSet();
 
-   public String a() {
-      return this.a;
-   }
+   public static fcf a(String $$0) {
+      fcf $$1 = new fcf();
+      JsonParser $$2 = new JsonParser();
 
-   public void a(String $$0) {
-      this.a = $$0;
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
+      }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      return $$1;
    }
 }

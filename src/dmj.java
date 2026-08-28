@@ -1,48 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmj extends dfw {
-   public static final MapCodec<dmj> h = b(dmj::new);
-   public static final dty<ji.a> i = dtq.I;
+public class dmj extends dfy implements dgb {
+   public static final MapCodec<dmj> a = b(dmj::new);
 
    @Override
-   public MapCodec<? extends dmj> a() {
-      return h;
+   public MapCodec<dmj> a() {
+      return a;
    }
 
-   public dmj(dsz.d $$0) {
+   public dmj(dtb.d $$0) {
       super($$0);
-      this.k(this.o().a(i, ji.a.b));
    }
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dta b(dta $$0, dmk $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ji.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ji.a.c);
-               case c:
-                  return $$0.a(i, ji.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
+      return $$0.a_($$1.e()).i();
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(i);
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return true;
    }
 
    @Override
-   public dta a(cyb $$0) {
-      return this.o().a(i, $$0.k().o());
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      $$0.b($$2.e(), dga.sG.o());
+   }
+
+   @Override
+   public jd a(jd $$0) {
+      return $$0.e();
    }
 }

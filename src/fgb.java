@@ -1,39 +1,29 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum fgb implements ayq {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class fgb {
+   private final List<xe> a = Lists.newArrayList();
 
-   private static final IntFunction<fgb> d = axd.a(fgb::a, values(), axd.a.b);
-   private final int e;
-   private final String f;
-
-   private fgb(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(xe $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   @Nullable
+   public xe a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xe.a(this.a);
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public xe b() {
+      xe $$0 = this.a();
+      return $$0 != null ? $$0 : xe.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static fgb a(int $$0) {
-      return d.apply($$0);
+   public void c() {
+      this.a.clear();
    }
 }

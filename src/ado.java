@@ -1,61 +1,166 @@
-public class ado implements zf<abt> {
-   public static final yw<vv, ado> a = zf.a(ado::a, ado::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import javax.annotation.Nullable;
 
-   public ado(bsq $$0) {
-      this.b = $$0.dv();
-      this.c = $$0.dx();
-      this.d = $$0.dB();
-      this.e = $$0.dG();
-      this.f = $$0.dI();
-   }
+public abstract class ado implements zg<abu> {
+   protected final int a;
+   protected final short b;
+   protected final short c;
+   protected final short d;
+   protected final byte e;
+   protected final byte f;
+   protected final boolean g;
+   protected final boolean h;
+   protected final boolean i;
 
-   private ado(vv $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   protected ado(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
    @Override
-   public zh<ado> a() {
-      return agf.U;
-   }
+   public abstract zi<? extends ado> a();
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   @Override
+   public String toString() {
+      return "Entity_" + super.toString();
+   }
+
+   @Nullable
+   public bsr a(dcw $$0) {
+      return $$0.a(this.a);
+   }
+
+   public short b() {
       return this.b;
    }
 
-   public double e() {
+   public short e() {
       return this.c;
    }
 
-   public double f() {
+   public short f() {
       return this.d;
    }
 
-   public float g() {
+   public byte g() {
       return this.e;
    }
 
-   public float h() {
+   public byte h() {
       return this.f;
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public boolean j() {
+      return this.i;
+   }
+
+   public boolean k() {
+      return this.g;
+   }
+
+   public static class a extends ado {
+      public static final yx<vw, ado.a> j = zg.a(ado.a::b, ado.a::a);
+
+      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
+         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
+      }
+
+      private static ado.a a(vw $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         boolean $$5 = $$0.readBoolean();
+         return new ado.a($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private void b(vw $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zi<ado.a> a() {
+         return agg.R;
+      }
+   }
+
+   public static class b extends ado {
+      public static final yx<vw, ado.b> j = zg.a(ado.b::b, ado.b::a);
+
+      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
+      }
+
+      private static ado.b a(vw $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         byte $$5 = $$0.readByte();
+         byte $$6 = $$0.readByte();
+         boolean $$7 = $$0.readBoolean();
+         return new ado.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      private void b(vw $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zi<ado.b> a() {
+         return agg.S;
+      }
+   }
+
+   public static class c extends ado {
+      public static final yx<vw, ado.c> j = zg.a(ado.c::b, ado.c::a);
+
+      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
+         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
+      }
+
+      private static ado.c a(vw $$0) {
+         int $$1 = $$0.l();
+         byte $$2 = $$0.readByte();
+         byte $$3 = $$0.readByte();
+         boolean $$4 = $$0.readBoolean();
+         return new ado.c($$1, $$2, $$3, $$4);
+      }
+
+      private void b(vw $$0) {
+         $$0.c(this.a);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public zi<ado.c> a() {
+         return agg.T;
+      }
    }
 }

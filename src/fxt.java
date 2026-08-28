@@ -1,44 +1,84 @@
-public class fxt<T extends bsq> extends fxp<T> {
-   private boolean b;
+public class fxt<T extends bsr> extends fvr<T> implements fvq, fxs {
+   private final fyi b;
+   private final fyi f;
+   private final fyi g;
+   private final fyi h;
+   private final fyi i;
+   private final fyi j;
+   protected final fyi a;
 
-   public fxt(fye $$0) {
-      super($$0);
+   public fxt(fyi $$0) {
+      this.b = $$0;
+      this.f = $$0.b("head");
+      this.g = this.f.b("hat");
+      this.h = this.g.b("hat_rim");
+      this.a = this.f.b("nose");
+      this.i = $$0.b("right_leg");
+      this.j = $$0.b("left_leg");
    }
 
-   public static fyk c() {
-      fym $$0 = fxp.b();
-      fyn $$1 = $$0.a();
-      fyn $$2 = $$1.a("head", fyj.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fyg.a);
-      fyn $$3 = $$2.a("hat", fyj.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fyg.a(-5.0F, -10.03125F, -5.0F));
-      fyn $$4 = $$3.a("hat2", fyj.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fyg.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
-      fyn $$5 = $$4.a("hat3", fyj.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fyg.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
-      $$5.a(
-         "hat4", fyj.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fyi(0.25F)), fyg.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+   public static fyq b() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      float $$2 = 0.5F;
+      fyr $$3 = $$1.a("head", fyn.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fyk.a);
+      fyr $$4 = $$3.a("hat", fyn.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fym(0.51F)), fyk.a);
+      $$4.a("hat_rim", fyn.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fyk.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$3.a("nose", fyn.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fyk.a(0.0F, -2.0F, 0.0F));
+      fyr $$5 = $$1.a("body", fyn.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), fyk.a);
+      $$5.a("jacket", fyn.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fym(0.5F)), fyk.a);
+      $$1.a(
+         "arms",
+         fyn.c()
+            .a(44, 22)
+            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
+            .a(44, 22)
+            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
+            .a(40, 38)
+            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         fyk.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
       );
-      fyn $$6 = $$2.a("nose");
-      $$6.a("mole", fyj.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fyi(-0.25F)), fyg.a(0.0F, -2.0F, 0.0F));
-      return fyk.a($$0, 64, 128);
+      $$1.a("right_leg", fyn.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fyk.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fyn.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fyk.a(2.0F, 12.0F, 0.0F));
+      return $$0;
+   }
+
+   @Override
+   public fyi a() {
+      return this.b;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.an() % 10);
-      this.a.e = ayn.a((float)$$0.ai * $$6) * 4.5F * (float) (Math.PI / 180.0);
-      this.a.f = 0.0F;
-      this.a.g = ayn.b((float)$$0.ai * $$6) * 2.5F * (float) (Math.PI / 180.0);
-      if (this.b) {
-         this.a.a(0.0F, 1.0F, -1.5F);
-         this.a.e = -0.9F;
+      boolean $$6 = false;
+      if ($$0 instanceof cmf) {
+         $$6 = ((cmf)$$0).s() > 0;
       }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      if ($$6) {
+         this.f.g = 0.3F * ayo.a(0.45F * $$3);
+         this.f.e = 0.4F;
+      } else {
+         this.f.g = 0.0F;
+      }
+
+      this.i.e = ayo.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
+      this.j.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
+      this.i.f = 0.0F;
+      this.j.f = 0.0F;
    }
 
-   public fye e() {
-      return this.a;
+   @Override
+   public fyi d() {
+      return this.f;
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
+   @Override
+   public void a(boolean $$0) {
+      this.f.k = $$0;
+      this.g.k = $$0;
+      this.h.k = $$0;
    }
 }

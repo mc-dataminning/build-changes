@@ -1,40 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dkv extends dfw {
-   public static final MapCodec<dkv> a = b(dkv::new);
-   protected static final exp b = dfw.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public enum dkv implements azk {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dkv> a() {
-      return a;
+   public static final Codec<dkv> d = azk.a(dkv::values);
+   private final String e;
+   private final wz f;
+   private final h g;
+
+   private dkv(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = wz.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dkv(dsz.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dmm a(ji $$0) {
+      ji.a $$1 = $$0.o();
+      return (this != b || $$1 != ji.a.c) && (this != c || $$1 != ji.a.a) ? dmm.a : dmm.c;
+   }
+
+   public ji b(ji $$0) {
+      if (this == c && $$0.o() == ji.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == ji.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public wz b() {
+      return this.f;
    }
 
    @Override
-   protected exp b(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return b;
-   }
-
-   @Override
-   protected exp b_(dta $$0, dca $$1, jd $$2) {
-      return exm.b();
-   }
-
-   @Override
-   protected exp c(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return exm.b();
-   }
-
-   @Override
-   protected boolean a(dta $$0, epn $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dta $$0, dca $$1, jd $$2) {
-      return 0.2F;
+   public String c() {
+      return this.e;
    }
 }

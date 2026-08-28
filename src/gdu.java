@@ -1,31 +1,22 @@
-public class gdu extends gdt {
-   private final fgm i;
+public class gdu extends gbd {
+   private static final int a = 12235202;
 
-   public gdu(fgm $$0) {
-      this.i = $$0;
+   protected gdu(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdg $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
+   public static class a implements gco<lq> {
+      private final gdg a;
+
+      public a(gdg $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.w.e();
-      this.d = this.i.y.e();
-      this.e = this.i.x.e();
-      this.f = this.i.z.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.A.e();
-      this.h = this.i.B.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdu($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

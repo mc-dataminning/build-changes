@@ -1,8 +1,7 @@
-import net.minecraft.server.MinecraftServer;
+@FunctionalInterface
+public interface ekc<C extends eeh> {
+   void generatePieces(ekh var1, ekc.a<C> var2);
 
-public record ekc(aud a, ka b, eno c) {
-   public static ekc a(aqt $$0) {
-      MinecraftServer $$1 = $$0.o();
-      return new ekc($$1.bg(), $$1.bc(), $$1.ba());
+   public static record a<C extends eeh>(C a, duz b, ens c, dcd d, dcy e, dzx f, long g) {
    }
 }

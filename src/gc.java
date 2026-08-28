@@ -9,21 +9,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class gc implements ArgumentType<crp> {
+public class gc implements ArgumentType<crr> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("slot.unknown", $$0));
 
    public static gc a() {
       return new gc();
    }
 
-   public static crp a(CommandContext<et> $$0, String $$1) {
-      return (crp)$$0.getArgument($$1, crp.class);
+   public static crr a(CommandContext<et> $$0, String $$1) {
+      return (crr)$$0.getArgument($$1, crr.class);
    }
 
-   public crp a(StringReader $$0) throws CommandSyntaxException {
+   public crr a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = ex.a($$0, $$0x -> $$0x != ' ');
-      crp $$2 = crq.a($$1);
+      crr $$2 = crs.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class gc implements ArgumentType<crp> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ey.b(crq.a(), $$1);
+      return ey.b(crs.a(), $$1);
    }
 
    public Collection<String> getExamples() {

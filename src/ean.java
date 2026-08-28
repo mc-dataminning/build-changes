@@ -1,21 +1,22 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ean implements eac {
-   protected final kh f;
+class ean implements eaf {
+   public static final MapCodec<ean> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eaf.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ean::new)
+   );
+   private final eaf e;
 
-   protected static <P extends ean> P1<Mu<P>, kh> a(Instance<P> $$0) {
-      return $$0.group(kh.v(16).optionalFieldOf("offset", kh.g).forGetter($$0x -> $$0x.f));
+   public ean(eaf $$0) {
+      this.e = $$0;
    }
 
-   protected ean(kh $$0) {
-      this.f = $$0;
+   public boolean a(dds $$0, jd $$1) {
+      return !this.e.test($$0, $$1);
    }
 
-   public final boolean a(ddq $$0, jd $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public eag<?> a() {
+      return eag.k;
    }
-
-   protected abstract boolean a(dta var1);
 }

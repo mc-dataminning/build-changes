@@ -1,67 +1,120 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportChatMessage;
+import com.mojang.authlib.minecraft.report.ReportEvidence;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record gaf(String a, @Nullable gaf.a b) {
-   public static gaf a() {
-      return a(null);
+public class gaf extends gai {
+   final IntSet f = new IntOpenHashSet();
+
+   gaf(UUID $$0, Instant $$1, UUID $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static gaf a(String $$0) {
-      return a(new gaf.a.b($$0));
+   public void a(int $$0, AbuseReportLimits $$1) {
+      if (this.f.contains($$0)) {
+         this.f.remove($$0);
+      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
+         this.f.add($$0);
+      }
    }
 
-   public static gaf a(fcj $$0) {
-      return a(new gaf.a.a($$0));
+   public gaf a() {
+      gaf $$0 = new gaf(this.a, this.b, this.c);
+      $$0.f.addAll(this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
-   public static gaf a(@Nullable gaf.a $$0) {
-      return new gaf(g(), $$0);
+   @Override
+   public fob a(fob $$0, gam $$1) {
+      return new fsj($$0, $$1, this);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gaf.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gaf.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w21b");
-      if (fgi.e().a()) {
-         $$0.append(" (modded)");
+   public static class a extends gai.a<gaf> {
+      public a(gaf $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$0.toString();
-   }
+      public a(UUID $$0, AbuseReportLimits $$1) {
+         super(new gaf(UUID.randomUUID(), Instant.now(), $$0), $$1);
+      }
 
-   public String e() {
-      return this.a;
-   }
+      public IntSet a() {
+         return this.a.f;
+      }
 
-   @Nullable
-   public gaf.a f() {
-      return this.b;
-   }
+      public void a(int $$0) {
+         this.a.a($$0, this.b);
+      }
 
-   public interface a {
-      public static record a(long a, int b) implements gaf.a {
-         public a(fcj $$0) {
-            this($$0.a, $$0.n);
+      public boolean b(int $$0) {
+         return this.a.f.contains($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
+      }
+
+      @Nullable
+      @Override
+      public gai.b c() {
+         if (this.a.f.isEmpty()) {
+            return gai.b.b;
+         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
+            return gai.b.c;
+         } else if (this.a.e == null) {
+            return gai.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gai.b.d : null;
          }
       }
 
-      public static record b(String a) implements gaf.a {
+      @Override
+      public Either<gai.c, gai.b> a(gam $$0) {
+         gai.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportEvidence $$3 = this.b($$0);
+            ReportedEntity $$4 = new ReportedEntity(this.a.c);
+            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
+            return Either.left(new gai.c(this.a.a, gal.a, $$5));
+         }
+      }
+
+      private ReportEvidence b(gam $$0) {
+         List<ReportChatMessage> $$1 = new ArrayList<>();
+         gag $$2 = new gag(this.b.leadingContextMessageCount());
+         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
+         return new ReportEvidence(Lists.reverse($$1));
+      }
+
+      private ReportChatMessage a(gab.a $$0, boolean $$1) {
+         xu $$2 = $$0.g().k();
+         xs $$3 = $$0.g().m();
+         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xl::a).toList();
+         ByteBuffer $$5 = x.a($$0.g().l(), xl::a);
+         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
+      }
+
+      public gaf.a d() {
+         return new gaf.a(this.a.a(), this.b);
       }
    }
 }

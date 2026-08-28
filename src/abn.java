@@ -1,3 +1,8 @@
-public interface abn extends vp {
-   void a(abo var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface abn {
 }

@@ -1,21 +1,23 @@
-public enum dum implements azj {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dum implements azk {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String d;
+   private final String e;
+   private final wz f;
 
    private dum(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+      this.e = $$0;
+      this.f = wz.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
+   }
+
+   public wz a() {
+      return this.f;
    }
 }

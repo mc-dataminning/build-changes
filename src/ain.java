@@ -1,16 +1,8 @@
-public interface ain extends abn, vp {
-   @Override
-   default vt b() {
-      return vt.d;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aiq var1);
-
-   void a(aip var1);
-
-   void a(ais var1);
-
-   void a(air var1);
-
-   void a(aio var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ain {
 }

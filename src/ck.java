@@ -4,7 +4,7 @@ public record ck(dk c) implements ct {
    public static final Codec<ck> a = dk.a.xmap(ck::new, ck::a);
 
    @Override
-   public boolean a(cuo $$0) {
+   public boolean a(cuq $$0) {
       return this.c.a($$0);
    }
 

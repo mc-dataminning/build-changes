@@ -1,39 +1,36 @@
-public class ghg implements ggt<drp> {
-   private final fwx<?> a;
+public class ghg implements ggx<drc> {
+   public static final gso a = new gso(gqi.e, akr.b("entity/enchanting_table_book"));
+   private final fuq b;
 
-   public ghg(ggu.a $$0) {
-      this.a = new fwx($$0.a(fyd.bl));
+   public ghg(ggy.a $$0) {
+      this.b = new fuq($$0.a(fyh.r));
    }
 
-   public void a(drp $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
-      ji $$6 = ji.b;
-      if ($$0.m()) {
-         dta $$7 = $$0.i().a_($$0.az_());
-         if ($$7.b() instanceof dmw) {
-            $$6 = $$7.c(dmw.b);
-         }
-      }
-
-      ctg $$8 = $$0.u();
-      gsj $$9;
-      if ($$8 == null) {
-         $$9 = gfi.i;
-      } else {
-         $$9 = gfi.j.get($$8.a());
-      }
-
+   public void a(drc $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
       $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fye $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      fbg $$13 = $$9.a($$3, gfb::e);
-      this.a.a($$2, $$13, $$4, $$5);
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + ayo.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
+      }
+
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = ayo.i($$1, $$0.c, $$0.b);
+      float $$10 = ayo.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = ayo.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = ayo.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, ayo.a($$10, 0.0F, 1.0F), ayo.a($$11, 0.0F, 1.0F), $$12);
+      fbk $$13 = a.a($$3, gff::c);
+      this.b.b($$2, $$13, $$4, $$5, -1);
       $$2.b();
    }
 }

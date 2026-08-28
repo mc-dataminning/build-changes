@@ -1,14 +1,16 @@
-public class ctf extends csm {
-   public ctf(dfw $$0, cuj.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class ctf extends cul {
+   public ctf(cul.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cyb $$0, dta $$1) {
-      dcu $$2 = $$0.q();
-      jd $$3 = $$0.a().c();
-      dta $$4 = $$2.z($$3) ? dfy.G.o() : dfy.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public xn c() {
+      return wz.c(this.a() + ".desc");
    }
 }

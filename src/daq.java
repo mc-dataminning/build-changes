@@ -1,33 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface daq extends dar {
-   Codec<daq> b = lt.aw.r().dispatch(daq::a, Function.identity());
-
-   static MapCodec<? extends daq> a(jz<MapCodec<? extends daq>> $$0) {
-      jz.a($$0, "all_of", dak.a.a);
-      jz.a($$0, "apply_mob_effect", dal.a);
-      jz.a($$0, "damage_entity", dam.a);
-      jz.a($$0, "damage_item", dao.a);
-      jz.a($$0, "explode", dat.a);
-      jz.a($$0, "ignite", dau.a);
-      jz.a($$0, "play_sound", daw.a);
-      jz.a($$0, "replace_block", day.a);
-      jz.a($$0, "replace_disc", daz.a);
-      jz.a($$0, "run_function", dba.a);
-      jz.a($$0, "set_block_properties", dbb.a);
-      jz.a($$0, "spawn_particles", dbd.a);
-      return jz.a($$0, "summon_entity", dbe.a);
-   }
-
-   void a(aqt var1, int var2, czz var3, bsq var4, eww var5);
+public record daq(daj d) implements das {
+   public static final MapCodec<daq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(daj.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, daq::new));
 
    @Override
-   default void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+      aqv $$6 = $$2.c() instanceof aqv $$5 ? $$5 : null;
+      $$2.a().a((int)this.d.a($$1), $$0, $$6, $$2.d());
    }
 
    @Override
-   MapCodec<? extends daq> a();
+   public MapCodec<daq> a() {
+      return a;
+   }
+
+   public daj b() {
+      return this.d;
+   }
 }

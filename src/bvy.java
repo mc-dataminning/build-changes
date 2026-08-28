@@ -2,27 +2,36 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bvy {
-   private static jd a(btn $$0, jd $$1) {
-      ayv $$2 = $$0.dQ().z;
-      return $$1.b(a($$2), 0, a($$2));
-   }
+   public static bvi<cmk> a(float $$0, int $$1) {
+      return byu.a((Function<byu.b<cmk>, ? extends App<byu.c<cmk>, byx<cmk>>>)($$2 -> $$2.group($$2.c(ccs.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dp())) {
+                  return false;
+               } else {
+                  ces $$6 = $$3.y();
+                  int $$7 = $$6.a(kf.a($$4.dp()));
+                  exa $$8 = null;
 
-   private static int a(ayv $$0) {
-      return $$0.a(3) - 1;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     exa $$10 = cem.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kf.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kf.a(jd.a((jw)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   public static <E extends btn> bwq<E> a(ccq<jd> $$0, int $$1, float $$2) {
-      return bys.a(
-         (Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccq.o), $$3.c(ccq.m), $$3.a(ccq.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     jd $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dq(), (double)$$1);
-                     if (!$$8) {
-                        bvh.a($$5x, a($$5x, $$7), $$2, $$1);
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
                      }
+                  }
 
-                     return true;
-                  }))
-      );
+                  if ($$8 != null) {
+                     $$2x.a(new ccv($$8, $$0, $$1));
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

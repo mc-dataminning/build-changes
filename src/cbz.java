@@ -1,32 +1,26 @@
-public class cbz extends cau {
-   private final cku b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cbz(cku $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cbz extends cbj {
+   public static final float i = 0.001F;
+   protected final float j;
+
+   public cbz(btw $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.c = 0;
+   public cbz(btw $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
+   @Nullable
    @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+   protected exa h() {
+      if (this.b.bi()) {
+         exa $$0 = cem.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         this.b.v(false);
+         return this.b.dS().i() >= this.j ? cem.a(this.b, 10, 7) : super.h();
       }
    }
 }

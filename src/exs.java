@@ -1,87 +1,46 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public final class exs extends exj {
+   private final exj d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class exs {
-   private final eya a;
-   private final String b;
-   private final eyd c;
-   private wy d;
-   private wy e;
-   private eyd.a f;
-   private boolean g;
-   @Nullable
-   private yo h;
-
-   public exs(eya $$0, String $$1, eyd $$2, wy $$3, eyd.a $$4, boolean $$5, @Nullable yo $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.i();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-   }
-
-   public eya a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public eyd c() {
-      return this.c;
-   }
-
-   public wy d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   @Nullable
-   public yo f() {
-      return this.h;
-   }
-
-   public yo a(yo $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
-   }
-
-   private wy i() {
-      return xb.a((wy)this.d.f().a($$0 -> $$0.a(new xe(xe.a.a, wy.b(this.b)))));
-   }
-
-   public wy g() {
-      return this.e;
-   }
-
-   public void a(wy $$0) {
+   protected exs(exj $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
       this.d = $$0;
-      this.e = this.i();
-      this.a.b(this);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public eyd.a h() {
-      return this.f;
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void a(eyd.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
+   @Override
+   public int a(ji.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public void b(@Nullable yo $$0) {
-      this.h = $$0;
-      this.a.b(this);
+   @Override
+   public int b(ji.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(ji.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return ayo.a($$1, $$2, $$3) - $$2;
    }
 }

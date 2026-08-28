@@ -1,29 +1,89 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public record cet(Set<dta> b, int c, int d) {
-   public static final Predicate<jm<cet>> a = $$0 -> false;
+public class cet {
+   private final jd a;
+   private final jm<cev> b;
+   private int c;
+   private final Runnable d;
 
-   public cet(Set<dta> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public static Codec<cet> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  jd.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  ako.a(lu.aa).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, cet::new)
+      );
    }
 
-   public boolean a(dta $$0) {
-      return this.b.contains($$0);
+   private cet(jd $$0, jm<cev> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.j();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public Set<dta> a() {
-      return this.b;
+   public cet(jd $$0, jm<cev> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   public int b() {
+   @Deprecated
+   @azt
+   public int a() {
       return this.c;
    }
 
-   public int c() {
-      return this.d;
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
+   }
+
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
+   }
+
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public jd f() {
+      return this.a;
+   }
+
+   public jm<cev> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cet)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

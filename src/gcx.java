@@ -1,20 +1,53 @@
-public class gcx extends gbz {
-   protected gcx(fyz $$0, double $$1, double $$2, double $$3, double $$4, gdc $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+public class gcx extends gdl {
+   protected final gdg a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
+
+   protected gcx(fzd $$0, double $$1, double $$2, double $$3, gdg $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
    }
 
-   public static class a implements gck<lq> {
-      private final gdc a;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
 
-      public a(gdc $$0) {
-         this.a = $$0;
-      }
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
+   }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcx($$1, $$2, $$3, $$4, $$5, this.a);
+   @Override
+   public gcp b() {
+      return gcp.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

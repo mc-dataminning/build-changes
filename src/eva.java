@@ -1,29 +1,27 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class eva implements euw {
-   private static final eva b = new eva();
-   public static final MapCodec<eva> a = MapCodec.unit(b);
+public interface eva extends erq, Predicate<erp> {
+   Codec<eva> d = lt.F.r().dispatch("condition", eva::b, evb::a);
+   Codec<eva> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, eun.b));
+   Codec<jm<eva>> f = akn.a(lu.be, e);
 
-   private eva() {
-   }
+   evb b();
 
-   @Override
-   public eux b() {
-      return euy.g;
-   }
+   @FunctionalInterface
+   public interface a {
+      eva build();
 
-   @Override
-   public Set<eue<?>> a() {
-      return ImmutableSet.of(euh.b);
-   }
+      default eva.a invert() {
+         return eux.a(this);
+      }
 
-   public boolean a(erl $$0) {
-      return $$0.a(euh.b);
-   }
+      default euo.a or(eva.a $$0) {
+         return euo.a(this, $$0);
+      }
 
-   public static euw.a c() {
-      return () -> b;
+      default eun.a and(eva.a $$0) {
+         return eun.a(this, $$0);
+      }
    }
 }

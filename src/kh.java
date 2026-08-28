@@ -100,7 +100,7 @@ public class kh implements Comparable<kh> {
       }
    }
 
-   public kh p() {
+   public kh q() {
       return this.n(1);
    }
 
@@ -108,7 +108,7 @@ public class kh implements Comparable<kh> {
       return this.b(ji.b, $$0);
    }
 
-   public kh o() {
+   public kh p() {
       return this.m(1);
    }
 
@@ -116,7 +116,7 @@ public class kh implements Comparable<kh> {
       return this.b(ji.a, $$0);
    }
 
-   public kh n() {
+   public kh o() {
       return this.l(1);
    }
 
@@ -124,7 +124,7 @@ public class kh implements Comparable<kh> {
       return this.b(ji.c, $$0);
    }
 
-   public kh m() {
+   public kh n() {
       return this.k(1);
    }
 
@@ -132,7 +132,7 @@ public class kh implements Comparable<kh> {
       return this.b(ji.d, $$0);
    }
 
-   public kh l() {
+   public kh m() {
       return this.j(1);
    }
 
@@ -140,7 +140,7 @@ public class kh implements Comparable<kh> {
       return this.b(ji.e, $$0);
    }
 
-   public kh k() {
+   public kh l() {
       return this.i(1);
    }
 
@@ -172,11 +172,11 @@ public class kh implements Comparable<kh> {
    }
 
    public boolean a(kh $$0, double $$1) {
-      return this.j($$0) < ayn.k($$1);
+      return this.j($$0) < ayo.k($$1);
    }
 
    public boolean a(jw $$0, double $$1) {
-      return this.b($$0) < ayn.k($$1);
+      return this.b($$0) < ayo.k($$1);
    }
 
    public double j(kh $$0) {

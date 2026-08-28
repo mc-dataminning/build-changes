@@ -1,16 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class bvr implements bvi<btn> {
+   private final int a;
+   private final int b;
+   private bvh.a c = bvh.a.a;
+   private long d;
 
-public class bvr {
-   public static <E extends btl> bvg<E> a(Predicate<E> $$0, ccq<?> $$1) {
-      return bys.a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public bvr(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public bvh.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(aqu $$0, btn $$1, long $$2) {
+      this.c = bvh.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(aqu $$0, btn $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aqu $$0, btn $$1, long $$2) {
+      this.c = bvh.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

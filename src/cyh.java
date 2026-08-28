@@ -1,90 +1,70 @@
-public class cyh extends cyp {
-   public cyh(cym $$0) {
-      super($$0);
+public abstract class cyh implements cyz<czp> {
+   protected final czf<?> a;
+   protected final cyn b;
+   protected final String c;
+   protected final cyw d;
+   protected final cuq e;
+   protected final float f;
+   protected final int g;
+
+   public cyh(czf<?> $$0, String $$1, cyn $$2, cyw $$3, cuq $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public boolean a(cyn $$0, dcu $$1) {
-      ctg $$2 = null;
-      cuo $$3 = null;
-      cuo $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-         cuo $$6 = $$0.a($$5);
-         if (!$$6.e()) {
-            cuj $$7 = $$6.g();
-            if (!($$7 instanceof csj)) {
-               return false;
-            }
-
-            csj $$8 = (csj)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(kq.Y, dpw.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   public boolean a(czp $$0, dcw $$1) {
+      return this.d.a($$0.c());
    }
 
-   public cuo a(cyn $$0, jo.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cuo $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            int $$4 = $$3.a(kq.Y, dpw.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cuo.l;
-   }
-
-   public jv<cuo> a(cyn $$0) {
-      jv<cuo> $$1 = jv.a($$0.a(), cuo.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cuo $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            if ($$3.g().v()) {
-               $$1.set($$2, new cuo($$3.g().u()));
-            } else if (!$$3.a(kq.Y, dpw.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public czc<?> ap_() {
-      return czc.k;
+   public cuq a(czp $$0, jo.a $$1) {
+      return this.e.s();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return true;
+   }
+
+   @Override
+   public jv<cyw> a() {
+      jv<cyw> $$0 = jv.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cuq a(jo.a $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public czf<?> e() {
+      return this.a;
+   }
+
+   public cyn f() {
+      return this.b;
+   }
+
+   public interface a<T extends cyh> {
+      T create(String var1, cyn var2, cyw var3, cuq var4, float var5, int var6);
    }
 }

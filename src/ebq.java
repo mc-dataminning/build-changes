@@ -1,34 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ebq extends ebp {
-   public ebq(Codec<eel> $$0) {
-      super($$0);
+public record ebq<FC extends eeh, F extends ecd<FC>>(F d, FC e) {
+   public static final Codec<ebq<?, ?>> a = lt.O.r().dispatch($$0 -> $$0.d, ecd::a);
+   public static final Codec<jm<ebq<?, ?>>> b = akn.a(lu.aI, a);
+   public static final Codec<jq<ebq<?, ?>>> c = kb.a(lu.aI, a);
+
+   public boolean a(dds $$0, duz $$1, ayw $$2, jd $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<ebq<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   protected boolean a(dcv $$0, ayv $$1, jd $$2, dta $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      jd.a $$8 = $$2.j();
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(ji.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
-      }
+   public F b() {
+      return this.d;
+   }
 
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

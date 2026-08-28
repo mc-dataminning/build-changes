@@ -1,110 +1,110 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class gge implements gso {
-   private final akq a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gge {
+   public static final gge a = new gge();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final gge.a[] c;
+   private final akr[] d;
 
-   public gge(akq $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private gge() {
+      this.c = new gge.a[0];
+      this.d = new akr[0];
    }
 
-   public akq a() {
-      return this.a;
+   public gge(gsp $$0, gfz $$1, List<ggd> $$2) {
+      this.d = $$2.stream().flatMap(ggd::b).map(ggd.b::a).distinct().toArray(akr[]::new);
+      Object2IntMap<akr> $$3 = new Object2IntOpenHashMap();
+
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
+      }
+
+      List<gge.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         ggd $$7 = $$2.get($$6);
+         gsk $$8 = this.a($$0, $$1, $$7);
+         gge.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new gge.b($$2x, $$1x.b());
+         }).toArray(gge.b[]::new);
+         $$5.add(new gge.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new gge.a[0]);
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   @Nullable
+   private gsk a(gsp $$0, gfz $$1, ggd $$2) {
+      gsw $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gsl.a);
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
+   @Nullable
+   public gsk a(gsk $$0, cuq $$1, @Nullable fzd $$2, @Nullable btn $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            akr $$8 = this.d[$$7];
+            gpr $$9 = gpq.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+            } else {
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
+            }
+         }
+
+         for (gge.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gsk $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public int d() {
-      return this.d;
-   }
+   static class a {
+      private final gge.b[] a;
+      @Nullable
+      final gsk b;
 
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
+      a(gge.b[] $$0, @Nullable gsk $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+      boolean a(float[] $$0) {
+         for (gge.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
          return true;
-      } else {
-         return !($$0 instanceof gge $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
+   static class b {
+      public final int a;
+      public final float b;
 
-   public static class a implements JsonDeserializer<gge> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public gge a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         akq $$4 = this.b($$3);
-         gsh $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gge($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return ayd.a($$0, "uvlock", false);
-      }
-
-      protected gsh a(JsonObject $$0) {
-         int $$1 = ayd.a($$0, "x", 0);
-         int $$2 = ayd.a($$0, "y", 0);
-         gsh $$3 = gsh.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
-         }
-      }
-
-      protected akq b(JsonObject $$0) {
-         return akq.a(ayd.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = ayd.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

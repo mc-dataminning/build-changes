@@ -4,7 +4,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record dc(dh.d b) {
    public static final Codec<dc> a = RecordCodecBuilder.create($$0 -> $$0.group(dh.d.d.optionalFieldOf("light", dh.d.c).forGetter(dc::a)).apply($$0, dc::new));
 
-   public boolean a(aqt $$0, jd $$1) {
+   public boolean a(aqu $$0, jd $$1) {
       return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
    }
 

@@ -1,5 +1,10 @@
-class sm extends Throwable {
-   public sm(int $$0, int $$1, sw $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.y() + ". max attempts: " + $$2.x() + ".", $$2.m());
-   }
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sm {
+   String a();
 }

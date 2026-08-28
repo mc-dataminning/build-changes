@@ -1,199 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public interface esx {
-   MapCodec<esx> a = a(Integer.MAX_VALUE);
+public class esx extends etc {
+   public static final MapCodec<esx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cs.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), etf.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, esx::new)
+   );
+   private final cs b;
+   private final etd c;
 
-   static MapCodec<esx> a(int $$0) {
-      return esx.f.e.dispatchMap("mode", esx::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof esx.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
-            }
-         }
-
-         return DataResult.success($$1);
-      });
+   private esx(List<eva> $$0, cs $$1, etd $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   esx.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
+   @Override
+   public ete<esx> b() {
+      return etf.v;
    }
 
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements esx {
-      private static final Logger d = LogUtils.getLogger();
-      public static final esx.a b = new esx.a();
-      public static final MapCodec<esx.a> c = MapCodec.unit(() -> b);
-
-      private a() {
-      }
-
-      @Override
-      public esx.f a() {
-         return esx.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
-      }
+   @Override
+   public cuq a(cuq $$0, erp $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
    }
 
-   public static record b(int c) implements esx {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<esx.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axv.k.optionalFieldOf("offset", 0).forGetter(esx.b::b)).apply($$0, esx.b::new)
-      );
-
-      @Override
-      public esx.f a() {
-         return esx.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public static class c implements esx {
-      public static final esx.c b = new esx.c();
-      public static final MapCodec<esx.c> c = MapCodec.unit(() -> b);
-
-      private c() {
-      }
-
-      @Override
-      public esx.f a() {
-         return esx.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int c, Optional<Integer> d) implements esx {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<esx.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axv.k.optionalFieldOf("offset", 0).forGetter(esx.d::b), axv.k.optionalFieldOf("size").forGetter(esx.d::c)).apply($$0, esx.d::new)
-      );
-
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
-
-      @Override
-      public esx.f a() {
-         return esx.f.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public Optional<Integer> c() {
-         return this.d;
-      }
-   }
-
-   public static record e<T>(List<T> a, esx b) {
-      public static <T> Codec<esx.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), esx.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, esx.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
-
-   public static enum f implements azj {
-      a("replace_all", esx.c.c),
-      b("replace_section", esx.d.b),
-      c("insert", esx.b.b),
-      d("append", esx.a.c);
-
-      public static final Codec<esx.f> e = azj.a(esx.f::values);
-      private final String f;
-      final MapCodec<? extends esx> g;
-
-      private f(final String $$0, final MapCodec<? extends esx> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends esx> a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

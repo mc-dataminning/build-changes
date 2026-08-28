@@ -1,61 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eav {
-   public static final eav a = new eav(false, dfy.gz.o(), dfy.pL.o(), dfy.ej.o(), dfy.aQ.o());
-   public static final Codec<eav> b = RecordCodecBuilder.create(
+public class eav extends eax {
+   public static final Codec<eav> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eav::a),
-               dta.b.optionalFieldOf("air_state", a.b()).forGetter(eav::b),
-               dta.b.optionalFieldOf("water_state", a.b()).forGetter(eav::c),
-               dta.b.optionalFieldOf("lava_state", a.b()).forGetter(eav::d),
-               dta.b.optionalFieldOf("barrier_state", a.b()).forGetter(eav::e)
+               eax.d.forGetter($$0x -> $$0x), bpu.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eav.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, eav::new)
    );
-   private final boolean c;
-   private final dta d;
-   private final dta e;
-   private final dta f;
-   private final dta g;
+   public final bpu b;
+   public final eav.a c;
 
-   public static eav a(boolean $$0, dta $$1, dta $$2, dta $$3, dta $$4) {
-      return new eav($$0, $$1, $$2, $$3, $$4);
+   public eav(float $$0, ehw $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, eav.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   public static eav a(dta $$0, dta $$1, dta $$2, dta $$3) {
-      return new eav(false, $$0, $$1, $$2, $$3);
+   public eav(eax $$0, bpu $$1, eav.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   public static eav a(boolean $$0, dta $$1) {
-      return new eav($$0, $$1, a.c(), a.d(), a.e());
-   }
+   public static class a {
+      public static final Codec<eav.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bpu.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bpu.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  axw.k.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bpu.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, eav.a::new)
+      );
+      public final bpu b;
+      public final bpu c;
+      public final int d;
+      public final bpu e;
+      public final float f;
+      public final float g;
 
-   private eav(boolean $$0, dta $$1, dta $$2, dta $$3, dta $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dta b() {
-      return this.d;
-   }
-
-   public dta c() {
-      return this.e;
-   }
-
-   public dta d() {
-      return this.f;
-   }
-
-   public dta e() {
-      return this.g;
+      public a(bpu $$0, bpu $$1, int $$2, bpu $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

@@ -19,21 +19,25 @@ public class v {
    private static final Pattern c = Pattern.compile(".*\\.|(?:COM|CLOCK\\$|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\..*)?", 2);
    private static final Pattern d = Pattern.compile("[-._a-z0-9]+");
 
-   public static String a(Path $$0, String $$1, String $$2) throws IOException {
-      for (char $$3 : ab.bd) {
-         $$1 = $$1.replace($$3, '_');
+   public static String a(String $$0) {
+      for (char $$1 : ab.bc) {
+         $$0 = $$0.replace($$1, '_');
       }
 
-      $$1 = $$1.replaceAll("[./\"]", "_");
+      return $$0.replaceAll("[./\"]", "_");
+   }
+
+   public static String a(Path $$0, String $$1, String $$2) throws IOException {
+      $$1 = a($$1);
       if (c.matcher($$1).matches()) {
          $$1 = "_" + $$1 + "_";
       }
 
-      Matcher $$4 = a.matcher($$1);
-      int $$5 = 0;
-      if ($$4.matches()) {
-         $$1 = $$4.group("name");
-         $$5 = Integer.parseInt($$4.group("count"));
+      Matcher $$3 = a.matcher($$1);
+      int $$4 = 0;
+      if ($$3.matches()) {
+         $$1 = $$3.group("name");
+         $$4 = Integer.parseInt($$3.group("count"));
       }
 
       if ($$1.length() > 255 - $$2.length()) {
@@ -41,26 +45,26 @@ public class v {
       }
 
       while (true) {
-         String $$6 = $$1;
-         if ($$5 != 0) {
-            String $$7 = " (" + $$5 + ")";
-            int $$8 = 255 - $$7.length();
-            if ($$1.length() > $$8) {
-               $$6 = $$1.substring(0, $$8);
+         String $$5 = $$1;
+         if ($$4 != 0) {
+            String $$6 = " (" + $$4 + ")";
+            int $$7 = 255 - $$6.length();
+            if ($$1.length() > $$7) {
+               $$5 = $$1.substring(0, $$7);
             }
 
-            $$6 = $$6 + $$7;
+            $$5 = $$5 + $$6;
          }
 
-         $$6 = $$6 + $$2;
-         Path $$9 = $$0.resolve($$6);
+         $$5 = $$5 + $$2;
+         Path $$8 = $$0.resolve($$5);
 
          try {
-            Path $$10 = Files.createDirectory($$9);
-            Files.deleteIfExists($$10);
-            return $$0.relativize($$10).toString();
+            Path $$9 = Files.createDirectory($$8);
+            Files.deleteIfExists($$9);
+            return $$0.relativize($$9).toString();
          } catch (FileAlreadyExistsException var8) {
-            $$5++;
+            $$4++;
          }
       }
    }
@@ -90,20 +94,20 @@ public class v {
       }
    }
 
-   public static String a(String $$0) {
+   public static String b(String $$0) {
       return FilenameUtils.getFullPath($$0).replace(File.separator, "/");
    }
 
-   public static String b(String $$0) {
+   public static String c(String $$0) {
       return FilenameUtils.normalize($$0).replace(File.separator, "/");
    }
 
-   public static DataResult<List<String>> c(String $$0) {
+   public static DataResult<List<String>> d(String $$0) {
       int $$1 = $$0.indexOf(47);
       if ($$1 == -1) {
          return switch ($$0) {
             case "", ".", ".." -> DataResult.error(() -> "Invalid path '" + $$0 + "'");
-            default -> !d($$0) ? DataResult.error(() -> "Invalid path '" + $$0 + "'") : DataResult.success(List.of($$0));
+            default -> !e($$0) ? DataResult.error(() -> "Invalid path '" + $$0 + "'") : DataResult.success(List.of($$0));
          };
       } else {
          List<String> $$2 = new ArrayList<>();
@@ -119,7 +123,7 @@ public class v {
                   return DataResult.error(() -> "Invalid segment '" + $$5 + "' in path '" + $$0 + "'");
             }
 
-            if (!d($$5)) {
+            if (!e($$5)) {
                return DataResult.error(() -> "Invalid segment '" + $$5 + "' in path '" + $$0 + "'");
             }
 
@@ -156,7 +160,7 @@ public class v {
       };
    }
 
-   public static boolean d(String $$0) {
+   public static boolean e(String $$0) {
       return d.matcher($$0).matches();
    }
 
@@ -165,7 +169,7 @@ public class v {
          throw new IllegalArgumentException("Path must have at least one element");
       } else {
          for (String $$1 : $$0) {
-            if ($$1.equals("..") || $$1.equals(".") || !d($$1)) {
+            if ($$1.equals("..") || $$1.equals(".") || !e($$1)) {
                throw new IllegalArgumentException("Illegal segment " + $$1 + " in path " + Arrays.toString((Object[])$$0));
             }
          }

@@ -1,44 +1,81 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dmg extends dhz {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final exp h = dfw.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final exp i = dfw.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final exp j = dfw.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class dmg extends dia {
+   public static final MapCodec<dmg> a = b(dmg::new);
+   public static final dtt b = dts.s;
+   public static final duc e = dts.aA;
 
-   protected dmg(dsz.d $$0) {
+   @Override
+   public MapCodec<dmg> a() {
+      return a;
+   }
+
+   protected dmg(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(aE, ji.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dmg> a();
-
-   @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if (!$$3.ga().e) {
+         return bqr.e;
+      } else {
+         $$1.a($$2, $$0.a(e), 3);
+         return bqr.a($$1.B);
       }
    }
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected int g(dtc $$0) {
+      return $$0.c(e) * 2;
    }
 
    @Override
-   protected dta a(dta $$0, dkt $$1) {
-      return $$0.a(a, $$1.b($$0.c(a)));
+   public dtc a(cyd $$0) {
+      dtc $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
    }
 
    @Override
-   protected boolean a(dta $$0, epn $$1) {
-      return false;
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$1 == ji.a && !this.b($$3, $$5, $$2)) {
+         return dga.a.o();
+      } else {
+         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean c(dcz $$0, jd $$1, dtc $$2) {
+      return this.a((ddm)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
+      if ($$0.c(d)) {
+         ji $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(lh.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

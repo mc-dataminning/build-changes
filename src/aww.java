@@ -1,77 +1,37 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
-public class aww {
-   public static Map<akp<? extends jz<?>>, aww.a> a(jt<akz> $$0) {
-      return kd.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((aww.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class aww implements aty {
+   private final ka a;
+   private List<aww.a<?>> b = List.of();
+
+   public aww(ka $$0) {
+      this.a = $$0;
    }
 
-   private static <T> aww.a a(jz<T> $$0) {
-      Map<akq, IntList> $$1 = new HashMap<>();
-      $$0.j().forEach($$2 -> {
-         jq<T> $$3 = (jq<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (jm<T> $$5 : $$3) {
-            if ($$5.f() != jm.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((awt)$$2.getFirst()).b(), $$4);
-      });
-      return new aww.a($$1);
+   public List<aww.a<?>> a() {
+      return this.b;
    }
 
-   static <T> void a(akp<? extends jz<T>> $$0, jz<T> $$1, aww.a $$2, aww.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         awt<T> $$5 = awt.a($$0, $$3x);
-         List<jm<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
+   @Override
+   public CompletableFuture<Void> a(aty.a $$0, aue $$1, bnf $$2, bnf $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends aww.a<?>>> $$6 = this.a.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.b = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
    }
 
-   public static final class a {
-      final Map<akq, IntList> a;
-
-      a(Map<akq, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(vv $$0) {
-         $$0.a(this.a, vv::a, vv::a);
-      }
-
-      public static aww.a b(vv $$0) {
-         return new aww.a($$0.a(vv::q, vv::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(jz<T> $$0) {
-         if (this.a() != 0) {
-            Map<awt<T>, List<jm<T>>> $$1 = new HashMap<>(this.a());
-            aww.a($$0.d(), $$0, this, $$1::put);
-            $$0.a($$1);
-         }
-      }
+   private <T> CompletableFuture<aww.a<T>> a(aue $$0, Executor $$1, ka.d<T> $$2) {
+      akq<? extends jz<T>> $$3 = $$2.a();
+      jz<T> $$4 = $$2.b();
+      awv<jm<T>> $$5 = new awv<>($$4::c, lu.d($$3));
+      return CompletableFuture.supplyAsync(() -> new aww.a<>($$3, $$5.b($$0)), $$1);
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(awt<T> var1, List<jm<T>> var2);
+   public static record a<T>(akq<? extends jz<T>> a, Map<akr, Collection<jm<T>>> b) {
    }
 }

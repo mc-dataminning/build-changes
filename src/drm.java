@@ -1,98 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class drm extends dqf implements dxy.b<drm.a> {
-   private final drm.a a;
+public record drm(Optional<cul> d, Optional<cul> e, Optional<cul> f, Optional<cul> g) {
+   public static final drm a = new drm(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<drm> b = lt.g.r().sizeLimitedListOf(4).xmap(drm::new, drm::a);
+   public static final yx<wk, drm> c = yv.a(lu.K).a(yv.c(4)).a(drm::new, drm::a);
 
-   public drm(jd $$0, dta $$1) {
-      super(dqh.K, $$0, $$1);
-      this.a = new drm.a($$1, new dxs($$0));
+   private drm(List<cul> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   public static void a(dcu $$0, jd $$1, dta $$2, drm $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   public drm(cul $$0, cul $$1, cul $$2, cul $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
    }
 
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
+   private static Optional<cul> a(List<cul> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         cul $$2 = $$0.get($$1);
+         return $$2 == cut.qL ? Optional.empty() : Optional.of($$2);
+      }
    }
 
-   @Override
-   protected void b(ua $$0, jo.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   public ub a(ub $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (uy)b.encodeStart(up.a, this).getOrThrow());
+         return $$0;
+      }
    }
 
-   public drm.a b() {
-      return this.a;
+   public List<cul> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cut.qL)).toList();
    }
 
-   public static class a implements dxy {
-      public static final int a = 8;
-      final dms b;
-      private final dta c;
-      private final dya d;
+   public static drm b(@Nullable ub $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(up.a, $$0.c("sherds")).result().orElse(a) : a;
+   }
 
-      public a(dta $$0, dya $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dms.a();
-      }
+   public Optional<cul> b() {
+      return this.d;
+   }
 
-      @Override
-      public dya a() {
-         return this.d;
-      }
+   public Optional<cul> c() {
+      return this.e;
+   }
 
-      @Override
-      public int b() {
-         return 8;
-      }
+   public Optional<cul> d() {
+      return this.f;
+   }
 
-      @Override
-      public dxy.a c() {
-         return dxy.a.b;
-      }
-
-      @Override
-      public boolean a(aqt $$0, jm<dxw> $$1, dxw.a $$2, eww $$3) {
-         if ($$1.a(dxw.p) && $$2.a() instanceof btl $$4) {
-            if (!$$4.eE()) {
-               brj $$5 = $$4.ez();
-               int $$6 = $$4.a($$0, x.a($$5, brj::d));
-               if ($$4.ef() && $$6 > 0) {
-                  this.b.a(jd.a((jw)$$3.a(ji.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eD();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, jd.a((jw)$$1x), this.c, $$0.E_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public dms d() {
-         return this.b;
-      }
-
-      private void a(aqt $$0, jd $$1, dta $$2, ayv $$3) {
-         $$0.a($$1, $$2.a(dmp.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lm.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avo.wa, avp.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(dcu $$0, btl $$1) {
-         if ($$1.ej() instanceof aqu $$3) {
-            brj $$4 = $$1.ez() == null ? $$0.aj().a((cmv)$$3) : $$1.ez();
-            an.Z.a($$3, $$1, $$4);
-         }
-      }
+   public Optional<cul> e() {
+      return this.g;
    }
 }

@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpm extends djk {
-   public static final MapCodec<dpm> c = b(dpm::new);
-   public static final exp e = dfw.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dpm extends dfy {
+   public static final MapCodec<dpm> a = b(dpm::new);
 
    @Override
    public MapCodec<dpm> a() {
-      return c;
+      return a;
    }
 
-   public dpm(dsz.d $$0) {
-      super($$0, ji.a, e, false);
+   public dpm(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected djl c() {
-      return (djl)dfy.oz;
+   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
+      exa $$4 = new exa(0.25, 0.05F, 0.25);
+      if ($$3 instanceof btn $$5 && $$5.b(bsb.K)) {
+         $$4 = new exa(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$4);
    }
 }

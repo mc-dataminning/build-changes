@@ -1,253 +1,125 @@
 import javax.annotation.Nullable;
 
 public class brk {
-   private final jz<brl> a;
-   private final brj b;
-   private final brj c;
-   private final brj d;
-   private final brj e;
-   private final brj f;
-   private final brj g;
-   private final brj h;
-   private final brj i;
-   private final brj j;
-   private final brj k;
-   private final brj l;
-   private final brj m;
-   private final brj n;
-   private final brj o;
-   private final brj p;
-   private final brj q;
-   private final brj r;
-   private final brj s;
-   private final brj t;
-   private final brj u;
-   private final brj v;
-   private final brj w;
-   private final brj x;
-   private final brj y;
+   private final jm<brm> a;
+   @Nullable
+   private final bsr b;
+   @Nullable
+   private final bsr c;
+   @Nullable
+   private final exa d;
 
-   public brk(ka $$0) {
-      this.a = $$0.d(lu.s);
-      this.b = this.a(brm.a);
-      this.c = this.a(brm.b);
-      this.d = this.a(brm.c);
-      this.e = this.a(brm.d);
-      this.f = this.a(brm.e);
-      this.g = this.a(brm.f);
-      this.h = this.a(brm.g);
-      this.i = this.a(brm.h);
-      this.j = this.a(brm.i);
-      this.k = this.a(brm.j);
-      this.l = this.a(brm.k);
-      this.m = this.a(brm.l);
-      this.n = this.a(brm.m);
-      this.o = this.a(brm.n);
-      this.p = this.a(brm.o);
-      this.q = this.a(brm.p);
-      this.r = this.a(brm.q);
-      this.s = this.a(brm.r);
-      this.t = this.a(brm.s);
-      this.u = this.a(brm.t);
-      this.v = this.a(brm.u);
-      this.w = this.a(brm.v);
-      this.x = this.a(brm.T);
-      this.y = this.a(brm.U);
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
    }
 
-   private brj a(akp<brl> $$0) {
-      return new brj(this.a.g($$0));
+   public float a() {
+      return this.k().c();
    }
 
-   private brj a(akp<brl> $$0, @Nullable bsq $$1) {
-      return new brj(this.a.g($$0), $$1);
+   public boolean b() {
+      return this.b == this.c;
    }
 
-   private brj a(akp<brl> $$0, @Nullable bsq $$1, @Nullable bsq $$2) {
-      return new brj(this.a.g($$0), $$1, $$2);
+   private brk(jm<brm> $$0, @Nullable bsr $$1, @Nullable bsr $$2, @Nullable exa $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
-   public brj a() {
-      return this.b;
+   public brk(jm<brm> $$0, @Nullable bsr $$1, @Nullable bsr $$2) {
+      this($$0, $$1, $$2, null);
    }
 
-   public brj b() {
+   public brk(jm<brm> $$0, exa $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public brk(jm<brm> $$0, @Nullable bsr $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public brk(jm<brm> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bsr c() {
       return this.c;
    }
 
-   public brj c() {
+   @Nullable
+   public bsr d() {
+      return this.b;
+   }
+
+   @Nullable
+   public cuq e() {
+      return this.c != null ? this.c.dT() : null;
+   }
+
+   public wz a(btn $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         btn $$5 = $$0.eN();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? wz.a($$6, $$0.S_(), $$5.S_()) : wz.a($$1, $$0.S_());
+      } else {
+         wz $$2 = this.b == null ? this.c.S_() : this.b.S_();
+         cuq $$4 = this.b instanceof btn $$3 ? $$3.eU() : cuq.l;
+         return !$$4.e() && $$4.b(kq.g) ? wz.a($$1 + ".item", $$0.S_(), $$2, $$4.F()) : wz.a($$1, $$0.S_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof btn && !(this.b instanceof cmx);
+         case c -> true;
+      };
+   }
+
+   public boolean h() {
+      if (this.d() instanceof cmx $$0 && $$0.ga().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public exa i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dn() : null;
+      }
+   }
+
+   @Nullable
+   public exa j() {
       return this.d;
    }
 
-   public brj d() {
-      return this.e;
+   public boolean a(awu<brm> $$0) {
+      return this.a.a($$0);
    }
 
-   public brj e() {
-      return this.f;
+   public boolean a(akq<brm> $$0) {
+      return this.a.a($$0);
    }
 
-   public brj f() {
-      return this.g;
+   public brm k() {
+      return this.a.a();
    }
 
-   public brj g() {
-      return this.h;
-   }
-
-   public brj h() {
-      return this.i;
-   }
-
-   public brj i() {
-      return this.j;
-   }
-
-   public brj j() {
-      return this.k;
-   }
-
-   public brj k() {
-      return this.l;
-   }
-
-   public brj l() {
-      return this.m;
-   }
-
-   public brj m() {
-      return this.n;
-   }
-
-   public brj n() {
-      return this.o;
-   }
-
-   public brj o() {
-      return this.p;
-   }
-
-   public brj p() {
-      return this.q;
-   }
-
-   public brj q() {
-      return this.r;
-   }
-
-   public brj r() {
-      return this.s;
-   }
-
-   public brj s() {
-      return this.t;
-   }
-
-   public brj t() {
-      return this.u;
-   }
-
-   public brj u() {
-      return this.v;
-   }
-
-   public brj v() {
-      return this.w;
-   }
-
-   public brj a(bsq $$0) {
-      return this.a(brm.w, $$0);
-   }
-
-   public brj b(bsq $$0) {
-      return this.a(brm.x, $$0);
-   }
-
-   public brj c(bsq $$0) {
-      return this.a(brm.y, $$0);
-   }
-
-   public brj a(btl $$0) {
-      return this.a(brm.z, $$0);
-   }
-
-   public brj b(btl $$0) {
-      return this.a(brm.A, $$0);
-   }
-
-   public brj c(btl $$0) {
-      return this.a(brm.B, $$0);
-   }
-
-   public brj a(cmv $$0) {
-      return this.a(brm.C, $$0);
-   }
-
-   public brj a(cnb $$0, @Nullable bsq $$1) {
-      return this.a(brm.D, $$0, $$1);
-   }
-
-   public brj a(bsq $$0, @Nullable bsq $$1) {
-      return this.a(brm.E, $$0, $$1);
-   }
-
-   public brj a(bsq $$0, @Nullable btl $$1) {
-      return this.a(brm.F, $$0, $$1);
-   }
-
-   public brj b(bsq $$0, @Nullable btl $$1) {
-      return this.a(brm.G, $$0, $$1);
-   }
-
-   public brj c(bsq $$0, @Nullable btl $$1) {
-      return this.a(brm.H, $$0, $$1);
-   }
-
-   public brj a(cni $$0, @Nullable bsq $$1) {
-      return this.a(brm.I, $$0, $$1);
-   }
-
-   public brj a(cnh $$0, @Nullable bsq $$1) {
-      return $$1 == null ? this.a(brm.K, $$0) : this.a(brm.J, $$0, $$1);
-   }
-
-   public brj a(cob $$0, bsq $$1) {
-      return this.a(brm.L, $$0, $$1);
-   }
-
-   public brj b(bsq $$0, @Nullable bsq $$1) {
-      return this.a(brm.M, $$0, $$1);
-   }
-
-   public brj c(bsq $$0, @Nullable bsq $$1) {
-      return this.a(brm.N, $$0, $$1);
-   }
-
-   public brj d(bsq $$0) {
-      return this.a(brm.O, $$0);
-   }
-
-   public brj a(@Nullable dcm $$0) {
-      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
-   }
-
-   public brj d(@Nullable bsq $$0, @Nullable bsq $$1) {
-      return this.a($$1 != null && $$0 != null ? brm.Q : brm.P, $$0, $$1);
-   }
-
-   public brj e(bsq $$0) {
-      return this.a(brm.R, $$0);
-   }
-
-   public brj a(eww $$0) {
-      return new brj(this.a.g(brm.S), $$0);
-   }
-
-   public brj w() {
-      return this.x;
-   }
-
-   public brj x() {
-      return this.y;
+   public jm<brm> l() {
+      return this.a;
    }
 }

@@ -1,90 +1,39 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
-
 public class gfu {
-   public float[] a;
-   public final int b;
+   protected final int[] a;
+   protected final int b;
+   protected final ji c;
+   protected final gqj d;
+   private final boolean e;
 
-   public gfu(@Nullable float[] $$0, int $$1) {
+   public gfu(int[] $$0, int $$1, ji $$2, gqj $$3, boolean $$4) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
+   public gqj a() {
+      return this.d;
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
+   public int[] b() {
+      return this.a;
    }
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
+   public boolean c() {
+      return this.b != -1;
    }
 
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
+   public int d() {
+      return this.b;
    }
 
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
+   public ji e() {
+      return this.c;
    }
 
-   protected static class a implements JsonDeserializer<gfu> {
-      private static final int a = 0;
-
-      public gfu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new gfu($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = ayd.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
-
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = ayd.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = ayd.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
-      }
+   public boolean f() {
+      return this.e;
    }
 }

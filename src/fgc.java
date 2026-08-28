@@ -1,29 +1,38 @@
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record fgc(int a, wy b, @Nullable xk c, @Nullable fgd d) {
+public class fgc {
+   private final fze a;
+   private int b = -1;
    @Nullable
-   public fgd.a a() {
-      return this.d != null ? this.d.f() : null;
+   private Consumer<ub> c;
+
+   public fgc(fze $$0) {
+      this.a = $$0;
    }
 
-   public int b() {
-      return this.a;
+   public boolean a(int $$0, @Nullable ub $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public wy c() {
-      return this.b;
+   private int a(Consumer<ub> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Nullable
-   public xk d() {
-      return this.c;
+   public void a(int $$0, Consumer<ub> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahc($$2, $$0));
    }
 
-   @Nullable
-   public fgd e() {
-      return this.d;
-   }
-
-   public static record a(int a, axz b, @Nullable fgd c, boolean d) {
+   public void a(jd $$0, Consumer<ub> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agl($$2, $$0));
    }
 }

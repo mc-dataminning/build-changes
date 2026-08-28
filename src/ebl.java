@@ -1,48 +1,66 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class ebl extends eca<eel> {
-   public ebl(Codec<eel> $$0) {
+public class ebl extends ecd<edy> {
+   public ebl(Codec<edy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eel> $$0) {
-      ayv $$1 = $$0.d();
-      ddq $$2 = $$0.b();
-      dcb $$3 = new dcb($$0.e());
-      IntArrayList $$4 = ad.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ad.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      jd.a $$6 = new jd.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(ecf<edy> $$0) {
+      dds $$1 = $$0.b();
+      edy $$2 = $$0.f();
+      ayw $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            jd $$9 = $$2.a(dyv.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dfy.cv.o(), 2);
-               bqy.a($$2, $$1, $$9, erh.b);
-               dta $$10 = dfy.cp.o();
-
-               for (ji $$11 : ji.c.a) {
-                  jd $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      return false;
+      if ($$6 == 0) {
+         return false;
+      } else {
+         jd.a $$8 = $$0.e().k();
+         jd.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               edy.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

@@ -1,82 +1,143 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dmz extends des {
-   public static final MapCodec<dmz> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmz.a.b.fieldOf("kind").forGetter(des::b), u()).apply($$0, dmz::new));
-   public static final int d = dug.a();
-   private static final int b = d + 1;
-   public static final dua e = dtq.ba;
-   protected static final exp f = dfw.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final exp g = dfw.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public abstract class dmz extends dfk implements dna {
+   public static final dtt f = dts.C;
+   protected static final float g = 4.0F;
+   protected static final ext h = dfy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private final dup a;
 
-   @Override
-   public MapCodec<? extends dmz> a() {
-      return c;
-   }
-
-   protected dmz(dmz.a $$0, dsz.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
+   protected dmz(dup $$0, dtb.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return this.b() == dmz.b.h ? g : f;
-   }
+   protected abstract MapCodec<? extends dmz> a();
 
    @Override
-   protected exp f(dta $$0, dca $$1, jd $$2) {
-      return exm.a();
-   }
-
-   @Override
-   public dta a(cyb $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dug.a($$0.i())));
-   }
-
-   @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dta a(dta $$0, dkt $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends azj {
-      Map<String, dmz.a> a = new Object2ObjectArrayMap();
-      Codec<dmz.a> b = Codec.stringResolver(azj::c, a::get);
-   }
-
-   public static enum b implements dmz.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return h;
+   }
+
+   @Override
+   public boolean a(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   public dqh a(jd $$0, dtc $$1) {
+      return new drs($$0, $$1);
+   }
+
+   @Override
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+      if ($$2.c_($$3) instanceof drs $$7) {
+         cvv $$10 = $$0.g() instanceof cvv $$9 ? $$9 : null;
+         boolean $$11 = $$10 != null && $$4.gl();
+         if (!$$2.B) {
+            if ($$11 && !$$7.v() && !this.a($$4, $$7)) {
+               boolean $$12 = $$7.a($$4);
+               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
+                  $$7.a($$4, $$2, $$3, $$12);
+                  $$4.b(avz.c.b($$0.g()));
+                  $$2.a(dxz.c, $$7.aD_(), dxz.a.a($$4, $$7.n()));
+                  $$0.a(1, $$4);
+                  return bqt.a;
+               } else {
+                  return bqt.d;
+               }
+            } else {
+               return bqt.d;
+            }
+         } else {
+            return !$$11 && !$$7.v() ? bqt.b : bqt.a;
+         }
+      } else {
+         return bqt.e;
       }
+   }
+
+   @Override
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$1.c_($$2) instanceof drs $$5) {
+         if ($$1.B) {
+            ad.b(new IllegalStateException("Expected to only call this on server"));
+         }
+
+         boolean $$7 = $$5.a($$3);
+         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
+         if ($$5.v()) {
+            $$1.a(null, $$5.aD_(), $$5.d(), avq.e);
+            return bqr.a;
+         } else if ($$8) {
+            return bqr.a;
+         } else if (!this.a($$3, $$5) && $$3.gl() && this.b($$3, $$5, $$7)) {
+            this.a($$3, $$5, $$7);
+            return bqr.a;
+         } else {
+            return bqr.e;
+         }
+      } else {
+         return bqr.e;
+      }
+   }
+
+   private boolean b(cmx $$0, drs $$1, boolean $$2) {
+      drt $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.Z())).allMatch($$0x -> $$0x.equals(wy.a) || $$0x.b() instanceof yg);
+   }
+
+   public abstract float g(dtc var1);
+
+   public exa m(dtc $$0) {
+      return new exa(0.5, 0.5, 0.5);
+   }
+
+   @Override
+   protected epc b_(dtc $$0) {
+      return $$0.c(f) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   public dup d() {
+      return this.a;
+   }
+
+   public static dup a(dfy $$0) {
+      dup $$1;
+      if ($$0 instanceof dmz) {
+         $$1 = ((dmz)$$0).d();
+      } else {
+         $$1 = dup.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(cmx $$0, drs $$1, boolean $$2) {
+      $$1.a($$0.cA());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(cmx $$0, drs $$1) {
+      UUID $$2 = $$1.u();
+      return $$2 != null && !$$2.equals($$0.cA());
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
+      return a($$2, dqj.h, drs::a);
    }
 }

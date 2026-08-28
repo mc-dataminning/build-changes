@@ -1,60 +1,255 @@
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class frq extends fru {
-   private static final fjt i = new fjt(
-      akq.b("recipe_book/furnace_filter_enabled"),
-      akq.b("recipe_book/furnace_filter_disabled"),
-      akq.b("recipe_book/furnace_filter_enabled_highlighted"),
-      akq.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   @Nullable
-   private cyu j;
+public class frq {
+   private final atp a;
+   final List<atm> b;
+   final List<atm> c;
+   final Function<atm, akr> d;
+   final Runnable e;
+   private final Consumer<atp> f;
 
-   @Override
-   protected void a() {
-      this.f.a(i);
+   public frq(Runnable $$0, Function<atm, akr> $$1, atp $$2, Consumer<atp> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   public void a(@Nullable cro $$0) {
-      super.a($$0);
-      if ($$0 != null && $$0.d < this.g.p()) {
-         this.e.a();
+   public Stream<frq.a> a() {
+      return this.c.stream().map($$0 -> new frq.d($$0));
+   }
+
+   public Stream<frq.a> b() {
+      return this.b.stream().map($$0 -> new frq.c($$0));
+   }
+
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(atm::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      akr a();
+
+      atn b();
+
+      String c();
+
+      wz d();
+
+      wz e();
+
+      atq f();
+
+      default wz g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements frq.a {
+      private final atm b;
+
+      public b(final atm $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<atm> s();
+
+      protected abstract List<atm> t();
+
+      @Override
+      public akr a() {
+         return frq.this.d.apply(this.b);
+      }
+
+      @Override
+      public atn b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wz d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wz e() {
+         return this.b.c();
+      }
+
+      @Override
+      public atq f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, atm::h, true);
+         frq.this.e.run();
+         frq.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fgp<Boolean> $$0 = fgm.Q().m.t();
+            $$0.a(!$$0.c());
+         }
+      }
+
+      protected void a(int $$0) {
+         List<atm> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         frq.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<atm> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<atm> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   @Override
-   public void a(cyz<?> $$0, List<cro> $$1) {
-      cuo $$2 = $$0.b().a(this.h.r.H_());
-      this.e.a($$0);
-      this.e.a(cyu.a($$2), $$1.get(2).e, $$1.get(2).f);
-      jv<cyu> $$3 = $$0.b().a();
-      cro $$4 = $$1.get(1);
-      if ($$4.g().e()) {
-         if (this.j == null) {
-            this.j = cyu.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.J())).map(cuo::new));
-         }
-
-         this.e.a(this.j, $$4.e, $$4.f);
+   class c extends frq.b {
+      public c(final atm $$0) {
+         super($$0);
       }
 
-      Iterator<cyu> $$5 = $$3.iterator();
+      @Override
+      protected List<atm> s() {
+         return frq.this.b;
+      }
 
-      for (int $$6 = 0; $$6 < 2; $$6++) {
-         if (!$$5.hasNext()) {
-            return;
-         }
+      @Override
+      protected List<atm> t() {
+         return frq.this.c;
+      }
 
-         cyu $$7 = $$5.next();
-         if (!$$7.c()) {
-            cro $$8 = $$1.get($$6);
-            this.e.a($$7, $$8.e, $$8.f);
-         }
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
       }
    }
 
-   protected abstract Set<cuj> b();
+   class d extends frq.b {
+      public d(final atm $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<atm> s() {
+         return frq.this.c;
+      }
+
+      @Override
+      protected List<atm> t() {
+         return frq.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
+   }
 }

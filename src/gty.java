@@ -1,28 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gty<T> extends gtz<T> {
-   private final gud<T> c;
+public interface gty {
+   akr a();
 
-   public gty(Function<T, Stream<String>> $$0, Function<T, Stream<akq>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = gud.plainText($$2, $$0);
+   @Nullable
+   gve a(gvd var1);
+
+   gtv b();
+
+   avq c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gty.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   default boolean s() {
+      return true;
    }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new gub<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gua<T>($$2.iterator(), $$5, this.a));
+   static ayw t() {
+      return ayw.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

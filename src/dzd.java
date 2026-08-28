@@ -1,70 +1,117 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
-public record dzd(int g, int h, int i, int j) {
+public record dzd(dzg j, dtc k, dtc l, dze m, dzp.o n, List<def.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<dzd> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dwv.e, dwv.d).fieldOf("min_y").forGetter(dzd::c),
-                  Codec.intRange(0, dwv.c).fieldOf("height").forGetter(dzd::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dzd::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dzd::f)
-               )
-               .apply($$0, dzd::new)
-      )
-      .comapFlatMap(dzd::a, Function.identity());
-   protected static final dzd b = a(-64, 384, 1, 2);
-   protected static final dzd c = a(0, 128, 1, 2);
-   protected static final dzd d = a(0, 128, 2, 1);
-   protected static final dzd e = a(-64, 192, 1, 2);
-   protected static final dzd f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               dzg.a.fieldOf("noise").forGetter(dzd::f),
+               dtc.b.fieldOf("default_block").forGetter(dzd::g),
+               dtc.b.fieldOf("default_fluid").forGetter(dzd::h),
+               dze.a.fieldOf("noise_router").forGetter(dzd::i),
+               dzp.o.b.fieldOf("surface_rule").forGetter(dzd::j),
+               def.d.a.listOf().fieldOf("spawn_target").forGetter(dzd::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dzd::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dzd::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dzd::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dzd::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dzd::n)
+            )
+            .apply($$0, dzd::new)
+   );
+   public static final Codec<jm<dzd>> b = akn.a(lu.aO, a);
+   public static final akq<dzd> c = akq.a(lu.aO, akr.b("overworld"));
+   public static final akq<dzd> d = akq.a(lu.aO, akr.b("large_biomes"));
+   public static final akq<dzd> e = akq.a(lu.aO, akr.b("amplified"));
+   public static final akq<dzd> f = akq.a(lu.aO, akr.b("nether"));
+   public static final akq<dzd> g = akq.a(lu.aO, akr.b("end"));
+   public static final akq<dzd> h = akq.a(lu.aO, akr.b("caves"));
+   public static final akq<dzd> i = akq.a(lu.aO, akr.b("floating_islands"));
 
-   private static DataResult<dzd> a(dzd $$0) {
-      if ($$0.c() + $$0.d() > dwv.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dwv.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public static dzd a(int $$0, int $$1, int $$2, int $$3) {
-      dzd $$4 = new dzd($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public boolean b() {
+      return this.r;
    }
 
-   public int a() {
-      return jx.c(this.f());
+   public boolean c() {
+      return this.s;
    }
 
-   public int b() {
-      return jx.c(this.e());
+   public dzx.a d() {
+      return this.t ? dzx.a.a : dzx.a.b;
    }
 
-   public dzd a(dcw $$0) {
-      int $$1 = Math.max(this.g, $$0.I_());
-      int $$2 = Math.min(this.g + this.h, $$0.am()) - $$1;
-      return new dzd($$1, $$2, this.i, this.j);
+   public static void a(qq<dzd> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public int c() {
-      return this.g;
+   private static dzd b(qq<?> $$0) {
+      return new dzd(dzg.d, dga.fz.o(), dga.a.o(), dzf.a($$0.a(lu.aJ)), rd.c(), List.of(), 0, true, false, false, true);
    }
 
-   public int d() {
-      return this.h;
+   private static dzd c(qq<?> $$0) {
+      return new dzd(dzg.c, dga.dV.o(), dga.H.o(), dzf.a($$0.a(lu.aJ), $$0.a(lu.aP)), rd.b(), List.of(), 32, false, false, false, true);
    }
 
-   public int e() {
-      return this.i;
+   private static dzd a(qq<?> $$0, boolean $$1, boolean $$2) {
+      return new dzd(dzg.b, dga.b.o(), dga.G.o(), dzf.a($$0.a(lu.aJ), $$0.a(lu.aP), $$2, $$1), rd.a(), new dem().a(), 63, false, true, true, false);
    }
 
-   public int f() {
+   private static dzd d(qq<?> $$0) {
+      return new dzd(dzg.e, dga.b.o(), dga.G.o(), dzf.b($$0.a(lu.aJ), $$0.a(lu.aP)), rd.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dzd e(qq<?> $$0) {
+      return new dzd(dzg.f, dga.b.o(), dga.G.o(), dzf.c($$0.a(lu.aJ), $$0.a(lu.aP)), rd.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dzd e() {
+      return new dzd(dzg.b, dga.b.o(), dga.a.o(), dzf.a(), rd.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dzg f() {
       return this.j;
+   }
+
+   public dtc g() {
+      return this.k;
+   }
+
+   public dtc h() {
+      return this.l;
+   }
+
+   public dze i() {
+      return this.m;
+   }
+
+   public dzp.o j() {
+      return this.n;
+   }
+
+   public List<def.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

@@ -1,117 +1,180 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dgi extends dfw {
-   public static final MapCodec<dgi> a = b(dgi::new);
-   public static final int b = 6;
-   public static final dua c = dtq.ay;
-   public static final int d = b(0);
-   protected static final float e = 1.0F;
-   protected static final float f = 2.0F;
-   protected static final exp[] g = new exp[]{
-      dfw.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dfw.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
-   };
+public class dgi extends dis {
+   public static final MapCodec<dgi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dtr.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               u()
+            )
+            .apply($$0, dgi::new)
+   );
+   public static final dtt b = dts.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final ext e = dfy.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ext f = dfy.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ext g = dfy.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final ext h = dfy.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final ext i = dfy.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final ext j = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final ext k = dfy.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ext l = dfy.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final ext m = dfy.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ext n = dfy.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ext o = dfy.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final ext F = dfy.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final ext G = dfy.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final ext H = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final ext I = dfy.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ext J = dfy.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dtr N;
+   private final int O;
 
    @Override
    public MapCodec<dgi> a() {
       return a;
    }
 
-   protected dgi(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dgi(dtr $$0, int $$1, dtb.d $$2) {
+      super($$2.a($$0.g()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, ji.c).a(b, Boolean.valueOf(false)).a(K, dtn.b));
+      this.O = $$1;
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return g[$$0.c(c)];
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      ji $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dtn)$$0.c(K)) {
+         case a:
+            if ($$4.o() == ji.a.a) {
+               return $$5 ? o : g;
+            }
+
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == ji.a.a) {
+               return $$5 ? m : e;
+            } else {
+               return $$5 ? n : f;
+            }
+      }
    }
 
    @Override
-   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
-      cuj $$7 = $$0.g();
-      if ($$0.a(awm.aJ) && $$1.c(c) == 0 && dfw.a($$7) instanceof dgl $$8) {
-         $$0.a(1, $$4);
-         $$2.a(null, $$3, avo.dr, avp.e, 1.0F, 1.0F);
-         $$2.b($$3, dgm.a($$8));
-         $$2.a($$4, dxw.c, $$3);
-         $$4.b(avy.c.b($$7));
-         return bqs.a;
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$0.c(b)) {
+         return bqr.c;
       } else {
-         return bqs.d;
+         this.a($$0, $$1, $$2, $$3);
+         return bqr.a($$1.B);
       }
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bqq.a;
-         }
-
-         if ($$3.b(bqp.a).e()) {
-            return bqq.c;
-         }
+   protected void a(dtc $$0, dcw $$1, jd $$2, dco $$3, BiConsumer<cuq, jd> $$4) {
+      if ($$3.n() && !$$0.c(b)) {
+         this.a($$0, $$1, $$2, null);
       }
 
-      return a($$1, $$2, $$0, $$3);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected static bqq a(dcv $$0, jd $$1, dta $$2, cmv $$3) {
-      if (!$$3.u(false)) {
-         return bqq.e;
-      } else {
-         $$3.a(avy.U);
-         $$3.gj().a(2, 0.1F);
-         int $$4 = $$2.c(c);
-         $$0.a($$3, dxw.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, dxw.f, $$1);
+   public void a(dtc $$0, dcw $$1, jd $$2, @Nullable cmx $$3) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+      this.a($$3, $$1, $$2, true);
+      $$1.a($$3, dxz.a, $$2);
+   }
+
+   protected void a(@Nullable cmx $$0, dcx $$1, jd $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), avq.e);
+   }
+
+   protected avo a(boolean $$0) {
+      return $$0 ? this.N.o() : this.N.n();
+   }
+
+   @Override
+   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.e($$0, $$1, $$2);
          }
 
-         return bqq.a;
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      return $$1 == ji.a && !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   protected boolean a(dta $$0, dcx $$1, jd $$2) {
-      return $$1.a_($$2.d()).e();
+   protected int b(dtc $$0, dcc $$1, jd $$2, ji $$3) {
+      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected int a(dta $$0, dcu $$1, jd $$2) {
-      return b($$0.c(c));
-   }
-
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
-   }
-
-   @Override
-   protected boolean c_(dta $$0) {
+   protected boolean e_(dtc $$0) {
       return true;
    }
 
    @Override
-   protected boolean a(dta $$0, epn $$1) {
-      return false;
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
+      if (!$$1.B && this.N.e() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dtc $$0, dcw $$1, jd $$2) {
+      cnd $$3 = this.N.e() ? $$1.a(cnd.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.e($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? dxz.a : dxz.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new jd($$2), this, this.O);
+      }
+   }
+
+   private void e(dtc $$0, dcw $$1, jd $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(m($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(aE, b, K);
    }
 }

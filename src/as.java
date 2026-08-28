@@ -5,10 +5,10 @@ import java.util.Optional;
 public class as {
    public static final Codec<as> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cuo.d.fieldOf("icon").forGetter(as::c),
-               xa.a.fieldOf("title").forGetter(as::a),
-               xa.a.fieldOf("description").forGetter(as::b),
-               akq.a.optionalFieldOf("background").forGetter(as::d),
+               cuq.d.fieldOf("icon").forGetter(as::c),
+               xb.a.fieldOf("title").forGetter(as::a),
+               xb.a.fieldOf("description").forGetter(as::b),
+               akr.a.optionalFieldOf("background").forGetter(as::d),
                am.d.optionalFieldOf("frame", am.a).forGetter(as::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(as::h),
                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(as::i),
@@ -16,11 +16,11 @@ public class as {
             )
             .apply($$0, as::new)
    );
-   public static final yw<wj, as> b = yw.a(as::a, as::b);
-   private final wy c;
-   private final wy d;
-   private final cuo e;
-   private final Optional<akq> f;
+   public static final yx<wk, as> b = yx.a(as::a, as::b);
+   private final wz c;
+   private final wz d;
+   private final cuq e;
+   private final Optional<akr> f;
    private final am g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class as {
    private float k;
    private float l;
 
-   public as(cuo $$0, wy $$1, wy $$2, Optional<akq> $$3, am $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public as(cuq $$0, wz $$1, wz $$2, Optional<akr> $$3, am $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class as {
       this.l = $$1;
    }
 
-   public wy a() {
+   public wz a() {
       return this.c;
    }
 
-   public wy b() {
+   public wz b() {
       return this.d;
    }
 
-   public cuo c() {
+   public cuq c() {
       return this.e;
    }
 
-   public Optional<akq> d() {
+   public Optional<akr> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class as {
       return this.j;
    }
 
-   private void a(wj $$0) {
-      xa.d.encode($$0, this.c);
-      xa.d.encode($$0, this.d);
-      cuo.i.encode($$0, this.e);
+   private void a(wk $$0) {
+      xb.d.encode($$0, this.c);
+      xb.d.encode($$0, this.d);
+      cuq.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class as {
       $$0.a(this.l);
    }
 
-   private static as b(wj $$0) {
-      wy $$1 = xa.d.decode($$0);
-      wy $$2 = xa.d.decode($$0);
-      cuo $$3 = cuo.i.decode($$0);
+   private static as b(wk $$0) {
+      wz $$1 = xb.d.decode($$0);
+      wz $$2 = xb.d.decode($$0);
+      cuq $$3 = cuq.i.decode($$0);
       am $$4 = $$0.b(am.class);
       int $$5 = $$0.readInt();
-      Optional<akq> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<akr> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       as $$9 = new as($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

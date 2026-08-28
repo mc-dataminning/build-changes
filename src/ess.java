@@ -1,40 +1,102 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ess extends esy {
+public class ess extends etc {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<ess> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(erl.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ess::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  kb.a(lu.aL).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
+                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ess::new)
    );
-   private final erl.b b;
+   private final Optional<jq<dac>> c;
+   private final boolean d;
 
-   public ess(List<euw> $$0, erl.b $$1) {
+   ess(List<eva> $$0, Optional<jq<dac>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eta<ess> b() {
-      return etb.B;
+   public ete<ess> b() {
+      return etf.h;
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return ImmutableSet.of(this.b.a());
+   public cuq a(cuq $$0, erp $$1) {
+      ayw $$2 = $$1.b();
+      boolean $$3 = $$0.a(cut.qP);
+      boolean $$4 = !$$3 && this.d;
+      Stream<jm<dac>> $$5 = this.c
+         .<Stream<jm<dac>>>map(jq::a)
+         .orElseGet(() -> $$1.d().H_().d(lu.aL).i().map(Function.identity()))
+         .filter($$2x -> !$$4 || ((dac)$$2x.a()).c($$0));
+      List<jm<dac>> $$6 = $$5.toList();
+      Optional<jm<dac>> $$7 = ad.b($$6, $$2);
+      if ($$7.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$7.get(), $$2);
+      }
    }
 
-   @Override
-   public cuo a(cuo $$0, erl $$1) {
-      if ($$0.a(cur.un) && $$1.c(this.b.a()) instanceof cmv $$2) {
-         $$0.b(kq.W, new cxs($$2.fY()));
+   private static cuq a(cuq $$0, jm<dac> $$1, ayw $$2) {
+      int $$3 = ayo.a($$2, $$1.a().d(), $$1.a().e());
+      if ($$0.a(cut.qP)) {
+         $$0 = new cuq(cut.uw);
       }
 
+      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static esy.a<?> a(erl.b $$0) {
-      return a($$1 -> new ess($$1, $$0));
+   public static ess.a c() {
+      return new ess.a();
+   }
+
+   public static ess.a a(jo.a $$0) {
+      return c().a($$0.b(lu.aL).b(awh.n));
+   }
+
+   public static class a extends etc.a<ess.a> {
+      private Optional<jq<dac>> a = Optional.empty();
+      private boolean b = true;
+
+      protected ess.a a() {
+         return this;
+      }
+
+      public ess.a a(jm<dac> $$0) {
+         this.a = Optional.of(jq.a($$0));
+         return this;
+      }
+
+      public ess.a a(jq<dac> $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ess.a e() {
+         this.b = false;
+         return this;
+      }
+
+      @Override
+      public etd b() {
+         return new ess(this.g(), this.a, this.b);
+      }
    }
 }

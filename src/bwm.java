@@ -1,29 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwm {
-   public static bwq<btn> a(int $$0) {
-      return bys.a(
-         (Function<bys.b<btn>, ? extends App<bys.c<btn>, byv<btn>>>)($$1 -> $$1.group($$1.a(ccq.n), $$1.b(ccq.o), $$1.c(ccq.p), $$1.b(ccq.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     btl $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<ccs>b($$5).a($$9)) {
-                        $$2.a(new bvq($$9, true));
-                        $$7.a(bqp.a);
-                        $$7.D($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bwm extends bvh<cmk> {
+   private final float c;
+
+   public bwm(float $$0) {
+      super(ImmutableMap.of(ccs.m, cct.c, ccs.n, cct.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   private static boolean a(btn $$0) {
-      return $$0.b($$1 -> {
-         cuj $$2 = $$1.g();
-         return $$2 instanceof cvl && $$0.a((cvl)$$2);
-      });
+   protected boolean a(aqu $$0, cmk $$1) {
+      cmx $$2 = $$1.gl();
+      return $$1.bE() && $$2 != null && !$$1.bf() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cd != null;
+   }
+
+   protected boolean a(aqu $$0, cmk $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqu $$0, cmk $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(aqu $$0, cmk $$1, long $$2) {
+      buq<?> $$3 = $$1.dU();
+      $$3.b(ccs.m);
+      $$3.b(ccs.n);
+   }
+
+   protected void d(aqu $$0, cmk $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cmk $$0) {
+      buq<?> $$1 = $$0.dU();
+      $$1.a(ccs.m, new ccv(new bvs($$0.gl(), false), this.c, 2));
+      $$1.a(ccs.n, new bvs($$0.gl(), true));
    }
 }

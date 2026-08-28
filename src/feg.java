@@ -1,167 +1,233 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class feg extends gwj {
-   private static final Logger b = LogUtils.getLogger();
-   public static final wy a = wy.c("mco.upload.select.world.title");
-   private static final wy c = wy.c("selectWorld.unable_to_load");
-   static final wy A = wy.c("selectWorld.world");
-   private static final wy B = wy.c("mco.upload.hardcore").b(-65536);
-   private static final wy C = wy.c("selectWorld.commands");
-   private static final DateFormat D = new SimpleDateFormat();
+public class feg extends gwo {
+   static final Logger a = LogUtils.getLogger();
+   private static final wz b = wz.c("mco.configure.world.players.title");
+   static final wz c = wz.c("mco.question");
+   private static final int B = 8;
+   final flx C = new flx(this);
+   private final fdv D;
+   final fcn E;
    @Nullable
-   private final ffj E;
-   private final fef F;
-   private final long G;
-   private final int H;
-   fig I;
-   List<era> J = Lists.newArrayList();
-   int K = -1;
-   feg.b L;
+   private feg.b F;
+   boolean G;
 
-   public feg(@Nullable ffj $$0, long $$1, int $$2, fef $$3) {
-      super(a);
-      this.E = $$0;
-      this.F = $$3;
-      this.G = $$1;
-      this.H = $$2;
+   public feg(fdv $$0, fcn $$1) {
+      super(b);
+      this.D = $$0;
+      this.E = $$1;
+   }
+
+   @Override
+   public void aT_() {
+      this.C.a(b, this.o);
+      this.F = this.C.c(new feg.b());
+      this.C();
+      fmb $$0 = this.C.b(fmb.e().a(8));
+      $$0.a(fik.a(wz.c("mco.configure.world.buttons.invite"), $$0x -> this.l.a(new fea(this.D, this, this.E))).a());
+      $$0.a(fik.a(wy.k, $$0x -> this.d()).a());
+      this.C.a($$1 -> {
+         fii var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
+      if (this.F != null) {
+         this.F.a(this.m, this.C);
+      }
+   }
+
+   void C() {
+      if (this.F != null) {
+         this.F.aK_().clear();
+
+         for (fcj $$0 : this.E.h) {
+            this.F.aK_().add(new feg.a($$0));
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.D();
    }
 
    private void D() {
-      eqz.a $$0 = this.l.m().b();
-      this.J = this.l.m().a($$0).join().stream().filter(era::v).collect(Collectors.toList());
-
-      for (era $$1 : this.J) {
-         this.L.a($$1);
-      }
-   }
-
-   @Override
-   public void aP_() {
-      this.L = this.c(new feg.b());
-
-      try {
-         this.D();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.l.a(new fdv(c, wy.a(var2.getMessage()), this.F));
-         return;
-      }
-
-      this.I = this.c(fig.a(wy.c("mco.upload.button.name"), $$0 -> this.E()).a(this.m / 2 - 154, this.n - 32, 153, 20).a());
-      this.I.j = this.K >= 0 && this.K < this.J.size();
-      this.c(fig.a(wx.k, $$0 -> this.l.a(this.F)).a(this.m / 2 + 6, this.n - 32, 153, 20).a());
-      this.a(new gwh(wy.c("mco.upload.select.world.subtitle"), this.m / 2, g(-1), -6250336));
-      if (this.J.isEmpty()) {
-         this.a(new gwh(wy.c("mco.upload.select.world.none"), this.m / 2, this.n / 2 - 20, -1));
-      }
-   }
-
-   @Override
-   public wy i() {
-      return wx.a(this.n(), this.m());
-   }
-
-   private void E() {
-      if (this.K != -1 && !this.J.get(this.K).i()) {
-         era $$0 = this.J.get(this.K);
-         this.l.a(new fem(this.E, this.G, this.H, this.F, $$0));
-      }
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 13, -1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l.a(this.F);
-         return true;
+      if (this.G) {
+         this.l.a(this.D.g());
       } else {
-         return super.a($$0, $$1, $$2);
+         this.l.a(this.D);
       }
    }
 
-   static wy a(era $$0) {
-      return $$0.h().d();
-   }
+   class a extends fiq.a<feg.a> {
+      private static final wz b = wz.c("mco.configure.world.invites.normal.tooltip");
+      private static final wz c = wz.c("mco.configure.world.invites.ops.tooltip");
+      private static final wz d = wz.c("mco.configure.world.invites.remove.tooltip");
+      private static final akr e = akr.b("player_list/make_operator");
+      private static final akr f = akr.b("player_list/remove_operator");
+      private static final akr g = akr.b("player_list/remove_player");
+      private static final int h = 8;
+      private static final int i = 7;
+      private final fcj j;
+      private final fik k;
+      private final fik l;
+      private final fik m;
 
-   static String b(era $$0) {
-      return D.format(new Date($$0.f()));
-   }
-
-   class a extends fjc.a<feg.a> {
-      private final era b;
-      private final String c;
-      private final wy d;
-      private final wy e;
-
-      public a(final era $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = wy.a("mco.upload.entry.id", $$0.a(), feg.b($$0));
-         this.e = $$0.s();
+      public a(final fcj $$0) {
+         this.j = $$0;
+         int $$1 = feg.this.E.h.indexOf(this.j);
+         this.l = fjp.a(b, $$1x -> this.a($$1), false)
+            .a(e, 8, 7)
+            .a(16 + feg.this.o.a(b))
+            .a($$1x -> wy.a(wz.a("mco.invited.player.narration", $$0.a()), (wz)$$1x.get(), wz.a("narration.cycle_button.usage.focused", c)))
+            .a();
+         this.m = fjp.a(c, $$1x -> this.b($$1), false)
+            .a(f, 8, 7)
+            .a(16 + feg.this.o.a(c))
+            .a($$1x -> wy.a(wz.a("mco.invited.player.narration", $$0.a()), (wz)$$1x.get(), wz.a("narration.cycle_button.usage.focused", b)))
+            .a();
+         this.k = fjp.a(d, $$1x -> this.c($$1), false)
+            .a(g, 8, 7)
+            .a(16 + feg.this.o.a(d))
+            .a($$1x -> wy.a(wz.a("mco.invited.player.narration", $$0.a()), (wz)$$1x.get()))
+            .a();
+         this.c();
       }
 
-      @Override
-      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
+      private void a(int $$0) {
+         fbw $$1 = fbw.a();
+         UUID $$2 = feg.this.E.h.get($$0).b();
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         feg.this.L.b(feg.this.J.indexOf(this.b));
-         return super.a($$0, $$1, $$2);
-      }
-
-      protected void a(fht $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = feg.A + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
+         try {
+            this.a($$1.b(feg.this.E.a, $$2));
+         } catch (fdh var5) {
+            feg.a.error("Couldn't op the user", var5);
          }
 
-         $$0.a(feg.this.o, $$4, $$2 + 2, $$3 + 1, 16777215, false);
-         $$0.a(feg.this.o, this.d, $$2 + 2, $$3 + 12, -8355712, false);
-         $$0.a(feg.this.o, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
+         this.c();
+      }
+
+      private void b(int $$0) {
+         fbw $$1 = fbw.a();
+         UUID $$2 = feg.this.E.h.get($$0).b();
+
+         try {
+            this.a($$1.c(feg.this.E.a, $$2));
+         } catch (fdh var5) {
+            feg.a.error("Couldn't deop the user", var5);
+         }
+
+         this.c();
+      }
+
+      private void c(int $$0) {
+         if ($$0 >= 0 && $$0 < feg.this.E.h.size()) {
+            fcj $$1 = feg.this.E.h.get($$0);
+            fdw $$2 = new fdw($$2x -> {
+               if ($$2x) {
+                  fbw $$3 = fbw.a();
+
+                  try {
+                     $$3.a(feg.this.E.a, $$1.b());
+                  } catch (fdh var6) {
+                     feg.a.error("Couldn't uninvite user", var6);
+                  }
+
+                  feg.this.E.h.remove($$0);
+                  feg.this.C();
+               }
+
+               feg.this.G = true;
+               feg.this.l.a(feg.this);
+            }, feg.c, wz.a("mco.configure.world.uninvite.player", $$1.a()));
+            feg.this.l.a($$2);
+         }
+      }
+
+      private void a(fcf $$0) {
+         for (fcj $$1 : feg.this.E.h) {
+            $$1.a($$0.a.contains($$1.a()));
+         }
+      }
+
+      private void c() {
+         this.l.k = !this.j.c();
+         this.m.k = !this.l.k;
+      }
+
+      private fik d() {
+         return this.l.k ? this.l : this.m;
       }
 
       @Override
-      public wy a() {
-         wy $$0 = wx.b(wy.b(this.b.b()), wy.b(feg.b(this.b)), feg.a(this.b));
-         return wy.a("narrator.select", $$0);
+      public List<? extends fkg> aK_() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public List<? extends fme> b() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.j.d()) {
+            $$10 = -6250336;
+         } else if (this.j.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         int $$13 = $$2 + $$5 / 2 - 16;
+         ffb.a($$0, $$3, $$13, 32, this.j.b());
+         int $$14 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.a(feg.this.o, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
+         int $$15 = $$2 + $$5 / 2 - 10;
+         int $$16 = $$3 + $$4 - this.k.y();
+         this.k.c($$16, $$15);
+         this.k.a($$0, $$6, $$7, $$9);
+         int $$17 = $$16 - this.d().y() - 8;
+         this.l.c($$17, $$15);
+         this.l.a($$0, $$6, $$7, $$9);
+         this.m.c($$17, $$15);
+         this.m.a($$0, $$6, $$7, $$9);
       }
    }
 
-   class b extends gwi<feg.a> {
+   class b extends fiq<feg.a> {
+      private static final int m = 36;
+
       public b() {
-         super(feg.this.m, feg.this.n - 40 - feg.g(0), feg.g(0), 36);
+         super(fgm.Q(), feg.this.m, feg.this.C.d(), feg.this.C.c(), 36);
+         this.a(true, (int)(9.0F * 1.5F));
       }
 
-      public void a(era $$0) {
-         this.a((feg.a)(feg.this.new a($$0)));
+      @Override
+      protected void a(fhx $$0, int $$1, int $$2) {
+         String $$3 = feg.this.E.h != null ? Integer.toString(feg.this.E.h.size()) : "0";
+         wz $$4 = wz.a("mco.configure.world.invited.number", $$3).a(n.t);
+         $$0.a(feg.this.o, $$4, $$1 + this.b() / 2 - feg.this.o.a($$4) / 2, $$2, -1, false);
       }
 
       @Override
       public int a() {
-         return feg.this.J.size() * 36;
+         return this.l() * this.d + this.f;
       }
 
-      public void a(@Nullable feg.a $$0) {
-         super.a($$0);
-         feg.this.K = this.aG_().indexOf($$0);
-         feg.this.I.j = feg.this.K >= 0 && feg.this.K < this.l() && !feg.this.J.get(feg.this.K).i();
+      @Override
+      public int b() {
+         return 300;
       }
    }
 }

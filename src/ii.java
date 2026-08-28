@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface ii<T> {
-   akq a();
+   akr a();
 
    List<hw<T>> b();
 }

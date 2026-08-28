@@ -1,21 +1,36 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class evt {
-   private static final Codec<evs> h = lt.G.r().dispatch(evs::b, evr::a);
-   public static final Codec<evs> a = Codec.lazyInitialized(() -> {
-      Codec<evs> $$0 = Codec.withAlternative(h, evw.a.codec());
-      return Codec.either(evp.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof evp $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final evr b = a("constant", evp.a);
-   public static final evr c = a("uniform", evw.a);
-   public static final evr d = a("binomial", evo.a);
-   public static final evr e = a("score", evu.a);
-   public static final evr f = a("storage", evv.a);
-   public static final evr g = a("enchantment_level", evq.a);
+public record evt(float c) implements evw {
+   public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(evt::c)).apply($$0, evt::new));
+   public static final Codec<evt> b = Codec.FLOAT.xmap(evt::new, evt::c);
 
-   private static evr a(String $$0, MapCodec<? extends evs> $$1) {
-      return jz.a(lt.G, akq.b($$0), new evr($$1));
+   @Override
+   public evv b() {
+      return evx.b;
+   }
+
+   @Override
+   public float b(erp $$0) {
+      return this.c;
+   }
+
+   public static evt a(float $$0) {
+      return new evt($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((evt)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

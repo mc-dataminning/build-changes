@@ -1,11 +1,15 @@
-public class gjk extends glj<cgt, fuo<cgt>> {
-   private static final akq a = akq.b("textures/entity/camel/camel.png");
+public class gjk extends gln<cjm, fun<cjm>> {
+   private static final akr a = akr.b("textures/entity/blaze.png");
 
-   public gjk(gkd.a $$0, fyc $$1) {
-      super($$0, new fuo<>($$0.a($$1)), 0.7F);
+   public gjk(gkh.a $$0) {
+      super($$0, new fun<>($$0.a(fyh.m)), 0.5F);
    }
 
-   public akq a(cgt $$0) {
+   protected int a(cjm $$0, jd $$1) {
+      return 15;
+   }
+
+   public akr a(cjm $$0) {
       return a;
    }
 }

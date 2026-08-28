@@ -1,48 +1,47 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cdy extends cdw<btu> {
-   public static final int a = 10;
-   private static final ced c = ced.b().a(10.0).d();
-   private final Predicate<cuo> d;
+public abstract class cdy<E extends btn> {
+   private static final ayw a = ayw.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final cef d = cef.b().a(16.0);
+   private static final cef e = cef.b().a(16.0).e();
+   private static final cef f = cef.a().a(16.0);
+   private static final cef g = cef.a().a(16.0).e();
+   private static final cef h = cef.a().a(16.0).d();
+   private static final cef i = cef.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public cdy(Predicate<cuo> $$0) {
-      this.d = $$0;
+   public cdy(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   protected void a(aqt $$0, btu $$1) {
-      buo<?> $$2 = $$1.dU();
-      List<cmv> $$3 = $$0.x()
-         .stream()
-         .filter(bsv.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cmv $$4 = $$3.get(0);
-         $$2.a(ccq.O, $$4);
-      } else {
-         $$2.b(ccq.O);
+   public cdy() {
+      this(20);
+   }
+
+   public final void b(aqu $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
       }
    }
 
-   private boolean a(cmv $$0) {
-      return this.a($$0.eU()) || this.a($$0.eV());
+   protected abstract void a(aqu var1, E var2);
+
+   public abstract Set<ccs<?>> a();
+
+   public static boolean b(btn $$0, btn $$1) {
+      return $$0.dU().b(ccs.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   private boolean a(cuo $$0) {
-      return this.d.test($$0);
+   public static boolean c(btn $$0, btn $$1) {
+      return $$0.dU().b(ccs.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
    }
 
-   @Override
-   public Set<ccq<?>> a() {
-      return ImmutableSet.of(ccq.O);
+   public static boolean d(btn $$0, btn $$1) {
+      return $$0.dU().b(ccs.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

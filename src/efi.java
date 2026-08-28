@@ -1,40 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.OptionalInt;
 
-public class efi extends eff {
-   public static final MapCodec<efi> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, efi::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
+public abstract class efi {
+   public static final Codec<efi> a = lt.Y.r().dispatch(efi::b, efj::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public efi(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   protected static <S extends efi> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   public efi(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public efi(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected efg<?> b() {
-      return efg.a;
-   }
+   protected abstract efj<?> b();
 
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

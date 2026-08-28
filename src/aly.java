@@ -1,246 +1,336 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class aly {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("commands.attribute.failed.entity", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (wz)$$0);
    private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> wy.b("commands.attribute.failed.no_attribute", $$0, $$1)
+      ($$0, $$1) -> wz.b("commands.advancement.criterionNotFound", $$0, $$1)
    );
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wy.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
-   );
-   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wy.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
-   );
+   private static final SuggestionProvider<et> c = ($$0, $$1) -> {
+      Collection<ag> $$2 = ((et)$$0.getSource()).l().aE().b();
+      return ey.a($$2.stream().map(ag::a), $$1);
+   };
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("attribute").requires($$0x -> $$0x.c(2)))
-            .then(
-               eu.a("target", fg.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("attribute", fs.a($$1, lu.c))
-                              .then(
-                                 ((LiteralArgumentBuilder)eu.a("get")
-                                       .executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fs.a($$0x, "attribute"), 1.0)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("advancement").requires($$0x -> $$0x.c(2)))
+               .then(
+                  eu.a("grant")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.d())
+                                       .then(
+                                          eu.a("only")
+                                             .then(
+                                                ((RequiredArgumentBuilder)eu.a("advancement", fu.a())
+                                                      .suggests(c)
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (et)$$0x.getSource(),
+                                                               fg.f($$0x, "targets"),
+                                                               aly.a.a,
+                                                               a($$0x, fu.a($$0x, "advancement"), aly.b.a)
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      eu.a("criterion", StringArgumentType.greedyString())
+                                                         .suggests(($$0x, $$1) -> ey.b(fu.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (et)$$0x.getSource(),
+                                                                  fg.f($$0x, "targets"),
+                                                                  aly.a.a,
+                                                                  fu.a($$0x, "advancement"),
+                                                                  StringArgumentType.getString($$0x, "criterion")
+                                                               )
+                                                         )
+                                                   )
+                                             )
+                                       ))
                                     .then(
-                                       eu.a("scale", DoubleArgumentType.doubleArg())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (et)$$0x.getSource(),
-                                                   fg.a($$0x, "target"),
-                                                   fs.a($$0x, "attribute"),
-                                                   DoubleArgumentType.getDouble($$0x, "scale")
+                                       eu.a("from")
+                                          .then(
+                                             eu.a("advancement", fu.a())
+                                                .suggests(c)
+                                                .executes(
+                                                   $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.a, a($$0x, fu.a($$0x, "advancement"), aly.b.c))
                                                 )
+                                          )
+                                    ))
+                                 .then(
+                                    eu.a("until")
+                                       .then(
+                                          eu.a("advancement", fu.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.a, a($$0x, fu.a($$0x, "advancement"), aly.b.d))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 eu.a("through")
+                                    .then(
+                                       eu.a("advancement", fu.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.a, a($$0x, fu.a($$0x, "advancement"), aly.b.b))
                                           )
                                     )
                               ))
                            .then(
-                              ((LiteralArgumentBuilder)eu.a("base")
+                              eu.a("everything").executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.a, ((et)$$0x.getSource()).l().aE().b()))
+                           )
+                     )
+               ))
+            .then(
+               eu.a("revoke")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.d())
                                     .then(
-                                       eu.a("set")
+                                       eu.a("only")
                                           .then(
-                                             eu.a("value", DoubleArgumentType.doubleArg())
-                                                .executes(
-                                                   $$0x -> c(
-                                                         (et)$$0x.getSource(),
-                                                         fg.a($$0x, "target"),
-                                                         fs.a($$0x, "attribute"),
-                                                         DoubleArgumentType.getDouble($$0x, "value")
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    ((LiteralArgumentBuilder)eu.a("get")
-                                          .executes($$0x -> b((et)$$0x.getSource(), fg.a($$0x, "target"), fs.a($$0x, "attribute"), 1.0)))
-                                       .then(
-                                          eu.a("scale", DoubleArgumentType.doubleArg())
-                                             .executes(
-                                                $$0x -> b(
-                                                      (et)$$0x.getSource(),
-                                                      fg.a($$0x, "target"),
-                                                      fs.a($$0x, "attribute"),
-                                                      DoubleArgumentType.getDouble($$0x, "scale")
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("modifier")
-                                    .then(
-                                       eu.a("add")
-                                          .then(
-                                             eu.a("id", fu.a())
-                                                .then(
-                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("value", DoubleArgumentType.doubleArg())
-                                                            .then(
-                                                               eu.a("add_value")
-                                                                  .executes(
-                                                                     $$0x -> a(
-                                                                           (et)$$0x.getSource(),
-                                                                           fg.a($$0x, "target"),
-                                                                           fs.a($$0x, "attribute"),
-                                                                           fu.c($$0x, "id"),
-                                                                           DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bus.a.a
-                                                                        )
-                                                                  )
-                                                            ))
-                                                         .then(
-                                                            eu.a("add_multiplied_base")
-                                                               .executes(
-                                                                  $$0x -> a(
-                                                                        (et)$$0x.getSource(),
-                                                                        fg.a($$0x, "target"),
-                                                                        fs.a($$0x, "attribute"),
-                                                                        fu.c($$0x, "id"),
-                                                                        DoubleArgumentType.getDouble($$0x, "value"),
-                                                                        bus.a.b
-                                                                     )
-                                                               )
-                                                         ))
-                                                      .then(
-                                                         eu.a("add_multiplied_total")
-                                                            .executes(
-                                                               $$0x -> a(
-                                                                     (et)$$0x.getSource(),
-                                                                     fg.a($$0x, "target"),
-                                                                     fs.a($$0x, "attribute"),
-                                                                     fu.c($$0x, "id"),
-                                                                     DoubleArgumentType.getDouble($$0x, "value"),
-                                                                     bus.a.c
-                                                                  )
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    eu.a("remove")
-                                       .then(
-                                          eu.a("id", fu.a())
-                                             .executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fs.a($$0x, "attribute"), fu.c($$0x, "id")))
-                                       )
-                                 ))
-                              .then(
-                                 eu.a("value")
-                                    .then(
-                                       eu.a("get")
-                                          .then(
-                                             ((RequiredArgumentBuilder)eu.a("id", fu.a())
+                                             ((RequiredArgumentBuilder)eu.a("advancement", fu.a())
+                                                   .suggests(c)
                                                    .executes(
-                                                      $$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fs.a($$0x, "attribute"), fu.c($$0x, "id"), 1.0)
+                                                      $$0x -> a(
+                                                            (et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.b, a($$0x, fu.a($$0x, "advancement"), aly.b.a)
+                                                         )
                                                    ))
                                                 .then(
-                                                   eu.a("scale", DoubleArgumentType.doubleArg())
+                                                   eu.a("criterion", StringArgumentType.greedyString())
+                                                      .suggests(($$0x, $$1) -> ey.b(fu.a($$0x, "advancement").b().e().keySet(), $$1))
                                                       .executes(
                                                          $$0x -> a(
                                                                (et)$$0x.getSource(),
-                                                               fg.a($$0x, "target"),
-                                                               fs.a($$0x, "attribute"),
-                                                               fu.c($$0x, "id"),
-                                                               DoubleArgumentType.getDouble($$0x, "scale")
+                                                               fg.f($$0x, "targets"),
+                                                               aly.a.b,
+                                                               fu.a($$0x, "advancement"),
+                                                               StringArgumentType.getString($$0x, "criterion")
                                                             )
                                                       )
                                                 )
                                           )
+                                    ))
+                                 .then(
+                                    eu.a("from")
+                                       .then(
+                                          eu.a("advancement", fu.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.b, a($$0x, fu.a($$0x, "advancement"), aly.b.c))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 eu.a("until")
+                                    .then(
+                                       eu.a("advancement", fu.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.b, a($$0x, fu.a($$0x, "advancement"), aly.b.d))
+                                          )
                                     )
-                              )
-                        )
+                              ))
+                           .then(
+                              eu.a("through")
+                                 .then(
+                                    eu.a("advancement", fu.a())
+                                       .suggests(c)
+                                       .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.b, a($$0x, fu.a($$0x, "advancement"), aly.b.b)))
+                                 )
+                           ))
+                        .then(eu.a("everything").executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), aly.a.b, ((et)$$0x.getSource()).l().aE().b())))
                   )
             )
       );
    }
 
-   private static buq a(bsq $$0, jm<bup> $$1) throws CommandSyntaxException {
-      buq $$2 = a($$0).eT().a($$1);
-      if ($$2 == null) {
-         throw b.create($$0.ah(), a($$1));
+   private static int a(et $$0, Collection<aqv> $$1, aly.a $$2, Collection<ag> $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (aqv $$5 : $$1) {
+         $$4 += $$2.a($$5, $$3);
+      }
+
+      if ($$4 == 0) {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               throw a.create(wz.a($$2.a() + ".one.to.one.failure", af.a($$3.iterator().next()), $$1.iterator().next().S_()));
+            } else {
+               throw a.create(wz.a($$2.a() + ".one.to.many.failure", af.a($$3.iterator().next()), $$1.size()));
+            }
+         } else if ($$1.size() == 1) {
+            throw a.create(wz.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().S_()));
+         } else {
+            throw a.create(wz.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
+         }
       } else {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wz.a($$2.a() + ".one.to.one.success", af.a($$3.iterator().next()), $$1.iterator().next().S_()), true);
+            } else {
+               $$0.a(() -> wz.a($$2.a() + ".one.to.many.success", af.a($$3.iterator().next()), $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> wz.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().S_()), true);
+         } else {
+            $$0.a(() -> wz.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
+         }
+
+         return $$4;
+      }
+   }
+
+   private static int a(et $$0, Collection<aqv> $$1, aly.a $$2, ag $$3, String $$4) throws CommandSyntaxException {
+      int $$5 = 0;
+      af $$6 = $$3.b();
+      if (!$$6.e().containsKey($$4)) {
+         throw b.create(af.a($$3), $$4);
+      } else {
+         for (aqv $$7 : $$1) {
+            if ($$2.a($$7, $$3, $$4)) {
+               $$5++;
+            }
+         }
+
+         if ($$5 == 0) {
+            if ($$1.size() == 1) {
+               throw a.create(wz.a($$2.a() + ".criterion.to.one.failure", $$4, af.a($$3), $$1.iterator().next().S_()));
+            } else {
+               throw a.create(wz.a($$2.a() + ".criterion.to.many.failure", $$4, af.a($$3), $$1.size()));
+            }
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wz.a($$2.a() + ".criterion.to.one.success", $$4, af.a($$3), $$1.iterator().next().S_()), true);
+            } else {
+               $$0.a(() -> wz.a($$2.a() + ".criterion.to.many.success", $$4, af.a($$3), $$1.size()), true);
+            }
+
+            return $$5;
+         }
+      }
+   }
+
+   private static List<ag> a(CommandContext<et> $$0, ag $$1, aly.b $$2) {
+      al $$3 = ((et)$$0.getSource()).l().aE().a();
+      ah $$4 = $$3.a($$1);
+      if ($$4 == null) {
+         return List.of($$1);
+      } else {
+         List<ag> $$5 = new ArrayList<>();
+         if ($$2.f) {
+            for (ah $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
+               $$5.add($$6.b());
+            }
+         }
+
+         $$5.add($$1);
+         if ($$2.g) {
+            a($$4, $$5);
+         }
+
+         return $$5;
+      }
+   }
+
+   private static void a(ah $$0, List<ag> $$1) {
+      for (ah $$2 : $$0.e()) {
+         $$1.add($$2.b());
+         a($$2, $$1);
+      }
+   }
+
+   static enum a {
+      a("grant") {
+         @Override
+         protected boolean a(aqv $$0, ag $$1) {
+            ai $$2 = $$0.R().b($$1);
+            if ($$2.a()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.e()) {
+                  $$0.R().a($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(aqv $$0, ag $$1, String $$2) {
+            return $$0.R().a($$1, $$2);
+         }
+      },
+      b("revoke") {
+         @Override
+         protected boolean a(aqv $$0, ag $$1) {
+            ai $$2 = $$0.R().b($$1);
+            if (!$$2.b()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.f()) {
+                  $$0.R().b($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(aqv $$0, ag $$1, String $$2) {
+            return $$0.R().b($$1, $$2);
+         }
+      };
+
+      private final String c;
+
+      a(final String $$0) {
+         this.c = "commands.advancement." + $$0;
+      }
+
+      public int a(aqv $$0, Iterable<ag> $$1) {
+         int $$2 = 0;
+
+         for (ag $$3 : $$1) {
+            if (this.a($$0, $$3)) {
+               $$2++;
+            }
+         }
+
          return $$2;
       }
-   }
 
-   private static btl a(bsq $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof btl)) {
-         throw a.create($$0.ah());
-      } else {
-         return (btl)$$0;
+      protected abstract boolean a(aqv var1, ag var2);
+
+      protected abstract boolean a(aqv var1, ag var2, String var3);
+
+      protected String a() {
+         return this.c;
       }
    }
 
-   private static btl b(bsq $$0, jm<bup> $$1) throws CommandSyntaxException {
-      btl $$2 = a($$0);
-      if (!$$2.eT().b($$1)) {
-         throw b.create($$0.ah(), a($$1));
-      } else {
-         return $$2;
+   static enum b {
+      a(false, false),
+      b(true, true),
+      c(false, true),
+      d(true, false),
+      e(true, true);
+
+      final boolean f;
+      final boolean g;
+
+      private b(final boolean $$0, final boolean $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
-   }
-
-   private static int a(et $$0, bsq $$1, jm<bup> $$2, double $$3) throws CommandSyntaxException {
-      btl $$4 = b($$1, $$2);
-      double $$5 = $$4.g($$2);
-      $$0.a(() -> wy.a("commands.attribute.value.get.success", a($$2), $$1.ah(), $$5), false);
-      return (int)($$5 * $$3);
-   }
-
-   private static int b(et $$0, bsq $$1, jm<bup> $$2, double $$3) throws CommandSyntaxException {
-      btl $$4 = b($$1, $$2);
-      double $$5 = $$4.h($$2);
-      $$0.a(() -> wy.a("commands.attribute.base_value.get.success", a($$2), $$1.ah(), $$5), false);
-      return (int)($$5 * $$3);
-   }
-
-   private static int a(et $$0, bsq $$1, jm<bup> $$2, akq $$3, double $$4) throws CommandSyntaxException {
-      btl $$5 = b($$1, $$2);
-      bur $$6 = $$5.eT();
-      if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.ah(), a($$2), $$3);
-      } else {
-         double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> wy.a("commands.attribute.modifier.value.get.success", wy.a($$3), a($$2), $$1.ah(), $$7), false);
-         return (int)($$7 * $$4);
-      }
-   }
-
-   private static int c(et $$0, bsq $$1, jm<bup> $$2, double $$3) throws CommandSyntaxException {
-      a($$1, $$2).a($$3);
-      $$0.a(() -> wy.a("commands.attribute.base_value.set.success", a($$2), $$1.ah(), $$3), false);
-      return 1;
-   }
-
-   private static int a(et $$0, bsq $$1, jm<bup> $$2, akq $$3, double $$4, bus.a $$5) throws CommandSyntaxException {
-      buq $$6 = a($$1, $$2);
-      bus $$7 = new bus($$3, $$4, $$5);
-      if ($$6.b($$3)) {
-         throw d.create($$1.ah(), a($$2), $$3);
-      } else {
-         $$6.c($$7);
-         $$0.a(() -> wy.a("commands.attribute.modifier.add.success", wy.a($$3), a($$2), $$1.ah()), false);
-         return 1;
-      }
-   }
-
-   private static int a(et $$0, bsq $$1, jm<bup> $$2, akq $$3) throws CommandSyntaxException {
-      buq $$4 = a($$1, $$2);
-      if ($$4.d($$3)) {
-         $$0.a(() -> wy.a("commands.attribute.modifier.remove.success", wy.a($$3), a($$2), $$1.ah()), false);
-         return 1;
-      } else {
-         throw c.create($$1.ah(), a($$2), $$3);
-      }
-   }
-
-   private static wy a(jm<bup> $$0) {
-      return wy.c($$0.a().c());
    }
 }

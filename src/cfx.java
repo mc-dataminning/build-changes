@@ -1,35 +1,192 @@
+import java.util.List;
+import java.util.function.Predicate;
+
 public class cfx extends cfb {
-   public cfx(bsw<? extends cfx> $$0, dcu $$1) {
+   private static final ajw<Integer> e = aka.a(cfx.class, ajy.b);
+   int ca;
+   int cb;
+   private static final Predicate<btn> cc = $$0 -> {
+      if ($$0 instanceof cmx $$1 && $$1.f()) {
+         return false;
+      }
+
+      return !$$0.am().a(awi.A);
+   };
+   static final cef cd = cef.b().e().d().a(cc);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+
+   public cfx(bsx<? extends cfx> $$0, dcw $$1) {
       super($$0, $$1);
+      this.i_();
    }
 
    @Override
-   public int go() {
-      return 5;
+   protected void a(aka.a $$0) {
+      super.a($$0);
+      $$0.a(e, 0);
+   }
+
+   public int gn() {
+      return this.ao.a(e);
+   }
+
+   public void c(int $$0) {
+      this.ao.a(e, $$0);
    }
 
    @Override
-   public cuo b() {
-      return new cuo(cur.qG);
+   public void a(ajw<?> $$0) {
+      if (e.equals($$0)) {
+         this.i_();
+      }
+
+      super.a($$0);
    }
 
    @Override
-   protected avn v() {
-      return avo.vF;
+   public void b(ub $$0) {
+      super.b($$0);
+      $$0.a("PuffState", this.gn());
    }
 
    @Override
-   protected avn n_() {
-      return avo.vG;
+   public void a(ub $$0) {
+      super.a($$0);
+      this.c(Math.min($$0.h("PuffState"), 2));
    }
 
    @Override
-   protected avn d(brj $$0) {
-      return avo.vI;
+   public cuq b() {
+      return new cuq(cut.qF);
    }
 
    @Override
-   protected avn gn() {
-      return avo.vH;
+   protected void B() {
+      super.B();
+      this.bU.a(1, new cfx.a(this));
+   }
+
+   @Override
+   public void l() {
+      if (!this.dP().B && this.bE() && this.dc()) {
+         if (this.ca > 0) {
+            if (this.gn() == 0) {
+               this.b(avp.uR);
+               this.c(1);
+            } else if (this.ca > 40 && this.gn() == 1) {
+               this.b(avp.uR);
+               this.c(2);
+            }
+
+            this.ca++;
+         } else if (this.gn() != 0) {
+            if (this.cb > 60 && this.gn() == 2) {
+               this.b(avp.uQ);
+               this.c(1);
+            } else if (this.cb > 100 && this.gn() == 1) {
+               this.b(avp.uQ);
+               this.c(0);
+            }
+
+            this.cb++;
+         }
+      }
+
+      super.l();
+   }
+
+   @Override
+   public void m_() {
+      super.m_();
+      if (this.bE() && this.gn() > 0) {
+         for (btp $$1 : this.dP().a(btp.class, this.cL().g(0.3), $$0 -> cd.a(this, $$0))) {
+            if ($$1.bE()) {
+               this.a($$1);
+            }
+         }
+      }
+   }
+
+   private void a(btp $$0) {
+      int $$1 = this.gn();
+      if ($$0.a(this.dQ().b((btn)this), (float)(1 + $$1))) {
+         $$0.b(new brz(bsb.s, 60 * $$1, 0), this);
+         this.a(avp.uV, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   public void b_(cmx $$0) {
+      int $$1 = this.gn();
+      if ($$0 instanceof aqv && $$1 > 0 && $$0.a(this.dQ().b((btn)this), (float)(1 + $$1))) {
+         if (!this.aX()) {
+            ((aqv)$$0).c.b(new adb(adb.k, 0.0F));
+         }
+
+         $$0.b(new brz(bsb.s, 60 * $$1, 0), this);
+      }
+   }
+
+   @Override
+   protected avo v() {
+      return avp.uP;
+   }
+
+   @Override
+   protected avo n_() {
+      return avp.uS;
+   }
+
+   @Override
+   protected avo d(brk $$0) {
+      return avp.uU;
+   }
+
+   @Override
+   protected avo gm() {
+      return avp.uT;
+   }
+
+   @Override
+   public bsu e(bua $$0) {
+      return super.e($$0).a(s(this.gn()));
+   }
+
+   private static float s(int $$0) {
+      switch ($$0) {
+         case 0:
+            return 0.5F;
+         case 1:
+            return 0.7F;
+         default:
+            return 1.0F;
+      }
+   }
+
+   static class a extends cam {
+      private final cfx a;
+
+      public a(cfx $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean b() {
+         List<btn> $$0 = this.a.dP().a(btn.class, this.a.cL().g(2.0), $$0x -> cfx.cd.a(this.a, $$0x));
+         return !$$0.isEmpty();
+      }
+
+      @Override
+      public void d() {
+         this.a.ca = 1;
+         this.a.cb = 0;
+      }
+
+      @Override
+      public void e() {
+         this.a.ca = 0;
+      }
    }
 }

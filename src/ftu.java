@@ -1,96 +1,49 @@
-import com.mojang.authlib.properties.PropertyMap;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-public class ftu {
-   public final ftu.d a;
-   public final ezu b;
-   public final ftu.a c;
-   public final ftu.b d;
-   public final ftu.c e;
+public class ftu implements ftq, ftr {
+   private static final akr a = akr.b("spectator/teleport_to_player");
+   private static final Comparator<fzo> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final wz c = wz.c("spectatorMenu.teleport");
+   private static final wz d = wz.c("spectatorMenu.teleport.prompt");
+   private final List<ftr> e;
 
-   public ftu(ftu.d $$0, ezu $$1, ftu.a $$2, ftu.b $$3, ftu.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public ftu() {
+      this(fgm.Q().L().l());
    }
 
-   public static class a {
-      public final File a;
-      public final File b;
-      public final File c;
-      @Nullable
-      public final String d;
-
-      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public Path a() {
-         return this.d == null ? this.c.toPath() : gra.a(this.c.toPath(), this.d);
-      }
+   public ftu(Collection<fzo> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != dct.d).sorted(b).map($$0x -> new ftn($$0x.a())).toList();
    }
 
-   public static class b {
-      public final boolean a;
-      public final String b;
-      public final String c;
-      public final boolean d;
-      public final boolean e;
-
-      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
+   @Override
+   public List<ftr> a() {
+      return this.e;
    }
 
-   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
-      public boolean a() {
-         return !azk.h(this.b) || !azk.h(this.c) || !azk.h(this.d);
-      }
-
-      @Nullable
-      public String b() {
-         return this.a;
-      }
-
-      @Nullable
-      public String c() {
-         return this.b;
-      }
-
-      @Nullable
-      public String d() {
-         return this.c;
-      }
-
-      @Nullable
-      public String e() {
-         return this.d;
-      }
+   @Override
+   public wz b() {
+      return d;
    }
 
-   public static class d {
-      public final fgv a;
-      public final PropertyMap b;
-      public final PropertyMap c;
-      public final Proxy d;
+   @Override
+   public void a(ftp $$0) {
+      $$0.a(this);
+   }
 
-      public d(fgv $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   @Override
+   public wz aU_() {
+      return c;
+   }
+
+   @Override
+   public void a(fhx $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aV_() {
+      return !this.e.isEmpty();
    }
 }

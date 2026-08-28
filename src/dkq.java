@@ -1,34 +1,41 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkq extends dkg implements dfz {
+public class dkq extends dju {
    public static final MapCodec<dkq> a = b(dkq::new);
+   private static final wz b = wz.c("container.loom");
 
    @Override
    public MapCodec<dkq> a() {
       return a;
    }
 
-   public dkq(dsz.d $$0) {
+   protected dkq(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return $$0.a_($$1.d()).i();
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$1.B) {
+         return bqr.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avz.ax);
+         return bqr.c;
+      }
    }
 
    @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
-      return true;
+   protected bqv b(dtc $$0, dcw $$1, jd $$2) {
+      return new brb(($$2x, $$3, $$4) -> new cra($$2x, $$3, cqg.a($$1, $$2)), b);
    }
 
    @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      $$0.a($$2.d(), dkr.c(), 2);
+   public dtc a(cyd $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 
    @Override
-   public jd a(jd $$0) {
-      return $$0.d();
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(aE);
    }
 }

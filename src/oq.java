@@ -3,98 +3,83 @@ import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class oq implements ok {
-   private final ol b;
-   private final cyl c;
-   private final cuj d;
-   private final cyu e;
-   private final float f;
-   private final int g;
-   private final Map<String, ao<?>> h = new LinkedHashMap<>();
+public class oq implements ol {
+   private final om b;
+   private final cul c;
+   private final int d;
+   private final jv<cyw> e = jv.a();
+   private final Map<String, ao<?>> f = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final cyf.a<?> j;
+   private String g;
 
-   private oq(ol $$0, cyl $$1, dct $$2, cyu $$3, float $$4, int $$5, cyf.a<?> $$6) {
+   public oq(om $$0, dcv $$1, int $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.r();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.c = $$1.r();
+      this.d = $$2;
    }
 
-   public static <T extends cyf> oq a(cyu $$0, ol $$1, dct $$2, float $$3, int $$4, czc<T> $$5, cyf.a<T> $$6) {
-      return new oq($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static oq a(om $$0, dcv $$1) {
+      return new oq($$0, $$1, 1);
    }
 
-   public static oq a(cyu $$0, ol $$1, dct $$2, float $$3, int $$4) {
-      return new oq($$1, cyl.a, $$2, $$0, $$3, $$4, cyk::new);
+   public static oq a(om $$0, dcv $$1, int $$2) {
+      return new oq($$0, $$1, $$2);
    }
 
-   public static oq b(cyu $$0, ol $$1, dct $$2, float $$3, int $$4) {
-      return new oq($$1, c($$2), $$2, $$0, $$3, $$4, cyi::new);
+   public oq a(awu<cul> $$0) {
+      return this.a(cyw.a($$0));
    }
 
-   public static oq c(cyu $$0, ol $$1, dct $$2, float $$3, int $$4) {
-      return new oq($$1, b($$2), $$2, $$0, $$3, $$4, czo::new);
+   public oq b(dcv $$0) {
+      return this.a($$0, 1);
    }
 
-   public static oq d(cyu $$0, ol $$1, dct $$2, float $$3, int $$4) {
-      return new oq($$1, cyl.a, $$2, $$0, $$3, $$4, czt::new);
+   public oq a(dcv $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(cyw.a($$0));
+      }
+
+      return this;
+   }
+
+   public oq a(cyw $$0) {
+      return this.a($$0, 1);
+   }
+
+   public oq a(cyw $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
    }
 
    public oq b(String $$0, ao<?> $$1) {
-      this.h.put($$0, $$1);
+      this.f.put($$0, $$1);
       return this;
    }
 
    public oq b(@Nullable String $$0) {
-      this.i = $$0;
+      this.g = $$0;
       return this;
    }
 
    @Override
-   public cuj a() {
-      return this.d;
+   public cul a() {
+      return this.c;
    }
 
    @Override
-   public void a(om $$0, akq $$1) {
+   public void a(on $$0, akr $$1) {
       this.a($$1);
       af.a $$2 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
-      this.h.forEach($$2::a);
-      cyf $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cuo(this.d), this.f, this.g);
+      this.f.forEach($$2::a);
+      czj $$3 = new czj(Objects.requireNonNullElse(this.g, ""), ol.a(this.b), new cuq(this.c, this.d), this.e);
       $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.b.a() + "/")));
    }
 
-   private static cyl b(dct $$0) {
-      if ($$0.r().p().b(kq.v)) {
-         return cyl.a;
-      } else {
-         return $$0.r() instanceof csm ? cyl.b : cyl.c;
-      }
-   }
-
-   private static cyl c(dct $$0) {
-      return $$0.r() instanceof csm ? cyl.b : cyl.c;
-   }
-
-   private static cyl a(czc<? extends cyf> $$0, dct $$1) {
-      if ($$0 == czc.p) {
-         return b($$1);
-      } else if ($$0 == czc.q) {
-         return c($$1);
-      } else if ($$0 != czc.r && $$0 != czc.s) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return cyl.a;
-      }
-   }
-
-   private void a(akq $$0) {
-      if (this.h.isEmpty()) {
+   private void a(akr $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }

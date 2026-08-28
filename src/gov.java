@@ -1,35 +1,41 @@
-public class gov extends gop<cga, fxe<cga>> {
-   private final gfn a;
-   private final glb b;
+public class gov extends got<cga, fwy<cga>> {
+   private static final akr a = akr.b("textures/entity/sheep/sheep_fur.png");
+   private final fwx<cga> b;
 
-   public gov(glz<cga, fxe<cga>> $$0, gfn $$1, glb $$2) {
+   public gov(gmd<cga, fwy<cga>> $$0, fye $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = new fwx<>($$1.a(fyh.bj));
    }
 
-   public void a(fbc $$0, get $$1, int $$2, cga $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.t()) {
-         boolean $$10 = fgi.Q().b($$3) && $$3.ci();
-         if (!$$3.ci() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cuo $$12 = new cuo(dfy.ee);
-            if ($$10) {
-               dta $$13 = dfy.ee.o();
-               gsg $$14 = this.a.a($$13);
-               int $$15 = gle.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gfb.r(gqe.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+   public void a(fbg $$0, gex $$1, int $$2, cga $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.x()) {
+         if ($$3.ci()) {
+            fgm $$10 = fgm.Q();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               fbk $$12 = $$1.getBuffer(gff.r(a));
+               this.b.a($$0, $$12, $$2, gli.c($$3, 0.0F), -16777216);
+            }
+         } else {
+            int $$21;
+            if ($$3.ai() && "jeb_".equals($$3.ah().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ai / 25 + $$3.an();
+               int $$15 = cti.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ai % 25) + $$6) / 25.0F;
+               int $$19 = cga.a(cti.a($$16));
+               int $$20 = cga.a(cti.a($$17));
+               $$21 = axy.b.a($$18, $$19, $$20);
             } else {
-               this.b.a($$3, $$12, cul.f, false, $$0, $$1, $$3.dQ(), $$2, gle.c($$3, 0.0F), $$3.an());
+               $$21 = cga.a($$3.t());
             }
 
-            $$0.b();
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21);
          }
       }
    }

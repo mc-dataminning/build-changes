@@ -1,14 +1,22 @@
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public interface esz extends erm, BiFunction<cuo, erl, cuo> {
-   eta<? extends esz> b();
+public interface esz<T extends esz<T>> {
+   T b(etd.a var1);
 
-   static Consumer<cuo> a(BiFunction<cuo, erl, cuo> $$0, Consumer<cuo> $$1, erl $$2) {
-      return $$3 -> $$1.accept($$0.apply($$3, $$2));
+   default <E> T a(Iterable<E> $$0, Function<E, etd.a> $$1) {
+      T $$2 = this.c();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   public interface a {
-      esz b();
+   default <E> T a(E[] $$0, Function<E, etd.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
+
+   T c();
 }

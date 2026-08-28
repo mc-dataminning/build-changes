@@ -1,16 +1,20 @@
-import com.google.common.collect.Lists;
+public record aaa(aqh b) implements zg<zz> {
+   public static final yx<vw, aaa> a = zg.a(aaa::a, aaa::new);
 
-public record aaa(aai b) implements zf<zy> {
-   private static final int c = 32767;
-   public static final yw<vv, aaa> a = aai.<vv>a($$0 -> aaj.a($$0, 32767), ad.a(Lists.newArrayList(new aai.c[]{new aai.c<>(aag.b, aag.a)}), $$0 -> {
-   })).a(aaa::new, aaa::b);
-
-   @Override
-   public zh<aaa> a() {
-      return zx.m;
+   private aaa(vw $$0) {
+      this(new aqh($$0));
    }
 
-   public void a(zy $$0) {
+   private void a(vw $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public zi<aaa> a() {
+      return zy.l;
+   }
+
+   public void a(zz $$0) {
       $$0.a(this);
    }
 }

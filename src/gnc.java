@@ -1,25 +1,24 @@
-public class gnc extends gkc<cod> {
-   private static final akq a = akq.b("textures/entity/projectiles/wind_charge.png");
-   private final fxs f;
+public class gnc extends gln<cmk, fxt<cmk>> {
+   private static final akr a = akr.b("textures/entity/villager/villager.png");
 
-   public gnc(gkd.a $$0) {
-      super($$0);
-      this.f = new fxs($$0.a(fyd.bU));
+   public gnc(gkh.a $$0) {
+      super($$0, new fxt<>($$0.a(fyh.bQ)), 0.5F);
+      this.a(new gny<>(this, $$0.f(), $$0.d()));
+      this.a(new gpe<>(this, $$0.e(), "villager"));
+      this.a(new gnx<>(this, $$0.d()));
    }
 
-   public void a(cod $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      float $$6 = (float)$$0.ai + $$2;
-      fbg $$7 = $$4.getBuffer(gfb.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, gpw.d);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public akq a(cod $$0) {
+   public akr a(cmk $$0) {
       return a;
+   }
+
+   protected void a(cmk $$0, fbg $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.eb();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cmk $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

@@ -1,42 +1,73 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class csg extends cuj {
-   public csg(cuj.a $$0) {
-      super($$0);
+public record csg(Map<csf.a, Integer> b, int c, jm<avo> d, Supplier<cyw> e, List<csg.a> f, float g, float h) {
+   public static final Codec<jm<csg>> a = lt.ap.s();
+
+   public int a(csf.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   @Override
-   public bqq a(cyd $$0) {
-      ji $$1 = $$0.k();
-      if ($$1 == ji.a) {
-         return bqq.f;
-      } else {
-         dcu $$2 = $$0.q();
-         cyb $$3 = new cyb($$0);
-         jd $$4 = $$3.a();
-         cuo $$5 = $$0.n();
-         eww $$6 = eww.c($$4);
-         ewr $$7 = bsw.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof aqt $$8) {
-               Consumer<ciu> $$9 = bsw.a($$8, $$5, $$0.o());
-               ciu $$10 = bsw.d.b($$8, $$9, $$4, btp.m, true, true);
-               if ($$10 == null) {
-                  return bqq.f;
-               }
+   public Map<csf.a, Integer> a() {
+      return this.b;
+   }
 
-               float $$11 = (float)ayn.d((ayn.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dv(), $$10.dx(), $$10.dB(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dv(), $$10.dx(), $$10.dB(), avo.aD, avp.e, 0.75F, 0.8F);
-               $$10.a(dxw.t, $$0.o());
-            }
+   public int b() {
+      return this.c;
+   }
 
-            $$5.h(1);
-            return bqq.a($$2.B);
-         } else {
-            return bqq.f;
-         }
+   public jm<avo> c() {
+      return this.d;
+   }
+
+   public Supplier<cyw> d() {
+      return this.e;
+   }
+
+   public List<csg.a> e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public static final class a {
+      private final akr a;
+      private final String b;
+      private final boolean c;
+      private final akr d;
+      private final akr e;
+
+      public a(akr $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
+      }
+
+      public a(akr $$0) {
+         this($$0, "", false);
+      }
+
+      private akr b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
+
+      public akr a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
+
+      public boolean a() {
+         return this.c;
       }
    }
 }

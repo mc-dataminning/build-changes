@@ -1,23 +1,54 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class zj<B extends ByteBuf, L extends we> {
-   private final yv.a<B, zf<? super L>, zh<? extends zf<? super L>>> a = yv.a(zf::a);
-   private final zg b;
+public class zj {
+   private static final Logger a = LogUtils.getLogger();
 
-   public zj(zg $$0) {
-      this.b = $$0;
+   public static <T extends wf> void a(zg<T> $$0, T $$1, aqu $$2) throws ald {
+      a($$0, $$1, $$2.o());
    }
 
-   public <T extends zf<? super L>> zj<B, L> a(zh<T> $$0, yw<? super B, T> $$1) {
-      if ($$0.a() != this.b) {
-         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
-      } else {
-         this.a.a($$0, $$1);
-         return this;
+   public static <T extends wf> void a(zg<T> $$0, T $$1, bph<?> $$2) throws ald {
+      if (!$$2.bx()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
+                     throw a(var4, $$0, $$1);
+                  }
+
+                  $$1.a($$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw ald.a;
       }
    }
 
-   public yw<B, zf<? super L>> a() {
-      return this.a.a();
+   public static <T extends wf> z a(Exception $$0, zg<T> $$1, T $$2) {
+      if ($$0 instanceof z $$3) {
+         a($$3.a(), $$2, $$1);
+         return $$3;
+      } else {
+         o $$4 = o.a($$0, "Main thread packet handler");
+         a($$4, $$2, $$1);
+         return new z($$4);
+      }
+   }
+
+   public static <T extends wf> void a(o $$0, T $$1, @Nullable zg<T> $$2) {
+      if ($$2 != null) {
+         p $$3 = $$0.a("Incoming Packet");
+         $$3.a("Type", () -> $$2.a().toString());
+         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
+         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
+      }
+
+      $$1.a($$0);
    }
 }

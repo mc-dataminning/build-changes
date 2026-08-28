@@ -1,17 +1,8 @@
-import java.io.IOException;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gqy extends aui<int[]> {
-   private static final akq a = akq.b("textures/colormap/foliage.png");
-
-   protected int[] a(aud $$0, bne $$1) {
-      try {
-         return grb.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
-   }
-
-   protected void a(int[] $$0, aud $$1, bne $$2) {
-      dco.a($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gqy {
 }

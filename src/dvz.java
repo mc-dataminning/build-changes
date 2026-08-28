@@ -1,136 +1,102 @@
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
 public class dvz {
-   private static boolean a(duw $$0) {
-      return $$0.j().a(dvx.l) && $$0.v();
+   public static final int a = 8;
+   private static final EnumSet<dyy.a> o = EnumSet.of(dyy.a.c, dyy.a.a);
+   public static final EnumSet<dyy.a> b = EnumSet.of(dyy.a.d, dyy.a.b, dyy.a.e, dyy.a.f);
+   public static final dvz c = a("empty", null, o, dwd.a);
+   public static final dvz d = a("structure_starts", c, o, dwd.a);
+   public static final dvz e = a("structure_references", d, o, dwd.a);
+   public static final dvz f = a("biomes", e, o, dwd.a);
+   public static final dvz g = a("noise", f, o, dwd.a);
+   public static final dvz h = a("surface", g, o, dwd.a);
+   public static final dvz i = a("carvers", h, b, dwd.a);
+   public static final dvz j = a("features", i, b, dwd.a);
+   public static final dvz k = a("initialize_light", j, b, dwd.a);
+   public static final dvz l = a("light", k, b, dwd.a);
+   public static final dvz m = a("spawn", l, b, dwd.a);
+   public static final dvz n = a("full", m, b, dwd.b);
+   private final int p;
+   private final dvz q;
+   private final dwd r;
+   private final EnumSet<dyy.a> s;
+
+   private static dvz a(String $$0, @Nullable dvz $$1, EnumSet<dyy.a> $$2, dwd $$3) {
+      return jz.a(lt.l, $$0, new dvz($$1, $$2, $$3));
    }
 
-   static CompletableFuture<duw> a(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
+   public static List<dvz> a() {
+      List<dvz> $$0 = Lists.newArrayList();
 
-   static CompletableFuture<duw> b(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      if ($$4.o().bb().y().c()) {
-         $$0.b().a($$4.H_(), $$4.l().h(), $$4.a(), $$3, $$0.c());
+      dvz $$1;
+      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
+         $$0.add($$1);
       }
 
-      $$4.a($$3);
-      return CompletableFuture.completedFuture($$3);
+      $$0.add($$1);
+      Collections.reverse($$0);
+      return $$0;
    }
 
-   static CompletableFuture<duw> c(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
+   @VisibleForTesting
+   protected dvz(@Nullable dvz $$0, EnumSet<dyy.a> $$1, dwd $$2) {
+      this.q = $$0 == null ? this : $$0;
+      this.r = $$2;
+      this.s = $$1;
+      this.p = $$0 == null ? 0 : $$0.b() + 1;
    }
 
-   static CompletableFuture<duw> d(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public int b() {
+      return this.p;
    }
 
-   static CompletableFuture<duw> e(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      return $$0.b().a($$4.l().i(), dzx.a($$5), $$4.a().a($$5), $$3);
+   public dvz c() {
+      return this.q;
    }
 
-   static CompletableFuture<duw> f(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      return $$0.b().a(dzx.a($$5), $$4.l().i(), $$4.a().a($$5), $$3).thenApply($$0x -> {
-         if ($$0x instanceof dvq $$1x) {
-            dyj $$2x = $$1x.x();
-            if ($$2x != null) {
-               dyj.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
-         }
-
-         return $$0x;
-      });
+   public dwd d() {
+      return this.r;
    }
 
-   static CompletableFuture<duw> g(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$4.l().i(), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public static dvz a(String $$0) {
+      return lt.l.a(akr.c($$0));
    }
 
-   static CompletableFuture<duw> h(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      if ($$3 instanceof dvq $$6) {
-         dzx.a($$5, $$6);
-      }
-
-      $$0.b().a($$5, $$4.C(), $$4.l().i(), $$4.F_(), $$4.a().a($$5), $$3, dyr.a.a);
-      return CompletableFuture.completedFuture($$3);
+   public EnumSet<dyy.a> e() {
+      return this.s;
    }
 
-   static CompletableFuture<duw> i(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqt $$4 = $$0.a();
-      dyv.a($$3, EnumSet.of(dyv.a.e, dyv.a.f, dyv.a.d, dyv.a.b));
-      ara $$5 = new ara($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$3, $$4.a().a($$5));
-      dzx.a($$5, $$3);
-      return CompletableFuture.completedFuture($$3);
+   public boolean a(dvz $$0) {
+      return this.b() >= $$0.b();
    }
 
-   static CompletableFuture<duw> j(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      aqw $$4 = $$0.d();
-      $$3.A();
-      ((dvq)$$3).a($$4);
-      boolean $$5 = a($$3);
-      return $$4.a($$3, $$5);
+   public boolean b(dvz $$0) {
+      return this.b() > $$0.b();
    }
 
-   static CompletableFuture<duw> k(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      boolean $$4 = a($$3);
-      return $$0.d().b($$3, $$4);
+   public boolean c(dvz $$0) {
+      return this.b() <= $$0.b();
    }
 
-   static CompletableFuture<duw> l(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      if (!$$3.y()) {
-         $$0.b().a(new ara($$0.a(), $$2, $$1, $$3));
-      }
-
-      return CompletableFuture.completedFuture($$3);
+   public boolean d(dvz $$0) {
+      return this.b() < $$0.b();
    }
 
-   static CompletableFuture<duw> m(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
-      dcb $$4 = $$3.f();
-      aqm $$5 = $$2.a($$4.e, $$4.f);
-      return CompletableFuture.supplyAsync(() -> {
-         dvq $$3x = (dvq)$$3;
-         aqt $$4x = $$0.a();
-         dvg $$5x;
-         if ($$3x instanceof dvf) {
-            $$5x = ((dvf)$$3x).C();
-         } else {
-            $$5x = new dvg($$4x, $$3x, $$2xx -> a($$4x, $$3x.E()));
-            $$5.a(new dvf($$5x, false));
-         }
-
-         $$5x.b($$5::s);
-         $$5x.E();
-         $$5x.c(true);
-         $$5x.J();
-         $$5x.a($$4x);
-         return $$5x;
-      }, $$3x -> $$0.e().a(aqd.a($$3x, $$4.a(), $$5::i)));
+   public static dvz a(dvz $$0, dvz $$1) {
+      return $$0.b($$1) ? $$0 : $$1;
    }
 
-   private static void a(aqt $$0, List<ua> $$1) {
-      if (!$$1.isEmpty()) {
-         $$0.b(bsw.a($$1, $$0));
-      }
+   @Override
+   public String toString() {
+      return this.f();
+   }
+
+   public String f() {
+      return lt.l.b(this).toString();
    }
 }

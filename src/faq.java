@@ -1,101 +1,140 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
 public class faq {
-   private static final int a = 32768;
-   private final faq.a b;
-   private final String c;
-   private int d;
+   @Nullable
+   private static faq a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final boolean g;
+   private final boolean h;
 
-   protected faq(faq.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
+   private faq(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.g = $$0;
+      this.b = $$2;
+      this.d = $$3;
+      this.c = $$4;
+      this.e = $$5;
+      this.h = $$1;
+      this.f = $$6;
    }
 
-   public void a(fas $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
+   public faq() {
+      this(false, true, 1, 0, 1, 0, 32774);
+   }
+
+   public faq(int $$0, int $$1, int $$2) {
+      this(false, false, $$0, $$1, $$0, $$1, $$2);
+   }
+
+   public faq(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this(true, false, $$0, $$1, $$2, $$3, $$4);
    }
 
    public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
-      }
-   }
+      if (!this.equals(a)) {
+         if (a == null || this.h != a.b()) {
+            a = this;
+            if (this.h) {
+               RenderSystem.disableBlend();
+               return;
+            }
 
-   public String b() {
-      return this.c;
-   }
+            RenderSystem.enableBlend();
+         }
 
-   public static faq a(faq.a $$0, String $$1, InputStream $$2, String $$3, faj $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      faq $$6 = new faq($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
-   }
-
-   protected static int b(faq.a $$0, String $$1, InputStream $$2, String $$3, faj $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         RenderSystem.blendEquation(this.f);
+         if (this.g) {
+            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
          } else {
-            return $$6;
+            RenderSystem.blendFunc(this.b, this.d);
          }
       }
    }
 
-   protected int c() {
-      return this.d;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof faq $$1)) {
+         return false;
+      } else if (this.f != $$1.f) {
+         return false;
+      } else if (this.e != $$1.e) {
+         return false;
+      } else if (this.d != $$1.d) {
+         return false;
+      } else if (this.h != $$1.h) {
+         return false;
+      } else if (this.g != $$1.g) {
+         return false;
+      } else {
+         return this.c != $$1.c ? false : this.b == $$1.b;
+      }
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      $$0 = 31 * $$0 + this.f;
+      $$0 = 31 * $$0 + (this.g ? 1 : 0);
+      return 31 * $$0 + (this.h ? 1 : 0);
+   }
 
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, faq> f = Maps.newHashMap();
+   public boolean b() {
+      return this.h;
+   }
 
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   public static int a(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      if ("add".equals($$1)) {
+         return 32774;
+      } else if ("subtract".equals($$1)) {
+         return 32778;
+      } else if ("reversesubtract".equals($$1)) {
+         return 32779;
+      } else if ("reverse_subtract".equals($$1)) {
+         return 32779;
+      } else if ("min".equals($$1)) {
+         return 32775;
+      } else {
+         return "max".equals($$1) ? 32776 : 32774;
       }
+   }
 
-      public String a() {
-         return this.c;
-      }
-
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, faq> c() {
-         return this.f;
+   public static int b(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      $$1 = $$1.replaceAll("_", "");
+      $$1 = $$1.replaceAll("one", "1");
+      $$1 = $$1.replaceAll("zero", "0");
+      $$1 = $$1.replaceAll("minus", "-");
+      if ("0".equals($$1)) {
+         return 0;
+      } else if ("1".equals($$1)) {
+         return 1;
+      } else if ("srccolor".equals($$1)) {
+         return 768;
+      } else if ("1-srccolor".equals($$1)) {
+         return 769;
+      } else if ("dstcolor".equals($$1)) {
+         return 774;
+      } else if ("1-dstcolor".equals($$1)) {
+         return 775;
+      } else if ("srcalpha".equals($$1)) {
+         return 770;
+      } else if ("1-srcalpha".equals($$1)) {
+         return 771;
+      } else if ("dstalpha".equals($$1)) {
+         return 772;
+      } else {
+         return "1-dstalpha".equals($$1) ? 773 : -1;
       }
    }
 }

@@ -1,13 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dao(dah d) implements daq {
-   public static final MapCodec<dao> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dao::new));
+public record dao(daj d, daj e, jm<brm> f) implements das {
+   public static final MapCodec<dao> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               daj.b.fieldOf("min_damage").forGetter(dao::b), daj.b.fieldOf("max_damage").forGetter(dao::c), brm.b.fieldOf("damage_type").forGetter(dao::d)
+            )
+            .apply($$0, dao::new)
+   );
 
    @Override
-   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
-      aqu $$6 = $$2.c() instanceof aqu $$5 ? $$5 : null;
-      $$2.a().a((int)this.d.a($$1), $$0, $$6, $$2.d());
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+      float $$5 = ayo.b($$3.dS(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new brk(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -15,7 +20,15 @@ public record dao(dah d) implements daq {
       return a;
    }
 
-   public dah b() {
+   public daj b() {
       return this.d;
+   }
+
+   public daj c() {
+      return this.e;
+   }
+
+   public jm<brm> d() {
+      return this.f;
    }
 }

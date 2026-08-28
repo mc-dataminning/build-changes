@@ -1,64 +1,80 @@
-import com.google.common.collect.ImmutableList;
+public class fut<T extends cfh> extends fwg<T> {
+   private float q;
+   private float r;
+   private float s;
 
-public class fut<T extends bsq> extends ftz<T> {
-   public static final String a = "red_thing";
-   private final fye b;
-   private final fye f;
-   private final fye g;
-   private final fye h;
-   private final fye i;
-   private final fye j;
-   private final fye k;
-   private final fye l;
-
-   public fut(fye $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   public fut(fyi $$0) {
+      super($$0);
    }
 
-   public static fyk c() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fyj.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fyg.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fyj.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fyg.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fyj.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fyg.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fyj.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fyg.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fyj $$3 = fyj.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fyg.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fyg.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fyj.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fyg.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fyj.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fyg.a(4.0F, 13.0F, 0.0F));
-      return fyk.a($$0, 64, 32);
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.q = $$0.H($$3);
+      this.r = $$0.I($$3);
+      this.s = $$0.J($$3);
+      if (this.q <= 0.0F) {
+         this.n.e = 0.0F;
+         this.n.g = 0.0F;
+         this.j.e = 0.0F;
+         this.j.g = 0.0F;
+         this.k.e = 0.0F;
+         this.k.g = 0.0F;
+         this.k.b = -1.2F;
+         this.h.e = 0.0F;
+         this.i.e = 0.0F;
+         this.i.g = 0.0F;
+         this.i.b = -1.1F;
+         this.i.c = 18.0F;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.x()) {
+         this.o.e = (float) (Math.PI / 4);
+         this.o.c += -4.0F;
+         this.o.d += 5.0F;
+         this.n.c += -3.3F;
+         this.n.d++;
+         this.l.c += 8.0F;
+         this.l.d += -2.0F;
+         this.m.c += 2.0F;
+         this.m.d += -0.8F;
+         this.l.e = 1.7278761F;
+         this.m.e = 2.670354F;
+         this.j.e = (float) (-Math.PI / 20);
+         this.j.c = 16.1F;
+         this.j.d = -7.0F;
+         this.k.e = (float) (-Math.PI / 20);
+         this.k.c = 16.1F;
+         this.k.d = -7.0F;
+         this.h.e = (float) (-Math.PI / 2);
+         this.h.c = 21.0F;
+         this.h.d = 1.0F;
+         this.i.e = (float) (-Math.PI / 2);
+         this.i.c = 21.0F;
+         this.i.d = 1.0F;
+         this.p = 3;
+      }
    }
 
-   @Override
-   protected Iterable<fye> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
-   }
-
-   @Override
-   protected Iterable<fye> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = ayn.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = ayn.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.q > 0.0F) {
+         this.n.g = fwf.a(this.n.g, -1.2707963F, this.q);
+         this.n.f = fwf.a(this.n.f, 1.2707963F, this.q);
+         this.j.e = -1.2707963F;
+         this.k.e = -0.47079635F;
+         this.k.g = -0.2F;
+         this.k.b = -0.2F;
+         this.h.e = -0.4F;
+         this.i.e = 0.5F;
+         this.i.g = -0.5F;
+         this.i.b = -0.3F;
+         this.i.c = 20.0F;
+         this.l.e = fwf.a(this.l.e, 0.8F, this.r);
+         this.m.e = fwf.a(this.m.e, -0.4F, this.r);
+      }
+
+      if (this.s > 0.0F) {
+         this.n.e = fwf.a(this.n.e, -0.58177644F, this.s);
+      }
    }
 }

@@ -1,20 +1,23 @@
-public enum dtz implements azj {
-   a("top"),
-   b("bottom");
+public enum dtz implements azk {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String c;
+   private final String f;
 
    private dtz(final String $$0) {
-      this.c = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.f;
    }
 }

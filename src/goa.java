@@ -1,24 +1,25 @@
-public abstract class goa<T extends bsq & btz, M extends fve<T>> extends gop<T, M> {
-   public goa(glz<T, M> $$0) {
+public class goa extends got<cfm, fvd<cfm>> {
+   private final get a;
+
+   public goa(gmd<cfm, fvd<cfm>> $$0, get $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         fve<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         fbg $$12 = $$1.getBuffer(gfb.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gpw.d, -8355712);
+   public void a(fbg $$0, gex $$1, int $$2, cfm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == btg.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = ayo.e($$3.dH()) / 60.0F;
+      if ($$3.dH() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      cuq $$14 = $$10 ? $$3.eU() : $$3.eV();
+      this.a.a($$3, $$14, cun.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract akq a();
-
-   protected abstract fve<T> b();
 }

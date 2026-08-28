@@ -1,31 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djw extends djv {
-   public static final MapCodec<djw> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lt.e.r().fieldOf("host").forGetter(djv::b), u()).apply($$0, djw::new));
-
-   @Override
-   public MapCodec<djw> a() {
-      return b;
-   }
-
-   public djw(dfw $$0, dsz.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(dmj.i, ji.a.b));
-   }
+public class djw extends djo {
+   public static final MapCodec<djw> e = b(djw::new);
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return dmj.b($$0, $$1);
+   public MapCodec<? extends djw> a() {
+      return e;
    }
 
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(dmj.i);
+   public djw(dtb.d $$0) {
+      super($$0);
+   }
+
+   public static dtc b() {
+      return dga.G.o();
    }
 
    @Override
-   public dta a(cyb $$0) {
-      return this.o().a(dmj.i, $$0.k().o());
+   public void a(dcw $$0, cmx $$1, jd $$2, dtc $$3, @Nullable dqh $$4, cuq $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dae.a($$5, awh.s)) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dtc $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
+      }
+   }
+
+   @Override
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$1.a(ddf.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dtc $$0, dcw $$1, jd $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

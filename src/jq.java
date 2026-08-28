@@ -15,9 +15,9 @@ public interface jq<T> extends Iterable<jm<T>> {
 
    int b();
 
-   Either<awt<T>, List<jm<T>>> c();
+   Either<awu<T>, List<jm<T>>> c();
 
-   Optional<jm<T>> a(ayv var1);
+   Optional<jm<T>> a(ayw var1);
 
    jm<T> a(int var1);
 
@@ -25,11 +25,11 @@ public interface jq<T> extends Iterable<jm<T>> {
 
    boolean a(jp<T> var1);
 
-   Optional<awt<T>> d();
+   Optional<awu<T>> d();
 
    @Deprecated
    @VisibleForTesting
-   static <T> jq.c<T> a(jp<T> $$0, awt<T> $$1) {
+   static <T> jq.c<T> a(jp<T> $$0, awu<T> $$1) {
       return new jq.c<T>($$0, $$1) {
          @Override
          protected List<jm<T>> f() {
@@ -76,12 +76,12 @@ public interface jq<T> extends Iterable<jm<T>> {
       }
 
       @Override
-      public Either<awt<T>, List<jm<T>>> c() {
+      public Either<awu<T>, List<jm<T>>> c() {
          return Either.right(this.b);
       }
 
       @Override
-      public Optional<awt<T>> d() {
+      public Optional<awu<T>> d() {
          return Optional.empty();
       }
 
@@ -142,7 +142,7 @@ public interface jq<T> extends Iterable<jm<T>> {
       }
 
       @Override
-      public Optional<jm<T>> a(ayv $$0) {
+      public Optional<jm<T>> a(ayw $$0) {
          return ad.b(this.f(), $$0);
       }
 
@@ -159,10 +159,10 @@ public interface jq<T> extends Iterable<jm<T>> {
 
    public static class c<T> extends jq.b<T> {
       private final jp<T> a;
-      private final awt<T> b;
+      private final awu<T> b;
       private List<jm<T>> c = List.of();
 
-      c(jp<T> $$0, awt<T> $$1) {
+      c(jp<T> $$0, awu<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -171,7 +171,7 @@ public interface jq<T> extends Iterable<jm<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public awt<T> g() {
+      public awu<T> g() {
          return this.b;
       }
 
@@ -181,12 +181,12 @@ public interface jq<T> extends Iterable<jm<T>> {
       }
 
       @Override
-      public Either<awt<T>, List<jm<T>>> c() {
+      public Either<awu<T>, List<jm<T>>> c() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<awt<T>> d() {
+      public Optional<awu<T>> d() {
          return Optional.of(this.b);
       }
 

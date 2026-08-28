@@ -1,26 +1,31 @@
-public class zx {
-   public static final zh<zm> a = a("custom_payload");
-   public static final zh<zn> b = a("custom_report_details");
-   public static final zh<zo> c = a("disconnect");
-   public static final zh<zp> d = a("keep_alive");
-   public static final zh<zq> e = a("ping");
-   public static final zh<zr> f = a("resource_pack_pop");
-   public static final zh<zs> g = a("resource_pack_push");
-   public static final zh<zt> h = a("server_links");
-   public static final zh<zu> i = a("store_cookie");
-   public static final zh<zv> j = a("transfer");
-   public static final zh<zw> k = a("update_tags");
-   public static final zh<zz> l = b("client_information");
-   public static final zh<aaa> m = b("custom_payload");
-   public static final zh<aab> n = b("keep_alive");
-   public static final zh<aac> o = b("pong");
-   public static final zh<aad> p = b("resource_pack");
+import java.util.Map;
 
-   private static <T extends zf<zl>> zh<T> a(String $$0) {
-      return new zh<>(zg.b, akq.b($$0));
+public class zx implements zg<zm> {
+   public static final yx<vw, zx> a = zg.a(zx::a, zx::new);
+   private final Map<akq<? extends jz<?>>, awx.a> b;
+
+   public zx(Map<akq<? extends jz<?>>, awx.a> $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zf<zy>> zh<T> b(String $$0) {
-      return new zh<>(zg.a, akq.b($$0));
+   private zx(vw $$0) {
+      this.b = $$0.a(vw::r, awx.a::b);
+   }
+
+   private void a(vw $$0) {
+      $$0.a(this.b, vw::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public zi<zx> a() {
+      return zy.k;
+   }
+
+   public void a(zm $$0) {
+      $$0.a(this);
+   }
+
+   public Map<akq<? extends jz<?>>, awx.a> b() {
+      return this.b;
    }
 }

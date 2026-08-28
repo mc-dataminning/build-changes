@@ -1,135 +1,141 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cho extends chj {
-   private int cb = 47999;
+public class cho extends chi {
+   private final chp ca = new chp(this);
+   private static final int cb = 18000;
+   private static final bsu cc = bsx.aO.n().a(bst.a().a(bss.a, 0.0F, bsx.aO.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean ce;
+   private int cf;
 
-   public cho(bsw<? extends cho> $$0, dcu $$1) {
+   public cho(bsx<? extends cho> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean gq() {
-      return true;
+   public static buv.a s() {
+      return gL().a(buw.s, 15.0).a(buw.v, 0.2F);
    }
 
-   @Nullable
-   @Override
-   protected chj gA() {
-      return bsw.be.a(this.dQ());
+   public static boolean c(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
+      return !btr.a($$2) ? cfe.b($$0, $$1, $$2, $$3, $$4) : btr.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.cb);
+   protected void a(ayw $$0) {
+      this.f(buw.o).a(a($$0::j));
    }
 
    @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.cb = $$0.h("DespawnDelay");
+   protected void gB() {
+   }
+
+   @Override
+   protected avo v() {
+      return this.a(awk.a) ? avp.xi : avp.xe;
+   }
+
+   @Override
+   protected avo n_() {
+      return avp.xf;
+   }
+
+   @Override
+   protected avo d(brk $$0) {
+      return avp.xg;
+   }
+
+   @Override
+   protected avo aQ() {
+      if (this.aF()) {
+         if (!this.bT()) {
+            return avp.xl;
+         }
+
+         this.cz++;
+         if (this.cz > 5 && this.cz % 3 == 0) {
+            return avp.xj;
+         }
+
+         if (this.cz <= 5) {
+            return avp.xl;
+         }
+      }
+
+      return avp.xh;
+   }
+
+   @Override
+   protected void f(float $$0) {
+      if (this.aF()) {
+         super.f(0.3F);
+      } else {
+         super.f(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
    @Override
-   protected void z() {
-      super.z();
-      this.bU.a(1, new cbd(this, 2.0));
-      this.bV.a(1, new cho.a(this));
-   }
-
-   @Override
-   public void w(int $$0) {
-      this.cb = $$0;
-   }
-
-   @Override
-   protected void f(cmv $$0) {
-      bsq $$1 = this.ga();
-      if (!($$1 instanceof cmo)) {
-         super.f($$0);
+   protected void gS() {
+      if (this.bf()) {
+         this.a(avp.xk, 0.4F, 1.0F);
+      } else {
+         super.gS();
       }
+   }
+
+   @Override
+   public bsu e(bua $$0) {
+      return this.o_() ? cc : super.e($$0);
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (!this.dQ().B) {
-         this.hb();
+      if (this.t() && this.cf++ >= 18000) {
+         this.aq();
       }
    }
 
-   private void hb() {
-      if (this.hc()) {
-         this.cb = this.hd() ? ((cmo)this.ga()).gv() - 1 : this.cb - 1;
-         if (this.cb <= 0) {
-            this.a(true, false);
-            this.aq();
+   @Override
+   public void b(ub $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.t());
+      $$0.a("SkeletonTrapTime", this.cf);
+   }
+
+   @Override
+   public void a(ub $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.cf = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fi() {
+      return 0.96F;
+   }
+
+   public boolean t() {
+      return this.ce;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.ce) {
+         this.ce = $$0;
+         if ($$0) {
+            this.bU.a(1, this.ca);
+         } else {
+            this.bU.a(this.ca);
          }
       }
-   }
-
-   private boolean hc() {
-      return !this.gB() && !this.he() && !this.cZ();
-   }
-
-   private boolean hd() {
-      return this.ga() instanceof cmo;
-   }
-
-   private boolean he() {
-      return this.fY() && !this.hd();
    }
 
    @Nullable
    @Override
-   public buf a(ddj $$0, bqo $$1, btp $$2, @Nullable buf $$3) {
-      if ($$2 == btp.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new bsk.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   public bsl a(aqu $$0, bsl $$1) {
+      return bsx.aO.a((dcw)$$0);
    }
 
-   protected static class a extends cck {
-      private final chj a;
-      private btl b;
-      private int c;
-
-      public a(chj $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(cak.a.d));
-      }
-
-      @Override
-      public boolean b() {
-         if (!this.a.fY()) {
-            return false;
-         } else if (!(this.a.ga() instanceof cmo $$1)) {
-            return false;
-         } else {
-            this.b = $$1.ej();
-            int $$2 = $$1.ek();
-            return $$2 != this.c && this.a(this.b, ced.a);
-         }
-      }
-
-      @Override
-      public void d() {
-         this.e.h(this.b);
-         bsq $$0 = this.a.ga();
-         if ($$0 instanceof cmo) {
-            this.c = ((cmo)$$0).ek();
-         }
-
-         super.d();
-      }
+   @Override
+   public bqr b(cmx $$0, bqq $$1) {
+      return !this.gA() ? bqr.e : super.b($$0, $$1);
    }
 }

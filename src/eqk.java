@@ -1,54 +1,53 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eqk {
-   private final jd a;
-   private final int b;
-   private final int c;
-
-   public eqk(jd $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public record eqk(jd c, cti d, Optional<wz> e) {
+   public static final Codec<eqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jd.a.fieldOf("pos").forGetter(eqk::c),
+               cti.q.lenientOptionalFieldOf("color", cti.a).forGetter(eqk::d),
+               xb.g.lenientOptionalFieldOf("name").forGetter(eqk::e)
+            )
+            .apply($$0, eqk::new)
+   );
+   public static final Codec<List<eqk>> b = a.listOf();
 
    @Nullable
-   public static eqk a(ua $$0) {
-      Optional<jd> $$1 = up.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
+   public static eqk a(dcc $$0, jd $$1) {
+      if ($$0.c_($$1) instanceof dpw $$3) {
+         cti $$4 = $$3.f();
+         Optional<wz> $$5 = Optional.ofNullable($$3.aj());
+         return new eqk($$1, $$4, $$5);
       } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new eqk($$1.get(), $$2, $$3);
+         return null;
       }
    }
 
-   public ua a() {
-      ua $$0 = new ua();
-      $$0.a("pos", up.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   public jm<eqm> a() {
+      return switch (this.d) {
+         case a -> eqn.k;
+         case b -> eqn.l;
+         case c -> eqn.m;
+         case d -> eqn.n;
+         case e -> eqn.o;
+         case f -> eqn.p;
+         case g -> eqn.q;
+         case h -> eqn.r;
+         case i -> eqn.s;
+         case j -> eqn.t;
+         case k -> eqn.u;
+         case l -> eqn.v;
+         case m -> eqn.w;
+         case n -> eqn.x;
+         case o -> eqn.y;
+         case p -> eqn.z;
+      };
    }
 
-   public jd b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(jd $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

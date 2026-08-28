@@ -1,41 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class esj extends esy {
-   public static final MapCodec<esj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, esj::new));
+public class esj extends ery {
+   public static final MapCodec<esj> a = a(esj::new);
 
-   private esj(List<euw> $$0) {
-      super($$0);
+   esj(List<esf> $$0, List<eva> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eta<esj> b() {
-      return etb.z;
+   public esg a() {
+      return esd.h;
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      Float $$2 = $$1.c(euh.j);
-      if ($$2 != null) {
-         ayv $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.H();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
+   protected erx a(List<? extends erx> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (erx)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (erx $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
             }
          }
 
-         $$0.e($$6);
-      }
-
-      return $$0;
+         return true;
+      };
+      };
    }
 
-   public static esy.a<?> c() {
-      return a(esj::new);
+   public static esj.a a(esf.a<?>... $$0) {
+      return new esj.a($$0);
+   }
+
+   public static class a extends esf.a<esj.a> {
+      private final Builder<esf> a = ImmutableList.builder();
+
+      public a(esf.a<?>... $$0) {
+         for (esf.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected esj.a a() {
+         return this;
+      }
+
+      @Override
+      public esj.a c(esf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public esf b() {
+         return new esj(this.a.build(), this.f());
+      }
    }
 }

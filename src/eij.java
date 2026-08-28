@@ -1,28 +1,26 @@
 import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class eij extends eix {
-   public static final MapCodec<eij> a = bpv.b(0, 256).fieldOf("count").xmap(eij::new, $$0 -> $$0.c);
-   private final bpv c;
+public class eij extends eiw {
+   public static final MapCodec<eij> a = dyu.a.c.fieldOf("step").xmap(eij::new, $$0 -> $$0.c);
+   private final dyu.a c;
 
-   private eij(bpv $$0) {
+   private eij(dyu.a $$0) {
       this.c = $$0;
    }
 
-   public static eij a(bpv $$0) {
+   public static eij a(dyu.a $$0) {
       return new eij($$0);
    }
 
-   public static eij a(int $$0) {
-      return a(bps.a($$0));
+   @Override
+   public Stream<jd> a_(eiu $$0, ayw $$1, jd $$2) {
+      dcd $$3 = new dcd($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   protected int a(ayv $$0, jd $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public eiu<?> b() {
-      return eiu.f;
+   public eix<?> b() {
+      return eix.o;
    }
 }

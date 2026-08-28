@@ -1,67 +1,36 @@
-public class ahl implements zf<agh> {
-   public static final yw<vv, ahl> a = zf.a(ahl::a, ahl::new);
-   private final jd b;
-   private final ji c;
-   private final ahl.a d;
-   private final int e;
+public class ahl implements zg<agi> {
+   public static final yx<vw, ahl> a = zg.a(ahl::a, ahl::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahl(ahl.a $$0, jd $$1, ji $$2, int $$3) {
-      this.d = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.e = $$3;
+   public ahl(cmu $$0) {
+      this.c = $$0.b;
    }
 
-   public ahl(ahl.a $$0, jd $$1, ji $$2) {
-      this($$0, $$1, $$2, 0);
+   private ahl(vw $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private ahl(vv $$0) {
-      this.d = $$0.b(ahl.a.class);
-      this.b = $$0.e();
-      this.c = ji.a($$0.readUnsignedByte());
-      this.e = $$0.l();
-   }
+   private void a(vw $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   private void a(vv $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b);
-      $$0.k(this.c.d());
-      $$0.c(this.e);
+      $$0.k($$1);
    }
 
    @Override
-   public zh<ahl> a() {
-      return agf.bK;
+   public zi<ahl> a() {
+      return agg.bJ;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
-      return this.b;
-   }
-
-   public ji e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public ahl.a f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
    }
 }

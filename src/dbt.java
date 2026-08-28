@@ -1,48 +1,41 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class dbt extends ArrayList<dbs> {
-   public static final Codec<dbt> a = dbs.a.listOf().fieldOf("Recipes").xmap(dbt::new, Function.identity()).codec();
-   public static final yw<wj, dbt> b = dbs.b.a(yu.a(dbt::new));
-
-   public dbt() {
-   }
-
-   private dbt(int $$0) {
-      super($$0);
-   }
-
-   private dbt(Collection<dbs> $$0) {
-      super($$0);
-   }
+public interface dbt {
+   void a(@Nullable cmx var1);
 
    @Nullable
-   public dbs a(cuo $$0, cuo $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         dbs $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            dbs $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
+   cmx gl();
+
+   dbv gn();
+
+   void a(dbv var1);
+
+   void a(dbu var1);
+
+   void n(cuq var1);
+
+   int t();
+
+   void t(int var1);
+
+   boolean go();
+
+   avo gp();
+
+   default boolean gx() {
+      return false;
+   }
+
+   default void a(cmx $$0, wz $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new brb(($$0x, $$1x, $$2x) -> new cre($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         dbv $$4 = this.gn();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.go(), this.gx());
          }
-
-         return null;
       }
    }
 
-   public dbt a() {
-      dbt $$0 = new dbt(this.size());
-
-      for (dbs $$1 : this) {
-         $$0.add($$1.v());
-      }
-
-      return $$0;
-   }
+   boolean gt();
 }

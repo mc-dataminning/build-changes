@@ -1,85 +1,62 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
-
-public abstract class gds extends cmv {
-   @Nullable
-   private fzk g;
-   protected eww b;
-   public float c;
-   public float d;
-   public float e;
-   public final fyz f;
-
-   public gds(fyz $$0, GameProfile $$1) {
-      super($$0, $$0.V(), $$0.W(), $$1);
-      this.b = eww.b;
-      this.f = $$0;
+public class gds extends gdl {
+   protected gds(fzd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public boolean N_() {
-      fzk $$0 = this.a();
-      return $$0 != null && $$0.e() == dcr.d;
+   public gcp b() {
+      return gcp.b;
    }
 
    @Override
-   public boolean f() {
-      fzk $$0 = this.a();
-      return $$0 != null && $$0.e() == dcr.b;
-   }
-
-   @Nullable
-   protected fzk a() {
-      if (this.g == null) {
-         this.g = fgi.Q().L().a(this.cA());
-      }
-
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dt();
-      super.l();
-   }
-
-   public eww F(float $$0) {
-      return this.b.a(this.dt(), (double)$$0);
-   }
-
-   public grf b() {
-      fzk $$0 = this.a();
-      return $$0 == null ? gqx.a(this.cA()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.ga().b) {
-         $$0 *= 1.1F;
-      }
-
-      $$0 *= ((float)this.g(buu.v) / this.ga().b() + 1.0F) / 2.0F;
-      if (this.ga().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cuo $$1 = this.fu();
-      if (this.fs()) {
-         if ($$1.a(cur.ov)) {
-            int $$2 = this.fw();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
             }
 
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (fgi.Q().m.aA().a() && this.gx()) {
-            return 0.1F;
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         jd $$0 = jd.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ji.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((dcc)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
          }
       }
+   }
 
-      return ayn.i(fgi.Q().m.ak().c().floatValue(), 1.0F, $$0);
+   public static class a implements gco<lq> {
+      private final gdg a;
+
+      public a(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gds $$8 = new gds($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

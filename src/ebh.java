@@ -1,45 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class ebh extends eca<edx> {
-   public ebh(Codec<edx> $$0) {
+public class ebh extends ecd<eer> {
+   private static final dtc a = dga.mZ.o().a(dfc.h, Integer.valueOf(1)).a(dfc.i, dto.a).a(dfc.j, Integer.valueOf(0));
+   private static final dtc b = a.a(dfc.i, dto.c).a(dfc.j, Integer.valueOf(1));
+   private static final dtc c = a.a(dfc.i, dto.c);
+   private static final dtc d = a.a(dfc.i, dto.b);
+
+   public ebh(Codec<eer> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<edx> $$0) {
-      jd $$1 = $$0.e();
-      ddq $$2 = $$0.b();
-      ayv $$3 = $$0.d();
+   public boolean a(ecf<eer> $$0) {
+      int $$1 = 0;
+      jd $$2 = $$0.e();
+      dds $$3 = $$0.b();
+      ayw $$4 = $$0.d();
+      eer $$5 = $$0.f();
+      jd.a $$6 = $$2.k();
+      jd.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dga.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      edx $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            dta $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (jd $$11 : jd.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dyy.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dga.l.o(), 2);
+                        }
+                     }
+                  }
                }
             }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ji.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ji.a, 1), c, 2);
+               $$3.a($$6.c(ji.a, 1), d, 2);
+            }
          }
 
-         return true;
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

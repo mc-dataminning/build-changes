@@ -1,8 +1,17 @@
-import java.nio.file.Path;
-import java.util.Optional;
+public enum vu {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public record vu(wy a, Optional<Path> b, Optional<String> c) {
-   public vu(wy $$0) {
-      this($$0, Optional.empty(), Optional.empty());
+   private final String f;
+
+   private vu(final String $$0) {
+      this.f = $$0;
+   }
+
+   public String a() {
+      return this.f;
    }
 }

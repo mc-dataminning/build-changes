@@ -1,55 +1,45 @@
-public class acq implements zf<abt> {
-   public static final yw<wj, acq> a = zf.a(acq::a, acq::new);
-   public static final int b = -1;
-   public static final int c = -2;
+public class acq implements zg<abu> {
+   public static final yx<vw, acq> a = zg.a(acq::a, acq::new);
+   private final int b;
+   private final int c;
    private final int d;
-   private final int e;
-   private final int f;
-   private final cuo g;
 
-   public acq(int $$0, int $$1, int $$2, cuo $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.s();
+   public acq(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private acq(wj $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = cuo.h.decode($$0);
+   private acq(vw $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private void a(wj $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      cuo.h.encode($$0, this.g);
+   private void a(vw $$0) {
+      $$0.k(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zh<acq> a() {
-      return agf.w;
+   public zi<acq> a() {
+      return agg.v;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.d;
+      return this.b;
    }
 
    public int e() {
-      return this.f;
+      return this.c;
    }
 
-   public cuo f() {
-      return this.g;
-   }
-
-   public int g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

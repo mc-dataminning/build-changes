@@ -1,61 +1,76 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dfb extends den {
-   public static final MapCodec<dfb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ctg.q.fieldOf("color").forGetter(den::b), u()).apply($$0, dfb::new));
-   public static final dua b = dtq.ba;
-   private static final Map<ctg, dfw> c = Maps.newHashMap();
-   private static final exp d = dfw.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dfb extends dfy implements dgb {
+   public static final MapCodec<dfb> a = b(dfb::new);
+   protected static final float b = 4.0F;
+   protected static final ext c = dfy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
    public MapCodec<dfb> a() {
       return a;
    }
 
-   public dfb(ctg $$0, dsz.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   public dfb(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dta $$0, dcx $$1, jd $$2) {
-      return $$1.a_($$2.d()).e();
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      exa $$4 = $$0.n($$1, $$2);
+      return c.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return d;
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   public dta a(cyb $$0) {
-      return this.o().a(b, Integer.valueOf(dug.a($$0.i() + 180.0F)));
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      return $$1.a_($$2.e()).a(awe.au);
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      return $$1 == ji.a && !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dga.a.o();
+      } else {
+         if ($$1 == ji.b && $$2.a(dga.mZ)) {
+            $$3.a($$4, dga.mZ.o(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public cuq a(dcz $$0, jd $$1, dtc $$2) {
+      return new cuq(cut.dR);
    }
 
    @Override
-   protected dta a(dta $$0, dkt $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return true;
    }
 
-   public static dfw a(ctg $$0) {
-      return c.getOrDefault($$0, dfy.iJ);
+   @Override
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   protected float a(dtc $$0, cmx $$1, dcc $$2, jd $$3) {
+      return $$1.eU().g() instanceof cwg ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dcw $$0, jd $$1) {
+      $$0.a($$1.d(), dga.mZ.o().a(dfc.i, dto.b), 3);
    }
 }

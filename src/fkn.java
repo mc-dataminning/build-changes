@@ -1,54 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fkn implements fkp {
-   private static final akq a = akq.b("toast/recipe");
-   private static final long d = 5000L;
-   private static final wy e = wy.c("recipe.toast.title");
-   private static final wy f = wy.c("recipe.toast.description");
-   private final List<cyz<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public class fkn {
+   private final Consumer<fii> a;
+   private final Consumer<fii> b;
+   @Nullable
+   private fkm c;
+   @Nullable
+   private fmq d;
 
-   public fkn(cyz<?> $$0) {
-      this.g.add($$0);
+   public fkn(Consumer<fii> $$0, Consumer<fii> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public fkp.a a(fht $$0, fkq $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
-      }
-
-      if (this.g.isEmpty()) {
-         return fkp.a.b;
-      } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         cyz<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         cuo $$4 = $$3.b().g();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? fkp.a.b : fkp.a.a;
+   public void a(fmq $$0) {
+      this.d = $$0;
+      fkm $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
    }
 
-   private void a(cyz<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
+   public void a(fkm $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            fgm.Q().aj().a(gtt.a(avp.Ar, 1.0F));
+         }
+      }
    }
 
-   public static void a(fkq $$0, cyz<?> $$1) {
-      fkn $$2 = $$0.a(fkn.class, b);
-      if ($$2 == null) {
-         $$0.a(new fkn($$1));
-      } else {
-         $$2.a($$1);
-      }
+   @Nullable
+   public fkm a() {
+      return this.c;
    }
 }

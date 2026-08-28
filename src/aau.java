@@ -1,26 +1,21 @@
-public record aau(jd c, int d) implements aai {
-   public static final yw<vv, aau> a = aai.a(aau::a, aau::new);
-   public static final aai.b<aau> b = aai.a("debug/poi_ticket_count");
+public record aau(jd c) implements aaj {
+   public static final yx<vw, aau> a = aaj.a(aau::a, aau::new);
+   public static final aaj.b<aau> b = aaj.a("debug/poi_removed");
 
-   private aau(vv $$0) {
-      this($$0.e(), $$0.readInt());
+   private aau(vw $$0) {
+      this($$0.e());
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.a(this.c);
-      $$0.p(this.d);
    }
 
    @Override
-   public aai.b<aau> a() {
+   public aaj.b<aau> a() {
       return b;
    }
 
    public jd b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

@@ -1,64 +1,31 @@
-public class fnk extends fmt {
-   private fig c;
+public class fnk extends fob {
+   private final wz a;
 
-   public fnk() {
-      super("");
+   public fnk(wz $$0, wz $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.c = fig.a(wy.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.m / 2 - 100, this.n - 40, 200, 20).a();
-      this.c(this.c);
+   protected void aT_() {
+      super.aT_();
+      this.c(fik.a(wy.e, $$0 -> this.l.a(null)).a(this.m / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      if (!this.l.J().a(this.l.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 90, 16777215);
+      $$0.a(this.o, this.a, this.m / 2, 110, 16777215);
    }
 
    @Override
-   public void d() {
-      this.D();
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.m, this.n, -12574688, -11530224);
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.l.J().a(this.l.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-      }
-
-      if (!this.l.J().a(this.l.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.l.l.d().d();
-         return true;
-      }
-   }
-
-   private void D() {
-      fza $$0 = this.l.s.h;
-      $$0.b(new ahm(this.l.s, ahm.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.l.a(null);
-      } else {
-         this.l.a(new fmt(this.b.a()));
-      }
+   public boolean aJ_() {
+      return false;
    }
 }

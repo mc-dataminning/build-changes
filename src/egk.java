@@ -1,49 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class egk extends egi {
+public class egk extends egm {
    public static final MapCodec<egk> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dta.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dta.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dta.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+      $$0 -> $$0.group(
+               ayg.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               eof.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               axw.m.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, egk::new)
    );
-   private final float g;
-   private final float h;
-   private final dta i;
-   private final List<dta> j;
-   private final List<dta> k;
+   private final ayg<Integer> i;
+   private final eof.a j;
+   private final float k;
+   private final eof l;
 
-   public egk(long $$0, eob.a $$1, float $$2, float $$3, float $$4, dta $$5, List<dta> $$6, List<dta> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public egk(ayg<Integer> $$0, eof.a $$1, float $$2, long $$3, eof.a $$4, float $$5, List<dtc> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = eof.b(new dzx(new dyz($$3)), $$1);
    }
 
    @Override
-   protected egg<?> a() {
-      return egg.c;
+   protected egj<?> a() {
+      return egj.e;
    }
 
    @Override
-   public dta a(ayv $$0, jd $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ad.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ad.a(this.k, $$0) : this.i;
+   public dtc a(ayw $$0, jd $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)ayo.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dtc> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(jd $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

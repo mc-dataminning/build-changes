@@ -3,14 +3,14 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 
-public record jl(akp<dcu> d, jd e) {
+public record jl(akq<dcw> d, jd e) {
    public static final MapCodec<jl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcu.g.fieldOf("dimension").forGetter(jl::a), jd.a.fieldOf("pos").forGetter(jl::b)).apply($$0, jl::a)
+      $$0 -> $$0.group(dcw.g.fieldOf("dimension").forGetter(jl::a), jd.a.fieldOf("pos").forGetter(jl::b)).apply($$0, jl::a)
    );
    public static final Codec<jl> b = a.codec();
-   public static final yw<ByteBuf, jl> c = yw.a(akp.b(lu.ba), jl::a, jd.b, jl::b, jl::a);
+   public static final yx<ByteBuf, jl> c = yx.a(akq.b(lu.ba), jl::a, jd.b, jl::b, jl::a);
 
-   public static jl a(akp<dcu> $$0, jd $$1) {
+   public static jl a(akq<dcw> $$0, jd $$1) {
       return new jl($$0, $$1);
    }
 
@@ -19,7 +19,7 @@ public record jl(akp<dcu> d, jd e) {
       return this.d + " " + this.e;
    }
 
-   public akp<dcu> a() {
+   public akq<dcw> a() {
       return this.d;
    }
 

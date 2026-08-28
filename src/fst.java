@@ -1,110 +1,167 @@
-import java.nio.file.Path;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class fst extends fnx {
-   private static final wy a = wy.c("telemetry_info.screen.title");
-   private static final wy b = wy.c("telemetry_info.screen.description").b(-4539718);
-   private static final wy c = wy.c("telemetry_info.button.privacy_statement");
-   private static final wy q = wy.c("telemetry_info.button.give_feedback");
-   private static final wy r = wy.c("telemetry_info.button.show_data");
-   private static final wy s = wy.c("telemetry_info.opt_in.description");
-   private static final int u = 8;
-   private static final boolean v = fgi.Q().D();
-   private final fnx w;
-   private final fgm x;
-   private final flt y = new flt(this, 16 + 9 * 5 + 20, v ? 33 + fii.a(fgi.Q().h) : 33);
+public class fst extends fiq<fsr> {
+   private final fsu a;
+   private final List<fsr> m = Lists.newArrayList();
    @Nullable
-   private fss z;
-   @Nullable
-   private fja A;
-   private double B;
+   private String n;
 
-   public fst(fnx $$0, fgm $$1) {
-      super(a);
-      this.w = $$0;
-      this.x = $$1;
+   public fst(fsu $$0, fgm $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
    @Override
-   public wy i() {
-      return wx.a(super.i(), b);
+   protected void b(fhx $$0) {
    }
 
    @Override
-   protected void aP_() {
-      flx $$0 = this.y.a(flx.d().a(4));
-      $$0.c().b();
-      $$0.a(new fjn(a, this.o));
-      this.A = $$0.a(new fja(b, this.o).b(true));
-      flx $$1 = $$0.a(flx.e().a(8));
-      $$1.a(fig.a(c, this::a).a());
-      $$1.a(fig.a(q, this::b).a());
-      flx $$2 = this.y.b(flx.d().a(4));
-      if (v) {
-         $$2.a(this.m());
-      }
-
-      flx $$3 = $$2.a(flx.e().a(8));
-      $$3.a(fig.a(r, this::c).a());
-      $$3.a(fig.a(wx.d, $$0x -> this.d()).a());
-      flx $$4 = this.y.c(flx.d().a(8));
-      this.z = $$4.a(new fss(0, 0, this.m - 40, this.y.d(), this.o));
-      this.z.a($$0x -> this.B = $$0x);
-      this.y.a($$1x -> {
-         fie var10000 = this.c($$1x);
-      });
-      this.c();
+   protected void a(fhx $$0) {
    }
 
    @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.a(this.B);
-         this.z.k(this.m - 40);
-         this.z.l(this.y.d());
-         this.z.j();
-      }
-
-      if (this.A != null) {
-         this.A.d(this.m - 16);
-      }
-
-      this.y.a();
+   protected void c(fhx $$0) {
+      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
    }
 
-   @Override
-   protected void aE_() {
-      if (this.z != null) {
-         this.b(this.z);
-      }
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fsr> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   private fie m() {
-      fgl<Boolean> $$0 = this.x.ai();
-      return fii.a(s, this.o).a($$0).a(this::a).a();
-   }
+   private void a(Collection<UUID> $$0, Map<UUID, fsr> $$1) {
+      fze $$2 = this.c.s.h;
 
-   private void a(fie $$0, boolean $$1) {
-      if (this.z != null) {
-         this.z.b($$1);
+      for (UUID $$3 : $$0) {
+         fzo $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fsr(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
       }
    }
 
-   private void a(fig $$0) {
-      fmu.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   private void a(Map<UUID, fsr> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aX().b())) {
+         fsr $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fsr $$2 = new fsr(this.c, this.a, $$3.getId(), $$3.getName(), this.c.am().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
    }
 
-   private void b(fig $$0) {
-      fmu.a(this, "https://aka.ms/javafeedback?ref=game");
+   private static Collection<GameProfile> a(fzy $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         gaa $$3 = $$0.b($$2);
+         if ($$3 instanceof gab.a) {
+            gab.a $$4 = (gab.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   private void c(fig $$0) {
-      Path $$1 = this.l.u().b();
-      ad.k().a($$1.toUri());
+   private void J() {
+      this.m.sort(Comparator.<fsr, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.aX().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fsr::c, String::compareToIgnoreCase));
    }
 
-   @Override
-   public void d() {
-      this.l.a(this.w);
+   private void a(Collection<fsr> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.J();
+      this.K();
+      this.a(this.m);
+      this.b($$1);
+   }
+
+   private void K() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean c() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fzo $$0, fsu.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fsr $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fsu.a.a || this.c.aL().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fsr $$5 = new fsr(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fsr)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fsr $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

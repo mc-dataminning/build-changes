@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpf extends dfw implements dpc {
+public class dpf extends dhm implements dpe {
    public static final MapCodec<dpf> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpc.a.e.fieldOf("weathering_state").forGetter(dgx::c), u()).apply($$0, dpf::new)
+      $$0 -> $$0.group(dpe.a.e.fieldOf("weathering_state").forGetter(dpf::m), u()).apply($$0, dpf::new)
    );
-   private final dpc.a e;
+   private final dpe.a e;
 
    @Override
-   public MapCodec<dpf> a() {
+   protected MapCodec<dpf> a() {
       return d;
    }
 
-   public dpf(dpc.a $$0, dsz.d $$1) {
+   public dpf(dpe.a $$0, dtb.d $$1) {
       super($$1);
       this.e = $$0;
    }
 
    @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dta $$0) {
-      return dpc.c($$0.b()).isPresent();
+   protected boolean d_(dtc $$0) {
+      return dpe.c($$0.b()).isPresent();
    }
 
-   public dpc.a m() {
+   public dpe.a m() {
       return this.e;
    }
 }

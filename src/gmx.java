@@ -1,17 +1,34 @@
-public class gmx extends glj<ckp, fxn> {
-   private static final akq a = akq.b("textures/entity/illager/vex.png");
-   private static final akq i = akq.b("textures/entity/illager/vex_charging.png");
+public class gmx extends gkg<cji> {
+   private final gfr a;
 
-   public gmx(gkd.a $$0) {
-      super($$0, new fxn($$0.a(fyd.bP)), 0.3F);
-      this.a(new goi<>(this, $$0.d()));
+   public gmx(gkh.a $$0) {
+      super($$0);
+      this.e = 0.5F;
+      this.a = $$0.c();
    }
 
-   protected int a(ckp $$0, jd $$1) {
-      return 15;
+   public void a(cji $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.t();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = ayo.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      gmw.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akq a(ckp $$0) {
-      return $$0.gn() ? i : a;
+   public akr a(cji $$0) {
+      return gqi.e;
    }
 }

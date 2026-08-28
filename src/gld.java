@@ -1,103 +1,95 @@
-import org.joml.Matrix4f;
+import com.google.common.annotations.VisibleForTesting;
 
-public class gld extends gkc<btk> {
-   public gld(gkd.a $$0) {
+public class gld extends gkg<cjh> {
+   private static final float a = 0.15F;
+   private static final float g = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final glf j;
+   private final ayw k = ayw.a();
+
+   public gld(gkh.a $$0) {
       super($$0);
+      this.j = $$0.b();
+      this.e = 0.15F;
+      this.f = 0.75F;
    }
 
-   public void a(btk $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      ayv $$10 = ayv.a($$0.b);
+   public akr a(cjh $$0) {
+      return gqi.e;
+   }
 
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
+   public void a(cjh $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      cuq $$6 = $$0.p();
+      this.k.b((long)a($$6));
+      gsk $$7 = this.j.a($$6, $$0.dP(), null, $$0.an());
+      boolean $$8 = $$7.b();
+      float $$9 = 0.25F;
+      float $$10 = ayo.a(((float)$$0.t() + $$2) / 10.0F + $$0.c) * 0.1F + 0.1F;
+      float $$11 = $$7.f().a(cun.h).d.y();
+      $$3.a(0.0F, $$10 + 0.25F * $$11, 0.0F);
+      float $$12 = $$0.a($$2);
+      $$3.a(a.d.rotation($$12));
+      a(this.j, $$3, $$4, $$5, $$6, $$7, $$8, this.k);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static int a(cuq $$0) {
+      return $$0.e() ? 187 : cul.a($$0.g()) + $$0.n();
+   }
+
+   @VisibleForTesting
+   static int a(int $$0) {
+      if ($$0 <= 1) {
+         return 1;
+      } else if ($$0 <= 16) {
+         return 2;
+      } else if ($$0 <= 32) {
+         return 3;
+      } else {
+         return $$0 <= 48 ? 4 : 5;
+      }
+   }
+
+   public static void a(glf $$0, fbg $$1, gex $$2, int $$3, cuq $$4, ayw $$5, dcw $$6) {
+      gsk $$7 = $$0.a($$4, $$6, null, 0);
+      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
+   }
+
+   public static void a(glf $$0, fbg $$1, gex $$2, int $$3, cuq $$4, gsk $$5, boolean $$6, ayw $$7) {
+      int $$8 = a($$4.H());
+      float $$9 = $$5.f().h.d.x();
+      float $$10 = $$5.f().h.d.y();
+      float $$11 = $$5.f().h.d.z();
+      if (!$$6) {
+         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
+         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
+         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
+         $$1.a($$12, $$13, $$14);
       }
 
-      fbg $$12 = $$4.getBuffer(gfb.q());
-      Matrix4f $$13 = $$3.c().a();
-
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         ayv $$15 = ayv.a($$0.b);
-
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
-            }
-
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+      for (int $$15 = 0; $$15 < $$8; $$15++) {
+         $$1.a();
+         if ($$15 > 0) {
+            if ($$6) {
+               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               $$1.a($$16, $$17, $$18);
+            } else {
+               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$1.a($$19, $$20, 0.0F);
             }
          }
+
+         $$0.a($$4, cun.h, false, $$1, $$2, $$3, gqa.d, $$5);
+         $$1.b();
+         if (!$$6) {
+            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
+         }
       }
-   }
-
-   private static void a(
-      Matrix4f $$0,
-      fbg $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
-   }
-
-   public akq a(btk $$0) {
-      return gqe.e;
    }
 }

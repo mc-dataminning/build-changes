@@ -1,78 +1,41 @@
-public interface dbm {
-   akp<dbh> a = dbn.a("trades/desert_armorer_boots_4");
-   akp<dbh> b = dbn.a("trades/desert_armorer_leggings_4");
-   akp<dbh> c = dbn.a("trades/desert_armorer_chestplate_4");
-   akp<dbh> d = dbn.a("trades/desert_armorer_helmet_4");
-   akp<dbh> e = dbn.a("trades/desert_armorer_leggings_5");
-   akp<dbh> f = dbn.a("trades/desert_armorer_chestplate_5");
-   akp<dbh> g = dbn.a("trades/plains_armorer_boots_4");
-   akp<dbh> h = dbn.a("trades/plains_armorer_leggings_4");
-   akp<dbh> i = dbn.a("trades/plains_armorer_chestplate_4");
-   akp<dbh> j = dbn.a("trades/plains_armorer_helmet_4");
-   akp<dbh> k = dbn.a("trades/plains_armorer_boots_5");
-   akp<dbh> l = dbn.a("trades/plains_armorer_leggings_5");
-   akp<dbh> m = dbn.a("trades/savanna_armorer_boots_4");
-   akp<dbh> n = dbn.a("trades/savanna_armorer_leggings_4");
-   akp<dbh> o = dbn.a("trades/savanna_armorer_chestplate_4");
-   akp<dbh> p = dbn.a("trades/savanna_armorer_helmet_4");
-   akp<dbh> q = dbn.a("trades/savanna_armorer_chestplate_5");
-   akp<dbh> r = dbn.a("trades/savanna_armorer_helmet_5");
-   akp<dbh> s = dbn.a("trades/snow_armorer_boots_4");
-   akp<dbh> t = dbn.a("trades/snow_armorer_helmet_4");
-   akp<dbh> u = dbn.a("trades/snow_armorer_boots_5");
-   akp<dbh> v = dbn.a("trades/snow_armorer_helmet_5");
-   akp<dbh> w = dbn.a("trades/jungle_armorer_boots_4");
-   akp<dbh> x = dbn.a("trades/jungle_armorer_leggings_4");
-   akp<dbh> y = dbn.a("trades/jungle_armorer_chestplate_4");
-   akp<dbh> z = dbn.a("trades/jungle_armorer_helmet_4");
-   akp<dbh> A = dbn.a("trades/jungle_armorer_boots_5");
-   akp<dbh> B = dbn.a("trades/jungle_armorer_helmet_5");
-   akp<dbh> C = dbn.a("trades/swamp_armorer_boots_4");
-   akp<dbh> D = dbn.a("trades/swamp_armorer_leggings_4");
-   akp<dbh> E = dbn.a("trades/swamp_armorer_chestplate_4");
-   akp<dbh> F = dbn.a("trades/swamp_armorer_helmet_4");
-   akp<dbh> G = dbn.a("trades/swamp_armorer_boots_5");
-   akp<dbh> H = dbn.a("trades/swamp_armorer_helmet_5");
-   akp<dbh> I = dbn.a("trades/taiga_armorer_leggings_5");
-   akp<dbh> J = dbn.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qp<dbh> $$0) {
-      jn<daa> $$1 = $$0.a(lu.aL);
-      $$0.a(a, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(b, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(c, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(d, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(e, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(f, new dbl($$1.b(daf.h), bps.a(1)));
-      $$0.a(g, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(h, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(i, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(j, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(k, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(l, new dbl($$1.b(daf.a), bps.a(1)));
-      $$0.a(m, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(n, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(o, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(p, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(q, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(r, new dbl($$1.b(daf.k), bps.a(1)));
-      $$0.a(s, new dbl($$1.b(daf.j), bps.a(1)));
-      $$0.a(t, new dbl($$1.b(daf.g), bps.a(1)));
-      $$0.a(u, new dbl($$1.b(daf.j), bps.a(1)));
-      $$0.a(v, new dbl($$1.b(daf.g), bps.a(1)));
-      $$0.a(w, new dbl($$1.b(daf.w), bps.a(1)));
-      $$0.a(x, new dbl($$1.b(daf.w), bps.a(1)));
-      $$0.a(y, new dbl($$1.b(daf.w), bps.a(1)));
-      $$0.a(z, new dbl($$1.b(daf.w), bps.a(1)));
-      $$0.a(A, new dbl($$1.b(daf.c), bps.a(1)));
-      $$0.a(B, new dbl($$1.b(daf.e), bps.a(1)));
-      $$0.a(C, new dbl($$1.b(daf.O), bps.a(1)));
-      $$0.a(D, new dbl($$1.b(daf.O), bps.a(1)));
-      $$0.a(E, new dbl($$1.b(daf.O), bps.a(1)));
-      $$0.a(F, new dbl($$1.b(daf.O), bps.a(1)));
-      $$0.a(G, new dbl($$1.b(daf.i), bps.a(1)));
-      $$0.a(H, new dbl($$1.b(daf.f), bps.a(1)));
-      $$0.a(I, new dbl($$1.b(daf.d), bps.a(1)));
-      $$0.a(J, new dbl($$1.b(daf.d), bps.a(1)));
+public record dbm(jq<dac> d, int e, int f) implements dbj {
+   public static final int b = 10000;
+   public static final MapCodec<dbm> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kb.a(lu.aL).fieldOf("enchantments").forGetter(dbm::b),
+               axw.a(1, 10000).fieldOf("min_cost").forGetter(dbm::c),
+               axw.a(0, 10000).fieldOf("max_cost_span").forGetter(dbm::d)
+            )
+            .apply($$0, dbm::new)
+   );
+
+   @Override
+   public void a(cuq $$0, dai.a $$1, ayw $$2, bqp $$3) {
+      float $$4 = $$3.d();
+      int $$5 = ayo.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (daf $$7 : dae.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.a, $$7.b);
+      }
+   }
+
+   @Override
+   public MapCodec<dbm> a() {
+      return c;
+   }
+
+   public jq<dac> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

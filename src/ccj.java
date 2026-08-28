@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class ccj<T extends btn & btr> extends cak {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class ccj extends ccm {
+   private final bul a;
+   private btn b;
+   private int c;
 
-   public ccj(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ccj(bul $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cam.a.d));
    }
 
    @Override
    public boolean b() {
-      return this.b.dQ().ab().b(dcq.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().am() == bsw.by && this.b.ek() > this.d;
+      if (this.a.s() && !this.a.gl()) {
+         btn $$0 = this.a.T_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, cef.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.ek();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btr)$$0).forEach(btr::aa_);
+      this.e.h(this.b);
+      btn $$0 = this.a.T_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
       }
 
       super.d();
-   }
-
-   private List<? extends btn> i() {
-      double $$0 = this.b.g(buu.m);
-      ewr $$1 = ewr.a(this.b.do()).c($$0, 10.0, $$0);
-      return this.b.dQ().a((Class<? extends btn>)this.b.getClass(), $$1, bsv.f);
    }
 }

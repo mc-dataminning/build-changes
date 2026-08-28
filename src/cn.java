@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cn implements dw<dag> {
+public abstract class cn implements dw<dai> {
    private final List<bq> a;
 
    protected cn(List<bq> $$0) {
@@ -17,7 +17,7 @@ public abstract class cn implements dw<dag> {
       return this.a;
    }
 
-   public boolean a(cuo $$0, dag $$1) {
+   public boolean a(cuq $$0, dai $$1) {
       for (bq $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,7 +43,7 @@ public abstract class cn implements dw<dag> {
       }
 
       @Override
-      public kp<dag> a() {
+      public kp<dai> a() {
          return kq.k;
       }
    }
@@ -56,7 +56,7 @@ public abstract class cn implements dw<dag> {
       }
 
       @Override
-      public kp<dag> a() {
+      public kp<dai> a() {
          return kq.y;
       }
    }

@@ -1,30 +1,41 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class cri<I extends czc, R extends cyz<I>> extends cpu {
+   public cri(crc<?> $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-public interface cri {
-   void a(@Nullable cyz<?> var1);
+   public void a(boolean $$0, czb<?> $$1, aqv $$2) {
+      czb<R> $$3 = (czb<R>)$$1;
+      this.an_();
 
-   @Nullable
-   cyz<?> d();
-
-   default void a(cmv $$0, List<cuo> $$1) {
-      cyz<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().ao_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
+      try {
+         new akf<>(this).a($$2, $$3, $$0);
+      } finally {
+         this.b((czb<R>)$$1);
       }
    }
 
-   default boolean a(dcu $$0, aqu $$1, cyz<?> $$2) {
-      if (!$$2.b().ao_() && $$0.ab().b(dcq.w) && !$$1.J().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
-      }
+   protected void an_() {
    }
+
+   protected void b(czb<R> $$0) {
+   }
+
+   public abstract void a(cnb var1);
+
+   @Override
+   public abstract void l();
+
+   public abstract boolean a(czb<R> var1);
+
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract crj t();
+
+   public abstract boolean e(int var1);
 }

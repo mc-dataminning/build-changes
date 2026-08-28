@@ -1,30 +1,41 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class eth extends esy {
+public class eth implements etd {
    public static final MapCodec<eth> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kn.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eth::new)
+      $$0 -> $$0.group(etf.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eth::new)
    );
-   private final kn b;
+   public static final Codec<eth> b = etf.b.listOf().xmap(eth::new, $$0 -> $$0.c);
+   private final List<etd> c;
+   private final BiFunction<cuq, erp, cuq> d;
 
-   private eth(List<euw> $$0, kn $$1) {
-      super($$0);
-      this.b = $$1;
+   private eth(List<etd> $$0) {
+      this.c = $$0;
+      this.d = etf.a($$0);
+   }
+
+   public static eth a(List<etd> $$0) {
+      return new eth(List.copyOf($$0));
+   }
+
+   public cuq a(cuq $$0, erp $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public eta<eth> b() {
-      return etb.k;
+   public void a(erv $$0) {
+      etd.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      $$0.a(this.b);
-      return $$0;
-   }
-
-   public static <T> esy.a<?> a(kp<T> $$0, T $$1) {
-      return a($$2 -> new eth($$2, kn.a().a($$0, $$1).a()));
+   public ete<eth> b() {
+      return etf.I;
    }
 }

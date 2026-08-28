@@ -1,6 +1,11 @@
-class brr extends brw {
-   protected brr(brx $$0, int $$1) {
+class brr extends brx {
+   protected brr(bry $$0, int $$1) {
       super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(btn $$0, int $$1) {
+      return $$0.fp() > 0.0F || $$0.dP().B;
    }
 
    @Override
@@ -9,19 +14,8 @@ class brr extends brw {
    }
 
    @Override
-   public boolean a(btl $$0, int $$1) {
-      if ($$0 instanceof aqu $$2 && !$$2.N_()) {
-         aqt $$3 = $$2.A();
-         if ($$3.al() != bqn.a && $$3.c($$2.dq())) {
-            cog $$4 = $$3.d($$2.dq());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new bry(bsa.I, 600, $$1));
-               $$2.c($$2.dq());
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public void b(btn $$0, int $$1) {
+      super.b($$0, $$1);
+      $$0.C(Math.max($$0.fp(), (float)(4 * (1 + $$1))));
    }
 }

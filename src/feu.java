@@ -1,22 +1,41 @@
-public enum feu {
-   a(0, ejc.a),
-   b(1, ejc.b),
-   c(2, ejc.c),
-   d(3, ejc.d);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private final int e;
-   private final wy f;
+public interface feu {
+   feu a = new feu() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   private feu(final int $$0, final akp<ejb> $$1) {
-      this.e = $$0;
-      this.f = wy.c($$1.a().h("generator"));
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   public wy a() {
-      return this.f;
-   }
+   long a();
 
-   public int b() {
-      return this.e;
+   long b();
+
+   static feu a(final int $$0) {
+      return new feu() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,71 +1,110 @@
-public class dze {
-   public static final akp<eob.a> a = a("temperature");
-   public static final akp<eob.a> b = a("vegetation");
-   public static final akp<eob.a> c = a("continentalness");
-   public static final akp<eob.a> d = a("erosion");
-   public static final akp<eob.a> e = a("temperature_large");
-   public static final akp<eob.a> f = a("vegetation_large");
-   public static final akp<eob.a> g = a("continentalness_large");
-   public static final akp<eob.a> h = a("erosion_large");
-   public static final akp<eob.a> i = a("ridge");
-   public static final akp<eob.a> j = a("offset");
-   public static final akp<eob.a> k = a("aquifer_barrier");
-   public static final akp<eob.a> l = a("aquifer_fluid_level_floodedness");
-   public static final akp<eob.a> m = a("aquifer_lava");
-   public static final akp<eob.a> n = a("aquifer_fluid_level_spread");
-   public static final akp<eob.a> o = a("pillar");
-   public static final akp<eob.a> p = a("pillar_rareness");
-   public static final akp<eob.a> q = a("pillar_thickness");
-   public static final akp<eob.a> r = a("spaghetti_2d");
-   public static final akp<eob.a> s = a("spaghetti_2d_elevation");
-   public static final akp<eob.a> t = a("spaghetti_2d_modulator");
-   public static final akp<eob.a> u = a("spaghetti_2d_thickness");
-   public static final akp<eob.a> v = a("spaghetti_3d_1");
-   public static final akp<eob.a> w = a("spaghetti_3d_2");
-   public static final akp<eob.a> x = a("spaghetti_3d_rarity");
-   public static final akp<eob.a> y = a("spaghetti_3d_thickness");
-   public static final akp<eob.a> z = a("spaghetti_roughness");
-   public static final akp<eob.a> A = a("spaghetti_roughness_modulator");
-   public static final akp<eob.a> B = a("cave_entrance");
-   public static final akp<eob.a> C = a("cave_layer");
-   public static final akp<eob.a> D = a("cave_cheese");
-   public static final akp<eob.a> E = a("ore_veininess");
-   public static final akp<eob.a> F = a("ore_vein_a");
-   public static final akp<eob.a> G = a("ore_vein_b");
-   public static final akp<eob.a> H = a("ore_gap");
-   public static final akp<eob.a> I = a("noodle");
-   public static final akp<eob.a> J = a("noodle_thickness");
-   public static final akp<eob.a> K = a("noodle_ridge_a");
-   public static final akp<eob.a> L = a("noodle_ridge_b");
-   public static final akp<eob.a> M = a("jagged");
-   public static final akp<eob.a> N = a("surface");
-   public static final akp<eob.a> O = a("surface_secondary");
-   public static final akp<eob.a> P = a("clay_bands_offset");
-   public static final akp<eob.a> Q = a("badlands_pillar");
-   public static final akp<eob.a> R = a("badlands_pillar_roof");
-   public static final akp<eob.a> S = a("badlands_surface");
-   public static final akp<eob.a> T = a("iceberg_pillar");
-   public static final akp<eob.a> U = a("iceberg_pillar_roof");
-   public static final akp<eob.a> V = a("iceberg_surface");
-   public static final akp<eob.a> W = a("surface_swamp");
-   public static final akp<eob.a> X = a("calcite");
-   public static final akp<eob.a> Y = a("gravel");
-   public static final akp<eob.a> Z = a("powder_snow");
-   public static final akp<eob.a> aa = a("packed_ice");
-   public static final akp<eob.a> ab = a("ice");
-   public static final akp<eob.a> ac = a("soul_sand_layer");
-   public static final akp<eob.a> ad = a("gravel_layer");
-   public static final akp<eob.a> ae = a("patch");
-   public static final akp<eob.a> af = a("netherrack");
-   public static final akp<eob.a> ag = a("nether_wart");
-   public static final akp<eob.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private static akp<eob.a> a(String $$0) {
-      return akp.a(lu.aP, akq.b($$0));
+public record dze(dyr b, dyr c, dyr d, dyr e, dyr f, dyr g, dyr h, dyr i, dyr j, dyr k, dyr l, dyr m, dyr n, dyr o, dyr p) {
+   public static final Codec<dze> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dze::a),
+               a("fluid_level_floodedness", dze::b),
+               a("fluid_level_spread", dze::c),
+               a("lava", dze::d),
+               a("temperature", dze::e),
+               a("vegetation", dze::f),
+               a("continents", dze::g),
+               a("erosion", dze::h),
+               a("depth", dze::i),
+               a("ridges", dze::j),
+               a("initial_density_without_jaggedness", dze::k),
+               a("final_density", dze::l),
+               a("vein_toggle", dze::m),
+               a("vein_ridged", dze::n),
+               a("vein_gap", dze::o)
+            )
+            .apply($$0, dze::new)
+   );
+
+   private static RecordCodecBuilder<dze, dyr> a(String $$0, Function<dze, dyr> $$1) {
+      return dyr.d.fieldOf($$0).forGetter($$1);
    }
 
-   public static eob a(jn<eob.a> $$0, dzi $$1, akp<eob.a> $$2) {
-      jm<eob.a> $$3 = $$0.b($$2);
-      return eob.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public dze a(dyr.f $$0) {
+      return new dze(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
+   }
+
+   public dyr a() {
+      return this.b;
+   }
+
+   public dyr b() {
+      return this.c;
+   }
+
+   public dyr c() {
+      return this.d;
+   }
+
+   public dyr d() {
+      return this.e;
+   }
+
+   public dyr e() {
+      return this.f;
+   }
+
+   public dyr f() {
+      return this.g;
+   }
+
+   public dyr g() {
+      return this.h;
+   }
+
+   public dyr h() {
+      return this.i;
+   }
+
+   public dyr i() {
+      return this.j;
+   }
+
+   public dyr j() {
+      return this.k;
+   }
+
+   public dyr k() {
+      return this.l;
+   }
+
+   public dyr l() {
+      return this.m;
+   }
+
+   public dyr m() {
+      return this.n;
+   }
+
+   public dyr n() {
+      return this.o;
+   }
+
+   public dyr o() {
+      return this.p;
    }
 }

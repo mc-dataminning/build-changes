@@ -1,154 +1,77 @@
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class eon implements eoq {
-   public static final int b = 1;
-   protected final dcw c;
+public abstract class eon<M extends eon<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dvd[] d = new dvd[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dvd> a;
+
+   protected eon(Long2ObjectOpenHashMap<dvd> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
+   }
+
+   public abstract M b();
+
+   public dvd a(long $$0) {
+      dvd $$1 = ((dvd)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
+   }
+
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
    @Nullable
-   private final eop<?, ?> a;
-   @Nullable
-   private final eop<?, ?> d;
-
-   public eon(dvj $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new eog($$0) : null;
-      this.d = $$2 ? new eor($$0) : null;
-   }
-
-   @Override
-   public void a(jd $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
+   public dvd c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
       }
 
-      if (this.d != null) {
-         this.d.a($$0);
-      }
-   }
-
-   @Override
-   public boolean K_() {
-      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(kf $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(dcb $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dcb $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public eol a(ddd $$0) {
-      if ($$0 == ddd.b) {
-         return (eol)(this.a == null ? eol.a.a : this.a);
+      dvd $$2 = (dvd)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
       } else {
-         return (eol)(this.d == null ? eol.a.a : this.d);
-      }
-   }
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
 
-   public String a(ddd $$0, kf $$1) {
-      if ($$0 == ddd.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+            this.c[0] = $$0;
+            this.d[0] = $$2;
          }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
 
-      return "n/a";
-   }
-
-   public eom.b b(ddd $$0, kf $$1) {
-      if ($$0 == ddd.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return eom.b.a;
-   }
-
-   public void a(ddd $$0, kf $$1, @Nullable dvb $$2) {
-      if ($$0 == ddd.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
+         return $$2;
       }
    }
 
-   public void b(dcb $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   @Nullable
+   public dvd d(long $$0) {
+      return (dvd)this.a.remove($$0);
+   }
+
+   public void a(long $$0, dvd $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
    }
 
-   public int a(jd $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(kf $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.an() + 2;
-   }
-
-   public int d() {
-      return this.c.ao() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   public void d() {
+      this.e = false;
    }
 }

@@ -1,48 +1,94 @@
-import com.google.common.base.Charsets;
-import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ezs {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+   private final List<ConcurrentLinkedQueue<ezr>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? azi.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
-      }
-
-      return $$3;
+   public ezs() {
+      this.c = this.e = this.f + 1;
    }
 
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
       } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
-
-         try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
-         }
+         return false;
       }
+   }
+
+   public void a(ezr $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<ezr> $$1 = this.i();
+         $$1.add($$0);
+      }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<ezr> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<ezr> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<ezr> j() {
+      return this.a.get(this.e);
    }
 }

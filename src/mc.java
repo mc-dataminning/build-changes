@@ -19,11 +19,11 @@ public class mc {
       return new mc.a(this, $$0, $$1);
    }
 
-   public mc.a a(akp<? extends jz<?>> $$0) {
+   public mc.a a(akq<? extends jz<?>> $$0) {
       return this.a(mc.b.a, lu.c($$0));
    }
 
-   public mc.a b(akp<? extends jz<?>> $$0) {
+   public mc.a b(akq<? extends jz<?>> $$0) {
       return this.a(mc.b.a, lu.d($$0));
    }
 
@@ -36,11 +36,11 @@ public class mc {
          this.b = $$2;
       }
 
-      public Path a(akq $$0, String $$1) {
+      public Path a(akr $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(akq $$0) {
+      public Path a(akr $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
    }

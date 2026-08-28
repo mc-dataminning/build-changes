@@ -1,31 +1,51 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnd extends dhq {
-   public static final MapCodec<dnd> b = b(dnd::new);
-   private static final wy c = wy.c("container.upgrade");
+public class dnd extends djo {
+   public static final MapCodec<dnd> a = b(dnd::new);
 
    @Override
    public MapCodec<dnd> a() {
-      return b;
+      return a;
    }
 
-   protected dnd(dsz.d $$0) {
+   public dnd(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqu b(dta $$0, dcu $$1, jd $$2) {
-      return new bra(($$2x, $$3, $$4) -> new crr($$2x, $$3, cqe.a($$1, $$2)), c);
+   public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
+      if ($$3.bY()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.aj().l());
+      }
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         return bqq.a;
+   public void a(dcc $$0, bsr $$1) {
+      if ($$1.bY()) {
+         super.a($$0, $$1);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avy.aF);
-         return bqq.c;
+         this.a($$1);
       }
+   }
+
+   private void a(bsr $$0) {
+      exa $$1 = $$0.ds();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof btn ? 1.0 : 0.8;
+         $$0.n($$1.c, -$$1.d * $$2, $$1.e);
+      }
+   }
+
+   @Override
+   public void a(dcw $$0, jd $$1, dtc $$2, bsr $$3) {
+      double $$4 = Math.abs($$3.ds().d);
+      if ($$4 < 0.1 && !$$3.bX()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.i($$3.ds().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

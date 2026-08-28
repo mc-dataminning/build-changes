@@ -1,28 +1,23 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bxz extends bvf<btn> {
-   private final float c;
-
-   public bxz(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static boolean a(btn $$0) {
-      return $$0.bf() && $$0.b(awj.a) > $$0.dj() || $$0.bt();
-   }
-
-   protected boolean a(aqt $$0, btn $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(aqt $$0, btn $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqt $$0, btn $$1, long $$2) {
-      if ($$1.dT().i() < this.c) {
-         $$1.I().a();
-      }
+public class bxz {
+   public static bvi<btw> a(ccs<jl> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return byu.a(
+         (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$5 -> $$5.group($$5.a(ccs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jl $$10 = $$5.b($$6);
+                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dn(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new ccv($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

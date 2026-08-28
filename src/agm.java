@@ -1,20 +1,29 @@
-public record agm(int b) implements zf<agh> {
-   public static final yw<vv, agm> a = zf.a(agm::a, agm::new);
+public class agm implements zg<agi> {
+   public static final yx<vw, agm> a = zg.a(agm::a, agm::new);
+   private final bqo b;
 
-   private agm(vv $$0) {
-      this($$0.l());
+   public agm(bqo $$0) {
+      this.b = $$0;
    }
 
-   private void a(vv $$0) {
-      $$0.c(this.b);
+   private agm(vw $$0) {
+      this.b = bqo.a($$0.readUnsignedByte());
+   }
+
+   private void a(vw $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zh<agm> a() {
-      return agf.bi;
+   public zi<agm> a() {
+      return agg.bh;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
+   }
+
+   public bqo b() {
+      return this.b;
    }
 }

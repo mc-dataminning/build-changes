@@ -1,89 +1,94 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dik extends dfi implements dlp {
+public class dik extends dfk {
    public static final MapCodec<dik> a = b(dik::new);
-   protected static final exp b = dfw.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<jd> c = jd.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jd::j).toList();
 
    @Override
    public MapCodec<dik> a() {
       return a;
    }
 
-   protected dik(dsz.d $$0) {
+   protected dik(dtb.d $$0) {
       super($$0);
    }
 
-   @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new drx($$0, $$1);
+   public static boolean a(dcw $$0, jd $$1, jd $$2) {
+      return $$0.a_($$1.a((kh)$$2)).a(awe.cv) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awe.cw);
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+   protected boolean f_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
       return b;
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, bsq $$3) {
-      if ($$3.cx() && exm.c(exm.a($$3.cL().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), exa.i)) {
-         if (!$$1.B && $$1.af() == dcu.j && $$3 instanceof aqu $$4 && !$$4.f) {
-            $$4.q();
-            return;
-         }
+   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-         $$3.a(this, $$2);
+      for (jd $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lm.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
       }
    }
 
    @Override
-   public epw a(aqt $$0, bsq $$1, jd $$2) {
-      akp<dcu> $$3 = $$0.af() == dcu.j ? dcu.h : dcu.j;
-      aqt $$4 = $$0.o().a($$3);
-      boolean $$5 = $$3 == dcu.j;
-      jd $$6 = $$5 ? aqt.a : $$4.V();
-      eww $$7 = new eww((double)$$6.u() + 0.5, (double)$$6.v(), (double)$$6.w() + 0.5);
-      if ($$5) {
-         this.a($$4, jd.a((jw)$$7).d());
+   protected dmf a_(dtc $$0) {
+      return dmf.c;
+   }
+
+   @Override
+   public dqh a(jd $$0, dtc $$1) {
+      return new drc($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
+      return $$0.B ? a($$2, dqj.m, drc::a) : null;
+   }
+
+   @Override
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$1.B) {
+         return bqr.a;
       } else {
-         if ($$1 instanceof aqu $$8) {
-            return $$8.a(false);
-         }
-
-         int $$9 = $$4.m($$6).a(dyv.a.f, $$6.u(), $$6.w()) + 1;
-         $$7 = new eww($$7.c, (double)$$9, $$7.e);
+         $$3.a($$0.b($$1, $$2));
+         return bqr.c;
       }
-
-      return new epw($$4, $$7, $$1.dt(), $$1.dG(), $$1.dI());
    }
 
-   private void a(aqt $$0, jd $$1) {
-      jd.a $$2 = $$1.j();
-
-      for (int $$3 = -2; $$3 <= 2; $$3++) {
-         for (int $$4 = -2; $$4 <= 2; $$4++) {
-            for (int $$5 = -1; $$5 < 3; $$5++) {
-               dta $$6 = $$5 == -1 ? dfy.co.o() : dfy.a.o();
-               $$0.b($$2.g($$1).e($$4, $$5, $$3), $$6);
-            }
-         }
+   @Nullable
+   @Override
+   protected bqv b(dtc $$0, dcw $$1, jd $$2) {
+      dqh $$3 = $$1.c_($$2);
+      if ($$3 instanceof drc) {
+         wz $$4 = ((bqw)$$3).S_();
+         return new brb(($$2x, $$3x, $$4x) -> new cqp($$2x, $$3x, cqg.a($$1, $$2)), $$4);
+      } else {
+         return null;
       }
    }
 
    @Override
-   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lm.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public cuo a(dcx $$0, jd $$1, dta $$2) {
-      return cuo.l;
-   }
-
-   @Override
-   protected boolean a(dta $$0, eox $$1) {
+   protected boolean a(dtc $$0, epr $$1) {
       return false;
    }
 }

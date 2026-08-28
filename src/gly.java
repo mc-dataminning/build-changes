@@ -1,11 +1,12 @@
-public class gly extends glj<ckg, fwr> {
-   private static final akq a = akq.b("textures/entity/illager/ravager.png");
+public class gly extends gla<ckg> {
+   private static final akr a = akr.b("textures/entity/illager/pillager.png");
 
-   public gly(gkd.a $$0) {
-      super($$0, new fwr($$0.a(fyd.bg)), 1.1F);
+   public gly(gkh.a $$0) {
+      super($$0, new fvw<>($$0.a(fyh.aS)), 0.5F);
+      this.a(new gom<>(this, $$0.d()));
    }
 
-   public akq a(ckg $$0) {
+   public akr a(ckg $$0) {
       return a;
    }
 }

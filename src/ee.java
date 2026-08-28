@@ -8,8 +8,8 @@ public class ee extends dv<ee.a> {
       return ee.a.a;
    }
 
-   public void a(aqu $$0, cfc $$1) {
-      erl $$2 = bv.b($$0, $$1);
+   public void a(aqv $$0, cfe $$1) {
+      erp $$2 = bv.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,7 +26,7 @@ public class ee extends dv<ee.a> {
          return an.y.a(new ee.a(Optional.empty(), Optional.of(bv.a($$0))));
       }
 
-      public boolean a(erl $$0) {
+      public boolean a(erp $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

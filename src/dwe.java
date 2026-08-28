@@ -1,5 +1,2 @@
-import java.util.concurrent.CompletableFuture;
-
-public interface dwe {
-   CompletableFuture<Void> a(dcb var1, uu var2);
+public record dwe(aqu a, duz b, ens c, aqx d, bpj<aqe.a<Runnable>> e) {
 }

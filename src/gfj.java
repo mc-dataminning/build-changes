@@ -1,44 +1,63 @@
-public class gfj implements fbg {
-   private final fbg a;
-   private final gqf b;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gfj(fbg $$0, gqf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gfj {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<gfi> b;
+   private volatile int c;
+
+   private gfj(List<gfi> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   @Override
-   public fbg a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static gfj a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gfi.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<gfi> $$3 = new ArrayList<>($$2);
+
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new gfi());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
+      }
+
+      return new gfj($$3);
    }
 
-   @Override
-   public fbg a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   @Nullable
+   public gfi a() {
+      gfi $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   public fbg a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public void a(gfi $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
    }
 
-   @Override
-   public fbg a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public boolean b() {
+      return this.b.isEmpty();
    }
 
-   @Override
-   public fbg b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public fbg b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public int c() {
+      return this.c;
    }
 }

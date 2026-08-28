@@ -1,14 +1,12 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public class gsd implements atc<gsc> {
-   public gsc b(JsonObject $$0) {
-      boolean $$1 = ayd.a($$0, "blur", false);
-      boolean $$2 = ayd.a($$0, "clamp", false);
-      return new gsc($$1, $$2);
-   }
+public record gsd(Map<String, grq> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gsd> b = Codec.unboundedMap(a, grq.a).xmap(gsd::new, gsd::a);
+   public static final ate<gsd> c = ate.a("language", b);
 
-   @Override
-   public String a() {
-      return "texture";
+   public Map<String, grq> a() {
+      return this.d;
    }
 }

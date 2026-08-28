@@ -1,65 +1,107 @@
-public abstract class gtg extends gtc {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cfd n;
-   private boolean r;
+public abstract class gtg implements gty {
+   protected gtv a;
+   protected final avq b;
+   protected final akr c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gty.a k = gty.a.b;
+   protected boolean l;
+   protected ayw m;
 
-   public gtg(cfd $$0, avn $$1, avp $$2) {
-      super($$1, $$2, gtt.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dv());
-      this.g = (double)((float)$$0.dx());
-      this.h = (double)((float)$$0.dB());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   protected gtg(avo $$0, avq $$1, ayw $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected gtg(akr $$0, avq $$1, ayw $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         fgi.Q().aj().a((gtu)this.o());
-         this.r = true;
-      }
+   public akr a() {
+      return this.c;
+   }
 
-      if (!this.n.dL() && !this.r) {
-         this.f = (double)((float)this.n.dv());
-         this.g = (double)((float)this.n.dx());
-         this.h = (double)((float)this.n.dB());
-         float $$1 = (float)this.n.dt().h();
-         if ($$1 >= 0.01F) {
-            this.e = ayn.i(ayn.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ayn.i(ayn.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   @Override
+   public gve a(gvd $$0) {
+      if (this.c.equals(gvd.c)) {
+         this.a = gvd.e;
+         return gvd.d;
       } else {
-         this.n();
+         gve $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gvd.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
       }
    }
 
-   private float u() {
-      return this.n.o_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.o_() ? 1.5F : 1.1F;
+   @Override
+   public gtv b() {
+      return this.a;
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public avq c() {
+      return this.b;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aX();
+   public boolean d() {
+      return this.i;
    }
 
-   protected abstract gtc o();
+   @Override
+   public int e() {
+      return this.j;
+   }
 
-   protected abstract boolean p();
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gty.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
+   }
 }

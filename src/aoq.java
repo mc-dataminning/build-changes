@@ -1,116 +1,61 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
 
 public class aoq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wz.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<et> $$0) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tag").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("summon").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.b())
-                        .then(
-                           eu.a("add")
-                              .then(
-                                 eu.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        eu.a("remove")
-                           .then(
-                              eu.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> ey.b(a(fg.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(eu.a("list").executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"))))
+               ((RequiredArgumentBuilder)eu.a("entity", fs.a($$1, lu.z))
+                     .suggests(is.d)
+                     .executes($$0x -> b((et)$$0x.getSource(), fs.e($$0x, "entity"), ((et)$$0x.getSource()).d(), new ub(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("pos", gw.a())
+                           .executes($$0x -> b((et)$$0x.getSource(), fs.e($$0x, "entity"), gw.a($$0x, "pos"), new ub(), true)))
+                        .then(eu.a("nbt", fd.a()).executes($$0x -> b((et)$$0x.getSource(), fs.e($$0x, "entity"), gw.a($$0x, "pos"), fd.a($$0x, "nbt"), false)))
+                  )
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends bsq> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bsq $$2 : $$0) {
-         $$1.addAll($$2.ao());
-      }
-
-      return $$1;
-   }
-
-   private static int a(et $$0, Collection<? extends bsq> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bsq $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
+   public static bsr a(et $$0, jm.c<bsx<?>> $$1, exa $$2, ub $$3, boolean $$4) throws CommandSyntaxException {
+      jd $$5 = jd.a((jw)$$2);
+      if (!dcw.l($$5)) {
+         throw c.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wy.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         ub $$6 = $$3.i();
+         $$6.a("id", $$1.h().a().toString());
+         aqu $$7 = $$0.e();
+         bsr $$8 = bsx.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dF(), $$1x.dH());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
          } else {
-            $$0.a(() -> wy.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
+            if ($$4 && $$8 instanceof btp) {
+               ((btp)$$8).a($$0.e(), $$0.e().d_($$8.dp()), btr.n, null);
+            }
 
-         return $$3;
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
    }
 
-   private static int b(et $$0, Collection<? extends bsq> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bsq $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wy.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wy.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(et $$0, Collection<? extends bsq> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bsq $$3 : $$1) {
-         $$2.addAll($$3.ao());
-      }
-
-      if ($$1.size() == 1) {
-         bsq $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> wy.a("commands.tag.list.single.empty", $$4.O_()), false);
-         } else {
-            $$0.a(() -> wy.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), xb.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> wy.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> wy.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xb.a($$2)), false);
-      }
-
-      return $$2.size();
+   private static int b(et $$0, jm.c<bsx<?>> $$1, exa $$2, ub $$3, boolean $$4) throws CommandSyntaxException {
+      bsr $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> wz.a("commands.summon.success", $$5.S_()), true);
+      return 1;
    }
 }

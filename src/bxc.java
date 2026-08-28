@@ -1,15 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxc<E extends btl> extends bvt<E> {
-   public bxc(List<Pair<? extends bvg<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
+public class bxc {
+   public static bvi<btn> a() {
+      return byu.a((Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.a((byx<btn>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               buq<?> $$3 = $$1.dU();
+               coi $$4 = $$0x.d($$1.dp());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(com.b);
+                  $$3.a($$0x.aa(), $$0x.Z());
+               }
 
-   public bxc(Map<ccq<?>, ccr> $$0, List<Pair<? extends bvg<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bvt.a.b, bvt.b.a, $$1);
+               return true;
+            }
+         }))));
    }
 }

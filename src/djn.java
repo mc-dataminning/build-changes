@@ -1,65 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djn extends dfw implements dmy {
-   public static final MapCodec<djn> a = b(djn::new);
-   private static final dtr c = dtq.C;
-   protected static final exp b = dfw.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public abstract class djn extends djl implements dgb {
+   public static final duc e = dts.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<djn> a() {
-      return a;
-   }
-
-   protected djn(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   protected djn(dtb.d $$0, ji $$1, ext $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(c);
+   protected abstract MapCodec<? extends djn> a();
+
+   @Override
+   public dtc a(dcx $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   protected eoy b_(dta $$0) {
-      return $$0.c(c) ? eoz.c.a(false) : super.b_($$0);
+   protected boolean d_(dtc $$0) {
+      return $$0.c(e) < 25;
    }
 
-   @Nullable
    @Override
-   public dta a(cyb $$0) {
-      dta $$1 = super.a($$0);
-      if ($$1 != null) {
-         eoy $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eoz.c));
-      } else {
-         return null;
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         jd $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   protected boolean a(dta $$0, dcx $$1, jd $$2) {
-      jd $$3 = $$2.c();
-      dta $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ji.a);
+   protected dtc a(dtc $$0, ayw $$1) {
+      return $$0.a(e);
+   }
+
+   public dtc n(dtc $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dtc $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dtc a(dtc $$0, dtc $$1) {
+      return $$1;
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return b;
-   }
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      if ($$1 == ji.b && !this.a($$0, $$3, $$4)) {
-         return dfy.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eoz.c, eoz.c.a($$3));
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, epd.c, epd.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
       }
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      jd $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(ayw var1);
+
+   protected abstract boolean g(dtc var1);
+
+   @Override
+   protected djn c() {
+      return this;
    }
 }

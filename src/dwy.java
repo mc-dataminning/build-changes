@@ -1,521 +1,233 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ContiguousSet;
-import com.google.common.collect.DiscreteDomain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Range;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.OptionalLong;
 
-public class dwy {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 1200;
-   private static final int f = 100;
-   public static final int a = 20;
-   private static final int g = 8;
-   public static final int b = 9;
-   private static final int h = 20;
-   private static final int i = 96;
-   public static final int c = 128;
-   private final Predicate<bsq> j;
-   private final aqq k = (aqq)new aqq(wy.c("entity.minecraft.ender_dragon"), bqg.a.a, bqg.b.a).b(true).c(true);
-   private final aqt l;
-   private final jd m;
-   private final ObjectArrayList<Integer> n = new ObjectArrayList();
-   private final dtf o;
-   private int p;
-   private int q;
-   private int r;
-   private int s = 21;
-   private boolean t;
-   private boolean u;
-   private boolean v = false;
-   @Nullable
-   private UUID w;
-   private boolean x = true;
-   @Nullable
-   private jd y;
-   @Nullable
-   private dwx z;
-   private int A;
-   @Nullable
-   private List<chx> B;
+public record dwy(
+   OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, awu<dfy> w, akr x, float y, dwy.a z
+) {
+   public static final int a = jd.d;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<dwy> h = axw.c(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axw.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dwy::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(dwy::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dwy::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dwy::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(dwy::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dwy::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(dwy::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dwy::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dwy::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(dwy::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dwy::p),
+                  awu.b(lu.f).fieldOf("infiniburn").forGetter(dwy::q),
+                  akr.a.fieldOf("effects").orElse(dww.e).forGetter(dwy::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dwy::s),
+                  dwy.a.a.forGetter(dwy::t)
+               )
+               .apply($$0, dwy::new)
+      )
+   );
+   public static final yx<wk, jm<dwy>> i = yv.b(lu.aK);
+   private static final int A = 8;
+   public static final float[] j = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<jm<dwy>> k = akn.a(lu.aK, h);
 
-   public dwy(aqt $$0, long $$1, dwy.a $$2) {
-      this($$0, $$1, $$2, jd.c);
-   }
-
-   public dwy(aqt $$0, long $$1, dwy.a $$2, jd $$3) {
-      this.l = $$0;
-      this.m = $$3;
-      this.j = bsv.a.and(bsv.a((double)$$3.u(), (double)(128 + $$3.v()), (double)$$3.w(), 192.0));
-      this.x = $$2.c;
-      this.w = $$2.g.orElse(null);
-      this.t = $$2.d;
-      this.u = $$2.e;
-      if ($$2.f) {
-         this.z = dwx.a;
-      }
-
-      this.y = $$2.h.orElse(null);
-      this.n.addAll($$2.i.orElseGet(() -> {
-         ObjectArrayList<Integer> $$1x = new ObjectArrayList(ContiguousSet.create(Range.closedOpen(0, 20), DiscreteDomain.integers()));
-         ad.c($$1x, ayv.a($$1));
-         return $$1x;
-      }));
-      this.o = dtg.a()
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("  ###  ", " #   # ", "#     #", "#  #  #", "#     #", " #   # ", "  ###  ")
-         .a("       ", "  ###  ", " ##### ", " ##### ", " ##### ", "  ###  ", "       ")
-         .a('#', dte.a(dti.a(dfy.F)))
-         .b();
-   }
-
-   @Deprecated
-   @VisibleForTesting
-   public void a() {
-      this.v = true;
-   }
-
-   public dwy.a b() {
-      return new dwy.a(this.x, this.t, this.u, false, Optional.ofNullable(this.w), Optional.ofNullable(this.y), Optional.of(this.n));
-   }
-
-   public void c() {
-      this.k.d(!this.t);
-      if (++this.s >= 20) {
-         this.o();
-         this.s = 0;
-      }
-
-      if (!this.k.g().isEmpty()) {
-         this.l.l().a(aqy.b, new dcb(0, 0), 9, azr.a);
-         boolean $$0 = this.n();
-         if (this.x && $$0) {
-            this.j();
-            this.x = false;
-         }
-
-         if (this.z != null) {
-            if (this.B == null && $$0) {
-               this.z = null;
-               this.g();
-            }
-
-            this.z.a(this.l, this, this.B, this.A++, this.y);
-         }
-
-         if (!this.t) {
-            if ((this.w == null || ++this.p >= 1200) && $$0) {
-               this.k();
-               this.p = 0;
-            }
-
-            if (++this.r >= 100 && $$0) {
-               this.p();
-               this.r = 0;
-            }
-         }
+   public dwy(
+      OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, awu<dfy> w, akr x, float y, dwy.a z
+   ) {
+      if (u < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (t + u > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (v > u) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (u % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (t % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         this.l.l().b(aqy.b, new dcb(0, 0), 9, azr.a);
-      }
-   }
-
-   private void j() {
-      d.info("Scanning for legacy world dragon fight...");
-      boolean $$0 = this.l();
-      if ($$0) {
-         d.info("Found that the dragon has been killed in this world already.");
-         this.u = true;
-      } else {
-         d.info("Found that the dragon has not yet been killed in this world.");
-         this.u = false;
-         if (this.m() == null) {
-            this.a(false);
-         }
-      }
-
-      List<? extends chy> $$1 = this.l.i();
-      if ($$1.isEmpty()) {
-         this.t = true;
-      } else {
-         chy $$2 = $$1.get(0);
-         this.w = $$2.cA();
-         d.info("Found that there's a dragon still alive ({})", $$2);
-         this.t = false;
-         if (!$$0) {
-            d.info("But we didn't have a portal, let's remove it.");
-            $$2.aq();
-            this.w = null;
-         }
-      }
-
-      if (!this.u && this.t) {
-         this.t = false;
-      }
-   }
-
-   private void k() {
-      List<? extends chy> $$0 = this.l.i();
-      if ($$0.isEmpty()) {
-         d.debug("Haven't seen the dragon, respawning it");
-         this.r();
-      } else {
-         d.debug("Haven't seen our dragon, but found another one to use.");
-         this.w = $$0.get(0).cA();
-      }
-   }
-
-   protected void a(dwx $$0) {
-      if (this.z == null) {
-         throw new IllegalStateException("Dragon respawn isn't in progress, can't skip ahead in the animation.");
-      } else {
-         this.A = 0;
-         if ($$0 == dwx.e) {
-            this.z = null;
-            this.t = false;
-            chy $$1 = this.r();
-            if ($$1 != null) {
-               for (aqu $$2 : this.k.g()) {
-                  an.o.a($$2, $$1);
-               }
-            }
-         } else {
-            this.z = $$0;
-         }
-      }
-   }
-
-   private boolean l() {
-      for (int $$0 = -8; $$0 <= 8; $$0++) {
-         for (int $$1 = -8; $$1 <= 8; $$1++) {
-            dvg $$2 = this.l.d($$0, $$1);
-
-            for (dqf $$3 : $$2.G().values()) {
-               if ($$3 instanceof drx) {
-                  return true;
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Nullable
-   private dtf.b m() {
-      dcb $$0 = new dcb(this.m);
-
-      for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
-         for (int $$2 = -8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
-            dvg $$3 = this.l.d($$1, $$2);
-
-            for (dqf $$4 : $$3.G().values()) {
-               if ($$4 instanceof drx) {
-                  dtf.b $$5 = this.o.a(this.l, $$4.az_());
-                  if ($$5 != null) {
-                     jd $$6 = $$5.a(3, 3, 3).d();
-                     if (this.y == null) {
-                        this.y = $$6;
-                     }
-
-                     return $$5;
-                  }
-               }
-            }
-         }
-      }
-
-      jd $$7 = ebz.a(this.m);
-      int $$8 = this.l.a(dyv.a.e, $$7).v();
-
-      for (int $$9 = $$8; $$9 >= this.l.I_(); $$9--) {
-         dtf.b $$10 = this.o.a(this.l, new jd($$7.u(), $$9, $$7.w()));
-         if ($$10 != null) {
-            if (this.y == null) {
-               this.y = $$10.a(3, 3, 3).d();
-            }
-
-            return $$10;
-         }
-      }
-
-      return null;
-   }
-
-   private boolean n() {
-      if (this.v) {
-         return true;
-      } else {
-         dcb $$0 = new dcb(this.m);
-
-         for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
-            for (int $$2 = 8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
-               duw $$3 = this.l.a($$1, $$2, dvx.n, false);
-               if (!($$3 instanceof dvg)) {
-                  return false;
-               }
-
-               aqk $$4 = ((dvg)$$3).D();
-               if (!$$4.a(aqk.c)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private void o() {
-      Set<aqu> $$0 = Sets.newHashSet();
-
-      for (aqu $$1 : this.l.a(this.j)) {
-         this.k.a($$1);
-         $$0.add($$1);
-      }
-
-      Set<aqu> $$2 = Sets.newHashSet(this.k.g());
-      $$2.removeAll($$0);
-
-      for (aqu $$3 : $$2) {
-         this.k.b($$3);
-      }
-   }
-
-   private void p() {
-      this.r = 0;
-      this.q = 0;
-
-      for (edk.a $$0 : edk.a(this.l)) {
-         this.q = this.q + this.l.a(chx.class, $$0.f()).size();
-      }
-
-      d.debug("Found {} end crystals still alive", this.q);
-   }
-
-   public void a(chy $$0) {
-      if ($$0.cA().equals(this.w)) {
-         this.k.a(0.0F);
-         this.k.d(false);
-         this.a(true);
-         this.q();
-         if (!this.u) {
-            this.l.b(this.l.a(dyv.a.e, ebz.a(this.m)), dfy.fA.o());
-         }
-
-         this.u = true;
-         this.t = true;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
+         this.z = z;
       }
    }
 
    @Deprecated
-   @VisibleForTesting
-   public void d() {
-      this.n.clear();
-   }
+   public static DataResult<akq<dcw>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dcw.i);
+         }
 
-   private void q() {
-      if (!this.n.isEmpty()) {
-         int $$0 = (Integer)this.n.remove(this.n.size() - 1);
-         int $$1 = ayn.a(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
-         int $$2 = ayn.a(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
-         this.a(new jd($$1, 75, $$2));
-      }
-   }
+         if ($$2 == 0) {
+            return DataResult.success(dcw.h);
+         }
 
-   private void a(jd $$0) {
-      this.l.c(3000, $$0, 0);
-      this.l.H_().c(lu.aI).flatMap($$0x -> $$0x.b(rp.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.l().g(), ayv.a(), $$0));
-   }
-
-   private void a(boolean $$0) {
-      ebz $$1 = new ebz($$0);
-      if (this.y == null) {
-         this.y = this.l.a(dyv.a.f, ebz.a(this.m)).d();
-
-         while (this.l.a_(this.y).a(dfy.F) && this.y.v() > this.l.z_()) {
-            this.y = this.y.d();
+         if ($$2 == 1) {
+            return DataResult.success(dcw.j);
          }
       }
 
-      if ($$1.a(eee.m, this.l, this.l.l().g(), ayv.a(), this.y)) {
-         int $$2 = ayn.e(4, 16);
-         this.l.l().a.a(new dcb(this.y), $$2);
+      return dcw.g.parse($$0);
+   }
+
+   public static double a(dwy $$0, dwy $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
+
+   public static Path a(akq<dcw> $$0, Path $$1) {
+      if ($$0 == dcw.h) {
+         return $$1;
+      } else if ($$0 == dcw.j) {
+         return $$1.resolve("DIM1");
+      } else {
+         return $$0 == dcw.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   @Nullable
-   private chy r() {
-      this.l.m(new jd(this.m.u(), 128 + this.m.v(), this.m.w()));
-      chy $$0 = bsw.F.a((dcu)this.l);
-      if ($$0 != null) {
-         $$0.a(this);
-         $$0.c(this.m);
-         $$0.gj().a(cio.a);
-         $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.z.i() * 360.0F, 0.0F);
-         this.l.b($$0);
-         this.w = $$0.cA();
-      }
-
-      return $$0;
+   public boolean a() {
+      return this.l.isPresent();
    }
 
-   public void b(chy $$0) {
-      if ($$0.cA().equals(this.w)) {
-         this.k.a($$0.ex() / $$0.eO());
-         this.p = 0;
-         if ($$0.ai()) {
-            this.k.a($$0.O_());
-         }
-      }
+   public float a(long $$0) {
+      double $$1 = ayo.e((double)this.l.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
+
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.z.a();
+   }
+
+   public boolean c() {
+      return this.z.b();
+   }
+
+   public bpw d() {
+      return this.z.c();
    }
 
    public int e() {
+      return this.z.d();
+   }
+
+   public OptionalLong f() {
+      return this.l;
+   }
+
+   public boolean g() {
+      return this.m;
+   }
+
+   public boolean h() {
+      return this.n;
+   }
+
+   public boolean i() {
+      return this.o;
+   }
+
+   public boolean j() {
+      return this.p;
+   }
+
+   public double k() {
       return this.q;
    }
 
-   public void a(chx $$0, brj $$1) {
-      if (this.z != null && this.B.contains($$0)) {
-         d.debug("Aborting respawn sequence");
-         this.z = null;
-         this.A = 0;
-         this.h();
-         this.a(true);
-      } else {
-         this.p();
-         bsq $$2 = this.l.a(this.w);
-         if ($$2 instanceof chy) {
-            ((chy)$$2).a($$0, $$0.dq(), $$1);
-         }
-      }
+   public boolean l() {
+      return this.r;
    }
 
-   public boolean f() {
+   public boolean m() {
+      return this.s;
+   }
+
+   public int n() {
+      return this.t;
+   }
+
+   public int o() {
       return this.u;
    }
 
-   public void g() {
-      if (this.t && this.z == null) {
-         jd $$0 = this.y;
-         if ($$0 == null) {
-            d.debug("Tried to respawn, but need to find the portal first.");
-            dtf.b $$1 = this.m();
-            if ($$1 == null) {
-               d.debug("Couldn't find a portal, so we made one.");
-               this.a(true);
-            } else {
-               d.debug("Found the exit portal & saved its location for next time.");
-            }
-
-            $$0 = this.y;
-         }
-
-         List<chx> $$2 = Lists.newArrayList();
-         jd $$3 = $$0.b(1);
-
-         for (ji $$4 : ji.c.a) {
-            List<chx> $$5 = this.l.a(chx.class, new ewr($$3.a($$4, 2)));
-            if ($$5.isEmpty()) {
-               return;
-            }
-
-            $$2.addAll($$5);
-         }
-
-         d.debug("Found all crystals, respawning dragon.");
-         this.a($$2);
-      }
+   public int p() {
+      return this.v;
    }
 
-   private void a(List<chx> $$0) {
-      if (this.t && this.z == null) {
-         for (dtf.b $$1 = this.m(); $$1 != null; $$1 = this.m()) {
-            for (int $$2 = 0; $$2 < this.o.c(); $$2++) {
-               for (int $$3 = 0; $$3 < this.o.b(); $$3++) {
-                  for (int $$4 = 0; $$4 < this.o.a(); $$4++) {
-                     dte $$5 = $$1.a($$2, $$3, $$4);
-                     if ($$5.a().a(dfy.F) || $$5.a().a(dfy.fx)) {
-                        this.l.b($$5.d(), dfy.fz.o());
-                     }
-                  }
-               }
-            }
-         }
-
-         this.z = dwx.a;
-         this.A = 0;
-         this.a(false);
-         this.B = $$0;
-      }
-   }
-
-   public void h() {
-      for (edk.a $$0 : edk.a(this.l)) {
-         for (chx $$2 : this.l.a(chx.class, $$0.f())) {
-            $$2.o(false);
-            $$2.a(null);
-         }
-      }
-   }
-
-   @Nullable
-   public UUID i() {
+   public awu<dfy> q() {
       return this.w;
    }
 
-   public static record a(boolean c, boolean d, boolean e, boolean f, Optional<UUID> g, Optional<jd> h, Optional<List<Integer>> i) {
-      public static final Codec<dwy.a> a = RecordCodecBuilder.create(
+   public akr r() {
+      return this.x;
+   }
+
+   public float s() {
+      return this.y;
+   }
+
+   public dwy.a t() {
+      return this.z;
+   }
+
+   public static record a(boolean b, boolean c, bpw d, int e) {
+      public static final MapCodec<dwy.a> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("NeedsStateScanning").orElse(true).forGetter(dwy.a::a),
-                  Codec.BOOL.fieldOf("DragonKilled").orElse(false).forGetter(dwy.a::b),
-                  Codec.BOOL.fieldOf("PreviouslyKilled").orElse(false).forGetter(dwy.a::c),
-                  Codec.BOOL.lenientOptionalFieldOf("IsRespawning", false).forGetter(dwy.a::d),
-                  kg.a.lenientOptionalFieldOf("Dragon").forGetter(dwy.a::e),
-                  jd.a.lenientOptionalFieldOf("ExitPortalLocation").forGetter(dwy.a::f),
-                  Codec.list(Codec.INT).lenientOptionalFieldOf("Gateways").forGetter(dwy.a::g)
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dwy.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(dwy.a::b),
+                  bpw.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dwy.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dwy.a::d)
                )
                .apply($$0, dwy.a::new)
       );
-      public static final dwy.a b = new dwy.a(true, false, false, false, Optional.empty(), Optional.empty(), Optional.empty());
 
       public boolean a() {
-         return this.c;
+         return this.b;
       }
 
       public boolean b() {
+         return this.c;
+      }
+
+      public bpw c() {
          return this.d;
       }
 
-      public boolean c() {
+      public int d() {
          return this.e;
-      }
-
-      public boolean d() {
-         return this.f;
-      }
-
-      public Optional<UUID> e() {
-         return this.g;
-      }
-
-      public Optional<jd> f() {
-         return this.h;
-      }
-
-      public Optional<List<Integer>> g() {
-         return this.i;
       }
    }
 }

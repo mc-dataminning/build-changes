@@ -1,100 +1,127 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fig extends fhx {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fig.b q = $$0 -> $$0.get();
-   protected final fig.c r;
-   protected final fig.b s;
+public abstract class fig extends fii {
+   private static final akr a = akr.b("widget/slider");
+   private static final akr d = akr.b("widget/slider_highlighted");
+   private static final akr e = akr.b("widget/slider_handle");
+   private static final akr f = akr.b("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-   public static fig.a a(wy $$0, fig.c $$1) {
-      return new fig.a($$0, $$1);
-   }
-
-   protected fig(int $$0, int $$1, int $$2, int $$3, wy $$4, fig.c $$5, fig.b $$6) {
+   public fig(int $$0, int $$1, int $$2, int $$3, wz $$4, double $$5) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+      this.c = $$5;
+   }
+
+   private akr c() {
+      return this.aO_() && !this.o ? d : a;
+   }
+
+   private akr e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public void b() {
-      this.r.onPress(this);
+   protected xn aQ_() {
+      return wz.a("gui.narrate.slider", this.z());
    }
 
    @Override
-   protected xm aM_() {
-      return this.s.createNarrationMessage(() -> super.aM_());
+   public void a(fmg $$0) {
+      $$0.a(fmf.a, this.aQ_());
+      if (this.j) {
+         if (this.aO_()) {
+            $$0.a(fmf.d, wz.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(fmf.d, wz.c("narration.slider.usage.hovered"));
+         }
+      }
    }
 
    @Override
-   public void a(fmc $$0) {
-      this.c($$0);
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      fgm $$4 = fgm.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.c(), this.D(), this.E(), this.y(), this.w());
+      $$0.a(this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | ayo.f(this.l * 255.0F) << 24);
    }
 
-   public static class a {
-      private final wy a;
-      private final fig.c b;
-      @Nullable
-      private fjr c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fig.b h = fig.q;
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
+   }
 
-      public a(wy $$0, fig.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fig.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fig.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fig.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fig.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fig.a a(@Nullable fjr $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fig.a a(fig.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fig a() {
-         fig $$0 = new fig(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         fgj $$1 = fgm.Q().aU();
+         if ($$1 == fgj.b || $$1 == fgj.d) {
+            this.o = true;
+         }
       }
    }
 
-   public interface b {
-      xm createNarrationMessage(Supplier<xm> var1);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fml.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public interface c {
-      void onPress(fig var1);
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
    }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = ayo.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gvd $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(fgm.Q().aj());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

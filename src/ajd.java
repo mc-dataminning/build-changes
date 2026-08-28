@@ -1,5 +1,7 @@
-public record ajd(akq a) implements ajb {
+public record ajd() implements ajb {
+   public static final ajd a = new ajd();
+
    @Override
-   public void a(vv $$0) {
+   public void a(vw $$0) {
    }
 }

@@ -1,4 +1,26 @@
-import org.joml.Vector3f;
+import java.util.function.BooleanSupplier;
 
-public record fgy(float a, Vector3f b, fgw.a c) {
+public class fgy extends fgk {
+   private final BooleanSupplier h;
+
+   public fgy(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, fac.b.a, $$1, $$2);
+      this.h = $$3;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   protected void n() {
+      super.a(false);
+   }
 }

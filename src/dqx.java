@@ -1,95 +1,175 @@
-import java.util.Map;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dqx {
-   public static final akp<dqw> a = a("blank");
-   public static final akp<dqw> b = a("angler");
-   public static final akp<dqw> c = a("archer");
-   public static final akp<dqw> d = a("arms_up");
-   public static final akp<dqw> e = a("blade");
-   public static final akp<dqw> f = a("brewer");
-   public static final akp<dqw> g = a("burn");
-   public static final akp<dqw> h = a("danger");
-   public static final akp<dqw> i = a("explorer");
-   public static final akp<dqw> j = a("flow");
-   public static final akp<dqw> k = a("friend");
-   public static final akp<dqw> l = a("guster");
-   public static final akp<dqw> m = a("heart");
-   public static final akp<dqw> n = a("heartbreak");
-   public static final akp<dqw> o = a("howl");
-   public static final akp<dqw> p = a("miner");
-   public static final akp<dqw> q = a("mourner");
-   public static final akp<dqw> r = a("plenty");
-   public static final akp<dqw> s = a("prize");
-   public static final akp<dqw> t = a("scrape");
-   public static final akp<dqw> u = a("sheaf");
-   public static final akp<dqw> v = a("shelter");
-   public static final akp<dqw> w = a("skull");
-   public static final akp<dqw> x = a("snort");
-   private static final Map<cuj, akp<dqw>> y = Map.ofEntries(
-      Map.entry(cur.qL, a),
-      Map.entry(cur.xO, b),
-      Map.entry(cur.xP, c),
-      Map.entry(cur.xQ, d),
-      Map.entry(cur.xR, e),
-      Map.entry(cur.xS, f),
-      Map.entry(cur.xT, g),
-      Map.entry(cur.xU, h),
-      Map.entry(cur.xV, i),
-      Map.entry(cur.xW, j),
-      Map.entry(cur.xX, k),
-      Map.entry(cur.xY, l),
-      Map.entry(cur.xZ, m),
-      Map.entry(cur.ya, n),
-      Map.entry(cur.yb, o),
-      Map.entry(cur.yc, p),
-      Map.entry(cur.yd, q),
-      Map.entry(cur.ye, r),
-      Map.entry(cur.yf, s),
-      Map.entry(cur.yg, t),
-      Map.entry(cur.yh, u),
-      Map.entry(cur.yi, v),
-      Map.entry(cur.yj, w),
-      Map.entry(cur.yk, x)
-   );
+public class dqx extends dqh implements bqz, eyl.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dqx.a h;
+   private drm k;
+   private cuq l;
+   @Nullable
+   protected akq<eru> i;
+   protected long j;
+
+   public dqx(jd $$0, dtc $$1) {
+      super(dqj.O, $$0, $$1);
+      this.l = cuq.l;
+      this.k = drm.a;
+   }
+
+   @Override
+   protected void b(ub $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      this.k.a($$0);
+      if (!this.c_($$0) && !this.l.e()) {
+         $$0.a("item", this.l.a($$1));
+      }
+   }
+
+   @Override
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.k = drm.b($$0);
+      if (!this.b_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cuq.a($$1, (uy)$$0.p("item")).orElse(cuq.l);
+         } else {
+            this.l = cuq.l;
+         }
+      }
+   }
+
+   public acb j() {
+      return acb.a(this);
+   }
+
+   @Override
+   public ub a(jo.a $$0) {
+      return this.e($$0);
+   }
+
+   public ji k() {
+      return this.n().c(dts.R);
+   }
+
+   public drm l() {
+      return this.k;
+   }
+
+   public void c(cuq $$0) {
+      this.a($$0);
+   }
+
+   public cuq u() {
+      cuq $$0 = cut.eC.w();
+      $$0.b(this.s());
+      return $$0;
+   }
+
+   public static cuq a(drm $$0) {
+      cuq $$1 = cut.eC.w();
+      $$1.b(kq.aa, $$0);
+      return $$1;
+   }
 
    @Nullable
-   public static akp<dqw> a(cuj $$0) {
-      return y.get($$0);
+   @Override
+   public akq<eru> aB_() {
+      return this.i;
    }
 
-   private static akp<dqw> a(String $$0) {
-      return akp.a(lu.ax, akq.b($$0));
+   @Override
+   public void a(@Nullable akq<eru> $$0) {
+      this.i = $$0;
    }
 
-   public static dqw a(jz<dqw> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   @Override
+   public long aC_() {
+      return this.j;
    }
 
-   private static dqw a(jz<dqw> $$0, akp<dqw> $$1, String $$2) {
-      return jz.a($$0, $$1, new dqw(akq.b($$2)));
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(km.a $$0) {
+      super.a($$0);
+      $$0.a(kq.aa, this.k);
+      $$0.a(kq.ab, cxo.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(dqh.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(kq.aa, drm.a);
+      this.l = $$0.a(kq.ab, cxo.a).a();
+   }
+
+   @Override
+   public void a(ub $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cuq f() {
+      this.e_(null);
+      return this.l;
+   }
+
+   @Override
+   public cuq c(int $$0) {
+      this.e_(null);
+      cuq $$1 = this.l.a($$0);
+      if (this.l.e()) {
+         this.l = cuq.l;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cuq $$0) {
+      this.e_(null);
+      this.l = $$0;
+   }
+
+   @Override
+   public dqh v() {
+      return this;
+   }
+
+   public void a(dqx.a $$0) {
+      if (this.n != null && !this.n.x_()) {
+         this.n.a(this.aD_(), this.n().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dqx.a.values().length) {
+         this.g = this.n.Z();
+         this.h = dqx.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static enum a {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

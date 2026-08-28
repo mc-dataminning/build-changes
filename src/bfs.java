@@ -1,27 +1,30 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 import java.util.Optional;
 
-public class bfs extends bfm {
+public class bfs extends DataFix {
    public bfs(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgq.s, "minecraft:banner");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static String a(String $$0) {
+      return $$0.equals("health") ? "hearts" : "integer";
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("CustomName").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get();
-         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-         return $$0.set("CustomName", $$0.createString($$2));
-      } else {
-         return $$0;
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgr.H);
+      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
+            if ($$1.isEmpty()) {
+               String $$2 = $$0xx.get("CriteriaName").asString("");
+               String $$3 = a($$2);
+               return $$0xx.set("RenderType", $$0xx.createString($$3));
+            } else {
+               return $$0xx;
+            }
+         }));
    }
 }

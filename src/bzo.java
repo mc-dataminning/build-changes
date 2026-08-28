@@ -1,32 +1,108 @@
-public class bzo extends bzm {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import java.util.Optional;
 
-   public bzo(btn $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class bzo implements bzl {
+   protected final btp a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
+
+   public bzo(btp $$0) {
+      this.a = $$0;
    }
 
-   @Override
+   public void a(exa $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public void a(bsr $$0) {
+      this.a($$0.du(), b($$0), $$0.dA());
+   }
+
+   public void a(bsr $$0, float $$1, float $$2) {
+      this.a($$0.du(), b($$0), $$0.dA(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fN(), (float)this.a.ac());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
    public void a() {
+      if (this.c()) {
+         this.a.u(0.0F);
+      }
+
       if (this.d > 0) {
          this.d--;
-         this.i().ifPresent($$0x -> this.a.ba = this.a(this.a.ba, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.t(this.a(this.a.dI(), $$0x + 10.0F, this.c)));
+         this.i().ifPresent($$0 -> this.a.ba = this.a(this.a.ba, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.u(this.a(this.a.dH(), $$0, this.c)));
       } else {
-         if (this.a.J().l()) {
-            this.a.t(this.a(this.a.dI(), 0.0F, 5.0F));
-         }
-
-         this.a.ba = this.a(this.a.ba, this.a.aY, this.b);
+         this.a.ba = this.a(this.a.ba, this.a.aY, 10.0F);
       }
 
-      float $$0 = ayn.g(this.a.ba - this.a.aY);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aY -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aY += 4.0F;
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.N().l()) {
+         this.a.ba = ayo.c(this.a.ba, this.a.aY, (float)this.a.ae());
       }
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.du();
+      double $$1 = this.f - this.a.dy();
+      double $$2 = this.g - this.a.dA();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(ayo.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.du();
+      double $$1 = this.g - this.a.dA();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(ayo.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = ayo.c($$0, $$1);
+      float $$4 = ayo.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bsr $$0) {
+      return $$0 instanceof btn ? $$0.dy() : ($$0.cL().b + $$0.cL().e) / 2.0;
    }
 }

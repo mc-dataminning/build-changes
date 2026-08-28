@@ -1,23 +1,63 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ehy extends eht {
+public class ehy extends ehw {
    public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpa.b(eht.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ehy::new)
+      $$0 -> $$0.group(
+               dzs.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dzs.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ehy::new)
    );
-   private final bpa<eht> b;
+   private static final Logger b = LogUtils.getLogger();
+   private final dzs d;
+   private final dzs e;
+   private final int f;
 
-   public ehy(bpa<eht> $$0) {
-      this.b = $$0;
+   private ehy(dzs $$0, dzs $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static ehy a(dzs $$0, dzs $$1, int $$2) {
+      return new ehy($$0, $$1, $$2);
+   }
+
+   public static ehy a(dzs $$0, dzs $$1) {
+      return a($$0, $$1, 0);
    }
 
    @Override
-   public int a(ayv $$0, dzs $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   public int a(ayw $$0, dzv $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return ayo.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + ayo.b($$0, 0, $$6) + ayo.b($$0, 0, $$5);
+         }
+      }
    }
 
    @Override
-   public ehu<?> a() {
-      return ehu.f;
+   public ehx<?> a() {
+      return ehx.e;
+   }
+
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

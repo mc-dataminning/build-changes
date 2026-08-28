@@ -1,166 +1,101 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class fzo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bpj<Runnable> b = bpj.a(ad.g(), "server-list-io");
-   private static final int c = 16;
-   private final fgi d;
-   private final List<fzn> e = Lists.newArrayList();
-   private final List<fzn> f = Lists.newArrayList();
+   private final GameProfile a;
+   private final Supplier<grj> b;
+   private dct c = dct.e;
+   private int d;
+   @Nullable
+   private wz e;
+   @Nullable
+   private xq f;
+   private xv g;
 
-   public fzo(fgi $$0) {
+   public fzo(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<grj>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
+   }
+
+   private static Supplier<grj> a(GameProfile $$0) {
+      fgm $$1 = fgm.Q();
+      grk $$2 = $$1.am();
+      CompletableFuture<grj> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      grj $$5 = grb.a($$0);
+      return () -> {
+         grj $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
+   }
+
+   public GameProfile a() {
+      return this.a;
+   }
+
+   @Nullable
+   public xq b() {
+      return this.f;
+   }
+
+   public xv c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.f != null;
+   }
+
+   protected void a(xq $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cna.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static xv b(boolean $$0) {
+      return $$0 ? xv.c : xv.b;
+   }
+
+   public dct e() {
+      return this.c;
+   }
+
+   protected void a(dct $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
       this.d = $$0;
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         ua $$0 = un.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         ug $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            ua $$3 = $$1.a($$2);
-            fzn $$4 = fzn.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
-   }
-
-   public void b() {
-      try {
-         ug $$0 = new ug();
-
-         for (fzn $$1 : this.e) {
-            ua $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (fzn $$3 : this.f) {
-            ua $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         ua $$5 = new ua();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         un.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ad.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public fzn a(int $$0) {
-      return this.e.get($$0);
+   public grj g() {
+      return this.b.get();
    }
 
    @Nullable
-   public fzn a(String $$0) {
-      for (fzn $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
+   public exz h() {
+      return fgm.Q().r.M().e(this.a().getName());
+   }
 
-      for (fzn $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public void a(@Nullable wz $$0) {
+      this.e = $$0;
    }
 
    @Nullable
-   public fzn b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fzn $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fzn $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fzn $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fzn $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fzn $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fzn $$0, List<fzn> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fzn $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fzn $$0) {
-      b.a(() -> {
-         fzo $$1 = new fzo(fgi.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+   public wz i() {
+      return this.e;
    }
 }

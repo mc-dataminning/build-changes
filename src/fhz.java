@@ -1,8 +1,38 @@
-public abstract class fhz extends fic {
-   protected final fgm a;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-   protected fhz(fgm $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, wx.a, $$5);
-      this.a = $$0;
+public class fhz {
+   public static final float a = 200.0F;
+   private final List<fhz.a> b = new ArrayList<>();
+
+   public fhz a(fhz.a $$0) {
+      this.b.add($$0);
+      return this;
+   }
+
+   public fhz a(fhz $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
+   }
+
+   public void a(fhx $$0, fgd $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
+   }
+
+   private void b(fhx $$0, fgd $$1) {
+      for (fhz.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(fhx var1, fgd var2);
    }
 }

@@ -1,9 +1,41 @@
-public class fnm {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+import javax.annotation.Nullable;
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+public class fnm extends fob {
+   @Nullable
+   private fiv a;
+
+   public fnm(wz $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void aT_() {
+      this.a = this.c(new fiv(this.m, this.k, this.o, 12));
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.m);
+         this.a.c(this.m / 2 - this.a.y() / 2, this.n / 2 - 9 / 2);
+      }
+   }
+
+   @Override
+   public boolean aJ_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aS_() {
+      return false;
+   }
+
+   @Override
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.a($$3);
+      this.a($$0);
    }
 }

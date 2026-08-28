@@ -1,30 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class etp extends esy {
-   public static final MapCodec<etp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(awt.b(lu.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, etp::new)
-   );
-   private final awt<cug> b;
+public class etp extends etc {
+   static final MapCodec<etp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evx.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, etp::new));
+   private final evw b;
 
-   private etp(List<euw> $$0, awt<cug> $$1) {
+   private etp(List<eva> $$0, evw $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public eta<etp> b() {
-      return etb.G;
+   public Set<eui<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      cuh.a($$0, this.b, $$1.b());
-      return $$0;
+   public ete<etp> b() {
+      return etf.R;
    }
 
-   public static esy.a<?> a(awt<cug> $$0) {
-      return a($$1 -> new etp($$1, $$0));
+   @Override
+   public cuq a(cuq $$0, erp $$1) {
+      $$0.b(kq.o, new cxi(this.b.a($$1)));
+      return $$0;
    }
 }

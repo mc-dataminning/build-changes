@@ -1,168 +1,111 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class aqd implements apy.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<bpi<?>, aqc<? extends Function<bpi<azr>, ?>>> b;
-   private final Set<bpi<?>> c;
-   private final bpj<bpl.b> d;
+public class aqd<T> {
+   public static final int a = aqa.b + 2;
+   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
+      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
+      .collect(Collectors.toList());
+   private volatile int c = a;
+   private final String d;
+   private final LongSet e = new LongOpenHashSet();
+   private final int f;
 
-   public aqd(List<bpi<?>> $$0, Executor $$1, int $$2) {
-      this.b = $$0.stream().collect(Collectors.toMap(Function.identity(), $$1x -> new aqc<>($$1x.bz() + "_queue", $$2)));
-      this.c = Sets.newHashSet($$0);
-      this.d = new bpj<>(new bpl.a(4), $$1, "sorter");
+   public aqd(String $$0, int $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
-   public boolean a() {
-      return this.d.c() || this.b.values().stream().anyMatch(aqc::b);
+   protected void a(int $$0, dcd $$1, int $$2) {
+      if ($$0 < a) {
+         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
+         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
+         if ($$0 == this.c) {
+            while (this.b() && this.b.get(this.c).isEmpty()) {
+               this.c++;
+            }
+         }
+
+         if ($$4 != null && !$$4.isEmpty()) {
+            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
+            this.c = Math.min(this.c, $$2);
+         }
+      }
    }
 
-   public static <T> aqd.a<T> a(Function<bpi<azr>, T> $$0, long $$1, IntSupplier $$2) {
-      return new aqd.a<>($$0, $$1, $$2);
+   protected void a(Optional<T> $$0, long $$1, int $$2) {
+      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
+      this.c = Math.min(this.c, $$2);
    }
 
-   public static aqd.a<Runnable> a(Runnable $$0, long $$1, IntSupplier $$2) {
-      return new aqd.a<>($$1x -> () -> {
-            $$0.run();
-            $$1x.a(azr.a);
-         }, $$1, $$2);
+   protected void a(long $$0, boolean $$1) {
+      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
+         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
+         if ($$3 != null) {
+            if ($$1) {
+               $$3.clear();
+            } else {
+               $$3.removeIf($$0x -> $$0x.isEmpty());
+            }
+
+            if ($$3.isEmpty()) {
+               $$2.remove($$0);
+            }
+         }
+      }
+
+      while (this.b() && this.b.get(this.c).isEmpty()) {
+         this.c++;
+      }
+
+      this.e.remove($$0);
    }
 
-   public static aqd.a<Runnable> a(aqm $$0, Runnable $$1) {
-      return a($$1, $$0.r().a(), $$0::j);
+   private Runnable a(long $$0) {
+      return () -> this.e.add($$0);
    }
 
-   public static <T> aqd.a<T> a(aqm $$0, Function<bpi<azr>, T> $$1) {
-      return a($$1, $$0.r().a(), $$0::j);
+   @Nullable
+   public Stream<Either<T, Runnable>> a() {
+      if (this.e.size() >= this.f) {
+         return null;
+      } else if (!this.b()) {
+         return null;
+      } else {
+         int $$0 = this.c;
+         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
+         long $$2 = $$1.firstLongKey();
+         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
+
+         while (this.b() && this.b.get(this.c).isEmpty()) {
+            this.c++;
+         }
+
+         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+      }
    }
 
-   public static aqd.b a(Runnable $$0, long $$1, boolean $$2) {
-      return new aqd.b($$0, $$1, $$2);
-   }
-
-   public <T> bpi<aqd.a<T>> a(bpi<T> $$0, boolean $$1) {
-      return this.d.<bpi<aqd.a<T>>>b($$2 -> new bpl.b(0, () -> {
-            this.b($$0);
-            $$2.a(bpi.a("chunk priority sorter around " + $$0.bz(), $$2xx -> this.a($$0, $$2xx.a, $$2xx.b, $$2xx.c, $$1)));
-         })).join();
-   }
-
-   public bpi<aqd.b> a(bpi<Runnable> $$0) {
-      return this.d
-         .<bpi<aqd.b>>b($$1 -> new bpl.b(0, () -> $$1.a(bpi.a("chunk priority sorter around " + $$0.bz(), $$1xx -> this.a($$0, $$1xx.b, $$1xx.a, $$1xx.c)))))
-         .join();
+   public boolean b() {
+      return this.c < a;
    }
 
    @Override
-   public void onLevelChange(dcb $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.d.a(new bpl.b(0, () -> {
-         int $$4 = $$1.getAsInt();
-         this.b.values().forEach($$3xx -> $$3xx.a($$4, $$0, $$2));
-         $$3.accept($$2);
-      }));
-   }
-
-   private <T> void a(bpi<T> $$0, long $$1, Runnable $$2, boolean $$3) {
-      this.d.a(new bpl.b(1, () -> {
-         aqc<Function<bpi<azr>, T>> $$4 = this.b($$0);
-         $$4.a($$1, $$3);
-         if (this.c.remove($$0)) {
-            this.a($$4, $$0);
-         }
-
-         $$2.run();
-      }));
-   }
-
-   private <T> void a(bpi<T> $$0, Function<bpi<azr>, T> $$1, long $$2, IntSupplier $$3, boolean $$4) {
-      this.d.a(new bpl.b(2, () -> {
-         aqc<Function<bpi<azr>, T>> $$5 = this.b($$0);
-         int $$6 = $$3.getAsInt();
-         $$5.a(Optional.of($$1), $$2, $$6);
-         if ($$4) {
-            $$5.a(Optional.empty(), $$2, $$6);
-         }
-
-         if (this.c.remove($$0)) {
-            this.a($$5, $$0);
-         }
-      }));
-   }
-
-   private <T> void a(aqc<Function<bpi<azr>, T>> $$0, bpi<T> $$1) {
-      this.d.a(new bpl.b(3, () -> {
-         Stream<Either<Function<bpi<azr>, T>, Runnable>> $$2 = $$0.a();
-         if ($$2 == null) {
-            this.c.add($$1);
-         } else {
-            CompletableFuture.allOf($$2.map($$1xx -> (CompletableFuture)$$1xx.map($$1::b, $$0xxx -> {
-                  $$0xxx.run();
-                  return CompletableFuture.completedFuture(azr.a);
-               })).toArray(CompletableFuture[]::new)).thenAccept($$2x -> this.a($$0, $$1));
-         }
-      }));
-   }
-
-   private <T> aqc<Function<bpi<azr>, T>> b(bpi<T> $$0) {
-      aqc<? extends Function<bpi<azr>, ?>> $$1 = this.b.get($$0);
-      if ($$1 == null) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("No queue for: " + $$0));
-      } else {
-         return (aqc<Function<bpi<azr>, T>>)$$1;
-      }
+   public String toString() {
+      return this.d + " " + this.c + "...";
    }
 
    @VisibleForTesting
-   public String b() {
-      return this.b
-            .entrySet()
-            .stream()
-            .map($$0 -> $$0.getKey().bz() + "=[" + $$0.getValue().c().stream().map($$0x -> $$0x + ":" + new dcb($$0x)).collect(Collectors.joining(",")) + "]")
-            .collect(Collectors.joining(","))
-         + ", s="
-         + this.c.size();
-   }
-
-   @Override
-   public void close() {
-      this.b.keySet().forEach(bpi::close);
-   }
-
-   public static final class a<T> {
-      final Function<bpi<azr>, T> a;
-      final long b;
-      final IntSupplier c;
-
-      a(Function<bpi<azr>, T> $$0, long $$1, IntSupplier $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-   }
-
-   public static final class b {
-      final Runnable a;
-      final long b;
-      final boolean c;
-
-      b(Runnable $$0, long $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   LongSet c() {
+      return new LongOpenHashSet(this.e);
    }
 }

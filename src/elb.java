@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-record elb(akp<ekw> c, bpa<akp<ekw>> d) implements eky {
-   static MapCodec<elb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akp.a(lu.aU).fieldOf("alias").forGetter(elb::c), bpa.b(akp.a(lu.aU)).fieldOf("targets").forGetter(elb::d)).apply($$0, elb::new)
-   );
+public interface elb {
+   Codec<elb> b = lt.ah.r().dispatch(elb::b, Function.identity());
 
-   @Override
-   public void a(ayv $$0, BiConsumer<akp<ekw>, akp<ekw>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (akp<ekw>)$$1x.b()));
+   void a(ayw var1, BiConsumer<akq<ekz>, akq<ekz>> var2);
+
+   Stream<akq<ekz>> a();
+
+   static ela a(String $$0, String $$1) {
+      return a(qx.a($$0), qx.a($$1));
    }
 
-   @Override
-   public Stream<akp<ekw>> a() {
-      return this.d.e().stream().map(bpc.b::b);
+   static ela a(akq<ekz> $$0, akq<ekz> $$1) {
+      return new ela($$0, $$1);
    }
 
-   @Override
-   public MapCodec<elb> b() {
-      return a;
+   static ele a(String $$0, bpb<String> $$1) {
+      bpb.a<akq<ekz>> $$2 = bpb.a();
+      $$1.e().forEach($$1x -> $$2.a(qx.a((String)$$1x.b()), $$1x.a().a()));
+      return a(qx.a($$0), $$2.a());
    }
+
+   static ele a(akq<ekz> $$0, bpb<akq<ekz>> $$1) {
+      return new ele($$0, $$1);
+   }
+
+   static elf a(bpb<List<elb>> $$0) {
+      return new elf($$0);
+   }
+
+   MapCodec<? extends elb> b();
 }

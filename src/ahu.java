@@ -1,29 +1,18 @@
-public class ahu implements zf<agh> {
-   public static final yw<vv, ahu> a = zf.a(ahu::a, ahu::new);
-   private final int b;
+import java.util.Optional;
 
-   public ahu(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahu(vv $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(vv $$0) {
-      $$0.l(this.b);
-   }
+public record ahu(Optional<jm<brx>> b, Optional<jm<brx>> c) implements zg<agi> {
+   public static final yx<wk, ahu> a = yx.a(brx.b.a(yv::a), ahu::b, brx.b.a(yv::a), ahu::e, ahu::new);
 
    @Override
-   public zh<ahu> a() {
-      return agf.bT;
+   public zi<ahu> a() {
+      return agg.bS;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<jm<brx>> e() {
+      return this.c;
    }
 }

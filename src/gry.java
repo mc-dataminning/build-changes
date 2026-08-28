@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gry {
+public class gry implements atd<grx> {
+   public grx b(JsonObject $$0) {
+      return new grx(grx.a.a(aye.a($$0, "hat", "none")));
+   }
+
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

@@ -1,22 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bxv {
-   public static bvg<btl> a() {
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$0 -> $$0.group($$0.b(ccq.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof btl $$1xx ? $$1xx : null)
-                           .filter(btl::ey)
-                           .filter($$1xx -> $$1xx.am() != bsw.by || $$2.ab().b(dcq.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
+   public static bvi<btn> a(Function<btn, Optional<bwv>> $$0, Predicate<btn> $$1, int $$2, int $$3, float $$4) {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$5 -> $$5.group($$5.a(ccs.n), $$5.a(ccs.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bwv> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bwv $$11 = $$10.get();
+                        if ($$8.dn().a((jw)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bwv $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new ccv($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
                      }
-               ))
+                  }))
       );
    }
 }

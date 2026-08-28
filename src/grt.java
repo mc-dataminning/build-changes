@@ -1,38 +1,22 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public class grt {
-   public static final gru a = new gru();
-   public static final String b = "villager";
-   private final grt.a c;
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-   public grt(grt.a $$0) {
-      this.c = $$0;
+   public grt(int $$0) {
+      this($$0, -1);
    }
 
-   public grt.a a() {
-      return this.c;
+   public grt(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
 
-      private static final Map<String, grt.a> d = Arrays.stream(values()).collect(Collectors.toMap(grt.a::a, $$0 -> (grt.a)$$0));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static grt.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   public int a() {
+      return this.b;
    }
 }

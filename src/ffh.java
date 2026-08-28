@@ -1,56 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ffh extends ffl {
+   private static final wz b = wz.c("mco.connect.connecting");
+   private final gwl c;
+   private final fcn d;
+   private final fco e;
 
-public abstract class ffh implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public ffh(fob $$0, fcn $$1, fco $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gwl($$0);
    }
 
-   public static void a(fnx $$0) {
-      fgi $$1 = fgi.Q();
-      $$1.execute(() -> $$1.a($$0));
+   @Override
+   public void run() {
+      this.c.a(this.d, gav.a(this.e.a));
    }
 
-   protected void a(wy $$0) {
-      this.b();
-      fgi $$1 = fgi.Q();
-      $$1.execute(() -> $$1.a(new fdv($$0, new fbn(new fnz()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fdd $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wy.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(fdd $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract wy a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
+   @Override
    public void b() {
-      this.c = true;
+      super.b();
+      this.c.a();
+      fgm.Q().ae().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public wz a() {
+      return b;
    }
 }

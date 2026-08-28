@@ -1,19 +1,14 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dlp {
-   default int a(aqt $$0, bsq $$1) {
-      return 0;
+public class dlp extends dpa {
+   public static final MapCodec<dlp> b = b(dlp::new);
+
+   @Override
+   public MapCodec<dlp> a() {
+      return b;
    }
 
-   @Nullable
-   epw a(aqt var1, bsq var2, jd var3);
-
-   default dlp.a b() {
-      return dlp.a.b;
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected dlp(dtb.d $$0) {
+      super(dnb.b.e, $$0);
    }
 }

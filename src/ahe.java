@@ -1,29 +1,45 @@
-public class ahe implements zf<agh> {
-   public static final yw<vv, ahe> a = zf.a(ahe::a, ahe::new);
-   private final boolean b;
+public class ahe implements zg<agi> {
+   public static final yx<vw, ahe> a = zg.a(ahe::a, ahe::new);
+   private final jd b;
+   private final int c;
+   private final boolean d;
 
-   public ahe(boolean $$0) {
+   public ahe(jd $$0, int $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahe(vv $$0) {
-      this.b = $$0.readBoolean();
+   private ahe(vw $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zh<ahe> a() {
-      return agf.bA;
+   public zi<ahe> a() {
+      return agg.bz;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public jd b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

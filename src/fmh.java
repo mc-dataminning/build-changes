@@ -1,5 +1,3 @@
-public class fmh {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
-   }
+public interface fmh {
+   void b(fmg var1);
 }

@@ -1,88 +1,48 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
 import java.util.BitSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class adj {
-   private static final yw<ByteBuf, byte[]> a = yu.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
+public class adj implements zg<abu> {
+   public static final yx<vw, adj> a = zg.a(adj::a, adj::new);
+   private final int b;
+   private final int c;
+   private final adk d;
 
-   public adj(dcb $$0, eon $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, ddd.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, ddd.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public adj(dcd $$0, eor $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adk($$0, $$1, $$2, $$3);
    }
 
-   public adj(vv $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adj(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adk($$0, this.b, this.c);
    }
 
-   public void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
-   private void a(dcb $$0, eon $$1, ddd $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dvb $$7 = $$1.a($$2).a(kf.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public zi<adj> a() {
+      return agg.N;
    }
 
-   public BitSet a() {
+   public void a(abu $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public int e() {
       return this.c;
    }
 
-   public BitSet e() {
-      return this.e;
-   }
-
-   public List<byte[]> f() {
-      return this.g;
+   public adk f() {
+      return this.d;
    }
 }

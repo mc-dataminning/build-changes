@@ -1,17 +1,43 @@
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
 import javax.crypto.Cipher;
+import javax.crypto.ShortBufferException;
 
-public class vn extends MessageToMessageDecoder<ByteBuf> {
-   private final vm a;
+public class vn {
+   private final Cipher a;
+   private byte[] b = new byte[0];
+   private byte[] c = new byte[0];
 
-   public vn(Cipher $$0) {
-      this.a = new vm($$0);
+   protected vn(Cipher $$0) {
+      this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   private byte[] a(ByteBuf $$0) {
+      int $$1 = $$0.readableBytes();
+      if (this.b.length < $$1) {
+         this.b = new byte[$$1];
+      }
+
+      $$0.readBytes(this.b, 0, $$1);
+      return this.b;
+   }
+
+   protected ByteBuf a(ChannelHandlerContext $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$1.readableBytes();
+      byte[] $$3 = this.a($$1);
+      ByteBuf $$4 = $$0.alloc().heapBuffer(this.a.getOutputSize($$2));
+      $$4.writerIndex(this.a.update($$3, 0, $$2, $$4.array(), $$4.arrayOffset()));
+      return $$4;
+   }
+
+   protected void a(ByteBuf $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$0.readableBytes();
+      byte[] $$3 = this.a($$0);
+      int $$4 = this.a.getOutputSize($$2);
+      if (this.c.length < $$4) {
+         this.c = new byte[$$4];
+      }
+
+      $$1.writeBytes(this.c, 0, this.a.update($$3, 0, $$2, this.c));
    }
 }

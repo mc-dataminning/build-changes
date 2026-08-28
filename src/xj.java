@@ -1,23 +1,13 @@
-import java.util.UUID;
-
-public record xj(UUID a, cmx b) {
-   public static xj a(cmx $$0) {
-      return new xj(UUID.randomUUID(), $$0);
+public record xj(xl a, boolean b) {
+   public xj a() {
+      return this.b ? new xj(this.a, false) : this;
    }
 
-   public xs.c a(UUID $$0) {
-      return new xs($$0, this.a).a(azb.a(this.b.b(), "SHA256withRSA"));
-   }
-
-   public xp a() {
-      return new xp(this.a, this.b.c());
-   }
-
-   public UUID b() {
+   public xl b() {
       return this.a;
    }
 
-   public cmx c() {
+   public boolean c() {
       return this.b;
    }
 }

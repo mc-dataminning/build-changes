@@ -1,85 +1,60 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface fzz {
-   static fzz a(gaf $$0, UserApiService $$1) {
-      return new fzz.b($$0, $$1);
+public enum fzz implements azk {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<fzz> d = azk.a(fzz::values);
+   private final String e;
+
+   private fzz(final String $$0) {
+      this.e = $$0;
    }
 
-   CompletableFuture<Unit> a(UUID var1, gah var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   public static class a extends xy {
-      public a(wy $$0, Throwable $$1) {
-         super($$0, $$1);
+   public static fzz a(xp $$0, wz $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public static record b(gaf a, UserApiService b) implements fzz {
-      private static final wy c = wy.c("gui.abuseReport.send.service_unavailable");
-      private static final wy d = wy.c("gui.abuseReport.send.http_error");
-      private static final wy e = wy.c("gui.abuseReport.send.json_error");
-
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gah $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               wy $$5 = this.a(var7);
-               throw new CompletionException(new fzz.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               wy $$7 = this.a(var8);
-               throw new CompletionException(new fzz.a($$7, var8));
-            }
-         }, ad.h());
+   private static boolean a(xp $$0, wz $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wz $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+   private static boolean a(wz $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xw.a).orElse(false);
+   }
 
-      private wy a(MinecraftClientHttpException $$0) {
-         return wy.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   private static boolean a(xw $$0) {
+      return !$$0.k().equals(xw.b);
+   }
 
-      private wy a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
-      }
+   public boolean a() {
+      return this == c;
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+   @Nullable
+   public fgh a(xp $$0) {
+      return switch (this) {
+         case b -> fgh.a($$0.c());
+         case c -> fgh.c();
+         default -> null;
+      };
+   }
 
-      public gaf c() {
-         return this.a;
-      }
-
-      public UserApiService d() {
-         return this.b;
-      }
+   @Override
+   public String c() {
+      return this.e;
    }
 }

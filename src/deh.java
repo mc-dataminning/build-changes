@@ -1,84 +1,57 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class deh extends ddy {
-   private static final MapCodec<jm<ddu>> d = ddu.c.fieldOf("biome");
-   public static final MapCodec<ded.c<jm<ddu>>> b = ded.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jm<dei>> e = dei.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<deh> c = Codec.mapEither(b, e).xmap(deh::new, $$0 -> $$0.f);
-   private final Either<ded.c<jm<ddu>>, jm<dei>> f;
+public class deh extends dea implements ddy.a {
+   public static final MapCodec<deh> b = ddw.c.fieldOf("biome").xmap(deh::new, $$0 -> $$0.c).stable();
+   private final jm<ddw> c;
 
-   private deh(Either<ded.c<jm<ddu>>, jm<dei>> $$0) {
-      this.f = $$0;
-   }
-
-   public static deh a(ded.c<jm<ddu>> $$0) {
-      return new deh(Either.left($$0));
-   }
-
-   public static deh a(jm<dei> $$0) {
-      return new deh(Either.right($$0));
-   }
-
-   private ded.c<jm<ddu>> d() {
-      return (ded.c<jm<ddu>>)this.f.map($$0 -> $$0, $$0 -> ((dei)$$0.a()).a());
+   public deh(jm<ddw> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected Stream<jm<ddu>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   protected Stream<jm<ddw>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected MapCodec<? extends ddy> a() {
-      return c;
-   }
-
-   public boolean a(akp<dei> $$0) {
-      Optional<jm<dei>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   protected MapCodec<? extends dea> a() {
+      return b;
    }
 
    @Override
-   public jm<ddu> getNoiseBiome(int $$0, int $$1, int $$2, ded.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @azs
-   public jm<ddu> a(ded.h $$0) {
-      return this.d().a($$0);
+   public jm<ddw> getNoiseBiome(int $$0, int $$1, int $$2, def.f $$3) {
+      return this.c;
    }
 
    @Override
-   public void a(List<String> $$0, jd $$1, ded.f $$2) {
-      int $$3 = jx.a($$1.u());
-      int $$4 = jx.a($$1.v());
-      int $$5 = jx.a($$1.w());
-      ded.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = ded.a($$6.d());
-      float $$8 = ded.a($$6.e());
-      float $$9 = ded.a($$6.b());
-      float $$10 = ded.a($$6.c());
-      float $$11 = ded.a($$6.g());
-      double $$12 = (double)dzc.a($$11);
-      dek $$13 = new dek();
-      $$0.add(
-         "Biome builder PV: "
-            + dek.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public jm<ddw> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<jd, jm<ddw>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jm<ddw>> $$5, ayw $$6, boolean $$7, def.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new jd($$0, $$1, $$2), this.c) : Pair.of(new jd($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<jd, jm<ddw>> a(jd $$0, int $$1, int $$2, int $$3, Predicate<jm<ddw>> $$4, def.f $$5, dcz $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<jm<ddw>> a(int $$0, int $$1, int $$2, int $$3, def.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

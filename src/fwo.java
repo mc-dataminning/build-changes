@@ -1,53 +1,62 @@
-import com.google.common.collect.ImmutableList;
-
-public class fwo<T extends bsq> extends ftz<T> {
-   protected final fye a;
-   protected final fye b;
-   protected final fye f;
-   protected final fye g;
-   protected final fye h;
-   protected final fye i;
-
-   protected fwo(fye $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+public class fwo<T extends cfw> extends fws<T> {
+   public fwo(fyi $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   public static fym a(int $$0, fyi $$1) {
-      fym $$2 = new fym();
-      fyn $$3 = $$2.a();
-      $$3.a("head", fyj.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), fyg.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", fyj.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), fyg.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fyj $$4 = fyj.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, fyg.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, fyg.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, fyg.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, fyg.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static fyo c() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fyn.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fyk.a(0.0F, 10.0F, -16.0F)
+      );
+      $$1.a(
+         "body",
+         fyn.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fyk.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fyn $$3 = fyn.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fyk.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fyk.a(4.5F, 14.0F, 6.0F));
+      fyn $$4 = fyn.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fyk.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fyk.a(3.5F, 14.0F, -8.0F));
+      return fyo.a($$0, 128, 64);
    }
 
-   @Override
-   protected Iterable<fye> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fye> b() {
-      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = ayn.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ayn.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ayn.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ayn.b($$1 * 0.6662F) * 1.4F * $$2;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = $$0.H($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+      }
+
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

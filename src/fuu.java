@@ -1,38 +1,30 @@
-public class fuu<T extends bsq> extends fvn<T> {
-   private final fye a;
-   private final fye b;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fuu(fye $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail_fin");
-   }
+public class fuu extends fuo {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public static fyk b() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fyj.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), fyg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", fyj.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fyg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", fyj.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), fyg.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", fyj.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fyg.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fyj.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fyg.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", fyj.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), fyg.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", fyj.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), fyg.a(0.0F, 20.0F, 0.0F));
-      return fyk.a($$0, 32, 32);
+   public fuu(fyi $$0) {
+      super($$0);
    }
 
    @Override
-   public fye a() {
-      return this.a;
+   protected Builder<fyi> a(fyi $$0) {
+      Builder<fyi> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bf()) {
-         $$6 = 1.5F;
-      }
-
-      this.b.f = -$$6 * 0.45F * ayn.a(0.6F * $$3);
+   public static fyo e() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      fuo.a($$1);
+      $$1.a("chest_bottom", fyn.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fyk.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fyn.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fyk.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fyn.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fyk.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fyo.a($$0, 128, 128);
    }
 }

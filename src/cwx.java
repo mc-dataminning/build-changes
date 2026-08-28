@@ -1,45 +1,103 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public class cwx {
-   public static final akp<cww> a = a("quartz");
-   public static final akp<cww> b = a("iron");
-   public static final akp<cww> c = a("netherite");
-   public static final akp<cww> d = a("redstone");
-   public static final akp<cww> e = a("copper");
-   public static final akp<cww> f = a("gold");
-   public static final akp<cww> g = a("emerald");
-   public static final akp<cww> h = a("diamond");
-   public static final akp<cww> i = a("lapis");
-   public static final akp<cww> j = a("amethyst");
+public class cwx implements cxy {
+   public static final Codec<cwx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwy.c.fieldOf("material").forGetter(cwx::b),
+               cxa.c.fieldOf("pattern").forGetter(cwx::a),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cwx::new)
+   );
+   public static final yx<wk, cwx> b = yx.a(cwy.d, cwx::b, cxa.d, cwx::a, yv.b, $$0 -> $$0.f, cwx::new);
+   private static final wz c = wz.c(ad.a("item", akr.b("smithing_template.upgrade"))).a(n.h);
+   private final jm<cwy> d;
+   private final jm<cxa> e;
+   private final boolean f;
+   private final Function<jm<csg>, akr> g;
+   private final Function<jm<csg>, akr> h;
 
-   public static void a(qp<cww> $$0) {
-      a($$0, a, cur.oC, xv.a.a(14931140), 0.1F);
-      a($$0, b, cur.oF, xv.a.a(15527148), 0.2F, Map.of(csf.c, "iron_darker"));
-      a($$0, c, cur.oK, xv.a.a(6445145), 0.3F, Map.of(csf.g, "netherite_darker"));
-      a($$0, d, cur.lH, xv.a.a(9901575), 0.4F);
-      a($$0, e, cur.oH, xv.a.a(11823181), 0.5F);
-      a($$0, f, cur.oJ, xv.a.a(14594349), 0.6F, Map.of(csf.d, "gold_darker"));
-      a($$0, g, cur.oA, xv.a.a(1155126), 0.7F);
-      a($$0, h, cur.oz, xv.a.a(7269586), 0.8F, Map.of(csf.e, "diamond_darker"));
-      a($$0, i, cur.oB, xv.a.a(4288151), 0.9F);
-      a($$0, j, cur.oD, xv.a.a(10116294), 1.0F);
+   private cwx(jm<cwy> $$0, jm<cxa> $$1, boolean $$2, Function<jm<csg>, akr> $$3, Function<jm<csg>, akr> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public static Optional<jm.c<cww>> a(jo.a $$0, cuo $$1) {
-      return $$0.b(lu.aW).b().filter($$1x -> $$1.a(((cww)$$1x.a()).b())).findFirst();
+   public cwx(jm<cwy> $$0, jm<cxa> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ad.b($$2x -> {
+         akr $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
+      });
+      this.h = ad.b($$2x -> {
+         akr $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
+      });
+      this.f = $$2;
    }
 
-   private static void a(qp<cww> $$0, akp<cww> $$1, cuj $$2, xv $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public cwx(jm<cwy> $$0, jm<cxa> $$1) {
+      this($$0, $$1, true);
    }
 
-   private static void a(qp<cww> $$0, akp<cww> $$1, cuj $$2, xv $$3, float $$4, Map<jm<cse>, String> $$5) {
-      cww $$6 = cww.a($$1.a().a(), $$2, $$4, wy.c(ad.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   private static String b(jm<cwy> $$0, jm<csg> $$1) {
+      Map<jm<csg>, String> $$2 = $$0.a().d();
+      String $$3 = $$2.get($$1);
+      return $$3 != null ? $$3 : $$0.a().a();
    }
 
-   private static akp<cww> a(String $$0) {
-      return akp.a(lu.aW, akq.b($$0));
+   public boolean a(jm<cxa> $$0, jm<cwy> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
+   }
+
+   public jm<cxa> a() {
+      return this.e;
+   }
+
+   public jm<cwy> b() {
+      return this.d;
+   }
+
+   public akr a(jm<csg> $$0) {
+      return this.g.apply($$0);
+   }
+
+   public akr b(jm<csg> $$0) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cwx $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
+
+   @Override
+   public void a(cul.b $$0, Consumer<wz> $$1, cwm $$2) {
+      if (this.f) {
+         $$1.accept(c);
+         $$1.accept(wy.a().b(this.e.a().a(this.d)));
+         $$1.accept(wy.a().b(this.d.a().e()));
+      }
+   }
+
+   public cwx a(boolean $$0) {
+      return new cwx(this.d, this.e, $$0, this.g, this.h);
    }
 }

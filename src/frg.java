@@ -1,21 +1,22 @@
-public class frg extends frb {
-   private static final wy a = wy.c("controls.title");
+import java.util.ArrayList;
+import java.util.List;
 
-   private static fgl<?>[] a(fgm $$0) {
-      return new fgl[]{$$0.ac(), $$0.ad(), $$0.H(), $$0.I()};
-   }
+public class frg extends frf {
+   private static final wz a = wz.c("options.skinCustomisation.title");
 
-   public frg(fnx $$0, fgm $$1) {
+   public frg(fob $$0, fgq $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      this.q
-         .a(
-            fig.a(wy.c("options.mouse_settings"), $$0 -> this.l.a(new fqy(this, this.c))).a(),
-            fig.a(wy.c("controls.keybinds"), $$0 -> this.l.a(new fri(this, this.c))).a()
-         );
-      this.q.a(a(this.c));
+      List<fii> $$0 = new ArrayList<>();
+
+      for (cmy $$1 : cmy.values()) {
+         $$0.add(fir.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      }
+
+      $$0.add(this.c.v().a(this.c));
+      this.r.a($$0);
    }
 }

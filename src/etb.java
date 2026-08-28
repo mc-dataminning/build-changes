@@ -1,76 +1,199 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class etb {
-   public static final BiFunction<cuo, erl, cuo> a = ($$0, $$1) -> $$0;
-   public static final Codec<esz> b = lt.E.r().dispatch("function", esz::b, eta::a);
-   public static final Codec<esz> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, etd.b));
-   public static final Codec<jm<esz>> d = akm.a(lu.bd, c);
-   public static final eta<etq> e = a("set_count", etq.a);
-   public static final eta<ets> f = a("set_item", ets.a);
-   public static final eta<esp> g = a("enchant_with_levels", esp.a);
-   public static final eta<eso> h = a("enchant_randomly", eso.a);
-   public static final eta<etm> i = a("set_enchantments", etm.a);
-   public static final eta<etk> j = a("set_custom_data", etk.a);
-   public static final eta<eth> k = a("set_components", eth.a);
-   public static final eta<eua> l = a("furnace_smelt", eua.a);
-   public static final eta<esq> m = a("enchanted_count_increase", esq.b);
-   public static final eta<etr> n = a("set_damage", etr.a);
-   public static final eta<ete> o = a("set_attributes", ete.a);
-   public static final eta<etu> p = a("set_name", etu.a);
-   public static final eta<esr> q = a("exploration_map", esr.f);
-   public static final eta<etx> r = a("set_stew_effect", etx.a);
-   public static final eta<esn> s = a("copy_name", esn.a);
-   public static final eta<eti> t = a("set_contents", eti.a);
-   public static final eta<etc> u = a("modify_contents", etc.a);
-   public static final eta<est> v = a("filtered", est.a);
-   public static final eta<esw> w = a("limit_count", esw.a);
-   public static final eta<esi> x = a("apply_bonus", esi.a);
-   public static final eta<etj> y = a("set_loot_table", etj.a);
-   public static final eta<esj> z = a("explosion_decay", esj.a);
-   public static final eta<ett> A = a("set_lore", ett.a);
-   public static final eta<ess> B = a("fill_player_head", ess.a);
-   public static final eta<esm> C = a("copy_custom_data", esm.a);
-   public static final eta<esk> D = a("copy_state", esk.a);
-   public static final eta<etf> E = a("set_banner_pattern", etf.a);
-   public static final eta<etw> F = a("set_potion", etw.a);
-   public static final eta<etp> G = a("set_instrument", etp.a);
-   public static final eta<esu> H = a("reference", esu.a);
-   public static final eta<etd> I = a("sequence", etd.a);
-   public static final eta<esl> J = a("copy_components", esl.a);
-   public static final eta<eto> K = a("set_fireworks", eto.a);
-   public static final eta<etn> L = a("set_firework_explosion", etn.a);
-   public static final eta<etg> M = a("set_book_cover", etg.a);
-   public static final eta<etz> N = a("set_written_book_pages", etz.b);
-   public static final eta<ety> O = a("set_writable_book_pages", ety.a);
-   public static final eta<eub> P = a("toggle_tooltips", eub.a);
-   public static final eta<etv> Q = a("set_ominous_bottle_amplifier", etv.a);
-   public static final eta<etl> R = a("set_custom_model_data", etl.a);
+public interface etb {
+   MapCodec<etb> a = a(Integer.MAX_VALUE);
 
-   private static <T extends esz> eta<T> a(String $$0, MapCodec<T> $$1) {
-      return jz.a(lt.E, akq.b($$0), new eta<>($$1));
+   static MapCodec<etb> a(int $$0) {
+      return etb.f.e.dispatchMap("mode", etb::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof etb.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   public static BiFunction<cuo, erl, cuo> a(List<? extends BiFunction<cuo, erl, cuo>> $$0) {
-      List<BiFunction<cuo, erl, cuo>> $$1 = List.copyOf($$0);
+   etb.f a();
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cuo, erl, cuo> $$2 = $$1.get(0);
-            BiFunction<cuo, erl, cuo> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cuo, erl, cuo> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
+   }
 
-         return $$1x;
-      };
-      };
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
+
+   public static class a implements etb {
+      private static final Logger d = LogUtils.getLogger();
+      public static final etb.a b = new etb.a();
+      public static final MapCodec<etb.a> c = MapCodec.unit(() -> b);
+
+      private a() {
+      }
+
+      @Override
+      public etb.f a() {
+         return etb.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements etb {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<etb.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axw.k.optionalFieldOf("offset", 0).forGetter(etb.b::b)).apply($$0, etb.b::new)
+      );
+
+      @Override
+      public etb.f a() {
+         return etb.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements etb {
+      public static final etb.c b = new etb.c();
+      public static final MapCodec<etb.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public etb.f a() {
+         return etb.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements etb {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<etb.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axw.k.optionalFieldOf("offset", 0).forGetter(etb.d::b), axw.k.optionalFieldOf("size").forGetter(etb.d::c)).apply($$0, etb.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public etb.f a() {
+         return etb.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, etb b) {
+      public static <T> Codec<etb.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), etb.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, etb.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azk {
+      a("replace_all", etb.c.c),
+      b("replace_section", etb.d.b),
+      c("insert", etb.b.b),
+      d("append", etb.a.c);
+
+      public static final Codec<etb.f> e = azk.a(etb.f::values);
+      private final String f;
+      final MapCodec<? extends etb> g;
+
+      private f(final String $$0, final MapCodec<? extends etb> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends etb> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

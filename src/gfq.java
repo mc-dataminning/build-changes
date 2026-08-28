@@ -1,39 +1,61 @@
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class gfq {
-   protected final int[] a;
-   protected final int b;
-   protected final ji c;
-   protected final gqf d;
-   private final boolean e;
+   private Map<dtc, gsk> a = Map.of();
+   private final gsr b;
 
-   public gfq(int[] $$0, int $$1, ji $$2, gqf $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public gfq(gsr $$0) {
+      this.b = $$0;
    }
 
-   public gqf a() {
-      return this.d;
+   public gqj a(dtc $$0) {
+      return this.b($$0).e();
    }
 
-   public int[] b() {
-      return this.a;
+   public gsk b(dtc $$0) {
+      gsk $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
    }
 
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
+   public gsr a() {
       return this.b;
    }
 
-   public ji e() {
-      return this.c;
+   public void a(Map<dtc, gsk> $$0) {
+      this.a = $$0;
    }
 
-   public boolean f() {
-      return this.e;
+   public static gss c(dtc $$0) {
+      return a(lt.e.b($$0.b()), $$0);
+   }
+
+   public static gss a(akr $$0, dtc $$1) {
+      return new gss($$0, b($$1.C()));
+   }
+
+   public static String b(Map<duf<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<duf<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         duf<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
+   }
+
+   private static <T extends Comparable<T>> String a(duf<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

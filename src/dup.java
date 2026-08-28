@@ -1,58 +1,57 @@
-public interface dup {
-   void a(dur var1, double var2);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-   void a(dur var1, double var2, double var4, long var6);
+public record dup(String m, dtr n, dnm o, dnm p, avo q, avo r) {
+   private static final Map<String, dup> s = new Object2ObjectArrayMap();
+   public static final Codec<dup> a = Codec.stringResolver(dup::b, s::get);
+   public static final dup b = a(new dup("oak", dtr.g));
+   public static final dup c = a(new dup("spruce", dtr.h));
+   public static final dup d = a(new dup("birch", dtr.i));
+   public static final dup e = a(new dup("acacia", dtr.j));
+   public static final dup f = a(new dup("cherry", dtr.k, dnm.aU, dnm.aX, avp.eM, avp.eN));
+   public static final dup g = a(new dup("jungle", dtr.l));
+   public static final dup h = a(new dup("dark_oak", dtr.m));
+   public static final dup i = a(new dup("crimson", dtr.n, dnm.aT, dnm.aQ, avp.qW, avp.qX));
+   public static final dup j = a(new dup("warped", dtr.o, dnm.aT, dnm.aQ, avp.qW, avp.qX));
+   public static final dup k = a(new dup("mangrove", dtr.p));
+   public static final dup l = a(new dup("bamboo", dtr.q, dnm.aS, dnm.aR, avp.bw, avp.bx));
 
-   void a(dur var1, double var2, double var4);
+   public dup(String $$0, dtr $$1) {
+      this($$0, $$1, dnm.b, dnm.aP, avp.iI, avp.iJ);
+   }
 
-   void a(dur var1, int var2);
+   private static dup a(dup $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
+   }
 
-   void b(dur var1, int var2);
+   public static Stream<dup> a() {
+      return s.values().stream();
+   }
 
-   void b(dur var1, double var2);
+   public String b() {
+      return this.m;
+   }
 
-   void c(dur var1, double var2);
+   public dtr c() {
+      return this.n;
+   }
 
-   public static class a implements dup {
-      private final dur a;
+   public dnm d() {
+      return this.o;
+   }
 
-      public a(dur $$0) {
-         this.a = $$0;
-      }
+   public dnm e() {
+      return this.p;
+   }
 
-      @Override
-      public void a(dur $$0, double $$1) {
-         this.a.a($$1);
-      }
+   public avo f() {
+      return this.q;
+   }
 
-      @Override
-      public void a(dur $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dur $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dur $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dur $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dur $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dur $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public avo g() {
+      return this.r;
    }
 }

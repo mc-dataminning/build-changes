@@ -1,82 +1,13 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public interface bue {
-   bue a = new bue() {
-      @Override
-      public cuo a() {
-         return cuo.l;
-      }
+   boolean f();
 
-      @Override
-      public boolean a(cuo $$0) {
-         return false;
-      }
-   };
+   void a(cuq var1, @Nullable avq var2);
 
-   static bue a(final Supplier<cuo> $$0, final Consumer<cuo> $$1) {
-      return new bue() {
-         @Override
-         public cuo a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(cuo $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
+   default avo ac_() {
+      return avp.mQ;
    }
 
-   static bue a(final bqj $$0, final int $$1, final Predicate<cuo> $$2) {
-      return new bue() {
-         @Override
-         public cuo a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cuo $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
-   }
-
-   static bue a(bqj $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   static bue a(final btl $$0, final bsx $$1, final Predicate<cuo> $$2) {
-      return new bue() {
-         @Override
-         public cuo a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cuo $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
-   }
-
-   static bue a(btl $$0, bsx $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   cuo a();
-
-   boolean a(cuo var1);
+   boolean i();
 }

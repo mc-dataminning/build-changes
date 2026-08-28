@@ -1,31 +1,23 @@
-public class gjz extends glj<cjr, fvc<cjr>> {
-   private static final akq a = akq.b("textures/entity/enderman/enderman.png");
-   private final ayv i = ayv.a();
+public class gjz extends gjc<cjr, fve<cjr>> {
+   private static final akr a = akr.b("textures/entity/zombie/drowned.png");
 
-   public gjz(gkd.a $$0) {
-      super($$0, new fvc<>($$0.a(fyd.Y)), 0.5F);
-      this.a(new gnz<>(this));
-      this.a(new gnq(this, $$0.c()));
+   public gjz(gkh.a $$0) {
+      super($$0, new fve<>($$0.a(fyh.S)), new fve<>($$0.a(fyh.T)), new fve<>($$0.a(fyh.U)));
+      this.a(new gob<>(this, $$0.f()));
    }
 
-   public void a(cjr $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      dta $$6 = $$0.gm();
-      fvc<cjr> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gn();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public eww a(cjr $$0, float $$1) {
-      if ($$0.gn()) {
-         double $$2 = 0.02 * (double)$$0.ec();
-         return new eww(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
-      }
-   }
-
-   public akq a(cjr $$0) {
+   @Override
+   public akr a(ckw $$0) {
       return a;
+   }
+
+   protected void a(cjr $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.a($$4);
+      if ($$6 > 0.0F) {
+         float $$7 = -10.0F - $$0.dH();
+         float $$8 = ayo.i($$6, 0.0F, $$7);
+         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dl() / 2.0F / $$5, 0.0F);
+      }
    }
 }

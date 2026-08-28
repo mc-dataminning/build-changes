@@ -1,17 +1,9 @@
-public interface alh extends alg {
-   apn a();
+public interface alh {
+   String af();
 
-   String b();
+   String L();
 
-   int d();
+   int M();
 
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   int N();
 }

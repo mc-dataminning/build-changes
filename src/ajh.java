@@ -1,3 +1,8 @@
-public interface ajh extends we {
-   void a(aji var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajh {
 }

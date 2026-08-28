@@ -1,120 +1,103 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class alb {
    private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<azr> b = CompletableFuture.completedFuture(azr.a);
-   private final ala.b c;
-   private final alb.a d;
-   private final eu e;
-   private final czb f;
-   private final awv g;
-   private final ald h;
-   private final ale i;
+   private static final Gson b = new GsonBuilder().create();
+   private static final jy c = new jy(Optional.empty(), Lifecycle.experimental());
 
-   private alb(ka.b $$0, cpj $$1, eu.a $$2, int $$3) {
-      this.c = new ala.b($$0);
-      this.d = new alb.a($$0);
-      this.d.a(alb.b.a);
-      this.f = new czb(this.d);
-      this.g = new awv($$0);
-      this.e = new eu($$2, ep.a(this.d, $$1));
-      this.h = new ald(this.d);
-      this.i = new ale($$3, this.e.a());
+   public static CompletableFuture<jt<ala>> a(jt<ala> $$0, aue $$1, Executor $$2) {
+      ka.b $$3 = $$0.b(ala.d);
+      akp<JsonElement> $$4 = new alb.a($$3).a(JsonOps.INSTANCE);
+      List<CompletableFuture<ki<?>>> $$5 = err.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      CompletableFuture<List<ki<?>>> $$6 = ad.d($$5);
+      return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   public ale a() {
-      return this.i;
+   private static <T> CompletableFuture<ki<?>> a(err<T> $$0, akp<JsonElement> $$1, aue $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         ki<T> $$3x = new ju<>($$0.b(), Lifecycle.experimental());
+         Map<akr, JsonElement> $$4 = new HashMap<>();
+         String $$5 = lu.c($$0.b());
+         aui.a($$2, $$5, b, $$4);
+         $$4.forEach(($$3xx, $$4x) -> $$0.a($$3xx, $$1, $$4x).ifPresent($$3xxx -> $$3x.a(akq.a($$0.b(), $$3xx), (T)$$3xxx, c)));
+         return $$3x;
+      }, $$3);
    }
 
-   public ala.b b() {
-      return this.c;
+   private static jt<ala> a(jt<ala> $$0, List<ki<?>> $$1) {
+      jt<ala> $$2 = b($$0, $$1);
+      ayu.a $$3 = new ayu.a();
+      ka.b $$4 = $$2.a();
+      erv $$5 = new erv($$3, euk.q, $$4.b());
+      err.a().forEach($$2x -> a($$5, $$2x, $$4));
+      $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      return $$2;
    }
 
-   public czb c() {
-      return this.f;
+   private static jt<ala> b(jt<ala> $$0, List<ki<?>> $$1) {
+      ka $$2 = new ka.c($$1);
+      ((ki)$$2.<eru>d(lu.bc)).a(erl.a, eru.a, c);
+      return $$0.a(ala.d, $$2.d());
    }
 
-   public eu d() {
-      return this.e;
-   }
-
-   public ald e() {
-      return this.h;
-   }
-
-   public List<atx> f() {
-      return List.of(this.g, this.f, this.i, this.h);
-   }
-
-   public static CompletableFuture<alb> a(aud $$0, jt<akz> $$1, cpj $$2, eu.a $$3, int $$4, Executor $$5, Executor $$6) {
-      return ala.a($$1, $$0, $$5).thenCompose($$6x -> {
-         alb $$7 = new alb($$6x.a(), $$2, $$3, $$4);
-         return auj.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1xx, $$2xx) -> $$7.d.a(alb.b.b)).thenApply($$1xx -> $$7);
-      });
-   }
-
-   public void g() {
-      this.g.a().forEach($$0 -> a(this.c.a(), (awv.a<?>)$$0));
-      dpt.f();
-      dfy.a();
-   }
-
-   private static <T> void a(ka $$0, awv.a<T> $$1) {
-      akp<? extends jz<T>> $$2 = $$1.a();
-      Map<awt<T>, List<jm<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> awt.a($$2, (akq)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends jm<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
+   private static <T> void a(erv $$0, err<T> $$1, ka $$2) {
+      jz<T> $$3 = $$2.d($$1.b());
+      $$3.i().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
 
    static class a implements jo.a {
       private final ka a;
-      alb.b b;
 
       a(ka $$0) {
-         this.b = alb.b.b;
          this.a = $$0;
       }
 
-      public void a(alb.b $$0) {
-         this.b = $$0;
-      }
-
       @Override
-      public Stream<akp<? extends jz<?>>> a() {
+      public Stream<akq<? extends jz<?>>> a() {
          return this.a.a();
       }
 
       @Override
-      public <T> Optional<jo.b<T>> a(akp<? extends jz<? extends T>> $$0) {
-         return this.a.c($$0).map($$0x -> this.a($$0x.q(), $$0x.v()));
-      }
-
-      private <T> jo.b<T> a(final jo.b<T> $$0, final jo.b<T> $$1) {
-         return new jo.b.a<T>() {
-            @Override
-            public jo.b<T> a() {
-               return switch (a.this.b) {
-                  case a -> $$1;
-                  case b -> $$0;
-               };
-            }
-         };
+      public <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> $$0) {
+         return this.a.c($$0).map(jz::v);
       }
    }
 
-   static enum b {
-      a,
-      b;
+   public static class b {
+      private final ka.b a;
+
+      public b(ka.b $$0) {
+         this.a = $$0;
+      }
+
+      public ka.b a() {
+         return this.a;
+      }
+
+      public jn.a b() {
+         return this.a.b();
+      }
+
+      public Collection<akr> a(akq<? extends jz<?>> $$0) {
+         return this.a.c($$0).stream().flatMap($$0x -> $$0x.i().map($$0xx -> $$0xx.h().a())).toList();
+      }
+
+      public eru b(akq<eru> $$0) {
+         return this.a.a(lu.bc).flatMap($$1 -> $$1.a($$0)).map(jm::a).orElse(eru.a);
+      }
    }
 }

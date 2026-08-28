@@ -1,25 +1,17 @@
 public class abi {
-   public static final wg<abj> a = zk.a(
-      vt.e, $$0 -> $$0.a(zx.l, zz.a).a(abp.b, abr.a).a(zx.m, aaa.a).a(abh.f, abk.b).a(zx.n, aab.a).a(zx.o, aac.a).a(zx.p, aad.a).a(abh.g, abl.a)
-   );
-   public static final wg<abb> b = zk.b(
-      vt.e,
-      $$0 -> $$0.a(abp.a, abo.a)
-            .a(zx.a, zm.b)
-            .a(zx.c, zo.a)
-            .a(abh.a, abc.b)
-            .a(zx.d, zp.a)
-            .a(zx.e, zq.a)
-            .a(abh.e, abe.b)
-            .a(abh.b, abd.a)
-            .a(zx.f, zr.a)
-            .a(zx.g, zs.b)
-            .a(zx.i, zu.a)
-            .a(zx.j, zv.a)
-            .a(abh.c, abg.a)
-            .a(zx.k, zw.a)
-            .a(abh.d, abf.a)
-            .a(zx.b, zn.a)
-            .a(zx.h, zt.a)
-   );
+   public static final zi<abd> a = a("finish_configuration");
+   public static final zi<abe> b = a("registry_data");
+   public static final zi<abh> c = a("update_enabled_features");
+   public static final zi<abg> d = a("select_known_packs");
+   public static final zi<abf> e = a("reset_chat");
+   public static final zi<abl> f = b("finish_configuration");
+   public static final zi<abm> g = b("select_known_packs");
+
+   private static <T extends zg<abc>> zi<T> a(String $$0) {
+      return new zi<>(zh.b, akr.b($$0));
+   }
+
+   private static <T extends zg<abk>> zi<T> b(String $$0) {
+      return new zi<>(zh.a, akr.b($$0));
+   }
 }

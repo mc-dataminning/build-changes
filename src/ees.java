@@ -1,19 +1,21 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.stream.Stream;
 
-public class ees implements eee {
+public class ees implements eeh {
    public static final Codec<ees> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(eem.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ees::new)
+      $$0 -> $$0.group(eit.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eit.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ees::new)
    );
-   public final List<eem.a> b;
+   public final jm<eit> b;
+   public final jm<eit> c;
 
-   public ees(dta $$0, dta $$1) {
-      this(ImmutableList.of(eem.a(new ems($$0), $$1)));
+   public ees(jm<eit> $$0, jm<eit> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ees(List<eem.a> $$0) {
-      this.b = $$0;
+   @Override
+   public Stream<ebq<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

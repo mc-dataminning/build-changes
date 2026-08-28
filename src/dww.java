@@ -1,19 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dww {
+   public static final akq<dwy> a = a("overworld");
+   public static final akq<dwy> b = a("the_nether");
+   public static final akq<dwy> c = a("the_end");
+   public static final akq<dwy> d = a("overworld_caves");
+   public static final akr e = akr.b("overworld");
+   public static final akr f = akr.b("the_nether");
+   public static final akr g = akr.b("the_end");
 
-public record dww(jm<dwv> e, dux f) {
-   public static final Codec<dww> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dwv.k.fieldOf("type").forGetter(dww::a), dux.a.fieldOf("generator").forGetter(dww::b)).apply($$0, $$0.stable(dww::new))
-   );
-   public static final akp<dww> b = akp.a(lu.bb, akq.b("overworld"));
-   public static final akp<dww> c = akp.a(lu.bb, akq.b("the_nether"));
-   public static final akp<dww> d = akp.a(lu.bb, akq.b("the_end"));
-
-   public jm<dwv> a() {
-      return this.e;
-   }
-
-   public dux b() {
-      return this.f;
+   private static akq<dwy> a(String $$0) {
+      return akq.a(lu.aK, akr.b($$0));
    }
 }

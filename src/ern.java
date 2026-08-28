@@ -1,53 +1,69 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public record ern<T>(akp<jz<T>> d, Codec<T> e, ern.a<T> f) {
-   private static final Logger g = LogUtils.getLogger();
-   public static final ern<euw> a = new ern<>(lu.be, euw.e, e());
-   public static final ern<esz> b = new ern<>(lu.bd, etb.c, e());
-   public static final ern<erq> c = new ern<>(lu.bc, erq.d, f());
+public interface ern {
+   erm<cxo> a = new erm<cxo>() {
+      @Override
+      public kp<cxo> a() {
+         return kq.ab;
+      }
 
-   public void a(err $$0, akp<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
-   }
+      public Stream<cuq> a(cxo $$0) {
+         return $$0.b();
+      }
 
-   public <V> Optional<T> a(akq $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
-      return $$3.result();
-   }
+      public cxo c() {
+         return cxo.a;
+      }
 
-   public static Stream<ern<?>> a() {
-      return Stream.of(a, b, c);
-   }
+      public cxo a(cxo $$0, Stream<cuq> $$1) {
+         return cxo.a($$1.toList());
+      }
+   };
+   erm<cxf> b = new erm<cxf>() {
+      @Override
+      public kp<cxf> a() {
+         return kq.F;
+      }
 
-   private static <T extends erm> ern.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public cxf c() {
+         return cxf.a;
+      }
 
-   private static ern.a<erq> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public Stream<cuq> a(cxf $$0) {
+         return $$0.a();
+      }
 
-   public akp<jz<T>> b() {
-      return this.d;
-   }
+      public cxf a(cxf $$0, Stream<cuq> $$1) {
+         cxf.a $$2 = new cxf.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   erm<cxg> c = new erm<cxg>() {
+      @Override
+      public kp<cxg> a() {
+         return kq.E;
+      }
 
-   public Codec<T> c() {
-      return this.e;
-   }
+      public cxg c() {
+         return cxg.a;
+      }
 
-   public ern.a<T> d() {
-      return this.f;
-   }
+      public Stream<cuq> a(cxg $$0) {
+         return $$0.a().stream();
+      }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(err var1, akp<T> var2, T var3);
-   }
+      public cxg a(cxg $$0, Stream<cuq> $$1) {
+         return cxg.a($$1.toList());
+      }
+   };
+   Map<kp<?>, erm<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(erm::a, $$0 -> (erm<?>)$$0));
+   Codec<erm<?>> e = lt.aq.r().comapFlatMap($$0 -> {
+      erm<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, erm::a);
 }

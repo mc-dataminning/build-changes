@@ -1,85 +1,68 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class ggd implements gsr {
-   private final List<gge> a;
+public class ggd {
+   private final akr a;
+   private final List<ggd.b> b;
 
-   public ggd(List<gge> $$0) {
+   public ggd(akr $$0, List<ggd.b> $$1) {
       this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public List<gge> a() {
+   public akr a() {
       return this.a;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof ggd $$1 ? this.a.equals($$1.a) : false;
-      }
+   public Stream<ggd.b> b() {
+      return this.b.stream();
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   @Override
-   public Collection<akq> f() {
-      return this.a().stream().map(gge::a).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<akq, gsr> $$0) {
-      this.a().stream().map(gge::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gsg a(gsk $$0, Function<gsj, gqf> $$1, gso $$2, akq $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         gss.a $$4 = new gss.a();
-
-         for (gge $$5 : this.a()) {
-            gsg $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<ggd> {
+   protected static class a implements JsonDeserializer<ggd> {
       public ggd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<gge> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
+         JsonObject $$3 = $$0.getAsJsonObject();
+         akr $$4 = akr.a(aye.i($$3, "model"));
+         List<ggd.b> $$5 = this.a($$3);
+         return new ggd($$4, $$5);
+      }
 
-            for (JsonElement $$5 : $$4) {
-               $$3.add((gge)$$2.deserialize($$5, gge.class));
-            }
-         } else {
-            $$3.add((gge)$$2.deserialize($$0, gge.class));
+      protected List<ggd.b> a(JsonObject $$0) {
+         Map<akr, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = aye.u($$0, "predicate");
+
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(akr.a($$3.getKey()), aye.e($$3.getValue(), $$3.getKey()));
          }
 
-         return new ggd($$3);
+         return $$1.entrySet().stream().map($$0x -> new ggd.b((akr)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+      }
+   }
+
+   public static class b {
+      private final akr a;
+      private final float b;
+
+      public b(akr $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public akr a() {
+         return this.a;
+      }
+
+      public float b() {
+         return this.b;
       }
    }
 }

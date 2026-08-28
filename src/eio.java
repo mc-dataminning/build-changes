@@ -1,38 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eio extends eix {
-   public static final MapCodec<eio> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eio::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class eio extends eiw {
+   public static final MapCodec<eio> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ehw.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eio::new));
+   private final ehw c;
 
-   private eio(int $$0, double $$1, double $$2) {
+   private eio(ehw $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static eio a(int $$0, double $$1, double $$2) {
-      return new eio($$0, $$1, $$2);
+   public static eio a(ehw $$0) {
+      return new eio($$0);
+   }
+
+   public static eio a(dzs $$0, dzs $$1) {
+      return a(ehz.a($$0, $$1));
+   }
+
+   public static eio b(dzs $$0, dzs $$1) {
+      return a(ehy.a($$0, $$1));
    }
 
    @Override
-   protected int a(ayv $$0, jd $$1) {
-      double $$2 = ddu.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<jd> a_(eiu $$0, ayw $$1, jd $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
    @Override
-   public eiu<?> b() {
-      return eiu.g;
+   public eix<?> b() {
+      return eix.l;
    }
 }

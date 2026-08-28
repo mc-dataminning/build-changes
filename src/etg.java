@@ -1,44 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class etg extends esy {
+public class etg extends etc {
    public static final MapCodec<etg> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ark.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  axv.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(ern.e.fieldOf("component").forGetter($$0x -> $$0x.b), etf.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
             .apply($$0, etg::new)
    );
-   private final Optional<String> b;
-   private final Optional<ark<String>> c;
-   private final Optional<Integer> d;
+   private final erm<?> b;
+   private final etd c;
 
-   public etg(List<euw> $$0, Optional<ark<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   private etg(List<eva> $$0, erm<?> $$1, etd $$2) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cuo a(cuo $$0, erl $$1) {
-      $$0.a(kq.J, cxz.a, this::a);
-      return $$0;
-   }
-
-   private cxz a(cxz $$0) {
-      return new cxz(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   public ete<etg> b() {
+      return etf.u;
    }
 
    @Override
-   public eta<etg> b() {
-      return etb.M;
+   public cuq a(cuq $$0, erp $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

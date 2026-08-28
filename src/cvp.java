@@ -1,19 +1,19 @@
-public class cvp extends cuk {
-   private final aqu a;
-
-   public cvp(aqu $$0) {
-      this.a = $$0;
+public class cvp extends cul {
+   public cvp(cul.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(cuj $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new acr($$0, $$1));
-   }
+   public bqr a(cuq $$0, cmx $$1, btn $$2, bqq $$3) {
+      if ($$2 instanceof bue $$4 && $$2.bE() && !$$4.i() && $$4.f()) {
+         if (!$$1.dP().B) {
+            $$4.a($$0.a(1), avq.g);
+            $$2.dP().a($$2, dxz.v, $$2.dn());
+         }
 
-   @Override
-   protected void c(cuj $$0) {
-      super.c($$0);
-      this.a.c.b(new acr($$0, 0));
+         return bqr.a($$1.dP().B);
+      }
+
+      return bqr.e;
    }
 }

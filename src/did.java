@@ -1,88 +1,148 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class did {
-   public static <S extends dqf> did.c<S> a(
-      dqh<S> $$0, Function<dta, did.a> $$1, Function<dta, ji> $$2, dtu $$3, dta $$4, dcv $$5, jd $$6, BiPredicate<dcv, jd> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return did.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return did.b::b;
+public class did extends dfk {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<did> a = b(did::new);
+   public static final dtw b = dib.a;
+   public static final dtt c = dts.A;
+   private static final kw f = new kw();
+   public static final Map<cul, kx> d = ad.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(f));
+   private static final int g = 4;
+
+   @Override
+   public MapCodec<? extends did> a() {
+      return a;
+   }
+
+   public static void a(dcv $$0, kx $$1) {
+      d.put($$0.r(), $$1);
+   }
+
+   public static void a(dcv $$0) {
+      d.put($$0.r(), new kz($$0.r()));
+   }
+
+   protected did(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ji.c).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$1.B) {
+         return bqr.a;
       } else {
-         did.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == did.a.a;
-         boolean $$11 = $$9 == did.a.b;
-         if ($$10) {
-            return new did.c.b<>($$8);
-         } else {
-            jd $$12 = $$6.a($$2.apply($$4));
-            dta $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               did.a $$14 = $$1.apply($$13);
-               if ($$14 != did.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return did.b::b;
-                  }
-
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new did.c.a<>($$16, $$17);
-                  }
-               }
+         dqh $$5 = $$1.c_($$2);
+         if ($$5 instanceof dra) {
+            $$3.a((dra)$$5);
+            if ($$5 instanceof drb) {
+               $$3.a(avz.ac);
+            } else {
+               $$3.a(avz.ae);
             }
+         }
 
-            return new did.c.b<>($$8);
+         return bqr.c;
+      }
+   }
+
+   protected void a(aqu $$0, dtc $$1, jd $$2) {
+      dra $$3 = $$0.a($$2, dqj.f).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
+      } else {
+         ku $$4 = new ku($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+            $$0.a(dxz.a, $$2, dxz.a.a($$3.n()));
+         } else {
+            cuq $$6 = $$3.a($$5);
+            kx $$7 = this.a($$0, $$6);
+            if ($$7 != kx.b) {
+               $$3.a($$5, $$7.dispense($$4, $$6));
+            }
          }
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   protected kx a(dcw $$0, cuq $$1) {
+      return (kx)(!$$1.a($$0.J()) ? f : d.get($$1.g()));
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3, jd $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2) || $$1.C($$2.d());
+      boolean $$7 = $$0.c(c);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      }
    }
 
-   public interface c<S> {
-      <T> T apply(did.b<? super S, T> var1);
+   @Override
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      this.a($$1, $$0, $$2);
+   }
 
-      public static final class a<S> implements did.c<S> {
-         private final S a;
-         private final S b;
+   @Override
+   public dqh a(jd $$0, dtc $$1) {
+      return new dra($$0, $$1);
+   }
 
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
+   @Override
+   public dtc a(cyd $$0) {
+      return this.o().a(b, $$0.d().g());
+   }
 
-         @Override
-         public <T> T apply(did.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
-      }
+   @Override
+   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
+      bqn.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      public static final class b<S> implements did.c<S> {
-         private final S a;
+   public static jw a(ku $$0) {
+      return a($$0, 0.7, exa.b);
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   public static jw a(ku $$0, double $$1, exa $$2) {
+      ji $$3 = $$0.d().c(b);
+      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
+   }
 
-         @Override
-         public <T> T apply(did.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   protected boolean c_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dtc $$0, dcw $$1, jd $$2) {
+      return cpu.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dmf a_(dtc $$0) {
+      return dmf.c;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b, c);
    }
 }

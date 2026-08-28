@@ -3,11 +3,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
 public class ix implements io<StringArgumentType, ix.a> {
-   public void a(ix.a $$0, vv $$1) {
+   public void a(ix.a $$0, vw $$1) {
       $$1.a((Enum<?>)$$0.b);
    }
 
-   public ix.a a(vv $$0) {
+   public ix.a a(vw $$0) {
       StringType $$1 = $$0.b(StringType.class);
       return new ix.a($$1);
    }

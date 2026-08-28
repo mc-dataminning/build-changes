@@ -1,73 +1,89 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public final class gai {
-   private static final int a = 1024;
-   private final fzz b;
-   private final gaf c;
-   private final fzu d;
+public abstract class gai {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
    @Nullable
-   private gae e;
+   protected gak e;
 
-   public gai(fzz $$0, gaf $$1, fzu $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public static gai a(gaf $$0, UserApiService $$1) {
-      fzu $$2 = new fzu(1024);
-      fzz $$3 = fzz.a($$0, $$1);
-      return new gai($$3, $$0, $$2);
-   }
-
-   public void a(fgi $$0, fnx $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gae $$4 = this.e.b();
-         $$0.a(
-            new fmv(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               wy.c("gui.abuseReport.draft.edit"),
-               wy.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
-      }
-   }
-
-   public fzz a() {
-      return this.b;
-   }
-
-   public fzu b() {
-      return this.d;
-   }
-
-   public boolean a(gaf $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable gae $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
+   public gai(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      return $$0.equals(this.c);
+   }
+
+   public abstract gai b();
+
+   public abstract fob a(fob var1, gam var2);
+
+   public abstract static class a<R extends gai> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public gak h() {
+         return this.a.e;
+      }
+
+      public void a(gak $$0) {
+         this.a.e = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract gai.b c();
+
+      public abstract Either<gai.c, gai.b> a(gam var1);
+   }
+
+   public static record b(wz e) {
+      public static final gai.b a = new gai.b(wz.c("gui.abuseReport.send.no_reason"));
+      public static final gai.b b = new gai.b(wz.c("gui.chatReport.send.no_reported_messages"));
+      public static final gai.b c = new gai.b(wz.c("gui.chatReport.send.too_many_messages"));
+      public static final gai.b d = new gai.b(wz.c("gui.abuseReport.send.comment_too_long"));
+
+      public fjv a() {
+         return fjv.a(this.e);
+      }
+
+      public wz b() {
+         return this.e;
+      }
+   }
+
+   public static record c(UUID a, gal b, AbuseReport c) {
    }
 }

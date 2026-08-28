@@ -1,9 +1,15 @@
-public class gnj extends giy<cku, fxw<cku>> {
-   public gnj(gkd.a $$0) {
-      this($$0, fyd.cg, fyd.cj, fyd.ck);
+public class gnj extends gmj<cku> {
+   private static final akr a = akr.b("textures/entity/skeleton/wither_skeleton.png");
+
+   public gnj(gkh.a $$0) {
+      super($$0, fyh.bY, fyh.bZ, fyh.ca);
    }
 
-   public gnj(gkd.a $$0, fyc $$1, fyc $$2, fyc $$3) {
-      super($$0, new fxw<>($$0.a($$1)), new fxw<>($$0.a($$2)), new fxw<>($$0.a($$3)));
+   public akr a(cku $$0) {
+      return a;
+   }
+
+   protected void a(cku $$0, fbg $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

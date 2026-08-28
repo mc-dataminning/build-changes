@@ -1,36 +1,16 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class yr implements yo {
-   public static final yp<yr> a = new yp<yr>() {
-      private static final MapCodec<yr> a = xv.b.a.xmap(yr::new, $$0 -> $$0.e);
-      private static final yw<wj, yr> b = yw.a(xv.b.c, $$0 -> $$0.e, yr::new);
+public class yr {
+   public static final MapCodec<yp> a = lt.ao.r().dispatchMap(yp::a, yq::a);
+   public static final Codec<yp> b = a.codec();
+   public static final yx<wk, yp> c = yv.a(lu.ay).b(yp::a, yq::b);
+   public static final yx<wk, Optional<yp>> d = c.a(yv::a);
 
-      @Override
-      public MapCodec<yr> a() {
-         return a;
-      }
-
-      @Override
-      public yw<wj, yr> b() {
-         return b;
-      }
-   };
-   public static final yr b = new yr(xv.a);
-   public static final yr c = new yr(xv.a.a(n.m));
-   public static final yr d = new yr(xv.a.a(n.o));
-   final xv e;
-
-   public yr(xv $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public xm a(int $$0) {
-      return wy.b(Integer.toString($$0)).c(this.e);
-   }
-
-   @Override
-   public yp<yr> a() {
-      return a;
+   public static yq<?> a(jz<yq<?>> $$0) {
+      jz.a($$0, "blank", yn.b);
+      jz.a($$0, "styled", ys.a);
+      return jz.a($$0, "fixed", yo.a);
    }
 }

@@ -1,8 +1,8 @@
-public interface ajn extends ajh, vp {
-   @Override
-   default vt b() {
-      return vt.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajo var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajn {
 }

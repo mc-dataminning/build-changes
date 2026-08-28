@@ -1,42 +1,32 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eba extends eay {
-   public eba(Codec<eax> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(eoz.e, eoz.c);
+public class eba extends eax {
+   public static final Codec<eba> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eax.d.forGetter($$0x -> $$0x),
+               bpu.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bpu.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bpu.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, eba::new)
+   );
+   public final bpu b;
+   public final bpu c;
+   final bpu j;
+
+   public eba(float $$0, ehw $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, bpu $$7, bpu $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public eba(float $$0, ehw $$1, bpu $$2, dzs $$3, jq<dfy> $$4, bpu $$5, bpu $$6, bpu $$7) {
+      this($$0, $$1, $$2, $$3, eay.a, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected float a(ayv $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(eaw $$0, eax $$1, duw $$2, Function<jd, jm<ddu>> $$3, duv $$4, jd.a $$5, jd.a $$6, dyh $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dta $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public eba(eax $$0, bpu $$1, bpu $$2, bpu $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

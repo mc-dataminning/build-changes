@@ -1,40 +1,19 @@
-public class cwb extends cuj {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cwb(cuj.a $$0) {
+public class cwb extends csj {
+   public cwb(cul.a $$0) {
       super($$0);
    }
 
    @Override
-   public int a(cuo $$0, btl $$1) {
-      return 1200;
+   public cnd a(dcw $$0, cuq $$1, btn $$2, @Nullable cuq $$3) {
+      return new cnv($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public cwm b(cuo $$0) {
-      return cwm.h;
-   }
-
-   @Override
-   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
-      $$1.a(avo.yX, 1.0F, 1.0F);
-      $$1.b(avy.c.b(this));
-      return cuq.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public cuo a(cuo $$0, dcu $$1, btl $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(cuo $$0, dcu $$1, btl $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(btl $$0) {
-      $$0.a(avo.yY, 1.0F, 1.0F);
+   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
+      cnv $$4 = new cnv($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = cnd.a.b;
+      return $$4;
    }
 }

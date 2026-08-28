@@ -1,105 +1,181 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public interface dyo {
-   Codec<dyo> b = dyp.b;
-   Codec<jm<dyo>> c = akm.a(lu.aJ, b);
-   Codec<dyo> d = c.xmap(dyp.j::new, $$0 -> (jm)($$0 instanceof dyp.j $$1 ? $$1.j() : new jm.a<>($$0)));
-
-   double a(dyo.b var1);
-
-   void a(double[] var1, dyo.a var2);
-
-   dyo a(dyo.f var1);
-
-   double a();
-
-   double b();
-
-   ayg<? extends dyo> c();
-
-   default dyo a(double $$0, double $$1) {
-      return new dyp.g(this, $$0, $$1);
+public abstract class dyo {
+   public static dyo.b a(int $$0, int $$1) {
+      return new dyo.b($$0 - 1, $$1 + 1);
    }
 
-   default dyo d() {
-      return dyp.a(this, dyp.k.a.a);
+   public static dyo.b b(int $$0, int $$1) {
+      return new dyo.b($$0, $$1);
    }
 
-   default dyo e() {
-      return dyp.a(this, dyp.k.a.b);
+   public static dyo a(int $$0) {
+      return new dyo.c($$0, false);
    }
 
-   default dyo f() {
-      return dyp.a(this, dyp.k.a.c);
+   public static dyo b(int $$0) {
+      return new dyo.c($$0 + 1, false);
    }
 
-   default dyo g() {
-      return dyp.a(this, dyp.k.a.d);
+   public static dyo c(int $$0) {
+      return new dyo.c($$0, true);
    }
 
-   default dyo h() {
-      return dyp.a(this, dyp.k.a.e);
+   public static dyo d(int $$0) {
+      return new dyo.c($$0 - 1, true);
    }
 
-   default dyo i() {
-      return dyp.a(this, dyp.k.a.f);
+   public static dyo a() {
+      return dyo.a.a;
    }
 
-   public interface a {
-      dyo.b a(int var1);
-
-      void a(double[] var1, dyo var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dzx d() {
-         return dzx.a();
+   public static dyo a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   public static record c(jm<eob.a> b, @Nullable eob c) {
-      public static final Codec<dyo.c> a = eob.a.b.xmap($$0 -> new dyo.c($$0, null), dyo.c::b);
+   public abstract OptionalInt b();
 
-      public c(jm<eob.a> $$0) {
-         this($$0, null);
-      }
+   public abstract OptionalInt c();
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
+   public abstract OptionalInt d();
 
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
+   public dyo a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dyo b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dyo> a(ddc $$0, jd $$1, int $$2, Predicate<dtc> $$3, Predicate<dtc> $$4) {
+      jd.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   public interface d extends dyo {
-      @Override
-      default void a(double[] $$0, dyo.a $$1) {
-         $$1.a($$0, this);
+   private static OptionalInt a(ddc $$0, int $$1, Predicate<dtc> $$2, Predicate<dtc> $$3, jd.a $$4, int $$5, ji $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dyo {
+      static final dyo.a a = new dyo.a();
+
+      private a() {
       }
 
       @Override
-      default dyo a(dyo.f $$0) {
-         return $$0.apply(this);
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
       }
    }
 
-   public static record e(int a, int b, int c) implements dyo.b {
+   public static final class b extends dyo {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public interface f {
-      dyo apply(dyo var1);
+   public static final class c extends dyo {
+      private final int a;
+      private final boolean b;
 
-      default dyo.c a(dyo.c $$0) {
-         return $$0;
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

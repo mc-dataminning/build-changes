@@ -1,23 +1,23 @@
-public enum dul implements azj {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dul implements azk {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final String e;
-   private final boolean f;
+   private final String f;
 
-   private dul(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dul(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
       return this.f;
    }
 }

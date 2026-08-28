@@ -1,51 +1,60 @@
-public class gkh extends gkc<btb> {
-   private static final akq a = akq.b("textures/entity/experience_orb.png");
-   private static final gfb f = gfb.g(a);
+@FunctionalInterface
+public interface gkh<T extends bsr> {
+   gkg<T> create(gkh.a var1);
 
-   public gkh(gkd.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
-   }
+   public static class a {
+      private final gkf a;
+      private final glf b;
+      private final gfr c;
+      private final get d;
+      private final aue e;
+      private final fye f;
+      private final fhv g;
 
-   protected int a(btb $$0, jd $$1) {
-      return ayn.a(super.a($$0, $$1) + 7, 0, 15);
-   }
+      public a(gkf $$0, glf $$1, gfr $$2, get $$3, aue $$4, fye $$5, fhv $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   public void a(btb $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
-      int $$16 = (int)((ayn.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((ayn.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      fbg $$20 = $$4.getBuffer(f);
-      fbc.a $$21 = $$3.c();
-      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public gkf a() {
+         return this.a;
+      }
 
-   private static void a(fbg $$0, fbc.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(gpw.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
-   }
+      public glf b() {
+         return this.b;
+      }
 
-   public akq a(btb $$0) {
-      return a;
+      public gfr c() {
+         return this.c;
+      }
+
+      public get d() {
+         return this.d;
+      }
+
+      public aue e() {
+         return this.e;
+      }
+
+      public fye f() {
+         return this.f;
+      }
+
+      public gsr g() {
+         return this.c.a().a();
+      }
+
+      public fyi a(fyg $$0) {
+         return this.f.a($$0);
+      }
+
+      public fhv h() {
+         return this.g;
+      }
    }
 }

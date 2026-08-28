@@ -1,4 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record evr(MapCodec<? extends evs> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evr {
 }

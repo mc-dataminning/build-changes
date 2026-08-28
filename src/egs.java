@@ -1,72 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-public class egs extends egw {
-   public static final MapCodec<egs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               egf.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               axv.a(ji.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, egs::new)
-   );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final egf e;
-   protected final int f;
-   protected final List<ji> g;
+public class egs extends egi {
+   public static final MapCodec<egs> b = bpb.b(dtc.b).comapFlatMap(egs::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bpb<dtc> c;
 
-   public egs(float $$0, int $$1, int $$2, egf $$3, int $$4, List<ji> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   private static DataResult<egs> a(bpb<dtc> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new egs($$0));
+   }
+
+   public egs(bpb<dtc> $$0) {
+      this.c = $$0;
+   }
+
+   public egs(bpb.a<dtc> $$0) {
+      this($$0.a());
    }
 
    @Override
-   public void a(egw.a $$0) {
-      Set<jd> $$1 = new HashSet<>();
-      ayv $$2 = $$0.b();
-
-      for (jd $$3 : ad.a($$0.d(), $$2)) {
-         ji $$4 = ad.a(this.g, $$2);
-         jd $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            jd $$6 = $$5.b(-this.c, -this.d, -this.c);
-            jd $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (jd $$8 : jd.c($$6, $$7)) {
-               $$1.add($$8.i());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
-   }
-
-   private boolean a(egw.a $$0, jd $$1, ji $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         jd $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected egj<?> a() {
+      return egj.b;
    }
 
    @Override
-   protected egx<?> a() {
-      return egx.f;
+   public dtc a(ayw $$0, jd $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

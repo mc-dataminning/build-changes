@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class etn extends esy {
+public class etn extends etc {
    public static final MapCodec<etn> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cxj.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cxj.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cxj.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  akq.a(lu.bc).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lt.j.s().fieldOf("type").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, etn::new)
    );
-   public static final cxj b = new cxj(cxj.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cxj.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final akq<eru> b;
+   private final long c;
+   private final jm<dqj<?>> d;
 
-   public etn(List<euw> $$0, Optional<cxj.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private etn(List<eva> $$0, akq<eru> $$1, long $$2, jm<dqj<?>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cuo a(cuo $$0, erl $$1) {
-      $$0.a(kq.U, b, this::a);
-      return $$0;
-   }
-
-   private cxj a(cxj $$0) {
-      return new cxj(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public ete<etn> b() {
+      return etf.y;
    }
 
    @Override
-   public eta<etn> b() {
-      return etb.L;
+   public cuq a(cuq $$0, erp $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         $$0.b(kq.af, new cxv(this.b, this.c));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else {
+         if ($$0.a().a(lu.bc, this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
+         }
+      }
+   }
+
+   public static etc.a<?> a(dqj<?> $$0, akq<eru> $$1) {
+      return a($$2 -> new etn($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static etc.a<?> a(dqj<?> $$0, akq<eru> $$1, long $$2) {
+      return a($$3 -> new etn($$3, $$1, $$2, $$0.a()));
    }
 }

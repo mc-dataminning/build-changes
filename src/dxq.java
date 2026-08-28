@@ -1,29 +1,45 @@
-public enum dxq {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private final boolean d;
-   private final boolean e;
+public class dxq<T extends dxg> implements dxp<T> {
+   private final dxi<T> a;
+   private final dxl<T> b;
 
-   private dxq(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public dxq(dxi<T> $$0, dxl<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a() {
-      return this.e;
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public boolean b() {
-      return this.d;
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public static dxq a(aqk $$0) {
-      if ($$0.a(aqk.d)) {
-         return c;
-      } else {
-         return $$0.a(aqk.b) ? b : a;
-      }
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
+   }
+
+   @Override
+   public <U extends T> void a(dxn<T, U> $$0, axa<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(ewv $$0, Consumer<T> $$1) {
+      this.b.b($$0, axa.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(dxn<T, U> $$0, ewv $$1, axa<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

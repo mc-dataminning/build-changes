@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eak implements eac {
-   public static final MapCodec<eak> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eac.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eak::new)
+public class eak extends eaq {
+   final awu<dfy> a;
+   public static final MapCodec<eak> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(awu.a(lu.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eak::new)
    );
-   private final eac e;
 
-   public eak(eac $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(ddq $$0, jd $$1) {
-      return !this.e.test($$0, $$1);
+   protected eak(kh $$0, awu<dfy> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public ead<?> a() {
-      return ead.k;
+   protected boolean a(dtc $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public eag<?> a() {
+      return eag.b;
    }
 }

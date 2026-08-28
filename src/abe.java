@@ -1,18 +1,20 @@
 import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public class abe implements zf<abb> {
-   public static final abe a = new abe();
-   public static final yw<ByteBuf, abe> b = yw.a(a);
-
-   private abe() {
-   }
+public record abe(akq<? extends jz<?>> b, List<kd.a> c) implements zg<abc> {
+   private static final yx<ByteBuf, akq<? extends jz<?>>> d = akr.b.a(akq::a, akq::a);
+   public static final yx<vw, abe> a = yx.a(d, abe::b, kd.a.a.a(yv.a()), abe::e, abe::new);
 
    @Override
-   public zh<abe> a() {
-      return abh.e;
+   public zi<abe> a() {
+      return abi.b;
    }
 
-   public void a(abb $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
+   }
+
+   public List<kd.a> e() {
+      return this.c;
    }
 }

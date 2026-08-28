@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aim extends agj {
+   @Override
+   default vu b() {
+      return vu.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aim {
+   void a(aij var1);
 }

@@ -1,58 +1,74 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class czk extends cyr {
+   public czk(cyo $$0) {
+      super($$0);
+   }
 
-public class czk<T extends cyf> implements czc<T> {
-   private final cyf.a<T> x;
-   private final MapCodec<T> y;
-   private final yw<wj, T> z;
+   public boolean a(cyp $$0, dcw $$1) {
+      cuq $$2 = cuq.l;
+      cuq $$3 = cuq.l;
 
-   public czk(cyf.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                  cyl.d.fieldOf("category").orElse(cyl.c).forGetter($$0xx -> $$0xx.b),
-                  cyu.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  cuo.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-      this.z = yw.a(this::a, this::a);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof csl) {
+               if (!$$3.e()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cut.vs)) {
+                  return false;
+               }
+
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               dpy $$6 = $$5.a(kq.Y, dpy.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            }
+         }
+      }
+
+      return !$$2.e() && !$$3.e();
+   }
+
+   public cuq a(cyp $$0, jo.a $$1) {
+      cuq $$2 = cuq.l;
+      cuq $$3 = cuq.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof csl) {
+               $$2 = $$5;
+            } else if ($$5.a(cut.vs)) {
+               $$3 = $$5.s();
+            }
+         }
+      }
+
+      if ($$3.e()) {
+         return $$3;
+      } else {
+         $$3.b(kq.Y, $$2.a(kq.Y));
+         $$3.b(kq.Z, ((csl)$$2.g()).b());
+         return $$3;
+      }
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.y;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public yw<wj, T> b() {
-      return this.z;
-   }
-
-   private T a(wj $$0) {
-      String $$1 = $$0.p();
-      cyl $$2 = $$0.b(cyl.class);
-      cyu $$3 = cyu.b.decode($$0);
-      cuo $$4 = cuo.i.decode($$0);
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.l();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private void a(wj $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      cyu.b.encode($$0, $$1.d);
-      cuo.i.encode($$0, $$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   public cyf a(String $$0, cyl $$1, cyu $$2, cuo $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   public cze<?> at_() {
+      return cze.l;
    }
 }

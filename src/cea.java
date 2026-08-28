@@ -1,36 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cea extends cdq {
-   private static final ImmutableMap<bsw<?>, Float> a = ImmutableMap.builder()
-      .put(bsw.B, 8.0F)
-      .put(bsw.J, 12.0F)
-      .put(bsw.ac, 8.0F)
-      .put(bsw.ad, 12.0F)
-      .put(bsw.aC, 15.0F)
-      .put(bsw.aH, 12.0F)
-      .put(bsw.bi, 8.0F)
-      .put(bsw.bk, 10.0F)
-      .put(bsw.bt, 10.0F)
-      .put(bsw.bu, 8.0F)
-      .put(bsw.bw, 8.0F)
-      .build();
+public class cea extends cdy<btw> {
+   public static final int a = 10;
+   private static final cef c = cef.b().a(10.0).d();
+   private final Predicate<cuq> d;
+
+   public cea(Predicate<cuq> $$0) {
+      this.d = $$0;
+   }
+
+   protected void a(aqu $$0, btw $$1) {
+      buq<?> $$2 = $$1.dU();
+      List<cmx> $$3 = $$0.x()
+         .stream()
+         .filter(bsw.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cmx $$4 = $$3.get(0);
+         $$2.a(ccs.O, $$4);
+      } else {
+         $$2.b(ccs.O);
+      }
+   }
+
+   private boolean a(cmx $$0) {
+      return this.a($$0.eU()) || this.a($$0.eV());
+   }
+
+   private boolean a(cuq $$0) {
+      return this.d.test($$0);
+   }
 
    @Override
-   protected boolean a(btl $$0, btl $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(btl $$0, btl $$1) {
-      float $$2 = (Float)a.get($$1.am());
-      return $$1.g((bsq)$$0) <= (double)($$2 * $$2);
-   }
-
-   @Override
-   protected ccq<btl> b() {
-      return ccq.A;
-   }
-
-   private boolean b(btl $$0) {
-      return a.containsKey($$0.am());
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.O);
    }
 }

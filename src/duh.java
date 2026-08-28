@@ -1,7 +1,7 @@
-public enum duh implements azj {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum duh implements azk {
+   a("up"),
+   b("side"),
+   c("none");
 
    private final String d;
 
@@ -11,11 +11,15 @@ public enum duh implements azj {
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

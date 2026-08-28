@@ -1,97 +1,115 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ns implements nq {
-   private final dfw a;
-   private final List<ns.b> b = Lists.newArrayList();
+public interface ns extends Supplier<JsonElement> {
+   void a(dtd<?, ?> var1);
 
-   private ns(dfw $$0) {
-      this.a = $$0;
+   static ns.c a() {
+      return new ns.c();
    }
 
-   @Override
-   public dfw a() {
-      return this.a;
+   static ns a(ns... $$0) {
+      return new ns.a(ns.b.a, Arrays.asList($$0));
    }
 
-   public static ns a(dfw $$0) {
-      return new ns($$0);
+   static ns b(ns... $$0) {
+      return new ns.a(ns.b.b, Arrays.asList($$0));
    }
 
-   public ns a(List<nw> $$0) {
-      this.b.add(new ns.b($$0));
-      return this;
-   }
+   public static class a implements ns {
+      private final ns.b a;
+      private final List<ns> b;
 
-   public ns a(nw $$0) {
-      return this.a(ImmutableList.of($$0));
-   }
-
-   public ns a(nr $$0, List<nw> $$1) {
-      this.b.add(new ns.a($$0, $$1));
-      return this;
-   }
-
-   public ns a(nr $$0, nw... $$1) {
-      return this.a($$0, ImmutableList.copyOf($$1));
-   }
-
-   public ns a(nr $$0, nw $$1) {
-      return this.a($$0, ImmutableList.of($$1));
-   }
-
-   public JsonElement b() {
-      dtb<dfw, dta> $$0 = this.a.l();
-      this.b.forEach($$1x -> $$1x.a($$0));
-      JsonArray $$1 = new JsonArray();
-      this.b.stream().map(ns.b::a).forEach($$1::add);
-      JsonObject $$2 = new JsonObject();
-      $$2.add("multipart", $$1);
-      return $$2;
-   }
-
-   static class a extends ns.b {
-      private final nr a;
-
-      a(nr $$0, List<nw> $$1) {
-         super($$1);
+      a(ns.b $$0, List<ns> $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
       @Override
-      public void a(dtb<?, ?> $$0) {
-         this.a.a($$0);
+      public void a(dtd<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
       }
 
-      @Override
-      public void a(JsonObject $$0) {
-         $$0.add("when", this.a.get());
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
       }
    }
 
-   static class b implements Supplier<JsonElement> {
-      private final List<nw> a;
+   public static enum b {
+      a("AND"),
+      b("OR");
 
-      b(List<nw> $$0) {
-         this.a = $$0;
+      final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static class c implements ns {
+      private final Map<duf<?>, String> a = Maps.newHashMap();
+
+      private static <T extends Comparable<T>> String a(duf<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
       }
 
-      public void a(dtb<?, ?> $$0) {
+      private static <T extends Comparable<T>> String c(duf<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
       }
 
-      public void a(JsonObject $$0) {
+      private <T extends Comparable<T>> void a(duf<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
       }
 
-      public JsonElement a() {
+      public final <T extends Comparable<T>> ns.c a(duf<T> $$0, T $$1) {
+         this.a($$0, $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> ns.c a(duf<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> ns.c b(duf<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> ns.c b(duf<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
          JsonObject $$0 = new JsonObject();
-         this.a($$0);
-         $$0.add("apply", nw.a(this.a));
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
          return $$0;
+      }
+
+      @Override
+      public void a(dtd<?, ?> $$0) {
+         List<duf<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
       }
    }
 }

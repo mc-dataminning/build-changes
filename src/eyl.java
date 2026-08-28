@@ -1,54 +1,59 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+public interface eyl extends bqk {
+   cuq f();
 
-public class eyl<T> implements eyo<T>, eyq<T> {
-   private final List<eym<T>> a = Lists.newArrayList();
-   private final Set<eym<?>> b = new ObjectOpenCustomHashSet(eym.a);
-
-   @Override
-   public void a(eyn<T> $$0) {
-      eym<T> $$1 = new eym<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   default cuq c(int $$0) {
+      return this.f().a($$0);
    }
 
-   private void a(eym<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   void b(cuq var1);
+
+   default cuq h() {
+      return this.c(this.al_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean c() {
+      return this.f().e();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cuq b(int $$0) {
+      return this.a($$0, this.al_());
+   }
+
+   @Override
+   default cuq a(int $$0) {
+      return $$0 == 0 ? this.f() : cuq.l;
+   }
+
+   @Override
+   default cuq a(int $$0, int $$1) {
+      return $$0 != 0 ? cuq.l : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cuq $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
    }
 
-   @Override
-   public boolean a(jd $$0, T $$1) {
-      return this.b.contains(eym.a($$1, $$0));
-   }
+   public interface a extends eyl {
+      dqh v();
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public ux b(long $$0, Function<T, String> $$1) {
-      ug $$2 = new ug();
-
-      for (eym<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+      @Override
+      default boolean a(cmx $$0) {
+         return bqk.a(this.v(), $$0);
       }
-
-      return $$2;
-   }
-
-   public List<eym<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> eyl<T> a(ug $$0, Function<String, Optional<T>> $$1, dcb $$2) {
-      eyl<T> $$3 = new eyl<>();
-      eym.a($$0, $$1, $$2, $$3::a);
-      return $$3;
    }
 }

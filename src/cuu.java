@@ -1,89 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public class cuu {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jm<cut> c;
-   private final jd d;
-   private final cuu.a e;
+public record cuu(ctl<cuv> c, boolean d) implements cxy {
+   public static final Codec<cuu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ctl.a(lu.L, cuv.c).fieldOf("song").forGetter(cuu::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cuu::b))
+            .apply($$0, cuu::new)
+   );
+   public static final yx<wk, cuu> b = yx.a(ctl.a(lu.L, cuv.d), cuu::a, yv.b, cuu::b, cuu::new);
 
-   public cuu(cuu.a $$0, jd $$1) {
-      this.e = $$0;
-      this.d = $$1;
-   }
-
-   public boolean a() {
-      return this.c != null;
-   }
-
-   @Nullable
-   public cut b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jm<cut> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
+   @Override
+   public void a(cul.b $$0, Consumer<wz> $$1, cwm $$2) {
+      jo.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xn $$2x = ((cuv)$$1x.a()).c().f();
+            xc.a($$2x, xw.a.a(n.h));
+            $$1.accept($$2x);
+         });
       }
    }
 
-   public int d() {
-      return this.c != null ? this.c.a().e() : 0;
+   public cuu a(boolean $$0) {
+      return new cuu(this.c, $$0);
    }
 
-   public void a(dcv $$0, jm<cut> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.H_().d(lu.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
+   public static bqt a(dcw $$0, jd $$1, cuq $$2, cmx $$3) {
+      cuu $$4 = $$2.a(kq.R);
+      if ($$4 == null) {
+         return bqt.d;
+      } else {
+         dtc $$5 = $$0.a_($$1);
+         if ($$5.a(dga.dT) && !$$5.c(dkb.b)) {
+            if (!$$0.B) {
+               cuq $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof drj $$7) {
+                  $$7.b($$6);
+                  $$0.a(dxz.c, $$1, dxz.a.a($$3, $$5));
+               }
 
-   public void a(dcv $$0, @Nullable dta $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(dxw.F, this.d, dxw.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dcv $$0, @Nullable dta $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.e()) {
-               $$0.a(dxw.E, this.d, dxw.a.a($$1));
-               a($$0, this.d);
+               $$3.a(avz.al);
             }
 
-            this.b++;
+            return bqt.a($$0.B);
+         } else {
+            return bqt.d;
          }
       }
    }
 
-   private boolean e() {
-      return this.b % 20L == 0L;
+   public ctl<cuv> a() {
+      return this.c;
    }
 
-   private static void a(dcv $$0, jd $$1) {
-      if ($$0 instanceof aqt $$2) {
-         eww $$3 = eww.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.E_().a(4) / 24.0F;
-         $$2.a(lm.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   public boolean b() {
+      return this.d;
    }
 }

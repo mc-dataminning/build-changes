@@ -1,81 +1,107 @@
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class giq implements gig.a {
-   private final fgi a;
+public class giq implements gik.a {
+   private static final Duration a = Duration.ofMillis(500L);
+   private static final int b = 10;
+   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
+   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
+   private final fgm e;
+   private final ddf f;
+   private Instant g = Instant.now();
+   @Nullable
+   private giq.a h;
 
-   public giq(fgi $$0) {
-      this.a = $$0;
+   public giq(fgm $$0, ddf $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      dca $$6 = this.a.s.dQ();
-      jd $$7 = jd.a($$2, $$3, $$4);
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      Instant $$5 = Instant.now();
+      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
+         this.g = $$5;
+         this.h = new giq.a(this.e.r.y_(), kf.a(this.e.s.dp()), 10, this.f);
+      }
 
-      for (jd $$8 : jd.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dta $$9 = $$6.a_($$8);
-         if (!$$9.a(dfy.a)) {
-            exp $$10 = $$9.j($$6, $$8);
+      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
+      fbk $$6 = $$1.getBuffer(gff.C());
+      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+   }
 
-            for (ewr $$11 : $$10.e()) {
-               ewr $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               int $$19 = -2130771968;
-               if ($$9.d($$6, $$8, ji.e)) {
-                  fbg $$20 = $$1.getBuffer(gfb.y());
-                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
-               }
+   private static void a(fbg $$0, exj $$1, kf $$2, fbk $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10) -> {
+         int $$11 = $$8 + $$2.u();
+         int $$12 = $$9 + $$2.v();
+         int $$13 = $$10 + $$2.w();
+         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
+      });
+   }
 
-               if ($$9.d($$6, $$8, ji.d)) {
-                  fbg $$21 = $$1.getBuffer(gfb.y());
-                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
+   private static void a(fbg $$0, exj $$1, kf $$2, gex $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
+         int $$13 = $$7x + $$2.u();
+         int $$14 = $$8 + $$2.v();
+         int $$15 = $$9 + $$2.w();
+         int $$16 = $$10 + $$2.u();
+         int $$17 = $$11 + $$2.v();
+         int $$18 = $$12 + $$2.w();
+         fbk $$19 = $$3.getBuffer(gff.a(1.0));
+         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
+      }, true);
+   }
 
-               if ($$9.d($$6, $$8, ji.f)) {
-                  fbg $$22 = $$1.getBuffer(gfb.y());
-                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
-               }
+   private static void a(fbg $$0, fbk $$1, ji $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
+      float $$10 = (float)((double)kf.c($$6) - $$3);
+      float $$11 = (float)((double)kf.c($$7) - $$4);
+      float $$12 = (float)((double)kf.c($$8) - $$5);
+      gev.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   }
 
-               if ($$9.d($$6, $$8, ji.c)) {
-                  fbg $$23 = $$1.getBuffer(gfb.y());
-                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
-               }
+   private static void a(fbg $$0, fbk $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
+      float $$12 = (float)((double)kf.c($$5) - $$2);
+      float $$13 = (float)((double)kf.c($$6) - $$3);
+      float $$14 = (float)((double)kf.c($$7) - $$4);
+      float $$15 = (float)((double)kf.c($$8) - $$2);
+      float $$16 = (float)((double)kf.c($$9) - $$3);
+      float $$17 = (float)((double)kf.c($$10) - $$4);
+      Matrix4f $$18 = $$0.c().a();
+      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   }
 
-               if ($$9.d($$6, $$8, ji.a)) {
-                  fbg $$24 = $$1.getBuffer(gfb.y());
-                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
+   static final class a {
+      final exj a;
+      final exj b;
+      final kf c;
 
-               if ($$9.d($$6, $$8, ji.b)) {
-                  fbg $$25 = $$1.getBuffer(gfb.y());
-                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
+      a(eor $$0, kf $$1, int $$2, ddf $$3) {
+         int $$4 = $$2 * 2 + 1;
+         this.a = new exd($$4, $$4, $$4);
+         this.b = new exd($$4, $$4, $$4);
+
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               for (int $$7 = 0; $$7 < $$4; $$7++) {
+                  kf $$8 = kf.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
+                  eoq.b $$9 = $$0.b($$3, $$8);
+                  if ($$9 == eoq.b.c) {
+                     this.a.c($$7, $$6, $$5);
+                     this.b.c($$7, $$6, $$5);
+                  } else if ($$9 == eoq.b.b) {
+                     this.b.c($$7, $$6, $$5);
+                  }
                }
             }
          }
+
+         this.c = kf.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
       }
    }
 }

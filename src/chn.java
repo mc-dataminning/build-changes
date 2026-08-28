@@ -1,87 +1,49 @@
 import javax.annotation.Nullable;
 
-public class chn extends cak {
-   private final chm a;
-
-   public chn(chm $$0) {
-      this.a = $$0;
+public class chn extends chh {
+   public chn(bsx<? extends chn> $$0, dcw $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean b() {
-      return this.a.dQ().a(this.a.dv(), this.a.dx(), this.a.dB(), 10.0);
+   protected avo v() {
+      return avp.px;
    }
 
    @Override
-   public void a() {
-      aqt $$0 = (aqt)this.a.dQ();
-      bqo $$1 = $$0.d_(this.a.dq());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      btk $$2 = bsw.am.a((dcu)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.dv(), this.a.dx(), this.a.dB());
-         $$2.a(true);
-         $$0.b($$2);
-         ckj $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected avo gK() {
+      return avp.py;
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               chg $$5 = this.a($$1);
-               if ($$5 != null) {
-                  ckj $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.dT().a(0.0, 1.1485), 0.0, this.a.dT().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
-         }
-      }
+   @Override
+   protected avo n_() {
+      return avp.pA;
    }
 
    @Nullable
-   private chg a(bqo $$0) {
-      chm $$1 = bsw.aO.a(this.a.dQ());
-      if ($$1 != null) {
-         $$1.a((aqt)this.a.dQ(), $$0, btp.k, null);
-         $$1.a_(this.a.dv(), this.a.dx(), this.a.dB());
-         $$1.am = 60;
-         $$1.fP();
-         $$1.x(true);
-         $$1.c_(0);
-      }
+   @Override
+   protected avo gn() {
+      return avp.pB;
+   }
 
-      return $$1;
+   @Override
+   protected avo d(brk $$0) {
+      return avp.pC;
+   }
+
+   @Override
+   protected void gS() {
+      this.a(avp.pD, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void x() {
+      this.a(avp.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
    }
 
    @Nullable
-   private ckj a(bqo $$0, chg $$1) {
-      ckj $$2 = bsw.aN.a($$1.dQ());
-      if ($$2 != null) {
-         $$2.a((aqt)$$1.dQ(), $$0, btp.k, null);
-         $$2.a_($$1.dv(), $$1.dx(), $$1.dB());
-         $$2.am = 60;
-         $$2.fP();
-         if ($$2.a(bsx.f).e()) {
-            $$2.a(bsx.f, new cuo(cur.pG));
-         }
-
-         this.a($$2, bsx.a, $$0);
-         this.a($$2, bsx.f, $$0);
-      }
-
-      return $$2;
-   }
-
-   private void a(ckj $$0, bsx $$1, bqo $$2) {
-      cuo $$3 = $$0.a($$1);
-      $$3.b(kq.k, dag.a);
-      dac.a($$3, $$0.dQ().H_(), dbn.a, $$2, $$0.dT());
-      $$0.a($$1, $$3);
+   @Override
+   public bsl a(aqu $$0, bsl $$1) {
+      return bsx.at.a((dcw)$$0);
    }
 }

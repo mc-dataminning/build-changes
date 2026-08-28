@@ -1,143 +1,218 @@
-public interface flw {
-   flw a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   flw a(int var1, int var2);
+public class flw extends fls {
+   private final List<flz> c = new ArrayList<>();
+   private final List<flw.a> d = new ArrayList<>();
+   private final fma e = fma.i();
+   private int f = 0;
+   private int g = 0;
 
-   flw a(int var1, int var2, int var3, int var4);
-
-   flw b(int var1);
-
-   flw c(int var1);
-
-   flw d(int var1);
-
-   flw e(int var1);
-
-   flw f(int var1);
-
-   flw g(int var1);
-
-   flw a(float var1, float var2);
-
-   flw a(float var1);
-
-   flw b(float var1);
-
-   default flw a() {
-      return this.a(0.0F);
+   public flw() {
+      this(0, 0);
    }
 
-   default flw b() {
-      return this.a(0.5F);
+   public flw(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
-   default flw c() {
-      return this.a(1.0F);
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (flw.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (flw.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (flw.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.D() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.E() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   default flw d() {
-      return this.b(0.0F);
+   public <T extends flz> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
    }
 
-   default flw e() {
-      return this.b(0.5F);
+   public <T extends flz> T a(T $$0, int $$1, int $$2, fma $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
    }
 
-   default flw f() {
-      return this.b(1.0F);
+   public <T extends flz> T a(T $$0, int $$1, int $$2, Consumer<fma> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ad.a(this.b(), $$3));
    }
 
-   flw g();
-
-   flw.a h();
-
-   static flw i() {
-      return new flw.a();
+   public <T extends flz> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
    }
 
-   public static class a implements flw {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public <T extends flz> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fma $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      } else {
+         this.d.add(new flw.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
+      }
+   }
 
-      public a() {
+   public <T extends flz> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fma> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ad.a(this.b(), $$5));
+   }
+
+   public flw a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public flw b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public flw c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
+   @Override
+   public void b(Consumer<flz> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public fma b() {
+      return this.e.g();
+   }
+
+   public fma c() {
+      return this.e;
+   }
+
+   public flw.b d(int $$0) {
+      return new flw.b($$0);
+   }
+
+   static class a extends fls.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(flz $$0, int $$1, int $$2, int $$3, int $$4, fma $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
 
-      public a(flw.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      public int c() {
+         return this.c + this.e - 1;
       }
 
-      public flw.a h(int $$0) {
-         return this.b($$0, $$0);
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(final int $$1) {
+         this.b = $$1;
       }
 
-      public flw.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
+      public <T extends flz> T a(T $$0) {
+         return this.a($$0, 1);
       }
 
-      public flw.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
+      public <T extends flz> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
       }
 
-      public flw.a i(int $$0) {
-         this.a = $$0;
-         return this;
+      public <T extends flz> T a(T $$0, fma $$1) {
+         return this.a($$0, 1, $$1);
       }
 
-      public flw.a j(int $$0) {
-         this.b = $$0;
-         return this;
+      public <T extends flz> T a(T $$0, int $$1, fma $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = ayo.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return flw.this.a($$0, $$3, $$4, 1, $$1, $$2);
       }
 
-      public flw.a k(int $$0) {
-         this.c = $$0;
-         return this;
+      public flw a() {
+         return flw.this;
       }
 
-      public flw.a l(int $$0) {
-         this.d = $$0;
-         return this;
+      public fma b() {
+         return flw.this.b();
       }
 
-      public flw.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public flw.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public flw.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public flw.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public flw.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public flw.a j() {
-         return new flw.a(this);
-      }
-
-      @Override
-      public flw.a h() {
-         return this;
+      public fma c() {
+         return flw.this.c();
       }
    }
 }

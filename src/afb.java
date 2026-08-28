@@ -1,60 +1,61 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
-public class afb implements zf<abt> {
-   public static final yw<wj, afb> a = zf.a(afb::a, afb::new);
-   private static final byte b = -128;
+public class afb implements zg<abu> {
+   public static final yx<vw, afb> a = zg.a(afb::a, afb::new);
+   private final int b;
    private final int c;
-   private final List<Pair<bsx, cuo>> d;
+   private final int d;
+   private final int e;
 
-   public afb(int $$0, List<Pair<bsx, cuo>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public afb(bsr $$0) {
+      this($$0.an(), $$0.ds());
    }
 
-   private afb(wj $$0) {
-      this.c = $$0.l();
-      bsx[] $$1 = bsx.values();
-      this.d = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bsx $$3 = $$1[$$2 & 127];
-         cuo $$4 = cuo.h.decode($$0);
-         this.d.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+   public afb(int $$0, exa $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = ayo.a($$1.c, -3.9, 3.9);
+      double $$4 = ayo.a($$1.d, -3.9, 3.9);
+      double $$5 = ayo.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private void a(wj $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
+   private afb(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bsx, cuo> $$3 = this.d.get($$2);
-         bsx $$4 = (bsx)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         cuo.h.encode($$0, (cuo)$$3.getSecond());
-      }
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public zh<afb> a() {
-      return agf.aF;
+   public zi<afb> a() {
+      return agg.aE;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<Pair<bsx, cuo>> e() {
-      return this.d;
+   public double e() {
+      return (double)this.c / 8000.0;
+   }
+
+   public double f() {
+      return (double)this.d / 8000.0;
+   }
+
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

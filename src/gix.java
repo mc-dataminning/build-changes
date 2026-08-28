@@ -1,13 +1,37 @@
-public abstract class gix<T extends chg, M extends fvp<T>> extends glj<T, M> {
-   private final float a;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gix(gkd.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
+public class gix implements gik.a {
+   private static final int a = 60;
+   private final Set<kf> b = Sets.newHashSet();
+
+   gix() {
    }
 
-   protected void a(T $$0, fbc $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(kf $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kf $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      jd $$5 = jd.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fbg $$0, gex $$1, kf $$2) {
+      gik.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

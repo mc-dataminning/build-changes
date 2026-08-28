@@ -1,228 +1,243 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.io.Reader;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.IdentityHashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gsm implements atx, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<akq, akq> b = Map.of(
-      gfi.c,
-      akq.b("banner_patterns"),
-      gfi.b,
-      akq.b("beds"),
-      gfi.f,
-      akq.b("chests"),
-      gfi.d,
-      akq.b("shield_patterns"),
-      gfi.e,
-      akq.b("signs"),
-      gfi.a,
-      akq.b("shulker_boxes"),
-      gfi.g,
-      akq.b("armor_trims"),
-      gfi.h,
-      akq.b("decorated_pot"),
-      gqe.e,
-      akq.b("blocks")
-   );
-   private Map<akq, gsg> c;
-   private final gsf d;
-   private final gfm e;
-   private final fhk f;
-   private int g;
-   private gsg h;
-   private Object2IntMap<dta> i;
+public class gsm {
+   private static final Logger c = LogUtils.getLogger();
+   static final int a = -1;
+   private static final int d = 0;
+   public static final akk b = akk.a("blockstates");
+   private static final Splitter e = Splitter.on(',');
+   private static final Splitter f = Splitter.on('=').limit(2);
+   private static final dtd<dfy, dtc> g = new dtd.a<dfy, dtc>(dga.a).a(dtt.a("map")).a(dfy::o, dtc::new);
+   private static final Map<akr, dtd<dfy, dtc>> h = Map.of(akr.b("item_frame"), g, akr.b("glow_item_frame"), g);
+   private final Map<akr, List<gsm.b>> i;
+   private final bnf j;
+   private final fho k;
+   private final BiConsumer<gss, gsw> l;
+   private int m = 1;
+   private final Object2IntMap<dtc> n = ad.a(new Object2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
+   private final gsm.c o;
+   private final gga.a p = new gga.a();
 
-   public gsm(gqg $$0, fhk $$1, int $$2) {
-      this.f = $$1;
-      this.g = $$2;
-      this.e = new gfm(this);
-      this.d = new gsf(b, $$0);
+   public gsm(Map<akr, List<gsm.b>> $$0, bnf $$1, gsw $$2, fho $$3, BiConsumer<gss, gsw> $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$3;
+      this.l = $$4;
+      gsm.d $$5 = new gsm.d(List.of($$2), List.of());
+      this.o = new gsm.c($$2, () -> $$5);
    }
 
-   public gsg a(gsn $$0) {
-      return this.c.getOrDefault($$0, this.h);
+   public void a() {
+      this.j.a("static_definitions");
+      h.forEach(this::a);
+      this.j.b("blocks");
+
+      for (dfy $$0 : lt.e) {
+         this.a($$0.s().h().a(), $$0.l());
+      }
+
+      this.j.c();
    }
 
-   public gsg a() {
-      return this.h;
-   }
+   private void a(akr $$0, dtd<dfy, dtc> $$1) {
+      this.p.a($$1);
+      List<duf<?>> $$2 = List.copyOf(this.k.a($$1.c()));
+      List<dtc> $$3 = $$1.a();
+      Map<gss, dtc> $$4 = new HashMap<>();
+      $$3.forEach($$2x -> $$4.put(gfq.a($$0, $$2x), $$2x));
+      Map<dtc, gsm.c> $$5 = new HashMap<>();
+      akr $$6 = b.a($$0);
 
-   public gfm b() {
-      return this.e;
-   }
+      try {
+         for (gsm.b $$7 : this.i.getOrDefault($$6, List.of())) {
+            gga $$8 = $$7.a($$0, this.p);
+            Map<dtc, gsm.c> $$9 = new IdentityHashMap<>();
+            ggm $$10;
+            if ($$8.c()) {
+               $$10 = $$8.d();
+               $$3.forEach($$3x -> $$9.put($$3x, new gsm.c($$10, () -> gsm.d.a($$3x, $$10, $$2))));
+            } else {
+               $$10 = null;
+            }
 
-   @Override
-   public final CompletableFuture<Void> a(atx.a $$0, aud $$1, bne $$2, bne $$3, Executor $$4, Executor $$5) {
-      $$2.a();
-      CompletableFuture<Map<akq, gfv>> $$6 = a($$1, $$4);
-      CompletableFuture<Map<akq, List<gsl.c>>> $$7 = b($$1, $$4);
-      CompletableFuture<gsl> $$8 = $$6.thenCombineAsync($$7, ($$1x, $$2x) -> new gsl(this.f, $$2, $$1x, $$2x), $$4);
-      Map<akq, CompletableFuture<gsf.b>> $$9 = this.d.a($$1, this.g, $$4);
-      return CompletableFuture.allOf(Stream.concat($$9.values().stream(), Stream.of($$8)).toArray(CompletableFuture[]::new))
-         .thenApplyAsync(
-            $$3x -> this.a(
-                  $$2,
-                  $$9.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0xx -> (gsf.b)((CompletableFuture)$$0xx.getValue()).join())),
-                  $$8.join()
-               ),
-            $$4
-         )
-         .thenCompose($$0x -> $$0x.e.thenApply($$1x -> $$0x))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private static CompletableFuture<Map<akq, gfv>> a(aud $$0, Executor $$1) {
-      return CompletableFuture.<Map<akq, aub>>supplyAsync(() -> gsl.p.a($$0), $$1).thenCompose($$1x -> {
-         List<CompletableFuture<Pair<akq, gfv>>> $$2 = new ArrayList<>($$1x.size());
-
-         for (Entry<akq, aub> $$3 : $$1x.entrySet()) {
-            $$2.add(CompletableFuture.supplyAsync(() -> {
-               try {
-                  Pair var2x;
-                  try (Reader $$1xx = $$3.getValue().e()) {
-                     var2x = Pair.of($$3.getKey(), gfv.a($$1xx));
+            $$8.a()
+               .forEach(
+                  ($$8x, $$9x) -> {
+                     try {
+                        $$3.stream()
+                           .filter(a($$1, $$8x))
+                           .forEach(
+                              $$5xx -> {
+                                 gsm.c $$6xx = $$9.put($$5xx, new gsm.c($$9x, () -> gsm.d.a($$5xx, $$9x, $$2)));
+                                 if ($$6xx != null && $$6xx.a != $$10) {
+                                    $$9.put($$5xx, this.o);
+                                    throw new RuntimeException(
+                                       "Overlapping definition with: "
+                                          + $$8.a().entrySet().stream().filter($$1xxx -> $$1xxx.getValue() == $$6xx.a).findFirst().get().getKey()
+                                    );
+                                 }
+                              }
+                           );
+                     } catch (Exception var12x) {
+                        c.warn(
+                           "Exception loading blockstate definition: '{}' in resourcepack: '{}' for variant: '{}': {}",
+                           new Object[]{$$6, $$7.a, $$8x, var12x.getMessage()}
+                        );
+                     }
                   }
+               );
+            $$5.putAll($$9);
+         }
+      } catch (gsm.a var18) {
+         c.warn("{}", var18.getMessage());
+      } catch (Exception var19) {
+         c.warn("Exception loading blockstate definition: '{}'", $$6, var19);
+      } finally {
+         Map<gsm.d, Set<dtc>> $$17 = new HashMap<>();
+         $$4.forEach(($$3x, $$4x) -> {
+            gsm.c $$5x = $$5.get($$4x);
+            if ($$5x == null) {
+               c.warn("Exception loading blockstate definition: '{}' missing model for variant: '{}'", $$6, $$3x);
+               $$5x = this.o;
+            }
 
-                  return var2x;
-               } catch (Exception var6) {
-                  a.error("Failed to load model {}", $$3.getKey(), var6);
-                  return null;
+            this.l.accept($$3x, $$5x.a);
+
+            try {
+               gsm.d $$6x = $$5x.b().get();
+               $$17.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x);
+            } catch (Exception var8) {
+               c.warn("Exception evaluating model definition: '{}'", $$3x, var8);
+            }
+         });
+         $$17.forEach(($$0x, $$1x) -> {
+            Iterator<dtc> $$2x = $$1x.iterator();
+
+            while ($$2x.hasNext()) {
+               dtc $$3x = $$2x.next();
+               if ($$3x.l() != dmf.c) {
+                  $$2x.remove();
+                  this.n.put($$3x, 0);
                }
-            }, $$1));
-         }
+            }
 
-         return ad.d($$2).thenApply($$0xx -> $$0xx.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
-      });
-   }
-
-   private static CompletableFuture<Map<akq, List<gsl.c>>> b(aud $$0, Executor $$1) {
-      return CompletableFuture.<Map<akq, List<aub>>>supplyAsync(() -> gsl.o.b($$0), $$1).thenCompose($$1x -> {
-         List<CompletableFuture<Pair<akq, List<gsl.c>>>> $$2 = new ArrayList<>($$1x.size());
-
-         for (Entry<akq, List<aub>> $$3 : $$1x.entrySet()) {
-            $$2.add(CompletableFuture.supplyAsync(() -> {
-               List<aub> $$1xx = $$3.getValue();
-               List<gsl.c> $$2x = new ArrayList<>($$1xx.size());
-
-               for (aub $$3x : $$1xx) {
-                  try (Reader $$4 = $$3x.e()) {
-                     JsonObject $$5 = ayd.a($$4);
-                     $$2x.add(new gsl.c($$3x.b(), $$5));
-                  } catch (Exception var10) {
-                     a.error("Failed to load blockstate {} from pack {}", new Object[]{$$3.getKey(), $$3x.b(), var10});
-                  }
-               }
-
-               return Pair.of($$3.getKey(), $$2x);
-            }, $$1));
-         }
-
-         return ad.d($$2).thenApply($$0xx -> $$0xx.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
-      });
-   }
-
-   private gsm.a a(bne $$0, Map<akq, gsf.b> $$1, gsl $$2) {
-      $$0.a("load");
-      $$0.b("baking");
-      Multimap<akq, gsj> $$3 = HashMultimap.create();
-      $$2.a(($$2x, $$3x) -> {
-         gsf.b $$4x = $$1.get($$3x.a());
-         gqf $$5x = $$4x.a($$3x.b());
-         if ($$5x != null) {
-            return $$5x;
-         } else {
-            $$3.put($$2x, $$3x);
-            return $$4x.a();
-         }
-      });
-      $$3.asMap()
-         .forEach(
-            ($$0x, $$1x) -> a.warn(
-                  "Missing textures in model {}:\n{}",
-                  $$0x,
-                  $$1x.stream().sorted(gsj.a).map($$0xx -> "    " + $$0xx.a() + ":" + $$0xx.b()).collect(Collectors.joining("\n"))
-               )
-         );
-      $$0.b("dispatch");
-      Map<akq, gsg> $$4 = $$2.a();
-      gsg $$5 = $$4.get(gsl.n);
-      Map<dta, gsg> $$6 = new IdentityHashMap<>();
-
-      for (dfw $$7 : lt.e) {
-         $$7.l().a().forEach($$3x -> {
-            akq $$4x = $$3x.b().s().h().a();
-            gsg $$5x = $$4.getOrDefault(gfm.a($$4x, $$3x), $$5);
-            $$6.put($$3x, $$5x);
+            if ($$1x.size() > 1) {
+               this.a($$1x);
+            }
          });
       }
-
-      CompletableFuture<Void> $$8 = CompletableFuture.allOf($$1.values().stream().map(gsf.b::b).toArray(CompletableFuture[]::new));
-      $$0.c();
-      $$0.b();
-      return new gsm.a($$2, $$5, $$6, $$1, $$8);
    }
 
-   private void a(gsm.a $$0, bne $$1) {
-      $$1.a();
-      $$1.a("upload");
-      $$0.d.values().forEach(gsf.b::c);
-      gsl $$2 = $$0.a;
-      this.c = $$2.a();
-      this.i = $$2.b();
-      this.h = $$0.b;
-      $$1.b("cache");
-      this.e.a($$0.c);
-      $$1.c();
-      $$1.b();
-   }
+   private static Predicate<dtc> a(dtd<dfy, dtc> $$0, String $$1) {
+      Map<duf<?>, Comparable<?>> $$2 = new HashMap<>();
 
-   public boolean a(dta $$0, dta $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else {
-         int $$2 = this.i.getInt($$0);
-         if ($$2 != -1) {
-            int $$3 = this.i.getInt($$1);
-            if ($$2 == $$3) {
-               eoy $$4 = $$0.u();
-               eoy $$5 = $$1.u();
-               return $$4 != $$5;
+      for (String $$3 : e.split($$1)) {
+         Iterator<String> $$4 = f.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            duf<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((duf<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
             }
          }
+      }
 
-         return true;
+      dfy $$9 = $$0.c();
+      return $$2x -> {
+         if ($$2x != null && $$2x.a($$9)) {
+            for (Entry<duf<?>, Comparable<?>> $$3x : $$2.entrySet()) {
+               if (!Objects.equals($$2x.c($$3x.getKey()), $$3x.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      };
+   }
+
+   @Nullable
+   static <T extends Comparable<T>> T a(duf<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
+   }
+
+   private void a(Iterable<dtc> $$0) {
+      int $$1 = this.m++;
+      $$0.forEach($$1x -> this.n.put($$1x, $$1));
+   }
+
+   public Object2IntMap<dtc> b() {
+      return this.n;
+   }
+
+   static class a extends RuntimeException {
+      public a(String $$0) {
+         super($$0);
       }
    }
 
-   public gqe a(akq $$0) {
-      return this.d.a($$0);
+   public static record b(String a, JsonElement b) {
+
+      gga a(akr $$0, gga.a $$1) {
+         try {
+            return gga.a($$1, this.b);
+         } catch (Exception var4) {
+            throw new gsm.a(
+               String.format(Locale.ROOT, "Exception loading blockstate definition: '%s' in resourcepack: '%s': %s", $$0, this.a, var4.getMessage())
+            );
+         }
+      }
    }
 
-   @Override
-   public void close() {
-      this.d.close();
+   static record c(gsw a, Supplier<gsm.d> b) {
    }
 
-   public void a(int $$0) {
-      this.g = $$0;
-   }
+   static record d(List<gsw> a, List<Object> b) {
+      public static gsm.d a(dtc $$0, ggm $$1, Collection<duf<?>> $$2) {
+         dtd<dfy, dtc> $$3 = $$0.b().l();
+         List<gsw> $$4 = $$1.a().stream().filter($$2x -> $$2x.a($$3).test($$0)).map(ggo::a).collect(Collectors.toUnmodifiableList());
+         List<Object> $$5 = a($$0, $$2);
+         return new gsm.d($$4, $$5);
+      }
 
-   static record a(gsl a, gsg b, Map<dta, gsg> c, Map<akq, gsf.b> d, CompletableFuture<Void> e) {
+      public static gsm.d a(dtc $$0, gsw $$1, Collection<duf<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         return new gsm.d(List.of($$1), $$3);
+      }
+
+      private static List<Object> a(dtc $$0, Collection<duf<?>> $$1) {
+         return $$1.stream().map($$0::c).collect(Collectors.toUnmodifiableList());
+      }
    }
 }

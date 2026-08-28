@@ -1,54 +1,39 @@
-public class fxe<T extends bsq> extends fvn<T> {
-   private static final String a = "upper_body";
-   private final fye b;
-   private final fye f;
-   private final fye g;
-   private final fye h;
-   private final fye i;
+public class fxe extends fxf {
+   private final fyi b;
+   protected final fyi a;
 
-   public fxe(fye $$0) {
+   public fxe(fyi $$0) {
       this.b = $$0;
-      this.g = $$0.b("head");
-      this.h = $$0.b("left_arm");
-      this.i = $$0.b("right_arm");
-      this.f = $$0.b("upper_body");
+      this.a = $$0.b("head");
    }
 
-   public static fyk b() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      float $$2 = 4.0F;
-      fyi $$3 = new fyi(-0.5F);
-      $$1.a("head", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fyg.a(0.0F, 4.0F, 0.0F));
-      fyj $$4 = fyj.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, fyg.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, fyg.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", fyj.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fyg.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", fyj.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fyg.a(0.0F, 24.0F, 0.0F));
-      return fyk.a($$0, 64, 64);
+   public static fyq a() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      $$1.a("head", fyn.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyk.a);
+      return $$0;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
-      float $$6 = ayn.a(this.f.f);
-      float $$7 = ayn.b(this.f.f);
-      this.h.f = this.f.f;
-      this.i.f = this.f.f + (float) Math.PI;
-      this.h.b = $$7 * 5.0F;
-      this.h.d = -$$6 * 5.0F;
-      this.i.b = -$$7 * 5.0F;
-      this.i.d = $$6 * 5.0F;
+   public static fyo b() {
+      fyq $$0 = a();
+      fyr $$1 = $$0.a();
+      $$1.a("head").a("hat", fyn.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fym(0.25F)), fyk.a);
+      return fyo.a($$0, 64, 64);
+   }
+
+   public static fyo c() {
+      fyq $$0 = a();
+      return fyo.a($$0, 64, 32);
    }
 
    @Override
-   public fye a() {
-      return this.b;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 
-   public fye c() {
-      return this.g;
+   @Override
+   public void a(fbg $$0, fbk $$1, int $$2, int $$3, int $$4) {
+      this.b.a($$0, $$1, $$2, $$3, $$4);
    }
 }

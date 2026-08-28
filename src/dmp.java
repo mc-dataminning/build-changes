@@ -1,55 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class dmp extends dfi {
-   public static final MapCodec<dmp> a = b(dmp::new);
-   public static final dtr b = dtq.E;
-   private final bpv c = bps.a(5);
-
-   @Override
-   public MapCodec<dmp> a() {
-      return a;
-   }
-
-   public dmp(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+public interface dmp {
+   dmp t_ = new dmp() {
+      @Override
+      public boolean a(dcx $$0, jd $$1, dtc $$2, @Nullable Collection<ji> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dmv)dga.qT).m().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(epd.c) ? false : dmv.a($$0, $$1, $$2, $$3);
+         } else {
+            return dmp.super.a($$0, $$1, $$2, $$3, $$4);
+         }
       }
-   }
 
-   @Nullable
-   @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new drm($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return $$0.B ? null : a($$2, dqh.K, drm::a);
-   }
-
-   @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
-   }
-
-   @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+      @Override
+      public int a(dmu.a $$0, dcx $$1, jd $$2, ayw $$3, dmu $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
       }
+
+      @Override
+      public int j_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
+
+   default void a(dcx $$0, dtc $$1, jd $$2, ayw $$3) {
+   }
+
+   default boolean a(dcx $$0, jd $$1, ayw $$2) {
+      return false;
+   }
+
+   default boolean a(dcx $$0, jd $$1, dtc $$2, @Nullable Collection<ji> $$3, boolean $$4) {
+      return ((dky)dga.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int j_(int $$0) {
+      return 1;
+   }
+
+   int a(dmu.a var1, dcx var2, jd var3, ayw var4, dmu var5, boolean var6);
 }

@@ -1,42 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class ebx extends eca<eed> {
-   public ebx(Codec<eed> $$0) {
+public class ebx extends ecd<eee> {
+   public ebx(Codec<eee> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eed> $$0) {
-      jd $$1 = $$0.e();
-      ddq $$2 = $$0.b();
-      eed $$3 = $$0.f();
+   public boolean a(ecf<eee> $$0) {
+      eee $$1 = $$0.f();
+      jd $$2 = $$0.e();
+      dds $$3 = $$0.b();
+      ayw $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      jd.a $$10 = new jd.a();
 
-      for (jd $$4 : jd.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            jd $$9 = $$4.i();
-            this.a($$2, $$9, dfy.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dqf $$4x = $$2.c_($$9);
-               if ($$4x instanceof drw $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dfy.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dfy.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dfy.F.o());
-         } else {
-            this.a($$2, $$4, dfy.a.o());
+      for (jd $$11 : jd.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      return true;
+      return $$5;
+   }
+
+   protected boolean a(eee $$0, dds $$1, ayw $$2, int $$3, int $$4, jd.a $$5) {
+      boolean $$6 = false;
+
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            dtc $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
+      }
+
+      return $$6;
    }
 }

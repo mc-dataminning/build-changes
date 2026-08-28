@@ -1,29 +1,37 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gwk extends gwo {
+   private final wz a;
+   private fjd b = fjd.a;
+   private final fob c;
+   private int B;
 
-public class gwk {
-   private final float a;
-   private final AtomicReference<gwk.a> b = new AtomicReference<>();
-
-   public gwk(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gwk(fob $$0, wz $$1, wz $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   public void a(fga $$0, wy $$1) {
-      gwk.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gwk.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   public void aT_() {
+      this.l.ae().i();
+      this.b = fjd.a(this.o, this.a, this.m - 50);
+      this.B = this.b.a() * 9;
+      this.c(fik.a(wy.k, $$0 -> this.l.a(this.c)).a(this.m / 2 - 100, this.n / 2 + this.B / 2 + 9, 200, 20).a());
    }
 
-   static class a {
-      final wy a;
-      final RateLimiter b;
+   @Override
+   public wz i() {
+      return wz.i().b(this.k).f(": ").b(this.a);
+   }
 
-      a(wy $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void d() {
+      fgm.Q().a(this.c);
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, this.n / 2 - this.B / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.m / 2, this.n / 2 - this.B / 2);
    }
 }

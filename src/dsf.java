@@ -1,127 +1,194 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dsf {
-   public static final String a = "spawn_data";
-   private static final String m = "next_mob_spawns_at";
-   private static final int n = 20;
-   private static final int o = 18000;
-   public static MapCodec<dsf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kg.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
-               kg.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
-               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
-               ddm.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
-               akp.a(lu.bc).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dsf::new)
-   );
-   protected final Set<UUID> c = new HashSet<>();
-   protected final Set<UUID> d = new HashSet<>();
-   protected long e;
-   protected long f;
-   protected int g;
-   protected Optional<ddm> h;
-   protected Optional<akp<erq>> i;
-   @Nullable
-   protected bsq j;
-   @Nullable
-   private bpa<cuo> p;
-   protected double k;
-   protected double l;
+public final class dsf {
+   public static final String a = "normal_config";
+   public static final String b = "ominous_config";
+   public static final int c = 40;
+   private static final int d = 36000;
+   private static final int e = 14;
+   private static final int f = 47;
+   private static final int g = ayo.h(47);
+   private static final float h = 0.02F;
+   private final dsg i;
+   private final dsg j;
+   private final dsh k;
+   private final int l;
+   private final int m;
+   private final dsf.b n;
+   private dse o;
+   private final dse.a p;
+   private boolean q;
+   private boolean r;
 
-   public dsf() {
-      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   public Codec<dsf> a() {
+      return RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dsg.b.optionalFieldOf("normal_config", dsg.a).forGetter(dsf::c),
+                  dsg.b.optionalFieldOf("ominous_config", dsg.a).forGetter(dsf::n),
+                  dsh.b.forGetter(dsf::f),
+                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dsf::g),
+                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dsf::h)
+               )
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dsf($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
+      );
    }
 
-   public dsf(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<ddm> $$5, Optional<akp<erq>> $$6) {
-      this.c.addAll($$0);
-      this.d.addAll($$1);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public dsf(dsf.b $$0, dse $$1, dse.a $$2) {
+      this(dsg.a, dsg.a, new dsh(), 36000, 14, $$0, $$1, $$2);
    }
 
-   public void a() {
-      this.c.clear();
-      this.g = 0;
-      this.f = 0L;
-      this.e = 0L;
-      this.d.clear();
+   public dsf(dsg $$0, dsg $$1, dsh $$2, int $$3, int $$4, dsf.b $$5, dse $$6, dse.a $$7) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.m = $$3;
+      this.l = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
    }
 
-   public boolean a(dsd $$0, ayv $$1) {
-      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
-      return $$2 || !$$0.b().h().d();
+   public dsg b() {
+      return this.r ? this.j : this.i;
    }
 
-   public boolean a(dse $$0, int $$1) {
-      return this.g >= $$0.a($$1);
+   @VisibleForTesting
+   public dsg c() {
+      return this.i;
    }
 
-   public boolean b() {
-      return this.d.isEmpty();
+   @VisibleForTesting
+   public dsg d() {
+      return this.j;
    }
 
-   public boolean a(aqt $$0, dse $$1, int $$2) {
-      return $$0.Z() >= this.f && this.d.size() < $$1.b($$2);
+   private dsg n() {
+      return !this.j.equals(this.i) ? this.j : dsg.a;
    }
 
-   public int a(jd $$0) {
-      if (this.c.isEmpty()) {
-         ad.a("Trial Spawner at " + $$0 + " has no detected players");
+   public void a(aqu $$0, jd $$1) {
+      $$0.a($$1, $$0.a_($$1).a(doo.c, Boolean.valueOf(true)), 3);
+      $$0.c(3020, $$1, 1);
+      this.r = true;
+      this.k.a(this, $$0);
+   }
+
+   public void b(aqu $$0, jd $$1) {
+      $$0.a($$1, $$0.a_($$1).a(doo.c, Boolean.valueOf(false)), 3);
+      this.r = false;
+   }
+
+   public boolean e() {
+      return this.r;
+   }
+
+   public dsh f() {
+      return this.k;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public int h() {
+      return this.l;
+   }
+
+   public dsi i() {
+      return this.n.d();
+   }
+
+   public void a(dcw $$0, dsi $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   public void j() {
+      this.n.f();
+   }
+
+   public dse k() {
+      return this.o;
+   }
+
+   public dse.a l() {
+      return this.p;
+   }
+
+   public boolean a(dcw $$0) {
+      if (this.q) {
+         return true;
+      } else {
+         return $$0.al() == bqo.a ? false : $$0.ab().b(dcs.e);
       }
-
-      return Math.max(0, this.c.size() - 1);
    }
 
-   public void a(aqt $$0, jd $$1, dsd $$2) {
-      boolean $$3 = ($$1.a() + $$0.Z()) % 20L != 0L;
-      if (!$$3) {
-         if (!$$2.i().equals(dsg.f) || !$$2.e()) {
-            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
-            boolean $$7;
-            if (!$$2.e() && !$$4.isEmpty()) {
-               Optional<Pair<cmv, jm<brw>>> $$6 = a($$0, $$4);
-               $$6.ifPresent($$3x -> {
-                  cmv $$4x = (cmv)$$3x.getFirst();
-                  if ($$3x.getSecond() == bsa.E) {
-                     a($$4x);
+   public Optional<UUID> c(aqu $$0, jd $$1) {
+      ayw $$2 = $$0.E_();
+      ddo $$3 = this.k.b(this, $$0.E_());
+      ub $$4 = $$3.d();
+      uh $$5 = $$4.c("Pos", 6);
+      Optional<bsx<?>> $$6 = bsx.a($$4);
+      if ($$6.isEmpty()) {
+         return Optional.empty();
+      } else {
+         int $$7 = $$5.size();
+         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
+         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
+         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
+         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
+            return Optional.empty();
+         } else {
+            exa $$11 = new exa($$8, $$9, $$10);
+            if (!a($$0, $$1.b(), $$11)) {
+               return Optional.empty();
+            } else {
+               jd $$12 = jd.a((jw)$$11);
+               if (!buk.a($$6.get(), $$0, btr.q, $$12, $$0.E_())) {
+                  return Optional.empty();
+               } else {
+                  if ($$3.b().isPresent()) {
+                     ddo.a $$13 = $$3.b().get();
+                     if (!$$13.a($$12, $$0)) {
+                        return Optional.empty();
+                     }
                   }
 
-                  $$0.c(3020, jd.a((jw)$$4x.by()), 0);
-                  $$2.a($$0, $$1);
-               });
-               $$7 = $$6.isPresent();
-            } else {
-               $$7 = false;
-            }
+                  bsr $$14 = bsx.a($$4, $$0, $$4x -> {
+                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
+                     return $$4x;
+                  });
+                  if ($$14 == null) {
+                     return Optional.empty();
+                  } else {
+                     if ($$14 instanceof btp $$15) {
+                        if (!$$15.a($$0)) {
+                           return Optional.empty();
+                        }
 
-            if (!$$2.i().equals(dsg.f) || $$7) {
-               boolean $$8 = $$2.f().c.isEmpty();
-               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
-               if (this.c.addAll($$9)) {
-                  this.f = Math.max($$0.Z() + 40L, this.f);
-                  if (!$$7) {
-                     int $$10 = $$2.e() ? 3019 : 3013;
-                     $$0.c($$10, $$1, this.c.size());
+                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
+                        if ($$16) {
+                           $$15.a($$0, $$0.d_($$15.dp()), btr.q, null);
+                        }
+
+                        $$15.fS();
+                        $$3.c().ifPresent($$15::a);
+                     }
+
+                     if (!$$0.e($$14)) {
+                        return Optional.empty();
+                     } else {
+                        dsf.a $$17 = this.r ? dsf.a.b : dsf.a.a;
+                        $$0.c(3011, $$1, $$17.a());
+                        $$0.c(3012, $$12, $$17.a());
+                        $$0.a($$14, dxz.t, $$12);
+                        return Optional.of($$14.cA());
+                     }
                   }
                }
             }
@@ -129,146 +196,151 @@ public class dsf {
       }
    }
 
-   private static Optional<Pair<cmv, jm<brw>>> a(aqt $$0, List<UUID> $$1) {
-      cmv $$2 = null;
+   public void a(aqu $$0, jd $$1, akq<eru> $$2) {
+      eru $$3 = $$0.o().be().b($$2);
+      ers $$4 = new ers.a($$0).a(euk.b);
+      ObjectArrayList<cuq> $$5 = $$3.a($$4);
+      if (!$$5.isEmpty()) {
+         ObjectListIterator var7 = $$5.iterator();
 
-      for (UUID $$3 : $$1) {
-         cmv $$4 = $$0.b($$3);
-         if ($$4 != null) {
-            jm<brw> $$5 = bsa.H;
-            if ($$4.b($$5)) {
-               return Optional.of(Pair.of($$4, $$5));
-            }
-
-            if ($$4.b(bsa.E)) {
-               $$2 = $$4;
-            }
-         }
-      }
-
-      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, bsa.E));
-   }
-
-   public void a(dsd $$0, aqt $$1) {
-      this.d.stream().map($$1::a).forEach($$1x -> {
-         if ($$1x != null) {
-            $$1.c(3012, $$1x.dq(), dsd.a.a.a());
-            $$1x.a(bsq.c.b);
-         }
-      });
-      if (!$$0.d().h().d()) {
-         this.h = Optional.empty();
-      }
-
-      this.g = 0;
-      this.d.clear();
-      this.f = $$1.Z() + (long)$$0.d().g();
-      $$0.j();
-      this.e = $$1.Z() + $$0.d().a();
-   }
-
-   private static void a(cmv $$0) {
-      bry $$1 = $$0.c(bsa.E);
-      if ($$1 != null) {
-         int $$2 = $$1.e() + 1;
-         int $$3 = 18000 * $$2;
-         $$0.e(bsa.E);
-         $$0.b(new bry(bsa.H, $$3, 0));
-      }
-   }
-
-   public boolean a(aqt $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)$$0.Z() >= (float)$$3 + $$1;
-   }
-
-   public boolean b(aqt $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)($$0.Z() - $$3) % $$1 == 0.0F;
-   }
-
-   public boolean a(aqt $$0) {
-      return $$0.Z() >= this.e;
-   }
-
-   public void a(dsd $$0, ayv $$1, bsw<?> $$2) {
-      this.b($$0, $$1).a().a("id", lt.f.b($$2).toString());
-   }
-
-   protected ddm b(dsd $$0, ayv $$1) {
-      if (this.h.isPresent()) {
-         return this.h.get();
-      } else {
-         bpa<ddm> $$2 = $$0.b().h();
-         Optional<ddm> $$3 = $$2.d() ? this.h : $$2.b($$1).map(bpc.b::b);
-         this.h = Optional.of($$3.orElseGet(ddm::new));
-         $$0.j();
-         return this.h.get();
-      }
-   }
-
-   @Nullable
-   public bsq a(dsd $$0, dcu $$1, dsg $$2) {
-      if (!$$2.d()) {
-         return null;
-      } else {
-         if (this.j == null) {
-            ua $$3 = this.b($$0, $$1.E_()).a();
-            if ($$3.b("id", 8)) {
-               this.j = bsw.a($$3, $$1, Function.identity());
-            }
+         while (var7.hasNext()) {
+            cuq $$6 = (cuq)var7.next();
+            kw.a($$0, $$6, 2, ji.b, exa.c($$1).a(ji.b, 1.2));
          }
 
-         return this.j;
+         $$0.c(3014, $$1, 0);
       }
    }
 
-   public ua a(dsg $$0) {
-      ua $$1 = new ua();
-      if ($$0 == dsg.c) {
-         $$1.a("next_mob_spawns_at", this.f);
+   public void a(dcw $$0, jd $$1, boolean $$2) {
+      dsi $$3 = this.i();
+      $$3.a($$0, $$1, $$2);
+      if ($$3.d()) {
+         double $$4 = (double)Math.max(0L, this.k.f - $$0.Z());
+         this.k.l = this.k.k;
+         this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
       }
 
-      this.h
-         .ifPresent($$1x -> $$1.a("spawn_data", (ux)ddm.b.encodeStart(uo.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
-      return $$1;
-   }
-
-   public double c() {
-      return this.k;
-   }
-
-   public double d() {
-      return this.l;
-   }
-
-   bpa<cuo> a(aqt $$0, dse $$1, jd $$2) {
-      if (this.p != null) {
-         return this.p;
-      } else {
-         erq $$3 = $$0.o().be().b($$1.j());
-         ero $$4 = new ero.a($$0).a(eug.b);
-         long $$5 = a($$0, $$2);
-         ObjectArrayList<cuo> $$6 = $$3.a($$4, $$5);
-         if ($$6.isEmpty()) {
-            return bpa.b();
-         } else {
-            bpa.a<cuo> $$7 = new bpa.a<>();
-            ObjectListIterator var10 = $$6.iterator();
-
-            while (var10.hasNext()) {
-               cuo $$8 = (cuo)var10.next();
-               $$7.a($$8.c(1), $$8.H());
-            }
-
-            this.p = $$7.a();
-            return this.p;
+      if ($$3.e()) {
+         ayw $$5 = $$0.E_();
+         if ($$5.i() <= 0.02F) {
+            avo $$6 = $$2 ? avp.mj : avp.mi;
+            $$0.a($$1, $$6, avq.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
          }
       }
    }
 
-   private static long a(aqt $$0, jd $$1) {
-      jd $$2 = new jd(ayn.d((float)$$1.u() / 30.0F), ayn.d((float)$$1.v() / 20.0F), ayn.d((float)$$1.w() / 30.0F));
-      return $$0.C() + $$2.a();
+   public void a(aqu $$0, jd $$1, boolean $$2) {
+      this.r = $$2;
+      dsi $$3 = this.i();
+      if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
+         this.k.f = $$0.Z() + (long)this.b().g();
+      }
+
+      dsi $$4 = $$3.a($$1, this, $$0);
+      if ($$4 != $$3) {
+         this.a($$0, $$4);
+      }
+   }
+
+   private static boolean a(aqu $$0, jd $$1, UUID $$2) {
+      bsr $$3 = $$0.a($$2);
+      return $$3 == null || !$$3.bE() || !$$3.dP().af().equals($$0.af()) || $$3.dp().j($$1) > (double)g;
+   }
+
+   private static boolean a(dcw $$0, exa $$1, exa $$2) {
+      eww $$3 = $$0.a(new dcf($$2, $$1, dcf.a.c, dcf.b.a, exf.a()));
+      return $$3.a().equals(jd.a((jw)$$1)) || $$3.c() == ewy.a.a;
+   }
+
+   public static void a(dcw $$0, jd $$1, ayw $$2, lq $$3) {
+      for (int $$4 = 0; $$4 < 20; $$4++) {
+         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         $$0.a(lm.ae, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void a(dcw $$0, jd $$1, ayw $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(lm.be, $$4, $$5, $$6, $$7, $$8, $$9);
+         $$0.a(lm.L, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   public static void a(dcw $$0, jd $$1, ayw $$2, int $$3, lk $$4) {
+      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
+         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$8 = (double)$$1.u() + 0.5 + $$6;
+         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
+         double $$10 = (double)$$1.w() + 0.5 + $$7;
+         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void b(dcw $$0, jd $$1, ayw $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
+         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
+         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(lm.aJ, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
+         $$0.a(lm.ae, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void a(dse $$0) {
+      this.o = $$0;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void m() {
+      this.q = true;
+   }
+
+   public static enum a {
+      a(lm.F),
+      b(lm.L);
+
+      public final lq c;
+
+      private a(final lq $$0) {
+         this.c = $$0;
+      }
+
+      public static dsf.a a(int $$0) {
+         dsf.a[] $$1 = values();
+         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
+      }
+
+      public int a() {
+         return this.ordinal();
+      }
+   }
+
+   public interface b {
+      void a(dcw var1, dsi var2);
+
+      dsi d();
+
+      void f();
    }
 }

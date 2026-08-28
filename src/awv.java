@@ -1,37 +1,130 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class awv implements atx {
-   private final ka a;
-   private List<awv.a<?>> b = List.of();
+public class awv<T> {
+   private static final Logger a = LogUtils.getLogger();
+   final Function<akr, Optional<? extends T>> b;
+   private final String c;
 
-   public awv(ka $$0) {
-      this.a = $$0;
+   public awv(Function<akr, Optional<? extends T>> $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public List<awv.a<?>> a() {
-      return this.b;
+   public Map<akr, List<awv.a>> a(aue $$0) {
+      Map<akr, List<awv.a>> $$1 = Maps.newHashMap();
+      akk $$2 = akk.a(this.c);
+
+      for (Entry<akr, List<auc>> $$3 : $$2.b($$0).entrySet()) {
+         akr $$4 = $$3.getKey();
+         akr $$5 = $$2.b($$4);
+
+         for (auc $$6 : $$3.getValue()) {
+            try (Reader $$7 = $$6.e()) {
+               JsonElement $$8 = JsonParser.parseReader($$7);
+               List<awv.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
+               awt $$10 = (awt)awt.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow();
+               if ($$10.b()) {
+                  $$9.clear();
+               }
+
+               String $$11 = $$6.b();
+               $$10.a().forEach($$2x -> $$9.add(new awv.a($$2x, $$11)));
+            } catch (Exception var17) {
+               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public CompletableFuture<Void> a(atx.a $$0, aud $$1, bne $$2, bne $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends awv.a<?>>> $$6 = this.a.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.b = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
+   private Either<Collection<awv.a>, Collection<T>> a(aws.a<T> $$0, List<awv.a> $$1) {
+      Builder<T> $$2 = ImmutableSet.builder();
+      List<awv.a> $$3 = new ArrayList<>();
+
+      for (awv.a $$4 : $$1) {
+         if (!$$4.a().a($$0, $$2::add)) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
    }
 
-   private <T> CompletableFuture<awv.a<T>> a(aud $$0, Executor $$1, ka.d<T> $$2) {
-      akp<? extends jz<T>> $$3 = $$2.a();
-      jz<T> $$4 = $$2.b();
-      awu<jm<T>> $$5 = new awu<>($$4::c, lu.d($$3));
-      return CompletableFuture.supplyAsync(() -> new awv.a<>($$3, $$5.b($$0)), $$1);
+   public Map<akr, Collection<T>> a(Map<akr, List<awv.a>> $$0) {
+      final Map<akr, Collection<T>> $$1 = Maps.newHashMap();
+      aws.a<T> $$2 = new aws.a<T>() {
+         @Nullable
+         @Override
+         public T a(akr $$0) {
+            return (T)awv.this.b.apply($$0).orElse(null);
+         }
+
+         @Nullable
+         @Override
+         public Collection<T> b(akr $$0) {
+            return $$1.get($$0);
+         }
+      };
+      axs<akr, awv.b> $$3 = new axs<>();
+      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new awv.b($$2x)));
+      $$3.a(
+         ($$2x, $$3x) -> this.a($$2, $$3x.a)
+               .ifLeft(
+                  $$1xx -> a.error(
+                        "Couldn't load tag {} as it is missing following references: {}",
+                        $$2x,
+                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
+                     )
+               )
+               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
+      );
+      return $$1;
    }
 
-   public static record a<T>(akp<? extends jz<T>> a, Map<akq, Collection<jm<T>>> b) {
+   public Map<akr, Collection<T>> b(aue $$0) {
+      return this.a(this.a($$0));
+   }
+
+   public static record a(aws a, String b) {
+
+      @Override
+      public String toString() {
+         return this.a + " (from " + this.b + ")";
+      }
+   }
+
+   static record b(List<awv.a> a) implements axs.a<akr> {
+
+      @Override
+      public void a(Consumer<akr> $$0) {
+         this.a.forEach($$1 -> $$1.a.a($$0));
+      }
+
+      @Override
+      public void b(Consumer<akr> $$0) {
+         this.a.forEach($$1 -> $$1.a.b($$0));
+      }
    }
 }

@@ -1,76 +1,209 @@
-import java.util.function.Predicate;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class dcd {
-   private final eww a;
-   private final eww b;
-   private final dcd.a c;
-   private final dcd.b d;
-   private final exb e;
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final dcd b = new dcd(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   public dcd(eww $$0, eww $$1, dcd.a $$2, dcd.b $$3, bsq $$4) {
-      this($$0, $$1, $$2, $$3, exb.a($$4));
+   public dcd(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public dcd(eww $$0, eww $$1, dcd.a $$2, dcd.b $$3, exb $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public dcd(jd $$0) {
+      this.e = kf.a($$0.u());
+      this.f = kf.a($$0.w());
    }
 
-   public eww a() {
-      return this.b;
+   public dcd(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   public eww b() {
-      return this.a;
+   public static dcd a(int $$0, int $$1) {
+      return new dcd($$0 << 5, $$1 << 5);
    }
 
-   public exp a(dta $$0, dca $$1, jd $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
+   public static dcd b(int $$0, int $$1) {
+      return new dcd(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   public exp a(eoy $$0, dca $$1, jd $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : exm.a();
+   public long a() {
+      return c(this.e, this.f);
    }
 
-   public static enum a implements dcd.c {
-      a(dsz.a::b),
-      b(dsz.a::a),
-      c(dsz.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(awd.aQ) ? exm.b() : exm.a());
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-      private final dcd.c e;
+   public static long a(jd $$0) {
+      return c(kf.a($$0.u()), kf.a($$0.w()));
+   }
 
-      private a(final dcd.c $$0) {
-         this.e = $$0;
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dcd $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
-
-      @Override
-      public exp get(dta $$0, dca $$1, jd $$2, exb $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
-      }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(eoy::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(awj.a));
-
-      private final Predicate<eoy> e;
-
-      private b(final Predicate<eoy> $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a(eoy $$0) {
-         return this.e.test($$0);
-      }
+   public int b() {
+      return this.a(8);
    }
 
-   public interface c {
-      exp get(dta var1, dca var2, jd var3, exb var4);
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return kf.c(this.e);
+   }
+
+   public int e() {
+      return kf.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public jd a(int $$0, int $$1, int $$2) {
+      return new jd(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return kf.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return kf.a(this.f, $$0);
+   }
+
+   public jd c(int $$0) {
+      return new jd(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public jd l() {
+      return new jd(this.d(), 0, this.e());
+   }
+
+   public int a(dcd $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int e(int $$0, int $$1) {
+      return Math.max(Math.abs(this.e - $$0), Math.abs(this.f - $$1));
+   }
+
+   public int b(dcd $$0) {
+      return this.f($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.f(a($$0), b($$0));
+   }
+
+   private int f(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<dcd> a(dcd $$0, int $$1) {
+      return a(new dcd($$0.e - $$1, $$0.f - $$1), new dcd($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<dcd> a(final dcd $$0, final dcd $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dcd>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dcd e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super dcd> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new dcd($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new dcd($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

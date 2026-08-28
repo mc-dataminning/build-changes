@@ -1,25 +1,89 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cef {
+   public static final cef a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   public static eww a(btu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cei.a($$0, $$1);
-      return cel.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   private Predicate<btn> g;
+
+   private cef(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static jd a(btu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jd $$8 = cel.a($$0.dT(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
+   public static cef a() {
+      return new cef(true);
+   }
+
+   public static cef b() {
+      return new cef(false);
+   }
+
+   public cef c() {
+      cef $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public cef a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public cef d() {
+      this.e = false;
+      return this;
+   }
+
+   public cef e() {
+      this.f = false;
+      return this;
+   }
+
+   public cef a(@Nullable Predicate<btn> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable btn $$0, btn $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.er()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
       } else {
-         jd $$9 = cel.a($$0, $$1, $$0.dT(), $$8);
-         if (!cei.a($$9, $$0) && !cei.a($$7, $$0, $$9)) {
-            $$9 = cel.a($$9, $$0.dQ().am(), $$1x -> cei.c($$0, $$1x));
-            return cei.b($$0, $$9) ? null : $$9;
+         if ($$0 == null) {
+            if (this.c && (!$$1.eq() || $$1.dP().al() == bqo.a)) {
+               return false;
+            }
          } else {
-            return null;
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.am()) || $$0.s($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.B($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.du(), $$1.dw(), $$1.dA());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof btp $$5 && !$$5.O().a($$1)) {
+               return false;
+            }
          }
+
+         return true;
       }
    }
 }

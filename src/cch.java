@@ -1,40 +1,37 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cch extends cck {
-   private final buj a;
-   private btl b;
-   private int c;
+public class cch<T extends btn> extends ccf<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cch(buj $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cak.a.d));
+   public cch(coj $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btn> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (this.a.s() && !this.a.gm()) {
-         btl $$0 = this.a.P_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ej();
-            int $$1 = $$0.ek();
-            return $$1 != this.c && this.a(this.b, ced.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.dS().h()) {
          return false;
+      } else if (!((coj)this.e).gC()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      btl $$0 = this.a.P_();
-      if ($$0 != null) {
-         this.c = $$0.ek();
-      }
-
+      this.j = b(200);
       super.d();
    }
 }

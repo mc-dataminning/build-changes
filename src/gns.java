@@ -1,24 +1,20 @@
-public class gns extends goa<cjn, fuy<cjn>> {
-   private static final akq a = akq.b("textures/entity/creeper/creeper_armor.png");
-   private final fuy<cjn> b;
+public class gns extends got<ckz, fur<ckz>> {
+   private static final akr a = akr.b("textures/entity/breeze/breeze_wind.png");
+   private final fur<ckz> b;
 
-   public gns(glz<cjn, fuy<cjn>> $$0, fya $$1) {
-      super($$0);
-      this.b = new fuy<>($$1.a(fyd.J));
+   public gns(gkh.a $$0, gmd<ckz, fur<ckz>> $$1) {
+      super($$1);
+      this.b = new fur<>($$0.a(fyh.t));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   public void a(fbg $$0, gex $$1, int $$2, ckz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      fbk $$11 = $$1.getBuffer(gff.a(a, this.a($$10) % 1.0F, 0.0F));
+      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gjn.a(this.b, this.b.e()).a($$0, $$11, $$2, gqa.d);
    }
 
-   @Override
-   protected akq a() {
-      return a;
-   }
-
-   @Override
-   protected fve<cjn> b() {
-      return this.b;
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

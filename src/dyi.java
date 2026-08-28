@@ -1,150 +1,365 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dyi implements dyp.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = ad.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
-            }
-         }
+public interface dyi {
+   List<akq<dxz>> f_ = List.of(
+      dxz.T.h(),
+      dxz.U.h(),
+      dxz.V.h(),
+      dxz.W.h(),
+      dxz.X.h(),
+      dxz.Y.h(),
+      dxz.Z.h(),
+      dxz.aa.h(),
+      dxz.ab.h(),
+      dxz.ac.h(),
+      dxz.ad.h(),
+      dxz.ae.h(),
+      dxz.af.h(),
+      dxz.ag.h(),
+      dxz.ah.h()
+   );
+   int g_ = 0;
+   ToIntFunction<akq<dxz>> h_ = ad.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dxz.P.h(), 1);
+      $$0.put(dxz.Q.h(), 1);
+      $$0.put(dxz.x.h(), 1);
+      $$0.put(dxz.J.h(), 2);
+      $$0.put(dxz.A.h(), 2);
+      $$0.put(dxz.O.h(), 2);
+      $$0.put(dxz.C.h(), 3);
+      $$0.put(dxz.K.h(), 3);
+      $$0.put(dxz.B.h(), 3);
+      $$0.put(dxz.u.h(), 4);
+      $$0.put(dxz.n.h(), 4);
+      $$0.put(dxz.S.h(), 4);
+      $$0.put(dxz.q.h(), 5);
+      $$0.put(dxz.v.h(), 5);
+      $$0.put(dxz.r.h(), 6);
+      $$0.put(dxz.M.h(), 6);
+      $$0.put(dxz.s.h(), 6);
+      $$0.put(dxz.o.h(), 7);
+      $$0.put(dxz.l.h(), 8);
+      $$0.put(dxz.m.h(), 8);
+      $$0.put(dxz.j.h(), 9);
+      $$0.put(dxz.d.h(), 9);
+      $$0.put(dxz.e.h(), 9);
+      $$0.put(dxz.g.h(), 9);
+      $$0.put(dxz.k.h(), 10);
+      $$0.put(dxz.h.h(), 10);
+      $$0.put(dxz.a.h(), 10);
+      $$0.put(dxz.b.h(), 10);
+      $$0.put(dxz.I.h(), 10);
+      $$0.put(dxz.H.h(), 10);
+      $$0.put(dxz.c.h(), 11);
+      $$0.put(dxz.f.h(), 12);
+      $$0.put(dxz.y.h(), 12);
+      $$0.put(dxz.i.h(), 13);
+      $$0.put(dxz.z.h(), 13);
+      $$0.put(dxz.t.h(), 14);
+      $$0.put(dxz.G.h(), 14);
+      $$0.put(dxz.R.h(), 14);
+      $$0.put(dxz.p.h(), 15);
+      $$0.put(dxz.w.h(), 15);
+
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
       }
    });
-   private final ObjectListIterator<dyi.a> h;
-   private final ObjectListIterator<ekp> i;
 
-   public static dyi a(ddo $$0, dcb $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<dyi.a> $$4 = new ObjectArrayList(10);
-      ObjectList<ekp> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != ejx.a).forEach($$5x -> {
-         ejx $$6 = $$5x.h().d();
+   dyi.a gn();
 
-         for (ejq $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof eji) {
-                  eji $$8 = (eji)$$7;
-                  ekw.a $$9 = $$8.b().e();
-                  if ($$9 == ekw.a.b) {
-                     $$4.add(new dyi.a($$8.f(), $$6, $$8.d()));
-                  }
+   dyi.d go();
 
-                  for (ekp $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
+   static int a_(jm<dxz> $$0) {
+      return $$0.e().map(dyi::a).orElse(0);
+   }
+
+   static int a(akq<dxz> $$0) {
+      return h_.applyAsInt($$0);
+   }
+
+   static akq<dxz> b(int $$0) {
+      return f_.get($$0 - 1);
+   }
+
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - ayo.a($$2 * (double)$$0));
+   }
+
+   public static final class a {
+      public static Codec<dyi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dyg.a.lenientOptionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  dyh.a.fieldOf("selector").forGetter(dyi.a::a),
+                  axw.k.fieldOf("event_delay").orElse(0).forGetter(dyi.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new dyi.a((dyg)$$0x.orElse(null), $$1, $$2, true))
+      );
+      public static final String b = "listener";
+      @Nullable
+      dyg c;
+      private int d;
+      final dyh e;
+      private boolean f;
+
+      private a(@Nullable dyg $$0, dyh $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
+      }
+
+      public a() {
+         this(null, new dyh(), 0, false);
+      }
+
+      public dyh a() {
+         return this.e;
+      }
+
+      @Nullable
+      public dyg b() {
+         return this.c;
+      }
+
+      public void a(@Nullable dyg $$0) {
+         this.c = $$0;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public void a(int $$0) {
+         this.d = $$0;
+      }
+
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
+   }
+
+   public static class b implements dyb {
+      private final dyi a;
+
+      public b(dyi $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public dyd a() {
+         return this.a.go().b();
+      }
+
+      @Override
+      public int b() {
+         return this.a.go().a();
+      }
+
+      @Override
+      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
+         dyi.a $$4 = this.a.gn();
+         dyi.d $$5 = this.a.go();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
+         } else {
+            Optional<exa> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
+            } else {
+               exa $$7 = $$6.get();
+               if (!$$5.a($$0, jd.a((jw)$$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
                } else {
-                  $$4.add(new dyi.a($$7.f(), $$6, 0));
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
                }
             }
          }
-      });
-      return new dyi($$4.iterator(), $$5.iterator());
-   }
-
-   @VisibleForTesting
-   public dyi(ObjectListIterator<dyi.a> $$0, ObjectListIterator<ekp> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public double a(dyo.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         dyi.a $$5 = (dyi.a)this.h.next();
-         eje $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
-         };
       }
 
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         ekp $$13 = (ekp)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      public void b(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
+         this.a.go().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gn(), $$1, $$2, $$3, $$4));
       }
 
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
-   }
+      private void a(aqu $$0, dyi.a $$1, jm<dxz> $$2, dxz.a $$3, exa $$4, exa $$5) {
+         $$1.e.a(new dyg($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.Z());
+      }
 
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
+      public static float a(jd $$0, jd $$1) {
+         return (float)Math.sqrt($$0.j($$1));
+      }
 
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
+      private static boolean a(dcw $$0, exa $$1, exa $$2) {
+         exa $$3 = new exa((double)ayo.a($$1.c) + 0.5, (double)ayo.a($$1.d) + 0.5, (double)ayo.a($$1.e) + 0.5);
+         exa $$4 = new exa((double)ayo.a($$2.c) + 0.5, (double)ayo.a($$2.d) + 0.5, (double)ayo.a($$2.e) + 0.5);
 
-   private static double a(double $$0, double $$1, double $$2) {
-      double $$3 = ayn.g($$0, $$1, $$2);
-      return ayn.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
+         for (ji $$5 : ji.values()) {
+            exa $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new dce($$6, $$4, $$0x -> $$0x.a(awe.bq))).c() != ewy.a.b) {
+               return false;
+            }
+         }
 
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = ayn.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * ayn.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
-      } else {
-         return 0.0;
+         return true;
       }
    }
 
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
+   public interface c {
+      static void a(dcw $$0, dyi.a $$1, dyi.d $$2) {
+         if ($$0 instanceof aqu $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
+
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
+      }
+
+      private static void a(aqu $$0, dyi.a $$1, dyi.d $$2) {
+         $$1.a().a($$0.Z()).ifPresent($$3 -> {
+            $$1.a($$3);
+            exa $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new lr($$2.b(), $$1.c()), $$4.c, $$4.d, $$4.e, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(aqu $$0, dyi.a $$1, dyi.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               exa $$3 = $$1.c.c();
+               dyd $$4 = $$2.b();
+               exa $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = ayo.d($$8, $$3.c, $$5.c);
+               double $$10 = ayo.d($$8, $$3.d, $$5.d);
+               double $$11 = ayo.d($$8, $$3.e, $$5.e);
+               boolean $$12 = $$0.a(new lr($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(aqu $$0, dyi.a $$1, dyi.d $$2, dyg $$3) {
+         jd $$4 = jd.a((jw)$$3.c());
+         jd $$5 = $$2.b().a($$0).map(jd::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), dyi.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(dcw $$0, jd $$1) {
+         dcd $$2 = new dcd($$1);
+
+         for (int $$3 = $$2.e - 1; $$3 <= $$2.e + 1; $$3++) {
+            for (int $$4 = $$2.f - 1; $$4 <= $$2.f + 1; $$4++) {
+               if (!$$0.a(dcd.c($$3, $$4)) || $$0.N().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
    }
 
-   private static double a(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
-   }
+   public interface d {
+      int a();
 
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = ayn.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
-   }
+      dyd b();
 
-   @VisibleForTesting
-   public static record a(eje a, ejx b, int c) {
+      boolean a(aqu var1, jd var2, jm<dxz> var3, dxz.a var4);
+
+      void a(aqu var1, jd var2, jm<dxz> var3, @Nullable bsr var4, @Nullable bsr var5, float var6);
+
+      default awu<dxz> c() {
+         return awl.a;
+      }
+
+      default boolean d() {
+         return false;
+      }
+
+      default boolean f() {
+         return false;
+      }
+
+      default int a(float $$0) {
+         return ayo.d($$0);
+      }
+
+      default boolean a(jm<dxz> $$0, dxz.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
+         } else {
+            bsr $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.R_()) {
+                  return false;
+               }
+
+               if ($$2.bX() && $$0.a(awl.d)) {
+                  if (this.d() && $$2 instanceof aqv $$3) {
+                     an.ab.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.bd()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(awe.br) : true;
+         }
+      }
+
+      default void e() {
+      }
    }
 }

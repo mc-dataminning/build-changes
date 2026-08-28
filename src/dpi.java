@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpi extends dnr implements dpc {
-   public static final MapCodec<dpi> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpc.a.e.fieldOf("weathering_state").forGetter(dgx::c), dta.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dpi::new)
+public class dpi extends dpd implements dpe {
+   public static final MapCodec<dpi> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dpe.a.e.fieldOf("weathering_state").forGetter(dpi::m), u()).apply($$0, dpi::new)
    );
-   private final dpc.a J;
+   private final dpe.a f;
 
    @Override
-   public MapCodec<dpi> a() {
-      return I;
+   protected MapCodec<dpi> a() {
+      return e;
    }
 
-   public dpi(dpc.a $$0, dta $$1, dsz.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   protected dpi(dpe.a $$0, dtb.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dta $$0) {
-      return dpc.c($$0.b()).isPresent();
+   protected boolean d_(dtc $$0) {
+      return dpe.c($$0.b()).isPresent();
    }
 
-   public dpc.a m() {
-      return this.J;
+   public dpe.a m() {
+      return this.f;
    }
 }

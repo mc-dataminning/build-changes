@@ -1,5 +1,183 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface frz {
-   void a(List<cyz<?>> var1);
+public class frz {
+   public static final int a = 20;
+   private static final fjx b = new fjx(akr.b("recipe_book/page_forward"), akr.b("recipe_book/page_forward_highlighted"));
+   private static final fjx c = new fjx(akr.b("recipe_book/page_backward"), akr.b("recipe_book/page_backward_highlighted"));
+   private final List<fsb> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fsb e;
+   private final frx f = new frx();
+   private fgm g;
+   private final List<fsd> h = Lists.newArrayList();
+   private List<fsc> i = ImmutableList.of();
+   private fjq j;
+   private fjq k;
+   private int l;
+   private int m;
+   private avs n;
+   @Nullable
+   private czb<?> o;
+   @Nullable
+   private fsc p;
+
+   public frz() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fsb());
+      }
+   }
+
+   public void a(fgm $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.s.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new fjq($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fjq($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
+   }
+
+   public void a(fry $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
+   }
+
+   public void a(List<fsc> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fsb $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fsc $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.k = true;
+         } else {
+            $$2.k = false;
+         }
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         wz $$6 = wz.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fsb $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.B()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(fhx $$0, int $$1, int $$2) {
+      if (this.g.y != null && this.e != null && !this.f.c()) {
+         $$0.a(this.g.h, this.e.e(), $$1, $$2);
+      }
+   }
+
+   @Nullable
+   public czb<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fsc b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fsb $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.c();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.D(), $$7.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.y());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(List<czb<?>> $$0) {
+      for (fsd $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public fgm d() {
+      return this.g;
+   }
+
+   public avs e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<fii> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
+   }
 }

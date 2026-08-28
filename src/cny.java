@@ -1,34 +1,75 @@
-public class cny extends cnu {
-   public cny(bsw<? extends cny> $$0, dcu $$1) {
+public class cny extends cnw {
+   private static final bsu b = bsu.c(0.0F, 0.0F);
+
+   public cny(bsx<? extends cny> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   public cny(dcu $$0, btl $$1) {
-      super(bsw.L, $$1, $$0);
+   public cny(dcw $$0, btn $$1) {
+      super(bsx.C, $$1, $$0);
    }
 
-   public cny(dcu $$0, double $$1, double $$2, double $$3) {
-      super(bsw.L, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cuj t() {
-      return cur.tW;
+   public cny(dcw $$0, double $$1, double $$2, double $$3) {
+      super(bsx.C, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected double aZ() {
-      return 0.07;
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dP()
+               .a(
+                  new li(lm.S, this.p()),
+                  this.du(),
+                  this.dw(),
+                  this.dA(),
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08
+               );
+         }
+      }
    }
 
    @Override
-   protected void a(ewu $$0) {
+   protected void a(ewx $$0) {
       super.a($$0);
-      if (this.dQ() instanceof aqt) {
-         this.dQ().c(2002, this.dq(), cws.c(cwt.a));
-         int $$1 = 3 + this.dQ().z.a(5) + this.dQ().z.a(5);
-         btb.a((aqt)this.dQ(), this.do(), $$1);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(ewy $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         if (this.ah.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ah.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cfj $$3 = bsx.t.a(this.dP());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+                  if (!$$3.a(b)) {
+                     break;
+                  }
+
+                  this.dP().b($$3);
+               }
+            }
+         }
+
+         this.dP().a(this, (byte)3);
          this.aq();
       }
+   }
+
+   @Override
+   protected cul t() {
+      return cut.qR;
    }
 }

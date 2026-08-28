@@ -1,29 +1,78 @@
-public record afw(float b, boolean c) implements zf<abt> {
-   public static final yw<vv, afw> a = zf.a(afw::a, afw::new);
+public class afw implements zg<abu> {
+   public static final yx<vw, afw> a = zg.a(afw::a, afw::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   private afw(vv $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public afw(bsr $$0) {
+      this.b = $$0.an();
+      exa $$1 = $$0.do();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
+      this.h = $$0.aF();
    }
 
-   public static afw a(brb $$0) {
-      return new afw($$0.f(), $$0.l());
+   private afw(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zh<afw> a() {
-      return agf.cf;
+   public zi<afw> a() {
+      return agg.aZ;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

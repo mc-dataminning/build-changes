@@ -1,179 +1,109 @@
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public class fmy extends fnx {
-   static final akq b = akq.b("container/slot");
-   private static final int c = 18;
-   private static final int q = 20;
-   private static final int r = 1;
-   private static final int s = 1;
-   private static final int u = 2;
-   private static final int v = 2;
-   protected final fsw a;
-   private final Consumer<ehp> w;
-   ehp x;
-   private wy y;
-   private wy z;
-   private fmy.a A;
-   private fig B;
+public class fmy extends fmz {
+   private static final wz r = wz.c("chat.copy");
+   private static final wz s = wz.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fmy(fsw $$0, Consumer<ehp> $$1, ehp $$2) {
-      super(wy.c("createWorld.customize.flat.title"));
-      this.a = $$0;
-      this.w = $$1;
-      this.x = $$2;
+   public fmy(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), wz.b($$1), $$1, $$2 ? wy.e : wy.g, $$2);
    }
 
-   public ehp l() {
-      return this.x;
+   public fmy(BooleanConsumer $$0, wz $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wy.e : wy.g, $$3);
    }
 
-   public void a(ehp $$0) {
-      this.x = $$0;
+   public fmy(BooleanConsumer $$0, wz $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
    }
 
-   @Override
-   protected void aP_() {
-      this.y = wy.c("createWorld.customize.flat.tile");
-      this.z = wy.c("createWorld.customize.flat.height");
-      this.A = this.c(new fmy.a());
-      this.B = this.c(fig.a(wy.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.D()) {
-            List<ehm> $$1 = this.x.e();
-            int $$2 = this.A.aG_().indexOf(this.A.h());
-            int $$3 = $$1.size() - $$2 - 1;
-            $$1.remove($$3);
-            this.A.a($$1.isEmpty() ? null : this.A.aG_().get(Math.min($$2, $$1.size() - 1)));
-            this.x.g();
-            this.A.c();
-            this.m();
-         }
-      }).a(this.m / 2 - 155, this.n - 52, 150, 20).a());
-      this.c(fig.a(wy.c("createWorld.customize.presets"), $$0 -> {
-         this.l.a(new fnt(this));
-         this.x.g();
-         this.m();
-      }).a(this.m / 2 + 5, this.n - 52, 150, 20).a());
-      this.c(fig.a(wx.d, $$0 -> {
-         this.w.accept(this.x);
-         this.l.a(this.a);
-         this.x.g();
-      }).a(this.m / 2 - 155, this.n - 28, 150, 20).a());
-      this.c(fig.a(wx.e, $$0 -> {
-         this.l.a(this.a);
-         this.x.g();
-      }).a(this.m / 2 + 5, this.n - 28, 150, 20).a());
-      this.x.g();
-      this.m();
+   public fmy(BooleanConsumer $$0, wz $$1, wz $$2, URI $$3, wz $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
    }
 
-   void m() {
-      this.B.j = this.D();
+   public fmy(BooleanConsumer $$0, wz $$1, wz $$2, String $$3, wz $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (wz)($$5 ? wz.c("chat.link.open") : wy.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
    }
 
-   private boolean D() {
-      return this.A.h() != null;
+   protected static xn a(boolean $$0, String $$1) {
+      return c($$0).b(wy.v).b(wz.b($$1));
+   }
+
+   protected static xn c(boolean $$0) {
+      return wz.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public void d() {
-      this.l.a(this.a);
+   protected void a(int $$0) {
+      this.c(fik.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fik.a(r, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.m / 2 - 50, $$0, 100, 20).a());
+      this.c(fik.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.l.o.a(this.u);
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 8, 16777215);
-      int $$4 = this.m / 2 - 92 - 16;
-      $$0.b(this.o, this.y, $$4, 32, 16777215);
-      $$0.b(this.o, this.z, $$4 + 2 + 213 - this.o.a(this.z), 32, 16777215);
+      if (this.v) {
+         $$0.a(this.o, s, this.m / 2, 110, 16764108);
+      }
    }
 
-   class a extends fjc<fmy.a.a> {
-      public a() {
-         super(fmy.this.l, fmy.this.m, fmy.this.n - 103, 43, 24);
-
-         for (int $$0 = 0; $$0 < fmy.this.x.e().size(); $$0++) {
-            this.b(new fmy.a.a());
-         }
-      }
-
-      public void a(@Nullable fmy.a.a $$0) {
-         super.a($$0);
-         fmy.this.m();
-      }
-
-      public void c() {
-         int $$0 = this.aG_().indexOf(this.h());
-         this.k();
-
-         for (int $$1 = 0; $$1 < fmy.this.x.e().size(); $$1++) {
-            this.b(new fmy.a.a());
+   public static void a(fob $$0, String $$1, boolean $$2) {
+      fgm $$3 = fgm.Q();
+      $$3.a(new fmy($$3x -> {
+         if ($$3x) {
+            ad.k().a($$1);
          }
 
-         List<fmy.a.a> $$2 = this.aG_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
 
-      class a extends fjc.a<fmy.a.a> {
-         @Override
-         public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            ehm $$10 = fmy.this.x.e().get(fmy.this.x.e().size() - $$1 - 1);
-            dta $$11 = $$10.b();
-            cuo $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            $$0.a(fmy.this.o, $$12.w(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            wy $$13;
-            if ($$1 == 0) {
-               $$13 = wy.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fmy.this.x.e().size() - 1) {
-               $$13 = wy.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$13 = wy.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.a(fmy.this.o, $$13, $$3 + 2 + 213 - fmy.this.o.a($$13), $$2 + 3, 16777215, false);
+   public static void a(fob $$0, URI $$1, boolean $$2) {
+      fgm $$3 = fgm.Q();
+      $$3.a(new fmy($$3x -> {
+         if ($$3x) {
+            ad.k().a($$1);
          }
 
-         private cuo a(dta $$0) {
-            cuj $$1 = $$0.b().r();
-            if ($$1 == cur.a) {
-               if ($$0.a(dfy.G)) {
-                  $$1 = cur.qz;
-               } else if ($$0.a(dfy.H)) {
-                  $$1 = cur.qA;
-               }
-            }
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
 
-            return new cuo($$1);
-         }
+   public static void a(fob $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
 
-         @Override
-         public wy a() {
-            ehm $$0 = fmy.this.x.e().get(fmy.this.x.e().size() - a.this.aG_().indexOf(this) - 1);
-            cuo $$1 = this.a($$0.b());
-            return (wy)(!$$1.e() ? wy.a("narrator.select", $$1.w()) : wx.a);
-         }
+   public static void a(fob $$0, String $$1) {
+      a($$0, $$1, true);
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   public static fik.c b(fob $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
 
-         private void a(fht $$0, int $$1, int $$2, cuo $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.e()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
+   public static fik.c b(fob $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
 
-         private void a(fht $$0, int $$1, int $$2) {
-            $$0.a(fmy.b, $$1, $$2, 0, 18, 18);
-         }
-      }
+   public static fik.c b(fob $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fik.c b(fob $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

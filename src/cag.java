@@ -1,61 +1,28 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class cag extends cak {
-   private static final int a = 200;
-   private final cfb b;
-   private int c;
-   private int d;
+public class cag extends cam {
+   private final btp a;
 
-   public cag(cfb $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cfb $$0) {
-      return b(200 + $$0.dT().a(200) % 20);
+   public cag(btp $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cam.a.c));
+      $$0.N().a(true);
    }
 
    @Override
    public boolean b() {
-      if (this.b.gs()) {
-         return false;
-      } else if (this.b.gp()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<cfb> $$0 = $$0x -> $$0x.gr() || !$$0x.gp();
-         List<? extends cfb> $$1 = this.b.dQ().a((Class<? extends cfb>)this.b.getClass(), this.b.cL().c(8.0, 8.0, 8.0), $$0);
-         cfb $$2 = (cfb)DataFixUtils.orElse($$1.stream().filter(cfb::gr).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gp()));
-         return this.b.gp();
-      }
+      return this.a.bf() && this.a.b(awk.a) > this.a.dj() || this.a.bt();
    }
 
    @Override
-   public boolean c() {
-      return this.b.gp() && this.b.gt();
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      this.b.gq();
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gu();
+      if (this.a.dS().i() < 0.8F) {
+         this.a.L().a();
       }
    }
 }

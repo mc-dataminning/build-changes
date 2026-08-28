@@ -1,19 +1,9 @@
-public class cqi extends cro {
-   private final cqh a;
+public interface cqi {
+   void a(cpu var1, jv<cuq> var2, cuq var3, int[] var4);
 
-   public cqi(bqj $$0, int $$1, int $$2, int $$3, cqh $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
+   void a(cpu var1, int var2, cuq var3);
 
-   @Override
-   public boolean a(cuo $$0) {
-      return !this.a.e(this.d) && super.a($$0);
-   }
+   void a(cpu var1, cuq var2);
 
-   @Override
-   public void c() {
-      super.c();
-      this.a.a(this.c);
-   }
+   void a(cpu var1, int var2, int var3);
 }

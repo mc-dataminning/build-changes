@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dpd extends dhk implements dpc {
-   public static final MapCodec<dpd> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpc.a.e.fieldOf("weathering_state").forGetter(dpd::m), u()).apply($$0, dpd::new)
-   );
-   private final dpc.a e;
+public class dpd extends dol implements dna {
+   public static final MapCodec<dpd> a = b(dpd::new);
+   public static final dtt c = dts.C;
 
    @Override
-   protected MapCodec<dpd> a() {
-      return d;
+   protected MapCodec<? extends dpd> a() {
+      return a;
    }
 
-   public dpd(dpc.a $$0, dsz.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dpd(dtb.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(epd.c)));
    }
 
    @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean d_(dta $$0) {
-      return dpc.c($$0.b()).isPresent();
+   protected epc b_(dtc $$0) {
+      return $$0.c(c) ? epd.c.a(true) : super.b_($$0);
    }
 
-   public dpc.a m() {
-      return this.e;
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(c);
    }
 }

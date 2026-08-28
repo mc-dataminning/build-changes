@@ -1,37 +1,32 @@
-public class acb implements zf<abt> {
-   public static final yw<wj, acb> a = zf.a(acb::a, acb::new);
+import java.util.function.BiFunction;
+
+public class acb implements zg<abu> {
+   public static final yx<wk, acb> a = yx.a(jd.b, acb::b, yv.a(lu.h), acb::e, yv.p, acb::f, acb::new);
    private final jd b;
-   private final int c;
-   private final int d;
-   private final dfw e;
+   private final dqj<?> c;
+   private final ub d;
 
-   public acb(jd $$0, dfw $$1, int $$2, int $$3) {
+   public static acb a(dqh $$0, BiFunction<dqh, ka, ub> $$1) {
+      ka $$2 = $$0.i().H_();
+      return new acb($$0.aD_(), $$0.r(), $$1.apply($$0, $$2));
+   }
+
+   public static acb a(dqh $$0) {
+      return a($$0, dqh::a);
+   }
+
+   private acb(jd $$0, dqj<?> $$1, ub $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   private acb(wj $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = yu.a(lu.f).decode($$0);
-   }
-
-   private void a(wj $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.k(this.d);
-      yu.a(lu.f).encode($$0, this.e);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zh<acb> a() {
-      return agf.j;
+   public zi<acb> a() {
+      return agg.i;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
@@ -39,15 +34,11 @@ public class acb implements zf<abt> {
       return this.b;
    }
 
-   public int e() {
+   public dqj<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public ub f() {
       return this.d;
-   }
-
-   public dfw g() {
-      return this.e;
    }
 }

@@ -15,9 +15,9 @@ public record eb(List<eb.c> c) {
          $$0 -> $$0.stream().collect(Collectors.toMap(eb.c::a, eb.c::b))
       );
    public static final Codec<eb> a = d.xmap(eb::new, eb::a);
-   public static final yw<ByteBuf, eb> b = eb.c.a.a(yu.a()).a(eb::new, eb::a);
+   public static final yx<ByteBuf, eb> b = eb.c.a.a(yv.a()).a(eb::new, eb::a);
 
-   public <S extends dtc<?, S>> boolean a(dtb<?, S> $$0, S $$1) {
+   public <S extends dte<?, S>> boolean a(dtd<?, S> $$0, S $$1) {
       for (eb.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record eb(List<eb.c> c) {
       return true;
    }
 
-   public boolean a(dta $$0) {
+   public boolean a(dtc $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(eoy $$0) {
+   public boolean a(epc $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dtb<?, ?> $$0) {
+   public Optional<String> a(dtd<?, ?> $$0) {
       for (eb.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record eb(List<eb.c> c) {
          return new eb.a();
       }
 
-      public eb.a a(dud<?> $$0, String $$1) {
+      public eb.a a(duf<?> $$0, String $$1) {
          this.a.add(new eb.c($$0.f(), new eb.b($$1)));
          return this;
       }
 
-      public eb.a a(dud<Integer> $$0, int $$1) {
+      public eb.a a(duf<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public eb.a a(dud<Boolean> $$0, boolean $$1) {
+      public eb.a a(duf<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & azj> eb.a a(dud<T> $$0, T $$1) {
+      public <T extends Comparable<T> & azk> eb.a a(duf<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -84,10 +84,10 @@ public record eb(List<eb.c> c) {
 
    static record b(String e) implements eb.e {
       public static final Codec<eb.b> a = Codec.STRING.xmap(eb.b::new, eb.b::a);
-      public static final yw<ByteBuf, eb.b> b = yu.l.a(eb.b::new, eb.b::a);
+      public static final yx<ByteBuf, eb.b> b = yv.l.a(eb.b::new, eb.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dtc<?, ?> $$0, dud<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dte<?, ?> $$0, duf<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -99,15 +99,15 @@ public record eb(List<eb.c> c) {
    }
 
    static record c(String b, eb.e c) {
-      public static final yw<ByteBuf, eb.c> a = yw.a(yu.l, eb.c::a, eb.e.d, eb.c::b, eb.c::new);
+      public static final yx<ByteBuf, eb.c> a = yx.a(yv.l, eb.c::a, eb.e.d, eb.c::b, eb.c::new);
 
-      public <S extends dtc<?, S>> boolean a(dtb<?, S> $$0, S $$1) {
-         dud<?> $$2 = $$0.a(this.b);
+      public <S extends dte<?, S>> boolean a(dtd<?, S> $$0, S $$1) {
+         duf<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(dtb<?, ?> $$0) {
-         dud<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(dtd<?, ?> $$0) {
+         duf<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -124,10 +124,10 @@ public record eb(List<eb.c> c) {
       public static final Codec<eb.d> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(Codec.STRING.optionalFieldOf("min").forGetter(eb.d::a), Codec.STRING.optionalFieldOf("max").forGetter(eb.d::b)).apply($$0, eb.d::new)
       );
-      public static final yw<ByteBuf, eb.d> b = yw.a(yu.a(yu.l), eb.d::a, yu.a(yu.l), eb.d::b, eb.d::new);
+      public static final yx<ByteBuf, eb.d> b = yx.a(yv.a(yv.l), eb.d::a, yv.a(yv.l), eb.d::b, eb.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dtc<?, ?> $$0, dud<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dte<?, ?> $$0, duf<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -165,7 +165,7 @@ public record eb(List<eb.c> c) {
             throw new UnsupportedOperationException();
          }
       });
-      yw<ByteBuf, eb.e> d = yu.a(eb.b.b, eb.d.b).a(Either::unwrap, $$0 -> {
+      yx<ByteBuf, eb.e> d = yv.a(eb.b.b, eb.d.b).a(Either::unwrap, $$0 -> {
          if ($$0 instanceof eb.b $$1) {
             return Either.left($$1);
          } else if ($$0 instanceof eb.d $$2) {
@@ -175,6 +175,6 @@ public record eb(List<eb.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dtc<?, ?> var1, dud<T> var2);
+      <T extends Comparable<T>> boolean a(dte<?, ?> var1, duf<T> var2);
    }
 }

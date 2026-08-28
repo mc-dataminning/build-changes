@@ -1,43 +1,22 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.google.gson.JsonPrimitive;
 
-public class ny<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class ny {
+   public static final nz<ny.a> a = new nz<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final nz<ny.a> b = new nz<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final nz<akr> c = new nz<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final nz<Boolean> d = new nz<>("uvlock", JsonPrimitive::new);
+   public static final nz<Integer> e = new nz<>("weight", JsonPrimitive::new);
 
-   public ny(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public ny<T>.a a(T $$0) {
-      return new ny.a($$0);
-   }
+      final int e;
 
-   @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public ny<T> a() {
-         return ny.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(ny.this.a, ny.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return ny.this.a + "=" + this.b;
+      private a(final int $$0) {
+         this.e = $$0;
       }
    }
 }

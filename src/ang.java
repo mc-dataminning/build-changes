@@ -1,29 +1,28 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Collection;
 
 public class ang {
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("list").executes($$0x -> a((et)$$0x.getSource())))
-            .then(eu.a("uuids").executes($$0x -> b((et)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((et)$$0x.getSource(), ImmutableList.of(((et)$$0x.getSource()).g()))))
+            .then(eu.a("targets", fg.b()).executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"))))
       );
    }
 
-   private static int a(et $$0) {
-      return a($$0, cmv::O_);
-   }
+   private static int a(et $$0, Collection<? extends bsr> $$1) {
+      for (bsr $$2 : $$1) {
+         $$2.ap();
+      }
 
-   private static int b(et $$0) {
-      return a($$0, $$0x -> wy.a("commands.list.nameAndId", $$0x.ah(), wy.a($$0x.fY().getId())));
-   }
+      if ($$1.size() == 1) {
+         $$0.a(() -> wz.a("commands.kill.success.single", $$1.iterator().next().S_()), true);
+      } else {
+         $$0.a(() -> wz.a("commands.kill.success.multiple", $$1.size()), true);
+      }
 
-   private static int a(et $$0, Function<aqu, wy> $$1) {
-      auq $$2 = $$0.l().ah();
-      List<aqu> $$3 = $$2.t();
-      wy $$4 = xb.b($$3, $$1);
-      $$0.a(() -> wy.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
-      return $$3.size();
+      return $$1.size();
    }
 }

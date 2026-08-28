@@ -12,13 +12,13 @@ public class cg extends dv<cg.a> {
       return cg.a.a;
    }
 
-   public void a(aqu $$0, cmu $$1, cuo $$2) {
+   public void a(aqv $$0, cmw $$1, cuq $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cuo $$7 = $$1.a($$6);
+         cuq $$7 = $$1.a($$6);
          if ($$7.e()) {
             $$4++;
          } else {
@@ -32,7 +32,7 @@ public class cg extends dv<cg.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(aqu $$0, cmu $$1, cuo $$2, int $$3, int $$4, int $$5) {
+   private void a(aqv $$0, cmw $$1, cuq $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class cg extends dv<cg.a> {
          return an.f.a(new cg.a(Optional.empty(), cg.a.a.b, List.of($$0)));
       }
 
-      public static ao<cg.a> a(dct... $$0) {
+      public static ao<cg.a> a(dcv... $$0) {
          cs[] $$1 = new cs[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -64,7 +64,7 @@ public class cg extends dv<cg.a> {
          return a($$1);
       }
 
-      public boolean a(cmu $$0, cuo $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cmw $$0, cuq $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class cg extends dv<cg.a> {
                   return true;
                }
 
-               cuo $$8 = $$0.a($$7);
+               cuq $$8 = $$0.a($$7);
                if (!$$8.e()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

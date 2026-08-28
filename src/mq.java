@@ -20,7 +20,7 @@ public class mq implements ma {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               ako<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               akp<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.b(lu.K)
                   .b()
                   .forEach(
@@ -29,7 +29,7 @@ public class mq implements ma {
                         $$3x.add(
                            "components",
                            (JsonElement)km.b
-                              .encodeStart($$4, ((cuj)$$2x.a()).p())
+                              .encodeStart($$4, ((cul)$$2x.a()).p())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

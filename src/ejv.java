@@ -1,26 +1,44 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface ejv<S extends ejm> {
-   ejv<elg> a = a("buried_treasure", elg.d);
-   ejv<eli> b = a("desert_pyramid", eli.d);
-   ejv<elk> c = a("end_city", elk.d);
-   ejv<elt> d = a("fortress", elt.e);
-   ejv<elm> e = a("igloo", elm.d);
-   ejv<eln> f = a("jigsaw", eln.h);
-   ejv<elp> g = a("jungle_temple", elp.d);
-   ejv<elr> h = a("mineshaft", elr.d);
-   ejv<elv> i = a("nether_fossil", elv.d);
-   ejv<elx> j = a("ocean_monument", elx.d);
-   ejv<elz> k = a("ocean_ruin", elz.d);
-   ejv<emb> l = a("ruined_portal", emb.d);
-   ejv<emd> m = a("shipwreck", emd.d);
-   ejv<emf> n = a("stronghold", emf.d);
-   ejv<emh> o = a("swamp_hut", emh.d);
-   ejv<emj> p = a("woodland_mansion", emj.d);
+public record ejv(List<ejv.a> c, ekm d) {
+   public static final Codec<ejv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ejv.a.a.listOf().fieldOf("structures").forGetter(ejv::a), ekm.b.fieldOf("placement").forGetter(ejv::b)).apply($$0, ejv::new)
+   );
+   public static final Codec<jm<ejv>> b = akn.a(lu.aT, a);
 
-   MapCodec<S> codec();
+   public ejv(jm<ejp> $$0, ekm $$1) {
+      this(List.of(new ejv.a($$0, 1)), $$1);
+   }
 
-   private static <S extends ejm> ejv<S> a(String $$0, MapCodec<S> $$1) {
-      return jz.a(lt.R, $$0, () -> $$1);
+   public static ejv.a a(jm<ejp> $$0, int $$1) {
+      return new ejv.a($$0, $$1);
+   }
+
+   public static ejv.a a(jm<ejp> $$0) {
+      return new ejv.a($$0, 1);
+   }
+
+   public List<ejv.a> a() {
+      return this.c;
+   }
+
+   public ekm b() {
+      return this.d;
+   }
+
+   public static record a(jm<ejp> b, int c) {
+      public static final Codec<ejv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ejp.b.fieldOf("structure").forGetter(ejv.a::a), axw.l.fieldOf("weight").forGetter(ejv.a::b)).apply($$0, ejv.a::new)
+      );
+
+      public jm<ejp> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

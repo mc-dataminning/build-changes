@@ -1,25 +1,29 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record evq(dah b) implements evs {
-   public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("amount").forGetter(evq::c)).apply($$0, evq::new));
-
-   @Override
-   public float b(erl $$0) {
-      int $$1 = $$0.b(euh.k);
-      return this.b.a($$1);
-   }
+public record evq(akr b) implements evo {
+   public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akr.a.fieldOf("source").forGetter(evq::c)).apply($$0, evq::new));
 
    @Override
-   public evr b() {
-      return evt.g;
+   public evn a() {
+      return evp.b;
    }
 
-   public static evq a(dah $$0) {
-      return new evq($$0);
+   @Nullable
+   @Override
+   public uy a(erp $$0) {
+      return $$0.d().o().aL().a(this.b);
    }
 
-   public dah c() {
+   @Override
+   public Set<eui<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public akr c() {
       return this.b;
    }
 }

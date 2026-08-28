@@ -1,113 +1,72 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
+public class geg {
+   public static final wz a = wz.c("quickplay.error.title");
+   private static final wz b = wz.c("quickplay.error.invalid_identifier");
+   private static final wz c = wz.c("quickplay.error.realm_connect");
+   private static final wz d = wz.c("quickplay.error.realm_permission");
+   private static final wz e = wz.c("gui.toTitle");
+   private static final wz f = wz.c("gui.toWorld");
+   private static final wz g = wz.c("gui.toRealms");
 
-public class geg implements aue {
-   private static final drp[] a = Arrays.stream(ctg.values())
-      .sorted(Comparator.comparingInt(ctg::a))
-      .map($$0 -> new drp($$0, jd.c, dfy.kP.o()))
-      .toArray(drp[]::new);
-   private static final drp b = new drp(jd.c, dfy.kP.o());
-   private final dqm c = new dqm(jd.c, dfy.cv.o());
-   private final dqm d = new drz(jd.c, dfy.gV.o());
-   private final drb e = new drb(jd.c, dfy.fG.o());
-   private final dpu f = new dpu(jd.c, dfy.iJ.o());
-   private final dqb g = new dqb(jd.c, dfy.bn.o());
-   private final dqr h = new dqr(jd.c, dfy.mX.o());
-   private final dqv i = new dqv(jd.c, dfy.tp.o());
-   private fwv j;
-   private fxj k;
-   private Map<dmz.a, fxb> l;
-   private final ggs m;
-   private final fya n;
-
-   public geg(ggs $$0, fya $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   public static void a(fgm $$0, fty.c $$1, fbw $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!azl.h($$3)) {
+         a($$0, $$3);
+      } else if (!azl.h($$4)) {
+         b($$0, $$4);
+      } else if (!azl.h($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   @Override
-   public void a(aud $$0) {
-      this.j = new fwv(this.n.a(fyd.bk));
-      this.k = new fxj(this.n.a(fyd.bJ));
-      this.l = ghi.a(this.n);
-   }
-
-   public void a(cuo $$0, cul $$1, fbc $$2, get $$3, int $$4, int $$5) {
-      cuj $$6 = $$0.g();
-      if ($$6 instanceof csm) {
-         dfw $$7 = ((csm)$$6).d();
-         if ($$7 instanceof des $$8) {
-            cxs $$9 = $$0.a(kq.W);
-            if ($$9 != null && !$$9.b()) {
-               $$0.c(kq.W);
-               $$9.a().thenAcceptAsync($$1x -> $$0.b(kq.W, $$1x), fgi.Q());
-               $$9 = null;
-            }
-
-            fxb $$10 = this.l.get($$8.b());
-            gfb $$11 = ghi.a($$8.b(), $$9);
-            ghi.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$10, $$11);
-         } else {
-            dta $$12 = $$7.o();
-            dqf $$13;
-            if ($$7 instanceof den) {
-               this.f.a($$0, ((den)$$7).b());
-               $$13 = this.f;
-            } else if ($$7 instanceof dfp) {
-               this.g.a(((dfp)$$7).b());
-               $$13 = this.g;
-            } else if ($$12.a(dfy.mX)) {
-               $$13 = this.h;
-            } else if ($$12.a(dfy.cv)) {
-               $$13 = this.c;
-            } else if ($$12.a(dfy.fG)) {
-               $$13 = this.e;
-            } else if ($$12.a(dfy.gV)) {
-               $$13 = this.d;
-            } else if ($$12.a(dfy.tp)) {
-               this.i.c($$0);
-               $$13 = this.i;
-            } else {
-               if (!($$7 instanceof dmw)) {
-                  return;
-               }
-
-               ctg $$20 = dmw.b($$6);
-               if ($$20 == null) {
-                  $$13 = b;
-               } else {
-                  $$13 = a[$$20.a()];
-               }
-            }
-
-            this.m.a($$13, $$2, $$3, $$4, $$5);
-         }
+   private static void a(fgm $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         fob $$2 = new ftg(new fod());
+         $$0.a(new fni($$2, a, b, f));
       } else {
-         if ($$0.a(cur.vs)) {
-            dpw $$24 = $$0.a(kq.Y, dpw.a);
-            ctg $$25 = $$0.a(kq.Z);
-            boolean $$26 = !$$24.b().isEmpty() || $$25 != null;
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            gsj $$27 = $$26 ? gsl.g : gsl.h;
-            fbg $$28 = $$27.c().a(glb.b($$3, this.j.a($$27.a()), true, $$0.x()));
-            this.j.c().a($$2, $$28, $$4, $$5);
-            if ($$26) {
-               ggo.a($$2, $$3, $$4, $$5, this.j.b(), $$27, false, Objects.requireNonNullElse($$25, ctg.a), $$24, $$0.x());
-            } else {
-               this.j.b().a($$2, $$28, $$4, $$5);
-            }
+         $$0.x().a($$1, () -> $$0.a(new fod()));
+      }
+   }
 
-            $$2.b();
-         } else if ($$0.a(cur.vS)) {
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            fbg $$29 = glb.b($$3, this.k.a(fxj.a), false, $$0.x());
-            this.k.a($$2, $$29, $$4, $$5);
-            $$2.b();
-         }
+   private static void b(fgm $$0, String $$1) {
+      fzs $$2 = new fzs($$0);
+      $$2.a();
+      fzr $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new fzr(grp.a("selectServer.defaultName"), $$1, fzr.c.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
+
+      gav $$4 = gav.a($$1);
+      fna.a(new fqr(new fod()), $$0, $$4, $$3, true, null);
+   }
+
+   private static void a(fgm $$0, fbw $$1, String $$2) {
+      long $$3;
+      fcp $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fob $$6 = new fbr(new fod());
+         $$0.a(new fni($$6, a, b, g));
+         return;
+      } catch (fdh var10) {
+         fob $$8 = new fod();
+         $$0.a(new fni($$8, a, c, e));
+         return;
+      }
+
+      fcn $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fob $$12 = new fbr(new fod());
+         $$0.a(new fni($$12, a, d, g));
+      } else {
+         fod $$13 = new fod();
+         ffk $$14 = new ffk($$13, $$11);
+         $$0.a(new feb($$13, $$14));
       }
    }
 }

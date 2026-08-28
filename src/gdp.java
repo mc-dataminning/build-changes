@@ -1,26 +1,92 @@
-public class gdp extends gaz {
-   private static final int a = 12235202;
+import java.util.Optional;
+import org.joml.Quaternionf;
 
-   protected gdp(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdc $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axx.b.b(12235202) / 255.0F;
-      this.w = (float)axx.b.c(12235202) / 255.0F;
-      this.x = (float)axx.b.d(12235202) / 255.0F;
+public class gdp extends gdl {
+   private final dyd a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
+
+   gdp(fzd $$0, double $$1, double $$2, double $$3, dyd $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<exa> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         exa $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)ayo.d($$8, $$10);
+         this.H = this.G = (float)ayo.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
-   public static class a implements gck<lq> {
-      private final gdc a;
+   @Override
+   public void a(fbk $$0, ffw $$1, float $$2) {
+      float $$3 = ayo.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = ayo.i($$2, this.F, this.b);
+      float $$5 = ayo.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+   }
 
-      public a(gdc $$0) {
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gcp b() {
+      return gcp.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         Optional<exa> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            exa $$3 = $$0.get();
+            this.g = ayo.d($$2, this.g, $$3.a());
+            this.h = ayo.d($$2, this.h, $$3.b());
+            this.i = ayo.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)ayo.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)ayo.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
+      }
+   }
+
+   public static class a implements gco<lr> {
+      private final gdg a;
+
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayv $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gdp($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public gcl a(lr $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdp $$8 = new gdp($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

@@ -1,24 +1,12 @@
-public class gmf<T extends cjj> extends gku<T, fwz<T>> {
-   private static final akq a = akq.b("textures/entity/skeleton/skeleton.png");
+public class gmf extends gln<cga, fwy<cga>> {
+   private static final akr a = akr.b("textures/entity/sheep/sheep.png");
 
-   public gmf(gkd.a $$0) {
-      this($$0, fyd.bo, fyd.bq, fyd.br);
+   public gmf(gkh.a $$0) {
+      super($$0, new fwy<>($$0.a(fyh.bi)), 0.7F);
+      this.a(new gov(this, $$0.f()));
    }
 
-   public gmf(gkd.a $$0, fyc $$1, fyc $$2, fyc $$3) {
-      this($$0, $$2, $$3, new fwz<>($$0.a($$1)));
-   }
-
-   public gmf(gkd.a $$0, fyc $$1, fyc $$2, fwz<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gof<>(this, new fwz($$0.a($$1)), new fwz($$0.a($$2)), $$0.g()));
-   }
-
-   public akq a(T $$0) {
+   public akr a(cga $$0) {
       return a;
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.go();
    }
 }

@@ -1,35 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amz {
+   public static final int a = 2;
+
    public static void a(CommandDispatcher<et> $$0) {
-      final LiteralArgumentBuilder<et> $$1 = (LiteralArgumentBuilder<et>)eu.a("gamerule").requires($$0x -> $$0x.c(2));
-      dcq.a(
-         new dcq.c() {
-            @Override
-            public <T extends dcq.g<T>> void a(dcq.e<T> $$0, dcq.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)eu.a($$0.a()).executes($$1xxx -> amz.a((et)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> amz.a($$1xxx, $$0)))
-               );
-            }
-         }
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((et)$$0x.getSource()).h()), fh.a($$0x, "gamemode"))))
+                  .then(eu.a("target", fg.d()).executes($$0x -> a($$0x, fg.f($$0x, "target"), fh.a($$0x, "gamemode"))))
+            )
       );
-      $$0.register($$1);
    }
 
-   static <T extends dcq.g<T>> int a(CommandContext<et> $$0, dcq.e<T> $$1) {
-      et $$2 = (et)$$0.getSource();
-      T $$3 = $$2.l().aM().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> wy.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
+   private static void a(et $$0, aqv $$1, dct $$2) {
+      wz $$3 = wz.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wz.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().ab().b(dcs.p)) {
+            $$1.a(wz.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> wz.a("commands.gamemode.success.other", $$1.S_(), $$3), true);
+      }
    }
 
-   static <T extends dcq.g<T>> int a(et $$0, dcq.e<T> $$1) {
-      T $$2 = $$0.l().aM().a($$1);
-      $$0.a(() -> wy.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   private static int a(CommandContext<et> $$0, Collection<aqv> $$1, dct $$2) {
+      int $$3 = 0;
+
+      for (aqv $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((et)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

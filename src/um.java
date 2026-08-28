@@ -1,4 +1,4 @@
-public class um extends ul {
+public class um extends RuntimeException {
    public um(String $$0) {
       super($$0);
    }

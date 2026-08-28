@@ -1,75 +1,35 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class cze extends cyp {
-   public cze(cym $$0) {
-      super($$0);
-   }
+public interface cze<T extends cyz<?>> {
+   cze<czh> a = a("crafting_shaped", new czh.a());
+   cze<czj> b = a("crafting_shapeless", new czj.a());
+   cze<cyi> c = a("crafting_special_armordye", new czn<>(cyi::new));
+   cze<cyl> d = a("crafting_special_bookcloning", new czn<>(cyl::new));
+   cze<cyx> e = a("crafting_special_mapcloning", new czn<>(cyx::new));
+   cze<cyy> f = a("crafting_special_mapextending", new czn<>(cyy::new));
+   cze<cyt> g = a("crafting_special_firework_rocket", new czn<>(cyt::new));
+   cze<cyv> h = a("crafting_special_firework_star", new czn<>(cyv::new));
+   cze<cyu> i = a("crafting_special_firework_star_fade", new czn<>(cyu::new));
+   cze<czy> j = a("crafting_special_tippedarrow", new czn<>(czy::new));
+   cze<cyj> k = a("crafting_special_bannerduplicate", new czn<>(cyj::new));
+   cze<czk> l = a("crafting_special_shielddecoration", new czn<>(czk::new));
+   cze<czl> m = a("crafting_special_shulkerboxcoloring", new czn<>(czl::new));
+   cze<czx> n = a("crafting_special_suspiciousstew", new czn<>(czx::new));
+   cze<czg> o = a("crafting_special_repairitem", new czn<>(czg::new));
+   cze<czq> p = a("smelting", new czm<>(czq::new, 200));
+   cze<cyk> q = a("blasting", new czm<>(cyk::new, 100));
+   cze<czv> r = a("smoking", new czm<>(czv::new, 100));
+   cze<cym> s = a("campfire_cooking", new czm<>(cym::new, 100));
+   cze<czw> t = a("stonecutting", new czo.b<>(czw::new));
+   cze<czt> u = a("smithing_transform", new czt.a());
+   cze<czu> v = a("smithing_trim", new czu.a());
+   cze<cys> w = a("crafting_decorated_pot", new czn<>(cys::new));
 
-   @Nullable
-   private Pair<cuo, cuo> a(cyn $$0) {
-      cuo $$1 = null;
-      cuo $$2 = null;
+   MapCodec<T> a();
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cuo $$4 = $$0.a($$3);
-         if (!$$4.e()) {
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else {
-               if ($$2 != null) {
-                  return null;
-               }
+   yx<wk, T> b();
 
-               $$2 = $$4;
-            }
-         }
-      }
-
-      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
-   }
-
-   private static boolean a(cuo $$0, cuo $$1) {
-      return $$1.a($$0.g()) && $$0.H() == 1 && $$1.H() == 1 && $$0.b(kq.d) && $$1.b(kq.d) && $$0.b(kq.e) && $$1.b(kq.e);
-   }
-
-   public boolean a(cyn $$0, dcu $$1) {
-      return this.a($$0) != null;
-   }
-
-   public cuo a(cyn $$0, jo.a $$1) {
-      Pair<cuo, cuo> $$2 = this.a($$0);
-      if ($$2 == null) {
-         return cuo.l;
-      } else {
-         cuo $$3 = (cuo)$$2.getFirst();
-         cuo $$4 = (cuo)$$2.getSecond();
-         int $$5 = Math.max($$3.o(), $$4.o());
-         int $$6 = $$3.o() - $$3.n();
-         int $$7 = $$4.o() - $$4.n();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cuo $$9 = new cuo($$3.g());
-         $$9.b(kq.d, Integer.valueOf($$5));
-         $$9.b(Math.max($$5 - $$8, 0));
-         dag $$10 = dac.b($$3);
-         dag $$11 = dac.b($$4);
-         dac.a($$9, $$3x -> $$1.b(lu.aL).b().filter($$0xx -> $$0xx.a(awg.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public czc<?> ap_() {
-      return czc.o;
+   static <S extends cze<T>, T extends cyz<?>> S a(String $$0, S $$1) {
+      return jz.a(lt.r, $$0, $$1);
    }
 }

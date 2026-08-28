@@ -1,84 +1,124 @@
-public class dki {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
+
+public class dki extends dfy implements dna {
+   public static final MapCodec<dki> b = b(dki::new);
+   public static final int c = 7;
+   public static final duc d = dts.aC;
+   public static final dtt e = dts.v;
+   public static final dtt f = dts.C;
+   private static final int a = 1;
+
+   @Override
+   public MapCodec<? extends dki> a() {
+      return b;
+   }
+
+   public dki(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
+      return exq.a();
+   }
+
+   @Override
+   protected boolean d_(dtc $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
+   }
+
+   @Override
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if (this.m($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean m(dtc $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
+   }
+
+   @Override
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int g(dtc $$0, dcc $$1, jd $$2) {
+      return 1;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(d) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dtc a(dtc $$0, dcx $$1, jd $$2) {
+      int $$3 = 7;
+      jd.a $$4 = new jd.a();
+
+      for (ji $$5 : ji.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(d, Integer.valueOf($$3));
+   }
+
+   private static int o(dtc $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(dtc $$0) {
+      if ($$0.a(awe.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   protected epc b_(dtc $$0) {
+      return $$0.c(f) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
+      if ($$1.r($$2.d())) {
+         if ($$3.a(15) == 1) {
+            jd $$4 = $$2.e();
+            dtc $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, ji.b)) {
+               ays.a($$1, $$2, $$3, lm.l);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(d, e, f);
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      dtc $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == epd.c));
+      return a($$2, $$0.q(), $$0.a());
+   }
 }

@@ -1,54 +1,105 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dyr {
-   public static enum a implements azj {
-      a("air"),
-      b("liquid");
+public interface dyr {
+   Codec<dyr> b = dys.b;
+   Codec<jm<dyr>> c = akn.a(lu.aJ, b);
+   Codec<dyr> d = c.xmap(dys.j::new, $$0 -> (jm)($$0 instanceof dys.j $$1 ? $$1.j() : new jm.a<>($$0)));
 
-      public static final Codec<dyr.a> c = azj.a(dyr.a::values);
-      private final String d;
+   double a(dyr.b var1);
 
-      private a(final String $$0) {
-         this.d = $$0;
-      }
+   void a(double[] var1, dyr.a var2);
 
-      public String a() {
-         return this.d;
-      }
+   dyr a(dyr.f var1);
 
-      @Override
-      public String c() {
-         return this.d;
+   double a();
+
+   double b();
+
+   ayh<? extends dyr> c();
+
+   default dyr a(double $$0, double $$1) {
+      return new dys.g(this, $$0, $$1);
+   }
+
+   default dyr d() {
+      return dys.a(this, dys.k.a.a);
+   }
+
+   default dyr e() {
+      return dys.a(this, dys.k.a.b);
+   }
+
+   default dyr f() {
+      return dys.a(this, dys.k.a.c);
+   }
+
+   default dyr g() {
+      return dys.a(this, dys.k.a.d);
+   }
+
+   default dyr h() {
+      return dys.a(this, dys.k.a.e);
+   }
+
+   default dyr i() {
+      return dys.a(this, dys.k.a.f);
+   }
+
+   public interface a {
+      dyr.b a(int var1);
+
+      void a(double[] var1, dyr var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default eaa d() {
+         return eaa.a();
       }
    }
 
-   public static enum b implements azj {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   public static record c(jm<eof.a> b, @Nullable eof c) {
+      public static final Codec<dyr.c> a = eof.a.b.xmap($$0 -> new dyr.c($$0, null), dyr.c::b);
 
-      public static final Codec<dyr.b> l = azj.a(dyr.b::values);
-      private final String m;
-
-      private b(final String $$0) {
-         this.m = $$0;
+      public c(jm<eof.a> $$0) {
+         this($$0, null);
       }
 
-      public String a() {
-         return this.m;
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends dyr {
+      @Override
+      default void a(double[] $$0, dyr.a $$1) {
+         $$1.a($$0, this);
       }
 
       @Override
-      public String c() {
-         return this.m;
+      default dyr a(dyr.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements dyr.b {
+   }
+
+   public interface f {
+      dyr apply(dyr var1);
+
+      default dyr.c a(dyr.c $$0) {
+         return $$0;
       }
    }
 }

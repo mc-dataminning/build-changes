@@ -1,19 +1,30 @@
 import java.util.List;
 
-public interface cwg {
-   int a();
+public class cwg extends cwj {
+   public cwg(cwi $$0, cul.a $$1) {
+      super($$0, $$1.a(kq.x, k()));
+   }
 
-   float b();
+   private static cxx k() {
+      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.bE, 1.5F)), 1.0F, 2);
+   }
 
-   float c();
+   public static cxn a(cwi $$0, int $$1, float $$2) {
+      return cxn.a().a(buw.c, new buu(e, (double)((float)$$1 + $$0.c()), buu.a.a), bsz.b).a(buw.e, new buu(f, (double)$$2, buu.a.a), bsz.b).a();
+   }
 
-   awt<dfw> d();
+   @Override
+   public boolean a(dtc $$0, dcw $$1, jd $$2, cmx $$3) {
+      return !$$3.f();
+   }
 
-   int e();
+   @Override
+   public boolean a(cuq $$0, btn $$1, btn $$2) {
+      return true;
+   }
 
-   cyu f();
-
-   default cxv a(awt<dfw> $$0) {
-      return new cxv(List.of(cxv.a.a(this.d()), cxv.a.a($$0, this.b())), 1.0F, 1);
+   @Override
+   public void b(cuq $$0, btn $$1, btn $$2) {
+      $$0.a(1, $$2, bsy.a);
    }
 }

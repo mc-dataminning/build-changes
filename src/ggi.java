@@ -1,40 +1,46 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class ggi implements gsr {
-   private final dtb<dfw, dta> a;
-   private final List<ggk> b;
+public class ggi implements gst {
+   private final akr a;
+   private final j b;
+   private final boolean c;
+   private final int d;
 
-   public ggi(dtb<dfw, dta> $$0, List<ggk> $$1) {
+   public ggi(akr $$0, j $$1, boolean $$2, int $$3) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public List<ggk> a() {
+   public akr a() {
+      return this.a;
+   }
+
+   @Override
+   public j b() {
       return this.b;
    }
 
-   public Set<ggd> b() {
-      Set<ggd> $$0 = Sets.newHashSet();
+   @Override
+   public boolean c() {
+      return this.c;
+   }
 
-      for (ggk $$1 : this.b) {
-         $$0.add($$1.a());
-      }
+   public int d() {
+      return this.d;
+   }
 
-      return $$0;
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
    }
 
    @Override
@@ -42,59 +48,63 @@ public class ggi implements gsr {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof ggi $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+         return !($$0 instanceof ggi $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.a, this.b);
-   }
-
-   @Override
-   public Collection<akq> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<akq, gsr> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gsg a(gsk $$0, Function<gsj, gqf> $$1, gso $$2, akq $$3) {
-      gsp.a $$4 = new gsp.a();
-
-      for (ggk $$5 : this.a()) {
-         gsg $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
    }
 
    public static class a implements JsonDeserializer<ggi> {
-      private final gfw.a a;
-
-      public a(gfw.a $$0) {
-         this.a = $$0;
-      }
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
 
       public ggi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new ggi(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+         JsonObject $$3 = $$0.getAsJsonObject();
+         akr $$4 = this.b($$3);
+         gsl $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new ggi($$4, $$5.b(), $$6, $$7);
       }
 
-      private List<ggk> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<ggk> $$2 = Lists.newArrayList();
+      private boolean d(JsonObject $$0) {
+         return aye.a($$0, "uvlock", false);
+      }
 
-         for (JsonElement $$3 : $$1) {
-            $$2.add((ggk)$$0.deserialize($$3, ggk.class));
+      protected gsl a(JsonObject $$0) {
+         int $$1 = aye.a($$0, "x", 0);
+         int $$2 = aye.a($$0, "y", 0);
+         gsl $$3 = gsl.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
+      }
 
-         return $$2;
+      protected akr b(JsonObject $$0) {
+         return akr.a(aye.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = aye.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
       }
    }
 }

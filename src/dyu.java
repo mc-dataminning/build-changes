@@ -1,26 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dyu {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<dyu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dyu::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+   public static enum a implements azk {
+      a("air"),
+      b("liquid");
 
-   public dyu(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      public static final Codec<dyu.a> c = azk.a(dyu.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum b implements azk {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
+
+      public static final Codec<dyu.b> l = azk.a(dyu.b::values);
+      private final String m;
+
+      private b(final String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

@@ -1,81 +1,171 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public interface bqy extends bqj {
-   String b = "LootTable";
-   String c = "LootTableSeed";
+public class bqy extends eqj {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<akr, bqx> f = new Object2ObjectOpenHashMap();
 
-   @Nullable
-   akp<erq> ax_();
-
-   void a(@Nullable akp<erq> var1);
-
-   default void a(akp<erq> $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   public static eqj.a<bqy> a(long $$0) {
+      return new eqj.a<>(() -> new bqy($$0), ($$1, $$2) -> a($$0, $$1), azw.m);
    }
 
-   long ay_();
+   public bqy(long $$0) {
+      this.b = $$0;
+   }
 
-   void a(long var1);
+   public ayw a(akr $$0) {
+      ayw $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bqy.a($$1);
+   }
 
-   jd az_();
+   private bqx c(akr $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
 
-   @Nullable
-   dcu i();
+   private bqx b(akr $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bqx($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
 
-   static void a(dca $$0, ayv $$1, jd $$2, akp<erq> $$3) {
-      if ($$0.c_($$2) instanceof bqy $$5) {
-         $$5.a($$3, $$1.g());
+   public void a(BiConsumer<akr, bqx> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public ub a(ub $$0, jo.a $$1) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      ub $$2 = new ub();
+      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (uy)bqx.a.encodeStart(up.a, $$2x).result().orElseThrow()));
+      $$0.a("sequences", $$2);
+      return $$0;
+   }
+
+   private static boolean a(ub $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bqy a(long $$0, ub $$1) {
+      bqy $$2 = new bqy($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      ub $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bqx $$6 = (bqx)((Pair)bqx.a.decode(up.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(akr.a($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
       }
+
+      return $$2;
    }
 
-   default boolean a_(ua $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(akp.a(lu.bc, akq.a($$0.l("LootTable"))));
-         if ($$0.b("LootTableSeed", 4)) {
-            this.a($$0.i("LootTableSeed"));
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
+   }
+
+   public void b(akr $$0) {
+      this.f.put($$0, this.c($$0));
+   }
+
+   public void a(akr $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
+   }
+
+   class a implements ayw {
+      private final ayw c;
+
+      a(final ayw $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public ayw d() {
+         bqy.this.c();
+         return this.c.d();
+      }
+
+      @Override
+      public dzl e() {
+         bqy.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bqy.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bqy.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bqy.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bqy.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bqy.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bqy.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bqy.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bqy.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            this.a(0L);
+            return $$0 instanceof bqy.a $$1 ? this.c.equals($$1.c) : false;
          }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   default boolean b_(ua $$0) {
-      akp<erq> $$1 = this.ax_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", $$1.a().toString());
-         long $$2 = this.ay_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
-   }
-
-   default void e_(@Nullable cmv $$0) {
-      dcu $$1 = this.i();
-      jd $$2 = this.az_();
-      akp<erq> $$3 = this.ax_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         erq $$4 = $$1.o().be().b($$3);
-         if ($$0 instanceof aqu) {
-            an.Q.a((aqu)$$0, $$3);
-         }
-
-         this.a(null);
-         ero.a $$5 = new ero.a((aqt)$$1).a(euh.f, eww.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gv()).a(euh.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(eug.c), this.ay_());
       }
    }
 }

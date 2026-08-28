@@ -1,29 +1,29 @@
-public class ahq implements zf<agh> {
-   public static final yw<vv, ahq> a = zf.a(ahq::a, ahq::new);
-   private final String b;
+public class ahq implements zg<agi> {
+   public static final yx<vw, ahq> a = zg.a(ahq::a, ahq::new);
+   private final akr b;
 
-   public ahq(String $$0) {
-      this.b = $$0;
+   public ahq(czb<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private ahq(vv $$0) {
-      this.b = $$0.p();
+   private ahq(vw $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zh<ahq> a() {
-      return agf.bP;
+   public zi<ahq> a() {
+      return agg.bO;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public akr b() {
       return this.b;
    }
 }

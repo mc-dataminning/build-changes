@@ -1,30 +1,29 @@
-public record agy(int b, int c, boolean d) implements zf<agh> {
-   public static final yw<vv, agy> a = zf.a(agy::a, agy::new);
+public class agy implements zg<agi> {
+   public static final yx<vw, agy> a = zg.a(agy::a, agy::new);
+   private final int b;
 
-   private agy(vv $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public agy(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vv $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private agy(vw $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(vw $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zh<agy> a() {
-      return agf.bu;
+   public zi<agy> a() {
+      return agg.bt;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

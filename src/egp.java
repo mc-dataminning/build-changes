@@ -1,29 +1,21 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 
-public class egp extends egf {
-   public static final MapCodec<egp> b = bpa.b(dta.b).comapFlatMap(egp::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bpa<dta> c;
+public class egp extends egi {
+   public static final MapCodec<egp> b = dtc.b.fieldOf("state").xmap(dtb.a::b, dfy::o).xmap(egp::new, $$0 -> $$0.c);
+   private final dfy c;
 
-   private static DataResult<egp> a(bpa<dta> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new egp($$0));
-   }
-
-   public egp(bpa<dta> $$0) {
+   public egp(dfy $$0) {
       this.c = $$0;
    }
 
-   public egp(bpa.a<dta> $$0) {
-      this($$0.a());
+   @Override
+   protected egj<?> a() {
+      return egj.f;
    }
 
    @Override
-   protected egg<?> a() {
-      return egg.b;
-   }
-
-   @Override
-   public dta a(ayv $$0, jd $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public dtc a(ayw $$0, jd $$1) {
+      ji.a $$2 = ji.a.a($$0);
+      return this.c.o().b(dml.i, $$2);
    }
 }

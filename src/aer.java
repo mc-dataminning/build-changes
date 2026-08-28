@@ -1,25 +1,25 @@
-public class aer implements zf<abt> {
-   public static final yw<vv, aer> a = zf.a(aer::a, aer::new);
+public class aer implements zg<abu> {
+   public static final yx<vw, aer> a = zg.a(aer::a, aer::new);
    private final int b;
 
-   public aer(dur $$0) {
-      this.b = $$0.r();
+   public aer(dut $$0) {
+      this.b = $$0.q();
    }
 
-   private aer(vv $$0) {
+   private aer(vw $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zh<aer> a() {
-      return agf.av;
+   public zi<aer> a() {
+      return agg.au;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 

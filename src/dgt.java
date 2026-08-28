@@ -1,72 +1,62 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgt extends djl implements dfz, dgs {
-   public static final MapCodec<dgt> c = b(dgt::new);
-   private static final float g = 0.11F;
+public class dgt extends der {
+   public static final MapCodec<dgt> d = b(dgt::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dgt> a() {
-      return c;
+      return d;
    }
 
-   public dgt(dsz.d $$0) {
-      super($$0, ji.a, q_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int a(ayv $$0) {
-      return 1;
+   public dgt(dtb.d $$0) {
+      super($$0, kj.c);
    }
 
    @Override
-   protected boolean g(dta $$0) {
-      return $$0.i();
+   public boolean d(dtc $$0) {
+      return false;
+   }
+
+   protected static boolean a(dcw $$0, ddw.c $$1) {
+      if ($$1 == ddw.c.b) {
+         return $$0.E_().i() < 0.05F;
+      } else {
+         return $$1 == ddw.c.c ? $$0.E_().i() < 0.1F : false;
+      }
    }
 
    @Override
-   protected dfw b() {
-      return dfy.sw;
+   public void a(dtc $$0, dcw $$1, jd $$2, ddw.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == ddw.c.b) {
+            $$1.b($$2, dga.fu.o());
+            $$1.a(null, dxz.c, $$2);
+         } else if ($$3 == ddw.c.c) {
+            $$1.b($$2, dga.fw.o());
+            $$1.a(null, dxz.c, $$2);
+         }
+      }
    }
 
    @Override
-   protected dta a(dta $$0, dta $$1) {
-      return $$1.a(r_, $$0.c(r_));
-   }
-
-   @Override
-   protected dta a(dta $$0, ayv $$1) {
-      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cuo a(dcx $$0, jd $$1, dta $$2) {
-      return new cuo(cur.wv);
-   }
-
-   @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      return dgs.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      super.a($$0);
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+   protected boolean a(epb $$0) {
       return true;
    }
 
    @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   protected void a(dtc $$0, dcw $$1, jd $$2, epb $$3) {
+      if ($$3 == epd.c) {
+         dtc $$4 = dga.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dxz.c, $$2, dxz.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == epd.e) {
+         dtc $$5 = dga.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dxz.c, $$2, dxz.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

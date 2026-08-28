@@ -1,48 +1,72 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.help.failed"));
+   public static final int a = 100;
 
-   public static void a(CommandDispatcher<et> $$0) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("help").executes($$1 -> {
-               Map<CommandNode<et>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (et)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((et)$$1.getSource()).a(() -> wy.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("give").requires($$0x -> $$0x.c(2)))
             .then(
-               eu.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<et> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (et)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<et>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (et)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((et)$$1.getSource()).a(() -> wy.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
+               eu.a("targets", fg.d())
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("item", hc.a($$1)).executes($$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), 1)))
+                        .then(
+                           eu.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
                   )
             )
       );
+   }
+
+   private static int a(et $$0, hd $$1, Collection<aqv> $$2, int $$3) throws CommandSyntaxException {
+      cuq $$4 = $$1.a(1, false);
+      int $$5 = $$4.j();
+      int $$6 = $$5 * 100;
+      if ($$3 > $$6) {
+         $$0.b(wz.a("commands.give.failed.toomanyitems", $$6, $$4.F()));
+         return 0;
+      } else {
+         for (aqv $$7 : $$2) {
+            int $$8 = $$3;
+
+            while ($$8 > 0) {
+               int $$9 = Math.min($$5, $$8);
+               $$8 -= $$9;
+               cuq $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.fZ().f($$10);
+               if ($$11 && $$10.e()) {
+                  cjh $$13 = $$7.a($$4, false);
+                  if ($$13 != null) {
+                     $$13.B();
+                  }
+
+                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avp.nC, avq.h, 0.2F, (($$7.dS().i() - $$7.dS().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.cd.d();
+               } else {
+                  cjh $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.w();
+                     $$12.b($$7.cA());
+                  }
+               }
+            }
+         }
+
+         if ($$2.size() == 1) {
+            $$0.a(() -> wz.a("commands.give.success.single", $$3, $$4.F(), $$2.iterator().next().S_()), true);
+         } else {
+            $$0.a(() -> wz.a("commands.give.success.single", $$3, $$4.F(), $$2.size()), true);
+         }
+
+         return $$2.size();
+      }
    }
 }

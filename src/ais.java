@@ -1,29 +1,29 @@
-public class ais implements zf<ain> {
-   public static final yw<vv, ais> a = zf.a(ais::a, ais::new);
-   private final wy b;
+public class ais implements zg<aio> {
+   public static final yx<vw, ais> a = zg.a(ais::a, ais::new);
+   private final int b;
 
-   public ais(wy $$0) {
+   public ais(int $$0) {
       this.b = $$0;
    }
 
-   private ais(vv $$0) {
-      this.b = wy.a.b($$0.d(262144), ka.b);
+   private ais(vw $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vv $$0) {
-      $$0.a(wy.a.a(this.b, ka.b));
+   private void a(vw $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zh<ais> a() {
-      return ait.e;
+   public zi<ais> a() {
+      return aiu.d;
    }
 
-   public void a(ain $$0) {
+   public void a(aio $$0) {
       $$0.a(this);
    }
 
-   public wy b() {
+   public int b() {
       return this.b;
    }
 }

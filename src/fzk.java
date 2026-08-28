@@ -1,101 +1,68 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public class fzk {
-   private final GameProfile a;
-   private final Supplier<grf> b;
-   private dcr c = dcr.e;
-   private int d;
-   @Nullable
-   private wy e;
-   @Nullable
-   private xp f;
-   private xu g;
+public class fzk extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gav b;
+   private final fzk.a c;
 
-   public fzk(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<grf>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+   public fzk(gav $$0, fzk.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static Supplier<grf> a(GameProfile $$0) {
-      fgi $$1 = fgi.Q();
-      grg $$2 = $$1.am();
-      CompletableFuture<grf> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      grf $$5 = gqx.a($$0);
-      return () -> {
-         grf $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         arn.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         arn.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
    }
 
-   public GameProfile a() {
-      return this.a;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = arn.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = ayo.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = ayo.a($$4.get(4), -1);
+            int $$9 = ayo.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
+      }
+
+      $$0.close();
    }
 
-   @Nullable
-   public xp b() {
-      return this.f;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public xu c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.f != null;
-   }
-
-   protected void a(xp $$0) {
-      this.f = $$0;
-      this.g = $$0.a(cmy.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
-   }
-
-   private static xu b(boolean $$0) {
-      return $$0 ? xu.c : xu.b;
-   }
-
-   public dcr e() {
-      return this.c;
-   }
-
-   protected void a(dcr $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public grf g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public exv h() {
-      return fgi.Q().r.M().e(this.a().getName());
-   }
-
-   public void a(@Nullable wy $$0) {
-      this.e = $$0;
-   }
-
-   @Nullable
-   public wy i() {
-      return this.e;
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

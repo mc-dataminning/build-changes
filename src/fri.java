@@ -1,88 +1,72 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-public class fri extends frb {
-   private static final wy u = wy.c("controls.keybinds.title");
-   @Nullable
-   public fgg a;
-   public long s;
-   private frh v;
-   private fig w;
+public class fri extends fob {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final wz r;
+   private final xe s;
+   private final ImmutableList<fri.a> u;
+   private fjd v = fjd.a;
+   private int w;
+   private int x;
 
-   public fri(fnx $$0, fgm $$1) {
-      super($$0, $$1, u);
+   protected fri(wz $$0, List<wz> $$1, ImmutableList<fri.a> $$2) {
+      super($$0);
+      this.s = xe.a($$1);
+      this.r = wy.a($$0, xc.a($$1, wy.a));
+      this.u = $$2;
    }
 
    @Override
-   protected void aQ_() {
-      this.v = this.r.c(new frh(this, this.l));
+   public wz i() {
+      return this.r;
    }
 
    @Override
-   protected void m() {
-   }
+   public void aT_() {
+      UnmodifiableIterator $$1 = this.u.iterator();
 
-   @Override
-   protected void D() {
-      this.w = fig.a(wy.c("controls.resetAll"), $$0x -> {
-         for (fgg $$1 : this.c.W) {
-            $$1.b($$1.i());
-         }
+      while ($$1.hasNext()) {
+         fri.a $$0 = (fri.a)$$1.next();
+         this.x = Math.max(this.x, 20 + this.o.a($$0.a) + 20);
+      }
 
-         this.v.c();
-      }).a();
-      flx $$0 = this.r.b(flx.e().a(8));
-      $$0.a(this.w);
-      $$0.a(fig.a(wx.d, $$0x -> this.d()).a());
-   }
+      int $$1x = 5 + this.x + 5;
+      int $$2 = $$1x * this.u.size();
+      this.v = fjd.a(this.o, this.s, $$2);
+      int $$3 = this.v.a() * 9;
+      this.w = (int)((double)this.n / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.w + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.m / 2.0 - (double)$$2 / 2.0);
 
-   @Override
-   protected void c() {
-      this.r.a();
-      this.v.a(this.m, this.r);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, ezy.b.c.a($$2));
-         this.a = null;
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fri.a $$6 = (fri.a)var6.next();
+         this.c(fik.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, ezy.bv);
-         } else {
-            this.c.a(this.a, ezy.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.s = ad.c();
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
+      $$0.a(this.o, this.k, this.m / 2, this.w - 9 * 2, -1);
+      this.v.a($$0, this.m / 2, this.w);
+   }
 
-      for (fgg $$5 : this.c.W) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
+   @Override
+   public boolean aJ_() {
+      return false;
+   }
+
+   public static final class a {
+      final wz a;
+      final fik.c b;
+
+      public a(wz $$0, fik.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-
-      this.w.j = $$4;
    }
 }

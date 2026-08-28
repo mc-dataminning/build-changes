@@ -1,4 +1,4 @@
 @FunctionalInterface
 public interface yz<O, T> {
-   void encode(T var1, O var2);
+   void encode(O var1, T var2);
 }

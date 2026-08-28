@@ -1,10 +1,10 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ehf extends ehi {
+public class ehf extends ehl {
    public static final MapCodec<ehf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehf::new));
 
    public ehf(int $$0, int $$1, int $$2) {
@@ -12,33 +12,61 @@ public class ehf extends ehi {
    }
 
    @Override
-   protected ehj<?> a() {
-      return ehj.c;
+   protected ehm<?> a() {
+      return ehm.e;
    }
 
    @Override
-   public List<efq.a> a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5) {
-      jd $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      jd.a $$7 = new jd.a();
+   public List<eft.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efd $$5) {
+      List<eft.a> $$6 = Lists.newArrayList();
+      jd $$7 = $$4.e();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.i(), $$5);
+      a($$0, $$1, $$2, $$7.g(), $$5);
+      a($$0, $$1, $$2, $$7.g().i(), $$5);
+      ji $$8 = ji.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
+         }
+
+         int $$18 = $$12 + $$17;
+         jd $$19 = new jd($$14, $$18, $$15);
+         if (edp.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.i(), $$5);
+            this.b($$0, $$1, $$2, $$19.g(), $$5);
+            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
          }
       }
 
-      return ImmutableList.of(new efq.a($$4.b($$3), 0, true));
-   }
+      $$6.add(new eft.a(new jd($$14, $$16, $$15), 0, true));
 
-   private void a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, jd.a $$3, efa $$4, jd $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new jd($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new eft.a(new jd($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
+      }
+
+      return $$6;
    }
 }

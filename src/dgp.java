@@ -1,33 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgp extends dfw {
+public class dgp extends dfy {
    public static final MapCodec<dgp> a = b(dgp::new);
-   private static final wy b = wy.c("container.cartography_table");
+   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<dgp> a() {
+   public MapCodec<? extends dgp> a() {
       return a;
    }
 
-   protected dgp(dsz.d $$0) {
+   public dgp(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         return bqq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avy.aw);
-         return bqq.c;
-      }
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   protected bqu b(dta $$0, dcu $$1, jd $$2) {
-      return new bra(($$2x, $$3, $$4) -> new cpz($$2x, $$3, cqe.a($$1, $$2)), b);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      return !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      return !$$1.u($$2.e());
    }
 }

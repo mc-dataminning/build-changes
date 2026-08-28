@@ -1,29 +1,29 @@
-public class zq implements zf<zl> {
-   public static final yw<vv, zq> a = zf.a(zq::a, zq::new);
-   private final int b;
+public class zq implements zg<zm> {
+   public static final yx<vw, zq> a = zg.a(zq::a, zq::new);
+   private final long b;
 
-   public zq(int $$0) {
+   public zq(long $$0) {
       this.b = $$0;
    }
 
-   private zq(vv $$0) {
-      this.b = $$0.readInt();
+   private zq(vw $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(vv $$0) {
-      $$0.p(this.b);
+   private void a(vw $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zh<zq> a() {
-      return zx.e;
+   public zi<zq> a() {
+      return zy.d;
    }
 
-   public void a(zl $$0) {
+   public void a(zm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

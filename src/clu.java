@@ -1,32 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
 
 public class clu {
-   public static bvg<btl> a(int $$0, int $$1) {
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$2 -> $$2.group($$2.b(ccq.ad), $$2.b(ccq.L), $$2.a(ccq.ae), $$2.a(ccq.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eV().e()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
+   public static bws<cln> a() {
+      return byu.a(
+         (Function<byu.b<cln>, ? extends App<byu.c<cln>, byx<cln>>>)($$0 -> $$0.group($$0.b(ccs.ak), $$0.c(ccs.ab), $$0.c(ccs.ah), $$0.a(ccs.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.o_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(clu::a)).isPresent()) {
+                        clh $$6 = $$0.b($$1);
+                        clo.c($$4x, $$6);
+                        clo.c((clm)$$4x);
+                        clo.b($$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(clo::c));
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(clm $$0) {
+      return $$0.dU().a(ccs.ah);
    }
 }

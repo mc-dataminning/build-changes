@@ -1,377 +1,174 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
 
-public class gfv implements gsr {
-   private static final Logger g = LogUtils.getLogger();
-   private static final gfx h = new gfx();
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gfv.class, new gfv.a())
-      .registerTypeAdapter(gfr.class, new gfr.a())
-      .registerTypeAdapter(gfs.class, new gfs.a())
-      .registerTypeAdapter(gfu.class, new gfu.a())
-      .registerTypeAdapter(ggb.class, new ggb.a())
-      .registerTypeAdapter(ggc.class, new ggc.a())
-      .registerTypeAdapter(gfz.class, new gfz.a())
-      .create();
-   private static final char i = '#';
-   public static final String b = "particle";
-   private static final boolean j = true;
-   private final List<gfr> k;
-   @Nullable
-   private final gfv.b l;
-   @Nullable
-   private final Boolean m;
-   private final ggc n;
-   private final List<gfz> o;
-   public String c = "";
-   @VisibleForTesting
-   protected final Map<String, Either<gsj, String>> d;
-   @Nullable
-   protected gfv e;
-   @Nullable
-   protected akq f;
+public class gfv {
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<ji, gfw> c;
+   public final gfx d;
+   public final boolean e;
 
-   public static gfv a(Reader $$0) {
-      return ayd.a(a, $$0, gfv.class);
+   public gfv(Vector3f $$0, Vector3f $$1, Map<ji, gfw> $$2, @Nullable gfx $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   public static gfv a(String $$0) {
-      return a(new StringReader($$0));
-   }
-
-   public gfv(@Nullable akq $$0, List<gfr> $$1, Map<String, Either<gsj, String>> $$2, @Nullable Boolean $$3, @Nullable gfv.b $$4, ggc $$5, List<gfz> $$6) {
-      this.k = $$1;
-      this.m = $$3;
-      this.l = $$4;
-      this.d = $$2;
-      this.f = $$0;
-      this.n = $$5;
-      this.o = $$6;
-   }
-
-   public List<gfr> a() {
-      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
-   }
-
-   public boolean b() {
-      if (this.m != null) {
-         return this.m;
-      } else {
-         return this.e != null ? this.e.b() : true;
+   private void a() {
+      for (Entry<ji, gfw> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().d().a($$1);
       }
    }
 
-   public gfv.b c() {
-      if (this.l != null) {
-         return this.l;
-      } else {
-         return this.e != null ? this.e.c() : gfv.b.b;
+   private float[] a(ji $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
       }
    }
 
-   public boolean d() {
-      return this.f == null || this.e != null && this.e.d();
-   }
+   protected static class a implements JsonDeserializer<gfv> {
+      private static final boolean a = true;
 
-   public List<gfz> e() {
-      return this.o;
-   }
-
-   private gga a(gsk $$0, gfv $$1) {
-      return this.o.isEmpty() ? gga.a : new gga($$0, $$1, this.o);
-   }
-
-   @Override
-   public Collection<akq> f() {
-      Set<akq> $$0 = Sets.newHashSet();
-
-      for (gfz $$1 : this.o) {
-         $$0.add($$1.a());
+      public gfv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         gfx $$6 = this.a($$3);
+         Map<ji, gfw> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !aye.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = aye.a($$3, "shade", true);
+            return new gfv($$4, $$5, $$7, $$6, $$8);
+         }
       }
 
-      if (this.f != null) {
-         $$0.add(this.f);
+      @Nullable
+      private gfx a(JsonObject $$0) {
+         gfx $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = aye.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            ji.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = aye.a($$2, "rescale", false);
+            $$1 = new gfx($$3, $$4, $$5, $$6);
+         }
+
+         return $$1;
       }
 
-      return $$0;
-   }
-
-   @Override
-   public void a(Function<akq, gsr> $$0) {
-      Set<gsr> $$1 = Sets.newLinkedHashSet();
-
-      for (gfv $$2 = this; $$2.f != null && $$2.e == null; $$2 = $$2.e) {
-         $$1.add($$2);
-         gsr $$3 = $$0.apply($$2.f);
-         if ($$3 == null) {
-            g.warn("No parent '{}' while loading model '{}'", this.f, $$2);
+      private float b(JsonObject $$0) {
+         float $$1 = aye.m($$0, "angle");
+         if ($$1 != 0.0F && ayo.e($$1) != 22.5F && ayo.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
          }
-
-         if ($$1.contains($$3)) {
-            g.warn(
-               "Found 'parent' loop while loading model '{}' in chain: {} -> {}",
-               new Object[]{$$2, $$1.stream().map(Object::toString).collect(Collectors.joining(" -> ")), this.f}
-            );
-            $$3 = null;
-         }
-
-         if ($$3 == null) {
-            $$2.f = gsl.n;
-            $$3 = $$0.apply($$2.f);
-         }
-
-         if (!($$3 instanceof gfv)) {
-            throw new IllegalStateException("BlockModel parent has to be a block model.");
-         }
-
-         $$2.e = (gfv)$$3;
       }
 
-      this.o.forEach($$1x -> {
-         gsr $$2x = $$0.apply($$1x.a());
-         if (!Objects.equals($$2x, this)) {
-            $$2x.a($$0);
-         }
-      });
-   }
-
-   @Override
-   public gsg a(gsk $$0, Function<gsj, gqf> $$1, gso $$2, akq $$3) {
-      return this.a($$0, this, $$1, $$2, $$3, true);
-   }
-
-   public gsg a(gsk $$0, gfv $$1, Function<gsj, gqf> $$2, gso $$3, akq $$4, boolean $$5) {
-      gqf $$6 = $$2.apply(this.c("particle"));
-      if (this.g() == gsl.s) {
-         return new gsi(this.h(), this.a($$0, $$1), $$6, this.c().a());
-      } else {
-         gsq.a $$7 = new gsq.a(this, this.a($$0, $$1), $$5).a($$6);
-
-         for (gfr $$8 : this.a()) {
-            for (ji $$9 : $$8.c.keySet()) {
-               gfs $$10 = $$8.c.get($$9);
-               gqf $$11 = $$2.apply(this.c($$10.d));
-               if ($$10.b == null) {
-                  $$7.a(a($$8, $$10, $$11, $$9, $$3, $$4));
-               } else {
-                  $$7.a(ji.a($$3.b().c(), $$10.b), a($$8, $$10, $$11, $$9, $$3, $$4));
-               }
-            }
-         }
-
-         return $$7.b();
-      }
-   }
-
-   private static gfq a(gfr $$0, gfs $$1, gqf $$2, ji $$3, gso $$4, akq $$5) {
-      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$5);
-   }
-
-   public boolean b(String $$0) {
-      return !gpv.b().equals(this.c($$0).b());
-   }
-
-   public gsj c(String $$0) {
-      if (e($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      List<String> $$1 = Lists.newArrayList();
-
-      while (true) {
-         Either<gsj, String> $$2 = this.d($$0);
-         Optional<gsj> $$3 = $$2.left();
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-
-         $$0 = (String)$$2.right().get();
-         if ($$1.contains($$0)) {
-            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
-            return new gsj(gqe.e, gpv.b());
-         }
-
-         $$1.add($$0);
-      }
-   }
-
-   private Either<gsj, String> d(String $$0) {
-      for (gfv $$1 = this; $$1 != null; $$1 = $$1.e) {
-         Either<gsj, String> $$2 = $$1.d.get($$0);
-         if ($$2 != null) {
+      private ji.a c(JsonObject $$0) {
+         String $$1 = aye.i($$0, "axis");
+         ji.a $$2 = ji.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
             return $$2;
          }
       }
 
-      return Either.left(new gsj(gqe.e, gpv.b()));
-   }
-
-   static boolean e(String $$0) {
-      return $$0.charAt(0) == '#';
-   }
-
-   public gfv g() {
-      return this.e == null ? this : this.e.g();
-   }
-
-   public ggc h() {
-      ggb $$0 = this.a(cul.b);
-      ggb $$1 = this.a(cul.c);
-      ggb $$2 = this.a(cul.d);
-      ggb $$3 = this.a(cul.e);
-      ggb $$4 = this.a(cul.f);
-      ggb $$5 = this.a(cul.g);
-      ggb $$6 = this.a(cul.h);
-      ggb $$7 = this.a(cul.i);
-      return new ggc($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private ggb a(cul $$0) {
-      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   public static class a implements JsonDeserializer<gfv> {
-      public gfv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<gfr> $$4 = this.b($$2, $$3);
-         String $$5 = this.c($$3);
-         Map<String, Either<gsj, String>> $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         ggc $$8 = ggc.a;
-         if ($$3.has("display")) {
-            JsonObject $$9 = ayd.u($$3, "display");
-            $$8 = (ggc)$$2.deserialize($$9, ggc.class);
-         }
-
-         List<gfz> $$10 = this.a($$2, $$3);
-         gfv.b $$11 = null;
-         if ($$3.has("gui_light")) {
-            $$11 = gfv.b.a(ayd.i($$3, "gui_light"));
-         }
-
-         akq $$12 = $$5.isEmpty() ? null : akq.a($$5);
-         return new gfv($$12, $$4, $$6, $$7, $$11, $$8, $$10);
-      }
-
-      protected List<gfz> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gfz> $$2 = Lists.newArrayList();
-         if ($$1.has("overrides")) {
-            for (JsonElement $$4 : ayd.v($$1, "overrides")) {
-               $$2.add((gfz)$$0.deserialize($$4, gfz.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      private Map<String, Either<gsj, String>> b(JsonObject $$0) {
-         akq $$1 = gqe.e;
-         Map<String, Either<gsj, String>> $$2 = Maps.newHashMap();
-         if ($$0.has("textures")) {
-            JsonObject $$3 = ayd.u($$0, "textures");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
-            }
-         }
-
-         return $$2;
-      }
-
-      private static Either<gsj, String> a(akq $$0, String $$1) {
-         if (gfv.e($$1)) {
-            return Either.right($$1.substring(1));
+      private Map<ji, gfw> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ji, gfw> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
          } else {
-            akq $$2 = akq.c($$1);
-            if ($$2 == null) {
-               throw new JsonParseException($$1 + " is not valid resource location");
-            } else {
-               return Either.left(new gsj($$0, $$2));
-            }
+            return $$2;
          }
       }
 
-      private String c(JsonObject $$0) {
-         return ayd.a($$0, "parent", "");
-      }
+      private Map<ji, gfw> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ji, gfw> $$2 = Maps.newEnumMap(ji.class);
+         JsonObject $$3 = aye.u($$1, "faces");
 
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? ayd.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gfr> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gfr> $$2 = Lists.newArrayList();
-         if ($$1.has("elements")) {
-            for (JsonElement $$3 : ayd.v($$1, "elements")) {
-               $$2.add((gfr)$$0.deserialize($$3, gfr.class));
-            }
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            ji $$5 = this.a($$4.getKey());
+            $$2.put($$5, (gfw)$$0.deserialize($$4.getValue(), gfw.class));
          }
 
          return $$2;
       }
-   }
 
-   public static enum b {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static gfv.b a(String $$0) {
-         for (gfv.b $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+      private ji a(String $$0) {
+         ji $$1 = ji.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
          }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
       }
 
-      public boolean a() {
-         return this == b;
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
       }
-   }
 
-   public static class c extends RuntimeException {
-      public c(String $$0) {
-         super($$0);
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = aye.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = aye.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
       }
    }
 }

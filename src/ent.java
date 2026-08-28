@@ -1,17 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ent implements env {
-   private static final ent b = new ent();
-   public static final MapCodec<ent> a = MapCodec.unit(b);
+public class ent extends enl {
+   public static final MapCodec<ent> a = awu.a(lu.f).fieldOf("tag").xmap(ent::new, $$0 -> $$0.b);
+   private final awu<dfy> b;
 
-   @Override
-   public ua a(ayv $$0, @Nullable ua $$1) {
-      return new ua();
+   public ent(awu<dfy> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public enw<?> a() {
-      return enw.a;
+   public boolean a(dtc $$0, ayw $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected enm<?> a() {
+      return enm.d;
    }
 }

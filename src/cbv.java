@@ -1,41 +1,40 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbv<T extends btn> extends cak {
-   private final T a;
-   private final cuo b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avn d;
+public class cbv extends cam {
+   private final cmf a;
 
-   public cbv(T $$0, cuo $$1, @Nullable avn $$2, Predicate<? super T> $$3) {
+   public cbv(cmf $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(cam.a.c, cam.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fs();
+      if (!this.a.bE()) {
+         return false;
+      } else if (this.a.bf()) {
+         return false;
+      } else if (!this.a.aF()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cmx $$0 = this.a.gl();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      this.a.a(bsx.a, this.b.s());
-      this.a.c(bqp.a);
+      this.a.N().n();
    }
 
    @Override
    public void e() {
-      this.a.a(bsx.a, cuo.l);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dT().i() * 0.2F + 0.9F);
-      }
+      this.a.a(null);
    }
 }

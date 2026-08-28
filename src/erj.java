@@ -1,69 +1,94 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public interface erj {
-   eri<cxm> a = new eri<cxm>() {
-      @Override
-      public kp<cxm> a() {
-         return kq.ab;
-      }
+   int d = 19133;
+   int e = 19132;
 
-      public Stream<cuo> a(cxm $$0) {
-         return $$0.b();
-      }
+   ddr D();
 
-      public cxm c() {
-         return cxm.a;
-      }
+   void a(ddr var1);
 
-      public cxm a(cxm $$0, Stream<cuo> $$1) {
-         return cxm.a($$1.toList());
-      }
-   };
-   eri<cxd> b = new eri<cxd>() {
-      @Override
-      public kp<cxd> a() {
-         return kq.F;
-      }
+   boolean F();
 
-      public cxd c() {
-         return cxd.a;
-      }
+   Set<String> G();
 
-      public Stream<cuo> a(cxd $$0) {
-         return $$0.a();
-      }
+   Set<String> H();
 
-      public cxd a(cxd $$0, Stream<cuo> $$1) {
-         cxd.a $$2 = new cxd.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   eri<cxe> c = new eri<cxe>() {
-      @Override
-      public kp<cxe> a() {
-         return kq.E;
-      }
+   void a(String var1, boolean var2);
 
-      public cxe c() {
-         return cxe.a;
-      }
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
+   }
 
-      public Stream<cuo> a(cxe $$0) {
-         return $$0.a().stream();
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
+   }
 
-      public cxe a(cxe $$0, Stream<cuo> $$1) {
-         return cxe.a($$1.toList());
-      }
-   };
-   Map<kp<?>, eri<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eri::a, $$0 -> (eri<?>)$$0));
-   Codec<eri<?>> e = lt.aq.r().comapFlatMap($$0 -> {
-      eri<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, eri::a);
+   @Nullable
+   ub E();
+
+   void a(@Nullable ub var1);
+
+   eri I();
+
+   dda J();
+
+   ub a(ka var1, @Nullable ub var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   dct k();
+
+   void a(dct var1);
+
+   boolean m();
+
+   bqo q();
+
+   void a(bqo var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dcs o();
+
+   @Nullable
+   ub w();
+
+   dxb.a C();
+
+   void a(dxb.a var1);
+
+   dzw y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cpl K() {
+      return this.D().b();
+   }
 }

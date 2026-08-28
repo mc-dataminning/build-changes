@@ -1,111 +1,130 @@
 import java.util.function.Consumer;
 
-public class flx implements flu {
-   private final fls a;
-   private final flx.a b;
-   private int c = 0;
+public class flx implements fly {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final flv c = new flv();
+   private final flv d = new flv();
+   private final flv e = new flv();
+   private final fob f;
+   private int g;
+   private int h;
 
-   private flx(flx.a $$0) {
-      this(0, 0, $$0);
+   public flx(fob $$0) {
+      this($$0, 33);
    }
 
-   public flx(int $$0, int $$1, flx.a $$2) {
-      this.a = new fls($$0, $$1);
-      this.b = $$2;
+   public flx(fob $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public flx a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public flw b() {
-      return this.a.b();
-   }
-
-   public flw c() {
-      return this.a.c();
-   }
-
-   public <T extends flv> T a(T $$0, flw $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends flv> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends flv> T a(T $$0, Consumer<flw> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ad.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<flv> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
+   public flx(fob $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
    public void m(int $$0) {
-      this.a.m($$0);
    }
 
    @Override
    public void n(int $$0) {
-      this.a.n($$0);
    }
 
    @Override
    public int D() {
-      return this.a.D();
+      return 0;
    }
 
    @Override
    public int E() {
-      return this.a.E();
+      return 0;
    }
 
-   public static flx d() {
-      return new flx(flx.a.b);
+   @Override
+   public int y() {
+      return this.f.m;
    }
 
-   public static flx e() {
-      return new flx(flx.a.a);
+   @Override
+   public int w() {
+      return this.f.n;
    }
 
-   public static enum a {
-      a,
-      b;
+   public int b() {
+      return this.h;
+   }
 
-      void a(fls $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
-      }
+   public void a(int $$0) {
+      this.h = $$0;
+   }
 
-      public <T extends flv> T a(fls $$0, T $$1, int $$2, flw $$3) {
-         return (T)(switch (this) {
-            case a -> (flv)$$0.a($$1, 0, $$2, $$3);
-            case b -> (flv)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.n - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<flz> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.m);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.m);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.n - $$1);
+      this.e.b(this.f.m);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.n - $$1 - this.e.w();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends flz> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends flz> T a(T $$0, Consumer<fma> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(wz $$0, fhv $$1) {
+      this.c.a(new fjr($$0, $$1));
+   }
+
+   public <T extends flz> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends flz> T b(T $$0, Consumer<fma> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends flz> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends flz> T c(T $$0, Consumer<fma> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

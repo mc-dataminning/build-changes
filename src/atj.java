@@ -1,98 +1,94 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class atj implements atq {
-   static final Logger a = LogUtils.getLogger();
-   private static final asq b = new asq(false, atl.b.a, false);
-   private final Path c;
-   private final asr d;
-   private final atp e;
-   private final ewm f;
+public abstract class atj implements atr {
+   private static final Logger c = LogUtils.getLogger();
+   public static final String a = "vanilla";
+   public static final atl b = atl.a("core");
+   private final ass d;
+   private final asu e;
+   private final akr f;
+   private final ewq g;
 
-   public atj(Path $$0, asr $$1, atp $$2, ewm $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   public atj(ass $$0, asu $$1, akr $$2, ewq $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void loadPacks(Consumer<atl> $$0) {
-      try {
-         v.c(this.c);
-         a(this.c, this.f, ($$1, $$2) -> {
-            aso $$3 = this.b($$1);
-            atl $$4 = atl.a($$3, $$2, this.d, b);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.c, var3);
+   public void loadPacks(Consumer<atm> $$0) {
+      atm $$1 = this.a(this.e);
+      if ($$1 != null) {
+         $$0.accept($$1);
       }
+
+      this.a($$0);
    }
 
-   private aso b(Path $$0) {
-      String $$1 = a($$0);
-      return new aso("file/" + $$1, wy.b($$1), this.e, Optional.empty());
+   @Nullable
+   protected abstract atm a(asq var1);
+
+   protected abstract wz a(String var1);
+
+   public asu a() {
+      return this.e;
    }
 
-   public static void a(Path $$0, ewm $$1, BiConsumer<Path, atl.c> $$2) throws IOException {
-      atj.a $$3 = new atj.a($$1);
+   private void a(Consumer<atm> $$0) {
+      Map<String, Function<String, atm>> $$1 = new HashMap<>();
+      this.a($$1::put);
+      $$1.forEach(($$1x, $$2) -> {
+         atm $$3 = $$2.apply($$1x);
+         if ($$3 != null) {
+            $$0.accept($$3);
+         }
+      });
+   }
 
-      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
-         for (Path $$5 : $$4) {
-            try {
-               List<ewn> $$6 = new ArrayList<>();
-               atl.c $$7 = $$3.a($$5, $$6);
-               if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", ewl.a($$5, $$6));
-               } else if ($$7 != null) {
-                  $$2.accept($$5, $$7);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$5);
-               }
-            } catch (IOException var10) {
-               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
-            }
+   protected void a(BiConsumer<String, Function<String, atm>> $$0) {
+      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
+   }
+
+   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, atm>> $$1) {
+      if ($$0 != null && Files.isDirectory($$0)) {
+         try {
+            atk.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
+         } catch (IOException var4) {
+            c.warn("Failed to discover packs in {}", $$0, var4);
          }
       }
    }
 
-   static class a extends atn<atl.c> {
-      protected a(ewm $$0) {
-         super($$0);
-      }
+   private static String a(Path $$0) {
+      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   }
 
-      @Nullable
-      protected atl.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof asz)) {
-            atj.a.info("Can't open pack archive at {}", $$0);
-            return null;
-         } else {
-            return new asm.a($$0);
+   @Nullable
+   protected abstract atm a(String var1, atm.c var2, wz var3);
+
+   protected static atm.c b(final asq $$0) {
+      return new atm.c() {
+         @Override
+         public asq a(asp $$0x) {
+            return $$0;
          }
-      }
 
-      protected atl.c b(Path $$0) {
-         return new ass.a($$0);
-      }
+         @Override
+         public asq a(asp $$0x, atm.a $$1) {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,156 +1,138 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
-public class gqe extends gpq implements gpr, gqh {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final akq e = cqu.x;
-   @Deprecated
-   public static final akq f = akq.b("textures/atlas/particles.png");
-   private List<gpz> h = List.of();
-   private List<gqf.a> i = List.of();
-   private Map<akq, gqf> j = Map.of();
-   @Nullable
-   private gqf k;
-   private final akq l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
+public class gqe {
+   public static final Set<atd<?>> a = Set.of(gru.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final akr c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public gqe(akq $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
+   public gqe(akr $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public void a(aud $$0) {
+   public static gqe a(gqi $$0) {
+      return new gqe($$0.g(), $$0.h(), $$0.i(), $$0.j());
    }
 
-   public void a(gqa.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(gpv.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<gpz> $$1 = new ArrayList<>();
-         List<gqf.a> $$2 = new ArrayList<>();
+   public gqe.a a(List<gqd> $$0, int $$1, Executor $$2) {
+      int $$3 = this.d;
+      gqg<gqd> $$4 = new gqg<>($$3, $$3, $$1);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = 1 << $$1;
 
-         for (gqf $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new z($$5);
-            }
-
-            gqf.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
-            }
+      for (gqd $$7 : $$0) {
+         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
+         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
+         if ($$8 < $$6) {
+            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayo.f($$6), ayo.f($$8)});
+            $$6 = $$8;
          }
 
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
+         $$4.a($$7);
       }
-   }
 
-   @Override
-   public void a(akq $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
-   }
-
-   private static void a(Path $$0, String $$1, Map<akq, gqf> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<akq, gqf> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gqf $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c();
-
-      for (gqf.a $$0 : this.i) {
-         $$0.a();
-      }
-   }
-
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
+      int $$9 = Math.min($$5, $$6);
+      int $$10 = ayo.f($$9);
+      int $$11;
+      if ($$10 < $$1) {
+         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
+         $$11 = $$10;
       } else {
-         this.d();
+         $$11 = $$1;
       }
-   }
 
-   public gqf a(akq $$0) {
-      gqf $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      try {
+         $$4.c();
+      } catch (gqh var16) {
+         o $$14 = o.a(var16, "Stitching");
+         p $$15 = $$14.a("Stitcher");
+         $$15.a(
+            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+         );
+         $$15.a("Max Texture Size", $$3);
+         throw new z($$14);
+      }
+
+      int $$16 = Math.max($$4.a(), this.e);
+      int $$17 = Math.max($$4.b(), this.f);
+      Map<akr, gqj> $$18 = this.a($$4, $$16, $$17);
+      gqj $$19 = $$18.get(gpz.b());
+      CompletableFuture<Void> $$20;
+      if ($$11 > 0) {
+         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
       } else {
-         return $$1;
+         $$20 = CompletableFuture.completedFuture(null);
       }
+
+      return new gqe.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public void f() {
-      this.h.forEach(gpz::close);
-      this.i.forEach(gqf.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
+   public static CompletableFuture<List<gqd>> a(gqm $$0, List<Function<gqm, gqd>> $$1, Executor $$2) {
+      List<CompletableFuture<gqd>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gqd)$$2x.apply($$0), $$2)).toList();
+      return ad.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
    }
 
-   public akq g() {
-      return this.l;
+   public CompletableFuture<gqe.a> a(aue $$0, akr $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
    }
 
-   public int h() {
-      return this.m;
+   public CompletableFuture<gqe.a> a(aue $$0, akr $$1, int $$2, Executor $$3, Collection<atd<?>> $$4) {
+      gqm $$5 = gqm.create($$4);
+      return CompletableFuture.<List<Function<gqm, gqd>>>supplyAsync(() -> gqo.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
    }
 
-   int i() {
-      return this.n;
+   private Map<akr, gqj> a(gqg<gqd> $$0, int $$1, int $$2) {
+      Map<akr, gqj> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gqj(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
    }
 
-   int j() {
-      return this.o;
-   }
+   public static record a(int a, int b, int c, gqj d, Map<akr, gqj> e, CompletableFuture<Void> f) {
+      public CompletableFuture<gqe.a> a() {
+         return this.f.thenApply($$0 -> this);
+      }
 
-   public void b(gqa.a $$0) {
-      this.a(false, $$0.d() > 0);
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public gqj e() {
+         return this.d;
+      }
+
+      public Map<akr, gqj> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
+      }
    }
 }

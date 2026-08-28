@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gst {
+   default j b() {
+      return j.a();
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gst {
+   default boolean c() {
+      return false;
+   }
 }

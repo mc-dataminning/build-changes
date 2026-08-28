@@ -1,34 +1,50 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface ddn {
-   void a(bsw<?> var1, ayv var2);
+public class ddn extends dcp {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<jq<dfy>> d;
 
-   static void a(cuo $$0, List<wy> $$1, String $$2) {
-      wy $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
+   public ddn(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jq<dfy>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   @Override
+   public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
       } else {
-         $$1.add(wx.a);
-         $$1.add(wy.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(n.j)));
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   @Nullable
-   static wy a(cuo $$0, String $$1) {
-      ua $$2 = $$0.a(kq.O, cxf.a).d();
-      akq $$3 = a($$2, $$1);
-      return $$3 != null ? lt.f.b($$3).map($$0x -> wy.c($$0x.g()).a(n.h)).orElse(null) : null;
+   @Override
+   public boolean a(dco $$0, dcc $$1, jd $$2, dtc $$3, float $$4) {
+      return this.a;
    }
 
-   @Nullable
-   private static akq a(ua $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return akq.c($$2);
-      } else {
-         return null;
+   @Override
+   public boolean a(dco $$0, bsr $$1) {
+      return this.b;
+   }
+
+   @Override
+   public float a(bsr $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof cmx $$1 && $$1.ga().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
       }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

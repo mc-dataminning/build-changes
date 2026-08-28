@@ -1,253 +1,290 @@
+import com.google.common.collect.ImmutableList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class rw {
-   public static final akp<ebn<?, ?>> a = rq.a("bamboo_no_podzol");
-   public static final akp<ebn<?, ?>> b = rq.a("bamboo_some_podzol");
-   public static final akp<ebn<?, ?>> c = rq.a("vines");
-   public static final akp<ebn<?, ?>> d = rq.a("patch_brown_mushroom");
-   public static final akp<ebn<?, ?>> e = rq.a("patch_red_mushroom");
-   public static final akp<ebn<?, ?>> f = rq.a("patch_sunflower");
-   public static final akp<ebn<?, ?>> g = rq.a("patch_pumpkin");
-   public static final akp<ebn<?, ?>> h = rq.a("patch_berry_bush");
-   public static final akp<ebn<?, ?>> i = rq.a("patch_taiga_grass");
-   public static final akp<ebn<?, ?>> j = rq.a("patch_grass");
-   public static final akp<ebn<?, ?>> k = rq.a("patch_grass_jungle");
-   public static final akp<ebn<?, ?>> l = rq.a("single_piece_of_grass");
-   public static final akp<ebn<?, ?>> m = rq.a("patch_dead_bush");
-   public static final akp<ebn<?, ?>> n = rq.a("patch_melon");
-   public static final akp<ebn<?, ?>> o = rq.a("patch_waterlily");
-   public static final akp<ebn<?, ?>> p = rq.a("patch_tall_grass");
-   public static final akp<ebn<?, ?>> q = rq.a("patch_large_fern");
-   public static final akp<ebn<?, ?>> r = rq.a("patch_cactus");
-   public static final akp<ebn<?, ?>> s = rq.a("patch_sugar_cane");
-   public static final akp<ebn<?, ?>> t = rq.a("flower_default");
-   public static final akp<ebn<?, ?>> u = rq.a("flower_flower_forest");
-   public static final akp<ebn<?, ?>> v = rq.a("flower_swamp");
-   public static final akp<ebn<?, ?>> w = rq.a("flower_plain");
-   public static final akp<ebn<?, ?>> x = rq.a("flower_meadow");
-   public static final akp<ebn<?, ?>> y = rq.a("flower_cherry");
-   public static final akp<ebn<?, ?>> z = rq.a("forest_flowers");
-   public static final akp<ebn<?, ?>> A = rq.a("dark_forest_vegetation");
-   public static final akp<ebn<?, ?>> B = rq.a("trees_flower_forest");
-   public static final akp<ebn<?, ?>> C = rq.a("meadow_trees");
-   public static final akp<ebn<?, ?>> D = rq.a("trees_taiga");
-   public static final akp<ebn<?, ?>> E = rq.a("trees_grove");
-   public static final akp<ebn<?, ?>> F = rq.a("trees_savanna");
-   public static final akp<ebn<?, ?>> G = rq.a("birch_tall");
-   public static final akp<ebn<?, ?>> H = rq.a("trees_windswept_hills");
-   public static final akp<ebn<?, ?>> I = rq.a("trees_water");
-   public static final akp<ebn<?, ?>> J = rq.a("trees_birch_and_oak");
-   public static final akp<ebn<?, ?>> K = rq.a("trees_plains");
-   public static final akp<ebn<?, ?>> L = rq.a("trees_sparse_jungle");
-   public static final akp<ebn<?, ?>> M = rq.a("trees_old_growth_spruce_taiga");
-   public static final akp<ebn<?, ?>> N = rq.a("trees_old_growth_pine_taiga");
-   public static final akp<ebn<?, ?>> O = rq.a("trees_jungle");
-   public static final akp<ebn<?, ?>> P = rq.a("bamboo_vegetation");
-   public static final akp<ebn<?, ?>> Q = rq.a("mushroom_island_vegetation");
-   public static final akp<ebn<?, ?>> R = rq.a("mangrove_vegetation");
+   public static final akq<ebq<?, ?>> a = rr.a("crimson_fungus");
+   public static final akq<ebq<?, ?>> b = rr.a("crimson_fungus_planted");
+   public static final akq<ebq<?, ?>> c = rr.a("warped_fungus");
+   public static final akq<ebq<?, ?>> d = rr.a("warped_fungus_planted");
+   public static final akq<ebq<?, ?>> e = rr.a("huge_brown_mushroom");
+   public static final akq<ebq<?, ?>> f = rr.a("huge_red_mushroom");
+   public static final akq<ebq<?, ?>> g = rr.a("oak");
+   public static final akq<ebq<?, ?>> h = rr.a("dark_oak");
+   public static final akq<ebq<?, ?>> i = rr.a("birch");
+   public static final akq<ebq<?, ?>> j = rr.a("acacia");
+   public static final akq<ebq<?, ?>> k = rr.a("spruce");
+   public static final akq<ebq<?, ?>> l = rr.a("pine");
+   public static final akq<ebq<?, ?>> m = rr.a("jungle_tree");
+   public static final akq<ebq<?, ?>> n = rr.a("fancy_oak");
+   public static final akq<ebq<?, ?>> o = rr.a("jungle_tree_no_vine");
+   public static final akq<ebq<?, ?>> p = rr.a("mega_jungle_tree");
+   public static final akq<ebq<?, ?>> q = rr.a("mega_spruce");
+   public static final akq<ebq<?, ?>> r = rr.a("mega_pine");
+   public static final akq<ebq<?, ?>> s = rr.a("super_birch_bees_0002");
+   public static final akq<ebq<?, ?>> t = rr.a("super_birch_bees");
+   public static final akq<ebq<?, ?>> u = rr.a("swamp_oak");
+   public static final akq<ebq<?, ?>> v = rr.a("jungle_bush");
+   public static final akq<ebq<?, ?>> w = rr.a("azalea_tree");
+   public static final akq<ebq<?, ?>> x = rr.a("mangrove");
+   public static final akq<ebq<?, ?>> y = rr.a("tall_mangrove");
+   public static final akq<ebq<?, ?>> z = rr.a("cherry");
+   public static final akq<ebq<?, ?>> A = rr.a("oak_bees_0002");
+   public static final akq<ebq<?, ?>> B = rr.a("oak_bees_002");
+   public static final akq<ebq<?, ?>> C = rr.a("oak_bees_005");
+   public static final akq<ebq<?, ?>> D = rr.a("birch_bees_0002");
+   public static final akq<ebq<?, ?>> E = rr.a("birch_bees_002");
+   public static final akq<ebq<?, ?>> F = rr.a("birch_bees_005");
+   public static final akq<ebq<?, ?>> G = rr.a("fancy_oak_bees_0002");
+   public static final akq<ebq<?, ?>> H = rr.a("fancy_oak_bees_002");
+   public static final akq<ebq<?, ?>> I = rr.a("fancy_oak_bees_005");
+   public static final akq<ebq<?, ?>> J = rr.a("fancy_oak_bees");
+   public static final akq<ebq<?, ?>> K = rr.a("cherry_bees_005");
 
-   private static eer a(egf $$0, int $$1) {
-      return rq.a($$1, sf.a(eca.S, new eew($$0)));
+   private static efd.a a(dfy $$0, dfy $$1, int $$2, int $$3, int $$4, int $$5) {
+      return new efd.a(egi.a($$0), new ehk($$2, $$3, $$4), egi.a($$1), new efo(bpt.a($$5), bpt.a(0), 3), new efl(1, 0, 1));
    }
 
-   public static void a(qp<ebn<?, ?>> $$0) {
-      jn<ebn<?, ?>> $$1 = $$0.a(lu.aI);
-      jm<ebn<?, ?>> $$2 = $$1.b(rv.e);
-      jm<ebn<?, ?>> $$3 = $$1.b(rv.f);
-      jm<ebn<?, ?>> $$4 = $$1.b(rv.I);
-      jm<ebn<?, ?>> $$5 = $$1.b(rv.C);
-      jm<ebn<?, ?>> $$6 = $$1.b(k);
-      jn<eiq> $$7 = $$0.a(lu.aQ);
-      jm<eiq> $$8 = $$7.b(sg.d);
-      jm<eiq> $$9 = $$7.b(sg.e);
-      jm<eiq> $$10 = $$7.b(sg.n);
-      jm<eiq> $$11 = $$7.b(sg.y);
-      jm<eiq> $$12 = $$7.b(sg.A);
-      jm<eiq> $$13 = $$7.b(sg.B);
-      jm<eiq> $$14 = $$7.b(sg.l);
-      jm<eiq> $$15 = $$7.b(sg.g);
-      jm<eiq> $$16 = $$7.b(sg.j);
-      jm<eiq> $$17 = $$7.b(sg.f);
-      jm<eiq> $$18 = $$7.b(sg.t);
-      jm<eiq> $$19 = $$7.b(sg.x);
-      jm<eiq> $$20 = $$7.b(sg.z);
-      jm<eiq> $$21 = $$7.b(sg.s);
-      jm<eiq> $$22 = $$7.b(sg.p);
-      jm<eiq> $$23 = $$7.b(sg.q);
-      jm<eiq> $$24 = $$7.b(sg.o);
-      jm<eiq> $$25 = $$7.b(sg.r);
-      jm<eiq> $$26 = $$7.b(sg.c);
-      jm<eiq> $$27 = $$7.b(sg.w);
-      jm<eiq> $$28 = $$7.b(sg.u);
-      jm<eiq> $$29 = $$7.b(sg.k);
-      jm<eiq> $$30 = $$7.b(sg.v);
-      jm<eiq> $$31 = $$7.b(sg.m);
-      jm<eiq> $$32 = $$7.b(sg.h);
-      rq.a($$0, a, eca.T, new eeo(0.0F));
-      rq.a($$0, b, eca.T, new eeo(0.2F));
-      rq.a($$0, c, eca.v);
-      rq.a($$0, d, eca.i, rq.a(eca.S, new eew(egf.a(dfy.cf))));
-      rq.a($$0, e, eca.i, rq.a(eca.S, new eew(egf.a(dfy.cg))));
-      rq.a($$0, f, eca.i, rq.a(eca.S, new eew(egf.a(dfy.iD))));
-      rq.a($$0, g, eca.i, rq.a(eca.S, new eew(egf.a(dfy.eZ)), List.of(dfy.i)));
-      rq.a($$0, h, eca.i, rq.a(eca.S, new eew(egf.a(dfy.oi.o().a(doa.c, Integer.valueOf(3)))), List.of(dfy.i)));
-      rq.a($$0, i, eca.i, a(new egp(bpa.<dta>a().a(dfy.bt.o(), 1).a(dfy.bu.o(), 4)), 32));
-      rq.a($$0, j, eca.i, a(egf.a(dfy.bt), 32));
-      rq.a(
-         $$0,
-         k,
-         eca.i,
-         new eer(32, 7, 3, sf.a(eca.S, new eew(new egp(bpa.<dta>a().a(dfy.bt.o(), 3).a(dfy.bu.o(), 1))), eac.a(eac.c, eac.a(eac.a(ji.a.q(), dfy.l)))))
+   private static efd.a a() {
+      return a(dga.U, dga.aE, 4, 2, 0, 2).a();
+   }
+
+   private static efd.a b() {
+      return a(dga.W, dga.aG, 5, 2, 0, 2).a();
+   }
+
+   private static efd.a c() {
+      return a(dga.W, dga.aG, 5, 2, 6, 2).a();
+   }
+
+   private static efd.a d() {
+      return a(dga.X, dga.aH, 4, 8, 0, 2);
+   }
+
+   private static efd.a e() {
+      return new efd.a(egi.a(dga.U), new ehg(3, 11, 0), egi.a(dga.aE), new efs(bpt.a(2), bpt.a(4), 4), new efl(0, 0, 0, OptionalInt.of(4))).a();
+   }
+
+   private static efd.a f() {
+      return new efd.a(
+            egi.a(dga.Z),
+            new ehe(7, 1, 0, new bqd(bpb.<bpw>a().a(bpt.a(1), 1).a(bpt.a(2), 1).a(bpt.a(3), 1).a()), bqc.a(2, 4), bqc.a(-4, -3), bqc.a(-1, 0)),
+            egi.a(dga.aJ),
+            new efq(bpt.a(4), bpt.a(0), bpt.a(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F),
+            new efl(1, 0, 2)
+         )
+         .a();
+   }
+
+   public static void a(qq<ebq<?, ?>> $$0) {
+      jn<dfy> $$1 = $$0.a(lu.f);
+      eaf $$2 = eaf.a(
+         dga.x,
+         dga.y,
+         dga.z,
+         dga.A,
+         dga.B,
+         dga.C,
+         dga.D,
+         dga.E,
+         dga.bR,
+         dga.bS,
+         dga.bT,
+         dga.bU,
+         dga.bV,
+         dga.bW,
+         dga.bX,
+         dga.bY,
+         dga.bZ,
+         dga.ca,
+         dga.cb,
+         dga.cc,
+         dga.cd,
+         dga.ce,
+         dga.cf,
+         dga.cg,
+         dga.cB,
+         dga.dS,
+         dga.fb,
+         dga.fc,
+         dga.fd,
+         dga.fe,
+         dga.fm,
+         dga.fq,
+         dga.fC,
+         dga.gt,
+         dga.gu,
+         dga.ku,
+         dga.kv,
+         dga.kA,
+         dga.kB,
+         dga.kD,
+         dga.oi,
+         dga.oo,
+         dga.ox,
+         dga.oz,
+         dga.oA,
+         dga.oB,
+         dga.oC,
+         dga.sv,
+         dga.sw,
+         dga.sx,
+         dga.sy,
+         dga.sz,
+         dga.sA,
+         dga.sB,
+         dga.sD,
+         dga.sE,
+         dga.sF
       );
-      rq.a($$0, l, eca.S, new eew(egf.a(dfy.bt.o())));
-      rq.a($$0, m, eca.i, a(egf.a(dfy.bv), 4));
-      rq.a($$0, n, eca.i, new eer(64, 7, 3, sf.a(eca.S, new eew(egf.a(dfy.fa)), eac.a(eac.b(), eac.d(), eac.a(ji.a.q(), dfy.i)))));
-      rq.a($$0, o, eca.i, new eer(10, 7, 3, sf.a(eca.S, new eew(egf.a(dfy.fm)))));
-      rq.a($$0, p, eca.i, rq.a(eca.S, new eew(egf.a(dfy.iH))));
-      rq.a($$0, q, eca.i, rq.a(eca.S, new eew(egf.a(dfy.iI))));
-      rq.a($$0, r, eca.i, rq.a(10, sf.a(eca.w, edv.b(bpn.a(1, 3), egf.a(dfy.dQ)), eif.a(eac.a(eac.c, eac.a(dfy.dQ.o(), jd.c))))));
-      rq.a(
+      rr.a($$0, a, ecd.U, new ecm(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, false));
+      rr.a($$0, b, ecd.U, new ecm(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, true));
+      rr.a($$0, c, ecd.U, new ecm(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, false));
+      rr.a($$0, d, ecd.U, new ecm(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, true));
+      rr.a(
          $$0,
-         s,
-         eca.i,
-         new eer(
-            20,
-            4,
-            0,
-            sf.a(
-               eca.w,
-               edv.b(bpn.a(2, 4), egf.a(dfy.dS)),
-               eif.a(
-                  eac.a(
-                     eac.c,
-                     eac.a(dfy.dS.o(), jd.c),
-                     eac.b(
-                        eac.a(new jd(1, -1, 0), eoz.c, eoz.b),
-                        eac.a(new jd(-1, -1, 0), eoz.c, eoz.b),
-                        eac.a(new jd(0, -1, 1), eoz.c, eoz.b),
-                        eac.a(new jd(0, -1, -1), eoz.c, eoz.b)
-                     )
-                  )
-               )
-            )
+         e,
+         ecd.r,
+         new eej(
+            egi.a(dga.eT.o().a(djv.f, Boolean.valueOf(true)).a(djv.g, Boolean.valueOf(false))),
+            egi.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))),
+            3
          )
       );
-      rq.a($$0, t, eca.g, a(new egp(bpa.<dta>a().a(dfy.bT.o(), 2).a(dfy.bR.o(), 1)), 64));
-      rq.a(
+      rr.a(
          $$0,
-         u,
-         eca.g,
-         new eer(
-            96,
-            6,
-            2,
-            sf.a(
-               eca.S,
-               new eew(
-                  new egj(
-                     2345L,
-                     new eob.a(0, 1.0),
-                     0.020833334F,
-                     List.of(dfy.bR.o(), dfy.bT.o(), dfy.bV.o(), dfy.bW.o(), dfy.bX.o(), dfy.bY.o(), dfy.bZ.o(), dfy.ca.o(), dfy.cb.o(), dfy.cc.o(), dfy.ce.o())
-                  )
-               )
-            )
-         )
+         f,
+         ecd.q,
+         new eej(egi.a(dga.eU.o().a(djv.g, Boolean.valueOf(false))), egi.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))), 2)
       );
-      rq.a($$0, v, eca.g, new eer(64, 6, 2, sf.a(eca.S, new eew(egf.a(dfy.bU)))));
-      rq.a(
+      egw $$3 = new egw(0.002F);
+      egw $$4 = new egw(0.01F);
+      egw $$5 = new egw(0.02F);
+      egw $$6 = new egw(0.05F);
+      egw $$7 = new egw(1.0F);
+      rr.a($$0, g, ecd.f, a().c());
+      rr.a(
+         $$0,
+         h,
+         ecd.f,
+         new efd.a(egi.a(dga.aa), new ehf(6, 2, 1), egi.a(dga.aK), new efr(bpt.a(0), bpt.a(0)), new efk(1, 1, 0, 1, 2, OptionalInt.empty())).a().c()
+      );
+      rr.a($$0, i, ecd.f, b().c());
+      rr.a($$0, j, ecd.f, new efd.a(egi.a(dga.Y), new ehh(5, 2, 2), egi.a(dga.aI), new efn(bpt.a(2), bpt.a(0)), new efl(1, 0, 2)).a().c());
+      rr.a($$0, z, ecd.f, f().c());
+      rr.a($$0, K, ecd.f, f().a(List.of($$6)).c());
+      rr.a($$0, k, ecd.f, new efd.a(egi.a(dga.V), new ehk(5, 2, 1), egi.a(dga.aF), new efz(bqc.a(2, 3), bqc.a(0, 2), bqc.a(1, 2)), new efl(2, 0, 2)).a().c());
+      rr.a($$0, l, ecd.f, new efd.a(egi.a(dga.V), new ehk(6, 4, 0), egi.a(dga.aF), new efx(bpt.a(1), bpt.a(1), bqc.a(3, 4)), new efl(2, 0, 2)).a().c());
+      rr.a($$0, m, ecd.f, d().a(ImmutableList.of(new egx(0.2F), ehb.b, new egy(0.25F))).a().c());
+      rr.a($$0, n, ecd.f, e().c());
+      rr.a($$0, o, ecd.f, d().a().c());
+      rr.a(
+         $$0,
+         p,
+         ecd.f,
+         new efd.a(egi.a(dga.X), new ehj(10, 2, 19), egi.a(dga.aH), new efv(bpt.a(2), bpt.a(0), 2), new efl(1, 1, 2))
+            .a(ImmutableList.of(ehb.b, new egy(0.25F)))
+            .c()
+      );
+      rr.a(
+         $$0,
+         q,
+         ecd.f,
+         new efd.a(egi.a(dga.V), new ehi(13, 2, 14), egi.a(dga.aF), new efw(bpt.a(0), bpt.a(0), bqc.a(13, 17)), new efl(1, 1, 2))
+            .a(ImmutableList.of(new egu(egi.a(dga.l))))
+            .c()
+      );
+      rr.a(
+         $$0,
+         r,
+         ecd.f,
+         new efd.a(egi.a(dga.V), new ehi(13, 2, 14), egi.a(dga.aF), new efw(bpt.a(0), bpt.a(0), bqc.a(3, 7)), new efl(1, 1, 2))
+            .a(ImmutableList.of(new egu(egi.a(dga.l))))
+            .c()
+      );
+      rr.a($$0, s, ecd.f, c().a(ImmutableList.of($$3)).c());
+      rr.a($$0, t, ecd.f, c().a(ImmutableList.of($$7)).c());
+      rr.a($$0, u, ecd.f, a(dga.U, dga.aE, 5, 3, 0, 3).a(ImmutableList.of(new egy(0.25F))).c());
+      rr.a($$0, v, ecd.f, new efd.a(egi.a(dga.X), new ehk(1, 0, 0), egi.a(dga.aE), new efp(bpt.a(2), bpt.a(1), 2), new efl(0, 0, 0)).c());
+      rr.a(
          $$0,
          w,
-         eca.g,
-         new eer(
-            64,
-            6,
-            2,
-            sf.a(
-               eca.S,
-               new eew(
-                  new egk(
-                     2345L,
-                     new eob.a(0, 1.0),
-                     0.005F,
-                     -0.8F,
-                     0.33333334F,
-                     dfy.bR.o(),
-                     List.of(dfy.bY.o(), dfy.bX.o(), dfy.ca.o(), dfy.bZ.o()),
-                     List.of(dfy.bT.o(), dfy.bW.o(), dfy.cb.o(), dfy.cc.o())
-                  )
-               )
+         ecd.f,
+         new efd.a(
+               egi.a(dga.U),
+               new ehd(4, 2, 0, 3, bqc.a(1, 2)),
+               new egs(bpb.<dtc>a().a(dga.aM.o(), 3).a(dga.aN.o(), 1)),
+               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 50),
+               new efl(1, 0, 1)
             )
-         )
+            .a(egi.a(dga.sH))
+            .b()
+            .c()
       );
-      rq.a(
+      rr.a(
          $$0,
          x,
-         eca.g,
-         new eer(
-            96,
-            6,
-            2,
-            sf.a(
-               eca.S,
-               new eew(
-                  new egh(
-                     new ayf<>(1, 3),
-                     new eob.a(-10, 1.0),
-                     1.0F,
-                     2345L,
-                     new eob.a(-3, 1.0),
-                     1.0F,
-                     List.of(dfy.iH.o(), dfy.bV.o(), dfy.bT.o(), dfy.bW.o(), dfy.bR.o(), dfy.cc.o(), dfy.cb.o(), dfy.bt.o())
+         ecd.f,
+         new efd.a(
+               egi.a(dga.ab),
+               new ehn(2, 1, 4, bqc.a(1, 4), 0.5F, bqc.a(0, 1), $$1.b(awe.cj)),
+               egi.a(dga.aL),
+               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 70),
+               Optional.of(
+                  new ege(
+                     bqc.a(1, 3),
+                     egi.a(dga.ac),
+                     Optional.of(new egc(egi.a(dga.sA), 0.5F)),
+                     new egd($$1.b(awe.ck), jq.a(dfy::s, dga.sI, dga.ad), egi.a(dga.ad), 8, 15, 0.2F)
                   )
+               ),
+               new efl(2, 0, 2)
+            )
+            .a(
+               List.of(
+                  new egy(0.125F), new egv(0.14F, 1, 0, new ego(egi.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
                )
             )
-         )
+            .a()
+            .c()
       );
-      bpa.a<dta> $$33 = bpa.a();
-
-      for (int $$34 = 1; $$34 <= 4; $$34++) {
-         for (ji $$35 : ji.c.a) {
-            $$33.a(dfy.sB.o().a(dlj.e, Integer.valueOf($$34)).a(dlj.d, $$35), 1);
-         }
-      }
-
-      rq.a($$0, y, eca.g, new eer(96, 6, 2, sf.a(eca.S, new eew(new egp($$33)))));
-      rq.a(
+      rr.a(
          $$0,
-         z,
-         eca.ag,
-         new eex(
-            jq.a(
-               sf.a(eca.i, rq.a(eca.S, new eew(egf.a(dfy.iE)))),
-               sf.a(eca.i, rq.a(eca.S, new eew(egf.a(dfy.iF)))),
-               sf.a(eca.i, rq.a(eca.S, new eew(egf.a(dfy.iG)))),
-               sf.a(eca.h, rq.a(eca.S, new eew(egf.a(dfy.ce))))
+         y,
+         ecd.f,
+         new efd.a(
+               egi.a(dga.ab),
+               new ehn(4, 1, 9, bqc.a(1, 6), 0.5F, bqc.a(0, 1), $$1.b(awe.cj)),
+               egi.a(dga.aL),
+               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 70),
+               Optional.of(
+                  new ege(
+                     bqc.a(3, 7),
+                     egi.a(dga.ac),
+                     Optional.of(new egc(egi.a(dga.sA), 0.5F)),
+                     new egd($$1.b(awe.ck), jq.a(dfy::s, dga.sI, dga.ad), egi.a(dga.ad), 8, 15, 0.2F)
+                  )
+               ),
+               new efl(3, 0, 2)
             )
-         )
+            .a(
+               List.of(
+                  new egy(0.125F), new egv(0.14F, 1, 0, new ego(egi.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
+               )
+            )
+            .a()
+            .c()
       );
-      rq.a(
-         $$0,
-         A,
-         eca.af,
-         new eeq(List.of(new edu(sf.a($$2), 0.025F), new edu(sf.a($$3), 0.05F), new edu($$8, 0.6666667F), new edu($$9, 0.2F), new edu($$10, 0.1F)), $$26)
-      );
-      rq.a($$0, B, eca.af, new eeq(List.of(new edu($$11, 0.2F), new edu($$12, 0.1F)), $$27));
-      rq.a($$0, C, eca.af, new eeq(List.of(new edu($$13, 0.5F)), $$28));
-      rq.a($$0, D, eca.af, new eeq(List.of(new edu($$14, 0.33333334F)), $$15));
-      rq.a($$0, E, eca.af, new eeq(List.of(new edu($$16, 0.33333334F)), $$29));
-      rq.a($$0, F, eca.af, new eeq(List.of(new edu($$17, 0.8F)), $$26));
-      rq.a($$0, G, eca.af, new eeq(List.of(new edu($$18, 0.5F)), $$19));
-      rq.a($$0, H, eca.af, new eeq(List.of(new edu($$15, 0.666F), new edu($$10, 0.1F)), $$26));
-      rq.a($$0, I, eca.af, new eeq(List.of(new edu($$10, 0.1F)), $$26));
-      rq.a($$0, J, eca.af, new eeq(List.of(new edu($$19, 0.2F), new edu($$20, 0.1F)), $$30));
-      rq.a($$0, K, eca.af, new eeq(List.of(new edu(sf.a($$4), 0.33333334F)), sf.a($$5)));
-      rq.a($$0, L, eca.af, new eeq(List.of(new edu($$10, 0.1F), new edu($$21, 0.5F)), $$31));
-      rq.a($$0, M, eca.af, new eeq(List.of(new edu($$22, 0.33333334F), new edu($$14, 0.33333334F)), $$15));
-      rq.a($$0, N, eca.af, new eeq(List.of(new edu($$22, 0.025641026F), new edu($$23, 0.30769232F), new edu($$14, 0.33333334F)), $$15));
-      rq.a($$0, O, eca.af, new eeq(List.of(new edu($$10, 0.1F), new edu($$21, 0.5F), new edu($$24, 0.33333334F)), $$31));
-      rq.a($$0, P, eca.af, new eeq(List.of(new edu($$10, 0.05F), new edu($$21, 0.15F), new edu($$24, 0.7F)), sf.a($$6)));
-      rq.a($$0, Q, eca.ah, new eep(sf.a($$3), sf.a($$2)));
-      rq.a($$0, R, eca.af, new eeq(List.of(new edu($$25, 0.85F)), $$32));
+      rr.a($$0, A, ecd.f, a().a(List.of($$3)).c());
+      rr.a($$0, B, ecd.f, a().a(List.of($$5)).c());
+      rr.a($$0, C, ecd.f, a().a(List.of($$6)).c());
+      rr.a($$0, D, ecd.f, b().a(List.of($$3)).c());
+      rr.a($$0, E, ecd.f, b().a(List.of($$5)).c());
+      rr.a($$0, F, ecd.f, b().a(List.of($$6)).c());
+      rr.a($$0, G, ecd.f, e().a(List.of($$3)).c());
+      rr.a($$0, H, ecd.f, e().a(List.of($$5)).c());
+      rr.a($$0, I, ecd.f, e().a(List.of($$6)).c());
+      rr.a($$0, J, ecd.f, e().a(List.of($$7)).c());
    }
 }

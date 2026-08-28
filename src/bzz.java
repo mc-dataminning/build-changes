@@ -1,34 +1,50 @@
 import java.util.EnumSet;
 
-public class bzz extends cak {
-   private final btn a;
-   private final dcu b;
+public class bzz extends caz {
+   private final cfh g;
 
-   public bzz(btn $$0, dcu $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cak.a.c));
+   public bzz(cfh $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(cam.a.c, cam.a.a));
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.aA || this.a.az;
-      if ($$0 && this.a.am().a(awh.h)) {
-         jd $$1 = this.a.dq().c();
-         dta $$2 = this.b.a_($$1);
-         return $$2.a(dfy.qP) || $$2.k(this.b, $$1) == exm.a();
-      } else {
-         return false;
-      }
+      return this.g.s() && !this.g.gl() && !this.g.gx() && super.b();
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void d() {
+      super.d();
+      this.g.x(false);
+   }
+
+   @Override
+   protected int a(btw $$0) {
+      return 40;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.z(false);
    }
 
    @Override
    public void a() {
-      this.a.I().a();
+      super.a();
+      this.g.x(false);
+      if (!this.m()) {
+         this.g.z(false);
+      } else if (!this.g.gx()) {
+         this.g.z(true);
+      }
+   }
+
+   @Override
+   protected boolean a(dcz $$0, jd $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(awe.R);
    }
 }

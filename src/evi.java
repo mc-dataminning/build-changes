@@ -1,93 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class evi implements evk {
-   private static final String d = "block_entity";
-   private static final evi.a e = new evi.a() {
-      @Override
-      public ux a(erl $$0) {
-         dqf $$1 = $$0.c(euh.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
+public record evi(Optional<Long> b, ero c) implements eva {
+   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(evi::c), ero.a.fieldOf("value").forGetter(evi::d)).apply($$0, evi::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<eue<?>> b() {
-         return ImmutableSet.of(euh.h);
-      }
-   };
-   public static final evi a = new evi(e);
-   private static final Codec<evi.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         erl.b $$1 = erl.b.a($$0);
-         return b($$1);
-      }
-   }, evi.a::a);
-   public static final MapCodec<evi> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, evi::new));
-   public static final Codec<evi> c = f.xmap(evi::new, $$0 -> $$0.g);
-   private final evi.a g;
-
-   private static evi.a b(final erl.b $$0) {
-      return new evi.a() {
-         @Nullable
-         @Override
-         public ux a(erl $$0x) {
-            bsq $$1 = $$0.c($$0.a());
-            return $$1 != null ? dk.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<eue<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private evi(evi.a $$0) {
-      this.g = $$0;
+   @Override
+   public evb b() {
+      return evc.q;
    }
 
    @Override
-   public evj a() {
-      return evl.c;
+   public Set<eui<?>> a() {
+      return this.c.a();
    }
 
-   @Nullable
-   @Override
-   public ux a(erl $$0) {
-      return this.g.a($$0);
+   public boolean a(erp $$0) {
+      aqu $$1 = $$0.d();
+      long $$2 = $$1.aa();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   @Override
-   public Set<eue<?>> b() {
-      return this.g.b();
+   public static evi.a a(ero $$0) {
+      return new evi.a($$0);
    }
 
-   public static evk a(erl.b $$0) {
-      return new evi(b($$0));
+   public Optional<Long> c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      ux a(erl var1);
+   public ero d() {
+      return this.c;
+   }
 
-      String a();
+   public static class a implements eva.a {
+      private Optional<Long> a = Optional.empty();
+      private final ero b;
 
-      Set<eue<?>> b();
+      public a(ero $$0) {
+         this.b = $$0;
+      }
+
+      public evi.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public evi a() {
+         return new evi(this.a, this.b);
+      }
    }
 }

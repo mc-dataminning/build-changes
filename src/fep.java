@@ -1,167 +1,76 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fep {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final azn d;
+public class fep extends gwo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wz b = wz.c("mco.terms.title");
+   private static final wz c = wz.c("mco.terms.sentence.1");
+   private static final wz B = wy.a().b(wz.c("mco.terms.sentence.2").c(xw.a.c(true)));
+   private final fob C;
+   private final fcn D;
+   private boolean E;
 
-   public fep(Executor $$0, TimeUnit $$1, azn $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fep(fob $$0, fcn $$1) {
+      super(b);
+      this.C = $$0;
+      this.D = $$1;
    }
 
-   public <T> fep.e<T> a(String $$0, Callable<T> $$1, Duration $$2, feq $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aT_() {
+      int $$0 = this.m / 4 - 2;
+      this.c(fik.a(wz.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.m / 4, g(12), $$0, 20).a());
+      this.c(fik.a(wz.c("mco.terms.buttons.disagree"), $$0x -> this.l.a(this.C)).a(this.m / 2 + 4, g(12), $$0, 20).a());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.l.a(this.C);
+         return true;
       } else {
-         return new fep.e<>($$0, $$1, $$4, $$3);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public fep.c a() {
-      return new fep.c();
-   }
+   private void C() {
+      fbw $$0 = fbw.a();
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fep.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fep.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fep.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fep.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
+      try {
+         $$0.j();
+         this.l.a(new feb(this.C, new ffk(this.C, this.D)));
+      } catch (fdh var3) {
+         a.error("Couldn't agree to TOS", var3);
       }
    }
 
-   public class c {
-      private final List<fep.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fep.e<T> $$0, Consumer<T> $$1) {
-         fep.b<T> $$2 = fep.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fep.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fep.b<?> $$0 : this.b) {
-            $$0.a(fep.this.d.get(fep.this.c));
-         }
-      }
-
-      public void c() {
-         for (fep.b<?> $$0 : this.b) {
-            $$0.c();
-         }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E) {
+         this.l.o.a(axj.s.toString());
+         ad.k().a(axj.s);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   static record d<T>(T a, long b) {
+   @Override
+   public wz i() {
+      return wy.a(super.i(), c).b(wy.v).b(B);
    }
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final feq e;
-      @Nullable
-      private CompletableFuture<fep.a<T>> f;
-      @Nullable
-      fep.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final feq $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fep.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fep.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fep.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fep.this.d.get(fep.this.c);
-                  return new fep.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fep.this.d.get(fep.this.c);
-                  return new fep.a<>(Either.right(var4x), $$3);
-               }
-            }, fep.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 17, -1);
+      $$0.a(this.o, c, this.m / 2 - 120, g(5), -1, false);
+      int $$4 = this.o.a(c);
+      int $$5 = this.m / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.o.a(B) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.E = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.o, B, this.m / 2 - 120 + $$4, g(5), this.E ? 7107012 : 3368635, false);
    }
 }

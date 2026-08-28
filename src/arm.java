@@ -1,24 +1,35 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class arm {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+public record arm(String b, xd c) {
+   public static final arm a = a("");
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   public static arm a(String $$0) {
+      return new arm($$0, xd.c);
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public static arm b(String $$0) {
+      return new arm($$0, xd.b);
+   }
+
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
+   }
+
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
+   public boolean c() {
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public xd e() {
+      return this.c;
    }
 }

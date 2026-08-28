@@ -8,8 +8,8 @@ public class bn extends dv<bn.a> {
       return bn.a.a;
    }
 
-   public void a(aqu $$0, eww $$1) {
-      eww $$2 = $$0.do();
+   public void a(aqv $$0, exa $$1) {
+      exa $$2 = $$0.dn();
       this.a($$0, $$3 -> $$3.a($$0.A(), $$1, $$2));
    }
 
@@ -35,7 +35,7 @@ public class bn extends dv<bn.a> {
          return an.D.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(aqt $$0, eww $$1, eww $$2) {
+      public boolean a(aqu $$0, exa $$1, exa $$2) {
          return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

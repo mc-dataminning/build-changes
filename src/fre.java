@@ -1,72 +1,124 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fre extends fnx {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final wy q;
-   private final xd r;
-   private final ImmutableList<fre.a> s;
-   private fiz u = fiz.a;
-   private int v;
-   private int w;
+public class fre extends fob {
+   private static final wz a = wz.c("options.title");
+   private static final wz b = wz.c("options.skinCustomisation");
+   private static final wz c = wz.c("options.sounds");
+   private static final wz r = wz.c("options.video");
+   private static final wz s = wz.c("options.controls");
+   private static final wz u = wz.c("options.language");
+   private static final wz v = wz.c("options.chat");
+   private static final wz w = wz.c("options.resourcepack");
+   private static final wz x = wz.c("options.accessibility");
+   private static final wz y = wz.c("options.telemetry");
+   private static final fjv z = fjv.a(wz.c("options.telemetry.disabled"));
+   private static final wz A = wz.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final flx C = new flx(this, 61, 33);
+   private final fob D;
+   private final fgq E;
+   @Nullable
+   private fir<bqo> F;
+   @Nullable
+   private fja G;
 
-   protected fre(wy $$0, List<wy> $$1, ImmutableList<fre.a> $$2) {
-      super($$0);
-      this.r = xd.a($$1);
-      this.q = wx.a($$0, xb.a($$1, wx.a));
-      this.s = $$2;
+   public fre(fob $$0, fgq $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
-   public wy i() {
-      return this.q;
-   }
-
-   @Override
-   public void aP_() {
-      UnmodifiableIterator $$1 = this.s.iterator();
-
-      while ($$1.hasNext()) {
-         fre.a $$0 = (fre.a)$$1.next();
-         this.w = Math.max(this.w, 20 + this.o.a($$0.a) + 20);
+   protected void aT_() {
+      fmb $$0 = this.C.a(fmb.d().a(8));
+      $$0.a(new fjr(a, this.o), fma::b);
+      fmb $$1 = $$0.a(fmb.e()).a(8);
+      $$1.a(this.E.ah().a(this.l.m));
+      $$1.a(this.m());
+      flw $$2 = new flw();
+      $$2.c().f(4).e(4).b();
+      flw.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new frg(this, this.E)));
+      $$3.a(this.a(c, () -> new frh(this, this.E)));
+      $$3.a(this.a(r, () -> new frj(this, this.l, this.E)));
+      $$3.a(this.a(s, () -> new frk(this, this.E)));
+      $$3.a(this.a(u, () -> new frb(this, this.E, this.l.ag())));
+      $$3.a(this.a(v, () -> new fqz(this, this.E)));
+      $$3.a(this.a(w, () -> new frr(this.l.ac(), this::a, this.l.af(), wz.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new fqy(this, this.E)));
+      fik $$4 = $$3.a(this.a(y, () -> new fsx(this, this.E)));
+      if (!this.l.E()) {
+         $$4.j = false;
+         $$4.a(z);
       }
 
-      int $$1x = 5 + this.w + 5;
-      int $$2 = $$1x * this.s.size();
-      this.u = fiz.a(this.o, this.r, $$2);
-      int $$3 = this.u.a() * 9;
-      this.v = (int)((double)this.n / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.v + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.m / 2.0 - (double)$$2 / 2.0);
+      $$3.a(this.a(A, () -> new fnd(this)));
+      this.C.c($$2);
+      this.C.b(fik.a(wy.d, $$0x -> this.d()).a(200).a());
+      this.C.a($$1x -> {
+         fii var10000 = this.c($$1x);
+      });
+      this.c();
+   }
 
-      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fre.a $$6 = (fre.a)var6.next();
-         this.c(fig.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
+   @Override
+   protected void c() {
+      this.C.a();
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.D);
+   }
+
+   private void a(atp $$0) {
+      this.E.a($$0);
+      this.l.a(this);
+   }
+
+   private flz m() {
+      if (this.l.r != null && this.l.U()) {
+         this.F = a(0, 0, "options.difficulty", this.l);
+         if (!this.l.r.k().l()) {
+            this.G = new fja(0, 0, $$0x -> this.l.a(new fmz(this::c, wz.c("difficulty.lock.title"), wz.a("difficulty.lock.question", this.l.r.k().q().b()))));
+            this.F.k(this.F.y() - this.G.y());
+            this.G.b(this.l.r.k().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            flu $$0 = new flu(150, 0, flu.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
+         } else {
+            this.F.j = false;
+            return this.F;
+         }
+      } else {
+         return fik.a(wz.c("options.online"), $$0x -> this.l.a(new frd(this, this.E))).a(this.m / 2 + 5, this.n / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static fir<bqo> a(int $$0, int $$1, String $$2, fgm $$3) {
+      return fir.a(bqo::b).a(bqo.values()).a($$3.r.al()).a($$0, $$1, 150, 20, wz.c($$2), ($$1x, $$2x) -> $$3.L().b(new agm($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.l.a(this);
+      if ($$0 && this.l.r != null && this.G != null && this.F != null) {
+         this.l.L().b(new ahf(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
       }
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, this.v - 9 * 2, -1);
-      this.u.a($$0, this.m / 2, this.v);
+   public void j() {
+      this.E.av();
    }
 
-   @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   public static final class a {
-      final wy a;
-      final fig.c b;
-
-      public a(wy $$0, fig.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private fik a(wz $$0, Supplier<fob> $$1) {
+      return fik.a($$0, $$1x -> this.l.a($$1.get())).a();
    }
 }

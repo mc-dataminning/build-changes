@@ -1,358 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import com.mojang.datafixers.util.Function3;
-import com.mojang.datafixers.util.Function4;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class bys<E extends btl, M> implements App<bys.c<E>, M> {
-   private final bys.e<E, M> a;
+public class bys extends bvh<cmk> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   public static <E extends btl, M> bys<E, M> a(App<bys.c<E>, M> $$0) {
-      return (bys<E, M>)$$0;
+   public bys() {
+      super(ImmutableMap.of(ccs.c, cct.a, ccs.n, cct.c));
    }
 
-   public static <E extends btl> bys.b<E> a() {
-      return new bys.b<>();
-   }
-
-   public static <E extends btl> bwq<E> a(Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>> $$0) {
-      final bys.e<E, byv<E>> $$1 = b((App<bys.c<E>, byv<E>>)$$0.apply(a()));
-      return new bwq<E>() {
-         @Override
-         public boolean trigger(aqt $$0, E $$1x, long $$2) {
-            byv<E> $$3 = $$1.a($$0, $$1, $$2);
-            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
-         }
-
-         @Override
-         public String b() {
-            return "OneShot[" + $$1.a() + "]";
-         }
-
-         @Override
-         public String toString() {
-            return this.b();
-         }
-      };
-   }
-
-   public static <E extends btl> bwq<E> a(byv<? super E> $$0, byv<? super E> $$1) {
-      return a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
-   }
-
-   public static <E extends btl> bwq<E> a(Predicate<E> $$0, bwq<? super E> $$1) {
-      return a(a($$0), $$1);
-   }
-
-   public static <E extends btl> bwq<E> a(Predicate<E> $$0) {
-      return a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$1 -> $$1.a((byv<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
-   }
-
-   public static <E extends btl> bwq<E> a(BiPredicate<aqt, E> $$0) {
-      return a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$1 -> $$1.a((byv<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
-   }
-
-   static <E extends btl, M> bys.e<E, M> b(App<bys.c<E>, M> $$0) {
-      return a($$0).a;
-   }
-
-   bys(bys.e<E, M> $$0) {
-      this.a = $$0;
-   }
-
-   static <E extends btl, M> bys<E, M> a(bys.e<E, M> $$0) {
-      return new bys<>($$0);
-   }
-
-   static final class a<E extends btl, A> extends bys<E, A> {
-      a(A $$0) {
-         this($$0, () -> "C[" + $$0 + "]");
-      }
-
-      a(final A $$0, final Supplier<String> $$1) {
-         super(new bys.e<E, A>() {
-            @Override
-            public A a(aqt $$0x, E $$1x, long $$2) {
-               return $$0;
-            }
-
-            @Override
-            public String a() {
-               return $$1.get();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
+   protected boolean b(aqu $$0, cmk $$1) {
+      if ($$0.Z() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.Z();
+         jl $$2 = $$1.dU().c(ccs.c).get();
+         return $$2.a() == $$0.af() && $$2.b().a($$1.dn(), 1.73);
       }
    }
 
-   public static final class b<E extends btl> implements Applicative<bys.c<E>, bys.b.a<E>> {
-      public <Value> Optional<Value> a(byt<Mu, Value> $$0) {
-         return OptionalBox.unbox($$0.a());
-      }
-
-      public <Value> Value b(byt<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
-         return (Value)IdF.get($$0.a());
-      }
-
-      public <Value> bys<E, byt<Mu, Value>> a(ccq<Value> $$0) {
-         return new bys.d<>(new byu.c<>($$0));
-      }
-
-      public <Value> bys<E, byt<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(ccq<Value> $$0) {
-         return new bys.d<>(new byu.b<>($$0));
-      }
-
-      public <Value> bys<E, byt<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(ccq<Value> $$0) {
-         return new bys.d<>(new byu.a<>($$0));
-      }
-
-      public bys<E, Unit> a(byv<? super E> $$0) {
-         return new bys.f<>($$0);
-      }
-
-      public <A> bys<E, A> a(A $$0) {
-         return new bys.a<>($$0);
-      }
-
-      public <A> bys<E, A> a(Supplier<String> $$0, A $$1) {
-         return new bys.a<>($$1, $$0);
-      }
-
-      public <A, R> Function<App<bys.c<E>, A>, App<bys.c<E>, R>> lift1(App<bys.c<E>, Function<A, R>> $$0) {
-         return $$1 -> {
-            final bys.e<E, A> $$2 = (bys.e<E, A>)bys.b((App<bys.c<E>, M>)$$1);
-            final bys.e<E, Function<A, R>> $$3 = bys.b($$0);
-            return bys.a(new bys.e<E, R>() {
-               @Override
-               public R a(aqt $$0, E $$1, long $$2x) {
-                  A $$3 = (A)$$2.a($$0, $$1, $$2);
-                  if ($$3 == null) {
-                     return null;
-                  } else {
-                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
-                     return (R)($$4 == null ? null : $$4.apply($$3));
-                  }
-               }
-
-               @Override
-               public String a() {
-                  return $$3.a() + " * " + $$2.a();
-               }
-
-               @Override
-               public String toString() {
-                  return this.a();
-               }
-            });
-         };
-      }
-
-      public <T, R> bys<E, R> a(final Function<? super T, ? extends R> $$0, App<bys.c<E>, T> $$1) {
-         final bys.e<E, T> $$2 = (bys.e<E, T>)bys.b((App<bys.c<E>, M>)$$1);
-         return bys.a(new bys.e<E, R>() {
-            @Override
-            public R a(aqt $$0x, E $$1, long $$2x) {
-               T $$3 = $$2.a($$0, $$1, $$2);
-               return (R)($$3 == null ? null : $$0.apply($$3));
-            }
-
-            @Override
-            public String a() {
-               return $$2.a() + ".map[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <A, B, R> bys<E, R> a(App<bys.c<E>, BiFunction<A, B, R>> $$0, App<bys.c<E>, A> $$1, App<bys.c<E>, B> $$2) {
-         final bys.e<E, A> $$3 = (bys.e<E, A>)bys.b((App<bys.c<E>, M>)$$1);
-         final bys.e<E, B> $$4 = (bys.e<E, B>)bys.b((App<bys.c<E>, M>)$$2);
-         final bys.e<E, BiFunction<A, B, R>> $$5 = bys.b($$0);
-         return bys.a(new bys.e<E, R>() {
-            @Override
-            public R a(aqt $$0, E $$1, long $$2) {
-               A $$3 = $$3.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  B $$4 = $$4.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
-                     return $$5 == null ? null : $$5.apply($$3, $$4);
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, R> bys<E, R> a(App<bys.c<E>, Function3<T1, T2, T3, R>> $$0, App<bys.c<E>, T1> $$1, App<bys.c<E>, T2> $$2, App<bys.c<E>, T3> $$3) {
-         final bys.e<E, T1> $$4 = (bys.e<E, T1>)bys.b((App<bys.c<E>, M>)$$1);
-         final bys.e<E, T2> $$5 = (bys.e<E, T2>)bys.b((App<bys.c<E>, M>)$$2);
-         final bys.e<E, T3> $$6 = (bys.e<E, T3>)bys.b((App<bys.c<E>, M>)$$3);
-         final bys.e<E, Function3<T1, T2, T3, R>> $$7 = bys.b($$0);
-         return bys.a(new bys.e<E, R>() {
-            @Override
-            public R a(aqt $$0, E $$1, long $$2) {
-               T1 $$3 = $$4.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$5.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$6.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
-                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, T4, R> bys<E, R> a(
-         App<bys.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<bys.c<E>, T1> $$1, App<bys.c<E>, T2> $$2, App<bys.c<E>, T3> $$3, App<bys.c<E>, T4> $$4
-      ) {
-         final bys.e<E, T1> $$5 = (bys.e<E, T1>)bys.b((App<bys.c<E>, M>)$$1);
-         final bys.e<E, T2> $$6 = (bys.e<E, T2>)bys.b((App<bys.c<E>, M>)$$2);
-         final bys.e<E, T3> $$7 = (bys.e<E, T3>)bys.b((App<bys.c<E>, M>)$$3);
-         final bys.e<E, T4> $$8 = (bys.e<E, T4>)bys.b((App<bys.c<E>, M>)$$4);
-         final bys.e<E, Function4<T1, T2, T3, T4, R>> $$9 = bys.b($$0);
-         return bys.a(new bys.e<E, R>() {
-            @Override
-            public R a(aqt $$0, E $$1, long $$2) {
-               T1 $$3 = $$5.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$6.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$7.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        T4 $$6 = $$8.a($$0, $$1, $$2);
-                        if ($$6 == null) {
-                           return null;
-                        } else {
-                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
-                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
-                        }
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      static final class a<E extends btl> implements com.mojang.datafixers.kinds.Applicative.Mu {
-         private a() {
-         }
+   protected void a(aqu $$0, cmk $$1, long $$2) {
+      buq<cmk> $$3 = $$1.dU();
+      $$3.a(ccs.J, $$2);
+      $$3.c(ccs.c).ifPresent($$1x -> $$3.a(ccs.n, new bvk($$1x.b())));
+      $$1.gA();
+      this.a($$0, $$1);
+      if ($$1.gz()) {
+         $$1.gy();
       }
    }
 
-   public static final class c<E extends btl> implements K1 {
+   protected void a(aqu $$0, cmk $$1) {
    }
 
-   static final class d<E extends btl, F extends K1, Value> extends bys<E, byt<F, Value>> {
-      d(final byu<F, Value> $$0) {
-         super(new bys.e<E, byt<F, Value>>() {
-            public byt<F, Value> b(aqt $$0x, E $$1, long $$2) {
-               buo<?> $$3 = $$1.dU();
-               Optional<Value> $$4 = $$3.d($$0.a());
-               return $$4 == null ? null : $$0.a($$3, $$4);
-            }
-
-            @Override
-            public String a() {
-               return "M[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-   }
-
-   interface e<E extends btl, R> {
-      @Nullable
-      R a(aqt var1, E var2, long var3);
-
-      String a();
-   }
-
-   static final class f<E extends btl> extends bys<E, Unit> {
-      f(final byv<? super E> $$0) {
-         super(new bys.e<E, Unit>() {
-            @Nullable
-            public Unit b(aqt $$0x, E $$1, long $$2) {
-               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
-            }
-
-            @Override
-            public String a() {
-               return "T[" + $$0 + "]";
-            }
-         });
+   protected boolean b(aqu $$0, cmk $$1, long $$2) {
+      Optional<jl> $$3 = $$1.dU().c(ccs.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jl $$4 = $$3.get();
+         return $$4.a() == $$0.af() && $$4.b().a($$1.dn(), 1.73);
       }
    }
 }

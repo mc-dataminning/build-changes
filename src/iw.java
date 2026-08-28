@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.LongArgumentType;
 
 public class iw implements io<LongArgumentType, iw.a> {
-   public void a(iw.a $$0, vv $$1) {
+   public void a(iw.a $$0, vw $$1) {
       boolean $$2 = $$0.b != Long.MIN_VALUE;
       boolean $$3 = $$0.c != Long.MAX_VALUE;
       $$1.k(iq.a($$2, $$3));
@@ -15,7 +15,7 @@ public class iw implements io<LongArgumentType, iw.a> {
       }
    }
 
-   public iw.a a(vv $$0) {
+   public iw.a a(vw $$0) {
       byte $$1 = $$0.readByte();
       long $$2 = iq.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
       long $$3 = iq.b($$1) ? $$0.readLong() : Long.MAX_VALUE;

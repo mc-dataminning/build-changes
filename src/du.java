@@ -8,7 +8,7 @@ public class du extends dv<du.a> {
       return du.a.a;
    }
 
-   public void a(aqu $$0, cuo $$1) {
+   public void a(aqv $$0, cuq $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class du extends dv<du.a> {
          return an.G.a(new du.a(Optional.empty(), $$0));
       }
 
-      public static ao<du.a> a(dct $$0) {
+      public static ao<du.a> a(dcv $$0) {
          return an.G.a(new du.a(Optional.empty(), Optional.of(cs.a.a().a($$0).b())));
       }
 
-      public boolean a(cuo $$0) {
+      public boolean a(cuq $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

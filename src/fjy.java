@@ -1,32 +1,55 @@
-import java.util.Locale;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public class fjy extends fjv {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 500;
+public class fjy {
+   @Nullable
+   private fjv a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public fjy(fhr $$0, blu $$1) {
-      super($$0, $$1);
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void d(fht $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(@Nullable fjv $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   @Nullable
+   public fjv a() {
+      return this.a;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
+   public void a(boolean $$0, boolean $$1, fmq $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fgm.Q().aU().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ad.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ad.c() - this.c > this.b.toMillis()) {
+            fob $$4 = fgm.Q().y;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
+      }
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   private fqm a(fmq $$0, boolean $$1, boolean $$2) {
+      return (fqm)(!$$1 && $$2 && fgm.Q().aU().b() ? new fqh($$0) : new fqo($$0));
+   }
+
+   public void a(fmg $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
    }
 }

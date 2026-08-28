@@ -1,18 +1,16 @@
-public class gmz extends gkw<ckq> {
-   private static final akq a = akq.b("textures/entity/illager/vindicator.png");
+public class gmz extends gln<cgf, fxq<cgf>> {
+   private static final akr a = akr.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gmz(gkd.a $$0) {
-      super($$0, new fvs<>($$0.a(fyd.bR)), 0.5F);
-      this.a(new goi<ckq, fvs<ckq>>(this, $$0.d()) {
-         public void a(fbc $$0, get $$1, int $$2, ckq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gd()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gmz(gkh.a $$0) {
+      super($$0, new fxq<>($$0.a(fyh.bO)), 0.7F);
    }
 
-   public akq a(ckq $$0) {
+   protected float a(cgf $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
+   }
+
+   public akr b(cgf $$0) {
       return a;
    }
 }

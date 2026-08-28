@@ -2,37 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ud extends uq {
-   private static final int c = 12;
-   public static final ud a = new ud(0.0F);
-   public static final uz<ud> b = new uz.a<ud>() {
-      public ud a(DataInput $$0, uj $$1) throws IOException {
-         return ud.a(d($$0, $$1));
+public class ud implements uy {
+   private static final int c = 8;
+   public static final va<ud> a = new va<ud>() {
+      public ud a(DataInput $$0, uk $$1) {
+         $$1.b(8L);
+         return ud.b;
       }
 
       @Override
-      public uu.b a(DataInput $$0, uu $$1, uj $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static float d(DataInput $$0, uj $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      public uv.b a(DataInput $$0, uv $$1, uk $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void a(DataInput $$0, int $$1, uk $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, uk $$1) {
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_End";
       }
 
       @Override
@@ -40,34 +39,33 @@ public class ud extends uq {
          return true;
       }
    };
-   private final float w;
+   public static final ud b = new ud();
 
-   private ud(float $$0) {
-      this.w = $$0;
-   }
-
-   public static ud a(float $$0) {
-      return $$0 == 0.0F ? a : new ud($$0);
+   private ud() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 0;
    }
 
    @Override
-   public uz<ud> c() {
-      return b;
+   public va<ud> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 
    public ud e() {
@@ -75,57 +73,12 @@ public class ud extends uq {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ud && this.w == ((ud)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(vb $$0) {
+   public void a(vc $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return ayn.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(ayn.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(ayn.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public uu.b a(uu $$0) {
-      return $$0.a(this.w);
+   public uv.b a(uv $$0) {
+      return $$0.a();
    }
 }

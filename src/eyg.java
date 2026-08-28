@@ -1,45 +1,83 @@
-public class eyg {
-   private static final eyq<Object> a = new eyq<Object>() {
-      @Override
-      public void a(eyn<Object> $$0) {
-      }
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(jd $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eyj<Object> b = new eyj<Object>() {
-      @Override
-      public void a(eyn<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(jd $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(jd $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eyq<T> a() {
-      return (eyq<T>)a;
+public abstract class eyg {
+   public boolean a(@Nullable eyg $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public static <T> eyj<T> b() {
-      return (eyj<T>)b;
+   public abstract String b();
+
+   public abstract xn d(wz var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract eyg.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract eyg.b k();
+
+   public abstract eyg.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, eyg.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eyg.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static eyg.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wz a() {
+         return wz.c("team.collision." + this.e);
+      }
+   }
+
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
+
+      private static final Map<String, eyg.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eyg.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static eyg.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wz b() {
+         return wz.c("team.visibility." + this.e);
+      }
    }
 }

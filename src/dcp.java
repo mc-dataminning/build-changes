@@ -1,34 +1,27 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class dcp extends eqf {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static eqf.a<dcp> a() {
-      return new eqf.a<>(dcp::new, dcp::b, azv.i);
+public class dcp {
+   public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   private dcp(LongSet $$0) {
-      this.c = $$0;
+   public boolean a(dco $$0, dcc $$1, jd $$2, dtc $$3, float $$4) {
+      return true;
    }
 
-   public dcp() {
-      this(new LongOpenHashSet());
+   public boolean a(dco $$0, bsr $$1) {
+      return true;
    }
 
-   public static dcp b(ua $$0, jo.a $$1) {
-      return new dcp(new LongOpenHashSet($$0.o("Forced")));
+   public float a(bsr $$0) {
+      return 1.0F;
    }
 
-   @Override
-   public ua a(ua $$0, jo.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
-      return this.c;
+   public float b(dco $$0, bsr $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      exa $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.g($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)dco.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

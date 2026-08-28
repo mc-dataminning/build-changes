@@ -2,24 +2,15 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bxb {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static bvg<btl> a() {
-      return bys.a((Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$0 -> $$0.group($$0.b(ccq.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  jd $$5 = $$0.<jl>b($$1).b();
-                  if ($$5.a($$3.dq(), 3.0)) {
-                     dta $$6 = $$2.a_($$5);
-                     if ($$6.a(dfy.od)) {
-                        dfs $$7 = (dfs)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
+   public static bvi<cmk> a() {
+      return byu.a((Function<byu.b<cmk>, ? extends App<byu.c<cmk>, byx<cmk>>>)($$0 -> $$0.group($$0.c(ccs.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cml $$3 = $$1.gw();
+               if ($$3.b() != cmn.b && $$3.b() != cmn.m && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gw().a(cmn.b));
+                  $$1.a($$0xx);
                   return true;
+               } else {
+                  return false;
                }
             })));
    }

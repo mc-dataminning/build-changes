@@ -1,200 +1,181 @@
-import com.google.common.collect.Queues;
+import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class fzt {
-   private static final wy a = wy.c("chat.validation_error").a(n.m, n.u);
-   private final fgi b;
-   private final Deque<fzt.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   private static final Logger a = LogUtils.getLogger();
+   private static final wz b = wz.c("multiplayer.status.cannot_connect").b(-65536);
+   private final List<vt> c = Collections.synchronizedList(Lists.newArrayList());
 
-   public fzt(fgi $$0) {
-      this.b = $$0;
+   public void a(final fzr $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
+      final gav $$3 = gav.a($$0.b);
+      Optional<InetSocketAddress> $$4 = gax.a.a($$3).map(gau::d);
+      if ($$4.isEmpty()) {
+         this.a(fna.b, $$0);
+      } else {
+         final InetSocketAddress $$5 = $$4.get();
+         final vt $$6 = vt.a($$5, false, null);
+         this.c.add($$6);
+         $$0.d = wz.c("multiplayer.status.pinging");
+         $$0.i = Collections.emptyList();
+         ajo $$7 = new ajo() {
+            private boolean h;
+            private boolean i;
+            private long j;
+
+            @Override
+            public void a(ajp $$0x) {
+               if (this.i) {
+                  $$6.a(wz.c("multiplayer.status.unrequested"));
+               } else {
+                  this.i = true;
+                  ajq $$1 = $$0.b();
+                  $$0.d = $$1.a();
+                  $$1.c().ifPresentOrElse($$1xxx -> {
+                     $$0.h = wz.b($$1xxx.b());
+                     $$0.g = $$1xxx.c();
+                  }, () -> {
+                     $$0.h = wz.c("multiplayer.status.old");
+                     $$0.g = 0;
+                  });
+                  $$1.b().ifPresentOrElse($$1xxx -> {
+                     $$0.c = fzt.a($$1xxx.b(), $$1xxx.a());
+                     $$0.e = $$1xxx;
+                     if (!$$1xxx.c().isEmpty()) {
+                        List<wz> $$2xx = new ArrayList<>($$1xxx.c().size());
+
+                        for (GameProfile $$3xx : $$1xxx.c()) {
+                           $$2xx.add(wz.b($$3xx.getName()));
+                        }
+
+                        if ($$1xxx.c().size() < $$1xxx.b()) {
+                           $$2xx.add(wz.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
+                        }
+
+                        $$0.i = $$2xx;
+                     } else {
+                        $$0.i = List.of();
+                     }
+                  }, () -> $$0.c = wz.c("multiplayer.status.unknown").a(n.i));
+                  $$1.d().ifPresent($$2xx -> {
+                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
+                        $$0.a(fzr.b($$2xx.a()));
+                        $$1.run();
+                     }
+                  });
+                  this.j = ad.c();
+                  $$6.a(new ajm(this.j));
+                  this.h = true;
+               }
+            }
+
+            @Override
+            public void a(ajj $$0x) {
+               long $$1 = this.j;
+               long $$2 = ad.c();
+               $$0.f = $$2 - $$1;
+               $$6.a(wz.c("multiplayer.status.finished"));
+               $$2.run();
+            }
+
+            @Override
+            public void a(vv $$0x) {
+               if (!this.h) {
+                  fzt.this.a($$0.a(), $$0);
+                  fzt.this.a($$5, $$3, $$0);
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return $$6.i();
+            }
+         };
+
+         try {
+            $$6.a($$3.a(), $$3.b(), $$7);
+            $$6.a(ajs.a);
+         } catch (Throwable var10) {
+            a.error("Failed to ping server {}", $$3, var10);
+         }
+      }
+   }
+
+   void a(wz $$0, fzr $$1) {
+      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
+      $$1.d = b;
+      $$1.c = wy.a;
+   }
+
+   void a(InetSocketAddress $$0, final gav $$1, final fzr $$2) {
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vt.e.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            $$0.pipeline().addLast(new ChannelHandler[]{new fzk($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
+               $$2.a(fzr.b.d);
+               $$2.h = wz.b($$2xx);
+               $$2.d = wz.b($$3);
+               $$2.c = fzt.a($$4, $$5);
+               $$2.e = new ajq.b($$5, $$4, List.of());
+            })});
+         }
+      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   public static wz a(int $$0, int $$1) {
+      wz $$2 = wz.b(Integer.toString($$0)).a(n.h);
+      wz $$3 = wz.b(Integer.toString($$1)).a(n.h);
+      return wz.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
    }
 
    public void a() {
-      if (this.d != 0L) {
-         if (ad.c() >= this.e + this.d) {
-            fzt.a $$0 = this.c.poll();
+      synchronized (this.c) {
+         Iterator<vt> $$0 = this.c.iterator();
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
+         while ($$0.hasNext()) {
+            vt $$1 = $$0.next();
+            if ($$1.i()) {
+               $$1.b();
+            } else {
+               $$0.remove();
+               $$1.n();
             }
          }
       }
-   }
-
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(fzt.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
    }
 
    public void b() {
-      this.c.remove().a();
-   }
+      synchronized (this.c) {
+         Iterator<vt> $$0 = this.c.iterator();
 
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(fzt.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xk $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ad.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xk $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new fzt.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(xo $$0, GameProfile $$1, wu.a $$2) {
-      boolean $$3 = this.b.m.ag().c();
-      xo $$4 = $$3 ? $$0.a() : $$0;
-      wy $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         fza $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, wu.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            wy $$2 = $$1.a(a);
-            this.b.l.d().a($$2, null, fgd.d());
-            this.e = ad.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(wy $$0, wu.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         wy $$3 = $$1.a($$0);
-         this.b.l.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ad.c();
-         return true;
-      });
-   }
-
-   private boolean a(wu.a $$0, xo $$1, wy $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      fzv $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fgd $$7 = $$6.a($$1);
-         xk $$8 = $$1.l();
-         xc $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.l.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            wy $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.l.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
+         while ($$0.hasNext()) {
+            vt $$1 = $$0.next();
+            if ($$1.i()) {
+               $$0.remove();
+               $$1.a(wz.c("multiplayer.status.cancelled"));
             }
          }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ad.c();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(wu.a $$0, wy $$1) {
-      this.b.aV().a($$0.b($$1));
-   }
-
-   private fzv a(xo $$0, wy $$1, Instant $$2) {
-      return this.a($$0.g()) ? fzv.a : fzv.a($$0, $$1, $$2);
-   }
-
-   private void a(xo $$0, wu.a $$1, GameProfile $$2, fzv $$3) {
-      fzu $$4 = this.b.aX().b();
-      $$4.a(fzx.a($$2, $$0, $$3));
-   }
-
-   private void a(wy $$0, Instant $$1) {
-      fzu $$2 = this.b.aX().b();
-      $$2.a(fzx.a($$0, $$1));
-   }
-
-   public void a(wy $$0, boolean $$1) {
-      if (!this.b.m.ae().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.l.a($$0, false);
-         } else {
-            this.b.l.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aV().b($$0);
-      }
-   }
-
-   private UUID a(wy $$0) {
-      String $$1 = azi.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ad.e : this.b.aL().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.s != null) {
-         UUID $$1 = this.b.s.fY().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable xk a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xk b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
       }
    }
 }

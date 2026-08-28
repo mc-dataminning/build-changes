@@ -1,39 +1,22 @@
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public class asc implements arj {
-   public static final arj.a a = new arj.a("synchronize_registries");
-   private final List<atk> b;
-   private final jt<akz> c;
+public class asc implements ark {
+   public static final ark.a a = new ark.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   public asc(List<atk> $$0, jt<akz> $$1) {
+   public asc(MinecraftServer.b $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    @Override
-   public void a(Consumer<zf<?>> $$0) {
-      $$0.accept(new abf(this.b));
-   }
-
-   private void a(Consumer<zf<?>> $$0, Set<atk> $$1) {
-      DynamicOps<ux> $$2 = this.c.a().a(uo.a);
-      kd.a($$2, this.c.c(akz.b), $$1, ($$1x, $$2x) -> $$0.accept(new abd($$1x, $$2x)));
-      $$0.accept(new zw(aww.a(this.c)));
-   }
-
-   public void a(List<atk> $$0, Consumer<zf<?>> $$1) {
-      if ($$0.equals(this.b)) {
-         this.a($$1, Set.copyOf(this.b));
-      } else {
-         this.a($$1, Set.of());
-      }
+   public void a(Consumer<zg<?>> $$0) {
+      $$0.accept(new zt(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
    }
 
    @Override
-   public arj.a a() {
+   public ark.a a() {
       return a;
    }
 }

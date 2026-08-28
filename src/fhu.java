@@ -1,22 +1,54 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fhu extends gri {
-   private static final Set<atc<?>> a = Set.of(grq.a, grw.c);
-
-   public fhu(gqg $$0) {
-      super($$0, akq.b("textures/atlas/gui.png"), akq.b("gui"), a);
+public interface fhu {
+   static fhu a(fkg $$0) {
+      return new fhu.a($$0);
    }
 
-   @Override
-   public gqf a(akq $$0) {
-      return super.a($$0);
+   @Nullable
+   static fhu a(fkf $$0, @Nullable fhu $$1) {
+      return $$1 == null ? null : new fhu.b($$0, $$1);
    }
 
-   public grx a(gqf $$0) {
-      return this.b($$0).a();
+   static fhu a(fkg $$0, fkf... $$1) {
+      fhu $$2 = a($$0);
+
+      for (fkf $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   private grw b(gqf $$0) {
-      return $$0.e().f().a(grw.c).orElse(grw.a);
+   fkg a();
+
+   void a(boolean var1);
+
+   public static record a(fkg a) implements fhu {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(fkf a, fhu b) implements fhu {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fkf b() {
+         return this.a;
+      }
+
+      public fhu c() {
+         return this.b;
+      }
    }
 }

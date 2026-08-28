@@ -1,60 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.Optional;
+public class elx {
+   private static final akr[] a = new akr[]{
+      akr.b("nether_fossils/fossil_1"),
+      akr.b("nether_fossils/fossil_2"),
+      akr.b("nether_fossils/fossil_3"),
+      akr.b("nether_fossils/fossil_4"),
+      akr.b("nether_fossils/fossil_5"),
+      akr.b("nether_fossils/fossil_6"),
+      akr.b("nether_fossils/fossil_7"),
+      akr.b("nether_fossils/fossil_8"),
+      akr.b("nether_fossils/fossil_9"),
+      akr.b("nether_fossils/fossil_10"),
+      akr.b("nether_fossils/fossil_11"),
+      akr.b("nether_fossils/fossil_12"),
+      akr.b("nether_fossils/fossil_13"),
+      akr.b("nether_fossils/fossil_14")
+   };
 
-public class elx extends ejm {
-   public static final MapCodec<elx> d = a(elx::new);
-
-   public elx(ejm.c $$0) {
-      super($$0);
+   public static void a(ens $$0, eju $$1, ayw $$2, jd $$3) {
+      dmm $$4 = dmm.a($$2);
+      $$1.a(new elx.a($$0, ad.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<ejm.b> a(ejm.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (jm<ddu> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(awc.X)) {
-            return Optional.empty();
-         }
+   public static class a extends ejz {
+      public a(ens $$0, akr $$1, jd $$2, dmm $$3) {
+         super(ekg.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      return a($$0, dyv.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static ejq a(dcb $$0, dzu $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      ji $$4 = ji.c.a.a($$1);
-      return new elw.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(eke $$0, ejm.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static ekb a(dcb $$0, long $$1, ekb $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dzu $$3 = new dzu(new dyw(dzk.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         ejq $$4 = $$2.c().get(0);
-         eje $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         ji $$8 = ji.c.a.a($$3);
-         ji $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         ejq $$10 = new elw.h($$3, $$6, $$7, $$9);
-         eke $$11 = new eke();
-         $$11.a($$10);
-         return $$11.a();
+      public a(ens $$0, ub $$1) {
+         super(ekg.ac, $$1, $$0, $$1x -> a(dmm.valueOf($$1.l("Rot"))));
       }
-   }
 
-   @Override
-   public ejv<?> e() {
-      return ejv.j;
+      private static enn a(dmm $$0) {
+         return new enn().a($$0).a(dkv.a).a(ems.d);
+      }
+
+      @Override
+      protected void a(ekf $$0, ub $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, jd $$1, ddl $$2, ayw $$3, ejh $$4) {
+      }
+
+      @Override
+      public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejh $$4, dcd $$5, jd $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

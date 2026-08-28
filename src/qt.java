@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class qt {
-   @Deprecated
-   public static final eob.a a = new eob.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qp<eob.a> $$0) {
-      a($$0, 0, dze.a, dze.b, dze.c, dze.d);
-      a($$0, -2, dze.e, dze.f, dze.g, dze.h);
-      a($$0, dze.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dze.j, a);
-      a($$0, dze.k, -3, 1.0);
-      a($$0, dze.l, -7, 1.0);
-      a($$0, dze.m, -1, 1.0);
-      a($$0, dze.n, -5, 1.0);
-      a($$0, dze.o, -7, 1.0, 1.0);
-      a($$0, dze.p, -8, 1.0);
-      a($$0, dze.q, -8, 1.0);
-      a($$0, dze.r, -7, 1.0);
-      a($$0, dze.s, -8, 1.0);
-      a($$0, dze.t, -11, 1.0);
-      a($$0, dze.u, -11, 1.0);
-      a($$0, dze.v, -7, 1.0);
-      a($$0, dze.w, -7, 1.0);
-      a($$0, dze.x, -11, 1.0);
-      a($$0, dze.y, -8, 1.0);
-      a($$0, dze.z, -5, 1.0);
-      a($$0, dze.A, -8, 1.0);
-      a($$0, dze.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dze.C, -8, 1.0);
-      a($$0, dze.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dze.E, -8, 1.0);
-      a($$0, dze.F, -7, 1.0);
-      a($$0, dze.G, -7, 1.0);
-      a($$0, dze.H, -5, 1.0);
-      a($$0, dze.I, -8, 1.0);
-      a($$0, dze.J, -8, 1.0);
-      a($$0, dze.K, -7, 1.0);
-      a($$0, dze.L, -7, 1.0);
-      a($$0, dze.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dze.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dze.P, -8, 1.0);
-      a($$0, dze.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.R, -8, 1.0);
-      a($$0, dze.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dze.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.U, -3, 1.0);
-      a($$0, dze.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dze.W, -2, 1.0);
-      a($$0, dze.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dze.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dze.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dze.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dze.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dze.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dze.ah, -4, 1.0);
-   }
-
-   private static void a(qp<eob.a> $$0, int $$1, akp<eob.a> $$2, akp<eob.a> $$3, akp<eob.a> $$4, akp<eob.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qp<eob.a> $$0, akp<eob.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eob.a($$2, $$3, $$4));
+   public static void a(qq<dwy> $$0) {
+      $$0.a(
+         dww.a,
+         new dwy(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awe.bb, dww.e, 0.0F, new dwy.a(false, true, bqc.a(0, 7), 0))
+      );
+      $$0.a(
+         dww.b,
+         new dwy(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awe.bc, dww.f, 0.1F, new dwy.a(true, false, bpt.a(7), 15))
+      );
+      $$0.a(
+         dww.c,
+         new dwy(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awe.bd, dww.g, 0.0F, new dwy.a(false, true, bqc.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dww.d,
+         new dwy(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awe.bb, dww.e, 0.0F, new dwy.a(false, true, bqc.a(0, 7), 0))
+      );
    }
 }

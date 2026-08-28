@@ -1,21 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
 public class bvd {
-   public static bwq<btn> a(int $$0, float $$1) {
-      return bys.a(
-         (Function<bys.b<btn>, ? extends App<bys.c<btn>, byv<btn>>>)($$2 -> $$2.group($$2.c(ccq.m), $$2.a(ccq.n), $$2.b(ccq.o), $$2.b(ccq.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     btl $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<ccs>b($$6).a($$9)) {
-                        $$4.a(new bvq($$9, true));
-                        $$7.H().a(-$$1, 0.0F);
-                        $$7.s(ayn.c($$7.dG(), $$7.ba, 0.0F));
-                        return true;
-                     } else {
-                        return false;
+   public static bvi<cmk> a() {
+      return byu.a(
+         (Function<byu.b<cmk>, ? extends App<byu.c<cmk>, byx<cmk>>>)($$0 -> $$0.group($$0.b(ccs.d), $$0.a(ccs.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jl $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dn(), 2.0) && !$$4.gv()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gw().b() != cmn.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> lt.x.t().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gw().a($$2xx));
+                                    $$4.a($$3);
+                                 });
+                              return true;
+                           }
+                        }
                      }
-                  }))
+               ))
       );
    }
 }

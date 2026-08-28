@@ -1,30 +1,31 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Predicate;
 
 public class bxg {
-   private static final int a = 300;
+   public static bvi<btn> a(btq $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.am().f()), $$1);
+   }
 
-   public static bvg<btl> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$3x -> $$3x.group($$3x.b(ccq.C), $$3x.b(ccq.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        jd $$11 = $$3x.<jl>b($$4).b();
-                        if ($$11.a($$7.dq(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public static bws<btn> a(bsx<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.am()), $$1);
+   }
 
-                        return true;
+   public static bws<btn> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bws<btn> a(Predicate<btn> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$2x -> $$2x.group($$2x.c(ccs.n), $$2x.b(ccs.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<btn> $$8 = $$2x.<ccu>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsr)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
                      } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dU().a($$6.aa(), $$6.Z());
-                        $$3.setValue(0);
+                        $$3.a(new bvs($$8.get(), true));
                         return true;
                      }
                   }))

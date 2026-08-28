@@ -1,175 +1,110 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.List;
 import java.util.Map;
 
-public class ghh implements ggt<drq> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = ayn.h(16);
-   private static final float d = 0.6666667F;
-   private static final eww e = new eww(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dun, ghh.a> f;
-   private final fhr g;
+public class ghh extends ghl {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final exa k = new exa(0.0, -0.32F, 0.073F);
+   private final Map<dup, ghh.a> l;
 
-   public ghh(ggu.a $$0) {
-      this.f = dun.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new ghh.a($$0.a(fyd.a($$1)))));
-      this.g = $$0.f();
+   public ghh(ggy.a $$0) {
+      super($$0);
+      this.l = dup.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new ghh.a($$0.a(fyh.b($$1)))));
    }
 
-   public void a(drq $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
-      dta $$6 = $$0.n();
-      dmx $$7 = (dmx)$$6.b();
-      dun $$8 = dmx.a($$7);
-      ghh.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof dns;
+   @Override
+   public float b() {
+      return 1.0F;
+   }
+
+   @Override
+   public float c() {
+      return 0.9F;
+   }
+
+   @Override
+   public void a(drs $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
+      dtc $$6 = $$0.n();
+      dmz $$7 = (dmz)$$6.b();
+      dup $$8 = dmz.a($$7);
+      ghh.a $$9 = this.l.get($$8);
+      $$9.a($$6);
       this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(drq $$0, fbc $$1, get $$2, int $$3, int $$4, dta $$5, dmx $$6, dun $$7, fwa $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.az_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.az_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(fbc $$0, float $$1, dta $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
+   @Override
+   void a(fbg $$0, float $$1, dtc $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
       $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dns)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
+      $$0.a(0.0F, -0.3125F, 0.0F);
    }
 
-   void a(fbc $$0, get $$1, int $$2, int $$3, dun $$4, fwa $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      gsj $$7 = this.a($$4);
-      fbg $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(fbc $$0, int $$1, int $$2, fwa $$3, fbg $$4) {
+   @Override
+   void a(fbg $$0, int $$1, int $$2, fwe $$3, fbk $$4) {
       ghh.a $$5 = (ghh.a)$$3;
       $$5.a.a($$0, $$4, $$1, $$2);
    }
 
-   gsj a(dun $$0) {
-      return gfi.a($$0);
+   @Override
+   gso a(dup $$0) {
+      return gfm.b($$0);
    }
 
-   void a(jd $$0, drr $$1, fbc $$2, get $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      axz[] $$10 = $$1.a(fgi.Q().aQ(), $$1x -> {
-         List<axz> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? axz.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         axz $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fhr.a.c, 0, $$13);
-         }
-      }
-
-      $$2.b();
+   @Override
+   exa d() {
+      return k;
    }
 
-   private void a(fbc $$0, boolean $$1, eww $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
+   public static fyo e() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      $$1.a("board", fyn.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fyk.a);
+      $$1.a("plank", fyn.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fyk.a);
+      fyr $$2 = $$1.a("normalChains", fyn.c(), fyk.a);
+      $$2.a("chainL1", fyn.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fyk.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", fyn.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fyk.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", fyn.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fyk.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", fyn.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fyk.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", fyn.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fyk.a);
+      return fyo.a($$0, 64, 32);
    }
 
-   eww d() {
-      return e;
-   }
+   public static final class a extends fwe {
+      public final fyi a;
+      public final fyi b;
+      public final fyi c;
+      public final fyi d;
 
-   static boolean a(jd $$0, int $$1) {
-      if ($$1 == ctg.p.g()) {
-         return true;
-      } else {
-         fgi $$2 = fgi.Q();
-         gdv $$3 = $$2.s;
-         if ($$3 != null && $$2.m.aA().a() && $$3.gx()) {
-            return true;
-         } else {
-            bsq $$4 = $$2.an();
-            return $$4 != null && $$4.g(eww.b($$0)) < (double)c;
-         }
-      }
-   }
-
-   public static int a(drr $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == ctg.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axx.b.b($$1) * 0.4);
-         int $$4 = (int)((double)axx.b.c($$1) * 0.4);
-         int $$5 = (int)((double)axx.b.d($$1) * 0.4);
-         return axx.b.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static ghh.a a(fya $$0, dun $$1) {
-      return new ghh.a($$0.a(fyd.a($$1)));
-   }
-
-   public static fyk f() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      $$1.a("sign", fyj.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fyg.a);
-      $$1.a("stick", fyj.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fyg.a);
-      return fyk.a($$0, 64, 32);
-   }
-
-   public static final class a extends fwa {
-      public final fye a;
-      public final fye b;
-
-      public a(fye $$0) {
-         super(gfb::e);
+      public a(fyi $$0) {
+         super(gff::e);
          this.a = $$0;
-         this.b = $$0.b("stick");
+         this.b = $$0.b("plank");
+         this.d = $$0.b("normalChains");
+         this.c = $$0.b("vChains");
+      }
+
+      public void a(dtc $$0) {
+         boolean $$1 = !($$0.b() instanceof dgx);
+         this.b.k = $$1;
+         this.c.k = false;
+         this.d.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dts.a);
+            this.d.k = !$$2;
+            this.c.k = $$2;
+         }
       }
 
       @Override
-      public void a(fbc $$0, fbg $$1, int $$2, int $$3, int $$4) {
+      public void a(fbg $$0, fbk $$1, int $$2, int $$3, int $$4) {
          this.a.a($$0, $$1, $$2, $$3, $$4);
       }
    }

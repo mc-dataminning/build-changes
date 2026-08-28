@@ -1,61 +1,104 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class gii implements gig.a {
-   private static final float a = 0.02F;
-   private final Map<jd, gii.a> b = Maps.newHashMap();
+public class gii implements gik.a {
+   final fgm a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gii.a d;
 
-   public void a(jd $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gii.a($$1, $$2, ad.c() + (long)$$3));
+   public gii(fgm $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ad.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gum $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gii.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
 
-   @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ad.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gii.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
+      if (this.d != null) {
+         Map<dcd, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.l().b().d * 0.85;
 
-   private void a(fbc $$0, get $$1, jd $$2, gii.a $$3) {
-      gig.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gig.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+         for (Entry<dcd, String> $$9 : this.d.a.entrySet()) {
+            dcd $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gik.a($$0, $$1, $$14, (double)kf.a($$10.e, 8), $$8 + (double)$$13, (double)kf.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
       }
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   final class a {
+      final Map<dcd, String> a;
+      final CompletableFuture<Map<dcd, String>> b;
 
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+      a(final gum $$0, final double $$1, final double $$2) {
+         fzd $$3 = gii.this.a.r;
+         akq<dcw> $$4 = $$3.af();
+         int $$5 = kf.a($$1);
+         int $$6 = kf.a($$2);
+         Builder<dcd, String> $$7 = ImmutableMap.builder();
+         fyz $$8 = $$3.i();
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               dcd $$11 = new dcd($$9, $$10);
+               String $$12 = "";
+               dvi $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
+               $$7.put($$11, $$12);
+            }
+         }
 
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            aqu $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<dcd, String> $$5x = ImmutableMap.builder();
+               aqs $$6x = $$4x.l();
 
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     dcd $$9x = new dcd($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

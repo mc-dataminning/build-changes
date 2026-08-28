@@ -1,20 +1,20 @@
-public record agr(float b) implements zf<agh> {
-   public static final yw<vv, agr> a = zf.a(agr::a, agr::new);
+public record agr(xq.a b) implements zg<agi> {
+   public static final yx<vw, agr> a = zg.a(agr::a, agr::new);
 
-   private agr(vv $$0) {
-      this($$0.readFloat());
+   private agr(vw $$0) {
+      this(xq.a.a($$0));
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      xq.a.a($$0, this.b);
    }
 
    @Override
-   public zh<agr> a() {
-      return agf.bn;
+   public zi<agr> a() {
+      return agg.bm;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 }

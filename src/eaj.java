@@ -1,24 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eaj extends ean {
-   private final jq<eox> e;
+public class eaj implements eaf {
    public static final MapCodec<eaj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kb.a(lu.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eaj::new)
+      $$0 -> $$0.group(kh.v(16).optionalFieldOf("offset", jd.c).forGetter($$0x -> $$0x.e)).apply($$0, eaj::new)
    );
+   private final kh e;
 
-   public eaj(kh $$0, jq<eox> $$1) {
-      super($$0);
-      this.e = $$1;
+   public eaj(kh $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(dds $$0, jd $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dta $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public ead<?> a() {
-      return ead.c;
+   public eag<?> a() {
+      return eag.h;
    }
 }

@@ -1,41 +1,151 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class gil implements gig.a {
-   private final fgi a;
-   private static final int b = 10;
+public class gil implements gik.a {
+   private final fgm a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gil.a> d = Lists.newArrayList();
+   private final List<gil.b> e = Lists.newArrayList();
 
-   public gil(fgi $$0) {
+   public gil(fgm $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      dcu $$5 = this.a.r;
-      jd $$6 = jd.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      dcw $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         exa $$6 = new exa($$2, 0.0, $$4);
+         this.d.removeIf(gil.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         fbk $$7 = $$1.getBuffer(gff.x());
 
-      for (jd $$8 : jd.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(ddd.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = ayn.h($$10, 0.9F, 0.9F);
-         long $$12 = kf.e($$8.a());
-         if ($$7.add($$12)) {
-            gig.a(
-               $$0,
-               $$1,
-               $$5.N().p().a(ddd.a, kf.a($$12)),
-               (double)kf.a(kf.b($$12), 8),
-               (double)kf.a(kf.c($$12), 8),
-               (double)kf.a(kf.d($$12), 8),
-               16711680,
-               0.3F
-            );
+         for (gil.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gev.a($$0, $$7, exq.a(new ewv($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
          }
 
-         if ($$9 != 15) {
-            gig.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         fbk $$9 = $$1.getBuffer(gff.z());
+
+         for (gil.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gev.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
          }
+
+         for (gil.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gik.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gik.a($$0, $$1, jd.a((jw)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gil.a $$12 : this.d) {
+            exa $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new ewv($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gik.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         }
+      }
+   }
+
+   private static void a(fbg $$0, gex $$1, ewv $$2, float $$3, float $$4, float $$5, float $$6) {
+      ffw $$7 = fgm.Q().j.l();
+      if ($$7.h()) {
+         exa $$8 = $$7.b().e();
+         gik.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(akq<dxz> $$0, exa $$1) {
+      this.d.add(new gil.a(ad.c(), $$0, $$1));
+   }
+
+   public void a(dyd $$0, int $$1) {
+      this.e.add(new gil.b($$0, $$1));
+   }
+
+   static record a(long a, akq<dxz> b, exa c) {
+
+      public boolean a() {
+         return ad.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public akq<dxz> c() {
+         return this.b;
+      }
+
+      public exa d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dyb {
+      public final dyd a;
+      public final int b;
+
+      public b(dyd $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dcw $$0, exa $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<exa> a(dcw $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public dyd a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
+         return false;
       }
    }
 }

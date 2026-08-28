@@ -1,3 +1,7 @@
-public interface gvf {
-   void log(gvd var1);
+public interface gvf<T> {
+   int e();
+
+   T b(ayw var1);
+
+   void a(gva var1);
 }

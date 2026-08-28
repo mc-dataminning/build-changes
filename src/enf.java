@@ -1,27 +1,13 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enf extends enh {
-   public static final MapCodec<enf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dta.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, enf::new)
-   );
-   private final dta b;
-   private final float d;
+public interface enf<P extends ene> {
+   enf<end> a = a("always_true", end.a);
+   enf<ena> b = a("linear_pos", ena.a);
+   enf<emp> c = a("axis_aligned_linear_pos", emp.a);
 
-   public enf(dta $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dta $$0, ayv $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected eni<?> a() {
-      return eni.f;
+   static <P extends ene> enf<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.o, $$0, () -> $$1);
    }
 }

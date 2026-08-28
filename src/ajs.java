@@ -1,12 +1,18 @@
-public class ajs {
-   public static final zh<ajo> a = a("status_response");
-   public static final zh<ajr> b = b("status_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zf<ajn>> zh<T> a(String $$0) {
-      return new zh<>(zg.b, akq.b($$0));
+public class ajs implements zg<ajr> {
+   public static final ajs a = new ajs();
+   public static final yx<ByteBuf, ajs> b = yx.a(a);
+
+   private ajs() {
    }
 
-   private static <T extends zf<ajq>> zh<T> b(String $$0) {
-      return new zh<>(zg.a, akq.b($$0));
+   @Override
+   public zi<ajs> a() {
+      return ajt.b;
+   }
+
+   public void a(ajr $$0) {
+      $$0.a(this);
    }
 }

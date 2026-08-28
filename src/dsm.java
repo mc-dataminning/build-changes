@@ -1,76 +1,62 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class dsm {
-   static final String a = "shared_data";
-   static Codec<dsm> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cuo.a("display_item").forGetter($$0x -> $$0x.d),
-               kg.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dsk.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dsm::new)
-   );
-   private cuo d = cuo.l;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = dsk.b.d();
-   boolean c;
+public record dsm(akq<eru> d, double e, double f, cuq g, Optional<akq<eru>> h, dse i, dse.a j) {
+   static final String a = "config";
+   static dsm b = new dsm();
+   static Codec<dsm> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akq.a(lu.bc).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dsm::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dsm::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dsm::d),
+                  cuq.a("key_item").forGetter(dsm::e),
+                  akq.a(lu.bc).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dsm::f)
+               )
+               .apply($$0, dsm::new)
+      )
+      .validate(dsm::h);
 
-   dsm(cuo $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
+   private dsm() {
+      this(erl.S, 4.0, 4.5, new cuq(cut.yC), Optional.empty(), dse.b, dse.a.a);
    }
 
-   dsm() {
+   public dsm(akq<eru> $$0, double $$1, double $$2, cuq $$3, Optional<akq<eru>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   public cuo a() {
+   public dse a() {
+      return this.i;
+   }
+
+   private DataResult<dsm> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
+   }
+
+   public akq<eru> b() {
       return this.d;
    }
 
-   public boolean b() {
-      return !this.d.e();
-   }
-
-   public void a(cuo $$0) {
-      if (!cuo.a(this.d, $$0)) {
-         this.d = $$0.s();
-         this.f();
-      }
-   }
-
-   boolean c() {
-      return !this.e.isEmpty();
-   }
-
-   Set<UUID> d() {
+   public double c() {
       return this.e;
    }
 
-   double e() {
+   public double d() {
       return this.f;
    }
 
-   void a(aqt $$0, jd $$1, dsl $$2, dsk $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
-      }
+   public cuq e() {
+      return this.g;
    }
 
-   private void f() {
-      this.c = true;
+   public Optional<akq<eru>> f() {
+      return this.h;
    }
 
-   void a(dsm $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
+   public dse.a g() {
+      return this.j;
    }
 }

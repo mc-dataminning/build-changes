@@ -1,110 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-
 public class cgj {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+   public static final akq<cgi> a = a("pale");
+   public static final akq<cgi> b = a("spotted");
+   public static final akq<cgi> c = a("snowy");
+   public static final akq<cgi> d = a("black");
+   public static final akq<cgi> e = a("ashen");
+   public static final akq<cgi> f = a("rusty");
+   public static final akq<cgi> g = a("woods");
+   public static final akq<cgi> h = a("chestnut");
+   public static final akq<cgi> i = a("striped");
+   public static final akq<cgi> j = a;
 
-   protected static buo<?> a(buo<cgi> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(cok.a));
-      $$0.b(cok.b);
-      $$0.f();
-      return $$0;
+   private static akq<cgi> a(String $$0) {
+      return akq.a(lu.m, akr.b($$0));
    }
 
-   private static void b(buo<cgi> $$0) {
-      $$0.a(cok.a, 0, ImmutableList.of(new bxz(0.8F), new bva(2.5F), new bwl(45, 90), new bwp(), new bvl(ccq.aO), new bvl(ccq.aP)));
+   static void a(qq<cgi> $$0, akq<cgi> $$1, String $$2, akq<ddw> $$3) {
+      a($$0, $$1, $$2, jq.a($$0.a(lu.aF).b($$3)));
    }
 
-   private static void c(buo<cgi> $$0) {
-      $$0.a(
-         cok.b,
-         ImmutableList.of(
-            Pair.of(0, bvz.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new bvv(cgj::b, 2.25F, 20)),
-            Pair.of(2, bxt.a(cgj::b, Predicate.not(cgj::c), 4, 16, 2.25F)),
-            Pair.of(3, bxf.a(6.0F, bqb.a(30, 60))),
-            Pair.of(4, new bxc(ImmutableList.of(Pair.of(bwx.b(1.0F), 2), Pair.of(bxm.a(1.0F, 3), 2), Pair.of(new bvp(30, 60), 1))))
-         ),
-         ImmutableSet.of()
-      );
+   static void a(qq<cgi> $$0, akq<cgi> $$1, String $$2, awu<ddw> $$3) {
+      a($$0, $$1, $$2, $$0.a(lu.aF).b($$3));
    }
 
-   public static void a(cgi $$0) {
-      $$0.dU().a(ImmutableList.of(cok.b));
+   static void a(qq<cgi> $$0, akq<cgi> $$1, String $$2, jq<ddw> $$3) {
+      akr $$4 = akr.b("entity/wolf/" + $$2);
+      akr $$5 = akr.b("entity/wolf/" + $$2 + "_tame");
+      akr $$6 = akr.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cgi($$4, $$5, $$6, $$3));
    }
 
-   public static void a(btl $$0, jd $$1) {
-      buo<?> $$2 = $$0.dU();
-      jl $$3 = jl.a($$0.dQ().af(), $$1);
-      Optional<jl> $$4 = $$2.c(ccq.aN);
-      if ($$4.isEmpty()) {
-         $$2.a(ccq.aN, $$3);
-         $$2.a(ccq.aO, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(ccq.aO, 600);
-      }
+   public static jm<cgi> a(ka $$0, jm<ddw> $$1) {
+      jz<cgi> $$2 = $$0.d(lu.m);
+      return $$2.i().filter($$1x -> ((cgi)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.b(j)).or($$2::a).orElseThrow();
    }
 
-   private static Optional<bwt> b(btl $$0) {
-      buo<?> $$1 = $$0.dU();
-      Optional<jl> $$2 = $$1.c(ccq.aN);
-      if ($$2.isPresent()) {
-         jl $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new bvi($$3.b().c()));
-         }
-
-         $$1.b(ccq.aN);
-      }
-
-      return d($$0);
-   }
-
-   private static boolean c(btl $$0) {
-      buo<?> $$1 = $$0.dU();
-      return $$1.a(ccq.L);
-   }
-
-   private static boolean a(btl $$0, buo<?> $$1, jl $$2) {
-      Optional<Integer> $$3 = $$1.c(ccq.aO);
-      dcu $$4 = $$0.dQ();
-      return $$4.af() == $$2.a() && $$4.a_($$2.b()).a(dfy.aY) && $$3.isPresent();
-   }
-
-   private static Optional<bwt> d(btl $$0) {
-      return a($$0).map($$0x -> new bvq($$0x, true));
-   }
-
-   public static Optional<aqu> a(btl $$0) {
-      dcu $$1 = $$0.dQ();
-      if (!$$1.x_() && $$1 instanceof aqt $$2) {
-         Optional<UUID> $$3 = $$0.dU().c(ccq.aM);
-         if ($$3.isPresent()) {
-            if ($$2.a($$3.get()) instanceof aqu $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
-            }
-
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
+   public static void a(qq<cgi> $$0) {
+      a($$0, a, "wolf", ded.p);
+      a($$0, b, "wolf_spotted", awd.k);
+      a($$0, c, "wolf_snowy", ded.F);
+      a($$0, d, "wolf_black", ded.n);
+      a($$0, e, "wolf_ashen", ded.q);
+      a($$0, f, "wolf_rusty", awd.i);
+      a($$0, g, "wolf_woods", ded.i);
+      a($$0, h, "wolf_chestnut", ded.o);
+      a($$0, i, "wolf_striped", awd.f);
    }
 }

@@ -1,33 +1,13 @@
+import javax.annotation.Nullable;
+
 public class cei {
-   public static boolean a(btn $$0) {
-      return $$0.J() instanceof ccx;
-   }
-
-   public static boolean a(btu $$0, int $$1) {
-      return $$0.fW() && $$0.fT().a($$0.do(), (double)($$0.fU() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(jd $$0, btu $$1) {
-      return $$0.v() < $$1.dQ().I_() || $$0.v() > $$1.dQ().am();
-   }
-
-   public static boolean a(boolean $$0, btu $$1, jd $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(ccy $$0, jd $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(btu $$0, jd $$1) {
-      return $$0.dQ().b_($$1).a(awj.a);
-   }
-
-   public static boolean b(btu $$0, jd $$1) {
-      return $$0.a(epu.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(btu $$0, jd $$1) {
-      return $$0.dQ().a_($$1).e();
+   @Nullable
+   public static exa a(btw $$0, int $$1, int $$2, int $$3, exa $$4, double $$5) {
+      exa $$6 = $$4.a($$0.du(), $$0.dw(), $$0.dA());
+      boolean $$7 = cek.a($$0, $$1);
+      return cen.a($$0, () -> {
+         jd $$7x = ceh.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
+         return $$7x != null && !cek.a($$0, $$7x) ? $$7x : null;
+      });
    }
 }

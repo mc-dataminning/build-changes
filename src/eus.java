@@ -1,36 +1,17 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.function.Function;
 
-public class eus implements euw {
-   private static final eus b = new eus();
-   public static final MapCodec<eus> a = MapCodec.unit(b);
+public interface eus<T extends eus<T>> {
+   T b(eva.a var1);
 
-   private eus() {
-   }
+   default <E> T a_(Iterable<E> $$0, Function<E, eva.a> $$1) {
+      T $$2 = this.d();
 
-   @Override
-   public eux b() {
-      return euy.l;
-   }
-
-   @Override
-   public Set<eue<?>> a() {
-      return ImmutableSet.of(euh.j);
-   }
-
-   public boolean a(erl $$0) {
-      Float $$1 = $$0.c(euh.j);
-      if ($$1 != null) {
-         ayv $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
+
+      return $$2;
    }
 
-   public static euw.a c() {
-      return () -> b;
-   }
+   T d();
 }

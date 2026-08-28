@@ -1,22 +1,25 @@
-public class gwh implements fjj {
-   private final wy a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public gwh(wy $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface gwh {
+   default void b() {
    }
 
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      $$0.a(fgi.Q().h, this.a, this.b, this.c, this.d);
+   default void a() {
    }
 
-   public wy a() {
-      return this.a;
+   default void a(gdx $$0) {
+   }
+
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(fzd $$0, ewy $$1) {
+   }
+
+   default void a(fzd $$0, jd $$1, dtc $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cuq $$0) {
    }
 }

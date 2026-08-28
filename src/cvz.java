@@ -1,19 +1,46 @@
 import javax.annotation.Nullable;
 
-public class cvz extends csh {
-   public cvz(cuj.a $$0) {
-      super($$0);
+public class cvz extends cso implements ctg {
+   private final avo a;
+
+   public cvz(dfy $$0, avo $$1, cul.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public cnb a(dcu $$0, cuo $$1, btl $$2, @Nullable cuo $$3) {
-      return new cnt($$0, $$2, $$1.c(1), $$3);
+   public bqr a(cyf $$0) {
+      bqr $$1 = super.a($$0);
+      cmx $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), csv.a($$0.n(), $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public cnn a(dcu $$0, jw $$1, cuo $$2, ji $$3) {
-      cnt $$4 = new cnt($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cnb.a.b;
-      return $$4;
+   public String a() {
+      return this.t();
+   }
+
+   @Override
+   protected avo a(dtc $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable cmx $$0, dcw $$1, jd $$2, @Nullable eww $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.B) {
+            $$1.a($$2, this.d().o(), 3);
+         }
+
+         $$1.a($$0, dxz.z, $$2);
+         $$1.a($$0, $$2, this.a, avq.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

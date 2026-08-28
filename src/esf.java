@@ -1,64 +1,66 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class esf extends eru {
-   public static final MapCodec<esf> a = a(esf::new);
+public abstract class esf implements erx {
+   protected final List<eva> e;
+   private final Predicate<erp> a;
 
-   esf(List<esb> $$0, List<euw> $$1) {
-      super($$0, $$1);
+   protected esf(List<eva> $$0) {
+      this.e = $$0;
+      this.a = ad.a($$0);
    }
 
-   @Override
-   public esc a() {
-      return erz.h;
+   protected static <T extends esf> P1<Mu<T>, List<eva>> a(Instance<T> $$0) {
+      return $$0.group(eva.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   protected ert a(List<? extends ert> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ert)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ert $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(erv $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   public static esf.a a(esb.a<?>... $$0) {
-      return new esf.a($$0);
+   protected final boolean a(erp $$0) {
+      return this.a.test($$0);
    }
 
-   public static class a extends esb.a<esf.a> {
-      private final Builder<esb> a = ImmutableList.builder();
+   public abstract esg a();
 
-      public a(esb.a<?>... $$0) {
-         for (esb.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   public abstract static class a<T extends esf.a<T>> implements eus<T> {
+      private final Builder<eva> a = ImmutableList.builder();
+
+      protected abstract T aH_();
+
+      public T a(eva.a $$0) {
+         this.a.add($$0.build());
+         return this.aH_();
       }
 
-      protected esf.a a() {
-         return this;
+      public final T e() {
+         return this.aH_();
       }
 
-      @Override
-      public esf.a c(esb.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      protected List<eva> f() {
+         return this.a.build();
       }
 
-      @Override
-      public esb b() {
-         return new esf(this.a.build(), this.f());
+      public erw.a a(esf.a<?> $$0) {
+         return new erw.a(this, $$0);
       }
+
+      public esb.a b(esf.a<?> $$0) {
+         return new esb.a(this, $$0);
+      }
+
+      public esj.a c(esf.a<?> $$0) {
+         return new esj.a(this, $$0);
+      }
+
+      public abstract esf b();
    }
 }

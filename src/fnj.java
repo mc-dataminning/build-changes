@@ -1,82 +1,80 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fnj extends fnx {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wy q;
-   private final wy r;
-   private final Runnable s;
-   @Nullable
-   private fiz u;
-   private fig v;
-   private int w;
+public class fnj extends fob {
+   private static final wz a = wz.c("addServer.enterName");
+   private static final wz b = wz.c("addServer.enterIp");
+   private fik c;
+   private final BooleanConsumer r;
+   private final fzr s;
+   private fit u;
+   private fit v;
+   private final fob w;
 
-   public static fnj a(wy $$0, wy $$1, Runnable $$2) {
-      return new fnj($$0, null, $$1, $$2, 0);
-   }
-
-   public static fnj a(wy $$0, wy $$1, wy $$2, Runnable $$3) {
-      return new fnj($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fnj(wy $$0, @Nullable wy $$1, wy $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.q = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.w = $$4;
+   public fnj(fob $$0, BooleanConsumer $$1, fzr $$2) {
+      super(wz.c("addServer.title"));
+      this.w = $$0;
+      this.r = $$1;
+      this.s = $$2;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      if (this.q != null) {
-         this.u = fiz.a(this.o, this.q, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.u != null ? this.u.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.n - 40);
-      this.v = this.c(fig.a(this.r, $$0x -> this.d()).a((this.m - 150) / 2, $$4, 150, 20).a());
+   protected void aT_() {
+      this.v = new fit(this.o, this.m / 2 - 100, 66, 200, 20, wz.c("addServer.enterName"));
+      this.v.a(this.s.a);
+      this.v.b($$0 -> this.C());
+      this.d(this.v);
+      this.u = new fit(this.o, this.m / 2 - 100, 106, 200, 20, wz.c("addServer.enterIp"));
+      this.u.f(128);
+      this.u.a(this.s.b);
+      this.u.b($$0 -> this.C());
+      this.d(this.u);
+      this.c(
+         fir.a(fzr.a::a)
+            .a(fzr.a.values())
+            .a(this.s.b())
+            .a(this.m / 2 - 100, this.n / 4 + 72, 200, 20, wz.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
+      );
+      this.c = this.c(fik.a(wz.c("addServer.add"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 18, 200, 20).a());
+      this.c(fik.a(wy.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 18, 200, 20).a());
+      this.C();
    }
 
    @Override
-   public void e() {
-      if (this.w > 0) {
-         this.w--;
-      }
-
-      this.v.j = this.w == 0;
+   protected void aI_() {
+      this.b(this.v);
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 80, 16777215);
-      if (this.u == null) {
-         String $$4 = fnm.a(ad.c());
-         $$0.a(this.o, $$4, this.m / 2, 120, 10526880);
-      } else {
-         this.u.a($$0, this.m / 2, 120);
-      }
+   public void a(fgm $$0, int $$1, int $$2) {
+      String $$3 = this.u.a();
+      String $$4 = this.v.a();
+      this.b($$0, $$1, $$2);
+      this.u.a($$3);
+      this.v.a($$4);
    }
 
-   @Override
-   public boolean aF_() {
-      return this.u != null && this.v.j;
+   private void m() {
+      this.s.a = this.v.a();
+      this.s.b = this.u.a();
+      this.r.accept(true);
    }
 
    @Override
    public void d() {
-      this.s.run();
+      this.l.a(this.w);
+   }
+
+   private void C() {
+      this.c.j = gav.b(this.u.a()) && !this.v.a().isEmpty();
    }
 
    @Override
-   public wy i() {
-      return wx.a(this.k, this.q != null ? this.q : wx.a);
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 17, 16777215);
+      $$0.b(this.o, a, this.m / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.o, b, this.m / 2 - 100 + 1, 94, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
    }
 }

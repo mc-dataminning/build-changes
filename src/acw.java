@@ -1,21 +1,20 @@
-public record acw(wy b, wu.a c) implements zf<abt> {
-   public static final yw<wj, acw> a = yw.a(xa.d, acw::b, wu.a.a, acw::e, acw::new);
+public record acw(xl.a b) implements zg<abu> {
+   public static final yx<vw, acw> a = zg.a(acw::a, acw::new);
 
-   @Override
-   public zh<acw> a() {
-      return agf.C;
+   private acw(vw $$0) {
+      this(xl.a.a($$0));
    }
 
-   public void a(abt $$0) {
+   private void a(vw $$0) {
+      xl.a.a($$0, this.b);
+   }
+
+   @Override
+   public zi<acw> a() {
+      return agg.B;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wu.a e() {
-      return this.c;
    }
 }

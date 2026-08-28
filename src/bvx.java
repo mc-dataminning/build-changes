@@ -1,41 +1,79 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bvx extends bvf<cmi> {
-   private static final int d = 1200;
-   final float c;
+public class bvx<E extends btn & cmi> extends bvh<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<btn, Optional<bwv>> e;
+   private final float f;
 
-   public bvx(float $$0) {
-      super(ImmutableMap.of(ccq.d, ccr.a), 1200);
-      this.c = $$0;
+   public bvx(Function<btn, Optional<bwv>> $$0, float $$1, int $$2) {
+      super(Map.of(ccs.n, cct.c, ccs.m, cct.c, ccs.aP, cct.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected boolean a(aqt $$0, cmi $$1) {
-      return $$1.dU().g().map($$0x -> $$0x == cok.b || $$0x == cok.c || $$0x == cok.d).orElse(true);
+   @Override
+   protected boolean a(aqu $$0, E $$1) {
+      return this.b($$1);
    }
 
-   protected boolean a(aqt $$0, cmi $$1, long $$2) {
-      return $$1.dU().a(ccq.d);
+   @Override
+   protected boolean a(aqu $$0, E $$1, long $$2) {
+      return this.b($$1);
    }
 
-   protected void b(aqt $$0, cmi $$1, long $$2) {
-      bvh.a($$1, $$1.dU().c(ccq.d).get().b(), this.c, 1);
+   @Override
+   protected void d(aqu $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bvj.a($$1, $$1x, this.f, 3));
    }
 
-   protected void c(aqt $$0, cmi $$1, long $$2) {
-      Optional<jl> $$3 = $$1.dU().c(ccq.d);
-      $$3.ifPresent($$1x -> {
-         jd $$2x = $$1x.b();
-         aqt $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            ceq $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
+   @Override
+   protected void c(aqu $$0, E $$1, long $$2) {
+      Optional<bwv> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bwv $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.by());
+         if ($$5 < 3.0) {
+            cuq $$6 = $$1.x().a(0, 1);
+            if (!$$6.e()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof cgk $$7) {
+                  cgl.a((btn)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dU().a(ccs.aP, 60);
             }
-
-            age.c($$0, $$2x);
          }
-      });
-      $$1.dU().b(ccq.d);
+      }
+   }
+
+   private void a(bwv $$0, cuq $$1, aqv $$2) {
+      jd $$3 = $$0.b().e();
+      an.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.x().c()) {
+         return false;
+      } else {
+         Optional<bwv> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
+      }
+   }
+
+   private static exa a(bwv $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
+   }
+
+   public static void a(btn $$0, cuq $$1, exa $$2) {
+      exa $$3 = new exa(0.2F, 0.3F, 0.2F);
+      bvj.a($$0, $$1, $$2, $$3, 0.2F);
+      dcw $$4 = $$0.dP();
+      if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ad.<Float>a(cgk.d, $$4.E_());
+         $$4.a(null, $$0, avp.g, avq.g, 1.0F, $$5);
+      }
    }
 }

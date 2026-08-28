@@ -1,166 +1,189 @@
 public class eoi {
-   private static final int b = 16;
-   public static final int a = Integer.MIN_VALUE;
-   private final int c;
-   private final axb d;
-   private final jd.a e = new jd.a();
-   private final jd.a f = new jd.a();
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-   public eoi(dcw $$0) {
-      this.c = $$0.I_() - 1;
-      int $$1 = $$0.am();
-      int $$2 = ayn.e($$1 - this.c + 1);
-      this.d = new azc($$2, 256);
-   }
+   public eoi(ayw $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
 
-   public void a(duw $$0) {
-      int $$1 = $$0.a();
-      if ($$1 == -1) {
-         this.a(this.c);
-      } else {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
-               this.b(c($$3, $$2), $$4);
-            }
-         }
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
+      }
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
       }
    }
 
-   private int a(duw $$0, int $$1, int $$2, int $$3) {
-      int $$4 = kf.c($$0.g($$1) + 1);
-      jd.a $$5 = this.e.d($$2, $$4, $$3);
-      jd.a $$6 = this.f.a($$5, ji.a);
-      dta $$7 = dfy.a.o();
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
 
-      for (int $$8 = $$1; $$8 >= 0; $$8--) {
-         dvh $$9 = $$0.b($$8);
-         if ($$9.c()) {
-            $$7 = dfy.a.o();
-            int $$10 = $$0.g($$8);
-            $$5.q(kf.c($$10));
-            $$6.q($$5.v() - 1);
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
+
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
+      } else {
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
+      }
+
+      return $$6;
+   }
+
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = ayo.a($$0 + $$2);
+      int $$4 = ayo.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
+      } else {
+         $$10 = 0;
+         $$11 = 1;
+      }
+
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = ayo.a($$0 + $$4);
+      int $$6 = ayo.a($$1 + $$4);
+      int $$7 = ayo.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          } else {
-            for (int $$11 = 15; $$11 >= 0; $$11--) {
-               dta $$12 = $$9.a($$2, $$11, $$3);
-               if (a($$0, $$5, $$7, $$6, $$12)) {
-                  return $$5.v();
-               }
-
-               $$7 = $$12;
-               $$5.g($$6);
-               $$6.c(ji.a);
-            }
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          }
-      }
-
-      return this.c;
-   }
-
-   public boolean a(dca $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 + 1;
-      int $$5 = c($$1, $$3);
-      int $$6 = this.b($$5);
-      if ($$4 < $$6) {
-         return false;
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
       } else {
-         jd $$7 = this.e.d($$1, $$2 + 1, $$3);
-         dta $$8 = $$0.a_($$7);
-         jd $$9 = this.f.d($$1, $$2, $$3);
-         dta $$10 = $$0.a_($$9);
-         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return true;
-         } else {
-            jd $$11 = this.e.d($$1, $$2 - 1, $$3);
-            dta $$12 = $$0.a_($$11);
-            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
-         }
-      }
-   }
-
-   private boolean a(dca $$0, int $$1, int $$2, jd $$3, dta $$4, jd $$5, dta $$6) {
-      int $$7 = $$3.v();
-      if (a($$0, $$3, $$4, $$5, $$6)) {
-         if ($$7 > $$2) {
-            this.b($$1, $$7);
-            return true;
-         }
-      } else if ($$7 == $$2) {
-         this.b($$1, this.a($$0, $$5, $$6));
-         return true;
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
       }
 
-      return false;
-   }
-
-   private int a(dca $$0, jd $$1, dta $$2) {
-      jd.a $$3 = this.e.g($$1);
-      jd.a $$4 = this.f.a($$1, ji.a);
-      dta $$5 = $$2;
-
-      while ($$4.v() >= this.c) {
-         dta $$6 = $$0.a_($$4);
-         if (a($$0, $$3, $$5, $$4, $$6)) {
-            return $$3.v();
-         }
-
-         $$5 = $$6;
-         $$3.g($$4);
-         $$4.c(ji.a);
-      }
-
-      return this.c;
-   }
-
-   private static boolean a(dca $$0, jd $$1, dta $$2, jd $$3, dta $$4) {
-      if ($$4.b($$0, $$3) != 0) {
-         return true;
-      } else {
-         exp $$5 = eop.a($$0, $$1, $$2, ji.a);
-         exp $$6 = eop.a($$0, $$3, $$4, ji.b);
-         return exm.b($$5, $$6);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = this.b(c($$0, $$1));
-      return this.c($$2);
-   }
-
-   public int a() {
-      int $$0 = Integer.MIN_VALUE;
-
-      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
-         int $$2 = this.d.a($$1);
-         if ($$2 > $$0) {
-            $$0 = $$2;
-         }
-      }
-
-      return this.c($$0 + this.c);
-   }
-
-   private void a(int $$0) {
-      int $$1 = $$0 - this.c;
-
-      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
-         this.d.b($$2, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      this.d.b($$0, $$1 - this.c);
-   }
-
-   private int b(int $$0) {
-      return this.d.a($$0) + this.c;
-   }
-
-   private int c(int $$0) {
-      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

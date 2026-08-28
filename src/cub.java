@@ -1,14 +1,15 @@
-public class cub extends cvu {
-   public cub(dfw $$0, dfw $$1, cuj.a $$2) {
-      super($$2, $$0, $$1, ji.b);
+public class cub extends cul implements cvv {
+   public cub(cul.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dcx $$0, dta $$1, jd $$2) {
-      if ($$1.b() instanceof dow $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(dcw $$0, drs $$1, boolean $$2, cmx $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aD_(), avp.kA, avq.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

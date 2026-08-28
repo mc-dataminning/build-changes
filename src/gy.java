@@ -13,15 +13,15 @@ public class gy implements gr {
    }
 
    @Override
-   public eww a(et $$0) {
-      eww $$1 = $$0.d();
-      return new eww(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public exa a(et $$0) {
+      exa $$1 = $$0.d();
+      return new exa(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public ewv b(et $$0) {
-      ewv $$1 = $$0.k();
-      return new ewv((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ewz b(et $$0) {
+      ewz $$1 = $$0.k();
+      return new ewz((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gy implements gr {
       return new gy(new gx(false, $$0), new gx(false, $$1), new gx(false, $$2));
    }
 
-   public static gy a(ewv $$0) {
+   public static gy a(ewz $$0) {
       return new gy(new gx(false, (double)$$0.i), new gx(false, (double)$$0.j), new gx(true, 0.0));
    }
 

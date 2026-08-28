@@ -1,56 +1,42 @@
-public class gdn extends gdh {
-   private float a;
+public class gdn extends gcj {
+   private final bsr a;
+   private int b;
+   private final int D;
+   private final lk E;
 
-   gdn(fyz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   public gdn(fzd $$0, bsr $$1, lk $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   @Override
-   public gcl b() {
-      return gcl.b;
+   public gdn(fzd $$0, bsr $$1, lk $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.ds());
+   }
+
+   private gdn(fzd $$0, bsr $$1, lk $$2, int $$3, exa $$4) {
+      super($$0, $$1.du(), $$1.e(0.5), $$1.dA(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * ayn.b(this.a));
-         this.l = this.l + (double)(0.6F * ayn.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jd.a(this.g, this.h, this.i)).a(awj.a) || this.m) {
-            this.k();
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
-
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements gck<lq> {
-      private final gdc a;
-
-      public a(gdc $$0) {
-         this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdn $$8 = new gdn($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

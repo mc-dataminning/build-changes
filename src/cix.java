@@ -1,103 +1,125 @@
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class cix extends civ {
-   protected static final Predicate<bsq> c = $$0 -> $$0 instanceof cix;
-   protected ji d;
+public abstract class cix extends bsr {
+   private static final Logger c = LogUtils.getLogger();
+   private int d;
+   protected jd b;
 
-   protected cix(bsw<? extends cix> $$0, dcu $$1) {
+   protected cix(bsx<? extends cix> $$0, dcw $$1) {
       super($$0, $$1);
-      this.d = ji.d;
    }
 
-   protected cix(bsw<? extends cix> $$0, dcu $$1, jd $$2) {
+   protected cix(bsx<? extends cix> $$0, dcw $$1, jd $$2) {
       this($$0, $$1);
       this.b = $$2;
    }
 
-   protected void a(ji $$0) {
-      Objects.requireNonNull($$0);
-      Validate.isTrue($$0.o().d());
-      this.d = $$0;
-      this.s((float)(this.d.e() * 90));
-      this.O = this.dG();
-      this.p();
-   }
+   protected abstract void p();
 
    @Override
-   protected final void p() {
-      if (this.d != null) {
-         ewr $$0 = this.a(this.b, this.d);
-         eww $$1 = $$0.f();
-         this.o($$1.c, $$1.d, $$1.e);
-         this.a($$0);
-      }
-   }
-
-   protected abstract ewr a(jd var1, ji var2);
-
-   @Override
-   public boolean s() {
-      if (!this.dQ().g(this)) {
-         return false;
-      } else {
-         boolean $$0 = jd.a(this.B()).allMatch($$0x -> {
-            dta $$1 = this.dQ().a_($$0x);
-            return $$1.e() || dhy.m($$1);
-         });
-         return !$$0 ? false : this.dQ().a(this, this.cL(), c).isEmpty();
-      }
-   }
-
-   protected ewr B() {
-      return this.cL().a(this.d.m().mul(-0.5F)).h(1.0E-7);
-   }
-
-   @Override
-   public ji cI() {
-      return this.d;
-   }
-
-   public abstract void C();
-
-   @Override
-   public cjf a(cuo $$0, float $$1) {
-      cjf $$2 = new cjf(
-         this.dQ(), this.dv() + (double)((float)this.d.j() * 0.15F), this.dx() + (double)$$1, this.dB() + (double)((float)this.d.l() * 0.15F), $$0
-      );
-      $$2.v();
-      this.dQ().b($$2);
-      return $$2;
-   }
-
-   @Override
-   public float a(dmk $$0) {
-      if (this.d.o() != ji.a.b) {
-         switch ($$0) {
-            case c:
-               this.d = this.d.g();
-               break;
-            case d:
-               this.d = this.d.i();
-               break;
-            case b:
-               this.d = this.d.h();
+   public void l() {
+      if (!this.dP().B) {
+         this.ax();
+         if (this.d++ == 100) {
+            this.d = 0;
+            if (!this.dK() && !this.s()) {
+               this.aq();
+               this.b(null);
+            }
          }
       }
+   }
 
-      float $$1 = ayn.g(this.dG());
+   public abstract boolean s();
 
-      return switch ($$0) {
-         case c -> $$1 + 180.0F;
-         case d -> $$1 + 90.0F;
-         case b -> $$1 + 270.0F;
-         default -> $$1;
-      };
+   @Override
+   public boolean bA() {
+      return true;
    }
 
    @Override
-   public float a(dkt $$0) {
-      return this.a($$0.a(this.d));
+   public boolean u(bsr $$0) {
+      if ($$0 instanceof cmx $$1) {
+         return !this.dP().a($$1, this.b) ? true : this.a(this.dQ().a($$1), 0.0F);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(brk $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else {
+         if (!this.dK() && !this.dP().B) {
+            this.ap();
+            this.bw();
+            this.b($$0.d());
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void a(bts $$0, exa $$1) {
+      if (!this.dP().B && !this.dK() && $$1.g() > 0.0) {
+         this.ap();
+         this.b(null);
+      }
+   }
+
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.dP().B && !this.dK() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.ap();
+         this.b(null);
+      }
+   }
+
+   @Override
+   public void b(ub $$0) {
+      jd $$1 = this.t();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(ub $$0) {
+      jd $$1 = new jd($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dp(), 16.0)) {
+         c.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.b = $$1;
+      }
+   }
+
+   public abstract void b(@Nullable bsr var1);
+
+   @Override
+   protected boolean bC() {
+      return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.b = jd.a($$0, $$1, $$2);
+      this.p();
+      this.av = true;
+   }
+
+   public jd t() {
+      return this.b;
+   }
+
+   @Override
+   public void a(aqu $$0, btm $$1) {
+   }
+
+   @Override
+   public void i_() {
    }
 }

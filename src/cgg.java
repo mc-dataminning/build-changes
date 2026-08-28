@@ -1,76 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-
-public final class cgg {
-   public static final Codec<cgg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akq.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
-               akq.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
-               akq.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
-               kb.a(lu.aF).fieldOf("biomes").forGetter(cgg::d)
-            )
-            .apply($$0, cgg::new)
-   );
-   public static final yw<wj, cgg> b = yw.a(akq.b, cgg::a, akq.b, cgg::b, akq.b, cgg::c, yu.c(lu.aF), cgg::d, cgg::new);
-   public static final Codec<jm<cgg>> c = akm.a(lu.m, a);
-   public static final yw<wj, jm<cgg>> d = yu.a(lu.m, b);
-   private final akq e;
-   private final akq f;
-   private final akq g;
-   private final akq h;
-   private final akq i;
-   private final akq j;
-   private final jq<ddu> k;
-
-   public cgg(akq $$0, akq $$1, akq $$2, jq<ddu> $$3) {
-      this.e = $$0;
-      this.h = a($$0);
-      this.f = $$1;
-      this.i = a($$1);
-      this.g = $$2;
-      this.j = a($$2);
-      this.k = $$3;
-   }
-
-   private static akq a(akq $$0) {
-      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
-   }
-
-   public akq a() {
-      return this.h;
-   }
-
-   public akq b() {
-      return this.i;
-   }
-
-   public akq c() {
-      return this.j;
-   }
-
-   public jq<ddu> d() {
-      return this.k;
+public abstract class cgg extends btw {
+   protected cgg(bsx<? extends cgg> $$0, dcw $$1) {
+      super($$0, $$1);
+      this.a(ept.j, 0.0F);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
+   public boolean a(dcz $$0) {
+      return $$0.f(this);
+   }
+
+   @Override
+   public int R() {
+      return 120;
+   }
+
+   @Override
+   protected int eh() {
+      return 1 + this.dP().z.a(3);
+   }
+
+   protected void b(int $$0) {
+      if (this.bE() && !this.bi()) {
+         this.j($$0 - 1);
+         if (this.cm() == -20) {
+            this.j(0);
+            this.a(this.dQ().i(), 2.0F);
+         }
       } else {
-         return !($$0 instanceof cgg $$1)
-            ? false
-            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+         this.j(300);
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = 1;
-      $$0 = 31 * $$0 + this.e.hashCode();
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.k.hashCode();
+   public void aw() {
+      int $$0 = this.cm();
+      super.aw();
+      this.b($$0);
+   }
+
+   @Override
+   public boolean cD() {
+      return false;
+   }
+
+   @Override
+   public boolean y() {
+      return false;
+   }
+
+   public static boolean c(bsx<? extends cgg> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
+      int $$5 = $$1.z_();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awk.a) && $$1.a_($$3.d()).a(dga.G);
    }
 }

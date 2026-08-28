@@ -1,34 +1,11 @@
-public class bvi implements bwt {
-   private final jd a;
-   private final eww b;
+public interface bvi<E extends btn> {
+   bvh.a a();
 
-   public bvi(jd $$0) {
-      this.a = $$0.i();
-      this.b = eww.b($$0);
-   }
+   boolean e(aqu var1, E var2, long var3);
 
-   public bvi(eww $$0) {
-      this.a = jd.a((jw)$$0);
-      this.b = $$0;
-   }
+   void f(aqu var1, E var2, long var3);
 
-   @Override
-   public eww a() {
-      return this.b;
-   }
+   void g(aqu var1, E var2, long var3);
 
-   @Override
-   public jd b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(btl $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
-   }
+   String b();
 }

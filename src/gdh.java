@@ -1,45 +1,54 @@
-public abstract class gdh extends gcu {
-   protected gqf E;
-
-   protected gdh(fyz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gdh(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gqf $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+public class gdh extends gcx {
+   gdh(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gdg $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axy.b.b($$7), (float)axy.b.c($$7), (float)axy.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(gdc $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(gdc $$0) {
+   public void a() {
+      super.a();
       if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(jd.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
+      }
+   }
+
+   public static class a implements gco<lq> {
+      private final gdg a;
+
+      public a(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdh($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gco<lq> {
+      private final gdg a;
+
+      public b(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdh($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

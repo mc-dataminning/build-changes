@@ -1,120 +1,33 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.mojang.serialization.Codec;
 
-public interface ffz {
-   ffz a = new ffz.a(0.0F);
-   ffz b = new ffz.a(1.0F);
+public enum ffz implements ayr, azk {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   float a();
+   public static final Codec<ffz> d = azk.a(ffz::values);
+   private final int e;
+   private final String f;
+   private final String g;
 
-   float a(boolean var1);
-
-   float b();
-
-   public static class a implements ffz {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
-
-      @Override
-      public float b() {
-         return this.c;
-      }
+   private ffz(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static class b implements ffz {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
+   @Override
+   public String c() {
+      return this.f;
+   }
 
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
-      }
+   @Override
+   public int a() {
+      return this.e;
+   }
 
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
-
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
-
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
-         } else {
-            this.d();
-         }
-      }
-
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
-         }
-
-         this.k = true;
-      }
-
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
-         }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
-      }
+   @Override
+   public String b() {
+      return this.g;
    }
 }

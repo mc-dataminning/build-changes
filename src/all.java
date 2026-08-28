@@ -1,43 +1,113 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record all(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aum d) {
-   private static final String e = "usercache.json";
+public class all extends brc {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static all a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      aum $$4 = new aum($$3, new File($$1, "usercache.json"));
-      return new all($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public all(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   @Nullable
-   public aza a() {
-      return aza.a(this.b, ServicesKeyType.PROFILE_KEY);
+   public boolean a() {
+      return this.j > 0L;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
+   }
+
+   private void n() {
+      this.l.ah().a(afx.a(this));
+   }
+
+   private void o() {
+      this.l.ah().a(afy.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
+      }
    }
 
    public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public MinecraftSessionService c() {
-      return this.a;
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public ServicesKeySet d() {
-      return this.b;
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
    }
 
-   public GameProfileRepository e() {
-      return this.c;
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)azp.b;
+      int $$2 = (int)((double)(azp.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aI().a(() -> wz.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.F();
    }
 
-   public aum f() {
-      return this.d;
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.F();
+      this.n();
+   }
+
+   public void a(aqv $$0) {
+      $$0.c.b(afx.a(this));
+      $$0.c.b(afy.a(this));
    }
 }

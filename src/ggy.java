@@ -1,30 +1,50 @@
-public class ggy implements ggt<dql> {
-   private static final float a = 0.375F;
-   private final glb b;
+@FunctionalInterface
+public interface ggy<T extends dqh> {
+   ggx<T> create(ggy.a var1);
 
-   public ggy(ggu.a $$0) {
-      this.b = $$0.d();
-   }
+   public static class a {
+      private final ggw a;
+      private final gfr b;
+      private final glf c;
+      private final gkf d;
+      private final fye e;
+      private final fhv f;
 
-   public void a(dql $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
-      ji $$6 = $$0.n().c(dgk.f);
-      jv<cuo> $$7 = $$0.b();
-      int $$8 = (int)$$0.az_().a();
+      public a(ggw $$0, gfr $$1, glf $$2, gkf $$3, fye $$4, fhv $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cuo $$10 = $$7.get($$9);
-         if ($$10 != cuo.l) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            ji $$11 = ji.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cul.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
-         }
+      public ggw a() {
+         return this.a;
+      }
+
+      public gfr b() {
+         return this.b;
+      }
+
+      public gkf c() {
+         return this.d;
+      }
+
+      public glf d() {
+         return this.c;
+      }
+
+      public fye e() {
+         return this.e;
+      }
+
+      public fyi a(fyg $$0) {
+         return this.e.a($$0);
+      }
+
+      public fhv f() {
+         return this.f;
       }
    }
 }

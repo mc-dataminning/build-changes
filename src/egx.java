@@ -1,23 +1,37 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class egx<P extends egw> {
-   public static final egx<egy> a = a("trunk_vine", egy.a);
-   public static final egx<egv> b = a("leave_vine", egv.a);
-   public static final egx<egu> c = a("cocoa", egu.a);
-   public static final egx<egt> d = a("beehive", egt.a);
-   public static final egx<egr> e = a("alter_ground", egr.a);
-   public static final egx<egs> f = a("attached_to_leaves", egs.a);
-   private final MapCodec<P> g;
+public class egx extends egz {
+   public static final MapCodec<egx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(egx::new, $$0 -> $$0.b);
+   private final float b;
 
-   private static <P extends egw> egx<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.X, $$0, new egx<>($$1));
+   public egx(float $$0) {
+      this.b = $$0;
    }
 
-   private egx(MapCodec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected eha<?> a() {
+      return eha.c;
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   @Override
+   public void a(egz.a $$0) {
+      ayw $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<jd> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (ji $$3x : ji.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  ji $$4 = $$3x.g();
+                  jd $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dga.fC.o().a(dhf.c, Integer.valueOf($$1.a(3))).a(dhf.aE, $$3x));
+                  }
+               }
+            }
+         });
+      }
    }
 }

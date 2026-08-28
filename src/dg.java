@@ -8,20 +8,20 @@ public class dg extends dv<dg.a> {
       return dg.a.a;
    }
 
-   public void a(aqu $$0, akp<erq> $$1) {
+   public void a(aqv $$0, akq<eru> $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static record a(Optional<bg> b, akp<erq> c) implements dv.a {
+   public static record a(Optional<bg> b, akq<eru> c) implements dv.a {
       public static final Codec<dg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(dg.a::a), akp.a(lu.bc).fieldOf("loot_table").forGetter(dg.a::b)).apply($$0, dg.a::new)
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(dg.a::a), akq.a(lu.bc).fieldOf("loot_table").forGetter(dg.a::b)).apply($$0, dg.a::new)
       );
 
-      public static ao<dg.a> a(akp<erq> $$0) {
+      public static ao<dg.a> a(akq<eru> $$0) {
          return an.Q.a(new dg.a(Optional.empty(), $$0));
       }
 
-      public boolean b(akp<erq> $$0) {
+      public boolean b(akq<eru> $$0) {
          return this.c == $$0;
       }
 
@@ -30,7 +30,7 @@ public class dg extends dv<dg.a> {
          return this.b;
       }
 
-      public akp<erq> b() {
+      public akq<eru> b() {
          return this.c;
       }
    }

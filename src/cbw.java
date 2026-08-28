@@ -1,16 +1,30 @@
-import javax.annotation.Nullable;
+public class cbw extends cam {
+   private final btw a;
 
-public class cbw extends cbx {
-   public cbw(btu $$0, double $$1) {
-      super($$0, $$1);
+   public cbw(btw $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
    @Override
-   protected eww h() {
-      eww $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      eww $$2 = cej.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cef.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.a.aF() && !this.a.dP().b_(this.a.dp()).a(awk.a);
+   }
+
+   @Override
+   public void d() {
+      jd $$0 = null;
+
+      for (jd $$2 : jd.b(
+         ayo.a(this.a.du() - 2.0), ayo.a(this.a.dw() - 2.0), ayo.a(this.a.dA() - 2.0), ayo.a(this.a.du() + 2.0), this.a.dv(), ayo.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awk.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.J().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

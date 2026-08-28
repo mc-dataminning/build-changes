@@ -1,103 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djz extends dfi {
-   public static final MapCodec<djz> a = b(djz::new);
-   public static final dtr b = dtq.n;
+public class djz extends dhu {
+   public static final MapCodec<djz> i = b(djz::new);
 
    @Override
-   public MapCodec<djz> a() {
-      return a;
+   public MapCodec<? extends djz> a() {
+      return i;
    }
 
-   protected djz(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   protected djz(dtb.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public void a(dcu $$0, jd $$1, dta $$2, @Nullable btl $$3, cuo $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cxf $$5 = $$4.a(kq.O, cxf.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+   public dtc a(cyd $$0) {
+      dcc $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      epc $$3 = $$0.q().b_($$0.a());
+      jd $$4 = $$2.f();
+      jd $$5 = $$2.g();
+      jd $$6 = $$2.h();
+      jd $$7 = $$2.i();
+      dtc $$8 = $$1.a_($$4);
+      dtc $$9 = $$1.a_($$5);
+      dtc $$10 = $$1.a_($$6);
+      dtc $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ji.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ji.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ji.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ji.e))))
+         .a(e, Boolean.valueOf($$3.a() == epd.c));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
       }
+
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof drh $$5) {
-         $$5.l();
-         return bqq.a($$1.B);
-      } else {
-         return bqq.e;
-      }
+   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return exq.a();
    }
 
    @Override
-   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
-      if ($$1.c(b)) {
-         return bqs.d;
-      } else {
-         cuo $$7 = $$4.b($$5);
-         bqs $$8 = cus.a($$2, $$3, $$7, $$4);
-         return !$$8.a() ? bqs.d : $$8;
-      }
-   }
-
-   @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof drh $$5) {
-            $$5.l();
+   protected boolean a(dtc $$0, dtc $$1, ji $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new drh($$0, $$1);
-   }
-
-   @Override
-   public boolean e_(dta $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dta $$0, dca $$1, jd $$2, ji $$3) {
-      if ($$1.c_($$2) instanceof drh $$4 && $$4.j().a()) {
-         return 15;
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
       }
 
-      return 0;
+      return super.a($$0, $$1, $$2);
+   }
+
+   public final boolean a(dtc $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof djz || $$0.a(awe.L);
    }
 
    @Override
-   protected boolean c_(dta $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dta $$0, dcu $$1, jd $$2) {
-      return $$1.c_($$2) instanceof drh $$3 ? $$3.j().d() : 0;
-   }
-
-   @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return $$1.c(b) ? a($$2, dqh.e, drh::a) : null;
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

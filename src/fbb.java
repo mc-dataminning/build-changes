@@ -1,111 +1,261 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
 import org.lwjgl.system.MemoryUtil;
 
-public class fbb implements AutoCloseable {
-   private final faz.a a;
-   @Nullable
-   private faz.a b;
-   private final fbb.a c;
+public class fbb implements fbk {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fbd d;
+   private long e = -1L;
+   private int f;
+   private final fbl g;
+   private final fbl.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public fbb(faz.a $$0, fbb.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
-   }
-
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fbh $$2) {
-      int $$3 = $$2.a(fbi.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+   public fbb(fbd $$0, fbl.c $$1, fbl $$2) {
+      if (!$$2.b(fbm.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
       } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
-
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
-         }
-
-         return $$8;
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fbm.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fbe.c;
+         boolean $$4 = $$2 == fbe.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
-   public ByteBuffer a() {
-      return this.a.a();
+   @Nullable
+   public fbf a() {
+      this.c();
+      this.f();
+      fbf $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
+   }
+
+   public fbf b() {
+      fbf $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
+   }
+
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
    }
 
    @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
-   }
-
-   public fbb.a c() {
-      return this.c;
-   }
-
-   @Nullable
-   public fbb.b a(faz $$0, fbk $$1) {
-      if (this.c.d() != fbh.c.h) {
+   private fbf d() {
+      if (this.f == 0) {
          return null;
       } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fbb.b $$3 = new fbb.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
+         fbd.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fbl.b $$2 = fbl.b.a(this.f);
+            return new fbf($$0, new fbf.a(this.g, this.f, $$1, this.h, $$2));
+         }
+      }
+   }
+
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
+   }
+
+   private long a(fbm $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fbm.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fbl.c.a || this.h == fbl.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axy.a.g($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
       }
    }
 
    @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
+   public fbk a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fbm.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fbk a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fbm.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
       }
+
+      return this;
    }
 
-   public static record a(fbh a, int b, int c, fbh.c d, fbh.b e) {
+   @Override
+   public fbk a(int $$0) {
+      long $$1 = this.a(fbm.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
    }
 
-   public static record b(Vector3f[] a, fbh.b b) {
-      @Nullable
-      public faz.a a(faz $$0, fbk $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
+   @Override
+   public fbk a(float $$0, float $$1) {
+      long $$2 = this.a(fbm.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
 
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
+      return this;
+   }
+
+   @Override
+   public fbk a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fbm.f);
+   }
+
+   @Override
+   public fbk b(int $$0) {
+      long $$1 = this.a(fbm.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbk b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fbm.g);
+   }
+
+   @Override
+   public fbk c(int $$0) {
+      long $$1 = this.a(fbm.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fbk a(short $$0, short $$1, fbm $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbk b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fbm.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(ayo.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
          }
 
-         return $$0.a();
-      }
-
-      private IntConsumer a(long $$0, fbh.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
-
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fbk.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

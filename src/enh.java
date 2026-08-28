@@ -1,9 +1,22 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class enh {
-   public static final Codec<enh> c = lt.m.r().dispatch("predicate_type", enh::a, eni::codec);
+public class enh extends eno {
+   public final awu<dfy> a;
+   public static final MapCodec<enh> b = awu.b(lu.f).xmap(enh::new, $$0 -> $$0.a).fieldOf("value");
 
-   public abstract boolean a(dta var1, ayv var2);
+   public enh(awu<dfy> $$0) {
+      this.a = $$0;
+   }
 
-   protected abstract eni<?> a();
+   @Nullable
+   @Override
+   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
+      return ecd.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected enq<?> a() {
+      return enq.n;
+   }
 }

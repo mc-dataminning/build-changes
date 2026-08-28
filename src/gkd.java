@@ -1,60 +1,31 @@
-@FunctionalInterface
-public interface gkd<T extends bsq> {
-   gkc<T> create(gkd.a var1);
+public class gkd extends gln<cjt, fvg<cjt>> {
+   private static final akr a = akr.b("textures/entity/enderman/enderman.png");
+   private final ayw i = ayw.a();
 
-   public static class a {
-      private final gkb a;
-      private final glb b;
-      private final gfn c;
-      private final gep d;
-      private final aud e;
-      private final fya f;
-      private final fhr g;
+   public gkd(gkh.a $$0) {
+      super($$0, new fvg<>($$0.a(fyh.Y)), 0.5F);
+      this.a(new god<>(this));
+      this.a(new gnu(this, $$0.c()));
+   }
 
-      public a(gkb $$0, glb $$1, gfn $$2, gep $$3, aud $$4, fya $$5, fhr $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public void a(cjt $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      dtc $$6 = $$0.gl();
+      fvg<cjt> $$7 = this.a();
+      $$7.a = $$6 != null;
+      $$7.b = $$0.gm();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public exa a(cjt $$0, float $$1) {
+      if ($$0.gm()) {
+         double $$2 = 0.02 * (double)$$0.ec();
+         return new exa(this.i.k() * $$2, 0.0, this.i.k() * $$2);
+      } else {
+         return super.a($$0, $$1);
       }
+   }
 
-      public gkb a() {
-         return this.a;
-      }
-
-      public glb b() {
-         return this.b;
-      }
-
-      public gfn c() {
-         return this.c;
-      }
-
-      public gep d() {
-         return this.d;
-      }
-
-      public aud e() {
-         return this.e;
-      }
-
-      public fya f() {
-         return this.f;
-      }
-
-      public gsm g() {
-         return this.c.a().a();
-      }
-
-      public fye a(fyc $$0) {
-         return this.f.a($$0);
-      }
-
-      public fhr h() {
-         return this.g;
-      }
+   public akr a(cjt $$0) {
+      return a;
    }
 }

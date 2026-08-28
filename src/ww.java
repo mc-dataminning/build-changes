@@ -1,81 +1,95 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class ww {
+public record ww(String c, List<ww.a> d, xw e) {
    public static final Codec<ww> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ww.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, ww::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(ww::a),
+               ww.a.d.listOf().fieldOf("parameters").forGetter(ww::b),
+               xw.b.b.optionalFieldOf("style", xw.a).forGetter(ww::c)
+            )
+            .apply($$0, ww::new)
    );
-   private final ww.a b;
-   private final String c;
+   public static final yx<wk, ww> b = yx.a(yv.l, ww::a, ww.a.e.a(yv.a()), ww::b, xw.b.c, ww::c, ww::new);
 
-   public ww(ww.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static ww a(String $$0) {
+      return new ww($$0, List.of(ww.a.a, ww.a.c), xw.a);
    }
 
-   public ww.a a() {
-      return this.b;
+   public static ww b(String $$0) {
+      xw $$1 = xw.a.a(n.h).b(true);
+      return new ww($$0, List.of(ww.a.a, ww.a.c), $$1);
    }
 
-   public String b() {
+   public static ww c(String $$0) {
+      xw $$1 = xw.a.a(n.h).b(true);
+      return new ww($$0, List.of(ww.a.b, ww.a.c), $$1);
+   }
+
+   public static ww d(String $$0) {
+      return new ww($$0, List.of(ww.a.b, ww.a.a, ww.a.c), xw.a);
+   }
+
+   public wz a(wz $$0, wv.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return wz.a(this.c, $$2).c(this.e);
+   }
+
+   private wz[] b(wz $$0, wv.a $$1) {
+      wz[] $$2 = new wz[this.d.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         ww.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ww $$1 = (ww)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public List<ww.a> b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public xw c() {
+      return this.e;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+   public static enum a implements azk {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(wy.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
 
-   public static enum a implements azj {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+      private static final IntFunction<ww.a> f = axe.a($$0 -> $$0.g, values(), axe.a.a);
+      public static final Codec<ww.a> d = azk.a(ww.a::values);
+      public static final yx<ByteBuf, ww.a> e = yv.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final ww.a.a i;
 
-      public static final MapCodec<ww.a> g = azj.a(ww.a::values).fieldOf("action");
-      public static final MapCodec<ww.a> h = g.validate(ww.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      private a(final int $$0, final String $$1, final ww.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      public boolean a() {
-         return this.i;
+      public wz a(wz $$0, wv.a $$1) {
+         return this.i.select($$0, $$1);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.h;
       }
 
-      public static DataResult<ww.a> a(ww.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public interface a {
+         wz select(wz var1, wv.a var2);
       }
    }
 }

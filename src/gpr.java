@@ -1,6 +1,6 @@
-import java.io.IOException;
-import java.nio.file.Path;
+import javax.annotation.Nullable;
 
+@Deprecated
 public interface gpr {
-   void a(akq var1, Path var2) throws IOException;
+   float call(cuq var1, @Nullable fzd var2, @Nullable btn var3, int var4);
 }

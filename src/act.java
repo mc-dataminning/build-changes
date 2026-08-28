@@ -1,68 +1,33 @@
-import java.util.Optional;
+import java.util.List;
 
-public record act(int b, jm<brl> c, int d, int e, Optional<eww> f) implements zf<abt> {
-   public static final yw<wj, act> a = zf.a(act::a, act::new);
+public record act(act.a b, List<String> c) implements zg<abu> {
+   public static final yx<vw, act> a = zg.a(act::a, act::new);
 
-   public act(bsq $$0, brj $$1) {
-      this($$0.an(), $$1.k(), $$1.d() != null ? $$1.d().an() : -1, $$1.c() != null ? $$1.c().an() : -1, Optional.ofNullable($$1.i()));
+   private act(vw $$0) {
+      this($$0.b(act.a.class), $$0.a(vw::p));
    }
 
-   private act(wj $$0) {
-      this($$0.l(), brl.c.decode($$0), a((vv)$$0), a((vv)$$0), $$0.b($$0x -> new eww($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
-   }
-
-   private static void a(vv $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int a(vv $$0) {
-      return $$0.l() - 1;
-   }
-
-   private void a(wj $$0) {
-      $$0.c(this.b);
-      brl.c.encode($$0, this.c);
-      a($$0, this.d);
-      a($$0, this.e);
-      $$0.a(this.f, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vw::a);
    }
 
    @Override
-   public zh<act> a() {
-      return agf.z;
+   public zi<act> a() {
+      return agg.y;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public brj a(dcu $$0) {
-      if (this.f.isPresent()) {
-         return new brj(this.c, this.f.get());
-      } else {
-         bsq $$1 = $$0.a(this.d);
-         bsq $$2 = $$0.a(this.e);
-         return new brj(this.c, $$2, $$1);
-      }
-   }
-
-   public jm<brl> e() {
+   public List<String> e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public Optional<eww> h() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

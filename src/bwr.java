@@ -1,85 +1,124 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bwr {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public class bwr extends bvh<btp> {
+   private static final int c = 40;
+   private int d;
+   @Nullable
+   private epq e;
+   @Nullable
+   private jd f;
+   private float g;
 
-   public static bvg<btu> a() {
-      return bys.a(
-         (Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$0 -> $$0.group($$0.b(ccq.i), $$0.c(ccq.m), $$0.a(ccq.n), $$0.a(ccq.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.E_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<btl> $$8 = $$0.b($$1);
-                        Optional<btl> $$9 = $$8.stream().filter($$1xx -> a((btl)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<btl> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              eww $$11 = cek.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(jd.a((jw)$$11))) {
-                                 $$2.a(new cct($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public bwr() {
+      this(150, 250);
    }
 
-   private static void a(byt<?, btl> $$0, byt<?, bwt> $$1, byt<?, cct> $$2, btl $$3) {
-      $$0.a($$3);
-      $$1.a(new bvq($$3, true));
-      $$2.a(new cct(new bvq($$3, false), 0.6F, 1));
+   public bwr(int $$0, int $$1) {
+      super(ImmutableMap.of(ccs.E, cct.c, ccs.t, cct.b, ccs.m, cct.a), $$0, $$1);
    }
 
-   private static Optional<btl> a(List<btl> $$0) {
-      Map<btl, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   protected boolean a(aqu $$0, btp $$1) {
+      if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         buq<?> $$2 = $$1.dU();
+         ccv $$3 = $$2.c(ccs.m).get();
+         boolean $$4 = this.a($$1, $$3);
+         if (!$$4 && this.a($$1, $$3, $$0.Z())) {
+            this.f = $$3.a().b();
+            return true;
+         } else {
+            $$2.b(ccs.m);
+            if ($$4) {
+               $$2.b(ccs.E);
+            }
+
+            return false;
+         }
+      }
    }
 
-   private static Map<btl, Integer> b(List<btl> $$0) {
-      Map<btl, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bwr::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   protected boolean a(aqu $$0, btp $$1, long $$2) {
+      if (this.e != null && this.f != null) {
+         Optional<ccv> $$3 = $$1.dU().c(ccs.m);
+         boolean $$4 = $$3.<Boolean>map(bwr::a).orElse(false);
+         cda $$5 = $$1.N();
+         return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
+      } else {
+         return false;
+      }
    }
 
-   private static btl a(btl $$0) {
-      return $$0.dU().c(ccq.q).get();
+   protected void b(aqu $$0, btp $$1, long $$2) {
+      if ($$1.dU().a(ccs.m) && !this.a($$1, $$1.dU().c(ccs.m).get()) && $$1.N().r()) {
+         this.d = $$0.E_().a(40);
+      }
+
+      $$1.N().n();
+      $$1.dU().b(ccs.m);
+      $$1.dU().b(ccs.t);
+      this.e = null;
    }
 
-   private static boolean b(btl $$0) {
-      return $$0.dU().c(ccq.q).isPresent();
+   protected void c(aqu $$0, btp $$1, long $$2) {
+      $$1.dU().a(ccs.t, this.e);
+      $$1.N().a(this.e, (double)this.g);
    }
 
-   private static boolean a(btl $$0, btl $$1) {
-      return $$1.dU().c(ccq.q).filter($$1x -> $$1x == $$0).isPresent();
+   protected void d(aqu $$0, btp $$1, long $$2) {
+      epq $$3 = $$1.N().j();
+      buq<?> $$4 = $$1.dU();
+      if (this.e != $$3) {
+         this.e = $$3;
+         $$4.a(ccs.t, $$3);
+      }
+
+      if ($$3 != null && this.f != null) {
+         ccv $$5 = $$4.c(ccs.m).get();
+         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.Z())) {
+            this.f = $$5.a().b();
+            this.c($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private boolean a(btp $$0, ccv $$1, long $$2) {
+      jd $$3 = $$1.a().b();
+      this.e = $$0.N().a($$3, 0);
+      this.g = $$1.b();
+      buq<?> $$4 = $$0.dU();
+      if (this.a($$0, $$1)) {
+         $$4.b(ccs.E);
+      } else {
+         boolean $$5 = this.e != null && this.e.j();
+         if ($$5) {
+            $$4.b(ccs.E);
+         } else if (!$$4.a(ccs.E)) {
+            $$4.a(ccs.E, $$2);
+         }
+
+         if (this.e != null) {
+            return true;
+         }
+
+         exa $$6 = cej.a((btw)$$0, 10, 7, exa.c($$3), (float) (Math.PI / 2));
+         if ($$6 != null) {
+            this.e = $$0.N().a($$6.c, $$6.d, $$6.e, 0);
+            return this.e != null;
+         }
+      }
+
+      return false;
+   }
+
+   private boolean a(btp $$0, ccv $$1) {
+      return $$1.a().b().k($$0.dp()) <= $$1.c();
+   }
+
+   private static boolean a(ccv $$0) {
+      return $$0.a() instanceof bvs $$2 ? $$2.c().R_() : false;
    }
 }

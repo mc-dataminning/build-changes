@@ -1,31 +1,25 @@
-import java.util.Map;
+public record zw(String b, int c) implements zg<zm> {
+   public static final yx<vw, zw> a = zg.a(zw::a, zw::new);
 
-public class zw implements zf<zl> {
-   public static final yw<vv, zw> a = zf.a(zw::a, zw::new);
-   private final Map<akp<? extends jz<?>>, aww.a> b;
-
-   public zw(Map<akp<? extends jz<?>>, aww.a> $$0) {
-      this.b = $$0;
+   private zw(vw $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private zw(vv $$0) {
-      this.b = $$0.a(vv::r, aww.a::b);
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b, vv::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zh<zw> a() {
-      return zx.k;
+   public zi<zw> a() {
+      return zy.j;
    }
 
-   public void a(zl $$0) {
+   public void a(zm $$0) {
       $$0.a(this);
    }
 
-   public Map<akp<? extends jz<?>>, aww.a> b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,27 +1,22 @@
-public class gnh extends glj<cgf, fxv<cgf>> {
-   public gnh(gkd.a $$0) {
-      super($$0, new fxv<>($$0.a(fyd.cd)), 0.5F);
-      this.a(new gpe(this, $$0.f()));
-      this.a(new gpf(this));
+public class gnh extends gln<ckt, fxx<ckt>> {
+   private static final akr a = akr.b("textures/entity/witch.png");
+
+   public gnh(gkh.a $$0) {
+      super($$0, new fxx<>($$0.a(fyh.bV)), 0.5F);
+      this.a(new gpg<>(this, $$0.d()));
    }
 
-   protected float a(cgf $$0, float $$1) {
-      return $$0.gA();
-   }
-
-   public void a(cgf $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      if ($$0.gz()) {
-         float $$6 = $$0.H($$2);
-         this.f.a(axx.b.a(1.0F, $$6, $$6, $$6));
-      }
-
+   public void a(ckt $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      this.g.b(!$$0.eU().e());
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gz()) {
-         this.f.a(-1);
-      }
    }
 
-   public akq a(cgf $$0) {
-      return $$0.gw();
+   public akr a(ckt $$0) {
+      return a;
+   }
+
+   protected void a(ckt $$0, fbg $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

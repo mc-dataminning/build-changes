@@ -1,289 +1,132 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
+import java.time.Instant;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class foa extends fnx {
+public class foa extends fob {
    private static final Logger a = LogUtils.getLogger();
-   private static final akq b = akq.b("textures/misc/credits_vignette.png");
-   private static final wy c = wy.b("============").a(n.p);
-   private static final String q = "           ";
-   private static final String r = "" + n.p + n.q + n.k + n.l;
-   private static final float s = 5.0F;
-   private static final float u = 15.0F;
-   private static final akq v = akq.b("texts/end.txt");
-   private static final akq w = akq.b("texts/credits.json");
-   private static final akq x = akq.b("texts/postcredits.txt");
-   private final boolean y;
-   private final Runnable z;
-   private float A;
-   private List<axz> B;
-   private IntSet C;
-   private int D;
-   private boolean E;
-   private final IntSet F = new IntOpenHashSet();
-   private float G;
-   private final float H;
-   private int I;
-   private final fix J = new fix(false);
+   private static final int b = 25;
+   private static final wz c = wz.c("recover_world.title").a(n.r);
+   private static final wz r = wz.c("recover_world.bug_tracker");
+   private static final wz s = wz.c("recover_world.restore");
+   private static final wz u = wz.c("recover_world.no_fallback");
+   private static final wz v = wz.c("recover_world.done.title");
+   private static final wz w = wz.c("recover_world.done.success");
+   private static final wz x = wz.c("recover_world.done.failed");
+   private static final wz y = wz.c("recover_world.issue.none").a(n.k);
+   private static final wz z = wz.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fmb B = fmb.d().a(8);
+   private final wz C;
+   private final fje D;
+   private final fje E;
+   private final erd.c F;
 
-   public foa(boolean $$0, Runnable $$1) {
-      super(fga.a);
-      this.y = $$0;
-      this.z = $$1;
-      if (!$$0) {
-         this.H = 0.75F;
+   public foa(fgm $$0, BooleanConsumer $$1, erd.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = wz.a("recover_world.message", wz.b($$2.f()).a(n.h));
+      this.D = new fje(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      wz $$5 = wz.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fje($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fjr(this.k, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fmb $$7 = fmb.e().a(5);
+      $$7.a(fik.a(r, fmy.b(this, axj.j)).b(120, 20).a());
+      $$7.a(fik.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fjv.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(fik.a(wy.k, $$0x -> this.d()).b(120, 20).a());
+      this.B.a(this::c);
+   }
+
+   private void a(fgm $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fnm(wz.c("recover_world.restoring")));
+         ftc.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fmz(this.A, v, w, wy.j, wy.k));
+         } else {
+            $$0.a(new fmu(() -> this.A.accept(false), v, x));
+         }
       } else {
-         this.H = 0.5F;
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fmu(() -> this.A.accept(false), v, x));
       }
-
-      this.I = 1;
-      this.G = this.H;
    }
 
-   private float m() {
-      return this.E ? this.H * (5.0F + (float)this.F.size() * 15.0F) * (float)this.I : this.H * (float)this.I;
+   private wz a(erd.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return wz.i();
+      } else {
+         xn $$3 = wz.i();
+         Instant $$4 = $$0.a($$1);
+         xn $$5 = $$4 != null ? wz.b(ftl.a.format($$4)) : wz.c("recover_world.state_entry.unknown");
+         $$3.b(wz.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof us) {
+            $$3.b(wz.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(wz.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(erd.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (um | us | IOException var4) {
+         return var4;
+      }
    }
 
    @Override
-   public void e() {
-      this.l.s().a();
-      this.l.aj().a(false);
-      float $$0 = (float)(this.D + this.n + this.n + 24);
-      if (this.A > $$0) {
-         this.D();
-      }
+   protected void aT_() {
+      super.aT_();
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.I = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.F.add($$0);
-      } else if ($$0 == 32) {
-         this.E = true;
-      }
-
-      this.G = this.m();
-      return super.a($$0, $$1, $$2);
+   protected void c() {
+      this.E.d(this.m - 50);
+      this.D.d(this.m - 50);
+      this.B.a();
+      flv.a(this.B, this.H());
    }
 
    @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.I = 1;
-      }
-
-      if ($$0 == 32) {
-         this.E = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.F.remove($$0);
-      }
-
-      this.G = this.m();
-      return super.c($$0, $$1, $$2);
+   public wz i() {
+      return wy.a(super.i(), this.C);
    }
 
    @Override
    public void d() {
-      this.D();
-   }
-
-   private void D() {
-      this.z.run();
-   }
-
-   @Override
-   protected void aP_() {
-      if (this.B == null) {
-         this.B = Lists.newArrayList();
-         this.C = new IntOpenHashSet();
-         if (this.y) {
-            this.a(v, this::a);
-         }
-
-         this.a(w, this::b);
-         if (this.y) {
-            this.a(x, this::a);
-         }
-
-         this.D = this.B.size() * 12;
-      }
-   }
-
-   private void a(akq $$0, foa.a $$1) {
-      try (Reader $$2 = this.l.ab().openAsReader($$0)) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits from file {}", $$0, var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      ayv $$2 = ayv.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.l.X().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(r)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + r.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.E();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.E();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : ayd.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(wy.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.E();
-         this.E();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(wy.b($$8).a(n.o), true);
-               this.E();
-               this.E();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(wy.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(wy.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.E();
-               this.E();
-            }
-         }
-      }
-   }
-
-   private void E() {
-      this.B.add(axz.a);
-   }
-
-   private void a(String $$0) {
-      this.B.addAll(this.l.h.c(wy.b($$0), 256));
-   }
-
-   private void a(wy $$0, boolean $$1) {
-      if ($$1) {
-         this.C.add(this.B.size());
-      }
-
-      this.B.add($$0.g());
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.A = Math.max(0.0F, this.A + $$3 * this.G);
-      int $$4 = this.m / 2 - 128;
-      int $$5 = this.n + 50;
-      float $$6 = -this.A;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.J.a($$0, this.m, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.B.size(); $$8++) {
-         if ($$8 == this.B.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.n / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.n) {
-            axz $$10 = this.B.get($$8);
-            if (this.C.contains($$8)) {
-               $$0.a(this.o, $$10, $$4 + 128, $$7, -1);
-            } else {
-               $$0.b(this.o, $$10, $$4, $$7, -1);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-   }
-
-   private void c(fht $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.m, this.n, this.m, this.n);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   }
-
-   @Override
-   public void b(fht $$0, int $$1, int $$2, float $$3) {
-      if (this.y) {
-         $$0.b(gfb.s(), 0, 0, this.m, this.n, 0);
-      } else {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = this.A * 0.5F;
-      fnx.a($$0, fnx.f, 0, 0, 0.0F, $$5, $$3, $$4);
-   }
-
-   @Override
-   public boolean k() {
-      return !this.y;
-   }
-
-   @Override
-   public void j() {
-      this.l.s().b(avm.c);
-   }
-
-   @Override
-   public avl C() {
-      return avm.c;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+      this.A.accept(false);
    }
 }

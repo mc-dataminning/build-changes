@@ -1,9 +1,9 @@
-public record ku(aqt a, jd b, dta c, dqy d) {
-   public eww a() {
+public record ku(aqu a, jd b, dtc c, dra d) {
+   public exa a() {
       return this.b.b();
    }
 
-   public aqt b() {
+   public aqu b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record ku(aqt a, jd b, dta c, dqy d) {
       return this.b;
    }
 
-   public dta d() {
+   public dtc d() {
       return this.c;
    }
 
-   public dqy e() {
+   public dra e() {
       return this.d;
    }
 }

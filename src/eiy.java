@@ -1,40 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eiy extends eis {
+public class eiy extends eiw {
    public static final MapCodec<eiy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dyv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
+      $$0 -> $$0.group(bpw.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpw.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
             .apply($$0, eiy::new)
    );
-   private final dyv.a c;
-   private final int d;
-   private final int e;
+   private final bpw c;
+   private final bpw d;
 
-   private eiy(dyv.a $$0, int $$1, int $$2) {
+   public static eiy a(bpw $$0, bpw $$1) {
+      return new eiy($$0, $$1);
+   }
+
+   public static eiy a(bpw $$0) {
+      return new eiy(bpt.a(0), $$0);
+   }
+
+   public static eiy b(bpw $$0) {
+      return new eiy($$0, bpt.a(0));
+   }
+
+   private eiy(bpw $$0, bpw $$1) {
       this.c = $$0;
       this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static eiy a(dyv.a $$0, int $$1, int $$2) {
-      return new eiy($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eir $$0, ayv $$1, jd $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public Stream<jd> a_(eiu $$0, ayw $$1, jd $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jd($$3, $$4, $$5));
    }
 
    @Override
-   public eiu<?> b() {
-      return eiu.c;
+   public eix<?> b() {
+      return eix.n;
    }
 }

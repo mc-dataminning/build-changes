@@ -1,22 +1,17 @@
 public class fyo {
-   private final float a;
-   private final float b;
+   private final fyq a;
+   private final fyp b;
 
-   public fyo(float $$0, float $$1) {
+   private fyo(fyq $$0, fyp $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public float a() {
-      return this.a;
+   public fyi a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static fyo a(fyq $$0, int $$1, int $$2) {
+      return new fyo($$0, new fyp($$1, $$2));
    }
 }

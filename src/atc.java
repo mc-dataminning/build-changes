@@ -1,7 +1,8 @@
-import com.google.gson.JsonObject;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface atc<T> {
-   String a();
-
-   T a(JsonObject var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface atc {
 }

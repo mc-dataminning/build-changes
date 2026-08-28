@@ -1,18 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class glk extends gkg<cno> {
+   private static final akr a = akr.b("textures/entity/llama/spit.png");
+   private final fwc<cno> g;
 
-public class glk extends glj<cfp, fux<cfp>> {
-   private static final Map<cfp.a, akq> a = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cfp.a.b, akq.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cfp.a.a, akq.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public glk(gkd.a $$0) {
-      super($$0, new fux<>($$0.a(fyd.aD)), 0.7F);
-      this.a(new gok<>(this, $$0.c()));
+   public glk(gkh.a $$0) {
+      super($$0);
+      this.g = new fwc<>($$0.a(fyh.aA));
    }
 
-   public akq a(cfp $$0) {
-      return a.get($$0.t());
+   public void a(cno $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayo.i($$2, $$0.O, $$0.dF()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayo.i($$2, $$0.P, $$0.dH())));
+      this.g.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      fbk $$6 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$6, $$5, gqa.d);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akr a(cno $$0) {
+      return a;
    }
 }

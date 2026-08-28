@@ -1,15 +1,28 @@
-public class ctz extends cuj implements cvt {
-   public ctz(cuj.a $$0) {
+public class ctz<T extends bsr & btj> extends cul {
+   private final bsx<T> a;
+   private final int b;
+
+   public ctz(cul.a $$0, bsx<T> $$1, int $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(dcu $$0, drq $$1, boolean $$2, cmv $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.az_(), avo.kA, avp.e, 1.0F, 1.0F);
-         return true;
+   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
+      cuq $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bqs.c($$3);
       } else {
-         return false;
+         bsr $$4 = $$1.de();
+         if ($$1.bS() && $$4 instanceof btj $$5 && $$4.am() == this.a && $$5.a()) {
+            bsy $$6 = btn.d($$2);
+            cuq $$7 = $$3.a(this.b, cut.qV, $$1, $$6);
+            return bqs.a($$7);
+         }
+
+         $$1.b(avz.c.b(this));
+         return bqs.c($$3);
       }
    }
 }

@@ -1,110 +1,179 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class cfb extends cgg implements cfg {
+   private static final ajw<Boolean> b = aka.a(cfb.class, ajy.k);
 
-public abstract class cfb extends cez {
-   @Nullable
-   private cfb b;
-   private int c = 1;
-
-   public cfb(bsw<? extends cfb> $$0, dcu $$1) {
+   public cfb(bsx<? extends cfb> $$0, dcw $$1) {
       super($$0, $$1);
+      this.bR = new cfb.a(this);
+   }
+
+   public static buv.a s() {
+      return btp.C().a(buw.s, 3.0);
    }
 
    @Override
-   protected void z() {
-      super.z();
-      this.bU.a(5, new cag(this));
+   public boolean Y() {
+      return super.Y() || this.t();
    }
 
    @Override
-   public int af() {
-      return this.go();
-   }
-
-   public int go() {
-      return super.af();
+   public boolean h(double $$0) {
+      return !this.t() && !this.ai();
    }
 
    @Override
-   protected boolean gm() {
-      return !this.gp();
-   }
-
-   public boolean gp() {
-      return this.b != null && this.b.bE();
-   }
-
-   public cfb a(cfb $$0) {
-      this.b = $$0;
-      $$0.gv();
-      return $$0;
-   }
-
-   public void gq() {
-      this.b.gw();
-      this.b = null;
-   }
-
-   private void gv() {
-      this.c++;
-   }
-
-   private void gw() {
-      this.c--;
-   }
-
-   public boolean gr() {
-      return this.gs() && this.c < this.go();
+   public int fO() {
+      return 8;
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.gs() && this.dQ().z.a(200) == 1) {
-         List<? extends cez> $$0 = this.dQ().a((Class<? extends cez>)this.getClass(), this.cL().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
+   protected void a(aka.a $$0) {
+      super.a($$0);
+      $$0.a(b, false);
+   }
+
+   @Override
+   public boolean t() {
+      return this.ao.a(b);
+   }
+
+   @Override
+   public void w(boolean $$0) {
+      this.ao.a(b, $$0);
+   }
+
+   @Override
+   public void b(ub $$0) {
+      super.b($$0);
+      $$0.a("FromBucket", this.t());
+   }
+
+   @Override
+   public void a(ub $$0) {
+      super.a($$0);
+      this.w($$0.q("FromBucket"));
+   }
+
+   @Override
+   protected void B() {
+      super.B();
+      this.bU.a(0, new cbf(this, 1.25));
+      this.bU.a(2, new bzt<>(this, cmx.class, 8.0F, 1.6, 1.4, bsw.f::test));
+      this.bU.a(4, new cfb.b(this));
+   }
+
+   @Override
+   protected cda b(dcw $$0) {
+      return new cdc(this, $$0);
+   }
+
+   @Override
+   public void a(exa $$0) {
+      if (this.dc() && this.bf()) {
+         this.a(0.01F, $$0);
+         this.a(bts.a, this.ds());
+         this.i(this.ds().a(0.9));
+         if (this.p() == null) {
+            this.i(this.ds().b(0.0, -0.005, 0.0));
+         }
+      } else {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public void m_() {
+      if (!this.bf() && this.aF() && this.R) {
+         this.i(this.ds().b((double)((this.ah.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ah.i() * 2.0F - 1.0F) * 0.05F)));
+         this.d(false);
+         this.av = true;
+         this.b(this.gm());
+      }
+
+      super.m_();
+   }
+
+   @Override
+   protected bqr b(cmx $$0, bqq $$1) {
+      return cfg.a($$0, $$1, this).orElse(super.b($$0, $$1));
+   }
+
+   @Override
+   public void n(cuq $$0) {
+      cfg.a(this, $$0);
+   }
+
+   @Override
+   public void h(ub $$0) {
+      cfg.a(this, $$0);
+   }
+
+   @Override
+   public avo x() {
+      return avp.dk;
+   }
+
+   protected boolean gl() {
+      return true;
+   }
+
+   protected abstract avo gm();
+
+   @Override
+   protected avo aQ() {
+      return avp.iV;
+   }
+
+   @Override
+   protected void b(jd $$0, dtc $$1) {
+   }
+
+   static class a extends bzp {
+      private final cfb l;
+
+      a(cfb $$0) {
+         super($$0);
+         this.l = $$0;
+      }
+
+      @Override
+      public void a() {
+         if (this.l.a(awk.a)) {
+            this.l.i(this.l.ds().b(0.0, 0.005, 0.0));
+         }
+
+         if (this.k == bzp.a.b && !this.l.N().l()) {
+            float $$0 = (float)(this.h * this.l.g(buw.v));
+            this.l.A(ayo.i(0.125F, this.l.fk(), $$0));
+            double $$1 = this.e - this.l.du();
+            double $$2 = this.f - this.l.dw();
+            double $$3 = this.g - this.l.dA();
+            if ($$2 != 0.0) {
+               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+               this.l.i(this.l.ds().b(0.0, (double)this.l.fk() * ($$2 / $$4) * 0.1, 0.0));
+            }
+
+            if ($$1 != 0.0 || $$3 != 0.0) {
+               float $$5 = (float)(ayo.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
+               this.l.t(this.a(this.l.dF(), $$5, 90.0F));
+               this.l.aY = this.l.dF();
+            }
+         } else {
+            this.l.A(0.0F);
          }
       }
    }
 
-   public boolean gs() {
-      return this.c > 1;
-   }
+   static class b extends cbk {
+      private final cfb i;
 
-   public boolean gt() {
-      return this.g(this.b) <= 121.0;
-   }
-
-   public void gu() {
-      if (this.gp()) {
-         this.J().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cfb> $$0) {
-      $$0.limit((long)(this.go() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public buf a(ddj $$0, bqo $$1, btp $$2, @Nullable buf $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cfb.a(this);
-      } else {
-         this.a(((cfb.a)$$3).a);
+      public b(cfb $$0) {
+         super($$0, 1.0, 40);
+         this.i = $$0;
       }
 
-      return $$3;
-   }
-
-   public static class a implements buf {
-      public final cfb a;
-
-      public a(cfb $$0) {
-         this.a = $$0;
+      @Override
+      public boolean b() {
+         return this.i.gl() && super.b();
       }
    }
 }

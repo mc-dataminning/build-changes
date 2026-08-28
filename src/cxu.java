@@ -1,37 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record cxu(List<cxu.a> d) {
-   public static final cxu a = new cxu(List.of());
-   public static final Codec<cxu> b = cxu.a.a.listOf().xmap(cxu::new, cxu::a);
-   public static final yw<wj, cxu> c = cxu.a.b.a(yu.a()).a(cxu::new, cxu::a);
+public record cxu(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cxu> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axw.w.optionalFieldOf("name").forGetter(cxu::c),
+               kg.a.optionalFieldOf("id").forGetter(cxu::d),
+               axw.v.optionalFieldOf("properties", new PropertyMap()).forGetter(cxu::e)
+            )
+            .apply($$0, cxu::new)
+   );
+   public static final Codec<cxu> a = Codec.withAlternative(g, axw.w, $$0 -> new cxu(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final yx<ByteBuf, cxu> b = yx.a(yv.b(16).a(yv::a), cxu::c, kg.g.a(yv::a), cxu::d, yv.t, cxu::e, cxu::new);
 
-   public cxu a(cxu.a $$0) {
-      return new cxu(ad.a(this.d, $$0));
+   public cxu(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public List<cxu.a> a() {
-      return this.d;
+   public cxu(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public static record a(jm<brw> c, int d) {
-      public static final Codec<cxu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brw.a.fieldOf("id").forGetter(cxu.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(cxu.a::c))
-               .apply($$0, cxu.a::new)
-      );
-      public static final yw<wj, cxu.a> b = yw.a(brw.b, cxu.a::b, yu.g, cxu.a::c, cxu.a::new);
-
-      public bry a() {
-         return new bry(this.c, this.d);
+   public CompletableFuture<cxu> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dru.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new cxu($$1);
+         }) : dru.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ad.e, this.c.get()));
+            return new cxu($$1);
+         });
       }
+   }
 
-      public jm<brw> b() {
-         return this.c;
-      }
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ad.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
+   }
 
-      public int c() {
-         return this.d;
-      }
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

@@ -1,11 +1,7 @@
 public interface blu {
-   int c();
+   void a(long[] var1);
 
-   int d();
+   void a(long var1);
 
-   long a(int var1);
-
-   long a(int var1, int var2);
-
-   void e();
+   void a(long var1, int var3);
 }

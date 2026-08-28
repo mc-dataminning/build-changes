@@ -1,86 +1,98 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class op implements ok {
-   private final ol b;
-   private final cuj c;
+public class op implements ol {
+   private final om b;
+   private final cul c;
    private final int d;
-   private final jv<cyu> e = jv.a();
-   private final Map<String, ao<?>> f = new LinkedHashMap<>();
+   private final List<String> e = Lists.newArrayList();
+   private final Map<Character, cyw> f = Maps.newLinkedHashMap();
+   private final Map<String, ao<?>> g = new LinkedHashMap<>();
    @Nullable
-   private String g;
+   private String h;
+   private boolean i = true;
 
-   public op(ol $$0, dct $$1, int $$2) {
+   public op(om $$0, dcv $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.r();
       this.d = $$2;
    }
 
-   public static op a(ol $$0, dct $$1) {
-      return new op($$0, $$1, 1);
+   public static op a(om $$0, dcv $$1) {
+      return a($$0, $$1, 1);
    }
 
-   public static op a(ol $$0, dct $$1, int $$2) {
+   public static op a(om $$0, dcv $$1, int $$2) {
       return new op($$0, $$1, $$2);
    }
 
-   public op a(awt<cuj> $$0) {
-      return this.a(cyu.a($$0));
+   public op a(Character $$0, awu<cul> $$1) {
+      return this.a($$0, cyw.a($$1));
    }
 
-   public op b(dct $$0) {
-      return this.a($$0, 1);
+   public op a(Character $$0, dcv $$1) {
+      return this.a($$0, cyw.a($$1));
    }
 
-   public op a(dct $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.a(cyu.a($$0));
+   public op a(Character $$0, cyw $$1) {
+      if (this.f.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.f.put($$0, $$1);
+         return this;
       }
-
-      return this;
    }
 
-   public op a(cyu $$0) {
-      return this.a($$0, 1);
-   }
-
-   public op a(cyu $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
+   public op b(String $$0) {
+      if (!this.e.isEmpty() && $$0.length() != this.e.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
          this.e.add($$0);
+         return this;
       }
-
-      return this;
    }
 
    public op b(String $$0, ao<?> $$1) {
-      this.f.put($$0, $$1);
+      this.g.put($$0, $$1);
       return this;
    }
 
-   public op b(@Nullable String $$0) {
-      this.g = $$0;
+   public op c(@Nullable String $$0) {
+      this.h = $$0;
+      return this;
+   }
+
+   public op a(boolean $$0) {
+      this.i = $$0;
       return this;
    }
 
    @Override
-   public cuj a() {
+   public cul a() {
       return this.c;
    }
 
    @Override
-   public void a(om $$0, akq $$1) {
-      this.a($$1);
-      af.a $$2 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
-      this.f.forEach($$2::a);
-      czh $$3 = new czh(Objects.requireNonNullElse(this.g, ""), ok.a(this.b), new cuo(this.c, this.d), this.e);
-      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.b.a() + "/")));
+   public void a(on $$0, akr $$1) {
+      czi $$2 = this.a($$1);
+      af.a $$3 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
+      this.g.forEach($$3::a);
+      czh $$4 = new czh(Objects.requireNonNullElse(this.h, ""), ol.a(this.b), $$2, new cuq(this.c, this.d), this.i);
+      $$0.a($$1, $$4, $$3.b($$1.f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(akq $$0) {
-      if (this.f.isEmpty()) {
+   private czi a(akr $$0) {
+      if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      } else {
+         return czi.a(this.f, this.e);
       }
    }
 }

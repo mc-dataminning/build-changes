@@ -1,24 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cdo extends cdw<btn> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class cdo<T extends btn> extends cdy<T> {
+   private final BiPredicate<T, btn> a;
+   private final Predicate<T> c;
+   private final ccs<Boolean> d;
+   private final int e;
 
-   @Override
-   public Set<ccq<?>> a() {
-      return ImmutableSet.of(ccq.L);
+   public cdo(int $$0, BiPredicate<T, btn> $$1, Predicate<T> $$2, ccs<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   protected void a(aqt $$0, btn $$1) {
-      buo<?> $$2 = $$1.dU();
-      List<cjf> $$3 = $$0.a(cjf.class, $$1.cL().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cjf> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::F).findFirst();
-      $$2.a(ccq.L, $$4);
+   @Override
+   protected void a(aqu $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<ccs<?>> a() {
+      return Set.of(ccs.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<btn>> $$1 = $$0.dU().c(ccs.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dU().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dU().b(this.d);
    }
 }

@@ -3,40 +3,46 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bxl {
-   public static bwq<cmi> a(ccq<jl> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return bys.a(
-         (Function<bys.b<cmi>, ? extends App<bys.c<cmi>, byv<cmi>>>)($$5 -> $$5.group($$5.a(ccq.E), $$5.c(ccq.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jl $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dq()) > $$3) {
-                           eww $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   public static bvi<btw> a(ccs<jd> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, exa::c);
+   }
 
-                           while ($$14 == null || jd.a((jw)$$14).k($$10.dq()) > $$3) {
-                              $$14 = ceh.a($$10, 15, 7, eww.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public static bws<btw> b(ccs<? extends bsr> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bsr::dn);
+   }
 
-                           $$7.a(new cct($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dq()) > $$2) {
-                           $$7.a(new cct($$12.b(), $$1, $$2));
-                        }
+   private static <T> bws<btw> a(ccs<T> $$0, float $$1, int $$2, boolean $$3, Function<T, exa> $$4) {
+      return byu.a(
+         (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$5 -> $$5.group($$5.a(ccs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<ccv> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     exa $$11 = $$8.dn();
+                     exa $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jw)$$12, (double)$$2)) {
+                        return false;
                      } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           exa $$13 = $$10.get().a().a().d($$11);
+                           exa $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
 
-                     return true;
-                  }))
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           exa $$16 = cem.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new ccv($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
       );
    }
 }

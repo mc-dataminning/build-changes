@@ -1,40 +1,90 @@
-public record cfg(akq m) {
-   public static final yw<wj, jm<cfg>> a = yu.b(lu.l);
-   public static final akp<cfg> b = a("tabby");
-   public static final akp<cfg> c = a("black");
-   public static final akp<cfg> d = a("red");
-   public static final akp<cfg> e = a("siamese");
-   public static final akp<cfg> f = a("british_shorthair");
-   public static final akp<cfg> g = a("calico");
-   public static final akp<cfg> h = a("persian");
-   public static final akp<cfg> i = a("ragdoll");
-   public static final akp<cfg> j = a("white");
-   public static final akp<cfg> k = a("jellie");
-   public static final akp<cfg> l = a("all_black");
+import java.util.Optional;
 
-   private static akp<cfg> a(String $$0) {
-      return akp.a(lu.l, akq.b($$0));
+public interface cfg {
+   boolean t();
+
+   void w(boolean var1);
+
+   void n(cuq var1);
+
+   void h(ub var1);
+
+   cuq b();
+
+   avo x();
+
+   @Deprecated
+   static void a(btp $$0, cuq $$1) {
+      $$1.b(kq.g, $$0.aj());
+      cxh.a(kq.N, $$1, $$1x -> {
+         if ($$0.ga()) {
+            $$1x.a("NoAI", $$0.ga());
+         }
+
+         if ($$0.aX()) {
+            $$1x.a("Silent", $$0.aX());
+         }
+
+         if ($$0.aY()) {
+            $$1x.a("NoGravity", $$0.aY());
+         }
+
+         if ($$0.cg()) {
+            $$1x.a("Glowing", $$0.cg());
+         }
+
+         if ($$0.cv()) {
+            $$1x.a("Invulnerable", $$0.cv());
+         }
+
+         $$1x.a("Health", $$0.ex());
+      });
    }
 
-   public static cfg a(jz<cfg> $$0) {
-      a($$0, b, "textures/entity/cat/tabby.png");
-      a($$0, c, "textures/entity/cat/black.png");
-      a($$0, d, "textures/entity/cat/red.png");
-      a($$0, e, "textures/entity/cat/siamese.png");
-      a($$0, f, "textures/entity/cat/british_shorthair.png");
-      a($$0, g, "textures/entity/cat/calico.png");
-      a($$0, h, "textures/entity/cat/persian.png");
-      a($$0, i, "textures/entity/cat/ragdoll.png");
-      a($$0, j, "textures/entity/cat/white.png");
-      a($$0, k, "textures/entity/cat/jellie.png");
-      return a($$0, l, "textures/entity/cat/all_black.png");
+   @Deprecated
+   static void a(btp $$0, ub $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.v($$1.j("Health"));
+      }
    }
 
-   private static cfg a(jz<cfg> $$0, akp<cfg> $$1, String $$2) {
-      return jz.a($$0, $$1, new cfg(akq.b($$2)));
-   }
+   static <T extends btn & cfg> Optional<bqr> a(cmx $$0, bqq $$1, T $$2) {
+      cuq $$3 = $$0.b($$1);
+      if ($$3.g() == cut.qz && $$2.bE()) {
+         $$2.a($$2.x(), 1.0F, 1.0F);
+         cuq $$4 = $$2.b();
+         $$2.n($$4);
+         cuq $$5 = cus.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dcw $$6 = $$2.dP();
+         if (!$$6.B) {
+            an.k.a((aqv)$$0, $$4);
+         }
 
-   public akq a() {
-      return this.m;
+         $$2.aq();
+         return Optional.of(bqr.a($$6.B));
+      } else {
+         return Optional.empty();
+      }
    }
 }

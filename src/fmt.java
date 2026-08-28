@@ -1,226 +1,105 @@
+import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fmt extends fnx {
-   public static final double a = 7.0;
-   private static final wy c = wy.c("chat_screen.usage");
-   private static final int q = 210;
-   private String r = "";
-   private int s = -1;
-   protected fip b;
-   private String u;
-   fij v;
-
-   public fmt(String $$0) {
-      super(wy.c("chat_screen.title"));
-      this.u = $$0;
-   }
-
-   @Override
-   protected void aP_() {
-      this.s = this.l.l.d().c().size();
-      this.b = new fip(this.l.i, 4, this.n - 12, this.m - 4, 12, wy.c("chat.editBox")) {
-         @Override
-         protected xm aM_() {
-            return super.aM_().b(fmt.this.v.e());
-         }
-      };
-      this.b.f(256);
-      this.b.d(false);
-      this.b.a(this.u);
-      this.b.b(this::b);
-      this.b.f(false);
-      this.d(this.b);
-      this.v = new fij(this.l, this, this.b, this.o, false, false, 1, 10, true, -805306368);
-      this.v.b(false);
-      this.v.d();
-   }
-
-   @Override
-   protected void aE_() {
-      this.b(this.b);
-   }
-
-   @Override
-   public void a(fgi $$0, int $$1, int $$2) {
-      String $$3 = this.b.a();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.v.d();
-   }
-
-   @Override
-   public void j() {
-      this.l.l.d().d();
-   }
-
-   private void b(String $$0) {
-      String $$1 = this.b.a();
-      this.v.a(!$$1.equals(this.u));
-      this.v.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.v.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.l.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         this.b(this.b.a(), true);
-         this.l.a(null);
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.l.l.d().a(this.l.l.d().j() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.l.l.d().a(-this.l.l.d().j() + 1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      $$3 = ayn.a($$3, -1.0, 1.0);
-      if (this.v.a($$3)) {
-         return true;
-      } else {
-         if (!s()) {
-            $$3 *= 7.0;
-         }
-
-         this.l.l.d().a((int)$$3);
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.v.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            fih $$3 = this.l.l.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            xv $$4 = this.b($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.u = this.b.a();
-               return true;
-            }
-         }
-
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a_(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
-      }
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.s + $$0;
-      int $$2 = this.l.l.d().c().size();
-      $$1 = ayn.a($$1, 0, $$2);
-      if ($$1 != this.s) {
-         if ($$1 == $$2) {
-            this.s = $$2;
-            this.b.a(this.r);
-         } else {
-            if (this.s == $$2) {
-               this.r = this.b.a();
-            }
-
-            this.b.a(this.l.l.d().c().get($$1));
-            this.v.a(false);
-            this.s = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      this.l.l.d().a($$0, this.l.l.e(), $$1, $$2, true);
-      $$0.a(2, this.n - 14, this.m - 2, this.n - 2, this.l.m.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 200.0F);
-      this.v.a($$0, $$1, $$2);
-      $$0.c().b();
-      fgd $$4 = this.l.l.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.g() != null) {
-         $$0.b(this.o, this.o.c($$4.g(), 210), $$1, $$2);
-      } else {
-         xv $$5 = this.b((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.o, $$5, $$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public void b(fht $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(fmc $$0) {
-      $$0.a(fmb.a, this.n());
-      $$0.a(fmb.d, c);
-      String $$1 = this.b.a();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(fmb.a, wy.a("chat_screen.message", $$1));
-      }
-   }
-
+public class fmt extends fob {
+   private static final wz a = wz.c("accessibility.onboarding.screen.title");
+   private static final wz b = wz.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int r = 16;
+   private final fjb s;
+   private final fgq u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
    @Nullable
-   private xv b(double $$0, double $$1) {
-      return this.l.l.d().b($$0, $$1);
+   private fiv z;
+   private final flx A = new flx(this, this.m(), 33);
+
+   public fmt(fgq $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fjb(true);
+      this.v = fgm.Q().aV().a();
    }
 
-   public void b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if (!$$0.isEmpty()) {
-         if ($$1) {
-            this.l.l.d().a($$0);
-         }
+   @Override
+   public void aT_() {
+      fmb $$0 = this.A.c(fmb.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fiv(this.m, this.k, this.o), $$0x -> $$0x.a(8));
+      if (this.u.as().a(this.u) instanceof fir $$1) {
+         this.p = $$1;
+         this.p.j = this.v;
+         $$0.a(this.p);
+      }
 
-         if ($$0.startsWith("/")) {
-            this.l.s.h.c($$0.substring(1));
-         } else {
-            this.l.s.h.b($$0);
-         }
+      $$0.a(fio.b(150, $$0x -> this.a(new fqy(this, this.l.m)), false));
+      $$0.a(fio.a(150, $$0x -> this.a(new frb(this, this.l.m, this.l.ag())), false));
+      this.A.b(fik.a(wy.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.m);
+      }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aI_() {
+      if (this.v && this.p != null) {
+         this.b(this.p);
+      } else {
+         super.aI_();
       }
    }
 
-   public String a(String $$0) {
-      return azk.e(StringUtils.normalizeSpace($$0.trim()));
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(this.y);
+   }
+
+   private void a(fob $$0) {
+      this.a(() -> this.l.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.u.ad = false;
+      this.u.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C();
+      this.s.a($$0, this.m, 1.0F);
+   }
+
+   @Override
+   protected void a(fhx $$0, float $$1) {
+      e.a($$0, this.m, this.n, 1.0F, 0.0F);
+   }
+
+   private void C() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.l.aA()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
+         }
+      }
    }
 }

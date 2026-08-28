@@ -1,148 +1,56 @@
 import java.util.List;
-import java.util.function.Predicate;
 
-public class cuz extends cuj {
-   private static final int c = 5;
-   private static final float j = -3.5F;
-   public static final float a = 1.5F;
-   private static final float k = 5.0F;
-   public static final float b = 3.5F;
-   private static final float l = 0.7F;
-
-   public cuz(cuj.a $$0) {
+public class cuz extends cul {
+   public cuz(cul.a $$0) {
       super($$0);
    }
 
-   public static cxl h() {
-      return cxl.a().a(buu.c, new bus(e, 5.0, bus.a.a), bsy.b).a(buu.e, new bus(f, -3.5, bus.a.a), bsy.b).a();
-   }
-
-   public static cxv k() {
-      return new cxv(List.of(), 1.0F, 2);
-   }
-
    @Override
-   public boolean a(dta $$0, dcu $$1, jd $$2, cmv $$3) {
-      return !$$3.f();
-   }
-
-   @Override
-   public int g() {
-      return 15;
-   }
-
-   @Override
-   public boolean a(cuo $$0, btl $$1, btl $$2) {
-      if ($$2 instanceof aqu $$3 && a($$3)) {
-         aqt $$4 = (aqt)$$2.dQ();
-         $$3.cx = $$3.do();
-         $$3.cz = true;
-         $$3.i($$3.dt().a(ji.a.b, 0.01F));
-         $$3.c.b(new afa($$3));
-         if ($$1.aF()) {
-            $$3.c(true);
-            avn $$5 = $$3.ac > 5.0F ? avo.oq : avo.op;
-            $$4.a(null, $$3.dv(), $$3.dx(), $$3.dB(), $$5, $$3.df(), 1.0F, 1.0F);
-         } else {
-            $$4.a(null, $$3.dv(), $$3.dx(), $$3.dB(), avo.oo, $$3.df(), 1.0F, 1.0F);
+   public bqr a(cyf $$0) {
+      dcw $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if ($$3.a(awe.S)) {
+         cmx $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
          }
 
-         a($$4, $$3, $$1);
-      }
-
-      return true;
-   }
-
-   @Override
-   public void b(cuo $$0, btl $$1, btl $$2) {
-      $$0.a(1, $$2, bsx.a);
-   }
-
-   @Override
-   public boolean a(cuo $$0, cuo $$1) {
-      return $$1.a(cur.yG);
-   }
-
-   @Override
-   public float a(bsq $$0, float $$1, brj $$2) {
-      if ($$2.c() instanceof btl $$3) {
-         if (!a($$3)) {
-            return 0.0F;
-         } else {
-            float $$5 = 3.0F;
-            float $$6 = 8.0F;
-            float $$7 = $$3.ac;
-            float $$8;
-            if ($$7 <= 3.0F) {
-               $$8 = 4.0F * $$7;
-            } else if ($$7 <= 8.0F) {
-               $$8 = 12.0F + 2.0F * ($$7 - 3.0F);
-            } else {
-               $$8 = 22.0F + $$7 - 8.0F;
-            }
-
-            return $$3.dQ() instanceof aqt $$11 ? $$8 + dac.b($$11, $$3.eU(), $$0, $$2, 0.0F) * $$7 : $$8;
-         }
+         return bqr.a($$1.B);
       } else {
-         return 0.0F;
+         return bqr.e;
       }
    }
 
-   private static void a(dcu $$0, cmv $$1, bsq $$2) {
-      $$0.c(2013, $$2.aM(), 750);
-      $$0.a(btl.class, $$2.cL().g(3.5), a($$1, $$2)).forEach($$2x -> {
-         eww $$3 = $$2x.do().d($$2.do());
-         double $$4 = a($$1, $$2x, $$3);
-         eww $$5 = $$3.d().a($$4);
-         if ($$4 > 0.0) {
-            $$2x.j($$5.c, 0.7F, $$5.e);
-            if ($$2x instanceof aqu $$6) {
-               $$6.c.b(new afa($$6));
-            }
+   public static bqr a(cmx $$0, dcw $$1, jd $$2) {
+      cjb $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      ewv $$8 = new ewv((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<bsr> $$9 = $$1.a(bsr.class, $$8, $$1x -> {
+         if ($$1x instanceof btk $$2x && $$2x.A() == $$0) {
+            return true;
          }
+
+         return false;
       });
-   }
 
-   private static Predicate<btl> a(cmv $$0, bsq $$1) {
-      return $$2 -> {
-         boolean $$3;
-         boolean $$4;
-         boolean $$5;
-         boolean var10000;
-         label62: {
-            $$3 = !$$2.N_();
-            $$4 = $$2 != $$0 && $$2 != $$1;
-            $$5 = !$$0.s($$2);
-            if ($$2 instanceof buj $$6 && $$6.s() && $$0.cA().equals($$6.W_())) {
-               var10000 = true;
-               break label62;
-            }
-
-            var10000 = false;
+      for (bsr $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cjb.b($$1, $$2);
+            $$3.v();
          }
 
-         boolean $$7;
-         label55: {
-            $$7 = !var10000;
-            if ($$2 instanceof ciu $$8 && $$8.z()) {
-               var10000 = false;
-               break label55;
-            }
+         ((btk)$$10).b($$3, true);
+      }
 
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         boolean $$11 = $$1.g($$2) <= Math.pow(3.5, 2.0);
-         return $$3 && $$4 && $$5 && $$7 && $$10 && $$11;
-      };
-   }
-
-   private static double a(cmv $$0, btl $$1, eww $$2) {
-      return (3.5 - $$2.f()) * 0.7F * (double)($$0.ac > 5.0F ? 2 : 1) * (1.0 - $$1.g(buu.p));
-   }
-
-   public static boolean a(btl $$0) {
-      return $$0.ac > 1.5F && !$$0.fB();
+      if (!$$9.isEmpty()) {
+         $$1.a(dxz.b, $$2, dxz.a.a($$0));
+         return bqr.a;
+      } else {
+         return bqr.e;
+      }
    }
 }

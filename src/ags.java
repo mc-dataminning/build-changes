@@ -1,34 +1,20 @@
-public class ags implements zf<agh> {
-   public static final yw<vv, ags> a = zf.a(ags::a, ags::new);
-   private final ags.a b;
+public record ags(float b) implements zg<agi> {
+   public static final yx<vw, ags> a = zg.a(ags::a, ags::new);
 
-   public ags(ags.a $$0) {
-      this.b = $$0;
+   private ags(vw $$0) {
+      this($$0.readFloat());
    }
 
-   private ags(vv $$0) {
-      this.b = $$0.b(ags.a.class);
-   }
-
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zh<ags> a() {
-      return agf.bo;
+   public zi<ags> a() {
+      return agg.bn;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
-   }
-
-   public ags.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

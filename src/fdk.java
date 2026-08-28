@@ -1,59 +1,35 @@
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public abstract class fdk {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fdk {
+   public final fet a = new fet(ad.h(), TimeUnit.MILLISECONDS, ad.c);
+   private final List<fet.e<?>> i;
+   public final fet.e<List<fcm>> b;
+   public final fet.e<fdk.a> c;
+   public final fet.e<Integer> d;
+   public final fet.e<Boolean> e;
+   public final fet.e<fcl> f;
+   public final fet.e<fcq> g;
+   public final fdl h = new fdl(new fez());
 
-   public fdk(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public fdk(fbw $$0) {
+      this.c = this.a.a("server list", () -> {
+         fcp $$1 = $$0.b();
+         return fbr.b() ? new fdk.a($$1.a, $$0.c()) : new fdk.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), feu.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), feu.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), feu.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), feu.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), feu.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), feu.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   public void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
+   public List<fet.e<?>> a() {
+      return this.i;
    }
 
-   protected abstract void a(fht var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(fht $$0, List<fdk> $$1, gwi<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fdk $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(gwi<?> $$0, fjc.a<?> $$1, List<fdk> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aG_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (fdk $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+   public static record a(List<fcn> a, List<fcn> b) {
    }
 }

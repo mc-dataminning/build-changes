@@ -35,104 +35,104 @@ public class eu {
    private final CommandDispatcher<et> h = new CommandDispatcher();
 
    public eu(eu.a $$0, ep $$1) {
-      alx.a(this.h);
-      aly.a(this.h, $$1);
-      ams.a(this.h, $$1);
-      amc.a(this.h, $$1);
-      ame.a(this.h, $$1);
+      aly.a(this.h);
+      alz.a(this.h, $$1);
+      amt.a(this.h, $$1);
+      amd.a(this.h, $$1);
       amf.a(this.h, $$1);
       amg.a(this.h, $$1);
-      apg.a(this.h);
-      amh.a(this.h);
-      amj.a(this.h);
-      amn.a(this.h);
+      amh.a(this.h, $$1);
+      aph.a(this.h);
+      ami.a(this.h);
+      amk.a(this.h);
       amo.a(this.h);
-      amp.a(this.h, $$1);
-      amq.a(this.h);
-      amr.a(this.h, $$1);
-      amt.a(this.h);
+      amp.a(this.h);
+      amq.a(this.h, $$1);
+      amr.a(this.h);
+      ams.a(this.h, $$1);
+      amu.a(this.h);
+      amw.a(this.h, $$1);
       amv.a(this.h, $$1);
-      amu.a(this.h, $$1);
-      amw.a(this.h);
       amx.a(this.h);
       amy.a(this.h);
       amz.a(this.h);
-      ana.a(this.h, $$1);
-      anb.a(this.h);
-      anc.a(this.h, $$1);
-      ane.a(this.h);
+      ana.a(this.h);
+      anb.a(this.h, $$1);
+      anc.a(this.h);
+      and.a(this.h, $$1);
       anf.a(this.h);
       ang.a(this.h);
-      anh.a(this.h, $$1);
+      anh.a(this.h);
       ani.a(this.h, $$1);
-      anj.a(this.h);
-      ann.a(this.h, $$1);
-      anp.a(this.h);
+      anj.a(this.h, $$1);
+      ank.a(this.h);
+      ano.a(this.h, $$1);
       anq.a(this.h);
-      ant.a(this.h);
-      anv.a(this.h);
+      anr.a(this.h);
       anu.a(this.h);
       anw.a(this.h);
+      anv.a(this.h);
       anx.a(this.h);
-      aob.a(this.h);
+      any.a(this.h);
       aoc.a(this.h);
-      aod.a(this.h, $$1);
-      aoe.a(this.h, $$0 != eu.a.c);
-      aog.a(this.h, $$1);
-      aoi.a(this.h);
+      aod.a(this.h);
+      aoe.a(this.h, $$1);
+      aof.a(this.h, $$0 != eu.a.c);
+      aoh.a(this.h, $$1);
       aoj.a(this.h);
-      aol.a(this.h);
+      aok.a(this.h);
       aom.a(this.h);
-      aoo.a(this.h);
-      aop.a(this.h, $$1);
-      aoq.a(this.h);
-      aor.a(this.h, $$1);
-      aos.a(this.h);
+      aon.a(this.h);
+      aop.a(this.h);
+      aoq.a(this.h, $$1);
+      aor.a(this.h);
+      aos.a(this.h, $$1);
       aot.a(this.h);
-      aou.a(this.h, $$1);
-      aov.a(this.h);
+      aou.a(this.h);
+      aov.a(this.h, $$1);
       aow.a(this.h);
-      aox.a(this.h, $$1);
-      aoz.a(this.h);
-      apb.a(this.h);
-      apd.a(this.h);
-      if (bnk.f.d()) {
-         and.a(this.h);
+      aox.a(this.h);
+      aoy.a(this.h, $$1);
+      apa.a(this.h);
+      apc.a(this.h);
+      ape.a(this.h);
+      if (bnl.f.d()) {
+         ane.a(this.h);
       }
 
-      if (ab.aV) {
-         to.a(this.h);
-         ans.a(this.h, $$1);
+      if (ab.aU) {
+         tp.a(this.h);
+         ant.a(this.h, $$1);
+         amn.a(this.h);
          amm.a(this.h);
-         aml.a(this.h);
-         apa.a(this.h);
-         aok.a(this.h);
-         aof.a(this.h);
+         apb.a(this.h);
+         aol.a(this.h);
+         aog.a(this.h);
          if ($$0.e) {
-            amk.a(this.h);
+            aml.a(this.h);
          }
       }
 
       if ($$0.e) {
-         alz.a(this.h);
          ama.a(this.h);
          amb.a(this.h);
-         ami.a(this.h);
-         ank.a(this.h);
+         amc.a(this.h);
+         amj.a(this.h);
          anl.a(this.h);
          anm.a(this.h);
-         ano.a(this.h);
-         any.a(this.h);
+         ann.a(this.h);
+         anp.a(this.h);
          anz.a(this.h);
          aoa.a(this.h);
-         aoh.a(this.h);
-         aon.a(this.h);
-         aoy.a(this.h);
-         apc.a(this.h);
+         aob.a(this.h);
+         aoi.a(this.h);
+         aoo.a(this.h);
+         aoz.a(this.h);
+         apd.a(this.h);
       }
 
       if ($$0.d) {
-         anr.a(this.h);
+         ans.a(this.h);
       }
 
       this.h.setConsumer(ev.b_());
@@ -159,7 +159,7 @@ public class eu {
             a($$2, $$3x -> hs.a($$3x, $$1, $$3, $$2, eq.a));
          }
       } catch (Exception var12) {
-         xm $$5 = wy.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         xn $$5 = wz.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -169,9 +169,9 @@ public class eu {
             }
          }
 
-         $$2.b(wy.c("command.failed").a($$1x -> $$1x.a(new xe(xe.a.a, $$5))));
-         if (ab.aV) {
-            $$2.b(wy.b(ad.c(var12)));
+         $$2.b(wz.c("command.failed").a($$1x -> $$1x.a(new xf(xf.a.a, $$5))));
+         if (ab.aU) {
+            $$2.b(wz.b(ad.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
@@ -186,21 +186,21 @@ public class eu {
          return (ContextChain<et>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(xb.a(var7.getRawMessage()));
+         $$2.b(xc.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xm $$5 = wy.i().a(n.h).a($$1x -> $$1x.a(new ww(ww.a.d, "/" + $$1)));
+            xn $$5 = wz.i().a(n.h).a($$1x -> $$1x.a(new wx(wx.a.d, "/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(wx.u);
+               $$5.b(wy.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               wy $$6 = wy.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               wz $$6 = wz.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(wy.c("command.context.here").a(n.m, n.u));
+            $$5.b(wz.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -213,8 +213,8 @@ public class eu {
       hs<et> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(dcq.x));
-         int $$6 = $$2.aM().c(dcq.y);
+         int $$5 = Math.max(1, $$2.aM().c(dcs.x));
+         int $$6 = $$2.aM().c(dcs.y);
 
          try (hs<et> $$7 = new hs<>($$5, $$6, $$2.aT())) {
             f.set($$7);
@@ -228,12 +228,12 @@ public class eu {
       }
    }
 
-   public void a(aqu $$0) {
+   public void a(aqv $$0) {
       Map<CommandNode<et>, CommandNode<ey>> $$1 = Maps.newHashMap();
       RootCommandNode<ey> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.dh(), $$1);
-      $$0.c.b(new acm($$2));
+      $$0.c.b(new acn($$2));
    }
 
    private void a(CommandNode<et> $$0, CommandNode<ey> $$1, et $$2, Map<CommandNode<et>, CommandNode<ey>> $$3) {
@@ -312,12 +312,12 @@ public class eu {
    public static ep a(final jo.a $$0) {
       return new ep() {
          @Override
-         public Stream<akp<? extends jz<?>>> a() {
+         public Stream<akq<? extends jz<?>>> a() {
             return $$0.a();
          }
 
          @Override
-         public <T> Optional<jo.b<T>> a(akp<? extends jz<? extends T>> $$0x) {
+         public <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 
@@ -329,12 +329,12 @@ public class eu {
                }
 
                @Override
-               public Optional<jq.c<T>> a(awt<T> $$0xx) {
+               public Optional<jq.c<T>> a(awu<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jq.c<T> b(awt<T> $$0xx) {
+               public jq.c<T> b(awu<T> $$0xx) {
                   Optional<jq.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jq.a(this.a(), $$0));
                }
@@ -344,7 +344,7 @@ public class eu {
    }
 
    public static void b() {
-      ep $$0 = a(pc.a());
+      ep $$0 = a(pd.a());
       CommandDispatcher<et> $$1 = new eu(eu.a.a, $$0).a();
       RootCommandNode<et> $$2 = $$1.getRoot();
       $$1.findAmbiguities(

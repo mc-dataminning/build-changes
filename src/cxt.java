@@ -1,16 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record cxt(akp<erq> b, long c) {
-   public static final Codec<cxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akp.a(lu.bc).fieldOf("loot_table").forGetter(cxt::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(cxt::b)).apply($$0, cxt::new)
-   );
+public enum cxt {
+   a(0),
+   b(1);
 
-   public akp<erq> a() {
-      return this.b;
+   public static final IntFunction<cxt> c = axe.a(cxt::a, values(), axe.a.a);
+   public static final yx<ByteBuf, cxt> d = yv.a(c, cxt::a);
+   private final int e;
+
+   private cxt(final int $$0) {
+      this.e = $$0;
    }
 
-   public long b() {
-      return this.c;
+   public int a() {
+      return this.e;
    }
 }

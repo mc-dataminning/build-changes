@@ -1,29 +1,18 @@
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class csj extends cwc {
-   public csj(dfw $$0, dfw $$1, cuj.a $$2) {
-      super($$0, $$1, $$2, ji.a);
-      Validate.isInstanceOf(den.class, $$0);
-      Validate.isInstanceOf(den.class, $$1);
+public class csj extends cul implements cvm {
+   public csj(cul.a $$0) {
+      super($$0);
    }
 
-   public static void a(cuo $$0, List<wy> $$1) {
-      dpw $$2 = $$0.a(kq.Y);
-      if ($$2 != null) {
-         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
-            dpw.b $$4 = $$2.b().get($$3);
-            $$1.add($$4.a().a(n.h));
-         }
-      }
-   }
-
-   public ctg b() {
-      return ((den)this.d()).b();
+   public cnd a(dcw $$0, cuq $$1, btn $$2, @Nullable cuq $$3) {
+      return new cnf($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
-      a($$0, $$2);
+   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
+      cnf $$4 = new cnf($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = cnd.a.b;
+      return $$4;
    }
 }

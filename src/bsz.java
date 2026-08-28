@@ -1,43 +1,55 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public record bsz(akp<erq> c, Map<bsx, Float> d) {
-   public static final Codec<Map<bsx, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsx.i, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(bsz::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bsx.values()));
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<bsz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akp.a(lu.bc).fieldOf("loot_table").forGetter(bsz::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bsz::b))
-            .apply($$0, bsz::new)
-   );
+public enum bsz implements azk {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bsy.a),
+   c(2, "offhand", bsy.b),
+   d(3, "hand", $$0 -> $$0.a() == bsy.a.a),
+   e(4, "feet", bsy.c),
+   f(5, "legs", bsy.d),
+   g(6, "chest", bsy.e),
+   h(7, "head", bsy.f),
+   i(8, "armor", bsy::f),
+   j(9, "body", bsy.g);
 
-   private static Map<bsx, Float> a(float $$0) {
-      return a(List.of(bsx.values()), $$0);
+   public static final IntFunction<bsz> k = axe.a($$0 -> $$0.n, values(), axe.a.a);
+   public static final Codec<bsz> l = azk.a(bsz::values);
+   public static final yx<ByteBuf, bsz> m = yv.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<bsy> p;
+
+   private bsz(final int $$0, final String $$1, final Predicate<bsy> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   private static Map<bsx, Float> a(List<bsx> $$0, float $$1) {
-      Map<bsx, Float> $$2 = Maps.newHashMap();
-
-      for (bsx $$3 : $$0) {
-         $$2.put($$3, $$1);
-      }
-
-      return $$2;
+   private bsz(final int $$0, final String $$1, final bsy $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   public akp<erq> a() {
-      return this.c;
+   public static bsz a(bsy $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public Map<bsx, Float> b() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.o;
+   }
+
+   public boolean b(bsy $$0) {
+      return this.p.test($$0);
    }
 }

@@ -36,7 +36,7 @@ public record bv(
                      bt.a.optionalFieldOf("flags").forGetter(bv::g),
                      bs.a.optionalFieldOf("equipment").forGetter(bv::h),
                      bw.a.optionalFieldOf("type_specific").forGetter(bv::i),
-                     axv.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
+                     axw.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
                      $$0.optionalFieldOf("vehicle").forGetter(bv::k),
                      $$0.optionalFieldOf("passenger").forGetter(bv::l),
                      $$0.optionalFieldOf("targeted_entity").forGetter(bv::m),
@@ -61,15 +61,15 @@ public record bv(
    }
 
    public static bg a(bv $$0) {
-      euw $$1 = euz.a(erl.b.a, $$0).build();
+      eva $$1 = evd.a(erp.b.a, $$0).build();
       return new bg(List.of($$1));
    }
 
-   public boolean a(aqu $$0, @Nullable bsq $$1) {
-      return this.a($$0.A(), $$0.do(), $$1);
+   public boolean a(aqv $$0, @Nullable bsr $$1) {
+      return this.a($$0.A(), $$0.dn(), $$1);
    }
 
-   public boolean a(aqt $$0, @Nullable eww $$1, @Nullable bsq $$2) {
+   public boolean a(aqu $$0, @Nullable exa $$1, @Nullable bsr $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.am())) {
@@ -79,30 +79,30 @@ public record bv(
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.dv(), $$2.dx(), $$2.dB())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.du(), $$2.dw(), $$2.dA())) {
             return false;
          }
 
          if (this.e.isPresent()) {
-            eww $$3 = $$2.ag();
-            eww $$4 = $$3.a(20.0);
+            exa $$3 = $$2.ag();
+            exa $$4 = $$3.a(20.0);
             if (!this.e.get().a($$4.c, $$4.d, $$4.e, (double)$$2.ac)) {
                return false;
             }
          }
 
-         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dv(), $$2.dx(), $$2.dB())) {
+         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.du(), $$2.dw(), $$2.dA())) {
             return false;
          } else {
             if (this.f.c.isPresent()) {
-               eww $$5 = eww.b($$2.aM());
+               exa $$5 = exa.b($$2.aM());
                if (!this.f.c.get().a($$0, $$5.a(), $$5.b(), $$5.c())) {
                   return false;
                }
             }
 
             if (this.f.d.isPresent()) {
-               eww $$6 = eww.b($$2.aL());
+               exa $$6 = exa.b($$2.aL());
                if (!this.f.d.get().a($$0, $$6.a(), $$6.b(), $$6.c())) {
                   return false;
                }
@@ -120,13 +120,13 @@ public record bv(
                return false;
             } else if (this.n.isPresent() && $$2.cT().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof btn ? ((btn)$$2).p() : null)) {
+            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof btp ? ((btp)$$2).p() : null)) {
                return false;
             } else if (this.l.isPresent() && $$2.ai % this.l.get() != 0) {
                return false;
             } else {
                if (this.p.isPresent()) {
-                  eyc $$7 = $$2.ck();
+                  eyg $$7 = $$2.ck();
                   if ($$7 == null || !this.p.get().equals($$7.b())) {
                      return false;
                   }
@@ -138,9 +138,9 @@ public record bv(
       }
    }
 
-   public static erl b(aqu $$0, bsq $$1) {
-      ero $$2 = new ero.a($$0.A()).a(euh.a, $$1).a(euh.f, $$0.do()).a(eug.n);
-      return new erl.a($$2).a(Optional.empty());
+   public static erp b(aqv $$0, bsr $$1) {
+      ers $$2 = new ers.a($$0.A()).a(eul.a, $$1).a(eul.f, $$0.dn()).a(euk.n);
+      return new erp.a($$2).a(Optional.empty());
    }
 
    public Optional<by> a() {
@@ -228,12 +228,12 @@ public record bv(
          return new bv.a();
       }
 
-      public bv.a a(bsw<?> $$0) {
+      public bv.a a(bsx<?> $$0) {
          this.a = Optional.of(by.a($$0));
          return this;
       }
 
-      public bv.a a(awt<bsw<?>> $$0) {
+      public bv.a a(awu<bsx<?>> $$0) {
          this.a = Optional.of(by.a($$0));
          return this;
       }

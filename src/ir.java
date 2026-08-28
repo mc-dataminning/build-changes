@@ -18,13 +18,13 @@ public class ir<A extends ArgumentType<?>> implements io<A, ir<A>.a> {
       return new ir<>($$0);
    }
 
-   public void a(ir<A>.a $$0, vv $$1) {
+   public void a(ir<A>.a $$0, vw $$1) {
    }
 
    public void a(ir<A>.a $$0, JsonObject $$1) {
    }
 
-   public ir<A>.a a(vv $$0) {
+   public ir<A>.a a(vw $$0) {
       return this.a;
    }
 

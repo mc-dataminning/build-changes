@@ -1,195 +1,135 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public abstract class fim<E extends fim.a<E>> extends fib<E> {
-   public fim(fgi $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fim extends fib {
+   private static final akr a = akr.b("widget/checkbox_selected_highlighted");
+   private static final akr b = akr.b("widget/checkbox_selected");
+   private static final akr c = akr.b("widget/checkbox_highlighted");
+   private static final akr d = akr.b("widget/checkbox");
+   private static final int f = 14737632;
+   private static final int m = 4;
+   private static final int n = 8;
+   private boolean o;
+   private final fim.b p;
+
+   fim(int $$0, int $$1, wz $$2, fhv $$3, boolean $$4, fim.b $$5) {
+      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
+      this.o = $$4;
+      this.p = $$5;
    }
 
-   @Nullable
+   public static fim.a a(wz $$0, fhv $$1) {
+      return new fim.a($$0, $$1);
+   }
+
+   public static int a(fhv $$0) {
+      return 9 + 8;
+   }
+
    @Override
-   public fhq a(fmi $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (!($$0 instanceof fmi.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.j();
-         if ($$1.b().a() == fmj.a && $$2 != null) {
-            return fhq.a(this, $$2.a($$0));
+   public void b() {
+      this.o = !this.o;
+      this.p.onValueChange(this, this.o);
+   }
+
+   public boolean a() {
+      return this.o;
+   }
+
+   @Override
+   public void a(fmg $$0) {
+      $$0.a(fmf.a, this.aQ_());
+      if (this.j) {
+         if (this.aO_()) {
+            $$0.a(fmf.d, wz.c("narration.checkbox.usage.focused"));
          } else {
-            int $$3 = -1;
-            fmk $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.aG_().indexOf($$2.aJ_());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = fmk.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = fmk.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            fhq $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aG_().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return fhq.a(this, $$6);
+            $$0.a(fmf.d, wz.c("narration.checkbox.usage.hovered"));
          }
       }
    }
 
    @Override
-   public void a(@Nullable fkc $$0) {
-      if (this.j() != $$0) {
-         super.a($$0);
-         if ($$0 == null) {
-            this.a(null);
-         }
-      }
-   }
-
-   @Override
-   public fma.a u() {
-      return this.aK_() ? fma.a.c : super.u();
-   }
-
-   @Override
-   protected boolean e(int $$0) {
-      return false;
-   }
-
-   @Override
-   public void a(fmc $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      fgm $$4 = fgm.Q();
+      RenderSystem.enableDepthTest();
+      fhv $$5 = $$4.h;
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      akr $$6;
+      if (this.o) {
+         $$6 = this.aO_() ? a : b;
       } else {
-         E $$2 = this.j();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
+         $$6 = this.aO_() ? c : d;
       }
 
-      $$0.a(fmb.d, wy.c("narration.component_list.usage"));
+      int $$8 = a($$5);
+      int $$9 = this.D() + $$8 + 4;
+      int $$10 = this.E() + (this.h >> 1) - (9 >> 1);
+      $$0.a($$6, this.D(), this.E(), $$8, $$8);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      $$0.b($$5, this.z(), $$9, $$10, 14737632 | ayo.f(this.l * 255.0F) << 24);
    }
 
-   public abstract static class a<E extends fim.a<E>> extends fib.a<E> implements fkb {
+   public static class a {
+      private final wz a;
+      private final fhv b;
+      private int c = 0;
+      private int d = 0;
+      private fim.b e = fim.b.a;
+      private boolean f = false;
       @Nullable
-      private fkc a;
+      private fgp<Boolean> g = null;
       @Nullable
-      private fma b;
-      private boolean c;
+      private fjv h = null;
 
-      @Override
-      public boolean aI_() {
-         return this.c;
-      }
-
-      @Override
-      public void b_(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return fkb.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable fkc $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
+      a(wz $$0, fhv $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      @Nullable
-      @Override
-      public fkc aJ_() {
-         return this.a;
+      public fim.a a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         return this;
       }
 
-      @Nullable
-      public fhq a(fmi $$0, int $$1) {
-         if (this.aG_().isEmpty()) {
-            return null;
-         } else {
-            fhq $$2 = this.aG_().get(Math.min($$1, this.aG_().size() - 1)).a($$0);
-            return fhq.a(this, $$2);
-         }
+      public fim.a a(fim.b $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      @Nullable
-      @Override
-      public fhq a(fmi $$0) {
-         if ($$0 instanceof fmi.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = ayn.a($$2 + this.aG_().indexOf(this.aJ_()), 0, this.aG_().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aG_().size(); $$4 += $$2) {
-               fkc $$5 = this.aG_().get($$4);
-               fhq $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return fhq.a(this, $$6);
-               }
-            }
-         }
-
-         return fkb.super.a($$0);
+      public fim.a a(boolean $$0) {
+         this.f = $$0;
+         this.g = null;
+         return this;
       }
 
-      public abstract List<? extends fma> b();
-
-      void a(fmc $$0) {
-         List<? extends fma> $$1 = this.b();
-         fnx.b $$2 = fnx.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
-
-            if ($$1.size() > 1) {
-               $$0.a(fmb.b, wy.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == fma.a.c) {
-                  $$0.a(fmb.d, wy.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
-         }
+      public fim.a a(fgp<Boolean> $$0) {
+         this.g = $$0;
+         this.f = $$0.c();
+         return this;
       }
+
+      public fim.a a(fjv $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fim a() {
+         fim.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
+            this.g.a($$1x);
+            this.e.onValueChange($$0x, $$1x);
+         };
+         fim $$1 = new fim(this.c, this.d, this.a, this.b, this.f, $$0);
+         $$1.a(this.h);
+         return $$1;
+      }
+   }
+
+   public interface b {
+      fim.b a = ($$0, $$1) -> {
+      };
+
+      void onValueChange(fim var1, boolean var2);
    }
 }

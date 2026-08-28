@@ -1,11 +1,11 @@
-public class gje extends glj<cex, fuh> {
-   private static final akq a = akq.b("textures/entity/bat.png");
+public class gje extends gln<cgn, fug> {
+   private static final akr a = akr.b("textures/entity/armadillo.png");
 
-   public gje(gkd.a $$0) {
-      super($$0, new fuh($$0.a(fyd.h)), 0.25F);
+   public gje(gkh.a $$0) {
+      super($$0, new fug($$0.a(fyh.b)), 0.4F);
    }
 
-   public akq a(cex $$0) {
+   public akr a(cgn $$0) {
       return a;
    }
 }

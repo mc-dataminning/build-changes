@@ -2,77 +2,68 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class grn implements aue {
-   private static final Logger a = LogUtils.getLogger();
-   private static final grm b = new grm("US", "English", false);
-   private Map<String, grm> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<grj> e;
+public class grn extends tw {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public grn(String $$0, Consumer<grj> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private grn(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static Map<String, grm> a(Stream<asp> $$0) {
-      Map<String, grm> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            grz $$2 = $$1x.a(grz.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
+   public static grn a(aue $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               akr $$7 = akr.a($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
             }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aud $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         grm $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
          }
       }
 
-      grj $$4 = grj.a($$0, $$1, $$2);
-      grl.a($$4);
-      tv.a($$4);
-      this.e.accept($$4);
+      return new grn(ImmutableMap.copyOf($$3), $$2);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
+   private static void a(String $$0, List<auc> $$1, Map<String, String> $$2) {
+      for (auc $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            tw.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
-   public String a() {
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
       return this.d;
    }
 
-   public SortedMap<String, grm> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public grm b(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public aya a(xe $$0) {
+      return gro.a($$0, this.d);
    }
 }

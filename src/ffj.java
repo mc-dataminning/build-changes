@@ -1,36 +1,70 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ffj extends ffh {
+public class ffj extends ffl {
    private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+   private static final wz c = wz.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fob f;
+   private final String g;
 
-   public ffj(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ffj(long $$0, int $$1, String $$2, fob $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      fbs $$0 = fbs.a();
+      fbw $$0 = fbw.a();
+      int $$1 = 0;
 
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fdd var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            fdb $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fdy(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fdi var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fdh var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new fdz(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
    @Override
-   public wy a() {
+   public wz a() {
       return c;
    }
 }

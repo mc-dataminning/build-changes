@@ -1,31 +1,53 @@
-public class acc implements zf<abt> {
-   public static final yw<wj, acc> a = yw.a(jd.b, acc::e, yu.a(dfw.q), acc::b, acc::new);
+public class acc implements zg<abu> {
+   public static final yx<wk, acc> a = zg.a(acc::a, acc::new);
    private final jd b;
-   private final dta c;
+   private final int c;
+   private final int d;
+   private final dfy e;
 
-   public acc(jd $$0, dta $$1) {
+   public acc(jd $$0, dfy $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public acc(dca $$0, jd $$1) {
-      this($$1, $$0.a_($$1));
+   private acc(wk $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = yv.a(lu.f).decode($$0);
+   }
+
+   private void a(wk $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.k(this.d);
+      yv.a(lu.f).encode($$0, this.e);
    }
 
    @Override
-   public zh<acc> a() {
-      return agf.k;
+   public zi<acc> a() {
+      return agg.j;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public dta b() {
+   public jd b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public jd e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public dfy g() {
+      return this.e;
    }
 }

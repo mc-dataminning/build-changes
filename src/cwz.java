@@ -1,56 +1,45 @@
+import java.util.Map;
 import java.util.Optional;
 
 public class cwz {
-   public static final akp<cwy> a = a("sentry");
-   public static final akp<cwy> b = a("dune");
-   public static final akp<cwy> c = a("coast");
-   public static final akp<cwy> d = a("wild");
-   public static final akp<cwy> e = a("ward");
-   public static final akp<cwy> f = a("eye");
-   public static final akp<cwy> g = a("vex");
-   public static final akp<cwy> h = a("tide");
-   public static final akp<cwy> i = a("snout");
-   public static final akp<cwy> j = a("rib");
-   public static final akp<cwy> k = a("spire");
-   public static final akp<cwy> l = a("wayfinder");
-   public static final akp<cwy> m = a("shaper");
-   public static final akp<cwy> n = a("silence");
-   public static final akp<cwy> o = a("raiser");
-   public static final akp<cwy> p = a("host");
-   public static final akp<cwy> q = a("flow");
-   public static final akp<cwy> r = a("bolt");
+   public static final akq<cwy> a = a("quartz");
+   public static final akq<cwy> b = a("iron");
+   public static final akq<cwy> c = a("netherite");
+   public static final akq<cwy> d = a("redstone");
+   public static final akq<cwy> e = a("copper");
+   public static final akq<cwy> f = a("gold");
+   public static final akq<cwy> g = a("emerald");
+   public static final akq<cwy> h = a("diamond");
+   public static final akq<cwy> i = a("lapis");
+   public static final akq<cwy> j = a("amethyst");
 
-   public static void a(qp<cwy> $$0) {
-      a($$0, cur.xw, a);
-      a($$0, cur.xx, b);
-      a($$0, cur.xy, c);
-      a($$0, cur.xz, d);
-      a($$0, cur.xA, e);
-      a($$0, cur.xB, f);
-      a($$0, cur.xC, g);
-      a($$0, cur.xD, h);
-      a($$0, cur.xE, i);
-      a($$0, cur.xF, j);
-      a($$0, cur.xG, k);
-      a($$0, cur.xH, l);
-      a($$0, cur.xI, m);
-      a($$0, cur.xJ, n);
-      a($$0, cur.xK, o);
-      a($$0, cur.xL, p);
-      a($$0, cur.xM, q);
-      a($$0, cur.xN, r);
+   public static void a(qq<cwy> $$0) {
+      a($$0, a, cut.oC, xw.a.a(14931140), 0.1F);
+      a($$0, b, cut.oF, xw.a.a(15527148), 0.2F, Map.of(csh.c, "iron_darker"));
+      a($$0, c, cut.oK, xw.a.a(6445145), 0.3F, Map.of(csh.g, "netherite_darker"));
+      a($$0, d, cut.lH, xw.a.a(9901575), 0.4F);
+      a($$0, e, cut.oH, xw.a.a(11823181), 0.5F);
+      a($$0, f, cut.oJ, xw.a.a(14594349), 0.6F, Map.of(csh.d, "gold_darker"));
+      a($$0, g, cut.oA, xw.a.a(1155126), 0.7F);
+      a($$0, h, cut.oz, xw.a.a(7269586), 0.8F, Map.of(csh.e, "diamond_darker"));
+      a($$0, i, cut.oB, xw.a.a(4288151), 0.9F);
+      a($$0, j, cut.oD, xw.a.a(10116294), 1.0F);
    }
 
-   public static Optional<jm.c<cwy>> a(jo.a $$0, cuo $$1) {
-      return $$0.b(lu.aX).b().filter($$1x -> $$1.a(((cwy)$$1x.a()).b())).findFirst();
+   public static Optional<jm.c<cwy>> a(jo.a $$0, cuq $$1) {
+      return $$0.b(lu.aW).b().filter($$1x -> $$1.a(((cwy)$$1x.a()).b())).findFirst();
    }
 
-   public static void a(qp<cwy> $$0, cuj $$1, akp<cwy> $$2) {
-      cwy $$3 = new cwy($$2.a(), lt.g.e($$1), wy.c(ad.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   private static void a(qq<cwy> $$0, akq<cwy> $$1, cul $$2, xw $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   private static akp<cwy> a(String $$0) {
-      return akp.a(lu.aX, akq.b($$0));
+   private static void a(qq<cwy> $$0, akq<cwy> $$1, cul $$2, xw $$3, float $$4, Map<jm<csg>, String> $$5) {
+      cwy $$6 = cwy.a($$1.a().a(), $$2, $$4, wz.c(ad.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
+   }
+
+   private static akq<cwy> a(String $$0) {
+      return akq.a(lu.aW, akr.b($$0));
    }
 }

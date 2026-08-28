@@ -1,86 +1,47 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fqp {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public class fqp extends fnx {
-   private static final int a = 310;
-   private static final int b = 25;
-   private static final wy c = wy.c("menu.server_links.title");
-   private final fnx q;
-   @Nullable
-   private fqp.a r;
-   final flt s = new flt(this);
-   final ali u;
-
-   public fqp(fnx $$0, ali $$1) {
-      super(c);
-      this.q = $$0;
-      this.u = $$1;
+   public static void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   @Override
-   protected void aP_() {
-      this.s.a(this.k, this.o);
-      this.r = this.s.c(new fqp.a(this.l, this.m, this));
-      this.s.b(fig.a(wx.k, $$0 -> this.d()).a(200).a());
-      this.s.a($$1 -> {
-         fie var10000 = this.c($$1);
-      });
-      this.c();
+   private static void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   @Override
-   protected void c() {
-      this.s.a();
-      if (this.r != null) {
-         this.r.a(this.m, this.s);
-      }
+   private static void b(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   public void d() {
-      this.l.a(this.q);
+   private static void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
    }
 
-   static class a extends fim<fqp.b> {
-      public a(fgi $$0, int $$1, fqp $$2) {
-         super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
-         $$2.u.b().forEach($$1x -> this.b(new fqp.b($$2, $$1x)));
-      }
-
-      @Override
-      public int b() {
-         return 310;
-      }
-
-      @Override
-      public void a(int $$0, flt $$1) {
-         super.a($$0, $$1);
-         int $$2 = $$0 / 2 - 155;
-         this.aG_().forEach($$1x -> $$1x.a.m($$2));
-      }
+   private static void c(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
    }
 
-   static class b extends fim.a<fqp.b> {
-      final fie a;
-
-      b(fnx $$0, ali.a $$1) {
-         this.a = fig.a($$1.a(), fmu.b($$0, $$1.c(), false)).a(310).a();
-      }
-
-      @Override
-      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a.n($$2);
-         this.a.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends fkc> aG_() {
-         return List.of(this.a);
-      }
-
-      @Override
-      public List<? extends fma> b() {
-         return List.of(this.a);
-      }
+   private static void b(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

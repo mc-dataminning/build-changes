@@ -1,95 +1,87 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class ggs implements ggx<dpw> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fyi g;
+   private final fyi h;
+   private final fyi i;
 
-public class ggs implements aue {
-   private Map<dqh<?>, ggt<?>> d = ImmutableMap.of();
-   private final fhr e;
-   private final fya f;
-   public dcu a;
-   public ffs b;
-   public ewu c;
-   private final Supplier<gfn> g;
-   private final Supplier<glb> h;
-   private final Supplier<gkb> i;
-
-   public ggs(fhr $$0, fya $$1, Supplier<gfn> $$2, Supplier<glb> $$3, Supplier<gkb> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ggs(ggy.a $$0) {
+      fyi $$1 = $$0.a(fyh.g);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   @Nullable
-   public <E extends dqf> ggt<E> a(E $$0) {
-      return (ggt<E>)this.d.get($$0.r());
+   public static fyo a() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      $$1.a("flag", fyn.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fyk.a);
+      $$1.a("pole", fyn.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fyk.a);
+      $$1.a("bar", fyn.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fyk.a);
+      return fyo.a($$0, 64, 64);
    }
 
-   public void a(dcu $$0, ffs $$1, ewu $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dqf> void a(E $$0, float $$1, fbc $$2, get $$3) {
-      ggt<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
+   public void a(dpw $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().Z();
+         dtc $$10 = $$0.n();
+         if ($$10.b() instanceof dfd) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dui.b($$10.c(dfd.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(dow.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
       }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fbk $$13 = gsq.f.a($$3, gff::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      jd $$14 = $$0.aD_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * ayo.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, gsq.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
    }
 
-   private static <T extends dqf> void a(ggt<T> $$0, T $$1, float $$2, fbc $$3, get $$4) {
-      dcu $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = ger.a($$5, $$1.az_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gpw.d);
+   public static void a(fbg $$0, gex $$1, int $$2, int $$3, fyi $$4, gso $$5, boolean $$6, cti $$7, dpy $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
    }
 
-   public <E extends dqf> boolean a(E $$0, fbc $$1, get $$2, int $$3, int $$4) {
-      ggt<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
+   public static void a(fbg $$0, gex $$1, int $$2, int $$3, fyi $$4, gso $$5, boolean $$6, cti $$7, dpy $$8, boolean $$9) {
+      $$4.a($$0, $$5.a($$1, gff::c, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gfm.m : gfm.n, $$7);
 
-   private static void a(dqf $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new z($$3);
+      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
+         dpy.b $$11 = $$8.b().get($$10);
+         gso $$12 = $$6 ? gfm.a($$11.b()) : gfm.b($$11.b());
+         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
       }
    }
 
-   public void a(@Nullable dcu $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(aud $$0) {
-      ggu.a $$1 = new ggu.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = ggv.a($$1);
+   private static void a(fbg $$0, gex $$1, int $$2, int $$3, fyi $$4, gso $$5, cti $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gff::m), $$2, $$3, $$7);
    }
 }

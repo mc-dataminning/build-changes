@@ -1,73 +1,58 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record cse(Map<csd.a, Integer> b, int c, jm<avn> d, Supplier<cyu> e, List<cse.a> f, float g, float h) {
-   public static final Codec<jm<cse>> a = lt.ap.s();
+public class cse extends csf {
+   private final akr j;
+   @Nullable
+   private final akr k;
+   private final cse.a l;
 
-   public int a(csd.a $$0) {
-      return this.b.getOrDefault($$0, 0);
-   }
-
-   public Map<csd.a, Integer> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public jm<avn> c() {
-      return this.d;
-   }
-
-   public Supplier<cyu> d() {
-      return this.e;
-   }
-
-   public List<cse.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final akq a;
-      private final String b;
-      private final boolean c;
-      private final akq d;
-      private final akq e;
-
-      public a(akq $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+   public cse(jm<csg> $$0, cse.a $$1, boolean $$2, cul.a $$3) {
+      super($$0, csf.a.e, $$3);
+      this.l = $$1;
+      akr $$4 = $$1.c.apply($$0.e().orElseThrow().a());
+      this.j = $$4.g(".png");
+      if ($$2) {
+         this.k = $$4.g("_overlay.png");
+      } else {
+         this.k = null;
       }
+   }
 
-      public a(akq $$0) {
-         this($$0, "", false);
-      }
+   public akr b() {
+      return this.j;
+   }
 
-      private akq b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
-      }
+   @Nullable
+   public akr c() {
+      return this.k;
+   }
 
-      public akq a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
+   public cse.a d() {
+      return this.l;
+   }
 
-      public boolean a() {
-         return this.c;
+   @Override
+   public avo e() {
+      return this.l.d;
+   }
+
+   @Override
+   public boolean a(cuq $$0) {
+      return false;
+   }
+
+   public static enum a {
+      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), avp.nB),
+      b($$0 -> $$0.e("textures/entity/wolf/wolf_armor"), avp.CI);
+
+      final Function<akr, akr> c;
+      final avo d;
+
+      private a(final Function<akr, akr> $$0, final avo $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
    }
 }

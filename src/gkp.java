@@ -1,16 +1,27 @@
-public class gkp extends gml<btd> {
-   private static final akq a = akq.b("textures/entity/squid/glow_squid.png");
+public class gkp extends gln<cfo, fvk<cfo>> {
+   private static final akr a = akr.b("textures/entity/fox/fox.png");
+   private static final akr i = akr.b("textures/entity/fox/fox_sleep.png");
+   private static final akr j = akr.b("textures/entity/fox/snow_fox.png");
+   private static final akr k = akr.b("textures/entity/fox/snow_fox_sleep.png");
 
-   public gkp(gkd.a $$0, fxg<btd> $$1) {
-      super($$0, $$1);
+   public gkp(gkh.a $$0) {
+      super($$0, new fvk<>($$0.a(fyh.ae)), 0.4F);
+      this.a(new gog(this, $$0.d()));
    }
 
-   public akq a(btd $$0) {
-      return a;
+   protected void a(cfo $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gm() || $$0.gl()) {
+         float $$6 = -ayo.i($$4, $$0.P, $$0.dH());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
    }
 
-   protected int a(btd $$0, jd $$1) {
-      int $$2 = (int)ayn.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public akr a(cfo $$0) {
+      if ($$0.t() == cfo.v.a) {
+         return $$0.fI() ? i : a;
+      } else {
+         return $$0.fI() ? k : j;
+      }
    }
 }

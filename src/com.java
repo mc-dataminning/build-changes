@@ -1,39 +1,65 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class com {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final com c = a("empty").a(0, cok.b).a();
-   public static final com d = a("simple").a(5000, cok.c).a(11000, cok.e).a();
-   public static final com e = a("villager_baby").a(10, cok.b).a(3000, cok.d).a(6000, cok.b).a(10000, cok.d).a(12000, cok.e).a();
-   public static final com f = a("villager_default").a(10, cok.b).a(2000, cok.c).a(9000, cok.f).a(11000, cok.b).a(12000, cok.e).a();
-   private final Map<cok, cop> g = Maps.newHashMap();
+   public static final com a = a("core");
+   public static final com b = a("idle");
+   public static final com c = a("work");
+   public static final com d = a("play");
+   public static final com e = a("rest");
+   public static final com f = a("meet");
+   public static final com g = a("panic");
+   public static final com h = a("raid");
+   public static final com i = a("pre_raid");
+   public static final com j = a("hide");
+   public static final com k = a("fight");
+   public static final com l = a("celebrate");
+   public static final com m = a("admire_item");
+   public static final com n = a("avoid");
+   public static final com o = a("ride");
+   public static final com p = a("play_dead");
+   public static final com q = a("long_jump");
+   public static final com r = a("ram");
+   public static final com s = a("tongue");
+   public static final com t = a("swim");
+   public static final com u = a("lay_spawn");
+   public static final com v = a("sniff");
+   public static final com w = a("investigate");
+   public static final com x = a("roar");
+   public static final com y = a("emerge");
+   public static final com z = a("dig");
+   private final String A;
+   private final int B;
 
-   protected static coo a(String $$0) {
-      com $$1 = jz.a(lt.B, $$0, new com());
-      return new coo($$1);
+   private com(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   protected void a(cok $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cop());
+   public String a() {
+      return this.A;
+   }
+
+   private static com a(String $$0) {
+      return jz.a(lt.C, $$0, new com($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         com $$1 = (com)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
-   protected cop b(cok $$0) {
-      return this.g.get($$0);
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   protected List<cop> c(cok $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public cok a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cok.b);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

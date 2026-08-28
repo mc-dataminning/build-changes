@@ -1,40 +1,20 @@
-public class dzl implements dyk {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dyx i = new dyx(this);
+import com.google.common.annotations.VisibleForTesting;
 
-   public dzl(long $$0) {
-      this.b($$0);
+public interface dzl {
+   default ayw a(jd $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public ayv d() {
-      return new dzl(this.g());
+   default ayw a(akr $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public dzi e() {
-      return new dyw.a(this.g());
-   }
+   ayw a(String var1);
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
+   ayw a(long var1);
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
+   ayw a(int var1, int var2, int var3);
 
-   @Override
-   public double k() {
-      return this.i.b();
-   }
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

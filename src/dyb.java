@@ -1,14 +1,20 @@
-import com.mojang.serialization.MapCodec;
+public interface dyb {
+   dyd a();
 
-public interface dyb<T extends dya> {
-   dyb<dxs> a = a("block", new dxs.a());
-   dyb<dxu> b = a("entity", new dxu.a());
+   int b();
 
-   MapCodec<T> a();
+   boolean a(aqu var1, jm<dxz> var2, dxz.a var3, exa var4);
 
-   yw<? super wj, T> b();
+   default dyb.a c() {
+      return dyb.a.a;
+   }
 
-   static <S extends dyb<T>, T extends dya> S a(String $$0, S $$1) {
-      return jz.a(lt.t, $$0, $$1);
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends dyb> {
+      T c();
    }
 }

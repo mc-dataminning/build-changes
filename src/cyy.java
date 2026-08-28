@@ -1,80 +1,54 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class cyy {
-   private final cyy.a[] a;
-   private WeakReference<czb> b = new WeakReference<>(null);
-
-   public cyy(int $$0) {
-      this.a = new cyy.a[$$0];
+public class cyy extends czh {
+   public cyy(cyo $$0) {
+      super("", $$0, czi.a(Map.of('#', cyw.a(cut.qO), 'x', cyw.a(cut.rU)), "###", "#x#", "###"), new cuq(cut.uj));
    }
 
-   public Optional<cyz<cyo>> a(dcu $$0, cyn $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
+   @Override
+   public boolean a(cyp $$0, dcw $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
       } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            cyy.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
+         cuq $$2 = a($$0);
+         if ($$2.e()) {
+            return false;
+         } else {
+            eqr $$3 = cvc.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
             }
          }
-
-         return this.a($$1, $$0);
       }
    }
 
-   private void a(dcu $$0) {
-      czb $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<cyz<cyo>> a(cyn $$0, dcu $$1) {
-      Optional<cyz<cyo>> $$2 = $$1.r().a(czd.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
+   @Override
+   public cuq a(cyp $$0, jo.a $$1) {
+      cuq $$2 = a($$0).c(1);
+      $$2.b(kq.D, cxt.b);
       return $$2;
    }
 
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         cyy.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(cyn $$0, @Nullable cyz<cyo> $$1) {
-      jv<cuo> $$2 = jv.a($$0.a(), cuo.l);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new cyy.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jv<cuo> a, int b, int c, @Nullable cyz<cyo> d) {
-      public boolean a(cyn $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cuo.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
-               }
-            }
-
-            return true;
-         } else {
-            return false;
+   private static cuq a(cyp $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cuq $$2 = $$0.a($$1);
+         if ($$2.a(cut.rU)) {
+            return $$2;
          }
       }
+
+      return cuq.l;
+   }
+
+   @Override
+   public boolean as_() {
+      return true;
+   }
+
+   @Override
+   public cze<?> at_() {
+      return cze.f;
    }
 }

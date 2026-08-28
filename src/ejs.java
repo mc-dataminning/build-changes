@@ -1,44 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record ejs(List<ejs.a> c, ekj d) {
-   public static final Codec<ejs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ejs.a.a.listOf().fieldOf("structures").forGetter(ejs::a), ekj.b.fieldOf("placement").forGetter(ejs::b)).apply($$0, ejs::new)
-   );
-   public static final Codec<jm<ejs>> b = akm.a(lu.aT, a);
+public class ejs extends eqj {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public ejs(jm<ejm> $$0, ekj $$1) {
-      this(List.of(new ejs.a($$0, 1)), $$1);
+   public static eqj.a<ejs> a() {
+      return new eqj.a<>(ejs::new, ejs::b, azw.o);
    }
 
-   public static ejs.a a(jm<ejm> $$0, int $$1) {
-      return new ejs.a($$0, $$1);
+   private ejs(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static ejs.a a(jm<ejm> $$0) {
-      return new ejs.a($$0, 1);
+   public ejs() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   public List<ejs.a> a() {
+   public static ejs b(ub $$0, jo.a $$1) {
+      return new ejs(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public ub a(ub $$0, jo.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
       return this.c;
-   }
-
-   public ekj b() {
-      return this.d;
-   }
-
-   public static record a(jm<ejm> b, int c) {
-      public static final Codec<ejs.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ejm.b.fieldOf("structure").forGetter(ejs.a::a), axv.l.fieldOf("weight").forGetter(ejs.a::b)).apply($$0, ejs.a::new)
-      );
-
-      public jm<ejm> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
    }
 }

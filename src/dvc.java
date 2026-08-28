@@ -1,74 +1,46 @@
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dvc extends dvg {
-   private final jm<ddu> n;
-
-   public dvc(dcu $$0, dcb $$1, jm<ddu> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+public abstract class dvc implements dvl, AutoCloseable {
+   @Nullable
+   public dvi a(int $$0, int $$1, boolean $$2) {
+      return (dvi)this.a($$0, $$1, dvz.n, $$2);
    }
 
-   @Override
-   public dta a_(jd $$0) {
-      return dfy.nb.o();
+   @Nullable
+   public dvi a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
    @Nullable
    @Override
-   public dta a(jd $$0, dta $$1, boolean $$2) {
-      return null;
+   public dvk c(int $$0, int $$1) {
+      return this.a($$0, $$1, dvz.c, false);
    }
 
-   @Override
-   public eoy b_(jd $$0) {
-      return eoz.a.g();
-   }
-
-   @Override
-   public int i(jd $$0) {
-      return 0;
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dvz.n, false) != null;
    }
 
    @Nullable
-   @Override
-   public dqf a(jd $$0, dvg.b $$1) {
-      return null;
-   }
+   public abstract duy a(int var1, int var2, dvz var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
-   public void b(dqf $$0) {
+   public void close() throws IOException {
    }
 
-   @Override
-   public void a(dqf $$0) {
+   public abstract eor p();
+
+   public void a(boolean $$0, boolean $$1) {
    }
 
-   @Override
-   public void d(jd $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return true;
-   }
-
-   @Override
-   public aqk D() {
-      return aqk.b;
-   }
-
-   @Override
-   public jm<ddu> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public void a(dcd $$0, boolean $$1) {
    }
 }

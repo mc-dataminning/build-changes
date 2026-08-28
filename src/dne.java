@@ -1,49 +1,113 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dne extends der {
+public class dne extends dig implements dgb, dna {
    public static final MapCodec<dne> c = b(dne::new);
+   private static final dtt g = dts.C;
+   public static final dtw d = dts.R;
+   protected static final float e = 6.0F;
+   protected static final ext f = dfy.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dne> a() {
       return c;
    }
 
-   protected dne(dsz.d $$0) {
+   public dne(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, dty.b).a(g, Boolean.valueOf(false)).a(d, ji.c));
    }
 
    @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new drt($$0, $$1);
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
+      return $$0.a(awe.bx) || $$1.b_($$2.d()).a(epd.c) && super.b($$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return a($$0, $$2, dqh.B);
+   public dtc a(cyd $$0) {
+      dtc $$1 = super.a($$0);
+      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
    }
 
    @Override
-   protected void a(dcu $$0, jd $$1, cmv $$2) {
-      dqf $$3 = $$0.c_($$1);
-      if ($$3 instanceof drt) {
-         $$2.a((bqu)$$3);
-         $$2.a(avy.at);
+   public void a(dcw $$0, jd $$1, dtc $$2, btn $$3, cuq $$4) {
+      if (!$$0.x_()) {
+         jd $$5 = $$1.d();
+         dtc $$6 = dig.c($$0, $$5, this.o().a(b, dty.a).a(d, $$2.c(d)));
+         $$0.a($$5, $$6, 3);
       }
    }
 
    @Override
-   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avo.yk, avp.e, 1.0F, 1.0F, false);
-         }
+   protected epc b_(dtc $$0) {
+      return $$0.c(g) ? epd.c.a(false) : super.b_($$0);
+   }
 
-         $$1.a(lm.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+   @Override
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      if ($$0.c(b) == dty.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         jd $$3 = $$2.e();
+         dtc $$4 = $$1.a_($$3);
+         return this.b($$4, $$1, $$3);
       }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b, g, d);
+   }
+
+   @Override
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      if ($$3.c(dig.b) == dty.b) {
+         jd $$4 = $$2.d();
+         $$0.a($$4, $$0.b_($$4).g(), 18);
+         dfv.a($$0, $$1, $$2, $$3.c(d));
+      } else {
+         jd $$5 = $$2.e();
+         this.a($$0, $$1, $$5, $$0.a_($$5));
+      }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected float ax_() {
+      return 0.1F;
    }
 }

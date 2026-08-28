@@ -1,16 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public interface bpw<P extends bpv> {
-   bpw<bps> a = a("constant", bps.b);
-   bpw<bqb> b = a("uniform", bqb.a);
-   bpw<bpn> c = a("biased_to_bottom", bpn.a);
-   bpw<bpo> d = a("clamped", bpo.a);
-   bpw<bqc> e = a("weighted_list", bqc.a);
-   bpw<bpq> f = a("clamped_normal", bpq.a);
+public abstract class bpw {
+   private static final Codec<Either<Integer, bpw>> a = Codec.either(Codec.INT, lt.K.r().dispatch(bpw::c, bpx::codec));
+   public static final Codec<bpw> c = a.xmap(
+      $$0 -> (bpw)$$0.map(bpt::a, $$0x -> $$0x), $$0 -> $$0.c() == bpx.a ? Either.left(((bpt)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bpw> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bpw> e = b(1, Integer.MAX_VALUE);
 
-   MapCodec<P> codec();
-
-   static <P extends bpv> bpw<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.K, $$0, () -> $$1);
+   public static Codec<bpw> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
+
+   public static <T extends bpw> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   }
+
+   private static <T extends bpw> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+      }
+   }
+
+   public abstract int a(ayw var1);
+
+   public abstract int a();
+
+   public abstract int b();
+
+   public abstract bpx<?> c();
 }

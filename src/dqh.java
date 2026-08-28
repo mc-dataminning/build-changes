@@ -1,219 +1,285 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.types.Type;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dqh<T extends dqf> {
-   private static final Logger S = LogUtils.getLogger();
-   public static final dqh<drc> a = a("furnace", dqh.b.a(drc::new, dfy.cD));
-   public static final dqh<dqm> b = a("chest", dqh.b.a(dqm::new, dfy.cv));
-   public static final dqh<drz> c = a("trapped_chest", dqh.b.a(drz::new, dfy.gV));
-   public static final dqh<drb> d = a("ender_chest", dqh.b.a(drb::new, dfy.fG));
-   public static final dqh<drh> e = a("jukebox", dqh.b.a(drh::new, dfy.dT));
-   public static final dqh<dqy> f = a("dispenser", dqh.b.a(dqy::new, dfy.aU));
-   public static final dqh<dqz> g = a("dropper", dqh.b.a(dqz::new, dfy.hi));
-   public static final dqh<drq> h = a(
-      "sign",
-      dqh.b.a(
-         drq::new,
-         dfy.cE,
-         dfy.cF,
-         dfy.cG,
-         dfy.cH,
-         dfy.cI,
-         dfy.cJ,
-         dfy.cK,
-         dfy.cR,
-         dfy.cS,
-         dfy.cT,
-         dfy.cU,
-         dfy.cV,
-         dfy.cW,
-         dfy.cX,
-         dfy.oW,
-         dfy.oY,
-         dfy.oX,
-         dfy.oZ,
-         dfy.cL,
-         dfy.cY,
-         dfy.cM,
-         dfy.cZ
-      )
-   );
-   public static final dqh<drd> i = a(
-      "hanging_sign",
-      dqh.b.a(
-         drd::new,
-         dfy.da,
-         dfy.db,
-         dfy.dc,
-         dfy.dd,
-         dfy.de,
-         dfy.df,
-         dfy.dg,
-         dfy.dh,
-         dfy.di,
-         dfy.dj,
-         dfy.dk,
-         dfy.dl,
-         dfy.dm,
-         dfy.dn,
-         dfy.do,
-         dfy.dp,
-         dfy.dq,
-         dfy.dr,
-         dfy.dt,
-         dfy.du,
-         dfy.ds,
-         dfy.dv
-      )
-   );
-   public static final dqh<dru> j = a("mob_spawner", dqh.b.a(dru::new, dfy.ct));
-   public static final dqh<dsw> k = a("piston", dqh.b.a(dsw::new, dfy.bQ));
-   public static final dqh<dqi> l = a("brewing_stand", dqh.b.a(dqi::new, dfy.fs));
-   public static final dqh<dra> m = a("enchanting_table", dqh.b.a(dra::new, dfy.fr));
-   public static final dqh<drx> n = a("end_portal", dqh.b.a(drx::new, dfy.fx));
-   public static final dqh<dqa> o = a("beacon", dqh.b.a(dqa::new, dfy.fO));
-   public static final dqh<drs> p = a(
-      "skull", dqh.b.a(drs::new, dfy.gE, dfy.gF, dfy.gM, dfy.gN, dfy.gO, dfy.gP, dfy.gI, dfy.gJ, dfy.gG, dfy.gH, dfy.gK, dfy.gL, dfy.gQ, dfy.gR)
-   );
-   public static final dqh<dqu> q = a("daylight_detector", dqh.b.a(dqu::new, dfy.gZ));
-   public static final dqh<drf> r = a("hopper", dqh.b.a(drf::new, dfy.hc));
-   public static final dqh<dqq> s = a("comparator", dqh.b.a(dqq::new, dfy.gY));
-   public static final dqh<dpu> t = a(
-      "banner",
-      dqh.b.a(
-         dpu::new,
-         dfy.iJ,
-         dfy.iK,
-         dfy.iL,
-         dfy.iM,
-         dfy.iN,
-         dfy.iO,
-         dfy.iP,
-         dfy.iQ,
-         dfy.iR,
-         dfy.iS,
-         dfy.iT,
-         dfy.iU,
-         dfy.iV,
-         dfy.iW,
-         dfy.iX,
-         dfy.iY,
-         dfy.iZ,
-         dfy.ja,
-         dfy.jb,
-         dfy.jc,
-         dfy.jd,
-         dfy.je,
-         dfy.jf,
-         dfy.jg,
-         dfy.jh,
-         dfy.ji,
-         dfy.jj,
-         dfy.jk,
-         dfy.jl,
-         dfy.jm,
-         dfy.jn,
-         dfy.jo
-      )
-   );
-   public static final dqh<drv> u = a("structure_block", dqh.b.a(drv::new, dfy.pa));
-   public static final dqh<drw> v = a("end_gateway", dqh.b.a(drw::new, dfy.kF));
-   public static final dqh<dqp> w = a("command_block", dqh.b.a(dqp::new, dfy.fN, dfy.kH, dfy.kG));
-   public static final dqh<drp> x = a(
-      "shulker_box",
-      dqh.b.a(drp::new, dfy.kP, dfy.lf, dfy.lb, dfy.lc, dfy.kZ, dfy.kX, dfy.ld, dfy.kT, dfy.kY, dfy.kV, dfy.kS, dfy.kR, dfy.kW, dfy.la, dfy.le, dfy.kQ, dfy.kU)
-   );
-   public static final dqh<dqb> y = a(
-      "bed", dqh.b.a(dqb::new, dfy.bn, dfy.bo, dfy.bk, dfy.bl, dfy.bi, dfy.bg, dfy.bm, dfy.bc, dfy.bh, dfy.be, dfy.bb, dfy.ba, dfy.bf, dfy.bj, dfy.aZ, dfy.bd)
-   );
-   public static final dqh<dqr> z = a("conduit", dqh.b.a(dqr::new, dfy.mX));
-   public static final dqh<dpy> A = a("barrel", dqh.b.a(dpy::new, dfy.nU));
-   public static final dqh<drt> B = a("smoker", dqh.b.a(drt::new, dfy.nV));
-   public static final dqh<dqe> C = a("blast_furnace", dqh.b.a(dqe::new, dfy.nW));
-   public static final dqh<dri> D = a("lectern", dqh.b.a(dri::new, dfy.oa));
-   public static final dqh<dqd> E = a("bell", dqh.b.a(dqd::new, dfy.od));
-   public static final dqh<drg> F = a("jigsaw", dqh.b.a(drg::new, dfy.pb));
-   public static final dqh<dql> G = a("campfire", dqh.b.a(dql::new, dfy.og, dfy.oh));
-   public static final dqh<dqc> H = a("beehive", dqh.b.a(dqc::new, dfy.pe, dfy.pf));
-   public static final dqh<drn> I = a("sculk_sensor", dqh.b.a(drn::new, dfy.qQ));
-   public static final dqh<dqk> J = a("calibrated_sculk_sensor", dqh.b.a(dqk::new, dfy.qR));
-   public static final dqh<drm> K = a("sculk_catalyst", dqh.b.a(drm::new, dfy.qU));
-   public static final dqh<dro> L = a("sculk_shrieker", dqh.b.a(dro::new, dfy.qV));
-   public static final dqh<dqo> M = a("chiseled_bookshelf", dqh.b.a(dqo::new, dfy.cm));
-   public static final dqh<dqj> N = a("brushable_block", dqh.b.a(dqj::new, dfy.J, dfy.M));
-   public static final dqh<dqv> O = a("decorated_pot", dqh.b.a(dqv::new, dfy.tp));
-   public static final dqh<dqt> P = a("crafter", dqh.b.a(dqt::new, dfy.tq));
-   public static final dqh<dsa> Q = a("trial_spawner", dqh.b.a(dsa::new, dfy.tr));
-   public static final dqh<dsi> R = a("vault", dqh.b.a(dsi::new, dfy.ts));
-   private final dqh.a<? extends T> T;
-   private final Set<dfw> U;
-   private final Type<?> V;
-   private final jm.c<dqh<?>> W = lt.j.f(this);
-
+public abstract class dqh {
+   private static final Logger d = LogUtils.getLogger();
+   private final dqj<?> e;
    @Nullable
-   public static akq a(dqh<?> $$0) {
-      return lt.j.b($$0);
+   protected dcw n;
+   protected final jd o;
+   protected boolean p;
+   private dtc f;
+   private km g = km.a;
+
+   public dqh(dqj<?> $$0, jd $$1, dtc $$2) {
+      this.e = $$0;
+      this.o = $$1.j();
+      this.f = $$2;
    }
 
-   private static <T extends dqf> dqh<T> a(String $$0, dqh.b<T> $$1) {
-      if ($$1.b.isEmpty()) {
-         S.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
-      }
-
-      Type<?> $$2 = ad.a(bgq.s, $$0);
-      return jz.a(lt.j, $$0, $$1.a($$2));
-   }
-
-   public dqh(dqh.a<? extends T> $$0, Set<dfw> $$1, Type<?> $$2) {
-      this.T = $$0;
-      this.U = $$1;
-      this.V = $$2;
+   public static jd b(ub $$0) {
+      return new jd($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
    @Nullable
-   public T a(jd $$0, dta $$1) {
-      return (T)this.T.create($$0, $$1);
+   public dcw i() {
+      return this.n;
    }
 
-   public boolean a(dta $$0) {
-      return this.U.contains($$0.b());
+   public void a(dcw $$0) {
+      this.n = $$0;
+   }
+
+   public boolean m() {
+      return this.n != null;
+   }
+
+   protected void a(ub $$0, jo.a $$1) {
+   }
+
+   public final void c(ub $$0, jo.a $$1) {
+      this.a($$0, $$1);
+      dqh.a.a.parse($$1.a(up.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(ub $$0, jo.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(ub $$0, jo.a $$1) {
+   }
+
+   public final ub b(jo.a $$0) {
+      ub $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final ub c(jo.a $$0) {
+      ub $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final ub d(jo.a $$0) {
+      ub $$1 = new ub();
+      this.b($$1, $$0);
+      dqh.a.a.encodeStart($$0.a(up.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((ub)$$1x));
+      return $$1;
+   }
+
+   public final ub e(jo.a $$0) {
+      ub $$1 = new ub();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final ub f(jo.a $$0) {
+      ub $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(ub $$0) {
+      akr $$1 = dqj.a(this.r());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
+      }
+   }
+
+   public static void a(ub $$0, dqj<?> $$1) {
+      $$0.a("id", dqj.a($$1).toString());
+   }
+
+   public void a(cuq $$0, jo.a $$1) {
+      ub $$2 = this.e($$1);
+      this.a($$2);
+      cso.a($$0, this.r(), $$2);
+      $$0.b(this.s());
+   }
+
+   private void d(ub $$0) {
+      this.c($$0);
+      $$0.a("x", this.o.u());
+      $$0.a("y", this.o.v());
+      $$0.a("z", this.o.w());
    }
 
    @Nullable
-   public jm.c<dqh<?>> a() {
-      return this.W;
+   public static dqh a(jd $$0, dtc $$1, ub $$2, jo.a $$3) {
+      String $$4 = $$2.l("id");
+      akr $$5 = akr.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return lt.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.n != null) {
+         a(this.n, this.o, this.f);
+      }
+   }
+
+   protected static void a(dcw $$0, jd $$1, dtc $$2) {
+      $$0.q($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public jd aD_() {
+      return this.o;
+   }
+
+   public dtc n() {
+      return this.f;
    }
 
    @Nullable
-   public T a(dca $$0, jd $$1) {
-      dqf $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.r() == this ? $$2 : null);
+   public zg<abu> az_() {
+      return null;
    }
 
-   @FunctionalInterface
-   interface a<T extends dqf> {
-      T create(jd var1, dta var2);
+   public ub a(jo.a $$0) {
+      return new ub();
    }
 
-   public static final class b<T extends dqf> {
-      private final dqh.a<? extends T> a;
-      final Set<dfw> b;
+   public boolean o() {
+      return this.p;
+   }
 
-      private b(dqh.a<? extends T> $$0, Set<dfw> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void aA_() {
+      this.p = true;
+   }
 
-      public static <T extends dqf> dqh.b<T> a(dqh.a<? extends T> $$0, dfw... $$1) {
-         return new dqh.b<>($$0, ImmutableSet.copyOf($$1));
-      }
+   public void p() {
+      this.p = false;
+   }
 
-      public dqh<T> a(Type<?> $$0) {
-         return new dqh<>(this.a, this.b, $$0);
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> lt.j.b(this.r()) + " // " + this.getClass().getCanonicalName());
+      if (this.n != null) {
+         p.a($$0, this.n, this.o, this.n());
+         p.a($$0, this.n, this.o, this.n.a_(this.o));
       }
+   }
+
+   public boolean q() {
+      return false;
+   }
+
+   public dqj<?> r() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void b(dtc $$0) {
+      this.f = $$0;
+   }
+
+   protected void a(dqh.b $$0) {
+   }
+
+   public final void a(cuq $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(km $$0, kn $$1) {
+      final Set<kp<?>> $$2 = new HashSet<>();
+      $$2.add(kq.O);
+      final km $$3 = kr.a($$0, $$1);
+      this.a(new dqh.b() {
+         @Nullable
+         @Override
+         public <T> T a(kp<T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(kp<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      kn $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
+   }
+
+   protected void a(km.a $$0) {
+   }
+
+   @Deprecated
+   public void a(ub $$0) {
+   }
+
+   public final km s() {
+      km.a $$0 = km.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public km t() {
+      return this.g;
+   }
+
+   public void a(km $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   public static wz a(String $$0, jo.a $$1) {
+      try {
+         return wz.a.a($$0, $$1);
+      } catch (Exception var3) {
+         d.warn("Failed to parse custom name from string '{}', discarding", $$0, var3);
+         return null;
+      }
+   }
+
+   static class a {
+      public static final Codec<km> a = km.b.optionalFieldOf("components", km.a).codec();
+
+      private a() {
+      }
+   }
+
+   protected interface b {
+      @Nullable
+      <T> T a(kp<T> var1);
+
+      <T> T a(kp<? extends T> var1, T var2);
    }
 }

@@ -1,79 +1,49 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ewm {
-   private final PathMatcher a;
+public class ewm<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final ewm<MinecraftServer> a = new ewm<MinecraftServer>().a(new ewj.a()).a(new ewk.a());
+   private final Map<akr, ewl.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, ewl.a<C, ?>> d = Maps.newHashMap();
 
-   public ewm(PathMatcher $$0) {
-      this.a = $$0;
+   public ewm<C> a(ewl.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   public void a(Path $$0, List<ewn> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new ewn($$0, $$2));
-      }
+   private <T extends ewl<C>> ewl.a<C, T> a(Class<?> $$0) {
+      return (ewl.a<C, T>)this.d.get($$0);
    }
 
-   public List<ewn> a(Path $$0) throws IOException {
-      List<ewn> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
+   public <T extends ewl<C>> ub a(T $$0) {
+      ewl.a<C, T> $$1 = this.a($$0.getClass());
+      ub $$2 = new ub();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
    }
 
-   public List<ewn> a(Path $$0, boolean $$1) throws IOException {
-      List<ewn> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
+   @Nullable
+   public ewl<C> a(ub $$0) {
+      akr $$1 = akr.c($$0.l("Type"));
+      ewl.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
       } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
          }
-
-         this.b($$0, $$2);
-         return $$2;
       }
-   }
-
-   public void b(Path $$0, final List<ewn> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               ewm.this.a($$0, $$1);
-            }
-         }
-
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
    }
 }

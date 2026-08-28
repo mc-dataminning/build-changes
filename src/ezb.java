@@ -1,7 +1,11 @@
-public record ezb(eww b, eww c, eww d) {
-   public static final ezb a = new ezb(eww.b, new eww(0.0, 0.0, -1.0), new eww(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public eww a() {
-      return this.c.c(this.d);
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ezb {
 }

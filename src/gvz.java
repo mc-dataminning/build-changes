@@ -1,38 +1,50 @@
-public class gvz implements gwc {
-   private static final int a = 600;
-   private static final wy b = wy.c("tutorial.open_inventory.title");
-   private static final wy c = wy.a("tutorial.open_inventory.description", gwb.a("inventory"));
-   private final gwb d;
-   private fkr e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gvz(gwb $$0) {
-      this.d = $$0;
+public class gvz {
+   private final gwg a;
+   private final fgq b;
+   @Nullable
+   private fkv c;
+
+   public gvz(gwg $$0, fgq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gwd.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fkr(fkr.a.d, b, c, false);
-            this.d.e().aw().a(this.e);
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      wz $$0 = wz.c("tutorial.bundleInsert.title");
+      wz $$1 = wz.c("tutorial.bundleInsert.description");
+      this.c = new fkv(fkv.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
+   }
+
+   public void a(cuq $$0, cuq $$1, cqd $$2) {
+      if (!this.b.t) {
+         if (!$$0.e() && $$1.a(cut.qU)) {
+            if ($$2 == cqd.a) {
+               this.a();
+            } else if ($$2 == cqd.b) {
+               this.b();
+            }
+         } else if ($$0.a(cut.qU) && !$$1.e() && $$2 == cqd.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gwd.e);
    }
 }

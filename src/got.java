@@ -1,14 +1,33 @@
-public class got<T extends btn & ckf, M extends fve<T>> extends gop<T, M> {
-   private final fwz<T> a;
-   private final akq b;
+public abstract class got<T extends bsr, M extends fvi<T>> {
+   private final gmd<T, M> a;
 
-   public got(glz<T, M> $$0, fya $$1, fyc $$2, akq $$3) {
-      super($$0);
-      this.b = $$3;
-      this.a = new fwz<>($$1.a($$2));
+   public got(gmd<T, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, -1);
+   protected static <T extends btn> void a(
+      fvi<T> $$0, fvi<T> $$1, akr $$2, fbg $$3, gex $$4, int $$5, T $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12, int $$13
+   ) {
+      if (!$$6.ci()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13);
+      }
    }
+
+   protected static <T extends btn> void a(fvi<T> $$0, akr $$1, fbg $$2, gex $$3, int $$4, T $$5, int $$6) {
+      fbk $$7 = $$3.getBuffer(gff.e($$1));
+      $$0.a($$2, $$7, $$4, gli.c($$5, 0.0F), $$6);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected akr a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(fbg var1, gex var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

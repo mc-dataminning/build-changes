@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fyp {
+   final int a;
+   final int b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyp {
+   public fyp(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

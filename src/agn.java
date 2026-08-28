@@ -1,20 +1,20 @@
-public record agn(String b) implements zf<agh> {
-   public static final yw<vv, agn> a = zf.a(agn::a, agn::new);
+public record agn(int b) implements zg<agi> {
+   public static final yx<vw, agn> a = zg.a(agn::a, agn::new);
 
-   private agn(vv $$0) {
-      this($$0.p());
+   private agn(vw $$0) {
+      this($$0.l());
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zh<agn> a() {
-      return agf.bj;
+   public zi<agn> a() {
+      return agg.bi;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 }

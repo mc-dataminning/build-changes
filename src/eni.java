@@ -1,16 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eni<P extends enh> {
-   eni<eml> a = a("always_true", eml.a);
-   eni<emq> b = a("block_match", emq.a);
-   eni<ems> c = a("blockstate_match", ems.a);
-   eni<enp> d = a("tag_match", enp.a);
-   eni<ene> e = a("random_block_match", ene.a);
-   eni<enf> f = a("random_blockstate_match", enf.a);
+public class eni extends enl {
+   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lt.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eni::new)
+   );
+   private final dfy b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public eni(dfy $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends enh> eni<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.m, $$0, () -> $$1);
+   @Override
+   public boolean a(dtc $$0, ayw $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected enm<?> a() {
+      return enm.e;
    }
 }

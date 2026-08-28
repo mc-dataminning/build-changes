@@ -1,31 +1,60 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dar {
-   Codec<dar> c = lt.ax.r().dispatch(dar::a, Function.identity());
+public record dar(akr b, jm<bur> d, daj e, buu.a f) implements dat {
+   public static final MapCodec<dar> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akr.a.fieldOf("id").forGetter(dar::b),
+               bur.a.fieldOf("attribute").forGetter(dar::c),
+               daj.b.fieldOf("amount").forGetter(dar::d),
+               buu.a.f.fieldOf("operation").forGetter(dar::e)
+            )
+            .apply($$0, dar::new)
+   );
 
-   static MapCodec<? extends dar> b(jz<MapCodec<? extends dar>> $$0) {
-      jz.a($$0, "all_of", dak.b.a);
-      jz.a($$0, "apply_mob_effect", dal.a);
-      jz.a($$0, "attribute", dap.a);
-      jz.a($$0, "damage_entity", dam.a);
-      jz.a($$0, "damage_item", dao.a);
-      jz.a($$0, "explode", dat.a);
-      jz.a($$0, "ignite", dau.a);
-      jz.a($$0, "play_sound", daw.a);
-      jz.a($$0, "replace_block", day.a);
-      jz.a($$0, "replace_disc", daz.a);
-      jz.a($$0, "run_function", dba.a);
-      jz.a($$0, "set_block_properties", dbb.a);
-      jz.a($$0, "spawn_particles", dbd.a);
-      return jz.a($$0, "summon_entity", dbe.a);
+   private akr a(azk $$0) {
+      return this.b.g("/" + $$0.c());
    }
 
-   void a(aqt var1, int var2, czz var3, bsq var4, eww var5, boolean var6);
-
-   default void a(czz $$0, bsq $$1, eww $$2, int $$3) {
+   public buu a(int $$0, azk $$1) {
+      return new buu(this.a($$1), (double)this.d().a($$0), this.e());
    }
 
-   MapCodec<? extends dar> a();
+   @Override
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof btn $$6) {
+         $$6.eT().a(this.a($$1, $$2.b()));
+      }
+   }
+
+   @Override
+   public void a(dab $$0, bsr $$1, exa $$2, int $$3) {
+      if ($$1 instanceof btn $$4) {
+         $$4.eT().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<jm<bur>, buu> a(int $$0, bsy $$1) {
+      HashMultimap<jm<bur>, buu> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (azk)$$1));
+      return $$2;
+   }
+
+   @Override
+   public MapCodec<dar> a() {
+      return a;
+   }
+
+   public jm<bur> c() {
+      return this.d;
+   }
+
+   public daj d() {
+      return this.e;
+   }
+
+   public buu.a e() {
+      return this.f;
+   }
 }

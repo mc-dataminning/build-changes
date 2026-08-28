@@ -1,47 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dnl extends dfi {
+public class dnl extends dfy {
    public static final MapCodec<dnl> a = b(dnl::new);
+   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dnl> a() {
       return a;
    }
 
-   protected dnl(dsz.d $$0) {
+   public dnl(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new dru($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return a($$2, dqh.j, $$0.B ? dru::a : dru::b);
+   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
+   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
+      return exq.b();
+   }
+
+   @Override
+   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return exq.b();
+   }
+
+   @Override
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      dge.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$1 == ji.b && $$2.a(dga.G)) {
+         $$3.a($$4, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
+   protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      ddn.a($$0, $$2, "SpawnData");
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dtc $$0, dcc $$1, jd $$2) {
+      return 0.2F;
    }
 }

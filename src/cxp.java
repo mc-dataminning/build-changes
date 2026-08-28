@@ -1,44 +1,42 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record cxp(Map<String, cxp.a> c) {
-   public static final cxp a = new cxp(Map.of());
-   public static final Codec<cxp> b = Codec.unboundedMap(Codec.STRING, cxp.a.a).xmap(cxp::new, cxp::a);
+public record cxp(List<wz> e, List<wz> f) implements cxy {
+   public static final cxp a = new cxp(List.of());
+   public static final int b = 256;
+   private static final xw g = xw.a.a(n.f).b(true);
+   public static final Codec<cxp> c = xb.g.sizeLimitedListOf(256).xmap(cxp::new, cxp::a);
+   public static final yx<wk, cxp> d = xb.b.a(yv.c(256)).a(cxp::new, cxp::a);
 
-   public cxp a(String $$0, cxp.a $$1) {
-      return new cxp(ad.a(this.c, $$0, $$1));
+   public cxp(List<wz> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xc.a($$0x.f(), g)));
    }
 
-   public Map<String, cxp.a> a() {
-      return this.c;
+   public cxp(List<wz> e, List<wz> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+      } else {
+         this.e = e;
+         this.f = f;
+      }
    }
 
-   public static record a(jm<eqi> b, double c, double d, float e) {
-      public static final Codec<cxp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eqi.b.fieldOf("type").forGetter(cxp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cxp.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cxp.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cxp.a::d)
-               )
-               .apply($$0, cxp.a::new)
-      );
+   public cxp a(wz $$0) {
+      return new cxp(ad.a(this.e, $$0));
+   }
 
-      public jm<eqi> a() {
-         return this.b;
-      }
+   @Override
+   public void a(cul.b $$0, Consumer<wz> $$1, cwm $$2) {
+      this.f.forEach($$1);
+   }
 
-      public double b() {
-         return this.c;
-      }
+   public List<wz> a() {
+      return this.e;
+   }
 
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   public List<wz> b() {
+      return this.f;
    }
 }

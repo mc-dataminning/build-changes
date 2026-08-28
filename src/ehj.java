@@ -1,26 +1,41 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ehj<P extends ehi> {
-   public static final ehj<ehh> a = a("straight_trunk_placer", ehh.a);
-   public static final ehj<ehe> b = a("forking_trunk_placer", ehe.a);
-   public static final ehj<ehf> c = a("giant_trunk_placer", ehf.a);
-   public static final ehj<ehg> d = a("mega_jungle_trunk_placer", ehg.b);
-   public static final ehj<ehc> e = a("dark_oak_trunk_placer", ehc.a);
-   public static final ehj<ehd> f = a("fancy_trunk_placer", ehd.a);
-   public static final ehj<eha> g = a("bending_trunk_placer", eha.a);
-   public static final ehj<ehk> h = a("upwards_branching_trunk_placer", ehk.a);
-   public static final ehj<ehb> i = a("cherry_trunk_placer", ehb.a);
-   private final MapCodec<P> j;
+public class ehj extends ehi {
+   public static final MapCodec<ehj> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehj::new));
 
-   private static <P extends ehi> ehj<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.V, $$0, new ehj<>($$1));
+   public ehj(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private ehj(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected ehm<?> a() {
+      return ehm.d;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public List<eft.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efd $$5) {
+      List<eft.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + ayo.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + ayo.a($$8) * (float)$$11);
+            jd $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new eft.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
    }
 }

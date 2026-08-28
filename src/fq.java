@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class fq implements ArgumentType<lk> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("particle.notFound", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("particle.invalidOptions", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wz.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("particle.invalidOptions", $$0));
    private final jo.a d;
 
    public fq(ep $$0) {
@@ -41,24 +41,24 @@ public class fq implements ArgumentType<lk> {
    }
 
    private static ll<?> a(StringReader $$0, jo<ll<?>> $$1) throws CommandSyntaxException {
-      akq $$2 = akq.a($$0);
-      akp<ll<?>> $$3 = akp.a(lu.Y, $$2);
+      akr $$2 = akr.a($$0);
+      akq<ll<?>> $$3 = akq.a(lu.Y, $$2);
       return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
    }
 
    private static <T extends lk> T a(StringReader $$0, ll<T> $$1, jo.a $$2) throws CommandSyntaxException {
-      ua $$3;
+      ub $$3;
       if ($$0.canRead() && $$0.peek() == '{') {
-         $$3 = new uy($$0).f();
+         $$3 = new uz($$0).f();
       } else {
-         $$3 = new ua();
+         $$3 = new ub();
       }
 
-      return (T)$$1.c().codec().parse($$2.a(uo.a), $$3).getOrThrow(b::create);
+      return (T)$$1.c().codec().parse($$2.a(up.a), $$3).getOrThrow(b::create);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       jo.b<ll<?>> $$2 = this.d.b(lu.Y);
-      return ey.a($$2.c().map(akp::a), $$1);
+      return ey.a($$2.c().map(akq::a), $$1);
    }
 }

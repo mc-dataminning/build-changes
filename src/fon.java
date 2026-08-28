@@ -1,107 +1,214 @@
-public abstract class fon<T extends cpt> extends fom<T> implements fsa {
-   public final frq D;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+
+public class fon extends fob {
+   static final akr a = akr.b("gamemode_switcher/slot");
+   static final akr b = akr.b("gamemode_switcher/selection");
+   private static final akr c = akr.b("textures/gui/container/gamemode_switcher.png");
+   private static final int r = 128;
+   private static final int s = 128;
+   private static final int u = 26;
+   private static final int v = 5;
+   private static final int w = 31;
+   private static final int x = 5;
+   private static final int y = fon.a.values().length * 31 - 5;
+   private static final wz z = wz.a("debug.gamemodes.select_next", wz.c("debug.gamemodes.press_f4").a(n.l));
+   private final fon.a A;
+   private fon.a B;
+   private int C;
+   private int D;
    private boolean E;
-   private final akq F;
-   private final akq G;
-   private final akq H;
+   private final List<fon.b> F = Lists.newArrayList();
 
-   public fon(T $$0, frq $$1, cmu $$2, wy $$3, akq $$4, akq $$5, akq $$6) {
-      super($$0, $$2, $$3);
-      this.D = $$1;
-      this.F = $$4;
-      this.G = $$5;
-      this.H = $$6;
+   public fon() {
+      super(fge.a);
+      this.A = fon.a.a(this.m());
+      this.B = this.A;
    }
 
-   @Override
-   public void aP_() {
-      super.aP_();
-      this.E = this.m < 379;
-      this.D.a(this.m, this.n, this.l, this.E, this.w);
-      this.z = this.D.a(this.m, this.c);
-      this.c(new fis(this.z + 20, this.n / 2 - 49, 20, 18, fru.a, $$0 -> {
-         this.D.e();
-         this.z = this.D.a(this.m, this.c);
-         $$0.c(this.z + 20, this.n / 2 - 49);
-      }));
-      this.r = (this.c - this.o.a(this.k)) / 2;
-   }
-
-   @Override
-   public void D() {
-      super.D();
-      this.D.h();
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      if (this.D.f() && this.E) {
-         this.b($$0, $$1, $$2, $$3);
-         this.D.a($$0, $$1, $$2, $$3);
+   private dct m() {
+      fzm $$0 = fgm.Q().q;
+      dct $$1 = $$0.i();
+      if ($$1 != null) {
+         return $$1;
       } else {
+         return $$0.j() == dct.b ? dct.a : dct.b;
+      }
+   }
+
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.B = this.A;
+
+      for (int $$0 = 0; $$0 < fon.a.e.length; $$0++) {
+         fon.a $$1 = fon.a.e[$$0];
+         this.F.add(new fon.b($$1, this.m / 2 - y / 2 + $$0 * 31, this.n / 2 - 31));
+      }
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      if (!this.D()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.m / 2 - 62;
+         int $$5 = this.n / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
          super.a($$0, $$1, $$2, $$3);
-         this.D.a($$0, $$1, $$2, $$3);
-         this.D.a($$0, this.z, this.A, true, $$3);
-      }
+         $$0.a(this.o, this.B.a(), this.m / 2, this.n / 2 - 31 - 20, -1);
+         $$0.a(this.o, z, this.m / 2, this.n / 2 + 5, 16777215);
+         if (!this.E) {
+            this.C = $$1;
+            this.D = $$2;
+            this.E = true;
+         }
 
-      this.a($$0, $$1, $$2);
-      this.D.a($$0, this.z, this.A, $$1, $$2);
+         boolean $$6 = this.C == $$1 && this.D == $$2;
+
+         for (fon.b $$7 : this.F) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.B == $$7.a);
+            if (!$$6 && $$7.B()) {
+               this.B = $$7.a;
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(fht $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(this.F, $$4, $$5, 0, 0, this.c, this.q);
-      if (this.w.s()) {
-         int $$6 = 14;
-         int $$7 = ayn.f(this.w.r() * 13.0F) + 1;
-         $$0.a(this.G, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = ayn.f(this.w.q() * 24.0F);
-      $$0.a(this.H, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.D.a($$0, $$1, $$2)) {
+   private void C() {
+      a(this.l, this.B);
+   }
+
+   private static void a(fgm $$0, fon.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         fon.a $$2 = fon.a.a($$0.q.j());
+         if ($$0.s.l(2) && $$1 != $$2) {
+            $$0.s.h.d($$1.b());
+         }
+      }
+   }
+
+   private boolean D() {
+      if (!fac.a(this.l.aM().j(), 292)) {
+         this.C();
+         this.l.a(null);
          return true;
       } else {
-         return this.E && this.D.f() ? true : super.a($$0, $$1, $$2);
+         return false;
       }
-   }
-
-   @Override
-   protected void a(cro $$0, int $$1, int $$2, cqc $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.D.a($$0);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      return this.D.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      if ($$0 == 293) {
+         this.E = false;
+         this.B = this.B.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.q);
-      return this.D.a($$0, $$1, this.z, this.A, this.c, this.q, $$4) && $$5;
+   public boolean k() {
+      return false;
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.D.a($$0, $$1) ? true : super.a($$0, $$1);
+   static enum a {
+      a(wz.c("gameMode.creative"), "gamemode creative", new cuq(dga.i)),
+      b(wz.c("gameMode.survival"), "gamemode survival", new cuq(cut.pb)),
+      c(wz.c("gameMode.adventure"), "gamemode adventure", new cuq(cut.uj)),
+      d(wz.c("gameMode.spectator"), "gamemode spectator", new cuq(cut.ss));
+
+      protected static final fon.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final wz g;
+      final String h;
+      final cuq i;
+
+      private a(final wz $$0, final String $$1, final cuq $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(fhx $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      wz a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      fon.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static fon.a a(dct $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
    }
 
-   @Override
-   public void F() {
-      this.D.i();
-   }
+   public class b extends fii {
+      final fon.a a;
+      private boolean b;
 
-   @Override
-   public fru G() {
-      return this.D;
+      public b(final fon.a $$1, final int $$2, final int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.a = $$1;
+      }
+
+      @Override
+      public void b(fhx $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.a.a($$0, this.D() + 5, this.E() + 5);
+         if (this.b) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(fmg $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean B() {
+         return super.B() || this.b;
+      }
+
+      public void b(boolean $$0) {
+         this.b = $$0;
+      }
+
+      private void a(fhx $$0) {
+         $$0.a(fon.a, this.D(), this.E(), 26, 26);
+      }
+
+      private void b(fhx $$0) {
+         $$0.a(fon.b, this.D(), this.E(), 26, 26);
+      }
    }
 }

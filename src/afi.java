@@ -1,20 +1,30 @@
-public record afi(int b) implements zf<abt> {
-   public static final yw<vv, afi> a = zf.a(afi::a, afi::new);
+import java.util.Optional;
 
-   private afi(vv $$0) {
-      this($$0.l());
-   }
-
-   private void a(vv $$0) {
-      $$0.c(this.b);
-   }
+public record afi(String b, String c, int d, Optional<wz> e, Optional<yp> f) implements zg<abu> {
+   public static final yx<wk, afi> a = yx.a(yv.l, afi::b, yv.l, afi::e, yv.g, afi::f, xb.e, afi::g, yr.d, afi::h, afi::new);
 
    @Override
-   public zh<afi> a() {
-      return agf.aM;
+   public zi<afi> a() {
+      return agg.aL;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<wz> g() {
+      return this.e;
+   }
+
+   public Optional<yp> h() {
+      return this.f;
    }
 }

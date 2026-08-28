@@ -1,76 +1,43 @@
-public class gbt extends gdh {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
+public class gbt extends gdl {
+   private final gdg a;
 
-   gbt(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+   protected gbt(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdg $$7) {
       super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public gcl b() {
-      return gcl.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
+   public gcp b() {
+      return gcp.b;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axx.b.a($$0, this.G, this.H);
-         this.a((float)axx.b.b($$2) / 255.0F, (float)axx.b.c($$2) / 255.0F, (float)axx.b.d($$2) / 255.0F);
-         this.e((float)axx.b.a($$2) / 255.0F);
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gck<lq> {
-      private final gdc a;
+   public static class a implements gco<lq> {
+      private final gdg a;
 
-      public a(gdc $$0) {
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbt $$8 = new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(ayn.b($$1.E_(), 3.0F, 5.0F));
-         $$8.a(this.a);
-         return $$8;
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

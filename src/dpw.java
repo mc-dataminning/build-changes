@@ -1,76 +1,109 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record dpw(List<dpw.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dpw a = new dpw(List.of());
-   public static final Codec<dpw> b = dpw.b.a.listOf().xmap(dpw::new, dpw::b);
-   public static final yw<wj, dpw> c = dpw.b.b.a(yu.a()).a(dpw::new, dpw::b);
+public class dpw extends dqh implements bqw {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wz d;
+   private cti e;
+   private dpy f = dpy.a;
 
-   public dpw a() {
-      return new dpw(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   public dpw(jd $$0, dtc $$1) {
+      super(dqj.t, $$0, $$1);
+      this.e = ((dep)$$1.b()).b();
    }
 
-   public List<dpw.b> b() {
+   public dpw(jd $$0, dtc $$1, cti $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
+
+   public void a(cuq $$0, cti $$1) {
+      this.e = $$1;
+      this.a($$0);
+   }
+
+   @Override
+   public wz ah() {
+      return (wz)(this.d != null ? this.d : wz.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public wz aj() {
       return this.d;
    }
 
-   public static class a {
-      private final Builder<dpw.b> a = ImmutableList.builder();
-
-      @Deprecated
-      public dpw.a a(jn<dpv> $$0, akp<dpv> $$1, ctg $$2) {
-         Optional<jm.c<dpv>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dpw.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
+   @Override
+   protected void b(ub $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dpy.a)) {
+         $$0.a("patterns", (uy)dpy.b.encodeStart($$1.a(up.a), this.f).getOrThrow());
       }
 
-      public dpw.a a(jm<dpv> $$0, ctg $$1) {
-         return this.a(new dpw.b($$0, $$1));
-      }
-
-      public dpw.a a(dpw.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dpw.a a(dpw $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dpw a() {
-         return new dpw(this.a.build());
+      if (this.d != null) {
+         $$0.a("CustomName", wz.a.a(this.d, $$1));
       }
    }
 
-   public static record b(jm<dpv> c, ctg d) {
-      public static final Codec<dpw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dpv.c.fieldOf("pattern").forGetter(dpw.b::b), ctg.q.fieldOf("color").forGetter(dpw.b::c)).apply($$0, dpw.b::new)
-      );
-      public static final yw<wj, dpw.b> b = yw.a(dpv.d, dpw.b::b, ctg.r, dpw.b::c, dpw.b::new);
-
-      public xm a() {
-         String $$0 = this.c.a().b();
-         return wy.c($$0 + "." + this.d.b());
+   @Override
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = a($$0.l("CustomName"), $$1);
       }
 
-      public jm<dpv> b() {
-         return this.c;
+      if ($$0.e("patterns")) {
+         dpy.b
+            .parse($$1.a(up.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
       }
+   }
 
-      public ctg c() {
-         return this.d;
-      }
+   public acb a() {
+      return acb.a(this);
+   }
+
+   @Override
+   public ub a(jo.a $$0) {
+      return this.d($$0);
+   }
+
+   public dpy b() {
+      return this.f;
+   }
+
+   public cuq c() {
+      cuq $$0 = new cuq(dfd.a(this.e));
+      $$0.b(this.s());
+      return $$0;
+   }
+
+   public cti f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dqh.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(kq.Y, dpy.a);
+      this.d = $$0.a(kq.g);
+   }
+
+   @Override
+   protected void a(km.a $$0) {
+      super.a($$0);
+      $$0.a(kq.Y, this.f);
+      $$0.a(kq.g, this.d);
+   }
+
+   @Override
+   public void a(ub $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

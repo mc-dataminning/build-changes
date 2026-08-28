@@ -1,37 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bwo {
-   public static bwq<btl> a(float $$0) {
-      return bys.a((Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$1 -> $$1.group($$1.c(ccq.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dq())) {
-                  return false;
-               } else {
-                  Optional<eww> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new cct($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+   public static bws<btp> a(int $$0) {
+      return byu.a(
+         (Function<byu.b<btp>, ? extends App<byu.c<btp>, byx<btp>>>)($$1 -> $$1.group($$1.a(ccs.n), $$1.b(ccs.o), $$1.c(ccs.p), $$1.b(ccs.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btn $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<ccu>b($$5).a($$9)) {
+                        $$2.a(new bvs($$9, true));
+                        $$7.a(bqq.a);
+                        $$7.D($$9);
+                        $$4.a(true, (long)$$0);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   @Nullable
-   private static eww a(aqt $$0, btl $$1) {
-      ayv $$2 = $$1.dT();
-      jd $$3 = $$1.dq();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jd $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return eww.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(aqt $$0, btl $$1, jd $$2) {
-      return $$0.h($$2) && (double)$$0.a(dyv.a.e, $$2).v() <= $$1.dx();
+   private static boolean a(btp $$0) {
+      return $$0.b($$1 -> {
+         cul $$2 = $$1.g();
+         return $$2 instanceof cvn && $$0.a((cvn)$$2);
+      });
    }
 }

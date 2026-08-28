@@ -1,43 +1,56 @@
-import java.util.Optional;
+public class ecc extends ecd<eeo> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final jd an = jd.c;
+   private final boolean ao;
 
-public class ecc<FC extends eee> {
-   private final Optional<ebn<?, ?>> a;
-   private final ddq b;
-   private final dux c;
-   private final ayv d;
-   private final jd e;
-   private final FC f;
-
-   public ecc(Optional<ebn<?, ?>> $$0, ddq $$1, dux $$2, ayv $$3, jd $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public static jd a(jd $$0) {
+      return an.a((kh)$$0);
    }
 
-   public Optional<ebn<?, ?>> a() {
-      return this.a;
+   public ecc(boolean $$0) {
+      super(eeo.a);
+      this.ao = $$0;
    }
 
-   public ddq b() {
-      return this.b;
-   }
+   @Override
+   public boolean a(ecf<eeo> $$0) {
+      jd $$1 = $$0.e();
+      dds $$2 = $$0.b();
 
-   public dux c() {
-      return this.c;
-   }
+      for (jd $$3 : jd.c(new jd($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new jd($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dga.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dga.fz.o());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dga.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, dga.F.o());
+            } else if (this.ao) {
+               this.a($$2, new jd($$3), dga.fx.o());
+            } else {
+               this.a($$2, new jd($$3), dga.a.o());
+            }
+         }
+      }
 
-   public ayv d() {
-      return this.d;
-   }
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dga.F.o());
+      }
 
-   public jd e() {
-      return this.e;
-   }
+      jd $$6 = $$1.b(2);
 
-   public FC f() {
-      return this.f;
+      for (ji $$7 : ji.c.a) {
+         this.a($$2, $$6.a($$7), dga.cq.o().a(dpb.g, $$7));
+      }
+
+      return true;
    }
 }

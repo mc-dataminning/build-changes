@@ -1,52 +1,56 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record cxb(Map<String, String> d) {
-   public static final cxb a = new cxb(Map.of());
-   public static final Codec<cxb> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cxb::new, cxb::b);
-   private static final yw<ByteBuf, Map<String, String>> e = yu.a(Object2ObjectOpenHashMap::new, yu.l, yu.l);
-   public static final yw<ByteBuf, cxb> c = e.a(cxb::new, cxb::b);
+public class cxb {
+   public static final akq<cxa> a = a("sentry");
+   public static final akq<cxa> b = a("dune");
+   public static final akq<cxa> c = a("coast");
+   public static final akq<cxa> d = a("wild");
+   public static final akq<cxa> e = a("ward");
+   public static final akq<cxa> f = a("eye");
+   public static final akq<cxa> g = a("vex");
+   public static final akq<cxa> h = a("tide");
+   public static final akq<cxa> i = a("snout");
+   public static final akq<cxa> j = a("rib");
+   public static final akq<cxa> k = a("spire");
+   public static final akq<cxa> l = a("wayfinder");
+   public static final akq<cxa> m = a("shaper");
+   public static final akq<cxa> n = a("silence");
+   public static final akq<cxa> o = a("raiser");
+   public static final akq<cxa> p = a("host");
+   public static final akq<cxa> q = a("flow");
+   public static final akq<cxa> r = a("bolt");
 
-   public <T extends Comparable<T>> cxb a(dud<T> $$0, T $$1) {
-      return new cxb(ad.a(this.d, $$0.f(), $$0.a($$1)));
+   public static void a(qq<cxa> $$0) {
+      a($$0, cut.xw, a);
+      a($$0, cut.xx, b);
+      a($$0, cut.xy, c);
+      a($$0, cut.xz, d);
+      a($$0, cut.xA, e);
+      a($$0, cut.xB, f);
+      a($$0, cut.xC, g);
+      a($$0, cut.xD, h);
+      a($$0, cut.xE, i);
+      a($$0, cut.xF, j);
+      a($$0, cut.xG, k);
+      a($$0, cut.xH, l);
+      a($$0, cut.xI, m);
+      a($$0, cut.xJ, n);
+      a($$0, cut.xK, o);
+      a($$0, cut.xL, p);
+      a($$0, cut.xM, q);
+      a($$0, cut.xN, r);
    }
 
-   public <T extends Comparable<T>> cxb a(dud<T> $$0, dta $$1) {
-      return this.a($$0, $$1.c($$0));
+   public static Optional<jm.c<cxa>> a(jo.a $$0, cuq $$1) {
+      return $$0.b(lu.aX).b().filter($$1x -> $$1.a(((cxa)$$1x.a()).b())).findFirst();
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T a(dud<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   public static void a(qq<cxa> $$0, cul $$1, akq<cxa> $$2) {
+      cxa $$3 = new cxa($$2.a(), lt.g.e($$1), wz.c(ad.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   public dta a(dta $$0) {
-      dtb<dfw, dta> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dud<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
-      return $$0;
-   }
-
-   private static <T extends Comparable<T>> dta a(dta $$0, dud<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Map<String, String> b() {
-      return this.d;
+   private static akq<cxa> a(String $$0) {
+      return akq.a(lu.aX, akr.b($$0));
    }
 }

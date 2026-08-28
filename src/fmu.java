@@ -1,77 +1,47 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-
-public class fmu extends fmv {
-   private static final wy q = wy.c("chat.copy");
-   private static final wy r = wy.c("chat.link.warning");
-   private final String s;
+public class fmu extends fob {
+   private static final int a = 90;
+   private final wz b;
+   private fjd c = fjd.a;
+   private final Runnable r;
+   private final wz s;
    private final boolean u;
 
-   public fmu(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wy.b($$1), $$1, $$2 ? wx.e : wx.g, $$2);
+   public fmu(Runnable $$0, wz $$1, wz $$2) {
+      this($$0, $$1, $$2, wy.k, true);
    }
 
-   public fmu(BooleanConsumer $$0, wy $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wx.e : wx.g, $$3);
-   }
-
-   public fmu(BooleanConsumer $$0, wy $$1, wy $$2, String $$3, wy $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wy)($$5 ? wy.c("chat.link.open") : wx.f);
-      this.b = $$4;
-      this.u = !$$5;
+   public fmu(Runnable $$0, wz $$1, wz $$2, wz $$3, boolean $$4) {
+      super($$1);
+      this.r = $$0;
+      this.b = $$2;
       this.s = $$3;
-   }
-
-   protected static xm a(boolean $$0, String $$1) {
-      return c($$0).b(wx.v).b(wy.b($$1));
-   }
-
-   protected static xm c(boolean $$0) {
-      return wy.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+      this.u = $$4;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fig.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fig.a(q, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.m / 2 - 50, $$0, 100, 20).a());
-      this.c(fig.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.l.o.a(this.s);
+   public wz i() {
+      return wy.a(super.i(), this.b);
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
+   protected void aT_() {
+      super.aT_();
+      this.c = fjd.a(this.o, this.b, this.m - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = ayo.a(90 + $$0 + 12, this.n / 6 + 96, this.n - 24);
+      int $$2 = 150;
+      this.c(fik.a(this.s, $$0x -> this.r.run()).a((this.m - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.u) {
-         $$0.a(this.o, r, this.m / 2, 110, 16764108);
-      }
+      $$0.a(this.o, this.k, this.m / 2, 70, 16777215);
+      this.c.a($$0, this.m / 2, 90);
    }
 
-   public static void a(fnx $$0, String $$1, boolean $$2) {
-      fgi $$3 = fgi.Q();
-      $$3.a(new fmu($$3x -> {
-         if ($$3x) {
-            ad.k().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1, $$2));
-   }
-
-   public static void a(fnx $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static fig.c b(fnx $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fig.c b(fnx $$0, String $$1) {
-      return b($$0, $$1, true);
+   @Override
+   public boolean aJ_() {
+      return this.u;
    }
 }

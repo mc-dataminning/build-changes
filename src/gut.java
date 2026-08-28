@@ -1,62 +1,46 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public class gut {
-   private static final int a = 100;
-   private final ayv b = ayv.a();
-   private final fgi c;
-   @Nullable
-   private gtt d;
-   private int e = 100;
+public class gut implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public gut(fgi $$0) {
-      this.c = $$0;
+   public gut(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   public void a() {
-      avl $$0 = this.c.ak();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.aj().b(this.d);
-            this.e = ayn.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.aj().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, ayn.a(this.b, $$0.b(), $$0.c()));
-         }
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
       }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+      int $$1 = ayo.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
    }
 
-   public void a(avl $$0) {
-      this.d = gto.a($$0.a().a());
-      if (this.d.b() != guy.b) {
-         this.c.aj().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(avl $$0) {
-      if (this.c($$0)) {
-         this.b();
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.aj().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(avl $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   public int b() {
+      return this.c;
    }
 }

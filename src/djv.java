@@ -1,69 +1,75 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class djv extends dfw {
-   public static final MapCodec<djv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lt.e.r().fieldOf("host").forGetter(djv::b), u()).apply($$0, djv::new));
-   private final dfw b;
-   private static final Map<dfw, dfw> c = Maps.newIdentityHashMap();
-   private static final Map<dta, dta> d = Maps.newIdentityHashMap();
-   private static final Map<dta, dta> e = Maps.newIdentityHashMap();
+public class djv extends dfy {
+   public static final MapCodec<djv> a = b(djv::new);
+   public static final dtt b = dlm.b;
+   public static final dtt c = dlm.c;
+   public static final dtt d = dlm.d;
+   public static final dtt e = dlm.e;
+   public static final dtt f = dlm.f;
+   public static final dtt g = dlm.g;
+   private static final Map<ji, dtt> h = dlm.h;
 
    @Override
-   public MapCodec<? extends djv> a() {
+   public MapCodec<djv> a() {
       return a;
    }
 
-   public djv(dfw $$0, dsz.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
-   }
-
-   public dfw b() {
-      return this.b;
-   }
-
-   public static boolean m(dta $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(aqt $$0, jd $$1) {
-      cki $$2 = bsw.aM.a((dcu)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.R();
-      }
+   public djv(dtb.d $$0) {
+      super($$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.ab().b(dcq.h) && !dac.a($$3, awg.t)) {
-         this.a($$1, $$2);
-      }
+   public dtc a(cyd $$0) {
+      dcc $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      return this.o()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
    }
 
-   public static dta n(dta $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).o());
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public dta o(dta $$0) {
-      return a(e, $$0, () -> this.b().o());
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(h.get($$1.a(ji.c)), $$0.c(b))
+         .a(h.get($$1.a(ji.d)), $$0.c(d))
+         .a(h.get($$1.a(ji.f)), $$0.c(c))
+         .a(h.get($$1.a(ji.e)), $$0.c(e))
+         .a(h.get($$1.a(ji.b)), $$0.c(f))
+         .a(h.get($$1.a(ji.a)), $$0.c(g));
    }
 
-   private static dta a(Map<dta, dta> $$0, dta $$1, Supplier<dta> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dta $$2x = $$2.get();
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a(h.get($$1.b(ji.c)), $$0.c(b))
+         .a(h.get($$1.b(ji.d)), $$0.c(d))
+         .a(h.get($$1.b(ji.f)), $$0.c(c))
+         .a(h.get($$1.b(ji.e)), $$0.c(e))
+         .a(h.get($$1.b(ji.b)), $$0.c(f))
+         .a(h.get($$1.b(ji.a)), $$0.c(g));
+   }
 
-         for (dud $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

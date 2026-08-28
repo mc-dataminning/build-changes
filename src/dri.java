@@ -1,221 +1,143 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class dri extends dqf implements bqh, bqu {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bqj e = new bqj() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dri extends dqh {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private akr h = akr.b("empty");
+   private akr i = akr.b("empty");
+   private akq<ekz> j = akq.a(lu.aU, akr.b("empty"));
+   private dri.a k = dri.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-      @Override
-      public boolean c() {
-         return dri.this.g.e();
-      }
-
-      @Override
-      public cuo a(int $$0) {
-         return $$0 == 0 ? dri.this.g : cuo.l;
-      }
-
-      @Override
-      public cuo a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cuo $$2 = dri.this.g.a($$1);
-            if (dri.this.g.e()) {
-               dri.this.k();
-            }
-
-            return $$2;
-         } else {
-            return cuo.l;
-         }
-      }
-
-      @Override
-      public cuo b(int $$0) {
-         if ($$0 == 0) {
-            cuo $$1 = dri.this.g;
-            dri.this.g = cuo.l;
-            dri.this.k();
-            return $$1;
-         } else {
-            return cuo.l;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cuo $$1) {
-      }
-
-      @Override
-      public int ah_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dri.this.e();
-      }
-
-      @Override
-      public boolean a(cmv $$0) {
-         return bqj.a(dri.this, $$0) && dri.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cuo $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cqd f = new cqd() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dri.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dri.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cuo g = cuo.l;
-   int h;
-   private int i;
-
-   public dri(jd $$0, dta $$1) {
-      super(dqh.D, $$0, $$1);
+   public dri(jd $$0, dtc $$1) {
+      super(dqj.F, $$0, $$1);
    }
 
-   public cuo b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.a(cur.tZ) || this.g.a(cur.ua);
-   }
-
-   public void b(cuo $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      dkh.a(null, this.i(), this.az_(), this.n(), false);
-   }
-
-   public void a(cuo $$0, @Nullable cmv $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = ayn.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         dkh.a(this.i(), this.az_(), this.n());
-      }
-   }
-
-   public int f() {
+   public akr b() {
       return this.h;
    }
 
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return ayn.d($$0 * 14.0F) + (this.c() ? 1 : 0);
+   public akr c() {
+      return this.i;
    }
 
-   private cuo b(cuo $$0, @Nullable cmv $$1) {
-      if (this.n instanceof aqt && $$0.a(cur.ua)) {
-         cwp.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
+   public akq<ekz> d() {
+      return this.j;
    }
 
-   private et a(@Nullable cmv $$0) {
-      String $$1;
-      wy $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = wy.b("Lectern");
-      } else {
-         $$1 = $$0.ah().getString();
-         $$2 = $$0.O_();
-      }
+   public String f() {
+      return this.l;
+   }
 
-      eww $$5 = eww.b(this.o);
-      return new et(es.a, $$5, ewv.a, (aqt)this.n, 2, $$1, $$2, this.n.o(), $$0);
+   public dri.a j() {
+      return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int l() {
+      return this.q;
+   }
+
+   public void a(akr $$0) {
+      this.h = $$0;
+   }
+
+   public void b(akr $$0) {
+      this.i = $$0;
+   }
+
+   public void a(akq<ekz> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dri.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.q = $$0;
    }
 
    @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cuo.a($$1, (ux)$$0.p("Book")).orElse(cuo.l), null);
-      } else {
-         this.g = cuo.l;
-      }
-
-      this.i = c(this.g);
-      this.h = ayn.a($$0.h("Page"), 0, this.i - 1);
-   }
-
-   @Override
-   protected void b(ua $$0, jo.a $$1) {
+   protected void b(ub $$0, jo.a $$1) {
       super.b($$0, $$1);
-      if (!this.b().e()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
+   }
+
+   @Override
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.h = akr.a($$0.l("name"));
+      this.i = akr.a($$0.l("target"));
+      this.j = akq.a(lu.aU, akr.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dri.a.a($$0.l("joint")).orElseGet(() -> dka.m(this.n()).o().d() ? dri.a.b : dri.a.a);
+      this.m = $$0.h("placement_priority");
+      this.q = $$0.h("selection_priority");
+   }
+
+   public acb u() {
+      return acb.a(this);
+   }
+
+   @Override
+   public ub a(jo.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(aqu $$0, int $$1, boolean $$2) {
+      jd $$3 = this.aD_().a(this.n().c(dka.b).a());
+      jz<ekz> $$4 = $$0.H_().d(lu.aU);
+      jm<ekz> $$5 = $$4.g(this.j);
+      ekt.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements azk {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
-   }
 
-   @Override
-   public void a() {
-      this.b(cuo.l);
-   }
+      @Override
+      public String c() {
+         return this.c;
+      }
 
-   @Override
-   public cps createMenu(int $$0, cmu $$1, cmv $$2) {
-      return new cqx($$0, this.e, this.f);
-   }
+      public static Optional<dri.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
 
-   @Override
-   public wy O_() {
-      return wy.c("container.lectern");
-   }
-
-   private static int c(cuo $$0) {
-      cxz $$1 = $$0.a(kq.J);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         cxy $$2 = $$0.a(kq.I);
-         return $$2 != null ? $$2.a().size() : 0;
+      public wz a() {
+         return wz.c("jigsaw_block.joint." + this.c);
       }
    }
 }

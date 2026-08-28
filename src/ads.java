@@ -1,37 +1,37 @@
-public class ads implements zf<abt> {
-   public static final yw<vv, ads> a = zf.a(ads::a, ads::new);
-   private final int b;
-   private final akq c;
+public class ads implements zg<abu> {
+   public static final yx<vw, ads> a = zg.a(ads::a, ads::new);
+   private final jd b;
+   private final boolean c;
 
-   public ads(int $$0, cyz<?> $$1) {
+   public ads(jd $$0, boolean $$1) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1;
    }
 
-   private ads(vv $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private ads(vw $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vv $$0) {
-      $$0.k(this.b);
+   private void a(vw $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zh<ads> a() {
-      return agf.Y;
+   public zi<ads> a() {
+      return agg.X;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public akq b() {
-      return this.c;
+   public jd b() {
+      return this.b;
    }
 
-   public int e() {
-      return this.b;
+   public boolean e() {
+      return this.c;
    }
 }

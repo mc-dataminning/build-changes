@@ -1,15 +1,15 @@
-public interface dre extends bqj {
-   ewr p_ = dfw.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
-
-   default ewr ai_() {
-      return p_;
+public class dre extends dpv {
+   public dre(jd $$0, dtc $$1) {
+      super(dqj.a, $$0, $$1, czf.b);
    }
 
-   double H();
+   @Override
+   protected wz k() {
+      return wz.c("container.furnace");
+   }
 
-   double I();
-
-   double J();
-
-   boolean K();
+   @Override
+   protected cpu a(int $$0, cmw $$1) {
+      return new cqr($$0, $$1, this, this.m);
+   }
 }

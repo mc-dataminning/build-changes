@@ -1,13 +1,9 @@
-public class gnn extends gop<ckx, fun<ckx>> {
-   private static final gfb a = gfb.q(akq.b("textures/entity/breeze/breeze_eyes.png"));
-
-   public gnn(glz<ckx, fun<ckx>> $$0) {
-      super($$0);
+public class gnn extends gjc<ckw, fya<ckw>> {
+   public gnn(gkh.a $$0) {
+      this($$0, fyh.cg, fyh.cj, fyh.ck);
    }
 
-   public void a(fbc $$0, get $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fbg $$10 = $$1.getBuffer(a);
-      fun<ckx> $$11 = this.c();
-      gjj.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gpw.d);
+   public gnn(gkh.a $$0, fyg $$1, fyg $$2, fyg $$3) {
+      super($$0, new fya<>($$0.a($$1)), new fya<>($$0.a($$2)), new fya<>($$0.a($$3)));
    }
 }

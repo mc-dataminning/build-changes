@@ -1,27 +1,24 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public enum dtu implements azk {
+   a("single"),
+   b("left"),
+   c("right");
 
-public class dtu extends dty<ji> {
-   protected dtu(String $$0, Collection<ji> $$1) {
-      super($$0, ji.class, $$1);
+   private final String d;
+
+   private dtu(final String $$0) {
+      this.d = $$0;
    }
 
-   public static dtu a(String $$0) {
-      return a($$0, $$0x -> true);
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public static dtu a(String $$0, Predicate<ji> $$1) {
-      return a($$0, Arrays.stream(ji.values()).filter($$1).collect(Collectors.toList()));
-   }
-
-   public static dtu a(String $$0, ji... $$1) {
-      return a($$0, Lists.newArrayList($$1));
-   }
-
-   public static dtu a(String $$0, Collection<ji> $$1) {
-      return new dtu($$0, $$1);
+   public dtu a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

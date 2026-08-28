@@ -1,15 +1,7 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
 
-@Deprecated
-public class ayh<T> {
-   private final Supplier<T> a;
-
-   public ayh(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
-   }
-
-   public T a() {
-      return this.a.get();
+public record ayh<A>(MapCodec<A> a) {
+   public static <A> ayh<A> a(MapCodec<A> $$0) {
+      return new ayh<>($$0);
    }
 }

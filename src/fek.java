@@ -1,135 +1,167 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fek extends gwj {
-   static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("mco.configure.world.subscription.title");
-   private static final wy c = wy.c("mco.configure.world.subscription.start");
-   private static final wy A = wy.c("mco.configure.world.subscription.timeleft");
-   private static final wy B = wy.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final wy C = wy.c("mco.configure.world.subscription.expired");
-   private static final wy D = wy.c("mco.configure.world.subscription.less_than_a_day");
-   private static final wy E = wy.c("mco.configure.world.subscription.unknown");
-   private static final wy F = wy.c("mco.configure.world.subscription.recurring.info");
-   private final fnx G;
-   final fcj H;
-   final fnx I;
-   private wy J = E;
-   private wy K = E;
+public class fek extends gwo {
+   private static final Logger b = LogUtils.getLogger();
+   public static final wz a = wz.c("mco.upload.select.world.title");
+   private static final wz c = wz.c("selectWorld.unable_to_load");
+   static final wz B = wz.c("selectWorld.world");
+   private static final wz C = wz.c("mco.upload.hardcore").b(-65536);
+   private static final wz D = wz.c("selectWorld.commands");
+   private static final DateFormat E = new SimpleDateFormat();
    @Nullable
-   private fcu.a L;
+   private final ffn F;
+   private final fej G;
+   private final long H;
+   private final int I;
+   fik J;
+   List<ere> K = Lists.newArrayList();
+   int L = -1;
+   fek.b M;
 
-   public fek(fnx $$0, fcj $$1, fnx $$2) {
-      super(fga.a);
-      this.G = $$0;
+   public fek(@Nullable ffn $$0, long $$1, int $$2, fej $$3) {
+      super(a);
+      this.F = $$0;
+      this.G = $$3;
       this.H = $$1;
       this.I = $$2;
    }
 
-   @Override
-   public void aP_() {
-      this.a(this.H.a);
-      this.c(fig.a(wy.c("mco.configure.world.subscription.extend"), $$0 -> fmu.a(this, axi.a(this.H.b, this.l.X().b()))).a(this.m / 2 - 100, g(6), 200, 20).a());
-      if (this.H.j) {
-         this.c(
-            fig.a(wy.c("mco.configure.world.delete.button"), $$0 -> this.l.a(fed.b(this, wy.c("mco.configure.world.delete.question.line1"), $$0x -> this.D())))
-               .a(this.m / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (fbn.b() && this.H.s != null) {
-         this.c(new fiq(this.m / 2 - 100, g(8), 200, 46, wy.a("mco.snapshot.subscription.info", this.H.s), this.o));
-      } else {
-         this.c(new fiq(this.m / 2 - 100, g(8), 200, 46, F, this.o));
-      }
+   private void C() {
+      erd.a $$0 = this.l.m().b();
+      this.K = this.l.m().a($$0).join().stream().filter(ere::v).collect(Collectors.toList());
 
-      this.c(fig.a(wx.k, $$0 -> this.d()).a(this.m / 2 - 100, g(12), 200, 20).a());
+      for (ere $$1 : this.K) {
+         this.M.a($$1);
+      }
    }
 
    @Override
-   public wy i() {
-      return wx.b(b, c, this.K, A, this.J);
+   public void aT_() {
+      this.M = this.c(new fek.b());
+
+      try {
+         this.C();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.l.a(new fdz(c, wz.a(var2.getMessage()), this.G));
+         return;
+      }
+
+      this.J = this.c(fik.a(wz.c("mco.upload.button.name"), $$0 -> this.D()).a(this.m / 2 - 154, this.n - 32, 153, 20).a());
+      this.J.j = this.L >= 0 && this.L < this.K.size();
+      this.c(fik.a(wy.k, $$0 -> this.l.a(this.G)).a(this.m / 2 + 6, this.n - 32, 153, 20).a());
+      this.a(new gwm(wz.c("mco.upload.select.world.subtitle"), this.m / 2, g(-1), -6250336));
+      if (this.K.isEmpty()) {
+         this.a(new gwm(wz.c("mco.upload.select.world.none"), this.m / 2, this.n / 2 - 20, -1));
+      }
+   }
+
+   @Override
+   public wz i() {
+      return wy.a(this.n(), this.m());
    }
 
    private void D() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               fbs $$0 = fbs.a();
-               $$0.i(fek.this.H.a);
-            } catch (fdd var2) {
-               fek.a.error("Couldn't delete world", var2);
-            }
-
-            fek.this.l.execute(() -> fek.this.l.a(fek.this.I));
-         }
-      }).start();
-      this.l.a(this);
-   }
-
-   private void a(long $$0) {
-      fbs $$1 = fbs.a();
-
-      try {
-         fcu $$2 = $$1.h($$0);
-         this.J = this.a($$2.b);
-         this.K = b($$2.a);
-         this.L = $$2.c;
-      } catch (fdd var5) {
-         a.error("Couldn't get subscription", var5);
-         this.l.a(new fdv(var5, this.G));
+      if (this.L != -1 && !this.K.get(this.L).i()) {
+         ere $$0 = this.K.get(this.L);
+         this.l.a(new feq(this.F, this.H, this.I, this.G, $$0));
       }
    }
 
-   private static wy b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return wy.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
-   }
-
    @Override
-   public void d() {
-      this.l.a(this.G);
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.m / 2 - 100;
-      $$0.a(this.o, b, this.m / 2, 17, -1);
-      $$0.a(this.o, c, $$4, g(0), -6250336, false);
-      $$0.a(this.o, this.K, $$4, g(1), -1, false);
-      if (this.L == fcu.a.a) {
-         $$0.a(this.o, A, $$4, g(3), -6250336, false);
-      } else if (this.L == fcu.a.b) {
-         $$0.a(this.o, B, $$4, g(3), -6250336, false);
-      }
-
-      $$0.a(this.o, this.J, $$4, g(4), -1, false);
+      $$0.a(this.o, this.k, this.m / 2, 13, -1);
    }
 
-   private wy a(int $$0) {
-      if ($$0 < 0 && this.H.j) {
-         return C;
-      } else if ($$0 <= 1) {
-         return D;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.l.a(this.G);
+         return true;
       } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return wy.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return wy.a("mco.configure.world.subscription.remaining.months", $$1);
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   static wz a(ere $$0) {
+      return $$0.h().d();
+   }
+
+   static String b(ere $$0) {
+      return E.format(new Date($$0.f()));
+   }
+
+   class a extends fjg.a<fek.a> {
+      private final ere b;
+      private final String c;
+      private final wz d;
+      private final wz e;
+
+      public a(final ere $$0) {
+         this.b = $$0;
+         this.c = $$0.b();
+         this.d = wz.a("mco.upload.entry.id", $$0.a(), fek.b($$0));
+         this.e = $$0.s();
+      }
+
+      @Override
+      public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fek.this.M.b(fek.this.K.indexOf(this.b));
+         return super.a($$0, $$1, $$2);
+      }
+
+      protected void a(fhx $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = fek.B + " " + ($$1 + 1);
          } else {
-            return $$4 ? wy.a("mco.configure.world.subscription.remaining.days", $$2) : wy.i();
+            $$4 = this.c;
          }
+
+         $$0.a(fek.this.o, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(fek.this.o, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(fek.this.o, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
+      }
+
+      @Override
+      public wz a() {
+         wz $$0 = wy.b(wz.b(this.b.b()), wz.b(fek.b(this.b)), fek.a(this.b));
+         return wz.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends gwn<fek.a> {
+      public b() {
+         super(fek.this.m, fek.this.n - 40 - fek.g(0), fek.g(0), 36);
+      }
+
+      public void a(ere $$0) {
+         this.a((fek.a)(fek.this.new a($$0)));
+      }
+
+      @Override
+      public int a() {
+         return fek.this.K.size() * 36;
+      }
+
+      public void a(@Nullable fek.a $$0) {
+         super.a($$0);
+         fek.this.L = this.aK_().indexOf($$0);
+         fek.this.J.j = fek.this.L >= 0 && fek.this.L < this.l() && !fek.this.K.get(fek.this.L).i();
       }
    }
 }

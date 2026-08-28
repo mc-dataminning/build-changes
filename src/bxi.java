@@ -1,26 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bxi {
-   public static bvg<btl> a() {
-      return bys.a((Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$0 -> $$0.a((byv<btl>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               buo<?> $$3 = $$1.dU();
-               cog $$4 = $$0x.d($$1.dq());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cok.h);
-                     $$3.a(cok.h);
-                  } else {
-                     $$3.b(cok.i);
-                     $$3.a(cok.i);
-                  }
-               }
+   private static final int a = 300;
 
-               return true;
-            }
-         }))));
+   public static bvi<btn> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$3x -> $$3x.group($$3x.b(ccs.C), $$3x.b(ccs.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        jd $$11 = $$3x.<jl>b($$4).b();
+                        if ($$11.a($$7.dp(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dU().a($$6.aa(), $$6.Z());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,188 +1,136 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class amx {
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("commands.function.error.argument_not_compound", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wy.b("commands.function.scheduled.no_functions", $$0));
-   @VisibleForTesting
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.function.instantiationFailure", $$0, $$1));
-   public static final SuggestionProvider<et> b = ($$0, $$1) -> {
-      alf $$2 = ((et)$$0.getSource()).l().aF();
-      ey.a($$2.e(), $$1, "#");
-      return ey.a($$2.d(), $$1);
-   };
-   static final amx.b<et> e = new amx.b<et>() {
-      public void a(et $$0, akq $$1, int $$2) {
-         $$0.a(() -> wy.a("commands.function.result", wy.a($$1), $$2), true);
-      }
-   };
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wz.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wz.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wz.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wz.c("commands.forceload.removed.failure"));
 
    public static void a(CommandDispatcher<et> $$0) {
-      LiteralArgumentBuilder<et> $$1 = eu.a("with");
-
-      for (apg.c $$2 : apg.c) {
-         $$2.a($$1, $$1x -> $$1x.executes(new amx.c() {
-               @Override
-               protected ua a(CommandContext<et> $$0) throws CommandSyntaxException {
-                  return $$2.a($$0).a();
-               }
-            }).then(eu.a("path", fl.a()).executes(new amx.c() {
-               @Override
-               protected ua a(CommandContext<et> $$0) throws CommandSyntaxException {
-                  return amx.a(fl.a($$0, "path"), $$2.a($$0));
-               }
-            })));
-      }
-
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("function").requires($$0x -> $$0x.c(2)))
-            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("name", hb.a()).suggests(b).executes(new amx.c() {
-               @Nullable
-               @Override
-               protected ua a(CommandContext<et> $$0) {
-                  return null;
-               }
-            })).then(eu.a("arguments", fd.a()).executes(new amx.c() {
-               @Override
-               protected ua a(CommandContext<et> $$0) {
-                  return fd.a($$0, "arguments");
-               }
-            }))).then($$1))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("forceload").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     eu.a("add")
+                        .then(
+                           ((RequiredArgumentBuilder)eu.a("from", gq.a())
+                                 .executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "from"), true)))
+                              .then(eu.a("to", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "to"), true)))
+                        )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)eu.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)eu.a("from", gq.a())
+                                 .executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "from"), false)))
+                              .then(eu.a("to", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "to"), false)))
+                        ))
+                     .then(eu.a("all").executes($$0x -> b((et)$$0x.getSource())))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)eu.a("query").executes($$0x -> a((et)$$0x.getSource())))
+                  .then(eu.a("pos", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "pos"))))
+            )
       );
    }
 
-   static ua a(fl.g $$0, apf $$1) throws CommandSyntaxException {
-      ux $$2 = apg.a($$0, $$1);
-      if ($$2 instanceof ua) {
-         return (ua)$$2;
+   private static int a(et $$0, aqi $$1) throws CommandSyntaxException {
+      dcd $$2 = $$1.a();
+      aqu $$3 = $$0.e();
+      akq<dcw> $$4 = $$3.af();
+      boolean $$5 = $$3.w().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> wz.a("commands.forceload.query.success", wz.a($$2), wz.a($$4.a())), false);
+         return 1;
       } else {
-         throw c.create($$2.c().a());
+         throw c.create($$2, $$4.a());
       }
    }
 
-   public static et a(et $$0) {
-      return $$0.a().b(2);
-   }
-
-   public static <T extends ev<T>> void a(Collection<ig<T>> $$0, @Nullable ua $$1, T $$2, T $$3, ht<T> $$4, amx.b<T> $$5, hn $$6) throws CommandSyntaxException {
-      if ($$6.c()) {
-         a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         b($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static <T extends ev<T>> void a(@Nullable ua $$0, ht<T> $$1, CommandDispatcher<T> $$2, T $$3, ig<T> $$4, akq $$5, eq $$6, boolean $$7) throws CommandSyntaxException {
-      try {
-         ii<T> $$8 = $$4.a($$0, $$2);
-         $$1.a(new hz<>($$8, $$6, $$7).bind($$3));
-      } catch (ew var9) {
-         throw a.create($$5, var9.a());
-      }
-   }
-
-   private static <T extends ev<T>> eq a(T $$0, amx.b<T> $$1, akq $$2, eq $$3) {
-      return $$0.y() ? $$3 : ($$4, $$5) -> {
-         $$1.a($$0, $$2, $$5);
-         $$3.onResult($$4, $$5);
-      };
-   }
-
-   private static <T extends ev<T>> void a(Collection<ig<T>> $$0, @Nullable ua $$1, T $$2, T $$3, ht<T> $$4, amx.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      eq $$8 = eq.chain($$2.p(), $$4.b().d());
-
-      for (ig<T> $$9 : $$0) {
-         akq $$10 = $$9.a();
-         eq $$11 = a($$2, $$5, $$10, $$8);
-         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
-      }
-
-      $$4.a(ic.a());
-   }
-
-   private static <T extends ev<T>> void b(Collection<ig<T>> $$0, @Nullable ua $$1, T $$2, T $$3, ht<T> $$4, amx.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      eq $$8 = $$2.p();
-      if (!$$0.isEmpty()) {
-         if ($$0.size() == 1) {
-            ig<T> $$9 = $$0.iterator().next();
-            akq $$10 = $$9.a();
-            eq $$11 = a($$2, $$5, $$10, $$8);
-            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
-         } else if ($$8 == eq.a) {
-            for (ig<T> $$12 : $$0) {
-               akq $$13 = $$12.a();
-               eq $$14 = a($$2, $$5, $$13, $$8);
-               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
-            }
+   private static int a(et $$0) {
+      aqu $$1 = $$0.e();
+      akq<dcw> $$2 = $$1.af();
+      LongSet $$3 = $$1.w();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dcd::new).map(dcd::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> wz.a("commands.forceload.list.single", wz.a($$2.a()), $$5), false);
          } else {
-            class a {
-               boolean a;
-               int b;
-
-               public void a(int $$0) {
-                  this.a = true;
-                  this.b += $$0;
-               }
-            }
-
-            a $$15 = new a();
-            eq $$16 = ($$1x, $$2x) -> $$15.a($$2x);
-
-            for (ig<T> $$17 : $$0) {
-               akq $$18 = $$17.a();
-               eq $$19 = a($$2, $$5, $$18, $$16);
-               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
-            }
-
-            $$4.a(($$2x, $$3x) -> {
-               if ($$15.a) {
-                  $$8.onSuccess($$15.b);
-               }
-            });
+            $$0.a(() -> wz.a("commands.forceload.list.multiple", $$4, wz.a($$2.a()), $$5), false);
          }
+      } else {
+         $$0.b(wz.a("commands.forceload.added.none", wz.a($$2.a())));
       }
+
+      return $$4;
    }
 
-   public interface b<T> {
-      void a(T var1, akq var2, int var3);
+   private static int b(et $$0) {
+      aqu $$1 = $$0.e();
+      akq<dcw> $$2 = $$1.af();
+      LongSet $$3 = $$1.w();
+      $$3.forEach($$1x -> $$1.a(dcd.a($$1x), dcd.b($$1x), false));
+      $$0.a(() -> wz.a("commands.forceload.removed.all", wz.a($$2.a())), true);
+      return 0;
    }
 
-   abstract static class c extends hp.b<et> implements hp.a<et> {
-      @Nullable
-      protected abstract ua a(CommandContext<et> var1) throws CommandSyntaxException;
-
-      public void a(et $$0, ContextChain<et> $$1, hn $$2, ht<et> $$3) throws CommandSyntaxException {
-         CommandContext<et> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<akq, Collection<ig<et>>> $$5 = hb.c($$4, "name");
-         Collection<ig<et>> $$6 = (Collection<ig<et>>)$$5.getSecond();
-         if ($$6.isEmpty()) {
-            throw amx.d.create(wy.a((akq)$$5.getFirst()));
+   private static int a(et $$0, aqi $$1, aqi $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = kf.a($$4);
+         int $$9 = kf.a($$5);
+         int $$10 = kf.a($$6);
+         int $$11 = kf.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
          } else {
-            ua $$7 = this.a($$4);
-            et $$8 = amx.a($$0);
-            if ($$6.size() == 1) {
-               $$0.a(() -> wy.a("commands.function.scheduled.single", wy.a($$6.iterator().next().a())), true);
+            aqu $$13 = $$0.e();
+            akq<dcw> $$14 = $$13.af();
+            dcd $$15 = null;
+            int $$16 = 0;
+
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
+                     $$16++;
+                     if ($$15 == null) {
+                        $$15 = new dcd($$17, $$18);
+                     }
+                  }
+               }
+            }
+
+            dcd $$20 = $$15;
+            int $$21 = $$16;
+            if ($$21 == 0) {
+               throw ($$3 ? d : e).create();
             } else {
-               $$0.a(() -> wy.a("commands.function.scheduled.multiple", xb.b($$6.stream().map(ig::a).toList(), wy::a)), true);
-            }
+               if ($$21 == 1) {
+                  $$0.a(() -> wz.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wz.a($$20), wz.a($$14.a())), true);
+               } else {
+                  dcd $$22 = new dcd($$8, $$9);
+                  dcd $$23 = new dcd($$10, $$11);
+                  $$0.a(() -> wz.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wz.a($$14.a()), wz.a($$22), wz.a($$23)), true);
+               }
 
-            amx.a($$6, $$7, $$0, $$8, $$3, amx.e, $$2);
+               return $$21;
+            }
          }
+      } else {
+         throw gp.b.create();
       }
    }
 }

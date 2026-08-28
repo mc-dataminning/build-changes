@@ -1,97 +1,49 @@
-import java.util.Objects;
+public class fpq extends foq<cqv> {
+   private static final akr E = akr.b("container/horse/chest_slots");
+   private static final akr F = akr.b("container/horse/saddle_slot");
+   private static final akr G = akr.b("container/horse/llama_armor_slot");
+   private static final akr H = akr.b("container/horse/armor_slot");
+   private static final akr I = akr.b("textures/gui/container/horse.png");
+   private final chi J;
+   private final int K;
+   private float L;
+   private float M;
 
-public class fpq extends fou implements fps<cqx> {
-   private final cqx x;
-   private final cqf y = new cqf() {
-      @Override
-      public void a(cps $$0, int $$1, cuo $$2) {
-         fpq.this.L();
+   public fpq(cqv $$0, cmw $$1, chi $$2, int $$3) {
+      super($$0, $$1, $$2.S_());
+      this.J = $$2;
+      this.K = $$3;
+   }
+
+   @Override
+   protected void a(fhx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.m - this.c) / 2;
+      int $$5 = (this.n - this.r) / 2;
+      $$0.a(I, $$4, $$5, 0, 0, this.c, this.r);
+      if (this.K > 0) {
+         $$0.a(E, 90, 54, 0, 0, $$4 + 79, $$5 + 17, this.K * 18, 54);
       }
 
-      @Override
-      public void a(cps $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fpq.this.M();
+      if (this.J.f()) {
+         $$0.a(F, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      }
+
+      if (this.J.d(bsy.g)) {
+         if (this.J instanceof chl) {
+            $$0.a(G, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(H, $$4 + 7, $$5 + 35, 18, 18);
          }
       }
-   };
 
-   public fpq(cqx $$0, cmu $$1, wy $$2) {
-      this.x = $$0;
-   }
-
-   public cqx K() {
-      return this.x;
+      fpr.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.L, this.M, this.J);
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.x.a(this.y);
-   }
-
-   @Override
-   public void d() {
-      this.l.s.s();
-      super.d();
-   }
-
-   @Override
-   public void j() {
-      super.j();
-      this.x.b(this.y);
-   }
-
-   @Override
-   protected void m() {
-      if (this.l.s.gl()) {
-         this.c(fig.a(wx.d, $$0 -> this.d()).a(this.m / 2 - 100, 196, 98, 20).a());
-         this.c(fig.a(wy.c("lectern.take_book"), $$0 -> this.g(3)).a(this.m / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
-   }
-
-   @Override
-   protected void F() {
-      this.g(1);
-   }
-
-   @Override
-   protected void G() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.x.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.l.q.a(this.x.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void L() {
-      cuo $$0 = this.x.l();
-      this.a(Objects.requireNonNullElse(fou.a.a($$0), fou.q));
-   }
-
-   void M() {
-      this.a(this.x.m());
-   }
-
-   @Override
-   protected void J() {
-      this.l.s.s();
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      this.L = (float)$$1;
+      this.M = (float)$$2;
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 }

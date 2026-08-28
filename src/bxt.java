@@ -4,25 +4,31 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bxt {
-   public static bvg<btl> a(Function<btl, Optional<bwt>> $$0, Predicate<btl> $$1, int $$2, int $$3, float $$4) {
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$5 -> $$5.group($$5.a(ccq.n), $$5.a(ccq.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bwt> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bwt $$11 = $$10.get();
-                        if ($$8.do().a((jw)$$11.a(), (double)$$3)) {
+   public static <E extends btp> bvi<E> a(Function<E, Optional<? extends btn>> $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static <E extends btp> bvi<E> a(Predicate<E> $$0, Function<E, Optional<? extends btn>> $$1) {
+      return byu.a(
+         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$2 -> $$2.group($$2.c(ccs.o), $$2.a(ccs.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends btn> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        btn $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
                            return false;
                         } else {
-                           bwt $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cct($$12, $$4, $$2));
+                           $$2x.a($$8);
+                           $$3.b();
                            return true;
                         }
-                     } else {
-                        return false;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

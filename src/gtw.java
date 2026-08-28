@@ -1,52 +1,28 @@
+import java.util.List;
+import javax.annotation.Nullable;
+
 public class gtw {
-   public static class a extends gtc {
-      private final gdv n;
+   private final List<gtv> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-      protected a(gdv $$0, avn $$1) {
-         super($$1, avp.i, gtt.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dL() || !this.n.bk()) {
-            this.n();
-         }
-      }
+   public gtw(List<gtv> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static class b extends gtc {
-      public static final int n = 40;
-      private final gdv o;
-      private int p;
+   public List<gtv> a() {
+      return this.a;
+   }
 
-      public b(gdv $$0) {
-         super(avo.z, avp.i, gtt.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   public boolean b() {
+      return this.b;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dL() && this.p >= 0) {
-            if (this.o.bk()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

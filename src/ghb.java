@@ -1,111 +1,58 @@
-import java.util.EnumSet;
-import java.util.Optional;
+public class ghb implements ggx<dql> {
+   private final glf a;
 
-public class ghb implements ggt<dqv> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fye h;
-   private final fye i;
-   private final fye j;
-   private final fye k;
-   private final fye l;
-   private final fye m;
-   private final fye n;
-   private static final float o = 0.125F;
-
-   public ghb(ggu.a $$0) {
-      fye $$1 = $$0.a(fyd.L);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fye $$2 = $$0.a(fyd.M);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public ghb(ggy.a $$0) {
+      this.a = $$0.d();
    }
 
-   public static fyk b() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      fyi $$2 = new fyi(0.2F);
-      fyi $$3 = new fyi(-0.1F);
-      $$1.a(
-         "neck",
-         fyj.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fyg.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fyj $$4 = fyj.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fyg.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fyg.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fyk.a($$0, 32, 32);
-   }
-
-   public static fyk c() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      fyj $$2 = fyj.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ji.c));
-      $$1.a("back", $$2, fyg.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fyg.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fyg.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fyg.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fyk.a($$0, 16, 16);
-   }
-
-   private static gsj a(Optional<cuj> $$0) {
-      if ($$0.isPresent()) {
-         gsj $$1 = gfi.a(dqx.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
-         }
-      }
-
-      return gfi.q;
-   }
-
-   public void a(dqv $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
-      $$2.a();
-      ji $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dqv.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().Z() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dqv.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (ayn.b($$10) + 0.5F) * ayn.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = ayn.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = ayn.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+   public void a(dql $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.n().c(dts.bv);
+         if ($$6 > 0) {
+            ji $$7 = $$0.d();
+            if ($$7 != null) {
+               cuq $$8 = $$0.f();
+               if (!$$8.e()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ji.f || $$7 == ji.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = gev.a($$0.i(), $$0.n(), $$0.aD_().a($$7));
+                  this.a.a($$8, cun.i, $$11, gqa.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
          }
       }
-
-      fbg $$15 = gfi.p.a($$3, gfb::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      drk $$16 = $$0.l();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
    }
 
-   private void a(fye $$0, fbc $$1, get $$2, int $$3, int $$4, gsj $$5) {
-      $$0.a($$1, $$5.a($$2, gfb::c), $$3, $$4);
+   private float[] a(ji $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

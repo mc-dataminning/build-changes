@@ -1,35 +1,78 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dpa extends dgf {
-   public static final MapCodec<dpa> a = b(dpa::new);
-   protected static final exp b = dfw.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+public class dpa extends deu {
+   public static final MapCodec<dpa> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dnb.a.b.fieldOf("kind").forGetter(deu::b), u()).apply($$0, dpa::new));
+   public static final dtw d = dju.aE;
+   private static final Map<ji, ext> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ji.c,
+         dfy.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ji.d,
+         dfy.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         ji.f,
+         dfy.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ji.e,
+         dfy.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
    @Override
-   public MapCodec<dpa> a() {
-      return a;
+   public MapCodec<? extends dpa> a() {
+      return c;
    }
 
-   protected dpa(dsz.d $$0) {
-      super($$0);
+   protected dpa(dnb.a $$0, dtb.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, ji.c));
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, bsq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof aqt && $$3 instanceof cot) {
-         $$1.a(new jd($$2), true, $$3);
+   public String g() {
+      return this.r().a();
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return b.get($$0.c(d));
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = super.a($$0);
+      dcc $$2 = $$0.q();
+      jd $$3 = $$0.a();
+      ji[] $$4 = $$0.f();
+
+      for (ji $$5 : $$4) {
+         if ($$5.o().d()) {
+            ji $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
+
+      return null;
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return b;
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected boolean b(dta $$0, dca $$1, jd $$2) {
-      eoy $$3 = $$1.b_($$2);
-      eoy $$4 = $$1.b_($$2.c());
-      return ($$3.a() == eoz.c || $$0.b() instanceof dju) && $$4.a() == eoz.a;
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

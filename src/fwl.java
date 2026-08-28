@@ -1,42 +1,31 @@
-public class fwl<T extends bsq> extends fvn<T> {
-   private final fye a;
-   private final fye b;
-   private final fye f;
+public class fwl extends fxf {
+   private final fyi a;
+   private final fyi b;
+   private final fyi c;
 
-   public fwl(fye $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+   public fwl(fyi $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static fyk b() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fyj.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fyg.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", fyj.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fyg.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", fyj.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", fyj.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fyg.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", fyj.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fyj.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fyj.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", fyj.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fyj.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return fyk.a($$0, 32, 32);
+   public static fyq a() {
+      fyq $$0 = new fyq();
+      fwm.a(fym.a, $$0);
+      return $$0;
    }
 
    @Override
-   public fye a() {
-      return this.a;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * ayn.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * ayn.a($$3 * 0.2F);
+   public void a(fbg $$0, fbk $$1, int $$2, int $$3, int $$4) {
+      this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

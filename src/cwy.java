@@ -1,37 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public record cwy(akq e, jm<cuj> f, wy g, boolean h) {
+public record cwy(String e, jm<cul> f, float g, Map<jm<csg>, String> h, wz i) {
    public static final Codec<cwy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               akq.a.fieldOf("asset_id").forGetter(cwy::a),
-               akn.a(lu.K).fieldOf("template_item").forGetter(cwy::b),
-               xa.a.fieldOf("description").forGetter(cwy::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cwy::d)
+               axw.A.fieldOf("asset_name").forGetter(cwy::a),
+               ako.a(lu.K).fieldOf("ingredient").forGetter(cwy::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwy::c),
+               Codec.unboundedMap(csg.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwy::d),
+               xb.a.fieldOf("description").forGetter(cwy::e)
             )
             .apply($$0, cwy::new)
    );
-   public static final yw<wj, cwy> b = yw.a(akq.b, cwy::a, yu.b(lu.K), cwy::b, xa.b, cwy::c, yu.b, cwy::d, cwy::new);
-   public static final Codec<jm<cwy>> c = akm.a(lu.aX, a);
-   public static final yw<wj, jm<cwy>> d = yu.a(lu.aX, b);
+   public static final yx<wk, cwy> b = yx.a(
+      yv.l, cwy::a, yv.b(lu.K), cwy::b, yv.i, cwy::c, yv.a(Object2ObjectOpenHashMap::new, yv.b(lu.az), yv.l), cwy::d, xb.b, cwy::e, cwy::new
+   );
+   public static final Codec<jm<cwy>> c = akn.a(lu.aW, a);
+   public static final yx<wk, jm<cwy>> d = yv.a(lu.aW, b);
 
-   public wy a(jm<cww> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   public static cwy a(String $$0, cul $$1, float $$2, wz $$3, Map<jm<csg>, String> $$4) {
+      return new cwy($$0, lt.g.e($$1), $$2, $$4, $$3);
    }
 
-   public akq a() {
+   public String a() {
       return this.e;
    }
 
-   public jm<cuj> b() {
+   public jm<cul> b() {
       return this.f;
    }
 
-   public wy c() {
+   public float c() {
       return this.g;
    }
 
-   public boolean d() {
+   public Map<jm<csg>, String> d() {
       return this.h;
+   }
+
+   public wz e() {
+      return this.i;
    }
 }

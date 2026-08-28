@@ -8,7 +8,7 @@ public class db extends dv<db.a> {
       return db.a.a;
    }
 
-   public void a(aqu $$0, eww $$1, int $$2) {
+   public void a(aqv $$0, exa $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,8 +26,8 @@ public class db extends dv<db.a> {
          return an.v.a(new db.a(Optional.empty(), Optional.of($$0), dh.d.c));
       }
 
-      public boolean a(aqu $$0, eww $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dv(), $$0.dx(), $$0.dB()) ? false : this.d.d($$2);
+      public boolean a(aqv $$0, exa $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.du(), $$0.dw(), $$0.dA()) ? false : this.d.d($$2);
       }
 
       @Override

@@ -1,42 +1,118 @@
-public class gdj extends gcf {
-   private final bsq a;
-   private int b;
-   private final int D;
-   private final lk E;
-
-   public gdj(fyz $$0, bsq $$1, lk $$2) {
-      this($$0, $$1, $$2, 3);
+public class gdj extends gdl {
+   gdj(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public gdj(fyz $$0, bsq $$1, lk $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dt());
+   @Override
+   public gcp b() {
+      return gcp.b;
    }
 
-   private gdj(fyz $$0, bsq $$1, lk $$2, int $$3, eww $$4) {
-      super($$0, $$1.dv(), $$1.e(0.5), $$1.dB(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
+   }
+
+   public static class a implements gco<lq> {
+      private final gdg a;
+
+      public a(gdg $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements gco<lq> {
+      private final gdg a;
+
+      public b(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements gco<lq> {
+      private final gdg a;
+
+      public c(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gco<lq> {
+      private final gdg a;
+
+      public d(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements gco<lq> {
+      private final gdg a;
+
+      public e(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

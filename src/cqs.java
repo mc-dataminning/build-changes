@@ -1,66 +1,45 @@
-public class cqs extends cps {
-   public static final int k = 5;
-   private final bqj l;
+public class cqs extends crq {
+   private final cmx a;
+   private int b;
 
-   public cqs(int $$0, cmu $$1) {
-      this($$0, $$1, new bqz(5));
-   }
-
-   public cqs(int $$0, cmu $$1, bqj $$2) {
-      super(cra.q, $$0);
-      this.l = $$2;
-      a($$2, 5);
-      $$2.d_($$1.l);
-      int $$3 = 51;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new cro($$2, $$4, 44 + $$4 * 18, 20));
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cro($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cro($$1, $$7, 8 + $$7 * 18, 109));
-      }
+   public cqs(cmx $$0, bqk $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public boolean b(cmv $$0) {
-      return this.l.a($$0);
+   public boolean a(cuq $$0) {
+      return false;
    }
 
    @Override
-   public cuo b(cmv $$0, int $$1) {
-      cuo $$2 = cuo.l;
-      cro $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuo $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cuo.l;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cuo.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cuo.l);
-         } else {
-            $$3.c();
-         }
+   public cuq a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().H());
       }
 
-      return $$2;
+      return super.a($$0);
    }
 
    @Override
-   public void a(cmv $$0) {
-      super.a($$0);
-      this.l.c($$0);
+   public void a(cmx $$0, cuq $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(cuq $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cuq $$0) {
+      $$0.a(this.a.dP(), this.a, this.b);
+      if (this.a instanceof aqv $$1 && this.c instanceof dpv $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

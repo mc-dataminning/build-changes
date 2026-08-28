@@ -1,34 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record euq(boolean b) implements euw {
-   public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(euq::e)).apply($$0, euq::new));
+public abstract class euq implements eva {
+   protected final List<eva> c;
+   private final Predicate<erp> a;
 
-   public boolean a(erl $$0) {
-      return $$0.b(euh.l) == this.b;
+   protected euq(List<eva> $$0, Predicate<erp> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends euq> MapCodec<T> a(Function<List<eva>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(eva.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends euq> Codec<T> b(Function<List<eva>, T> $$0) {
+      return eva.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(erp $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public eux b() {
-      return euy.s;
+   public void a(erv $$0) {
+      eva.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<eue<?>> a() {
-      return Set.of(euh.l);
-   }
+   public abstract static class a implements eva.a {
+      private final Builder<eva> a = ImmutableList.builder();
 
-   public static euw.a c() {
-      return () -> new euq(true);
-   }
+      protected a(eva.a... $$0) {
+         for (eva.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public static euw.a d() {
-      return () -> new euq(false);
-   }
+      public void a(eva.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public boolean e() {
-      return this.b;
+      @Override
+      public eva build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract eva a(List<eva> var1);
    }
 }

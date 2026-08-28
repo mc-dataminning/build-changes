@@ -1,22 +1,15 @@
-import java.util.Optional;
 import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
 
-public class asb implements arj {
-   public static final arj.a a = new arj.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public class asb implements ark {
+   public static final ark.a a = new ark.a("join_world");
 
-   public asb(MinecraftServer.b $$0) {
-      this.b = $$0;
+   @Override
+   public void a(Consumer<zg<?>> $$0) {
+      $$0.accept(abd.a);
    }
 
    @Override
-   public void a(Consumer<zf<?>> $$0) {
-      $$0.accept(new zs(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
-   }
-
-   @Override
-   public arj.a a() {
+   public ark.a a() {
       return a;
    }
 }

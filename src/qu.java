@@ -1,42 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class qu {
-   public static final akp<ekw> a = qw.a("pillager_outpost/base_plates");
+   @Deprecated
+   public static final eof.a a = new eof.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(qp<ekw> $$0) {
-      jn<enl> $$1 = $$0.a(lu.aS);
-      jm<enl> $$2 = $$1.b(qx.q);
-      jn<ekw> $$3 = $$0.a(lu.aU);
-      jm<ekw> $$4 = $$3.b(qw.a);
-      $$0.a(a, new ekw($$4, ImmutableList.of(Pair.of(eku.a("pillager_outpost/base_plate"), 1)), ekw.a.b));
-      qw.a(
-         $$0,
-         "pillager_outpost/towers",
-         new ekw(
-            $$4,
-            ImmutableList.of(Pair.of(eku.b(ImmutableList.of(eku.a("pillager_outpost/watchtower"), eku.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            ekw.a.b
-         )
-      );
-      qw.a($$0, "pillager_outpost/feature_plates", new ekw($$4, ImmutableList.of(Pair.of(eku.a("pillager_outpost/feature_plate"), 1)), ekw.a.a));
-      qw.a(
-         $$0,
-         "pillager_outpost/features",
-         new ekw(
-            $$4,
-            ImmutableList.of(
-               Pair.of(eku.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(eku.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(eku.g(), 6)
-            ),
-            ekw.a.b
-         )
-      );
+   public static void a(qq<eof.a> $$0) {
+      a($$0, 0, dzh.a, dzh.b, dzh.c, dzh.d);
+      a($$0, -2, dzh.e, dzh.f, dzh.g, dzh.h);
+      a($$0, dzh.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dzh.j, a);
+      a($$0, dzh.k, -3, 1.0);
+      a($$0, dzh.l, -7, 1.0);
+      a($$0, dzh.m, -1, 1.0);
+      a($$0, dzh.n, -5, 1.0);
+      a($$0, dzh.o, -7, 1.0, 1.0);
+      a($$0, dzh.p, -8, 1.0);
+      a($$0, dzh.q, -8, 1.0);
+      a($$0, dzh.r, -7, 1.0);
+      a($$0, dzh.s, -8, 1.0);
+      a($$0, dzh.t, -11, 1.0);
+      a($$0, dzh.u, -11, 1.0);
+      a($$0, dzh.v, -7, 1.0);
+      a($$0, dzh.w, -7, 1.0);
+      a($$0, dzh.x, -11, 1.0);
+      a($$0, dzh.y, -8, 1.0);
+      a($$0, dzh.z, -5, 1.0);
+      a($$0, dzh.A, -8, 1.0);
+      a($$0, dzh.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dzh.C, -8, 1.0);
+      a($$0, dzh.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dzh.E, -8, 1.0);
+      a($$0, dzh.F, -7, 1.0);
+      a($$0, dzh.G, -7, 1.0);
+      a($$0, dzh.H, -5, 1.0);
+      a($$0, dzh.I, -8, 1.0);
+      a($$0, dzh.J, -8, 1.0);
+      a($$0, dzh.K, -7, 1.0);
+      a($$0, dzh.L, -7, 1.0);
+      a($$0, dzh.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dzh.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dzh.P, -8, 1.0);
+      a($$0, dzh.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.R, -8, 1.0);
+      a($$0, dzh.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dzh.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.U, -3, 1.0);
+      a($$0, dzh.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dzh.W, -2, 1.0);
+      a($$0, dzh.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dzh.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dzh.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dzh.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dzh.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dzh.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dzh.ah, -4, 1.0);
+   }
+
+   private static void a(qq<eof.a> $$0, int $$1, akq<eof.a> $$2, akq<eof.a> $$3, akq<eof.a> $$4, akq<eof.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(qq<eof.a> $$0, akq<eof.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eof.a($$2, $$3, $$4));
    }
 }

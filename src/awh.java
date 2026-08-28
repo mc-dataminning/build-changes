@@ -1,40 +1,42 @@
 public interface awh {
-   awt<bsw<?>> a = a("skeletons");
-   awt<bsw<?>> b = a("zombies");
-   awt<bsw<?>> c = a("raiders");
-   awt<bsw<?>> d = a("undead");
-   awt<bsw<?>> e = a("beehive_inhabitors");
-   awt<bsw<?>> f = a("arrows");
-   awt<bsw<?>> g = a("impact_projectiles");
-   awt<bsw<?>> h = a("powder_snow_walkable_mobs");
-   awt<bsw<?>> i = a("axolotl_always_hostiles");
-   awt<bsw<?>> j = a("axolotl_hunt_targets");
-   awt<bsw<?>> k = a("freeze_immune_entity_types");
-   awt<bsw<?>> l = a("freeze_hurts_extra_types");
-   awt<bsw<?>> m = a("can_breathe_under_water");
-   awt<bsw<?>> n = a("frog_food");
-   awt<bsw<?>> o = a("fall_damage_immune");
-   awt<bsw<?>> p = a("dismounts_underwater");
-   awt<bsw<?>> q = a("non_controlling_rider");
-   awt<bsw<?>> r = a("deflects_projectiles");
-   awt<bsw<?>> s = a("can_turn_in_boats");
-   awt<bsw<?>> t = a("illager");
-   awt<bsw<?>> u = a("aquatic");
-   awt<bsw<?>> v = a("arthropod");
-   awt<bsw<?>> w = a("ignores_poison_and_regen");
-   awt<bsw<?>> x = a("inverted_healing_and_harm");
-   awt<bsw<?>> y = a("wither_friends");
-   awt<bsw<?>> z = a("illager_friends");
-   awt<bsw<?>> A = a("not_scary_for_pufferfish");
-   awt<bsw<?>> B = a("sensitive_to_impaling");
-   awt<bsw<?>> C = a("sensitive_to_bane_of_arthropods");
-   awt<bsw<?>> D = a("sensitive_to_smite");
-   awt<bsw<?>> E = a("no_anger_from_wind_charge");
-   awt<bsw<?>> F = a("immune_to_oozing");
-   awt<bsw<?>> G = a("immune_to_infested");
-   awt<bsw<?>> H = a("redirectable_projectile");
+   awu<dac> a = a("tooltip_order");
+   awu<dac> b = a("exclusive_set/armor");
+   awu<dac> c = a("exclusive_set/boots");
+   awu<dac> d = a("exclusive_set/bow");
+   awu<dac> e = a("exclusive_set/crossbow");
+   awu<dac> f = a("exclusive_set/damage");
+   awu<dac> g = a("exclusive_set/mining");
+   awu<dac> h = a("exclusive_set/riptide");
+   awu<dac> i = a("tradeable");
+   awu<dac> j = a("double_trade_price");
+   awu<dac> k = a("in_enchanting_table");
+   awu<dac> l = a("on_mob_spawn_equipment");
+   awu<dac> m = a("on_traded_equipment");
+   awu<dac> n = a("on_random_loot");
+   awu<dac> o = a("curse");
+   awu<dac> p = a("smelts_loot");
+   awu<dac> q = a("prevents_bee_spawns_when_mining");
+   awu<dac> r = a("prevents_decorated_pot_shattering");
+   awu<dac> s = a("prevents_ice_melting");
+   awu<dac> t = a("prevents_infested_spawns");
+   awu<dac> u = a("treasure");
+   awu<dac> v = a("non_treasure");
+   awu<dac> w = a("trades/desert_common");
+   awu<dac> x = a("trades/jungle_common");
+   awu<dac> y = a("trades/plains_common");
+   awu<dac> z = a("trades/savanna_common");
+   awu<dac> A = a("trades/snow_common");
+   awu<dac> B = a("trades/swamp_common");
+   awu<dac> C = a("trades/taiga_common");
+   awu<dac> D = a("trades/desert_special");
+   awu<dac> E = a("trades/jungle_special");
+   awu<dac> F = a("trades/plains_special");
+   awu<dac> G = a("trades/savanna_special");
+   awu<dac> H = a("trades/snow_special");
+   awu<dac> I = a("trades/swamp_special");
+   awu<dac> J = a("trades/taiga_special");
 
-   private static awt<bsw<?>> a(String $$0) {
-      return awt.a(lu.z, akq.b($$0));
+   private static awu<dac> a(String $$0) {
+      return awu.a(lu.aL, akr.b($$0));
    }
 }

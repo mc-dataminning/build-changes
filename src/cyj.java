@@ -1,82 +1,77 @@
-public class cyj extends cyp {
-   public cyj(cym $$0) {
+public class cyj extends cyr {
+   public cyj(cyo $$0) {
       super($$0);
    }
 
-   public boolean a(cyn $$0, dcu $$1) {
-      int $$2 = 0;
-      cuo $$3 = cuo.l;
+   public boolean a(cyp $$0, dcw $$1) {
+      cti $$2 = null;
+      cuq $$3 = null;
+      cuq $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuo $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cur.ua)) {
-               if (!$$3.e()) {
+      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+         cuq $$6 = $$0.a($$5);
+         if (!$$6.e()) {
+            cul $$7 = $$6.g();
+            if (!($$7 instanceof csl)) {
+               return false;
+            }
+
+            csl $$8 = (csl)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = $$6.a(kq.Y, dpy.a).b().size();
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$3 = $$6;
             } else {
-               if (!$$5.a(cur.tZ)) {
+               if ($$4 != null) {
                   return false;
                }
 
-               $$2++;
+               $$4 = $$6;
             }
          }
       }
 
-      return !$$3.e() && $$2 > 0;
+      return $$3 != null && $$4 != null;
    }
 
-   public cuo a(cyn $$0, jo.a $$1) {
-      int $$2 = 0;
-      cuo $$3 = cuo.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuo $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cur.ua)) {
-               if (!$$3.e()) {
-                  return cuo.l;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cur.tZ)) {
-                  return cuo.l;
-               }
-
-               $$2++;
+   public cuq a(cyp $$0, jo.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         cuq $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            int $$4 = $$3.a(kq.Y, dpy.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      cxz $$6 = $$3.a(kq.J);
-      if (!$$3.e() && $$2 >= 1 && $$6 != null) {
-         cxz $$7 = $$6.b();
-         if ($$7 == null) {
-            return cuo.l;
-         } else {
-            cuo $$8 = $$3.c($$2);
-            $$8.b(kq.J, $$7);
-            return $$8;
-         }
-      } else {
-         return cuo.l;
-      }
+      return cuq.l;
    }
 
-   public jv<cuo> a(cyn $$0) {
-      jv<cuo> $$1 = jv.a($$0.a(), cuo.l);
+   public jv<cuq> a(cyp $$0) {
+      jv<cuq> $$1 = jv.a($$0.a(), cuq.l);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cuo $$3 = $$0.a($$2);
-         if ($$3.g().v()) {
-            $$1.set($$2, new cuo($$3.g().u()));
-         } else if ($$3.g() instanceof cwp) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         cuq $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            if ($$3.g().v()) {
+               $$1.set($$2, new cuq($$3.g().u()));
+            } else if (!$$3.a(kq.Y, dpy.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
          }
       }
 
@@ -84,12 +79,12 @@ public class cyj extends cyp {
    }
 
    @Override
-   public czc<?> ap_() {
-      return czc.d;
+   public cze<?> at_() {
+      return cze.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 }

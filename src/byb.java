@@ -1,28 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byb {
-   public static <E extends btl> bwq<E> a(List<Pair<? extends byv<? super E>, Integer>> $$0) {
-      return a($$0, bvt.a.b, bvt.b.a);
+public class byb extends bvh<btp> {
+   private final float c;
+
+   public byb(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
    }
 
-   public static <E extends btl> bwq<E> a(List<Pair<? extends byv<? super E>, Integer>> $$0, bvt.a $$1, bvt.b $$2) {
-      bxo<byv<? super E>> $$3 = new bxo<>();
-      $$0.forEach($$1x -> $$3.a((byv<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bys.a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$3x -> $$3x.a((byv<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bvt.a.b) {
-               $$3.a();
-            }
+   public static boolean a(btp $$0) {
+      return $$0.bf() && $$0.b(awk.a) > $$0.dj() || $$0.bt();
+   }
 
-            for (byv<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bvt.b.a) {
-                  break;
-               }
-            }
+   protected boolean a(aqu $$0, btp $$1) {
+      return a($$1);
+   }
 
-            return true;
-         }))));
+   protected boolean a(aqu $$0, btp $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqu $$0, btp $$1, long $$2) {
+      if ($$1.dS().i() < this.c) {
+         $$1.L().a();
+      }
    }
 }

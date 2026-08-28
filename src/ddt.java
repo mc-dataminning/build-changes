@@ -3,21 +3,21 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class ddt {
    public static final Codec<ddt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(lm.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, ddt::new)
+      $$0 -> $$0.group(avo.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, ddt::new)
    );
-   private final lk b;
-   private final float c;
+   private final jm<avo> b;
+   private final double c;
 
-   public ddt(lk $$0, float $$1) {
+   public ddt(jm<avo> $$0, double $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public lk a() {
+   public jm<avo> a() {
       return this.b;
    }
 
-   public boolean a(ayv $$0) {
-      return $$0.i() <= this.c;
+   public double b() {
+      return this.c;
    }
 }

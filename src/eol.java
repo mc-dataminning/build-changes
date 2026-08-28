@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public interface eol extends eoq {
-   @Nullable
-   dvb a(kf var1);
+public class eol extends eoq<eol.a> {
+   protected eol(dvl $$0) {
+      super(ddf.b, $$0, new eol.a(new Long2ObjectOpenHashMap()));
+   }
 
-   int b(jd var1);
+   @Override
+   protected int a(long $$0) {
+      long $$1 = kf.e($$0);
+      dvd $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kf.b(jd.a($$0)), kf.b(jd.b($$0)), kf.b(jd.c($$0)));
+   }
 
-   public static enum a implements eol {
-      a;
-
-      @Nullable
-      @Override
-      public dvb a(kf $$0) {
-         return null;
+   protected static final class a extends eon<eol.a> {
+      public a(Long2ObjectOpenHashMap<dvd> $$0) {
+         super($$0);
       }
 
-      @Override
-      public int b(jd $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(jd $$0) {
-      }
-
-      @Override
-      public boolean K_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kf $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(dcb $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(dcb $$0) {
+      public eol.a a() {
+         return new eol.a(this.a.clone());
       }
    }
 }

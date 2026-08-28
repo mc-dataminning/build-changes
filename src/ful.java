@@ -1,37 +1,56 @@
-public class ful extends fwz<cjl> {
-   private final fye a;
+public class ful extends fvr<cez> {
+   private final fyi a;
+   private final fyi b;
+   private final fyi f;
+   private final fyi g;
+   private final fyi h;
+   private final fyi i;
+   private final fyi j;
+   private final fyi k;
 
-   public ful(fye $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+   public ful(fyi $$0) {
+      super(gff::d);
+      this.a = $$0;
+      this.f = $$0.b("body");
+      this.b = $$0.b("head");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
+      this.k = this.f.b("feet");
    }
 
-   public static fyk c() {
-      fym $$0 = fvr.a(fyi.a, 0.0F);
-      fyn $$1 = $$0.a();
-      fwz.a($$1);
-      fyn $$2 = $$1.a("head").a("mushrooms", fyj.c(), fyg.a);
-      $$2.a("red_mushroom_1", fyj.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fyg.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", fyj.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fyg.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", fyj.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fyg.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", fyj.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fyg.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         fyj.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fyg.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         fyj.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fyg.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return fyk.a($$0, 64, 32);
+   public static fyo b() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      fyr $$2 = $$1.a("body", fyn.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fyk.a(0.0F, 17.0F, 0.0F));
+      fyr $$3 = $$1.a("head", fyn.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fyk.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", fyn.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fyk.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", fyn.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fyk.a(1.1F, -3.0F, 0.0F));
+      fyr $$4 = $$2.a("right_wing", fyn.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fyk.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", fyn.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fyk.a(-2.0F, 0.0F, 0.0F));
+      fyr $$5 = $$2.a("left_wing", fyn.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fyk.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", fyn.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fyk.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", fyn.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fyk.a(0.0F, 5.0F, 0.0F));
+      return fyo.a($$0, 32, 32);
    }
 
-   public void a(cjl $$0, float $$1, float $$2, float $$3) {
-      this.a.k = !$$0.gq();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public fyi a() {
+      return this.a;
+   }
+
+   public void a(cez $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fyi::c);
+      if ($$0.t()) {
+         this.a($$4);
+      }
+
+      this.a($$0.d, fhf.b, $$3, 1.0F);
+      this.a($$0.e, fhf.a, $$3, 1.0F);
+   }
+
+   private void a(float $$0) {
+      this.b.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

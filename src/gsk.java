@@ -1,8 +1,20 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
 public interface gsk {
-   gsr a(akq var1);
+   List<gfu> a(@Nullable dtc var1, @Nullable ji var2, ayw var3);
 
-   @Nullable
-   gsg a(akq var1, gso var2);
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   gqj e();
+
+   ggg f();
+
+   gge g();
 }

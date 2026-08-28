@@ -1,21 +1,25 @@
-public class goq<T extends bsq & buc, M extends fve<T>> extends gop<T, M> {
-   private final akq a;
-   private final M b;
+public class goq<T extends cmx> extends got<T, fwn<T>> {
+   private final fwi a;
 
-   public goq(glz<T, M> $$0, M $$1, akq $$2) {
+   public goq(gmd<T, fwn<T>> $$0, fye $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = new fwi($$1.a(fyh.aH));
    }
 
-   @Override
-   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fbg $$10 = $$1.getBuffer(gfb.e(this.a));
-         this.b.a($$0, $$10, $$2, gpw.d);
-      }
+   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
+
+   private void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      ub $$9 = $$8 ? $$3.gq() : $$3.gr();
+      bsx.a($$9.l("id")).filter($$0x -> $$0x == bsx.ax).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.cb() ? -1.3F : -1.5F, 0.0F);
+         cfu.b $$11 = cfu.b.a($$9.h("Variant"));
+         fbk $$12 = $$1.getBuffer(this.a.a(glu.a($$11)));
+         this.a.a($$0, $$12, $$2, gqa.d, $$4, $$5, $$6, $$7, $$3.ai);
+         $$0.b();
+      });
    }
 }

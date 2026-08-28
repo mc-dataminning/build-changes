@@ -1,21 +1,64 @@
 import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class gvq {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   private final UUID a = UUID.randomUUID();
+   private final gvl b;
+   private final gvu c;
+   private final gvw d = new gvw();
+   private final gvt e;
+   private final gvv f;
 
-   public gvq(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public gvq(gvl $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gvu($$3);
+      this.e = new gvt();
+      this.f = new gvv($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gvo.i, this.a);
+      });
    }
 
-   public void a(gvg $$0) {
-      if (this.b != null) {
-         $$0.send(gvh.d, $$0x -> {
-            $$0x.a(gvj.x, (int)this.b.toMillis());
-            $$0x.a(gvj.y, this.a);
+   public void a() {
+      this.e.a(this.b);
+   }
+
+   public void a(dct $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
+      }
+   }
+
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(dcw $$0, ag $$1) {
+      akr $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.Z();
+         this.b.send(gvm.f, $$2x -> {
+            $$2x.a(gvo.D, $$2.toString());
+            $$2x.a(gvo.E, $$3);
          });
       }
    }

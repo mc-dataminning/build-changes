@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.Contract;
 
-public enum n implements azj {
+public enum n implements azk {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -34,7 +34,7 @@ public enum n implements azj {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<n> w = azj.a(n::values);
+   public static final Codec<n> w = azk.a(n::values);
    public static final char x = '§';
    private static final Map<String, n> y = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.A), $$0 -> (n)$$0));
    private static final Pattern z = Pattern.compile("(?i)§[0-9A-FK-OR]");

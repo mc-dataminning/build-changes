@@ -1,69 +1,23 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eha extends ehi {
-   public static final MapCodec<eha> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axv.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bpv.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, eha::new)
-   );
-   private final int b;
-   private final bpv h;
+public class eha<P extends egz> {
+   public static final eha<ehb> a = a("trunk_vine", ehb.a);
+   public static final eha<egy> b = a("leave_vine", egy.a);
+   public static final eha<egx> c = a("cocoa", egx.a);
+   public static final eha<egw> d = a("beehive", egw.a);
+   public static final eha<egu> e = a("alter_ground", egu.a);
+   public static final eha<egv> f = a("attached_to_leaves", egv.a);
+   private final MapCodec<P> g;
 
-   public eha(int $$0, int $$1, int $$2, int $$3, bpv $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   private static <P extends egz> eha<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.X, $$0, new eha<>($$1));
    }
 
-   @Override
-   protected ehj<?> a() {
-      return ehj.g;
+   private eha(MapCodec<P> $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public List<efq.a> a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5) {
-      ji $$6 = ji.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      jd.a $$8 = $$4.j();
-      jd $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<efq.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (edm.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new efq.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ji.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (edm.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new efq.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

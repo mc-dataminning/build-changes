@@ -1,32 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eax extends eau {
-   public static final Codec<eax> a = RecordCodecBuilder.create(
+public class eax extends eer {
+   public static final MapCodec<eax> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               eau.d.forGetter($$0x -> $$0x),
-               bpt.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bpt.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bpt.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               ehw.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bpu.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dzs.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               eay.b.optionalFieldOf("debug_settings", eay.a).forGetter($$0x -> $$0x.h),
+               kb.a(lu.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
             )
             .apply($$0, eax::new)
    );
-   public final bpt b;
-   public final bpt c;
-   final bpt j;
+   public final ehw e;
+   public final bpu f;
+   public final dzs g;
+   public final eay h;
+   public final jq<dfy> i;
 
-   public eax(float $$0, eht $$1, bpt $$2, dzp $$3, eav $$4, jq<dfw> $$5, bpt $$6, bpt $$7, bpt $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
-   }
-
-   public eax(float $$0, eht $$1, bpt $$2, dzp $$3, jq<dfw> $$4, bpt $$5, bpt $$6, bpt $$7) {
-      this($$0, $$1, $$2, $$3, eav.a, $$4, $$5, $$6, $$7);
-   }
-
-   public eax(eau $$0, bpt $$1, bpt $$2, bpt $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public eax(float $$0, ehw $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

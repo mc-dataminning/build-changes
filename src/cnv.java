@@ -1,67 +1,51 @@
-public abstract class cnv extends cnn {
-   protected cnv(bsw<? extends cnv> $$0, dcu $$1) {
+import javax.annotation.Nullable;
+
+public class cnv extends cnd {
+   private int f = 200;
+
+   public cnv(bsx<? extends cnv> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   protected cnv(bsw<? extends cnv> $$0, double $$1, double $$2, double $$3, dcu $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cnv(dcw $$0, btn $$1, cuq $$2, @Nullable cuq $$3) {
+      super(bsx.aV, $$1, $$0, $$2, $$3);
    }
 
-   protected cnv(bsw<? extends cnv> $$0, btl $$1, dcu $$2) {
-      this($$0, $$1.dv(), $$1.dz() - 0.1F, $$1.dB(), $$2);
-      this.c($$1);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cL().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean cx() {
-      return true;
+   public cnv(dcw $$0, double $$1, double $$2, double $$3, cuq $$4, @Nullable cuq $$5) {
+      super(bsx.aV, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
    public void l() {
       super.l();
-      ewu $$0 = cnp.a(this, this::b);
-      if ($$0.c() != ewu.a.a) {
-         this.b($$0);
+      if (this.dP().B && !this.b) {
+         this.dP().a(lm.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
       }
-
-      this.aT();
-      eww $$1 = this.dt();
-      double $$2 = this.dv() + $$1.c;
-      double $$3 = this.dx() + $$1.d;
-      double $$4 = this.dB() + $$1.e;
-      this.K();
-      float $$7;
-      if (this.bf()) {
-         for (int $$5 = 0; $$5 < 4; $$5++) {
-            float $$6 = 0.25F;
-            this.dQ().a(lm.d, $$2 - $$1.c * 0.25, $$3 - $$1.d * 0.25, $$4 - $$1.e * 0.25, $$1.c, $$1.d, $$1.e);
-         }
-
-         $$7 = 0.8F;
-      } else {
-         $$7 = 0.99F;
-      }
-
-      this.i($$1.a((double)$$7));
-      this.bb();
-      this.a_($$2, $$3, $$4);
    }
 
    @Override
-   protected double aZ() {
-      return 0.03;
+   protected void a(btn $$0) {
+      super.a($$0);
+      brz $$1 = new brz(bsb.x, this.f, 0);
+      $$0.b($$1, this.H());
+   }
+
+   @Override
+   public void a(ub $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(ub $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cuq x() {
+      return new cuq(cut.vp);
    }
 }

@@ -1,70 +1,10 @@
-public abstract class deb {
-   public static final akp<ddu> a = a("the_void");
-   public static final akp<ddu> b = a("plains");
-   public static final akp<ddu> c = a("sunflower_plains");
-   public static final akp<ddu> d = a("snowy_plains");
-   public static final akp<ddu> e = a("ice_spikes");
-   public static final akp<ddu> f = a("desert");
-   public static final akp<ddu> g = a("swamp");
-   public static final akp<ddu> h = a("mangrove_swamp");
-   public static final akp<ddu> i = a("forest");
-   public static final akp<ddu> j = a("flower_forest");
-   public static final akp<ddu> k = a("birch_forest");
-   public static final akp<ddu> l = a("dark_forest");
-   public static final akp<ddu> m = a("old_growth_birch_forest");
-   public static final akp<ddu> n = a("old_growth_pine_taiga");
-   public static final akp<ddu> o = a("old_growth_spruce_taiga");
-   public static final akp<ddu> p = a("taiga");
-   public static final akp<ddu> q = a("snowy_taiga");
-   public static final akp<ddu> r = a("savanna");
-   public static final akp<ddu> s = a("savanna_plateau");
-   public static final akp<ddu> t = a("windswept_hills");
-   public static final akp<ddu> u = a("windswept_gravelly_hills");
-   public static final akp<ddu> v = a("windswept_forest");
-   public static final akp<ddu> w = a("windswept_savanna");
-   public static final akp<ddu> x = a("jungle");
-   public static final akp<ddu> y = a("sparse_jungle");
-   public static final akp<ddu> z = a("bamboo_jungle");
-   public static final akp<ddu> A = a("badlands");
-   public static final akp<ddu> B = a("eroded_badlands");
-   public static final akp<ddu> C = a("wooded_badlands");
-   public static final akp<ddu> D = a("meadow");
-   public static final akp<ddu> E = a("cherry_grove");
-   public static final akp<ddu> F = a("grove");
-   public static final akp<ddu> G = a("snowy_slopes");
-   public static final akp<ddu> H = a("frozen_peaks");
-   public static final akp<ddu> I = a("jagged_peaks");
-   public static final akp<ddu> J = a("stony_peaks");
-   public static final akp<ddu> K = a("river");
-   public static final akp<ddu> L = a("frozen_river");
-   public static final akp<ddu> M = a("beach");
-   public static final akp<ddu> N = a("snowy_beach");
-   public static final akp<ddu> O = a("stony_shore");
-   public static final akp<ddu> P = a("warm_ocean");
-   public static final akp<ddu> Q = a("lukewarm_ocean");
-   public static final akp<ddu> R = a("deep_lukewarm_ocean");
-   public static final akp<ddu> S = a("ocean");
-   public static final akp<ddu> T = a("deep_ocean");
-   public static final akp<ddu> U = a("cold_ocean");
-   public static final akp<ddu> V = a("deep_cold_ocean");
-   public static final akp<ddu> W = a("frozen_ocean");
-   public static final akp<ddu> X = a("deep_frozen_ocean");
-   public static final akp<ddu> Y = a("mushroom_fields");
-   public static final akp<ddu> Z = a("dripstone_caves");
-   public static final akp<ddu> aa = a("lush_caves");
-   public static final akp<ddu> ab = a("deep_dark");
-   public static final akp<ddu> ac = a("nether_wastes");
-   public static final akp<ddu> ad = a("warped_forest");
-   public static final akp<ddu> ae = a("crimson_forest");
-   public static final akp<ddu> af = a("soul_sand_valley");
-   public static final akp<ddu> ag = a("basalt_deltas");
-   public static final akp<ddu> ah = a("the_end");
-   public static final akp<ddu> ai = a("end_highlands");
-   public static final akp<ddu> aj = a("end_midlands");
-   public static final akp<ddu> ak = a("small_end_islands");
-   public static final akp<ddu> al = a("end_barrens");
+import com.mojang.serialization.MapCodec;
 
-   private static akp<ddu> a(String $$0) {
-      return akp.a(lu.aF, akq.b($$0));
+public class deb {
+   public static MapCodec<? extends dea> a(jz<MapCodec<? extends dea>> $$0) {
+      jz.a($$0, "fixed", deh.b);
+      jz.a($$0, "multi_noise", dej.c);
+      jz.a($$0, "checkerboard", dee.b);
+      return jz.a($$0, "the_end", den.b);
    }
 }

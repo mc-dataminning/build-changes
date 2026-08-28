@@ -1,32 +1,17 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
-
 public class dzv {
-   private long b;
-   private long c;
-   public static final Codec<dzv> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new dzv($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+   private final int a;
+   private final int b;
 
-   public dzv(dzk.a $$0) {
-      this($$0.b(), $$0.c());
+   public dzv(duz $$0, dcy $$1) {
+      this.a = Math.max($$1.I_(), $$0.g());
+      this.b = Math.min($$1.J_(), $$0.e());
    }
 
-   public dzv(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
+   public int a() {
+      return this.a;
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public int b() {
+      return this.b;
    }
 }

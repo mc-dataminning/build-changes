@@ -1,121 +1,140 @@
-public class fop extends fpo<cpu> {
-   private static final akq D = akq.b("container/anvil/text_field");
-   private static final akq E = akq.b("container/anvil/text_field_disabled");
-   private static final akq F = akq.b("container/anvil/error");
-   private static final akq G = akq.b("textures/gui/container/anvil.png");
-   private static final wy H = wy.c("container.repair.expensive");
-   private fip I;
-   private final cmv J;
+public abstract class fop extends fob {
+   private static final wz u = wz.c("advMode.setCommand");
+   private static final wz v = wz.c("advMode.command");
+   private static final wz w = wz.c("advMode.previousOutput");
+   protected fit a;
+   protected fit b;
+   protected fik c;
+   protected fik r;
+   protected fir<Boolean> s;
+   fin x;
 
-   public fop(cpu $$0, cmu $$1, wy $$2) {
-      super($$0, $$1, $$2, G);
-      this.J = $$1.l;
-      this.r = 60;
+   public fop() {
+      super(fge.a);
    }
 
    @Override
-   protected void F() {
-      int $$0 = (this.m - this.c) / 2;
-      int $$1 = (this.n - this.q) / 2;
-      this.I = new fip(this.o, $$0 + 62, $$1 + 24, 103, 12, wy.c("container.repair"));
-      this.I.f(false);
-      this.I.g(-1);
-      this.I.h(-1);
-      this.I.d(false);
-      this.I.f(50);
-      this.I.b(this::a);
-      this.I.a("");
-      this.d(this.I);
-      this.I.e(this.w.b(0).h());
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
+   }
+
+   abstract dbx m();
+
+   abstract int C();
+
+   @Override
+   protected void aT_() {
+      this.c = this.c(fik.a(wy.d, $$0x -> this.D()).a(this.m / 2 - 4 - 150, this.n / 4 + 120 + 12, 150, 20).a());
+      this.r = this.c(fik.a(wy.e, $$0x -> this.d()).a(this.m / 2 + 4, this.n / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.s = this.c(fir.a(wz.b("O"), wz.b("X")).a($$0).a().a(this.m / 2 + 150 - 20, this.C(), 20, 20, wz.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dbx $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fit(this.o, this.m / 2 - 150, 50, 300, 20, wz.c("advMode.command")) {
+         @Override
+         protected xn aQ_() {
+            return super.aQ_().b(fop.this.x.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fit(this.o, this.m / 2 - 150, this.C(), 276, 20, wz.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fin(this.l, this, this.a, this.o, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
    }
 
    @Override
-   protected void aE_() {
-      this.b(this.I);
+   protected void aI_() {
+      this.b(this.a);
    }
 
    @Override
-   public void a(fgi $$0, int $$1, int $$2) {
-      String $$3 = this.I.a();
+   protected wz z() {
+      return this.x.a() ? this.x.b() : super.z();
+   }
+
+   @Override
+   public void a(fgm $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
       this.b($$0, $$1, $$2);
-      this.I.a($$3);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void D() {
+      dbx $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.l.a(null);
+   }
+
+   protected abstract void a(dbx var1);
+
+   private void a(String $$0) {
+      this.x.d();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l.s.s();
-      }
-
-      return !this.I.a($$0, $$1, $$2) && !this.I.c() ? super.a($$0, $$1, $$2) : true;
-   }
-
-   private void a(String $$0) {
-      cro $$1 = this.w.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(kq.g) && $$0.equals($$1.g().w().getString())) {
-            $$2 = "";
-         }
-
-         if (this.w.a($$2)) {
-            this.l.s.h.b(new ahq($$2));
-         }
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.D();
+         return true;
       }
    }
 
    @Override
-   protected void b(fht $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.w.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         wy $$5;
-         if ($$3 >= 40 && !this.l.s.ga().d) {
-            $$5 = H;
-            $$4 = 16736352;
-         } else if (!this.w.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = wy.a("container.repair.cost", $$3);
-            if (!this.w.b(2).a(this.J)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.o.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.o, $$5, $$8, 69, $$4);
-         }
-      }
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(fht $$0, float $$1, int $$2, int $$3) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
-   }
-
-   @Override
-   public void d(fht $$0, int $$1, int $$2, float $$3) {
-      this.I.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(fht $$0, int $$1, int $$2) {
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
-         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
+      $$0.a(this.o, u, this.m / 2, 20, 16777215);
+      $$0.b(this.o, v, this.m / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.C() - 135;
+         $$0.b(this.o, w, this.m / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.x.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(cps $$0, int $$1, cuo $$2) {
-      if ($$1 == 0) {
-         this.I.a($$2.e() ? "" : $$2.w().getString());
-         this.I.e(!$$2.e());
-         this.a(this.I);
-      }
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

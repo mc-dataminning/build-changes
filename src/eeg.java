@@ -1,22 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eeg implements eee {
+public class eeg implements eeh {
    public static final Codec<eeg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egf.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               egf.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eeg::new)
+      $$0 -> $$0.group(jd.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eeg::new)
    );
-   public final egf b;
-   public final egf c;
-   public final int d;
+   private final Optional<jd> b;
+   private final boolean c;
 
-   public eeg(egf $$0, egf $$1, int $$2) {
+   private eeg(Optional<jd> $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public static eeg a(jd $$0, boolean $$1) {
+      return new eeg(Optional.of($$0), $$1);
+   }
+
+   public static eeg a() {
+      return new eeg(Optional.empty(), false);
+   }
+
+   public Optional<jd> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

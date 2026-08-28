@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class it implements io<DoubleArgumentType, it.a> {
-   public void a(it.a $$0, vv $$1) {
+   public void a(it.a $$0, vw $$1) {
       boolean $$2 = $$0.b != -Double.MAX_VALUE;
       boolean $$3 = $$0.c != Double.MAX_VALUE;
       $$1.k(iq.a($$2, $$3));
@@ -15,7 +15,7 @@ public class it implements io<DoubleArgumentType, it.a> {
       }
    }
 
-   public it.a a(vv $$0) {
+   public it.a a(vw $$0) {
       byte $$1 = $$0.readByte();
       double $$2 = iq.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
       double $$3 = iq.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;

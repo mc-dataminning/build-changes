@@ -1,151 +1,53 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fkq {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fgi c;
-   private final List<fkq.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fkp> f = Queues.newArrayDeque();
+public class fkq implements fkt {
+   private static final akr d = akr.b("toast/advancement");
+   public static final int a = 5000;
+   private final ag e;
+   private boolean f;
 
-   public fkq(fgi $$0) {
-      this.c = $$0;
+   public fkq(ag $$0) {
+      this.e = $$0;
    }
 
-   public void a(fht $$0) {
-      if (!this.c.m.Y) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
+   @Override
+   public fkt.a a(fhx $$0, fku $$1, long $$2) {
+      as $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<aya> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == am.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayo.d(ayo.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
             } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new fkq.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
+               int $$9 = ayo.d(ayo.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+
+               for (aya $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
                }
-            });
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
             }
          }
-      }
 
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends fkp> T a(Class<? extends T> $$0, Object $$1) {
-      for (fkq.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fkp $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fkp $$0) {
-      this.f.add($$0);
-   }
-
-   public fgi b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.B().c();
-   }
-
-   class a<T extends fkp> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fkp.a h = fkp.a.a;
-
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = ayn.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == fkp.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, fht $$1) {
-         long $$2 = ad.c();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(fkq.this.c.aj());
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == am.b) {
+               $$1.b().aj().a(gtt.a(avp.Ax, 1.0F, 1.0F));
+            }
          }
 
-         if (this.h == fkp.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         fkp.a $$3 = this.c.a($$1, fkq.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(fkq.this.c.aj());
-         }
-
-         return this.h == fkp.a.b && $$2 - this.f > 600L;
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fkt.a.b : fkt.a.a;
+      } else {
+         return fkt.a.b;
       }
    }
 }

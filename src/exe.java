@@ -1,38 +1,20 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface exe {
+   exe a = ($$0, $$1) -> false;
+   exe b = ($$0, $$1) -> !$$0 && !$$1;
+   exe c = ($$0, $$1) -> $$1 && !$$0;
+   exe d = ($$0, $$1) -> !$$0;
+   exe e = ($$0, $$1) -> $$0 && !$$1;
+   exe f = ($$0, $$1) -> !$$1;
+   exe g = ($$0, $$1) -> $$0 != $$1;
+   exe h = ($$0, $$1) -> !$$0 || !$$1;
+   exe i = ($$0, $$1) -> $$0 && $$1;
+   exe j = ($$0, $$1) -> $$0 == $$1;
+   exe k = ($$0, $$1) -> $$1;
+   exe l = ($$0, $$1) -> !$$0 || $$1;
+   exe m = ($$0, $$1) -> $$0;
+   exe n = ($$0, $$1) -> $$0 || !$$1;
+   exe o = ($$0, $$1) -> $$0 || $$1;
+   exe p = ($$0, $$1) -> true;
 
-public final class exe implements exi {
-   private final exc a;
-   private final int b;
-   private final int c;
-
-   exe(int $$0, int $$1) {
-      this.a = new exc((int)exm.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(exi.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

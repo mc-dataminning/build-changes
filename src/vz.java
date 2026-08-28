@@ -1,4 +1,4 @@
-import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class vz extends ChannelOutboundHandlerAdapter {
+public class vz extends ChannelInboundHandlerAdapter {
 }

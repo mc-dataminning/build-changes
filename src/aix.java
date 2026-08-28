@@ -1,27 +1,44 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aix(String b, UUID c) implements zf<aiv> {
-   public static final yw<vv, aix> a = zf.a(aix::a, aix::new);
+public record aix(int b, @Nullable ajb c) implements zg<aiw> {
+   public static final yx<vw, aix> a = zg.a(aix::c, aix::a);
+   private static final int d = 1048576;
 
-   private aix(vv $$0) {
-      this($$0.d(16), $$0.n());
+   private static aix a(vw $$0) {
+      int $$1 = $$0.l();
+      return new aix($$1, a($$1, $$0));
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private static ajb a(int $$0, vw $$1) {
+      return b($$1);
+   }
+
+   private static ajb b(vw $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.j($$1);
+         return ajd.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vw $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zh<aix> a() {
-      return ait.g;
+   public zi<aix> a() {
+      return aiu.f;
    }
 
-   public void a(aiv $$0) {
+   public void a(aiw $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
+   @Nullable
+   public ajb e() {
       return this.c;
    }
 }

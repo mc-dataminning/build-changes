@@ -35,12 +35,12 @@ public class kf extends kh {
       return new kf(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static kf a(dcb $$0, int $$1) {
+   public static kf a(dcd $$0, int $$1) {
       return new kf($$0.e, $$1, $$0.f);
    }
 
-   public static kf a(dxd $$0) {
-      return a($$0.dq());
+   public static kf a(dxg $$0) {
+      return a($$0.dp());
    }
 
    public static kf a(jw $$0) {
@@ -51,7 +51,7 @@ public class kf extends kh {
       return new kf(b($$0), c($$0), d($$0));
    }
 
-   public static kf a(duw $$0) {
+   public static kf a(duy $$0) {
       return a($$0.f(), $$0.ao());
    }
 
@@ -64,7 +64,7 @@ public class kf extends kh {
    }
 
    public static int a(double $$0) {
-      return a(ayn.a($$0));
+      return a(ayo.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class kf extends kh {
    }
 
    public static int b(double $$0) {
-      return ayn.a($$0) >> 4;
+      return ayo.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -186,13 +186,13 @@ public class kf extends kh {
       return new jd(c(this.a()), c(this.b()), c(this.c()));
    }
 
-   public jd q() {
+   public jd k() {
       int $$0 = 8;
       return this.j().b(8, 8, 8);
    }
 
-   public dcb r() {
-      return new dcb(this.a(), this.c());
+   public dcd r() {
+      return new dcd(this.a(), this.c());
    }
 
    public static long c(jd $$0) {
@@ -225,7 +225,7 @@ public class kf extends kh {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<kf> a(dcb $$0, int $$1, int $$2, int $$3) {
+   public static Stream<kf> a(dcd $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

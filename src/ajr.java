@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
-
-public class ajr implements zf<ajq> {
-   public static final ajr a = new ajr();
-   public static final yw<ByteBuf, ajr> b = yw.a(a);
-
-   private ajr() {
-   }
-
+public interface ajr extends agj, ajl {
    @Override
-   public zh<ajr> a() {
-      return ajs.b;
+   default vu b() {
+      return vu.c;
    }
 
-   public void a(ajq $$0) {
-      $$0.a(this);
-   }
+   void a(ajs var1);
 }

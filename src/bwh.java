@@ -1,48 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
-public class bwh<E extends btn> extends bwi<E> {
-   private final awt<dfw> m;
-   private final float n;
-   private final List<bwi.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bwh(bqb $$0, int $$1, int $$2, float $$3, Function<E, avn> $$4, awt<dfw> $$5, float $$6, BiPredicate<E, jd> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
-   }
-
-   @Override
-   protected void a(aqt $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dT().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bwi.a> a(aqt $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         jd.a $$1 = new jd.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bwi.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bwi.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), ji.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+public class bwh {
+   public static bws<btn> a(int $$0, float $$1, int $$2) {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$3 -> $$3.group(
+                  $$3.c(ccs.m), $$3.a(ccs.b), $$3.a(ccs.C), $$3.a(ccs.t), $$3.a(ccs.n), $$3.a(ccs.r), $$3.a(ccs.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(cew.n), $$0xxxx -> true, $$12.dp(), $$2 + 1, ces.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dn(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cew.n), $$0xxxxx -> true, ces.b.c, $$12.dp(), $$0, $$12.dS()))
+                           .or(() -> $$3.<jl>a($$5).map(jl::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(jl.a($$11.af(), $$10xx));
+                              if (!$$10xx.a($$12.dn(), (double)$$2)) {
+                                 $$4.a(new ccv($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

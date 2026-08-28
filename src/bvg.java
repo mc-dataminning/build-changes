@@ -1,11 +1,15 @@
-public interface bvg<E extends btl> {
-   bvf.a a();
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   boolean e(aqt var1, E var2, long var3);
-
-   void f(aqt var1, E var2, long var3);
-
-   void g(aqt var1, E var2, long var3);
-
-   String b();
+public class bvg {
+   public static bvi<btn> a(ccs<?> $$0, int $$1) {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$2 -> $$2.group($$2.a(ccs.o), $$2.c(ccs.ax), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
+   }
 }

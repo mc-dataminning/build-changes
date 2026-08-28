@@ -1,69 +1,68 @@
-public class crl extends cps {
-   private static final int k = 27;
-   private final bqj l;
+import javax.annotation.Nullable;
 
-   public crl(int $$0, cmu $$1) {
-      this($$0, $$1, new bqz(27));
-   }
+public class crl implements bqk, crk {
+   private final jv<cuq> b = jv.a(1, cuq.l);
+   @Nullable
+   private czb<?> c;
 
-   public crl(int $$0, cmu $$1, bqj $$2) {
-      super(cra.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.l);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crm($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cro($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cro($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public boolean b(cmv $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public cuo b(cmv $$0, int $$1) {
-      cuo $$2 = cuo.l;
-      cro $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuo $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cuo.l;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cuo.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cuo.l);
-         } else {
-            $$3.c();
+   public boolean c() {
+      for (cuq $$0 : this.b) {
+         if (!$$0.e()) {
+            return false;
          }
       }
 
-      return $$2;
+      return true;
    }
 
    @Override
-   public void a(cmv $$0) {
-      super.a($$0);
-      this.l.c($$0);
+   public cuq a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cuq a(int $$0, int $$1) {
+      return bql.a(this.b, 0);
+   }
+
+   @Override
+   public cuq b(int $$0) {
+      return bql.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cuq $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmx $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable czb<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public czb<?> d() {
+      return this.c;
    }
 }

@@ -1,151 +1,61 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gim implements gig.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final fgi e;
-   private final ddd f;
-   private Instant g = Instant.now();
-   @Nullable
-   private gim.a h;
+public class gim implements gik.a {
+   private static final float a = 0.02F;
+   private final Map<jd, gim.a> b = Maps.newHashMap();
 
-   public gim(fgi $$0, ddd $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(jd $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gim.a($$1, $$2, ad.c() + (long)$$3));
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new gim.a(this.e.r.y_(), kf.a(this.e.s.dq()), 10, this.f);
-      }
-
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      fbg $$6 = $$1.getBuffer(gfb.A());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+   public void a() {
+      this.b.clear();
    }
 
-   private static void a(fbc $$0, exf $$1, kf $$2, fbg $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
+   @Override
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ad.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gim.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
    }
 
-   private static void a(fbc $$0, exf $$1, kf $$2, get $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         fbg $$19 = $$3.getBuffer(gfb.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(fbc $$0, fbg $$1, ji $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)kf.c($$6) - $$3);
-      float $$11 = (float)((double)kf.c($$7) - $$4);
-      float $$12 = (float)((double)kf.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19);
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19);
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19);
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19);
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19);
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19);
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19);
+   private void a(fbg $$0, gex $$1, jd $$2, gim.a $$3) {
+      gik.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gik.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   private static void a(fbc $$0, fbg $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)kf.c($$5) - $$2);
-      float $$13 = (float)((double)kf.c($$6) - $$3);
-      float $$14 = (float)((double)kf.c($$7) - $$4);
-      float $$15 = (float)((double)kf.c($$8) - $$2);
-      float $$16 = (float)((double)kf.c($$9) - $$3);
-      float $$17 = (float)((double)kf.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   static final class a {
-      final exf a;
-      final exf b;
-      final kf c;
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-      a(eon $$0, kf $$1, int $$2, ddd $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new ewz($$4, $$4, $$4);
-         this.b = new ewz($$4, $$4, $$4);
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
 
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  kf $$8 = kf.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  eom.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == eom.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == eom.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
-         }
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
 
-         this.c = kf.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

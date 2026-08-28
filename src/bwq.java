@@ -1,37 +1,37 @@
-public abstract class bwq<E extends btl> implements bvg<E>, byv<E> {
-   private bvf.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public bwq() {
-      this.a = bvf.a.a;
+public class bwq {
+   public static bws<btn> a(float $$0) {
+      return byu.a((Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$1 -> $$1.group($$1.c(ccs.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dp())) {
+                  return false;
+               } else {
+                  Optional<exa> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new ccv($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   @Override
-   public final bvf.a a() {
-      return this.a;
-   }
+   @Nullable
+   private static exa a(aqu $$0, btn $$1) {
+      ayw $$2 = $$1.dS();
+      jd $$3 = $$1.dp();
 
-   @Override
-   public final boolean e(aqt $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bvf.a.b;
-         return true;
-      } else {
-         return false;
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         jd $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return exa.c($$5);
+         }
       }
+
+      return null;
    }
 
-   @Override
-   public final void f(aqt $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(aqt $$0, E $$1, long $$2) {
-      this.a = bvf.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public static boolean a(aqu $$0, btn $$1, jd $$2) {
+      return $$0.h($$2) && (double)$$0.a(dyy.a.e, $$2).v() <= $$1.dw();
    }
 }

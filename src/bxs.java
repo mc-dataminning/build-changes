@@ -1,27 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bxs {
-   public static bvg<btl> a(int $$0, BiPredicate<btl, btl> $$1) {
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$2 -> $$2.group($$2.b(ccq.o), $$2.a(ccq.ab), $$2.c(ccq.ai), $$2.a(ccq.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     btl $$10 = $$2.b($$3);
-                     if (!$$10.ey()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   private static final float a = 0.3F;
 
-                        $$5.a($$10.dq(), (long)$$0);
-                        if ($$10.am() != bsw.by || $$7.ab().b(dcq.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
+   public static bws<btn> a() {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.group($$0.a(ccs.m), $$0.a(ccs.n), $$0.b(ccs.e), $$0.b(ccs.h), $$0.c(ccs.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jl $$9 = $$0.b($$3);
+                     ccu $$10 = $$0.b($$4);
+                     if ($$6.E_().a(100) == 0 && $$6.af() == $$9.a() && $$9.b().a($$7.dn(), 4.0) && $$10.d($$0xxx -> bsx.bj.equals($$0xxx.am()))) {
+                        $$10.a($$1xx -> bsx.bj.equals($$1xx.am()) && $$1xx.g((bsr)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bvs($$3xx, true));
+                           $$1.a(new ccv(new bvs($$3xx, false), 0.3F, 1));
+                        });
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );

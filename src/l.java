@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class l {
    public static l.a a(jd $$0, ji.a $$1, int $$2, ji.a $$3, int $$4, Predicate<jd> $$5) {
-      jd.a $$6 = $$0.j();
+      jd.a $$6 = $$0.k();
       ji $$7 = ji.a(ji.b.b, $$1);
       ji $$8 = $$7.g();
       ji $$9 = ji.a(ji.b.b, $$3);
@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<jd> a(dca $$0, jd $$1, dfw $$2, ji $$3, dfw $$4) {
-      jd.a $$5 = $$1.j();
+   public static Optional<jd> a(dcc $$0, jd $$1, dfy $$2, ji $$3, dfy $$4) {
+      jd.a $$5 = $$1.k();
 
-      dta $$6;
+      dtc $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);

@@ -1,35 +1,44 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqm {
-   private static final BiMap<akq, gql> i = HashBiMap.create();
-   public static final gql a = a("single", gqr.b);
-   public static final gql b = a("directory", gqo.b);
-   public static final gql c = a("filter", gqs.b);
-   public static final gql d = a("unstitch", gqt.b);
-   public static final gql e = a("paletted_permutations", gqq.b);
-   public static Codec<gql> f = akq.a.flatXmap($$0 -> {
-      gql $$1 = (gql)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      akq $$1 = (akq)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gqj> g = f.dispatch(gqj::a, gql::a);
-   public static Codec<List<gqj>> h = g.listOf().fieldOf("sources").codec();
+@FunctionalInterface
+public interface gqm {
+   Logger a = LogUtils.getLogger();
 
-   private static gql a(String $$0, MapCodec<? extends gqj> $$1) {
-      gql $$2 = new gql($$1);
-      akq $$3 = akq.b($$0);
-      gql $$4 = (gql)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
-      }
+   static gqm create(Collection<atd<?>> $$0) {
+      return ($$1, $$2) -> {
+         aug $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fah $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fah.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gru $$11 = $$3.a(gru.a).orElse(gru.e);
+         grw $$12 = $$11.a($$7.a(), $$7.b());
+         if (ayo.c($$7.a(), $$12.a()) && ayo.c($$7.b(), $$12.b())) {
+            return new gqd($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
+
+   @Nullable
+   gqd loadSprite(akr var1, auc var2);
 }

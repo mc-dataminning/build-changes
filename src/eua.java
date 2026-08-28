@@ -1,42 +1,28 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class eua extends esy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eua> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eua::new));
+public class eua extends etc {
+   public static final MapCodec<eua> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cws.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eua::new));
+   private final jm<cws> b;
 
-   private eua(List<euw> $$0) {
+   private eua(List<eva> $$0, jm<cws> $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eta<eua> b() {
-      return etb.l;
+   public ete<eua> b() {
+      return etf.F;
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Optional<cyz<czo>> $$2 = $$1.d().r().a(czd.b, new czn($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cuo $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.e()) {
-               return $$3.c($$0.H());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public cuq a(cuq $$0, erp $$1) {
+      $$0.a(kq.G, cwu.a, this.b, cwu::b);
+      return $$0;
    }
 
-   public static esy.a<?> c() {
-      return a(eua::new);
+   public static etc.a<?> a(jm<cws> $$0) {
+      return a($$1 -> new eua($$1, $$0));
    }
 }

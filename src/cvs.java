@@ -1,59 +1,54 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
 
-public class cvs extends ctc {
-   protected static final Map<dfw, dta> a = Maps.newHashMap(
-      new Builder()
-         .put(dfy.i, dfy.kE.o())
-         .put(dfy.j, dfy.kE.o())
-         .put(dfy.l, dfy.kE.o())
-         .put(dfy.k, dfy.kE.o())
-         .put(dfy.fl, dfy.kE.o())
-         .put(dfy.sH, dfy.kE.o())
-         .build()
-   );
+public class cvs extends cul {
+   public cvs(cul.a $$0) {
+      super($$0);
+   }
 
-   public cvs(cwg $$0, cuj.a $$1) {
-      super($$0, awd.bD, $$1);
+   public static cxx h() {
+      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.O, 15.0F), cxx.a.b(awe.a, 5.0F), cxx.a.b(List.of(dga.ff, dga.fg), 2.0F)), 1.0F, 1);
    }
 
    @Override
-   public bqq a(cyd $$0) {
-      dcu $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      dta $$3 = $$1.a_($$2);
-      if ($$0.k() == ji.a) {
-         return bqq.e;
-      } else {
-         cmv $$4 = $$0.o();
-         dta $$5 = a.get($$3.b());
-         dta $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, avo.wK, avp.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dgk && $$3.c(dgk.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dgk.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(dgk.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dxw.c, $$2, dxw.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, btl.d($$0.p()));
-               }
-            }
-
-            return bqq.a($$1.B);
-         } else {
-            return bqq.e;
-         }
+   public boolean a(cuq $$0, dcw $$1, dtc $$2, jd $$3, btn $$4) {
+      if (!$$1.B && !$$2.a(awe.aK)) {
+         $$0.a(1, $$4, bsy.a);
       }
+
+      return $$2.a(awe.O)
+         || $$2.a(dga.bs)
+         || $$2.a(dga.bt)
+         || $$2.a(dga.bu)
+         || $$2.a(dga.bv)
+         || $$2.a(dga.sG)
+         || $$2.a(dga.ff)
+         || $$2.a(dga.fI)
+         || $$2.a(awe.a);
+   }
+
+   @Override
+   public bqr a(cyf $$0) {
+      dcw $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof djn $$5 && !$$5.o($$3)) {
+         cmx $$6 = $$0.o();
+         cuq $$7 = $$0.n();
+         if ($$6 instanceof aqv) {
+            an.N.a((aqv)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, avp.lp, avq.e, 1.0F, 1.0F);
+         dtc $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dxz.c, $$2, dxz.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, btn.d($$0.p()));
+         }
+
+         return bqr.a($$1.B);
+      }
+
+      return super.a($$0);
    }
 }

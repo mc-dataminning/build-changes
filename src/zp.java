@@ -1,29 +1,14 @@
-public class zp implements zf<zl> {
-   public static final yw<vv, zp> a = zf.a(zp::a, zp::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public zp(long $$0) {
-      this.b = $$0;
-   }
-
-   private zp(vv $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vv $$0) {
-      $$0.b(this.b);
-   }
+public record zp(wz b) implements zg<zm> {
+   public static final yx<ByteBuf, zp> a = xb.f.a(zp::new, zp::b);
 
    @Override
-   public zh<zp> a() {
-      return zx.d;
+   public zi<zp> a() {
+      return zy.c;
    }
 
-   public void a(zl $$0) {
+   public void a(zm $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

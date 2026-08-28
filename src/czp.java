@@ -1,22 +1,19 @@
-public interface czp extends cyx<czq> {
+public record czp(cuq a) implements czc {
    @Override
-   default czd<?> e() {
-      return czd.g;
+   public cuq a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   default cuo g() {
-      return new cuo(dfy.ob);
+   public cuq c() {
+      return this.a;
    }
-
-   boolean a(cuo var1);
-
-   boolean b(cuo var1);
-
-   boolean c(cuo var1);
 }

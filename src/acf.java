@@ -1,14 +1,6 @@
-public class acf extends zd<abt> {
-   public acf(Iterable<zf<? super abt>> $$0) {
-      super($$0);
-   }
-
+public class acf extends zd<abu> {
    @Override
-   public zh<acf> a() {
-      return agf.a;
-   }
-
-   public void a(abt $$0) {
-      $$0.a(this);
+   public zi<acf> a() {
+      return agg.b;
    }
 }

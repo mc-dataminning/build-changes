@@ -1,60 +1,166 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.UUID;
 
-public class als {
-   private final Map<akq, alr> a = Maps.newHashMap();
+public class als extends aqr {
+   private final akr h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   @Nullable
-   public alr a(akq $$0) {
-      return this.a.get($$0);
+   public als(akr $$0, wz $$1) {
+      super($$1, bqh.a.g, bqh.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   public alr a(akq $$0, wy $$1) {
-      alr $$2 = new alr($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public akr a() {
+      return this.h;
    }
 
-   public void a(alr $$0) {
-      this.a.remove($$0.a());
+   @Override
+   public void a(aqv $$0) {
+      super.a($$0);
+      this.i.add($$0.cA());
    }
 
-   public Collection<akq> a() {
-      return this.a.keySet();
+   public void a(UUID $$0) {
+      this.i.add($$0);
    }
 
-   public Collection<alr> b() {
-      return this.a.values();
+   @Override
+   public void b(aqv $$0) {
+      super.b($$0);
+      this.i.remove($$0.cA());
    }
 
-   public ua a(jo.a $$0) {
-      ua $$1 = new ua();
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
+   }
 
-      for (alr $$2 : this.a.values()) {
-         $$1.a($$2.a().toString(), $$2.a($$0));
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(ayo.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(ayo.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final wz e() {
+      return xc.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new xf(xf.a.a, wz.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<aqv> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<aqv> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (aqv $$5 : $$0) {
+            if ($$5.cA().equals($$3)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            $$1.add($$3);
+         }
       }
 
+      for (aqv $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cA().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (aqv $$10 : this.g()) {
+            if ($$10.cA().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (aqv $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public ub a(jo.a $$0) {
+      ub $$1 = new ub();
+      $$1.a("Name", wz.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      uh $$2 = new uh();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(uq.a($$3));
+      }
+
+      $$1.a("Players", $$2);
       return $$1;
    }
 
-   public void a(ua $$0, jo.a $$1) {
-      for (String $$2 : $$0.e()) {
-         akq $$3 = akq.a($$2);
-         this.a.put($$3, alr.a($$0.p($$2), $$3, $$1));
+   public static als a(ub $$0, akr $$1, jo.a $$2) {
+      als $$3 = new als($$1, wz.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bqh.a.a($$0.l("Color")));
+      $$3.a(bqh.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (uy $$5 : $$0.c("Players", 11)) {
+         $$3.a(uq.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(aqv $$0) {
+      if (this.i.contains($$0.cA())) {
+         this.a($$0);
       }
    }
 
-   public void a(aqu $$0) {
-      for (alr $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
-   }
-
-   public void b(aqu $$0) {
-      for (alr $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   public void d(aqv $$0) {
+      super.b($$0);
    }
 }

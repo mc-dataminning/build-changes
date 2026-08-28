@@ -1,64 +1,75 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class fho {
    private static final int a = -1;
    private final js<fhn> b = new js<>(32);
+   private final Map<dfy, Set<duf<?>>> c = Maps.newHashMap();
 
-   public static fho a(fhk $$0) {
-      fho $$1 = new fho();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cxi.a($$0x, -6265536), cur.py, cur.pz, cur.pA, cur.pB, cur.uJ);
-      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cxi.a($$0x, 0), cur.or);
-      $$1.a(($$0x, $$1x) -> dcs.a(0.5, 1.0), dfy.iH, dfy.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
+   public static fho a() {
+      fho $$0 = new fho();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gej.a($$1, $$0x.c(dig.b) == dty.a ? $$2.e() : $$2) : dcu.a(), dga.iI, dga.iH);
+      $$0.a(dig.b, dga.iI, dga.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gej.a($$1, $$2) : dcu.a(), dga.i, dga.bu, dga.bt, dga.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? gej.a($$1, $$2) : dcu.a();
          } else {
-            cxj $$2x = $$0x.a(kq.U);
-            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
-            int $$4 = $$3.size();
-            if ($$4 == 0) {
-               return -7697782;
-            } else if ($$4 == 1) {
-               return axx.b.e($$3.getInt(0));
-            } else {
-               int $$5 = 0;
-               int $$6 = 0;
-               int $$7 = 0;
-
-               for (int $$8 = 0; $$8 < $$4; $$8++) {
-                  int $$9 = $$3.getInt($$8);
-                  $$5 += axx.b.b($$9);
-                  $$6 += axx.b.c($$9);
-                  $$7 += axx.b.d($$9);
-               }
-
-               return axx.b.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
-            }
+            return -1;
          }
-      }, cur.uv);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : axx.b.e($$0x.a(kq.G, cws.a).b()), cur.sk, cur.vo, cur.vr, cur.vq);
-
-      for (cvy $$2 : cvy.h()) {
-         $$1.a(($$1x, $$2x) -> axx.b.e($$2.a($$2x)), $$2);
-      }
-
-      $$1.a(($$1x, $$2x) -> {
-         dta $$3 = ((csm)$$1x.g()).d().o();
-         return $$0.a($$3, null, null, $$2x);
-      }, dfy.i, dfy.bt, dfy.bu, dfy.ff, dfy.aE, dfy.aF, dfy.aG, dfy.aH, dfy.aI, dfy.aK, dfy.fm);
-      $$1.a(($$0x, $$1x) -> dco.d(), dfy.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : axx.b.e($$0x.a(kq.A, cxq.c).a()), cur.rU);
-      return $$1;
+      }, dga.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dcq.a(), dga.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dcq.b(), dga.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gej.b($$1, $$2) : dcq.c(), dga.aE, dga.aH, dga.aI, dga.aK, dga.ff, dga.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gej.c($$1, $$2) : -1, dga.G, dga.nd, dga.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dmb.b($$0x.c(dmb.f)), dga.cw);
+      $$0.a(dmb.f, dga.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gej.a($$1, $$2) : -1, dga.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dga.fc, dga.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dnv.c);
+         return axy.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
+      }, dga.fe, dga.fd);
+      $$0.a(dnv.c, dga.fe, dga.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dga.fm);
+      return $$0;
    }
 
-   public int a(cuo $$0, int $$1) {
-      fhn $$2 = this.b.a(lt.g.a($$0.g()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   public int a(dtc $$0, dcw $$1, jd $$2) {
+      fhn $$3 = this.b.a(lt.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
+      } else {
+         epg $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
+      }
    }
 
-   public void a(fhn $$0, dct... $$1) {
-      for (dct $$2 : $$1) {
-         this.b.a($$0, cuj.a($$2.r()));
+   public int a(dtc $$0, @Nullable dbz $$1, @Nullable jd $$2, int $$3) {
+      fhn $$4 = this.b.a(lt.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   }
+
+   public void a(fhn $$0, dfy... $$1) {
+      for (dfy $$2 : $$1) {
+         this.b.a($$0, lt.e.a($$2));
       }
+   }
+
+   private void a(Set<duf<?>> $$0, dfy... $$1) {
+      for (dfy $$2 : $$1) {
+         this.c.put($$2, $$0);
+      }
+   }
+
+   private void a(duf<?> $$0, dfy... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
+   }
+
+   public Set<duf<?>> a(dfy $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

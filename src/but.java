@@ -1,95 +1,135 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class but {
-   private final Map<jm<bup>, buq> a;
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jm<bur>, bus> b = new Object2ObjectOpenHashMap();
+   private final Set<bus> c = new ObjectOpenHashSet();
+   private final Set<bus> d = new ObjectOpenHashSet();
+   private final buv e;
 
-   but(Map<jm<bup>, buq> $$0) {
-      this.a = $$0;
+   public but(buv $$0) {
+      this.e = $$0;
    }
 
-   private buq d(jm<bup> $$0) {
-      buq $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
+   private void a(bus $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
       }
    }
 
-   public double a(jm<bup> $$0) {
-      return this.d($$0).f();
+   public Set<bus> a() {
+      return this.c;
    }
 
-   public double b(jm<bup> $$0) {
-      return this.d($$0).b();
+   public Set<bus> b() {
+      return this.d;
    }
 
-   public double a(jm<bup> $$0, akq $$1) {
-      bus $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
+   public Collection<bus> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public buq a(Consumer<buq> $$0, jm<bup> $$1) {
-      buq $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         buq $$3 = new buq($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
+   public bus a(jm<bur> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   public static but.a a() {
-      return new but.a();
+   public boolean b(jm<bur> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
    }
 
-   public boolean c(jm<bup> $$0) {
-      return this.a.containsKey($$0);
+   public boolean a(jm<bur> $$0, akr $$1) {
+      bus $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
    }
 
-   public boolean b(jm<bup> $$0, akq $$1) {
-      buq $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public double c(jm<bur> $$0) {
+      bus $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.e.a($$0);
    }
 
-   public static class a {
-      private final Builder<jm<bup>, buq> a = ImmutableMap.builder();
-      private boolean b;
+   public double d(jm<bur> $$0) {
+      bus $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
 
-      private buq b(jm<bup> $$0) {
-         buq $$1 = new buq($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   public double b(jm<bur> $$0, akr $$1) {
+      bus $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jm<bur>, buu> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bus $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jm<bur>, buu> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bus $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(but $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bus $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(but $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bus $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public uh d() {
+      uh $$0 = new uh();
+
+      for (bus $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
 
-      public but.a a(jm<bup> $$0) {
-         this.b($$0);
-         return this;
-      }
+      return $$0;
+   }
 
-      public but.a a(jm<bup> $$0, double $$1) {
-         buq $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public but a() {
-         this.b = true;
-         return new but(this.a.buildKeepingLast());
+   public void a(uh $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ub $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         akr $$4 = akr.c($$3);
+         if ($$4 != null) {
+            ad.a(lt.s.c($$4), $$1x -> {
+               bus $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
       }
    }
 }

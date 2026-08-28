@@ -1,23 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record efb(int b, int c, int d) implements eee {
+public class efb implements eeh {
    public static final Codec<efb> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axv.l.fieldOf("spread_width").forGetter(efb::a), axv.l.fieldOf("spread_height").forGetter(efb::b), axv.l.fieldOf("max_height").forGetter(efb::c)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               edn.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               jd.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, efb::new)
    );
+   private final boolean b;
+   private final List<edn.a> c;
+   @Nullable
+   private final jd d;
 
-   public int a() {
+   public efb(boolean $$0, List<edn.a> $$1, @Nullable jd $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private efb(boolean $$0, List<edn.a> $$1, Optional<jd> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
       return this.b;
    }
 
-   public int b() {
+   public List<edn.a> b() {
       return this.c;
    }
 
-   public int c() {
+   @Nullable
+   public jd c() {
       return this.d;
    }
 }

@@ -1,68 +1,162 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class fzg extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final gar b;
-   private final fzg.a c;
+public class fzg implements ey {
+   private final fze a;
+   private final fgm b;
+   private int c = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   public fzg(gar $$0, fzg.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fzg(fze $$0, fgm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
 
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         arm.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         arm.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
+      for (fzo $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
       }
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = arm.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = ayn.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = ayn.a($$4.get(4), -1);
-            int $$9 = ayn.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.v != null && this.b.v.c() == ewy.a.c ? Collections.singleton(((ewx)this.b.v).a().cB()) : Collections.emptyList());
+   }
+
+   @Override
+   public Collection<String> r() {
+      return this.a.y().f();
+   }
+
+   @Override
+   public Stream<akr> s() {
+      return this.b.aj().d().stream();
+   }
+
+   @Override
+   public Stream<akr> t() {
+      return this.a.j().e();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      gdz $$1 = this.b.s;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(akq<? extends jz<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
       }
 
-      $$0.close();
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new agu($$1, $$0.getInput()));
+      return this.d;
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
    }
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<ey.b> B() {
+      ewy $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == ewy.a.b) {
+         jd $$1 = ((eww)$$0).a();
+         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return ey.super.B();
+      }
+   }
+
+   @Override
+   public Collection<ey.b> C() {
+      ewy $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == ewy.a.b) {
+         exa $$1 = $$0.e();
+         return Collections.singleton(new ey.b(a($$1.c), a($$1.d), a($$1.e)));
+      } else {
+         return ey.super.C();
+      }
+   }
+
+   @Override
+   public Set<akq<dcw>> u() {
+      return this.a.u();
+   }
+
+   @Override
+   public ka v() {
+      return this.a.v();
+   }
+
+   @Override
+   public cpl w() {
+      return this.a.x();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(act.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
+      }
    }
 }

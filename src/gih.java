@@ -1,151 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class gih implements gig.a {
-   private final fgi a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gih.a> d = Lists.newArrayList();
-   private final List<gih.b> e = Lists.newArrayList();
+public class gih implements gik.a {
+   private final fgm a;
+   private static final int b = axy.b.a(255, 0, 155, 155);
+   private static final int c = axy.b.a(255, 255, 255, 0);
 
-   public gih(fgi $$0) {
+   public gih(fgm $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      dcu $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         eww $$6 = new eww($$2, 0.0, $$4);
-         this.d.removeIf(gih.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         fbg $$7 = $$1.getBuffer(gfb.w());
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      bsr $$5 = this.a.j.l().g();
+      float $$6 = (float)((double)this.a.r.I_() - $$3);
+      float $$7 = (float)((double)this.a.r.am() - $$3);
+      dcd $$8 = $$5.dr();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      fbk $$11 = $$1.getBuffer(gff.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-         for (gih.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               ger.a($$0, $$7, exm.a(new ewr($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         fbg $$9 = $$1.getBuffer(gfb.y());
-
-         for (gih.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> ger.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (gih.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gig.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gig.a($$0, $$1, jd.a((jw)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (gih.a $$12 : this.d) {
-            eww $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new ewr($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gig.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
          }
       }
-   }
 
-   private static void a(fbc $$0, get $$1, ewr $$2, float $$3, float $$4, float $$5, float $$6) {
-      ffs $$7 = fgi.Q().j.l();
-      if ($$7.h()) {
-         eww $$8 = $$7.b().e();
-         gig.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public void a(akp<dxw> $$0, eww $$1) {
-      this.d.add(new gih.a(ad.c(), $$0, $$1));
-   }
-
-   public void a(dya $$0, int $$1) {
-      this.e.add(new gih.b($$0, $$1));
-   }
-
-   static record a(long a, akp<dxw> b, eww c) {
-
-      public boolean a() {
-         return ad.c() - this.a > 3000L;
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public long b() {
-         return this.a;
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public akp<dxw> c() {
-         return this.b;
+      for (int $$19 = this.a.r.I_(); $$19 <= this.a.r.am(); $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public eww d() {
-         return this.c;
-      }
-   }
+      $$11 = $$1.getBuffer(gff.a(2.0));
 
-   static class b implements dxy {
-      public final dya a;
-      public final int b;
-
-      public b(dya $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
+         }
       }
 
-      public boolean a(dcu $$0, eww $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<eww> a(dcu $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dya a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(aqt $$0, jm<dxw> $$1, dxw.a $$2, eww $$3) {
-         return false;
+      for (int $$24 = this.a.r.I_(); $$24 <= this.a.r.am(); $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
       }
    }
 }

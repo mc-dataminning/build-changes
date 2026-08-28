@@ -1,474 +1,578 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fob extends fnx {
-   private static final wy b = wy.c("gui.stats");
-   static final akq c = akq.b("container/slot");
-   static final akq q = akq.b("statistics/header");
-   static final akq r = akq.b("statistics/sort_up");
-   static final akq s = akq.b("statistics/sort_down");
-   private static final wy u = wy.c("multiplayer.downloadingStats");
-   static final wy v = wy.c("stats.none");
-   private static final wy w = wy.c("stat.generalButton");
-   private static final wy x = wy.c("stat.itemsButton");
-   private static final wy y = wy.c("stat.mobsButton");
-   protected final fnx a;
-   private static final int z = 280;
-   private static final int A = 5;
-   private static final int B = 58;
-   private flt C = new flt(this, 33, 58);
+public abstract class fob extends fke implements fjn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wz b = wz.c("narrator.screen.usage");
+   protected static final gel d = new gel(akr.b("textures/gui/title/background/panorama"));
+   protected static final gez e = new gez(d);
+   public static final akr f = akr.b("textures/gui/menu_background.png");
+   public static final akr g = akr.b("textures/gui/header_separator.png");
+   public static final akr h = akr.b("textures/gui/footer_separator.png");
+   private static final akr c = akr.b("textures/gui/inworld_menu_background.png");
+   public static final akr i = akr.b("textures/gui/inworld_header_separator.png");
+   public static final akr j = akr.b("textures/gui/inworld_footer_separator.png");
+   protected final wz k;
+   private final List<fkg> r = Lists.newArrayList();
+   private final List<fme> s = Lists.newArrayList();
    @Nullable
-   private fob.a D;
+   protected fgm l;
+   private boolean u;
+   public int m;
+   public int n;
+   private final List<fjn> v = Lists.newArrayList();
+   protected fhv o;
+   private static final long w = TimeUnit.SECONDS.toMillis(2L);
+   private static final long x = w;
+   private static final long y = 750L;
+   private static final long z = 200L;
+   private static final long A = 200L;
+   private final fmj B = new fmj();
+   private long C = Long.MIN_VALUE;
+   private long D = Long.MAX_VALUE;
    @Nullable
-   fob.b E;
+   protected fir<fgo> p;
    @Nullable
-   private fob.c F;
-   final avz G;
+   private fme E;
    @Nullable
-   private fjc<?> H;
-   private boolean I = true;
+   private fob.a F;
+   protected final Executor q = $$0x -> this.l.execute(() -> {
+         if (this.l.y == this) {
+            $$0x.run();
+         }
+      });
 
-   public fob(fnx $$0, avz $$1) {
-      super(b);
-      this.a = $$0;
-      this.G = $$1;
+   protected fob(wz $$0) {
+      this.k = $$0;
+   }
+
+   public wz n() {
+      return this.k;
+   }
+
+   public wz i() {
+      return this.n();
+   }
+
+   public final void c(fhx $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$1, $$2, $$3);
+      if (this.F != null) {
+         $$0.a(this.o, this.F.a(), this.F.b(), $$1, $$2);
+         this.F = null;
+      }
    }
 
    @Override
-   protected void aP_() {
-      this.C.c(new fiv(this.o, u));
-      this.l.L().b(new ags(ags.a.b));
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0, $$1, $$2, $$3);
+
+      for (fjn $$4 : this.v) {
+         $$4.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public void m() {
-      this.D = new fob.a(this.l);
-      this.E = new fob.b(this.l);
-      this.F = new fob.c(this.l);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256 && this.aJ_()) {
+         this.d();
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         fmm $$3 = (fmm)(switch ($$0) {
+            case 258 -> this.m();
+            default -> null;
+            case 262 -> this.a(fmo.d);
+            case 263 -> this.a(fmo.c);
+            case 264 -> this.a(fmo.b);
+            case 265 -> this.a(fmo.a);
+         });
+         if ($$3 != null) {
+            fhu $$4 = super.a($$3);
+            if ($$4 == null && $$3 instanceof fmm.c) {
+               this.o();
+               $$4 = super.a($$3);
+            }
+
+            if ($$4 != null) {
+               this.a($$4);
+            }
+         }
+
+         return false;
+      }
    }
 
-   public void D() {
-      flt $$0 = new flt(this, 33, 58);
-      $$0.a(b, this.o);
-      flx $$1 = $$0.b(flx.d()).a(5);
-      $$1.c().b();
-      flx $$2 = $$1.a(flx.e()).a(5);
-      $$2.a(fig.a(w, $$0x -> this.a(this.D)).a(120).a());
-      fig $$3 = $$2.a(fig.a(x, $$0x -> this.a(this.E)).a(120).a());
-      fig $$4 = $$2.a(fig.a(y, $$0x -> this.a(this.F)).a(120).a());
-      $$1.a(fig.a(wx.d, $$0x -> this.d()).a(200).a());
-      if (this.E != null && this.E.aG_().isEmpty()) {
-         $$3.j = false;
+   private fmm.c m() {
+      boolean $$0 = !s();
+      return new fmm.c($$0);
+   }
+
+   private fmm.a a(fmo $$0) {
+      return new fmm.a($$0);
+   }
+
+   protected void aI_() {
+      if (this.l.aU().b()) {
+         fmm.c $$0 = new fmm.c(true);
+         fhu $$1 = super.a($$0);
+         if ($$1 != null) {
+            this.a($$1);
+         }
+      }
+   }
+
+   protected void b(fkg $$0) {
+      fhu $$1 = fhu.a(this, $$0.a(new fmm.b()));
+      if ($$1 != null) {
+         this.a($$1);
+      }
+   }
+
+   public void o() {
+      fhu $$0 = this.aP_();
+      if ($$0 != null) {
+         $$0.a(false);
+      }
+   }
+
+   @VisibleForTesting
+   protected void a(fhu $$0) {
+      this.o();
+      $$0.a(true);
+   }
+
+   public boolean aJ_() {
+      return true;
+   }
+
+   public void d() {
+      this.l.a(null);
+   }
+
+   protected <T extends fkg & fjn & fme> T c(T $$0) {
+      this.v.add($$0);
+      return this.d($$0);
+   }
+
+   protected <T extends fjn> T a(T $$0) {
+      this.v.add($$0);
+      return $$0;
+   }
+
+   protected <T extends fkg & fme> T d(T $$0) {
+      this.r.add($$0);
+      this.s.add($$0);
+      return $$0;
+   }
+
+   protected void e(fkg $$0) {
+      if ($$0 instanceof fjn) {
+         this.v.remove((fjn)$$0);
       }
 
-      if (this.F != null && this.F.aG_().isEmpty()) {
-         $$4.j = false;
+      if ($$0 instanceof fme) {
+         this.s.remove((fme)$$0);
       }
 
-      this.C = $$0;
-      this.C.a($$1x -> {
-         fie var10000 = this.c($$1x);
-      });
+      this.r.remove($$0);
+   }
+
+   protected void p() {
+      this.v.clear();
+      this.r.clear();
+      this.s.clear();
+   }
+
+   public static List<wz> a(fgm $$0, cuq $$1) {
+      return $$1.a(cul.b.a($$0.r), $$0.s, $$0.m.m ? cwm.a.b : cwm.a.a);
+   }
+
+   protected void a_(String $$0, boolean $$1) {
+   }
+
+   public boolean a(@Nullable xw $$0) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         wx $$1 = $$0.h();
+         if (s()) {
+            if ($$0.j() != null) {
+               this.a_($$0.j(), false);
+            }
+         } else if ($$1 != null) {
+            if ($$1.a() == wx.a.a) {
+               if (!this.l.m.L().c()) {
+                  return false;
+               }
+
+               try {
+                  URI $$2 = ad.a($$1.b());
+                  if (this.l.m.M().c()) {
+                     this.l.a(new fmy($$1x -> {
+                        if ($$1x) {
+                           ad.k().a($$2);
+                        }
+
+                        this.l.a(this);
+                     }, $$1.b(), false));
+                  } else {
+                     ad.k().a($$2);
+                  }
+               } catch (URISyntaxException var4) {
+                  a.error("Can't open url for {}", $$1, var4);
+               }
+            } else if ($$1.a() == wx.a.b) {
+               ad.k().a(new File($$1.b()));
+            } else if ($$1.a() == wx.a.d) {
+               this.a_(azl.g($$1.b()), true);
+            } else if ($$1.a() == wx.a.c) {
+               String $$4 = azl.g($$1.b());
+               if ($$4.startsWith("/")) {
+                  if (!this.l.s.h.d($$4.substring(1))) {
+                     a.error("Not allowed to run command with signed argument from click event: '{}'", $$4);
+                  }
+               } else {
+                  a.error("Failed to run command without '/' prefix from click event: '{}'", $$4);
+               }
+            } else if ($$1.a() == wx.a.f) {
+               this.l.o.a($$1.b());
+            } else {
+               a.error("Don't know how to handle {}", $$1);
+            }
+
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   public final void b(fgm $$0, int $$1, int $$2) {
+      this.l = $$0;
+      this.o = $$0.h;
+      this.m = $$1;
+      this.n = $$2;
+      if (!this.u) {
+         this.aT_();
+         this.aI_();
+      } else {
+         this.c();
+      }
+
+      this.u = true;
+      this.d(false);
+      this.a(w);
+   }
+
+   protected void q() {
+      this.p();
+      this.o();
+      this.aT_();
+      this.aI_();
+   }
+
+   @Override
+   public List<? extends fkg> aK_() {
+      return this.r;
+   }
+
+   protected void aT_() {
+   }
+
+   public void e() {
+   }
+
+   public void j() {
+   }
+
+   public void aL_() {
+   }
+
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      if (this.l.r == null) {
+         this.a($$0, $$3);
+      }
+
+      this.a($$3);
+      this.a($$0);
+   }
+
+   protected void a(float $$0) {
+      this.l.j.a($$0);
+      this.l.h().a(false);
+   }
+
+   protected void a(fhx $$0, float $$1) {
+      e.a($$0, this.m, this.n, 1.0F, $$1);
+   }
+
+   protected void a(fhx $$0) {
+      this.a($$0, 0, 0, this.m, this.n);
+   }
+
+   protected void a(fhx $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, this.l.r == null ? f : c, $$1, $$2, 0.0F, 0.0F, $$3, $$4);
+   }
+
+   public static void a(fhx $$0, akr $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7) {
+      int $$8 = 32;
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, 0, $$4, $$5, $$6, $$7, 32, 32);
+      RenderSystem.disableBlend();
+   }
+
+   public void b(fhx $$0) {
+      $$0.b(0, 0, this.m, this.n, -1072689136, -804253680);
+   }
+
+   public boolean k() {
+      return true;
+   }
+
+   public static boolean r() {
+      return fgm.a ? fac.a(fgm.Q().aM().j(), 343) || fac.a(fgm.Q().aM().j(), 347) : fac.a(fgm.Q().aM().j(), 341) || fac.a(fgm.Q().aM().j(), 345);
+   }
+
+   public static boolean s() {
+      return fac.a(fgm.Q().aM().j(), 340) || fac.a(fgm.Q().aM().j(), 344);
+   }
+
+   public static boolean t() {
+      return fac.a(fgm.Q().aM().j(), 342) || fac.a(fgm.Q().aM().j(), 346);
+   }
+
+   public static boolean c(int $$0) {
+      return $$0 == 88 && r() && !s() && !t();
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 == 86 && r() && !s() && !t();
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 == 67 && r() && !s() && !t();
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 == 65 && r() && !s() && !t();
+   }
+
+   protected void c() {
+      this.q();
+   }
+
+   public void a(fgm $$0, int $$1, int $$2) {
+      this.m = $$1;
+      this.n = $$2;
       this.c();
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
-      if (this.H != null) {
-         this.H.a(this.m, this.C);
+   public static void a(Runnable $$0, String $$1, String $$2) {
+      try {
+         $$0.run();
+      } catch (Throwable var6) {
+         o $$4 = o.a(var6, $$1);
+         p $$5 = $$4.a("Affected screen");
+         $$5.a("Screen name", () -> $$2);
+         throw new z($$4);
+      }
+   }
+
+   protected boolean a(String $$0, char $$1, int $$2) {
+      int $$3 = $$0.indexOf(58);
+      int $$4 = $$0.indexOf(47);
+      if ($$1 == ':') {
+         return ($$4 == -1 || $$2 <= $$4) && $$3 == -1;
+      } else {
+         return $$1 == '/' ? $$2 > $$3 : $$1 == '_' || $$1 == '-' || $$1 >= 'a' && $$1 <= 'z' || $$1 >= '0' && $$1 <= '9' || $$1 == '.';
       }
    }
 
    @Override
-   public void d() {
-      this.l.a(this.a);
+   public boolean c(double $$0, double $$1) {
+      return true;
    }
 
-   public void E() {
-      if (this.I) {
-         this.m();
-         this.a(this.D);
-         this.D();
-         this.aE_();
-         this.I = false;
+   public void a(List<Path> $$0) {
+   }
+
+   private void a(long $$0, boolean $$1) {
+      this.D = ad.c() + $$0;
+      if ($$1) {
+         this.C = Long.MIN_VALUE;
       }
    }
 
-   @Override
-   public boolean k() {
-      return !this.I;
+   private void a(long $$0) {
+      this.C = ad.c() + $$0;
    }
 
-   public void a(@Nullable fjc<?> $$0) {
-      if (this.H != null) {
-         this.e(this.H);
-      }
+   public void u() {
+      this.a(750L, false);
+   }
 
-      if ($$0 != null) {
+   public void v() {
+      this.a(200L, true);
+   }
+
+   public void x() {
+      this.a(200L, true);
+   }
+
+   private boolean C() {
+      return this.l.aV().a();
+   }
+
+   public void y() {
+      if (this.C()) {
+         long $$0 = ad.c();
+         if ($$0 > this.D && $$0 > this.C) {
+            this.c(true);
+            this.D = Long.MAX_VALUE;
+         }
+      }
+   }
+
+   public void d(boolean $$0) {
+      if (this.C()) {
          this.c($$0);
-         this.H = $$0;
-         this.c();
       }
    }
 
-   static String a(avv<akq> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   class a extends fjc<fob.a.a> {
-      public a(final fgi $$0) {
-         super($$0, fob.this.m, fob.this.n - 33 - 58, 33, 14);
-         ObjectArrayList<avv<akq>> $$1 = new ObjectArrayList(avy.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> grl.a(fob.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            avv<akq> $$2 = (avv<akq>)var4.next();
-            this.b(new fob.a.a($$2));
-         }
-      }
-
-      @Override
-      public int b() {
-         return 280;
-      }
-
-      class a extends fjc.a<fob.a.a> {
-         private final avv<akq> b;
-         private final wy c;
-
-         a(final avv<akq> $$0) {
-            this.b = $$0;
-            this.c = wy.c(fob.a($$0));
-         }
-
-         private String b() {
-            return this.b.a(fob.this.G.a(this.b));
-         }
-
-         @Override
-         public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2 - 9 / 2;
-            int $$11 = $$1 % 2 == 0 ? -1 : -4539718;
-            $$0.b(fob.this.o, this.c, $$3 + 2, $$10, $$11);
-            String $$12 = this.b();
-            $$0.b(fob.this.o, $$12, $$3 + $$4 - fob.this.o.b($$12) - 4, $$10, $$11);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", wy.i().b(this.c).b(wx.v).f(this.b()));
-         }
+   private void c(boolean $$0) {
+      this.B.a(this::a);
+      String $$1 = this.B.a(!$$0);
+      if (!$$1.isEmpty()) {
+         this.l.aV().a($$1);
       }
    }
 
-   class b extends fjc<fob.b.a> {
-      private static final int s = 18;
-      private static final int u = 22;
-      private static final int v = 1;
-      private static final int w = 0;
-      private static final int x = -1;
-      private static final int y = 1;
-      private final akq[] z = new akq[]{
-         akq.b("statistics/block_mined"),
-         akq.b("statistics/item_broken"),
-         akq.b("statistics/item_crafted"),
-         akq.b("statistics/item_used"),
-         akq.b("statistics/item_picked_up"),
-         akq.b("statistics/item_dropped")
-      };
-      protected final List<avx<dfw>> a;
-      protected final List<avx<cuj>> m;
-      protected final Comparator<fob.b.a> n = new fob.b.b();
-      @Nullable
-      protected avx<?> o;
-      protected int p = -1;
-      protected int q;
+   protected boolean aS_() {
+      return true;
+   }
 
-      public b(final fgi $$0) {
-         super($$0, fob.this.m, fob.this.n - 33 - 58, 33, 22);
-         this.a = Lists.newArrayList();
-         this.a.add(avy.a);
-         this.m = Lists.newArrayList(new avx[]{avy.d, avy.b, avy.c, avy.e, avy.f});
-         this.a(true, 22);
-         Set<cuj> $$1 = Sets.newIdentityHashSet();
+   protected void a(fmg $$0) {
+      $$0.a(fmf.a, this.i());
+      if (this.aS_()) {
+         $$0.a(fmf.d, b);
+      }
 
-         for (cuj $$2 : lt.g) {
-            boolean $$3 = false;
+      this.b($$0);
+   }
 
-            for (avx<cuj> $$4 : this.m) {
-               if ($$4.a($$2) && fob.this.G.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
-            }
+   protected void b(fmg $$0) {
+      List<fme> $$1 = this.s.stream().filter(fme::C).sorted(Comparator.comparingInt(fju::I)).toList();
+      fob.b $$2 = a($$1, this.E);
+      if ($$2 != null) {
+         if ($$2.c.a()) {
+            this.E = $$2.a;
+         }
 
-            if ($$3) {
-               $$1.add($$2);
+         if ($$1.size() > 1) {
+            $$0.a(fmf.b, wz.a("narrator.position.screen", $$2.b + 1, $$1.size()));
+            if ($$2.c == fme.a.c) {
+               $$0.a(fmf.d, this.z());
             }
          }
 
-         for (dfw $$5 : lt.e) {
-            boolean $$6 = false;
-
-            for (avx<dfw> $$7 : this.a) {
-               if ($$7.a($$5) && fob.this.G.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.r());
-            }
-         }
-
-         $$1.remove(cur.a);
-
-         for (cuj $$8 : $$1) {
-            this.b(new fob.b.a($$8));
-         }
-      }
-
-      int a(int $$0) {
-         return 75 + 40 * $$0;
-      }
-
-      @Override
-      protected void a(fht $$0, int $$1, int $$2) {
-         if (!this.c.n.b()) {
-            this.p = -1;
-         }
-
-         for (int $$3 = 0; $$3 < this.z.length; $$3++) {
-            akq $$4 = this.p == $$3 ? fob.c : fob.q;
-            $$0.a($$4, $$1 + this.a($$3) - 18, $$2 + 1, 0, 18, 18);
-         }
-
-         if (this.o != null) {
-            int $$5 = this.a(this.b(this.o)) - 36;
-            akq $$6 = this.q == 1 ? fob.r : fob.s;
-            $$0.a($$6, $$1 + $$5, $$2 + 1, 0, 18, 18);
-         }
-
-         for (int $$7 = 0; $$7 < this.z.length; $$7++) {
-            int $$8 = this.p == $$7 ? 1 : 0;
-            $$0.a(this.z[$$7], $$1 + this.a($$7) - 18 + $$8, $$2 + 1 + $$8, 0, 18, 18);
-         }
-      }
-
-      @Override
-      public int b() {
-         return 280;
-      }
-
-      @Override
-      protected boolean a(int $$0, int $$1) {
-         this.p = -1;
-
-         for (int $$2 = 0; $$2 < this.z.length; $$2++) {
-            int $$3 = $$0 - this.a($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.p = $$2;
-               break;
-            }
-         }
-
-         if (this.p >= 0) {
-            this.a(this.b(this.p));
-            this.c.aj().a(gto.a(avo.Ar, 1.0F));
-            return true;
-         } else {
-            return super.a($$0, $$1);
-         }
-      }
-
-      private avx<?> b(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(avx<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
-         } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
-         }
-      }
-
-      @Override
-      protected void b(fht $$0, int $$1, int $$2) {
-         if ($$2 >= this.E() && $$2 <= this.G()) {
-            fob.b.a $$3 = this.v();
-            int $$4 = this.s();
-            if ($$3 != null) {
-               if ($$1 < $$4 || $$1 > $$4 + 18) {
-                  return;
-               }
-
-               cuj $$5 = $$3.b();
-               $$0.a(fob.this.o, $$5.s(), $$1, $$2);
-            } else {
-               wy $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.z.length; $$8++) {
-                  int $$9 = this.a($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.b($$8).c();
-                     break;
-                  }
-               }
-
-               if ($$6 != null) {
-                  $$0.a(fob.this.o, $$6, $$1, $$2);
-               }
-            }
-         }
-      }
-
-      protected void a(avx<?> $$0) {
-         if ($$0 != this.o) {
-            this.o = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
-         } else {
-            this.o = null;
-            this.q = 0;
-         }
-
-         this.aG_().sort(this.n);
-      }
-
-      class a extends fjc.a<fob.b.a> {
-         private final cuj b;
-
-         a(final cuj $$0) {
-            this.b = $$0;
-         }
-
-         public cuj b() {
-            return this.b;
-         }
-
-         @Override
-         public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fob.c, $$3, $$2, 0, 18, 18);
-            $$0.b(this.b.w(), $$3 + 1, $$2 + 1);
-            if (fob.this.E != null) {
-               for (int $$10 = 0; $$10 < fob.this.E.a.size(); $$10++) {
-                  avv<dfw> $$12;
-                  if (this.b instanceof csm $$11) {
-                     $$12 = fob.this.E.a.get($$10).b($$11.d());
-                  } else {
-                     $$12 = null;
-                  }
-
-                  this.a($$0, $$12, $$3 + b.this.a($$10), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-
-               for (int $$14 = 0; $$14 < fob.this.E.m.size(); $$14++) {
-                  this.a($$0, fob.this.E.m.get($$14).b(this.b), $$3 + b.this.a($$14 + fob.this.E.a.size()), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-            }
-         }
-
-         protected void a(fht $$0, @Nullable avv<?> $$1, int $$2, int $$3, boolean $$4) {
-            wy $$5 = (wy)($$1 == null ? fob.v : wy.b($$1.a(fob.this.G.a($$1))));
-            $$0.b(fob.this.o, $$5, $$2 - fob.this.o.a($$5), $$3, $$4 ? -1 : -4539718);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", this.b.s());
-         }
-      }
-
-      class b implements Comparator<fob.b.a> {
-         public int a(fob.b.a $$0, fob.b.a $$1) {
-            cuj $$2 = $$0.b();
-            cuj $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.o == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.o)) {
-               avx<dfw> $$6 = (avx<dfw>)b.this.o;
-               $$4 = $$2 instanceof csm ? fob.this.G.a($$6, ((csm)$$2).d()) : -1;
-               $$5 = $$3 instanceof csm ? fob.this.G.a($$6, ((csm)$$3).d()) : -1;
-            } else {
-               avx<cuj> $$9 = (avx<cuj>)b.this.o;
-               $$4 = fob.this.G.a($$9, $$2);
-               $$5 = fob.this.G.a($$9, $$3);
-            }
-
-            return $$4 == $$5 ? b.this.q * Integer.compare(cuj.a($$2), cuj.a($$3)) : b.this.q * Integer.compare($$4, $$5);
-         }
+         $$2.a.b($$0.a());
       }
    }
 
-   class c extends fjc<fob.c.a> {
-      public c(final fgi $$0) {
-         super($$0, fob.this.m, fob.this.n - 33 - 58, 33, 9 * 4);
+   protected wz z() {
+      return wz.c("narration.component_list.usage");
+   }
 
-         for (bsw<?> $$1 : lt.f) {
-            if (fob.this.G.a(avy.g.b($$1)) > 0 || fob.this.G.a(avy.h.b($$1)) > 0) {
-               this.b(new fob.c.a($$1));
+   @Nullable
+   public static fob.b a(List<? extends fme> $$0, @Nullable fme $$1) {
+      fob.b $$2 = null;
+      fob.b $$3 = null;
+      int $$4 = 0;
+
+      for (int $$5 = $$0.size(); $$4 < $$5; $$4++) {
+         fme $$6 = $$0.get($$4);
+         fme.a $$7 = $$6.u();
+         if ($$7.a()) {
+            if ($$6 != $$1) {
+               return new fob.b($$6, $$4, $$7);
             }
+
+            $$3 = new fob.b($$6, $$4, $$7);
+         } else if ($$7.compareTo($$2 != null ? $$2.c : fme.a.a) > 0) {
+            $$2 = new fob.b($$6, $$4, $$7);
          }
       }
 
-      @Override
-      public int b() {
-         return 280;
+      return $$2 != null ? $$2 : $$3;
+   }
+
+   public void e(boolean $$0) {
+      if ($$0) {
+         this.a(x, false);
       }
 
-      class a extends fjc.a<fob.c.a> {
-         private final wy b;
-         private final wy c;
-         private final wy d;
-         private final boolean e;
-         private final boolean f;
+      if (this.p != null) {
+         this.p.a(this.l.m.as().c());
+      }
+   }
 
-         public a(final bsw<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = fob.this.G.a(avy.g.b($$0));
-            if ($$1 == 0) {
-               this.c = wy.a("stat_type.minecraft.killed.none", this.b);
-               this.e = false;
-            } else {
-               this.c = wy.a("stat_type.minecraft.killed", $$1, this.b);
-               this.e = true;
-            }
+   protected void A() {
+      this.F = null;
+   }
 
-            int $$2 = fob.this.G.a(avy.h.b($$0));
-            if ($$2 == 0) {
-               this.d = wy.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.d = wy.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
-         }
+   public void b(List<aya> $$0) {
+      this.a($$0, fqn.a, true);
+   }
 
-         @Override
-         public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fob.this.o, this.b, $$3 + 2, $$2 + 1, -1);
-            $$0.b(fob.this.o, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.e ? -4539718 : -8355712);
-            $$0.b(fob.this.o, this.d, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? -4539718 : -8355712);
-         }
+   public void a(List<aya> $$0, fqm $$1, boolean $$2) {
+      if (this.F == null || $$2) {
+         this.F = new fob.a($$0, $$1);
+      }
+   }
 
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", wx.a(this.c, this.d));
-         }
+   public void d(wz $$0) {
+      this.b(fjv.a(this.l, $$0));
+   }
+
+   public void a(fjv $$0, fqm $$1, boolean $$2) {
+      this.a($$0.a(this.l), $$1, $$2);
+   }
+
+   @Override
+   public fmq H() {
+      return new fmq(0, 0, this.m, this.n);
+   }
+
+   @Nullable
+   public avm B() {
+      return null;
+   }
+
+   static record a(List<aya> a, fqm b) {
+   }
+
+   public static class b {
+      public final fme a;
+      public final int b;
+      public final fme.a c;
+
+      public b(fme $$0, int $$1, fme.a $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

@@ -1,39 +1,48 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class yc implements wz {
-   public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yc::new)
-   );
-   public static final wz.a<yc> b = new wz.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<wy> d;
+public record yc(String d, @Nullable hi e) implements yb {
+   public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(yc::b)).apply($$0, yc::new));
+   public static final yb.a<yc> b = new yb.a<>(a, "entity");
 
    public yc(String $$0) {
-      this.c = $$0;
+      this($$0, a($$0));
    }
 
-   private wy c() {
-      if (this.d == null) {
-         this.d = yd.a.apply(this.c);
+   @Nullable
+   private static hi a(String $$0) {
+      try {
+         hj $$1 = new hj(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return this.d.get();
    }
 
    @Override
-   public <T> Optional<T> a(xd.a<T> $$0) {
-      return this.c().a($$0);
+   public Stream<ub> a(et $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bsr> $$1 = this.e.b($$0);
+         return $$1.stream().map(dk::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(xd.b<T> $$0, xv $$1) {
-      return this.c().a($$0, $$1);
+   public yb.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
    }
 
    @Override
@@ -41,7 +50,7 @@ public class yc implements wz {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yc $$1 && this.c.equals($$1.c)) {
+         if ($$0 instanceof yc $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -51,20 +60,15 @@ public class yc implements wz {
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
+      return this.d.hashCode();
    }
 
    public String b() {
-      return this.c;
+      return this.d;
    }
 
-   @Override
-   public wz.a<?> a() {
-      return b;
+   @Nullable
+   public hi c() {
+      return this.e;
    }
 }

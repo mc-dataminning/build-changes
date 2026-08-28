@@ -1,113 +1,16 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bvt<E extends btl> implements bvg<E> {
-   private final Map<ccq<?>, ccr> a;
-   private final Set<ccq<?>> b;
-   private final bvt.a c;
-   private final bvt.b d;
-   private final bxo<bvg<? super E>> e = new bxo<>();
-   private bvf.a f = bvf.a.a;
-
-   public bvt(Map<ccq<?>, ccr> $$0, Set<ccq<?>> $$1, bvt.a $$2, bvt.b $$3, List<Pair<? extends bvg<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((bvg<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
-   }
-
-   @Override
-   public bvf.a a() {
-      return this.f;
-   }
-
-   private boolean a(E $$0) {
-      for (Entry<ccq<?>, ccr> $$1 : this.a.entrySet()) {
-         ccq<?> $$2 = $$1.getKey();
-         ccr $$3 = $$1.getValue();
-         if (!$$0.dU().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public final boolean e(aqt $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = bvf.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(aqt $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == bvf.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == bvf.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(aqt $$0, E $$1, long $$2) {
-      this.f = bvf.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == bvf.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dU()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends bvg<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bvf.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(bxo::a);
-
-      private final Consumer<bxo<?>> c;
-
-      private a(final Consumer<bxo<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bxo<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends btl> void a(Stream<bvg<? super E>> $$0, aqt $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bvf.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
-         }
-      },
-      b {
-         @Override
-         public <E extends btl> void a(Stream<bvg<? super E>> $$0, aqt $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bvf.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
-
-      public abstract <E extends btl> void a(Stream<bvg<? super E>> var1, aqt var2, E var3, long var4);
+public class bvt {
+   public static <E extends btn> bvi<E> a(Predicate<E> $$0, ccs<?> $$1) {
+      return byu.a((Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

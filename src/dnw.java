@@ -1,31 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnw extends dfw {
+public class dnw extends dfy {
    public static final MapCodec<dnw> a = b(dnw::new);
-   private static final double b = 5.0;
-   private static final exp c = dfw.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   private static final wz d = wz.c("container.stonecutter");
+   public static final dtw b = dju.aE;
+   protected static final ext c = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dnw> a() {
       return a;
    }
 
-   protected dnw(dsz.d $$0) {
+   public dnw(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, ji.c));
    }
 
    @Override
-   protected dmd a_(dta $$0) {
-      return dmd.a;
+   public dtc a(cyd $$0) {
+      return this.o().a(b, $$0.g().g());
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+      if ($$1.B) {
+         return bqr.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avz.ay);
+         return bqr.c;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bqv b(dtc $$0, dcw $$1, jd $$2) {
+      return new brb(($$2x, $$3, $$4) -> new crw($$2x, $$3, cqg.a($$1, $$2)), d);
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
       return c;
    }
 
    @Override
-   protected float d(dta $$0, dca $$1, jd $$2) {
-      return 1.0F;
+   protected boolean f_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected dmf a_(dtc $$0) {
+      return dmf.c;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

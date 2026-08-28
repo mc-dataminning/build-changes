@@ -1,59 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ccp<T> {
-   private final T a;
-   private long b;
+public enum ccp implements azk {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
 
-   public ccp(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<ccp> n = azk.a(ccp::values);
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> ccp<T> a(T $$0) {
-      return new ccp<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> ccp<T> a(T $$0, long $$1) {
-      return new ccp<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   private ccp(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
-   }
-
-   @azs
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
-   }
-
-   public static <T> Codec<ccp<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new ccp<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   public String c() {
+      return this.i;
    }
 }

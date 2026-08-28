@@ -1,57 +1,19 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import java.util.List;
 
-public enum cwi implements cwg {
-   a(awd.bN, 59, 2.0F, 0.0F, 15, () -> cyu.a(awm.b)),
-   b(awd.bL, 131, 4.0F, 1.0F, 5, () -> cyu.a(awm.aX)),
-   c(awd.bK, 250, 6.0F, 2.0F, 14, () -> cyu.a(cur.oF)),
-   d(awd.bJ, 1561, 8.0F, 3.0F, 10, () -> cyu.a(cur.oz)),
-   e(awd.bM, 32, 12.0F, 0.0F, 22, () -> cyu.a(cur.oJ)),
-   f(awd.bI, 2031, 9.0F, 4.0F, 15, () -> cyu.a(cur.oK));
+public interface cwi {
+   int a();
 
-   private final awt<dfw> g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final Supplier<cyu> l;
+   float b();
 
-   private cwi(final awt<dfw> $$0, final int $$1, final float $$2, final float $$3, final int $$4, final Supplier<cyu> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = Suppliers.memoize($$5::get);
-   }
+   float c();
 
-   @Override
-   public int a() {
-      return this.h;
-   }
+   awu<dfy> d();
 
-   @Override
-   public float b() {
-      return this.i;
-   }
+   int e();
 
-   @Override
-   public float c() {
-      return this.j;
-   }
+   cyw f();
 
-   @Override
-   public awt<dfw> d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cyu f() {
-      return this.l.get();
+   default cxx a(awu<dfy> $$0) {
+      return new cxx(List.of(cxx.a.a(this.d()), cxx.a.a($$0, this.b())), 1.0F, 1);
    }
 }

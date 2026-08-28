@@ -1,5 +1,11 @@
-public class dvl extends RuntimeException {
-   public dvl(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
+import javax.annotation.Nullable;
+
+public interface dvl {
+   @Nullable
+   dvk c(int var1, int var2);
+
+   default void a(ddf $$0, kf $$1) {
    }
+
+   dcc q();
 }

@@ -1,29 +1,61 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ekr extends ekt {
-   public static final MapCodec<ekr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ekr::new));
+public class ekr extends ekx {
+   public static final MapCodec<ekr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eit.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, ekr::new)
+   );
+   private final jm<eit> b;
+   private final ub c;
 
-   protected ekr(Either<akq, enn> $$0, jm<enl> $$1, ekw.a $$2) {
-      super($$0, $$1, $$2);
+   protected ekr(jm<eit> $$0, ekz.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
+   }
+
+   private ub b() {
+      ub $$0 = new ub();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dri.a.a.c());
+      return $$0;
    }
 
    @Override
-   protected enj a(dmk $$0, eje $$1, boolean $$2) {
-      enj $$3 = super.a($$0, $$1, $$2);
-      $$3.b(emp.b);
-      $$3.a(emp.d);
-      return $$3;
+   public kh a(ens $$0, dmm $$1) {
+      return kh.g;
    }
 
    @Override
-   public ekv<?> a() {
-      return ekv.e;
+   public List<enr.c> a(ens $$0, jd $$1, dmm $$2, ayw $$3) {
+      List<enr.c> $$4 = Lists.newArrayList();
+      $$4.add(new enr.c($$1, dga.pb.o().a(dka.b, jk.a(ji.a, ji.d)), this.c));
+      return $$4;
+   }
+
+   @Override
+   public ejh a(ens $$0, jd $$1, dmm $$2) {
+      kh $$3 = this.a($$0, $$2);
+      return new ejh($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(ens $$0, dds $$1, ddq $$2, duz $$3, jd $$4, jd $$5, dmm $$6, ejh $$7, ayw $$8, enb $$9, boolean $$10) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public eky<?> a() {
+      return eky.c;
    }
 
    @Override
    public String toString() {
-      return "LegacySingle[" + this.c + "]";
+      return "Feature[" + this.b + "]";
    }
 }

@@ -1,26 +1,21 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-@FunctionalInterface
-public interface eka<C extends eee> {
-   Optional<ejz<C>> createGenerator(eka.a<C> var1);
+public enum eka implements azk {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box"),
+   e("encapsulate");
 
-   static <C extends eee> eka<C> simple(Predicate<eka.a<C>> $$0, ejz<C> $$1) {
-      Optional<ejz<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public static final Codec<eka> f = azk.a(eka::values);
+   private final String g;
+
+   private eka(final String $$0) {
+      this.g = $$0;
    }
 
-   static <C extends eee> Predicate<eka.a<C>> checkForBiomeOnTop(dyv.a $$0) {
-      return $$1 -> $$1.a($$0);
-   }
-
-   public static record a<C extends eee>(dux a, ddy b, dzj c, long d, dcb e, C f, dcw g, Predicate<jm<ddu>> h, eno i, ka j) {
-      public boolean a(dyv.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         jm<ddu> $$4 = this.a.d().getNoiseBiome(jx.a($$1), jx.a($$3), jx.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   @Override
+   public String c() {
+      return this.g;
    }
 }

@@ -1,15 +1,82 @@
-public class ru {
-   public static final akp<ebn<?, ?>> a = rq.a("pile_hay");
-   public static final akp<ebn<?, ?>> b = rq.a("pile_melon");
-   public static final akp<ebn<?, ?>> c = rq.a("pile_snow");
-   public static final akp<ebn<?, ?>> d = rq.a("pile_ice");
-   public static final akp<ebn<?, ?>> e = rq.a("pile_pumpkin");
+import java.util.List;
 
-   public static void a(qp<ebn<?, ?>> $$0) {
-      rq.a($$0, a, eca.j, new edw(new egm(dfy.ij)));
-      rq.a($$0, b, eca.j, new edw(egf.a(dfy.fa)));
-      rq.a($$0, c, eca.j, new edw(egf.a(dfy.dN)));
-      rq.a($$0, d, eca.j, new edw(new egp(bpa.<dta>a().a(dfy.mW.o(), 1).a(dfy.iC.o(), 5))));
-      rq.a($$0, e, eca.j, new edw(new egp(bpa.<dta>a().a(dfy.eZ.o(), 19).a(dfy.ef.o(), 1))));
+public class ru {
+   public static final akq<ebq<?, ?>> a = rr.a("ore_magma");
+   public static final akq<ebq<?, ?>> b = rr.a("ore_soul_sand");
+   public static final akq<ebq<?, ?>> c = rr.a("ore_nether_gold");
+   public static final akq<ebq<?, ?>> d = rr.a("ore_quartz");
+   public static final akq<ebq<?, ?>> e = rr.a("ore_gravel_nether");
+   public static final akq<ebq<?, ?>> f = rr.a("ore_blackstone");
+   public static final akq<ebq<?, ?>> g = rr.a("ore_dirt");
+   public static final akq<ebq<?, ?>> h = rr.a("ore_gravel");
+   public static final akq<ebq<?, ?>> i = rr.a("ore_granite");
+   public static final akq<ebq<?, ?>> j = rr.a("ore_diorite");
+   public static final akq<ebq<?, ?>> k = rr.a("ore_andesite");
+   public static final akq<ebq<?, ?>> l = rr.a("ore_tuff");
+   public static final akq<ebq<?, ?>> m = rr.a("ore_coal");
+   public static final akq<ebq<?, ?>> n = rr.a("ore_coal_buried");
+   public static final akq<ebq<?, ?>> o = rr.a("ore_iron");
+   public static final akq<ebq<?, ?>> p = rr.a("ore_iron_small");
+   public static final akq<ebq<?, ?>> q = rr.a("ore_gold");
+   public static final akq<ebq<?, ?>> r = rr.a("ore_gold_buried");
+   public static final akq<ebq<?, ?>> s = rr.a("ore_redstone");
+   public static final akq<ebq<?, ?>> t = rr.a("ore_diamond_small");
+   public static final akq<ebq<?, ?>> u = rr.a("ore_diamond_medium");
+   public static final akq<ebq<?, ?>> v = rr.a("ore_diamond_large");
+   public static final akq<ebq<?, ?>> w = rr.a("ore_diamond_buried");
+   public static final akq<ebq<?, ?>> x = rr.a("ore_lapis");
+   public static final akq<ebq<?, ?>> y = rr.a("ore_lapis_buried");
+   public static final akq<ebq<?, ?>> z = rr.a("ore_infested");
+   public static final akq<ebq<?, ?>> A = rr.a("ore_emerald");
+   public static final akq<ebq<?, ?>> B = rr.a("ore_ancient_debris_large");
+   public static final akq<ebq<?, ?>> C = rr.a("ore_ancient_debris_small");
+   public static final akq<ebq<?, ?>> D = rr.a("ore_copper_small");
+   public static final akq<ebq<?, ?>> E = rr.a("ore_copper_large");
+   public static final akq<ebq<?, ?>> F = rr.a("ore_clay");
+
+   public static void a(qq<ebq<?, ?>> $$0) {
+      enl $$1 = new ent(awe.be);
+      enl $$2 = new ent(awe.bf);
+      enl $$3 = new ent(awe.bg);
+      enl $$4 = new emt(dga.dV);
+      enl $$5 = new ent(awe.bh);
+      List<eep.a> $$6 = List.of(eep.a($$2, dga.P.o()), eep.a($$3, dga.Q.o()));
+      List<eep.a> $$7 = List.of(eep.a($$2, dga.N.o()), eep.a($$3, dga.O.o()));
+      List<eep.a> $$8 = List.of(eep.a($$2, dga.cx.o()), eep.a($$3, dga.cy.o()));
+      List<eep.a> $$9 = List.of(eep.a($$2, dga.aR.o()), eep.a($$3, dga.aS.o()));
+      List<eep.a> $$10 = List.of(eep.a($$2, dga.ra.o()), eep.a($$3, dga.rb.o()));
+      List<eep.a> $$11 = List.of(eep.a($$2, dga.R.o()), eep.a($$3, dga.S.o()));
+      rr.a($$0, a, ecd.I, new eep($$4, dga.kJ.o(), 33));
+      rr.a($$0, b, ecd.I, new eep($$4, dga.dW.o(), 12));
+      rr.a($$0, c, ecd.I, new eep($$4, dga.T.o(), 10));
+      rr.a($$0, d, ecd.I, new eep($$4, dga.hb.o(), 14));
+      rr.a($$0, e, ecd.I, new eep($$4, dga.L.o(), 33));
+      rr.a($$0, f, ecd.I, new eep($$4, dga.pr.o(), 33));
+      rr.a($$0, g, ecd.I, new eep($$1, dga.j.o(), 33));
+      rr.a($$0, h, ecd.I, new eep($$1, dga.L.o(), 33));
+      rr.a($$0, i, ecd.I, new eep($$1, dga.c.o(), 64));
+      rr.a($$0, j, ecd.I, new eep($$1, dga.e.o(), 64));
+      rr.a($$0, k, ecd.I, new eep($$1, dga.g.o(), 64));
+      rr.a($$0, l, ecd.I, new eep($$1, dga.qz.o(), 64));
+      rr.a($$0, m, ecd.I, new eep($$11, 17));
+      rr.a($$0, n, ecd.I, new eep($$11, 17, 0.5F));
+      rr.a($$0, o, ecd.I, new eep($$6, 9));
+      rr.a($$0, p, ecd.I, new eep($$6, 4));
+      rr.a($$0, q, ecd.I, new eep($$7, 9));
+      rr.a($$0, r, ecd.I, new eep($$7, 9, 0.5F));
+      rr.a($$0, s, ecd.I, new eep(List.of(eep.a($$2, dga.dI.o()), eep.a($$3, dga.dJ.o())), 8));
+      rr.a($$0, t, ecd.I, new eep($$8, 4, 0.5F));
+      rr.a($$0, v, ecd.I, new eep($$8, 12, 0.7F));
+      rr.a($$0, w, ecd.I, new eep($$8, 8, 1.0F));
+      rr.a($$0, u, ecd.I, new eep($$8, 8, 0.5F));
+      rr.a($$0, x, ecd.I, new eep($$9, 7));
+      rr.a($$0, y, ecd.I, new eep($$9, 7, 1.0F));
+      rr.a($$0, z, ecd.I, new eep(List.of(eep.a($$2, dga.eN.o()), eep.a($$3, dga.td.o())), 9));
+      rr.a($$0, A, ecd.I, new eep(List.of(eep.a($$2, dga.fE.o()), eep.a($$3, dga.fF.o())), 3));
+      rr.a($$0, B, ecd.ae, new eep($$5, dga.pj.o(), 3, 1.0F));
+      rr.a($$0, C, ecd.ae, new eep($$5, dga.pj.o(), 2, 1.0F));
+      rr.a($$0, D, ecd.I, new eep($$10, 10));
+      rr.a($$0, E, ecd.I, new eep($$10, 20));
+      rr.a($$0, F, ecd.I, new eep($$1, dga.dR.o(), 33));
    }
 }

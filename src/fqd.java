@@ -1,26 +1,9 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fqd extends fos<cru> {
+   private static final akr F = akr.b("container/smoker/lit_progress");
+   private static final akr G = akr.b("container/smoker/burn_progress");
+   private static final akr H = akr.b("textures/gui/container/smoker.png");
 
-public class fqd implements fqi {
-   private final fmm a;
-
-   public fqd(fmm $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
-
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
-
-      return $$6;
+   public fqd(cru $$0, cmw $$1, wz $$2) {
+      super($$0, new fsg(), $$1, $$2, H, F, G);
    }
 }

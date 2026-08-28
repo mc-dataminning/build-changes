@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class gl implements ArgumentType<gl.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final jo<dfw> b;
+   private final jo<dfy> b;
 
    public gl(ep $$0) {
       this.b = $$0.b(lu.f);
@@ -29,12 +29,12 @@ public class gl implements ArgumentType<gl.b> {
       return a(this.b, $$0);
    }
 
-   public static gl.b a(jo<dfw> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static gl.b a(jo<dfy> $$0, StringReader $$1) throws CommandSyntaxException {
       return (gl.b)gn.b($$0, $$1, true).map($$0x -> new gl.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gl.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dte> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dte>)$$0.getArgument($$1, gl.b.class);
+   public static Predicate<dtg> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dtg>)$$0.getArgument($$1, gl.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class gl implements ArgumentType<gl.b> {
    }
 
    static class a implements gl.b {
-      private final dta a;
-      private final Set<dud<?>> b;
+      private final dtc a;
+      private final Set<duf<?>> b;
       @Nullable
-      private final ua c;
+      private final ub c;
 
-      public a(dta $$0, Set<dud<?>> $$1, @Nullable ua $$2) {
+      public a(dtc $$0, Set<duf<?>> $$1, @Nullable ub $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dte $$0) {
-         dta $$1 = $$0.a();
+      public boolean a(dtg $$0) {
+         dtc $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dud<?> $$2 : this.b) {
+            for (duf<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,8 +71,8 @@ public class gl implements ArgumentType<gl.b> {
             if (this.c == null) {
                return true;
             } else {
-               dqf $$3 = $$0.b();
-               return $$3 != null && up.a(this.c, $$3.b($$0.c().H_()), true);
+               dqh $$3 = $$0.b();
+               return $$3 != null && uq.a(this.c, $$3.b($$0.c().H_()), true);
             }
          }
       }
@@ -83,29 +83,29 @@ public class gl implements ArgumentType<gl.b> {
       }
    }
 
-   public interface b extends Predicate<dte> {
+   public interface b extends Predicate<dtg> {
       boolean a();
    }
 
    static class c implements gl.b {
-      private final jq<dfw> a;
+      private final jq<dfy> a;
       @Nullable
-      private final ua b;
+      private final ub b;
       private final Map<String, String> c;
 
-      c(jq<dfw> $$0, Map<String, String> $$1, @Nullable ua $$2) {
+      c(jq<dfy> $$0, Map<String, String> $$1, @Nullable ub $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dte $$0) {
-         dta $$1 = $$0.a();
+      public boolean a(dtg $$0) {
+         dtc $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dud<?> $$3 = $$1.b().l().a($$2.getKey());
+               duf<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,8 +123,8 @@ public class gl implements ArgumentType<gl.b> {
             if (this.b == null) {
                return true;
             } else {
-               dqf $$5 = $$0.b();
-               return $$5 != null && up.a(this.b, $$5.b($$0.c().H_()), true);
+               dqh $$5 = $$0.b();
+               return $$5 != null && uq.a(this.b, $$5.b($$0.c().H_()), true);
             }
          }
       }

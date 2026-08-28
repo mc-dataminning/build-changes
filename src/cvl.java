@@ -1,106 +1,110 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public abstract class cvl extends cuj {
-   public static final Predicate<cuo> c = $$0 -> $$0.a(awm.aT);
-   public static final Predicate<cuo> j = c.or($$0 -> $$0.a(cur.uu));
+public class cvl extends cul {
+   private static final int a = 32;
 
-   public cvl(cuj.a $$0) {
+   public cvl(cul.a $$0) {
       super($$0);
    }
 
-   public Predicate<cuo> d() {
-      return this.b();
+   @Override
+   public cuq w() {
+      cuq $$0 = super.w();
+      $$0.b(kq.G, new cwu(cwv.a));
+      return $$0;
    }
 
-   public abstract Predicate<cuo> b();
+   @Override
+   public cuq a(cuq $$0, dcw $$1, btn $$2) {
+      cmx $$3 = $$2 instanceof cmx ? (cmx)$$2 : null;
+      if ($$3 instanceof aqv) {
+         an.A.a((aqv)$$3, $$0);
+      }
 
-   public static cuo a(btl $$0, Predicate<cuo> $$1) {
-      if ($$1.test($$0.b(bqp.b))) {
-         return $$0.b(bqp.b);
+      if (!$$1.B) {
+         cwu $$4 = $$0.a(kq.G, cwu.a);
+         $$4.a($$2x -> {
+            if ($$2x.c().a().a()) {
+               $$2x.c().a().a($$3, $$3, $$2, $$2x.e(), 1.0);
+            } else {
+               $$2.b($$2x);
+            }
+         });
+      }
+
+      if ($$3 != null) {
+         $$3.b(avz.c.b(this));
+         $$0.a(1, $$3);
+      }
+
+      if ($$3 == null || !$$3.fM()) {
+         if ($$0.e()) {
+            return new cuq(cut.sl);
+         }
+
+         if ($$3 != null) {
+            $$3.fZ().f(new cuq(cut.sl));
+         }
+      }
+
+      $$2.a(dxz.l);
+      return $$0;
+   }
+
+   @Override
+   public bqr a(cyf $$0) {
+      dcw $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      cmx $$3 = $$0.o();
+      cuq $$4 = $$0.n();
+      cwu $$5 = $$4.a(kq.G, cwu.a);
+      dtc $$6 = $$1.a_($$2);
+      if ($$0.k() != ji.a && $$6.a(awe.ci) && $$5.a(cwv.a)) {
+         $$1.a(null, $$2, avp.ki, avq.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cus.a($$4, $$3, new cuq(cut.sl)));
+         $$3.b(avz.c.b($$4.g()));
+         if (!$$1.B) {
+            aqu $$7 = (aqu)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(lm.am, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
+         }
+
+         $$1.a(null, $$2, avp.cB, avq.e, 1.0F, 1.0F);
+         $$1.a(null, dxz.z, $$2);
+         $$1.b($$2, dga.sI.o());
+         return bqr.a($$1.B);
       } else {
-         return $$1.test($$0.b(bqp.a)) ? $$0.b(bqp.a) : cuo.l;
+         return bqr.e;
       }
    }
 
    @Override
-   public int g() {
-      return 1;
+   public int a(cuq $$0, btn $$1) {
+      return 32;
    }
 
-   public abstract int c();
-
-   protected void a(aqt $$0, btl $$1, bqp $$2, cuo $$3, List<cuo> $$4, float $$5, float $$6, boolean $$7, @Nullable btl $$8) {
-      float $$9 = dac.a($$0, $$3, $$1, 0.0F);
-      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
-      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
-      float $$12 = 1.0F;
-
-      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
-         cuo $$14 = $$4.get($$13);
-         if (!$$14.e()) {
-            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
-            $$12 = -$$12;
-            $$3.a(this.j($$14), $$1, btl.d($$2));
-            cnn $$16 = this.a($$0, $$1, $$3, $$14, $$7);
-            this.a($$1, $$16, $$13, $$5, $$6, $$15, $$8);
-            $$0.b($$16);
-         }
-      }
+   @Override
+   public cwo b(cuq $$0) {
+      return cwo.c;
    }
 
-   protected int j(cuo $$0) {
-      return 1;
+   @Override
+   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
+      return cus.a($$0, $$1, $$2);
    }
 
-   protected abstract void a(btl var1, cnn var2, int var3, float var4, float var5, float var6, @Nullable btl var7);
-
-   protected cnn a(dcu $$0, btl $$1, cuo $$2, cuo $$3, boolean $$4) {
-      csh $$6 = $$3.g() instanceof csh $$5 ? $$5 : (csh)cur.ow;
-      cnb $$7 = $$6.a($$0, $$3, $$1, $$2);
-      if ($$4) {
-         $$7.a(true);
-      }
-
-      return $$7;
+   @Override
+   public String h(cuq $$0) {
+      return cws.a($$0.a(kq.G, cwu.a).e(), this.a() + ".effect.");
    }
 
-   protected static List<cuo> a(cuo $$0, cuo $$1, btl $$2) {
-      if ($$1.e()) {
-         return List.of();
-      } else {
-         int $$4 = $$2.dQ() instanceof aqt $$3 ? dac.a($$3, $$0, $$2, 1) : 1;
-         List<cuo> $$5 = new ArrayList<>($$4);
-         cuo $$6 = $$1.s();
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            cuo $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
-            if (!$$8.e()) {
-               $$5.add($$8);
-            }
-         }
-
-         return $$5;
-      }
-   }
-
-   protected static cuo a(cuo $$0, cuo $$1, btl $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fM() && $$2.dQ() instanceof aqt $$4 ? dac.a($$4, $$0, $$1, 1) : 0;
-      if ($$5 > $$1.H()) {
-         return cuo.l;
-      } else if ($$5 == 0) {
-         cuo $$6 = $$1.c(1);
-         $$6.b(kq.u, azr.a);
-         return $$6;
-      } else {
-         cuo $$7 = $$1.a($$5);
-         if ($$1.e() && $$2 instanceof cmv $$8) {
-            $$8.fZ().h($$1);
-         }
-
-         return $$7;
+   @Override
+   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
+      cwu $$4 = $$0.a(kq.G);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1.b());
       }
    }
 }

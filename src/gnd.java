@@ -1,22 +1,18 @@
-public class gnd extends glj<ckr, fxt<ckr>> {
-   private static final akq a = akq.b("textures/entity/witch.png");
+public class gnd extends gla<cks> {
+   private static final akr a = akr.b("textures/entity/illager/vindicator.png");
 
-   public gnd(gkd.a $$0) {
-      super($$0, new fxt<>($$0.a(fyd.bV)), 0.5F);
-      this.a(new gpc<>(this, $$0.d()));
+   public gnd(gkh.a $$0) {
+      super($$0, new fvw<>($$0.a(fyh.bR)), 0.5F);
+      this.a(new gom<cks, fvw<cks>>(this, $$0.d()) {
+         public void a(fbg $$0, gex $$1, int $$2, cks $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gc()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(ckr $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      this.f.b(!$$0.eU().e());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akq a(ckr $$0) {
+   public akr a(cks $$0) {
       return a;
-   }
-
-   protected void a(ckr $$0, fbc $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

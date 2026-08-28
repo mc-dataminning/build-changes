@@ -1,9 +1,17 @@
-public class grd extends gri {
-   public grd(gqg $$0) {
-      super($$0, akq.b("textures/atlas/mob_effects.png"), akq.b("mob_effects"));
+import java.io.IOException;
+
+public class grd extends auj<int[]> {
+   private static final akr a = akr.b("textures/colormap/grass.png");
+
+   protected int[] a(aue $$0, bnf $$1) {
+      try {
+         return grf.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   public gqf a(jm<brw> $$0) {
-      return this.a($$0.e().map(akp::a).orElseGet(gpv::b));
+   protected void a(int[] $$0, aue $$1, bnf $$2) {
+      dcu.a($$0);
    }
 }

@@ -1,30 +1,96 @@
-import org.joml.Vector3f;
+public class fpk {
+   private static final akr a = akr.b("alt");
+   private static final xw b = xw.a.a(a);
+   private static final fpk c = new fpk();
+   private final ayw d = ayw.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class fpk extends foo {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int q = 16;
-   private static final int r = 16;
-   private final akq s = akq.b("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public fpk(drq $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, wy.c("hanging_sign.edit"));
+   private fpk() {
    }
 
-   @Override
-   protected void b(fht $$0, dta $$1) {
-      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
-   }
-
-   @Override
-   protected void a(fht $$0, dta $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f m() {
+   public static fpk a() {
       return c;
+   }
+
+   public xe a(fhv $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ad.a(this.e, this.d));
+      }
+
+      return $$0.b().a(wz.b($$2.toString()).c(b), $$1, xw.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

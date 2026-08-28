@@ -1,16 +1,31 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ewc {
-   private static final Codec<ewb> d = lt.I.r().dispatch(ewb::a, ewa::a);
-   public static final Codec<ewb> a = Codec.lazyInitialized(
-      () -> Codec.either(evy.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof evy $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final ewa b = a("fixed", evz.a);
-   public static final ewa c = a("context", evy.a);
+public record ewc(erp.b c) implements ewf {
+   public static final MapCodec<ewc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(erp.b.e.fieldOf("target").forGetter(ewc::c)).apply($$0, ewc::new));
+   public static final Codec<ewc> b = erp.b.e.xmap(ewc::new, ewc::c);
 
-   private static ewa a(String $$0, MapCodec<? extends ewb> $$1) {
-      return jz.a(lt.I, akq.b($$0), new ewa($$1));
+   public static ewf a(erp.b $$0) {
+      return new ewc($$0);
+   }
+
+   @Override
+   public ewe a() {
+      return ewg.c;
+   }
+
+   @Nullable
+   @Override
+   public eyd a(erp $$0) {
+      return $$0.c(this.c.a());
+   }
+
+   @Override
+   public Set<eui<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

@@ -1,7 +1,12 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public interface gsw {
-   void a(Map<UUID, ask.c> var1, Consumer<ask.b> var2);
+   Collection<akr> f();
+
+   void a(Function<akr, gsw> var1);
+
+   @Nullable
+   gsk a(gsp var1, Function<gso, gqj> var2, gst var3);
 }

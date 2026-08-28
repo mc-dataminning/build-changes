@@ -1,25 +1,123 @@
+import com.google.common.collect.Iterables;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public interface dcg extends dcl, dcx, dcz {
-   @Override
-   default <T extends dqf> Optional<T> a(jd $$0, dqh<T> $$1) {
-      return dcx.super.a($$0, $$1);
+public interface dcg extends dcc {
+   dut C_();
+
+   @Nullable
+   dcc c(int var1, int var2);
+
+   default boolean a(@Nullable bsr $$0, ext $$1) {
+      return true;
    }
 
-   @Override
-   default List<exp> c(@Nullable bsq $$0, ewr $$1) {
-      return dcl.super.c($$0, $$1);
+   default boolean a(dtc $$0, jd $$1, exf $$2) {
+      ext $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   @Override
-   default boolean a(@Nullable bsq $$0, exp $$1) {
-      return dcl.super.a($$0, $$1);
+   default boolean f(bsr $$0) {
+      return this.a($$0, exq.a($$0.cL()));
    }
 
-   @Override
-   default jd a(dyv.a $$0, jd $$1) {
-      return dcx.super.a($$0, $$1);
+   default boolean b(ewv $$0) {
+      return this.a(null, $$0);
+   }
+
+   default boolean g(bsr $$0) {
+      return this.a($$0, $$0.cL());
+   }
+
+   default boolean a(@Nullable bsr $$0, ewv $$1) {
+      for (ext $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      if (!this.c($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
+      } else {
+         ext $$3 = this.h($$0, $$1);
+         return $$3 == null || !exq.c($$3, exq.a($$1), exe.i);
+      }
+   }
+
+   default boolean b(@Nullable bsr $$0, ewv $$1) {
+      for (ext $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   List<ext> c(@Nullable bsr var1, ewv var2);
+
+   default Iterable<ext> d(@Nullable bsr $$0, ewv $$1) {
+      List<ext> $$2 = this.c($$0, $$1);
+      Iterable<ext> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   }
+
+   default Iterable<ext> e(@Nullable bsr $$0, ewv $$1) {
+      return () -> new dca<ext>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   }
+
+   @Nullable
+   private ext h(bsr $$0, ewv $$1) {
+      dut $$2 = this.C_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
+   }
+
+   default boolean f(@Nullable bsr $$0, ewv $$1) {
+      dca<ext> $$2 = new dca<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((ext)$$2.next()).c()) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   default Optional<jd> g(bsr $$0, ewv $$1) {
+      jd $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      dca<jd> $$4 = new dca<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         jd $$5 = (jd)$$4.next();
+         double $$6 = $$5.b($$0.dn());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.j();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
+   }
+
+   default Optional<exa> a(@Nullable bsr $$0, ext $$1, exa $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         ewv $$6 = $$1.a().c($$3, $$4, $$5);
+         ext $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(exq::a)
+            .reduce(exq.a(), exq::a);
+         ext $$8 = exq.a($$1, $$7, exe.e);
+         return $$8.a($$2);
+      }
    }
 }

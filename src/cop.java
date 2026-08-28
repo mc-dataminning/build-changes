@@ -1,59 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class cop {
-   private final List<col> a = Lists.newArrayList();
-   private int b;
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cop c = a("empty").a(0, com.b).a();
+   public static final cop d = a("simple").a(5000, com.c).a(11000, com.e).a();
+   public static final cop e = a("villager_baby").a(10, com.b).a(3000, com.d).a(6000, com.b).a(10000, com.d).a(12000, com.e).a();
+   public static final cop f = a("villager_default").a(10, com.b).a(2000, com.c).a(9000, com.f).a(11000, com.b).a(12000, com.e).a();
+   private final Map<com, cor> g = Maps.newHashMap();
 
-   public ImmutableList<col> a() {
-      return ImmutableList.copyOf(this.a);
+   protected static coq a(String $$0) {
+      cop $$1 = jz.a(lt.B, $$0, new cop());
+      return new coq($$1);
    }
 
-   public cop a(int $$0, float $$1) {
-      this.a.add(new col($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public cop a(Collection<col> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<col> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         col $$1 = this.a.get(this.b);
-         col $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            col $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   protected void a(com $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cor());
       }
+   }
+
+   protected cor b(com $$0) {
+      return this.g.get($$0);
+   }
+
+   protected List<cor> c(com $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public com a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(com.b);
    }
 }

@@ -1,237 +1,439 @@
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dwi implements dwe, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bpj<bpl.b> c;
-   private final dwn d;
-   private final Map<dcb, dwi.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class dwi {
+   private static final Codec<dvq<dtc>> h = dvq.a(dfy.q, dtc.b, dvq.d.d, dga.a.o());
+   private static final Logger i = LogUtils.getLogger();
+   private static final String j = "UpgradeData";
+   private static final String k = "block_ticks";
+   private static final String l = "fluid_ticks";
+   public static final String a = "xPos";
+   public static final String b = "zPos";
+   public static final String c = "Heightmaps";
+   public static final String d = "isLightOn";
+   public static final String e = "sections";
+   public static final String f = "BlockLight";
+   public static final String g = "SkyLight";
 
-   protected dwi(dwp $$0, Path $$1, boolean $$2) {
-      this.d = new dwn($$0, $$1, $$2);
-      this.c = new bpj<>(new bpl.a(dwi.b.values().length), ad.h(), "IOWorker-" + $$0.c());
+   public static dvs a(aqu $$0, ces $$1, dws $$2, dcd $$3, ub $$4) {
+      dcd $$5 = new dcd($$4.h("xPos"), $$4.h("zPos"));
+      if (!Objects.equals($$3, $$5)) {
+         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$3, $$3, $$5});
+         $$0.o().a($$5, $$3, $$2);
+      }
+
+      dvv $$6 = $$4.b("UpgradeData", 10) ? new dvv($$4.p("UpgradeData"), $$0) : dvv.a;
+      boolean $$7 = $$4.q("isLightOn");
+      uh $$8 = $$4.c("sections", 10);
+      int $$9 = $$0.an();
+      dvj[] $$10 = new dvj[$$9];
+      boolean $$11 = $$0.D_().g();
+      dvc $$12 = $$0.l();
+      eor $$13 = $$12.p();
+      jz<ddw> $$14 = $$0.H_().d(lu.aF);
+      Codec<dvr<jm<ddw>>> $$15 = a($$14);
+      boolean $$16 = false;
+
+      for (int $$17 = 0; $$17 < $$8.size(); $$17++) {
+         ub $$18 = $$8.a($$17);
+         int $$19 = $$18.f("Y");
+         int $$20 = $$0.f($$19);
+         if ($$20 >= 0 && $$20 < $$10.length) {
+            dvq<dtc> $$21;
+            if ($$18.b("block_states", 10)) {
+               $$21 = (dvq<dtc>)h.parse(up.a, $$18.p("block_states")).promotePartial($$2x -> a($$3, $$19, $$2x)).getOrThrow(dwi.a::new);
+            } else {
+               $$21 = new dvq<>(dfy.q, dga.a.o(), dvq.d.d);
+            }
+
+            dvr<jm<ddw>> $$23;
+            if ($$18.b("biomes", 10)) {
+               $$23 = (dvr<jm<ddw>>)$$15.parse(up.a, $$18.p("biomes")).promotePartial($$2x -> a($$3, $$19, $$2x)).getOrThrow(dwi.a::new);
+            } else {
+               $$23 = new dvq<>($$14.u(), $$14.g(ded.b), dvq.d.e);
+            }
+
+            dvj $$25 = new dvj($$21, $$23);
+            $$10[$$20] = $$25;
+            kf $$26 = kf.a($$3, $$19);
+            $$1.a($$26, $$25);
+         }
+
+         boolean $$27 = $$18.b("BlockLight", 7);
+         boolean $$28 = $$11 && $$18.b("SkyLight", 7);
+         if ($$27 || $$28) {
+            if (!$$16) {
+               $$13.b($$3, true);
+               $$16 = true;
+            }
+
+            if ($$27) {
+               $$13.a(ddf.b, kf.a($$3, $$19), new dvd($$18.m("BlockLight")));
+            }
+
+            if ($$28) {
+               $$13.a(ddf.a, kf.a($$3, $$19), new dvd($$18.m("SkyLight")));
+            }
+         }
+      }
+
+      long $$29 = $$4.i("InhabitedTime");
+      dwd $$30 = a($$4);
+      eab $$31;
+      if ($$4.b("blending_data", 10)) {
+         $$31 = (eab)eab.e.parse(new Dynamic(up.a, $$4.p("blending_data"))).resultOrPartial(i::error).orElse(null);
+      } else {
+         $$31 = null;
+      }
+
+      duy $$35;
+      if ($$30 == dwd.b) {
+         eym<dfy> $$33 = eym.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
+         eym<epb> $$34 = eym.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
+         $$35 = new dvi($$0.E(), $$3, $$6, $$33, $$34, $$29, $$10, a($$0, $$4), $$31);
+      } else {
+         eyp<dfy> $$36 = eyp.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
+         eyp<epb> $$37 = eyp.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
+         dvs $$38 = new dvs($$3, $$6, $$10, $$36, $$37, $$0, $$14, $$31);
+         $$35 = $$38;
+         $$38.b($$29);
+         if ($$4.b("below_zero_retrogen", 10)) {
+            dym.a.parse(new Dynamic(up.a, $$4.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$38::a);
+         }
+
+         dvz $$40 = dvz.a($$4.l("Status"));
+         $$38.a($$40);
+         if ($$40.a(dvz.k)) {
+            $$38.a($$13);
+         }
+      }
+
+      $$35.b($$7);
+      ub $$41 = $$4.p("Heightmaps");
+      EnumSet<dyy.a> $$42 = EnumSet.noneOf(dyy.a.class);
+
+      for (dyy.a $$43 : $$35.j().e()) {
+         String $$44 = $$43.a();
+         if ($$41.b($$44, 12)) {
+            $$35.a($$43, $$41.o($$44));
+         } else {
+            $$42.add($$43);
+         }
+      }
+
+      dyy.a($$35, $$42);
+      ub $$45 = $$4.p("structures");
+      $$35.a(a(ekf.a($$0), $$45, $$0.C()));
+      $$35.b(a($$0.H_(), $$3, $$45));
+      if ($$4.q("shouldSave")) {
+         $$35.a(true);
+      }
+
+      uh $$46 = $$4.c("PostProcessing", 9);
+
+      for (int $$47 = 0; $$47 < $$46.size(); $$47++) {
+         uh $$48 = $$46.b($$47);
+
+         for (int $$49 = 0; $$49 < $$48.size(); $$49++) {
+            $$35.a($$48.d($$49), $$47);
+         }
+      }
+
+      if ($$30 == dwd.b) {
+         return new dvh((dvi)$$35, false);
+      } else {
+         dvs $$50 = (dvs)$$35;
+         uh $$51 = $$4.c("entities", 10);
+
+         for (int $$52 = 0; $$52 < $$51.size(); $$52++) {
+            $$50.b($$51.a($$52));
+         }
+
+         uh $$53 = $$4.c("block_entities", 10);
+
+         for (int $$54 = 0; $$54 < $$53.size(); $$54++) {
+            ub $$55 = $$53.a($$54);
+            $$35.a($$55);
+         }
+
+         ub $$56 = $$4.p("CarvingMasks");
+
+         for (String $$57 : $$56.e()) {
+            dyu.a $$58 = dyu.a.valueOf($$57);
+            $$50.a($$58, new dux($$56.o($$57), $$35.I_()));
+         }
+
+         return $$50;
+      }
    }
 
-   public boolean a(dcb $$0, int $$1) {
-      dcb $$2 = new dcb($$0.e - $$1, $$0.f - $$1);
-      dcb $$3 = new dcb($$0.e + $$1, $$0.f + $$1);
+   private static void a(dcd $$0, int $$1, String $$2) {
+      i.error("Recoverable errors when loading section [{}, {}, {}]: {}", new Object[]{$$0.e, $$1, $$0.f, $$2});
+   }
 
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               dcb $$7 = dcb.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
+   private static Codec<dvr<jm<ddw>>> a(jz<ddw> $$0) {
+      return dvq.b($$0.u(), $$0.s(), dvq.d.e, $$0.g(ded.b));
+   }
 
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
+   public static ub a(aqu $$0, duy $$1) {
+      dcd $$2 = $$1.f();
+      ub $$3 = uq.e(new ub());
+      $$3.a("xPos", $$2.e);
+      $$3.a("yPos", $$1.ao());
+      $$3.a("zPos", $$2.f);
+      $$3.a("LastUpdate", $$0.Z());
+      $$3.a("InhabitedTime", $$1.u());
+      $$3.a("Status", lt.l.b($$1.j()).toString());
+      eab $$4 = $$1.t();
+      if ($$4 != null) {
+         eab.e.encodeStart(up.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
+      }
+
+      dym $$5 = $$1.x();
+      if ($$5 != null) {
+         dym.a.encodeStart(up.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
+      }
+
+      dvv $$6 = $$1.r();
+      if (!$$6.a()) {
+         $$3.a("UpgradeData", $$6.b());
+      }
+
+      dvj[] $$7 = $$1.d();
+      uh $$8 = new uh();
+      eor $$9 = $$0.l().a();
+      jz<ddw> $$10 = $$0.H_().d(lu.aF);
+      Codec<dvr<jm<ddw>>> $$11 = a($$10);
+      boolean $$12 = $$1.v();
+
+      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
+         int $$14 = $$1.f($$13);
+         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
+         dvd $$16 = $$9.a(ddf.b).a(kf.a($$2, $$13));
+         dvd $$17 = $$9.a(ddf.a).a(kf.a($$2, $$13));
+         if ($$15 || $$16 != null || $$17 != null) {
+            ub $$18 = new ub();
+            if ($$15) {
+               dvj $$19 = $$7[$$14];
+               $$18.a("block_states", (uy)h.encodeStart(up.a, $$19.h()).getOrThrow());
+               $$18.a("biomes", (uy)$$11.encodeStart(up.a, $$19.i()).getOrThrow());
+            }
+
+            if ($$16 != null && !$$16.d()) {
+               $$18.a("BlockLight", $$16.a());
+            }
+
+            if ($$17 != null && !$$17.d()) {
+               $$18.a("SkyLight", $$17.a());
+            }
+
+            if (!$$18.g()) {
+               $$18.a("Y", (byte)$$13);
+               $$8.add($$18);
+            }
+         }
+      }
+
+      $$3.a("sections", $$8);
+      if ($$12) {
+         $$3.a("isLightOn", true);
+      }
+
+      uh $$20 = new uh();
+
+      for (jd $$21 : $$1.c()) {
+         ub $$22 = $$1.a($$21, $$0.H_());
+         if ($$22 != null) {
+            $$20.add($$22);
+         }
+      }
+
+      $$3.a("block_entities", $$20);
+      if ($$1.j().d() == dwd.a) {
+         dvs $$23 = (dvs)$$1;
+         uh $$24 = new uh();
+         $$24.addAll($$23.E());
+         $$3.a("entities", $$24);
+         ub $$25 = new ub();
+
+         for (dyu.a $$26 : dyu.a.values()) {
+            dux $$27 = $$23.a($$26);
+            if ($$27 != null) {
+               $$25.a($$26.toString(), $$27.a());
+            }
+         }
+
+         $$3.a("CarvingMasks", $$25);
+      }
+
+      a($$0, $$3, $$1.q());
+      $$3.a("PostProcessing", a($$1.n()));
+      ub $$28 = new ub();
+
+      for (Entry<dyy.a, dyy> $$29 : $$1.e()) {
+         if ($$1.j().e().contains($$29.getKey())) {
+            $$28.a($$29.getKey().a(), new ui($$29.getValue().a()));
+         }
+      }
+
+      $$3.a("Heightmaps", $$28);
+      $$3.a("structures", a(ekf.a($$0), $$2, $$1.g(), $$1.h()));
+      return $$3;
+   }
+
+   private static void a(aqu $$0, ub $$1, duy.a $$2) {
+      long $$3 = $$0.A_().c();
+      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> lt.e.b($$0x).toString()));
+      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> lt.c.b($$0x).toString()));
+   }
+
+   public static dwd a(@Nullable ub $$0) {
+      return $$0 != null ? dvz.a($$0.l("Status")).d() : dwd.a;
+   }
+
+   @Nullable
+   private static dvi.c a(aqu $$0, ub $$1) {
+      uh $$2 = a($$1, "entities");
+      uh $$3 = a($$1, "block_entities");
+      return $$2 == null && $$3 == null ? null : $$3x -> {
+         if ($$2 != null) {
+            $$0.a(bsx.a($$2, $$0));
+         }
+
+         if ($$3 != null) {
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               ub $$5 = $$3.a($$4);
+               boolean $$6 = $$5.q("keepPacked");
+               if ($$6) {
+                  $$3x.a($$5);
+               } else {
+                  jd $$7 = dqh.b($$5);
+                  dqh $$8 = dqh.a($$7, $$3x.a_($$7), $$5, $$0.H_());
+                  if ($$8 != null) {
+                     $$3x.a($$8);
                   }
                }
             }
          }
-      }
-
-      return false;
+      };
    }
 
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = dcb.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
+   @Nullable
+   private static uh a(ub $$0, String $$1) {
+      uh $$2 = $$0.c($$1, 10);
+      return $$2.isEmpty() ? null : $$2;
+   }
+
+   private static ub a(ekf $$0, dcd $$1, Map<ejp, ejx> $$2, Map<ejp, LongSet> $$3) {
+      ub $$4 = new ub();
+      ub $$5 = new ub();
+      jz<ejp> $$6 = $$0.b().d(lu.aR);
+
+      for (Entry<ejp, ejx> $$7 : $$2.entrySet()) {
+         akr $$8 = $$6.b($$7.getKey());
+         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
+      }
+
+      $$4.a("starts", $$5);
+      ub $$9 = new ub();
+
+      for (Entry<ejp, LongSet> $$10 : $$3.entrySet()) {
+         if (!$$10.getValue().isEmpty()) {
+            akr $$11 = $$6.b($$10.getKey());
+            $$9.a($$11.toString(), new ui($$10.getValue()));
          }
-
-         return $$3;
       }
+
+      $$4.a("References", $$9);
+      return $$4;
    }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         dcb $$2 = dcb.a($$0, $$1);
-         dcb $$3 = dcb.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         dcb.a($$2, $$3).forEach($$1xx -> {
-            ve $$2x = new ve(new vg(uf.a, "DataVersion"), new vg(ua.b, "blending_data"));
+   private static Map<ejp, ejx> a(ekf $$0, ub $$1, long $$2) {
+      Map<ejp, ejx> $$3 = Maps.newHashMap();
+      jz<ejp> $$4 = $$0.b().d(lu.aR);
+      ub $$5 = $$1.p("starts");
 
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof ua $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ad.g());
-   }
-
-   private boolean a(ua $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(dcb $$0, @Nullable ua $$1) {
-      return this.a(() -> {
-         dwi.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dwi.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<ua>> a(dcb $$0) {
-      return this.a(() -> {
-         dwi.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a()));
+      for (String $$6 : $$5.e()) {
+         akr $$7 = akr.c($$6);
+         ejp $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.error("Unknown structure start: {}", $$7);
          } else {
-            try {
-               ua $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
+            ejx $$9 = ejx.a($$0, $$5.p($$6), $$2);
+            if ($$9 != null) {
+               $$3.put($$8, $$9);
             }
          }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(dcb $$0, uu $$1) {
-      return this.a(() -> {
-         try {
-            dwi.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new bpl.b(dwi.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<dcb, dwi.a>> $$0 = this.e.entrySet().iterator();
-         Entry<dcb, dwi.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
       }
+
+      return $$3;
    }
 
-   private void b() {
-      this.c.a(new bpl.b(dwi.b.b.ordinal(), this::a));
-   }
+   private static Map<ejp, LongSet> a(ka $$0, dcd $$1, ub $$2) {
+      Map<ejp, LongSet> $$3 = Maps.newHashMap();
+      jz<ejp> $$4 = $$0.d(lu.aR);
+      ub $$5 = $$2.p("References");
 
-   private void a(dcb $$0, dwi.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new bpl.b(dwi.b.c.ordinal(), () -> $$0.a(azr.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
+      for (String $$6 : $$5.e()) {
+         akr $$7 = akr.c($$6);
+         ejp $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
+         } else {
+            long[] $$9 = $$5.o($$6);
+            if ($$9.length != 0) {
+               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
+                  dcd $$3x = new dcd($$2x);
+                  if ($$3x.a($$1) > 8) {
+                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
+                     return false;
+                  } else {
+                     return true;
+                  }
+               }).toArray()));
+            }
          }
       }
+
+      return $$3;
    }
 
-   static class a {
-      @Nullable
-      ua a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
+   public static uh a(ShortList[] $$0) {
+      uh $$1 = new uh();
 
-      public a(@Nullable ua $$0) {
-         this.a = $$0;
+      for (ShortList $$2 : $$0) {
+         uh $$3 = new uh();
+         if ($$2 != null) {
+            ShortListIterator var7 = $$2.iterator();
+
+            while (var7.hasNext()) {
+               Short $$4 = (Short)var7.next();
+               $$3.add(ut.a($$4));
+            }
+         }
+
+         $$1.add($$3);
       }
 
-      @Nullable
-      ua a() {
-         ua $$0 = this.a;
-         return $$0 == null ? null : $$0.i();
-      }
+      return $$1;
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   public static class a extends um {
+      public a(String $$0) {
+         super($$0);
+      }
    }
 }

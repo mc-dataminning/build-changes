@@ -1,17 +1,13 @@
-public class gjm extends gmk<cjm> {
-   private static final akq a = akq.b("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public class gjm extends gmj<cjn> {
+   private static final akr a = akr.b("textures/entity/skeleton/bogged.png");
+   private static final akr i = akr.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gjm(gkd.a $$0) {
-      super($$0, fyd.x);
-      this.d *= 0.7F;
+   public gjm(gkh.a $$0) {
+      super($$0, fyh.o, fyh.p, new fup($$0.a(fyh.n)));
+      this.a(new gox<>(this, $$0.f(), fyh.q, i));
    }
 
-   protected void a(cjm $$0, fbc $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public akq a(cjm $$0) {
+   public akr a(cjn $$0) {
       return a;
    }
 }

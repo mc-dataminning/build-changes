@@ -1,41 +1,65 @@
-public abstract class crg<I extends cza, R extends cyx<I>> extends cps {
-   public crg(cra<?> $$0, int $$1) {
-      super($$0, $$1);
+import java.util.Optional;
+
+public class crg extends crq {
+   public crg(bqk $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
-
-   public void a(boolean $$0, cyz<?> $$1, aqu $$2) {
-      cyz<R> $$3 = (cyz<R>)$$1;
-      this.aj_();
-
-      try {
-         new ake<>(this).a($$2, $$3, $$0);
-      } finally {
-         this.b((cyz<R>)$$1);
-      }
-   }
-
-   protected void aj_() {
-   }
-
-   protected void b(cyz<R> $$0) {
-   }
-
-   public abstract void a(cmz var1);
 
    @Override
-   public abstract void l();
+   public void b(cuq $$0, cuq $$1) {
+   }
 
-   public abstract boolean a(cyz<R> var1);
+   @Override
+   public boolean a(cmx $$0) {
+      return false;
+   }
 
-   public abstract int m();
+   @Override
+   public Optional<cuq> a(int $$0, int $$1, cmx $$2) {
+      return Optional.empty();
+   }
 
-   public abstract int n();
+   @Override
+   public cuq b(int $$0, int $$1, cmx $$2) {
+      return cuq.l;
+   }
 
-   public abstract int o();
+   @Override
+   public cuq d(cuq $$0) {
+      return $$0;
+   }
 
-   public abstract int p();
+   @Override
+   public cuq b(cuq $$0, int $$1) {
+      return this.d($$0);
+   }
 
-   public abstract crh t();
+   @Override
+   public boolean b(cmx $$0) {
+      return false;
+   }
 
-   public abstract boolean e(int var1);
+   @Override
+   public boolean a(cuq $$0) {
+      return false;
+   }
+
+   @Override
+   public cuq a(int $$0) {
+      return cuq.l;
+   }
+
+   @Override
+   public void a(cmx $$0, cuq $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
+   }
 }

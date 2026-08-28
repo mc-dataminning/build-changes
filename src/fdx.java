@@ -1,95 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fdx extends gwo {
+   private static final wz a = wz.c("mco.selectServer.create");
+   private static final wz b = wz.c("mco.configure.world.name");
+   private static final wz c = wz.c("mco.configure.world.description");
+   private static final int B = 10;
+   private static final int C = 210;
+   private final fbr D;
+   private final flx E = new flx(this);
+   private fit F;
+   private fit G;
+   private final Runnable H;
 
-public class fdx extends gwj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gwk b = new gwk(Duration.ofSeconds(5L));
-   private final List<ffh> c;
-   private final fnx A;
-   private final flx B = flx.d();
-   private volatile wy C;
-   @Nullable
-   private fiv D;
+   public fdx(fbr $$0, fcn $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
+   }
 
-   public fdx(fnx $$0, ffh... $$1) {
-      super(fga.a);
-      this.A = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.C = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (ffh $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
-
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fdb(a));
-         $$3.start();
-      }
+   public fdx(fbr $$0, long $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
    }
 
    @Override
-   public void e() {
-      super.e();
-      if (this.D != null) {
-         b.a(this.l.aV(), this.D.z());
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void aP_() {
-      this.B.c().b();
-      this.D = new fiv(this.o, this.C);
-      this.B.a(this.D, $$0 -> $$0.e(30));
-      this.B.a(fig.a(wx.e, $$0 -> this.f()).a());
-      this.B.a($$1 -> {
-         fie var10000 = this.c($$1);
+   public void aT_() {
+      this.E.a(this.k, this.o);
+      fmb $$0 = this.E.c(fmb.d()).a(10);
+      fik $$1 = fik.a(wy.j, $$0x -> this.H.run()).a();
+      $$1.j = false;
+      this.F = new fit(this.o, 210, 20, b);
+      this.F.b($$1x -> $$1.j = !azl.h($$1x));
+      this.G = new fit(this.o, 210, 20, c);
+      $$0.a(flt.a(this.o, this.F, b));
+      $$0.a(flt.a(this.o, this.G, c));
+      fmb $$2 = this.E.b(fmb.e().a(10));
+      $$2.a($$1);
+      $$2.a(fik.a(wy.k, $$0x -> this.d()).a());
+      this.E.a($$1x -> {
+         fii var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
+   protected void aI_() {
+      this.b(this.F);
+   }
+
+   @Override
    protected void c() {
-      this.B.a();
-      flr.a(this.B, this.H());
+      this.E.a();
    }
 
-   protected void f() {
-      for (ffh $$0 : this.c) {
-         $$0.b();
-      }
-
-      this.l.a(this.A);
+   private void a(fcn $$0) {
+      ffn $$1 = new ffn($$0.a, this.F.a(), this.G.a());
+      fej $$2 = fej.a(this, $$0, $$1, () -> this.l.execute(() -> {
+            fbr.g();
+            this.l.a(this.D);
+         }));
+      this.l.a($$2);
    }
 
-   public void a(wy $$0) {
-      if (this.D != null) {
-         this.D.b($$0);
-      }
+   private void a(long $$0) {
+      fob $$1 = new fei($$1x -> {
+         if ($$1x == null) {
+            this.l.a(this);
+         } else {
+            this.l.a(new feb(this, new ffi(this.D, $$0, $$1x, this.F.a(), this.G.a())));
+         }
+      }, a);
+      this.l.a($$1);
+   }
 
-      this.C = $$0;
+   @Override
+   public void d() {
+      this.l.a(this.D);
    }
 }

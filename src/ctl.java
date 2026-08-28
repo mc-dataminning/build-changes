@@ -1,27 +1,48 @@
-public class ctl extends csx {
-   public ctl(cuj.a $$0) {
-      super($$0);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
+
+public record ctl<T>(Optional<jm<T>> a, akq<T> b) {
+   public ctl(jm<T> $$0) {
+      this(Optional.of($$0), $$0.e().orElseThrow());
    }
 
-   @Override
-   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
-      cuo $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bqr.a($$3);
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(avy.c.b(this));
-         $$1.dQ().a(null, $$1, avo.Au, $$1.df(), 1.0F, 1.0F);
-         cuo $$4 = cva.a($$0, $$1.du(), $$1.dA(), (byte)0, true, false);
-         if ($$3.e()) {
-            return bqr.b($$4);
-         } else {
-            if (!$$1.fZ().f($$4.s())) {
-               $$1.a($$4, false);
-            }
+   public ctl(akq<T> $$0) {
+      this(Optional.empty(), $$0);
+   }
 
-            return bqr.b($$3);
-         }
-      }
+   public static <T> Codec<ctl<T>> a(akq<jz<T>> $$0, Codec<jm<T>> $$1) {
+      return Codec.either($$1, akq.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(ctl::a, ctl::a);
+   }
+
+   public static <T> yx<wk, ctl<T>> a(akq<jz<T>> $$0, yx<wk, jm<T>> $$1) {
+      return yx.a(yv.a($$1, akq.b($$0)), ctl::a, ctl::a);
+   }
+
+   public Either<jm<T>, akq<T>> a() {
+      return this.a.<Either<jm<T>, akq<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
+   }
+
+   public static <T> ctl<T> a(Either<jm<T>, akq<T>> $$0) {
+      return (ctl<T>)$$0.map(ctl::new, ctl::new);
+   }
+
+   public Optional<T> a(jz<T> $$0) {
+      return this.a.<T>map(jm::a).or(() -> $$0.e(this.b));
+   }
+
+   public Optional<jm<T>> a(jo.a $$0) {
+      return this.a.or(() -> $$0.b(this.b.c()).a(this.b));
+   }
+
+   public Optional<jm<T>> b() {
+      return this.a;
+   }
+
+   public akq<T> c() {
+      return this.b;
    }
 }

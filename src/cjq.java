@@ -1,61 +1,20 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cjq extends cjx {
-   public static final float b = bsw.D.l() / bsw.Y.l();
-   private static final int e = 1200;
-   private static final int ca = 50;
-   private static final int cb = 6000;
-   private static final int cc = 2;
-   private static final int cd = 1200;
+public interface cjq extends ckh {
+   void b(boolean var1);
 
-   public cjq(bsw<? extends cjq> $$0, dcu $$1) {
-      super($$0, $$1);
-      this.fP();
-      if (this.d != null) {
-         this.d.c(400);
-      }
-   }
+   @Nullable
+   btn p();
 
-   public static but.a s() {
-      return cjx.gm().a(buu.v, 0.3F).a(buu.c, 8.0).a(buu.s, 80.0);
-   }
+   void a();
 
-   @Override
-   public int t() {
-      return 60;
-   }
-
-   @Override
-   protected avn v() {
-      return this.bi() ? avo.hO : avo.hP;
-   }
-
-   @Override
-   protected avn d(brj $$0) {
-      return this.bi() ? avo.hU : avo.hV;
-   }
-
-   @Override
-   protected avn n_() {
-      return this.bi() ? avo.hR : avo.hS;
-   }
-
-   @Override
-   protected avn x() {
-      return avo.hT;
-   }
-
-   @Override
-   protected void Z() {
-      super.Z();
-      if ((this.ai + this.an()) % 1200 == 0) {
-         bry $$0 = new bry(bsa.d, 6000, 2);
-         List<aqu> $$1 = brz.a((aqt)this.dQ(), this, this.do(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.c.b(new ada(ada.l, this.aX() ? 0.0F : 1.0F)));
+   default void b(btn $$0, float $$1) {
+      bqq $$2 = cnr.a($$0, cut.vW);
+      cuq $$3 = $$0.b($$2);
+      if ($$3.g() instanceof ctc $$4) {
+         $$4.a($$0.dP(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dP().al().a() * 4), this.p());
       }
 
-      if (!this.fW()) {
-         this.a(this.dq(), 16);
-      }
+      this.a();
    }
 }

@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bvz {
-   public static bvg<btl> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+public class bvz extends bvh<cmk> {
+   private static final int d = 1200;
+   final float c;
+
+   public bvz(float $$0) {
+      super(ImmutableMap.of(ccs.d, cct.a), 1200);
+      this.c = $$0;
    }
 
-   public static <E extends btl> bvg<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bys.a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$4 -> {
-         bys<E, ? extends byt<? extends K1, cct>> $$5 = $$2 ? $$4.a(ccq.m) : $$4.c(ccq.m);
-         return $$4.group($$4.a(ccq.n), $$5, $$4.b(ccq.L), $$4.a(ccq.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cjf $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dQ().C_().a($$11.dq())) {
-                  cct $$12 = new cct(new bvq($$11, false), $$1, 0);
-                  $$4x.a(new bvq($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   protected boolean a(aqu $$0, cmk $$1) {
+      return $$1.dU().g().map($$0x -> $$0x == com.b || $$0x == com.c || $$0x == com.d).orElse(true);
+   }
+
+   protected boolean a(aqu $$0, cmk $$1, long $$2) {
+      return $$1.dU().a(ccs.d);
+   }
+
+   protected void b(aqu $$0, cmk $$1, long $$2) {
+      bvj.a($$1, $$1.dU().c(ccs.d).get().b(), this.c, 1);
+   }
+
+   protected void c(aqu $$0, cmk $$1, long $$2) {
+      Optional<jl> $$3 = $$1.dU().c(ccs.d);
+      $$3.ifPresent($$1x -> {
+         jd $$2x = $$1x.b();
+         aqu $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            ces $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agf.c($$0, $$2x);
+         }
+      });
+      $$1.dU().b(ccs.d);
    }
 }

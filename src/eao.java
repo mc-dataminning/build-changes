@@ -1,18 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eao implements eac {
-   public static eao a = new eao();
-   public static final MapCodec<eao> e = MapCodec.unit(() -> a);
+class eao extends eaq {
+   public static final MapCodec<eao> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eao::new));
 
-   private eao() {
-   }
-
-   public boolean a(ddq $$0, jd $$1) {
-      return true;
+   public eao(kh $$0) {
+      super($$0);
    }
 
    @Override
-   public ead<?> a() {
-      return ead.l;
+   protected boolean a(dtc $$0) {
+      return $$0.r();
+   }
+
+   @Override
+   public eag<?> a() {
+      return eag.f;
    }
 }

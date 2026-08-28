@@ -1,97 +1,139 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import java.util.Locale;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class ceu {
-   public static final akp<cet> a = a("armorer");
-   public static final akp<cet> b = a("butcher");
-   public static final akp<cet> c = a("cartographer");
-   public static final akp<cet> d = a("cleric");
-   public static final akp<cet> e = a("farmer");
-   public static final akp<cet> f = a("fisherman");
-   public static final akp<cet> g = a("fletcher");
-   public static final akp<cet> h = a("leatherworker");
-   public static final akp<cet> i = a("librarian");
-   public static final akp<cet> j = a("mason");
-   public static final akp<cet> k = a("shepherd");
-   public static final akp<cet> l = a("toolsmith");
-   public static final akp<cet> m = a("weaponsmith");
-   public static final akp<cet> n = a("home");
-   public static final akp<cet> o = a("meeting");
-   public static final akp<cet> p = a("beehive");
-   public static final akp<cet> q = a("bee_nest");
-   public static final akp<cet> r = a("nether_portal");
-   public static final akp<cet> s = a("lodestone");
-   public static final akp<cet> t = a("lightning_rod");
-   private static final Set<dta> u = ImmutableList.of(
-         dfy.bn, dfy.bo, dfy.bk, dfy.bl, dfy.bi, dfy.bg, dfy.bm, dfy.bc, dfy.bh, dfy.be, dfy.bb, dfy.ba, new dfw[]{dfy.bf, dfy.bj, dfy.aZ, dfy.bd}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(dfp.b) == dtn.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dta> v = ImmutableList.of(dfy.ft, dfy.fv, dfy.fu, dfy.fw)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dta, jm<cet>> w = Maps.newHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<cet> b = new Short2ObjectOpenHashMap();
+   private final Map<jm<cev>, Set<cet>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   private static Set<dta> a(dfw $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public static Codec<ceu> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     cet.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, ceu::new)
+         )
+         .orElseGet(ad.a("Failed to read POI section: ", a::error), () -> new ceu($$0, false, ImmutableList.of()));
    }
 
-   private static akp<cet> a(String $$0) {
-      return akp.a(lu.aa, akq.b($$0));
+   public ceu(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   private static cet a(jz<cet> $$0, akp<cet> $$1, Set<dta> $$2, int $$3, int $$4) {
-      cet $$5 = new cet($$2, $$3, $$4);
-      jz.a($$0, $$1, $$5);
-      a($$0.g($$1), $$2);
-      return $$5;
+   private ceu(Runnable $$0, boolean $$1, List<cet> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   private static void a(jm<cet> $$0, Set<dta> $$1) {
-      $$1.forEach($$1x -> {
-         jm<cet> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ad.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+   public Stream<cet> a(Predicate<jm<cev>> $$0, ces.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((jm<cev>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(jd $$0, jm<cev> $$1) {
+      if (this.a(new cet($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
+      }
+   }
+
+   private boolean a(cet $$0) {
+      jd $$1 = $$0.f();
+      jm<cev> $$2 = $$0.g();
+      short $$3 = kf.b($$1);
+      cet $$4 = (cet)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
          }
-      });
+
+         ad.b("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
-   public static Optional<jm<cet>> a(dta $$0) {
-      return Optional.ofNullable(w.get($$0));
+   public void a(jd $$0) {
+      cet $$1 = (cet)this.b.remove(kf.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
+      }
    }
 
-   public static boolean b(dta $$0) {
-      return w.containsKey($$0);
+   @Deprecated
+   @azt
+   public int b(jd $$0) {
+      return this.e($$0).map(cet::a).orElse(0);
    }
 
-   public static cet a(jz<cet> $$0) {
-      a($$0, a, a(dfy.nW), 1, 1);
-      a($$0, b, a(dfy.nV), 1, 1);
-      a($$0, c, a(dfy.nX), 1, 1);
-      a($$0, d, a(dfy.fs), 1, 1);
-      a($$0, e, a(dfy.pc), 1, 1);
-      a($$0, f, a(dfy.nU), 1, 1);
-      a($$0, g, a(dfy.nY), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dfy.oa), 1, 1);
-      a($$0, j, a(dfy.oc), 1, 1);
-      a($$0, k, a(dfy.nT), 1, 1);
-      a($$0, l, a(dfy.ob), 1, 1);
-      a($$0, m, a(dfy.nZ), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dfy.od), 32, 6);
-      a($$0, p, a(dfy.pf), 0, 1);
-      a($$0, q, a(dfy.pe), 0, 1);
-      a($$0, r, a(dfy.ed), 0, 1);
-      a($$0, s, a(dfy.pq), 0, 1);
-      return a($$0, t, a(dfy.ss), 0, 1);
+   public boolean c(jd $$0) {
+      cet $$1 = (cet)this.b.get(kf.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ad.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
+      }
+   }
+
+   public boolean a(jd $$0, Predicate<jm<cev>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
+
+   public Optional<jm<cev>> d(jd $$0) {
+      return this.e($$0).map(cet::g);
+   }
+
+   private Optional<cet> e(jd $$0) {
+      return Optional.ofNullable((cet)this.b.get(kf.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<jd, jm<cev>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<cet> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = kf.b($$1x);
+            cet $$4 = (cet)$$1.computeIfAbsent($$3, $$2x -> new cet($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

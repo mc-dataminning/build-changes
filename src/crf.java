@@ -1,73 +1,57 @@
-import javax.annotation.Nullable;
+public class crf extends crq {
+   private final crd a;
+   private final cmx b;
+   private int g;
+   private final dbt h;
 
-public class crf extends bqz {
-   @Nullable
-   private drb b;
-
-   public crf() {
-      super(27);
-   }
-
-   public void a(drb $$0) {
+   public crf(cmx $$0, dbt $$1, crd $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
       this.b = $$0;
-   }
-
-   public boolean b(drb $$0) {
-      return this.b == $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public void a(ug $$0, jo.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cuo.l);
+   public boolean a(cuq $$0) {
+      return false;
+   }
+
+   @Override
+   public cuq a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().H());
       }
 
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ua $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cuo.a($$1, (ux)$$4).orElse(cuo.l));
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cuq $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cuq $$0) {
+      $$0.a(this.b.dP(), this.b, this.g);
+      this.g = 0;
+   }
+
+   @Override
+   public void a(cmx $$0, cuq $$1) {
+      this.b_($$1);
+      dbu $$2 = this.a.g();
+      if ($$2 != null) {
+         cuq $$3 = this.a.a(0);
+         cuq $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(avz.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
          }
+
+         this.h.t(this.h.t() + $$2.q());
       }
-   }
-
-   @Override
-   public ug a(jo.a $$0) {
-      ug $$1 = new ug();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cuo $$3 = this.a($$2);
-         if (!$$3.e()) {
-            ua $$4 = new ua();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(cmv $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void d_(cmv $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.d_($$0);
-   }
-
-   @Override
-   public void c(cmv $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
-
-      super.c($$0);
-      this.b = null;
    }
 }

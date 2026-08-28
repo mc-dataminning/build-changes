@@ -1,55 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dgu extends djk implements dfz, dgs {
-   public static final MapCodec<dgu> c = b(dgu::new);
+public interface dgu {
+   ext r_ = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dtt s_ = dts.D;
 
-   @Override
-   public MapCodec<dgu> a() {
-      return c;
+   static bqr a(@Nullable bsr $$0, dtc $$1, dcw $$2, jd $$3) {
+      if ($$1.c(s_)) {
+         dfy.a($$2, $$3, new cuq(cut.wv, 1));
+         float $$4 = ayo.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, avp.ee, avq.e, 1.0F, $$4);
+         dtc $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dxz.c, $$3, dxz.a.a($$0, $$5));
+         return bqr.a($$2.B);
+      } else {
+         return bqr.e;
+      }
    }
 
-   public dgu(dsz.d $$0) {
-      super($$0, ji.a, q_, false);
-      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
+   static boolean h_(dtc $$0) {
+      return $$0.b(s_) && $$0.c(s_);
    }
 
-   @Override
-   protected djl c() {
-      return (djl)dfy.sv;
-   }
-
-   @Override
-   protected dta a(dta $$0, dta $$1) {
-      return $$1.a(r_, $$0.c(r_));
-   }
-
-   @Override
-   public cuo a(dcx $$0, jd $$1, dta $$2) {
-      return new cuo(cur.wv);
-   }
-
-   @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      return dgs.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   static ToIntFunction<dtc> i_(int $$0) {
+      return $$1 -> $$1.c(dts.D) ? $$0 : 0;
    }
 }

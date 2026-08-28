@@ -1,42 +1,74 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class euj extends eum {
-   public static final MapCodec<euj> a = a(euj::new);
-   public static final Codec<euj> b = b(euj::new);
+public class euj {
+   private final Set<eui<?>> a;
+   private final Set<eui<?>> b;
 
-   euj(List<euw> $$0) {
-      super($$0, ad.a($$0));
+   euj(Set<eui<?>> $$0, Set<eui<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   public static euj a(List<euw> $$0) {
-      return new euj(List.copyOf($$0));
+   public boolean a(eui<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eui<?>> a() {
+      return this.a;
+   }
+
+   public Set<eui<?>> b() {
+      return this.b;
    }
 
    @Override
-   public eux b() {
-      return euy.c;
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   public static euj.a a(euw.a... $$0) {
-      return new euj.a($$0);
+   public void a(erv $$0, erq $$1) {
+      this.a($$0.c(), $$1);
    }
 
-   public static class a extends eum.a {
-      public a(euw.a... $$0) {
-         super($$0);
+   public void a(ayu $$0, erq $$1) {
+      Set<eui<?>> $$2 = $$1.a();
+      Set<eui<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static euj.a c() {
+      return new euj.a();
+   }
+
+   public static class a {
+      private final Set<eui<?>> a = Sets.newIdentityHashSet();
+      private final Set<eui<?>> b = Sets.newIdentityHashSet();
+
+      public euj.a a(eui<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      public euj.a and(euw.a $$0) {
-         this.a($$0);
-         return this;
+      public euj.a b(eui<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      protected euw a(List<euw> $$0) {
-         return new euj($$0);
+      public euj a() {
+         return new euj(this.a, this.b);
       }
    }
 }

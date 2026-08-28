@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record df(
    Optional<df.b> b,
-   Optional<jq<ddu>> c,
-   Optional<jq<ejm>> d,
-   Optional<akp<dcu>> e,
+   Optional<jq<ddw>> c,
+   Optional<jq<ejp>> d,
+   Optional<akq<dcw>> e,
    Optional<Boolean> f,
    Optional<dc> g,
    Optional<aw> h,
@@ -18,7 +18,7 @@ public record df(
                df.b.a.optionalFieldOf("position").forGetter(df::a),
                kb.a(lu.aF).optionalFieldOf("biomes").forGetter(df::b),
                kb.a(lu.aR).optionalFieldOf("structures").forGetter(df::c),
-               akp.a(lu.ba).optionalFieldOf("dimension").forGetter(df::d),
+               akq.a(lu.ba).optionalFieldOf("dimension").forGetter(df::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(df::e),
                dc.a.optionalFieldOf("light").forGetter(df::f),
                aw.a.optionalFieldOf("block").forGetter(df::g),
@@ -28,7 +28,7 @@ public record df(
             .apply($$0, df::new)
    );
 
-   public boolean a(aqt $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aqu $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
@@ -38,7 +38,7 @@ public record df(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dgk.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dgm.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record df(
       return this.b;
    }
 
-   public Optional<jq<ddu>> b() {
+   public Optional<jq<ddw>> b() {
       return this.c;
    }
 
-   public Optional<jq<ejm>> c() {
+   public Optional<jq<ejp>> c() {
       return this.d;
    }
 
-   public Optional<akp<dcu>> d() {
+   public Optional<akq<dcw>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record df(
       private dh.c a;
       private dh.c b;
       private dh.c c;
-      private Optional<jq<ddu>> d;
-      private Optional<jq<ejm>> e;
-      private Optional<akp<dcu>> f;
+      private Optional<jq<ddw>> d;
+      private Optional<jq<ejp>> e;
+      private Optional<akq<dcw>> f;
       private Optional<Boolean> g;
       private Optional<dc> h;
       private Optional<aw> i;
@@ -125,15 +125,15 @@ public record df(
          return new df.a();
       }
 
-      public static df.a a(jm<ddu> $$0) {
+      public static df.a a(jm<ddw> $$0) {
          return a().a(jq.a($$0));
       }
 
-      public static df.a a(akp<dcu> $$0) {
+      public static df.a a(akq<dcw> $$0) {
          return a().b($$0);
       }
 
-      public static df.a b(jm<ejm> $$0) {
+      public static df.a b(jm<ejp> $$0) {
          return a().b(jq.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record df(
          return this;
       }
 
-      public df.a a(jq<ddu> $$0) {
+      public df.a a(jq<ddw> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public df.a b(jq<ejm> $$0) {
+      public df.a b(jq<ejp> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public df.a b(akp<dcu> $$0) {
+      public df.a b(akq<dcw> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

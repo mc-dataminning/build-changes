@@ -1,29 +1,96 @@
-import java.util.function.Function;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public abstract class fty<E extends bsq> extends fvn<E> {
-   private final float a;
-   private final float b;
+public class fty {
+   public final fty.d a;
+   public final ezy b;
+   public final fty.a c;
+   public final fty.b d;
+   public final fty.c e;
 
-   public fty(float $$0, float $$1) {
-      this($$0, $$1, gfb::e);
-   }
-
-   public fty(float $$0, float $$1, Function<akq, gfb> $$2) {
-      super($$2);
-      this.b = $$1;
+   public fty(fty.d $$0, ezy $$1, fty.a $$2, fty.b $$3, fty.c $$4) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public void a(fbc $$0, fbg $$1, int $$2, int $$3, int $$4) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gre.a(this.c.toPath(), this.d);
+      }
+   }
+
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !azl.h(this.b) || !azl.h(this.c) || !azl.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fgz a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fgz $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
    }
 }

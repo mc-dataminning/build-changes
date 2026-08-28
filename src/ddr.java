@@ -1,23 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddr {
-   public static final Codec<ddr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avn.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, ddr::new)
+public record ddr(dck d, cpl e) {
+   public static final String a = "enabled_features";
+   public static final Codec<ddr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dck.b.lenientOptionalFieldOf("DataPacks", dck.a).forGetter(ddr::a), cpn.e.lenientOptionalFieldOf("enabled_features", cpn.g).forGetter(ddr::b)
+            )
+            .apply($$0, ddr::new)
    );
-   private final jm<avn> b;
-   private final double c;
+   public static final ddr c = new ddr(dck.a, cpn.g);
 
-   public ddr(jm<avn> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ddr a(cpl $$0) {
+      return new ddr(this.d, this.e.c($$0));
    }
 
-   public jm<avn> a() {
-      return this.b;
+   public dck a() {
+      return this.d;
    }
 
-   public double b() {
-      return this.c;
+   public cpl b() {
+      return this.e;
    }
 }

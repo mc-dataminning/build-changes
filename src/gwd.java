@@ -1,36 +1,110 @@
-import java.util.function.Function;
+public class gwd implements gwh {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final wz f = wz.a("tutorial.move.title", gwg.a("forward"), gwg.a("left"), gwg.a("back"), gwg.a("right"));
+   private static final wz g = wz.a("tutorial.move.description", gwg.a("jump"));
+   private static final wz h = wz.c("tutorial.look.title");
+   private static final wz i = wz.c("tutorial.look.description");
+   private final gwg j;
+   private fkv k;
+   private fkv l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-public enum gwd {
-   a("movement", gvy::new),
-   b("find_tree", gvx::new),
-   c("punch_tree", gwa::new),
-   d("open_inventory", gvz::new),
-   e("craft_planks", gvw::new),
-   f("none", gvv::new);
-
-   private final String g;
-   private final Function<gwb, ? extends gwc> h;
-
-   private <T extends gwc> gwd(final String $$0, final Function<gwb, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gwd(gwg $$0) {
+      this.j = $$0;
    }
 
-   public gwc a(gwb $$0) {
-      return this.h.apply($$0);
-   }
+   @Override
+   public void a() {
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
 
-   public String a() {
-      return this.g;
-   }
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
 
-   public static gwd a(String $$0) {
-      for (gwd $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gwi.b);
+         } else {
+            this.j.a(gwi.f);
          }
       }
 
-      return f;
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fkv(fkv.a.a, f, g, true);
+            this.j.e().aw().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fkv(fkv.a.b, h, i, true);
+            this.j.e().aw().a(this.l);
+         }
+      }
+   }
+
+   @Override
+   public void b() {
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
+      }
+   }
+
+   @Override
+   public void a(gdx $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
    }
 }

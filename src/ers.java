@@ -1,81 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ers extends eru {
-   public static final MapCodec<ers> a = a(ers::new);
+public class ers {
+   private final aqu a;
+   private final Map<eui<?>, Object> b;
+   private final Map<akr, ers.b> c;
+   private final float d;
 
-   ers(List<esb> $$0, List<euw> $$1) {
-      super($$0, $$1);
+   public ers(aqu $$0, Map<eui<?>, Object> $$1, Map<akr, ers.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public esc a() {
-      return erz.g;
+   public aqu a() {
+      return this.a;
    }
 
-   @Override
-   protected ert a(List<? extends ert> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ert)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ert $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
+   public boolean a(eui<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(eui<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(eui<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(eui<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(akr $$0, Consumer<cuq> $$1) {
+      ers.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final aqu a;
+      private final Map<eui<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<akr, ers.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(aqu $$0) {
+         this.a = $$0;
+      }
+
+      public aqu a() {
+         return this.a;
+      }
+
+      public <T> ers.a a(eui<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> ers.a b(eui<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(eui<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(eui<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public ers.a a(akr $$0, ers.b $$1) {
+         ers.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public ers.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ers a(euj $$0) {
+         Set<eui<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<eui<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new ers(this.a, this.b, this.c, this.d);
             }
          }
-
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(err $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
       }
    }
 
-   public static ers.a a(esb.a<?>... $$0) {
-      return new ers.a($$0);
-   }
-
-   public static <E> ers.a a(Collection<E> $$0, Function<E, esb.a<?>> $$1) {
-      return new ers.a($$0.stream().map($$1::apply).toArray(esb.a[]::new));
-   }
-
-   public static class a extends esb.a<ers.a> {
-      private final Builder<esb> a = ImmutableList.builder();
-
-      public a(esb.a<?>... $$0) {
-         for (esb.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ers.a a() {
-         return this;
-      }
-
-      @Override
-      public ers.a a(esb.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public esb b() {
-         return new ers(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cuq> var1);
    }
 }

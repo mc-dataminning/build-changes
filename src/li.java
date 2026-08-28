@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public class li implements lk {
-   private static final Codec<cuo> a = Codec.withAlternative(cuo.c, cuo.a, cuo::new);
+   private static final Codec<cuq> a = Codec.withAlternative(cuq.c, cuq.a, cuq::new);
    private final ll<li> b;
-   private final cuo c;
+   private final cuq c;
 
    public static MapCodec<li> a(ll<li> $$0) {
       return a.xmap($$1 -> new li($$0, $$1), $$0x -> $$0x.c).fieldOf("item");
    }
 
-   public static yw<? super wj, li> b(ll<li> $$0) {
-      return cuo.i.a($$1 -> new li($$0, $$1), $$0x -> $$0x.c);
+   public static yx<? super wk, li> b(ll<li> $$0) {
+      return cuq.i.a($$1 -> new li($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public li(ll<li> $$0, cuo $$1) {
+   public li(ll<li> $$0, cuq $$1) {
       if ($$1.e()) {
          throw new IllegalArgumentException("Empty stacks are not allowed");
       } else {
@@ -28,7 +28,7 @@ public class li implements lk {
       return this.b;
    }
 
-   public cuo b() {
+   public cuq b() {
       return this.c;
    }
 }

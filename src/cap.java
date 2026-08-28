@@ -1,36 +1,13 @@
-public class cap extends cak {
-   private final cfz a;
-   private aqu b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public cap(cfz $$0) {
-      this.a = $$0;
+public class cap extends cau {
+   public cap(btp $$0, Class<? extends btn> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(cam.a.b, cam.a.a));
    }
 
-   @Override
-   public boolean b() {
-      aqu $$0 = (aqu)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bf() && !$$0.az;
-      return !this.a.gm() && $$1 && this.a.gA();
-   }
-
-   @Override
-   public boolean Q_() {
-      return !this.c;
-   }
-
-   @Override
-   public void d() {
-      this.b = (aqu)this.a.P_();
-      this.c = false;
-   }
-
-   @Override
-   public void a() {
-      if (!this.c && !this.a.x() && !this.a.fY()) {
-         if (this.a.cL().c(this.b.cL())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+   public cap(btp $$0, Class<? extends btn> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(cam.a.b, cam.a.a));
    }
 }

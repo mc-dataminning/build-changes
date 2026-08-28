@@ -1,86 +1,70 @@
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class caf extends cak {
-   private int a;
-   private final btu b;
-   @Nullable
-   private cmv c;
-   private bzt d;
+public class caf extends cam {
+   protected final btw a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dcw f;
 
-   public caf(btu $$0) {
-      this.b = $$0;
+   public caf(btw $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dP();
+      this.a(EnumSet.of(cam.a.a));
    }
 
    @Override
    public boolean b() {
-      List<cot> $$0 = this.b.dQ().a(cot.class, this.b.cL().g(5.0));
-      boolean $$1 = false;
-
-      for (cot $$2 : $$0) {
-         bsq $$3 = $$2.cR();
-         if ($$3 instanceof cmv && (ayn.e(((cmv)$$3).bo) > 0.0F || ayn.e(((cmv)$$3).bq) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.a.p() != null) {
+         return false;
+      } else if (!this.f.R()) {
+         return false;
+      } else if (!this.a.bR()) {
+         return false;
+      } else if (!this.f.h(this.a.dp())) {
+         return false;
+      } else {
+         return !this.a.a(bsy.f).e() ? false : this.h();
       }
-
-      return this.c != null && (ayn.e(this.c.bo) > 0.0F || ayn.e(this.c.bq) > 0.0F) || $$1;
    }
 
-   @Override
-   public boolean Q_() {
-      return true;
+   protected boolean h() {
+      exa $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.c != null && this.c.bS() && (ayn.e(this.c.bo) > 0.0F || ayn.e(this.c.bq) > 0.0F);
+      return !this.a.N().l();
    }
 
    @Override
    public void d() {
-      for (cot $$1 : this.b.dQ().a(cot.class, this.b.cL().g(5.0))) {
-         if ($$1.cR() instanceof cmv $$2) {
-            this.c = $$2;
-            break;
+      this.a.N().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected exa i() {
+      ayw $$0 = this.a.dS();
+      jd $$1 = this.a.dp();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         jd $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return exa.c($$3);
          }
       }
 
-      this.a = 0;
-      this.d = bzt.a;
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-   }
-
-   @Override
-   public void a() {
-      boolean $$0 = ayn.e(this.c.bo) > 0.0F || ayn.e(this.c.bq) > 0.0F;
-      float $$1 = this.d == bzt.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new eww((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
-      this.b.a(btq.a, this.b.dt());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bzt.a) {
-            jd $$2 = this.c.dq().a(this.c.cI().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.J().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bzt.b;
-            }
-         } else if (this.d == bzt.b) {
-            ji $$3 = this.c.cJ();
-            jd $$4 = this.c.dq().a($$3, 10);
-            this.b.J().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bzt.a;
-            }
-         }
-      }
+      return null;
    }
 }

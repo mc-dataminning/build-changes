@@ -1,99 +1,46 @@
-public class fvc<T extends btl> extends fvr<T> {
-   public boolean a;
-   public boolean b;
+public class fvc<T extends bsr> extends fvr<T> {
+   private final fyi a;
+   private final fyi b;
+   private final fyi f;
+   private final fyi g;
+   private final fyi h;
+   private final fyi i;
+   private static final int j = 6;
 
-   public fvc(fye $$0) {
-      super($$0);
+   public fvc(fyi $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   public static fyk c() {
-      float $$0 = -14.0F;
-      fym $$1 = fvr.a(fyi.a, -14.0F);
-      fyn $$2 = $$1.a();
-      fyg $$3 = fyg.a(0.0F, -13.0F, 0.0F);
-      $$2.a("hat", fyj.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyi(-0.5F)), $$3);
-      $$2.a("head", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
-      $$2.a("body", fyj.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fyg.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", fyj.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fyg.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", fyj.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fyg.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", fyj.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fyg.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", fyj.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fyg.a(2.0F, -5.0F, 0.0F));
-      return fyk.a($$1, 64, 32);
+   public static fyo a(fym $$0) {
+      fyq $$1 = new fyq();
+      fyr $$2 = $$1.a();
+      $$2.a("head", fyn.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fyk.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fyn.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fyk.a(0.0F, 6.0F, 0.0F));
+      fyn $$3 = fyn.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fyk.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fyk.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fyk.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fyk.a(2.0F, 18.0F, -4.0F));
+      return fyo.a($$1, 64, 32);
+   }
+
+   @Override
+   public fyi a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.k.k = true;
-      int $$6 = -14;
-      this.m.e = 0.0F;
-      this.m.c = -14.0F;
-      this.m.d = -0.0F;
-      this.p.e -= 0.0F;
-      this.q.e -= 0.0F;
-      this.n.e *= 0.5F;
-      this.o.e *= 0.5F;
-      this.p.e *= 0.5F;
-      this.q.e *= 0.5F;
-      float $$7 = 0.4F;
-      if (this.n.e > 0.4F) {
-         this.n.e = 0.4F;
-      }
-
-      if (this.o.e > 0.4F) {
-         this.o.e = 0.4F;
-      }
-
-      if (this.n.e < -0.4F) {
-         this.n.e = -0.4F;
-      }
-
-      if (this.o.e < -0.4F) {
-         this.o.e = -0.4F;
-      }
-
-      if (this.p.e > 0.4F) {
-         this.p.e = 0.4F;
-      }
-
-      if (this.q.e > 0.4F) {
-         this.q.e = 0.4F;
-      }
-
-      if (this.p.e < -0.4F) {
-         this.p.e = -0.4F;
-      }
-
-      if (this.q.e < -0.4F) {
-         this.q.e = -0.4F;
-      }
-
-      if (this.a) {
-         this.n.e = -0.5F;
-         this.o.e = -0.5F;
-         this.n.g = 0.05F;
-         this.o.g = -0.05F;
-      }
-
-      this.p.d = 0.0F;
-      this.q.d = 0.0F;
-      this.p.c = -5.0F;
-      this.q.c = -5.0F;
-      this.k.d = -0.0F;
-      this.k.c = -13.0F;
-      this.l.b = this.k.b;
-      this.l.c = this.k.c;
-      this.l.d = this.k.d;
-      this.l.e = this.k.e;
-      this.l.f = this.k.f;
-      this.l.g = this.k.g;
-      if (this.b) {
-         float $$8 = 1.0F;
-         this.k.c -= 5.0F;
-      }
-
-      int $$9 = -14;
-      this.n.a(-5.0F, -12.0F, 0.0F);
-      this.o.a(5.0F, -12.0F, 0.0F);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = ayo.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = ayo.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

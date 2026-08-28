@@ -1,60 +1,30 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gez {
-   private final gfe a = new gfe();
-   private final gff b;
-   private final get.a c;
-   private final get.a d;
-   private final geu e;
+   public static final akr a = akr.b("textures/gui/title/background/panorama_overlay.png");
+   private final fgm b;
+   private final gel c;
+   private float d;
+   private float e;
 
-   public gez(int $$0) {
-      this.b = gff.a($$0);
-      SortedMap<gfb, faz> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gfi.h(), this.a.a(gfb.c()));
-         $$0x.put(gfi.i(), this.a.a(gfb.e()));
-         $$0x.put(gfi.a(), this.a.a(gfb.d()));
-         $$0x.put(gfi.k(), this.a.a(gfb.f()));
-         a($$0x, gfi.b());
-         a($$0x, gfi.c());
-         a($$0x, gfi.d());
-         a($$0x, gfi.e());
-         a($$0x, gfi.f());
-         $$0x.put(gfi.g(), new faz(786432));
-         a($$0x, gfb.j());
-         a($$0x, gfb.l());
-         a($$0x, gfb.k());
-         a($$0x, gfb.m());
-         a($$0x, gfb.n());
-         a($$0x, gfb.i());
-         gsl.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = get.a(new faz(1536));
-      this.c = get.a($$1, new faz(786432));
-      this.e = new geu(this.c);
+   public gez(gel $$0) {
+      this.c = $$0;
+      this.b = fgm.Q();
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gfb, faz> $$0, gfb $$1) {
-      $$0.put($$1, new faz($$1.G()));
+   public void a(fhx $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = (float)((double)$$4 * this.b.m.s().c());
+      this.d = a(this.d + $$5 * 0.1F, 360.0F);
+      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$3);
+      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public gfe a() {
-      return this.a;
-   }
-
-   public gff b() {
-      return this.b;
-   }
-
-   public get.a c() {
-      return this.c;
-   }
-
-   public get.a d() {
-      return this.d;
-   }
-
-   public geu e() {
-      return this.e;
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

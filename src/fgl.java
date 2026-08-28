@@ -1,486 +1,488 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
+import com.google.common.base.MoreObjects;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import java.text.MessageFormat;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class fgl<T> {
-   private static final Logger c = LogUtils.getLogger();
-   public static final fgl.e<Boolean> a = new fgl.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final fgl.b<Boolean> b = ($$0, $$1) -> $$1 ? wx.b : wx.c;
-   private final fgl.l<T> d;
-   final Function<T, wy> e;
-   private final fgl.n<T> f;
-   private final Codec<T> g;
-   private final T h;
-   private final Consumer<T> i;
-   final wy j;
-   T k;
+public class fgl {
+   public static final int a = 10000;
+   private final fgm b;
+   private final ezw c = new ezw();
+   private long d = -1L;
+   private long e = -1L;
+   private long f = -1L;
+   private boolean g;
 
-   public static fgl<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
-      return a($$0, a(), $$1, $$2);
+   public fgl(fgm $$0) {
+      this.b = $$0;
    }
 
-   public static fgl<Boolean> a(String $$0, boolean $$1) {
-      return a($$0, a(), $$1, $$0x -> {
-      });
+   private boolean a(int $$0) {
+      switch ($$0) {
+         case 69:
+            this.b.B = !this.b.B;
+            this.c("SectionPath: {0}", this.b.B ? "shown" : "hidden");
+            return true;
+         case 76:
+            this.b.D = !this.b.D;
+            this.c("SmartCull: {0}", this.b.D ? "enabled" : "disabled");
+            return true;
+         case 85:
+            if (fob.s()) {
+               this.b.f.n();
+               this.c("Killed frustum");
+            } else {
+               this.b.f.m();
+               this.c("Captured frustum");
+            }
+
+            return true;
+         case 86:
+            this.b.C = !this.b.C;
+            this.c("SectionVisibility: {0}", this.b.C ? "enabled" : "disabled");
+            return true;
+         case 87:
+            this.b.A = !this.b.A;
+            this.c("WireFrame: {0}", this.b.A ? "enabled" : "disabled");
+            return true;
+         default:
+            return false;
+      }
    }
 
-   public static fgl<Boolean> a(String $$0, fgl.l<Boolean> $$1, boolean $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   private void a(n $$0, wz $$1) {
+      this.b.l.d().a(wz.i().b(wz.c("debug.prefix").a($$0, n.r)).b(wy.v).b($$1));
    }
 
-   public static fgl<Boolean> a(String $$0, fgl.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
-      return a($$0, $$1, b, $$2, $$3);
+   private void a(wz $$0) {
+      this.a(n.o, $$0);
    }
 
-   public static fgl<Boolean> a(String $$0, fgl.l<Boolean> $$1, fgl.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
-      return new fgl<>($$0, $$1, $$2, a, $$3, $$4);
+   private void a(String $$0, Object... $$1) {
+      this.a(wz.b($$0, $$1));
    }
 
-   public fgl(String $$0, fgl.l<T> $$1, fgl.b<T> $$2, fgl.n<T> $$3, T $$4, Consumer<T> $$5) {
-      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   private void b(String $$0, Object... $$1) {
+      this.a(n.m, wz.b($$0, $$1));
    }
 
-   public fgl(String $$0, fgl.l<T> $$1, fgl.b<T> $$2, fgl.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = wy.c($$0);
-      this.d = $$1;
-      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.k = this.h;
+   private void c(String $$0, Object... $$1) {
+      this.a(wz.b(MessageFormat.format($$0, $$1)));
    }
 
-   public static <T> fgl.l<T> a() {
-      return $$0 -> null;
-   }
-
-   public static <T> fgl.l<T> a(wy $$0) {
-      return $$1 -> fjr.a($$0);
-   }
-
-   public static <T extends ayq> fgl.b<T> b() {
-      return ($$0, $$1) -> $$1.d();
-   }
-
-   public fie a(fgm $$0) {
-      return this.a($$0, 0, 0, 150);
-   }
-
-   public fie a(fgm $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, $$0x -> {
-      });
-   }
-
-   public fie a(fgm $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
-      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
-   }
-
-   public T c() {
-      return this.k;
-   }
-
-   public Codec<T> d() {
-      return this.g;
-   }
-
-   @Override
-   public String toString() {
-      return this.j.getString();
-   }
-
-   public void a(T $$0) {
-      T $$1 = this.f.a($$0).orElseGet(() -> {
-         c.error("Illegal option value " + $$0 + " for " + this.j);
-         return this.h;
-      });
-      if (!fgi.Q().r()) {
-         this.k = $$1;
+   private boolean b(int $$0) {
+      if (this.d > 0L && this.d < ad.c() - 100L) {
+         return true;
       } else {
-         if (!Objects.equals(this.k, $$1)) {
-            this.k = $$1;
-            this.i.accept(this.k);
-         }
-      }
-   }
+         switch ($$0) {
+            case 49:
+               this.b.aN().k();
+               return true;
+            case 50:
+               this.b.aN().j();
+               return true;
+            case 51:
+               this.b.aN().i();
+               return true;
+            case 65:
+               this.b.f.f();
+               this.a("debug.reload_chunks.message");
+               return true;
+            case 66:
+               boolean $$1 = !this.b.ap().a();
+               this.b.ap().b($$1);
+               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
+               return true;
+            case 67:
+               if (this.b.s.gp()) {
+                  return false;
+               } else {
+                  fze $$7 = this.b.s.h;
+                  if ($$7 == null) {
+                     return false;
+                  }
 
-   public fgl.n<T> e() {
-      return this.f;
-   }
-
-   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fgl.d.a<T> d, Codec<T> e) implements fgl.d<T> {
-      @Override
-      public fin.c<T> a() {
-         return fin.c.a(this.c, this.a, this.b);
-      }
-
-      @Override
-      public Optional<T> a(T $$0) {
-         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      public List<T> c() {
-         return this.b;
-      }
-
-      public BooleanSupplier d() {
-         return this.c;
-      }
-
-      @Override
-      public fgl.d.a<T> e() {
-         return this.d;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.e;
-      }
-   }
-
-   public interface b<T> {
-      wy toString(wy var1, T var2);
-   }
-
-   public static record c(int a, IntSupplier b, int c) implements fgl.g, fgl.j<Integer> {
-      public Optional<Integer> a(Integer $$0) {
-         return Optional.of(ayn.a($$0, this.d(), this.b()));
-      }
-
-      @Override
-      public int b() {
-         return this.b.getAsInt();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.INT
-            .validate(
-               $$0 -> {
-                  int $$1 = this.c + 1;
-                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
-                     ? DataResult.success($$0)
-                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+                  this.a("debug.copy_location.message");
+                  this.a(
+                     String.format(
+                        Locale.ROOT,
+                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
+                        this.b.s.dP().af().a(),
+                        this.b.s.du(),
+                        this.b.s.dw(),
+                        this.b.s.dA(),
+                        this.b.s.dF(),
+                        this.b.s.dH()
+                     )
+                  );
+                  return true;
                }
-            );
-      }
+            case 68:
+               if (this.b.l != null) {
+                  this.b.l.d().a(false);
+               }
 
-      @Override
-      public boolean c() {
-         return true;
-      }
+               return true;
+            case 71:
+               boolean $$2 = this.b.k.b();
+               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
+               return true;
+            case 72:
+               this.b.m.m = !this.b.m.m;
+               this.a(this.b.m.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
+               this.b.m.av();
+               return true;
+            case 73:
+               if (!this.b.s.gp()) {
+                  this.a(this.b.s.l(2), !fob.s());
+               }
 
-      @Override
-      public fin.c<Integer> a() {
-         return fin.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
-      }
+               return true;
+            case 76:
+               if (this.b.a(this::a)) {
+                  this.a("debug.profiling.start", 10);
+               }
 
-      @Override
-      public int d() {
-         return this.a;
-      }
+               return true;
+            case 78:
+               if (!this.b.s.l(2)) {
+                  this.a("debug.creative_spectator.error");
+               } else if (!this.b.s.R_()) {
+                  this.b.s.h.d("gamemode spectator");
+               } else {
+                  this.b.s.h.d("gamemode " + ((dct)MoreObjects.firstNonNull(this.b.q.i(), dct.b)).b());
+               }
 
-      public IntSupplier g() {
-         return this.b;
-      }
+               return true;
+            case 80:
+               this.b.m.n = !this.b.m.n;
+               this.b.m.av();
+               this.a(this.b.m.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
+               return true;
+            case 81:
+               this.a("debug.help.message");
+               fil $$3 = this.b.l.d();
+               $$3.a(wz.c("debug.reload_chunks.help"));
+               $$3.a(wz.c("debug.show_hitboxes.help"));
+               $$3.a(wz.c("debug.copy_location.help"));
+               $$3.a(wz.c("debug.clear_chat.help"));
+               $$3.a(wz.c("debug.chunk_boundaries.help"));
+               $$3.a(wz.c("debug.advanced_tooltips.help"));
+               $$3.a(wz.c("debug.inspect.help"));
+               $$3.a(wz.c("debug.profiling.help"));
+               $$3.a(wz.c("debug.creative_spectator.help"));
+               $$3.a(wz.c("debug.pause_focus.help"));
+               $$3.a(wz.c("debug.help.help"));
+               $$3.a(wz.c("debug.dump_dynamic_textures.help"));
+               $$3.a(wz.c("debug.reload_resourcepacks.help"));
+               $$3.a(wz.c("debug.pause.help"));
+               $$3.a(wz.c("debug.gamemodes.help"));
+               return true;
+            case 83:
+               Path $$4 = this.b.p.toPath().toAbsolutePath();
+               Path $$5 = TextureUtil.getDebugTexturePath($$4);
+               this.b.aa().a($$5);
+               wz $$6 = wz.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new wx(wx.a.b, $$5.toFile().toString())));
+               this.a("debug.dump_dynamic_textures", $$6);
+               return true;
+            case 84:
+               this.a("debug.reload_resourcepacks.message");
+               this.b.l();
+               return true;
+            case 293:
+               if (!this.b.s.l(2)) {
+                  this.a("debug.gamemodes.error");
+               } else {
+                  this.b.a(new fon());
+               }
 
-      public int h() {
-         return this.c;
-      }
-   }
-
-   interface d<T> extends fgl.n<T> {
-      fin.c<T> a();
-
-      default fgl.d.a<T> e() {
-         return fgl::a;
-      }
-
-      @Override
-      default Function<fgl<T>, fie> a(fgl.l<T> $$0, fgm $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> fin.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
-               this.e().set($$6, (T)$$4xx);
-               $$1.av();
-               $$5.accept((T)$$4xx);
-            });
-      }
-
-      public interface a<T> {
-         void set(fgl<T> var1, T var2);
-      }
-   }
-
-   public static record e<T>(List<T> a, Codec<T> b) implements fgl.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public fin.c<T> a() {
-         return fin.c.a(this.a);
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.b;
-      }
-   }
-
-   public static record f(int a, int b, boolean c) implements fgl.g {
-      public f(int $$0, int $$1) {
-         this($$0, $$1, true);
-      }
-
-      public Optional<Integer> a(Integer $$0) {
-         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.intRange(this.a, this.b + 1);
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      @Override
-      public boolean aN_() {
-         return this.c;
+               return true;
+            default:
+               return false;
+         }
       }
    }
 
-   interface g extends fgl.k<Integer> {
-      int d();
+   private void a(boolean $$0, boolean $$1) {
+      ewy $$2 = this.b.v;
+      if ($$2 != null) {
+         switch ($$2.c()) {
+            case b:
+               jd $$3 = ((eww)$$2).a();
+               dcw $$4 = this.b.s.dP();
+               dtc $$5 = $$4.a_($$3);
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.h.s().a($$3, $$2x -> {
+                        this.a($$5, $$3, $$2x);
+                        this.a("debug.inspect.server.block");
+                     });
+                  } else {
+                     dqh $$6 = $$4.c_($$3);
+                     ub $$7 = $$6 != null ? $$6.d($$4.H_()) : null;
+                     this.a($$5, $$3, $$7);
+                     this.a("debug.inspect.client.block");
+                  }
+               } else {
+                  this.a($$5, $$3, null);
+                  this.a("debug.inspect.client.block");
+               }
+               break;
+            case c:
+               bsr $$8 = ((ewx)$$2).a();
+               akr $$9 = lt.f.b($$8.am());
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.h.s().a($$8.an(), $$2x -> {
+                        this.a($$9, $$8.dn(), $$2x);
+                        this.a("debug.inspect.server.entity");
+                     });
+                  } else {
+                     ub $$10 = $$8.f(new ub());
+                     this.a($$9, $$8.dn(), $$10);
+                     this.a("debug.inspect.client.entity");
+                  }
+               } else {
+                  this.a($$9, $$8.dn(), null);
+                  this.a("debug.inspect.client.entity");
+               }
+         }
+      }
+   }
 
-      int b();
+   private void a(dtc $$0, jd $$1, @Nullable ub $$2) {
+      StringBuilder $$3 = new StringBuilder(gn.a($$0));
+      if ($$2 != null) {
+         $$3.append($$2);
+      }
 
-      default double b(Integer $$0) {
-         if ($$0 == this.d()) {
-            return 0.0;
+      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
+      this.a($$4);
+   }
+
+   private void a(akr $$0, exa $$1, @Nullable ub $$2) {
+      String $$4;
+      if ($$2 != null) {
+         $$2.r("UUID");
+         $$2.r("Pos");
+         $$2.r("Dimension");
+         String $$3 = uq.c((uy)$$2).getString();
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.c, $$1.d, $$1.e, $$3);
+      } else {
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.c, $$1.d, $$1.e);
+      }
+
+      this.a($$4);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$0 == this.b.aM().j()) {
+         boolean $$5 = fac.a(fgm.Q().aM().j(), 292);
+         if (this.d > 0L) {
+            if (!fac.a(fgm.Q().aM().j(), 67) || !$$5) {
+               this.d = -1L;
+            }
+         } else if (fac.a(fgm.Q().aM().j(), 67) && $$5) {
+            this.g = true;
+            this.d = ad.c();
+            this.e = ad.c();
+            this.f = 0L;
+         }
+
+         fob $$6 = this.b.y;
+         if ($$6 != null) {
+            switch ($$1) {
+               case 258:
+                  this.b.a(fgj.d);
+               case 259:
+               case 260:
+               case 261:
+               default:
+                  break;
+               case 262:
+               case 263:
+               case 264:
+               case 265:
+                  this.b.a(fgj.c);
+            }
+         }
+
+         if ($$3 == 1 && (!(this.b.y instanceof frm) || ((frm)$$6).u <= ad.c() - 20L)) {
+            if (this.b.m.Q.a($$1, $$2)) {
+               this.b.aM().i();
+               this.b.m.aa().a(this.b.aM().k());
+               return;
+            }
+
+            if (this.b.m.N.a($$1, $$2)) {
+               if (fob.r()) {
+               }
+
+               fgw.a(this.b.p, this.b.h(), $$0x -> this.b.execute(() -> this.b.l.d().a($$0x)));
+               return;
+            }
+         }
+
+         if ($$3 != 0) {
+            boolean $$7 = $$6 == null || !($$6.aN_() instanceof fit) || !((fit)$$6.aN_()).c();
+            if ($$7) {
+               if (fob.r() && $$1 == 66 && this.b.aV().a() && this.b.m.u().c()) {
+                  boolean $$8 = this.b.m.as().c() == fgo.a;
+                  this.b.m.as().a(fgo.a(this.b.m.as().c().a() + 1));
+                  this.b.m.av();
+                  if ($$6 != null) {
+                     $$6.e($$8);
+                  }
+               }
+
+               gdz var16 = this.b.s;
+            }
+         }
+
+         if ($$6 != null) {
+            boolean[] $$9 = new boolean[]{false};
+            fob.a(() -> {
+               if ($$3 == 1 || $$3 == 2) {
+                  $$6.x();
+                  $$9[0] = $$6.a($$1, $$2, $$4);
+               } else if ($$3 == 0) {
+                  $$9[0] = $$6.c($$1, $$2, $$4);
+               }
+            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
+            if ($$9[0]) {
+               return;
+            }
+         }
+
+         fac.a $$10;
+         boolean $$11;
+         boolean var10000;
+         label180: {
+            $$10 = fac.a($$1, $$2);
+            $$11 = this.b.y == null;
+            label141:
+            if (!$$11) {
+               if (this.b.y instanceof fnw $$12 && !$$12.m()) {
+                  break label141;
+               }
+
+               var10000 = false;
+               break label180;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$13 = var10000;
+         if ($$3 == 0) {
+            fgk.a($$10, false);
+            if ($$13 && $$1 == 292) {
+               if (this.g) {
+                  this.g = false;
+               } else {
+                  this.b.aN().h();
+               }
+            }
          } else {
-            return $$0 == this.b() ? 1.0 : ayn.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
-         }
-      }
+            boolean $$14 = false;
+            if ($$13) {
+               if ($$1 == 293 && this.b.j != null) {
+                  this.b.j.c();
+               }
 
-      default Integer a(double $$0) {
-         if ($$0 >= 1.0) {
-            $$0 = 0.99999F;
-         }
+               if ($$1 == 256) {
+                  this.b.b($$5);
+                  $$14 |= $$5;
+               }
 
-         return ayn.a(ayn.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
-      }
+               $$14 |= $$5 && this.b($$1);
+               this.g |= $$14;
+               if ($$1 == 290) {
+                  this.b.m.Y = !this.b.m.Y;
+               }
 
-      default <R> fgl.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
-         return new fgl.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+               if (this.b.aN().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
+                  this.b.a($$1 - 48);
+               }
             }
 
-            @Override
-            public double b(R $$0x) {
-               return g.this.b($$1.applyAsInt($$0));
+            if ($$11) {
+               if ($$14) {
+                  fgk.a($$10, false);
+               } else {
+                  fgk.a($$10, true);
+                  fgk.a($$10);
+               }
             }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(g.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
-            }
-         };
-      }
-   }
-
-   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fgl.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public fin.c<T> a() {
-         return fin.c.a(this.a.get());
-      }
-
-      public Supplier<List<T>> b() {
-         return this.a;
-      }
-
-      public Function<T, Optional<T>> c() {
-         return this.b;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.c;
-      }
-   }
-
-   public static final class i<N> extends fhz {
-      private final fgl<N> d;
-      private final fgl.k<N> e;
-      private final fgl.l<N> f;
-      private final Consumer<N> m;
-      @Nullable
-      private Long n;
-      private final boolean o;
-
-      i(fgm $$0, int $$1, int $$2, int $$3, int $$4, fgl<N> $$5, fgl.k<N> $$6, fgl.l<N> $$7, Consumer<N> $$8, boolean $$9) {
-         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$7;
-         this.m = $$8;
-         this.o = $$9;
-         this.b();
-      }
-
-      @Override
-      protected void b() {
-         this.b(this.d.e.apply(this.e.b(this.c)));
-         this.a(this.f.apply(this.e.b(this.c)));
-      }
-
-      @Override
-      protected void a() {
-         if (this.o) {
-            this.c();
-         } else {
-            this.n = ad.c() + 600L;
-         }
-      }
-
-      public void c() {
-         N $$0 = this.e.b(this.c);
-         if (!Objects.equals($$0, this.d.c())) {
-            this.d.a($$0);
-            this.a.av();
-            this.m.accept(this.d.c());
-         }
-      }
-
-      @Override
-      public void b(fht $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.n != null && ad.c() >= this.n) {
-            this.n = null;
-            this.c();
          }
       }
    }
 
-   interface j<T> extends fgl.d<T>, fgl.k<T> {
-      boolean c();
-
-      @Override
-      default Function<fgl<T>, fie> a(fgl.l<T> $$0, fgm $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return this.c() ? fgl.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fgl.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(long $$0, int $$1, int $$2) {
+      if ($$0 == this.b.aM().j()) {
+         fkg $$3 = this.b.y;
+         if ($$3 != null && this.b.aK() == null) {
+            if (Character.charCount($$1) == 1) {
+               fob.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+            } else {
+               for (char $$4 : Character.toChars($$1)) {
+                  fob.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+               }
+            }
+         }
       }
    }
 
-   interface k<T> extends fgl.n<T> {
-      double b(T var1);
+   public void a(long $$0) {
+      fac.a(
+         $$0,
+         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
+      );
+   }
 
-      T b(double var1);
+   public String a() {
+      return this.c.a(this.b.aM().j(), ($$0, $$1) -> {
+         if ($$0 != 65545) {
+            this.b.aM().a($$0, $$1);
+         }
+      });
+   }
 
-      default boolean aN_() {
-         return true;
-      }
-
-      @Override
-      default Function<fgl<T>, fie> a(fgl.l<T> $$0, fgm $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new fgl.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aN_());
+   public void a(String $$0) {
+      if (!$$0.isEmpty()) {
+         this.c.a(this.b.aM().j(), $$0);
       }
    }
 
-   @FunctionalInterface
-   public interface l<T> {
-      @Nullable
-      fjr apply(T var1);
-   }
-
-   public static enum m implements fgl.k<Double> {
-      a;
-
-      public Optional<Double> a(Double $$0) {
-         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      public double b(Double $$0) {
-         return $$0;
-      }
-
-      public Double a(double $$0) {
-         return $$0;
-      }
-
-      public <R> fgl.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
-         return new fgl.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+   public void b() {
+      if (this.d > 0L) {
+         long $$0 = ad.c();
+         long $$1 = 10000L - ($$0 - this.d);
+         long $$2 = $$0 - this.e;
+         if ($$1 < 0L) {
+            if (fob.r()) {
+               eyy.a();
             }
 
-            @Override
-            public double b(R $$0x) {
-               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            String $$3 = "Manually triggered debug crash";
+            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
+            p $$5 = $$4.a("Manual crash details");
+            ayp.a($$5);
+            throw new z($$4);
+         }
+
+         if ($$2 >= 1000L) {
+            if (this.f == 0L) {
+               this.a("debug.crash.message");
+            } else {
+               this.b("debug.crash.warning", ayo.f((float)$$1 / 1000.0F));
             }
 
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(m.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
-            }
-         };
+            this.e = $$0;
+            this.f++;
+         }
       }
-
-      @Override
-      public Codec<Double> f() {
-         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
-      }
-   }
-
-   interface n<T> {
-      Function<fgl<T>, fie> a(fgl.l<T> var1, fgm var2, int var3, int var4, int var5, Consumer<T> var6);
-
-      Optional<T> a(T var1);
-
-      Codec<T> f();
    }
 }

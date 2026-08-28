@@ -1,18 +1,41 @@
-public class avm {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final avl a = new avl(avo.qc, 20, 600, true);
-   public static final avl b = new avl(avo.pE, 12000, 24000, false);
-   public static final avl c = new avl(avo.pF, 0, 0, true);
-   public static final avl d = new avl(avo.pZ, 0, 0, true);
-   public static final avl e = new avl(avo.qa, 6000, 24000, true);
-   public static final avl f = a(avo.qB);
-   public static final avl g = a(avo.qb);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static avl a(jm<avn> $$0) {
-      return new avl($$0, 12000, 24000, false);
+public class avm {
+   public static final Codec<avm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avo.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, avm::new)
+   );
+   private final jm<avo> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public avm(jm<avo> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public jm<avo> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

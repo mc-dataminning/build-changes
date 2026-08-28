@@ -1,33 +1,25 @@
-public abstract class gop<T extends bsq, M extends fve<T>> {
-   private final glz<T, M> a;
+public class gop extends got<cft, fwh<cft>> {
+   private final get a;
 
-   public gop(glz<T, M> $$0) {
-      this.a = $$0;
+   public gop(gmd<cft, fwh<cft>> $$0, get $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends btl> void a(
-      fve<T> $$0, fve<T> $$1, akq $$2, fbc $$3, get $$4, int $$5, T $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12, int $$13
-   ) {
-      if (!$$6.ci()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13);
+   public void a(fbg $$0, gex $$1, int $$2, cft $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cuq $$10 = $$3.a(bsy.a);
+      if ($$3.x() && !$$3.gD()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gm()) {
+            $$11 -= 0.2F * ayo.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * ayo.a($$7 * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cun.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
-
-   protected static <T extends btl> void a(fve<T> $$0, akq $$1, fbc $$2, get $$3, int $$4, T $$5, int $$6) {
-      fbg $$7 = $$3.getBuffer(gfb.e($$1));
-      $$0.a($$2, $$7, $$4, gle.c($$5, 0.0F), $$6);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected akq a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(fbc var1, get var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

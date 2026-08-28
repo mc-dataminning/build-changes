@@ -1,36 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eng extends enk {
-   public static final MapCodec<eng> a = enc.b.listOf().fieldOf("rules").xmap(eng::new, $$0 -> $$0.b);
-   private final ImmutableList<enc> b;
+public class eng {
+   public static final eny a = eny.a;
+   public static final Codec<eng> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               enl.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               enl.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               ene.c.lenientOptionalFieldOf("position_predicate", end.b).forGetter($$0x -> $$0x.e),
+               dtc.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               enz.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eng::new)
+   );
+   private final enl c;
+   private final enl d;
+   private final ene e;
+   private final dtc f;
+   private final enz g;
 
-   public eng(List<? extends enc> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public eng(enl $$0, enl $$1, dtc $$2) {
+      this($$0, $$1, end.b, $$2);
+   }
+
+   public eng(enl $$0, enl $$1, ene $$2, dtc $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public eng(enl $$0, enl $$1, ene $$2, dtc $$3, enz $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a(dtc $$0, dtc $$1, jd $$2, jd $$3, jd $$4, ayw $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public dtc a() {
+      return this.f;
    }
 
    @Nullable
-   @Override
-   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
-      ayv $$6 = ayv.a(ayn.a($$4.a()));
-      dta $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         enc $$8 = (enc)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new enn.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected enm<?> a() {
-      return enm.i;
+   public ub a(ayw $$0, @Nullable ub $$1) {
+      return this.g.a($$0, $$1);
    }
 }

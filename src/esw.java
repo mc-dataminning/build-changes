@@ -1,35 +1,40 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class esw extends esy {
-   public static final MapCodec<esw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(erk.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, esw::new));
-   private final erk b;
+public class esw extends etc {
+   public static final MapCodec<esw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(erp.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, esw::new)
+   );
+   private final erp.b b;
 
-   private esw(List<euw> $$0, erk $$1) {
+   public esw(List<eva> $$0, erp.b $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public eta<esw> b() {
-      return etb.w;
+   public ete<esw> b() {
+      return etf.B;
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return this.b.a();
+   public Set<eui<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      int $$2 = this.b.a($$1, $$0.H());
-      $$0.e($$2);
+   public cuq a(cuq $$0, erp $$1) {
+      if ($$0.a(cut.un) && $$1.c(this.b.a()) instanceof cmx $$2) {
+         $$0.b(kq.W, new cxu($$2.fY()));
+      }
+
       return $$0;
    }
 
-   public static esy.a<?> a(erk $$0) {
+   public static etc.a<?> a(erp.b $$0) {
       return a($$1 -> new esw($$1, $$0));
    }
 }

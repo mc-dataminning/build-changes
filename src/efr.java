@@ -1,28 +1,51 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efr<P extends efq> {
-   public static final efr<efl> a = a("blob_foliage_placer", efl.a);
-   public static final efr<efw> b = a("spruce_foliage_placer", efw.a);
-   public static final efr<efu> c = a("pine_foliage_placer", efu.a);
-   public static final efr<efk> d = a("acacia_foliage_placer", efk.a);
-   public static final efr<efm> e = a("bush_foliage_placer", efm.c);
-   public static final efr<efp> f = a("fancy_foliage_placer", efp.c);
-   public static final efr<efs> g = a("jungle_foliage_placer", efs.a);
-   public static final efr<eft> h = a("mega_pine_foliage_placer", eft.a);
-   public static final efr<efo> i = a("dark_oak_foliage_placer", efo.a);
-   public static final efr<efv> j = a("random_spread_foliage_placer", efv.a);
-   public static final efr<efn> k = a("cherry_foliage_placer", efn.a);
-   private final MapCodec<P> l;
+public class efr extends eft {
+   public static final MapCodec<efr> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efr::new));
 
-   private static <P extends efq> efr<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.U, $$0, new efr<>($$1));
+   public efr(bpw $$0, bpw $$1) {
+      super($$0, $$1);
    }
 
-   private efr(MapCodec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected efu<?> a() {
+      return efu.i;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   protected void a(ddc $$0, eft.b $$1, ayw $$2, efd $$3, int $$4, eft.a $$5, int $$6, int $$7, int $$8) {
+      jd $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
+   }
+
+   @Override
+   public int a(ayw $$0, int $$1, efd $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(ayw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(ayw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

@@ -1,127 +1,93 @@
-import javax.annotation.Nullable;
+public class dra extends drn {
+   public static final int d = 9;
+   private jv<cuq> e = jv.a(9, cuq.l);
 
-public class dra extends dqf implements bqv {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final ayv k = ayv.a();
-   @Nullable
-   private wy l;
+   protected dra(dqj<?> $$0, jd $$1, dtc $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public dra(jd $$0, dta $$1) {
-      super(dqh.m, $$0, $$1);
+   public dra(jd $$0, dtc $$1) {
+      this(dqj.f, $$0, $$1);
    }
 
    @Override
-   protected void b(ua $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      if (this.ai()) {
-         $$0.a("CustomName", wy.a.a(this.l, $$1));
-      }
+   public int b() {
+      return 9;
    }
 
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = a($$0.l("CustomName"), $$1);
-      }
-   }
+   public int a(ayw $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
 
-   public static void a(dcu $$0, jd $$1, dta $$2, dra $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cmv $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dv() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dB() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)ayn.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
+         if (!this.e.get($$3).e() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
          }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
       }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
+      return $$1;
+   }
+
+   public cuq b(cuq $$0) {
+      int $$1 = this.e_($$0);
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         cuq $$3 = this.e.get($$2);
+         if ($$3.e() || cuq.c($$0, $$3)) {
+            int $$4 = Math.min($$0.H(), $$1 - $$3.H());
+            if ($$4 > 0) {
+               if ($$3.e()) {
+                  this.a($$2, $$0.a($$4));
+               } else {
+                  $$0.h($$4);
+                  $$3.g($$4);
+               }
+            }
+
+            if ($$0.e()) {
+               break;
+            }
+         }
       }
 
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = ayn.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = ayn.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
+      return $$0;
    }
 
    @Override
-   public wy ah() {
-      return (wy)(this.l != null ? this.l : wy.c("container.enchant"));
-   }
-
-   public void a(@Nullable wy $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public wy aj() {
-      return this.l;
+   protected wz k() {
+      return wz.c("container.dispenser");
    }
 
    @Override
-   protected void a(dqf.b $$0) {
-      super.a($$0);
-      this.l = $$0.a(kq.g);
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.e = jv.a(this.b(), cuq.l);
+      if (!this.b_($$0)) {
+         bql.b($$0, this.e, $$1);
+      }
    }
 
    @Override
-   protected void a(km.a $$0) {
-      super.a($$0);
-      $$0.a(kq.g, this.l);
+   protected void b(ub $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bql.a($$0, this.e, $$1);
+      }
    }
 
    @Override
-   public void a(ua $$0) {
-      $$0.r("CustomName");
+   protected jv<cuq> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jv<cuq> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected cpu a(int $$0, cmw $$1) {
+      return new cqo($$0, $$1, this);
    }
 }

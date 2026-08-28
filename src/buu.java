@@ -1,45 +1,78 @@
-public class buu {
-   public static final jm<bup> a = a("generic.armor", new buw("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final jm<bup> b = a("generic.armor_toughness", new buw("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final jm<bup> c = a("generic.attack_damage", new buw("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final jm<bup> d = a("generic.attack_knockback", new buw("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final jm<bup> e = a("generic.attack_speed", new buw("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final jm<bup> f = a("player.block_break_speed", new buw("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final jm<bup> g = a("player.block_interaction_range", new buw("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final jm<bup> h = a("generic.burning_time", new buw("attribute.name.generic.burning_time", 1.0, 0.0, 1024.0).a(true).a(bup.a.c));
-   public static final jm<bup> i = a(
-      "generic.explosion_knockback_resistance", new buw("attribute.name.generic.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true)
-   );
-   public static final jm<bup> j = a("player.entity_interaction_range", new buw("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final jm<bup> k = a(
-      "generic.fall_damage_multiplier", new buw("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bup.a.c)
-   );
-   public static final jm<bup> l = a("generic.flying_speed", new buw("attribute.name.generic.flying_speed", 0.4, 0.0, 1024.0).a(true));
-   public static final jm<bup> m = a("generic.follow_range", new buw("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final jm<bup> n = a("generic.gravity", new buw("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true).a(bup.a.b));
-   public static final jm<bup> o = a("generic.jump_strength", new buw("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final jm<bup> p = a("generic.knockback_resistance", new buw("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final jm<bup> q = a("generic.luck", new buw("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final jm<bup> r = a("generic.max_absorption", new buw("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final jm<bup> s = a("generic.max_health", new buw("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final jm<bup> t = a("player.mining_efficiency", new buw("attribute.name.player.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
-   public static final jm<bup> u = a("generic.movement_efficiency", new buw("attribute.name.generic.movement_efficiency", 0.0, 0.0, 1.0).a(true));
-   public static final jm<bup> v = a("generic.movement_speed", new buw("attribute.name.generic.movement_speed", 0.7, 0.0, 1024.0).a(true));
-   public static final jm<bup> w = a("generic.oxygen_bonus", new buw("attribute.name.generic.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
-   public static final jm<bup> x = a("generic.safe_fall_distance", new buw("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final jm<bup> y = a("generic.scale", new buw("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true).a(bup.a.b));
-   public static final jm<bup> z = a("player.sneaking_speed", new buw("attribute.name.player.sneaking_speed", 0.3, 0.0, 1.0).a(true));
-   public static final jm<bup> A = a("zombie.spawn_reinforcements", new buw("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final jm<bup> B = a("generic.step_height", new buw("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
-   public static final jm<bup> C = a("player.submerged_mining_speed", new buw("attribute.name.player.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
-   public static final jm<bup> D = a("player.sweeping_damage_ratio", new buw("attribute.name.player.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
-   public static final jm<bup> E = a("generic.water_movement_efficiency", new buw("attribute.name.generic.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static jm<bup> a(String $$0, bup $$1) {
-      return jz.b(lt.s, akq.b($$0), $$1);
+public record buu(akr d, double e, buu.a f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final MapCodec<buu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akr.a.fieldOf("id").forGetter(buu::b), Codec.DOUBLE.fieldOf("amount").forGetter(buu::c), buu.a.f.fieldOf("operation").forGetter(buu::d))
+            .apply($$0, buu::new)
+   );
+   public static final Codec<buu> b = a.codec();
+   public static final yx<ByteBuf, buu> c = yx.a(akr.b, buu::b, yv.j, buu::c, buu.a.e, buu::d, buu::new);
+
+   public ub a() {
+      DataResult<uy> $$0 = b.encode(this, up.a, new ub());
+      return (ub)$$0.getOrThrow();
    }
 
-   public static jm<bup> a(jz<bup> $$0) {
-      return s;
+   @Nullable
+   public static buu a(ub $$0) {
+      DataResult<buu> $$1 = b.parse(up.a, $$0);
+      if ($$1.isSuccess()) {
+         return (buu)$$1.getOrThrow();
+      } else {
+         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
+         return null;
+      }
+   }
+
+   public boolean a(akr $$0) {
+      return $$0.equals(this.d);
+   }
+
+   public akr b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.e;
+   }
+
+   public buu.a d() {
+      return this.f;
+   }
+
+   public static enum a implements azk {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<buu.a> d = axe.a(buu.a::a, values(), axe.a.a);
+      public static final yx<ByteBuf, buu.a> e = yv.a(d, buu.a::a);
+      public static final Codec<buu.a> f = azk.a(buu.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

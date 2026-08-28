@@ -1,29 +1,53 @@
-public class aib implements zf<agh> {
-   public static final yw<vv, aib> a = zf.a(aib::a, aib::new);
-   private final bqp b;
+public class aib implements zg<agi> {
+   public static final yx<vw, aib> a = zg.a(aib::a, aib::new);
+   private static final int b = 384;
+   private final jd c;
+   private final String[] d;
+   private final boolean e;
 
-   public aib(bqp $$0) {
-      this.b = $$0;
+   public aib(jd $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private aib(vv $$0) {
-      this.b = $$0.b(bqp.class);
+   private aib(vw $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public zh<aib> a() {
-      return agf.ca;
+   public zi<aib> a() {
+      return agg.bZ;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public bqp b() {
-      return this.b;
+   public jd b() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

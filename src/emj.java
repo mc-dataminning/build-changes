@@ -1,55 +1,98 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class emj extends ejn {
+   private boolean h;
+   private boolean i;
 
-public class emj extends ejm {
-   public static final MapCodec<emj> d = a(emj::new);
+   public emj(ayw $$0, int $$1, int $$2) {
+      super(ekg.K, $$1, 64, $$2, 7, 7, 9, a($$0));
+   }
 
-   public emj(ejm.c $$0) {
-      super($$0);
+   public emj(ub $$0) {
+      super(ekg.K, $$0);
+      this.h = $$0.q("Witch");
+      this.i = $$0.q("Cat");
    }
 
    @Override
-   public Optional<ejm.b> a(ejm.a $$0) {
-      dmk $$1 = dmk.a($$0.f());
-      jd $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ejm.b($$2, (Consumer<eke>)($$3 -> this.a($$3, $$0, $$2, $$1))));
-   }
-
-   private void a(eke $$0, ejm.a $$1, jd $$2, dmk $$3) {
-      List<emi.i> $$4 = Lists.newLinkedList();
-      emi.a($$1.e(), $$2, $$3, $$4, $$1.f());
-      $$4.forEach($$0::a);
+   protected void a(ekf $$0, ub $$1) {
+      super.a($$0, $$1);
+      $$1.a("Witch", this.h);
+      $$1.a("Cat", this.i);
    }
 
    @Override
-   public void a(ddq $$0, ddo $$1, dux $$2, ayv $$3, eje $$4, dcb $$5, ekb $$6) {
-      jd.a $$7 = new jd.a();
-      int $$8 = $$0.I_();
-      eje $$9 = $$6.b();
-      int $$10 = $$9.i();
+   public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejh $$4, dcd $$5, jd $$6) {
+      if (this.a($$0, $$4, 0)) {
+         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, dga.o.o(), dga.o.o(), false);
+         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, dga.U.o(), dga.U.o(), false);
+         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, dga.U.o(), dga.U.o(), false);
+         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, dga.U.o(), dga.U.o(), false);
+         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, dga.U.o(), dga.U.o(), false);
+         this.a($$0, dga.dU.o(), 2, 3, 2, $$4);
+         this.a($$0, dga.dU.o(), 3, 3, 7, $$4);
+         this.a($$0, dga.a.o(), 1, 3, 4, $$4);
+         this.a($$0, dga.a.o(), 5, 3, 4, $$4);
+         this.a($$0, dga.a.o(), 5, 3, 5, $$4);
+         this.a($$0, dga.gp.o(), 1, 3, 5, $$4);
+         this.a($$0, dga.cA.o(), 3, 2, 6, $$4);
+         this.a($$0, dga.ft.o(), 4, 2, 6, $$4);
+         this.a($$0, dga.dU.o(), 1, 2, 1, $$4);
+         this.a($$0, dga.dU.o(), 5, 2, 1, $$4);
+         dtc $$7 = dga.fK.o().a(dnt.b, ji.c);
+         dtc $$8 = dga.fK.o().a(dnt.b, ji.f);
+         dtc $$9 = dga.fK.o().a(dnt.b, ji.e);
+         dtc $$10 = dga.fK.o().a(dnt.b, ji.d);
+         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
+         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
+         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
+         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
+         this.a($$0, $$7.a(dnt.d, dul.e), 0, 4, 1, $$4);
+         this.a($$0, $$7.a(dnt.d, dul.d), 6, 4, 1, $$4);
+         this.a($$0, $$10.a(dnt.d, dul.d), 0, 4, 8, $$4);
+         this.a($$0, $$10.a(dnt.d, dul.e), 6, 4, 8, $$4);
 
-      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
-         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
-            $$7.d($$11, $$10, $$12);
-            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
-               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
-                  $$7.q($$13);
-                  if (!$$0.u($$7) && !$$0.a_($$7).k()) {
-                     break;
-                  }
+         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
+            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
+               this.b($$0, dga.U.o(), $$12, -1, $$11, $$4);
+            }
+         }
 
-                  $$0.a($$7, dfy.m.o(), 2);
+         if (!this.h) {
+            jd $$13 = this.b(2, 2, 5);
+            if ($$4.b($$13)) {
+               this.h = true;
+               ckt $$14 = bsx.bo.a((dcw)$$0.E());
+               if ($$14 != null) {
+                  $$14.fS();
+                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
+                  $$14.a($$0, $$0.d_($$13), btr.d, null);
+                  $$0.a_($$14);
                }
             }
          }
+
+         this.a($$0, $$4);
       }
    }
 
-   @Override
-   public ejv<?> e() {
-      return ejv.p;
+   private void a(ddl $$0, ejh $$1) {
+      if (!this.i) {
+         jd $$2 = this.b(2, 2, 5);
+         if ($$1.b($$2)) {
+            this.i = true;
+            cfh $$3 = bsx.p.a((dcw)$$0.E());
+            if ($$3 != null) {
+               $$3.fS();
+               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
+               $$3.a($$0, $$0.d_($$2), btr.d, null);
+               $$0.a_($$3);
+            }
+         }
+      }
    }
 }

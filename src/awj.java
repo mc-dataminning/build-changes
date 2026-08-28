@@ -1,11 +1,10 @@
-public final class awj {
-   public static final awt<eox> a = a("water");
-   public static final awt<eox> b = a("lava");
+public class awj {
+   public static final awu<ehq> a = a("visible");
 
    private awj() {
    }
 
-   private static awt<eox> a(String $$0) {
-      return awt.a(lu.D, akq.b($$0));
+   private static awu<ehq> a(String $$0) {
+      return awu.a(lu.aN, akr.b($$0));
    }
 }

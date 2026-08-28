@@ -1,56 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class anx {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.wrong_dimension"));
-
-   public static void a(CommandDispatcher<et> $$0) {
+   public static <T extends ev<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("ride").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)eu.a("target", fg.a())
-                     .then(eu.a("mount").then(eu.a("vehicle", fg.a()).executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fg.a($$0x, "vehicle"))))))
-                  .then(eu.a("dismount").executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new anx.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new anx.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new anx.b(), false))
       );
    }
 
-   private static int a(et $$0, bsq $$1, bsq $$2) throws CommandSyntaxException {
-      bsq $$3 = $$1.dd();
-      if ($$3 != null) {
-         throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.am() == bsw.by) {
-         throw d.create();
-      } else if ($$1.cV().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dQ() != $$2.dQ()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.O_(), $$2.O_());
-      } else {
-         $$0.a(() -> wy.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+   static class a<T extends ev<T>> implements hp.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hn $$2, ht<T> $$3) {
+         $$0.p().onFailure();
+         hu $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
       }
    }
 
-   private static int a(et $$0, bsq $$1) throws CommandSyntaxException {
-      bsq $$2 = $$1.dd();
-      if ($$2 == null) {
-         throw a.create($$1.O_());
-      } else {
-         $$1.ad();
-         $$0.a(() -> wy.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+   static class b<T extends ev<T>> implements hq.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hn $$3, ht<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(ic.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new hy.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
+      }
+   }
+
+   static class c<T extends ev<T>> implements hp.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hn $$2, ht<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         hu $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
       }
    }
 }

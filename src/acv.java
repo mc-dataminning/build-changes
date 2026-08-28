@@ -1,20 +1,25 @@
-public record acv(xk.a b) implements zf<abt> {
-   public static final yw<vv, acv> a = zf.a(acv::a, acv::new);
+public record acv(long[] b, bls c) implements zg<abu> {
+   public static final yx<vw, acv> a = zg.a(acv::a, acv::new);
 
-   private acv(vv $$0) {
-      this(xk.a.a($$0));
+   private acv(vw $$0) {
+      this($$0.d(), $$0.b(bls.class));
    }
 
-   private void a(vv $$0) {
-      xk.a.a($$0, this.b);
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<acv> a() {
-      return agf.B;
+   public zi<acv> a() {
+      return agg.A;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public bls e() {
+      return this.c;
    }
 }

@@ -1,30 +1,37 @@
-public class fyg {
-   public static final fyg a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
+public final class fyg {
+   private final akr a;
+   private final String b;
 
-   private fyg(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public fyg(akr $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fyg a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public akr a() {
+      return this.a;
    }
 
-   public static fyg b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public String b() {
+      return this.b;
    }
 
-   public static fyg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fyg($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fyg $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

@@ -1,52 +1,64 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Map;
+import java.io.Serializable;
+import java.util.Deque;
+import java.util.List;
+import java.util.RandomAccess;
 import javax.annotation.Nullable;
 
-public class ayk implements TypeAdapterFactory {
-   @Nullable
-   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
-      Class<T> $$2 = $$1.getRawType();
-      if (!$$2.isEnum()) {
-         return null;
-      } else {
-         final Map<String, T> $$3 = Maps.newHashMap();
+public interface ayk<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   ayk<T> b();
 
-         for (T $$4 : $$2.getEnumConstants()) {
-            $$3.put(this.a($$4), $$4);
-         }
+   @Override
+   T getFirst();
 
-         return new TypeAdapter<T>() {
-            public void write(JsonWriter $$0, T $$1) throws IOException {
-               if ($$1 == null) {
-                  $$0.nullValue();
-               } else {
-                  $$0.value(ayk.this.a($$1));
-               }
-            }
+   @Override
+   T getLast();
 
-            @Nullable
-            public T read(JsonReader $$0) throws IOException {
-               if ($$0.peek() == JsonToken.NULL) {
-                  $$0.nextNull();
-                  return null;
-               } else {
-                  return $$3.get($$0.nextString());
-               }
-            }
-         };
-      }
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   String a(Object $$0) {
-      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
+   @Override
+   default T remove() {
+      return this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
+   }
+
+   @Override
+   default T element() {
+      return this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
+   }
+
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
+   }
+
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

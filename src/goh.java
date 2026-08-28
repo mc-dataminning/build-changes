@@ -1,24 +1,27 @@
-public class goh extends gop<cfo, fvt<cfo>> {
-   private final gfn a;
+public class goh extends got<chk, fvt<chk>> {
+   private final fvt<chk> a;
 
-   public goh(glz<cfo, fvt<cfo>> $$0, gfn $$1) {
+   public goh(gmd<chk, fvt<chk>> $$0, fye $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new fvt<>($$1.a(fyh.ar));
    }
 
-   public void a(fbc $$0, get $$1, int $$2, cfo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gm() != 0) {
-         $$0.a();
-         fye $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dfy.bT.o(), $$0, $$1, $$2, gpw.d);
-         $$0.b();
+   public void a(fbg $$0, gex $$1, int $$2, chk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cuq $$10 = $$3.fP();
+      if ($$10.g() instanceof cse $$11 && $$11.d() == cse.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         int $$13;
+         if ($$10.a(awn.bx)) {
+            $$13 = axy.b.e(cxk.a($$10, -6265536));
+         } else {
+            $$13 = -1;
+         }
+
+         fbk $$15 = $$1.getBuffer(gff.e($$11.b()));
+         this.a.a($$0, $$15, $$2, gqa.d, $$13);
+         return;
       }
    }
 }

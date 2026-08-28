@@ -1,31 +1,26 @@
-public record aar(int c, epm d, float e) implements aai {
-   public static final yw<vv, aar> a = aai.a(aar::a, aar::new);
-   public static final aai.b<aar> b = aai.a("debug/path");
+public record aar(long c, jd d) implements aaj {
+   public static final yx<vw, aar> a = aaj.a(aar::a, aar::new);
+   public static final aaj.b<aar> b = aaj.a("debug/neighbors_update");
 
-   private aar(vv $$0) {
-      this($$0.readInt(), epm.b($$0), $$0.readFloat());
+   private aar(vw $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vv $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aai.b<aar> a() {
+   public aaj.b<aar> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public epm c() {
+   public jd c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

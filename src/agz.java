@@ -1,20 +1,30 @@
-public record agz(blr b) implements zf<agh> {
-   public static final yw<vv, agz> a = zf.a(agz::a, agz::new);
+public record agz(int b, int c, boolean d) implements zg<agi> {
+   public static final yx<vw, agz> a = zg.a(agz::a, agz::new);
 
-   private agz(vv $$0) {
-      this($$0.b(blr.class));
+   private agz(vw $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zh<agz> a() {
-      return agf.bv;
+   public zi<agz> a() {
+      return agg.bu;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

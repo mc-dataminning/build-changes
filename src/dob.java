@@ -1,29 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dob extends die implements dfz {
-   public static final MapCodec<dob> c = b(dob::new);
+public interface dob {
+   cxw b();
 
-   @Override
-   public MapCodec<dob> a() {
-      return c;
+   static List<dob> c() {
+      return lt.g.t().map(dob::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public dob(dsz.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static dob a(dcv $$0) {
+      if ($$0.r() instanceof cso $$1) {
+         dfy var6 = $$1.d();
+         if (var6 instanceof dob) {
+            return (dob)var6;
+         }
+      }
 
-   @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      a($$0, $$2, new cuo(this));
+      cul $$2 = $$0.r();
+      return $$2 instanceof dob ? (dob)$$2 : null;
    }
 }

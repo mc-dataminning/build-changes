@@ -1,87 +1,84 @@
-import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cah extends cak {
-   private final btn a;
-   private final Predicate<btn> b;
+public class cah extends cam {
+   private int a;
+   private final btw b;
    @Nullable
-   private btn c;
-   private final double d;
-   private final ccy e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
+   private cmx c;
+   private bzv d;
 
-   public cah(btn $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.J();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cak.a.a, cak.a.b));
-      if (!($$0.J() instanceof ccx) && !($$0.J() instanceof ccw)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+   public cah(btw $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean b() {
-      List<btn> $$0 = this.a.dQ().a(btn.class, this.a.cL().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (btn $$1 : $$0) {
-            if (!$$1.ci()) {
-               this.c = $$1;
-               return true;
-            }
+      List<cov> $$0 = this.b.dP().a(cov.class, this.b.cL().g(5.0));
+      boolean $$1 = false;
+
+      for (cov $$2 : $$0) {
+         bsr $$3 = $$2.cR();
+         if ($$3 instanceof cmx && (ayo.e(((cmx)$$3).bo) > 0.0F || ayo.e(((cmx)$$3).bq) > 0.0F)) {
+            $$1 = true;
+            break;
          }
       }
 
-      return false;
+      return this.c != null && (ayo.e(this.c.bo) > 0.0F || ayo.e(this.c.bq) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean U_() {
+      return true;
    }
 
    @Override
    public boolean c() {
-      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
+      return this.c != null && this.c.bS() && (ayo.e(this.c.bo) > 0.0F || ayo.e(this.c.bq) > 0.0F);
    }
 
    @Override
    public void d() {
-      this.f = 0;
-      this.h = this.a.a(epp.j);
-      this.a.a(epp.j, 0.0F);
+      for (cov $$1 : this.b.dP().a(cov.class, this.b.cL().g(5.0))) {
+         if ($$1.cR() instanceof cmx $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = bzv.a;
    }
 
    @Override
    public void e() {
       this.c = null;
-      this.e.n();
-      this.a.a(epp.j, this.h);
    }
 
    @Override
    public void a() {
-      if (this.c != null && !this.a.fY()) {
-         this.a.F().a(this.c, 10.0F, (float)this.a.aa());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dv() - this.c.dv();
-            double $$1 = this.a.dx() - this.c.dx();
-            double $$2 = this.a.dB() - this.c.dB();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               bzm $$4 = this.c.F();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dv() && $$4.f() == this.a.dx() && $$4.g() == this.a.dB()) {
-                  double $$5 = this.c.dv() - this.a.dv();
-                  double $$6 = this.c.dB() - this.a.dB();
-                  this.e.a(this.a.dv() - $$5, this.a.dx(), this.a.dB() - $$6, this.d);
-               }
+      boolean $$0 = ayo.e(this.c.bo) > 0.0F || ayo.e(this.c.bq) > 0.0F;
+      float $$1 = this.d == bzv.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new exa((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
+      this.b.a(bts.a, this.b.ds());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == bzv.a) {
+            jd $$2 = this.c.dp().a(this.c.cI().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = bzv.b;
+            }
+         } else if (this.d == bzv.b) {
+            ji $$3 = this.c.cJ();
+            jd $$4 = this.c.dp().a($$3, 10);
+            this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = bzv.a;
             }
          }
       }

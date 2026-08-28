@@ -1,20 +1,37 @@
-public record ach(int b) implements zf<abt> {
-   public static final yw<vv, ach> a = zf.a(ach::a, ach::new);
+public class ach implements zg<abu> {
+   public static final yx<vw, ach> a = zg.a(ach::a, ach::new);
+   private final bqo b;
+   private final boolean c;
 
-   private ach(vv $$0) {
-      this($$0.l());
+   public ach(bqo $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vv $$0) {
-      $$0.c(this.b);
+   private ach(vw $$0) {
+      this.b = bqo.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vw $$0) {
+      $$0.k(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<ach> a() {
-      return agf.n;
+   public zi<ach> a() {
+      return agg.m;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public bqo e() {
+      return this.b;
    }
 }

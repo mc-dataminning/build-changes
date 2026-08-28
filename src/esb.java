@@ -1,66 +1,70 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.function.Predicate;
 
-public abstract class esb implements ert {
-   protected final List<euw> e;
-   private final Predicate<erl> a;
+public class esb extends ery {
+   public static final MapCodec<esb> a = a(esb::new);
 
-   protected esb(List<euw> $$0) {
-      this.e = $$0;
-      this.a = ad.a($$0);
+   esb(List<esf> $$0, List<eva> $$1) {
+      super($$0, $$1);
    }
 
-   protected static <T extends esb> P1<Mu<T>, List<euw>> a(Instance<T> $$0) {
-      return $$0.group(euw.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public esg a() {
+      return esd.i;
    }
 
-   public void a(err $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Override
+   protected erx a(List<? extends erx> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (erx)$$0.get(0);
+         case 2 -> {
+            erx $$1 = $$0.get(0);
+            erx $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (erx $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   protected final boolean a(erl $$0) {
-      return this.a.test($$0);
+   public static esb.a a(esf.a<?>... $$0) {
+      return new esb.a($$0);
    }
 
-   public abstract esc a();
+   public static class a extends esf.a<esb.a> {
+      private final Builder<esf> a = ImmutableList.builder();
 
-   public abstract static class a<T extends esb.a<T>> implements euo<T> {
-      private final Builder<euw> a = ImmutableList.builder();
-
-      protected abstract T aD_();
-
-      public T a(euw.a $$0) {
-         this.a.add($$0.build());
-         return this.aD_();
+      public a(esf.a<?>... $$0) {
+         for (esf.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      public final T e() {
-         return this.aD_();
+      protected esb.a a() {
+         return this;
       }
 
-      protected List<euw> f() {
-         return this.a.build();
+      @Override
+      public esb.a b(esf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
-      public ers.a a(esb.a<?> $$0) {
-         return new ers.a(this, $$0);
+      @Override
+      public esf b() {
+         return new esb(this.a.build(), this.f());
       }
-
-      public erx.a b(esb.a<?> $$0) {
-         return new erx.a(this, $$0);
-      }
-
-      public esf.a c(esb.a<?> $$0) {
-         return new esf.a(this, $$0);
-      }
-
-      public abstract esb b();
    }
 }

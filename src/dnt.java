@@ -1,112 +1,204 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.stream.IntStream;
 
-public class dnt extends dgf implements dfz {
+public class dnt extends dfy implements dna {
    public static final MapCodec<dnt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akp.a(lu.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               akp.a(lu.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               akp.a(lu.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               u()
-            )
-            .apply($$0, dnt::new)
+      $$0 -> $$0.group(dtc.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dnt::new)
    );
-   public static final int b = 7;
-   public static final dua c = dtq.av;
-   protected static final float d = 1.0F;
-   protected static final exp[] e = new exp[]{
-      dfw.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      dfw.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final akp<dfw> f;
-   private final akp<dfw> g;
-   private final akp<cuj> h;
+   public static final dtw b = dju.aE;
+   public static final dua<dub> c = dts.af;
+   public static final dua<dul> d = dts.bi;
+   public static final dtt e = dts.C;
+   protected static final ext f = dnc.e;
+   protected static final ext g = dnc.d;
+   protected static final ext h = dfy.a(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
+   protected static final ext i = dfy.a(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
+   protected static final ext j = dfy.a(0.0, 8.0, 0.0, 8.0, 16.0, 8.0);
+   protected static final ext k = dfy.a(0.0, 8.0, 8.0, 8.0, 16.0, 16.0);
+   protected static final ext l = dfy.a(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
+   protected static final ext m = dfy.a(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
+   protected static final ext n = dfy.a(8.0, 8.0, 0.0, 16.0, 16.0, 8.0);
+   protected static final ext o = dfy.a(8.0, 8.0, 8.0, 16.0, 16.0, 16.0);
+   protected static final ext[] F = a(f, h, l, i, m);
+   protected static final ext[] G = a(g, j, n, k, o);
+   private static final int[] I = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
+   private final dfy J;
+   protected final dtc H;
 
    @Override
-   public MapCodec<dnt> a() {
+   public MapCodec<? extends dnt> a() {
       return a;
    }
 
-   protected dnt(akp<dfw> $$0, akp<dfw> $$1, akp<cuj> $$2, dsz.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   private static ext[] a(ext $$0, ext $$1, ext $$2, ext $$3, ext $$4) {
+      return IntStream.range(0, 16).mapToObj($$5 -> a($$5, $$0, $$1, $$2, $$3, $$4)).toArray(ext[]::new);
    }
 
-   @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean b(dta $$0, dca $$1, jd $$2) {
-      return $$0.a(dfy.cC);
-   }
-
-   @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dhr.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               ji $$6 = ji.c.a.a($$3);
-               jd $$7 = $$2.a($$6);
-               dta $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(dfy.cC) || $$8.a(awd.af))) {
-                  jz<dfw> $$9 = $$1.H_().d(lu.f);
-                  Optional<dfw> $$10 = $$9.e(this.f);
-                  Optional<dfw> $$11 = $$9.e(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(djs.aE, $$6));
-                  }
-               }
-            }
-         }
+   private static ext a(int $$0, ext $$1, ext $$2, ext $$3, ext $$4, ext $$5) {
+      ext $$6 = $$1;
+      if (($$0 & 1) != 0) {
+         $$6 = exq.a($$1, $$2);
       }
+
+      if (($$0 & 2) != 0) {
+         $$6 = exq.a($$6, $$3);
+      }
+
+      if (($$0 & 4) != 0) {
+         $$6 = exq.a($$6, $$4);
+      }
+
+      if (($$0 & 8) != 0) {
+         $$6 = exq.a($$6, $$5);
+      }
+
+      return $$6;
+   }
+
+   protected dnt(dtc $$0, dtb.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(b, ji.c).a(c, dub.b).a(d, dul.a).a(e, Boolean.valueOf(false)));
+      this.J = $$0.b();
+      this.H = $$0;
    }
 
    @Override
-   public cuo a(dcx $$0, jd $$1, dta $$2) {
-      return new cuo((dct)DataFixUtils.orElse($$0.H_().d(lu.K).e(this.h), this));
-   }
-
-   @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+   protected boolean f_(dtc $$0) {
       return true;
    }
 
    @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + ayn.a($$0.z, 2, 5));
-      dta $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
-      }
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return ($$0.c(c) == dub.a ? F : G)[I[this.n($$0)]];
+   }
+
+   private int n(dtc $$0) {
+      return $$0.c(d).ordinal() * 4 + $$0.c(b).e();
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(c);
+   public float e() {
+      return this.J.e();
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      ji $$1 = $$0.k();
+      jd $$2 = $$0.a();
+      epc $$3 = $$0.q().b_($$2);
+      dtc $$4 = this.o()
+         .a(b, $$0.g())
+         .a(c, $$1 != ji.a && ($$1 == ji.b || !($$0.l().d - (double)$$2.v() > 0.5)) ? dub.b : dub.a)
+         .a(e, Boolean.valueOf($$3.a() == epd.c));
+      return $$4.a(d, i($$4, $$0.q(), $$2));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      return $$1.o().d() ? $$0.a(d, i($$0, $$3, $$4)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static dul i(dtc $$0, dcc $$1, jd $$2) {
+      ji $$3 = $$0.c(b);
+      dtc $$4 = $$1.a_($$2.a($$3));
+      if (m($$4) && $$0.c(c) == $$4.c(c)) {
+         ji $$5 = $$4.c(b);
+         if ($$5.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$5.g())) {
+            if ($$5 == $$3.i()) {
+               return dul.d;
+            }
+
+            return dul.e;
+         }
+      }
+
+      dtc $$6 = $$1.a_($$2.a($$3.g()));
+      if (m($$6) && $$0.c(c) == $$6.c(c)) {
+         ji $$7 = $$6.c(b);
+         if ($$7.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$7)) {
+            if ($$7 == $$3.i()) {
+               return dul.b;
+            }
+
+            return dul.c;
+         }
+      }
+
+      return dul.a;
+   }
+
+   private static boolean c(dtc $$0, dcc $$1, jd $$2, ji $$3) {
+      dtc $$4 = $$1.a_($$2.a($$3));
+      return !m($$4) || $$4.c(b) != $$0.c(b) || $$4.c(c) != $$0.c(c);
+   }
+
+   public static boolean m(dtc $$0) {
+      return $$0.b() instanceof dnt;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      ji $$2 = $$0.c(b);
+      dul $$3 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            if ($$2.o() == ji.a.c) {
+               switch ($$3) {
+                  case b:
+                     return $$0.a(dmm.c).a(d, dul.c);
+                  case c:
+                     return $$0.a(dmm.c).a(d, dul.b);
+                  case d:
+                     return $$0.a(dmm.c).a(d, dul.e);
+                  case e:
+                     return $$0.a(dmm.c).a(d, dul.d);
+                  default:
+                     return $$0.a(dmm.c);
+               }
+            }
+            break;
+         case c:
+            if ($$2.o() == ji.a.a) {
+               switch ($$3) {
+                  case b:
+                     return $$0.a(dmm.c).a(d, dul.b);
+                  case c:
+                     return $$0.a(dmm.c).a(d, dul.c);
+                  case d:
+                     return $$0.a(dmm.c).a(d, dul.e);
+                  case e:
+                     return $$0.a(dmm.c).a(d, dul.d);
+                  case a:
+                     return $$0.a(dmm.c);
+               }
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b, c, d, e);
+   }
+
+   @Override
+   protected epc b_(dtc $$0) {
+      return $$0.c(e) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

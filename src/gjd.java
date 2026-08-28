@@ -1,19 +1,16 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public class gjd extends gln<cgk, fue> {
+   private static final akr a = akr.b("textures/entity/allay/allay.png");
 
-public class gjd extends glj<cgo, fug<cgo>> {
-   private static final Map<cgo.d, akq> a = ad.a(Maps.newHashMap(), $$0 -> {
-      for (cgo.d $$1 : cgo.d.values()) {
-         $$0.put($$1, akq.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public gjd(gkd.a $$0) {
-      super($$0, new fug<>($$0.a(fyd.f)), 0.5F);
+   public gjd(gkh.a $$0) {
+      super($$0, new fue($$0.a(fyh.a)), 0.4F);
+      this.a(new gom<>(this, $$0.d()));
    }
 
-   public akq a(cgo $$0) {
-      return a.get($$0.gm());
+   public akr a(cgk $$0) {
+      return a;
+   }
+
+   protected int a(cgk $$0, jd $$1) {
+      return 15;
    }
 }

@@ -1,104 +1,255 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dox extends dmx {
-   public static final MapCodec<dox> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dun.a.fieldOf("wood_type").forGetter(dmx::d), u()).apply($$0, dox::new));
-   public static final dtu b = djs.aE;
-   protected static final float c = 2.0F;
-   protected static final float d = 4.5F;
-   protected static final float e = 12.5F;
-   private static final Map<ji, exp> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         ji.c,
-         dfw.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
-         ji.d,
-         dfw.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
-         ji.f,
-         dfw.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
-         ji.e,
-         dfw.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
-      )
-   );
+public class dox extends dfy implements dna {
+   public static final MapCodec<dox> a = b(dox::new);
+   public static final dtt b = dts.J;
+   public static final dua<duo> c = dts.W;
+   public static final dua<duo> d = dts.X;
+   public static final dua<duo> e = dts.Y;
+   public static final dua<duo> f = dts.Z;
+   public static final dtt g = dts.C;
+   private final Map<dtc, ext> h;
+   private final Map<dtc, ext> i;
+   private static final int j = 3;
+   private static final int k = 14;
+   private static final int l = 4;
+   private static final int m = 1;
+   private static final int n = 7;
+   private static final int o = 9;
+   private static final ext F = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ext G = dfy.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
+   private static final ext H = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
+   private static final ext I = dfy.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ext J = dfy.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
 
    @Override
    public MapCodec<dox> a() {
       return a;
    }
 
-   public dox(dun $$0, dsz.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, ji.c).a(f, Boolean.valueOf(false)));
+   public dox(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)).a(d, duo.a).a(c, duo.a).a(e, duo.a).a(f, duo.a).a(g, Boolean.valueOf(false)));
+      this.h = this.a(4.0F, 3.0F, 16.0F, 0.0F, 14.0F, 16.0F);
+      this.i = this.a(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, 24.0F);
    }
 
-   @Override
-   public String g() {
-      return this.r().a();
+   private static ext a(ext $$0, duo $$1, ext $$2, ext $$3) {
+      if ($$1 == duo.c) {
+         return exq.a($$0, $$3);
+      } else {
+         return $$1 == duo.b ? exq.a($$0, $$2) : $$0;
+      }
    }
 
-   @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return i.get($$0.c(b));
-   }
+   private Map<dtc, ext> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 8.0F - $$0;
+      float $$7 = 8.0F + $$0;
+      float $$8 = 8.0F - $$1;
+      float $$9 = 8.0F + $$1;
+      ext $$10 = dfy.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
+      ext $$11 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
+      ext $$12 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
+      ext $$13 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
+      ext $$14 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
+      ext $$15 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
+      ext $$16 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
+      ext $$17 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
+      ext $$18 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
+      Builder<dtc, ext> $$19 = ImmutableMap.builder();
 
-   @Override
-   protected boolean a(dta $$0, dcx $$1, jd $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
-   }
+      for (Boolean $$20 : b.a()) {
+         for (duo $$21 : c.a()) {
+            for (duo $$22 : d.a()) {
+               for (duo $$23 : f.a()) {
+                  for (duo $$24 : e.a()) {
+                     ext $$25 = exq.a();
+                     $$25 = a($$25, $$21, $$14, $$18);
+                     $$25 = a($$25, $$23, $$13, $$17);
+                     $$25 = a($$25, $$22, $$11, $$15);
+                     $$25 = a($$25, $$24, $$12, $$16);
+                     if ($$20) {
+                        $$25 = exq.a($$25, $$10);
+                     }
 
-   @Nullable
-   @Override
-   public dta a(cyb $$0) {
-      dta $$1 = this.o();
-      eoy $$2 = $$0.q().b_($$0.a());
-      dcx $$3 = $$0.q();
-      jd $$4 = $$0.a();
-      ji[] $$5 = $$0.f();
-
-      for (ji $$6 : $$5) {
-         if ($$6.o().d()) {
-            ji $$7 = $$6.g();
-            $$1 = $$1.a(b, $$7);
-            if ($$1.a($$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == eoz.c));
+                     dtc $$26 = this.o().a(b, $$20).a(c, $$21).a(f, $$23).a(d, $$22).a(e, $$24);
+                     $$19.put($$26.a(g, Boolean.valueOf(false)), $$25);
+                     $$19.put($$26.a(g, Boolean.valueOf(true)), $$25);
+                  }
+               }
             }
          }
       }
 
-      return null;
+      return $$19.build();
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return this.h.get($$0);
    }
 
    @Override
-   public float g(dta $$0) {
-      return $$0.c(b).p();
+   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return this.i.get($$0);
    }
 
    @Override
-   public eww m(dta $$0) {
-      exp $$1 = i.get($$0.c(b));
-      return $$1.a().f();
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
+   }
+
+   private boolean a(dtc $$0, boolean $$1, ji $$2) {
+      dfy $$3 = $$0.b();
+      boolean $$4 = $$3 instanceof dix && dix.a($$0, $$2);
+      return $$0.a(awe.L) || !j($$0) && $$1 || $$3 instanceof djz || $$4;
    }
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public dtc a(cyd $$0) {
+      dcz $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      epc $$3 = $$0.q().b_($$0.a());
+      jd $$4 = $$2.f();
+      jd $$5 = $$2.i();
+      jd $$6 = $$2.g();
+      jd $$7 = $$2.h();
+      jd $$8 = $$2.d();
+      dtc $$9 = $$1.a_($$4);
+      dtc $$10 = $$1.a_($$5);
+      dtc $$11 = $$1.a_($$6);
+      dtc $$12 = $$1.a_($$7);
+      dtc $$13 = $$1.a_($$8);
+      boolean $$14 = this.a($$9, $$9.d($$1, $$4, ji.d), ji.d);
+      boolean $$15 = this.a($$10, $$10.d($$1, $$5, ji.e), ji.e);
+      boolean $$16 = this.a($$11, $$11.d($$1, $$6, ji.c), ji.c);
+      boolean $$17 = this.a($$12, $$12.d($$1, $$7, ji.f), ji.f);
+      dtc $$18 = this.o().a(g, Boolean.valueOf($$3.a() == epd.c));
+      return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
    }
 
    @Override
-   protected dta a(dta $$0, dkt $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
+      }
+
+      if ($$1 == ji.a) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return $$1 == ji.b ? this.a($$3, $$0, $$5, $$2) : this.a($$3, $$4, $$0, $$5, $$2, $$1);
+      }
+   }
+
+   private static boolean a(dtc $$0, duf<duo> $$1) {
+      return $$0.c($$1) != duo.a;
+   }
+
+   private static boolean a(ext $$0, ext $$1) {
+      return !exq.c($$1, $$0, exe.e);
+   }
+
+   private dtc a(dcz $$0, dtc $$1, jd $$2, dtc $$3) {
+      boolean $$4 = a($$1, d);
+      boolean $$5 = a($$1, c);
+      boolean $$6 = a($$1, e);
+      boolean $$7 = a($$1, f);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private dtc a(dcz $$0, jd $$1, dtc $$2, jd $$3, dtc $$4, ji $$5) {
+      ji $$6 = $$5.g();
+      boolean $$7 = $$5 == ji.c ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, d);
+      boolean $$8 = $$5 == ji.f ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, c);
+      boolean $$9 = $$5 == ji.d ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, e);
+      boolean $$10 = $$5 == ji.e ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, f);
+      jd $$11 = $$1.d();
+      dtc $$12 = $$0.a_($$11);
+      return this.a($$0, $$2, $$11, $$12, $$7, $$8, $$9, $$10);
+   }
+
+   private dtc a(dcz $$0, dtc $$1, jd $$2, dtc $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
+      ext $$8 = $$3.k($$0, $$2).a(ji.a);
+      dtc $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
+      return $$9.a(b, Boolean.valueOf(this.a($$9, $$3, $$8)));
+   }
+
+   private boolean a(dtc $$0, dtc $$1, ext $$2) {
+      boolean $$3 = $$1.b() instanceof dox && $$1.c(b);
+      if ($$3) {
+         return true;
+      } else {
+         duo $$4 = $$0.c(d);
+         duo $$5 = $$0.c(e);
+         duo $$6 = $$0.c(c);
+         duo $$7 = $$0.c(f);
+         boolean $$8 = $$5 == duo.a;
+         boolean $$9 = $$7 == duo.a;
+         boolean $$10 = $$6 == duo.a;
+         boolean $$11 = $$4 == duo.a;
+         boolean $$12 = $$11 && $$8 && $$9 && $$10 || $$11 != $$8 || $$9 != $$10;
+         if ($$12) {
+            return true;
+         } else {
+            boolean $$13 = $$4 == duo.c && $$5 == duo.c || $$6 == duo.c && $$7 == duo.c;
+            return $$13 ? false : $$1.a(awe.aO) || a($$2, F);
+         }
+      }
+   }
+
+   private dtc a(dtc $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, ext $$5) {
+      return $$0.a(d, this.a($$1, $$5, G)).a(c, this.a($$2, $$5, J)).a(e, this.a($$3, $$5, H)).a(f, this.a($$4, $$5, I));
+   }
+
+   private duo a(boolean $$0, ext $$1, ext $$2) {
+      if ($$0) {
+         return a($$1, $$2) ? duo.c : duo.b;
+      } else {
+         return duo.a;
+      }
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b, f);
+   protected epc b_(dtc $$0) {
+      return $$0.c(g) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(dtc $$0, dcc $$1, jd $$2) {
+      return !$$0.c(g);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b, d, c, f, e, g);
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmm $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(d, $$0.c(e)).a(c, $$0.c(f)).a(e, $$0.c(d)).a(f, $$0.c(c));
+         case d:
+            return $$0.a(d, $$0.c(c)).a(c, $$0.c(e)).a(e, $$0.c(f)).a(f, $$0.c(d));
+         case b:
+            return $$0.a(d, $$0.c(f)).a(c, $$0.c(d)).a(e, $$0.c(c)).a(f, $$0.c(e));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(d, $$0.c(e)).a(e, $$0.c(d));
+         case c:
+            return $$0.a(c, $$0.c(f)).a(f, $$0.c(c));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

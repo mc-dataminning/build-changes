@@ -1,55 +1,118 @@
 public class cpq {
-   public static final cpp a = new cpp.a().a(4).a(0.3F).c();
-   public static final cpp b = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp c = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp d = new cpp.a().a(1).a(0.6F).c();
-   public static final cpp e = a(6).c();
-   public static final cpp f = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp g = new cpp.a().a(3).a(0.6F).c();
-   public static final cpp h = new cpp.a().a(2).a(0.3F).a(new bry(bsa.q, 600, 0), 0.3F).c();
-   public static final cpp i = new cpp.a().a(4).a(0.3F).a().c();
-   public static final cpp j = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp k = new cpp.a().a(8).a(0.8F).c();
-   public static final cpp l = new cpp.a().a(6).a(0.6F).c();
-   public static final cpp m = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp n = new cpp.a().a(6).a(0.8F).c();
-   public static final cpp o = new cpp.a().a(8).a(0.8F).c();
-   public static final cpp p = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp q = new cpp.a().a(6).a(0.8F).c();
-   public static final cpp r = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp s = new cpp.a().a(1).a(0.3F).b().c();
-   public static final cpp t = new cpp.a()
-      .a(4)
-      .a(1.2F)
-      .a(new bry(bsa.j, 400, 1), 1.0F)
-      .a(new bry(bsa.k, 6000, 0), 1.0F)
-      .a(new bry(bsa.l, 6000, 0), 1.0F)
-      .a(new bry(bsa.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cpp u = new cpp.a().a(4).a(1.2F).a(new bry(bsa.j, 100, 1), 1.0F).a(new bry(bsa.v, 2400, 0), 1.0F).a().c();
-   public static final cpp v = new cpp.a().a(6).a(1.2F).c();
-   public static final cpp w = new cpp.a().a(6).a(0.1F).c();
-   public static final cpp x = new cpp.a().a(2).a(0.3F).c();
-   public static final cpp y = a(6).c();
-   public static final cpp z = new cpp.a().a(2).a(0.3F).c();
-   public static final cpp A = new cpp.a().a(2).a(0.3F).a(new bry(bsa.s, 100, 0), 0.6F).c();
-   public static final cpp B = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp C = new cpp.a().a(1).a(0.3F).c();
-   public static final cpp D = new cpp.a().a(1).a(0.1F).a(new bry(bsa.s, 1200, 1), 1.0F).a(new bry(bsa.q, 300, 2), 1.0F).a(new bry(bsa.i, 300, 0), 1.0F).c();
-   public static final cpp E = new cpp.a().a(8).a(0.3F).c();
-   public static final cpp F = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp G = a(10).c();
-   public static final cpp H = new cpp.a().a(4).a(0.1F).a(new bry(bsa.q, 600, 0), 0.8F).c();
-   public static final cpp I = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp J = new cpp.a().a(2).a(0.8F).a(new bry(bsa.s, 100, 0), 1.0F).c();
-   public static final cpp K = a(6).a().c();
-   public static final cpp L = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp M = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp N = new cpp.a().a(1).a(0.1F).c();
-   public static final cpp O = new cpp.a().a(1).a(0.1F).c();
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-   private static cpp.a a(int $$0) {
-      return new cpp.a().a($$0).a(0.6F).a(cur.ot);
+   public cpq() {
+      this.b = 5.0F;
+   }
+
+   private void b(int $$0, float $$1) {
+      this.a = ayo.a($$0 + this.a, 0, 20);
+      this.b = ayo.a($$1 + this.b, 0.0F, (float)this.a);
+   }
+
+   public void a(int $$0, float $$1) {
+      this.b($$0, cpp.a($$0, $$1));
+   }
+
+   public void a(cpr $$0) {
+      this.b($$0.b(), $$0.c());
+   }
+
+   public void a(cmx $$0) {
+      bqo $$1 = $$0.dP().al();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bqo.a) {
+            this.a = Math.max(this.a - 1, 0);
+         }
+      }
+
+      boolean $$2 = $$0.dP().ab().b(dcs.k);
+      if ($$2 && this.b > 0.0F && $$0.gk() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
+         }
+      } else if ($$2 && this.a >= 18 && $$0.gk()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.ex() > 10.0F || $$1 == bqo.d || $$0.ex() > 1.0F && $$1 == bqo.c) {
+               $$0.a($$0.dQ().j(), 1.0F);
+            }
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
+      }
+   }
+
+   public void a(ub $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
+   }
+
+   public void b(ub $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

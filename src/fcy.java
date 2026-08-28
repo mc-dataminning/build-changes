@@ -1,46 +1,40 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcy extends fcw {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public fcy.a i = fcy.a.a;
+public class fcy extends fda {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fcy.a c = fcy.a.a;
 
-   public static fcy a(JsonObject $$0) {
+   public static fcy a(String $$0) {
       fcy $$1 = new fcy();
 
       try {
-         $$1.a = fet.b("id", $$0, "");
-         $$1.b = fet.b("name", $$0, "");
-         $$1.c = fet.b("version", $$0, "");
-         $$1.d = fet.b("author", $$0, "");
-         $$1.e = fet.b("link", $$0, "");
-         $$1.f = fet.b("image", $$0, null);
-         $$1.g = fet.b("trailer", $$0, "");
-         $$1.h = fet.b("recommendedPlayers", $$0, "");
-         $$1.i = fcy.a.valueOf(fet.b("type", $$0, fcy.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fex.a("startDate", $$3, 0L);
+         $$1.b = fex.a("daysLeft", $$3, 0);
+         $$1.c = b(fex.b("subscriptionType", $$3, fcy.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
       }
 
       return $$1;
    }
 
+   private static fcy.a b(String $$0) {
+      try {
+         return fcy.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fcy.a.a;
+      }
+   }
+
    public static enum a {
       a,
-      b,
-      c,
-      d,
-      e;
+      b;
    }
 }

@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public final class ddi implements duv {
+   private final int a;
+   private final dtc[] b;
 
-public class ddi {
-   private final List<ddi.a> a = Lists.newArrayList();
-
-   public void a(jd $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new ddi.a($$0, $$1));
-      }
+   public ddi(int $$0, dtc[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public double b(jd $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
+   @Override
+   public dtc a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dga.a.o();
+   }
+
+   @Override
+   public void a(int $$0, dtc $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         double $$2 = 0.0;
-
-         for (ddi.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
-   }
-
-   static class a {
-      private final jd a;
-      private final double b;
-
-      public a(jd $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(jd $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
    }
 }

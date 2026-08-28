@@ -18,7 +18,7 @@ public record bt(
             .apply($$0, bt::new)
    );
 
-   public boolean a(bsq $$0) {
+   public boolean a(bsr $$0) {
       if (this.b.isPresent() && $$0.aF() != this.b.get()) {
          return false;
       } else if (this.c.isPresent() && $$0.bR() != this.c.get()) {
@@ -33,7 +33,7 @@ public record bt(
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof btl $$1 && ($$1.fB() || $$1 instanceof cmv $$2 && $$2.ga().b)) {
+               if ($$0 instanceof btn $$1 && ($$1.fB() || $$1 instanceof cmx $$2 && $$2.ga().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bt(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof btl $$4 && $$4.o_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof btn $$4 && $$4.o_() != this.h.get()) {
             return false;
          }
 

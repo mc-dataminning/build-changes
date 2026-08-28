@@ -1,232 +1,122 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.BooleanSupplier;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ceq extends dwq<ces> {
-   public static final int a = 6;
-   public static final int b = 1;
-   private final ceq.a d;
-   private final LongSet e = new LongOpenHashSet();
+public class ceq implements dcj {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private ceq.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public ceq(dwp $$0, Path $$1, DataFixer $$2, boolean $$3, ka $$4, dcw $$5) {
-      super(new dwr($$0, $$1, $$2, $$3, azv.q), ces::a, ces::new, $$4, $$5);
-      this.d = new ceq.a();
-   }
-
-   public void a(jd $$0, jm<cet> $$1) {
-      this.f(kf.c($$0)).a($$0, $$1);
-   }
-
-   public void a(jd $$0) {
-      this.d(kf.c($$0)).ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public long a(Predicate<jm<cet>> $$0, jd $$1, int $$2, ceq.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).count();
-   }
-
-   public boolean a(akp<cet> $$0, jd $$1) {
-      return this.a($$1, (Predicate<jm<cet>>)($$1x -> $$1x.a($$0)));
-   }
-
-   public Stream<cer> b(Predicate<jm<cet>> $$0, jd $$1, int $$2, ceq.b $$3) {
-      int $$4 = Math.floorDiv($$2, 16) + 1;
-      return dcb.a(new dcb($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
-         jd $$3x = $$2x.f();
-         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
-      });
-   }
-
-   public Stream<cer> c(Predicate<jm<cet>> $$0, jd $$1, int $$2, ceq.b $$3) {
-      int $$4 = $$2 * $$2;
-      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.f().j($$1) <= (double)$$4);
-   }
-
-   @azs
-   public Stream<cer> a(Predicate<jm<cet>> $$0, dcb $$1, ceq.b $$2) {
-      return IntStream.range(this.c.ao(), this.c.ap())
-         .boxed()
-         .map($$1x -> this.d(kf.a($$1, $$1x).s()))
-         .filter(Optional::isPresent)
-         .flatMap($$2x -> ((ces)$$2x.get()).a($$0, $$2));
-   }
-
-   public Stream<jd> a(Predicate<jm<cet>> $$0, Predicate<jd> $$1, jd $$2, int $$3, ceq.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(cer::f).filter($$1);
-   }
-
-   public Stream<Pair<jm<cet>, jd>> b(Predicate<jm<cet>> $$0, Predicate<jd> $$1, jd $$2, int $$3, ceq.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.f())).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
-   }
-
-   public Stream<Pair<jm<cet>, jd>> c(Predicate<jm<cet>> $$0, Predicate<jd> $$1, jd $$2, int $$3, ceq.b $$4) {
-      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((jd)$$1x.getSecond()).j($$2)));
-   }
-
-   public Optional<jd> d(Predicate<jm<cet>> $$0, Predicate<jd> $$1, jd $$2, int $$3, ceq.b $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
-   }
-
-   public Optional<jd> d(Predicate<jm<cet>> $$0, jd $$1, int $$2, ceq.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).map(cer::f).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
-   }
-
-   public Optional<Pair<jm<cet>, jd>> e(Predicate<jm<cet>> $$0, jd $$1, int $$2, ceq.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.f().j($$1))).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
-   }
-
-   public Optional<jd> e(Predicate<jm<cet>> $$0, Predicate<jd> $$1, jd $$2, int $$3, ceq.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(cer::f).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
-   }
-
-   public Optional<jd> a(Predicate<jm<cet>> $$0, BiPredicate<jm<cet>, jd> $$1, jd $$2, int $$3) {
-      return this.c($$0, $$2, $$3, ceq.b.a).filter($$1x -> $$1.test($$1x.g(), $$1x.f())).findFirst().map($$0x -> {
-         $$0x.b();
-         return $$0x.f();
-      });
-   }
-
-   public Optional<jd> a(Predicate<jm<cet>> $$0, Predicate<jd> $$1, ceq.b $$2, jd $$3, int $$4, ayv $$5) {
-      List<cer> $$6 = ad.a(this.c($$0, $$3, $$4, $$2), $$5);
-      return $$6.stream().filter($$1x -> $$1.test($$1x.f())).findFirst().map(cer::f);
-   }
-
-   public boolean b(jd $$0) {
-      return this.d(kf.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ad.b(new IllegalStateException("POI never registered at " + $$0)));
-   }
-
-   public boolean a(jd $$0, Predicate<jm<cet>> $$1) {
-      return this.d(kf.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
-   }
-
-   public Optional<jm<cet>> c(jd $$0) {
-      return this.d(kf.c($$0)).flatMap($$1 -> $$1.d($$0));
-   }
-
-   @Deprecated
-   @azs
-   public int d(jd $$0) {
-      return this.d(kf.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
-   }
-
-   public int a(kf $$0) {
-      this.d.a();
-      return this.d.c($$0.s());
-   }
-
-   boolean g(long $$0) {
-      Optional<ces> $$1 = this.c($$0);
-      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(awo.b), ceq.b.b).findAny().isPresent()).orElse(false);
+   public ceq() {
+      this.c = ceq.a.c;
    }
 
    @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      this.d.a();
-   }
-
-   @Override
-   protected void a(long $$0) {
-      super.a($$0);
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   @Override
-   protected void b(long $$0) {
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   public void a(kf $$0, dvh $$1) {
-      ad.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
-            if (a($$1)) {
-               this.a($$1, $$0, $$2x);
-            }
-         }), () -> {
-         if (a($$1)) {
-            ces $$2 = this.f($$0.s());
-            this.a($$1, $$0, $$2::a);
+   public int a(aqu $$0, boolean $$1, boolean $$2) {
+      if (!$$0.R() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? ceq.a.b : ceq.a.c;
          }
-      });
-   }
 
-   private static boolean a(dvh $$0) {
-      return $$0.a(ceu::b);
-   }
-
-   private void a(dvh $$0, kf $$1, BiConsumer<jd, jm<cet>> $$2) {
-      $$1.t().forEach($$2x -> {
-         dta $$3 = $$0.a(kf.b($$2x.u()), kf.b($$2x.v()), kf.b($$2x.w()));
-         ceu.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
-      });
-   }
-
-   public void a(dcx $$0, jd $$1, int $$2) {
-      kf.a(new dcb($$1), Math.floorDiv($$2, 16), this.c.ao(), this.c.ap())
-         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
-         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(ces::a).orElse(false))
-         .map($$0x -> ((kf)$$0x.getFirst()).r())
-         .filter($$0x -> this.e.add($$0x.a()))
-         .forEach($$1x -> $$0.a($$1x.e, $$1x.f, dvx.c));
-   }
-
-   final class a extends aqp {
-      private final Long2ByteMap b = new Long2ByteOpenHashMap();
-
-      protected a() {
-         super(7, 16, 256);
-         this.b.defaultReturnValue((byte)7);
-      }
-
-      @Override
-      protected int b(long $$0) {
-         return ceq.this.g($$0) ? 0 : 7;
-      }
-
-      @Override
-      protected int c(long $$0) {
-         return this.b.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         if ($$1 > 6) {
-            this.b.remove($$0);
+         if (this.c == ceq.a.c) {
+            return 0;
          } else {
-            this.b.put($$0, (byte)$$1);
-         }
-      }
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
 
-      public void a() {
-         super.b(Integer.MAX_VALUE);
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = ceq.a.c;
+               }
+
+               return 1;
+            }
+         }
+      } else {
+         this.c = ceq.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   public static enum b {
-      a(cer::d),
-      b(cer::e),
-      c($$0 -> true);
+   private boolean a(aqu $$0) {
+      for (cmx $$1 : $$0.x()) {
+         if (!$$1.R_()) {
+            jd $$2 = $$1.dp();
+            if ($$0.c($$2) && !$$0.t($$2).a(awd.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + ayo.d(ayo.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + ayo.d(ayo.a($$4) * 32.0F);
+                  if (this.a($$0, new jd(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
 
-      private final Predicate<? super cer> d;
-
-      private b(final Predicate<? super cer> $$0) {
-         this.d = $$0;
+               return true;
+            }
+         }
       }
 
-      public Predicate<? super cer> a() {
-         return this.d;
+      return false;
+   }
+
+   private void b(aqu $$0) {
+      exa $$1 = this.a($$0, new jd(this.f, this.g, this.h));
+      if ($$1 != null) {
+         ckw $$2;
+         try {
+            $$2 = new ckw($$0);
+            $$2.a($$0, $$0.d_($$2.dp()), btr.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
       }
+   }
+
+   @Nullable
+   private exa a(aqu $$0, jd $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dyy.a.b, $$3, $$4);
+         jd $$6 = new jd($$3, $$5, $$4);
+         if ($$0.c($$6) && ckd.b(bsx.bu, $$0, btr.h, $$6, $$0.z)) {
+            return exa.c($$6);
+         }
+      }
+
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

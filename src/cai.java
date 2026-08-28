@@ -1,77 +1,61 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cai extends cak {
-   private final buj a;
-   @Nullable
-   private btl b;
-   private final double c;
-   private final ccy d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
+public class cai extends cam {
+   private static final int a = 200;
+   private final cfd b;
+   private int c;
+   private int d;
 
-   public cai(buj $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.J();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(cak.a.a, cak.a.b));
-      if (!($$0.J() instanceof ccx) && !($$0.J() instanceof ccw)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public cai(cfd $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(cfd $$0) {
+      return b(200 + $$0.dS().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      btl $$0 = this.a.P_();
-      if ($$0 == null) {
+      if (this.b.gr()) {
          return false;
-      } else if (this.a.gp()) {
-         return false;
-      } else if (this.a.g((bsq)$$0) < (double)(this.g * this.g)) {
+      } else if (this.b.go()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         this.d = this.a(this.b);
+         Predicate<cfd> $$0 = $$0x -> $$0x.gq() || !$$0x.go();
+         List<? extends cfd> $$1 = this.b.dP().a((Class<? extends cfd>)this.b.getClass(), this.b.cL().c(8.0, 8.0, 8.0), $$0);
+         cfd $$2 = (cfd)DataFixUtils.orElse($$1.stream().filter(cfd::gq).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.go()));
+         return this.b.go();
       }
    }
 
    @Override
    public boolean c() {
-      if (this.d.l()) {
-         return false;
-      } else {
-         return this.a.gp() ? false : !(this.a.g((bsq)this.b) <= (double)(this.f * this.f));
-      }
+      return this.b.go() && this.b.gs();
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.h = this.a.a(epp.j);
-      this.a.a(epp.j, 0.0F);
+      this.c = 0;
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.d.n();
-      this.a.a(epp.j, this.h);
+      this.b.gp();
    }
 
    @Override
    public void a() {
-      this.a.F().a(this.b, 10.0F, (float)this.a.aa());
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if (this.a.go()) {
-            this.a.gn();
-         } else {
-            this.d.a(this.b, this.c);
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gt();
       }
    }
 }

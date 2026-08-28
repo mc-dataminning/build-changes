@@ -1,48 +1,46 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record ctj<T>(Optional<jm<T>> a, akp<T> b) {
-   public ctj(jm<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+public class ctj extends cul implements cvv {
+   private static final Map<cti, ctj> a = Maps.newEnumMap(cti.class);
+   private final cti b;
+
+   public ctj(cti $$0, cul.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
-   public ctj(akp<T> $$0) {
-      this(Optional.empty(), $$0);
+   @Override
+   public bqr a(cuq $$0, cmx $$1, btn $$2, bqq $$3) {
+      if ($$2 instanceof cga $$4 && $$4.bE() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dP().a($$1, $$4, avp.hM, avq.h, 1.0F, 1.0F);
+         if (!$$1.dP().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bqr.a($$1.dP().B);
+      }
+
+      return bqr.e;
    }
 
-   public static <T> Codec<ctj<T>> a(akp<jz<T>> $$0, Codec<jm<T>> $$1) {
-      return Codec.either($$1, akp.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(ctj::a, ctj::a);
-   }
-
-   public static <T> yw<wj, ctj<T>> a(akp<jz<T>> $$0, yw<wj, jm<T>> $$1) {
-      return yw.a(yu.a($$1, akp.b($$0)), ctj::a, ctj::a);
-   }
-
-   public Either<jm<T>, akp<T>> a() {
-      return this.a.<Either<jm<T>, akp<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> ctj<T> a(Either<jm<T>, akp<T>> $$0) {
-      return (ctj<T>)$$0.map(ctj::new, ctj::new);
-   }
-
-   public Optional<T> a(jz<T> $$0) {
-      return this.a.<T>map(jm::a).or(() -> $$0.e(this.b));
-   }
-
-   public Optional<jm<T>> a(jo.a $$0) {
-      return this.a.or(() -> $$0.b(this.b.c()).a(this.b));
-   }
-
-   public Optional<jm<T>> b() {
-      return this.a;
-   }
-
-   public akp<T> c() {
+   public cti c() {
       return this.b;
+   }
+
+   public static ctj a(cti $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(dcw $$0, drs $$1, boolean $$2, cmx $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.aD_(), avp.hM, avq.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

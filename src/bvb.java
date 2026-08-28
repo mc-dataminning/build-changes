@@ -1,38 +1,84 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
 
-public class bvb {
-   public static bvg<cmi> a() {
-      return bys.a(
-         (Function<bys.b<cmi>, ? extends App<bys.c<cmi>, byv<cmi>>>)($$0 -> $$0.group($$0.b(ccq.d), $$0.a(ccq.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jl $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.do(), 2.0) && !$$4.gw()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gx().b() != cml.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.o();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
-                                 .flatMap($$0xxx -> lt.x.t().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gx().a($$2xx));
-                                    $$4.a($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class bvb extends bvh<cfe> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bsx<? extends cfe> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
+
+   public bvb(bsx<? extends cfe> $$0) {
+      this($$0, 1.0F, 2);
+   }
+
+   public bvb(bsx<? extends cfe> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(ccs.h, cct.a, ccs.r, cct.b, ccs.m, cct.c, ccs.n, cct.c, ccs.Z, cct.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   protected boolean a(aqu $$0, cfe $$1) {
+      return $$1.gt() && this.c($$1).isPresent();
+   }
+
+   protected void a(aqu $$0, cfe $$1, long $$2) {
+      cfe $$3 = this.c($$1).get();
+      $$1.dU().a(ccs.r, $$3);
+      $$3.dU().a(ccs.r, $$1);
+      bvj.a($$1, (btn)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dS().a(50);
+      this.j = $$2 + (long)$$4;
+   }
+
+   protected boolean b(aqu $$0, cfe $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
+      } else {
+         cfe $$3 = this.a($$1);
+         return $$3.bE() && $$1.a($$3) && bvj.a($$1.dU(), $$3) && $$2 <= this.j && !$$1.gi() && !$$3.gi();
+      }
+   }
+
+   protected void c(aqu $$0, cfe $$1, long $$2) {
+      cfe $$3 = this.a($$1);
+      bvj.a($$1, (btn)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.dU().b(ccs.r);
+            $$3.dU().b(ccs.r);
+         }
+      }
+   }
+
+   protected void d(aqu $$0, cfe $$1, long $$2) {
+      $$1.dU().b(ccs.r);
+      $$1.dU().b(ccs.m);
+      $$1.dU().b(ccs.n);
+      this.j = 0L;
+   }
+
+   private cfe a(cfe $$0) {
+      return (cfe)$$0.dU().c(ccs.r).get();
+   }
+
+   private boolean b(cfe $$0) {
+      buq<?> $$1 = $$0.dU();
+      return $$1.a(ccs.r) && $$1.c(ccs.r).get().am() == this.f;
+   }
+
+   private Optional<? extends cfe> c(cfe $$0) {
+      return $$0.dU().c(ccs.h).get().a($$1 -> {
+         if ($$1.am() == this.f && $$1 instanceof cfe $$2 && $$0.a($$2) && !$$2.gi()) {
+            return true;
+         }
+
+         return false;
+      }).map(cfe.class::cast);
    }
 }

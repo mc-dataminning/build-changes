@@ -1,103 +1,74 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public class fnl extends fnx {
-   private static final long a = 2000L;
-   private final arg b;
-   private long c = -1L;
-   private boolean q;
-   private static final Object2IntMap<dvx> r = ad.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dvx.c, 5526612);
-      $$0.put(dvx.d, 10066329);
-      $$0.put(dvx.e, 6250897);
-      $$0.put(dvx.f, 8434258);
-      $$0.put(dvx.g, 13750737);
-      $$0.put(dvx.h, 7497737);
-      $$0.put(dvx.i, 3159410);
-      $$0.put(dvx.j, 2213376);
-      $$0.put(dvx.k, 13421772);
-      $$0.put(dvx.l, 16769184);
-      $$0.put(dvx.m, 15884384);
-      $$0.put(dvx.n, 16777215);
-   });
+public class fnl implements AutoCloseable {
+   private static final akr a = akr.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gqk d;
+   private final akr e;
+   @Nullable
+   private gpw f;
+   private boolean g;
 
-   public fnl(arg $$0) {
-      super(fga.a);
-      this.b = $$0;
+   private fnl(gqk $$0, akr $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public boolean aF_() {
-      return false;
+   public static fnl a(gqk $$0, String $$1) {
+      return new fnl($$0, akr.b("worlds/" + ad.a($$1, akr::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected boolean aO_() {
-      return false;
+   public static fnl b(gqk $$0, String $$1) {
+      return new fnl($$0, akr.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   public void j() {
-      this.q = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fmc $$0) {
-      if (this.q) {
-         $$0.a(fmb.a, wy.c("narrator.loading.done"));
-      } else {
-         $$0.a(fmb.a, this.m());
-      }
-   }
-
-   private wy m() {
-      return wy.a("loading.progress", ayn.a(this.b.f(), 0, 100));
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ad.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.m / 2;
-      int $$6 = this.n / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.o, this.m(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(fht $$0, arg $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dvx $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
+   public void a(fah $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gpw($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
             }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
          }
-      });
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public akr b() {
+      return this.f != null ? this.e : a;
+   }
+
+   @Override
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

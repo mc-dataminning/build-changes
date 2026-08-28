@@ -1,25 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record ddp(dci d, cpj e) {
-   public static final String a = "enabled_features";
-   public static final Codec<ddp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dci.b.lenientOptionalFieldOf("DataPacks", dci.a).forGetter(ddp::a), cpl.e.lenientOptionalFieldOf("enabled_features", cpl.g).forGetter(ddp::b)
-            )
-            .apply($$0, ddp::new)
-   );
-   public static final ddp c = new ddp(dci.a, cpl.g);
+public interface ddp {
+   void a(bsx<?> var1, ayw var2);
 
-   public ddp a(cpj $$0) {
-      return new ddp(this.d, this.e.c($$0));
+   static void a(cuq $$0, List<wz> $$1, String $$2) {
+      wz $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(wy.a);
+         $$1.add(wz.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(wy.a().b(wz.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public dci a() {
-      return this.d;
+   @Nullable
+   static wz a(cuq $$0, String $$1) {
+      ub $$2 = $$0.a(kq.O, cxh.a).d();
+      akr $$3 = a($$2, $$1);
+      return $$3 != null ? lt.f.b($$3).map($$0x -> wz.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public cpj b() {
-      return this.e;
+   @Nullable
+   private static akr a(ub $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return akr.c($$2);
+      } else {
+         return null;
+      }
    }
 }

@@ -1,24 +1,23 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public record dba(akq d) implements daq {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dba> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akq.a.fieldOf("function").forGetter(dba::b)).apply($$0, dba::new));
+public record dba(kh d, Optional<eaf> e, egi f, Optional<jm<dxz>> g) implements das {
+   public static final MapCodec<dba> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kh.f.optionalFieldOf("offset", kh.g).forGetter(dba::b),
+               eaf.b.optionalFieldOf("predicate").forGetter(dba::c),
+               egi.a.fieldOf("block_state").forGetter(dba::d),
+               dxz.aj.optionalFieldOf("trigger_game_event").forGetter(dba::e)
+            )
+            .apply($$0, dba::new)
+   );
 
    @Override
-   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
-      MinecraftServer $$5 = $$0.o();
-      alf $$6 = $$5.aF();
-      Optional<ig<et>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         et $$8 = $$5.aI().a(2).a().a($$3).a($$0).a($$4).a($$3.bN());
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+      jd $$5 = jd.a((jw)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dS(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -27,7 +26,19 @@ public record dba(akq d) implements daq {
       return a;
    }
 
-   public akq b() {
+   public kh b() {
       return this.d;
+   }
+
+   public Optional<eaf> c() {
+      return this.e;
+   }
+
+   public egi d() {
+      return this.f;
+   }
+
+   public Optional<jm<dxz>> e() {
+      return this.g;
    }
 }

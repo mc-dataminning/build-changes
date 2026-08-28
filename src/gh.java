@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gh extends gd<dmk> {
+public class gh extends gd<dmm> {
    private gh() {
-      super(dmk.e, dmk::values);
+      super(dmm.e, dmm::values);
    }
 
    public static gh a() {
       return new gh();
    }
 
-   public static dmk a(CommandContext<et> $$0, String $$1) {
-      return (dmk)$$0.getArgument($$1, dmk.class);
+   public static dmm a(CommandContext<et> $$0, String $$1) {
+      return (dmm)$$0.getArgument($$1, dmm.class);
    }
 }

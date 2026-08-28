@@ -1,17 +1,26 @@
-public record aal(dya c, int d) implements aai {
-   public static final yw<wj, aal> a = yw.a(dya.d, aal::b, yu.g, aal::c, aal::new);
-   public static final aai.b<aal> b = aai.a("debug/game_event_listeners");
+public record aal(akq<dxz> c, exa d) implements aaj {
+   public static final yx<vw, aal> a = aaj.a(aal::a, aal::new);
+   public static final aaj.b<aal> b = aaj.a("debug/game_event");
+
+   private aal(vw $$0) {
+      this($$0.a(lu.G), $$0.k());
+   }
+
+   private void a(vw $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
+   }
 
    @Override
-   public aai.b<aal> a() {
+   public aaj.b<aal> a() {
       return b;
    }
 
-   public dya b() {
+   public akq<dxz> b() {
       return this.c;
    }
 
-   public int c() {
+   public exa c() {
       return this.d;
    }
 }

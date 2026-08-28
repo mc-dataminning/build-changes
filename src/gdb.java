@@ -1,25 +1,20 @@
-public class gdb extends gdo {
-   gdb(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+public class gdb extends gcd {
+   protected gdb(fzd $$0, double $$1, double $$2, double $$3, double $$4, gdg $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   public static class a implements gck<lq> {
-      private final gdc a;
+   public static class a implements gco<lq> {
+      private final gdg a;
 
-      public a(gdc $$0) {
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdb $$8 = new gdb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdb($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

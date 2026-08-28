@@ -1,59 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhk extends dfw {
-   public static final MapCodec<dhk> a = b(dhk::new);
-   public static final dtr b = dtq.w;
-   public static final dtr c = dtq.r;
+public class dhk extends diu {
+   public static final MapCodec<dhk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lt.e.r().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, dhk::new)
+   );
+   private final dfy b;
 
    @Override
-   protected MapCodec<? extends dhk> a() {
+   public MapCodec<dhk> a() {
       return a;
    }
 
-   public dhk(dsz.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   public dhk(dfy $$0, dtb.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof aqt $$5) {
-         this.a($$0, $$5, $$2);
+   public void a(dcw $$0, jd $$1, dtc $$2, dtc $$3, cjg $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
       }
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3, jd $$4, boolean $$5) {
-      if ($$1 instanceof aqt $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public dtc a(cyd $$0) {
+      dcc $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
    }
 
-   public void a(dta $$0, aqt $$1, jd $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dta $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? avo.fG : avo.fH, avp.e);
+   private static boolean a(dcc $$0, jd $$1, dtc $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dcc $$0, jd $$1) {
+      boolean $$2 = false;
+      jd.a $$3 = $$1.k();
+
+      for (ji $$4 : ji.values()) {
+         dtc $$5 = $$0.a_($$3);
+         if ($$4 != ji.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+
+      return $$2;
+   }
+
+   private static boolean n(dtc $$0) {
+      return $$0.u().a(awk.a);
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(c, b);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean c_(dta $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dta $$0, dcu $$1, jd $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public int b(dtc $$0, dcc $$1, jd $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

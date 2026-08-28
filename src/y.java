@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record y(String e, List<String> f) {
+public record y(String f, List<String> g) {
    public static final y a = new y(
       "Minecraft Crash Report",
       List.of(
@@ -76,7 +76,7 @@ public record y(String e, List<String> f) {
    public static final y d = new y(
       "Minecraft Network Protocol Error Report",
       List.of(
-         "0xBADFOOD",
+         "0xBADF00D",
          "+'${`%&NO CARRIER",
          "Please insert The Internet CD #4",
          "Sabotage!",
@@ -97,10 +97,29 @@ public record y(String e, List<String> f) {
          "I heard pigeons are more reliable"
       )
    );
+   public static final y e = new y(
+      "Minecraft Chunk IO Error Report",
+      List.of(
+         "I have failed you!",
+         "Let's not do it again...",
+         "Worst magic trick ever!",
+         "Remember to backup your worlds regularly",
+         "Pirates stole your chunk!",
+         "Ker-chunk!",
+         "Ideally, this shouldn't be here",
+         "Let's hope it wasn't anything important",
+         "Computers were a mistake",
+         "Welp",
+         "Not my proudest moment",
+         "Who needs blocks in a block game, right?",
+         "This chunk is no more...it has ceased to be...this is an EX-chunk",
+         "loss.mca"
+      )
+   );
 
    public String a() {
       try {
-         return this.f.get((int)(ad.d() % (long)this.f.size()));
+         return this.g.get((int)(ad.d() % (long)this.g.size()));
       } catch (Throwable var2) {
          return "Witty comment unavailable :(";
       }
@@ -124,10 +143,10 @@ public record y(String e, List<String> f) {
    }
 
    public String b() {
-      return this.e;
+      return this.f;
    }
 
    public List<String> c() {
-      return this.f;
+      return this.g;
    }
 }

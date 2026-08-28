@@ -1,51 +1,48 @@
-public interface cuv {
-   akp<cut> a = a("13");
-   akp<cut> b = a("cat");
-   akp<cut> c = a("blocks");
-   akp<cut> d = a("chirp");
-   akp<cut> e = a("far");
-   akp<cut> f = a("mall");
-   akp<cut> g = a("mellohi");
-   akp<cut> h = a("stal");
-   akp<cut> i = a("strad");
-   akp<cut> j = a("ward");
-   akp<cut> k = a("11");
-   akp<cut> l = a("wait");
-   akp<cut> m = a("pigstep");
-   akp<cut> n = a("otherside");
-   akp<cut> o = a("5");
-   akp<cut> p = a("relic");
-   akp<cut> q = a("precipice");
-   akp<cut> r = a("creator");
-   akp<cut> s = a("creator_music_box");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   private static akp<cut> a(String $$0) {
-      return akp.a(lu.L, akq.b($$0));
+public record cuv(jm<avo> e, wz f, float g, int h) {
+   public static final Codec<cuv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avo.b.fieldOf("sound_event").forGetter(cuv::b),
+               xb.a.fieldOf("description").forGetter(cuv::c),
+               axw.m.fieldOf("length_in_seconds").forGetter(cuv::d),
+               axw.a(0, 15).fieldOf("comparator_output").forGetter(cuv::e)
+            )
+            .apply($$0, cuv::new)
+   );
+   public static final yx<wk, cuv> b = yx.a(avo.d, cuv::b, xb.b, cuv::c, yv.i, cuv::d, yv.g, cuv::e, cuv::new);
+   public static final Codec<jm<cuv>> c = ako.a(lu.L);
+   public static final yx<wk, jm<cuv>> d = yv.a(lu.L, b);
+   private static final int i = 20;
+
+   public int a() {
+      return ayo.f(this.g * 20.0F);
    }
 
-   private static void a(qp<cut> $$0, akp<cut> $$1, jm.c<avn> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cut($$2, wy.c(ad.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   static void a(qp<cut> $$0) {
-      a($$0, a, avo.pI, 178, 1);
-      a($$0, b, avo.pK, 185, 2);
-      a($$0, c, avo.pJ, 345, 3);
-      a($$0, d, avo.pL, 185, 4);
-      a($$0, e, avo.pM, 174, 5);
-      a($$0, f, avo.pN, 197, 6);
-      a($$0, g, avo.pO, 96, 7);
-      a($$0, h, avo.pQ, 150, 8);
-      a($$0, i, avo.pR, 188, 9);
-      a($$0, j, avo.pT, 251, 10);
-      a($$0, k, avo.pH, 71, 11);
-      a($$0, l, avo.pS, 238, 12);
-      a($$0, m, avo.pP, 149, 13);
-      a($$0, n, avo.pU, 195, 14);
-      a($$0, o, avo.pG, 178, 15);
-      a($$0, p, avo.pV, 218, 14);
-      a($$0, q, avo.pY, 299, 13);
-      a($$0, r, avo.pW, 176, 12);
-      a($$0, s, avo.pX, 73, 11);
+   public static Optional<jm<cuv>> a(jo.a $$0, cuq $$1) {
+      cuu $$2 = $$1.a(kq.R);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   }
+
+   public jm<avo> b() {
+      return this.e;
+   }
+
+   public wz c() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

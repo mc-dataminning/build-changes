@@ -1,65 +1,37 @@
-public class gvw implements gwc {
-   private static final int a = 1200;
-   private static final wy b = wy.c("tutorial.craft_planks.title");
-   private static final wy c = wy.c("tutorial.craft_planks.description");
-   private final gwb d;
-   private fkr e;
-   private int f;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-   public gvw(gwb $$0) {
+public class gvw {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
+   }
+
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gwd.f);
-      } else {
-         if (this.f == 1) {
-            gdv $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fZ().a(awm.b)) {
-                  this.d.a(gwd.f);
-                  return;
-               }
-
-               if (a($$0, awm.b)) {
-                  this.d.a(gwd.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fkr(fkr.a.e, b, c, false);
-            this.d.e().aw().a(this.e);
-         }
-      }
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(cuo $$0) {
-      if ($$0.a(awm.b)) {
-         this.d.a(gwd.f);
-      }
-   }
-
-   public static boolean a(gdv $$0, awt<cuj> $$1) {
-      for (jm<cuj> $$2 : lt.g.c($$1)) {
-         if ($$0.j().a(avy.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(gvl $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gvm.e, $$1x -> {
+            $$1x.a(gvo.p, this.a($$1));
+            $$1x.a(gvo.q, (int)this.c);
+         }));
    }
 }

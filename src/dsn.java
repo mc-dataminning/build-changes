@@ -1,116 +1,124 @@
-public enum dsn implements azj {
-   a("inactive", dsn.a.a) {
-      @Override
-      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
-         $$3.a(cuo.l);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", dsn.a.b) {
-      @Override
-      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dsi.b.a($$0, this, $$2, $$3, $$1);
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+
+public class dsn {
+   static final String a = "server_data";
+   static Codec<dsn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kg.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               cuq.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dsn::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<cuq> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
+
+   dsn(Set<UUID> $$0, long $$1, List<cuq> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
+   }
+
+   dsn() {
+   }
+
+   void a(long $$0) {
+      this.h = $$0;
+   }
+
+   long a() {
+      return this.h;
+   }
+
+   Set<UUID> b() {
+      return this.e;
+   }
+
+   boolean a(cmx $$0) {
+      return this.e.contains($$0.cA());
+   }
+
+   @VisibleForTesting
+   public void b(cmx $$0) {
+      this.e.add($$0.cA());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
          }
-
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dsn.a.b) {
-      @Override
-      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
-         $$0.a(null, $$1, avo.AJ, avp.e);
-      }
-   },
-   d("ejecting", dsn.a.b) {
-      @Override
-      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
-         $$0.a(null, $$1, avo.AL, avp.e);
       }
 
-      @Override
-      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3) {
-         $$0.a(null, $$1, avo.AD, avp.e);
+      this.i();
+   }
+
+   long c() {
+      return this.f;
+   }
+
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
+   }
+
+   List<cuq> d() {
+      return this.g;
+   }
+
+   void e() {
+      this.i = 0;
+      this.i();
+   }
+
+   void a(List<cuq> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
+   }
+
+   cuq f() {
+      return this.g.isEmpty() ? cuq.l : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cuq.l);
+   }
+
+   cuq g() {
+      if (this.g.isEmpty()) {
+         return cuq.l;
+      } else {
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cuq.l);
       }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dsn.a j;
-
-   dsn(final String $$0, final dsn.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   void a(dsn $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   public int a() {
-      return this.j.c;
+   private void i() {
+      this.c = true;
    }
 
-   public dsn a(aqt $$0, jd $$1, dsk $$2, dsl $$3, dsm $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Z() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Z() + (long)$$7);
-               yield d;
-            }
-         }
-      };
-   }
-
-   private static dsn a(aqt $$0, jd $$1, dsk $$2, dsl $$3, dsm $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Z() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(aqt $$0, jd $$1, dsn $$2, dsk $$3, dsm $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
-   }
-
-   protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3) {
-   }
-
-   private void a(aqt $$0, jd $$1, cuo $$2, float $$3) {
-      kw.a($$0, $$2, 2, ji.b, eww.c($$1).a(ji.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, avo.AF, avp.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - ayo.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

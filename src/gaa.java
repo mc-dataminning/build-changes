@@ -1,47 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public enum gaa {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
+public interface gaa {
+   Codec<gaa> a = azk.a(gaa.a::values).dispatch(gaa::a, gaa.a::a);
 
-   private final wy n;
+   gaa.a a();
 
-   private gaa(final String $$0) {
-      this.n = wy.c("gui.banned.reason." + $$0);
-   }
+   public static enum a implements azk {
+      a("player", () -> gab.a.b),
+      b("system", () -> gab.b.b);
 
-   public wy a() {
-      return this.n;
-   }
+      private final String c;
+      private final Supplier<MapCodec<? extends gaa>> d;
 
-   @Nullable
-   public static gaa a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+      private a(final String $$0, final Supplier<MapCodec<? extends gaa>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private MapCodec<? extends gaa> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

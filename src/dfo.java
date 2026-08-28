@@ -1,50 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfo extends dfi implements dfn {
-   public static final MapCodec<dfo> a = b(dfo::new);
+public abstract class dfo extends dfy {
+   protected static final int a = 2;
+   protected static final ext b = dfy.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dfo> a() {
-      return a;
-   }
-
-   public dfo(dsz.d $$0) {
+   protected dfo(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   public ctg b() {
-      return ctg.a;
+   protected abstract MapCodec<? extends dfo> a();
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return b;
    }
 
    @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new dqa($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return a($$2, dqh.o, dqa::a);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      return $$1 == ji.a && !this.a($$0, $$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         return bqq.a;
-      } else {
-         if ($$1.c_($$2) instanceof dqa $$5) {
-            $$3.a($$5);
-            $$3.a(avy.ab);
-         }
-
-         return bqq.c;
-      }
-   }
-
-   @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      return a($$1, $$2.e(), ji.b);
    }
 }

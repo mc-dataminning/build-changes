@@ -1,280 +1,73 @@
-import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cqy extends cps {
-   private static final int k = -1;
-   private static final int l = 4;
-   private static final int m = 31;
-   private static final int n = 31;
-   private static final int o = 40;
-   private final cqe p;
-   final cql q = cql.a();
-   private List<jm<dpv>> r = List.of();
-   Runnable s = () -> {
-   };
-   private final jn<dpv> t;
-   final cro u;
-   final cro v;
-   private final cro w;
-   private final cro x;
-   long y;
-   private final bqj z = new bqz(3) {
-      @Override
-      public void e() {
-         super.e();
-         cqy.this.a(this);
-         cqy.this.s.run();
-      }
-   };
-   private final bqj A = new bqz(1) {
-      @Override
-      public void e() {
-         super.e();
-         cqy.this.s.run();
-      }
-   };
+public class cqy {
+   private final List<cqy.b> a;
+   private final cqy.b b;
 
-   public cqy(int $$0, cmu $$1) {
-      this($$0, $$1, cqe.a);
-   }
-
-   public cqy(int $$0, cmu $$1, final cqe $$2) {
-      super(cra.s, $$0);
-      this.p = $$2;
-      this.u = this.a(new cro(this.z, 0, 13, 26) {
-         @Override
-         public boolean a(cuo $$0) {
-            return $$0.g() instanceof csj;
-         }
-      });
-      this.v = this.a(new cro(this.z, 1, 33, 26) {
-         @Override
-         public boolean a(cuo $$0) {
-            return $$0.g() instanceof cth;
-         }
-      });
-      this.w = this.a(new cro(this.z, 2, 23, 45) {
-         @Override
-         public boolean a(cuo $$0) {
-            return $$0.g() instanceof csk;
-         }
-      });
-      this.x = this.a(new cro(this.A, 0, 143, 57) {
-         @Override
-         public boolean a(cuo $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(cmv $$0, cuo $$1) {
-            cqy.this.u.a(1);
-            cqy.this.v.a(1);
-            if (!cqy.this.u.h() || !cqy.this.v.h()) {
-               cqy.this.q.a(-1);
-            }
-
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.Z();
-               if (cqy.this.y != $$2xx) {
-                  $$0x.a(null, $$1x, avo.At, avp.e, 1.0F, 1.0F);
-                  cqy.this.y = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cro($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cro($$1, $$5, 8 + $$5 * 18, 142));
-      }
-
-      this.a(this.q);
-      this.t = $$1.l.dS().b(lu.d);
-   }
-
-   @Override
-   public boolean b(cmv $$0) {
-      return a(this.p, $$0, dfy.nT);
-   }
-
-   @Override
-   public boolean a(cmv $$0, int $$1) {
-      if ($$1 >= 0 && $$1 < this.r.size()) {
-         this.q.a($$1);
-         this.a(this.r.get($$1));
-         return true;
+   cqy(List<cqy.b> $$0, cqy.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cqy.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         return false;
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   private List<jm<dpv>> c(cuo $$0) {
-      if ($$0.e()) {
-         return this.t.a(awb.a).<List<jm<dpv>>>map(ImmutableList::copyOf).orElse(ImmutableList.of());
-      } else {
-         return $$0.g() instanceof csk $$1 ? this.t.a($$1.b()).<List<jm<dpv>>>map(ImmutableList::copyOf).orElse(ImmutableList.of()) : List.of();
+   public static cqy.a a() {
+      return new cqy.a();
+   }
+
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
+
+   public cqy.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cqy.b b() {
+      return this.b;
+   }
+
+   public List<cqy.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cqy.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cqy.b> a = new ArrayList<>();
+      private cqy.b b = cqy.b.e;
+
+      public cqy.a a(int $$0, int $$1, int $$2, Predicate<cuq> $$3) {
+         this.a.add(new cqy.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cqy.a a(int $$0, int $$1, int $$2) {
+         this.b = new cqy.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cqy a() {
+         return new cqy(this.a, this.b);
       }
    }
 
-   private boolean e(int $$0) {
-      return $$0 >= 0 && $$0 < this.r.size();
-   }
-
-   @Override
-   public void a(bqj $$0) {
-      cuo $$1 = this.u.g();
-      cuo $$2 = this.v.g();
-      cuo $$3 = this.w.g();
-      if (!$$1.e() && !$$2.e()) {
-         int $$4 = this.q.b();
-         boolean $$5 = this.e($$4);
-         List<jm<dpv>> $$6 = this.r;
-         this.r = this.c($$3);
-         jm<dpv> $$7;
-         if (this.r.size() == 1) {
-            this.q.a(0);
-            $$7 = this.r.get(0);
-         } else if (!$$5) {
-            this.q.a(-1);
-            $$7 = null;
-         } else {
-            jm<dpv> $$9 = $$6.get($$4);
-            int $$10 = this.r.indexOf($$9);
-            if ($$10 != -1) {
-               $$7 = $$9;
-               this.q.a($$10);
-            } else {
-               $$7 = null;
-               this.q.a(-1);
-            }
-         }
-
-         if ($$7 != null) {
-            dpw $$13 = $$1.a(kq.Y, dpw.a);
-            boolean $$14 = $$13.b().size() >= 6;
-            if ($$14) {
-               this.q.a(-1);
-               this.x.f(cuo.l);
-            } else {
-               this.a($$7);
-            }
-         } else {
-            this.x.f(cuo.l);
-         }
-
-         this.d();
-      } else {
-         this.x.f(cuo.l);
-         this.r = List.of();
-         this.q.a(-1);
-      }
-   }
-
-   public List<jm<dpv>> l() {
-      return this.r;
-   }
-
-   public int m() {
-      return this.q.b();
-   }
-
-   public void a(Runnable $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public cuo b(cmv $$0, int $$1) {
-      cuo $$2 = cuo.l;
-      cro $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuo $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == this.x.d) {
-            if (!this.a($$4, 4, 40, true)) {
-               return cuo.l;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != this.v.d && $$1 != this.u.d && $$1 != this.w.d) {
-            if ($$4.g() instanceof csj) {
-               if (!this.a($$4, this.u.d, this.u.d + 1, false)) {
-                  return cuo.l;
-               }
-            } else if ($$4.g() instanceof cth) {
-               if (!this.a($$4, this.v.d, this.v.d + 1, false)) {
-                  return cuo.l;
-               }
-            } else if ($$4.g() instanceof csk) {
-               if (!this.a($$4, this.w.d, this.w.d + 1, false)) {
-                  return cuo.l;
-               }
-            } else if ($$1 >= 4 && $$1 < 31) {
-               if (!this.a($$4, 31, 40, false)) {
-                  return cuo.l;
-               }
-            } else if ($$1 >= 31 && $$1 < 40 && !this.a($$4, 4, 31, false)) {
-               return cuo.l;
-            }
-         } else if (!this.a($$4, 4, 40, false)) {
-            return cuo.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cuo.l);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.H() == $$2.H()) {
-            return cuo.l;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cmv $$0) {
-      super.a($$0);
-      this.p.a(($$1, $$2) -> this.a($$0, this.z));
-   }
-
-   private void a(jm<dpv> $$0) {
-      cuo $$1 = this.u.g();
-      cuo $$2 = this.v.g();
-      cuo $$3 = cuo.l;
-      if (!$$1.e() && !$$2.e()) {
-         $$3 = $$1.c(1);
-         ctg $$4 = ((cth)$$2.g()).c();
-         $$3.a(kq.Y, dpw.a, $$2x -> new dpw.a().a($$2x).a($$0, $$4).a());
-      }
-
-      if (!cuo.a($$3, this.x.g())) {
-         this.x.f($$3);
-      }
-   }
-
-   public cro n() {
-      return this.u;
-   }
-
-   public cro o() {
-      return this.v;
-   }
-
-   public cro p() {
-      return this.w;
-   }
-
-   public cro q() {
-      return this.x;
+   public static record b(int a, int b, int c, Predicate<cuq> d) {
+      static final cqy.b e = new cqy.b(0, 0, 0, $$0 -> true);
    }
 }

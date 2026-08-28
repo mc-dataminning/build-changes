@@ -1,10 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edx implements eee {
-   public static final Codec<edx> a = dta.b.fieldOf("state").xmap(edx::new, $$0 -> $$0.b).codec();
-   public final dta b;
+public class edx {
+   public static final Codec<edx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eit.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, edx::new)
+   );
+   public final jm<eit> b;
+   public final float c;
 
-   public edx(dta $$0) {
+   public edx(jm<eit> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a(dds $$0, duz $$1, ayw $$2, jd $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

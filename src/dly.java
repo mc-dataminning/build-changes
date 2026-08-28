@@ -1,97 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dly extends dfw {
-   public static final MapCodec<dly> a = b(dly::new);
-   public static final dtr b = dmb.d;
+public class dly extends dfn {
+   public static final MapCodec<dly> d = b(dly::new);
+   public static final dua<dug> e = dts.ag;
 
    @Override
    public MapCodec<dly> a() {
-      return a;
+      return d;
    }
 
-   public dly(dsz.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a_(dta $$0, dcu $$1, jd $$2, cmv $$3) {
-      d($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   protected dly(dtb.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dug.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dcu $$0, jd $$1, dta $$2, bsq $$3) {
-      if (!$$3.bX()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
-      if ($$2.B) {
-         a($$2, $$3);
-      } else {
-         d($$1, $$2, $$3);
-      }
-
-      return $$0.g() instanceof csm && new cyb($$4, $$5, $$0, $$6).b() ? bqs.e : bqs.a;
-   }
-
-   private static void d(dta $$0, dcu $$1, jd $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3) {
+      if ($$3.o().m() && new dlz($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean d_(dta $$0) {
-      return $$0.c(b);
+   public duf<dug> c() {
+      return e;
    }
 
    @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
+   protected dtc a(dtc $$0, dmm $$1) {
+      dug $$2 = $$0.c(e);
 
-   @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bqb.a(1, 5));
-      }
-   }
-
-   @Override
-   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dcu $$0, jd $$1) {
-      double $$2 = 0.5625;
-      ayv $$3 = $$0.z;
-
-      for (ji $$4 : ji.values()) {
-         jd $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            ji.a $$6 = $$4.o();
-            double $$7 = $$6 == ji.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == ji.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == ji.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(lh.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dug.a;
+               case b:
+                  yield dug.b;
+               case c:
+                  yield dug.d;
+               case d:
+                  yield dug.c;
+               case e:
+                  yield dug.f;
+               case f:
+                  yield dug.e;
+               case g:
+                  yield dug.i;
+               case h:
+                  yield dug.j;
+               case i:
+                  yield dug.g;
+               case j:
+                  yield dug.h;
+               default:
+                  throw new MatchException(null, null);
+            }
          }
-      }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dug.b;
+               case b:
+                  yield dug.a;
+               case c:
+                  yield dug.e;
+               case d:
+                  yield dug.f;
+               case e:
+                  yield dug.d;
+               case f:
+                  yield dug.c;
+               case g:
+                  yield dug.j;
+               case h:
+                  yield dug.g;
+               case i:
+                  yield dug.h;
+               case j:
+                  yield dug.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dug.b;
+               case b:
+                  yield dug.a;
+               case c:
+                  yield dug.f;
+               case d:
+                  yield dug.e;
+               case e:
+                  yield dug.c;
+               case f:
+                  yield dug.d;
+               case g:
+                  yield dug.h;
+               case h:
+                  yield dug.i;
+               case i:
+                  yield dug.j;
+               case j:
+                  yield dug.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
+   protected dtc a(dtc $$0, dkv $$1) {
+      dug $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dug.f);
+               case f:
+                  return $$0.a(e, dug.e);
+               case g:
+                  return $$0.a(e, dug.j);
+               case h:
+                  return $$0.a(e, dug.i);
+               case i:
+                  return $$0.a(e, dug.h);
+               case j:
+                  return $$0.a(e, dug.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dug.d);
+               case d:
+                  return $$0.a(e, dug.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dug.h);
+               case h:
+                  return $$0.a(e, dug.g);
+               case i:
+                  return $$0.a(e, dug.j);
+               case j:
+                  return $$0.a(e, dug.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(e, c);
    }
 }

@@ -1,60 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public enum fzv implements azj {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class fzv {
+   private final Map<akq<? extends jz<?>>, awx.a> a = new HashMap<>();
 
-   public static final Codec<fzv> d = azj.a(fzv::values);
-   private final String e;
-
-   private fzv(final String $$0) {
-      this.e = $$0;
+   public void a(akq<? extends jz<?>> $$0, awx.a $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public static fzv a(xo $$0, wy $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
+   private static void a() {
+      dpv.f();
+      dga.a();
+   }
+
+   private void a(ka $$0, Predicate<akq<? extends jz<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((akq<? extends jz<?>>)$$2)) {
+            $$3.a($$0.d((akq<? extends jz<?>>)$$2));
+         }
+      });
+   }
+
+   public void a(ka $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, kd.a::contains);
       } else {
-         return a($$0, $$1) ? b : a;
+         $$0.c().filter($$0x -> !kd.a.contains($$0x.a())).forEach($$0x -> $$0x.b().n());
+         this.a($$0, $$0x -> true);
+         a();
       }
-   }
-
-   private static boolean a(xo $$0, wy $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         wy $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
-      }
-   }
-
-   private static boolean a(wy $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xv.a).orElse(false);
-   }
-
-   private static boolean a(xv $$0) {
-      return !$$0.k().equals(xv.b);
-   }
-
-   public boolean a() {
-      return this == c;
-   }
-
-   @Nullable
-   public fgd a(xo $$0) {
-      return switch (this) {
-         case b -> fgd.a($$0.c());
-         case c -> fgd.c();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String c() {
-      return this.e;
    }
 }

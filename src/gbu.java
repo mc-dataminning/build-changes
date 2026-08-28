@@ -1,69 +1,32 @@
-public class gbu extends gdh {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gch.a H;
+import javax.annotation.Nullable;
 
-   gbu(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gch.a.a);
-   }
+public class gbu extends gdl {
+   private final float a;
+   private final gdg b;
 
-   gbu(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gch.a $$8) {
+   gbu(fzd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gdg $$7) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public gcl b() {
-      return this.H.a() ? gcl.b : gcl.c;
+   public gcp b() {
+      return gcp.b;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+   public float b(float $$0) {
+      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -74,63 +37,43 @@ public class gbu extends gdh {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   @Override
-   public void a(fbg $$0, ffs $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
+   public static class a implements gco<le> {
+      private final gdg a;
 
-   public static class a implements gck<lq> {
-      private final gdc a;
-
-      public a(gdc $$0) {
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
+      @Nullable
+      public gcl a(le $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dtc $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dmf.a) {
+            return null;
+         } else {
+            jd $$9 = jd.a($$2, $$3, $$4);
+            int $$10 = fgm.Q().au().a($$8, $$1, $$9);
+            if ($$8.b() instanceof diu) {
+               $$10 = ((diu)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   public static class b implements gck<lq> {
-      private final gdc a;
-
-      public b(gdc $$0) {
-         this.a = $$0;
-      }
-
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements gck<lq> {
-      private final gdc a;
-
-      public c(gdc $$0) {
-         this.a = $$0;
-      }
-
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gch.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gbu($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

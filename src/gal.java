@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Locale;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gal {
+public enum gal {
+   a("chat"),
+   b("skin"),
+   c("username");
+
+   private final String d;
+
+   private gal(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.d;
+   }
 }

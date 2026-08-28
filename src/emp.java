@@ -1,27 +1,49 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emp extends enk {
-   public static final MapCodec<emp> a = dta.b.xmap(dsz.a::b, dfw::o).listOf().fieldOf("blocks").xmap(emp::new, $$0 -> $$0.e);
-   public static final emp b = new emp(ImmutableList.of(dfy.pa));
-   public static final emp c = new emp(ImmutableList.of(dfy.a));
-   public static final emp d = new emp(ImmutableList.of(dfy.a, dfy.pa));
-   private final ImmutableList<dfw> e;
+public class emp extends ene {
+   public static final MapCodec<emp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               ji.a.e.fieldOf("axis").orElse(ji.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, emp::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final ji.a g;
 
-   public emp(List<dfw> $$0) {
-      this.e = ImmutableList.copyOf($$0);
+   public emp(float $$0, float $$1, int $$2, int $$3, ji.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+      }
    }
 
-   @Nullable
    @Override
-   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public boolean a(jd $$0, jd $$1, jd $$2, ayw $$3) {
+      ji $$4 = ji.a(ji.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= ayo.b(this.b, this.d, ayo.g((float)$$8, (float)this.e, (float)this.f));
    }
 
    @Override
-   protected enm<?> a() {
-      return enm.e;
+   protected enf<?> a() {
+      return enf.c;
    }
 }

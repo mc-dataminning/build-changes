@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dau(dah d) implements daq {
-   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dau::new));
+public interface dau {
+   Codec<dau> b = lt.ay.r().dispatch(dau::a, Function.identity());
 
-   @Override
-   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
-      $$3.d(this.d.a($$1));
+   static MapCodec<? extends dau> a(jz<MapCodec<? extends dau>> $$0) {
+      jz.a($$0, "add", dal.a);
+      jz.a($$0, "all_of", dam.c.a);
+      jz.a($$0, "multiply", dax.a);
+      jz.a($$0, "remove_binomial", daz.a);
+      return jz.a($$0, "set", dbe.a);
    }
 
-   @Override
-   public MapCodec<dau> a() {
-      return a;
-   }
+   float a(int var1, ayw var2, float var3);
 
-   public dah b() {
-      return this.d;
-   }
+   MapCodec<? extends dau> a();
 }

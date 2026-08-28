@@ -1,47 +1,65 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record euz(Optional<bv> b, erl.b c) implements euw {
+public record euz(jm<dfy> b, Optional<eb> c) implements eva {
    public static final MapCodec<euz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bv.a.optionalFieldOf("predicate").forGetter(euz::c), erl.b.e.fieldOf("entity").forGetter(euz::d)).apply($$0, euz::new)
-   );
+         $$0 -> $$0.group(lt.e.s().fieldOf("block").forGetter(euz::c), eb.a.optionalFieldOf("properties").forGetter(euz::d)).apply($$0, euz::new)
+      )
+      .validate(euz::a);
 
-   @Override
-   public eux b() {
-      return euy.f;
+   private static DataResult<euz> a(euz $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return ImmutableSet.of(euh.f, this.c.a());
+   public evb b() {
+      return evc.i;
    }
 
-   public boolean a(erl $$0) {
-      bsq $$1 = $$0.c(this.c.a());
-      eww $$2 = $$0.c(euh.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public Set<eui<?>> a() {
+      return Set.of(eul.g);
    }
 
-   public static euw.a a(erl.b $$0) {
-      return a($$0, bv.a.a());
+   public boolean a(erp $$0) {
+      dtc $$1 = $$0.c(eul.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public static euw.a a(erl.b $$0, bv.a $$1) {
-      return () -> new euz(Optional.of($$1.b()), $$0);
+   public static euz.a a(dfy $$0) {
+      return new euz.a($$0);
    }
 
-   public static euw.a a(erl.b $$0, bv $$1) {
-      return () -> new euz(Optional.of($$1), $$0);
-   }
-
-   public Optional<bv> c() {
+   public jm<dfy> c() {
       return this.b;
    }
 
-   public erl.b d() {
+   public Optional<eb> d() {
       return this.c;
+   }
+
+   public static class a implements eva.a {
+      private final jm<dfy> a;
+      private Optional<eb> b = Optional.empty();
+
+      public a(dfy $$0) {
+         this.a = $$0.s();
+      }
+
+      public euz.a a(eb.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public eva build() {
+         return new euz(this.a, this.b);
+      }
    }
 }

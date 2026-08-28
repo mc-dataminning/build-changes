@@ -1,17 +1,11 @@
-public class gjo extends glj<cfh, fut<cfh>> {
-   private static final akq a = akq.b("textures/entity/chicken.png");
+public class gjo extends gln<cgv, fus<cgv>> {
+   private static final akr a = akr.b("textures/entity/camel/camel.png");
 
-   public gjo(gkd.a $$0) {
-      super($$0, new fut<>($$0.a(fyd.A)), 0.3F);
+   public gjo(gkh.a $$0, fyg $$1) {
+      super($$0, new fus<>($$0.a($$1)), 0.7F);
    }
 
-   public akq a(cfh $$0) {
+   public akr a(cgv $$0) {
       return a;
-   }
-
-   protected float a(cfh $$0, float $$1) {
-      float $$2 = ayn.i($$1, $$0.ce, $$0.ca);
-      float $$3 = ayn.i($$1, $$0.cc, $$0.cb);
-      return (ayn.a($$2) + 1.0F) * $$3;
    }
 }

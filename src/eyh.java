@@ -1,59 +1,136 @@
-public interface eyh extends bqj {
-   cuo f();
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-   default cuo c(int $$0) {
-      return this.f().a($$0);
+public class eyh {
+   private static final Map<String, eyh> a = Maps.newHashMap();
+   private static final Map<String, eyh> o = Maps.newHashMap();
+   public static final eyh b = b("dummy");
+   public static final eyh c = b("trigger");
+   public static final eyh d = b("deathCount");
+   public static final eyh e = b("playerKillCount");
+   public static final eyh f = b("totalKillCount");
+   public static final eyh g = a("health", true, eyh.a.b);
+   public static final eyh h = a("food", true, eyh.a.a);
+   public static final eyh i = a("air", true, eyh.a.a);
+   public static final eyh j = a("armor", true, eyh.a.a);
+   public static final eyh k = a("xp", true, eyh.a.a);
+   public static final eyh l = a("level", true, eyh.a.a);
+   public static final eyh[] m = new eyh[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final eyh[] n = new eyh[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final eyh.a r;
+
+   private static eyh a(String $$0, boolean $$1, eyh.a $$2) {
+      eyh $$3 = new eyh($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   void b(cuo var1);
-
-   default cuo h() {
-      return this.c(this.ah_());
+   private static eyh b(String $$0) {
+      return a($$0, false, eyh.a.a);
    }
 
-   @Override
-   default int b() {
-      return 1;
+   protected eyh(String $$0) {
+      this($$0, false, eyh.a.a);
    }
 
-   @Override
-   default boolean c() {
-      return this.f().e();
+   protected eyh(String $$0, boolean $$1, eyh.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
    }
 
-   @Override
-   default void a() {
-      this.h();
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
    }
 
-   @Override
-   default cuo b(int $$0) {
-      return this.a($$0, this.ah_());
-   }
-
-   @Override
-   default cuo a(int $$0) {
-      return $$0 == 0 ? this.f() : cuo.l;
-   }
-
-   @Override
-   default cuo a(int $$0, int $$1) {
-      return $$0 != 0 ? cuo.l : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cuo $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+   public static Optional<eyh> a(String $$0) {
+      eyh $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : lt.v.b(akr.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akr.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public interface a extends eyh {
-      dqf v();
+   private static <T> Optional<eyh> a(avy<T> $$0, akr $$1) {
+      return $$0.b().b($$1).map($$0::b);
+   }
+
+   public String d() {
+      return this.p;
+   }
+
+   public boolean e() {
+      return this.q;
+   }
+
+   public eyh.a f() {
+      return this.r;
+   }
+
+   public static enum a implements azk {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final azk.a<eyh.a> c = azk.a(eyh.a::values);
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
 
       @Override
-      default boolean a(cmv $$0) {
-         return bqj.a(this.v(), $$0);
+      public String c() {
+         return this.d;
+      }
+
+      public static eyh.a a(String $$0) {
+         return c.a($$0, a);
       }
    }
 }

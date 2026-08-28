@@ -1,84 +1,112 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dnv extends dfi implements dje {
-   public static final MapCodec<dnv> a = b(dnv::new);
-   public static final dty<duk> b = dtq.bj;
+public class dnv extends dgh implements dgb {
+   public static final MapCodec<dnv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akq.a(lu.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               akq.a(lu.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               akq.a(lu.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               u()
+            )
+            .apply($$0, dnv::new)
+   );
+   public static final int b = 7;
+   public static final duc c = dts.av;
+   protected static final float d = 1.0F;
+   protected static final ext[] e = new ext[]{
+      dfy.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final akq<dfy> f;
+   private final akq<dfy> g;
+   private final akq<cul> h;
 
    @Override
    public MapCodec<dnv> a() {
       return a;
    }
 
-   protected dnv(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, duk.b));
+   protected dnv(akq<dfy> $$0, akq<dfy> $$1, akq<cul> $$2, dtb.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new drv($$0, $$1);
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      dqf $$5 = $$1.c_($$2);
-      if ($$5 instanceof drv) {
-         return ((drv)$$5).a($$3) ? bqq.a($$1.B) : bqq.e;
-      } else {
-         return bqq.e;
-      }
+   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
+      return $$0.a(dga.cC);
    }
 
    @Override
-   public void a(dcu $$0, jd $$1, dta $$2, @Nullable btl $$3, cuo $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dqf $$5 = $$0.c_($$1);
-            if ($$5 instanceof drv) {
-               ((drv)$$5).a($$3);
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = dht.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               ji $$6 = ji.c.a.a($$3);
+               jd $$7 = $$2.a($$6);
+               dtc $$8 = $$1.a_($$7.e());
+               if ($$1.a_($$7).i() && ($$8.a(dga.cC) || $$8.a(awe.af))) {
+                  jz<dfy> $$9 = $$1.H_().d(lu.f);
+                  Optional<dfy> $$10 = $$9.e(this.f);
+                  Optional<dfy> $$11 = $$9.e(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().o());
+                     $$1.b($$2, $$11.get().o().a(dju.aE, $$6));
+                  }
+               }
             }
          }
       }
    }
 
    @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
+   public cuq a(dcz $$0, jd $$1, dtc $$2) {
+      return new cuq((dcv)DataFixUtils.orElse($$0.H_().d(lu.K).e(this.h), this));
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
+      return $$2.c(c) != 7;
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3, jd $$4, boolean $$5) {
-      if ($$1 instanceof aqt) {
-         if ($$1.c_($$2) instanceof drv $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aqt)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + ayo.a($$0.z, 2, 5));
+      dtc $$5 = $$3.a(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
       }
    }
 
-   private void a(aqt $$0, drv $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(c);
    }
 }

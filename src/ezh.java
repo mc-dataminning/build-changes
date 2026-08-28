@@ -1,35 +1,61 @@
-public interface ezh {
-   int a();
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
-   int b();
+public class ezh {
+   @Nullable
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   public ezh(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ezg.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ezg.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ezg.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ezg.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
-
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

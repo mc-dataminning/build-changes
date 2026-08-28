@@ -1,62 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class esn extends esy {
-   public static final MapCodec<esn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(esn.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, esn::new)
-   );
-   private final esn.a b;
+public class esn extends etc {
+   public static final MapCodec<esn> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, esn::new));
 
-   private esn(List<euw> $$0, esn.a $$1) {
+   private esn(List<eva> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public eta<esn> b() {
-      return etb.s;
+   public ete<esn> b() {
+      return etf.z;
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return ImmutableSet.of(this.b.g);
-   }
+   public cuq a(cuq $$0, erp $$1) {
+      Float $$2 = $$1.c(eul.j);
+      if ($$2 != null) {
+         ayw $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.H();
+         int $$6 = 0;
 
-   @Override
-   public cuo a(cuo $$0, erl $$1) {
-      if ($$1.c(this.b.g) instanceof bqv $$3) {
-         $$0.b(kq.g, $$3.aj());
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
       }
 
       return $$0;
    }
 
-   public static esy.a<?> a(esn.a $$0) {
-      return a($$1 -> new esn($$1, $$0));
-   }
-
-   public static enum a implements azj {
-      a("this", euh.a),
-      b("attacking_entity", euh.d),
-      c("last_damage_player", euh.b),
-      d("block_entity", euh.h);
-
-      public static final Codec<esn.a> e = azj.a(esn.a::values);
-      private final String f;
-      final eue<?> g;
-
-      private a(final String $$0, final eue<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static etc.a<?> c() {
+      return a(esn::new);
    }
 }

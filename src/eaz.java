@@ -1,24 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 import java.util.function.Function;
 
-public record eaz<WC extends eau>(ebb<WC> d, WC e) {
-   public static final Codec<eaz<?>> a = lt.N.r().dispatch($$0 -> $$0.d, ebb::c);
-   public static final Codec<jm<eaz<?>>> b = akm.a(lu.aH, a);
-   public static final Codec<jq<eaz<?>>> c = kb.a(lu.aH, a);
+public class eaz extends dzv {
+   private final ka a;
+   private final dzc b;
+   private final dzm c;
+   private final dzp.o d;
 
-   public boolean a(ayv $$0) {
-      return this.d.a(this.e, $$0);
+   public eaz(dzb $$0, ka $$1, dcy $$2, dzc $$3, dzm $$4, dzp.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public boolean a(eaw $$0, duw $$1, Function<jd, jm<ddu>> $$2, ayv $$3, dyh $$4, dcb $$5, duv $$6) {
-      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Deprecated
+   public Optional<dtc> a(Function<jd, jm<ddw>> $$0, duy $$1, jd $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   public ebb<WC> a() {
-      return this.d;
+   @Deprecated
+   public ka c() {
+      return this.a;
    }
 
-   public WC b() {
-      return this.e;
+   public dzm d() {
+      return this.c;
    }
 }

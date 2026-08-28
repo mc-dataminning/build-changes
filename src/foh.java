@@ -1,247 +1,185 @@
 import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class foh extends fnx implements fyu.a {
-   private static final akq w = akq.b("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int x = 9;
-   private static final int y = 18;
-   public static final int c = 234;
-   public static final int q = 113;
-   private static final int z = 8;
-   private static final int A = 6;
-   public static final int r = 16;
-   public static final int s = 16;
-   public static final int u = 14;
-   public static final int v = 7;
-   private static final double B = 16.0;
-   private static final wy C = wy.c("advancements.sad_label");
-   private static final wy D = wy.c("advancements.empty");
-   private static final wy E = wy.c("gui.advancements");
-   private final flt F = new flt(this);
-   @Nullable
-   private final fnx G;
-   private final fyu H;
-   private final Map<ag, fod> I = Maps.newLinkedHashMap();
-   @Nullable
-   private fod J;
-   private boolean K;
+public class foh {
+   private final fgm a;
+   private final fol b;
+   private final foi c;
+   private final int d;
+   private final ah e;
+   private final as f;
+   private final cuq g;
+   private final wz h;
+   private final foj i;
+   private final Map<ag, foj> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public foh(fyu $$0) {
-      this($$0, null);
+   public foh(fgm $$0, fol $$1, foi $$2, int $$3, ah $$4, as $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new foj(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   public foh(fyu $$0, @Nullable fnx $$1) {
-      super(E);
-      this.H = $$0;
-      this.G = $$1;
+   public foi a() {
+      return this.c;
    }
 
-   @Override
-   protected void aP_() {
-      this.F.a(E, this.o);
-      this.I.clear();
-      this.J = null;
-      this.H.a(this);
-      if (this.J == null && !this.I.isEmpty()) {
-         fod $$0 = this.I.values().iterator().next();
-         this.H.a($$0.c().b(), true);
-      } else {
-         this.H.a(this.J == null ? null : this.J.c().b(), true);
+   public int b() {
+      return this.d;
+   }
+
+   public ah c() {
+      return this.e;
+   }
+
+   public wz d() {
+      return this.h;
+   }
+
+   public as e() {
+      return this.f;
+   }
+
+   public void a(fhx $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(fhx $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(fhx $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
       }
 
-      this.F.b(fig.a(wx.d, $$0x -> this.d()).a(200).a());
-      this.F.a($$1 -> {
-         fie var10000 = this.c($$1);
-      });
-      this.c();
-   }
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      akr $$3 = this.f.d().orElse(gqk.a);
+      int $$4 = ayo.a(this.k);
+      int $$5 = ayo.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
 
-   @Override
-   protected void c() {
-      this.F.a();
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.G);
-   }
-
-   @Override
-   public void j() {
-      this.H.a(null);
-      fza $$0 = this.l.L();
-      if ($$0 != null) {
-         $$0.b(ahr.b());
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
       }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.m - 252) / 2;
-         int $$4 = (this.n - 140) / 2;
-
-         for (fod $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.H.a($$5.c().b(), true);
+   public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ayo.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ayo.a(this.k);
+      int $$7 = ayo.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (foj $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
                break;
             }
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.l.m.S.a($$0, $$1)) {
-         this.l.a(null);
-         this.l.n.i();
-         return true;
+      $$0.c().b();
+      if ($$5) {
+         this.q = ayo.a(this.q + 0.02F, 0.0F, 0.3F);
       } else {
-         return super.a($$0, $$1, $$2);
+         this.q = ayo.a(this.q - 0.04F, 0.0F, 1.0F);
       }
    }
 
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.m - 252) / 2;
-      int $$5 = (this.n - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.K = false;
-         return false;
+   @Nullable
+   public static foh a(fgm $$0, fol $$1, int $$2, ah $$3) {
+      Optional<as> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
       } else {
-         if (!this.K) {
-            this.K = true;
-         } else if (this.J != null) {
-            this.J.a($$3, $$4);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.J != null) {
-         this.J.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void b(fht $$0, int $$1, int $$2, int $$3, int $$4) {
-      fod $$5 = this.J;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.o, D, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.o, C, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(fht $$0, int $$1, int $$2) {
-      RenderSystem.enableBlend();
-      $$0.a(w, $$1, $$2, 0, 0, 252, 140);
-      if (this.I.size() > 1) {
-         for (fod $$3 : this.I.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.J);
-         }
-
-         for (fod $$4 : this.I.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
-      }
-
-      $$0.a(this.o, this.J != null ? this.J.d() : E, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void c(fht $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.J != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         RenderSystem.enableDepthTest();
-         this.J.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         RenderSystem.disableDepthTest();
-         $$0.c().b();
-      }
-
-      if (this.I.size() > 1) {
-         for (fod $$5 : this.I.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.o, $$5.d(), $$1, $$2);
+         for (foi $$5 : foi.values()) {
+            if ($$2 < $$5.a()) {
+               return new foh($$0, $$1, $$5, $$2, $$3, $$4.get());
             }
+
+            $$2 -= $$5.a();
          }
+
+         return null;
       }
    }
 
-   @Override
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ayo.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = ayo.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
    public void a(ah $$0) {
-      fod $$1 = fod.a(this.l, this, this.I.size(), $$0);
-      if ($$1 != null) {
-         this.I.put($$0.b(), $$1);
+      Optional<as> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         foj $$2 = new foj(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
       }
    }
 
-   @Override
-   public void b(ah $$0) {
-   }
+   private void a(foj $$0, ag $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
 
-   @Override
-   public void c(ah $$0) {
-      fod $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
+      for (foj $$6 : this.j.values()) {
+         $$6.b();
       }
-   }
-
-   @Override
-   public void d(ah $$0) {
-   }
-
-   @Override
-   public void a(ah $$0, ai $$1) {
-      fof $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable ag $$0) {
-      this.J = this.I.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.I.clear();
-      this.J = null;
    }
 
    @Nullable
-   public fof e(ah $$0) {
-      fod $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
+   public foj a(ag $$0) {
+      return this.j.get($$0);
    }
 
-   @Nullable
-   private fod f(ah $$0) {
-      ah $$1 = $$0.d();
-      return this.I.get($$1.b());
+   public fol f() {
+      return this.b;
    }
 }

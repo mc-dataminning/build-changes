@@ -1,181 +1,150 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public abstract class dyl {
-   public static dyl.b a(int $$0, int $$1) {
-      return new dyl.b($$0 - 1, $$1 + 1);
-   }
-
-   public static dyl.b b(int $$0, int $$1) {
-      return new dyl.b($$0, $$1);
-   }
-
-   public static dyl a(int $$0) {
-      return new dyl.c($$0, false);
-   }
-
-   public static dyl b(int $$0) {
-      return new dyl.c($$0 + 1, false);
-   }
-
-   public static dyl c(int $$0) {
-      return new dyl.c($$0, true);
-   }
-
-   public static dyl d(int $$0) {
-      return new dyl.c($$0 - 1, true);
-   }
-
-   public static dyl a() {
-      return dyl.a.a;
-   }
-
-   public static dyl a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dyl a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public dyl b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<dyl> a(dda $$0, jd $$1, int $$2, Predicate<dta> $$3, Predicate<dta> $$4) {
-      jd.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(dda $$0, int $$1, Predicate<dta> $$2, Predicate<dta> $$3, jd.a $$4, int $$5, ji $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dyl {
-      static final dyl.a a = new dyl.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends dyl {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+public class dyl implements dys.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ad.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
          }
       }
+   });
+   private final ObjectListIterator<dyl.a> h;
+   private final ObjectListIterator<eks> i;
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
+   public static dyl a(ddq $$0, dcd $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dyl.a> $$4 = new ObjectArrayList(10);
+      ObjectList<eks> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != eka.a).forEach($$5x -> {
+         eka $$6 = $$5x.h().d();
+
+         for (ejt $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof ejl) {
+                  ejl $$8 = (ejl)$$7;
+                  ekz.a $$9 = $$8.b().f();
+                  if ($$9 == ekz.a.b) {
+                     $$4.add(new dyl.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (eks $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dyl.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dyl($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public dyl(ObjectListIterator<dyl.a> $$0, ObjectListIterator<eks> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(dyr.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dyl.a $$5 = (dyl.a)this.h.next();
+         ejh $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
       }
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         eks $$13 = (eks)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
       }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
 
-      public int e() {
-         return this.b;
-      }
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
 
-      public int f() {
-         return this.a;
-      }
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
 
-      public int g() {
-         return this.b - this.a - 1;
-      }
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = ayo.g($$0, $$1, $$2);
+      return ayo.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
 
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = ayo.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * ayo.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
    }
 
-   public static final class c extends dyl {
-      private final int a;
-      private final boolean b;
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = ayo.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   @VisibleForTesting
+   public static record a(ejh a, eka b, int c) {
    }
 }

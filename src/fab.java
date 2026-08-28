@@ -1,89 +1,40 @@
-import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import org.apache.commons.lang3.ArrayUtils;
 
-public final class fab {
-   private final long a;
-   private final List<faf> b;
-   private faf c;
-   private int d;
-   private int e;
+public enum fab {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public fab(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+   private final String[] c;
+
+   private fab(final String... $$0) {
+      this.c = $$0;
    }
 
-   public void a() {
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+   public List<atw<InputStream>> a(asq $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
+   }
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         faf $$2 = new faf($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
+   public atw<InputStream> b(asq $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private atw<InputStream> a(asq $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      atw<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
       }
-
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new faf($$5);
-   }
-
-   public faf a(Optional<faf> $$0) {
-      if ($$0.isPresent()) {
-         faf $$1 = $$0.get();
-
-         for (faf $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
-         }
-      }
-
-      return this.b();
-   }
-
-   public int a(faf $$0) {
-      return this.b.indexOf($$0);
-   }
-
-   public faf b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public faf a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

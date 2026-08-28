@@ -1,31 +1,29 @@
-public class gtp extends gtc {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cht p;
+public class gtp extends gth {
+   private final bsr n;
 
-   public gtp(cht $$0) {
-      super(avo.yu, avp.g, gtt.t());
-      this.p = $$0;
-      this.k = gtt.a.b;
-      this.i = false;
-      this.j = 0;
+   public gtp(avo $$0, avq $$1, float $$2, float $$3, bsr $$4, long $$5) {
+      super($$0, $$1, ayw.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.du());
+      this.g = (double)((float)this.n.dw());
+      this.h = (double)((float)this.n.dA());
    }
 
    @Override
    public boolean s() {
-      return !this.p.aX();
+      return !this.n.aX();
    }
 
    @Override
    public void q() {
-      if (!this.p.dL() && this.p.p() == null && this.p.gn()) {
-         this.f = (double)((float)this.p.dv());
-         this.g = (double)((float)this.p.dx());
-         this.h = (double)((float)this.p.dB());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dK()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.du());
+         this.g = (double)((float)this.n.dw());
+         this.h = (double)((float)this.n.dA());
       }
    }
 }

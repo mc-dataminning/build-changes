@@ -1,79 +1,42 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fnd extends fob {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wz c = wz.c("credits_and_attribution.screen.title");
+   private static final wz r = wz.c("credits_and_attribution.button.credits");
+   private static final wz s = wz.c("credits_and_attribution.button.attribution");
+   private static final wz u = wz.c("credits_and_attribution.button.licenses");
+   private final fob v;
+   private final flx w = new flx(this);
 
-public class fnd extends fnx {
-   private static final wy a = wy.c("addServer.enterIp");
-   private fig b;
-   private final fzn c;
-   private fip q;
-   private final BooleanConsumer r;
-   private final fnx s;
-
-   public fnd(fnx $$0, BooleanConsumer $$1, fzn $$2) {
-      super(wy.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
+   public fnd(fob $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aJ_() != this.q || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
-      }
+   protected void aT_() {
+      this.w.a(c, this.o);
+      fmb $$0 = this.w.c(fmb.d()).a(8);
+      $$0.c().b();
+      $$0.a(fik.a(r, $$0x -> this.m()).a(210).a());
+      $$0.a(fik.a(s, fmy.b(this, axj.d)).a(210).a());
+      $$0.a(fik.a(u, fmy.b(this, axj.e)).a(210).a());
+      this.w.b(fik.a(wy.d, $$0x -> this.d()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
-   protected void aP_() {
-      this.q = new fip(this.o, this.m / 2 - 100, 116, 200, 20, wy.c("addServer.enterIp"));
-      this.q.f(128);
-      this.q.a(this.l.m.Z);
-      this.q.b($$0 -> this.D());
-      this.d(this.q);
-      this.b = this.c(fig.a(wy.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
-      this.c(fig.a(wx.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
-      this.D();
-   }
-
-   @Override
-   protected void aE_() {
-      this.b(this.q);
-   }
-
-   @Override
-   public void a(fgi $$0, int $$1, int $$2) {
-      String $$3 = this.q.a();
-      this.b($$0, $$1, $$2);
-      this.q.a($$3);
+   protected void c() {
+      this.w.a();
    }
 
    private void m() {
-      this.c.b = this.q.a();
-      this.r.accept(true);
+      this.l.a(new foe(false, () -> this.l.a(this)));
    }
 
    @Override
    public void d() {
-      this.l.a(this.s);
-   }
-
-   @Override
-   public void j() {
-      this.l.m.Z = this.q.a();
-      this.l.m.av();
-   }
-
-   private void D() {
-      this.b.j = gar.b(this.q.a());
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
-      this.q.a($$0, $$1, $$2, $$3);
+      this.l.a(this.v);
    }
 }

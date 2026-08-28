@@ -1,26 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record dzr(dzt b, dzq c) {
-   public static final Codec<dzr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dzt.a.forGetter(dzr::a), dzq.a.forGetter(dzr::b)).apply($$0, $$0.stable(dzr::new))
-   );
+@Deprecated
+public class dzr implements dyn {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dza i = new dza(this);
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzt $$1, dzq $$2) {
-      return a.encodeStart($$0, new dzr($$1, $$2));
+   public dzr(long $$0) {
+      this.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzt $$1, ka $$2) {
-      return a($$0, $$1, new dzq($$2.d(lu.bb)));
+   @Override
+   public ayw d() {
+      return new dzr(this.g());
    }
 
-   public dzt a() {
-      return this.b;
+   @Override
+   public dzl e() {
+      return new dyz.a(this.g());
    }
 
-   public dzq b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

@@ -1,179 +1,64 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gio implements gig.a {
-   private final Map<Integer, epm> a = Maps.newHashMap();
-   private final Map<Integer, Float> b = Maps.newHashMap();
-   private final Map<Integer, Long> c = Maps.newHashMap();
-   private static final long d = 5000L;
-   private static final float e = 80.0F;
-   private static final boolean f = true;
-   private static final boolean g = false;
-   private static final boolean h = false;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final float k = 0.02F;
+public class gio implements gik.a {
+   private final fgm a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public void a(int $$0, epm $$1, float $$2) {
-      this.a.put($$0, $$1);
-      this.c.put($$0, ad.c());
-      this.b.put($$0, $$2);
+   public gio(fgm $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      if (!this.a.isEmpty()) {
-         long $$5 = ad.c();
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      dcx $$5 = this.a.r;
+      fbk $$6 = $$1.getBuffer(gff.z());
+      jd $$7 = jd.a($$2, 0.0, $$4);
 
-         for (Integer $$6 : this.a.keySet()) {
-            epm $$7 = this.a.get($$6);
-            float $$8 = this.b.get($$6);
-            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
-         }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            duy $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
-            if ($$5 - this.c.get($$9) > 5000L) {
-               this.a.remove($$9);
-               this.c.remove($$9);
+            for (Entry<dyy.a, dyy> $$11 : $$10.e()) {
+               dyy.a $$12 = $$11.getKey();
+               dcd $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = kf.a($$13.e, $$15);
+                     int $$18 = kf.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gev.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
             }
          }
       }
    }
 
-   public static void a(fbc $$0, get $$1, epm $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
-      a($$0, $$1.getBuffer(gfb.a(6.0)), $$2, $$6, $$7, $$8);
-      jd $$9 = $$2.l();
-      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
-         gig.a(
-            $$0,
-            $$1,
-            new ewr(
-                  (double)((float)$$9.u() + 0.25F),
-                  (double)((float)$$9.v() + 0.25F),
-                  (double)$$9.w() + 0.25,
-                  (double)((float)$$9.u() + 0.75F),
-                  (double)((float)$$9.v() + 0.75F),
-                  (double)((float)$$9.w() + 0.75F)
-               )
-               .d(-$$6, -$$7, -$$8),
-            0.0F,
-            1.0F,
-            0.0F,
-            0.5F
-         );
-
-         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
-            epk $$11 = $$2.a($$10);
-            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
-               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
-               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
-               gig.a(
-                  $$0,
-                  $$1,
-                  new ewr(
-                        (double)((float)$$11.a + 0.5F - $$3),
-                        (double)((float)$$11.b + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F - $$3),
-                        (double)((float)$$11.a + 0.5F + $$3),
-                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F + $$3)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  $$12,
-                  0.0F,
-                  $$13,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      epm.a $$14 = $$2.k();
-      if ($$4 && $$14 != null) {
-         for (epk $$15 : $$14.b()) {
-            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
-               gig.a(
-                  $$0,
-                  $$1,
-                  new ewr(
-                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.b + 0.01F),
-                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
-                        (double)$$15.b + 0.1,
-                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  1.0F,
-                  0.8F,
-                  0.8F,
-                  0.5F
-               );
-            }
-         }
-
-         for (epk $$16 : $$14.a()) {
-            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
-               gig.a(
-                  $$0,
-                  $$1,
-                  new ewr(
-                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.b + 0.01F),
-                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
-                        (double)$$16.b + 0.1,
-                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  0.8F,
-                  1.0F,
-                  1.0F,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      if ($$5) {
-         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
-            epk $$18 = $$2.a($$17);
-            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
-               gig.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
-               gig.a(
-                  $$0,
-                  $$1,
-                  String.format(Locale.ROOT, "%.2f", $$18.k),
-                  (double)$$18.a + 0.5,
-                  (double)$$18.b + 0.25,
-                  (double)$$18.c + 0.5,
-                  -1,
-                  0.02F,
-                  true,
-                  0.0F,
-                  true
-               );
-            }
-         }
-      }
-   }
-
-   public static void a(fbc $$0, fbg $$1, epm $$2, double $$3, double $$4, double $$5) {
-      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
-         epk $$7 = $$2.a($$6);
-         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
-            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
-            int $$9 = $$6 == 0 ? 0 : ayn.h($$8, 0.9F, 0.9F);
-            int $$10 = $$9 >> 16 & 0xFF;
-            int $$11 = $$9 >> 8 & 0xFF;
-            int $$12 = $$9 & 0xFF;
-            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5)).a($$10, $$11, $$12, 255);
-         }
-      }
-   }
-
-   private static float a(jd $$0, double $$1, double $$2, double $$3) {
-      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
+   private Vector3f a(dyy.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

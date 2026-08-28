@@ -1,30 +1,29 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cdr extends cdw<btl> {
+public class cdr<T extends btn> extends cdy<T> {
    @Override
-   public Set<ccq<?>> a() {
-      return ImmutableSet.of(ccq.h, ccq.M, ccq.an);
+   protected void a(aqu $$0, T $$1) {
+      ewv $$2 = $$1.cL().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<btn> $$3 = $$0.a(btn.class, $$2, $$1x -> $$1x != $$1 && $$1x.bE());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      buq<?> $$4 = $$1.dU();
+      $$4.a(ccs.g, $$3);
+      $$4.a(ccs.h, new ccu($$1, $$3));
+   }
+
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
    }
 
    @Override
-   protected void a(aqt $$0, btl $$1) {
-      buo<?> $$2 = $$1.dU();
-      List<clk> $$3 = Lists.newArrayList();
-      ccs $$4 = $$2.c(ccq.h).orElse(ccs.a());
-      Optional<btn> $$5 = $$4.a($$0x -> $$0x instanceof cks || $$0x instanceof cis).map(btn.class::cast);
-
-      for (btl $$7 : $$2.c(ccq.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof clk && ((clk)$$7).gn()) {
-            $$3.add((clk)$$7);
-         }
-      }
-
-      $$2.a(ccq.M, $$5);
-      $$2.a(ccq.an, $$3);
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.g, ccs.h);
    }
 }

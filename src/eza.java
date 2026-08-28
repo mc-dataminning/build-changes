@@ -1,32 +1,11 @@
-import org.lwjgl.openal.AL10;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public class eza {
-   private float a = 1.0F;
-   private ezb b = ezb.a;
-
-   public void a(ezb $$0) {
-      this.b = $$0;
-      eww $$1 = $$0.b();
-      eww $$2 = $$0.c();
-      eww $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
-   }
-
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
-   }
-
-   public float a() {
-      return this.a;
-   }
-
-   public void b() {
-      this.a(ezb.a);
-   }
-
-   public ezb c() {
-      return this.b;
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface eza {
 }

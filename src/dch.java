@@ -1,3 +1,4 @@
+@FunctionalInterface
 public interface dch {
-   int a(aqt var1, boolean var2, boolean var3);
+   int getColor(ddw var1, double var2, double var4);
 }

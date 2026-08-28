@@ -1,65 +1,85 @@
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record euv(jm<dfw> b, Optional<eb> c) implements euw {
+public record euv(Map<String, ero> b, erp.b c) implements eva {
    public static final MapCodec<euv> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(lt.e.s().fieldOf("block").forGetter(euv::c), eb.a.optionalFieldOf("properties").forGetter(euv::d)).apply($$0, euv::new)
-      )
-      .validate(euv::a);
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ero.a).fieldOf("scores").forGetter(euv::c), erp.b.e.fieldOf("entity").forGetter(euv::d))
+            .apply($$0, euv::new)
+   );
 
-   private static DataResult<euv> a(euv $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public evb b() {
+      return evc.h;
    }
 
    @Override
-   public eux b() {
-      return euy.i;
+   public Set<eui<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   @Override
-   public Set<eue<?>> a() {
-      return Set.of(euh.g);
+   public boolean a(erp $$0) {
+      bsr $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         eye $$2 = $$0.d().f();
+
+         for (Entry<String, ero> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public boolean a(erl $$0) {
-      dta $$1 = $$0.c(euh.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   protected boolean a(erp $$0, bsr $$1, eye $$2, String $$3, ero $$4) {
+      exw $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         eya $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
    }
 
-   public static euv.a a(dfw $$0) {
+   public static euv.a a(erp.b $$0) {
       return new euv.a($$0);
    }
 
-   public jm<dfw> c() {
+   public Map<String, ero> c() {
       return this.b;
    }
 
-   public Optional<eb> d() {
+   public erp.b d() {
       return this.c;
    }
 
-   public static class a implements euw.a {
-      private final jm<dfw> a;
-      private Optional<eb> b = Optional.empty();
+   public static class a implements eva.a {
+      private final Builder<String, ero> a = ImmutableMap.builder();
+      private final erp.b b;
 
-      public a(dfw $$0) {
-         this.a = $$0.s();
+      public a(erp.b $$0) {
+         this.b = $$0;
       }
 
-      public euv.a a(eb.a $$0) {
-         this.b = $$0.b();
+      public euv.a a(String $$0, ero $$1) {
+         this.a.put($$0, $$1);
          return this;
       }
 
       @Override
-      public euw build() {
-         return new euv(this.a, this.b);
+      public eva build() {
+         return new euv(this.a.build(), this.b);
       }
    }
 }

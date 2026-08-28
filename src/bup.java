@@ -1,59 +1,35 @@
-import com.mojang.serialization.Codec;
-
 public class bup {
-   public static final Codec<jm<bup>> a = lt.s.s();
-   public static final yw<wj, jm<bup>> b = yu.b(lu.c);
-   private final double c;
-   private boolean d;
-   private final String e;
-   private bup.a f = bup.a.a;
+   private float a;
+   private float b;
+   private float c;
 
-   protected bup(String $$0, double $$1) {
-      this.c = $$1;
-      this.e = $$0;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public double a() {
+   public void a(float $$0, float $$1) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b(float $$0) {
+      return ayo.i($$0, this.a, this.b);
+   }
+
+   public float b() {
       return this.c;
    }
 
-   public boolean b() {
-      return this.d;
+   public float c(float $$0) {
+      return this.c - this.b * (1.0F - $$0);
    }
 
-   public bup a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public bup a(bup.a $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public n b(boolean $$0) {
-      return this.f.a($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public n a(boolean $$0) {
-         return switch (this) {
-            case a -> $$0 ? n.j : n.m;
-            case b -> n.h;
-            case c -> $$0 ? n.m : n.j;
-         };
-      }
+   public boolean c() {
+      return this.b > 1.0E-5F;
    }
 }

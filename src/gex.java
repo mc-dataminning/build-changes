@@ -1,93 +1,97 @@
-import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-public class gex implements AutoCloseable {
-   private final gej c;
-   public final ezp a;
-   public final ezp b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
-
-   public gex(aug $$0, String $$1, ezp $$2, ezp $$3, boolean $$4) throws IOException {
-      this.c = new gej($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
+public interface gex {
+   static gex.a a(fbd $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   static gex.a a(SequencedMap<gff, fbd> $$0, fbd $$1) {
+      return new gex.a($$1, $$0);
    }
 
-   public final String a() {
-      return this.c.h();
-   }
+   fbk getBuffer(gff var1);
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
+   public static class a implements gex {
+      protected final fbd a;
+      protected final SequencedMap<gff, fbd> b;
+      protected final Map<gff, fbb> c = new HashMap<>();
+      @Nullable
+      protected gff d;
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+      protected a(fbd $$0, SequencedMap<gff, fbd> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      fgi $$4 = fgi.Q();
-      this.c.b("ScreenSize").a((float)$$4.aM().l(), (float)$$4.aM().m());
-      this.c.g();
-      this.b.b(fgi.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      fax $$5 = fbe.b().a(fbh.c.h, fba.e);
-      $$5.a(0.0F, 0.0F, 500.0F);
-      $$5.a($$1, 0.0F, 500.0F);
-      $$5.a($$1, $$2, 500.0F);
-      $$5.a(0.0F, $$2, 500.0F);
-      fay.b($$5.b());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
+      @Override
+      public fbk getBuffer(gff $$0) {
+         fbb $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.O()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
 
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof ezp) {
-            ((ezp)$$6).d();
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fbd $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fbb($$2, $$0.K(), $$0.J());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
+
+               $$1 = new fbb(this.a, $$0.K(), $$0.J());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
          }
       }
-   }
 
-   public gej b() {
-      return this.c;
-   }
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
+      }
 
-   public int c() {
-      return this.i;
+      public void b() {
+         this.a();
+
+         for (gff $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(gff $$0) {
+         fbb $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
+      }
+
+      private void a(gff $$0, fbb $$1) {
+         fbf $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.P()) {
+               fbd $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getVertexSorting());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
+      }
    }
 }

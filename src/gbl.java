@@ -1,21 +1,83 @@
-public class gbl extends gbm<lh> {
-   protected gbl(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lh $$7, gdc $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.b().x(), $$9);
-      this.w = this.a($$7.b().y(), $$9);
-      this.x = this.a($$7.b().z(), $$9);
+public class gbl extends gdl {
+   gbl(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
-   public static class a implements gck<lh> {
-      private final gdc a;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(gdc $$0) {
+   @Override
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
+
+   @Override
+   public gcp b() {
+      return gcp.b;
+   }
+
+   public static class a implements gco<lq> {
+      private final gdg a;
+
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lh $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbl $$8 = new gbl($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gco<lq> {
+      private final gdg a;
+
+      public b(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbl $$8 = new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gco<lq> {
+      private final gdg a;
+
+      public c(gdg $$0) {
+         this.a = $$0;
+      }
+
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbl $$8 = new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

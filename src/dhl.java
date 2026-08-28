@@ -1,56 +1,71 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dhl extends dfw {
-   public static final MapCodec<dfw> a = lt.e.r().fieldOf("dead");
-   public static final MapCodec<dhl> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dhl::new));
-   private final dfw c;
-
-   public dhl(dfw $$0, dsz.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dhl extends dfk implements dna {
+   public static final MapCodec<dhl> a = b(dhl::new);
+   public static final dtt b = dts.C;
+   private static final int d = 3;
+   protected static final ext c = dfy.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dhl> a() {
-      return b;
+      return a;
+   }
+
+   public dhl(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
-      }
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
+   public dqh a(jd $$0, dtc $$1) {
+      return new dqt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
+      return a($$2, dqj.z, $$0.B ? dqt::a : dqt::b);
+   }
+
+   @Override
+   protected dmf a_(dtc $$0) {
+      return dmf.b;
+   }
+
+   @Override
+   protected epc b_(dtc $$0) {
+      return $$0.c(b) ? epd.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, epd.c, epd.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean a(dca $$0, jd $$1) {
-      for (ji $$2 : ji.values()) {
-         eoy $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awj.a)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return c;
    }
 
    @Nullable
    @Override
-   public dta a(cyb $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
-      }
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(awk.a) && $$1.e() == 8));
+   }
 
-      return this.o();
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

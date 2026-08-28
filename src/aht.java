@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class aht implements zg<agi> {
+   public static final yx<vw, aht> a = zg.a(aht::a, aht::new);
+   private final int b;
 
-public record aht(Optional<jm<brw>> b, Optional<jm<brw>> c) implements zf<agh> {
-   public static final yw<wj, aht> a = yw.a(brw.b.a(yu::a), aht::b, brw.b.a(yu::a), aht::e, aht::new);
-
-   @Override
-   public zh<aht> a() {
-      return agf.bS;
+   public aht(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agh $$0) {
+   private aht(vw $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vw $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zi<aht> a() {
+      return agg.bR;
+   }
+
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public Optional<jm<brw>> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

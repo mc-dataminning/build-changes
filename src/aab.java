@@ -1,29 +1,16 @@
-public class aab implements zf<zy> {
-   public static final yw<vv, aab> a = zf.a(aab::a, aab::new);
-   private final long b;
+import com.google.common.collect.Lists;
 
-   public aab(long $$0) {
-      this.b = $$0;
-   }
-
-   private aab(vv $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vv $$0) {
-      $$0.b(this.b);
-   }
+public record aab(aaj b) implements zg<zz> {
+   private static final int c = 32767;
+   public static final yx<vw, aab> a = aaj.<vw>a($$0 -> aak.a($$0, 32767), ad.a(Lists.newArrayList(new aaj.c[]{new aaj.c<>(aah.b, aah.a)}), $$0 -> {
+   })).a(aab::new, aab::b);
 
    @Override
-   public zh<aab> a() {
-      return zx.n;
+   public zi<aab> a() {
+      return zy.m;
    }
 
-   public void a(zy $$0) {
+   public void a(zz $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

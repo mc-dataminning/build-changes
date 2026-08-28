@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface eyt<T> {
+   void a(eyr<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eyt {
+   boolean a(jd var1, T var2);
+
+   int a();
 }

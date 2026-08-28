@@ -24,10 +24,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.spi.FileSystemProvider;
@@ -44,6 +42,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.Map.Entry;
 import java.util.concurrent.BlockingQueue;
@@ -79,13 +78,14 @@ public class ad {
    private static final int h = 255;
    private static final int i = 10;
    private static final String j = "max.bg.threads";
-   private static final ExecutorService k = b("Main");
+   private static final ExecutorService k = c("Main");
    private static final ExecutorService l = a("IO-Worker-", false);
    private static final ExecutorService m = a("Download-", true);
    private static final DateTimeFormatter n = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    public static final int a = 8;
+   private static final Set<String> o = Set.of("http", "https");
    public static final long b = 1000000L;
-   public static azn.a c = System::nanoTime;
+   public static azo.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return ad.c.getAsLong();
@@ -97,7 +97,7 @@ public class ad {
       .filter($$0 -> $$0.getScheme().equalsIgnoreCase("jar"))
       .findFirst()
       .orElseThrow(() -> new IllegalStateException("No jar file system provider found"));
-   private static Consumer<String> o = $$0 -> {
+   private static Consumer<String> p = $$0 -> {
    };
 
    public static <K, V> Collector<Entry<? extends K, ? extends V>, ?, Map<K, V>> a() {
@@ -108,11 +108,11 @@ public class ad {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dud<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(duf<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable akq $$1) {
+   public static String a(String $$0, @Nullable akr $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -132,8 +132,8 @@ public class ad {
       return n.format(ZonedDateTime.now());
    }
 
-   private static ExecutorService b(String $$0) {
-      int $$1 = ayn.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
+   private static ExecutorService c(String $$0) {
+      int $$1 = ayo.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -232,7 +232,7 @@ public class ad {
       }
 
       if ($$1 instanceof z $$2) {
-         aks.a($$2.a().a(y.a));
+         akt.a($$2.a().a(y.a));
          System.exit(-1);
       }
 
@@ -241,7 +241,7 @@ public class ad {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !ab.aU ? null : b($$0, $$1);
+      return !ab.aT ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -249,10 +249,10 @@ public class ad {
       Type<?> $$2 = null;
 
       try {
-         $$2 = azw.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = azx.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (ab.aV) {
+         if (ab.aU) {
             throw var4;
          }
       }
@@ -261,7 +261,7 @@ public class ad {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return ab.aV ? () -> {
+      return ab.aU ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -275,7 +275,7 @@ public class ad {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return ab.aV ? () -> {
+      return ab.aU ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -292,7 +292,7 @@ public class ad {
    }
 
    public static <T> String a(jz<T> $$0, T $$1) {
-      akq $$2 = $$0.b($$1);
+      akr $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -369,6 +369,21 @@ public class ad {
          return ad.a.a;
       } else {
          return $$0.contains("unix") ? ad.a.a : ad.a.e;
+      }
+   }
+
+   public static URI a(String $$0) throws URISyntaxException {
+      URI $$1 = new URI($$0);
+      String $$2 = $$1.getScheme();
+      if ($$2 == null) {
+         throw new URISyntaxException($$0, "Missing protocol in URI: " + $$0);
+      } else {
+         String $$3 = $$2.toLowerCase(Locale.ROOT);
+         if (!o.contains($$3)) {
+            throw new URISyntaxException($$0, "Unsupported protocol in URI: " + $$0);
+         } else {
+            return $$1;
+         }
       }
    }
 
@@ -491,39 +506,39 @@ public class ad {
       return $$0;
    }
 
-   public static void a(String $$0) {
+   public static void b(String $$0) {
       g.error($$0);
-      if (ab.aV) {
-         c($$0);
+      if (ab.aU) {
+         d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (ab.aV) {
-         c($$0);
+      if (ab.aU) {
+         d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (ab.aV) {
+      if (ab.aU) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
-         c($$0.getMessage());
+         d($$0.getMessage());
       }
 
       return $$0;
    }
 
    public static void a(Consumer<String> $$0) {
-      o = $$0;
+      p = $$0;
    }
 
-   private static void c(String $$0) {
+   private static void d(String $$0) {
       Instant $$1 = Instant.now();
       g.warn("Did you remember to set a breakpoint here?");
       boolean $$2 = Duration.between($$1, Instant.now()).toMillis() > 500L;
       if (!$$2) {
-         o.accept($$0);
+         p.accept($$0);
       }
    }
 
@@ -535,19 +550,19 @@ public class ad {
       }
    }
 
-   public static <T> T a(T[] $$0, ayv $$1) {
+   public static <T> T a(T[] $$0, ayw $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, ayv $$1) {
+   public static int a(int[] $$0, ayw $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, ayv $$1) {
+   public static <T> T a(List<T> $$0, ayw $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, ayv $$1) {
+   public static <T> Optional<T> b(List<T> $$0, ayw $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -742,8 +757,8 @@ public class ad {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> azd<K, V> a(Function<K, V> $$0) {
-      return new azd<>($$0);
+   public static <K, V> aze<K, V> a(Function<K, V> $$0) {
+      return new aze<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -778,13 +793,13 @@ public class ad {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, ayv $$1) {
+   public static <T> List<T> a(Stream<T> $$0, ayw $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, ayv $$1) {
+   public static IntArrayList a(IntStream $$0, ayw $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -796,19 +811,19 @@ public class ad {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, ayv $$1) {
+   public static <T> List<T> b(T[] $$0, ayw $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, ayv $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, ayw $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, ayv $$1) {
+   public static <T> void c(List<T> $$0, ayw $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -918,13 +933,13 @@ public class ad {
       b("solaris"),
       c("windows") {
          @Override
-         protected String[] b(URL $$0) {
+         protected String[] b(URI $$0) {
             return new String[]{"rundll32", "url.dll,FileProtocolHandler", $$0.toString()};
          }
       },
       d("mac") {
          @Override
-         protected String[] b(URL $$0) {
+         protected String[] b(URI $$0) {
             return new String[]{"open", $$0.toString()};
          }
       },
@@ -936,36 +951,28 @@ public class ad {
          this.f = $$0;
       }
 
-      public void a(URL $$0) {
+      public void a(URI $$0) {
          try {
             Process $$1 = AccessController.doPrivileged((PrivilegedExceptionAction<Process>)(() -> Runtime.getRuntime().exec(this.b($$0))));
             $$1.getInputStream().close();
             $$1.getErrorStream().close();
             $$1.getOutputStream().close();
          } catch (IOException | PrivilegedActionException var3) {
-            ad.g.error("Couldn't open url '{}'", $$0, var3);
-         }
-      }
-
-      public void a(URI $$0) {
-         try {
-            this.a($$0.toURL());
-         } catch (MalformedURLException var3) {
-            ad.g.error("Couldn't open uri '{}'", $$0, var3);
+            ad.g.error("Couldn't open location '{}'", $$0, var3);
          }
       }
 
       public void a(File $$0) {
-         try {
-            this.a($$0.toURI().toURL());
-         } catch (MalformedURLException var3) {
-            ad.g.error("Couldn't open file '{}'", $$0, var3);
-         }
+         this.a($$0.toURI());
       }
 
-      protected String[] b(URL $$0) {
+      public void a(Path $$0) {
+         this.a($$0.toUri());
+      }
+
+      protected String[] b(URI $$0) {
          String $$1 = $$0.toString();
-         if ("file".equals($$0.getProtocol())) {
+         if ("file".equals($$0.getScheme())) {
             $$1 = $$1.replace("file:", "file://");
          }
 
@@ -974,8 +981,8 @@ public class ad {
 
       public void a(String $$0) {
          try {
-            this.a(new URI($$0).toURL());
-         } catch (MalformedURLException | IllegalArgumentException | URISyntaxException var3) {
+            this.a(new URI($$0));
+         } catch (IllegalArgumentException | URISyntaxException var3) {
             ad.g.error("Couldn't open uri '{}'", $$0, var3);
          }
       }

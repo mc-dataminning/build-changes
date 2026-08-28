@@ -1,141 +1,224 @@
-import java.util.UUID;
-
-public class abu implements zf<abt> {
-   public static final yw<wj, abu> a = zf.a(abu::a, abu::new);
-   private static final double b = 8000.0;
-   private static final double c = 3.9;
-   private final int d;
-   private final UUID e;
-   private final bsw<?> f;
-   private final double g;
-   private final double h;
-   private final double i;
-   private final int j;
-   private final int k;
-   private final int l;
-   private final byte m;
-   private final byte n;
-   private final byte o;
-   private final int p;
-
-   public abu(bsq $$0) {
-      this($$0, 0);
-   }
-
-   public abu(bsq $$0, int $$1) {
-      this($$0.an(), $$0.cA(), $$0.dv(), $$0.dx(), $$0.dB(), $$0.dI(), $$0.dG(), $$0.am(), $$1, $$0.dt(), (double)$$0.ct());
-   }
-
-   public abu(bsq $$0, int $$1, jd $$2) {
-      this($$0.an(), $$0.cA(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dI(), $$0.dG(), $$0.am(), $$1, $$0.dt(), (double)$$0.ct());
-   }
-
-   public abu(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsw<?> $$7, int $$8, eww $$9, double $$10) {
-      this.d = $$0;
-      this.e = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.m = (byte)ayn.d($$5 * 256.0F / 360.0F);
-      this.n = (byte)ayn.d($$6 * 256.0F / 360.0F);
-      this.o = (byte)ayn.a($$10 * 256.0 / 360.0);
-      this.f = $$7;
-      this.p = $$8;
-      this.j = (int)(ayn.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.k = (int)(ayn.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.l = (int)(ayn.a($$9.e, -3.9, 3.9) * 8000.0);
-   }
-
-   private abu(wj $$0) {
-      this.d = $$0.l();
-      this.e = $$0.n();
-      this.f = yu.a(lu.z).decode($$0);
-      this.g = $$0.readDouble();
-      this.h = $$0.readDouble();
-      this.i = $$0.readDouble();
-      this.m = $$0.readByte();
-      this.n = $$0.readByte();
-      this.o = $$0.readByte();
-      this.p = $$0.l();
-      this.j = $$0.readShort();
-      this.k = $$0.readShort();
-      this.l = $$0.readShort();
-   }
-
-   private void a(wj $$0) {
-      $$0.c(this.d);
-      $$0.a(this.e);
-      yu.a(lu.z).encode($$0, this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.k(this.m);
-      $$0.k(this.n);
-      $$0.k(this.o);
-      $$0.c(this.p);
-      $$0.l(this.j);
-      $$0.l(this.k);
-      $$0.l(this.l);
-   }
-
+public interface abu extends aji, zm {
    @Override
-   public zh<abu> a() {
-      return agf.c;
+   default vu b() {
+      return vu.b;
    }
 
-   public void a(abt $$0) {
-      $$0.a(this);
-   }
+   void a(abv var1);
 
-   public int b() {
-      return this.d;
-   }
+   void a(abw var1);
 
-   public UUID e() {
-      return this.e;
-   }
+   void a(aff var1);
 
-   public bsw<?> f() {
-      return this.f;
-   }
+   void a(abx var1);
 
-   public double g() {
-      return this.g;
-   }
+   void a(add var1);
 
-   public double h() {
-      return this.h;
-   }
+   void a(aby var1);
 
-   public double i() {
-      return this.i;
-   }
+   void a(aee var1);
 
-   public double j() {
-      return (double)this.j / 8000.0;
-   }
+   void a(aca var1);
 
-   public double k() {
-      return (double)this.k / 8000.0;
-   }
+   void a(ads var1);
 
-   public double l() {
-      return (double)this.l / 8000.0;
-   }
+   void a(acb var1);
 
-   public float m() {
-      return (float)(this.m * 360) / 256.0F;
-   }
+   void a(acc var1);
 
-   public float n() {
-      return (float)(this.n * 360) / 256.0F;
-   }
+   void a(acd var1);
 
-   public float o() {
-      return (float)(this.o * 360) / 256.0F;
-   }
+   void a(afs var1);
 
-   public int p() {
-      return this.p;
-   }
+   void a(adv var1);
+
+   void a(acx var1);
+
+   void a(acw var1);
+
+   void a(aek var1);
+
+   void a(adm var1);
+
+   void a(aco var1);
+
+   void a(acp var1);
+
+   void a(adc var1);
+
+   void a(acq var1);
+
+   void a(acr var1);
+
+   void a(acy var1);
+
+   void a(afa var1);
+
+   void a(afg var1);
+
+   void a(acz var1);
+
+   void a(adb var1);
+
+   void a(adg var1);
+
+   void a(ack var1);
+
+   void a(ada var1);
+
+   void a(adh var1);
+
+   void a(adl var1);
+
+   void a(ado var1);
+
+   void a(aec var1);
+
+   void a(adi var1);
+
+   void a(adu var1);
+
+   void a(adz var1);
+
+   void a(aea var1);
+
+   void a(aef var1);
+
+   void a(aeg var1);
+
+   void a(aei var1);
+
+   void a(aej var1);
+
+   void a(aeu var1);
+
+   void a(aey var1);
+
+   void a(aez var1);
+
+   void a(afb var1);
+
+   void a(afc var1);
+
+   void a(afd var1);
+
+   void a(afe var1);
+
+   void a(afh var1);
+
+   void a(afi var1);
+
+   void a(aeh var1);
+
+   void a(aex var1);
+
+   void a(afl var1);
+
+   void a(afp var1);
+
+   void a(afo var1);
+
+   void a(afv var1);
+
+   void a(afw var1);
+
+   void a(afx var1);
+
+   void a(afy var1);
+
+   void a(aga var1);
+
+   void a(agb var1);
+
+   void a(adw var1);
+
+   void a(adx var1);
+
+   void a(ady var1);
+
+   void a(ach var1);
+
+   void a(aet var1);
+
+   void a(ade var1);
+
+   void a(aep var1);
+
+   void a(aeq var1);
+
+   void a(aer var1);
+
+   void a(aes var1);
+
+   void a(aeo var1);
+
+   void a(aft var1);
+
+   void a(ace var1);
+
+   void a(acs var1);
+
+   void a(adp var1);
+
+   void a(afz var1);
+
+   void a(ael var1);
+
+   void a(adt var1);
+
+   void a(acn var1);
+
+   void a(afr var1);
+
+   void a(acm var1);
+
+   void a(agc var1);
+
+   void a(aeb var1);
+
+   void a(afu var1);
+
+   void a(adj var1);
+
+   void a(adq var1);
+
+   void a(adr var1);
+
+   void a(adn var1);
+
+   void a(aew var1);
+
+   void a(afj var1);
+
+   void a(aev var1);
+
+   void a(abz var1);
+
+   void a(aen var1);
+
+   void a(afk var1);
+
+   void a(afm var1);
+
+   void a(afn var1);
+
+   void a(acl var1);
+
+   void a(aem var1);
+
+   void a(act var1);
+
+   void a(acg var1);
+
+   void a(acu var1);
+
+   void a(afq var1);
+
+   void a(acj var1);
+
+   void a(aci var1);
+
+   void a(acv var1);
+
+   void a(aed var1);
 }

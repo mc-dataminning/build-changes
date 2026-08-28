@@ -1,15 +1,42 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record eql(int c) {
-   public static final Codec<eql> a = Codec.INT.xmap(eql::new, eql::b);
-   public static final yw<ByteBuf, eql> b = yu.g.a(eql::new, eql::b);
+public record eql(jm<eqm> b, byte c, byte d, byte e, Optional<wz> f) {
+   public static final yx<wk, eql> a = yx.a(eqm.c, eql::c, yv.c, eql::d, yv.c, eql::e, yv.c, eql::f, xb.c, eql::g, eql::new);
 
-   public String a() {
-      return "map_" + this.c;
+   public eql(jm<eqm> b, byte c, byte d, byte e, Optional<wz> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   public int b() {
+   public akr a() {
+      return this.b.a().b();
+   }
+
+   public boolean b() {
+      return this.b.a().c();
+   }
+
+   public jm<eqm> c() {
+      return this.b;
+   }
+
+   public byte d() {
       return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<wz> g() {
+      return this.f;
    }
 }

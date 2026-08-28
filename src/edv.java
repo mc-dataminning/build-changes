@@ -1,53 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record edv(List<edv.a> b, ji c, eac d, boolean e) implements eee {
-   public static final Codec<edv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edv.a.a.listOf().fieldOf("layers").forGetter(edv::a),
-               ji.g.fieldOf("direction").forGetter(edv::b),
-               eac.b.fieldOf("allowed_placement").forGetter(edv::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(edv::d)
-            )
-            .apply($$0, edv::new)
-   );
-
-   public static edv.a a(bpv $$0, egf $$1) {
-      return new edv.a($$0, $$1);
+public class edv extends eds {
+   public edv(Codec<efg> $$0) {
+      super($$0);
    }
 
-   public static edv b(bpv $$0, egf $$1) {
-      return new edv(List.of(a($$0, $$1)), ji.b, eac.c, false);
-   }
+   @Override
+   protected Set<jd> a(dds $$0, efg $$1, ayw $$2, jd $$3, Predicate<dtc> $$4, int $$5, int $$6) {
+      Set<jd> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<jd> $$8 = new HashSet<>();
+      jd.a $$9 = new jd.a();
 
-   public List<edv.a> a() {
-      return this.b;
-   }
-
-   public ji b() {
-      return this.c;
-   }
-
-   public eac c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpv b, egf c) {
-      public static final Codec<edv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpv.d.fieldOf("height").forGetter(edv.a::a), egf.a.fieldOf("provider").forGetter(edv.a::b)).apply($$0, edv.a::new)
-      );
-
-      public bpv a() {
-         return this.b;
+      for (jd $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
       }
 
-      public egf b() {
-         return this.c;
+      for (jd $$11 : $$8) {
+         $$0.a($$11, dga.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(dds $$0, Set<jd> $$1, jd $$2, jd.a $$3) {
+      return a($$0, $$2, $$3, ji.c) || a($$0, $$2, $$3, ji.f) || a($$0, $$2, $$3, ji.d) || a($$0, $$2, $$3, ji.e) || a($$0, $$2, $$3, ji.a);
+   }
+
+   private static boolean a(dds $$0, jd $$1, jd.a $$2, ji $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dds $$0, efg $$1, duz $$2, ayw $$3, jd $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         dtc $$5 = $$0.a_($$4);
+         if ($$5.b(dts.C) && !$$5.c(dts.C)) {
+            $$0.a($$4, $$5.a(dts.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

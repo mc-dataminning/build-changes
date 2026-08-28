@@ -1,25 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface eiu<P extends eit> {
-   eiu<eif> a = a("block_predicate_filter", eif.a);
-   eiu<eiw> b = a("rarity_filter", eiw.a);
-   eiu<eiy> c = a("surface_relative_threshold_filter", eiy.a);
-   eiu<eiz> d = a("surface_water_depth_filter", eiz.a);
-   eiu<eie> e = a("biome", eie.a);
-   eiu<eij> f = a("count", eij.a);
-   eiu<eio> g = a("noise_based_count", eio.a);
-   eiu<eip> h = a("noise_threshold_count", eip.a);
-   eiu<eii> i = a("count_on_every_layer", eii.a);
-   eiu<eik> j = a("environment_scan", eik.a);
-   eiu<eim> k = a("heightmap", eim.a);
-   eiu<eil> l = a("height_range", eil.a);
-   eiu<ein> m = a("in_square", ein.a);
-   eiu<eiv> n = a("random_offset", eiv.a);
-   eiu<eig> o = a("carving_mask", eig.a);
+public class eiu extends dzv {
+   private final dds a;
+   private final duz b;
+   private final Optional<eit> c;
 
-   MapCodec<P> codec();
+   public eiu(dds $$0, duz $$1, Optional<eit> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   private static <P extends eit> eiu<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.S, $$0, () -> $$1);
+   public int a(dyy.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public dux a(dcd $$0, dyu.a $$1) {
+      return ((dvs)this.a.a($$0.e, $$0.f)).b($$1);
+   }
+
+   public dtc a(jd $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.I_();
+   }
+
+   public dds d() {
+      return this.a;
+   }
+
+   public Optional<eit> e() {
+      return this.c;
+   }
+
+   public duz f() {
+      return this.b;
    }
 }

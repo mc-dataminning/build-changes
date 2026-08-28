@@ -1,98 +1,22 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxo<U> implements Iterable<U> {
-   protected final List<bxo.a<U>> a;
-   private final ayv b = ayv.a();
-
-   public bxo() {
-      this.a = Lists.newArrayList();
+public class bxo {
+   public static bws<btn> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
    }
 
-   private bxo(List<bxo.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<bxo<U>> a(Codec<U> $$0) {
-      return bxo.a.a($$0).listOf().xmap(bxo::new, $$0x -> $$0x.a);
-   }
-
-   public bxo<U> a(U $$0, int $$1) {
-      this.a.add(new bxo.a<>($$0, $$1));
-      return this;
-   }
-
-   public bxo<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bxo.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bxo.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bxo.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bxo.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bxo.a<E>>() {
-            public <T> DataResult<Pair<bxo.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bxo.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(bxo.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+   public static bws<btn> a(Predicate<btn> $$0, Function<btn, Float> $$1, int $$2) {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$3 -> $$3.group($$3.c(ccs.m), $$3.b(ccs.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new ccv($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
+                  }
+               }))
+      );
    }
 }

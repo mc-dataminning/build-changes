@@ -1,82 +1,27 @@
-import java.util.List;
+public class dqs extends dqh {
+   private int a;
 
-public abstract class dqs {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(dcu var1, jd var2, dta var3);
-
-   protected abstract void b(dcu var1, jd var2, dta var3);
-
-   protected abstract void a(dcu var1, jd var2, dta var3, int var4, int var5);
-
-   protected abstract boolean a(cmv var1);
-
-   public void a(cmv $$0, dcu $$1, jd $$2, dta $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dxw.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gz(), this.c);
+   public dqs(jd $$0, dtc $$1) {
+      super(dqj.s, $$0, $$1);
    }
 
-   public void b(cmv $$0, dcu $$1, jd $$2, dta $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dxw.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   @Override
+   protected void b(ub $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("OutputSignal", this.a);
    }
 
-   private List<cmv> a(dcu $$0, jd $$1) {
-      double $$2 = this.c + 4.0;
-      ewr $$3 = new ewr($$1).g($$2);
-      return $$0.a(dxk.a(cmv.class), $$3, this::a);
+   @Override
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.a = $$0.h("OutputSignal");
    }
 
-   public void c(dcu $$0, jd $$1, dta $$2) {
-      List<cmv> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cmv $$4 : $$3) {
-         this.c = Math.max($$4.gz(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dxw.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dxw.j, $$1);
-         }
-
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
-      }
+   public int b() {
+      return this.a;
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(dcu $$0, jd $$1, dta $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

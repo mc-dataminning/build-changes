@@ -1,40 +1,12 @@
-public class fdh {
-   private final fev a;
-   private boolean b;
-   private String c;
+public class fdh extends Exception {
+   public final fby a;
 
-   public fdh(fev $$0) {
+   public fdh(fby $$0) {
       this.a = $$0;
-      fev.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
    }
 
-   public boolean a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fch $$0) {
-      fev.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fev.a b(fch $$0) {
-      fev.a $$1 = new fev.a();
-      $$1.a = $$0.a;
-      fev.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

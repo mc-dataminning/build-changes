@@ -1,35 +1,45 @@
-public record aap(aap.a c) implements aai {
-   public static final yw<vv, aap> a = aai.a(aap::a, aap::new);
-   public static final aai.b<aap> b = aai.a("debug/hive");
+import java.util.List;
 
-   private aap(vv $$0) {
-      this(new aap.a($$0));
+public record aap(int c, jd d, List<aap.a> e) implements aaj {
+   public static final yx<vw, aap> a = aaj.a(aap::a, aap::new);
+   public static final aaj.b<aap> b = aaj.a("debug/goal_selector");
+
+   private aap(vw $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aap.a::new));
    }
 
-   private void a(vv $$0) {
-      this.c.a($$0);
+   private void a(vw $$0) {
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aai.b<aap> a() {
+   public aaj.b<aap> a() {
       return b;
    }
 
-   public aap.a b() {
+   public int b() {
       return this.c;
    }
 
-   public static record a(jd a, String b, int c, int d, boolean e) {
-      public a(vv $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+   public jd c() {
+      return this.d;
+   }
+
+   public List<aap.a> d() {
+      return this.e;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(vw $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
       }
 
-      public void a(vv $$0) {
-         $$0.a(this.a);
+      public void a(vw $$0) {
+         $$0.p(this.a);
          $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
+         $$0.a(this.c);
       }
    }
 }

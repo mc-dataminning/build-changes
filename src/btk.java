@@ -1,218 +1,221 @@
-import com.google.common.collect.Sets;
-import java.util.List;
+import com.mojang.datafixers.util.Either;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class btk extends bsq {
-   private static final int c = 2;
-   private static final double d = 3.0;
-   private static final double e = 15.0;
-   private int f;
-   public long b;
-   private int g;
-   private boolean h;
-   @Nullable
-   private aqu i;
-   private final Set<bsq> j = Sets.newHashSet();
-   private int k;
-
-   public btk(bsw<? extends btk> $$0, dcu $$1) {
-      super($$0, $$1);
-      this.au = true;
-      this.f = 2;
-      this.b = this.ah.g();
-      this.g = this.ah.a(3) + 1;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   @Override
-   public avp df() {
-      return avp.d;
-   }
+public interface btk {
+   String b_ = "leash";
 
    @Nullable
-   public aqu p() {
-      return this.i;
+   btk.a X_();
+
+   void a(@Nullable btk.a var1);
+
+   default boolean N_() {
+      return this.X_() != null && this.X_().a != null;
    }
 
-   public void b(@Nullable aqu $$0) {
-      this.i = $$0;
+   default boolean O_() {
+      return this.X_() != null;
    }
 
-   private void v() {
-      jd $$0 = this.w();
-      dta $$1 = this.dQ().a_($$0);
-      if ($$1.a(dfy.ss)) {
-         ((dkl)$$1.b()).d($$1, this.dQ(), $$0);
-      }
+   default boolean q() {
+      return this.y() && !this.N_();
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.f == 2) {
-         if (this.dQ().x_()) {
-            this.dQ().a(this.dv(), this.dx(), this.dB(), avo.nW, avp.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
-            this.dQ().a(this.dv(), this.dx(), this.dB(), avo.nV, avp.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
-         } else {
-            bqn $$0 = this.dQ().al();
-            if ($$0 == bqn.c || $$0 == bqn.d) {
-               this.b(4);
-            }
-
-            this.v();
-            b(this.dQ(), this.w());
-            this.a(dxw.G);
-         }
-      }
-
-      this.f--;
-      if (this.f < 0) {
-         if (this.g == 0) {
-            if (this.dQ() instanceof aqt) {
-               List<bsq> $$1 = this.dQ()
-                  .a(
-                     this,
-                     new ewr(this.dv() - 15.0, this.dx() - 15.0, this.dB() - 15.0, this.dv() + 15.0, this.dx() + 6.0 + 15.0, this.dB() + 15.0),
-                     $$0 -> $$0.bE() && !this.j.contains($$0)
-                  );
-
-               for (aqu $$2 : ((aqt)this.dQ()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  an.V.a($$2, this, $$1);
-               }
-            }
-
-            this.aq();
-         } else if (this.f < -this.ah.a(10)) {
-            this.g--;
-            this.f = 1;
-            this.b = this.ah.g();
-            this.b(0);
-         }
-      }
-
-      if (this.f >= 0) {
-         if (!(this.dQ() instanceof aqt)) {
-            this.dQ().c(2);
-         } else if (!this.h) {
-            List<bsq> $$3 = this.dQ()
-               .a(this, new ewr(this.dv() - 3.0, this.dx() - 3.0, this.dB() - 3.0, this.dv() + 3.0, this.dx() + 6.0 + 3.0, this.dB() + 3.0), bsq::bE);
-
-            for (bsq $$4 : $$3) {
-               $$4.a((aqt)this.dQ(), this);
-            }
-
-            this.j.addAll($$3);
-            if (this.i != null) {
-               an.F.a(this.i, $$3);
-            }
-         }
-      }
+   default boolean y() {
+      return true;
    }
 
-   private jd w() {
-      eww $$0 = this.do();
-      return jd.a($$0.c, $$0.d - 1.0E-6, $$0.e);
+   default void h_(int $$0) {
+      this.a(new btk.a($$0));
+      a((bsr)this, false, false);
    }
 
-   private void b(int $$0) {
-      if (!this.h && !this.dQ().B && this.dQ().ab().b(dcq.b)) {
-         jd $$1 = this.dq();
-         dta $$2 = dfj.a(this.dQ(), $$1);
-         if (this.dQ().a_($$1).i() && $$2.a((dcx)this.dQ(), $$1)) {
-            this.dQ().b($$1, $$2);
-            this.k++;
-         }
-
-         for (int $$3 = 0; $$3 < $$0; $$3++) {
-            jd $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
-            $$2 = dfj.a(this.dQ(), $$4);
-            if (this.dQ().a_($$4).i() && $$2.a((dcx)this.dQ(), $$4)) {
-               this.dQ().b($$4, $$2);
-               this.k++;
-            }
-         }
-      }
-   }
-
-   private static void b(dcu $$0, jd $$1) {
-      dta $$2 = $$0.a_($$1);
-      jd $$3;
-      dta $$4;
-      if ($$2.a(dfy.ss)) {
-         $$3 = $$1.a($$2.c(dkl.a).g());
-         $$4 = $$0.a_($$3);
+   @Nullable
+   default btk.a c(ub $$0) {
+      if ($$0.b("leash", 10)) {
+         return new btk.a(Either.left($$0.p("leash").a("UUID")));
       } else {
-         $$3 = $$1;
-         $$4 = $$2;
+         if ($$0.b("leash", 11)) {
+            Either<UUID, jd> $$1 = uq.a($$0, "leash").<Either<UUID, jd>>map(Either::right).orElse(null);
+            if ($$1 != null) {
+               return new btk.a($$1);
+            }
+         }
+
+         return null;
       }
+   }
 
-      if ($$4.b() instanceof dpc) {
-         $$0.b($$3, dpc.c($$0.a_($$3)));
-         jd.a $$7 = $$1.j();
-         int $$8 = $$0.z.a(3) + 3;
+   default void a(ub $$0, @Nullable btk.a $$1) {
+      if ($$1 != null) {
+         Either<UUID, jd> $$2 = $$1.b;
+         if ($$1.a instanceof btn) {
+            $$2 = Either.left($$1.a.cA());
+         } else if ($$1.a instanceof cjb $$3) {
+            $$2 = Either.right($$3.t());
+         }
 
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.z.a(8) + 1;
-            a($$0, $$3, $$7, $$10);
+         $$0.a("leash", (uy)$$2.map($$0x -> {
+            ub $$1x = new ub();
+            $$1x.a("UUID", $$0x);
+            return $$1x;
+         }, uq::a));
+      }
+   }
+
+   private static <E extends bsr & btk> void a(E $$0, btk.a $$1) {
+      if ($$1.b != null && $$0.dP() instanceof aqu $$2) {
+         Optional<UUID> $$3 = $$1.b.left();
+         Optional<jd> $$4 = $$1.b.right();
+         if ($$3.isPresent()) {
+            bsr $$5 = $$2.a($$3.get());
+            if ($$5 != null) {
+               a($$0, $$5, true);
+               return;
+            }
+         } else if ($$4.isPresent()) {
+            a($$0, cjb.b($$2, $$4.get()), true);
+            return;
+         }
+
+         if ($$0.ai > 100) {
+            $$0.a((dcv)cut.uK);
+            $$1.b = null;
          }
       }
    }
 
-   private static void a(dcu $$0, jd $$1, jd.a $$2, int $$3) {
-      $$2.g($$1);
+   default void a(boolean $$0, boolean $$1) {
+      a((bsr)this, $$0, $$1);
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<jd> $$5 = c($$0, $$2);
-         if ($$5.isEmpty()) {
-            break;
+   private static <E extends bsr & btk> void a(E $$0, boolean $$1, boolean $$2) {
+      btk.a $$3 = $$0.X_();
+      if ($$3 != null && $$3.a != null) {
+         $$0.a(null);
+         if (!$$0.dP().B && $$2) {
+            $$0.a((dcv)cut.uK);
          }
 
-         $$2.g($$5.get());
+         if ($$1 && $$0.dP() instanceof aqu $$4) {
+            $$4.l().b($$0, new afa($$0, null));
+         }
+      }
+   }
+
+   static <E extends bsr & btk> void b_(E $$0) {
+      btk.a $$1 = $$0.X_();
+      if ($$1 != null && $$1.b != null) {
+         a($$0, $$1);
+      }
+
+      if ($$1 != null && $$1.a != null) {
+         if (!$$0.bE() || !$$1.a.bE()) {
+            a($$0, true, true);
+         }
+
+         bsr $$2 = $$0.A();
+         if ($$2 != null && $$2.dP() == $$0.dP()) {
+            float $$3 = $$0.f($$2);
+            if (!$$0.a($$2, $$3)) {
+               return;
+            }
+
+            if ($$3 > 10.0F) {
+               $$0.z();
+            } else if ($$3 > 6.0F) {
+               double $$4 = ($$2.du() - $$0.du()) / (double)$$3;
+               double $$5 = ($$2.dw() - $$0.dw()) / (double)$$3;
+               double $$6 = ($$2.dA() - $$0.dA()) / (double)$$3;
+               $$0.i($$0.ds().b(Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5), Math.copySign($$6 * $$6 * 0.4, $$6)));
+               $$0.cr();
+            } else {
+               $$0.b($$2);
+            }
+         }
       }
    }
 
-   private static Optional<jd> c(dcu $$0, jd $$1) {
-      for (jd $$2 : jd.a($$0.z, 10, $$1, 1)) {
-         dta $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dpc) {
-            dpc.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
-            $$0.c(3002, $$2, -1);
-            return Optional.of($$2);
-         }
+   default boolean a(bsr $$0, float $$1) {
+      return true;
+   }
+
+   default void z() {
+      this.a(true, true);
+   }
+
+   default void b(bsr $$0) {
+   }
+
+   default void b(bsr $$0, boolean $$1) {
+      a((bsr)this, $$0, $$1);
+   }
+
+   private static <E extends bsr & btk> void a(E $$0, bsr $$1, boolean $$2) {
+      btk.a $$3 = $$0.X_();
+      if ($$3 == null) {
+         $$3 = new btk.a($$1);
+         $$0.a($$3);
+      } else {
+         $$3.a($$1);
       }
 
-      return Optional.empty();
+      if ($$2 && $$0.dP() instanceof aqu $$4) {
+         $$4.l().b($$0, new afa($$0, $$1));
+      }
+
+      if ($$0.bS()) {
+         $$0.ad();
+      }
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = 64.0 * cE();
-      return $$0 < $$1 * $$1;
+   @Nullable
+   default bsr A() {
+      return c((bsr)this);
    }
 
-   @Override
-   protected void a(ajz.a $$0) {
+   @Nullable
+   private static <E extends bsr & btk> bsr c(E $$0) {
+      btk.a $$1 = $$0.X_();
+      if ($$1 == null) {
+         return null;
+      } else {
+         if ($$1.c != 0 && $$0.dP().B) {
+            bsr var3 = $$0.dP().a($$1.c);
+            if (var3 instanceof bsr) {
+               $$1.a(var3);
+            }
+         }
+
+         return $$1.a;
+      }
    }
 
-   @Override
-   protected void a(ua $$0) {
-   }
+   public static final class a {
+      int c;
+      @Nullable
+      public bsr a;
+      @Nullable
+      public Either<UUID, jd> b;
 
-   @Override
-   protected void b(ua $$0) {
-   }
+      a(Either<UUID, jd> $$0) {
+         this.b = $$0;
+      }
 
-   public int s() {
-      return this.k;
-   }
+      a(bsr $$0) {
+         this.a = $$0;
+      }
 
-   public Stream<bsq> t() {
-      return this.j.stream().filter(bsq::bE);
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a(bsr $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = 0;
+      }
    }
 }

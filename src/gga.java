@@ -1,110 +1,166 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 public class gga {
-   public static final gga a = new gga();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final gga.a[] c;
-   private final akq[] d;
+   private final Map<String, ggh> a = Maps.newLinkedHashMap();
+   private ggm b;
 
-   private gga() {
-      this.c = new gga.a[0];
-      this.d = new akq[0];
+   public static gga a(gga.a $$0, Reader $$1) {
+      return aye.a($$0.a, $$1, gga.class);
    }
 
-   public gga(gsk $$0, gfv $$1, List<gfz> $$2) {
-      this.d = $$2.stream().flatMap(gfz::b).map(gfz.b::a).distinct().toArray(akq[]::new);
-      Object2IntMap<akq> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
-      }
-
-      List<gga.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         gfz $$7 = $$2.get($$6);
-         gsg $$8 = this.a($$0, $$1, $$7);
-         gga.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new gga.b($$2x, $$1x.b());
-         }).toArray(gga.b[]::new);
-         $$5.add(new gga.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new gga.a[0]);
+   public static gga a(gga.a $$0, JsonElement $$1) {
+      return (gga)$$0.a.fromJson($$1, gga.class);
    }
 
-   @Nullable
-   private gsg a(gsk $$0, gfv $$1, gfz $$2) {
-      gsr $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gsh.a);
+   public gga(Map<String, ggh> $$0, ggm $$1) {
+      this.b = $$1;
+      this.a.putAll($$0);
    }
 
-   @Nullable
-   public gsg a(gsg $$0, cuo $$1, @Nullable fyz $$2, @Nullable btl $$3, int $$4) {
-      if (this.c.length != 0) {
-         int $$5 = this.d.length;
-         float[] $$6 = new float[$$5];
+   public gga(List<gga> $$0) {
+      gga $$1 = null;
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            akq $$8 = this.d[$$7];
-            gpn $$9 = gpm.a($$1, $$8);
-            if ($$9 != null) {
-               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
-            } else {
-               $$6[$$7] = Float.NEGATIVE_INFINITY;
-            }
+      for (gga $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
          }
 
-         for (gga.a $$10 : this.c) {
-            if ($$10.a($$6)) {
-               gsg $$11 = $$10.b;
-               if ($$11 == null) {
-                  return $$0;
-               }
+         this.a.putAll($$2.a);
+      }
 
-               return $$11;
-            }
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
+   }
+
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
+   }
+
+   @VisibleForTesting
+   public ggh b(String $$0) {
+      ggh $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new gga.c();
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof gga $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
          }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
+   }
+
+   public Map<String, ggh> a() {
+      return this.a;
+   }
+
+   @VisibleForTesting
+   public Set<ggh> b() {
+      Set<ggh> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
       }
 
       return $$0;
    }
 
-   static class a {
-      private final gga.b[] a;
-      @Nullable
-      final gsg b;
+   public boolean c() {
+      return this.b != null;
+   }
 
-      a(gga.b[] $$0, @Nullable gsg $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public ggm d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(gga.class, new gga.b())
+         .registerTypeAdapter(ggi.class, new ggi.a())
+         .registerTypeAdapter(ggh.class, new ggh.a())
+         .registerTypeAdapter(ggm.class, new ggm.a(this))
+         .registerTypeAdapter(ggo.class, new ggo.a())
+         .create();
+      private dtd<dfy, dtc> b;
+
+      public dtd<dfy, dtc> a() {
+         return this.b;
       }
 
-      boolean a(float[] $$0) {
-         for (gga.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
+      public void a(dtd<dfy, dtc> $$0) {
+         this.b = $$0;
       }
    }
 
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static class b implements JsonDeserializer<gga> {
+      public gga a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Map<String, ggh> $$4 = this.a($$2, $$3);
+         ggm $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new gga($$4, $$5);
+         } else {
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
+         }
       }
+
+      protected Map<String, ggh> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, ggh> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = aye.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (ggh)$$0.deserialize($$4.getValue(), ggh.class));
+            }
+         }
+
+         return $$2;
+      }
+
+      @Nullable
+      protected ggm b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = aye.v($$1, "multipart");
+            return (ggm)$$0.deserialize($$2, ggm.class);
+         }
+      }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

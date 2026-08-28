@@ -1,27 +1,38 @@
-public class gmg extends glj<ckk, fxc<ckk>> {
-   private static final akq a = akq.b("textures/entity/slime/slime.png");
+public class gmg extends gkg<cns> {
+   private static final akr a = akr.b("textures/entity/shulker/spark.png");
+   private static final gff g = gff.i(a);
+   private final fxa<cns> h;
 
-   public gmg(gkd.a $$0) {
-      super($$0, new fxc<>($$0.a(fyd.bt)), 0.25F);
-      this.a(new gou<>(this, $$0.f()));
+   public gmg(gkh.a $$0) {
+      super($$0);
+      this.h = new fxa<>($$0.a(fyh.bm));
    }
 
-   public void a(ckk $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gn();
+   protected int a(cns $$0, jd $$1) {
+      return 15;
+   }
+
+   public void a(cns $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      float $$6 = ayo.j($$2, $$0.O, $$0.dF());
+      float $$7 = ayo.i($$2, $$0.P, $$0.dH());
+      float $$8 = (float)$$0.ai + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayo.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(ayo.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(ayo.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.h.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      fbk $$9 = $$4.getBuffer(this.h.a(a));
+      this.h.a($$3, $$9, $$5, gqa.d);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      fbk $$10 = $$4.getBuffer(g);
+      this.h.a($$3, $$10, $$5, gqa.d, 654311423);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(ckk $$0, fbc $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gn();
-      float $$5 = ayn.i($$2, $$0.ca, $$0.bZ) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public akq a(ckk $$0) {
+   public akr a(cns $$0) {
       return a;
    }
 }

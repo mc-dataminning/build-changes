@@ -1,20 +1,20 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gsg {
+   public static final gsh a = new gsh();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public interface gsg {
-   List<gfq> a(@Nullable dta var1, @Nullable ji var2, ayv var3);
+   public gsg(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   boolean a();
+   public boolean a() {
+      return this.d;
+   }
 
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   gqf e();
-
-   ggc f();
-
-   gga g();
+   public boolean b() {
+      return this.e;
+   }
 }

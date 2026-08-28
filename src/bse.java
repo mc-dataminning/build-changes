@@ -1,20 +1,25 @@
-class bse extends brw {
-   protected bse(brx $$0, int $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(btl $$0, int $$1) {
-      if ($$0.ex() < $$0.eO()) {
-         $$0.c(1.0F);
-      }
-
-      return true;
+class bse extends brx {
+   protected bse(bry $$0, int $$1, lk $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(btn $$0, int $$1) {
+      if ($$0 instanceof aqv $$2 && !$$0.R_()) {
+         aqu $$3 = $$2.A();
+         jd $$4 = $$2.af();
+         if ($$4 != null) {
+            $$3.z().a($$2, $$4);
+            $$2.ae();
+            return false;
+         }
+      }
+
+      return true;
    }
 }

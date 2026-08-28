@@ -1,54 +1,17 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class rq {
-   public static void a(qp<ebn<?, ?>> $$0) {
-      rn.a($$0);
-      ro.a($$0);
-      rp.a($$0);
-      rr.a($$0);
-      rs.a($$0);
-      rt.a($$0);
-      ru.a($$0);
-      rv.a($$0);
-      rw.a($$0);
-   }
+   public static final akq<ebq<?, ?>> a = rr.a("end_spike");
+   public static final akq<ebq<?, ?>> b = rr.a("end_gateway_return");
+   public static final akq<ebq<?, ?>> c = rr.a("end_gateway_delayed");
+   public static final akq<ebq<?, ?>> d = rr.a("chorus_plant");
+   public static final akq<ebq<?, ?>> e = rr.a("end_island");
 
-   private static eac a(List<dfw> $$0) {
-      eac $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = eac.a(eac.c, eac.a(ji.a.q(), $$0));
-      } else {
-         $$1 = eac.c;
-      }
-
-      return $$1;
-   }
-
-   public static eer a(int $$0, jm<eiq> $$1) {
-      return new eer($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends eee, F extends eca<FC>> eer a(F $$0, FC $$1, List<dfw> $$2, int $$3) {
-      return a($$3, sf.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends eee, F extends eca<FC>> eer a(F $$0, FC $$1, List<dfw> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends eee, F extends eca<FC>> eer a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static akp<ebn<?, ?>> a(String $$0) {
-      return akp.a(lu.aI, akq.b($$0));
-   }
-
-   public static void a(qp<ebn<?, ?>> $$0, akp<ebn<?, ?>> $$1, eca<eel> $$2) {
-      a($$0, $$1, $$2, eee.m);
-   }
-
-   public static <FC extends eee, F extends eca<FC>> void a(qp<ebn<?, ?>> $$0, akp<ebn<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new ebn($$2, $$3));
+   public static void a(qq<ebq<?, ?>> $$0) {
+      rr.a($$0, a, ecd.J, new efb(false, ImmutableList.of(), null));
+      rr.a($$0, b, ecd.L, eeg.a(aqu.a, true));
+      rr.a($$0, c, ecd.L, eeg.a());
+      rr.a($$0, d, ecd.l);
+      rr.a($$0, e, ecd.K);
    }
 }

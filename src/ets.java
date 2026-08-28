@@ -1,25 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class ets extends esy {
+public class ets extends etc {
    public static final MapCodec<ets> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(akn.a(lu.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, ets::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  etb.e.a(cxl.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  axw.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ets::new)
    );
-   private final jm<cuj> b;
+   public static final cxm b = new cxm(0, List.of());
+   private final Optional<etb.e<cxl>> c;
+   private final Optional<Integer> d;
 
-   private ets(List<euw> $$0, jm<cuj> $$1) {
+   protected ets(List<eva> $$0, Optional<etb.e<cxl>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eta<ets> b() {
-      return etb.f;
+   protected cuq a(cuq $$0, erp $$1) {
+      $$0.a(kq.V, b, this::a);
+      return $$0;
+   }
+
+   private cxm a(cxm $$0) {
+      return new cxm(this.d.orElseGet($$0::a), this.c.<List<cxl>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      return $$0.a(this.b.a());
+   public ete<ets> b() {
+      return etf.K;
    }
 }

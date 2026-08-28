@@ -1,32 +1,16 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class ewg implements ewh<MinecraftServer> {
-   final akq a;
+public class ewg {
+   private static final Codec<ewf> d = lt.I.r().dispatch(ewf::a, ewe::a);
+   public static final Codec<ewf> a = Codec.lazyInitialized(
+      () -> Codec.either(ewc.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof ewc $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final ewe b = a("fixed", ewd.a);
+   public static final ewe c = a("context", ewc.a);
 
-   public ewg(akq $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, ewj<MinecraftServer> $$1, long $$2) {
-      alf $$3 = $$0.aF();
-
-      for (ig<et> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
-   }
-
-   public static class a extends ewh.a<MinecraftServer, ewg> {
-      public a() {
-         super(akq.b("function_tag"), ewg.class);
-      }
-
-      public void a(ua $$0, ewg $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public ewg a(ua $$0) {
-         akq $$1 = akq.a($$0.l("Name"));
-         return new ewg($$1);
-      }
+   private static ewe a(String $$0, MapCodec<? extends ewf> $$1) {
+      return jz.a(lt.I, akr.b($$0), new ewe($$1));
    }
 }

@@ -1,15 +1,13 @@
-public class drz extends dqm {
-   public drz(jd $$0, dta $$1) {
-      super(dqh.c, $$0, $$1);
+public class drz extends dqh {
+   protected drz(dqj<?> $$0, jd $$1, dtc $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(dcu $$0, jd $$1, dta $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         dfw $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public drz(jd $$0, dtc $$1) {
+      this(dqj.n, $$0, $$1);
+   }
+
+   public boolean a(ji $$0) {
+      return $$0.o() == ji.a.b;
    }
 }

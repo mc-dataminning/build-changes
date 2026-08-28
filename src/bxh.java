@@ -1,23 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bxh {
-   public static bvg<btl> a(bsw<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return bys.a(
-         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$2x -> $$2x.group($$2x.a(ccq.n), $$2x.c(ccq.q), $$2x.b(ccq.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<btl> $$9 = $$2x.<ccs>b($$5).a($$3xx -> $$3xx.g((bsq)$$7) <= (double)$$2 && $$0.equals($$3xx.am()));
+   public static bvi<btn> a(float $$0, bqc $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static bvi<btn> a(bsx<?> $$0, float $$1, bqc $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.am()));
+   }
+
+   private static bvi<btn> a(float $$0, bqc $$1, Predicate<btn> $$2) {
+      float $$3 = $$0 * $$0;
+      bxh.a $$4 = new bxh.a($$1);
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$3x -> $$3x.group($$3x.c(ccs.n), $$3x.b(ccs.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<btn> $$9 = $$3x.<ccu>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bsr)$$7) <= (double)$$3));
                      if ($$9.isEmpty()) {
                         return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
                      } else {
-                        btl $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bvq($$10, true));
+                        $$4x.a(new bvs($$9.get(), true));
                         return true;
                      }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bqc a;
+      private int b;
+
+      public a(bqc $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(ayw $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

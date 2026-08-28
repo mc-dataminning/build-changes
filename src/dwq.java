@@ -1,206 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwq<R> implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dwr d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final ka i;
-   protected final dcw c;
+public final class dwq implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<dwp> c = new Long2ObjectLinkedOpenHashMap();
+   private final dws d;
+   private final Path e;
+   private final boolean f;
 
-   public dwq(dwr $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, ka $$3, dcw $$4) {
+   dwq(dws $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
       this.d = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.c = $$4;
    }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         dcb $$1 = kf.a(this.f.firstLong()).r();
-         this.d($$1);
+   private dwp b(dcd $$0) throws IOException {
+      long $$1 = dcd.c($$0.h(), $$0.i());
+      dwp $$2 = (dwp)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((dwp)this.c.removeLast()).close();
+         }
+
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         dwp $$4 = new dwp(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
-   }
-
-   public boolean a() {
-      return !this.f.isEmpty();
    }
 
    @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
+   public ub a(dcd $$0) throws IOException {
+      dwp $$1 = this.b($$0);
+
+      ub var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = uo.a($$2);
+      }
+
+      return var4;
    }
 
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
+   public void a(dcd $$0, uv $$1) throws IOException {
+      dwp $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            uo.a((DataInput)$$3, $$1, uk.a());
+         }
+      }
+   }
+
+   protected void a(dcd $$0, @Nullable ub $$1) throws IOException {
+      dwp $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
       } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(kf.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ad.b(new IllegalStateException());
-            } else {
-               return $$1;
-            }
-         }
-      }
-   }
-
-   protected boolean e(long $$0) {
-      int $$1 = kf.c(kf.c($$0));
-      return this.c.d($$1);
-   }
-
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
-   }
-
-   private void b(dcb $$0) {
-      Optional<ua> $$1 = this.c($$0).join();
-      ako<ux> $$2 = this.i.a(uo.a);
-      this.a($$0, $$2, $$1.orElse(null));
-   }
-
-   private CompletableFuture<Optional<ua>> c(dcb $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1);
-         }
-      });
-   }
-
-   private void a(dcb $$0, ako<ux> $$1, @Nullable ua $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.ao(); $$3 < this.c.ap(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<ux> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = ab.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<ux> $$8 = this.d.a($$4, $$5);
-         OptionalDynamic<ux> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.ao(); $$10 < this.c.ap(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
-               }
-            });
-         }
-      }
-   }
-
-   private void d(dcb $$0) {
-      ako<ux> $$1 = this.i.a(uo.a);
-      Dynamic<ux> $$2 = this.a($$0, $$1);
-      ux $$3 = (ux)$$2.getValue();
-      if ($$3 instanceof ua) {
-         this.d.a($$0, (ua)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(dcb $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.ao(); $$3 < this.c.ap(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ab.b().d().c())))
-      );
-   }
-
-   private static long a(dcb $$0, int $$1) {
-      return kf.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", kf.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(dcb $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.ao(); $$1 < this.c.ap(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
-            }
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            uo.a($$1, (DataOutput)$$3);
          }
       }
    }
 
    @Override
    public void close() throws IOException {
-      this.d.close();
+      axv<IOException> $$0 = new axv<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         dwp $$1 = (dwp)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         dwp $$0 = (dwp)var1.next();
+         $$0.b();
+      }
+   }
+
+   public dws b() {
+      return this.d;
    }
 }

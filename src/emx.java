@@ -1,42 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class emx extends ena {
+public class emx extends eno {
    public static final MapCodec<emx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
+      $$0 -> $$0.group(dyy.a.g.fieldOf("heightmap").orElse(dyy.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
             .apply($$0, emx::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+   private final dyy.a b;
+   private final int c;
 
-   public emx(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public emx(dyy.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Nullable
+   @Override
+   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
+      dyy.a $$6;
+      if ($$0 instanceof aqu) {
+         if (this.b == dyy.a.a) {
+            $$6 = dyy.a.b;
+         } else if (this.b == dyy.a.c) {
+            $$6 = dyy.a.d;
+         } else {
+            $$6 = this.b;
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         $$6 = this.b;
       }
+
+      jd $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new enr.c(new jd($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   public boolean a(jd $$0, jd $$1, jd $$2, ayv $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= ayn.b(this.b, this.d, ayn.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected enb<?> a() {
-      return enb.b;
+   protected enq<?> a() {
+      return enq.g;
    }
 }

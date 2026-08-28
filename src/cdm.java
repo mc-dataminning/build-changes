@@ -1,52 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class cdm<T extends btl> extends cdw<T> {
-   private final BiPredicate<T, btl> a;
-   private final Predicate<T> c;
-   private final ccq<Boolean> d;
-   private final int e;
-
-   public cdm(int $$0, BiPredicate<T, btl> $$1, Predicate<T> $$2, ccq<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+public class cdm extends cdy<btn> {
+   @Override
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.x, ccs.y);
    }
 
    @Override
-   protected void a(aqt $$0, T $$1) {
-      if (!this.c.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<ccq<?>> a() {
-      return Set.of(ccq.g);
-   }
-
-   public void a(T $$0) {
-      Optional<List<btl>> $$1 = $$0.dU().c(ccq.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+   protected void a(aqu $$0, btn $$1) {
+      buq<?> $$2 = $$1.dU();
+      brk $$3 = $$1.ez();
+      if ($$3 != null) {
+         $$2.a(ccs.x, $$1.ez());
+         bsr $$4 = $$3.d();
+         if ($$4 instanceof btn) {
+            $$2.a(ccs.y, (btn)$$4);
          }
+      } else {
+         $$2.b(ccs.x);
       }
-   }
 
-   public void b(T $$0) {
-      $$0.dU().a(this.d, true, (long)this.e);
-   }
-
-   public void c(T $$0) {
-      $$0.dU().b(this.d);
+      $$2.c(ccs.y).ifPresent($$2x -> {
+         if (!$$2x.bE() || $$2x.dP() != $$0) {
+            $$2.b(ccs.y);
+         }
+      });
    }
 }

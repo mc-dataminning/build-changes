@@ -1,69 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class etm extends esy {
+public class etm extends etc {
    public static final MapCodec<etm> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(daa.c, evt.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+            .and($$0.group(ern.e.fieldOf("component").forGetter($$0x -> $$0x.b), esd.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, etm::new)
    );
-   private final Map<jm<daa>, evs> b;
-   private final boolean c;
+   private final erm<?> b;
+   private final List<esf> c;
 
-   etm(List<euw> $$0, Map<jm<daa>, evs> $$1, boolean $$2) {
+   etm(List<eva> $$0, erm<?> $$1, List<esf> $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eta<etm> b() {
-      return etb.i;
+   public ete<etm> b() {
+      return etf.t;
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cuo a(cuo $$0, erl $$1) {
-      if ($$0.a(cur.qP)) {
-         $$0 = $$0.a((dct)cur.uw);
-         $$0.b(kq.y, $$0.c(kq.k));
+   public cuq a(cuq $$0, erp $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         Builder<cuq> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eru.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
       }
-
-      dac.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jm<daa>)$$2, ayn.a($$1x.a((jm<daa>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jm<daa>)$$2, ayn.a($$3.a($$1), 0, 255)));
-         }
-      });
-      return $$0;
    }
 
-   public static class a extends esy.a<etm.a> {
-      private final Builder<jm<daa>, evs> a = ImmutableMap.builder();
-      private final boolean b;
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
 
-      public a() {
-         this(false);
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
+   }
 
-      public a(boolean $$0) {
+   public static etm.a a(erm<?> $$0) {
+      return new etm.a($$0);
+   }
+
+   public static class a extends etc.a<etm.a> {
+      private final com.google.common.collect.ImmutableList.Builder<esf> a = ImmutableList.builder();
+      private final erm<?> b;
+
+      public a(erm<?> $$0) {
          this.b = $$0;
       }
 
@@ -71,14 +62,14 @@ public class etm extends esy {
          return this;
       }
 
-      public etm.a a(jm<daa> $$0, evs $$1) {
-         this.a.put($$0, $$1);
+      public etm.a a(esf.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public esz b() {
-         return new etm(this.g(), this.a.build(), this.b);
+      public etd b() {
+         return new etm(this.g(), this.b, this.a.build());
       }
    }
 }

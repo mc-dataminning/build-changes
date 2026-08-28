@@ -1,42 +1,95 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class byc {
-   private static final int a = 60;
+public class byc extends bvh<cmk> {
+   private Set<cul> c = ImmutableSet.of();
 
-   public static bvg<btu> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bys.a(
-         (Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$3 -> $$3.group($$3.c(ccq.o), $$3.c(ccq.m), $$3.a(ccq.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dq()).a(awj.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        jd $$8 = $$6.dq();
-                        jd.a $$9 = new jd.a();
-                        exb $$10 = exb.a($$6);
+   public byc() {
+      super(ImmutableMap.of(ccs.q, cct.a, ccs.h, cct.a));
+   }
 
-                        for (jd $$11 : jd.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dta $$12 = $$5x.a_($$11);
-                              dta $$13 = $$5x.a_($$9.a($$11, ji.a));
-                              if (!$$12.a(dfy.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ji.b)) {
-                                 jd $$14 = $$11.i();
-                                 $$5.a(new bvi($$14));
-                                 $$4.a(new cct(new bvi($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
+   protected boolean a(aqu $$0, cmk $$1) {
+      return bvj.a($$1.dU(), ccs.q, bsx.bj);
+   }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(aqu $$0, cmk $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqu $$0, cmk $$1, long $$2) {
+      cmk $$3 = (cmk)$$1.dU().c(ccs.q).get();
+      bvj.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(aqu $$0, cmk $$1, long $$2) {
+      cmk $$3 = (cmk)$$1.dU().c(ccs.q).get();
+      if (!($$1.g($$3) > 5.0)) {
+         bvj.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gD() && ($$1.gw().b() == cmn.g || $$3.gE())) {
+            a($$1, cmk.cd.keySet(), $$3);
+         }
+
+         if ($$3.gw().b() == cmn.g && $$1.x().a_(cut.pw) > cut.pw.q() / 2) {
+            a($$1, ImmutableSet.of(cut.pw), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.x().a(this.c)) {
+            a($$1, this.c, $$3);
+         }
+      }
+   }
+
+   protected void d(aqu $$0, cmk $$1, long $$2) {
+      $$1.dU().b(ccs.q);
+   }
+
+   private static Set<cul> a(cmk $$0, cmk $$1) {
+      ImmutableSet<cul> $$2 = $$1.gw().b().d();
+      ImmutableSet<cul> $$3 = $$0.gw().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(cmk $$0, Set<cul> $$1, btn $$2) {
+      bra $$3 = $$0.x();
+      cuq $$4 = cuq.l;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         cuq $$6;
+         cul $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.e()) {
+               $$7 = $$6.g();
+               if ($$1.contains($$7)) {
+                  if ($$6.H() > $$6.j() / 2) {
+                     $$8 = $$6.H() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.H() > 24) {
+                     $$8 = $$6.H() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new cuq($$7, $$8);
+         break;
+      }
+
+      if (!$$4.e()) {
+         bvj.a($$0, $$4, $$2.dn());
+      }
    }
 }

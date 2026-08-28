@@ -1,59 +1,52 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class gin implements gig.a {
-   private final fgi a;
-   private final Map<Long, Map<jd, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gin implements gik.a {
+   private static final int a = 160;
+   private final fgm b;
+   private final Int2ObjectMap<gin.a> c = new Int2ObjectOpenHashMap();
 
-   gin(fgi $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public void a(long $$0, jd $$1) {
-      Map<jd, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public void a(int $$0, jd $$1, List<aap.a> $$2) {
+      this.c.put($$0, new gin.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gin(fgm $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Z();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<jd> $$8 = Sets.newHashSet();
-      Map<jd, Integer> $$9 = Maps.newHashMap();
-      fbg $$10 = $$1.getBuffer(gfb.w());
-      Iterator<Entry<Long, Map<jd, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
+      ffw $$5 = this.b.j.l();
+      jd $$6 = jd.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<jd, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<jd, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<jd, Integer> $$16 : $$14.entrySet()) {
-               jd $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ewr $$19 = new ewr(jd.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  ger.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
+      while (var11.hasNext()) {
+         gin.a $$7 = (gin.a)var11.next();
+         jd $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aap.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gik.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
             }
          }
       }
+   }
 
-      for (Entry<jd, Integer> $$20 : $$9.entrySet()) {
-         jd $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gig.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
-      }
+   static record a(jd a, List<aap.a> b) {
    }
 }

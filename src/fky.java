@@ -1,115 +1,110 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class fky extends gpq implements gpr {
-   private static final int e = 256;
-   private final fkz f;
-   private final boolean g;
-   private final fky.a h;
+public class fky<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public fky(fkz $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fky.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fad.b.a : fad.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fky(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   @Override
-   public void a(aud $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
+   public void a() {
+      Arrays.fill(this.g, this.f);
    }
 
    @Nullable
-   public flb a(ezh $$0) {
-      if ($$0.c() != this.g) {
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
+   }
+
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
          return null;
       } else {
-         fky.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new flb(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
+      }
+   }
+
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
          }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
       }
    }
 
-   @Override
-   public void a(akq $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fky.a e;
-      @Nullable
-      private fky.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      fky.a a(ezh $$0) {
-         if (this.e != null && this.f != null) {
-            fky.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fky.a(this.a, this.b, $$2, this.d);
-                  this.f = new fky.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fky.a(this.a, this.b, this.c, $$3);
-                  this.f = new fky.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+   public void a(fky.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
                }
-
-               return this.e.a($$0);
             }
          }
       }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

@@ -1,69 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public class aed implements zg<abu> {
+   public static final yx<vw, aed> a = zg.a(aed::a, aed::new);
+   private final int b;
+   private final double c;
 
-public class aed implements zf<abt> {
-   public static final yw<vv, aed> a = zf.a(aed::a, aed::new);
-   private final aed.a b;
-   private final List<akq> c;
-   private final List<akq> d;
-   private final avs e;
-
-   public aed(aed.a $$0, Collection<akq> $$1, Collection<akq> $$2, avs $$3) {
+   public aed(int $$0, double $$1) {
       this.b = $$0;
-      this.c = ImmutableList.copyOf($$1);
-      this.d = ImmutableList.copyOf($$2);
-      this.e = $$3;
+      this.c = $$1;
    }
 
-   private aed(vv $$0) {
-      this.b = $$0.b(aed.a.class);
-      this.e = avs.a($$0);
-      this.c = $$0.a(vv::q);
-      if (this.b == aed.a.a) {
-         this.d = $$0.a(vv::q);
-      } else {
-         this.d = ImmutableList.of();
-      }
+   private aed(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      this.e.b($$0);
-      $$0.a(this.c, vv::a);
-      if (this.b == aed.a.a) {
-         $$0.a(this.d, vv::a);
-      }
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<aed> a() {
-      return agf.ai;
+   public zi<aed> a() {
+      return agg.be;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public List<akq> b() {
-      return this.c;
-   }
-
-   public List<akq> e() {
-      return this.d;
-   }
-
-   public avs f() {
-      return this.e;
-   }
-
-   public aed.a g() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public double e() {
+      return this.c;
    }
 }

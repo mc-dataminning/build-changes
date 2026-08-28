@@ -1,59 +1,64 @@
-import java.util.Map;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class gpe extends gop<cgf, fxv<cgf>> {
-   private final fxv<cgf> a;
-   private static final Map<bso.a, akq> b = Map.of(
-      bso.a.b,
-      akq.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bso.a.c,
-      akq.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bso.a.d,
-      akq.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
+public class gpe<T extends btn & cmm, M extends fvi<T> & fxs> extends got<T, M> {
+   private static final Int2ObjectMap<akr> a = ad.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, akr.b("stone"));
+      $$0.put(2, akr.b("iron"));
+      $$0.put(3, akr.b("gold"));
+      $$0.put(4, akr.b("emerald"));
+      $$0.put(5, akr.b("diamond"));
+   });
+   private final Object2ObjectMap<cmp, grx.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cmn, grx.a> c = new Object2ObjectOpenHashMap();
+   private final aue d;
+   private final String e;
 
-   public gpe(glz<cgf, fxv<cgf>> $$0, fya $$1) {
+   public gpe(gmd<T, M> $$0, aue $$1, String $$2) {
       super($$0);
-      this.a = new fxv<>($$1.a(fyd.ce));
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public void a(fbc $$0, get $$1, int $$2, cgf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gC()) {
-         cuo $$10 = $$3.fN();
-         if ($$10.g() instanceof csc $$11 && $$11.d() == csc.a.b) {
-            this.c().a(this.a);
-            this.a.a($$3, $$4, $$5, $$6);
-            this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-            fbg $$13 = $$1.getBuffer(gfb.e($$11.b()));
-            this.a.a($$0, $$13, $$2, gpw.d);
-            this.a($$0, $$1, $$2, $$10, $$11);
-            this.a($$0, $$1, $$2, $$10);
-            return;
+   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ci()) {
+         cml $$10 = $$3.gw();
+         cmp $$11 = $$10.a();
+         cmn $$12 = $$10.b();
+         grx.a $$13 = this.a(this.b, "type", lt.w, $$11);
+         grx.a $$14 = this.a(this.c, "profession", lt.x, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == grx.a.a || $$14 == grx.a.b && $$13 != grx.a.c);
+         akr $$16 = this.a("type", lt.w.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, -1);
+         $$15.a(true);
+         if ($$12 != cmn.b && !$$3.o_()) {
+            akr $$17 = this.a("profession", lt.x.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, -1);
+            if ($$12 != cmn.m) {
+               akr $$18 = this.a("profession_level", (akr)a.get(ayo.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, -1);
+            }
          }
       }
    }
 
-   private void a(fbc $$0, get $$1, int $$2, cuo $$3, csc $$4) {
-      if ($$3.a(awm.bx)) {
-         int $$5 = cxi.a($$3, 0);
-         if (axx.b.a($$5) == 0) {
-            return;
-         }
-
-         akq $$6 = $$4.c();
-         if ($$6 == null) {
-            return;
-         }
-
-         this.a.a($$0, $$1.getBuffer(gfb.e($$6)), $$2, gpw.d, axx.b.e($$5));
-      }
+   private akr a(String $$0, akr $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   private void a(fbc $$0, get $$1, int $$2, cuo $$3) {
-      bso.a $$4 = bso.b.a($$3);
-      if ($$4 != bso.a.a) {
-         akq $$5 = b.get($$4);
-         fbg $$6 = $$1.getBuffer(gfb.i($$5));
-         this.a.a($$0, $$6, $$2, gpw.d);
-      }
+   public <K> grx.a a(Object2ObjectMap<K, grx.a> $$0, String $$1, jh<K> $$2, K $$3) {
+      return (grx.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(grx.a).map(grx::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(grx.a.a));
    }
 }

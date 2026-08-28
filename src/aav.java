@@ -1,23 +1,26 @@
-import java.util.List;
+public record aav(jd c, int d) implements aaj {
+   public static final yx<vw, aav> a = aaj.a(aav::a, aav::new);
+   public static final aaj.b<aav> b = aaj.a("debug/poi_ticket_count");
 
-public record aav(List<jd> c) implements aai {
-   public static final yw<vv, aav> a = aai.a(aav::a, aav::new);
-   public static final aai.b<aav> b = aai.a("debug/raids");
-
-   private aav(vv $$0) {
-      this($$0.a(jd.b));
+   private aav(vw $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.c, jd.b);
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public aai.b<aav> a() {
+   public aaj.b<aav> a() {
       return b;
    }
 
-   public List<jd> b() {
+   public jd b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

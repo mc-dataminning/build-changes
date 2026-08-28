@@ -1,193 +1,98 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dro extends dqf implements dxy.b<dyf.b>, dyf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<avn> k = ad.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, avo.BR);
-      $$0.put(2, avo.BS);
-      $$0.put(3, avo.BT);
-      $$0.put(4, avo.BQ);
-   });
-   private int l;
-   private final dyf.d m = new dro.a();
-   private dyf.a q = new dyf.a();
-   private final dyf.b r = new dyf.b(this);
+public class dro extends dqh implements dyb.b<dro.a> {
+   private final dro.a a;
 
-   public dro(jd $$0, dta $$1) {
-      super(dqh.L, $$0, $$1);
+   public dro(jd $$0, dtc $$1) {
+      super(dqj.K, $$0, $$1);
+      this.a = new dro.a($$1, new dxv($$0));
+   }
+
+   public static void a(dcw $$0, jd $$1, dtc $$2, dro $$3) {
+      $$3.a.d().a($$0, $$1, $$0.E_(), true);
    }
 
    @Override
-   public dyf.a go() {
-      return this.q;
-   }
-
-   @Override
-   public dyf.d gp() {
-      return this.m;
-   }
-
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
+   protected void a(ub $$0, jo.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
-      }
-
-      if ($$0.b("listener", 10)) {
-         dyf.a.a.parse(new Dynamic(uo.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.q = $$0x);
-      }
+      this.a.b.a($$0);
    }
 
    @Override
-   protected void b(ua $$0, jo.a $$1) {
+   protected void b(ub $$0, jo.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      dyf.a.a.encodeStart(uo.a, this.q).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   @Nullable
-   public static aqu a(@Nullable bsq $$0) {
-      if ($$0 instanceof aqu) {
-         return (aqu)$$0;
-      } else {
-         if ($$0 != null) {
-            btl $$6 = $$0.cR();
-            if ($$6 instanceof aqu) {
-               return (aqu)$$6;
-            }
-         }
-
-         if ($$0 instanceof cnn $$3) {
-            bsq var3 = $$3.s();
-            if (var3 instanceof aqu) {
-               return (aqu)var3;
-            }
-         }
-
-         if ($$0 instanceof cjf $$5) {
-            bsq var9 = $$5.s();
-            if (var9 instanceof aqu) {
-               return (aqu)var9;
-            }
-         }
-
-         return null;
-      }
+   public dro.a b() {
+      return this.a;
    }
 
-   public void a(aqt $$0, @Nullable aqu $$1) {
-      if ($$1 != null) {
-         dta $$2 = this.n();
-         if (!$$2.c(dmr.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bsq)$$1);
-            }
-         }
-      }
-   }
+   public static class a implements dyb {
+      public static final int a = 8;
+      final dmu b;
+      private final dtc c;
+      private final dyd d;
 
-   private boolean b(aqt $$0, aqu $$1) {
-      OptionalInt $$2 = cmb.a($$0, this.az_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(aqt $$0, @Nullable bsq $$1) {
-      jd $$2 = this.az_();
-      dta $$3 = this.n();
-      $$0.a($$2, $$3.a(dmr.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(dxw.N, $$2, dxw.a.a($$1));
-   }
-
-   private boolean b(aqt $$0) {
-      return this.n().c(dmr.d) && $$0.al() != bqn.a && $$0.ab().b(dcq.M);
-   }
-
-   public void a(aqt $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dcu)$$0);
-         }
-
-         clz.a($$0, eww.b(this.az_()), null, 40);
-      }
-   }
-
-   private void b(dcu $$0) {
-      avn $$1 = (avn)k.get(this.l);
-      if ($$1 != null) {
-         jd $$2 = this.az_();
-         int $$3 = $$2.u() + ayn.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + ayn.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + ayn.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, avp.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(aqt $$0) {
-      return this.l < 4 ? false : azg.a(bsw.bm, btp.k, $$0, this.az_(), 20, 5, 6, azg.a.b).isPresent();
-   }
-
-   public dyf.b b() {
-      return this.r;
-   }
-
-   class a implements dyf.d {
-      private static final int b = 8;
-      private final dya c = new dxs(dro.this.o);
-
-      public a() {
+      public a(dtc $$0, dyd $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dmu.a();
       }
 
       @Override
-      public int a() {
+      public dyd a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public dya b() {
-         return this.c;
+      public dyb.a c() {
+         return dyb.a.b;
       }
 
       @Override
-      public awt<dxw> c() {
-         return awk.c;
+      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
+         if ($$1.a(dxz.p) && $$2.a() instanceof btn $$4) {
+            if (!$$4.eE()) {
+               brk $$5 = $$4.ez();
+               int $$6 = $$4.a($$0, x.a($$5, brk::d));
+               if ($$4.ef() && $$6 > 0) {
+                  this.b.a(jd.a((jw)$$3.a(ji.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eD();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, jd.a((jw)$$1x), this.c, $$0.E_()));
+            }
+
+            return true;
+         } else {
+            return false;
+         }
       }
 
-      @Override
-      public boolean a(aqt $$0, jd $$1, jm<dxw> $$2, dxw.a $$3) {
-         return !dro.this.n().c(dmr.b) && dro.a($$3.a()) != null;
+      @VisibleForTesting
+      public dmu d() {
+         return this.b;
       }
 
-      @Override
-      public void a(aqt $$0, jd $$1, jm<dxw> $$2, @Nullable bsq $$3, @Nullable bsq $$4, float $$5) {
-         dro.this.a($$0, dro.a($$4 != null ? $$4 : $$3));
+      private void a(aqu $$0, jd $$1, dtc $$2, ayw $$3) {
+         $$0.a($$1, $$2.a(dmr.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lm.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, avp.wa, avq.e, 2.0F, 0.6F + $$3.i() * 0.4F);
       }
 
-      @Override
-      public void e() {
-         dro.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      private void a(dcw $$0, btn $$1) {
+         if ($$1.ej() instanceof aqv $$3) {
+            brk $$4 = $$1.ez() == null ? $$0.aj().a((cmx)$$3) : $$1.ez();
+            an.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

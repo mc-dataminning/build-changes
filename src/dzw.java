@@ -1,137 +1,83 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class dzw implements ayv {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dzw> b = dzv.a.xmap($$0 -> new dzw($$0), $$0 -> $$0.e);
-   private dzv e;
-   private final dyx f = new dyx(this);
+public class dzw {
+   public static final MapCodec<dzw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(dzw::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dzw::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dzw::d),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(dzw::new))
+   );
+   public static final dzw b = new dzw((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public dzw(long $$0) {
-      this.e = new dzv(dzk.c($$0));
+   public dzw(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public dzw(dzk.a $$0) {
-      this.e = new dzv($$0);
+   public static dzw a() {
+      return new dzw(f(), true, false);
    }
 
-   public dzw(long $$0, long $$1) {
-      this.e = new dzv($$0, $$1);
+   private dzw(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private dzw(dzv $$0) {
-      this.e = $$0;
+   public long b() {
+      return this.c;
    }
 
-   @Override
-   public ayv d() {
-      return new dzw(this.e.a(), this.e.a());
+   public boolean c() {
+      return this.d;
    }
 
-   @Override
-   public dzi e() {
-      return new dzw.a(this.e.a(), this.e.a());
+   public boolean d() {
+      return this.e;
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new dzv(dzk.c($$0));
-      this.f.a();
+   public boolean e() {
+      return this.f.isPresent();
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
+   public dzw a(boolean $$0) {
+      return new dzw(this.c, this.d, $$0, this.f);
    }
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   public dzw b(boolean $$0) {
+      return new dzw(this.c, $$0, this.e, this.f);
+   }
+
+   public dzw a(OptionalLong $$0) {
+      return new dzw($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dzi {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public ayv a(int $$0, int $$1, int $$2) {
-         long $$3 = ayn.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dzw($$4, this.b);
-      }
-
-      @Override
-      public ayv a(String $$0) {
-         dzk.a $$1 = dzk.a($$0);
-         return new dzw($$1.a(this.a, this.b));
-      }
-
-      @Override
-      public ayv a(long $$0) {
-         return new dzw($$0 ^ this.a, $$0 ^ this.b);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public static long f() {
+      return ayw.a().g();
    }
 }

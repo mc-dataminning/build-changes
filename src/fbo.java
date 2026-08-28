@@ -1,43 +1,36 @@
-import java.util.Locale;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public enum fbo {
-   a,
-   b,
-   c,
-   d;
+public interface fbo {
+   fbo a = a(0.0F, 0.0F, 0.0F);
+   fbo b = a((fbo.a)($$0 -> -$$0.z()));
 
-   private static final int e = 1024;
+   static fbo a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-   public static fbo a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+   static fbo a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
+
+   static fbo a(fbo.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public static double a(long $$0, fbo $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
+   int[] sort(Vector3f[] var1);
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
-   }
-
-   public static String b(long $$0, fbo $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

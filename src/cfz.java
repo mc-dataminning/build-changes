@@ -1,30 +1,35 @@
-public abstract class cfz extends buj {
-   private static final int ce = 100;
-   private int cf;
-
-   protected cfz(bsw<? extends cfz> $$0, dcu $$1) {
+public class cfz extends cfd {
+   public cfz(bsx<? extends cfz> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(aqu $$0) {
-      ua $$1 = new ua();
-      $$1.a("id", this.bD());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.aq();
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int gn() {
+      return 5;
    }
 
    @Override
-   public void l() {
-      this.cf++;
-      super.l();
+   public cuq b() {
+      return new cuq(cut.qG);
    }
 
-   public boolean gA() {
-      return this.cf > 100;
+   @Override
+   protected avo v() {
+      return avp.vF;
+   }
+
+   @Override
+   protected avo n_() {
+      return avp.vG;
+   }
+
+   @Override
+   protected avo d(brk $$0) {
+      return avp.vI;
+   }
+
+   @Override
+   protected avo gm() {
+      return avp.vH;
    }
 }

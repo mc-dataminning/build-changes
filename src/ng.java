@@ -1,81 +1,61 @@
 import java.util.function.BiConsumer;
 
-public record ng(jo.a a) implements mw {
+public record ng(jo.a a) implements mx {
    @Override
-   public void generate(BiConsumer<akp<erq>, erq.a> $$0) {
+   public void generate(BiConsumer<akq<eru>, eru.a> $$0) {
+      jo.b<ddw> $$1 = this.a.b(lu.aF);
       $$0.accept(
-         erh.aG,
-         erq.b()
+         erl.aC,
+         eru.b()
             .a(
-               erp.a()
-                  .a(evp.a(1.0F))
-                  .a(ery.a(cur.uE).a(10))
-                  .a(ery.a(cur.uD).a(10))
-                  .a(ery.a(cur.sc).a(10))
-                  .a(ery.a(cur.pt).a(10))
-                  .a(ery.a(cur.se).a(10))
-                  .a(ery.a(cur.ps).a(10))
-                  .a(ery.a(cur.vT).a(2))
+               ert.a()
+                  .a(evt.a(1.0F))
+                  .a(esi.a(erl.aD).a(10).b(-2))
+                  .a(esi.a(erl.aE).a(5).b(2).a(evd.a(erp.b.a, bv.a.a().a(cb.a(true)))))
+                  .a(esi.a(erl.aF).a(85).b(-1))
             )
       );
-      $$0.accept(erh.aH, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.pC)).a(ery.a(cur.pD)).a(ery.a(cur.pE)).a(ery.a(cur.pF))));
-      $$0.accept(erh.aI, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.uB)).a(ery.a(cur.sd)).a(ery.a(cur.pY)).a(ery.a(cur.sb)).a(ery.a(cur.uO))));
-      $$0.accept(erh.aJ, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.uj)).a(ery.a(cur.qO))));
-      $$0.accept(erh.aK, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.lH)).a(ery.a(cur.oB))));
-      $$0.accept(erh.aL, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.px)).a(ery.a(cur.ut)).a(ery.a(cur.rS))));
-      $$0.accept(erh.aM, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.qZ)).a(ery.a(cur.ra))));
+      $$0.accept(erl.aF, a());
       $$0.accept(
-         erh.aN,
-         erq.b()
+         erl.aD,
+         eru.b()
             .a(
-               erp.a()
-                  .a(evp.a(1.0F))
-                  .a(ery.a(cur.ow).a(26))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.n)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.q)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.I)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.y)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.A)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.i)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.F)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.l)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.w)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.g)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.e)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.L)))
-                  .a(ery.a(cur.vq).a(etq.a(evw.a(0.0F, 1.0F))).a(etw.a(cwt.C)))
+               ert.a()
+                  .a(esc.a(dga.fm).a(17))
+                  .a(esc.a(cut.pB).a(10).a(etv.a(ewa.a(0.0F, 0.9F))))
+                  .a(esc.a(cut.qD).a(10))
+                  .a(esc.a(cut.rz).a(10))
+                  .a(esc.a(cut.sk).a(10).a(eua.a(cwv.a)))
+                  .a(esc.a(cut.ps).a(5))
+                  .a(esc.a(cut.qV).a(2).a(etv.a(ewa.a(0.0F, 0.9F))))
+                  .a(esc.a(cut.ot).a(10))
+                  .a(esc.a(cut.pq).a(5))
+                  .a(esc.a(cut.rf).a(1).a(etu.a(evt.a(10.0F))))
+                  .a(esc.a(dga.fH).a(10))
+                  .a(esc.a(cut.se).a(10))
+                  .a(esc.a(dga.mZ).a(euy.a(df.a.a().a(jq.a($$1.b(ded.x), $$1.b(ded.y), $$1.b(ded.z))))).a(10))
             )
       );
-      $$0.accept(erh.aO, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.qD))));
-      $$0.accept(erh.aP, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.qP))));
-      $$0.accept(erh.aQ, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.eX))));
       $$0.accept(
-         erh.aR,
-         erq.b()
+         erl.aE,
+         eru.b()
             .a(
-               erp.a()
-                  .a(evp.a(1.0F))
-                  .a(ery.a(cur.cU))
-                  .a(ery.a(cur.cV))
-                  .a(ery.a(cur.cW))
-                  .a(ery.a(cur.cX))
-                  .a(ery.a(cur.cY))
-                  .a(ery.a(cur.cZ))
-                  .a(ery.a(cur.da))
-                  .a(ery.a(cur.db))
-                  .a(ery.a(cur.dc))
-                  .a(ery.a(cur.dd))
-                  .a(ery.a(cur.de))
-                  .a(ery.a(cur.df))
-                  .a(ery.a(cur.dg))
-                  .a(ery.a(cur.dh))
-                  .a(ery.a(cur.di))
-                  .a(ery.a(cur.dj))
+               ert.a()
+                  .a(esc.a(cut.uL))
+                  .a(esc.a(cut.nL))
+                  .a(esc.a(cut.ov).a(etv.a(ewa.a(0.0F, 0.25F))).a(est.a(this.a, evt.a(30.0F))))
+                  .a(esc.a(cut.qV).a(etv.a(ewa.a(0.0F, 0.25F))).a(est.a(this.a, evt.a(30.0F))))
+                  .a(esc.a(cut.qP).a(est.a(this.a, evt.a(30.0F))))
+                  .a(esc.a(cut.vU))
             )
       );
-      $$0.accept(erh.aS, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.oT)).a(ery.a(cur.oU)).a(ery.a(cur.oV)).a(ery.a(cur.oS))));
-      $$0.accept(erh.aT, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.oU)).a(ery.a(cur.oZ)).a(ery.a(cur.pe))));
-      $$0.accept(erh.aU, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.vi)).a(ery.a(cur.vj))));
-      $$0.accept(erh.aV, erq.b().a(erp.a().a(evp.a(1.0F)).a(ery.a(cur.qQ).a(1)).a(erw.b().a(699))));
+   }
+
+   public static eru.a a() {
+      return eru.b().a(ert.a().a(esc.a(cut.qZ).a(60)).a(esc.a(cut.ra).a(25)).a(esc.a(cut.rb).a(2)).a(esc.a(cut.rc).a(13)));
+   }
+
+   public jo.a b() {
+      return this.a;
    }
 }

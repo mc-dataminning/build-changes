@@ -1,29 +1,37 @@
-public class agl implements zf<agh> {
-   public static final yw<vv, agl> a = zf.a(agl::a, agl::new);
-   private final bqn b;
+public class agl implements zg<agi> {
+   public static final yx<vw, agl> a = zg.a(agl::a, agl::new);
+   private final int b;
+   private final jd c;
 
-   public agl(bqn $$0) {
+   public agl(int $$0, jd $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private agl(vv $$0) {
-      this.b = bqn.a($$0.readUnsignedByte());
+   private agl(vw $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(vv $$0) {
-      $$0.k(this.b.a());
+   private void a(vw $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<agl> a() {
-      return agf.bh;
+   public zi<agl> a() {
+      return agg.bg;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public bqn b() {
+   public int b() {
       return this.b;
+   }
+
+   public jd e() {
+      return this.c;
    }
 }

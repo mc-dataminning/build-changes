@@ -1,81 +1,342 @@
-public class cvc extends cuj {
-   private static final kx a = new kw() {
-      private final kw c = new kw();
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultiset;
+import com.google.common.collect.Multiset;
+import com.google.common.collect.Multisets;
+import java.util.List;
+import javax.annotation.Nullable;
 
-      @Override
-      public cuo a(ku $$0, cuo $$1) {
-         ji $$2 = $$0.d().c(dib.b);
-         aqt $$3 = $$0.b();
-         eww $$4 = $$0.a();
-         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
-         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
-         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
-         jd $$8 = $$0.c().a($$2);
-         dta $$9 = $$3.a_($$8);
-         due $$10 = $$9.b() instanceof dfl ? $$9.c(((dfl)$$9.b()).c()) : due.a;
-         double $$11;
-         if ($$9.a(awd.N)) {
-            if ($$10.b()) {
-               $$11 = 0.6;
-            } else {
-               $$11 = 0.1;
-            }
-         } else {
-            if (!$$9.i() || !$$3.a_($$8.d()).a(awd.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cvc extends csz {
+   public static final int a = 128;
+   public static final int b = 128;
 
-            dta $$13 = $$3.a_($$8.d());
-            due $$14 = $$13.b() instanceof dfl ? $$13.c(((dfl)$$13.b()).c()) : due.a;
-            if ($$2 != ji.a && $$14.b()) {
-               $$11 = -0.4;
-            } else {
-               $$11 = -0.9;
-            }
+   public cvc(cul.a $$0) {
+      super($$0);
+   }
+
+   public static cuq a(dcw $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
+      cuq $$6 = new cuq(cut.rU);
+      eqp $$7 = a($$0, $$1, $$2, $$3, $$4, $$5, $$0.af());
+      $$6.b(kq.B, $$7);
+      return $$6;
+   }
+
+   @Nullable
+   public static eqr a(@Nullable eqp $$0, dcw $$1) {
+      return $$0 == null ? null : $$1.a($$0);
+   }
+
+   @Nullable
+   public static eqr b(cuq $$0, dcw $$1) {
+      eqp $$2 = $$0.a(kq.B);
+      return a($$2, $$1);
+   }
+
+   private static eqp a(dcw $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, akq<dcw> $$6) {
+      eqr $$7 = eqr.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
+      eqp $$8 = $$0.v();
+      $$0.a($$8, $$7);
+      return $$8;
+   }
+
+   public void a(dcw $$0, bsr $$1, eqr $$2) {
+      if ($$0.af() == $$2.e && $$1 instanceof cmx) {
+         int $$3 = 1 << $$2.f;
+         int $$4 = $$2.c;
+         int $$5 = $$2.d;
+         int $$6 = ayo.a($$1.du() - (double)$$4) / $$3 + 64;
+         int $$7 = ayo.a($$1.dA() - (double)$$5) / $$3 + 64;
+         int $$8 = 128 / $$3;
+         if ($$0.D_().h()) {
+            $$8 /= 2;
          }
 
-         cor $$18 = cor.a($$3, $$5, $$6 + $$11, $$7, ((cvc)$$1.g()).b, $$1, null);
-         $$3.b($$18);
-         $$1.h(1);
-         return $$1;
-      }
+         eqr.a $$9 = $$2.a((cmx)$$1);
+         $$9.b++;
+         jd.a $$10 = new jd.a();
+         jd.a $$11 = new jd.a();
+         boolean $$12 = false;
 
-      @Override
-      protected void a(ku $$0) {
-         $$0.b().c(1000, $$0.c(), 0);
-      }
-   };
-   final cor.a b;
+         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
+            if (($$13 & 15) == ($$9.b & 15) || $$12) {
+               $$12 = false;
+               double $$14 = 0.0;
 
-   public cvc(cor.a $$0, cuj.a $$1) {
-      super($$1);
-      this.b = $$0;
-      dib.a(this, a);
+               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
+                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
+                     int $$16 = ayo.h($$13 - $$6) + ayo.h($$15 - $$7);
+                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
+                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
+                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
+                     Multiset<epg> $$20 = LinkedHashMultiset.create();
+                     dvi $$21 = $$0.d(kf.a($$18), kf.a($$19));
+                     if (!$$21.C()) {
+                        int $$22 = 0;
+                        double $$23 = 0.0;
+                        if ($$0.D_().h()) {
+                           int $$24 = $$18 + $$19 * 231871;
+                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
+                           if (($$24 >> 20 & 1) == 0) {
+                              $$20.add(dga.j.o().d($$0, jd.c), 10);
+                           } else {
+                              $$20.add(dga.b.o().d($$0, jd.c), 100);
+                           }
+
+                           $$23 = 100.0;
+                        } else {
+                           for (int $$25 = 0; $$25 < $$3; $$25++) {
+                              for (int $$26 = 0; $$26 < $$3; $$26++) {
+                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
+                                 int $$27 = $$21.a(dyy.a.b, $$10.u(), $$10.w()) + 1;
+                                 dtc $$31;
+                                 if ($$27 <= $$0.I_() + 1) {
+                                    $$31 = dga.F.o();
+                                 } else {
+                                    do {
+                                       $$10.q(--$$27);
+                                       $$31 = $$21.a_($$10);
+                                    } while ($$31.d($$0, $$10) == epg.a && $$27 > $$0.I_());
+
+                                    if ($$27 > $$0.I_() && !$$31.u().c()) {
+                                       int $$29 = $$27 - 1;
+                                       $$11.g($$10);
+
+                                       dtc $$30;
+                                       do {
+                                          $$11.q($$29--);
+                                          $$30 = $$21.a_($$11);
+                                          $$22++;
+                                       } while ($$29 > $$0.I_() && !$$30.u().c());
+
+                                       $$31 = this.a($$0, $$31, $$10);
+                                    }
+                                 }
+
+                                 $$2.a($$0, $$10.u(), $$10.w());
+                                 $$23 += (double)$$27 / (double)($$3 * $$3);
+                                 $$20.add($$31.d($$0, $$10));
+                              }
+                           }
+                        }
+
+                        $$22 /= $$3 * $$3;
+                        epg $$32 = (epg)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), epg.a);
+                        epg.a $$34;
+                        if ($$32 == epg.m) {
+                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
+                           if ($$33 < 0.5) {
+                              $$34 = epg.a.c;
+                           } else if ($$33 > 0.9) {
+                              $$34 = epg.a.a;
+                           } else {
+                              $$34 = epg.a.b;
+                           }
+                        } else {
+                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
+                           if ($$37 > 0.6) {
+                              $$34 = epg.a.c;
+                           } else if ($$37 < -0.6) {
+                              $$34 = epg.a.a;
+                           } else {
+                              $$34 = epg.a.b;
+                           }
+                        }
+
+                        $$14 = $$23;
+                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
+                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private dtc a(dcw $$0, dtc $$1, jd $$2) {
+      epc $$3 = $$1.u();
+      return !$$3.c() && !$$1.d($$0, $$2, ji.b) ? $$3.g() : $$1;
+   }
+
+   private static boolean a(boolean[] $$0, int $$1, int $$2) {
+      return $$0[$$2 * 128 + $$1];
+   }
+
+   public static void a(aqu $$0, cuq $$1) {
+      eqr $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         if ($$0.af() == $$2.e) {
+            int $$3 = 1 << $$2.f;
+            int $$4 = $$2.c;
+            int $$5 = $$2.d;
+            boolean[] $$6 = new boolean[16384];
+            int $$7 = $$4 / $$3 - 64;
+            int $$8 = $$5 / $$3 - 64;
+            jd.a $$9 = new jd.a();
+
+            for (int $$10 = 0; $$10 < 128; $$10++) {
+               for (int $$11 = 0; $$11 < 128; $$11++) {
+                  jm<ddw> $$12 = $$0.t($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
+                  $$6[$$10 * 128 + $$11] = $$12.a(awd.ab);
+               }
+            }
+
+            for (int $$13 = 1; $$13 < 127; $$13++) {
+               for (int $$14 = 1; $$14 < 127; $$14++) {
+                  int $$15 = 0;
+
+                  for (int $$16 = -1; $$16 < 2; $$16++) {
+                     for (int $$17 = -1; $$17 < 2; $$17++) {
+                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
+                           $$15++;
+                        }
+                     }
+                  }
+
+                  epg.a $$18 = epg.a.d;
+                  epg $$19 = epg.a;
+                  if (a($$6, $$13, $$14)) {
+                     $$19 = epg.p;
+                     if ($$15 > 7 && $$14 % 2 == 0) {
+                        switch (($$13 + (int)(ayo.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
+                           case 0:
+                           case 4:
+                              $$18 = epg.a.a;
+                              break;
+                           case 1:
+                           case 3:
+                              $$18 = epg.a.b;
+                              break;
+                           case 2:
+                              $$18 = epg.a.c;
+                        }
+                     } else if ($$15 > 7) {
+                        $$19 = epg.a;
+                     } else if ($$15 > 5) {
+                        $$18 = epg.a.b;
+                     } else if ($$15 > 3) {
+                        $$18 = epg.a.a;
+                     } else if ($$15 > 1) {
+                        $$18 = epg.a.a;
+                     }
+                  } else if ($$15 > 0) {
+                     $$19 = epg.A;
+                     if ($$15 > 3) {
+                        $$18 = epg.a.b;
+                     } else {
+                        $$18 = epg.a.d;
+                     }
+                  }
+
+                  if ($$19 != epg.a) {
+                     $$2.b($$13, $$14, $$19.b($$18));
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public bqq a(cyd $$0) {
-      dcu $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      dta $$3 = $$1.a_($$2);
-      if (!$$3.a(awd.N)) {
-         return bqq.f;
-      } else {
-         cuo $$4 = $$0.n();
-         if ($$1 instanceof aqt $$5) {
-            due $$6 = $$3.b() instanceof dfl ? $$3.c(((dfl)$$3.b()).c()) : due.a;
-            double $$7 = 0.0;
-            if ($$6.b()) {
-               $$7 = 0.5;
+   public void a(cuq $$0, dcw $$1, bsr $$2, int $$3, boolean $$4) {
+      if (!$$1.B) {
+         eqr $$5 = b($$0, $$1);
+         if ($$5 != null) {
+            if ($$2 instanceof cmx $$6) {
+               $$5.a($$6, $$0);
             }
 
-            cor $$8 = cor.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
-            $$5.b($$8);
-            $$5.a(dxw.t, $$2, dxw.a.a($$0.o(), $$5.a_($$2.d())));
+            if (!$$5.h && ($$4 || $$2 instanceof cmx && ((cmx)$$2).eV() == $$0)) {
+               this.a($$1, $$2, $$5);
+            }
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public zg<?> a(cuq $$0, dcw $$1, cmx $$2) {
+      eqp $$3 = $$0.a(kq.B);
+      eqr $$4 = a($$3, $$1);
+      return $$4 != null ? $$4.a($$3, $$2) : null;
+   }
+
+   @Override
+   public void a(cuq $$0, dcw $$1) {
+      cxt $$2 = $$0.c(kq.D);
+      if ($$2 != null) {
+         switch ($$2) {
+            case a:
+               a($$1, $$0);
+               break;
+            case b:
+               c($$0, $$1);
+         }
+      }
+   }
+
+   private static void c(cuq $$0, dcw $$1) {
+      eqr $$2 = b($$0, $$1);
+      if ($$2 != null) {
+         eqp $$3 = $$1.v();
+         $$1.a($$3, $$2.e());
+         $$0.b(kq.B, $$3);
+      }
+   }
+
+   public static void a(dcw $$0, cuq $$1) {
+      eqr $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         eqp $$3 = $$0.v();
+         eqr $$4 = $$2.b();
+         $$0.a($$3, $$4);
+         $$1.b(kq.B, $$3);
+      }
+   }
+
+   @Override
+   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
+      eqp $$4 = $$0.a(kq.B);
+      eqr $$5 = $$4 != null ? $$1.a($$4) : null;
+      cxt $$6 = $$0.a(kq.D);
+      if ($$5 != null && ($$5.h || $$6 == cxt.a)) {
+         $$2.add(wz.a("filled_map.locked", $$4.b()).a(n.h));
+      }
+
+      if ($$3.a()) {
+         if ($$5 != null) {
+            if ($$6 == null) {
+               $$2.add(a($$4));
+            }
+
+            int $$7 = $$6 == cxt.b ? 1 : 0;
+            int $$8 = Math.min($$5.f + $$7, 4);
+            $$2.add(wz.a("filled_map.scale", 1 << $$8).a(n.h));
+            $$2.add(wz.a("filled_map.level", $$8, 4).a(n.h));
+         } else {
+            $$2.add(wz.c("filled_map.unknown").a(n.h));
+         }
+      }
+   }
+
+   public static wz a(eqp $$0) {
+      return wz.a("filled_map.id", $$0.b()).a(n.h);
+   }
+
+   @Override
+   public bqr a(cyf $$0) {
+      dtc $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(awe.G)) {
+         if (!$$0.q().B) {
+            eqr $$2 = b($$0.n(), $$0.q());
+            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
+               return bqr.f;
+            }
          }
 
-         $$4.h(1);
-         return bqq.a($$1.B);
+         return bqr.a($$0.q().B);
+      } else {
+         return super.a($$0);
       }
    }
 }

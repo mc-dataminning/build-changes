@@ -1,94 +1,135 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class gwg {
-   static final Logger a = LogUtils.getLogger();
-   final fnx b;
-   volatile boolean c;
+   private final fgm a;
    @Nullable
-   vs d;
+   private gwh b;
+   private final List<gwg.a> c = Lists.newArrayList();
+   private final gvz d;
 
-   public gwg(fnx $$0) {
-      this.b = $$0;
+   public gwg(fgm $$0, fgq $$1) {
+      this.a = $$0;
+      this.d = new gvz(this, $$1);
    }
 
-   public void a(final fcj $$0, gar $$1) {
-      final fgi $$2 = fgi.Q();
-      $$2.aR();
-      $$2.aV().c(wy.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   public void a(gdx $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
 
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gwg.this.c) {
-                  return;
-               }
+   public void a(double $$0, double $$1) {
+      if (this.b != null) {
+         this.b.a($$0, $$1);
+      }
+   }
 
-               gwg.this.d = vs.a($$0, $$2.m.az(), $$2.aN().n());
-               if (gwg.this.c) {
-                  return;
-               }
+   public void a(@Nullable fzd $$0, @Nullable ewy $$1) {
+      if (this.b != null && $$1 != null && $$0 != null) {
+         this.b.a($$0, $$1);
+      }
+   }
 
-               fyy $$1 = new fyy(gwg.this.d, $$2, $$0.e($$3), gwg.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.o);
-               }
-
-               if (gwg.this.c) {
-                  return;
-               }
-
-               gwg.this.d.a($$3, $$4, $$1);
-               if (gwg.this.c) {
-                  return;
-               }
-
-               gwg.this.d.a(new aix($$2.X().c(), $$2.X().b()));
-               $$2.a(gaf.a($$0));
-               $$2.aZ().a(ged.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ae().a(gwg.this.d, gsz.c.b);
-            } catch (Exception var5) {
-               $$2.ae().i();
-               if (gwg.this.c) {
-                  return;
-               }
-
-               gwg.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gwf $$5 = new gwf(gwg.this.b, wx.r, wy.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
-            }
-         }
-      }).start();
+   public void a(fzd $$0, jd $$1, dtc $$2, float $$3) {
+      if (this.b != null) {
+         this.b.a($$0, $$1, $$2, $$3);
+      }
    }
 
    public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wy.c("disconnect.genericReason"));
-         this.d.n();
+      if (this.b != null) {
+         this.b.c();
+      }
+   }
+
+   public void a(cuq $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
    }
 
    public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
+      if (this.b != null) {
+         this.b.b();
+         this.b = null;
+      }
+   }
+
+   public void c() {
+      if (this.b != null) {
+         this.b();
+      }
+
+      this.b = this.a.m.r.a(this);
+   }
+
+   public void a(fkv $$0, int $$1) {
+      this.c.add(new gwg.a($$0, $$1));
+      this.a.aw().a($$0);
+   }
+
+   public void a(fkv $$0) {
+      this.c.removeIf($$1 -> $$1.a == $$0);
+      $$0.c();
+   }
+
+   public void d() {
+      this.c.removeIf(gwg.a::a);
+      if (this.b != null) {
+         if (this.a.r != null) {
+            this.b.a();
          } else {
-            this.d.n();
+            this.b();
+         }
+      } else if (this.a.r != null) {
+         this.c();
+      }
+   }
+
+   public void a(gwi $$0) {
+      this.a.m.r = $$0;
+      this.a.m.av();
+      if (this.b != null) {
+         this.b.b();
+         this.b = $$0.a(this);
+      }
+   }
+
+   public fgm e() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.a.q == null ? false : this.a.q.j() == dct.a;
+   }
+
+   public static wz a(String $$0) {
+      return wz.d("key." + $$0).a(n.r);
+   }
+
+   public void a(cuq $$0, cuq $$1, cqd $$2) {
+      this.d.a($$0, $$1, $$2);
+   }
+
+   static final class a {
+      final fkv a;
+      private final int b;
+      private int c;
+
+      a(fkv $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private boolean a() {
+         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
+         if (this.c > this.b) {
+            this.a.c();
+            return true;
+         } else {
+            return false;
          }
       }
    }

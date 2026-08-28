@@ -1,3 +1,8 @@
-public interface fmd {
-   void b(fmc var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fmd {
 }

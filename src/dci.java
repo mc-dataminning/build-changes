@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dci {
-   public static final dci a = new dci(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dci> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dci::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
-
-   public dci(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+public interface dci extends dcn, dcz, ddb {
+   @Override
+   default <T extends dqh> Optional<T> a(jd $$0, dqj<T> $$1) {
+      return dcz.super.a($$0, $$1);
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   default List<ext> c(@Nullable bsr $$0, ewv $$1) {
+      return dcn.super.c($$0, $$1);
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   default boolean a(@Nullable bsr $$0, ext $$1) {
+      return dcn.super.a($$0, $$1);
+   }
+
+   @Override
+   default jd a(dyy.a $$0, jd $$1) {
+      return dcz.super.a($$0, $$1);
    }
 }

@@ -1,57 +1,42 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record eun(akp<euw> b) implements euw {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eun> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akp.a(lu.be).fieldOf("name").forGetter(eun::c)).apply($$0, eun::new));
+public class eun extends euq {
+   public static final MapCodec<eun> a = a(eun::new);
+   public static final Codec<eun> b = b(eun::new);
 
-   @Override
-   public eux b() {
-      return euy.p;
+   eun(List<eva> $$0) {
+      super($$0, ad.a($$0));
+   }
+
+   public static eun a(List<eva> $$0) {
+      return new eun(List.copyOf($$0));
    }
 
    @Override
-   public void a(err $$0) {
-      if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         euw.super.a($$0);
-         $$0.a()
-            .a(lu.be, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public evb b() {
+      return evc.c;
+   }
+
+   public static eun.a a(eva.a... $$0) {
+      return new eun.a($$0);
+   }
+
+   public static class a extends euq.a {
+      public a(eva.a... $$0) {
+         super($$0);
       }
-   }
 
-   public boolean a(erl $$0) {
-      euw $$1 = $$0.a().a(lu.be, this.b).map(jm.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         erl.c<?> $$2 = erl.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
+      @Override
+      public eun.a and(eva.a $$0) {
+         this.a($$0);
+         return this;
       }
-   }
 
-   public static euw.a a(akp<euw> $$0) {
-      return () -> new eun($$0);
-   }
-
-   public akp<euw> c() {
-      return this.b;
+      @Override
+      protected eva a(List<eva> $$0) {
+         return new eun($$0);
+      }
    }
 }

@@ -1,19 +1,24 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class wj extends vv {
-   private final ka d;
+public class wj extends vt {
+   private static final Logger h = LogUtils.getLogger();
+   private static final wz i = wz.c("disconnect.exceeded_packet_rate");
+   private final int j;
 
-   public wj(ByteBuf $$0, ka $$1) {
-      super($$0);
-      this.d = $$1;
+   public wj(int $$0) {
+      super(zh.a);
+      this.j = $$0;
    }
 
-   public ka G() {
-      return this.d;
-   }
-
-   public static Function<ByteBuf, wj> a(ka $$0) {
-      return $$1 -> new wj($$1, $$0);
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zp(i), wg.a(() -> this.a(i)));
+         this.m();
+      }
    }
 }

@@ -1,25 +1,12 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public interface ddc {
-   boolean a(jd var1, dta var2, int var3, int var4);
+   boolean a(jd var1, Predicate<dtc> var2);
 
-   default boolean a(jd $$0, dta $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
+   boolean b(jd var1, Predicate<epc> var2);
 
-   boolean a(jd var1, boolean var2);
+   <T extends dqh> Optional<T> a(jd var1, dqj<T> var2);
 
-   default boolean b(jd $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
-   }
-
-   default boolean a(jd $$0, boolean $$1, @Nullable bsq $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(jd var1, boolean var2, @Nullable bsq var3, int var4);
-
-   default boolean b(bsq $$0) {
-      return false;
-   }
+   jd a(dyy.a var1, jd var2);
 }

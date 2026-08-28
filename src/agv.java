@@ -1,16 +1,23 @@
-public record agv(int b, int c) implements zf<agh> {
-   public static final yw<vv, agv> a = yw.a(yu.g, agv::b, yu.g, agv::e, agv::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zh<agv> a() {
-      return agf.br;
+public class agv implements zg<agi> {
+   public static final agv a = new agv();
+   public static final yx<ByteBuf, agv> b = yx.a(a);
+
+   private agv() {
    }
 
-   public void a(agh $$0) {
+   @Override
+   public zi<agv> a() {
+      return agg.bq;
+   }
+
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

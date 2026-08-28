@@ -1,51 +1,53 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aif implements zg<agi> {
+   public static final yx<vw, aif> a = zg.a(aif::a, aif::new);
+   private final bqq b;
+   private final int c;
+   private final float d;
+   private final float e;
 
-public class aif {
-   private static final double a = 4096.0;
-   private eww b;
-
-   public aif() {
-      this.b = eww.b;
-   }
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public eww a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new eww($$3, $$4, $$5);
-      }
-   }
-
-   public long a(eww $$0) {
-      return a($$0.c) - a(this.b.c);
-   }
-
-   public long b(eww $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long c(eww $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public eww d(eww $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(eww $$0) {
+   public aif(bqq $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   private aif(vw $$0) {
+      this.b = $$0.b(bqq.class);
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+   }
+
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+   }
+
+   @Override
+   public zi<aif> a() {
+      return agg.cd;
+   }
+
+   public void a(agi $$0) {
+      $$0.a(this);
+   }
+
+   public bqq b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

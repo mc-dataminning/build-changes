@@ -1,17 +1,36 @@
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface euo<T extends euo<T>> {
-   T b(euw.a var1);
+public class euo extends euq {
+   public static final MapCodec<euo> a = a(euo::new);
 
-   default <E> T a_(Iterable<E> $$0, Function<E, euw.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   euo(List<eva> $$0) {
+      super($$0, ad.b($$0));
    }
 
-   T d();
+   @Override
+   public evb b() {
+      return evc.b;
+   }
+
+   public static euo.a a(eva.a... $$0) {
+      return new euo.a($$0);
+   }
+
+   public static class a extends euq.a {
+      public a(eva.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public euo.a or(eva.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eva a(List<eva> $$0) {
+         return new euo($$0);
+      }
+   }
 }

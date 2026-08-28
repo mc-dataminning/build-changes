@@ -1,38 +1,15 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface eky {
-   Codec<eky> b = lt.ah.r().dispatch(eky::b, Function.identity());
+public interface eky<P extends ekx> {
+   eky<ekw> a = a("single_pool_element", ekw.b);
+   eky<ekv> b = a("list_pool_element", ekv.a);
+   eky<ekr> c = a("feature_pool_element", ekr.a);
+   eky<ekq> d = a("empty_pool_element", ekq.a);
+   eky<eku> e = a("legacy_single_pool_element", eku.a);
 
-   void a(ayv var1, BiConsumer<akp<ekw>, akp<ekw>> var2);
+   MapCodec<P> codec();
 
-   Stream<akp<ekw>> a();
-
-   static ekx a(String $$0, String $$1) {
-      return a(qw.a($$0), qw.a($$1));
+   static <P extends ekx> eky<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.ag, $$0, () -> $$1);
    }
-
-   static ekx a(akp<ekw> $$0, akp<ekw> $$1) {
-      return new ekx($$0, $$1);
-   }
-
-   static elb a(String $$0, bpa<String> $$1) {
-      bpa.a<akp<ekw>> $$2 = bpa.a();
-      $$1.e().forEach($$1x -> $$2.a(qw.a((String)$$1x.b()), $$1x.a().a()));
-      return a(qw.a($$0), $$2.a());
-   }
-
-   static elb a(akp<ekw> $$0, bpa<akp<ekw>> $$1) {
-      return new elb($$0, $$1);
-   }
-
-   static elc a(bpa<List<eky>> $$0) {
-      return new elc($$0);
-   }
-
-   MapCodec<? extends eky> b();
 }

@@ -1,63 +1,60 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+public class dzk implements dcj {
+   private int a;
 
-public final class dzk {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+   @Override
+   public int a(aqu $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ab().b(dcs.C)) {
+         return 0;
+      } else {
+         ayw $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
-   }
+               for (aqv $$5 : $$0.x()) {
+                  if (!$$5.R_()) {
+                     jd $$6 = $$5.dp();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
+                        bqp $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           avv $$8 = $$5.I();
+                           int $$9 = ayo.a($$8.a(avz.i.b(avz.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              jd $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dtc $$12 = $$0.a_($$11);
+                              epc $$13 = $$0.b_($$11);
+                              if (ddh.a($$0, $$11, $$12, $$13, bsx.ay)) {
+                                 buh $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   public static dzk.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dzk.a($$1, $$2);
-   }
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    ckf $$17 = bsx.ay.a((dcw)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, btr.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
 
-   public static dzk.a c(long $$0) {
-      return b($$0).a();
-   }
-
-   public static dzk.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dzk.a($$2, $$3);
-   }
-
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public static record a(long a, long b) {
-      public dzk.a a(long $$0, long $$1) {
-         return new dzk.a(this.a ^ $$0, this.b ^ $$1);
-      }
-
-      public dzk.a a(dzk.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
-
-      public dzk.a a() {
-         return new dzk.a(dzk.a(this.a), dzk.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
+               return $$4;
+            }
+         }
       }
    }
 }

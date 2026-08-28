@@ -1,17 +1,20 @@
-public abstract class gtc extends gtb implements gtu {
-   private boolean n;
+import java.util.UUID;
 
-   protected gtc(avn $$0, avp $$1, ayv $$2) {
-      super($$0, $$1, $$2);
+public interface gtc {
+   void a(UUID var1, gtc.b var2);
+
+   void a(UUID var1, gtc.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public static enum b {
+      a,
+      b;
    }
 }

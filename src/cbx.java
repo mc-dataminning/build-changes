@@ -1,26 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cbx extends cbh {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cbx(btu $$0, double $$1) {
-      this($$0, $$1, 0.001F);
-   }
-
-   public cbx(btu $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
+public class cbx<T extends btp> extends cam {
+   private final T a;
+   private final cuq b;
+   private final Predicate<? super T> c;
    @Nullable
+   private final avo d;
+
+   public cbx(T $$0, cuq $$1, @Nullable avo $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
+   }
+
    @Override
-   protected eww h() {
-      if (this.b.bi()) {
-         eww $$0 = cek.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dT().i() >= this.j ? cek.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.fs();
+   }
+
+   @Override
+   public void d() {
+      this.a.a(bsy.a, this.b.s());
+      this.a.c(bqq.a);
+   }
+
+   @Override
+   public void e() {
+      this.a.a(bsy.a, cuq.l);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dS().i() * 0.2F + 0.9F);
       }
    }
 }

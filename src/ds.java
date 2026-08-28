@@ -11,41 +11,41 @@ public class ds extends dv<ds.a> {
       return ds.a.a;
    }
 
-   public void a(aqu $$0, akq $$1, List<cuo> $$2) {
+   public void a(aqv $$0, akr $$1, List<cuq> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bg> b, akq c, List<cs> d) implements dv.a {
+   public static record a(Optional<bg> b, akr c, List<cs> d) implements dv.a {
       public static final Codec<ds.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(ds.a::a),
-                  akq.a.fieldOf("recipe_id").forGetter(ds.a::b),
+                  akr.a.fieldOf("recipe_id").forGetter(ds.a::b),
                   cs.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(ds.a::c)
                )
                .apply($$0, ds.a::new)
       );
 
-      public static ao<ds.a> a(akq $$0, List<cs.a> $$1) {
+      public static ao<ds.a> a(akr $$0, List<cs.a> $$1) {
          return an.ac.a(new ds.a(Optional.empty(), $$0, $$1.stream().map(cs.a::b).toList()));
       }
 
-      public static ao<ds.a> a(akq $$0) {
+      public static ao<ds.a> a(akr $$0) {
          return an.ac.a(new ds.a(Optional.empty(), $$0, List.of()));
       }
 
-      public static ao<ds.a> b(akq $$0) {
+      public static ao<ds.a> b(akr $$0) {
          return an.ad.a(new ds.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(akq $$0, List<cuo> $$1) {
+      boolean b(akr $$0, List<cuq> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cuo> $$2 = new ArrayList<>($$1);
+            List<cuq> $$2 = new ArrayList<>($$1);
 
             for (cs $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cuo> $$5 = $$2.iterator();
+               Iterator<cuq> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {
@@ -69,7 +69,7 @@ public class ds extends dv<ds.a> {
          return this.b;
       }
 
-      public akq b() {
+      public akr b() {
          return this.c;
       }
 

@@ -1,31 +1,72 @@
-import java.util.UUID;
+public class fiu extends fie {
+   private final fhv a;
+   private final fje b;
 
-public class fiu extends bqg {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public fiu(int $$0, int $$1, int $$2, int $$3, wz $$4, fhv $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fje($$4, $$5).d(this.y() - this.b());
+   }
 
-   public fiu(UUID $$0, wy $$1, float $$2, bqg.a $$3, bqg.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ad.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fiu a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ad.c();
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
    }
 
    @Override
-   public float j() {
-      long $$0 = ad.c() - this.i;
-      float $$1 = ayn.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayn.i($$1, this.b, this.h);
+   protected int h() {
+      return this.b.w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fhx $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aO_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
+      }
+   }
+
+   @Override
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fhx $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fmg $$0) {
+      $$0.a(fmf.a, this.z());
    }
 }

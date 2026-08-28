@@ -1,32 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eed implements eee {
+public class eed implements eeh {
    public static final Codec<eed> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jd.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eed::new)
+      $$0 -> $$0.group(
+               dtc.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dtc.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bpw.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bpw.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eed::new)
    );
-   private final Optional<jd> b;
-   private final boolean c;
+   private final dtc b;
+   private final dtc c;
+   private final bpw d;
+   private final bpw e;
 
-   private eed(Optional<jd> $$0, boolean $$1) {
+   public eed(dtc $$0, dtc $$1, bpw $$2, bpw $$3) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static eed a(jd $$0, boolean $$1) {
-      return new eed(Optional.of($$0), $$1);
-   }
-
-   public static eed a() {
-      return new eed(Optional.empty(), false);
-   }
-
-   public Optional<jd> b() {
+   public dtc a() {
       return this.b;
    }
 
-   public boolean c() {
+   public dtc b() {
       return this.c;
+   }
+
+   public bpw c() {
+      return this.d;
+   }
+
+   public bpw d() {
+      return this.e;
    }
 }

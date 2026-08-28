@@ -1,1335 +1,2658 @@
-import com.google.common.base.Charsets;
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
+import com.google.common.collect.Queues;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.minecraft.BanDetails;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.UserApiService.UserFlag;
+import com.mojang.authlib.minecraft.UserApiService.UserProperties;
+import com.mojang.authlib.yggdrasil.ProfileActionType;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.lang.management.ManagementFactory;
+import java.net.Proxy;
+import java.net.SocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.MissingResourceException;
+import java.util.Queue;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import net.minecraft.client.ClientBrandRetriever;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
-public class fgm {
-   static final Logger af = LogUtils.getLogger();
-   static final Gson ag = new Gson();
-   private static final TypeToken<List<String>> ah = new TypeToken<List<String>>() {
-   };
-   public static final int a = 2;
-   public static final int b = 4;
-   public static final int c = 8;
-   public static final int d = 12;
-   public static final int e = 16;
-   public static final int f = 32;
-   private static final Splitter ai = Splitter.on(':').limit(2);
-   public static final String g = "";
-   private static final wy aj = wy.c("options.darkMojangStudiosBackgroundColor.tooltip");
-   private final fgl<Boolean> ak = fgl.a("options.darkMojangStudiosBackgroundColor", fgl.a(aj), false);
-   private static final wy al = wy.c("options.hideLightningFlashes.tooltip");
-   private final fgl<Boolean> am = fgl.a("options.hideLightningFlashes", fgl.a(al), false);
-   private static final wy an = wy.c("options.hideSplashTexts.tooltip");
-   private final fgl<Boolean> ao = fgl.a("options.hideSplashTexts", fgl.a(an), false);
-   private final fgl<Double> ap = new fgl<>("options.sensitivity", fgl.a(), ($$0x, $$1x) -> {
-      if ($$1x == 0.0) {
-         return a($$0x, wy.c("options.sensitivity.min"));
-      } else {
-         return $$1x == 1.0 ? a($$0x, wy.c("options.sensitivity.max")) : a($$0x, 2.0 * $$1x);
-      }
-   }, fgl.m.a, 0.5, $$0x -> {
-   });
-   private final fgl<Integer> aq;
-   private final fgl<Integer> ar;
-   private int as = 0;
-   private final fgl<Double> at = new fgl<>(
-      "options.entityDistanceScaling",
-      fgl.a(),
-      fgm::a,
-      new fgl.f(2, 20).a($$0x -> (double)$$0x / 4.0, $$0x -> (int)($$0x * 4.0)),
-      Codec.doubleRange(0.5, 5.0),
-      1.0,
-      $$0x -> {
-      }
-   );
-   public static final int h = 260;
-   private final fgl<Integer> au = new fgl<>(
-      "options.framerateLimit",
-      fgl.a(),
-      ($$0x, $$1x) -> $$1x == 260 ? a($$0x, wy.c("options.framerateLimit.max")) : a($$0x, wy.a("options.framerate", $$1x)),
-      new fgl.f(1, 26).a($$0x -> $$0x * 10, $$0x -> $$0x / 10),
-      Codec.intRange(10, 260),
-      120,
-      $$0x -> fgi.Q().aM().a($$0x)
-   );
-   private final fgl<ffv> av = new fgl<>(
-      "options.renderClouds",
-      fgl.a(),
-      fgl.b(),
-      new fgl.e<>(Arrays.asList(ffv.values()), Codec.withAlternative(ffv.d, Codec.BOOL, $$0x -> $$0x ? ffv.c : ffv.a)),
-      ffv.c,
-      $$0x -> {
-         if (fgi.O()) {
-            ezp $$1x = fgi.Q().f.x();
-            if ($$1x != null) {
-               $$1x.b(fgi.a);
-            }
-         }
-      }
-   );
-   private static final wy aw = wy.c("options.graphics.fast.tooltip");
-   private static final wy ax = wy.a("options.graphics.fabulous.tooltip", wy.c("options.graphics.fabulous").a(n.u));
-   private static final wy ay = wy.c("options.graphics.fancy.tooltip");
-   private final fgl<fgb> az = new fgl<>(
-      "options.graphics",
-      $$0x -> {
-         return switch ($$0x) {
-            case b -> fjr.a(ay);
-            case a -> fjr.a(aw);
-            case c -> fjr.a(ax);
-         };
-      },
-      ($$0x, $$1x) -> {
-         xm $$2x = wy.c($$1x.b());
-         return $$1x == fgb.c ? $$2x.a(n.u) : $$2x;
-      },
-      new fgl.a<>(
-         Arrays.asList(fgb.values()),
-         Stream.of(fgb.values()).filter($$0x -> $$0x != fgb.c).collect(Collectors.toList()),
-         () -> fgi.Q().r() && fgi.Q().ai().h(),
-         ($$0x, $$1x) -> {
-            fgi $$2x = fgi.Q();
-            gen $$3 = $$2x.ai();
-            if ($$1x == fgb.c && $$3.b()) {
-               $$3.d();
-            } else {
-               $$0x.a($$1x);
-               $$2x.f.f();
-            }
-         },
-         Codec.INT.xmap(fgb::a, fgb::a)
-      ),
-      fgb.b,
-      $$0x -> {
-      }
-   );
-   private final fgl<Boolean> aA = fgl.a("options.ao", true, $$0x -> fgi.Q().f.f());
-   private static final wy aB = wy.c("options.prioritizeChunkUpdates.none.tooltip");
-   private static final wy aC = wy.c("options.prioritizeChunkUpdates.byPlayer.tooltip");
-   private static final wy aD = wy.c("options.prioritizeChunkUpdates.nearby.tooltip");
-   private final fgl<fgp> aE = new fgl<>("options.prioritizeChunkUpdates", $$0x -> {
-      return switch ($$0x) {
-         case a -> fjr.a(aB);
-         case b -> fjr.a(aC);
-         case c -> fjr.a(aD);
-      };
-   }, fgl.b(), new fgl.e<>(Arrays.asList(fgp.values()), Codec.INT.xmap(fgp::a, fgp::a)), fgp.a, $$0x -> {
-   });
-   public List<String> i = Lists.newArrayList();
-   public List<String> j = Lists.newArrayList();
-   private final fgl<cmt> aF = new fgl<>(
-      "options.chat.visibility", fgl.a(), fgl.b(), new fgl.e<>(Arrays.asList(cmt.values()), Codec.INT.xmap(cmt::a, cmt::a)), cmt.a, $$0x -> {
-      }
-   );
-   private final fgl<Double> aG = new fgl<>("options.chat.opacity", fgl.a(), ($$0x, $$1x) -> a($$0x, $$1x * 0.9 + 0.1), fgl.m.a, 1.0, $$0x -> fgi.Q().l.d().b());
-   private final fgl<Double> aH = new fgl<>("options.chat.line_spacing", fgl.a(), fgm::a, fgl.m.a, 0.0, $$0x -> {
-   });
-   private static final wy aI = wy.c("options.accessibility.menu_background_blurriness.tooltip");
-   private static final int aJ = 5;
-   private final fgl<Integer> aK = new fgl<>("options.accessibility.menu_background_blurriness", fgl.a(aI), fgm::b, new fgl.f(0, 10), 5, $$0x -> {
-   });
-   private final fgl<Double> aL = new fgl<>("options.accessibility.text_background_opacity", fgl.a(), fgm::a, fgl.m.a, 0.5, $$0x -> fgi.Q().l.d().b());
-   private final fgl<Double> aM = new fgl<>("options.accessibility.panorama_speed", fgl.a(), fgm::a, fgl.m.a, 1.0, $$0x -> {
-   });
-   private static final wy aN = wy.c("options.accessibility.high_contrast.tooltip");
-   private final fgl<Boolean> aO = fgl.a("options.accessibility.high_contrast", fgl.a(aN), false, $$0x -> {
-      ato $$1x = fgi.Q().ac();
-      boolean $$2x = $$1x.d().contains("high_contrast");
-      if (!$$2x && $$0x) {
-         if ($$1x.a("high_contrast")) {
-            this.a($$1x);
-         }
-      } else if ($$2x && !$$0x && $$1x.b("high_contrast")) {
-         this.a($$1x);
-      }
-   });
-   private final fgl<Boolean> aP = fgl.a(
-      "options.accessibility.narrator_hotkey",
-      fgl.a(fgi.a ? wy.c("options.accessibility.narrator_hotkey.mac.tooltip") : wy.c("options.accessibility.narrator_hotkey.tooltip")),
-      true
-   );
+public class fgm extends bpl<Runnable> implements fal {
+   static fgm E;
+   private static final Logger F = LogUtils.getLogger();
+   public static final boolean a = ad.k() == ad.a.d;
+   private static final int G = 10;
+   public static final akr b = akr.b("default");
+   public static final akr c = akr.b("uniform");
+   public static final akr d = akr.b("alt");
+   private static final akr H = akr.b("regional_compliancies.json");
+   private static final CompletableFuture<azs> I = CompletableFuture.completedFuture(azs.a);
+   private static final wz J = wz.c("multiplayer.socialInteractions.not_available");
+   public static final String e = "Please make sure you have up-to-date drivers (see aka.ms/mcdriver for instructions).";
+   private final long K = Double.doubleToLongBits(Math.PI);
+   private final Path L;
+   private final CompletableFuture<ProfileResult> M;
+   private final gqk N;
+   private final DataFixer O;
+   private final gfp P;
+   private final fak Q;
+   private final fgd.b R = new fgd.b(20.0F, 0L, this::a);
+   private final gfd S;
+   public final gev f;
+   private final gkf T;
+   private final glf U;
+   public final gcn g;
+   private final fgz V;
+   public final fhv h;
+   public final fhv i;
+   public final geq j;
+   public final gik k;
+   private final AtomicReference<arh> W = new AtomicReference<>();
+   public final fhw l;
+   public final fgq m;
+   private final fgi X;
+   public final fgn n;
+   public final fgl o;
+   private fgj Y = fgj.a;
+   public final File p;
+   private final String Z;
+   private final String aa;
+   private final Proxy ab;
+   private final erd ac;
+   private final boolean ad;
+   private final boolean ae;
+   private final boolean af;
+   private final aub ag;
+   private final asu ah;
+   private final gta ai;
+   private final atp aj;
+   private final grr ak;
+   private final fho al;
+   private final fhs am;
+   private final ezt an;
+   private final gvd ao;
+   private final guy ap;
+   private final fkz aq;
+   private final grl ar;
+   private final ger as;
+   private final fgs at = new fgs(H, fgm::b);
+   private final YggdrasilAuthenticationService au;
+   private final MinecraftSessionService av;
+   private final UserApiService aw;
+   private final CompletableFuture<UserProperties> ax;
+   private final grk ay;
+   private final gsr az;
+   private final gfr aA;
+   private final gri aB;
+   private final grh aC;
+   private final grg aD;
+   private final fhy aE;
+   private final fku aF;
+   private final gwg aG;
+   private final fss aH;
+   private final fye aI;
+   private final ggw aJ;
+   private final gvh aK;
+   private final fzp aL;
+   private final fdk aM;
+   private final geh aN;
    @Nullable
-   public String k;
-   public boolean l;
-   public boolean m;
-   public boolean n = true;
-   private final Set<cmw> aQ = EnumSet.allOf(cmw.class);
-   private final fgl<btf> aR = new fgl<>("options.mainHand", fgl.a(), fgl.b(), new fgl.e<>(Arrays.asList(btf.values()), btf.c), btf.b, $$0x -> this.ax());
-   public int o;
-   public int p;
-   private final fgl<Double> aS = new fgl<>(
-      "options.chat.scale",
-      fgl.a(),
-      ($$0x, $$1x) -> (wy)($$1x == 0.0 ? wx.a($$0x, false) : a($$0x, $$1x.doubleValue())),
-      fgl.m.a,
-      1.0,
-      $$0x -> fgi.Q().l.d().b()
-   );
-   private final fgl<Double> aT = new fgl<>("options.chat.width", fgl.a(), ($$0x, $$1x) -> c($$0x, fih.a($$1x)), fgl.m.a, 1.0, $$0x -> fgi.Q().l.d().b());
-   private final fgl<Double> aU = new fgl<>(
-      "options.chat.height.unfocused", fgl.a(), ($$0x, $$1x) -> c($$0x, fih.b($$1x)), fgl.m.a, fih.i(), $$0x -> fgi.Q().l.d().b()
-   );
-   private final fgl<Double> aV = new fgl<>(
-      "options.chat.height.focused", fgl.a(), ($$0x, $$1x) -> c($$0x, fih.b($$1x)), fgl.m.a, 1.0, $$0x -> fgi.Q().l.d().b()
-   );
-   private final fgl<Double> aW = new fgl<>(
-      "options.chat.delay_instant",
-      fgl.a(),
-      ($$0x, $$1x) -> $$1x <= 0.0 ? wy.c("options.chat.delay_none") : wy.a("options.chat.delay", String.format(Locale.ROOT, "%.1f", $$1x)),
-      new fgl.f(0, 60).a($$0x -> (double)$$0x / 10.0, $$0x -> (int)($$0x * 10.0)),
-      Codec.doubleRange(0.0, 6.0),
-      0.0,
-      $$0x -> fgi.Q().aW().a($$0x)
-   );
-   private static final wy aX = wy.c("options.notifications.display_time.tooltip");
-   private final fgl<Double> aY = new fgl<>(
-      "options.notifications.display_time",
-      fgl.a(aX),
-      ($$0x, $$1x) -> a($$0x, wy.a("options.multiplier", $$1x)),
-      new fgl.f(5, 100).a($$0x -> (double)$$0x / 10.0, $$0x -> (int)($$0x * 10.0)),
-      Codec.doubleRange(0.5, 10.0),
-      1.0,
-      $$0x -> {
-      }
-   );
-   private final fgl<Integer> aZ = new fgl<>(
-      "options.mipmapLevels", fgl.a(), ($$0x, $$1x) -> (wy)($$1x == 0 ? wx.a($$0x, false) : a($$0x, $$1x.intValue())), new fgl.f(0, 4), 4, $$0x -> {
-      }
-   );
-   public boolean q = true;
-   private final fgl<ffr> ba = new fgl<>(
-      "options.attackIndicator", fgl.a(), fgl.b(), new fgl.e<>(Arrays.asList(ffr.values()), Codec.INT.xmap(ffr::a, ffr::a)), ffr.b, $$0x -> {
-      }
-   );
-   public gwd r = gwd.a;
-   public boolean s = false;
-   public boolean t = false;
-   private final fgl<Integer> bb = new fgl<>("options.biomeBlendRadius", fgl.a(), ($$0x, $$1x) -> {
-      int $$2x = $$1x * 2 + 1;
-      return a($$0x, wy.c("options.biomeBlendRadius." + $$2x));
-   }, new fgl.f(0, 7, false), 2, $$0x -> fgi.Q().f.f());
-   private final fgl<Double> bc = new fgl<>(
-      "options.mouseWheelSensitivity",
-      fgl.a(),
-      ($$0x, $$1x) -> a($$0x, wy.b(String.format(Locale.ROOT, "%.2f", $$1x))),
-      new fgl.f(-200, 100).a(fgm::c, fgm::a),
-      Codec.doubleRange(c(-200), c(100)),
-      c(0),
-      $$0x -> {
-      }
-   );
-   private final fgl<Boolean> bd = fgl.a("options.rawMouseInput", true, $$0x -> {
-      fag $$1x = fgi.Q().aM();
-      if ($$1x != null) {
-         $$1x.b($$0x);
-      }
-   });
-   public int u = 1;
-   private final fgl<Boolean> be = fgl.a("options.autoJump", false);
-   private final fgl<Boolean> bf = fgl.a("options.operatorItemsTab", false);
-   private final fgl<Boolean> bg = fgl.a("options.autoSuggestCommands", true);
-   private final fgl<Boolean> bh = fgl.a("options.chat.color", true);
-   private final fgl<Boolean> bi = fgl.a("options.chat.links", true);
-   private final fgl<Boolean> bj = fgl.a("options.chat.links.prompt", true);
-   private final fgl<Boolean> bk = fgl.a("options.vsync", true, $$0x -> {
-      if (fgi.Q().aM() != null) {
-         fgi.Q().aM().a($$0x);
-      }
-   });
-   private final fgl<Boolean> bl = fgl.a("options.entityShadows", true);
-   private final fgl<Boolean> bm = fgl.a("options.forceUnicodeFont", false, $$0x -> aE());
-   private final fgl<Boolean> bn = fgl.a("options.japaneseGlyphVariants", fgl.a(wy.c("options.japaneseGlyphVariants.tooltip")), aF(), $$0x -> aE());
-   private final fgl<Boolean> bo = fgl.a("options.invertMouse", false);
-   private final fgl<Boolean> bp = fgl.a("options.discrete_mouse_scroll", false);
-   private static final wy bq = wy.c("options.realmsNotifications.tooltip");
-   private final fgl<Boolean> br = fgl.a("options.realmsNotifications", fgl.a(bq), true);
-   private static final wy bs = wy.c("options.allowServerListing.tooltip");
-   private final fgl<Boolean> bt = fgl.a("options.allowServerListing", fgl.a(bs), true, $$0x -> this.ax());
-   private final fgl<Boolean> bu = fgl.a("options.reducedDebugInfo", false);
-   private final Map<avp, fgl<Double>> bv = ad.a(new EnumMap<>(avp.class), $$0x -> {
-      for (avp $$1x : avp.values()) {
-         $$0x.put($$1x, this.a("soundCategory." + $$1x.a(), $$1x));
-      }
-   });
-   private final fgl<Boolean> bw = fgl.a("options.showSubtitles", false);
-   private static final wy bx = wy.c("options.directionalAudio.on.tooltip");
-   private static final wy by = wy.c("options.directionalAudio.off.tooltip");
-   private final fgl<Boolean> bz = fgl.a("options.directionalAudio", $$0x -> $$0x ? fjr.a(bx) : fjr.a(by), false, $$0x -> {
-      guy $$1x = fgi.Q().aj();
-      $$1x.k();
-      $$1x.a(gto.a(avo.Ar, 1.0F));
-   });
-   private final fgl<Boolean> bA = new fgl<>(
-      "options.accessibility.text_background",
-      fgl.a(),
-      ($$0x, $$1x) -> $$1x ? wy.c("options.accessibility.text_background.chat") : wy.c("options.accessibility.text_background.everywhere"),
-      fgl.a,
-      true,
-      $$0x -> {
-      }
-   );
-   private final fgl<Boolean> bB = fgl.a("options.touchscreen", false);
-   private final fgl<Boolean> bC = fgl.a("options.fullscreen", false, $$0x -> {
-      fgi $$1x = fgi.Q();
-      if ($$1x.aM() != null && $$1x.aM().k() != $$0x) {
-         $$1x.aM().i();
-         this.aa().a($$1x.aM().k());
-      }
-   });
-   private final fgl<Boolean> bD = fgl.a("options.viewBobbing", true);
-   private static final wy bE = wy.c("options.key.toggle");
-   private static final wy bF = wy.c("options.key.hold");
-   private final fgl<Boolean> bG = new fgl<>("key.sneak", fgl.a(), ($$0x, $$1x) -> $$1x ? bE : bF, fgl.a, false, $$0x -> {
-   });
-   private final fgl<Boolean> bH = new fgl<>("key.sprint", fgl.a(), ($$0x, $$1x) -> $$1x ? bE : bF, fgl.a, false, $$0x -> {
-   });
-   public boolean v;
-   private static final wy bI = wy.c("options.hideMatchedNames.tooltip");
-   private final fgl<Boolean> bJ = fgl.a("options.hideMatchedNames", fgl.a(bI), true);
-   private final fgl<Boolean> bK = fgl.a("options.autosaveIndicator", true);
-   private static final wy bL = wy.c("options.onlyShowSecureChat.tooltip");
-   private final fgl<Boolean> bM = fgl.a("options.onlyShowSecureChat", fgl.a(bL), false);
-   public final fgg w = new fgg("key.forward", 87, "key.categories.movement");
-   public final fgg x = new fgg("key.left", 65, "key.categories.movement");
-   public final fgg y = new fgg("key.back", 83, "key.categories.movement");
-   public final fgg z = new fgg("key.right", 68, "key.categories.movement");
-   public final fgg A = new fgg("key.jump", 32, "key.categories.movement");
-   public final fgg B = new fgu("key.sneak", 340, "key.categories.movement", this.bG::c);
-   public final fgg C = new fgu("key.sprint", 341, "key.categories.movement", this.bH::c);
-   public final fgg D = new fgg("key.inventory", 69, "key.categories.inventory");
-   public final fgg E = new fgg("key.swapOffhand", 70, "key.categories.inventory");
-   public final fgg F = new fgg("key.drop", 81, "key.categories.inventory");
-   public final fgg G = new fgg("key.use", ezy.b.c, 1, "key.categories.gameplay");
-   public final fgg H = new fgg("key.attack", ezy.b.c, 0, "key.categories.gameplay");
-   public final fgg I = new fgg("key.pickItem", ezy.b.c, 2, "key.categories.gameplay");
-   public final fgg J = new fgg("key.chat", 84, "key.categories.multiplayer");
-   public final fgg K = new fgg("key.playerlist", 258, "key.categories.multiplayer");
-   public final fgg L = new fgg("key.command", 47, "key.categories.multiplayer");
-   public final fgg M = new fgg("key.socialInteractions", 80, "key.categories.multiplayer");
-   public final fgg N = new fgg("key.screenshot", 291, "key.categories.misc");
-   public final fgg O = new fgg("key.togglePerspective", 294, "key.categories.misc");
-   public final fgg P = new fgg("key.smoothCamera", ezy.bv.b(), "key.categories.misc");
-   public final fgg Q = new fgg("key.fullscreen", 300, "key.categories.misc");
-   public final fgg R = new fgg("key.spectatorOutlines", ezy.bv.b(), "key.categories.misc");
-   public final fgg S = new fgg("key.advancements", 76, "key.categories.misc");
-   public final fgg[] T = new fgg[]{
-      new fgg("key.hotbar.1", 49, "key.categories.inventory"),
-      new fgg("key.hotbar.2", 50, "key.categories.inventory"),
-      new fgg("key.hotbar.3", 51, "key.categories.inventory"),
-      new fgg("key.hotbar.4", 52, "key.categories.inventory"),
-      new fgg("key.hotbar.5", 53, "key.categories.inventory"),
-      new fgg("key.hotbar.6", 54, "key.categories.inventory"),
-      new fgg("key.hotbar.7", 55, "key.categories.inventory"),
-      new fgg("key.hotbar.8", 56, "key.categories.inventory"),
-      new fgg("key.hotbar.9", 57, "key.categories.inventory")
-   };
-   public final fgg U = new fgg("key.saveToolbarActivator", 67, "key.categories.creative");
-   public final fgg V = new fgg("key.loadToolbarActivator", 88, "key.categories.creative");
-   public final fgg[] W = (fgg[])ArrayUtils.addAll(
-      new fgg[]{
-         this.H,
-         this.G,
-         this.w,
-         this.x,
-         this.y,
-         this.z,
-         this.A,
-         this.B,
-         this.C,
-         this.F,
-         this.D,
-         this.J,
-         this.K,
-         this.I,
-         this.L,
-         this.M,
-         this.N,
-         this.O,
-         this.P,
-         this.Q,
-         this.R,
-         this.E,
-         this.U,
-         this.V,
-         this.S
-      },
-      this.T
-   );
-   protected fgi X;
-   private final File bN;
-   public boolean Y;
-   private fft bO = fft.a;
-   public String Z = "";
-   public boolean aa;
-   private final fgl<Integer> bP = new fgl<>("options.fov", fgl.a(), ($$0x, $$1x) -> {
-      return switch ($$1x) {
-         case 70 -> a($$0x, wy.c("options.fov.min"));
-         case 110 -> a($$0x, wy.c("options.fov.max"));
-         default -> a($$0x, $$1x.intValue());
-      };
-   }, new fgl.f(30, 110), Codec.DOUBLE.xmap($$0x -> (int)($$0x * 40.0 + 70.0), $$0x -> ((double)$$0x.intValue() - 70.0) / 40.0), 70, $$0x -> fgi.Q().f.r());
-   private static final wy bQ = wy.a("options.telemetry.button.tooltip", wy.c("options.telemetry.state.minimal"), wy.c("options.telemetry.state.all"));
-   private final fgl<Boolean> bR = fgl.a("options.telemetry.button", fgl.a(bQ), ($$0x, $$1x) -> {
-      fgi $$2x = fgi.Q();
-      if (!$$2x.E()) {
-         return wy.c("options.telemetry.state.none");
-      } else {
-         return $$1x && $$2x.D() ? wy.c("options.telemetry.state.all") : wy.c("options.telemetry.state.minimal");
-      }
-   }, false, $$0x -> {
-   });
-   private static final wy bS = wy.c("options.screenEffectScale.tooltip");
-   private final fgl<Double> bT = new fgl<>("options.screenEffectScale", fgl.a(bS), fgm::b, fgl.m.a, 1.0, $$0x -> {
-   });
-   private static final wy bU = wy.c("options.fovEffectScale.tooltip");
-   private final fgl<Double> bV = new fgl<>(
-      "options.fovEffectScale", fgl.a(bU), fgm::b, fgl.m.a.a(ayn::k, Math::sqrt), Codec.doubleRange(0.0, 1.0), 1.0, $$0x -> {
-      }
-   );
-   private static final wy bW = wy.c("options.darknessEffectScale.tooltip");
-   private final fgl<Double> bX = new fgl<>("options.darknessEffectScale", fgl.a(bW), fgm::b, fgl.m.a.a(ayn::k, Math::sqrt), 1.0, $$0x -> {
-   });
-   private static final wy bY = wy.c("options.glintSpeed.tooltip");
-   private final fgl<Double> bZ = new fgl<>("options.glintSpeed", fgl.a(bY), fgm::b, fgl.m.a, 0.5, $$0x -> {
-   });
-   private static final wy ca = wy.c("options.glintStrength.tooltip");
-   private final fgl<Double> cb = new fgl<>("options.glintStrength", fgl.a(ca), fgm::b, fgl.m.a, 0.75, RenderSystem::setShaderGlintAlpha);
-   private static final wy cc = wy.c("options.damageTiltStrength.tooltip");
-   private final fgl<Double> cd = new fgl<>("options.damageTiltStrength", fgl.a(cc), fgm::b, fgl.m.a, 1.0, $$0x -> {
-   });
-   private final fgl<Double> ce = new fgl<>("options.gamma", fgl.a(), ($$0x, $$1x) -> {
-      int $$2x = (int)($$1x * 100.0);
-      if ($$2x == 0) {
-         return a($$0x, wy.c("options.gamma.min"));
-      } else if ($$2x == 50) {
-         return a($$0x, wy.c("options.gamma.default"));
-      } else {
-         return $$2x == 100 ? a($$0x, wy.c("options.gamma.max")) : a($$0x, $$2x);
-      }
-   }, fgl.m.a, 0.5, $$0x -> {
-   });
-   public static final int ab = 0;
-   private static final int cf = 2147483646;
-   private final fgl<Integer> cg = new fgl<>(
-      "options.guiScale", fgl.a(), ($$0x, $$1x) -> $$1x == 0 ? wy.c("options.guiScale.auto") : wy.b(Integer.toString($$1x)), new fgl.c(0, () -> {
-         fgi $$0x = fgi.Q();
-         return !$$0x.r() ? 2147483646 : $$0x.aM().a(0, $$0x.k());
-      }, 2147483646), 0, $$0x -> this.X.a()
-   );
-   private final fgl<fgn> ch = new fgl<>(
-      "options.particles", fgl.a(), fgl.b(), new fgl.e<>(Arrays.asList(fgn.values()), Codec.INT.xmap(fgn::a, fgn::a)), fgn.a, $$0x -> {
-      }
-   );
-   private final fgl<fgk> ci = new fgl<>(
-      "options.narrator",
-      fgl.a(),
-      ($$0x, $$1x) -> (wy)(this.X.aV().a() ? $$1x.b() : wy.c("options.narrator.notavailable")),
-      new fgl.e<>(Arrays.asList(fgk.values()), Codec.INT.xmap(fgk::a, fgk::a)),
-      fgk.a,
-      $$0x -> this.X.aV().a($$0x)
-   );
-   public String ac = "en_us";
-   private final fgl<String> cj = new fgl<>(
-      "options.audioDevice",
-      fgl.a(),
-      ($$0x, $$1x) -> {
-         if ("".equals($$1x)) {
-            return wy.c("options.audioDevice.default");
-         } else {
-            return $$1x.startsWith("OpenAL Soft on ") ? wy.b($$1x.substring(guv.c)) : wy.b($$1x);
+   public fzm q;
+   @Nullable
+   public fzd r;
+   @Nullable
+   public gdz s;
+   @Nullable
+   private gum aO;
+   @Nullable
+   private vt aP;
+   private boolean aQ;
+   @Nullable
+   public bsr t;
+   @Nullable
+   public bsr u;
+   @Nullable
+   public ewy v;
+   private int aR;
+   protected int w;
+   private volatile boolean aS;
+   private long aT = ad.d();
+   private long aU;
+   private int aV;
+   public boolean x;
+   @Nullable
+   public fob y;
+   @Nullable
+   private fnv aW;
+   private boolean aX;
+   private Thread aY;
+   private volatile boolean aZ;
+   @Nullable
+   private Supplier<o> ba;
+   private static int bb;
+   public String z = "";
+   private long bc;
+   public boolean A;
+   public boolean B;
+   public boolean C;
+   public boolean D = true;
+   private boolean bd;
+   private final Queue<Runnable> be = Queues.newConcurrentLinkedQueue();
+   @Nullable
+   private CompletableFuture<Void> bf;
+   @Nullable
+   private fkv bg;
+   private bnf bh = bnc.a;
+   private int bi;
+   private final bmz bj = new bmz(ad.c, () -> this.bi);
+   @Nullable
+   private bne bk;
+   private bot bl = bos.a;
+   private final fgv bm = new fgv();
+   private long bn;
+   private double bo;
+   @Nullable
+   private faz.a bp;
+   private final fge bq;
+   private final fzx br;
+   private gam bs;
+   private final fga bt;
+   private final ewq bu;
+   private boolean bv;
+   private final long bw;
+   private long bx;
+   private String by = "root";
+
+   public fgm(fty $$0) {
+      super("Client");
+      E = this;
+      this.bw = System.currentTimeMillis();
+      this.p = $$0.c.a;
+      File $$1 = $$0.c.c;
+      this.L = $$0.c.b.toPath();
+      this.Z = $$0.d.b;
+      this.aa = $$0.d.c;
+      Path $$2 = this.p.toPath();
+      this.bu = erd.a($$2.resolve("allowed_symlinks.txt"));
+      gra $$3 = new gra($$0.c.a(), this.bu);
+      this.ai = new gta(this, $$2.resolve("downloads"), $$0.a);
+      atr $$4 = new atk(this.L, ass.a, atq.b, this.bu);
+      this.aj = new atp($$3, this.ai.a(), $$4);
+      this.ah = $$3.a();
+      this.ab = $$0.a.d;
+      this.au = new YggdrasilAuthenticationService(this.ab);
+      this.av = this.au.createMinecraftSessionService();
+      this.V = $$0.a.a;
+      this.M = CompletableFuture.supplyAsync(() -> this.av.fetchProfile(this.V.b(), true), ad.i());
+      this.aw = this.a(this.au, $$0);
+      this.ax = CompletableFuture.supplyAsync(() -> {
+         try {
+            return this.aw.fetchProperties();
+         } catch (AuthenticationException var2x) {
+            F.error("Failed to fetch user properties", var2x);
+            return UserApiService.OFFLINE_PROPERTIES;
          }
-      },
-      new fgl.h<>(
-         () -> Stream.concat(Stream.of(""), fgi.Q().aj().a().stream()).toList(),
-         $$0x -> fgi.Q().r() && $$0x != "" && !fgi.Q().aj().a().contains($$0x) ? Optional.empty() : Optional.of($$0x),
-         Codec.STRING
-      ),
-      "",
-      $$0x -> {
-         guy $$1x = fgi.Q().aj();
-         $$1x.k();
-         $$1x.a(gto.a(avo.Ar, 1.0F));
+      }, ad.i());
+      F.info("Setting user: {}", this.V.c());
+      F.debug("(Session ID is {})", this.V.a());
+      this.ad = $$0.d.a;
+      this.ae = !$$0.d.d;
+      this.af = !$$0.d.e;
+      this.aO = null;
+      ye.a(fgk::a);
+      this.O = azx.a();
+      this.aF = new fku(this);
+      this.aY = Thread.currentThread();
+      this.m = new fgq(this, this.p);
+      RenderSystem.setShaderGlintAlpha(this.m.an().c());
+      this.aZ = true;
+      this.aG = new gwg(this, this.m);
+      this.X = new fgi($$2, this.O);
+      F.info("Backend library: {}", RenderSystem.getBackendDescription());
+      ezy $$5;
+      if (this.m.p > 0 && this.m.o > 0) {
+         $$5 = new ezy(this.m.o, this.m.p, $$0.b.c, $$0.b.d, $$0.b.e);
+      } else {
+         $$5 = $$0.b;
       }
-   );
-   public boolean ad = true;
-   public boolean ae;
 
-   public fgl<Boolean> a() {
-      return this.ak;
+      ad.c = RenderSystem.initBackendSystem();
+      this.P = new gfp(this);
+      this.Q = this.P.a($$5, this.m.k, this.bd());
+      this.a(true);
+      gvs.a.b(gvo.A);
+
+      try {
+         this.Q.a(this.ah, ab.b().g() ? fab.a : fab.b);
+      } catch (IOException var13) {
+         F.error("Couldn't set icon", var13);
+      }
+
+      this.Q.a(this.m.h().c());
+      this.n = new fgn(this);
+      this.n.a(this.Q.j());
+      this.o = new fgl(this);
+      this.o.a(this.Q.j());
+      RenderSystem.initRenderer(this.m.u, false);
+      this.an = new ezq(this.Q.l(), this.Q.m());
+      this.an.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.an.b(a);
+      this.ag = new aub(ass.a);
+      this.aj.a();
+      this.m.b(this.aj);
+      this.ak = new grr(this.m.ac, $$0x -> {
+         if (this.s != null) {
+            this.s.h.A();
+         }
+      });
+      this.ag.a(this.ak);
+      this.N = new gqk(this.ag);
+      this.ag.a(this.N);
+      this.ay = new grk(this.N, $$1.toPath().resolve("skins"), this.av, this);
+      this.ac = new erd($$2.resolve("saves"), $$2.resolve("backups"), this.bu, this.O);
+      this.bt = new fga($$2);
+      this.ao = new gvd(this.m);
+      this.ag.a(this.ao);
+      this.ar = new grl(this.V);
+      this.ag.a(this.ar);
+      this.ap = new guy(this);
+      this.aq = new fkz(this.N);
+      this.h = this.aq.a();
+      this.i = this.aq.b();
+      this.ag.a(this.aq);
+      this.g();
+      this.ag.a(new grd());
+      this.ag.a(new grc());
+      this.Q.a("Startup");
+      RenderSystem.setupDefaultState(0, 0, this.Q.l(), this.Q.m());
+      this.Q.a("Post startup");
+      this.al = fho.a();
+      this.am = fhs.a(this.al);
+      this.az = new gsr(this.N, this.al, this.m.C().c());
+      this.ag.a(this.az);
+      this.aI = new fye();
+      this.ag.a(this.aI);
+      this.aJ = new ggw(this.h, this.aI, this::ao, this::ar, this::ap);
+      this.ag.a(this.aJ);
+      gek $$8 = new gek(this.aJ, this.aI);
+      this.ag.a($$8);
+      this.U = new glf(this, this.N, this.az, this.am, $$8);
+      this.ag.a(this.U);
+
+      try {
+         int $$9 = Runtime.getRuntime().availableProcessors();
+         fbi.a();
+         this.S = new gfd($$9);
+      } catch (OutOfMemoryError var12) {
+         TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Oh no! The game was unable to allocate memory off-heap while trying to start. You may try to free some memory by closing other applications on your computer, check that your system meets the minimum requirements, and try again. If the problem persists, please visit: "
+               + axj.k,
+            "ok",
+            "error",
+            true
+         );
+         throw new ftz("Unable to allocate render buffers", var12);
+      }
+
+      this.aH = new fss(this, this.aw);
+      this.aA = new gfr(this.az.b(), $$8, this.al);
+      this.ag.a(this.aA);
+      this.T = new gkf(this, this.N, this.U, this.aA, this.h, this.m, this.aI);
+      this.ag.a(this.T);
+      this.g = new gcn(this.r, this.N);
+      this.ag.a(this.g);
+      this.aB = new gri(this.N);
+      this.ag.a(this.aB);
+      this.aC = new grh(this.N);
+      this.ag.a(this.aC);
+      this.aD = new grg(this.N);
+      this.ag.a(this.aD);
+      this.aE = new fhy(this.N);
+      this.ag.a(this.aE);
+      this.j = new geq(this, this.T.d(), this.ag, this.S);
+      this.ag.a(this.j.d());
+      this.f = new gev(this, this.T, this.aJ, this.S);
+      this.ag.a(this.f);
+      this.as = new ger();
+      this.ag.a(this.as);
+      this.ag.a(this.at);
+      this.l = new fhw(this);
+      this.k = new gik(this);
+      fbw $$11 = fbw.a(this);
+      this.aM = new fdk($$11);
+      RenderSystem.setErrorCallback(this::a);
+      if (this.an.c != this.Q.l() || this.an.d != this.Q.m()) {
+         StringBuilder $$12 = new StringBuilder(
+            "Recovering from unsupported resolution ("
+               + this.Q.l()
+               + "x"
+               + this.Q.m()
+               + ").\nPlease make sure you have up-to-date drivers (see aka.ms/mcdriver for instructions)."
+         );
+         if (ezz.b()) {
+            $$12.append("\n\nReported GL debug messages:\n").append(String.join("\n", ezz.a()));
+         }
+
+         this.Q.a(this.an.c, this.an.d);
+         TinyFileDialogs.tinyfd_messageBox("Minecraft", $$12.toString(), "ok", "error", false);
+      } else if (this.m.aa().c() && !this.Q.k()) {
+         this.Q.i();
+         this.m.aa().a(this.Q.k());
+      }
+
+      this.Q.a(this.m.N().c());
+      this.Q.b(this.m.G().c());
+      this.Q.d();
+      this.a();
+      this.j.a(this.ah.d());
+      this.aK = new gvh(this, this.aw, this.V);
+      this.aL = fzp.a(this.aw, this.V, $$2);
+      this.bq = new fge(this);
+      this.bq.a(this.m.as().c() != fgo.a);
+      this.br = new fzx(this);
+      this.br.a(this.m.A().c());
+      this.bs = gam.a(gaj.a(), this.aw);
+      fnr.a(this);
+      this.a(new fnm(wz.c("gui.loadingMinecraft")));
+      List<asq> $$13 = this.aj.g();
+      this.bm.a(fgv.b.a, $$13);
+      aua $$14 = this.ag.a(ad.g(), this, I, $$13);
+      gvs.a.a(gvo.C);
+      fgm.b $$15 = new fgm.b($$11, $$0.e);
+      this.a(new fnr(this, $$14, $$1x -> ad.a($$1x, $$1xx -> this.a($$1xx, $$15), () -> {
+            if (ab.aU) {
+               this.bg();
+            }
+
+            this.bm.a();
+            this.a($$15);
+         }), false));
+      this.aN = geh.a($$0.e.b());
    }
 
-   public fgl<Boolean> b() {
-      return this.am;
+   private void a(@Nullable fgm.b $$0) {
+      if (!this.bv) {
+         this.bv = true;
+         this.b($$0);
+      }
    }
 
-   public fgl<Boolean> c() {
-      return this.ao;
+   private void b(@Nullable fgm.b $$0) {
+      Runnable $$1 = this.c($$0);
+      gvs.a.b(gvo.C);
+      gvs.a.b(gvo.z);
+      gvs.a.a(this.aK.a());
+      $$1.run();
    }
 
-   public fgl<Double> d() {
-      return this.ap;
+   public boolean c() {
+      return this.bv;
    }
 
-   public fgl<Integer> e() {
-      return this.aq;
+   private Runnable c(@Nullable fgm.b $$0) {
+      List<Function<Runnable, fob>> $$1 = new ArrayList<>();
+      this.a($$1);
+      Runnable $$2 = () -> {
+         if ($$0 != null && $$0.b().a()) {
+            geg.a(this, $$0.b(), $$0.a());
+         } else {
+            this.a(new fod(true));
+         }
+      };
+
+      for (Function<Runnable, fob> $$3 : Lists.reverse($$1)) {
+         fob $$4 = $$3.apply($$2);
+         $$2 = () -> this.a($$4);
+      }
+
+      return $$2;
    }
 
-   public fgl<Integer> f() {
-      return this.ar;
+   private void a(List<Function<Runnable, fob>> $$0) {
+      if (this.m.ad) {
+         $$0.add($$0x -> new fmt(this.m, $$0x));
+      }
+
+      BanDetails $$1 = this.H();
+      if ($$1 != null) {
+         $$0.add($$1x -> fmw.a($$1xx -> {
+               if ($$1xx) {
+                  ad.k().a(axj.n);
+               }
+
+               $$1x.run();
+            }, $$1));
+      }
+
+      ProfileResult $$2 = this.M.join();
+      if ($$2 != null) {
+         GameProfile $$3 = $$2.profile();
+         Set<ProfileActionType> $$4 = $$2.actions();
+         if ($$4.contains(ProfileActionType.FORCED_NAME_CHANGE)) {
+            $$0.add($$1x -> fmw.a($$3.getName(), $$1x));
+         }
+
+         if ($$4.contains(ProfileActionType.USING_BANNED_SKIN)) {
+            $$0.add(fmw::a);
+         }
+      }
    }
 
-   public fgl<Double> g() {
-      return this.at;
+   private static boolean b(Object $$0) {
+      try {
+         return Locale.getDefault().getISO3Country().equals($$0);
+      } catch (MissingResourceException var2) {
+         return false;
+      }
    }
 
-   public fgl<Integer> h() {
-      return this.au;
+   public void d() {
+      this.Q.b(this.bd());
    }
 
-   public fgl<ffv> i() {
-      return this.av;
+   private String bd() {
+      StringBuilder $$0 = new StringBuilder("Minecraft");
+      if (e().a()) {
+         $$0.append("*");
+      }
+
+      $$0.append(" ");
+      $$0.append(ab.b().c());
+      fze $$1 = this.L();
+      if ($$1 != null && $$1.k().i()) {
+         $$0.append(" - ");
+         fzr $$2 = this.S();
+         if (this.aO != null && !this.aO.r()) {
+            $$0.append(grp.a("title.singleplayer"));
+         } else if ($$2 != null && $$2.e()) {
+            $$0.append(grp.a("title.multiplayer.realms"));
+         } else if (this.aO == null && ($$2 == null || !$$2.d())) {
+            $$0.append(grp.a("title.multiplayer.other"));
+         } else {
+            $$0.append(grp.a("title.multiplayer.lan"));
+         }
+      }
+
+      return $$0.toString();
    }
 
-   public fgl<fgb> j() {
-      return this.az;
+   private UserApiService a(YggdrasilAuthenticationService $$0, fty $$1) {
+      return $$1.a.a.g() != fgz.a.c ? UserApiService.OFFLINE : $$0.createUserApiService($$1.a.a.d());
    }
 
-   public fgl<Boolean> k() {
-      return this.aA;
+   public static ayn e() {
+      return ayn.a("vanilla", ClientBrandRetriever::getClientModName, "Client", fgm.class);
    }
 
-   public fgl<fgp> l() {
-      return this.aE;
+   private void a(Throwable $$0, @Nullable fgm.b $$1) {
+      if (this.aj.d().size() > 1) {
+         this.a($$0, null, $$1);
+      } else {
+         ad.a($$0);
+      }
    }
 
-   public void a(ato $$0) {
-      List<String> $$1 = ImmutableList.copyOf(this.i);
-      this.i.clear();
-      this.j.clear();
+   public void a(Throwable $$0, @Nullable wz $$1, @Nullable fgm.b $$2) {
+      F.info("Caught error loading resourcepacks, removing all selected resourcepacks", $$0);
+      this.bm.a($$0);
+      this.ai.b();
+      this.aj.b(Collections.emptyList());
+      this.m.i.clear();
+      this.m.j.clear();
+      this.m.av();
+      this.a(true, $$2).thenRun(() -> this.a($$1));
+   }
 
-      for (atl $$2 : $$0.f()) {
-         if (!$$2.j()) {
-            this.i.add($$2.g());
-            if (!$$2.d().a()) {
-               this.j.add($$2.g());
+   private void be() {
+      this.a(null);
+      if (this.r != null) {
+         this.r.Y();
+         this.y();
+      }
+
+      this.a(new fod());
+      this.a(null);
+   }
+
+   private void a(@Nullable wz $$0) {
+      fku $$1 = this.aw();
+      fks.b($$1, fks.a.c, wz.c("resourcePack.load_fail"), $$0);
+   }
+
+   public void f() {
+      this.aY = Thread.currentThread();
+      if (Runtime.getRuntime().availableProcessors() > 4) {
+         this.aY.setPriority(10);
+      }
+
+      try {
+         boolean $$0 = false;
+
+         while (this.aZ) {
+            this.bf();
+
+            try {
+               bni $$1 = bni.a("Renderer");
+               boolean $$2 = this.aN().e();
+               this.bh = this.a($$2, $$1);
+               this.bh.a();
+               this.bl.c();
+               this.c(!$$0);
+               this.bl.d();
+               this.bh.b();
+               this.b($$2, $$1);
+            } catch (OutOfMemoryError var4) {
+               if ($$0) {
+                  throw var4;
+               }
+
+               this.bi();
+               this.a(new fnu());
+               System.gc();
+               F.error(LogUtils.FATAL_MARKER, "Out of memory", var4);
+               $$0 = true;
+            }
+         }
+      } catch (z var5) {
+         F.error(LogUtils.FATAL_MARKER, "Reported exception thrown!", var5);
+         this.c(var5.a());
+      } catch (Throwable var6) {
+         F.error(LogUtils.FATAL_MARKER, "Unreported exception thrown!", var6);
+         this.c(new o("Unexpected error", var6));
+      }
+   }
+
+   void g() {
+      this.aq.a(this.m);
+   }
+
+   private void a(int $$0, long $$1) {
+      this.m.N().a(false);
+      this.m.av();
+   }
+
+   public ezt h() {
+      return this.an;
+   }
+
+   public String i() {
+      return this.Z;
+   }
+
+   public String j() {
+      return this.aa;
+   }
+
+   public void a(o $$0) {
+      this.ba = () -> this.d($$0);
+   }
+
+   public void b(o $$0) {
+      this.ba = () -> $$0;
+   }
+
+   private void bf() {
+      if (this.ba != null) {
+         a(this, this.p, this.ba.get());
+      }
+   }
+
+   public void c(o $$0) {
+      o $$1 = this.d($$0);
+      this.bi();
+      a(this, this.p, $$1);
+   }
+
+   public static void a(@Nullable fgm $$0, File $$1, o $$2) {
+      Path $$3 = $$1.toPath().resolve("crash-reports");
+      Path $$4 = $$3.resolve("crash-" + ad.f() + "-client.txt");
+      akt.a($$2.a(y.a));
+      if ($$0 != null) {
+         $$0.ao.h();
+      }
+
+      if ($$2.e() != null) {
+         akt.a("#@!@# Game crashed! Crash report saved to: #@!@# " + $$2.e().toAbsolutePath());
+         System.exit(-1);
+      } else if ($$2.a($$4, y.a)) {
+         akt.a("#@!@# Game crashed! Crash report saved to: #@!@# " + $$4.toAbsolutePath());
+         System.exit(-1);
+      } else {
+         akt.a("#@?@# Game crashed! Crash report could not be saved. #@?@#");
+         System.exit(-2);
+      }
+   }
+
+   public boolean k() {
+      return this.m.P().c();
+   }
+
+   public CompletableFuture<Void> l() {
+      return this.a(false, null);
+   }
+
+   private CompletableFuture<Void> a(boolean $$0, @Nullable fgm.b $$1) {
+      if (this.bf != null) {
+         return this.bf;
+      } else {
+         CompletableFuture<Void> $$2 = new CompletableFuture<>();
+         if (!$$0 && this.aW instanceof fnr) {
+            this.bf = $$2;
+            return $$2;
+         } else {
+            this.aj.a();
+            List<asq> $$3 = this.aj.g();
+            if (!$$0) {
+               this.bm.a(fgv.b.b, $$3);
+            }
+
+            this.a(new fnr(this, this.ag.a(ad.g(), this, I, $$3), $$3x -> ad.a($$3x, $$2xx -> {
+                  if ($$0) {
+                     this.ai.c();
+                     this.be();
+                  } else {
+                     this.a($$2xx, $$1);
+                  }
+               }, () -> {
+                  this.f.f();
+                  this.bm.a();
+                  this.ai.d();
+                  $$2.complete(null);
+                  this.a($$1);
+               }), !$$0));
+            return $$2;
+         }
+      }
+   }
+
+   private void bg() {
+      boolean $$0 = false;
+      gfq $$1 = this.ao().a();
+      gsk $$2 = $$1.a().a();
+
+      for (dfy $$3 : lt.e) {
+         UnmodifiableIterator $$10 = $$3.l().a().iterator();
+
+         while ($$10.hasNext()) {
+            dtc $$4 = (dtc)$$10.next();
+            if ($$4.l() == dmf.c) {
+               gsk $$5 = $$1.b($$4);
+               if ($$5 == $$2) {
+                  F.debug("Missing model for: {}", $$4);
+                  $$0 = true;
+               }
             }
          }
       }
 
-      this.av();
-      List<String> $$3 = ImmutableList.copyOf(this.i);
-      if (!$$3.equals($$1)) {
-         this.X.l();
+      gqj $$6 = $$2.e();
+
+      for (dfy $$7 : lt.e) {
+         UnmodifiableIterator var17 = $$7.l().a().iterator();
+
+         while (var17.hasNext()) {
+            dtc $$8 = (dtc)var17.next();
+            gqj $$9 = $$1.a($$8);
+            if (!$$8.i() && $$9 == $$6) {
+               F.debug("Missing particle icon for: {}", $$8);
+            }
+         }
+      }
+
+      for (cul $$10 : lt.g) {
+         cuq $$11 = $$10.w();
+         String $$12 = $$11.t();
+         String $$13 = wz.c($$12).getString();
+         if ($$13.toLowerCase(Locale.ROOT).equals($$10.a())) {
+            F.debug("Missing translation for: {} {} {}", new Object[]{$$11, $$12, $$10});
+         }
+      }
+
+      $$0 |= fns.a();
+      $$0 |= gki.a();
+      if ($$0) {
+         throw new IllegalStateException("Your game data is foobar, fix the errors above!");
       }
    }
 
-   public fgl<cmt> m() {
-      return this.aF;
+   public erd m() {
+      return this.ac;
    }
 
-   public fgl<Double> n() {
-      return this.aG;
+   private void a(String $$0) {
+      fgm.a $$1 = this.J();
+      if (!$$1.a(this.T())) {
+         if (this.l.b()) {
+            this.l.b(false);
+            this.a(new fmy($$0x -> {
+               if ($$0x) {
+                  ad.k().a(axj.g);
+               }
+
+               this.a(null);
+            }, fgm.a.e, axj.g, true));
+         } else {
+            wz $$2 = $$1.a();
+            this.l.a($$2, false);
+            this.bq.c($$2);
+            this.l.b($$1 == fgm.a.d);
+         }
+      } else {
+         this.a(new fmx($$0));
+      }
    }
 
-   public fgl<Double> o() {
-      return this.aH;
+   public void a(@Nullable fob $$0) {
+      if (ab.aU && Thread.currentThread() != this.aY) {
+         F.error("setScreen called from non-game thread");
+      }
+
+      if (this.y != null) {
+         this.y.j();
+      } else {
+         this.a(fgj.a);
+      }
+
+      if ($$0 == null && this.aX) {
+         throw new IllegalStateException("Trying to return to in-game GUI during disconnection");
+      } else {
+         if ($$0 == null && this.r == null) {
+            $$0 = new fod();
+         } else if ($$0 == null && this.s.ey()) {
+            if (this.s.o()) {
+               $$0 = new fnf(null, this.r.k().l());
+            } else {
+               this.s.fX();
+            }
+         }
+
+         this.y = $$0;
+         if (this.y != null) {
+            this.y.aL_();
+         }
+
+         fbc.a();
+         if ($$0 != null) {
+            this.n.j();
+            fgk.b();
+            $$0.b(this, this.Q.p(), this.Q.q());
+            this.x = false;
+         } else {
+            this.ao.i();
+            this.n.i();
+         }
+
+         this.d();
+      }
    }
 
-   public fgl<Integer> p() {
-      return this.aK;
+   public void a(@Nullable fnv $$0) {
+      this.aW = $$0;
    }
 
-   public int q() {
-      return this.p().c();
+   public void n() {
+      try {
+         F.info("Stopping!");
+
+         try {
+            this.bq.c();
+         } catch (Throwable var7) {
+         }
+
+         try {
+            if (this.r != null) {
+               this.r.Y();
+            }
+
+            this.y();
+         } catch (Throwable var6) {
+         }
+
+         if (this.y != null) {
+            this.y.j();
+         }
+
+         this.close();
+      } finally {
+         ad.c = System::nanoTime;
+         if (this.ba == null) {
+            System.exit(0);
+         }
+      }
    }
 
-   public fgl<Double> r() {
-      return this.aL;
+   @Override
+   public void close() {
+      if (this.bp != null) {
+         this.bp.a();
+      }
+
+      try {
+         this.aK.close();
+         this.at.close();
+         this.az.close();
+         this.aq.close();
+         this.j.close();
+         this.f.close();
+         this.ao.g();
+         this.g.a();
+         this.aC.close();
+         this.aB.close();
+         this.aD.close();
+         this.aE.close();
+         this.N.close();
+         this.ag.close();
+         fll.b();
+         ad.j();
+      } catch (Throwable var5) {
+         F.error("Shutdown failure!", var5);
+         throw var5;
+      } finally {
+         this.P.close();
+         this.Q.close();
+      }
    }
 
-   public fgl<Double> s() {
-      return this.aM;
+   private void c(boolean $$0) {
+      this.Q.a("Pre render");
+      if (this.Q.c()) {
+         this.q();
+      }
+
+      if (this.bf != null && !(this.aW instanceof fnr)) {
+         CompletableFuture<Void> $$1 = this.bf;
+         this.bf = null;
+         this.l().thenRun(() -> $$1.complete(null));
+      }
+
+      Runnable $$2;
+      while (($$2 = this.be.poll()) != null) {
+         $$2.run();
+      }
+
+      int $$3 = this.R.a(ad.c(), $$0);
+      if ($$0) {
+         this.bh.a("scheduledExecutables");
+         this.bB();
+         this.bh.c();
+         this.bh.a("tick");
+
+         for (int $$4 = 0; $$4 < Math.min(10, $$3); $$4++) {
+            this.bh.d("clientTick");
+            this.t();
+         }
+
+         this.bh.c();
+      }
+
+      this.Q.a("Render");
+      this.bh.a("sound");
+      this.ao.a(this.j.l());
+      this.bh.c();
+      this.bh.a("render");
+      long $$5 = ad.d();
+      boolean $$7;
+      if (!this.aN().d() && !this.bl.e()) {
+         $$7 = false;
+         this.bo = 0.0;
+      } else {
+         $$7 = this.bp == null || this.bp.b();
+         if ($$7) {
+            faz.a().ifPresent(faz::b);
+         }
+      }
+
+      RenderSystem.clear(16640, a);
+      this.an.a(true);
+      gep.a();
+      this.bh.a("display");
+      RenderSystem.enableCull();
+      this.bh.b("mouse");
+      this.n.a();
+      this.bh.c();
+      if (!this.x) {
+         this.bh.b("gameRenderer");
+         this.j.a(this.R, $$0);
+         this.bh.c();
+      }
+
+      if (this.bk != null) {
+         this.bh.a("fpsPie");
+         fhx $$8 = new fhx(this, this.S.c());
+         this.a($$8, this.bk);
+         $$8.e();
+         this.bh.c();
+      }
+
+      this.bh.a("blit");
+      this.an.e();
+      this.an.a(this.Q.l(), this.Q.m());
+      this.bc = ad.d() - $$5;
+      if ($$7) {
+         faz.a().ifPresent($$0x -> this.bp = $$0x.c());
+      }
+
+      this.bh.b("updateDisplay");
+      this.Q.f();
+      int $$9 = this.bh();
+      if ($$9 < 260) {
+         RenderSystem.limitDisplayFPS($$9);
+      }
+
+      this.bh.b("yield");
+      Thread.yield();
+      this.bh.c();
+      this.Q.a("Post render");
+      this.aV++;
+      this.aS = this.U() && (this.y != null && this.y.k() || this.aW != null && this.aW.a()) && !this.aO.r();
+      this.R.b(this.aS);
+      this.R.c(!this.bn());
+      long $$10 = ad.d();
+      long $$11 = $$10 - this.aT;
+      if ($$7) {
+         this.bn = $$11;
+      }
+
+      this.aN().a($$11);
+      this.aT = $$10;
+      this.bh.a("fpsUpdate");
+      if (this.bp != null && this.bp.b()) {
+         this.bo = (double)this.bp.c() * 100.0 / (double)this.bn;
+      }
+
+      while (ad.c() >= this.aU + 1000L) {
+         String $$12;
+         if (this.bo > 0.0) {
+            $$12 = " GPU: " + (this.bo > 100.0 ? n.m + "100%" : Math.round(this.bo) + "%");
+         } else {
+            $$12 = "";
+         }
+
+         bb = this.aV;
+         this.z = String.format(
+            Locale.ROOT,
+            "%d fps T: %s%s%s%s B: %d%s",
+            bb,
+            $$9 == 260 ? "inf" : $$9,
+            this.m.N().c() ? " vsync " : " ",
+            this.m.j().c(),
+            this.m.i().c() == ffz.a ? "" : (this.m.i().c() == ffz.b ? " fast-clouds" : " fancy-clouds"),
+            this.m.E().c(),
+            $$12
+         );
+         this.aU += 1000L;
+         this.aV = 0;
+      }
+
+      this.bh.c();
    }
 
-   public fgl<Boolean> t() {
-      return this.aO;
+   private bnf a(boolean $$0, @Nullable bni $$1) {
+      if (!$$0) {
+         this.bj.b();
+         if (!this.bl.e() && $$1 == null) {
+            return bnc.a;
+         }
+      }
+
+      bnf $$2;
+      if ($$0) {
+         if (!this.bj.a()) {
+            this.bi = 0;
+            this.bj.c();
+         }
+
+         this.bi++;
+         $$2 = this.bj.d();
+      } else {
+         $$2 = bnc.a;
+      }
+
+      if (this.bl.e()) {
+         $$2 = bnf.a($$2, this.bl.f());
+      }
+
+      return bni.a($$2, $$1);
    }
 
-   public fgl<Boolean> u() {
-      return this.aP;
+   private void b(boolean $$0, @Nullable bni $$1) {
+      if ($$1 != null) {
+         $$1.b();
+      }
+
+      if ($$0) {
+         this.bk = this.bj.e();
+      } else {
+         this.bk = null;
+      }
+
+      this.bh = this.bj.d();
    }
 
-   public fgl<btf> v() {
-      return this.aR;
+   @Override
+   public void a() {
+      int $$0 = this.Q.a(this.m.aq().c(), this.k());
+      this.Q.a((double)$$0);
+      if (this.y != null) {
+         this.y.a(this, this.Q.p(), this.Q.q());
+      }
+
+      ezt $$1 = this.h();
+      $$1.a(this.Q.l(), this.Q.m(), a);
+      this.j.a(this.Q.l(), this.Q.m());
+      this.n.g();
    }
 
-   public fgl<Double> w() {
-      return this.aS;
+   @Override
+   public void b() {
+      this.n.k();
    }
 
-   public fgl<Double> x() {
-      return this.aT;
+   public int o() {
+      return bb;
    }
 
-   public fgl<Double> y() {
-      return this.aU;
-   }
-
-   public fgl<Double> z() {
-      return this.aV;
-   }
-
-   public fgl<Double> A() {
-      return this.aW;
-   }
-
-   public fgl<Double> B() {
-      return this.aY;
-   }
-
-   public fgl<Integer> C() {
-      return this.aZ;
-   }
-
-   public fgl<ffr> D() {
-      return this.ba;
-   }
-
-   public fgl<Integer> E() {
-      return this.bb;
-   }
-
-   private static double c(int $$0) {
-      return Math.pow(10.0, (double)$$0 / 100.0);
-   }
-
-   private static int a(double $$0) {
-      return ayn.a(Math.log10($$0) * 100.0);
-   }
-
-   public fgl<Double> F() {
+   public long p() {
       return this.bc;
    }
 
-   public fgl<Boolean> G() {
-      return this.bd;
+   private int bh() {
+      return this.r != null || this.y == null && this.aW == null ? this.Q.e() : 60;
    }
 
-   public fgl<Boolean> H() {
-      return this.be;
+   private void bi() {
+      try {
+         aym.b();
+         this.f.p();
+      } catch (Throwable var3) {
+      }
+
+      try {
+         System.gc();
+         if (this.aQ && this.aO != null) {
+            this.aO.a(true);
+         }
+
+         this.b((fob)(new fnm(wz.c("menu.savingLevel"))));
+      } catch (Throwable var2) {
+      }
+
+      System.gc();
    }
 
-   public fgl<Boolean> I() {
-      return this.bf;
-   }
+   public boolean a(Consumer<wz> $$0) {
+      if (this.bl.e()) {
+         this.bj();
+         return false;
+      } else {
+         Consumer<bne> $$1 = $$1x -> {
+            if ($$1x != bna.a) {
+               int $$2x = $$1x.f();
+               double $$3x = (double)$$1x.g() / (double)azp.a;
+               this.execute(
+                  () -> $$0.accept(
+                        wz.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3x), $$2x, String.format(Locale.ROOT, "%.2f", (double)$$2x / $$3x))
+                     )
+               );
+            }
+         };
+         Consumer<Path> $$2 = $$1x -> {
+            wz $$2x = wz.b($$1x.toString()).a(n.t).a($$1xx -> $$1xx.a(new wx(wx.a.b, $$1x.toFile().getParent())));
+            this.execute(() -> $$0.accept(wz.a("debug.profiling.stop", $$2x)));
+         };
+         ac $$3 = a(new ac(), this, this.ak, this.Z, this.m);
+         Consumer<List<Path>> $$4 = $$2x -> {
+            Path $$3x = this.a($$3, $$2x);
+            $$2.accept($$3x);
+         };
+         Consumer<Path> $$5;
+         if (this.aO == null) {
+            $$5 = $$1x -> $$4.accept(ImmutableList.of($$1x));
+         } else {
+            this.aO.b($$3);
+            CompletableFuture<Path> $$6 = new CompletableFuture<>();
+            CompletableFuture<Path> $$7 = new CompletableFuture<>();
+            CompletableFuture.allOf($$6, $$7).thenRunAsync(() -> $$4.accept(ImmutableList.of($$6.join(), $$7.join())), ad.h());
+            this.aO.a($$0x -> {
+            }, $$7::complete);
+            $$5 = $$6::complete;
+         }
 
-   public fgl<Boolean> J() {
-      return this.bg;
-   }
-
-   public fgl<Boolean> K() {
-      return this.bh;
-   }
-
-   public fgl<Boolean> L() {
-      return this.bi;
-   }
-
-   public fgl<Boolean> M() {
-      return this.bj;
-   }
-
-   public fgl<Boolean> N() {
-      return this.bk;
-   }
-
-   public fgl<Boolean> O() {
-      return this.bl;
-   }
-
-   private static void aE() {
-      fgi $$0 = fgi.Q();
-      if ($$0.aM() != null) {
-         $$0.g();
-         $$0.a();
+         this.bl = bor.a(new gee(ad.c, this.f), ad.c, ad.h(), new box("client"), $$1x -> {
+            this.bl = bos.a;
+            $$1.accept($$1x);
+         }, $$5);
+         return true;
       }
    }
 
-   public fgl<Boolean> P() {
-      return this.bm;
+   private void bj() {
+      this.bl.a();
+      if (this.aO != null) {
+         this.aO.aX();
+      }
    }
 
-   private static boolean aF() {
-      return Locale.getDefault().getLanguage().equalsIgnoreCase("ja");
+   private void bk() {
+      this.bl.b();
+      if (this.aO != null) {
+         this.aO.aY();
+      }
    }
 
-   public fgl<Boolean> Q() {
-      return this.bn;
+   private Path a(ac $$0, List<Path> $$1) {
+      String $$2;
+      if (this.T()) {
+         $$2 = this.V().bb().e();
+      } else {
+         fzr $$3 = this.S();
+         $$2 = $$3 != null ? $$3.a : "unknown";
+      }
+
+      Path $$7;
+      try {
+         String $$5 = String.format(Locale.ROOT, "%s-%s-%s", ad.f(), $$2, ab.b().b());
+         String $$6 = v.a(box.a, $$5, ".zip");
+         $$7 = box.a.resolve($$6);
+      } catch (IOException var21) {
+         throw new UncheckedIOException(var21);
+      }
+
+      try (axz $$10 = new axz($$7)) {
+         $$10.a(Paths.get("system.txt"), $$0.a());
+         $$10.a(Paths.get("client").resolve(this.m.aB().getName()), this.m.aC());
+         $$1.forEach($$10::a);
+      } finally {
+         for (Path $$13 : $$1) {
+            try {
+               FileUtils.forceDelete($$13.toFile());
+            } catch (IOException var18) {
+               F.warn("Failed to delete temporary profiling result {}", $$13, var18);
+            }
+         }
+      }
+
+      return $$7;
    }
 
-   public fgl<Boolean> R() {
+   public void a(int $$0) {
+      if (this.bk != null) {
+         List<bnh> $$1 = this.bk.a(this.by);
+         if (!$$1.isEmpty()) {
+            bnh $$2 = $$1.remove(0);
+            if ($$0 == 0) {
+               if (!$$2.d.isEmpty()) {
+                  int $$3 = this.by.lastIndexOf(30);
+                  if ($$3 >= 0) {
+                     this.by = this.by.substring(0, $$3);
+                  }
+               }
+            } else {
+               $$0--;
+               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
+                  if (!this.by.isEmpty()) {
+                     this.by = this.by + "\u001e";
+                  }
+
+                  this.by = this.by + $$1.get($$0).d;
+               }
+            }
+         }
+      }
+   }
+
+   private void a(fhx $$0, bne $$1) {
+      List<bnh> $$2 = $$1.a(this.by);
+      bnh $$3 = $$2.removeFirst();
+      RenderSystem.clear(256, a);
+      RenderSystem.setShader(geq::p);
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)this.Q.l(), (float)this.Q.m(), 0.0F, 1000.0F, 3000.0F);
+      RenderSystem.setProjectionMatrix($$4, fbo.b);
+      fbi $$5 = fbi.b();
+      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
+      $$6.pushMatrix();
+      $$6.translation(0.0F, 0.0F, -2000.0F);
+      RenderSystem.applyModelViewMatrix();
+      int $$7 = 160;
+      int $$8 = this.Q.l() - 160 - 10;
+      int $$9 = this.Q.m() - 320;
+      double $$10 = 0.0;
+
+      for (bnh $$11 : $$2) {
+         int $$12 = ayo.a($$11.a / 4.0) + 1;
+         fbb $$13 = $$5.a(fbl.c.g, fbe.f);
+         int $$14 = axy.b.e($$11.a());
+         int $$15 = axy.b.a($$14, -8355712);
+         $$13.a((float)$$8, (float)$$9, 0.0F).a($$14);
+
+         for (int $$16 = $$12; $$16 >= 0; $$16--) {
+            float $$17 = (float)(($$10 + $$11.a * (double)$$16 / (double)$$12) * (float) (Math.PI * 2) / 100.0);
+            float $$18 = ayo.a($$17) * 160.0F;
+            float $$19 = ayo.b($$17) * 160.0F * 0.5F;
+            $$13.a((float)$$8 + $$18, (float)$$9 - $$19, 0.0F).a($$14);
+         }
+
+         fbc.a($$13.b());
+         $$13 = $$5.a(fbl.c.f, fbe.f);
+
+         for (int $$20 = $$12; $$20 >= 0; $$20--) {
+            float $$21 = (float)(($$10 + $$11.a * (double)$$20 / (double)$$12) * (float) (Math.PI * 2) / 100.0);
+            float $$22 = ayo.a($$21) * 160.0F;
+            float $$23 = ayo.b($$21) * 160.0F * 0.5F;
+            if (!($$23 > 0.0F)) {
+               $$13.a((float)$$8 + $$22, (float)$$9 - $$23, 0.0F).a($$15);
+               $$13.a((float)$$8 + $$22, (float)$$9 - $$23 + 10.0F, 0.0F).a($$15);
+            }
+         }
+
+         fbf $$24 = $$13.a();
+         if ($$24 != null) {
+            fbc.a($$24);
+         }
+
+         $$10 += $$11.a;
+      }
+
+      DecimalFormat $$25 = new DecimalFormat("##0.00");
+      $$25.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+      String $$26 = bne.b($$3.d);
+      String $$27 = "";
+      if (!"unspecified".equals($$26)) {
+         $$27 = $$27 + "[0] ";
+      }
+
+      if ($$26.isEmpty()) {
+         $$27 = $$27 + "ROOT ";
+      } else {
+         $$27 = $$27 + $$26 + " ";
+      }
+
+      int $$28 = 16777215;
+      $$0.b(this.h, $$27, $$8 - 160, $$9 - 80 - 16, 16777215);
+      $$27 = $$25.format($$3.b) + "%";
+      $$0.b(this.h, $$27, $$8 + 160 - this.h.b($$27), $$9 - 80 - 16, 16777215);
+
+      for (int $$29 = 0; $$29 < $$2.size(); $$29++) {
+         bnh $$30 = $$2.get($$29);
+         StringBuilder $$31 = new StringBuilder();
+         if ("unspecified".equals($$30.d)) {
+            $$31.append("[?] ");
+         } else {
+            $$31.append("[").append($$29 + 1).append("] ");
+         }
+
+         String $$32 = $$31.append($$30.d).toString();
+         $$0.b(this.h, $$32, $$8 - 160, $$9 + 80 + $$29 * 8 + 20, $$30.a());
+         $$32 = $$25.format($$30.a) + "%";
+         $$0.b(this.h, $$32, $$8 + 160 - 50 - this.h.b($$32), $$9 + 80 + $$29 * 8 + 20, $$30.a());
+         $$32 = $$25.format($$30.b) + "%";
+         $$0.b(this.h, $$32, $$8 + 160 - this.h.b($$32), $$9 + 80 + $$29 * 8 + 20, $$30.a());
+      }
+
+      $$6.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   }
+
+   public void q() {
+      this.aZ = false;
+   }
+
+   public boolean r() {
+      return this.aZ;
+   }
+
+   public void b(boolean $$0) {
+      if (this.y == null) {
+         boolean $$1 = this.U() && !this.aO.r();
+         if ($$1) {
+            this.a(new fnw(!$$0));
+            this.ao.e();
+         } else {
+            this.a(new fnw(true));
+         }
+      }
+   }
+
+   private void d(boolean $$0) {
+      if (!$$0) {
+         this.w = 0;
+      }
+
+      if (this.w <= 0 && !this.s.fs()) {
+         if ($$0 && this.v != null && this.v.c() == ewy.a.b) {
+            eww $$1 = (eww)this.v;
+            jd $$2 = $$1.a();
+            if (!this.r.a_($$2).i()) {
+               ji $$3 = $$1.b();
+               if (this.q.b($$2, $$3)) {
+                  this.g.a($$2, $$3);
+                  this.s.a(bqq.a);
+               }
+            }
+         } else {
+            this.q.b();
+         }
+      }
+   }
+
+   private boolean bl() {
+      if (this.w > 0) {
+         return false;
+      } else if (this.v == null) {
+         F.error("Null returned as 'hitResult', this shouldn't happen!");
+         if (this.q.e()) {
+            this.w = 10;
+         }
+
+         return false;
+      } else if (this.s.B()) {
+         return false;
+      } else {
+         cuq $$0 = this.s.b(bqq.a);
+         if (!$$0.a(this.r.J())) {
+            return false;
+         } else {
+            boolean $$1 = false;
+            switch (this.v.c()) {
+               case c:
+                  this.q.a(this.s, ((ewx)this.v).a());
+                  break;
+               case b:
+                  eww $$2 = (eww)this.v;
+                  jd $$3 = $$2.a();
+                  if (!this.r.a_($$3).i()) {
+                     this.q.a($$3, $$2.b());
+                     if (this.r.a_($$3).i()) {
+                        $$1 = true;
+                     }
+                     break;
+                  }
+               case a:
+                  if (this.q.e()) {
+                     this.w = 10;
+                  }
+
+                  this.s.gt();
+            }
+
+            this.s.a(bqq.a);
+            return $$1;
+         }
+      }
+   }
+
+   private void bm() {
+      if (!this.q.k()) {
+         this.aR = 4;
+         if (!this.s.B()) {
+            if (this.v == null) {
+               F.warn("Null returned as 'hitResult', this shouldn't happen!");
+            }
+
+            for (bqq $$0 : bqq.values()) {
+               cuq $$1 = this.s.b($$0);
+               if (!$$1.a(this.r.J())) {
+                  return;
+               }
+
+               if (this.v != null) {
+                  switch (this.v.c()) {
+                     case c:
+                        ewx $$2 = (ewx)this.v;
+                        bsr $$3 = $$2.a();
+                        if (!this.r.C_().a($$3.dp())) {
+                           return;
+                        }
+
+                        bqr $$4 = this.q.a(this.s, $$3, $$2, $$0);
+                        if (!$$4.a()) {
+                           $$4 = this.q.a(this.s, $$3, $$0);
+                        }
+
+                        if ($$4.a()) {
+                           if ($$4.b()) {
+                              this.s.a($$0);
+                           }
+
+                           return;
+                        }
+                        break;
+                     case b:
+                        eww $$5 = (eww)this.v;
+                        int $$6 = $$1.H();
+                        bqr $$7 = this.q.a(this.s, $$0, $$5);
+                        if ($$7.a()) {
+                           if ($$7.b()) {
+                              this.s.a($$0);
+                              if (!$$1.e() && ($$1.H() != $$6 || this.q.f())) {
+                                 this.j.c.a($$0);
+                              }
+                           }
+
+                           return;
+                        }
+
+                        if ($$7 == bqr.f) {
+                           return;
+                        }
+                  }
+               }
+
+               if (!$$1.e()) {
+                  bqr $$8 = this.q.a(this.s, $$0);
+                  if ($$8.a()) {
+                     if ($$8.b()) {
+                        this.s.a($$0);
+                     }
+
+                     this.j.c.a($$0);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public guy s() {
+      return this.ap;
+   }
+
+   public void t() {
+      this.bx++;
+      if (this.r != null && !this.aS) {
+         this.r.s().m();
+      }
+
+      if (this.aR > 0) {
+         this.aR--;
+      }
+
+      this.bh.a("gui");
+      this.br.a();
+      this.l.a(this.aS);
+      this.bh.c();
+      this.j.b(1.0F);
+      this.aG.a(this.r, this.v);
+      this.bh.a("gameMode");
+      if (!this.aS && this.r != null) {
+         this.q.c();
+      }
+
+      this.bh.b("textures");
+      if (this.bn()) {
+         this.N.e();
+      }
+
+      if (this.y != null || this.s == null) {
+         if (this.y instanceof fno $$0 && !this.s.fI()) {
+            $$0.m();
+         }
+      } else if (this.s.ey() && !(this.y instanceof fnf)) {
+         this.a(null);
+      } else if (this.s.fI() && this.r != null) {
+         this.a(new fno());
+      }
+
+      if (this.y != null) {
+         this.w = 10000;
+      }
+
+      if (this.y != null) {
+         fob.a(() -> this.y.e(), "Ticking screen", this.y.getClass().getCanonicalName());
+      }
+
+      if (!this.aN().d()) {
+         this.l.l();
+      }
+
+      if (this.aW == null && this.y == null) {
+         this.bh.b("Keybindings");
+         this.bp();
+         if (this.w > 0) {
+            this.w--;
+         }
+      }
+
+      if (this.r != null) {
+         this.bh.b("gameRenderer");
+         if (!this.aS) {
+            this.j.e();
+         }
+
+         this.bh.b("levelRenderer");
+         if (!this.aS) {
+            this.f.o();
+         }
+
+         this.bh.b("level");
+         if (!this.aS) {
+            this.r.f();
+         }
+      } else if (this.j.f() != null) {
+         this.j.b();
+      }
+
+      if (!this.aS) {
+         this.ap.a();
+      }
+
+      this.ao.a(this.aS);
+      if (this.r != null) {
+         if (!this.aS) {
+            if (!this.m.s && this.bo()) {
+               wz $$1 = wz.c("tutorial.socialInteractions.title");
+               wz $$2 = wz.a("tutorial.socialInteractions.description", gwg.a("socialInteractions"));
+               this.bg = new fkv(fkv.a.f, $$1, $$2, true);
+               this.aG.a(this.bg, 160);
+               this.m.s = true;
+               this.m.av();
+            }
+
+            this.aG.d();
+
+            try {
+               this.r.a(() -> true);
+            } catch (Throwable var4) {
+               o $$4 = o.a(var4, "Exception in world tick");
+               if (this.r == null) {
+                  p $$5 = $$4.a("Affected level");
+                  $$5.a("Problem", "Level is null!");
+               } else {
+                  this.r.a($$4);
+               }
+
+               throw new z($$4);
+            }
+         }
+
+         this.bh.b("animateTick");
+         if (!this.aS && this.bn()) {
+            this.r.b(this.s.dt(), this.s.dv(), this.s.dz());
+         }
+
+         this.bh.b("particles");
+         if (!this.aS && this.bn()) {
+            this.g.b();
+         }
+      } else if (this.aP != null) {
+         this.bh.b("pendingConnection");
+         this.aP.b();
+      }
+
+      this.bh.b("keyboard");
+      this.o.b();
+      this.bh.c();
+   }
+
+   private boolean bn() {
+      return this.r == null || this.r.s().i();
+   }
+
+   private boolean bo() {
+      return !this.aQ || this.aO != null && this.aO.r();
+   }
+
+   private void bp() {
+      while (this.m.O.g()) {
+         ffx $$0 = this.m.aA();
+         this.m.a(this.m.aA().c());
+         if ($$0.a() != this.m.aA().a()) {
+            this.j.a(this.m.aA().a() ? this.an() : null);
+         }
+
+         this.f.r();
+      }
+
+      while (this.m.P.g()) {
+         this.m.aa = !this.m.aa;
+      }
+
+      for (int $$1 = 0; $$1 < 9; $$1++) {
+         boolean $$2 = this.m.U.e();
+         boolean $$3 = this.m.V.e();
+         if (this.m.T[$$1].g()) {
+            if (this.s.R_()) {
+               this.l.g().a($$1);
+            } else if (!this.s.f() || this.y != null || !$$3 && !$$2) {
+               this.s.fZ().k = $$1;
+            } else {
+               fpg.a(this, $$1, $$3, $$2);
+            }
+         }
+      }
+
+      while (this.m.M.g()) {
+         if (!this.bo()) {
+            this.s.a(J, true);
+            this.bq.c(J);
+         } else {
+            if (this.bg != null) {
+               this.aG.a(this.bg);
+               this.bg = null;
+            }
+
+            this.a(new fsu());
+         }
+      }
+
+      while (this.m.D.g()) {
+         if (this.q.g()) {
+            this.s.i();
+         } else {
+            this.aG.a();
+            this.a(new fpr(this.s));
+         }
+      }
+
+      while (this.m.S.g()) {
+         this.a(new fol(this.s.h.p()));
+      }
+
+      while (this.m.E.g()) {
+         if (!this.s.R_()) {
+            this.L().b(new ahm(ahm.a.g, jd.c, ji.a));
+         }
+      }
+
+      while (this.m.F.g()) {
+         if (!this.s.R_() && this.s.a(fob.r())) {
+            this.s.a(bqq.a);
+         }
+      }
+
+      while (this.m.J.g()) {
+         this.a("");
+      }
+
+      if (this.y == null && this.aW == null && this.m.L.g()) {
+         this.a("/");
+      }
+
+      boolean $$4 = false;
+      if (this.s.fs()) {
+         if (!this.m.G.e()) {
+            this.q.b(this.s);
+         }
+
+         while (this.m.H.g()) {
+         }
+
+         while (this.m.G.g()) {
+         }
+
+         while (this.m.I.g()) {
+         }
+      } else {
+         while (this.m.H.g()) {
+            $$4 |= this.bl();
+         }
+
+         while (this.m.G.g()) {
+            this.bm();
+         }
+
+         while (this.m.I.g()) {
+            this.br();
+         }
+      }
+
+      if (this.m.G.e() && this.aR == 0 && !this.s.fs()) {
+         this.bm();
+      }
+
+      this.d(this.y == null && !$$4 && this.m.H.e() && this.n.h());
+   }
+
+   public gvh u() {
+      return this.aK;
+   }
+
+   public double v() {
       return this.bo;
    }
 
-   public fgl<Boolean> S() {
-      return this.bp;
+   public fzp w() {
+      return this.aL;
    }
 
-   public fgl<Boolean> T() {
-      return this.br;
+   public ftk x() {
+      return new ftk(this, this.ac);
    }
 
-   public fgl<Boolean> U() {
-      return this.bt;
-   }
+   public void a(erd.c $$0, atp $$1, alp $$2, boolean $$3) {
+      this.y();
+      this.W.set(null);
+      Instant $$4 = Instant.now();
 
-   public fgl<Boolean> V() {
-      return this.bu;
-   }
-
-   public final float a(avp $$0) {
-      return this.b($$0).c().floatValue();
-   }
-
-   public final fgl<Double> b(avp $$0) {
-      return Objects.requireNonNull(this.bv.get($$0));
-   }
-
-   private fgl<Double> a(String $$0, avp $$1) {
-      return new fgl<>($$0, fgl.a(), fgm::b, fgl.m.a, 1.0, $$1x -> fgi.Q().aj().a($$1, $$1x.floatValue()));
-   }
-
-   public fgl<Boolean> W() {
-      return this.bw;
-   }
-
-   public fgl<Boolean> X() {
-      return this.bz;
-   }
-
-   public fgl<Boolean> Y() {
-      return this.bA;
-   }
-
-   public fgl<Boolean> Z() {
-      return this.bB;
-   }
-
-   public fgl<Boolean> aa() {
-      return this.bC;
-   }
-
-   public fgl<Boolean> ab() {
-      return this.bD;
-   }
-
-   public fgl<Boolean> ac() {
-      return this.bG;
-   }
-
-   public fgl<Boolean> ad() {
-      return this.bH;
-   }
-
-   public fgl<Boolean> ae() {
-      return this.bJ;
-   }
-
-   public fgl<Boolean> af() {
-      return this.bK;
-   }
-
-   public fgl<Boolean> ag() {
-      return this.bM;
-   }
-
-   public fgl<Integer> ah() {
-      return this.bP;
-   }
-
-   public fgl<Boolean> ai() {
-      return this.bR;
-   }
-
-   public fgl<Double> aj() {
-      return this.bT;
-   }
-
-   public fgl<Double> ak() {
-      return this.bV;
-   }
-
-   public fgl<Double> al() {
-      return this.bX;
-   }
-
-   public fgl<Double> am() {
-      return this.bZ;
-   }
-
-   public fgl<Double> an() {
-      return this.cb;
-   }
-
-   public fgl<Double> ao() {
-      return this.cd;
-   }
-
-   public fgl<Double> ap() {
-      return this.ce;
-   }
-
-   public fgl<Integer> aq() {
-      return this.cg;
-   }
-
-   public fgl<fgn> ar() {
-      return this.ch;
-   }
-
-   public fgl<fgk> as() {
-      return this.ci;
-   }
-
-   public fgl<String> at() {
-      return this.cj;
-   }
-
-   public fgm(fgi $$0, File $$1) {
-      this.X = $$0;
-      this.bN = new File($$1, "options.txt");
-      boolean $$2 = Runtime.getRuntime().maxMemory() >= 1000000000L;
-      this.aq = new fgl<>(
-         "options.renderDistance",
-         fgl.a(),
-         ($$0x, $$1x) -> a($$0x, wy.a("options.chunks", $$1x)),
-         new fgl.f(2, $$2 ? 32 : 16, false),
-         12,
-         $$0x -> fgi.Q().f.r()
-      );
-      this.ar = new fgl<>(
-         "options.simulationDistance", fgl.a(), ($$0x, $$1x) -> a($$0x, wy.a("options.chunks", $$1x)), new fgl.f(5, $$2 ? 32 : 16, false), 12, $$0x -> {
-         }
-      );
-      this.ae = ad.k() == ad.a.c;
-      this.au();
-   }
-
-   public float a(float $$0) {
-      return this.bA.c() ? $$0 : this.r().c().floatValue();
-   }
-
-   public int b(float $$0) {
-      return (int)(this.a($$0) * 255.0F) << 24 & 0xFF000000;
-   }
-
-   public int a(int $$0) {
-      return this.bA.c() ? $$0 : (int)(this.aL.c() * 255.0) << 24 & 0xFF000000;
-   }
-
-   public void a(fgg $$0, ezy.a $$1) {
-      $$0.b($$1);
-      this.av();
-   }
-
-   private void a(fgm.b $$0) {
-      $$0.a("ao", this.aA);
-      $$0.a("biomeBlendRadius", this.bb);
-      $$0.a("enableVsync", this.bk);
-      $$0.a("entityDistanceScaling", this.at);
-      $$0.a("entityShadows", this.bl);
-      $$0.a("forceUnicodeFont", this.bm);
-      $$0.a("japaneseGlyphVariants", this.bn);
-      $$0.a("fov", this.bP);
-      $$0.a("fovEffectScale", this.bV);
-      $$0.a("darknessEffectScale", this.bX);
-      $$0.a("glintSpeed", this.bZ);
-      $$0.a("glintStrength", this.cb);
-      $$0.a("prioritizeChunkUpdates", this.aE);
-      $$0.a("fullscreen", this.bC);
-      $$0.a("gamma", this.ce);
-      $$0.a("graphicsMode", this.az);
-      $$0.a("guiScale", this.cg);
-      $$0.a("maxFps", this.au);
-      $$0.a("mipmapLevels", this.aZ);
-      $$0.a("narrator", this.ci);
-      $$0.a("particles", this.ch);
-      $$0.a("reducedDebugInfo", this.bu);
-      $$0.a("renderClouds", this.av);
-      $$0.a("renderDistance", this.aq);
-      $$0.a("simulationDistance", this.ar);
-      $$0.a("screenEffectScale", this.bT);
-      $$0.a("soundDevice", this.cj);
-   }
-
-   private void a(fgm.a $$0) {
-      this.a((fgm.b)$$0);
-      $$0.a("autoJump", this.be);
-      $$0.a("operatorItemsTab", this.bf);
-      $$0.a("autoSuggestions", this.bg);
-      $$0.a("chatColors", this.bh);
-      $$0.a("chatLinks", this.bi);
-      $$0.a("chatLinksPrompt", this.bj);
-      $$0.a("discrete_mouse_scroll", this.bp);
-      $$0.a("invertYMouse", this.bo);
-      $$0.a("realmsNotifications", this.br);
-      $$0.a("showSubtitles", this.bw);
-      $$0.a("directionalAudio", this.bz);
-      $$0.a("touchscreen", this.bB);
-      $$0.a("bobView", this.bD);
-      $$0.a("toggleCrouch", this.bG);
-      $$0.a("toggleSprint", this.bH);
-      $$0.a("darkMojangStudiosBackground", this.ak);
-      $$0.a("hideLightningFlashes", this.am);
-      $$0.a("hideSplashTexts", this.ao);
-      $$0.a("mouseSensitivity", this.ap);
-      $$0.a("damageTiltStrength", this.cd);
-      $$0.a("highContrast", this.aO);
-      $$0.a("narratorHotkey", this.aP);
-      this.i = $$0.a("resourcePacks", this.i, fgm::c, ag::toJson);
-      this.j = $$0.a("incompatibleResourcePacks", this.j, fgm::c, ag::toJson);
-      this.Z = $$0.a("lastServer", this.Z);
-      this.ac = $$0.a("lang", this.ac);
-      $$0.a("chatVisibility", this.aF);
-      $$0.a("chatOpacity", this.aG);
-      $$0.a("chatLineSpacing", this.aH);
-      $$0.a("textBackgroundOpacity", this.aL);
-      $$0.a("backgroundForChatOnly", this.bA);
-      this.l = $$0.a("hideServerAddress", this.l);
-      this.m = $$0.a("advancedItemTooltips", this.m);
-      this.n = $$0.a("pauseOnLostFocus", this.n);
-      this.o = $$0.a("overrideWidth", this.o);
-      this.p = $$0.a("overrideHeight", this.p);
-      $$0.a("chatHeightFocused", this.aV);
-      $$0.a("chatDelay", this.aW);
-      $$0.a("chatHeightUnfocused", this.aU);
-      $$0.a("chatScale", this.aS);
-      $$0.a("chatWidth", this.aT);
-      $$0.a("notificationDisplayTime", this.aY);
-      this.q = $$0.a("useNativeTransport", this.q);
-      $$0.a("mainHand", this.aR);
-      $$0.a("attackIndicator", this.ba);
-      this.r = $$0.a("tutorialStep", this.r, gwd::a, gwd::a);
-      $$0.a("mouseWheelSensitivity", this.bc);
-      $$0.a("rawMouseInput", this.bd);
-      this.u = $$0.a("glDebugVerbosity", this.u);
-      this.v = $$0.a("skipMultiplayerWarning", this.v);
-      $$0.a("hideMatchedNames", this.bJ);
-      this.s = $$0.a("joinedFirstServer", this.s);
-      this.t = $$0.a("hideBundleTutorial", this.t);
-      this.ae = $$0.a("syncChunkWrites", this.ae);
-      $$0.a("showAutosaveIndicator", this.bK);
-      $$0.a("allowServerListing", this.bt);
-      $$0.a("onlyShowSecureChat", this.bM);
-      $$0.a("panoramaScrollSpeed", this.aM);
-      $$0.a("telemetryOptInExtra", this.bR);
-      this.ad = $$0.a("onboardAccessibility", this.ad);
-      $$0.a("menuBackgroundBlurriness", this.aK);
-
-      for (fgg $$1 : this.W) {
-         String $$2 = $$1.m();
-         String $$3 = $$0.a("key_" + $$1.h(), $$2);
-         if (!$$2.equals($$3)) {
-            $$1.b(ezy.a($$3));
-         }
-      }
-
-      for (avp $$4 : avp.values()) {
-         $$0.a("soundCategory_" + $$4.a(), this.bv.get($$4));
-      }
-
-      for (cmw $$5 : cmw.values()) {
-         boolean $$6 = this.aQ.contains($$5);
-         boolean $$7 = $$0.a("modelPart_" + $$5.c(), $$6);
-         if ($$7 != $$6) {
-            this.b($$5, $$7);
-         }
-      }
-   }
-
-   public void au() {
       try {
-         if (!this.bN.exists()) {
-            return;
+         $$0.a($$2.c().a(), $$2.d());
+         alm $$5 = alm.a(this.au, this.p);
+         $$5.f().a(this);
+         dru.a($$5, this);
+         aun.a(false);
+         this.aO = MinecraftServer.a((Function<Thread, gum>)($$4x -> new gum($$4x, this, $$0, $$1, $$2, $$5, $$0xx -> {
+               arh $$1xx = arh.b($$0xx + 0);
+               this.W.set($$1xx);
+               return arg.a($$1xx, this.be::add);
+            })));
+         this.aQ = true;
+         this.a(gaj.a());
+         this.aN.a(geh.c.a, $$0.f(), $$2.d().e());
+      } catch (Throwable var11) {
+         o $$7 = o.a(var11, "Starting integrated server");
+         p $$8 = $$7.a("Starting integrated server");
+         $$8.a("Level ID", $$0.f());
+         $$8.a("Level Name", () -> $$2.d().e());
+         throw new z($$7);
+      }
+
+      while (this.W.get() == null) {
+         Thread.yield();
+      }
+
+      fnp $$9 = new fnp(this.W.get());
+      this.a($$9);
+      this.bh.a("waitForServer");
+
+      for (; !this.aO.aj() || this.aW != null; this.bf()) {
+         $$9.e();
+         this.c(false);
+
+         try {
+            Thread.sleep(16L);
+         } catch (InterruptedException var10) {
+         }
+      }
+
+      this.bh.c();
+      Duration $$10 = Duration.between($$4, Instant.now());
+      SocketAddress $$11 = this.aO.ai().a();
+      vt $$12 = vt.a($$11);
+      $$12.a($$11.toString(), 0, new fzc($$12, this, null, null, $$3, $$10, $$0x -> {
+      }, null));
+      $$12.a(new aiy(this.X().c(), this.X().b()));
+      this.aP = $$12;
+   }
+
+   public void a(fzd $$0, fnz.a $$1) {
+      this.e(new fnz(() -> false, $$1));
+      this.r = $$0;
+      this.a($$0);
+      if (!this.aQ) {
+         alm $$2 = alm.a(this.au, this.p);
+         $$2.f().a(this);
+         dru.a($$2, this);
+         aun.a(false);
+      }
+   }
+
+   public void y() {
+      this.a(new fny(true), false);
+   }
+
+   public void b(fob $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(fob $$0, boolean $$1) {
+      fze $$2 = this.L();
+      if ($$2 != null) {
+         this.bA();
+         $$2.h();
+         if (!$$1) {
+            this.z();
+         }
+      }
+
+      this.aH.b();
+      if (this.bl.e()) {
+         this.bk();
+      }
+
+      gum $$3 = this.aO;
+      this.aO = null;
+      this.j.h();
+      this.q = null;
+      this.bq.b();
+      this.aX = true;
+
+      try {
+         this.e($$0);
+         if (this.r != null) {
+            if ($$3 != null) {
+               this.bh.a("waitForServer");
+
+               while (!$$3.H()) {
+                  this.c(false);
+               }
+
+               this.bh.c();
+            }
+
+            this.l.i();
+            this.aQ = false;
          }
 
-         ua $$0 = new ua();
+         this.r = null;
+         this.a(null);
+         this.s = null;
+      } finally {
+         this.aX = false;
+      }
 
-         try (BufferedReader $$1 = Files.newReader(this.bN, Charsets.UTF_8)) {
-            $$1.lines().forEach($$1x -> {
-               try {
-                  Iterator<String> $$2x = ai.split($$1x).iterator();
-                  $$0.a($$2x.next(), $$2x.next());
-               } catch (Exception var3) {
-                  af.warn("Skipping bad option: {}", $$1x);
+      dru.b();
+   }
+
+   public void z() {
+      this.ai.i();
+      this.bB();
+   }
+
+   public void c(fob $$0) {
+      fze $$1 = this.L();
+      if ($$1 != null) {
+         $$1.i();
+      }
+
+      if (this.bl.e()) {
+         this.bk();
+      }
+
+      this.j.h();
+      this.q = null;
+      this.bq.b();
+      this.aX = true;
+
+      try {
+         this.e($$0);
+         this.l.i();
+         this.r = null;
+         this.a(null);
+         this.s = null;
+      } finally {
+         this.aX = false;
+      }
+
+      dru.b();
+   }
+
+   private void e(fob $$0) {
+      this.bh.a("forcedTick");
+      this.ao.f();
+      this.t = null;
+      this.aP = null;
+      this.a($$0);
+      this.c(false);
+      this.bh.c();
+   }
+
+   public void d(fob $$0) {
+      this.bh.a("forcedTick");
+      this.a($$0);
+      this.c(false);
+      this.bh.c();
+   }
+
+   private void a(@Nullable fzd $$0) {
+      this.f.a($$0);
+      this.g.a($$0);
+      this.aJ.a($$0);
+      this.d();
+   }
+
+   private UserProperties bq() {
+      return this.ax.join();
+   }
+
+   public boolean C() {
+      return this.D() && this.m.ai().c();
+   }
+
+   public boolean D() {
+      return this.E() && this.bq().flag(UserFlag.OPTIONAL_TELEMETRY_AVAILABLE);
+   }
+
+   public boolean E() {
+      return ab.aU ? false : this.bq().flag(UserFlag.TELEMETRY_ENABLED);
+   }
+
+   public boolean F() {
+      return this.ae && this.bq().flag(UserFlag.SERVERS_ALLOWED) && this.H() == null && !this.I();
+   }
+
+   public boolean G() {
+      return this.bq().flag(UserFlag.REALMS_ALLOWED) && this.H() == null;
+   }
+
+   @Nullable
+   public BanDetails H() {
+      return (BanDetails)this.bq().bannedScopes().get("MULTIPLAYER");
+   }
+
+   public boolean I() {
+      ProfileResult $$0 = this.M.getNow(null);
+      return $$0 != null && $$0.actions().contains(ProfileActionType.FORCED_NAME_CHANGE);
+   }
+
+   public boolean a(UUID $$0) {
+      return this.J().a(false) ? this.aH.c($$0) : (this.s == null || !$$0.equals(this.s.cA())) && !$$0.equals(ad.e);
+   }
+
+   public fgm.a J() {
+      if (this.m.m().c() == cmv.c) {
+         return fgm.a.b;
+      } else if (!this.af) {
+         return fgm.a.c;
+      } else {
+         return !this.bq().flag(UserFlag.CHAT_ALLOWED) ? fgm.a.d : fgm.a.a;
+      }
+   }
+
+   public final boolean K() {
+      return this.ad;
+   }
+
+   @Nullable
+   public fze L() {
+      return this.s == null ? null : this.s.h;
+   }
+
+   public static boolean M() {
+      return !E.m.Y;
+   }
+
+   public static boolean N() {
+      return E.m.j().c().a() >= fgf.b.a();
+   }
+
+   public static boolean O() {
+      return !E.j.a() && E.m.j().c().a() >= fgf.c.a();
+   }
+
+   public static boolean P() {
+      return E.m.k().c();
+   }
+
+   private void br() {
+      if (this.v != null && this.v.c() != ewy.a.a) {
+         boolean $$0 = this.s.ga().d;
+         dqh $$1 = null;
+         ewy.a $$2 = this.v.c();
+         cuq $$6;
+         if ($$2 == ewy.a.b) {
+            jd $$3 = ((eww)this.v).a();
+            dtc $$4 = this.r.a_($$3);
+            if ($$4.i()) {
+               return;
+            }
+
+            dfy $$5 = $$4.b();
+            $$6 = $$5.a((dcz)this.r, $$3, $$4);
+            if ($$6.e()) {
+               return;
+            }
+
+            if ($$0 && fob.r() && $$4.t()) {
+               $$1 = this.r.c_($$3);
+            }
+         } else {
+            if ($$2 != ewy.a.c || !$$0) {
+               return;
+            }
+
+            bsr $$7 = ((ewx)this.v).a();
+            $$6 = $$7.dC();
+            if ($$6 == null) {
+               return;
+            }
+         }
+
+         if ($$6.e()) {
+            String $$10 = "";
+            if ($$2 == ewy.a.b) {
+               $$10 = lt.e.b(this.r.a_(((eww)this.v).a()).b()).toString();
+            } else if ($$2 == ewy.a.c) {
+               $$10 = lt.f.b(((ewx)this.v).a().am()).toString();
+            }
+
+            F.warn("Picking on: [{}] {} gave null item", $$2, $$10);
+         } else {
+            cmw $$11 = this.s.fZ();
+            if ($$1 != null) {
+               this.a($$6, $$1, this.r.H_());
+            }
+
+            int $$12 = $$11.c($$6);
+            if ($$0) {
+               $$11.b($$6);
+               this.q.a(this.s.b(bqq.a), 36 + $$11.k);
+            } else if ($$12 != -1) {
+               if (cmw.d($$12)) {
+                  $$11.k = $$12;
+               } else {
+                  this.q.a($$12);
                }
+            }
+         }
+      }
+   }
+
+   private void a(cuq $$0, dqh $$1, ka $$2) {
+      ub $$3 = $$1.f($$2);
+      $$1.a($$3);
+      cso.a($$0, $$1.r(), $$3);
+      $$0.b($$1.s());
+   }
+
+   public o d(o $$0) {
+      ac $$1 = $$0.f();
+      a($$1, this, this.ak, this.Z, this.m);
+      this.a($$0.a("Uptime"));
+      if (this.r != null) {
+         this.r.a($$0);
+      }
+
+      if (this.aO != null) {
+         this.aO.b($$1);
+      }
+
+      this.bm.a($$0);
+      return $$0;
+   }
+
+   public static void a(@Nullable fgm $$0, @Nullable grr $$1, String $$2, @Nullable fgq $$3, o $$4) {
+      ac $$5 = $$4.f();
+      a($$5, $$0, $$1, $$2, $$3);
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.3fs", $$0);
+   }
+
+   private void a(p $$0) {
+      $$0.a("JVM uptime", () -> a((double)ManagementFactory.getRuntimeMXBean().getUptime() / 1000.0));
+      $$0.a("Wall uptime", () -> a((double)(System.currentTimeMillis() - this.bw) / 1000.0));
+      $$0.a("High-res time", () -> a((double)ad.c() / 1000.0));
+      $$0.a("Client ticks", () -> String.format(Locale.ROOT, "%d ticks / %.3fs", this.bx, (double)this.bx / 20.0));
+   }
+
+   private static ac a(ac $$0, @Nullable fgm $$1, @Nullable grr $$2, String $$3, @Nullable fgq $$4) {
+      $$0.a("Launched Version", () -> $$3);
+      String $$5 = bc();
+      if ($$5 != null) {
+         $$0.a("Launcher name", $$5);
+      }
+
+      $$0.a("Backend library", RenderSystem::getBackendDescription);
+      $$0.a("Backend API", RenderSystem::getApiDescription);
+      $$0.a("Window size", () -> $$1 != null ? $$1.Q.l() + "x" + $$1.Q.m() : "<not initialized>");
+      $$0.a("GFLW Platform", fak::a);
+      $$0.a("GL Caps", RenderSystem::getCapsString);
+      $$0.a("GL debug messages", () -> ezz.b() ? String.join("\n", ezz.a()) : "<disabled>");
+      $$0.a("Is Modded", () -> e().b());
+      $$0.a("Universe", () -> $$1 != null ? Long.toHexString($$1.K) : "404");
+      $$0.a("Type", "Client (map_client.txt)");
+      if ($$4 != null) {
+         if ($$1 != null) {
+            String $$6 = $$1.ai().m();
+            if ($$6 != null) {
+               $$0.a("GPU Warnings", $$6);
+            }
+         }
+
+         $$0.a("Graphics mode", $$4.j().c().toString());
+         $$0.a("Render Distance", $$4.aD() + "/" + $$4.e().c() + " chunks");
+      }
+
+      if ($$1 != null) {
+         $$0.a("Resource Packs", () -> atp.a($$1.ac().f()));
+      }
+
+      if ($$2 != null) {
+         $$0.a("Current Language", () -> $$2.a());
+      }
+
+      $$0.a("Locale", String.valueOf(Locale.getDefault()));
+      $$0.a("System encoding", () -> System.getProperty("sun.jnu.encoding", "<not set>"));
+      $$0.a("File encoding", () -> System.getProperty("file.encoding", "<not set>"));
+      $$0.a("CPU", faa::b);
+      return $$0;
+   }
+
+   public static fgm Q() {
+      return E;
+   }
+
+   public CompletableFuture<Void> R() {
+      return this.a(this::l).thenCompose($$0 -> (CompletionStage<Void>)$$0);
+   }
+
+   public void a(gaj $$0) {
+      if (!this.bs.a($$0)) {
+         this.bs = gam.a($$0, this.aw);
+      }
+   }
+
+   @Nullable
+   public fzr S() {
+      return x.a(this.L(), fze::w);
+   }
+
+   public boolean T() {
+      return this.aQ;
+   }
+
+   public boolean U() {
+      return this.aQ && this.aO != null;
+   }
+
+   @Nullable
+   public gum V() {
+      return this.aO;
+   }
+
+   public boolean W() {
+      gum $$0 = this.V();
+      return $$0 != null && !$$0.r();
+   }
+
+   public boolean b(UUID $$0) {
+      return $$0.equals(this.X().b());
+   }
+
+   public fgz X() {
+      return this.V;
+   }
+
+   public GameProfile Y() {
+      ProfileResult $$0 = this.M.join();
+      return $$0 != null ? $$0.profile() : new GameProfile(this.V.b(), this.V.c());
+   }
+
+   public Proxy Z() {
+      return this.ab;
+   }
+
+   public gqk aa() {
+      return this.N;
+   }
+
+   public aue ab() {
+      return this.ag;
+   }
+
+   public atp ac() {
+      return this.aj;
+   }
+
+   public asu ad() {
+      return this.ah;
+   }
+
+   public gta ae() {
+      return this.ai;
+   }
+
+   public Path af() {
+      return this.L;
+   }
+
+   public grr ag() {
+      return this.ak;
+   }
+
+   public Function<akr, gqj> a(akr $$0) {
+      return this.az.a($$0)::a;
+   }
+
+   public boolean ah() {
+      return this.aS;
+   }
+
+   public ger ai() {
+      return this.as;
+   }
+
+   public gvd aj() {
+      return this.ao;
+   }
+
+   public avm ak() {
+      avm $$0 = x.a(this.y, fob::B);
+      if ($$0 != null) {
+         return $$0;
+      } else if (this.s != null) {
+         if (this.s.dP().af() == dcw.j) {
+            return this.l.j().b() ? avn.d : avn.e;
+         } else {
+            jm<ddw> $$1 = this.s.dP().t(this.s.dp());
+            if (!this.ap.c(avn.f) && (!this.s.bk() || !$$1.a(awd.Z))) {
+               return this.s.dP().af() != dcw.i && this.s.ga().d && this.s.ga().c ? avn.b : $$1.a().o().orElse(avn.g);
+            } else {
+               return avn.f;
+            }
+         }
+      } else {
+         return avn.a;
+      }
+   }
+
+   public MinecraftSessionService al() {
+      return this.av;
+   }
+
+   public grk am() {
+      return this.ay;
+   }
+
+   @Nullable
+   public bsr an() {
+      return this.t;
+   }
+
+   public void a(bsr $$0) {
+      this.t = $$0;
+      this.j.a($$0);
+   }
+
+   public boolean b(bsr $$0) {
+      return $$0.ch() || this.s != null && this.s.R_() && this.m.R.e() && $$0.am() == bsx.by;
+   }
+
+   @Override
+   protected Thread az() {
+      return this.aY;
+   }
+
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
+   }
+
+   @Override
+   protected boolean e(Runnable $$0) {
+      return true;
+   }
+
+   public gfr ao() {
+      return this.aA;
+   }
+
+   public gkf ap() {
+      return this.T;
+   }
+
+   public ggw aq() {
+      return this.aJ;
+   }
+
+   public glf ar() {
+      return this.U;
+   }
+
+   public DataFixer as() {
+      return this.O;
+   }
+
+   public fgd at() {
+      return this.R;
+   }
+
+   public fho au() {
+      return this.al;
+   }
+
+   public boolean av() {
+      return this.s != null && this.s.gp() || this.m.V().c();
+   }
+
+   public fku aw() {
+      return this.aF;
+   }
+
+   public gwg ax() {
+      return this.aG;
+   }
+
+   public boolean aA() {
+      return this.bd;
+   }
+
+   public fgi aB() {
+      return this.X;
+   }
+
+   public gsr aC() {
+      return this.az;
+   }
+
+   public gri aD() {
+      return this.aB;
+   }
+
+   public grh aE() {
+      return this.aC;
+   }
+
+   public grg aF() {
+      return this.aD;
+   }
+
+   public fhy aG() {
+      return this.aE;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.bd = $$0;
+   }
+
+   public wz a(File $$0, int $$1, int $$2) {
+      int $$3 = this.Q.l();
+      int $$4 = this.Q.m();
+      ezt $$5 = new ezu($$1, $$2, true, a);
+      float $$6 = this.s.dH();
+      float $$7 = this.s.dF();
+      float $$8 = this.s.P;
+      float $$9 = this.s.O;
+      this.j.b(false);
+
+      xn var12;
+      try {
+         this.j.c(true);
+         this.f.e();
+         this.Q.b($$1);
+         this.Q.c($$2);
+
+         for (int $$10 = 0; $$10 < 6; $$10++) {
+            switch ($$10) {
+               case 0:
+                  this.s.t($$7);
+                  this.s.u(0.0F);
+                  break;
+               case 1:
+                  this.s.t(($$7 + 90.0F) % 360.0F);
+                  this.s.u(0.0F);
+                  break;
+               case 2:
+                  this.s.t(($$7 + 180.0F) % 360.0F);
+                  this.s.u(0.0F);
+                  break;
+               case 3:
+                  this.s.t(($$7 - 90.0F) % 360.0F);
+                  this.s.u(0.0F);
+                  break;
+               case 4:
+                  this.s.t($$7);
+                  this.s.u(-90.0F);
+                  break;
+               case 5:
+               default:
+                  this.s.t($$7);
+                  this.s.u(90.0F);
+            }
+
+            this.s.O = this.s.dF();
+            this.s.P = this.s.dH();
+            $$5.a(true);
+            this.j.a(fgd.b);
+
+            try {
+               Thread.sleep(10L);
+            } catch (InterruptedException var17) {
+            }
+
+            fgw.a($$0, "panorama_" + $$10 + ".png", $$5, $$0x -> {
             });
          }
 
-         final ua $$2 = this.a($$0);
-         if (!$$2.e("graphicsMode") && $$2.e("fancyGraphics")) {
-            if (a($$2.l("fancyGraphics"))) {
-               this.az.a(fgb.b);
-            } else {
-               this.az.a(fgb.a);
-            }
-         }
-
-         this.a(new fgm.a() {
-            @Nullable
-            private String a(String $$0) {
-               return $$2.e($$0) ? $$2.c($$0).s_() : null;
-            }
-
-            @Override
-            public <T> void a(String $$0, fgl<T> $$1) {
-               String $$2 = this.a($$0);
-               if ($$2 != null) {
-                  JsonReader $$3 = new JsonReader(new StringReader($$2.isEmpty() ? "\"\"" : $$2));
-                  JsonElement $$4 = JsonParser.parseReader($$3);
-                  DataResult<T> $$5 = $$1.d().parse(JsonOps.INSTANCE, $$4);
-                  $$5.error().ifPresent($$2xx -> fgm.af.error("Error parsing option value " + $$2 + " for option " + $$1 + ": " + $$2xx.message()));
-                  $$5.ifSuccess($$1::a);
-               }
-            }
-
-            @Override
-            public int a(String $$0, int $$1) {
-               String $$2 = this.a($$0);
-               if ($$2 != null) {
-                  try {
-                     return Integer.parseInt($$2);
-                  } catch (NumberFormatException var5) {
-                     fgm.af.warn("Invalid integer value for option {} = {}", new Object[]{$$0, $$2, var5});
-                  }
-               }
-
-               return $$1;
-            }
-
-            @Override
-            public boolean a(String $$0, boolean $$1) {
-               String $$2 = this.a($$0);
-               return $$2 != null ? fgm.a($$2) : $$1;
-            }
-
-            @Override
-            public String a(String $$0, String $$1) {
-               return (String)MoreObjects.firstNonNull(this.a($$0), $$1);
-            }
-
-            @Override
-            public float a(String $$0, float $$1) {
-               String $$2 = this.a($$0);
-               if ($$2 == null) {
-                  return $$1;
-               } else if (fgm.a($$2)) {
-                  return 1.0F;
-               } else if (fgm.b($$2)) {
-                  return 0.0F;
-               } else {
-                  try {
-                     return Float.parseFloat($$2);
-                  } catch (NumberFormatException var5) {
-                     fgm.af.warn("Invalid floating point value for option {} = {}", new Object[]{$$0, $$2, var5});
-                     return $$1;
-                  }
-               }
-            }
-
-            @Override
-            public <T> T a(String $$0, T $$1, Function<String, T> $$2, Function<T, String> $$3) {
-               String $$4 = this.a($$0);
-               return $$4 == null ? $$1 : $$2.apply($$4);
-            }
-         });
-         if ($$2.e("fullscreenResolution")) {
-            this.k = $$2.l("fullscreenResolution");
-         }
-
-         if (this.X.aM() != null) {
-            this.X.aM().a(this.au.c());
-         }
-
-         fgg.d();
-      } catch (Exception var7) {
-         af.error("Failed to load options", var7);
+         wz $$11 = wz.b($$0.getName()).a(n.t).a($$1x -> $$1x.a(new wx(wx.a.b, $$0.getAbsolutePath())));
+         return wz.a("screenshot.success", $$11);
+      } catch (Exception var18) {
+         F.error("Couldn't save image", var18);
+         var12 = wz.a("screenshot.failure", var18.getMessage());
+      } finally {
+         this.s.u($$6);
+         this.s.t($$7);
+         this.s.P = $$8;
+         this.s.O = $$9;
+         this.j.b(true);
+         this.Q.b($$3);
+         this.Q.c($$4);
+         $$5.a();
+         this.j.c(false);
+         this.f.e();
+         this.h().a(true);
       }
+
+      return var12;
    }
 
-   static boolean a(String $$0) {
-      return "true".equals($$0);
-   }
-
-   static boolean b(String $$0) {
-      return "false".equals($$0);
-   }
-
-   private ua a(ua $$0) {
-      int $$1 = 0;
-
+   private wz a(File $$0, int $$1, int $$2, int $$3, int $$4) {
       try {
-         $$1 = Integer.parseInt($$0.l("version"));
-      } catch (RuntimeException var4) {
-      }
+         ByteBuffer $$5 = faa.a($$1 * $$2 * 3);
+         fgw $$6 = new fgw($$0, $$3, $$4, $$2);
+         float $$7 = (float)$$3 / (float)$$1;
+         float $$8 = (float)$$4 / (float)$$2;
+         float $$9 = $$7 > $$8 ? $$7 : $$8;
 
-      return azv.e.a(this.X.as(), $$0, $$1);
-   }
-
-   public void av() {
-      try (final PrintWriter $$0 = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.bN), StandardCharsets.UTF_8))) {
-         $$0.println("version:" + ab.b().d().c());
-         this.a(new fgm.a() {
-            public void a(String $$0) {
-               $$0.print($$0);
-               $$0.print(':');
+         for (int $$10 = ($$4 - 1) / $$2 * $$2; $$10 >= 0; $$10 -= $$2) {
+            for (int $$11 = 0; $$11 < $$3; $$11 += $$1) {
+               RenderSystem.setShaderTexture(0, gqi.e);
+               float $$12 = (float)($$3 - $$1) / 2.0F * 2.0F - (float)($$11 * 2);
+               float $$13 = (float)($$4 - $$2) / 2.0F * 2.0F - (float)($$10 * 2);
+               $$12 /= (float)$$1;
+               $$13 /= (float)$$2;
+               this.j.a($$9, $$12, $$13);
+               $$5.clear();
+               RenderSystem.pixelStore(3333, 1);
+               RenderSystem.pixelStore(3317, 1);
+               RenderSystem.readPixels(0, 0, $$1, $$2, 32992, 5121, $$5);
+               $$6.a($$5, $$11, $$10, $$1, $$2);
             }
 
-            @Override
-            public <T> void a(String $$0, fgl<T> $$1x) {
-               $$1.d().encodeStart(JsonOps.INSTANCE, $$1.c()).ifError($$1xx -> fgm.af.error("Error saving option " + $$1 + ": " + $$1xx)).ifSuccess($$2 -> {
-                  this.a($$0);
-                  $$0.println(fgm.ag.toJson($$2));
-               });
-            }
-
-            @Override
-            public int a(String $$0, int $$1x) {
-               this.a($$0);
-               $$0.println($$1);
-               return $$1;
-            }
-
-            @Override
-            public boolean a(String $$0, boolean $$1x) {
-               this.a($$0);
-               $$0.println($$1);
-               return $$1;
-            }
-
-            @Override
-            public String a(String $$0, String $$1x) {
-               this.a($$0);
-               $$0.println($$1);
-               return $$1;
-            }
-
-            @Override
-            public float a(String $$0, float $$1x) {
-               this.a($$0);
-               $$0.println($$1);
-               return $$1;
-            }
-
-            @Override
-            public <T> T a(String $$0, T $$1x, Function<String, T> $$2, Function<T, String> $$3) {
-               this.a($$0);
-               $$0.println($$3.apply($$1));
-               return $$1;
-            }
-         });
-         if (this.X.aM().g().isPresent()) {
-            $$0.println("fullscreenResolution:" + this.X.aM().g().get().g());
-         }
-      } catch (Exception var6) {
-         af.error("Failed to save options", var6);
-      }
-
-      this.ax();
-   }
-
-   public aqg aw() {
-      int $$0 = 0;
-
-      for (cmw $$1 : this.aQ) {
-         $$0 |= $$1.a();
-      }
-
-      return new aqg(this.ac, this.aq.c(), this.aF.c(), this.bh.c(), $$0, this.aR.c(), this.X.aQ(), this.bt.c());
-   }
-
-   public void ax() {
-      if (this.X.s != null) {
-         this.X.s.h.b(new zz(this.aw()));
-      }
-   }
-
-   private void b(cmw $$0, boolean $$1) {
-      if ($$1) {
-         this.aQ.add($$0);
-      } else {
-         this.aQ.remove($$0);
-      }
-   }
-
-   public boolean a(cmw $$0) {
-      return this.aQ.contains($$0);
-   }
-
-   public void a(cmw $$0, boolean $$1) {
-      this.b($$0, $$1);
-      this.ax();
-   }
-
-   public ffv ay() {
-      return this.aD() >= 4 ? this.av.c() : ffv.a;
-   }
-
-   public boolean az() {
-      return this.q;
-   }
-
-   public void b(ato $$0) {
-      Set<String> $$1 = Sets.newLinkedHashSet();
-      Iterator<String> $$2 = this.i.iterator();
-
-      while ($$2.hasNext()) {
-         String $$3 = $$2.next();
-         atl $$4 = $$0.c($$3);
-         if ($$4 == null && !$$3.startsWith("file/")) {
-            $$4 = $$0.c("file/" + $$3);
+            $$6.a();
          }
 
-         if ($$4 == null) {
-            af.warn("Removed resource pack {} from options because it doesn't seem to exist anymore", $$3);
-            $$2.remove();
-         } else if (!$$4.d().a() && !this.j.contains($$3)) {
-            af.warn("Removed resource pack {} from options because it is no longer compatible", $$3);
-            $$2.remove();
-         } else if ($$4.d().a() && this.j.contains($$3)) {
-            af.info("Removed resource pack {} from incompatibility list because it's now compatible", $$3);
-            this.j.remove($$3);
-         } else {
-            $$1.add($$4.g());
-         }
+         File $$14 = $$6.b();
+         faa.a($$5);
+         wz $$15 = wz.b($$14.getName()).a(n.t).a($$1x -> $$1x.a(new wx(wx.a.b, $$14.getAbsolutePath())));
+         return wz.a("screenshot.success", $$15);
+      } catch (Exception var15) {
+         F.warn("Couldn't save screenshot", var15);
+         return wz.a("screenshot.failure", var15.getMessage());
       }
-
-      $$0.b($$1);
    }
 
-   public fft aA() {
-      return this.bO;
+   public bnf aH() {
+      return this.bh;
    }
 
-   public void a(fft $$0) {
-      this.bO = $$0;
+   @Nullable
+   public arh aI() {
+      return this.W.get();
    }
 
-   private static List<String> c(String $$0) {
-      List<String> $$1 = ayd.a(ag, $$0, ah);
-      return (List<String>)($$1 != null ? $$1 : Lists.newArrayList());
+   public grl aJ() {
+      return this.ar;
    }
 
-   public File aB() {
-      return this.bN;
+   @Nullable
+   public fnv aK() {
+      return this.aW;
    }
 
-   public String aC() {
-      final List<Pair<String, Object>> $$0 = new ArrayList<>();
-      this.a(new fgm.b() {
-         @Override
-         public <T> void a(String $$0x, fgl<T> $$1) {
-            $$0.add(Pair.of($$0, $$1.c()));
-         }
-      });
-      $$0.add(Pair.of("fullscreenResolution", String.valueOf(this.k)));
-      $$0.add(Pair.of("glDebugVerbosity", this.u));
-      $$0.add(Pair.of("overrideHeight", this.p));
-      $$0.add(Pair.of("overrideWidth", this.o));
-      $$0.add(Pair.of("syncChunkWrites", this.ae));
-      $$0.add(Pair.of("useNativeTransport", this.q));
-      $$0.add(Pair.of("resourcePacks", this.i));
-      return $$0.stream()
-         .sorted(Comparator.comparing(Pair::getFirst))
-         .map($$0x -> (String)$$0x.getFirst() + ": " + $$0x.getSecond())
-         .collect(Collectors.joining(System.lineSeparator()));
+   public fss aL() {
+      return this.aH;
+   }
+
+   public fak aM() {
+      return this.Q;
+   }
+
+   public fis aN() {
+      return this.l.k();
+   }
+
+   public gfd aO() {
+      return this.S;
    }
 
    public void b(int $$0) {
-      this.as = $$0;
+      this.az.a($$0);
    }
 
-   public int aD() {
-      return this.as > 0 ? Math.min(this.aq.c(), this.as) : this.aq.c();
+   public fye aP() {
+      return this.aI;
    }
 
-   private static wy c(wy $$0, int $$1) {
-      return wy.a("options.pixel_value", $$0, $$1);
+   public boolean aQ() {
+      return this.bq().flag(UserFlag.PROFANITY_FILTER_ENABLED);
    }
 
-   private static wy a(wy $$0, double $$1) {
-      return wy.a("options.percent_value", $$0, (int)($$1 * 100.0));
+   public void aR() {
+      this.aH.a();
+      this.w().a();
    }
 
-   public static wy a(wy $$0, wy $$1) {
-      return wy.a("options.generic_value", $$0, $$1);
+   @Nullable
+   public azb aS() {
+      return azb.a(this.au.getServicesKeySet(), ServicesKeyType.PROFILE_KEY);
    }
 
-   public static wy a(wy $$0, int $$1) {
-      return a($$0, wy.b(Integer.toString($$1)));
+   public boolean aT() {
+      return !this.au.getServicesKeySet().keys(ServicesKeyType.PROFILE_KEY).isEmpty();
    }
 
-   public static wy b(wy $$0, int $$1) {
-      return $$1 == 0 ? a($$0, wx.c) : a($$0, $$1);
+   public fgj aU() {
+      return this.Y;
    }
 
-   private static wy b(wy $$0, double $$1) {
-      return $$1 == 0.0 ? a($$0, wx.c) : a($$0, $$1);
+   public void a(fgj $$0) {
+      this.Y = $$0;
    }
 
-   interface a extends fgm.b {
-      int a(String var1, int var2);
-
-      boolean a(String var1, boolean var2);
-
-      String a(String var1, String var2);
-
-      float a(String var1, float var2);
-
-      <T> T a(String var1, T var2, Function<String, T> var3, Function<T, String> var4);
+   public fge aV() {
+      return this.bq;
    }
 
-   interface b {
-      <T> void a(String var1, fgl<T> var2);
+   public fzx aW() {
+      return this.br;
+   }
+
+   public gam aX() {
+      return this.bs;
+   }
+
+   public fdk aY() {
+      return this.aM;
+   }
+
+   public geh aZ() {
+      return this.aN;
+   }
+
+   public fga ba() {
+      return this.bt;
+   }
+
+   public ewq bb() {
+      return this.bu;
+   }
+
+   private float a(float $$0) {
+      if (this.r != null) {
+         brc $$1 = this.r.s();
+         if ($$1.i()) {
+            return Math.max($$0, $$1.g());
+         }
+      }
+
+      return $$0;
+   }
+
+   @Nullable
+   public static String bc() {
+      return System.getProperty("minecraft.launcher.brand");
+   }
+
+   public static enum a {
+      a(wy.a) {
+         @Override
+         public boolean a(boolean $$0) {
+            return true;
+         }
+      },
+      b(wz.c("chat.disabled.options").a(n.m)) {
+         @Override
+         public boolean a(boolean $$0) {
+            return false;
+         }
+      },
+      c(wz.c("chat.disabled.launcher").a(n.m)) {
+         @Override
+         public boolean a(boolean $$0) {
+            return $$0;
+         }
+      },
+      d(wz.a("chat.disabled.profile", wz.d(fgm.E.m.J.h())).a(n.m)) {
+         @Override
+         public boolean a(boolean $$0) {
+            return $$0;
+         }
+      };
+
+      static final wz e = wz.c("chat.disabled.profile.moreInfo");
+      private final wz f;
+
+      a(final wz $$0) {
+         this.f = $$0;
+      }
+
+      public wz a() {
+         return this.f;
+      }
+
+      public abstract boolean a(boolean var1);
+   }
+
+   static record b(fbw a, fty.c b) {
    }
 }

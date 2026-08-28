@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class bps extends bpv {
-   public static final bps a = new bps(0);
-   public static final MapCodec<bps> b = Codec.INT.fieldOf("value").xmap(bps::a, bps::d);
-   private final int f;
+public class bps extends bpu {
+   public static final bps a = new bps(0.0F);
+   public static final MapCodec<bps> b = Codec.FLOAT.fieldOf("value").xmap(bps::a, bps::d);
+   private final float d;
 
-   public static bps a(int $$0) {
-      return $$0 == 0 ? a : new bps($$0);
+   public static bps a(float $$0) {
+      return $$0 == 0.0F ? a : new bps($$0);
    }
 
-   private bps(int $$0) {
-      this.f = $$0;
+   private bps(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(ayv $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(ayw $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bpw<?> c() {
-      return bpw.a;
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bpv<?> c() {
+      return bpv.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

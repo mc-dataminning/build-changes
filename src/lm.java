@@ -113,13 +113,13 @@ public class lm {
    public static final lq bd = a("raid_omen", false);
    public static final lq be = a("trial_omen", false);
    public static final Codec<lk> bf = lt.i.r().dispatch("type", lk::a, ll::c);
-   public static final yw<wj, lk> bg = yu.a(lu.Y).b(lk::a, ll::d);
+   public static final yx<wk, lk> bg = yv.a(lu.Y).b(lk::a, ll::d);
 
    private static lq a(String $$0, boolean $$1) {
       return jz.a(lt.i, $$0, new lq($$1));
    }
 
-   private static <T extends lk> ll<T> a(String $$0, boolean $$1, final Function<ll<T>, MapCodec<T>> $$2, final Function<ll<T>, yw<? super wj, T>> $$3) {
+   private static <T extends lk> ll<T> a(String $$0, boolean $$1, final Function<ll<T>, MapCodec<T>> $$2, final Function<ll<T>, yx<? super wk, T>> $$3) {
       return jz.a(lt.i, $$0, new ll<T>($$1) {
          @Override
          public MapCodec<T> c() {
@@ -127,7 +127,7 @@ public class lm {
          }
 
          @Override
-         public yw<? super wj, T> d() {
+         public yx<? super wk, T> d() {
             return $$3.apply(this);
          }
       });

@@ -1,41 +1,24 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class egj extends egi {
-   public static final MapCodec<egj> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, egj::new));
-   protected final List<dta> h;
+public class egj<P extends egi> {
+   public static final egj<egr> a = a("simple_state_provider", egr.b);
+   public static final egj<egs> b = a("weighted_state_provider", egs.b);
+   public static final egj<egn> c = a("noise_threshold_provider", egn.b);
+   public static final egj<egm> d = a("noise_provider", egm.g);
+   public static final egj<egk> e = a("dual_noise_provider", egk.b);
+   public static final egj<egp> f = a("rotated_block_provider", egp.b);
+   public static final egj<ego> g = a("randomized_int_state_provider", ego.b);
+   private final MapCodec<P> h;
 
-   protected static <P extends egj> P4<Mu<P>, Long, eob.a, Float, List<dta>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dta.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   private static <P extends egi> egj<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.T, $$0, new egj<>($$1));
    }
 
-   public egj(long $$0, eob.a $$1, float $$2, List<dta> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   private egj(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   protected egg<?> a() {
-      return egg.d;
-   }
-
-   @Override
-   public dta a(ayv $$0, jd $$1) {
-      return this.a(this.h, $$1, (double)this.e);
-   }
-
-   protected dta a(List<dta> $$0, jd $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dta a(List<dta> $$0, double $$1) {
-      double $$2 = ayn.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

@@ -1,44 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class ejb {
-   public static final Codec<ejb> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(akp.a(lu.bb), dww.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ejb::new)
-      )
-      .validate(ejb::a);
-   public static final Codec<jm<ejb>> b = akm.a(lu.aY, a);
-   private final Map<akp<dww>, dww> c;
+public class ejb extends eiv {
+   public static final MapCodec<ejb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dyy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ejb::new)
+   );
+   private final dyy.a c;
+   private final int d;
+   private final int e;
 
-   public ejb(Map<akp<dww>, dww> $$0) {
+   private ejb(dyy.a $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private ImmutableMap<akp<dww>, dww> c() {
-      Builder<akp<dww>, dww> $$0 = ImmutableMap.builder();
-      dzq.a(this.c.keySet().stream()).forEach($$1 -> {
-         dww $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   public static ejb a(dyy.a $$0, int $$1, int $$2) {
+      return new ejb($$0, $$1, $$2);
    }
 
-   public dzq a() {
-      return new dzq(this.c());
+   @Override
+   protected boolean a(eiu $$0, ayw $$1, jd $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
    }
 
-   public Optional<dww> b() {
-      return Optional.ofNullable(this.c.get(dww.b));
-   }
-
-   private static DataResult<ejb> a(ejb $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public eix<?> b() {
+      return eix.c;
    }
 }

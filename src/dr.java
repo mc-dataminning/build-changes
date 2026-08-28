@@ -16,8 +16,8 @@ public record dr(boolean d, boolean e) implements bw {
    }
 
    @Override
-   public boolean a(bsq $$0, aqt $$1, @Nullable eww $$2) {
-      return !($$0 instanceof coh $$3) ? false : $$3.gC() == this.d && $$3.gB() == this.e;
+   public boolean a(bsr $$0, aqu $$1, @Nullable exa $$2) {
+      return !($$0 instanceof coj $$3) ? false : $$3.gB() == this.d && $$3.gA() == this.e;
    }
 
    public boolean b() {

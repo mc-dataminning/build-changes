@@ -1,22 +1,44 @@
-public class ctp extends cuj {
-   public ctp(cuj.a $$0) {
+import java.util.List;
+
+public class ctp extends cul {
+   public ctp(cul.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
-      cuo $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dv(), $$1.dx(), $$1.dB(), avo.it, avp.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      $$1.gu().a(this, 20);
-      if (!$$0.B) {
-         cnx $$4 = new cnx($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dI(), $$1.dG(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public bqr a(cyf $$0) {
+      dcw $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if (!$$3.a(dga.co) && !$$3.a(dga.F)) {
+         return bqr.f;
+      } else {
+         jd $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return bqr.f;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bsr> $$8 = $$1.a_(null, new ewv($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bqr.f;
+            } else {
+               if ($$1 instanceof aqu) {
+                  chz $$9 = new chz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dxz.t, $$4);
+                  dxb $$10 = ((aqu)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-      $$1.b(avy.c.b(this));
-      $$3.a(1, $$1);
-      return bqr.a($$3, $$0.x_());
+               $$0.n().h(1);
+               return bqr.a($$1.B);
+            }
+         }
+      }
    }
 }

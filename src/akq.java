@@ -1,271 +1,64 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.collect.MapMaker;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class akq implements Comparable<akq> {
-   public static final Codec<akq> a = Codec.STRING.comapFlatMap(akq::d, akq::toString).stable();
-   public static final yw<ByteBuf, akq> b = yu.l.a(akq::a, akq::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String g;
-   private final String h;
+public class akq<T> {
+   private static final ConcurrentMap<akq.a, akq<?>> a = new MapMaker().weakValues().makeMap();
+   private final akr b;
+   private final akr c;
 
-   protected akq(String $$0, String $$1, @Nullable akq.a $$2) {
-      this.g = $$0;
-      this.h = $$1;
+   public static <T> Codec<akq<T>> a(akq<? extends jz<T>> $$0) {
+      return akr.a.xmap($$1 -> a($$0, $$1), akq::a);
    }
 
-   protected akq(String $$0, String $$1) {
-      this(d($$0, $$1), e($$0, $$1), null);
+   public static <T> yx<ByteBuf, akq<T>> b(akq<? extends jz<T>> $$0) {
+      return akr.b.a($$1 -> a($$0, $$1), akq::a);
    }
 
-   public static akq a(String $$0, String $$1) {
-      return new akq($$0, $$1);
+   public static <T> akq<T> a(akq<? extends jz<T>> $$0, akr $$1) {
+      return a($$0.c, $$1);
    }
 
-   private akq(String[] $$0) {
-      this($$0[0], $$0[1]);
+   public static <T> akq<jz<T>> a(akr $$0) {
+      return a(lu.a, $$0);
    }
 
-   public static akq a(String $$0) {
-      return a($$0, ':');
+   private static <T> akq<T> a(akr $$0, akr $$1) {
+      return (akq<T>)a.computeIfAbsent(new akq.a($$0, $$1), $$0x -> new akq($$0x.a, $$0x.b));
    }
 
-   public static akq a(String $$0, char $$1) {
-      return new akq(b($$0, $$1));
-   }
-
-   public static akq b(String $$0) {
-      return new akq("minecraft", $$0);
-   }
-
-   @Nullable
-   public static akq c(String $$0) {
-      try {
-         return a($$0);
-      } catch (aa var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static akq b(String $$0, String $$1) {
-      try {
-         return new akq($$0, $$1);
-      } catch (aa var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   public static DataResult<akq> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (aa var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.h;
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public akq e(String $$0) {
-      return new akq(this.g, e(this.g, $$0), null);
-   }
-
-   public akq a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.h));
-   }
-
-   public akq f(String $$0) {
-      return this.e($$0 + this.h);
-   }
-
-   public akq g(String $$0) {
-      return this.e(this.h + $$0);
+   private akq(akr $$0, akr $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    public String toString() {
-      return this.g + ":" + this.h;
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof akq $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
-      }
+   public boolean c(akq<? extends jz<?>> $$0) {
+      return this.b.equals($$0.a());
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * this.g.hashCode() + this.h.hashCode();
+   public <E> Optional<akq<E>> d(akq<? extends jz<E>> $$0) {
+      return this.c($$0) ? Optional.of((akq<E>)this) : Optional.empty();
    }
 
-   public int a(akq $$0) {
-      int $$1 = this.h.compareTo($$0.h);
-      if ($$1 == 0) {
-         $$1 = this.g.compareTo($$0.g);
-      }
-
-      return $$1;
+   public akr a() {
+      return this.c;
    }
 
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
+   public akr b() {
+      return this.b;
    }
 
-   public String d() {
-      return this.g + "." + this.h;
+   public akq<jz<T>> c() {
+      return a(this.b);
    }
 
-   public String e() {
-      return this.g.equals("minecraft") ? this.h : this.d();
-   }
-
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static akq a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (aa var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
-   }
-
-   public static akq b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (aa var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean k(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return j(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && i($$1[1]);
-   }
-
-   private static String e(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<akq>, JsonSerializer<akq> {
-      public akq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return akq.a(ayd.a($$0, "location"));
-      }
-
-      public JsonElement a(akq $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   static record a(akr a, akr b) {
    }
 }

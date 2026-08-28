@@ -1,57 +1,57 @@
-import java.util.BitSet;
-import java.util.Set;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
 public class ghw {
-   private static final int a = ji.values().length;
-   private final BitSet b = new BitSet(a * a);
+   private final Long2ObjectMap<ghw.a> a = new Long2ObjectOpenHashMap();
 
-   public void a(Set<ji> $$0) {
-      for (ji $$1 : $$0) {
-         for (ji $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
-   }
+   @Nullable
+   public ghv a(dcw $$0, kf $$1) {
+      ghw.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         ghu[] $$7 = new ghu[9];
 
-   public void a(ji $$0, ji $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ji $$0, ji $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (ji $$1 : ji.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (ji $$2 : ji.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ji $$3 : ji.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = ghv.a($$3, $$4, $$9, $$8);
+               ghw.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
             }
          }
 
-         $$0.append('\n');
+         return new ghv($$0, $$3, $$4, $$7);
+      }
+   }
+
+   private ghw.a a(dcw $$0, int $$1, int $$2) {
+      return (ghw.a)this.a.computeIfAbsent(dcd.c($$1, $$2), $$1x -> new ghw.a($$0.d(dcd.a($$1x), dcd.b($$1x))));
+   }
+
+   static final class a {
+      private final dvi a;
+      @Nullable
+      private ghu b;
+
+      a(dvi $$0) {
+         this.a = $$0;
       }
 
-      return $$0.toString();
+      public dvi a() {
+         return this.a;
+      }
+
+      public ghu b() {
+         if (this.b == null) {
+            this.b = new ghu(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

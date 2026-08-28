@@ -1,58 +1,216 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
 import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amk {
+   static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wz.c("commands.debug.alreadyRunning"));
+   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wz.c("commands.debug.function.noRecursion"));
+   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wz.c("commands.debug.function.noReturnRun"));
+
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(eu.a("config").then(eu.a("target", fg.c()).executes($$0x -> a((et)$$0x.getSource(), fg.e($$0x, "target"))))))
-            .then(
-               eu.a("unconfig")
-                  .then(
-                     eu.a("target", gj.a())
-                        .suggests(($$0x, $$1) -> ey.b(a(((et)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((et)$$0x.getSource(), gj.a($$0x, "target")))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(eu.a("start").executes($$0x -> a((et)$$0x.getSource()))))
+               .then(eu.a("stop").executes($$0x -> b((et)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)eu.a("function").requires($$0x -> $$0x.c(3))).then(eu.a("name", hb.a()).suggests(amy.b).executes(new amk.a())))
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (vs $$2 : $$0.ai().e()) {
-         if ($$2.k() instanceof arr $$3) {
-            $$1.add($$3.j().getId().toString());
-         }
+   private static int a(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.bi()) {
+         throw c.create();
+      } else {
+         $$1.bj();
+         $$0.a(() -> wz.c("commands.debug.started"), true);
+         return 0;
       }
-
-      return $$1;
    }
 
-   private static int a(et $$0, aqu $$1) {
-      GameProfile $$2 = $$1.fY();
-      $$1.c.n();
-      $$0.a(() -> wy.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
+   private static int b(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.bi()) {
+         throw b.create();
+      } else {
+         bne $$2 = $$1.bk();
+         double $$3 = (double)$$2.g() / (double)azp.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> wz.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
    }
 
-   private static int a(et $$0, UUID $$1) {
-      for (vs $$2 : $$0.l().ai().e()) {
-         we var5 = $$2.k();
-         if (var5 instanceof arr) {
-            arr $$3 = (arr)var5;
-            if ($$3.j().getId().equals($$1)) {
-               $$3.m();
+   static class a extends hp.b<et> implements hp.a<et> {
+      public void a(et $$0, ContextChain<et> $$1, hn $$2, ht<et> $$3) throws CommandSyntaxException {
+         if ($$2.c()) {
+            throw amk.e.create();
+         } else if ($$3.a() != null) {
+            throw amk.d.create();
+         } else {
+            CommandContext<et> $$4 = $$1.getTopContext();
+            Collection<ig<et>> $$5 = hb.a($$4, "name");
+            MinecraftServer $$6 = $$0.l();
+            String $$7 = "debug-trace-" + ad.f() + ".txt";
+            CommandDispatcher<et> $$8 = $$0.l().aF().a();
+            int $$9 = 0;
+
+            try {
+               Path $$10 = $$6.c("debug");
+               Files.createDirectories($$10);
+               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
+               amk.b $$12 = new amk.b($$11);
+               $$3.a($$12);
+
+               for (final ig<et> $$13 : $$5) {
+                  try {
+                     et $$14 = $$0.a($$12).b(2);
+                     ii<et> $$15 = $$13.a(null, $$8);
+                     $$3.a((new hz<et>($$15, eq.a, false) {
+                        public void a(et $$0, hs<et> $$1, hu $$2) {
+                           $$11.println($$13.a());
+                           super.a($$0, $$1, $$2);
+                        }
+                     }).bind($$14));
+                     $$9 += $$15.b().size();
+                  } catch (ew var18) {
+                     $$0.b(var18.a());
+                  }
+               }
+            } catch (IOException | UncheckedIOException var19) {
+               amk.a.warn("Tracing failed", var19);
+               $$0.b(wz.c("commands.debug.function.traceFailed"));
             }
+
+            int $$18 = $$9;
+            $$3.a(($$4x, $$5x) -> {
+               if ($$5.size() == 1) {
+                  $$0.a(() -> wz.a("commands.debug.function.success.single", $$18, wz.a($$5.iterator().next().a()), $$7), true);
+               } else {
+                  $$0.a(() -> wz.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+               }
+            });
+         }
+      }
+   }
+
+   static class b implements es, hv {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      b(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
          }
       }
 
-      $$0.b(wy.b("Can't find player to unconfig"));
-      return 0;
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, akr $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.e();
+         this.a(this.d + 1);
+         this.c.print("[E] ");
+         this.c.print($$0);
+      }
+
+      @Override
+      public void a(wz $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean k_() {
+         return true;
+      }
+
+      @Override
+      public boolean w_() {
+         return true;
+      }
+
+      @Override
+      public boolean M_() {
+         return false;
+      }
+
+      @Override
+      public boolean l_() {
+         return true;
+      }
+
+      @Override
+      public void close() {
+         IOUtils.closeQuietly(this.c);
+      }
    }
 }

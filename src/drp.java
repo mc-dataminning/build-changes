@@ -1,227 +1,124 @@
-import java.util.List;
-import java.util.stream.IntStream;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class drp extends drl implements brc {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private jv<cuo> q = jv.a(27, cuo.l);
-   private int r;
-   private drp.a s = drp.a.a;
-   private float t;
-   private float u;
-   @Nullable
-   private final ctg v;
+public class drp extends dqh implements dyb.b<dyi.b>, dyi {
+   private static final Logger b = LogUtils.getLogger();
+   private dyi.a c;
+   private final dyi.b d;
+   private final dyi.d e = this.b();
+   private int h;
 
-   public drp(@Nullable ctg $$0, jd $$1, dta $$2) {
-      super(dqh.x, $$1, $$2);
-      this.v = $$0;
+   protected drp(dqj<?> $$0, jd $$1, dtc $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dyi.a();
+      this.d = new dyi.b(this);
    }
 
-   public drp(jd $$0, dta $$1) {
-      super(dqh.x, $$0, $$1);
-      this.v = dmw.a($$1.b());
+   public drp(jd $$0, dtc $$1) {
+      this(dqj.I, $$0, $$1);
    }
 
-   public static void a(dcu $$0, jd $$1, dta $$2, drp $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(dcu $$0, jd $$1, dta $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t >= 1.0F) {
-               this.s = drp.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t <= 0.0F) {
-               this.s = drp.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
-      }
-   }
-
-   public drp.a l() {
-      return this.s;
-   }
-
-   public ewr a(dta $$0) {
-      return ckh.a(1.0F, $$0.c(dmw.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(dcu $$0, jd $$1, dta $$2) {
-      if ($$2.b() instanceof dmw) {
-         ji $$3 = $$2.c(dmw.b);
-         ewr $$4 = ckh.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<bsq> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bsq $$6 : $$5) {
-               if ($$6.j_() != epd.d) {
-                  $$6.a(btq.d, new eww(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
-      }
+   public dyi.d b() {
+      return new drp.a(this.aD_());
    }
 
    @Override
-   public int b() {
-      return this.q.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = drp.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = drp.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(dcu $$0, jd $$1, dta $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.n.a(this.o, this.n().b(), 1, this.r);
-         if (this.r == 1) {
-            this.n.a($$0, dxw.k, this.o);
-            this.n.a(null, this.o, avo.wN, avp.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.r--;
-         this.n.a(this.o, this.n().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.n.a($$0, dxw.j, this.o);
-            this.n.a(null, this.o, avo.wM, avp.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected wy k() {
-      return wy.c("container.shulkerBox");
-   }
-
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
+   protected void a(ub $$0, jo.a $$1) {
       super.a($$0, $$1);
-      this.e($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      akp<uy> $$2 = $$1.a(up.a);
+      if ($$0.b("listener", 10)) {
+         dyi.a.a
+            .parse($$2, $$0.p("listener"))
+            .resultOrPartial($$0x -> b.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
+            .ifPresent($$0x -> this.c = $$0x);
+      }
    }
 
    @Override
-   protected void b(ua $$0, jo.a $$1) {
+   protected void b(ub $$0, jo.a $$1) {
       super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqk.a($$0, this.q, false, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      akp<uy> $$2 = $$1.a(up.a);
+      dyi.a.a
+         .encodeStart($$2, this.c)
+         .resultOrPartial($$0x -> b.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
+         .ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
+
+   @Override
+   public dyi.a gn() {
+      return this.c;
+   }
+
+   @Override
+   public dyi.d go() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dyi.b f() {
+      return this.d;
+   }
+
+   protected class a implements dyi.d {
+      public static final int b = 8;
+      protected final jd c;
+      private final dyd a;
+
+      public a(final jd $$1) {
+         this.c = $$1;
+         this.a = new dxv($$1);
       }
-   }
 
-   public void e(ua $$0, jo.a $$1) {
-      this.q = jv.a(this.b(), cuo.l);
-      if (!this.a_($$0) && $$0.b("Items", 9)) {
-         bqk.b($$0, this.q, $$1);
+      @Override
+      public int a() {
+         return 8;
       }
-   }
 
-   @Override
-   protected jv<cuo> j() {
-      return this.q;
-   }
+      @Override
+      public dyd b() {
+         return this.a;
+      }
 
-   @Override
-   protected void a(jv<cuo> $$0) {
-      this.q = $$0;
-   }
+      @Override
+      public boolean d() {
+         return true;
+      }
 
-   @Override
-   public int[] a(ji $$0) {
-      return k;
-   }
+      @Override
+      public boolean a(aqu $$0, jd $$1, jm<dxz> $$2, @Nullable dxz.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dxz.f) && !$$2.a(dxz.i) ? dms.n(drp.this.n()) : false;
+      }
 
-   @Override
-   public boolean a(int $$0, cuo $$1, @Nullable ji $$2) {
-      return !(dfw.a($$1.g()) instanceof dmw);
-   }
+      @Override
+      public void a(aqu $$0, jd $$1, jm<dxz> $$2, @Nullable bsr $$3, @Nullable bsr $$4, float $$5) {
+         dtc $$6 = drp.this.n();
+         if (dms.n($$6)) {
+            drp.this.a(dyi.a_($$2));
+            int $$7 = dyi.a_($$5, this.a());
+            if ($$6.b() instanceof dms $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, drp.this.d());
+            }
+         }
+      }
 
-   @Override
-   public boolean b(int $$0, cuo $$1, ji $$2) {
-      return true;
-   }
+      @Override
+      public void e() {
+         drp.this.e();
+      }
 
-   public float a(float $$0) {
-      return ayn.i($$0, this.u, this.t);
-   }
-
-   @Nullable
-   public ctg u() {
-      return this.v;
-   }
-
-   @Override
-   protected cps a(int $$0, cmu $$1) {
-      return new crl($$0, $$1, this);
-   }
-
-   public boolean v() {
-      return this.s == drp.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

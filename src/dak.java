@@ -1,88 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
 
-public interface dak {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+public record dak<T>(dag a, dag b, T c, Optional<eva> d) {
+   public static <S> Codec<dak<S>> a(Codec<S> $$0, euj $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dag.d.fieldOf("enchanted").forGetter(dak::a),
+                  dag.d.fieldOf("affected").forGetter(dak::b),
+                  $$0.fieldOf("effect").forGetter(dak::c),
+                  daa.a($$1).optionalFieldOf("requirements").forGetter(dak::d)
+               )
+               .apply($$2, dak::new)
+      );
    }
 
-   static dak.a a(daq... $$0) {
-      return new dak.a(List.of($$0));
+   public static <S> Codec<dak<S>> b(Codec<S> $$0, euj $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dag.d
+                     .validate($$0xx -> $$0xx != dag.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dak::a),
+                  $$0.fieldOf("effect").forGetter(dak::c),
+                  daa.a($$1).optionalFieldOf("requirements").forGetter(dak::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dak<>($$0xx, dag.c, $$1xx, $$2x))
+      );
    }
 
-   static dak.b a(dar... $$0) {
-      return new dak.b(List.of($$0));
-   }
-
-   static dak.c a(das... $$0) {
-      return new dak.c(List.of($$0));
-   }
-
-   public static record a(List<daq> d) implements daq {
-      public static final MapCodec<dak.a> a = dak.a(daq.b, dak.a::new, dak.a::b);
-
-      @Override
-      public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
-         for (daq $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
-
-      @Override
-      public MapCodec<dak.a> a() {
-         return a;
-      }
-
-      public List<daq> b() {
-         return this.d;
-      }
-   }
-
-   public static record b(List<dar> b) implements dar {
-      public static final MapCodec<dak.b> a = dak.a(dar.c, dak.b::new, dak.b::b);
-
-      @Override
-      public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4, boolean $$5) {
-         for (dar $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
-
-      @Override
-      public void a(czz $$0, bsq $$1, eww $$2, int $$3) {
-         for (dar $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-      }
-
-      @Override
-      public MapCodec<dak.b> a() {
-         return a;
-      }
-   }
-
-   public static record c(List<das> c) implements das {
-      public static final MapCodec<dak.c> a = dak.a(das.b, dak.c::new, dak.c::b);
-
-      @Override
-      public float a(int $$0, ayv $$1, float $$2) {
-         for (das $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
-         }
-
-         return $$2;
-      }
-
-      @Override
-      public MapCodec<dak.c> a() {
-         return a;
-      }
-
-      public List<das> b() {
-         return this.c;
-      }
+   public boolean a(erp $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

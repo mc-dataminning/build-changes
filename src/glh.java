@@ -1,27 +1,103 @@
-public class glh extends glj<cka, fvu<cka>> {
-   private static final akq a = akq.b("textures/entity/slime/magmacube.png");
+import org.joml.Matrix4f;
 
-   public glh(gkd.a $$0) {
-      super($$0, new fvu<>($$0.a(fyd.aB)), 0.25F);
+public class glh extends gkg<btm> {
+   public glh(gkh.a $$0) {
+      super($$0);
    }
 
-   protected int a(cka $$0, jd $$1) {
-      return 15;
+   public void a(btm $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      ayw $$10 = ayw.a($$0.b);
+
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
+      }
+
+      fbk $$12 = $$4.getBuffer(gff.q());
+      Matrix4f $$13 = $$3.c().a();
+
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         ayw $$15 = ayw.a($$0.b);
+
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+            }
+         }
+      }
    }
 
-   public akq a(cka $$0) {
-      return a;
+   private static void a(
+      Matrix4f $$0,
+      fbk $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
    }
 
-   public void a(cka $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gn();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cka $$0, fbc $$1, float $$2) {
-      int $$3 = $$0.gn();
-      float $$4 = ayn.i($$2, $$0.ca, $$0.bZ) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   public akr a(btm $$0) {
+      return gqi.e;
    }
 }

@@ -1,50 +1,30 @@
-public abstract class fpo<T extends cqv> extends fom<T> implements cqf {
-   private final akq D;
+import org.joml.Vector3f;
 
-   public fpo(T $$0, cmu $$1, wy $$2, akq $$3) {
-      super($$0, $$1, $$2);
-      this.D = $$3;
-   }
+public class fpo extends fot {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int r = 16;
+   private static final int s = 16;
+   private final akr u = akr.b("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-   protected void F() {
-   }
-
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.F();
-      this.w.a(this);
+   public fpo(drs $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wz.c("hanging_sign.edit"));
    }
 
    @Override
-   public void j() {
-      super.j();
-      this.w.b(this);
+   protected void b(fhx $$0, dtc $$1) {
+      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fht $$0, int $$1, int $$2, float $$3) {
+   protected void a(fhx $$0, dtc $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.u, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   protected void a(fht $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.D, this.z, this.A, 0, 0, this.c, this.q);
-      this.c($$0, this.z, this.A);
-   }
-
-   protected abstract void c(fht var1, int var2, int var3);
-
-   @Override
-   public void a(cps $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cps $$0, int $$1, cuo $$2) {
+   protected Vector3f m() {
+      return c;
    }
 }

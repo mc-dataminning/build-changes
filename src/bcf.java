@@ -2,30 +2,64 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.Set;
 
 public class bcf extends DataFix {
+   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+
    public bcf(Schema $$0) {
       super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bgq.t)
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      Type<?> $$1 = this.getInputSchema().getType(bgr.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgr.D.typeName(), bid.a()));
+      OpticFinder<?> $$3 = $$1.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgr.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgr.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
+               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
+               if ($$3x.filter(a::contains).isPresent()) {
+                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
+                  if ($$4.isPresent()) {
+                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
+                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
+                     return $$2x.set($$3, $$6);
+                  }
+               }
+
+               return $$2x;
+            })
+         }
       );
-      return this.fixTypeEverywhereTyped(
-         "EmptyItemInHotbarFix", this.getInputSchema().getType(bgq.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
-                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
-                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
-                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
-                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
-                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
-               }))
-      );
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("FactorCalculationData", $$1 -> {
+         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
+         $$1 = $$1.remove("effect_changed_timestamp");
+         int $$3 = $$0.get("Duration").asInt(-1);
+         int $$4 = $$2 - $$3;
+         return $$1.set("ticks_active", $$1.createInt($$4));
+      });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.createList($$0.asStream().map(this::a));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      $$0 = $$0.update("Effects", this::b);
+      $$0 = $$0.update("ActiveEffects", this::b);
+      return $$0.update("CustomPotionEffects", this::b);
    }
 }

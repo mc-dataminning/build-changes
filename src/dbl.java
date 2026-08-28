@@ -1,14 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dbl(jm<daa> c, bpv d) implements dbh {
+public record dbl(jq<dac> c, bpw d) implements dbj {
    public static final MapCodec<dbl> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(daa.c.fieldOf("enchantment").forGetter(dbl::b), bpv.c.fieldOf("level").forGetter(dbl::c)).apply($$0, dbl::new)
+      $$0 -> $$0.group(kb.a(lu.aL).fieldOf("enchantments").forGetter(dbl::b), bpw.c.fieldOf("cost").forGetter(dbl::c)).apply($$0, dbl::new)
    );
 
    @Override
-   public void a(cuo $$0, dag.a $$1, ayv $$2, bqo $$3) {
-      $$1.b(this.c, ayn.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(cuq $$0, dai.a $$1, ayw $$2, bqp $$3) {
+      for (daf $$5 : dae.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
+      }
    }
 
    @Override
@@ -16,11 +18,11 @@ public record dbl(jm<daa> c, bpv d) implements dbh {
       return b;
    }
 
-   public jm<daa> b() {
+   public jq<dac> b() {
       return this.c;
    }
 
-   public bpv c() {
+   public bpw c() {
       return this.d;
    }
 }

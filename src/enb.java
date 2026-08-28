@@ -1,13 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface enb<P extends ena> {
-   enb<emz> a = a("always_true", emz.a);
-   enb<emx> b = a("linear_pos", emx.a);
-   enb<emm> c = a("axis_aligned_linear_pos", emm.a);
+public enum enb implements azk {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   MapCodec<P> codec();
+   public static Codec<enb> c = azk.b(enb::values);
+   private final String d;
 
-   static <P extends ena> enb<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.o, $$0, () -> $$1);
+   private enb(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
    }
 }

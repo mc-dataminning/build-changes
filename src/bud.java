@@ -1,5 +1,3 @@
 public interface bud {
-   void a(avp var1);
-
-   boolean a();
+   void a(cep var1, bsr var2);
 }

@@ -1,41 +1,35 @@
-public class ccv extends ccy {
-   public ccv(btn $$0, dcu $$1) {
-      super($$0, $$1);
+public class ccv {
+   private final bwv a;
+   private final float b;
+   private final int c;
+
+   public ccv(jd $$0, float $$1, int $$2) {
+      this(new bvk($$0), $$1, $$2);
    }
 
-   @Override
-   protected epo a(int $$0) {
-      this.o = new eph(false);
-      this.o.a(true);
-      return new epo(this.o, $$0);
+   public ccv(exa $$0, float $$1, int $$2) {
+      this(new bvk(jd.a((jw)$$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   public ccv(bsr $$0, float $$1, int $$2) {
+      this(new bvs($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected eww b() {
-      return new eww(this.a.dv(), this.a.e(0.5), this.a.dB());
+   public ccv(bwv $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected double a(eww $$0) {
-      return $$0.d;
+   public bwv a() {
+      return this.a;
    }
 
-   @Override
-   protected boolean a(eww $$0, eww $$1) {
-      return this.a.bj() ? a(this.a, $$0, $$1, false) : false;
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(jd $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public int c() {
+      return this.c;
    }
 }

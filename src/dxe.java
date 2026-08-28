@@ -1,15 +1,24 @@
-public interface dxe {
-   dxe a = new dxe() {
-      @Override
-      public void a() {
-      }
+import java.util.List;
+import java.util.stream.Stream;
 
-      @Override
-      public void a(bsq.c $$0) {
-      }
-   };
+public class dxe<T> {
+   private final dcd a;
+   private final List<T> b;
 
-   void a();
+   public dxe(dcd $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(bsq.c var1);
+   public dcd a() {
+      return this.a;
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

@@ -1,88 +1,1184 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
-public class dga extends dfi {
-   public static final MapCodec<dga> a = b(dga::new);
-   public static final dtr[] b = new dtr[]{dtq.k, dtq.l, dtq.m};
-   protected static final exp c = exm.a(dfw.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dfw.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public class dga {
+   private static final dtb.f tu = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof drr $$4 ? $$4.v() : true;
+   public static final dfy a = a("air", new dev(dtb.d.a().o().b().g().l()));
+   public static final dfy b = a("stone", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy c = a("granite", new dfy(dtb.d.a().a(epg.k).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy d = a("polished_granite", new dfy(dtb.d.a().a(epg.k).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy e = a("diorite", new dfy(dtb.d.a().a(epg.o).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy f = a("polished_diorite", new dfy(dtb.d.a().a(epg.o).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy g = a("andesite", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy h = a("polished_andesite", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy i = a("grass_block", new djj(dtb.d.a().a(epg.b).e().d(0.6F).a(dnm.d)));
+   public static final dfy j = a("dirt", new dfy(dtb.d.a().a(epg.k).d(0.5F).a(dnm.c)));
+   public static final dfy k = a("coarse_dirt", new dfy(dtb.d.a().a(epg.k).d(0.5F).a(dnm.c)));
+   public static final dfy l = a("podzol", new dnj(dtb.d.a().a(epg.I).d(0.5F).a(dnm.c)));
+   public static final dfy m = a("cobblestone", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy n = a("oak_planks", new dfy(dtb.d.a().a(epg.n).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy o = a("spruce_planks", new dfy(dtb.d.a().a(epg.I).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy p = a("birch_planks", new dfy(dtb.d.a().a(epg.c).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy q = a("jungle_planks", new dfy(dtb.d.a().a(epg.k).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy r = a("acacia_planks", new dfy(dtb.d.a().a(epg.p).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy s = a("cherry_planks", new dfy(dtb.d.a().a(epg.K).a(dud.e).a(2.0F, 3.0F).a(dnm.aU).h()));
+   public static final dfy t = a("dark_oak_planks", new dfy(dtb.d.a().a(epg.A).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy u = a("mangrove_planks", new dfy(dtb.d.a().a(epg.C).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy v = a("bamboo_planks", new dfy(dtb.d.a().a(epg.s).a(dud.e).a(2.0F, 3.0F).a(dnm.aS).h()));
+   public static final dfy w = a("bamboo_mosaic", new dfy(dtb.d.a().a(epg.s).a(dud.e).a(2.0F, 3.0F).a(dnm.aS).h()));
+   public static final dfy x = a("oak_sapling", new dmn(dsr.b, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy y = a("spruce_sapling", new dmn(dsr.c, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy z = a("birch_sapling", new dmn(dsr.f, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy A = a("jungle_sapling", new dmn(dsr.g, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy B = a("acacia_sapling", new dmn(dsr.h, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy C = a("cherry_sapling", new dmn(dsr.i, dtb.d.a().a(epg.u).b().e().d().a(dnm.aV).a(eph.b)));
+   public static final dfy D = a("dark_oak_sapling", new dmn(dsr.j, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy E = a("mangrove_propagule", new dkt(dsr.d, dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy F = a("bedrock", new dfy(dtb.d.a().a(epg.l).a(dud.b).a(-1.0F, 3600000.0F).g().a(dga::a)));
+   public static final dfy G = a("water", new dko(epd.c, dtb.d.a().a(epg.m).o().b().d(100.0F).a(eph.b).g().i().a(dnm.a)));
+   public static final dfy H = a("lava", new dko(epd.e, dtb.d.a().a(epg.e).o().b().e().d(100.0F).a($$0x -> 15).a(eph.b).g().i().a(dnm.a)));
+   public static final dfy I = a("sand", new dhg(new axh(14406560), dtb.d.a().a(epg.c).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy J = a("suspicious_sand", new dgd(I, avp.cT, avp.cV, dtb.d.a().a(epg.c).a(dud.c).d(0.25F).a(dnm.aZ).a(eph.b)));
+   public static final dfy K = a("red_sand", new dhg(new axh(11098145), dtb.d.a().a(epg.p).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy L = a("gravel", new dhg(new axh(-8356741), dtb.d.a().a(epg.l).a(dud.c).d(0.6F).a(dnm.c)));
+   public static final dfy M = a("suspicious_gravel", new dgd(L, avp.cU, avp.cW, dtb.d.a().a(epg.l).a(dud.c).d(0.25F).a(dnm.ba).a(eph.b)));
+   public static final dfy N = a("gold_ore", new dii(bpt.a(0), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy O = a("deepslate_gold_ore", new dii(bpt.a(0), dtb.d.b(N).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy P = a("iron_ore", new dii(bpt.a(0), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy Q = a("deepslate_iron_ore", new dii(bpt.a(0), dtb.d.b(P).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy R = a("coal_ore", new dii(bqc.a(0, 2), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy S = a("deepslate_coal_ore", new dii(bqc.a(0, 2), dtb.d.b(R).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy T = a("nether_gold_ore", new dii(bqc.a(0, 1), dtb.d.a().a(epg.J).a(dud.b).m().a(3.0F, 3.0F).a(dnm.V)));
+   public static final dfy U = a("oak_log", a(epg.n, epg.I));
+   public static final dfy V = a("spruce_log", a(epg.I, epg.A));
+   public static final dfy W = a("birch_log", a(epg.c, epg.o));
+   public static final dfy X = a("jungle_log", a(epg.k, epg.I));
+   public static final dfy Y = a("acacia_log", a(epg.p, epg.l));
+   public static final dfy Z = a("cherry_log", a(epg.K, epg.R, dnm.aU));
+   public static final dfy aa = a("dark_oak_log", a(epg.A, epg.A));
+   public static final dfy ab = a("mangrove_log", a(epg.C, epg.I));
+   public static final dfy ac = a("mangrove_roots", new dku(dtb.d.a().a(epg.I).a(dud.e).d(0.7F).a(dnm.aK).c().b(dga::b).c(dga::b).c().h()));
+   public static final dfy ad = a("muddy_mangrove_roots", new dml(dtb.d.a().a(epg.I).d(0.7F).a(dnm.aL)));
+   public static final dfy ae = a("bamboo_block", a(epg.s, epg.h, dnm.aS));
+   public static final dfy af = a("stripped_spruce_log", a(epg.I, epg.I));
+   public static final dfy ag = a("stripped_birch_log", a(epg.c, epg.c));
+   public static final dfy ah = a("stripped_jungle_log", a(epg.k, epg.k));
+   public static final dfy ai = a("stripped_acacia_log", a(epg.p, epg.p));
+   public static final dfy aj = a("stripped_cherry_log", a(epg.K, epg.Q, dnm.aU));
+   public static final dfy ak = a("stripped_dark_oak_log", a(epg.A, epg.A));
+   public static final dfy al = a("stripped_oak_log", a(epg.n, epg.n));
+   public static final dfy am = a("stripped_mangrove_log", a(epg.C, epg.C));
+   public static final dfy an = a("stripped_bamboo_block", a(epg.s, epg.s, dnm.aS));
+   public static final dfy ao = a("oak_wood", new dml(dtb.d.a().a(epg.n).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy ap = a("spruce_wood", new dml(dtb.d.a().a(epg.I).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy aq = a("birch_wood", new dml(dtb.d.a().a(epg.c).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy ar = a("jungle_wood", new dml(dtb.d.a().a(epg.k).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy as = a("acacia_wood", new dml(dtb.d.a().a(epg.v).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy at = a("cherry_wood", new dml(dtb.d.a().a(epg.R).a(dud.e).d(2.0F).a(dnm.aU).h()));
+   public static final dfy au = a("dark_oak_wood", new dml(dtb.d.a().a(epg.A).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy av = a("mangrove_wood", new dml(dtb.d.a().a(epg.C).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy aw = a("stripped_oak_wood", new dml(dtb.d.a().a(epg.n).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy ax = a("stripped_spruce_wood", new dml(dtb.d.a().a(epg.I).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy ay = a("stripped_birch_wood", new dml(dtb.d.a().a(epg.c).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy az = a("stripped_jungle_wood", new dml(dtb.d.a().a(epg.k).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy aA = a("stripped_acacia_wood", new dml(dtb.d.a().a(epg.p).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy aB = a("stripped_cherry_wood", new dml(dtb.d.a().a(epg.Q).a(dud.e).d(2.0F).a(dnm.aU).h()));
+   public static final dfy aC = a("stripped_dark_oak_wood", new dml(dtb.d.a().a(epg.A).a(dud.e).d(2.0F).a(dnm.b).h()));
+   public static final dfy aD = a("stripped_mangrove_wood", a(epg.C, epg.C));
+   public static final dfy aE = a("oak_leaves", a(dnm.d));
+   public static final dfy aF = a("spruce_leaves", a(dnm.d));
+   public static final dfy aG = a("birch_leaves", a(dnm.d));
+   public static final dfy aH = a("jungle_leaves", a(dnm.d));
+   public static final dfy aI = a("acacia_leaves", a(dnm.d));
+   public static final dfy aJ = a("cherry_leaves", new dha(dtb.d.a().a(epg.u).d(0.2F).e().a(dnm.aW).c().a(dga::c).b(dga::b).c(dga::b).h().a(eph.b).a(dga::b)));
+   public static final dfy aK = a("dark_oak_leaves", a(dnm.d));
+   public static final dfy aL = a("mangrove_leaves", new dks(dtb.d.a().a(epg.h).d(0.2F).e().a(dnm.d).c().a(dga::c).b(dga::b).c(dga::b).h().a(eph.b).a(dga::b)));
+   public static final dfy aM = a("azalea_leaves", a(dnm.ax));
+   public static final dfy aN = a("flowering_azalea_leaves", a(dnm.ax));
+   public static final dfy aO = a("sponge", new dno(dtb.d.a().a(epg.s).d(0.6F).a(dnm.be)));
+   public static final dfy aP = a("wet_sponge", new dpq(dtb.d.a().a(epg.s).d(0.6F).a(dnm.bf)));
+   public static final dfy aQ = a("glass", new dol(dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c().a(dga::a).a(dga::b).b(dga::b).c(dga::b)));
+   public static final dfy aR = a("lapis_ore", new dii(bqc.a(2, 5), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy aS = a("deepslate_lapis_ore", new dii(bqc.a(2, 5), dtb.d.b(aR).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy aT = a("lapis_block", new dfy(dtb.d.a().a(epg.G).m().a(3.0F, 3.0F)));
+   public static final dfy aU = a("dispenser", new did(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F)));
+   public static final dfy aV = a("sandstone", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().d(0.8F)));
+   public static final dfy aW = a("chiseled_sandstone", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().d(0.8F)));
+   public static final dfy aX = a("cut_sandstone", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().d(0.8F)));
+   public static final dfy aY = a("note_block", new dlh(dtb.d.a().a(epg.n).a(dud.e).a(dnm.b).d(0.8F).h()));
+   public static final dfy aZ = a("white_bed", a(cti.a));
+   public static final dfy ba = a("orange_bed", a(cti.b));
+   public static final dfy bb = a("magenta_bed", a(cti.c));
+   public static final dfy bc = a("light_blue_bed", a(cti.d));
+   public static final dfy bd = a("yellow_bed", a(cti.e));
+   public static final dfy be = a("lime_bed", a(cti.f));
+   public static final dfy bf = a("pink_bed", a(cti.g));
+   public static final dfy bg = a("gray_bed", a(cti.h));
+   public static final dfy bh = a("light_gray_bed", a(cti.i));
+   public static final dfy bi = a("cyan_bed", a(cti.j));
+   public static final dfy bj = a("purple_bed", a(cti.k));
+   public static final dfy bk = a("blue_bed", a(cti.l));
+   public static final dfy bl = a("brown_bed", a(cti.m));
+   public static final dfy bm = a("green_bed", a(cti.n));
+   public static final dfy bn = a("red_bed", a(cti.o));
+   public static final dfy bo = a("black_bed", a(cti.p));
+   public static final dfy bp = a("powered_rail", new dlv(dtb.d.a().b().d(0.7F).a(dnm.g)));
+   public static final dfy bq = a("detector_rail", new dhz(dtb.d.a().b().d(0.7F).a(dnm.g)));
+   public static final dfy br = a("sticky_piston", a(true));
+   public static final dfy bs = a("cobweb", new dpm(dtb.d.a().a(epg.d).a(dnm.bi).j().b().m().d(4.0F).a(eph.b)));
+   public static final dfy bt = a("short_grass", new doe(dtb.d.a().a(epg.h).o().b().d().a(dnm.d).a(dtb.c.c).h().a(eph.b)));
+   public static final dfy bu = a("fern", new doe(dtb.d.a().a(epg.h).o().b().d().a(dnm.d).a(dtb.c.c).h().a(eph.b)));
+   public static final dfy bv = a("dead_bush", new dhx(dtb.d.a().a(epg.n).o().b().d().a(dnm.d).h().a(eph.b)));
+   public static final dfy bw = a("seagrass", new dmx(dtb.d.a().a(epg.m).o().b().d().a(dnm.q).a(eph.b)));
+   public static final dfy bx = a("tall_seagrass", new dof(dtb.d.a().a(epg.m).o().b().d().a(dnm.q).a(dtb.c.b).a(eph.b)));
+   public static final dfy by = a("piston", a(false));
+   public static final dfy bz = a("piston_head", new dsw(dtb.d.a().a(epg.l).d(1.5F).g().a(eph.c)));
+   public static final dfy bA = a("white_wool", new dfy(dtb.d.a().a(epg.i).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bB = a("orange_wool", new dfy(dtb.d.a().a(epg.p).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bC = a("magenta_wool", new dfy(dtb.d.a().a(epg.q).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bD = a("light_blue_wool", new dfy(dtb.d.a().a(epg.r).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bE = a("yellow_wool", new dfy(dtb.d.a().a(epg.s).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bF = a("lime_wool", new dfy(dtb.d.a().a(epg.t).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bG = a("pink_wool", new dfy(dtb.d.a().a(epg.u).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bH = a("gray_wool", new dfy(dtb.d.a().a(epg.v).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bI = a("light_gray_wool", new dfy(dtb.d.a().a(epg.w).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bJ = a("cyan_wool", new dfy(dtb.d.a().a(epg.x).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bK = a("purple_wool", new dfy(dtb.d.a().a(epg.y).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bL = a("blue_wool", new dfy(dtb.d.a().a(epg.z).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bM = a("brown_wool", new dfy(dtb.d.a().a(epg.A).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bN = a("green_wool", new dfy(dtb.d.a().a(epg.B).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bO = a("red_wool", new dfy(dtb.d.a().a(epg.C).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bP = a("black_wool", new dfy(dtb.d.a().a(epg.D).a(dud.h).d(0.8F).a(dnm.i).h()));
+   public static final dfy bQ = a("moving_piston", new dsu(dtb.d.a().a(epg.l).j().d(-1.0F).f().g().c().a(dga::b).b(dga::b).c(dga::b).a(eph.c)));
+   public static final dfy bR = a("dandelion", new dja(bsb.w, 0.35F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bS = a("torchflower", new dja(bsb.p, 5.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bT = a("poppy", new dja(bsb.p, 5.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bU = a("blue_orchid", new dja(bsb.w, 0.35F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bV = a("allium", new dja(bsb.l, 4.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bW = a("azure_bluet", new dja(bsb.o, 8.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bX = a("red_tulip", new dja(bsb.r, 9.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bY = a("orange_tulip", new dja(bsb.r, 9.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy bZ = a("white_tulip", new dja(bsb.r, 9.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy ca = a("pink_tulip", new dja(bsb.r, 9.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy cb = a("oxeye_daisy", new dja(bsb.j, 8.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy cc = a("cornflower", new dja(bsb.h, 6.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy cd = a("wither_rose", new dpr(bsb.t, 8.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy ce = a("lily_of_the_valley", new dja(bsb.s, 12.0F, dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).a(eph.b)));
+   public static final dfy cf = a("brown_mushroom", new dla(rw.e, dtb.d.a().a(epg.A).b().e().d().a(dnm.d).a($$0x -> 1).d(dga::a).a(eph.b)));
+   public static final dfy cg = a("red_mushroom", new dla(rw.f, dtb.d.a().a(epg.C).b().e().d().a(dnm.d).d(dga::a).a(eph.b)));
+   public static final dfy ch = a("gold_block", new dfy(dtb.d.a().a(epg.E).a(dud.g).m().a(3.0F, 6.0F).a(dnm.g)));
+   public static final dfy ci = a("iron_block", new dfy(dtb.d.a().a(epg.g).a(dud.k).m().a(5.0F, 6.0F).a(dnm.g)));
+   public static final dfy cj = a("bricks", new dfy(dtb.d.a().a(epg.C).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy ck = a("tnt", new doi(dtb.d.a().a(epg.e).d().a(dnm.d).h().a(dga::b)));
+   public static final dfy cl = a("bookshelf", new dfy(dtb.d.a().a(epg.n).a(dud.e).d(1.5F).a(dnm.b).h()));
+   public static final dfy cm = a("chiseled_bookshelf", new dhc(dtb.d.a().a(epg.n).a(dud.e).d(1.5F).a(dnm.aY).h()));
+   public static final dfy cn = a("mossy_cobblestone", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy co = a("obsidian", new dfy(dtb.d.a().a(epg.D).a(dud.b).m().a(50.0F, 1200.0F)));
+   public static final dfy cp = a("torch", new doj(lm.F, dtb.d.a().b().d().a($$0x -> 14).a(dnm.b).a(eph.b)));
+   public static final dfy cq = a("wall_torch", new dpb(lm.F, dtb.d.a().b().d().a($$0x -> 14).a(dnm.b).a(cp).a(eph.b)));
+   public static final dfy cr = a("fire", new diy(dtb.d.a().a(epg.e).o().b().d().a($$0x -> 15).a(dnm.i).a(eph.b)));
+   public static final dfy cs = a("soul_fire", new dnk(dtb.d.a().a(epg.r).o().b().d().a($$0x -> 10).a(dnm.i).a(eph.b)));
+   public static final dfy ct = a("spawner", new dnn(dtb.d.a().a(epg.l).a(dud.b).m().d(5.0F).a(dnm.g).c()));
+   public static final dfy cu = a("oak_stairs", b(n));
+   public static final dfy cv = a("chest", new dhb(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h(), () -> dqj.b));
+   public static final dfy cw = a("redstone_wire", new dmb(dtb.d.a().b().d().a(eph.b)));
+   public static final dfy cx = a("diamond_ore", new dii(bqc.a(3, 7), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy cy = a("deepslate_diamond_ore", new dii(bqc.a(3, 7), dtb.d.b(cx).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy cz = a("diamond_block", new dfy(dtb.d.a().a(epg.F).m().a(5.0F, 6.0F).a(dnm.g)));
+   public static final dfy cA = a("crafting_table", new dhs(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy cB = a("wheat", new dht(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy cC = a("farmland", new div(dtb.d.a().a(epg.k).e().d(0.6F).a(dnm.c).c(dga::a).b(dga::a)));
+   public static final dfy cD = a("furnace", new djf(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F).a(a(13))));
+   public static final dfy cE = a("oak_sign", new dnu(dup.b, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cF = a("spruce_sign", new dnu(dup.c, dtb.d.a().a(V.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cG = a("birch_sign", new dnu(dup.d, dtb.d.a().a(epg.c).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cH = a("acacia_sign", new dnu(dup.e, dtb.d.a().a(epg.p).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cI = a("cherry_sign", new dnu(dup.f, dtb.d.a().a(s.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cJ = a("jungle_sign", new dnu(dup.g, dtb.d.a().a(X.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cK = a("dark_oak_sign", new dnu(dup.h, dtb.d.a().a(aa.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cL = a("mangrove_sign", new dnu(dup.k, dtb.d.a().a(ab.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cM = a("bamboo_sign", new dnu(dup.l, dtb.d.a().a(v.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy cN = a("oak_door", new die(dtr.g, dtb.d.a().a(n.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy cO = a("ladder", new dke(dtb.d.a().k().d(0.4F).a(dnm.m).c().a(eph.b)));
+   public static final dfy cP = a("rail", new dly(dtb.d.a().b().d(0.7F).a(dnm.g)));
+   public static final dfy cQ = a("cobblestone_stairs", b(m));
+   public static final dfy cR = a("oak_wall_sign", new doz(dup.b, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(cE).h()));
+   public static final dfy cS = a("spruce_wall_sign", new doz(dup.c, dtb.d.a().a(V.w()).j().a(dud.e).b().d(1.0F).a(cF).h()));
+   public static final dfy cT = a("birch_wall_sign", new doz(dup.d, dtb.d.a().a(epg.c).j().a(dud.e).b().d(1.0F).a(cG).h()));
+   public static final dfy cU = a("acacia_wall_sign", new doz(dup.e, dtb.d.a().a(epg.p).j().a(dud.e).b().d(1.0F).a(cH).h()));
+   public static final dfy cV = a("cherry_wall_sign", new doz(dup.f, dtb.d.a().a(Z.w()).j().a(dud.e).b().d(1.0F).a(cI).h()));
+   public static final dfy cW = a("jungle_wall_sign", new doz(dup.g, dtb.d.a().a(X.w()).j().a(dud.e).b().d(1.0F).a(cJ).h()));
+   public static final dfy cX = a("dark_oak_wall_sign", new doz(dup.h, dtb.d.a().a(aa.w()).j().a(dud.e).b().d(1.0F).a(cK).h()));
+   public static final dfy cY = a("mangrove_wall_sign", new doz(dup.k, dtb.d.a().a(ab.w()).j().a(dud.e).b().d(1.0F).a(cL).h()));
+   public static final dfy cZ = a("bamboo_wall_sign", new doz(dup.l, dtb.d.a().a(v.w()).j().a(dud.e).b().d(1.0F).h().a(cM)));
+   public static final dfy da = a("oak_hanging_sign", new dgx(dup.b, dtb.d.a().a(U.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy db = a("spruce_hanging_sign", new dgx(dup.c, dtb.d.a().a(V.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dc = a("birch_hanging_sign", new dgx(dup.d, dtb.d.a().a(epg.c).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dd = a("acacia_hanging_sign", new dgx(dup.e, dtb.d.a().a(epg.p).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy de = a("cherry_hanging_sign", new dgx(dup.f, dtb.d.a().a(epg.Q).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy df = a("jungle_hanging_sign", new dgx(dup.g, dtb.d.a().a(X.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dg = a("dark_oak_hanging_sign", new dgx(dup.h, dtb.d.a().a(aa.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dh = a("crimson_hanging_sign", new dgx(dup.i, dtb.d.a().a(epg.ab).j().a(dud.e).b().d(1.0F)));
+   public static final dfy di = a("warped_hanging_sign", new dgx(dup.j, dtb.d.a().a(epg.ae).j().a(dud.e).b().d(1.0F)));
+   public static final dfy dj = a("mangrove_hanging_sign", new dgx(dup.k, dtb.d.a().a(ab.w()).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dk = a("bamboo_hanging_sign", new dgx(dup.l, dtb.d.a().a(epg.s).j().a(dud.e).b().d(1.0F).h()));
+   public static final dfy dl = a("oak_wall_hanging_sign", new doy(dup.b, dtb.d.a().a(U.w()).j().a(dud.e).b().d(1.0F).h().a(da)));
+   public static final dfy dm = a("spruce_wall_hanging_sign", new doy(dup.c, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(db).h()));
+   public static final dfy dn = a("birch_wall_hanging_sign", new doy(dup.d, dtb.d.a().a(epg.c).j().a(dud.e).b().d(1.0F).a(dc).h()));
+   public static final dfy do = a("acacia_wall_hanging_sign", new doy(dup.e, dtb.d.a().a(epg.p).j().a(dud.e).b().d(1.0F).h().a(dd)));
+   public static final dfy dp = a("cherry_wall_hanging_sign", new doy(dup.f, dtb.d.a().a(epg.Q).j().a(dud.e).b().d(1.0F).h().a(de)));
+   public static final dfy dq = a("jungle_wall_hanging_sign", new doy(dup.g, dtb.d.a().a(X.w()).j().a(dud.e).b().d(1.0F).h().a(df)));
+   public static final dfy dr = a("dark_oak_wall_hanging_sign", new doy(dup.h, dtb.d.a().a(aa.w()).j().a(dud.e).b().d(1.0F).h().a(dg)));
+   public static final dfy ds = a("mangrove_wall_hanging_sign", new doy(dup.k, dtb.d.a().a(ab.w()).j().a(dud.e).b().d(1.0F).h().a(dj)));
+   public static final dfy dt = a("crimson_wall_hanging_sign", new doy(dup.i, dtb.d.a().a(epg.ab).j().a(dud.e).b().d(1.0F).a(dh)));
+   public static final dfy du = a("warped_wall_hanging_sign", new doy(dup.j, dtb.d.a().a(epg.ae).j().a(dud.e).b().d(1.0F).a(di)));
+   public static final dfy dv = a("bamboo_wall_hanging_sign", new doy(dup.l, dtb.d.a().a(epg.s).j().a(dud.e).b().d(1.0F).h().a(dk)));
+   public static final dfy dw = a("lever", new dkl(dtb.d.a().b().d(0.5F).a(dnm.f).a(eph.b)));
+   public static final dfy dx = a("stone_pressure_plate", new dlw(dtr.e, dtb.d.a().a(epg.l).j().a(dud.b).m().b().d(0.5F).a(eph.b)));
+   public static final dfy dy = a("iron_door", new die(dtr.b, dtb.d.a().a(epg.g).m().d(5.0F).c().a(eph.b)));
+   public static final dfy dz = a("oak_pressure_plate", new dlw(dtr.g, dtb.d.a().a(n.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dA = a("spruce_pressure_plate", new dlw(dtr.h, dtb.d.a().a(o.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dB = a("birch_pressure_plate", new dlw(dtr.i, dtb.d.a().a(p.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dC = a("jungle_pressure_plate", new dlw(dtr.l, dtb.d.a().a(q.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dD = a("acacia_pressure_plate", new dlw(dtr.j, dtb.d.a().a(r.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dE = a("cherry_pressure_plate", new dlw(dtr.k, dtb.d.a().a(s.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dF = a("dark_oak_pressure_plate", new dlw(dtr.m, dtb.d.a().a(t.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dG = a("mangrove_pressure_plate", new dlw(dtr.p, dtb.d.a().a(u.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dH = a("bamboo_pressure_plate", new dlw(dtr.q, dtb.d.a().a(v.w()).j().a(dud.e).b().d(0.5F).h().a(eph.b)));
+   public static final dfy dI = a("redstone_ore", new dma(dtb.d.a().a(epg.l).a(dud.b).m().e().a(a(9)).a(3.0F, 3.0F)));
+   public static final dfy dJ = a("deepslate_redstone_ore", new dma(dtb.d.b(dI).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy dK = a("redstone_torch", new dmd(dtb.d.a().b().d().a(a(7)).a(dnm.b).a(eph.b)));
+   public static final dfy dL = a("redstone_wall_torch", new dme(dtb.d.a().b().d().a(a(7)).a(dnm.b).a(dK).a(eph.b)));
+   public static final dfy dM = a("stone_button", b());
+   public static final dfy dN = a("snow", new dni(dtb.d.a().a(epg.i).o().k().e().d(0.1F).m().a(dnm.k).c(($$0x, $$1x, $$2) -> $$0x.c(dni.c) >= 8).a(eph.b)));
+   public static final dfy dO = a("ice", new djw(dtb.d.a().a(epg.f).a(0.98F).e().d(0.5F).a(dnm.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bsx.aD).a(dga::b)));
+   public static final dfy dP = a("snow_block", new dfy(dtb.d.a().a(epg.i).m().d(0.2F).a(dnm.k)));
+   public static final dfy dQ = a("cactus", new dgj(dtb.d.a().a(epg.h).e().d(0.4F).a(dnm.i).a(eph.b)));
+   public static final dfy dR = a("clay", new dfy(dtb.d.a().a(epg.j).a(dud.f).d(0.6F).a(dnm.c)));
+   public static final dfy dS = a("sugar_cane", new dnz(dtb.d.a().a(epg.h).b().e().d().a(dnm.d).a(eph.b)));
+   public static final dfy dT = a("jukebox", new dkb(dtb.d.a().a(epg.k).a(dud.e).a(2.0F, 6.0F).a(dnm.b).h()));
+   public static final dfy dU = a("oak_fence", new diw(dtb.d.a().a(n.w()).j().a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy dV = a("netherrack", new dlg(dtb.d.a().a(epg.J).a(dud.b).m().d(0.4F).a(dnm.M)));
+   public static final dfy dW = a("soul_sand", new dnl(dtb.d.a().a(epg.A).a(dud.l).d(0.5F).b(0.4F).a(dnm.I).a(dga::b).a(dga::a).c(dga::a).b(dga::a)));
+   public static final dfy dX = a("soul_soil", new dfy(dtb.d.a().a(epg.A).d(0.5F).a(dnm.J)));
+   public static final dfy dY = a("basalt", new dml(dtb.d.a().a(epg.D).a(dud.b).m().a(1.25F, 4.2F).a(dnm.K)));
+   public static final dfy dZ = a("polished_basalt", new dml(dtb.d.a().a(epg.D).a(dud.b).m().a(1.25F, 4.2F).a(dnm.K)));
+   public static final dfy ea = a("soul_torch", new doj(lm.L, dtb.d.a().b().d().a($$0x -> 10).a(dnm.b).a(eph.b)));
+   public static final dfy eb = a("soul_wall_torch", new dpb(lm.L, dtb.d.a().b().d().a($$0x -> 10).a(dnm.b).a(ea).a(eph.b)));
+   public static final dfy ec = a("glowstone", new dfy(dtb.d.a().a(epg.c).a(dud.p).d(0.3F).a(dnm.h).a($$0x -> 15).a(dga::b)));
+   public static final dfy ed = a("nether_portal", new dlc(dtb.d.a().b().e().d(-1.0F).a(dnm.h).a($$0x -> 11).a(eph.c)));
+   public static final dfy ee = a("carved_pumpkin", new dir(dtb.d.a().a(epg.p).d(1.0F).a(dnm.b).a(dga::b).a(eph.b)));
+   public static final dfy ef = a("jack_o_lantern", new dgs(dtb.d.a().a(epg.p).d(1.0F).a(dnm.b).a($$0x -> 15).a(dga::b).a(eph.b)));
+   public static final dfy eg = a("cake", new dgk(dtb.d.a().j().d(0.5F).a(dnm.i).a(eph.b)));
+   public static final dfy eh = a("repeater", new dmg(dtb.d.a().d().a(dnm.f).a(eph.b)));
+   public static final dfy ei = a("white_stained_glass", b(cti.a));
+   public static final dfy ej = a("orange_stained_glass", b(cti.b));
+   public static final dfy ek = a("magenta_stained_glass", b(cti.c));
+   public static final dfy el = a("light_blue_stained_glass", b(cti.d));
+   public static final dfy em = a("yellow_stained_glass", b(cti.e));
+   public static final dfy en = a("lime_stained_glass", b(cti.f));
+   public static final dfy eo = a("pink_stained_glass", b(cti.g));
+   public static final dfy ep = a("gray_stained_glass", b(cti.h));
+   public static final dfy eq = a("light_gray_stained_glass", b(cti.i));
+   public static final dfy er = a("cyan_stained_glass", b(cti.j));
+   public static final dfy es = a("purple_stained_glass", b(cti.k));
+   public static final dfy et = a("blue_stained_glass", b(cti.l));
+   public static final dfy eu = a("brown_stained_glass", b(cti.m));
+   public static final dfy ev = a("green_stained_glass", b(cti.n));
+   public static final dfy ew = a("red_stained_glass", b(cti.o));
+   public static final dfy ex = a("black_stained_glass", b(cti.p));
+   public static final dfy ey = a("oak_trapdoor", new dom(dtr.g, dtb.d.a().a(epg.n).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy ez = a("spruce_trapdoor", new dom(dtr.h, dtb.d.a().a(epg.I).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eA = a("birch_trapdoor", new dom(dtr.i, dtb.d.a().a(epg.c).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eB = a("jungle_trapdoor", new dom(dtr.l, dtb.d.a().a(epg.k).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eC = a("acacia_trapdoor", new dom(dtr.j, dtb.d.a().a(epg.p).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eD = a("cherry_trapdoor", new dom(dtr.k, dtb.d.a().a(epg.K).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eE = a("dark_oak_trapdoor", new dom(dtr.m, dtb.d.a().a(epg.A).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eF = a("mangrove_trapdoor", new dom(dtr.p, dtb.d.a().a(epg.C).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eG = a("bamboo_trapdoor", new dom(dtr.q, dtb.d.a().a(epg.s).a(dud.e).d(3.0F).c().a(dga::a).h()));
+   public static final dfy eH = a("stone_bricks", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy eI = a("mossy_stone_bricks", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy eJ = a("cracked_stone_bricks", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy eK = a("chiseled_stone_bricks", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy eL = a("packed_mud", new dfy(dtb.d.b(j).a(1.0F, 3.0F).a(dnm.aO)));
+   public static final dfy eM = a("mud_bricks", new dfy(dtb.d.a().a(epg.S).a(dud.b).m().a(1.5F, 3.0F).a(dnm.aN)));
+   public static final dfy eN = a("infested_stone", new djx(b, dtb.d.a().a(epg.j)));
+   public static final dfy eO = a("infested_cobblestone", new djx(m, dtb.d.a().a(epg.j)));
+   public static final dfy eP = a("infested_stone_bricks", new djx(eH, dtb.d.a().a(epg.j)));
+   public static final dfy eQ = a("infested_mossy_stone_bricks", new djx(eI, dtb.d.a().a(epg.j)));
+   public static final dfy eR = a("infested_cracked_stone_bricks", new djx(eJ, dtb.d.a().a(epg.j)));
+   public static final dfy eS = a("infested_chiseled_stone_bricks", new djx(eK, dtb.d.a().a(epg.j)));
+   public static final dfy eT = a("brown_mushroom_block", new djv(dtb.d.a().a(epg.k).a(dud.e).d(0.2F).a(dnm.b).h()));
+   public static final dfy eU = a("red_mushroom_block", new djv(dtb.d.a().a(epg.C).a(dud.e).d(0.2F).a(dnm.b).h()));
+   public static final dfy eV = a("mushroom_stem", new djv(dtb.d.a().a(epg.d).a(dud.e).d(0.2F).a(dnm.b).h()));
+   public static final dfy eW = a("iron_bars", new djz(dtb.d.a().m().a(5.0F, 6.0F).a(dnm.g).c()));
+   public static final dfy eX = a("chain", new dgy(dtb.d.a().j().m().a(5.0F, 6.0F).a(dnm.U).c()));
+   public static final dfy eY = a("glass_pane", new djz(dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy eZ = a(akh.a, new dlx(dtb.d.a().a(epg.p).a(dud.m).d(1.0F).a(dnm.b).a(eph.b)));
+   public static final dfy fa = a(akh.d, new dfy(dtb.d.a().a(epg.t).d(1.0F).a(dnm.b).a(eph.b)));
+   public static final dfy fb = a(akh.c, new dez(akh.b, akh.a, aki.a, dtb.d.a().a(epg.h).b().d().a(dnm.b).a(eph.b)));
+   public static final dfy fc = a(akh.f, new dez(akh.e, akh.d, aki.b, dtb.d.a().a(epg.h).b().d().a(dnm.b).a(eph.b)));
+   public static final dfy fd = a(akh.b, new dnv(akh.a, akh.c, aki.a, dtb.d.a().a(epg.h).b().e().d().a(dnm.x).a(eph.b)));
+   public static final dfy fe = a(akh.e, new dnv(akh.d, akh.f, aki.b, dtb.d.a().a(epg.h).b().e().d().a(dnm.x).a(eph.b)));
+   public static final dfy ff = a("vine", new dov(dtb.d.a().a(epg.h).o().b().e().d(0.2F).a(dnm.y).h().a(eph.b)));
+   public static final dfy fg = a("glow_lichen", new dji(dtb.d.a().a(epg.aj).o().b().d(0.2F).a(dnm.aD).a(dji.b(7)).h().a(eph.b)));
+   public static final dfy fh = a("oak_fence_gate", new dix(dup.b, dtb.d.a().a(n.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy fi = a("brick_stairs", b(cj));
+   public static final dfy fj = a("stone_brick_stairs", b(eH));
+   public static final dfy fk = a("mud_brick_stairs", b(eM));
+   public static final dfy fl = a("mycelium", new dlb(dtb.d.a().a(epg.y).e().d(0.6F).a(dnm.d)));
+   public static final dfy fm = a("lily_pad", new dpc(dtb.d.a().a(epg.h).d().a(dnm.e).c().a(eph.b)));
+   public static final dfy fn = a("nether_bricks", new dfy(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy fo = a("nether_brick_fence", new diw(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy fp = a("nether_brick_stairs", b(fn));
+   public static final dfy fq = a("nether_wart", new dlf(dtb.d.a().a(epg.C).b().e().a(dnm.z).a(eph.b)));
+   public static final dfy fr = a("enchanting_table", new dik(dtb.d.a().a(epg.C).a(dud.b).m().a($$0x -> 7).a(5.0F, 1200.0F)));
+   public static final dfy fs = a("brewing_stand", new dgc(dtb.d.a().a(epg.g).m().d(0.5F).a($$0x -> 1).c()));
+   public static final dfy ft = a("cauldron", new dgt(dtb.d.a().a(epg.l).m().d(2.0F).c()));
+   public static final dfy fu = a("water_cauldron", new dkh(ddw.c.b, kj.d, dtb.d.b(ft)));
+   public static final dfy fv = a("lava_cauldron", new dkg(dtb.d.b(ft).a($$0x -> 15)));
+   public static final dfy fw = a("powder_snow_cauldron", new dkh(ddw.c.c, kj.f, dtb.d.b(ft)));
+   public static final dfy fx = a("end_portal", new dim(dtb.d.a().a(epg.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eph.c)));
+   public static final dfy fy = a("end_portal_frame", new din(dtb.d.a().a(epg.B).a(dud.b).a(dnm.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g()));
+   public static final dfy fz = a("end_stone", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().a(3.0F, 9.0F)));
+   public static final dfy fA = a("dragon_egg", new dih(dtb.d.a().a(epg.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(eph.b)));
+   public static final dfy fB = a("redstone_lamp", new dmc(dtb.d.a().a(a(15)).d(0.3F).a(dnm.h).a(dga::b)));
+   public static final dfy fC = a("cocoa", new dhf(dtb.d.a().a(epg.h).e().a(0.2F, 3.0F).a(dnm.b).c().a(eph.b)));
+   public static final dfy fD = a("sandstone_stairs", b(aV));
+   public static final dfy fE = a("emerald_ore", new dii(bqc.a(3, 7), dtb.d.a().a(epg.l).a(dud.b).m().a(3.0F, 3.0F)));
+   public static final dfy fF = a("deepslate_emerald_ore", new dii(bqc.a(3, 7), dtb.d.b(fE).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy fG = a("ender_chest", new dip(dtb.d.a().a(epg.l).a(dud.b).m().a(22.5F, 600.0F).a($$0x -> 7)));
+   public static final dfy fH = a("tripwire_hook", new doq(dtb.d.a().b().a(dnm.b).a(eph.b)));
+   public static final dfy fI = a("tripwire", new dop(fH, dtb.d.a().b().a(eph.b)));
+   public static final dfy fJ = a("emerald_block", new dfy(dtb.d.a().a(epg.H).a(dud.n).m().a(5.0F, 6.0F).a(dnm.g)));
+   public static final dfy fK = a("spruce_stairs", b(o));
+   public static final dfy fL = a("birch_stairs", b(p));
+   public static final dfy fM = a("jungle_stairs", b(q));
+   public static final dfy fN = a("command_block", new dhh(false, dtb.d.a().a(epg.A).m().a(-1.0F, 3600000.0F).g()));
+   public static final dfy fO = a("beacon", new dfq(dtb.d.a().a(epg.F).a(dud.d).d(3.0F).a($$0x -> 15).c().a(dga::b)));
+   public static final dfy fP = a("cobblestone_wall", new dox(dtb.d.b(m).j()));
+   public static final dfy fQ = a("mossy_cobblestone_wall", new dox(dtb.d.b(m).j()));
+   public static final dfy fR = a("flower_pot", a(a));
+   public static final dfy fS = a("potted_torchflower", a(bS));
+   public static final dfy fT = a("potted_oak_sapling", a(x));
+   public static final dfy fU = a("potted_spruce_sapling", a(y));
+   public static final dfy fV = a("potted_birch_sapling", a(z));
+   public static final dfy fW = a("potted_jungle_sapling", a(A));
+   public static final dfy fX = a("potted_acacia_sapling", a(B));
+   public static final dfy fY = a("potted_cherry_sapling", a(C));
+   public static final dfy fZ = a("potted_dark_oak_sapling", a(D));
+   public static final dfy ga = a("potted_mangrove_propagule", a(E));
+   public static final dfy gb = a("potted_fern", a(bu));
+   public static final dfy gc = a("potted_dandelion", a(bR));
+   public static final dfy gd = a("potted_poppy", a(bT));
+   public static final dfy ge = a("potted_blue_orchid", a(bU));
+   public static final dfy gf = a("potted_allium", a(bV));
+   public static final dfy gg = a("potted_azure_bluet", a(bW));
+   public static final dfy gh = a("potted_red_tulip", a(bX));
+   public static final dfy gi = a("potted_orange_tulip", a(bY));
+   public static final dfy gj = a("potted_white_tulip", a(bZ));
+   public static final dfy gk = a("potted_pink_tulip", a(ca));
+   public static final dfy gl = a("potted_oxeye_daisy", a(cb));
+   public static final dfy gm = a("potted_cornflower", a(cc));
+   public static final dfy gn = a("potted_lily_of_the_valley", a(ce));
+   public static final dfy go = a("potted_wither_rose", a(cd));
+   public static final dfy gp = a("potted_red_mushroom", a(cg));
+   public static final dfy gq = a("potted_brown_mushroom", a(cf));
+   public static final dfy gr = a("potted_dead_bush", a(bv));
+   public static final dfy gs = a("potted_cactus", a(dQ));
+   public static final dfy gt = a("carrots", new dgq(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy gu = a("potatoes", new dls(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy gv = a("oak_button", a(dtr.g));
+   public static final dfy gw = a("spruce_button", a(dtr.h));
+   public static final dfy gx = a("birch_button", a(dtr.i));
+   public static final dfy gy = a("jungle_button", a(dtr.l));
+   public static final dfy gz = a("acacia_button", a(dtr.j));
+   public static final dfy gA = a("cherry_button", a(dtr.k));
+   public static final dfy gB = a("dark_oak_button", a(dtr.m));
+   public static final dfy gC = a("mangrove_button", a(dtr.p));
+   public static final dfy gD = a("bamboo_button", a(dtr.q));
+   public static final dfy gE = a("skeleton_skull", new dnb(dnb.b.c, dtb.d.a().a(dud.r).d(1.0F).a(eph.b)));
+   public static final dfy gF = a("skeleton_wall_skull", new dpa(dnb.b.c, dtb.d.a().d(1.0F).a(gE).a(eph.b)));
+   public static final dfy gG = a("wither_skeleton_skull", new dps(dtb.d.a().a(dud.u).d(1.0F).a(eph.b)));
+   public static final dfy gH = a("wither_skeleton_wall_skull", new dpt(dtb.d.a().d(1.0F).a(gG).a(eph.b)));
+   public static final dfy gI = a("zombie_head", new dnb(dnb.b.f, dtb.d.a().a(dud.q).d(1.0F).a(eph.b)));
+   public static final dfy gJ = a("zombie_wall_head", new dpa(dnb.b.f, dtb.d.a().d(1.0F).a(gI).a(eph.b)));
+   public static final dfy gK = a("player_head", new dlo(dtb.d.a().a(dud.w).d(1.0F).a(eph.b)));
+   public static final dfy gL = a("player_wall_head", new dlp(dtb.d.a().d(1.0F).a(gK).a(eph.b)));
+   public static final dfy gM = a("creeper_head", new dnb(dnb.b.g, dtb.d.a().a(dud.s).d(1.0F).a(eph.b)));
+   public static final dfy gN = a("creeper_wall_head", new dpa(dnb.b.g, dtb.d.a().d(1.0F).a(gM).a(eph.b)));
+   public static final dfy gO = a("dragon_head", new dnb(dnb.b.i, dtb.d.a().a(dud.t).d(1.0F).a(eph.b)));
+   public static final dfy gP = a("dragon_wall_head", new dpa(dnb.b.i, dtb.d.a().d(1.0F).a(gO).a(eph.b)));
+   public static final dfy gQ = a("piglin_head", new dnb(dnb.b.h, dtb.d.a().a(dud.v).d(1.0F).a(eph.b)));
+   public static final dfy gR = a("piglin_wall_head", new dlk(dtb.d.a().d(1.0F).a(gQ).a(eph.b)));
+   public static final dfy gS = a("anvil", new dey(dtb.d.a().a(epg.g).m().a(5.0F, 1200.0F).a(dnm.n).a(eph.c)));
+   public static final dfy gT = a("chipped_anvil", new dey(dtb.d.a().a(epg.g).m().a(5.0F, 1200.0F).a(dnm.n).a(eph.c)));
+   public static final dfy gU = a("damaged_anvil", new dey(dtb.d.a().a(epg.g).m().a(5.0F, 1200.0F).a(dnm.n).a(eph.c)));
+   public static final dfy gV = a("trapped_chest", new don(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy gW = a("light_weighted_pressure_plate", new dpp(15, dtr.d, dtb.d.a().a(epg.E).j().m().b().d(0.5F).a(eph.b)));
+   public static final dfy gX = a("heavy_weighted_pressure_plate", new dpp(150, dtr.b, dtb.d.a().a(epg.g).j().m().b().d(0.5F).a(eph.b)));
+   public static final dfy gY = a("comparator", new dhi(dtb.d.a().d().a(dnm.f).a(eph.b)));
+   public static final dfy gZ = a("daylight_detector", new dhw(dtb.d.a().a(epg.n).a(dud.e).d(0.2F).a(dnm.b).h()));
+   public static final dfy ha = a("redstone_block", new dlu(dtb.d.a().a(epg.e).m().a(5.0F, 6.0F).a(dnm.g).a(dga::b)));
+   public static final dfy hb = a("nether_quartz_ore", new dii(bqc.a(2, 5), dtb.d.a().a(epg.J).a(dud.b).m().a(3.0F, 3.0F).a(dnm.P)));
+   public static final dfy hc = a("hopper", new djt(dtb.d.a().a(epg.l).m().a(3.0F, 4.8F).a(dnm.g).c()));
+   public static final dfy hd = a("quartz_block", new dfy(dtb.d.a().a(epg.o).a(dud.b).m().d(0.8F)));
+   public static final dfy he = a("chiseled_quartz_block", new dfy(dtb.d.a().a(epg.o).a(dud.b).m().d(0.8F)));
+   public static final dfy hf = a("quartz_pillar", new dml(dtb.d.a().a(epg.o).a(dud.b).m().d(0.8F)));
+   public static final dfy hg = a("quartz_stairs", b(hd));
+   public static final dfy hh = a("activator_rail", new dlv(dtb.d.a().b().d(0.7F).a(dnm.g)));
+   public static final dfy hi = a("dropper", new dij(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F)));
+   public static final dfy hj = a("white_terracotta", new dfy(dtb.d.a().a(epg.K).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hk = a("orange_terracotta", new dfy(dtb.d.a().a(epg.L).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hl = a("magenta_terracotta", new dfy(dtb.d.a().a(epg.M).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hm = a("light_blue_terracotta", new dfy(dtb.d.a().a(epg.N).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hn = a("yellow_terracotta", new dfy(dtb.d.a().a(epg.O).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy ho = a("lime_terracotta", new dfy(dtb.d.a().a(epg.P).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hp = a("pink_terracotta", new dfy(dtb.d.a().a(epg.Q).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hq = a("gray_terracotta", new dfy(dtb.d.a().a(epg.R).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hr = a("light_gray_terracotta", new dfy(dtb.d.a().a(epg.S).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hs = a("cyan_terracotta", new dfy(dtb.d.a().a(epg.T).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy ht = a("purple_terracotta", new dfy(dtb.d.a().a(epg.U).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hu = a("blue_terracotta", new dfy(dtb.d.a().a(epg.V).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hv = a("brown_terracotta", new dfy(dtb.d.a().a(epg.W).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hw = a("green_terracotta", new dfy(dtb.d.a().a(epg.X).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hx = a("red_terracotta", new dfy(dtb.d.a().a(epg.Y).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hy = a("black_terracotta", new dfy(dtb.d.a().a(epg.Z).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy hz = a("white_stained_glass_pane", new dns(cti.a, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hA = a("orange_stained_glass_pane", new dns(cti.b, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hB = a("magenta_stained_glass_pane", new dns(cti.c, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hC = a("light_blue_stained_glass_pane", new dns(cti.d, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hD = a("yellow_stained_glass_pane", new dns(cti.e, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hE = a("lime_stained_glass_pane", new dns(cti.f, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hF = a("pink_stained_glass_pane", new dns(cti.g, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hG = a("gray_stained_glass_pane", new dns(cti.h, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hH = a("light_gray_stained_glass_pane", new dns(cti.i, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hI = a("cyan_stained_glass_pane", new dns(cti.j, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hJ = a("purple_stained_glass_pane", new dns(cti.k, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hK = a("blue_stained_glass_pane", new dns(cti.l, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hL = a("brown_stained_glass_pane", new dns(cti.m, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hM = a("green_stained_glass_pane", new dns(cti.n, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hN = a("red_stained_glass_pane", new dns(cti.o, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hO = a("black_stained_glass_pane", new dns(cti.p, dtb.d.a().a(dud.d).d(0.3F).a(dnm.h).c()));
+   public static final dfy hP = a("acacia_stairs", b(r));
+   public static final dfy hQ = a("cherry_stairs", b(s));
+   public static final dfy hR = a("dark_oak_stairs", b(t));
+   public static final dfy hS = a("mangrove_stairs", b(u));
+   public static final dfy hT = a("bamboo_stairs", b(v));
+   public static final dfy hU = a("bamboo_mosaic_stairs", b(w));
+   public static final dfy hV = a("slime_block", new dnd(dtb.d.a().a(epg.b).a(0.8F).a(dnm.o).c()));
+   public static final dfy hW = a("barrier", new dff(dtb.d.a().a(-1.0F, 3600000.8F).a(a(epg.a)).g().c().a(dga::a).n().a(eph.c)));
+   public static final dfy hX = a("light", new dkm(dtb.d.a().o().a(-1.0F, 3600000.8F).a(a(epg.a)).g().c().a(dkm.e)));
+   public static final dfy hY = a("iron_trapdoor", new dom(dtr.b, dtb.d.a().a(epg.g).m().d(5.0F).c().a(dga::a)));
+   public static final dfy hZ = a("prismarine", new dfy(dtb.d.a().a(epg.x).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ia = a("prismarine_bricks", new dfy(dtb.d.a().a(epg.F).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ib = a("dark_prismarine", new dfy(dtb.d.a().a(epg.F).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ic = a("prismarine_stairs", b(hZ));
+   public static final dfy id = a("prismarine_brick_stairs", b(ia));
+   public static final dfy ie = a("dark_prismarine_stairs", b(ib));
+   public static final dfy if = a("prismarine_slab", new dnc(dtb.d.a().a(epg.x).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ig = a("prismarine_brick_slab", new dnc(dtb.d.a().a(epg.F).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ih = a("dark_prismarine_slab", new dnc(dtb.d.a().a(epg.F).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ii = a("sea_lantern", new dfy(dtb.d.a().a(epg.o).a(dud.d).d(0.3F).a(dnm.h).a($$0x -> 15).a(dga::b)));
+   public static final dfy ij = a("hay_block", new djq(dtb.d.a().a(epg.s).a(dud.o).d(0.5F).a(dnm.d)));
+   public static final dfy ik = a("white_carpet", new dpu(cti.a, dtb.d.a().a(epg.i).d(0.1F).a(dnm.i).h()));
+   public static final dfy il = a("orange_carpet", new dpu(cti.b, dtb.d.a().a(epg.p).d(0.1F).a(dnm.i).h()));
+   public static final dfy im = a("magenta_carpet", new dpu(cti.c, dtb.d.a().a(epg.q).d(0.1F).a(dnm.i).h()));
+   public static final dfy in = a("light_blue_carpet", new dpu(cti.d, dtb.d.a().a(epg.r).d(0.1F).a(dnm.i).h()));
+   public static final dfy io = a("yellow_carpet", new dpu(cti.e, dtb.d.a().a(epg.s).d(0.1F).a(dnm.i).h()));
+   public static final dfy ip = a("lime_carpet", new dpu(cti.f, dtb.d.a().a(epg.t).d(0.1F).a(dnm.i).h()));
+   public static final dfy iq = a("pink_carpet", new dpu(cti.g, dtb.d.a().a(epg.u).d(0.1F).a(dnm.i).h()));
+   public static final dfy ir = a("gray_carpet", new dpu(cti.h, dtb.d.a().a(epg.v).d(0.1F).a(dnm.i).h()));
+   public static final dfy is = a("light_gray_carpet", new dpu(cti.i, dtb.d.a().a(epg.w).d(0.1F).a(dnm.i).h()));
+   public static final dfy it = a("cyan_carpet", new dpu(cti.j, dtb.d.a().a(epg.x).d(0.1F).a(dnm.i).h()));
+   public static final dfy iu = a("purple_carpet", new dpu(cti.k, dtb.d.a().a(epg.y).d(0.1F).a(dnm.i).h()));
+   public static final dfy iv = a("blue_carpet", new dpu(cti.l, dtb.d.a().a(epg.z).d(0.1F).a(dnm.i).h()));
+   public static final dfy iw = a("brown_carpet", new dpu(cti.m, dtb.d.a().a(epg.A).d(0.1F).a(dnm.i).h()));
+   public static final dfy ix = a("green_carpet", new dpu(cti.n, dtb.d.a().a(epg.B).d(0.1F).a(dnm.i).h()));
+   public static final dfy iy = a("red_carpet", new dpu(cti.o, dtb.d.a().a(epg.C).d(0.1F).a(dnm.i).h()));
+   public static final dfy iz = a("black_carpet", new dpu(cti.p, dtb.d.a().a(epg.D).d(0.1F).a(dnm.i).h()));
+   public static final dfy iA = a("terracotta", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().a(1.25F, 4.2F)));
+   public static final dfy iB = a("coal_block", new dfy(dtb.d.a().a(epg.D).a(dud.b).m().a(5.0F, 6.0F)));
+   public static final dfy iC = a("packed_ice", new dfy(dtb.d.a().a(epg.f).a(dud.i).a(0.98F).d(0.5F).a(dnm.h)));
+   public static final dfy iD = a("sunflower", new dod(dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iE = a("lilac", new dod(dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iF = a("rose_bush", new dod(dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iG = a("peony", new dod(dtb.d.a().a(epg.h).b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iH = a("tall_grass", new dig(dtb.d.a().a(epg.h).o().b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iI = a("large_fern", new dig(dtb.d.a().a(epg.h).o().b().d().a(dnm.d).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy iJ = a("white_banner", new dfd(cti.a, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iK = a("orange_banner", new dfd(cti.b, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iL = a("magenta_banner", new dfd(cti.c, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iM = a("light_blue_banner", new dfd(cti.d, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iN = a("yellow_banner", new dfd(cti.e, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iO = a("lime_banner", new dfd(cti.f, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iP = a("pink_banner", new dfd(cti.g, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iQ = a("gray_banner", new dfd(cti.h, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iR = a("light_gray_banner", new dfd(cti.i, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iS = a("cyan_banner", new dfd(cti.j, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iT = a("purple_banner", new dfd(cti.k, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iU = a("blue_banner", new dfd(cti.l, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iV = a("brown_banner", new dfd(cti.m, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iW = a("green_banner", new dfd(cti.n, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iX = a("red_banner", new dfd(cti.o, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iY = a("black_banner", new dfd(cti.p, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).h()));
+   public static final dfy iZ = a("white_wall_banner", new dow(cti.a, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iJ).h()));
+   public static final dfy ja = a("orange_wall_banner", new dow(cti.b, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iK).h()));
+   public static final dfy jb = a("magenta_wall_banner", new dow(cti.c, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iL).h()));
+   public static final dfy jc = a("light_blue_wall_banner", new dow(cti.d, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iM).h()));
+   public static final dfy jd = a("yellow_wall_banner", new dow(cti.e, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iN).h()));
+   public static final dfy je = a("lime_wall_banner", new dow(cti.f, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iO).h()));
+   public static final dfy jf = a("pink_wall_banner", new dow(cti.g, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iP).h()));
+   public static final dfy jg = a("gray_wall_banner", new dow(cti.h, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iQ).h()));
+   public static final dfy jh = a("light_gray_wall_banner", new dow(cti.i, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iR).h()));
+   public static final dfy ji = a("cyan_wall_banner", new dow(cti.j, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iS).h()));
+   public static final dfy jj = a("purple_wall_banner", new dow(cti.k, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iT).h()));
+   public static final dfy jk = a("blue_wall_banner", new dow(cti.l, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iU).h()));
+   public static final dfy jl = a("brown_wall_banner", new dow(cti.m, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iV).h()));
+   public static final dfy jm = a("green_wall_banner", new dow(cti.n, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iW).h()));
+   public static final dfy jn = a("red_wall_banner", new dow(cti.o, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iX).h()));
+   public static final dfy jo = a("black_wall_banner", new dow(cti.p, dtb.d.a().a(epg.n).j().a(dud.e).b().d(1.0F).a(dnm.b).a(iY).h()));
+   public static final dfy jp = a("red_sandstone", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().d(0.8F)));
+   public static final dfy jq = a("chiseled_red_sandstone", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().d(0.8F)));
+   public static final dfy jr = a("cut_red_sandstone", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().d(0.8F)));
+   public static final dfy js = a("red_sandstone_stairs", b(jp));
+   public static final dfy jt = a("oak_slab", new dnc(dtb.d.a().a(epg.n).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy ju = a("spruce_slab", new dnc(dtb.d.a().a(epg.I).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jv = a("birch_slab", new dnc(dtb.d.a().a(epg.c).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jw = a("jungle_slab", new dnc(dtb.d.a().a(epg.k).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jx = a("acacia_slab", new dnc(dtb.d.a().a(epg.p).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jy = a("cherry_slab", new dnc(dtb.d.a().a(epg.K).a(dud.e).a(2.0F, 3.0F).a(dnm.aU).h()));
+   public static final dfy jz = a("dark_oak_slab", new dnc(dtb.d.a().a(epg.A).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jA = a("mangrove_slab", new dnc(dtb.d.a().a(epg.C).a(dud.e).a(2.0F, 3.0F).a(dnm.b).h()));
+   public static final dfy jB = a("bamboo_slab", new dnc(dtb.d.a().a(epg.s).a(dud.e).a(2.0F, 3.0F).a(dnm.aS).h()));
+   public static final dfy jC = a("bamboo_mosaic_slab", new dnc(dtb.d.a().a(epg.s).a(dud.e).a(2.0F, 3.0F).a(dnm.aS).h()));
+   public static final dfy jD = a("stone_slab", new dnc(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jE = a("smooth_stone_slab", new dnc(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jF = a("sandstone_slab", new dnc(dtb.d.a().a(epg.c).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jG = a("cut_sandstone_slab", new dnc(dtb.d.a().a(epg.c).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jH = a("petrified_oak_slab", new dnc(dtb.d.a().a(epg.n).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jI = a("cobblestone_slab", new dnc(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jJ = a("brick_slab", new dnc(dtb.d.a().a(epg.C).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jK = a("stone_brick_slab", new dnc(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jL = a("mud_brick_slab", new dnc(dtb.d.a().a(epg.S).a(dud.b).m().a(1.5F, 3.0F).a(dnm.aN)));
+   public static final dfy jM = a("nether_brick_slab", new dnc(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy jN = a("quartz_slab", new dnc(dtb.d.a().a(epg.o).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jO = a("red_sandstone_slab", new dnc(dtb.d.a().a(epg.p).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jP = a("cut_red_sandstone_slab", new dnc(dtb.d.a().a(epg.p).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jQ = a("purpur_slab", new dnc(dtb.d.a().a(epg.q).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jR = a("smooth_stone", new dfy(dtb.d.a().a(epg.l).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jS = a("smooth_sandstone", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jT = a("smooth_quartz", new dfy(dtb.d.a().a(epg.o).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jU = a("smooth_red_sandstone", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().a(2.0F, 6.0F)));
+   public static final dfy jV = a("spruce_fence_gate", new dix(dup.c, dtb.d.a().a(o.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy jW = a("birch_fence_gate", new dix(dup.d, dtb.d.a().a(p.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy jX = a("jungle_fence_gate", new dix(dup.g, dtb.d.a().a(q.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy jY = a("acacia_fence_gate", new dix(dup.e, dtb.d.a().a(r.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy jZ = a("cherry_fence_gate", new dix(dup.f, dtb.d.a().a(s.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy ka = a("dark_oak_fence_gate", new dix(dup.h, dtb.d.a().a(t.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy kb = a("mangrove_fence_gate", new dix(dup.k, dtb.d.a().a(u.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy kc = a("bamboo_fence_gate", new dix(dup.l, dtb.d.a().a(v.w()).j().a(dud.e).a(2.0F, 3.0F).h()));
+   public static final dfy kd = a("spruce_fence", new diw(dtb.d.a().a(o.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy ke = a("birch_fence", new diw(dtb.d.a().a(p.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy kf = a("jungle_fence", new diw(dtb.d.a().a(q.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy kg = a("acacia_fence", new diw(dtb.d.a().a(r.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy kh = a("cherry_fence", new diw(dtb.d.a().a(s.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.aU)));
+   public static final dfy ki = a("dark_oak_fence", new diw(dtb.d.a().a(t.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy kj = a("mangrove_fence", new diw(dtb.d.a().a(u.w()).a(dud.e).a(2.0F, 3.0F).h().a(dnm.b)));
+   public static final dfy kk = a("bamboo_fence", new diw(dtb.d.a().a(v.w()).a(dud.e).a(2.0F, 3.0F).a(dnm.aS).h()));
+   public static final dfy kl = a("spruce_door", new die(dtr.h, dtb.d.a().a(o.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy km = a("birch_door", new die(dtr.i, dtb.d.a().a(p.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy kn = a("jungle_door", new die(dtr.l, dtb.d.a().a(q.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy ko = a("acacia_door", new die(dtr.j, dtb.d.a().a(r.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy kp = a("cherry_door", new die(dtr.k, dtb.d.a().a(s.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy kq = a("dark_oak_door", new die(dtr.m, dtb.d.a().a(t.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy kr = a("mangrove_door", new die(dtr.p, dtb.d.a().a(u.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy ks = a("bamboo_door", new die(dtr.q, dtb.d.a().a(v.w()).a(dud.e).d(3.0F).c().h().a(eph.b)));
+   public static final dfy kt = a("end_rod", new dio(dtb.d.a().k().d().a($$0x -> 14).a(dnm.b).c()));
+   public static final dfy ku = a("chorus_plant", new dhe(dtb.d.a().a(epg.y).k().d(0.4F).a(dnm.b).c().a(eph.b)));
+   public static final dfy kv = a("chorus_flower", new dhd(ku, dtb.d.a().a(epg.y).k().e().d(0.4F).a(dnm.b).c().a(dga::a).a(eph.b).a(dga::b)));
+   public static final dfy kw = a("purpur_block", new dfy(dtb.d.a().a(epg.q).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy kx = a("purpur_pillar", new dml(dtb.d.a().a(epg.q).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ky = a("purpur_stairs", b(kw));
+   public static final dfy kz = a("end_stone_bricks", new dfy(dtb.d.a().a(epg.c).a(dud.b).m().a(3.0F, 9.0F)));
+   public static final dfy kA = a("torchflower_crop", new dok(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy kB = a("pitcher_crop", new dln(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy kC = a("pitcher_plant", new dig(dtb.d.a().a(epg.h).b().d().a(dnm.w).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy kD = a("beetroots", new dft(dtb.d.a().a(epg.h).b().e().d().a(dnm.w).a(eph.b)));
+   public static final dfy kE = a("dirt_path", new dic(dtb.d.a().a(epg.k).d(0.65F).a(dnm.d).c(dga::a).b(dga::a)));
+   public static final dfy kF = a("end_gateway", new dil(dtb.d.a().a(epg.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eph.c)));
+   public static final dfy kG = a("repeating_command_block", new dhh(false, dtb.d.a().a(epg.y).m().a(-1.0F, 3600000.0F).g()));
+   public static final dfy kH = a("chain_command_block", new dhh(true, dtb.d.a().a(epg.B).m().a(-1.0F, 3600000.0F).g()));
+   public static final dfy kI = a("frosted_ice", new djd(dtb.d.a().a(epg.f).a(0.98F).d(0.5F).a(dnm.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bsx.aD).a(dga::b)));
+   public static final dfy kJ = a(
+      "magma_block", new dkr(dtb.d.a().a(epg.J).a(dud.b).m().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dga::a).e(dga::a))
+   );
+   public static final dfy kK = a("nether_wart_block", new dfy(dtb.d.a().a(epg.C).d(1.0F).a(dnm.L)));
+   public static final dfy kL = a("red_nether_bricks", new dfy(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy kM = a("bone_block", new dml(dtb.d.a().a(epg.c).a(dud.j).m().d(2.0F).a(dnm.Q)));
+   public static final dfy kN = a("structure_void", new dny(dtb.d.a().o().b().g().n().a(eph.b)));
+   public static final dfy kO = a("observer", new dlj(dtb.d.a().a(epg.l).a(dud.b).d(3.0F).m().a(dga::b)));
+   public static final dfy kP = a("shulker_box", a(null, epg.y));
+   public static final dfy kQ = a("white_shulker_box", a(cti.a, epg.i));
+   public static final dfy kR = a("orange_shulker_box", a(cti.b, epg.p));
+   public static final dfy kS = a("magenta_shulker_box", a(cti.c, epg.q));
+   public static final dfy kT = a("light_blue_shulker_box", a(cti.d, epg.r));
+   public static final dfy kU = a("yellow_shulker_box", a(cti.e, epg.s));
+   public static final dfy kV = a("lime_shulker_box", a(cti.f, epg.t));
+   public static final dfy kW = a("pink_shulker_box", a(cti.g, epg.u));
+   public static final dfy kX = a("gray_shulker_box", a(cti.h, epg.v));
+   public static final dfy kY = a("light_gray_shulker_box", a(cti.i, epg.w));
+   public static final dfy kZ = a("cyan_shulker_box", a(cti.j, epg.x));
+   public static final dfy la = a("purple_shulker_box", a(cti.k, epg.U));
+   public static final dfy lb = a("blue_shulker_box", a(cti.l, epg.z));
+   public static final dfy lc = a("brown_shulker_box", a(cti.m, epg.A));
+   public static final dfy ld = a("green_shulker_box", a(cti.n, epg.B));
+   public static final dfy le = a("red_shulker_box", a(cti.o, epg.C));
+   public static final dfy lf = a("black_shulker_box", a(cti.p, epg.D));
+   public static final dfy lg = a("white_glazed_terracotta", new djh(dtb.d.a().a(cti.a).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lh = a("orange_glazed_terracotta", new djh(dtb.d.a().a(cti.b).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy li = a("magenta_glazed_terracotta", new djh(dtb.d.a().a(cti.c).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lj = a("light_blue_glazed_terracotta", new djh(dtb.d.a().a(cti.d).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lk = a("yellow_glazed_terracotta", new djh(dtb.d.a().a(cti.e).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy ll = a("lime_glazed_terracotta", new djh(dtb.d.a().a(cti.f).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lm = a("pink_glazed_terracotta", new djh(dtb.d.a().a(cti.g).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy ln = a("gray_glazed_terracotta", new djh(dtb.d.a().a(cti.h).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lo = a("light_gray_glazed_terracotta", new djh(dtb.d.a().a(cti.i).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lp = a("cyan_glazed_terracotta", new djh(dtb.d.a().a(cti.j).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lq = a("purple_glazed_terracotta", new djh(dtb.d.a().a(cti.k).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lr = a("blue_glazed_terracotta", new djh(dtb.d.a().a(cti.l).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy ls = a("brown_glazed_terracotta", new djh(dtb.d.a().a(cti.m).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lt = a("green_glazed_terracotta", new djh(dtb.d.a().a(cti.n).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lu = a("red_glazed_terracotta", new djh(dtb.d.a().a(cti.o).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lv = a("black_glazed_terracotta", new djh(dtb.d.a().a(cti.p).a(dud.b).m().d(1.4F).a(eph.e)));
+   public static final dfy lw = a("white_concrete", new dfy(dtb.d.a().a(cti.a).a(dud.b).m().d(1.8F)));
+   public static final dfy lx = a("orange_concrete", new dfy(dtb.d.a().a(cti.b).a(dud.b).m().d(1.8F)));
+   public static final dfy ly = a("magenta_concrete", new dfy(dtb.d.a().a(cti.c).a(dud.b).m().d(1.8F)));
+   public static final dfy lz = a("light_blue_concrete", new dfy(dtb.d.a().a(cti.d).a(dud.b).m().d(1.8F)));
+   public static final dfy lA = a("yellow_concrete", new dfy(dtb.d.a().a(cti.e).a(dud.b).m().d(1.8F)));
+   public static final dfy lB = a("lime_concrete", new dfy(dtb.d.a().a(cti.f).a(dud.b).m().d(1.8F)));
+   public static final dfy lC = a("pink_concrete", new dfy(dtb.d.a().a(cti.g).a(dud.b).m().d(1.8F)));
+   public static final dfy lD = a("gray_concrete", new dfy(dtb.d.a().a(cti.h).a(dud.b).m().d(1.8F)));
+   public static final dfy lE = a("light_gray_concrete", new dfy(dtb.d.a().a(cti.i).a(dud.b).m().d(1.8F)));
+   public static final dfy lF = a("cyan_concrete", new dfy(dtb.d.a().a(cti.j).a(dud.b).m().d(1.8F)));
+   public static final dfy lG = a("purple_concrete", new dfy(dtb.d.a().a(cti.k).a(dud.b).m().d(1.8F)));
+   public static final dfy lH = a("blue_concrete", new dfy(dtb.d.a().a(cti.l).a(dud.b).m().d(1.8F)));
+   public static final dfy lI = a("brown_concrete", new dfy(dtb.d.a().a(cti.m).a(dud.b).m().d(1.8F)));
+   public static final dfy lJ = a("green_concrete", new dfy(dtb.d.a().a(cti.n).a(dud.b).m().d(1.8F)));
+   public static final dfy lK = a("red_concrete", new dfy(dtb.d.a().a(cti.o).a(dud.b).m().d(1.8F)));
+   public static final dfy lL = a("black_concrete", new dfy(dtb.d.a().a(cti.p).a(dud.b).m().d(1.8F)));
+   public static final dfy lM = a("white_concrete_powder", new dhk(lw, dtb.d.a().a(cti.a).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lN = a("orange_concrete_powder", new dhk(lx, dtb.d.a().a(cti.b).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lO = a("magenta_concrete_powder", new dhk(ly, dtb.d.a().a(cti.c).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lP = a("light_blue_concrete_powder", new dhk(lz, dtb.d.a().a(cti.d).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lQ = a("yellow_concrete_powder", new dhk(lA, dtb.d.a().a(cti.e).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lR = a("lime_concrete_powder", new dhk(lB, dtb.d.a().a(cti.f).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lS = a("pink_concrete_powder", new dhk(lC, dtb.d.a().a(cti.g).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lT = a("gray_concrete_powder", new dhk(lD, dtb.d.a().a(cti.h).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lU = a("light_gray_concrete_powder", new dhk(lE, dtb.d.a().a(cti.i).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lV = a("cyan_concrete_powder", new dhk(lF, dtb.d.a().a(cti.j).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lW = a("purple_concrete_powder", new dhk(lG, dtb.d.a().a(cti.k).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lX = a("blue_concrete_powder", new dhk(lH, dtb.d.a().a(cti.l).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lY = a("brown_concrete_powder", new dhk(lI, dtb.d.a().a(cti.m).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy lZ = a("green_concrete_powder", new dhk(lJ, dtb.d.a().a(cti.n).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy ma = a("red_concrete_powder", new dhk(lK, dtb.d.a().a(cti.o).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy mb = a("black_concrete_powder", new dhk(lL, dtb.d.a().a(cti.p).a(dud.c).d(0.5F).a(dnm.j)));
+   public static final dfy mc = a("kelp", new dkc(dtb.d.a().a(epg.m).b().e().d().a(dnm.q).a(eph.b)));
+   public static final dfy md = a("kelp_plant", new dkd(dtb.d.a().a(epg.m).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy me = a("dried_kelp_block", new dfy(dtb.d.a().a(epg.B).a(0.5F, 2.5F).a(dnm.d)));
+   public static final dfy mf = a("turtle_egg", new dor(dtb.d.a().a(epg.c).j().d(0.5F).a(dnm.g).e().c().a(eph.b)));
+   public static final dfy mg = a("sniffer_egg", new dnh(dtb.d.a().a(epg.C).d(0.5F).a(dnm.g).c()));
+   public static final dfy mh = a("dead_tube_coral_block", new dfy(dtb.d.a().a(epg.v).j().a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy mi = a("dead_brain_coral_block", new dfy(dtb.d.a().a(epg.v).j().a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy mj = a("dead_bubble_coral_block", new dfy(dtb.d.a().a(epg.v).j().a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy mk = a("dead_fire_coral_block", new dfy(dtb.d.a().a(epg.v).j().a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ml = a("dead_horn_coral_block", new dfy(dtb.d.a().a(epg.v).j().a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy mm = a("tube_coral_block", new dhn(mh, dtb.d.a().a(epg.z).a(dud.b).m().a(1.5F, 6.0F).a(dnm.r)));
+   public static final dfy mn = a("brain_coral_block", new dhn(mi, dtb.d.a().a(epg.u).a(dud.b).m().a(1.5F, 6.0F).a(dnm.r)));
+   public static final dfy mo = a("bubble_coral_block", new dhn(mj, dtb.d.a().a(epg.y).a(dud.b).m().a(1.5F, 6.0F).a(dnm.r)));
+   public static final dfy mp = a("fire_coral_block", new dhn(mk, dtb.d.a().a(epg.C).a(dud.b).m().a(1.5F, 6.0F).a(dnm.r)));
+   public static final dfy mq = a("horn_coral_block", new dhn(ml, dtb.d.a().a(epg.s).a(dud.b).m().a(1.5F, 6.0F).a(dnm.r)));
+   public static final dfy mr = a("dead_tube_coral", new dfh(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy ms = a("dead_brain_coral", new dfh(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mt = a("dead_bubble_coral", new dfh(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mu = a("dead_fire_coral", new dfh(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mv = a("dead_horn_coral", new dfh(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mw = a("tube_coral", new dhp(mr, dtb.d.a().a(epg.z).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mx = a("brain_coral", new dhp(ms, dtb.d.a().a(epg.u).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy my = a("bubble_coral", new dhp(mt, dtb.d.a().a(epg.y).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mz = a("fire_coral", new dhp(mu, dtb.d.a().a(epg.C).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mA = a("horn_coral", new dhp(mv, dtb.d.a().a(epg.s).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mB = a("dead_tube_coral_fan", new dfg(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mC = a("dead_brain_coral_fan", new dfg(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mD = a("dead_bubble_coral_fan", new dfg(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mE = a("dead_fire_coral_fan", new dfg(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mF = a("dead_horn_coral_fan", new dfg(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d()));
+   public static final dfy mG = a("tube_coral_fan", new dho(mB, dtb.d.a().a(epg.z).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mH = a("brain_coral_fan", new dho(mC, dtb.d.a().a(epg.u).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mI = a("bubble_coral_fan", new dho(mD, dtb.d.a().a(epg.y).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mJ = a("fire_coral_fan", new dho(mE, dtb.d.a().a(epg.C).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mK = a("horn_coral_fan", new dho(mF, dtb.d.a().a(epg.s).b().d().a(dnm.q).a(eph.b)));
+   public static final dfy mL = a("dead_tube_coral_wall_fan", new dfj(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d().a(mB)));
+   public static final dfy mM = a("dead_brain_coral_wall_fan", new dfj(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d().a(mC)));
+   public static final dfy mN = a("dead_bubble_coral_wall_fan", new dfj(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d().a(mD)));
+   public static final dfy mO = a("dead_fire_coral_wall_fan", new dfj(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d().a(mE)));
+   public static final dfy mP = a("dead_horn_coral_wall_fan", new dfj(dtb.d.a().a(epg.v).j().a(dud.b).m().b().d().a(mF)));
+   public static final dfy mQ = a("tube_coral_wall_fan", new dhq(mL, dtb.d.a().a(epg.z).b().d().a(dnm.q).a(mG).a(eph.b)));
+   public static final dfy mR = a("brain_coral_wall_fan", new dhq(mM, dtb.d.a().a(epg.u).b().d().a(dnm.q).a(mH).a(eph.b)));
+   public static final dfy mS = a("bubble_coral_wall_fan", new dhq(mN, dtb.d.a().a(epg.y).b().d().a(dnm.q).a(mI).a(eph.b)));
+   public static final dfy mT = a("fire_coral_wall_fan", new dhq(mO, dtb.d.a().a(epg.C).b().d().a(dnm.q).a(mJ).a(eph.b)));
+   public static final dfy mU = a("horn_coral_wall_fan", new dhq(mP, dtb.d.a().a(epg.s).b().d().a(dnm.q).a(mK).a(eph.b)));
+   public static final dfy mV = a("sea_pickle", new dmw(dtb.d.a().a(epg.B).a($$0x -> dmw.m($$0x) ? 0 : 3 + 3 * $$0x.c(dmw.c)).a(dnm.o).c().a(eph.b)));
+   public static final dfy mW = a("blue_ice", new djo(dtb.d.a().a(epg.f).d(2.8F).a(0.989F).a(dnm.h)));
+   public static final dfy mX = a("conduit", new dhl(dtb.d.a().a(epg.F).j().a(dud.d).d(3.0F).a($$0x -> 15).c()));
+   public static final dfy mY = a("bamboo_sapling", new dfb(dtb.d.a().a(epg.n).j().e().d().b().d(1.0F).a(dnm.t).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy mZ = a("bamboo", new dfc(dtb.d.a().a(epg.h).j().e().d().d(1.0F).a(dnm.s).c().f().a(dtb.c.b).h().a(eph.b).a(dga::b)));
+   public static final dfy na = a("potted_bamboo", a(mZ));
+   public static final dfy nb = a("void_air", new dev(dtb.d.a().o().b().g().l()));
+   public static final dfy nc = a("cave_air", new dev(dtb.d.a().o().b().g().l()));
+   public static final dfy nd = a("bubble_column", new dge(dtb.d.a().a(epg.m).o().b().g().a(eph.b).i().a(dnm.a)));
+   public static final dfy ne = a("polished_granite_stairs", b(d));
+   public static final dfy nf = a("smooth_red_sandstone_stairs", b(jU));
+   public static final dfy ng = a("mossy_stone_brick_stairs", b(eI));
+   public static final dfy nh = a("polished_diorite_stairs", b(f));
+   public static final dfy ni = a("mossy_cobblestone_stairs", b(cn));
+   public static final dfy nj = a("end_stone_brick_stairs", b(kz));
+   public static final dfy nk = a("stone_stairs", b(b));
+   public static final dfy nl = a("smooth_sandstone_stairs", b(jS));
+   public static final dfy nm = a("smooth_quartz_stairs", b(jT));
+   public static final dfy nn = a("granite_stairs", b(c));
+   public static final dfy no = a("andesite_stairs", b(g));
+   public static final dfy np = a("red_nether_brick_stairs", b(kL));
+   public static final dfy nq = a("polished_andesite_stairs", b(h));
+   public static final dfy nr = a("diorite_stairs", b(e));
+   public static final dfy ns = a("polished_granite_slab", new dnc(dtb.d.b(d)));
+   public static final dfy nt = a("smooth_red_sandstone_slab", new dnc(dtb.d.b(jU)));
+   public static final dfy nu = a("mossy_stone_brick_slab", new dnc(dtb.d.b(eI)));
+   public static final dfy nv = a("polished_diorite_slab", new dnc(dtb.d.b(f)));
+   public static final dfy nw = a("mossy_cobblestone_slab", new dnc(dtb.d.b(cn)));
+   public static final dfy nx = a("end_stone_brick_slab", new dnc(dtb.d.b(kz)));
+   public static final dfy ny = a("smooth_sandstone_slab", new dnc(dtb.d.b(jS)));
+   public static final dfy nz = a("smooth_quartz_slab", new dnc(dtb.d.b(jT)));
+   public static final dfy nA = a("granite_slab", new dnc(dtb.d.b(c)));
+   public static final dfy nB = a("andesite_slab", new dnc(dtb.d.b(g)));
+   public static final dfy nC = a("red_nether_brick_slab", new dnc(dtb.d.b(kL)));
+   public static final dfy nD = a("polished_andesite_slab", new dnc(dtb.d.b(h)));
+   public static final dfy nE = a("diorite_slab", new dnc(dtb.d.b(e)));
+   public static final dfy nF = a("brick_wall", new dox(dtb.d.b(cj).j()));
+   public static final dfy nG = a("prismarine_wall", new dox(dtb.d.b(hZ).j()));
+   public static final dfy nH = a("red_sandstone_wall", new dox(dtb.d.b(jp).j()));
+   public static final dfy nI = a("mossy_stone_brick_wall", new dox(dtb.d.b(eI).j()));
+   public static final dfy nJ = a("granite_wall", new dox(dtb.d.b(c).j()));
+   public static final dfy nK = a("stone_brick_wall", new dox(dtb.d.b(eH).j()));
+   public static final dfy nL = a("mud_brick_wall", new dox(dtb.d.b(eM).j()));
+   public static final dfy nM = a("nether_brick_wall", new dox(dtb.d.b(fn).j()));
+   public static final dfy nN = a("andesite_wall", new dox(dtb.d.b(g).j()));
+   public static final dfy nO = a("red_nether_brick_wall", new dox(dtb.d.b(kL).j()));
+   public static final dfy nP = a("sandstone_wall", new dox(dtb.d.b(aV).j()));
+   public static final dfy nQ = a("end_stone_brick_wall", new dox(dtb.d.b(kz).j()));
+   public static final dfy nR = a("diorite_wall", new dox(dtb.d.b(e).j()));
+   public static final dfy nS = a("scaffolding", new dmo(dtb.d.a().a(epg.c).b().a(dnm.u).f().a(dga::a).a(eph.b).a(dga::b)));
+   public static final dfy nT = a("loom", new dkq(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy nU = a("barrel", new dfe(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy nV = a("smoker", new dng(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F).a(a(13))));
+   public static final dfy nW = a("blast_furnace", new dfx(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F).a(a(13))));
+   public static final dfy nX = a("cartography_table", new dgr(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy nY = a("fletching_table", new diz(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy nZ = a("grindstone", new djk(dtb.d.a().a(epg.g).m().a(2.0F, 6.0F).a(dnm.f).a(eph.c)));
+   public static final dfy oa = a("lectern", new dkj(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy ob = a("smithing_table", new dnf(dtb.d.a().a(epg.n).a(dud.e).d(2.5F).a(dnm.b).h()));
+   public static final dfy oc = a("stonecutter", new dnw(dtb.d.a().a(epg.l).a(dud.b).m().d(3.5F)));
+   public static final dfy od = a("bell", new dfu(dtb.d.a().a(epg.E).j().m().d(5.0F).a(dnm.n).a(eph.b)));
+   public static final dfy oe = a("lantern", new dkf(dtb.d.a().a(epg.g).j().m().d(3.5F).a(dnm.A).a($$0x -> 15).c().a(eph.b)));
+   public static final dfy of = a("soul_lantern", new dkf(dtb.d.a().a(epg.g).j().m().d(3.5F).a(dnm.A).a($$0x -> 10).c().a(eph.b)));
+   public static final dfy og = a("campfire", new dgm(true, 1, dtb.d.a().a(epg.I).a(dud.e).d(2.0F).a(dnm.b).a(a(15)).c().h()));
+   public static final dfy oh = a("soul_campfire", new dgm(false, 2, dtb.d.a().a(epg.I).a(dud.e).d(2.0F).a(dnm.b).a(a(10)).c().h()));
+   public static final dfy oi = a("sweet_berry_bush", new doc(dtb.d.a().a(epg.h).e().b().a(dnm.v).a(eph.b)));
+   public static final dfy oj = a("warped_stem", b(epg.ae));
+   public static final dfy ok = a("stripped_warped_stem", b(epg.ae));
+   public static final dfy ol = a("warped_hyphae", new dml(dtb.d.a().a(epg.af).a(dud.e).d(2.0F).a(dnm.B)));
+   public static final dfy om = a("stripped_warped_hyphae", new dml(dtb.d.a().a(epg.af).a(dud.e).d(2.0F).a(dnm.B)));
+   public static final dfy on = a("warped_nylium", new dli(dtb.d.a().a(epg.ad).a(dud.b).m().d(0.4F).a(dnm.C).e()));
+   public static final dfy oo = a("warped_fungus", new dje(rw.d, on, dtb.d.a().a(epg.x).d().b().a(dnm.D).a(eph.b)));
+   public static final dfy op = a("warped_wart_block", new dfy(dtb.d.a().a(epg.ag).d(1.0F).a(dnm.L)));
+   public static final dfy oq = a("warped_roots", new dmk(dtb.d.a().a(epg.x).o().b().d().a(dnm.E).a(dtb.c.b).a(eph.b)));
+   public static final dfy or = a("nether_sprouts", new dld(dtb.d.a().a(epg.x).o().b().d().a(dnm.O).a(dtb.c.b).a(eph.b)));
+   public static final dfy os = a("crimson_stem", b(epg.ab));
+   public static final dfy ot = a("stripped_crimson_stem", b(epg.ab));
+   public static final dfy ou = a("crimson_hyphae", new dml(dtb.d.a().a(epg.ac).a(dud.e).d(2.0F).a(dnm.B)));
+   public static final dfy ov = a("stripped_crimson_hyphae", new dml(dtb.d.a().a(epg.ac).a(dud.e).d(2.0F).a(dnm.B)));
+   public static final dfy ow = a("crimson_nylium", new dli(dtb.d.a().a(epg.aa).a(dud.b).m().d(0.4F).a(dnm.C).e()));
+   public static final dfy ox = a("crimson_fungus", new dje(rw.b, ow, dtb.d.a().a(epg.J).d().b().a(dnm.D).a(eph.b)));
+   public static final dfy oy = a("shroomlight", new dfy(dtb.d.a().a(epg.C).d(1.0F).a(dnm.F).a($$0x -> 15)));
+   public static final dfy oz = a("weeping_vines", new dpn(dtb.d.a().a(epg.J).e().b().d().a(dnm.G).a(eph.b)));
+   public static final dfy oA = a("weeping_vines_plant", new dpo(dtb.d.a().a(epg.J).b().d().a(dnm.G).a(eph.b)));
+   public static final dfy oB = a("twisting_vines", new dos(dtb.d.a().a(epg.x).e().b().d().a(dnm.G).a(eph.b)));
+   public static final dfy oC = a("twisting_vines_plant", new dot(dtb.d.a().a(epg.x).b().d().a(dnm.G).a(eph.b)));
+   public static final dfy oD = a("crimson_roots", new dmk(dtb.d.a().a(epg.J).o().b().d().a(dnm.E).a(dtb.c.b).a(eph.b)));
+   public static final dfy oE = a("crimson_planks", new dfy(dtb.d.a().a(epg.ab).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oF = a("warped_planks", new dfy(dtb.d.a().a(epg.ae).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oG = a("crimson_slab", new dnc(dtb.d.a().a(oE.w()).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oH = a("warped_slab", new dnc(dtb.d.a().a(oF.w()).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oI = a("crimson_pressure_plate", new dlw(dtr.n, dtb.d.a().a(oE.w()).j().a(dud.e).b().d(0.5F).a(eph.b)));
+   public static final dfy oJ = a("warped_pressure_plate", new dlw(dtr.o, dtb.d.a().a(oF.w()).j().a(dud.e).b().d(0.5F).a(eph.b)));
+   public static final dfy oK = a("crimson_fence", new diw(dtb.d.a().a(oE.w()).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oL = a("warped_fence", new diw(dtb.d.a().a(oF.w()).a(dud.e).a(2.0F, 3.0F).a(dnm.aT)));
+   public static final dfy oM = a("crimson_trapdoor", new dom(dtr.n, dtb.d.a().a(oE.w()).a(dud.e).d(3.0F).c().a(dga::a)));
+   public static final dfy oN = a("warped_trapdoor", new dom(dtr.o, dtb.d.a().a(oF.w()).a(dud.e).d(3.0F).c().a(dga::a)));
+   public static final dfy oO = a("crimson_fence_gate", new dix(dup.i, dtb.d.a().a(oE.w()).j().a(dud.e).a(2.0F, 3.0F)));
+   public static final dfy oP = a("warped_fence_gate", new dix(dup.j, dtb.d.a().a(oF.w()).j().a(dud.e).a(2.0F, 3.0F)));
+   public static final dfy oQ = a("crimson_stairs", b(oE));
+   public static final dfy oR = a("warped_stairs", b(oF));
+   public static final dfy oS = a("crimson_button", a(dtr.n));
+   public static final dfy oT = a("warped_button", a(dtr.o));
+   public static final dfy oU = a("crimson_door", new die(dtr.n, dtb.d.a().a(oE.w()).a(dud.e).d(3.0F).c().a(eph.b)));
+   public static final dfy oV = a("warped_door", new die(dtr.o, dtb.d.a().a(oF.w()).a(dud.e).d(3.0F).c().a(eph.b)));
+   public static final dfy oW = a("crimson_sign", new dnu(dup.i, dtb.d.a().a(oE.w()).a(dud.e).j().b().d(1.0F)));
+   public static final dfy oX = a("warped_sign", new dnu(dup.j, dtb.d.a().a(oF.w()).a(dud.e).j().b().d(1.0F)));
+   public static final dfy oY = a("crimson_wall_sign", new doz(dup.i, dtb.d.a().a(oE.w()).a(dud.e).j().b().d(1.0F).a(oW)));
+   public static final dfy oZ = a("warped_wall_sign", new doz(dup.j, dtb.d.a().a(oF.w()).a(dud.e).j().b().d(1.0F).a(oX)));
+   public static final dfy pa = a("structure_block", new dnx(dtb.d.a().a(epg.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final dfy pb = a("jigsaw", new dka(dtb.d.a().a(epg.w).m().a(-1.0F, 3600000.0F).g()));
+   public static final dfy pc = a("composter", new dhj(dtb.d.a().a(epg.n).a(dud.e).d(0.6F).a(dnm.b).h()));
+   public static final dfy pd = a("target", new dog(dtb.d.a().a(epg.o).d(0.5F).a(dnm.d)));
+   public static final dfy pe = a("bee_nest", new dfs(dtb.d.a().a(epg.s).a(dud.e).d(0.3F).a(dnm.b).h()));
+   public static final dfy pf = a("beehive", new dfs(dtb.d.a().a(epg.n).a(dud.e).d(0.6F).a(dnm.b).h()));
+   public static final dfy pg = a("honey_block", new djs(dtb.d.a().a(epg.p).b(0.4F).c(0.5F).c().a(dnm.p)));
+   public static final dfy ph = a("honeycomb_block", new dfy(dtb.d.a().a(epg.p).d(0.6F).a(dnm.r)));
+   public static final dfy pi = a("netherite_block", new dfy(dtb.d.a().a(epg.D).m().a(50.0F, 1200.0F).a(dnm.R)));
+   public static final dfy pj = a("ancient_debris", new dfy(dtb.d.a().a(epg.D).m().a(30.0F, 1200.0F).a(dnm.S)));
+   public static final dfy pk = a("crying_obsidian", new dhv(dtb.d.a().a(epg.D).a(dud.b).m().a(50.0F, 1200.0F).a($$0x -> 10)));
+   public static final dfy pl = a("respawn_anchor", new dmh(dtb.d.a().a(epg.D).a(dud.b).m().a(50.0F, 1200.0F).a($$0x -> dmh.a($$0x, 15))));
+   public static final dfy pm = a("potted_crimson_fungus", a(ox));
+   public static final dfy pn = a("potted_warped_fungus", a(oo));
+   public static final dfy po = a("potted_crimson_roots", a(oD));
+   public static final dfy pp = a("potted_warped_roots", a(oq));
+   public static final dfy pq = a("lodestone", new dfy(dtb.d.a().a(epg.g).m().d(3.5F).a(dnm.T).a(eph.c)));
+   public static final dfy pr = a("blackstone", new dfy(dtb.d.a().a(epg.D).a(dud.b).m().a(1.5F, 6.0F)));
+   public static final dfy ps = a("blackstone_stairs", b(pr));
+   public static final dfy pt = a("blackstone_wall", new dox(dtb.d.b(pr).j()));
+   public static final dfy pu = a("blackstone_slab", new dnc(dtb.d.b(pr).a(2.0F, 6.0F)));
+   public static final dfy pv = a("polished_blackstone", new dfy(dtb.d.b(pr).a(2.0F, 6.0F)));
+   public static final dfy pw = a("polished_blackstone_bricks", new dfy(dtb.d.b(pv).a(1.5F, 6.0F)));
+   public static final dfy px = a("cracked_polished_blackstone_bricks", new dfy(dtb.d.b(pw)));
+   public static final dfy py = a("chiseled_polished_blackstone", new dfy(dtb.d.b(pv).a(1.5F, 6.0F)));
+   public static final dfy pz = a("polished_blackstone_brick_slab", new dnc(dtb.d.b(pw).a(2.0F, 6.0F)));
+   public static final dfy pA = a("polished_blackstone_brick_stairs", b(pw));
+   public static final dfy pB = a("polished_blackstone_brick_wall", new dox(dtb.d.b(pw).j()));
+   public static final dfy pC = a("gilded_blackstone", new dfy(dtb.d.b(pr).a(dnm.W)));
+   public static final dfy pD = a("polished_blackstone_stairs", b(pv));
+   public static final dfy pE = a("polished_blackstone_slab", new dnc(dtb.d.b(pv)));
+   public static final dfy pF = a("polished_blackstone_pressure_plate", new dlw(dtr.f, dtb.d.a().a(epg.D).j().a(dud.b).m().b().d(0.5F).a(eph.b)));
+   public static final dfy pG = a("polished_blackstone_button", b());
+   public static final dfy pH = a("polished_blackstone_wall", new dox(dtb.d.b(pv).j()));
+   public static final dfy pI = a("chiseled_nether_bricks", new dfy(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy pJ = a("cracked_nether_bricks", new dfy(dtb.d.a().a(epg.J).a(dud.b).m().a(2.0F, 6.0F).a(dnm.N)));
+   public static final dfy pK = a("quartz_bricks", new dfy(dtb.d.b(hd)));
+   public static final dfy pL = a("candle", c(epg.c));
+   public static final dfy pM = a("white_candle", c(epg.d));
+   public static final dfy pN = a("orange_candle", c(epg.p));
+   public static final dfy pO = a("magenta_candle", c(epg.q));
+   public static final dfy pP = a("light_blue_candle", c(epg.r));
+   public static final dfy pQ = a("yellow_candle", c(epg.s));
+   public static final dfy pR = a("lime_candle", c(epg.t));
+   public static final dfy pS = a("pink_candle", c(epg.u));
+   public static final dfy pT = a("gray_candle", c(epg.v));
+   public static final dfy pU = a("light_gray_candle", c(epg.w));
+   public static final dfy pV = a("cyan_candle", c(epg.x));
+   public static final dfy pW = a("purple_candle", c(epg.y));
+   public static final dfy pX = a("blue_candle", c(epg.z));
+   public static final dfy pY = a("brown_candle", c(epg.A));
+   public static final dfy pZ = a("green_candle", c(epg.B));
+   public static final dfy qa = a("red_candle", c(epg.C));
+   public static final dfy qb = a("black_candle", c(epg.D));
+   public static final dfy qc = a("candle_cake", new dgo(pL, dtb.d.b(eg).a(a(3))));
+   public static final dfy qd = a("white_candle_cake", new dgo(pM, dtb.d.b(qc)));
+   public static final dfy qe = a("orange_candle_cake", new dgo(pN, dtb.d.b(qc)));
+   public static final dfy qf = a("magenta_candle_cake", new dgo(pO, dtb.d.b(qc)));
+   public static final dfy qg = a("light_blue_candle_cake", new dgo(pP, dtb.d.b(qc)));
+   public static final dfy qh = a("yellow_candle_cake", new dgo(pQ, dtb.d.b(qc)));
+   public static final dfy qi = a("lime_candle_cake", new dgo(pR, dtb.d.b(qc)));
+   public static final dfy qj = a("pink_candle_cake", new dgo(pS, dtb.d.b(qc)));
+   public static final dfy qk = a("gray_candle_cake", new dgo(pT, dtb.d.b(qc)));
+   public static final dfy ql = a("light_gray_candle_cake", new dgo(pU, dtb.d.b(qc)));
+   public static final dfy qm = a("cyan_candle_cake", new dgo(pV, dtb.d.b(qc)));
+   public static final dfy qn = a("purple_candle_cake", new dgo(pW, dtb.d.b(qc)));
+   public static final dfy qo = a("blue_candle_cake", new dgo(pX, dtb.d.b(qc)));
+   public static final dfy qp = a("brown_candle_cake", new dgo(pY, dtb.d.b(qc)));
+   public static final dfy qq = a("green_candle_cake", new dgo(pZ, dtb.d.b(qc)));
+   public static final dfy qr = a("red_candle_cake", new dgo(qa, dtb.d.b(qc)));
+   public static final dfy qs = a("black_candle_cake", new dgo(qb, dtb.d.b(qc)));
+   public static final dfy qt = a("amethyst_block", new dew(dtb.d.a().a(epg.y).d(1.5F).a(dnm.Y).m()));
+   public static final dfy qu = a("budding_amethyst", new dgg(dtb.d.a().a(epg.y).e().d(1.5F).a(dnm.Y).m().a(eph.b)));
+   public static final dfy qv = a("amethyst_cluster", new dex(7.0F, 3.0F, dtb.d.a().a(epg.y).j().c().a(dnm.Z).d(1.5F).a($$0x -> 5).a(eph.b)));
+   public static final dfy qw = a("large_amethyst_bud", new dex(5.0F, 3.0F, dtb.d.b(qv).a(dnm.ab).a($$0x -> 4)));
+   public static final dfy qx = a("medium_amethyst_bud", new dex(4.0F, 3.0F, dtb.d.b(qv).a(dnm.ac).a($$0x -> 2)));
+   public static final dfy qy = a("small_amethyst_bud", new dex(3.0F, 4.0F, dtb.d.b(qv).a(dnm.aa).a($$0x -> 1)));
+   public static final dfy qz = a("tuff", new dfy(dtb.d.a().a(epg.R).a(dud.b).a(dnm.ad).m().a(1.5F, 6.0F)));
+   public static final dfy qA = a("tuff_slab", new dnc(dtb.d.b(qz)));
+   public static final dfy qB = a("tuff_stairs", new dnt(qz.o(), dtb.d.b(qz)));
+   public static final dfy qC = a("tuff_wall", new dox(dtb.d.b(qz).j()));
+   public static final dfy qD = a("polished_tuff", new dfy(dtb.d.b(qz).a(dnm.af)));
+   public static final dfy qE = a("polished_tuff_slab", new dnc(dtb.d.b(qD)));
+   public static final dfy qF = a("polished_tuff_stairs", new dnt(qD.o(), dtb.d.b(qD)));
+   public static final dfy qG = a("polished_tuff_wall", new dox(dtb.d.b(qD).j()));
+   public static final dfy qH = a("chiseled_tuff", new dfy(dtb.d.b(qz)));
+   public static final dfy qI = a("tuff_bricks", new dfy(dtb.d.b(qz).a(dnm.ae)));
+   public static final dfy qJ = a("tuff_brick_slab", new dnc(dtb.d.b(qI)));
+   public static final dfy qK = a("tuff_brick_stairs", new dnt(qI.o(), dtb.d.b(qI)));
+   public static final dfy qL = a("tuff_brick_wall", new dox(dtb.d.b(qI).j()));
+   public static final dfy qM = a("chiseled_tuff_bricks", new dfy(dtb.d.b(qI)));
+   public static final dfy qN = a("calcite", new dfy(dtb.d.a().a(epg.K).a(dud.b).a(dnm.ag).m().d(0.75F)));
+   public static final dfy qO = a("tinted_glass", new doh(dtb.d.b(aQ).a(epg.v).c().a(dga::a).a(dga::b).b(dga::b).c(dga::b)));
+   public static final dfy qP = a("powder_snow", new dlt(dtb.d.a().a(epg.i).d(0.25F).a(dnm.l).f().a(dga::b)));
+   public static final dfy qQ = a("sculk_sensor", new dms(dtb.d.a().a(epg.x).d(1.5F).a(dnm.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dms.m($$0x) == duj.b)));
+   public static final dfy qR = a("calibrated_sculk_sensor", new dgl(dtb.d.b(qQ)));
+   public static final dfy qS = a("sculk", new dmq(dtb.d.a().a(epg.D).d(0.2F).a(dnm.aA)));
+   public static final dfy qT = a("sculk_vein", new dmv(dtb.d.a().a(epg.D).j().b().d(0.2F).a(dnm.aB).a(eph.b)));
+   public static final dfy qU = a("sculk_catalyst", new dmr(dtb.d.a().a(epg.D).a(3.0F, 3.0F).a(dnm.az).a($$0x -> 6)));
+   public static final dfy qV = a("sculk_shrieker", new dmt(dtb.d.a().a(epg.D).a(3.0F, 3.0F).a(dnm.aC)));
+   public static final dfy qW = a("copper_block", new dph(dpe.a.a, dtb.d.a().a(epg.p).m().a(3.0F, 6.0F).a(dnm.aj)));
+   public static final dfy qX = a("exposed_copper", new dph(dpe.a.b, dtb.d.a((dtb)qW).a(epg.S)));
+   public static final dfy qY = a("weathered_copper", new dph(dpe.a.c, dtb.d.a((dtb)qW).a(epg.ae)));
+   public static final dfy qZ = a("oxidized_copper", new dph(dpe.a.d, dtb.d.a((dtb)qW).a(epg.ad)));
+   public static final dfy ra = a("copper_ore", new dii(bpt.a(0), dtb.d.b(P)));
+   public static final dfy rb = a("deepslate_copper_ore", new dii(bpt.a(0), dtb.d.b(ra).a(epg.ah).a(4.5F, 3.0F).a(dnm.aE)));
+   public static final dfy rc = a("oxidized_cut_copper", new dph(dpe.a.d, dtb.d.a((dtb)qZ)));
+   public static final dfy rd = a("weathered_cut_copper", new dph(dpe.a.c, dtb.d.a((dtb)qY)));
+   public static final dfy re = a("exposed_cut_copper", new dph(dpe.a.b, dtb.d.a((dtb)qX)));
+   public static final dfy rf = a("cut_copper", new dph(dpe.a.a, dtb.d.a((dtb)qW)));
+   public static final dfy rg = a("oxidized_chiseled_copper", new dph(dpe.a.d, dtb.d.a((dtb)qZ)));
+   public static final dfy rh = a("weathered_chiseled_copper", new dph(dpe.a.c, dtb.d.a((dtb)qY)));
+   public static final dfy ri = a("exposed_chiseled_copper", new dph(dpe.a.b, dtb.d.a((dtb)qX)));
+   public static final dfy rj = a("chiseled_copper", new dph(dpe.a.a, dtb.d.a((dtb)qW)));
+   public static final dfy rk = a("waxed_oxidized_chiseled_copper", new dfy(dtb.d.a((dtb)rg)));
+   public static final dfy rl = a("waxed_weathered_chiseled_copper", new dfy(dtb.d.a((dtb)rh)));
+   public static final dfy rm = a("waxed_exposed_chiseled_copper", new dfy(dtb.d.a((dtb)ri)));
+   public static final dfy rn = a("waxed_chiseled_copper", new dfy(dtb.d.a((dtb)rj)));
+   public static final dfy ro = a("oxidized_cut_copper_stairs", new dpk(dpe.a.d, rc.o(), dtb.d.a((dtb)rc)));
+   public static final dfy rp = a("weathered_cut_copper_stairs", new dpk(dpe.a.c, rd.o(), dtb.d.a((dtb)qY)));
+   public static final dfy rq = a("exposed_cut_copper_stairs", new dpk(dpe.a.b, re.o(), dtb.d.a((dtb)qX)));
+   public static final dfy rr = a("cut_copper_stairs", new dpk(dpe.a.a, rf.o(), dtb.d.a((dtb)qW)));
+   public static final dfy rs = a("oxidized_cut_copper_slab", new dpj(dpe.a.d, dtb.d.a((dtb)rc)));
+   public static final dfy rt = a("weathered_cut_copper_slab", new dpj(dpe.a.c, dtb.d.a((dtb)rd)));
+   public static final dfy ru = a("exposed_cut_copper_slab", new dpj(dpe.a.b, dtb.d.a((dtb)re)));
+   public static final dfy rv = a("cut_copper_slab", new dpj(dpe.a.a, dtb.d.a((dtb)rf)));
+   public static final dfy rw = a("waxed_copper_block", new dfy(dtb.d.a((dtb)qW)));
+   public static final dfy rx = a("waxed_weathered_copper", new dfy(dtb.d.a((dtb)qY)));
+   public static final dfy ry = a("waxed_exposed_copper", new dfy(dtb.d.a((dtb)qX)));
+   public static final dfy rz = a("waxed_oxidized_copper", new dfy(dtb.d.a((dtb)qZ)));
+   public static final dfy rA = a("waxed_oxidized_cut_copper", new dfy(dtb.d.a((dtb)qZ)));
+   public static final dfy rB = a("waxed_weathered_cut_copper", new dfy(dtb.d.a((dtb)qY)));
+   public static final dfy rC = a("waxed_exposed_cut_copper", new dfy(dtb.d.a((dtb)qX)));
+   public static final dfy rD = a("waxed_cut_copper", new dfy(dtb.d.a((dtb)qW)));
+   public static final dfy rE = a("waxed_oxidized_cut_copper_stairs", c(rA));
+   public static final dfy rF = a("waxed_weathered_cut_copper_stairs", c(rB));
+   public static final dfy rG = a("waxed_exposed_cut_copper_stairs", c(rC));
+   public static final dfy rH = a("waxed_cut_copper_stairs", c(rD));
+   public static final dfy rI = a("waxed_oxidized_cut_copper_slab", new dnc(dtb.d.a((dtb)rA).m()));
+   public static final dfy rJ = a("waxed_weathered_cut_copper_slab", new dnc(dtb.d.a((dtb)rB).m()));
+   public static final dfy rK = a("waxed_exposed_cut_copper_slab", new dnc(dtb.d.a((dtb)rC).m()));
+   public static final dfy rL = a("waxed_cut_copper_slab", new dnc(dtb.d.a((dtb)rD).m()));
+   public static final dfy rM = a("copper_door", new dpg(dtr.c, dpe.a.a, dtb.d.a().a(qW.w()).a(3.0F, 6.0F).c().m().a(eph.b)));
+   public static final dfy rN = a("exposed_copper_door", new dpg(dtr.c, dpe.a.b, dtb.d.a((dtb)rM).a(qX.w())));
+   public static final dfy rO = a("oxidized_copper_door", new dpg(dtr.c, dpe.a.d, dtb.d.a((dtb)rM).a(qZ.w())));
+   public static final dfy rP = a("weathered_copper_door", new dpg(dtr.c, dpe.a.c, dtb.d.a((dtb)rM).a(qY.w())));
+   public static final dfy rQ = a("waxed_copper_door", new die(dtr.c, dtb.d.a((dtb)rM)));
+   public static final dfy rR = a("waxed_exposed_copper_door", new die(dtr.c, dtb.d.a((dtb)rN)));
+   public static final dfy rS = a("waxed_oxidized_copper_door", new die(dtr.c, dtb.d.a((dtb)rO)));
+   public static final dfy rT = a("waxed_weathered_copper_door", new die(dtr.c, dtb.d.a((dtb)rP)));
+   public static final dfy rU = a("copper_trapdoor", new dpl(dtr.c, dpe.a.a, dtb.d.a().a(qW.w()).a(3.0F, 6.0F).m().c().a(dga::a)));
+   public static final dfy rV = a("exposed_copper_trapdoor", new dpl(dtr.c, dpe.a.b, dtb.d.a((dtb)rU).a(qX.w())));
+   public static final dfy rW = a("oxidized_copper_trapdoor", new dpl(dtr.c, dpe.a.d, dtb.d.a((dtb)rU).a(qZ.w())));
+   public static final dfy rX = a("weathered_copper_trapdoor", new dpl(dtr.c, dpe.a.c, dtb.d.a((dtb)rU).a(qY.w())));
+   public static final dfy rY = a("waxed_copper_trapdoor", new dom(dtr.c, dtb.d.a((dtb)rU)));
+   public static final dfy rZ = a("waxed_exposed_copper_trapdoor", new dom(dtr.c, dtb.d.a((dtb)rV)));
+   public static final dfy sa = a("waxed_oxidized_copper_trapdoor", new dom(dtr.c, dtb.d.a((dtb)rW)));
+   public static final dfy sb = a("waxed_weathered_copper_trapdoor", new dom(dtr.c, dtb.d.a((dtb)rX)));
+   public static final dfy sc = a("copper_grate", new dpi(dpe.a.a, dtb.d.a().a(3.0F, 6.0F).a(dnm.al).a(epg.p).c().m().a(dga::a).a(dga::b).b(dga::b).c(dga::b)));
+   public static final dfy sd = a("exposed_copper_grate", new dpi(dpe.a.b, dtb.d.a((dtb)sc).a(epg.S)));
+   public static final dfy se = a("weathered_copper_grate", new dpi(dpe.a.c, dtb.d.a((dtb)sc).a(epg.ae)));
+   public static final dfy sf = a("oxidized_copper_grate", new dpi(dpe.a.d, dtb.d.a((dtb)sc).a(epg.ad)));
+   public static final dfy sg = a("waxed_copper_grate", new dpd(dtb.d.a((dtb)sc)));
+   public static final dfy sh = a("waxed_exposed_copper_grate", new dpd(dtb.d.a((dtb)sd)));
+   public static final dfy si = a("waxed_weathered_copper_grate", new dpd(dtb.d.a((dtb)se)));
+   public static final dfy sj = a("waxed_oxidized_copper_grate", new dpd(dtb.d.a((dtb)sf)));
+   public static final dfy sk = a("copper_bulb", new dpf(dpe.a.a, dtb.d.a().a(qW.w()).a(3.0F, 6.0F).a(dnm.ak).m().a(dga::b).a(a(15))));
+   public static final dfy sl = a("exposed_copper_bulb", new dpf(dpe.a.b, dtb.d.a((dtb)sk).a(epg.S).a(a(12))));
+   public static final dfy sm = a("weathered_copper_bulb", new dpf(dpe.a.c, dtb.d.a((dtb)sk).a(epg.ae).a(a(8))));
+   public static final dfy sn = a("oxidized_copper_bulb", new dpf(dpe.a.d, dtb.d.a((dtb)sk).a(epg.ad).a(a(4))));
+   public static final dfy so = a("waxed_copper_bulb", new dhm(dtb.d.a((dtb)sk)));
+   public static final dfy sp = a("waxed_exposed_copper_bulb", new dhm(dtb.d.a((dtb)sl)));
+   public static final dfy sq = a("waxed_weathered_copper_bulb", new dhm(dtb.d.a((dtb)sm)));
+   public static final dfy sr = a("waxed_oxidized_copper_bulb", new dhm(dtb.d.a((dtb)sn)));
+   public static final dfy ss = a("lightning_rod", new dkn(dtb.d.a().a(epg.p).j().m().a(3.0F, 6.0F).a(dnm.aj).c()));
+   public static final dfy st = a(
+      "pointed_dripstone", new dlq(dtb.d.a().a(epg.W).j().a(dud.b).c().a(dnm.ai).e().a(1.5F, 3.0F).f().a(dtb.c.b).a(eph.b).a(dga::b))
+   );
+   public static final dfy su = a("dripstone_block", new dfy(dtb.d.a().a(epg.W).a(dud.b).a(dnm.ah).m().a(1.5F, 1.0F)));
+   public static final dfy sv = a("cave_vines", new dgv(dtb.d.a().a(epg.h).e().b().a(dgu.i_(14)).d().a(dnm.am).a(eph.b)));
+   public static final dfy sw = a("cave_vines_plant", new dgw(dtb.d.a().a(epg.h).b().a(dgu.i_(14)).d().a(dnm.am).a(eph.b)));
+   public static final dfy sx = a("spore_blossom", new dnp(dtb.d.a().a(epg.h).d().b().a(dnm.an).a(eph.b)));
+   public static final dfy sy = a("azalea", new dfa(dtb.d.a().a(epg.h).k().d().a(dnm.ao).c().a(eph.b)));
+   public static final dfy sz = a("flowering_azalea", new dfa(dtb.d.a().a(epg.h).k().d().a(dnm.ap).c().a(eph.b)));
+   public static final dfy sA = a("moss_carpet", new dgp(dtb.d.a().a(epg.B).d(0.1F).a(dnm.aq).a(eph.b)));
+   public static final dfy sB = a("pink_petals", new dll(dtb.d.a().a(epg.h).b().a(dnm.ar).a(eph.b)));
+   public static final dfy sC = a("moss_block", new dkw(dtb.d.a().a(epg.B).d(0.1F).a(dnm.as).a(eph.b)));
+   public static final dfy sD = a("big_dripleaf", new dfv(dtb.d.a().a(epg.h).k().d(0.1F).a(dnm.at).a(eph.b)));
+   public static final dfy sE = a("big_dripleaf_stem", new dfw(dtb.d.a().a(epg.h).b().d(0.1F).a(dnm.at).a(eph.b)));
+   public static final dfy sF = a("small_dripleaf", new dne(dtb.d.a().a(epg.h).b().d().a(dnm.au).a(dtb.c.c).a(eph.b)));
+   public static final dfy sG = a("hanging_roots", new djp(dtb.d.a().a(epg.k).o().b().d().a(dnm.aw).a(dtb.c.b).h().a(eph.b)));
+   public static final dfy sH = a("rooted_dirt", new dmj(dtb.d.a().a(epg.k).d(0.5F).a(dnm.av)));
+   public static final dfy sI = a("mud", new dkx(dtb.d.b(j).a(epg.T).a(dga::b).a(dga::a).c(dga::a).b(dga::a).a(dnm.aM)));
+   public static final dfy sJ = a("deepslate", new dml(dtb.d.a().a(epg.ah).a(dud.b).m().a(3.0F, 6.0F).a(dnm.aE)));
+   public static final dfy sK = a("cobbled_deepslate", new dfy(dtb.d.b(sJ).a(3.5F, 6.0F)));
+   public static final dfy sL = a("cobbled_deepslate_stairs", b(sK));
+   public static final dfy sM = a("cobbled_deepslate_slab", new dnc(dtb.d.b(sK)));
+   public static final dfy sN = a("cobbled_deepslate_wall", new dox(dtb.d.b(sK).j()));
+   public static final dfy sO = a("polished_deepslate", new dfy(dtb.d.b(sK).a(dnm.aH)));
+   public static final dfy sP = a("polished_deepslate_stairs", b(sO));
+   public static final dfy sQ = a("polished_deepslate_slab", new dnc(dtb.d.b(sO)));
+   public static final dfy sR = a("polished_deepslate_wall", new dox(dtb.d.b(sO).j()));
+   public static final dfy sS = a("deepslate_tiles", new dfy(dtb.d.b(sK).a(dnm.aG)));
+   public static final dfy sT = a("deepslate_tile_stairs", b(sS));
+   public static final dfy sU = a("deepslate_tile_slab", new dnc(dtb.d.b(sS)));
+   public static final dfy sV = a("deepslate_tile_wall", new dox(dtb.d.b(sS).j()));
+   public static final dfy sW = a("deepslate_bricks", new dfy(dtb.d.b(sK).a(dnm.aF)));
+   public static final dfy sX = a("deepslate_brick_stairs", b(sW));
+   public static final dfy sY = a("deepslate_brick_slab", new dnc(dtb.d.b(sW)));
+   public static final dfy sZ = a("deepslate_brick_wall", new dox(dtb.d.b(sW).j()));
+   public static final dfy ta = a("chiseled_deepslate", new dfy(dtb.d.b(sK).a(dnm.aF)));
+   public static final dfy tb = a("cracked_deepslate_bricks", new dfy(dtb.d.b(sW)));
+   public static final dfy tc = a("cracked_deepslate_tiles", new dfy(dtb.d.b(sS)));
+   public static final dfy td = a("infested_deepslate", new djy(sJ, dtb.d.a().a(epg.ah).a(dnm.aE)));
+   public static final dfy te = a("smooth_basalt", new dfy(dtb.d.b(dY)));
+   public static final dfy tf = a("raw_iron_block", new dfy(dtb.d.a().a(epg.ai).a(dud.b).m().a(5.0F, 6.0F)));
+   public static final dfy tg = a("raw_copper_block", new dfy(dtb.d.a().a(epg.p).a(dud.b).m().a(5.0F, 6.0F)));
+   public static final dfy th = a("raw_gold_block", new dfy(dtb.d.a().a(epg.E).a(dud.b).m().a(5.0F, 6.0F)));
+   public static final dfy ti = a("potted_azalea_bush", a(sy));
+   public static final dfy tj = a("potted_flowering_azalea_bush", a(sz));
+   public static final dfy tk = a("ochre_froglight", new dml(dtb.d.a().a(epg.c).d(0.3F).a($$0x -> 15).a(dnm.aI)));
+   public static final dfy tl = a("verdant_froglight", new dml(dtb.d.a().a(epg.aj).d(0.3F).a($$0x -> 15).a(dnm.aI)));
+   public static final dfy tm = a("pearlescent_froglight", new dml(dtb.d.a().a(epg.u).d(0.3F).a($$0x -> 15).a(dnm.aI)));
+   public static final dfy tn = a("frogspawn", new djc(dtb.d.a().a(epg.m).d().c().b().a(dnm.aJ).a(eph.b)));
+   public static final dfy to = a("reinforced_deepslate", new dfy(dtb.d.a().a(epg.ah).a(dud.b).a(dnm.aE).a(55.0F, 1200.0F)));
+   public static final dfy tp = a("decorated_pot", new dhy(dtb.d.a().a(epg.Y).a(0.0F, 0.0F).a(eph.b).c()));
+   public static final dfy tq = a("crafter", new dhr(dtb.d.a().a(epg.l).a(1.5F, 3.5F)));
+   public static final dfy tr = a("trial_spawner", new doo(dtb.d.a().a(epg.l).a(dud.b).a($$0x -> $$0x.c(doo.b).a()).d(50.0F).a(dnm.bd).c(dga::b).c()));
+   public static final dfy ts = a("vault", new dou(dtb.d.a().a(epg.l).a(dud.b).c().a(dnm.bg).a($$0x -> $$0x.c(dou.b).a()).d(50.0F).c(dga::b)));
+   public static final dfy tt = a("heavy_core", new djr(dtb.d.a().a(epg.g).a(dud.c).a(dnm.bh).d(10.0F).a(eph.a).f(1200.0F)));
 
-   @Override
-   public MapCodec<dga> a() {
-      return a;
+   private static ToIntFunction<dtc> a(int $$0) {
+      return $$1 -> $$1.c(dts.r) ? $$0 : 0;
    }
 
-   public dga(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+   private static Function<dtc, epg> a(epg $$0) {
+      return $$1 -> $$1.c(dts.C) ? epg.m : $$0;
    }
 
-   @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
+   private static Boolean a(dtc $$0, dcc $$1, jd $$2, bsx<?> $$3) {
+      return false;
    }
 
-   @Override
-   public dqf a(jd $$0, dta $$1) {
-      return new dqi($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
-      return $$0.B ? null : a($$2, dqh.l, dqi::a);
-   }
-
-   @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return c;
-   }
-
-   @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         return bqq.a;
-      } else {
-         dqf $$5 = $$1.c_($$2);
-         if ($$5 instanceof dqi) {
-            $$3.a((dqi)$$5);
-            $$3.a(avy.aa);
-         }
-
-         return bqq.c;
-      }
-   }
-
-   @Override
-   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(lm.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
-      bqm.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean c_(dta $$0) {
+   private static Boolean b(dtc $$0, dcc $$1, jd $$2, bsx<?> $$3) {
       return true;
    }
 
-   @Override
-   protected int a(dta $$0, dcu $$1, jd $$2) {
-      return cps.a($$1.c_($$2));
+   private static Boolean c(dtc $$0, dcc $$1, jd $$2, bsx<?> $$3) {
+      return $$3 == bsx.au || $$3 == bsx.ax;
    }
 
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b[0], b[1], b[2]);
+   private static dfy a(cti $$0) {
+      return new dfr($$0, dtb.d.a().a($$1 -> $$1.c(dfr.b) == dtp.b ? $$0.e() : epg.d).a(dnm.b).d(0.2F).c().h().a(eph.b));
    }
 
-   @Override
-   protected boolean a(dta $$0, epn $$1) {
+   private static dfy a(epg $$0, epg $$1) {
+      return new dml(dtb.d.a().a($$2 -> $$2.c(dml.i) == ji.a.b ? $$0 : $$1).a(dud.e).d(2.0F).a(dnm.b).h());
+   }
+
+   private static dfy a(epg $$0, epg $$1, dnm $$2) {
+      return new dml(dtb.d.a().a($$2x -> $$2x.c(dml.i) == ji.a.b ? $$0 : $$1).a(dud.e).d(2.0F).a($$2).h());
+   }
+
+   private static dfy b(epg $$0) {
+      return new dml(dtb.d.a().a($$1 -> $$0).a(dud.e).d(2.0F).a(dnm.B));
+   }
+
+   private static boolean a(dtc $$0, dcc $$1, jd $$2) {
+      return true;
+   }
+
+   private static boolean b(dtc $$0, dcc $$1, jd $$2) {
       return false;
+   }
+
+   private static dfy b(cti $$0) {
+      return new dnr($$0, dtb.d.a().a($$0).a(dud.d).d(0.3F).a(dnm.h).c().a(dga::a).a(dga::b).b(dga::b).c(dga::b));
+   }
+
+   private static dfy a(dnm $$0) {
+      return new dki(dtb.d.a().a(epg.h).d(0.2F).e().a($$0).c().a(dga::c).b(dga::b).c(dga::b).h().a(eph.b).a(dga::b));
+   }
+
+   private static dfy a(@Nullable cti $$0, epg $$1) {
+      return new dmy($$0, dtb.d.a().a($$1).j().d(2.0F).f().c().b(tu).c(tu).a(eph.b));
+   }
+
+   private static dfy a(boolean $$0) {
+      dtb.f $$1 = ($$0x, $$1x, $$2) -> !$$0x.c(dsv.c);
+      return new dsv($$0, dtb.d.a().a(epg.l).d(1.5F).a(dga::b).b($$1).c($$1).a(eph.c));
+   }
+
+   private static dfy a(dtr $$0) {
+      return new dgi($$0, 30, dtb.d.a().b().d(0.5F).a(eph.b));
+   }
+
+   private static dfy b() {
+      return new dgi(dtr.e, 20, dtb.d.a().b().d(0.5F).a(eph.b));
+   }
+
+   private static dfy a(dfy $$0) {
+      return new djb($$0, dtb.d.a().d().c().a(eph.b));
+   }
+
+   private static dfy c(epg $$0) {
+      return new dgn(dtb.d.a().a($$0).c().d(0.1F).a(dnm.X).a(dgn.i).a(eph.b));
+   }
+
+   @Deprecated
+   private static dfy b(dfy $$0) {
+      return new dnt($$0.o(), dtb.d.b($$0));
+   }
+
+   private static dfy c(dfy $$0) {
+      return new dnt($$0.o(), dtb.d.a((dtb)$$0));
+   }
+
+   public static dfy a(String $$0, dfy $$1) {
+      return jz.a(lt.e, $$0, $$1);
+   }
+
+   public static dfy a(akq<dfy> $$0, dfy $$1) {
+      return jz.a(lt.e, $$0, $$1);
+   }
+
+   public static void a() {
+      dfy.q.forEach(dtb.a::a);
+   }
+
+   static {
+      for (dfy $$0 : lt.e) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            dtc $$1 = (dtc)var2.next();
+            dfy.q.b($$1);
+            $$1.a();
+         }
+
+         $$0.v();
+      }
    }
 }

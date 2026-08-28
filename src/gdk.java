@@ -1,61 +1,88 @@
-public class gdk extends gdh {
-   private final gdc a;
-   private static final int b = 8;
+import javax.annotation.Nullable;
 
-   protected gdk(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdc $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+public class gdk extends gdl {
+   private final jd a;
+   private final float b;
+   private final float F;
+
+   public gdk(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jd.a($$1, $$2, $$3));
+   }
+
+   public gdk(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7, jd $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / ayn.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
+      this.a(fgm.Q().ao().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dga.i)) {
+         int $$9 = fgm.Q().au().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public gcl b() {
-      return gcl.b;
+   public gcp b() {
+      return gcp.a;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? gev.a(this.c, this.a) : $$1;
    }
 
-   @Override
-   public gcu.a p() {
-      return gcu.a.b;
+   @Nullable
+   static gdk a(le $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      dtc $$8 = $$0.b();
+      return !$$8.i() && !$$8.a(dga.bQ) && $$8.z() ? new gdk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class a implements gco<le> {
+      @Nullable
+      public gcl a(le $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcl $$8 = gdk.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
+            $$8.a($$1.z.a(20) + 20);
+         }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements gck<lq> {
-      private final gdc a;
-
-      public a(gdc $$0) {
-         this.a = $$0;
+         return $$8;
       }
+   }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdk($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+   public static class b implements gco<le> {
+      @Nullable
+      public gcl a(le $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return gdk.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

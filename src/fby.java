@@ -1,50 +1,178 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
+import com.google.common.base.Strings;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Locale;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fby extends fcw {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public interface fby {
+   wz a = wz.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-   public static fby a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fby $$2 = new fby();
+   int a();
 
-      try {
-         $$2.a = fet.b("backupId", $$1, "");
-         $$2.b = fet.b("lastModifiedDate", $$1);
-         $$2.c = fet.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+   wz b();
 
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
+   String c();
+
+   static fby a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return fby.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return fby.b.b($$0);
+      } else {
+         try {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = aye.a($$2, "reason", null);
+            String $$4 = aye.a($$2, "errorMsg", null);
+            int $$5 = aye.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new fby.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
             }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
          }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
+
+         return new fby.d($$0, $$1);
+      }
+   }
+
+   public static record a(String d) implements fby {
+      public static final int c = 401;
+
+      @Override
+      public int a() {
+         return 401;
       }
 
-      return $$2;
+      @Override
+      public wz b() {
+         return wz.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public static record b(int e, @Nullable wz f) implements fby {
+      public static final fby.b c = new fby.b(429, wz.c("mco.errorMessage.serviceBusy"));
+      public static final wz d = wz.c("mco.errorMessage.retry");
+
+      public static fby.b a(String $$0) {
+         return new fby.b(500, wz.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+      }
+
+      public static fby.b a(fdg $$0) {
+         return new fby.b(500, wz.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+      }
+
+      public static fby.b a(int $$0) {
+         return new fby.b($$0, d);
+      }
+
+      public static fby.b b(int $$0) {
+         return new fby.b($$0, null);
+      }
+
+      @Override
+      public int a() {
+         return this.e;
+      }
+
+      @Override
+      public wz b() {
+         return this.f != null ? this.f : a;
+      }
+
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      @Nullable
+      public wz e() {
+         return this.f;
+      }
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fby {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public wz b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (grp.a($$0)) {
+            return wz.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (grp.a($$1)) {
+                  return wz.c($$1);
+               }
+            }
+
+            return (wz)(this.f != null ? wz.b(this.f) : a);
+         }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
+      }
+   }
+
+   public static record d(int c, String d) implements fby {
+      @Override
+      public int a() {
+         return this.c;
+      }
+
+      @Override
+      public wz b() {
+         return wz.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
+      }
    }
 }

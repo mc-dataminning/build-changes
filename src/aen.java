@@ -1,37 +1,12 @@
-public class aen implements zf<abt> {
-   public static final yw<vv, aen> a = zf.a(aen::a, aen::new);
-   private final double b;
-   private final double c;
-
-   public aen(dur $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
-
-   private aen(vv $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aen(wz b) implements zg<abu> {
+   public static final yx<wk, aen> a = yx.a(xb.d, aen::b, aen::new);
 
    @Override
-   public zh<aen> a() {
-      return agf.ar;
+   public zi<aen> a() {
+      return agg.aq;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.c;
-   }
-
-   public double e() {
-      return this.b;
    }
 }

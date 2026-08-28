@@ -1,35 +1,21 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bze<E extends clz> extends bvf<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public bze(int $$0) {
-      super(ImmutableMap.of(ccq.aB, ccr.a, ccq.o, ccr.b, ccq.m, ccr.b, ccq.n, ccr.c, ccq.B, ccr.c, ccq.az, ccr.c, ccq.aG, ccr.c), $$0);
-   }
-
-   protected boolean a(aqt $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aqt $$0, E $$1, long $$2) {
-      $$1.a(avo.BV, 5.0F, 1.0F);
-   }
-
-   protected void c(aqt $$0, E $$1, long $$2) {
-      if ($$1.c(bty.m)) {
-         $$1.b(bty.a);
-      }
-
-      $$1.dU().b(ccq.aB);
-      $$1.dU().c(ccq.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dU().a(ccq.az)) {
-            cma.a($$1, $$1x.dq());
-         }
-      });
+public class bze {
+   public static <E extends cmb> bvi<E> a(Function<E, Optional<? extends btn>> $$0) {
+      return byu.a(
+         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$1 -> $$1.group($$1.c(ccs.ay), $$1.c(ccs.o), $$1.a(ccs.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends btn> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::c).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

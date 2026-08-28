@@ -1,7 +1,5 @@
-public record ajc() implements aja {
-   public static final ajc a = new ajc();
+public interface ajc {
+   akr a();
 
-   @Override
-   public void a(vv $$0) {
-   }
+   void a(vw var1);
 }

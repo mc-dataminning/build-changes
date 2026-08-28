@@ -1,15 +1,23 @@
 import io.netty.buffer.ByteBuf;
-import java.util.List;
 
-public record abl(List<atk> b) implements zf<abj> {
-   public static final yw<ByteBuf, abl> a = yw.a(atk.a.a(yu.c(64)), abl::b, abl::new);
+public class abl implements zg<abk> {
+   public static final abl a = new abl();
+   public static final yx<ByteBuf, abl> b = yx.a(a);
 
-   @Override
-   public zh<abl> a() {
-      return abh.g;
+   private abl() {
    }
 
-   public void a(abj $$0) {
+   @Override
+   public zi<abl> a() {
+      return abi.f;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

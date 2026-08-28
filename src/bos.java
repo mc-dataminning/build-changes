@@ -1,13 +1,29 @@
-public interface bos {
-   void a();
+public class bos implements bot {
+   public static final bot a = new bos();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bne f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bnf f() {
+      return bnc.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

@@ -1,15 +1,16 @@
-public class gka extends glj<cjs, fvd<cjs>> {
-   private static final akq a = akq.b("textures/entity/endermite.png");
+public class gka extends gkv {
+   public static final akr a = akr.b("textures/entity/guardian_elder.png");
 
-   public gka(gkd.a $$0) {
-      super($$0, new fvd<>($$0.a(fyd.Z)), 0.3F);
+   public gka(gkh.a $$0) {
+      super($$0, 1.2F, fyh.W);
    }
 
-   protected float a(cjs $$0) {
-      return 180.0F;
+   protected void a(cjz $$0, fbg $$1, float $$2) {
+      $$1.b(cjs.b, cjs.b, cjs.b);
    }
 
-   public akq b(cjs $$0) {
+   @Override
+   public akr a(cjz $$0) {
       return a;
    }
 }

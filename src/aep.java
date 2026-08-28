@@ -1,29 +1,45 @@
-public class aep implements zf<abt> {
-   public static final yw<vv, aep> a = zf.a(aep::a, aep::new);
+public class aep implements zg<abu> {
+   public static final yx<vw, aep> a = zg.a(aep::a, aep::new);
    private final double b;
+   private final double c;
+   private final long d;
 
-   public aep(dur $$0) {
-      this.b = $$0.k();
+   public aep(dut $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private aep(vv $$0) {
+   private aep(vw $$0) {
       this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zh<aep> a() {
-      return agf.at;
+   public zi<aep> a() {
+      return agg.as;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

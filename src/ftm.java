@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ftm {
-   List<ftn> a();
-
-   wy b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ftm {
 }

@@ -1,72 +1,85 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+public class cac extends caq {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cfm b;
+   private final int c;
+   private boolean d;
 
-public class cac extends cak {
-   private static final int a = 40;
-   private static final Predicate<dta> b = dtj.a(dfy.bt);
-   private final btn c;
-   private final dcu d;
-   private int e;
-
-   public cac(btn $$0) {
-      this.c = $$0;
-      this.d = $$0.dQ();
-      this.a(EnumSet.of(cak.a.a, cak.a.b, cak.a.c));
+   public cac(cfm $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean b() {
-      if (this.c.dT().a(this.c.o_() ? 50 : 1000) != 0) {
+      if (this.b.dS().a(this.c) != 0) {
          return false;
       } else {
-         jd $$0 = this.c.dq();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dfy.i);
+         ji $$0 = this.b.cJ();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         jd $$3 = this.b.dp();
+
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   @Override
-   public void d() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.J().n();
+   private boolean a(jd $$0, int $$1, int $$2, int $$3) {
+      jd $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dP().b_($$4).a(awk.a) && !this.b.dP().a_($$4).d();
    }
 
-   @Override
-   public void e() {
-      this.e = 0;
+   private boolean b(jd $$0, int $$1, int $$2, int $$3) {
+      return this.b.dP().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dP().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      double $$0 = this.b.ds().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dH() == 0.0F || !(Math.abs(this.b.dH()) < 10.0F) || !this.b.bf()) && !this.b.aF();
    }
 
-   public int h() {
-      return this.e;
+   @Override
+   public boolean U_() {
+      return false;
+   }
+
+   @Override
+   public void d() {
+      ji $$0 = this.b.cJ();
+      this.b.i(this.b.ds().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.N().n();
+   }
+
+   @Override
+   public void e() {
+      this.b.u(0.0F);
    }
 
    @Override
    public void a() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         jd $$0 = this.c.dq();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.ab().b(dcq.c)) {
-               this.d.b($$0, false);
-            }
+      boolean $$0 = this.d;
+      if (!$$0) {
+         epc $$1 = this.b.dP().b_(this.b.dp());
+         this.d = $$1.a(awk.a);
+      }
 
-            this.c.O();
-         } else {
-            jd $$1 = $$0.d();
-            if (this.d.a_($$1).a(dfy.i)) {
-               if (this.d.ab().b(dcq.c)) {
-                  this.d.c(2001, $$1, dfw.i(dfy.i.o()));
-                  this.d.a($$1, dfy.j.o(), 2);
-               }
+      if (this.d && !$$0) {
+         this.b.a(avp.hb, 1.0F, 1.0F);
+      }
 
-               this.c.O();
-            }
-         }
+      exa $$2 = this.b.ds();
+      if ($$2.d * $$2.d < 0.03F && this.b.dH() != 0.0F) {
+         this.b.u(ayo.j(0.2F, this.b.dH(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.u((float)$$4);
       }
    }
 }

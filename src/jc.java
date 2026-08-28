@@ -1,10 +1,8 @@
 import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import java.util.Map;
-import java.util.function.Supplier;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
 import org.slf4j.Logger;
 
 public class jc {
@@ -37,15 +35,15 @@ public class jc {
       return new j($$1);
    }
 
-   public static j a(j $$0, ji $$1, Supplier<String> $$2) {
-      ji $$3 = ji.a($$0.c(), $$1);
-      j $$4 = $$0.b();
-      if ($$4 == null) {
-         c.warn($$2.get());
-         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+   public static j a(j $$0, ji $$1) {
+      ji $$2 = ji.a($$0.c(), $$1);
+      j $$3 = $$0.b();
+      if ($$3 == null) {
+         c.debug("Failed to invert transformation {}", $$0);
+         return j.a();
       } else {
-         j $$5 = b.get($$1).a($$4).a(a.get($$3));
-         return a($$5);
+         j $$4 = b.get($$1).a($$3).a(a.get($$2));
+         return a($$4);
       }
    }
 }

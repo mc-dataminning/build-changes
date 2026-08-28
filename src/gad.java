@@ -1,65 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gad extends gae {
-   private final String f;
-
-   gad(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public interface gad {
+   static gad a(gaj $$0, UserApiService $$1) {
+      return new gad.b($$0, $$1);
    }
 
-   public String a() {
-      return this.f;
+   CompletableFuture<Unit> a(UUID var1, gal var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public gad c() {
-      gad $$0 = new gad(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
-   }
-
-   @Override
-   public fnx a(fnx $$0, gai $$1) {
-      return new fsi($$0, $$1, this);
-   }
-
-   public static class a extends gae.a<gad> {
-      public a(gad $$0, AbuseReportLimits $$1) {
+   public static class a extends xz {
+      public a(wz $$0, Throwable $$1) {
          super($$0, $$1);
       }
+   }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new gad(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+   public static record b(gaj a, UserApiService b) implements gad {
+      private static final wz c = wz.c("gui.abuseReport.send.service_unavailable");
+      private static final wz d = wz.c("gui.abuseReport.send.http_error");
+      private static final wz e = wz.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gal $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wz $$5 = this.a(var7);
+               throw new CompletionException(new gad.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wz $$7 = this.a(var8);
+               throw new CompletionException(new gad.a($$7, var8));
+            }
+         }, ad.h());
       }
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      @Nullable
-      @Override
-      public gae.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gae.b.d : null;
+      private wz a(MinecraftClientHttpException $$0) {
+         return wz.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wz a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
       }
 
       @Override
-      public Either<gae.c, gae.b> a(gai $$0) {
-         gae.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new gae.c(this.a.a, gah.c, $$3));
-         }
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gaj c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

@@ -1,90 +1,126 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record eym<T>(T b, jd c, int d, eyr e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<eym<?>> a = new Strategy<eym<?>>() {
-      public int a(eym<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+public class eym<T> implements eys<T>, eyu<T> {
+   private final Queue<eyr<T>> a = new PriorityQueue<>(eyr.a);
+   @Nullable
+   private List<eyq<T>> b;
+   private final Set<eyr<?>> c = new ObjectOpenCustomHashSet(eyr.c);
+   @Nullable
+   private BiConsumer<eym<T>, eyr<T>> d;
+
+   public eym() {
+   }
+
+   public eym(List<eyq<T>> $$0) {
+      this.b = $$0;
+
+      for (eyq<T> $$1 : $$0) {
+         this.c.add(eyr.a($$1.a(), $$1.b()));
+      }
+   }
+
+   public void a(@Nullable BiConsumer<eym<T>, eyr<T>> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public eyr<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public eyr<T> c() {
+      eyr<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      public boolean a(@Nullable eym<?> $$0, @Nullable eym<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+      return $$0;
+   }
+
+   @Override
+   public void a(eyr<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(eyr<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(jd $$0, T $$1) {
+      return this.c.contains(eyr.a($$1, $$0));
+   }
+
+   public void a(Predicate<eyr<T>> $$0) {
+      Iterator<eyr<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         eyr<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
-   };
+   }
 
-   public static <T> void a(ug $$0, Function<String, Optional<T>> $$1, dcb $$2, Consumer<eym<T>> $$3) {
-      long $$4 = $$2.a();
+   public Stream<eyr<T>> d() {
+      return this.a.stream();
+   }
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         ua $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (dcb.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
-            }
-         });
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
+
+   public uh a(long $$0, Function<T, String> $$1) {
+      uh $$2 = new uh();
+      if (this.b != null) {
+         for (eyq<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
       }
+
+      for (eyr<T> $$4 : this.a) {
+         $$2.add(eyq.a($$4, $$1, $$0));
+      }
+
+      return $$2;
    }
 
-   public static <T> Optional<eym<T>> a(ua $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         jd $$2 = new jd($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new eym<>((T)$$1x, $$2, $$0.h("t"), eyr.a($$0.h("p")));
-      });
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (eyq<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
    }
 
-   private static ua a(String $$0, jd $$1, int $$2, eyr $$3) {
-      ua $$4 = new ua();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
-   }
-
-   public static <T> ua a(eyn<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
-   }
-
-   public ua a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
-   }
-
-   public eyn<T> a(long $$0, long $$1) {
-      return new eyn<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
-
-   public static <T> eym<T> a(T $$0, jd $$1) {
-      return new eym<>($$0, $$1, 0, eyr.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public jd b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public eyr d() {
-      return this.e;
+   public static <T> eym<T> a(uh $$0, Function<String, Optional<T>> $$1, dcd $$2) {
+      Builder<eyq<T>> $$3 = ImmutableList.builder();
+      eyq.a($$0, $$1, $$2, $$3::add);
+      return new eym<>($$3.build());
    }
 }

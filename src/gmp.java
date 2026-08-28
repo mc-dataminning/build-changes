@@ -1,39 +1,25 @@
-public class gmp<T extends bsq & cnk> extends gkc<T> {
-   private static final float a = 12.25F;
-   private final glb f;
-   private final float g;
-   private final boolean h;
+public class gmp<T extends cgd> extends gln<T, fxk<T>> {
+   private static final akr a = akr.b("textures/entity/squid/squid.png");
 
-   public gmp(gkd.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gmp(gkh.a $$0, fxk<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   public gmp(gkd.a $$0) {
-      this($$0, 1.0F, false);
+   public akr a(T $$0) {
+      return a;
    }
 
-   @Override
-   protected int a(T $$0, jd $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected void a(T $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = ayo.i($$4, $$0.c, $$0.b);
+      float $$7 = ayo.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         this.f.a($$0.p(), cul.h, $$5, gpw.d, $$3, $$4, $$0.dQ(), $$0.an());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public akq a(bsq $$0) {
-      return gqe.e;
+   protected float a(T $$0, float $$1) {
+      return ayo.i($$1, $$0.cd, $$0.cc);
    }
 }

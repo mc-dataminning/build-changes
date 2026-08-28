@@ -2,137 +2,25 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qh {
-   public static void a(qp<ekw> $$0) {
-      jn<eiq> $$1 = $$0.a(lu.aQ);
-      jm<eiq> $$2 = $$1.b(sa.s);
-      jn<enl> $$3 = $$0.a(lu.aS);
-      jm<enl> $$4 = $$3.b(qx.H);
-      jm<enl> $$5 = $$3.b(qx.I);
-      jn<ekw> $$6 = $$0.a(lu.aU);
-      jm<ekw> $$7 = $$6.b(qw.a);
-      qw.a(
-         $$0,
-         "ancient_city/structures",
-         new ekw(
-            $$7,
+   public static final akq<ekz> a = qx.a("ancient_city/city_center");
+
+   public static void a(qq<ekz> $$0) {
+      jn<enp> $$1 = $$0.a(lu.aS);
+      jm<enp> $$2 = $$1.b(qy.G);
+      jn<ekz> $$3 = $$0.a(lu.aU);
+      jm<ekz> $$4 = $$3.b(qx.a);
+      $$0.a(
+         a,
+         new ekz(
+            $$4,
             ImmutableList.of(
-               Pair.of(eku.g(), 7),
-               Pair.of(eku.b("ancient_city/structures/barracks", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/chamber_1", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/chamber_2", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/chamber_3", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/sauna_1", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/small_statue", $$4), 4),
-               Pair.of(eku.b("ancient_city/structures/large_ruin_1", $$4), 1),
-               Pair.of(eku.b("ancient_city/structures/tall_ruin_1", $$4), 1),
-               Pair.of(eku.b("ancient_city/structures/tall_ruin_2", $$4), 1),
-               Pair.of(eku.b("ancient_city/structures/tall_ruin_3", $$4), 2),
-               Pair.of(eku.b("ancient_city/structures/tall_ruin_4", $$4), 2),
-               new Pair[]{
-                  Pair.of(
-                     eku.b(
-                        ImmutableList.of(
-                           eku.b("ancient_city/structures/camp_1", $$4),
-                           eku.b("ancient_city/structures/camp_2", $$4),
-                           eku.b("ancient_city/structures/camp_3", $$4)
-                        )
-                     ),
-                     1
-                  ),
-                  Pair.of(eku.b("ancient_city/structures/medium_ruin_1", $$4), 1),
-                  Pair.of(eku.b("ancient_city/structures/medium_ruin_2", $$4), 1),
-                  Pair.of(eku.b("ancient_city/structures/small_ruin_1", $$4), 1),
-                  Pair.of(eku.b("ancient_city/structures/small_ruin_2", $$4), 1),
-                  Pair.of(eku.b("ancient_city/structures/large_pillar_1", $$4), 1),
-                  Pair.of(eku.b("ancient_city/structures/medium_pillar_1", $$4), 1),
-                  Pair.of(eku.b(ImmutableList.of(eku.b("ancient_city/structures/ice_box_1"))), 1)
-               }
+               Pair.of(ekx.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(ekx.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(ekx.b("ancient_city/city_center/city_center_3", $$2), 1)
             ),
-            ekw.a.b
+            ekz.a.b
          )
       );
-      qw.a($$0, "ancient_city/sculk", new ekw($$7, ImmutableList.of(Pair.of(eku.a($$2), 6), Pair.of(eku.g(), 1)), ekw.a.b));
-      qw.a(
-         $$0,
-         "ancient_city/walls",
-         new ekw(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eku.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
-               Pair.of(eku.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
-               new Pair[]{
-                  Pair.of(eku.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
-                  Pair.of(eku.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
-                  Pair.of(eku.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
-                  Pair.of(eku.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
-               }
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "ancient_city/walls/no_corners",
-         new ekw(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
-               Pair.of(eku.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "ancient_city/city_center/walls",
-         new ekw(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eku.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/left", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/right", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/top", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
-               Pair.of(eku.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "ancient_city/city/entrance",
-         new ekw(
-            $$7,
-            ImmutableList.of(
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
-               Pair.of(eku.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
-            ),
-            ekw.a.b
-         )
-      );
+      qi.a($$0);
    }
 }

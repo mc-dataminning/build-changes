@@ -1,145 +1,117 @@
-import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class epi {
-   private epk[] a = new epk[128];
-   private int b;
+public abstract class epi extends epa {
+   @Override
+   public epb d() {
+      return epd.b;
+   }
 
-   public epk a(epk $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            epk[] $$1 = new epk[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
+   @Override
+   public epb e() {
+      return epd.c;
+   }
+
+   @Override
+   public cul a() {
+      return cut.qz;
+   }
+
+   @Override
+   public void a(dcw $$0, jd $$1, epc $$2, ayw $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avp.Cc, avq.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lm.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 
-   public void a() {
-      this.b = 0;
+   @Nullable
+   @Override
+   public lk h() {
+      return lm.l;
    }
 
-   public epk b() {
-      return this.a[0];
+   @Override
+   protected boolean a(dcw $$0) {
+      return $$0.ab().b(dcs.U);
    }
 
-   public epk c() {
-      epk $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
+   @Override
+   protected void a(dcx $$0, jd $$1, dtc $$2) {
+      dqh $$3 = $$2.t() ? $$0.c_($$1) : null;
+      dfy.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(dcz $$0) {
+      return 4;
+   }
+
+   @Override
+   public dtc b(epc $$0) {
+      return dga.G.o().a(dko.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(epb $$0) {
+      return $$0 == epd.c || $$0 == epd.b;
+   }
+
+   @Override
+   public int c(dcz $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dcz $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(epc $$0, dcc $$1, jd $$2, epb $$3, ji $$4) {
+      return $$4 == ji.a && !$$3.a(awk.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avo> j() {
+      return Optional.of(avp.di);
+   }
+
+   public static class a extends epi {
+      @Override
+      protected void a(dtd.a<epb, epc> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(epk $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
+      @Override
+      public int d(epc $$0) {
+         return $$0.c(b);
       }
 
-      $$0.d = -1;
-   }
-
-   public void a(epk $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
+      @Override
+      public boolean c(epc $$0) {
+         return false;
       }
    }
 
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      epk $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         epk $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
+   public static class b extends epi {
+      @Override
+      public int d(epc $$0) {
+         return 8;
       }
 
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      epk $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         epk $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         epk $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
+      @Override
+      public boolean c(epc $$0) {
+         return true;
       }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public epk[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

@@ -1,52 +1,63 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dmn {
-   dmn s_ = new dmn() {
-      @Override
-      public boolean a(dcv $$0, jd $$1, dta $$2, @Nullable Collection<ji> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dmt)dfy.qT).m().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(eoz.c) ? false : dmt.a($$0, $$1, $$2, $$3);
-         } else {
-            return dmn.super.a($$0, $$1, $$2, $$3, $$4);
-         }
+public class dmn extends dgh implements dgb {
+   public static final MapCodec<dmn> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsr.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dmn::new)
+   );
+   public static final duc f = dts.aU;
+   protected static final float g = 6.0F;
+   protected static final ext h = dfy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dsr i;
+
+   @Override
+   public MapCodec<? extends dmn> a() {
+      return e;
+   }
+
+   protected dmn(dsr $$0, dtb.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return h;
+   }
+
+   @Override
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
+   }
 
-      @Override
-      public int a(dms.a $$0, dcv $$1, jd $$2, ayv $$3, dms $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
+   public void a(aqu $$0, jd $$1, dtc $$2, ayw $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
+      } else {
+         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
       }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
    }
 
-   default void a(dcv $$0, dta $$1, jd $$2, ayv $$3) {
-   }
-
-   default boolean a(dcv $$0, jd $$1, ayv $$2) {
-      return false;
-   }
-
-   default boolean a(dcv $$0, jd $$1, dta $$2, @Nullable Collection<ji> $$3, boolean $$4) {
-      return ((dkw)dfy.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
+   @Override
+   public boolean b(dcz $$0, jd $$1, dtc $$2) {
       return true;
    }
 
-   default int i_(int $$0) {
-      return 1;
+   @Override
+   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
-   int a(dms.a var1, dcv var2, jd var3, ayv var4, dms var5, boolean var6);
+   @Override
+   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(f);
+   }
 }

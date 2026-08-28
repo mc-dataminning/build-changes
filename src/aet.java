@@ -1,29 +1,32 @@
-public class aet implements zf<abt> {
-   public static final yw<vv, aet> a = zf.a(aet::a, aet::new);
+import javax.annotation.Nullable;
+
+public class aet implements zg<abu> {
+   public static final yx<vw, aet> a = zg.a(aet::a, aet::new);
    private final int b;
 
-   public aet(int $$0) {
-      this.b = $$0;
+   public aet(bsr $$0) {
+      this.b = $$0.an();
    }
 
-   private aet(vv $$0) {
-      this.b = $$0.readByte();
+   private aet(vw $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vv $$0) {
-      $$0.k(this.b);
+   private void a(vw $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zh<aet> a() {
-      return agf.ax;
+   public zi<aet> a() {
+      return agg.aw;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bsr a(dcw $$0) {
+      return $$0.a(this.b);
    }
 }

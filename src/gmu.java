@@ -1,40 +1,23 @@
-public class gmu extends glj<cgc, fuw<cgc>> {
-   private final fuw<cgc> a = this.a();
-   private final fuw<cgc> i;
-   private static final akq j = akq.b("textures/entity/fish/tropical_a.png");
-   private static final akq k = akq.b("textures/entity/fish/tropical_b.png");
+public class gmu extends gkg<coc> {
+   public static final akr a = akr.b("textures/entity/trident.png");
+   private final fxn g;
 
-   public gmu(gkd.a $$0) {
-      super($$0, new fxk<>($$0.a(fyd.bM)), 0.15F);
-      this.i = new fxl<>($$0.a(fyd.bK));
-      this.a(new goz(this, $$0.f()));
+   public gmu(gkh.a $$0) {
+      super($$0);
+      this.g = new fxn($$0.a(fyh.bJ));
    }
 
-   public akq a(cgc $$0) {
-      return switch ($$0.gx().a()) {
-         case a -> j;
-         case b -> k;
-      };
-   }
-
-   public void a(cgc $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
-      fuw<cgc> $$6 = switch ($$0.gx().a()) {
-         case a -> this.a;
-         case b -> this.i;
-      };
-      this.f = $$6;
-      $$6.a($$0.gv().d());
+   public void a(coc $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(ayo.i($$2, $$0.O, $$0.dF()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayo.i($$2, $$0.P, $$0.dH()) + 90.0F));
+      fbk $$6 = glf.b($$4, this.g.a(this.a($$0)), false, $$0.F());
+      this.g.a($$3, $$6, $$5, gqa.d);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.a(-1);
    }
 
-   protected void a(cgc $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayn.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bf()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public akr a(coc $$0) {
+      return a;
    }
 }

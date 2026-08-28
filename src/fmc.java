@@ -1,19 +1,61 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
-public interface fmc {
-   default void a(fmb $$0, wy $$1) {
-      this.a($$0, fme.a($$1.getString()));
+public class fmc implements flz {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public fmc(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default void a(fmb $$0, String $$1) {
-      this.a($$0, fme.a($$1));
+   public fmc(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   default void a(fmb $$0, wy... $$1) {
-      this.a($$0, fme.a(ImmutableList.copyOf($$1)));
+   public static fmc a(int $$0) {
+      return new fmc($$0, 0);
    }
 
-   void a(fmb var1, fme<?> var2);
+   public static fmc b(int $$0) {
+      return new fmc(0, $$0);
+   }
 
-   fmc a();
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int D() {
+      return this.a;
+   }
+
+   @Override
+   public int E() {
+      return this.b;
+   }
+
+   @Override
+   public int y() {
+      return this.c;
+   }
+
+   @Override
+   public int w() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fii> $$0) {
+   }
 }

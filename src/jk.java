@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum jk implements azj {
+public enum jk implements azk {
    a("down_east", ji.a, ji.f),
    b("down_north", ji.a, ji.c),
    c("down_south", ji.a, ji.d),

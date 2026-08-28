@@ -1,15 +1,8 @@
-public class gtf extends gtg {
-   public gtf(cfd $$0) {
-      super($$0, avo.bR, avp.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected gtc o() {
-      return new gte(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.Z_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gtf {
 }

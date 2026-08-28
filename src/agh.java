@@ -1,102 +1,190 @@
-public interface agh extends ajk, zy {
-   @Override
-   default vt b() {
-      return vt.b;
-   }
-
-   void a(aib var1);
-
-   void a(agp var1);
-
-   void a(agn var1);
-
-   void a(ago var1);
-
-   void a(agm var1);
-
-   void a(ags var1);
-
-   void a(agv var1);
-
-   void a(agw var1);
-
-   void a(ahj var1);
-
-   void a(agx var1);
-
-   void a(ahc var1);
-
-   void a(ahf var1);
-
-   void a(ahk var1);
-
-   void a(ahl var1);
-
-   void a(ahm var1);
-
-   void a(ahn var1);
-
-   void a(ahu var1);
-
-   void a(ahx var1);
-
-   void a(aia var1);
-
-   void a(aid var1);
-
-   void a(aie var1);
-
-   void a(aic var1);
-
-   void a(ahh var1);
-
-   void a(ahg var1);
-
-   void a(agj var1);
-
-   void a(ahp var1);
-
-   void a(aho var1);
-
-   void a(ahr var1);
-
-   void a(agt var1);
-
-   void a(ahv var1);
-
-   void a(ahw var1);
-
-   void a(ahi var1);
-
-   void a(ahq var1);
-
-   void a(aht var1);
-
-   void a(ahz var1);
-
-   void a(ahs var1);
-
-   void a(aha var1);
-
-   void a(ahb var1);
-
-   void a(agy var1);
-
-   void a(agk var1);
-
-   void a(ahy var1);
-
-   void a(ahd var1);
-
-   void a(agl var1);
-
-   void a(ahe var1);
-
-   void a(agq var1);
-
-   void a(agu var1);
-
-   void a(agr var1);
-
-   void a(agz var1);
+public class agh {
+   public static final wh.a<agi, wk> a = zl.a(
+      vu.b,
+      $$0 -> $$0.a(agg.bf, agk.a)
+            .a(agg.bg, agl.a)
+            .a(agg.bh, agm.a)
+            .a(agg.bi, agn.a)
+            .a(agg.bj, ago.a)
+            .a(agg.bk, agp.a)
+            .a(agg.bl, agq.a)
+            .a(agg.bm, agr.a)
+            .a(agg.bn, ags.a)
+            .a(agg.bo, agt.a)
+            .a(zy.l, aaa.a)
+            .a(agg.bp, agu.a)
+            .a(agg.bq, agv.b)
+            .a(agg.br, agw.a)
+            .a(agg.bs, agx.a)
+            .a(agg.bt, agy.a)
+            .a(agg.bu, agz.a)
+            .a(abq.b, abs.a)
+            .a(zy.m, aab.a)
+            .a(agg.bv, aha.a)
+            .a(agg.bw, ahb.b)
+            .a(agg.bx, ahc.a)
+            .a(agg.by, ahd.a)
+            .a(agg.bz, ahe.a)
+            .a(zy.n, aac.a)
+            .a(agg.bA, ahf.a)
+            .a(agg.bB, ahg.a.i)
+            .a(agg.bC, ahg.b.i)
+            .a(agg.bD, ahg.c.i)
+            .a(agg.bE, ahg.d.i)
+            .a(agg.bF, ahh.a)
+            .a(agg.bG, ahi.a)
+            .a(agg.bH, ahj.a)
+            .a(ajk.b, ajm.a)
+            .a(agg.bI, ahk.a)
+            .a(agg.bJ, ahl.a)
+            .a(agg.bK, ahm.a)
+            .a(agg.bL, ahn.a)
+            .a(agg.bM, aho.a)
+            .a(zy.o, aad.a)
+            .a(agg.bN, ahp.a)
+            .a(agg.bO, ahq.a)
+            .a(agg.bP, ahr.a)
+            .a(zy.p, aae.a)
+            .a(agg.bQ, ahs.a)
+            .a(agg.bR, aht.a)
+            .a(agg.bS, ahu.a)
+            .a(agg.bT, ahv.a)
+            .a(agg.bU, ahw.a)
+            .a(agg.bV, ahx.a)
+            .a(agg.bW, ahy.a)
+            .a(agg.bX, ahz.a)
+            .a(agg.bY, aia.a)
+            .a(agg.bZ, aib.a)
+            .a(agg.ca, aic.a)
+            .a(agg.cb, aid.a)
+            .a(agg.cc, aie.a)
+            .a(agg.cd, aif.a)
+   );
+   public static final wh.a<abu, wk> b = zl.b(
+      vu.b,
+      $$0 -> $$0.a(agg.a, acg::new, new acf())
+            .a(agg.c, abv.a)
+            .a(agg.d, abw.a)
+            .a(agg.e, abx.a)
+            .a(agg.f, aby.a)
+            .a(agg.g, abz.a)
+            .a(agg.h, aca.a)
+            .a(agg.i, acb.a)
+            .a(agg.j, acc.a)
+            .a(agg.k, acd.a)
+            .a(agg.l, ace.a)
+            .a(agg.m, ach.a)
+            .a(agg.n, aci.a)
+            .a(agg.o, acj.b)
+            .a(agg.p, ack.a)
+            .a(agg.q, acl.a)
+            .a(agg.r, acm.a)
+            .a(agg.s, acn.a)
+            .a(agg.t, aco.a)
+            .a(agg.u, acp.a)
+            .a(agg.v, acq.a)
+            .a(agg.w, acr.a)
+            .a(abq.a, abp.a)
+            .a(agg.x, acs.a)
+            .a(agg.y, act.a)
+            .a(zy.a, zn.a)
+            .a(agg.z, acu.a)
+            .a(agg.A, acv.a)
+            .a(agg.B, acw.a)
+            .a(zy.c, zp.a)
+            .a(agg.C, acx.a)
+            .a(agg.D, acy.a)
+            .a(agg.E, acz.a)
+            .a(agg.F, ada.a)
+            .a(agg.G, adb.a)
+            .a(agg.H, adc.a)
+            .a(agg.I, add.a)
+            .a(agg.J, ade.a)
+            .a(zy.d, zq.a)
+            .a(agg.K, adg.a)
+            .a(agg.L, adh.a)
+            .a(agg.M, adi.a)
+            .a(agg.N, adj.a)
+            .a(agg.O, adl.a)
+            .a(agg.P, adm.a)
+            .a(agg.Q, adn.a)
+            .a(agg.R, ado.a.j)
+            .a(agg.S, ado.b.j)
+            .a(agg.T, ado.c.j)
+            .a(agg.U, adp.a)
+            .a(agg.V, adq.a)
+            .a(agg.W, adr.a)
+            .a(agg.X, ads.a)
+            .a(zy.e, zr.a)
+            .a(ajk.a, ajj.a)
+            .a(agg.Y, adt.a)
+            .a(agg.Z, adu.a)
+            .a(agg.aa, adv.a)
+            .a(agg.ab, adw.a)
+            .a(agg.ac, adx.b)
+            .a(agg.ad, ady.a)
+            .a(agg.ae, adz.a)
+            .a(agg.af, aea.a)
+            .a(agg.ag, aeb.a)
+            .a(agg.ah, aec.a)
+            .a(agg.ai, aee.a)
+            .a(agg.aj, aef.a)
+            .a(agg.ak, aeg.a)
+            .a(agg.ce, aeh.a)
+            .a(zy.f, zs.a)
+            .a(zy.g, zt.b)
+            .a(agg.al, aei.a)
+            .a(agg.am, aej.a)
+            .a(agg.an, aek.a)
+            .a(agg.ao, ael.a)
+            .a(agg.ap, aem.a)
+            .a(agg.aq, aen.a)
+            .a(agg.ar, aeo.a)
+            .a(agg.as, aep.a)
+            .a(agg.at, aeq.a)
+            .a(agg.au, aer.a)
+            .a(agg.av, aes.a)
+            .a(agg.aw, aet.a)
+            .a(agg.ax, aeu.a)
+            .a(agg.ay, aev.a)
+            .a(agg.az, aew.a)
+            .a(agg.aA, aex.a)
+            .a(agg.aB, aey.a)
+            .a(agg.aC, aez.a)
+            .a(agg.aD, afa.a)
+            .a(agg.aE, afb.a)
+            .a(agg.aF, afc.a)
+            .a(agg.aG, afd.a)
+            .a(agg.aH, afe.a)
+            .a(agg.aI, aff.a)
+            .a(agg.aJ, afg.a)
+            .a(agg.aK, afh.a)
+            .a(agg.aL, afi.a)
+            .a(agg.aM, afj.a)
+            .a(agg.aN, afk.a)
+            .a(agg.aO, afl.a)
+            .a(agg.aP, afm.a)
+            .a(agg.aQ, afn.a)
+            .a(agg.aR, afo.a)
+            .a(agg.aS, afp.a)
+            .a(agg.aT, afq.b)
+            .a(agg.aU, afr.a)
+            .a(zy.i, zv.a)
+            .a(agg.aV, afs.a)
+            .a(agg.aW, aft.a)
+            .a(agg.aX, afu.a)
+            .a(agg.aY, afv.a)
+            .a(agg.aZ, afw.a)
+            .a(agg.cf, afx.a)
+            .a(agg.cg, afy.a)
+            .a(zy.j, zw.a)
+            .a(agg.ba, afz.a)
+            .a(agg.bb, aga.a)
+            .a(agg.bc, agb.a)
+            .a(agg.bd, agc.a)
+            .a(zy.k, zx.a)
+            .a(agg.be, aed.a)
+            .a(zy.b, zo.a)
+            .a(zy.h, zu.a)
+   );
 }

@@ -1,30 +1,62 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class erv extends esd {
-   public static final MapCodec<erv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akq.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erv::new)
-   );
-   private final akq j;
+public class erv {
+   private final ayu a;
+   private final euj b;
+   private final Optional<jn.a> c;
+   private final Set<akq<?>> d;
 
-   private erv(akq $$0, int $$1, int $$2, List<euw> $$3, List<esz> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public erv(ayu $$0, euj $$1, jn.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public esc a() {
-      return erz.e;
+   public erv(ayu $$0, euj $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   public void a(Consumer<cuo> $$0, erl $$1) {
-      $$1.a(this.j, $$0);
+   private erv(ayu $$0, euj $$1, Optional<jn.a> $$2, Set<akq<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static esd.a<?> a(akq $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erv($$0, $$1, $$2, $$3, $$4));
+   public erv a(String $$0) {
+      return new erv(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public erv a(String $$0, akq<?> $$1) {
+      Set<akq<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new erv(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(akq<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(erq $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jn.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public erv a(euj $$0) {
+      return new erv(this.a, $$0, this.c, this.d);
+   }
+
+   public ayu c() {
+      return this.a;
    }
 }

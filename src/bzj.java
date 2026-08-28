@@ -1,2 +1,8 @@
-public interface bzj {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bzj {
 }

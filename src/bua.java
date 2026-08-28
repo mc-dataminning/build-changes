@@ -1,48 +1,35 @@
-import java.util.EnumSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
 public enum bua {
    a(0),
    b(1),
    c(2),
    d(3),
-   e(4);
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-   public static final Set<bua> f = Set.of(values());
-   public static final Set<bua> g = Set.of(e, d);
-   private final int h;
+   public static final IntFunction<bua> s = axe.a(bua::a, values(), axe.a.a);
+   public static final yx<ByteBuf, bua> t = yv.a(s, bua::a);
+   private final int u;
 
    private bua(final int $$0) {
-      this.h = $$0;
+      this.u = $$0;
    }
 
-   private int a() {
-      return 1 << this.h;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bua> a(int $$0) {
-      Set<bua> $$1 = EnumSet.noneOf(bua.class);
-
-      for (bua $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static int a(Set<bua> $$0) {
-      int $$1 = 0;
-
-      for (bua $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
-
-      return $$1;
+   public int a() {
+      return this.u;
    }
 }

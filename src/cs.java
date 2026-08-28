@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cs(Optional<jq<cuj>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implements Predicate<cuo> {
+public record cs(Optional<jq<cul>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implements Predicate<cuq> {
    public static final Codec<cs> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                kb.a(lu.K).optionalFieldOf("items").forGetter(cs::a),
@@ -17,7 +17,7 @@ public record cs(Optional<jq<cuj>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implemen
             .apply($$0, cs::new)
    );
 
-   public boolean a(cuo $$0) {
+   public boolean a(cuq $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.H())) {
@@ -35,7 +35,7 @@ public record cs(Optional<jq<cuj>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implemen
       }
    }
 
-   public Optional<jq<cuj>> a() {
+   public Optional<jq<cul>> a() {
       return this.b;
    }
 
@@ -52,7 +52,7 @@ public record cs(Optional<jq<cuj>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implemen
    }
 
    public static class a {
-      private Optional<jq<cuj>> a = Optional.empty();
+      private Optional<jq<cul>> a = Optional.empty();
       private dh.d b = dh.d.c;
       private ko c;
       private final Builder<ct.a<?>, ct> d;
@@ -66,12 +66,12 @@ public record cs(Optional<jq<cuj>> b, dh.d c, ko d, Map<ct.a<?>, ct> e) implemen
          return new cs.a();
       }
 
-      public cs.a a(dct... $$0) {
+      public cs.a a(dcv... $$0) {
          this.a = Optional.of(jq.a($$0x -> $$0x.r().o(), $$0));
          return this;
       }
 
-      public cs.a a(awt<cuj> $$0) {
+      public cs.a a(awu<cul> $$0) {
          this.a = Optional.of(lt.g.a($$0));
          return this;
       }

@@ -1,16 +1,13 @@
-public class gnr extends gop<cff, fup<cff>> {
-   private static final akq a = akq.b("textures/entity/cat/cat_collar.png");
-   private final fup<cff> b;
+public class gnr extends got<ckz, fur<ckz>> {
+   private static final gff a = gff.q(akr.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gnr(glz<cff, fup<cff>> $$0, fya $$1) {
+   public gnr(gmd<ckz, fur<ckz>> $$0) {
       super($$0);
-      this.b = new fup<>($$1.a(fyd.v));
    }
 
-   public void a(fbc $$0, get $$1, int $$2, cff $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         int $$10 = $$3.gz().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10);
-      }
+   public void a(fbg $$0, gex $$1, int $$2, ckz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      fbk $$10 = $$1.getBuffer(a);
+      fur<ckz> $$11 = this.c();
+      gjn.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gqa.d);
    }
 }

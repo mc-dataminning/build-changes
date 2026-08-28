@@ -1,20 +1,16 @@
-public record aby(int b) implements zf<abt> {
-   public static final yw<vv, aby> a = zf.a(aby::a, aby::new);
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private aby(vv $$0) {
-      this($$0.l());
-   }
-
-   private void a(vv $$0) {
-      $$0.c(this.b);
-   }
+public record aby(Object2IntMap<avw<?>> b) implements zg<abu> {
+   private static final yx<wk, Object2IntMap<avw<?>>> c = yv.a(Object2IntOpenHashMap::new, avw.a, yv.g);
+   public static final yx<wk, aby> a = c.a(aby::new, aby::b);
 
    @Override
-   public zh<aby> a() {
-      return agf.g;
+   public zi<aby> a() {
+      return agg.f;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 }

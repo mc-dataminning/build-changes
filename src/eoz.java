@@ -1,24 +1,61 @@
-import com.google.common.collect.UnmodifiableIterator;
-
-public class eoz {
-   public static final eox a = a("empty", new eov());
-   public static final eow b = a("flowing_water", new epe.a());
-   public static final eow c = a("water", new epe.b());
-   public static final eow d = a("flowing_lava", new epb.a());
-   public static final eow e = a("lava", new epb.b());
-
-   private static <T extends eox> T a(String $$0, T $$1) {
-      return jz.a(lt.c, $$0, $$1);
+public class eoz extends epb {
+   @Override
+   public cul a() {
+      return cut.a;
    }
 
-   static {
-      for (eox $$0 : lt.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Override
+   public boolean a(epc $$0, dcc $$1, jd $$2, epb $$3, ji $$4) {
+      return true;
+   }
 
-         while (var2.hasNext()) {
-            eoy $$1 = (eoy)var2.next();
-            eox.c.b($$1);
-         }
-      }
+   @Override
+   public exa a(dcc $$0, jd $$1, epc $$2) {
+      return exa.b;
+   }
+
+   @Override
+   public int a(dcz $$0) {
+      return 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(epc $$0, dcc $$1, jd $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(epc $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dtc b(epc $$0) {
+      return dga.a.o();
+   }
+
+   @Override
+   public boolean c(epc $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(epc $$0) {
+      return 0;
+   }
+
+   @Override
+   public ext b(epc $$0, dcc $$1, jd $$2) {
+      return exq.a();
    }
 }

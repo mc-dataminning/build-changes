@@ -1,76 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnu extends dfw {
-   public static final MapCodec<dnu> a = b(dnu::new);
-   private static final wy d = wy.c("container.stonecutter");
-   public static final dtu b = djs.aE;
-   protected static final exp c = dfw.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dnu extends dmz {
+   public static final MapCodec<dnu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmz::d), u()).apply($$0, dnu::new));
+   public static final duc b = dts.ba;
 
    @Override
    public MapCodec<dnu> a() {
       return a;
    }
 
-   public dnu(dsz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ji.c));
+   public dnu(dup $$0, dtb.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dta a(cyb $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$1.B) {
-         return bqq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avy.ay);
-         return bqq.c;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bqu b(dta $$0, dcu $$1, jd $$2) {
-      return new bra(($$2x, $$3, $$4) -> new cru($$2x, $$3, cqe.a($$1, $$2)), d);
+   public dtc a(cyd $$0) {
+      epc $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Integer.valueOf(dui.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == epd.c));
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return c;
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      return $$1 == ji.a && !this.a($$0, $$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean f_(dta $$0) {
-      return true;
+   public float g(dtc $$0) {
+      return dui.b($$0.c(b));
    }
 
    @Override
-   protected dmd a_(dta $$0) {
-      return dmd.c;
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dta a(dta $$0, dmk $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dta a(dta $$0, dkt $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dta $$0, epn $$1) {
-      return false;
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b, f);
    }
 }

@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class eah extends ean {
-   final awt<dfw> a;
-   public static final MapCodec<eah> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(awt.a(lu.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eah::new)
-   );
+abstract class eah implements eaf {
+   protected final List<eaf> e;
 
-   protected eah(kh $$0, awt<dfw> $$1) {
-      super($$0);
-      this.a = $$1;
+   protected eah(List<eaf> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dta $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public ead<?> a() {
-      return ead.b;
+   public static <T extends eah> MapCodec<T> a(Function<List<eaf>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(eaf.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

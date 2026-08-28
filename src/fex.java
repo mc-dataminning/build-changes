@@ -1,41 +1,98 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.util.UndashedUuid;
 import java.util.Date;
 import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class fex {
-   private static final wy a = wy.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
-
-   public static wy a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
+   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
       } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return wy.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return wy.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return wy.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return wy.a("mco.time.daysAgo", $$4);
-         }
+         return $$2.apply($$3.getAsJsonObject());
       }
    }
 
-   public static wy a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   @Nullable
+   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         return null;
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
+      }
    }
 
-   public static void a(fht $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      fgi $$5 = fgi.Q();
-      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
-      grf $$7 = $$6 != null ? $$5.am().b($$6.profile()) : gqx.a($$4);
-      fjf.a($$0, $$7.a(), $$1, $$2, $$3);
+   public static String a(String $$0, JsonObject $$1) {
+      String $$2 = b($$0, $$1, null);
+      if ($$2 == null) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else {
+         return $$2;
+      }
+   }
+
+   public static String a(String $$0, JsonObject $$1, String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
+      String $$3 = b($$0, $$1, null);
+      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   }
+
+   public static int a(String $$0, JsonObject $$1, int $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static long a(String $$0, JsonObject $$1, long $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static Date b(String $$0, JsonObject $$1) {
+      JsonElement $$2 = $$1.get($$0);
+      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

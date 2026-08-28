@@ -1,44 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+public class eqf implements eqg {
+   private final dcw b;
 
-public abstract class eqf {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-
-   public abstract ua a(ua var1, jo.a var2);
-
-   public void c() {
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
+   public eqf(dcw $$0) {
       this.b = $$0;
    }
 
-   public boolean d() {
-      return this.b;
+   @Override
+   public void a(ji $$0, dtc $$1, jd $$2, jd $$3, int $$4, int $$5) {
+      eqg.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public void a(File $$0, jo.a $$1) {
-      if (this.d()) {
-         ua $$2 = new ua();
-         $$2.a("data", this.a(new ua(), $$1));
-         up.e($$2);
-
-         try {
-            un.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
-         }
-
-         this.a(false);
-      }
+   @Override
+   public void a(jd $$0, dfy $$1, jd $$2) {
+      dtc $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public static record a<T extends eqf>(Supplier<T> a, BiFunction<ua, jo.a, T> b, azv c) {
+   @Override
+   public void a(dtc $$0, jd $$1, dfy $$2, jd $$3, boolean $$4) {
+      eqg.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

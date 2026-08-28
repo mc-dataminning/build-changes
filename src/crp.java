@@ -1,28 +1,22 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+public class crp implements cqf {
+   private final int[] a;
 
-public interface crp extends azj {
-   IntList a();
-
-   default int b() {
-      return this.a().size();
+   public crp(int $$0) {
+      this.a = new int[$$0];
    }
 
-   static crp a(final String $$0, final IntList $$1) {
-      return new crp() {
-         @Override
-         public IntList a() {
-            return $$1;
-         }
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
 
-         @Override
-         public String c() {
-            return $$0;
-         }
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

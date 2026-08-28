@@ -1,38 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class etz extends esy {
-   public static final Codec<wy> a = xa.a.validate($$0 -> cxz.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<etz> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cxz.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), esx.a.forGetter($$0x -> $$0x.d))).apply($$0, etz::new)
-   );
-   private final List<ark<wy>> c;
-   private final esx d;
+public class etz extends etc {
+   static final MapCodec<etz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evx.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, etz::new));
+   private final evw b;
 
-   protected etz(List<euw> $$0, List<ark<wy>> $$1, esx $$2) {
+   private etz(List<eva> $$0, evw $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cuo a(cuo $$0, erl $$1) {
-      $$0.a(kq.J, cxz.a, this::a);
+   public Set<eui<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ete<etz> b() {
+      return etf.Q;
+   }
+
+   @Override
+   public cuq a(cuq $$0, erp $$1) {
+      int $$2 = ayo.a(this.b.a($$1), 0, 4);
+      $$0.b(kq.Q, $$2);
       return $$0;
    }
 
-   @VisibleForTesting
-   public cxz a(cxz $$0) {
-      List<ark<wy>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   public evw c() {
+      return this.b;
    }
 
-   @Override
-   public eta<etz> b() {
-      return etb.N;
+   public static etc.a<?> a(evw $$0) {
+      return a($$1 -> new etz($$1, $$0));
    }
 }

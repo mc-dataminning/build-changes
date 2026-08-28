@@ -1,33 +1,104 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class byj {
-   private static final int a = 10;
-   private static final int b = 7;
+public class byj extends bvh<cmk> {
+   private static final int c = 80;
+   private long d;
+   private long e;
+   private int f;
+   private Optional<jd> g = Optional.empty();
 
-   public static bwq<btu> a(float $$0) {
-      return a($$0, 10, 7);
+   public byj() {
+      super(ImmutableMap.of(ccs.n, cct.b, ccs.m, cct.b));
    }
 
-   public static bwq<btu> a(float $$0, int $$1, int $$2) {
-      return bys.a((Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$3 -> $$3.group($$3.c(ccq.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jd $$7 = $$5.dq();
-               eww $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cek.a($$5, $$1, $$2);
-               } else {
-                  kf $$9 = kf.a($$7);
-                  kf $$10 = bvh.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = ceh.a($$5, $$1, $$2, eww.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cek.a($$5, $$1, $$2);
+   protected boolean a(aqu $$0, cmk $$1) {
+      if ($$1.ai % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ai)) {
+         if ($$1.x().a_(cut.ry) <= 0) {
+            return false;
+         } else {
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(aqu $$0, cmk $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
+
+   private Optional<jd> b(aqu $$0, cmk $$1) {
+      jd.a $$2 = new jd.a();
+      Optional<jd> $$3 = Optional.empty();
+      int $$4 = 0;
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.dp(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.z.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.j());
                   }
                }
+            }
+         }
+      }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cct($$1xxxx, $$0, 0)));
-               return true;
-            })));
+      return $$3;
+   }
+
+   private boolean a(jd $$0, aqu $$1) {
+      dtc $$2 = $$1.a_($$0);
+      dfy $$3 = $$2.b();
+      return $$3 instanceof dht && !((dht)$$3).h($$2);
+   }
+
+   protected void b(aqu $$0, cmk $$1, long $$2) {
+      this.a($$1);
+      $$1.a(bsy.a, new cuq(cut.ry));
+      this.d = $$2;
+      this.f = 0;
+   }
+
+   private void a(cmk $$0) {
+      this.g.ifPresent($$1 -> {
+         bvk $$2 = new bvk($$1);
+         $$0.dU().a(ccs.n, $$2);
+         $$0.dU().a(ccs.m, new ccv($$2, 0.5F, 1));
+      });
+   }
+
+   protected void c(aqu $$0, cmk $$1, long $$2) {
+      $$1.a(bsy.a, cuq.l);
+      this.e = (long)$$1.ai;
+   }
+
+   protected void d(aqu $$0, cmk $$1, long $$2) {
+      jd $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dn(), 1.0)) {
+         cuq $$4 = cuq.l;
+         bra $$5 = $$1.x();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            cuq $$8 = $$5.a($$7);
+            if ($$8.a(cut.ry)) {
+               $$4 = $$8;
+               break;
+            }
+         }
+
+         if (!$$4.e() && csq.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 15);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
+      }
    }
 }

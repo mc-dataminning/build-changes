@@ -1,33 +1,16 @@
-import java.util.List;
-
-public record acs(acs.a b, List<String> c) implements zf<abt> {
-   public static final yw<vv, acs> a = zf.a(acs::a, acs::new);
-
-   private acs(vv $$0) {
-      this($$0.b(acs.a.class), $$0.a(vv::p));
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vv::a);
-   }
+public record acs(cul b, int c) implements zg<abu> {
+   public static final yx<wk, acs> a = yx.a(yv.a(lu.K), acs::b, yv.g, acs::e, acs::new);
 
    @Override
-   public zh<acs> a() {
-      return agf.y;
+   public zi<acs> a() {
+      return agg.x;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

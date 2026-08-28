@@ -1,57 +1,36 @@
-import java.util.Collection;
+import java.util.function.Function;
 
-public abstract class gwi<E extends fjc.a<E>> extends fjc<E> {
-   protected gwi(int $$0, int $$1, int $$2, int $$3) {
-      super(fgi.Q(), $$0, $$1, $$2, $$3);
+public enum gwi {
+   a("movement", gwd::new),
+   b("find_tree", gwc::new),
+   c("punch_tree", gwf::new),
+   d("open_inventory", gwe::new),
+   e("craft_planks", gwb::new),
+   f("none", gwa::new);
+
+   private final String g;
+   private final Function<gwg, ? extends gwh> h;
+
+   private <T extends gwh> gwi(final String $$0, final Function<gwg, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   public gwh a(gwg $$0) {
+      return this.h.apply($$0);
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public static gwi a(String $$0) {
+      for (gwi $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
       }
-   }
 
-   public void b(int $$0) {
-      this.p($$0);
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
+      return f;
    }
 }

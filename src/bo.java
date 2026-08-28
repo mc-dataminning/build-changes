@@ -9,8 +9,8 @@ public class bo extends dv<bo.a> {
       return bo.a.a;
    }
 
-   public void a(aqu $$0, @Nullable bsq $$1) {
-      erl $$2 = $$1 != null ? bv.b($$0, $$1) : null;
+   public void a(aqv $$0, @Nullable bsr $$1) {
+      erp $$2 = $$1 != null ? bv.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bo extends dv<bo.a> {
          return an.B.a(new bo.a(Optional.empty(), Optional.empty(), Optional.of(bv.a($$0.b()))));
       }
 
-      public boolean a(aqu $$0, @Nullable erl $$1) {
-         return this.c.isPresent() && !this.c.get().a((btl)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(aqv $$0, @Nullable erp $$1) {
+         return this.c.isPresent() && !this.c.get().a((btn)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

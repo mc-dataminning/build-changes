@@ -1,43 +1,97 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class efd implements eee {
+public class efd implements eeh {
    public static final Codec<efd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awt.b(lu.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               egf.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eiq.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               eih.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bpv.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bpv.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               egi.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               ehl.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               egi.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               eft.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               egf.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               egi.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               efi.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               egz.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
             )
             .apply($$0, efd::new)
    );
-   public final awt<dfw> b;
-   public final egf c;
-   public final jm<eiq> d;
-   public final eih e;
-   public final bpv f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final bpv j;
-   public final float k;
+   public final egi b;
+   public final egi c;
+   public final ehl d;
+   public final egi e;
+   public final eft f;
+   public final Optional<egf> g;
+   public final efi h;
+   public final List<egz> i;
+   public final boolean j;
+   public final boolean k;
 
-   public efd(awt<dfw> $$0, egf $$1, jm<eiq> $$2, eih $$3, bpv $$4, float $$5, int $$6, float $$7, bpv $$8, float $$9) {
+   protected efd(egi $$0, ehl $$1, egi $$2, eft $$3, Optional<egf> $$4, egi $$5, efi $$6, List<egz> $$7, boolean $$8, boolean $$9) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
       this.h = $$6;
       this.i = $$7;
       this.j = $$8;
       this.k = $$9;
+   }
+
+   public static class a {
+      public final egi a;
+      private final ehl c;
+      public final egi b;
+      private final eft d;
+      private final Optional<egf> e;
+      private egi f;
+      private final efi g;
+      private List<egz> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
+
+      public a(egi $$0, ehl $$1, egi $$2, eft $$3, Optional<egf> $$4, efi $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = egi.a(dga.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
+      }
+
+      public a(egi $$0, ehl $$1, egi $$2, eft $$3, efi $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
+      }
+
+      public efd.a a(egi $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public efd.a a(List<egz> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public efd.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public efd.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public efd c() {
+         return new efd(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

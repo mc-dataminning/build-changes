@@ -1,14 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public interface enw<P extends env> {
-   enw<ent> a = a("clear", ent.a);
-   enw<enu> b = a("passthrough", enu.b);
-   enw<ens> c = a("append_static", ens.a);
-   enw<enr> d = a("append_loot", enr.a);
+public class enw implements enz {
+   public static final MapCodec<enw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ub.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, enw::new));
+   private final ub b;
 
-   MapCodec<P> codec();
+   public enw(ub $$0) {
+      this.b = $$0;
+   }
 
-   private static <P extends env> enw<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.n, $$0, () -> $$1);
+   @Override
+   public ub a(ayw $$0, @Nullable ub $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   }
+
+   @Override
+   public eoa<?> a() {
+      return eoa.c;
    }
 }

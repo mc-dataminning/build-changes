@@ -1,123 +1,103 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class ciz extends civ {
-   public static final double c = 0.375;
+public abstract class ciz extends cix {
+   protected static final Predicate<bsr> c = $$0 -> $$0 instanceof ciz;
+   protected ji d;
 
-   public ciz(bsw<? extends ciz> $$0, dcu $$1) {
+   protected ciz(bsx<? extends ciz> $$0, dcw $$1) {
       super($$0, $$1);
+      this.d = ji.d;
    }
 
-   public ciz(dcu $$0, jd $$1) {
-      super(bsw.al, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   protected ciz(bsx<? extends ciz> $$0, dcw $$1, jd $$2) {
+      this($$0, $$1);
+      this.b = $$2;
    }
 
-   @Override
-   protected void a(ajz.a $$0) {
-   }
-
-   @Override
-   protected void p() {
-      this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
-      double $$0 = (double)this.am().l() / 2.0;
-      double $$1 = (double)this.am().m();
-      this.a(new ewr(this.dv() - $$0, this.dx(), this.dB() - $$0, this.dv() + $$0, this.dx() + $$1, this.dB() + $$0));
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
+   protected void a(ji $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.t((float)(this.d.e() * 90));
+      this.O = this.dF();
+      this.p();
    }
 
    @Override
-   public void b(@Nullable bsq $$0) {
-      this.a(avo.nS, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(ua $$0) {
-   }
-
-   @Override
-   public void a(ua $$0) {
-   }
-
-   @Override
-   public bqq a(cmv $$0, bqp $$1) {
-      if (this.dQ().B) {
-         return bqq.a;
-      } else {
-         boolean $$2 = false;
-         double $$3 = 7.0;
-         List<btn> $$4 = this.dQ().a(btn.class, new ewr(this.dv() - 7.0, this.dx() - 7.0, this.dB() - 7.0, this.dv() + 7.0, this.dx() + 7.0, this.dB() + 7.0));
-
-         for (btn $$5 : $$4) {
-            if ($$5.ga() == $$0) {
-               $$5.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$6 = false;
-         if (!$$2) {
-            this.aq();
-            if ($$0.ga().d) {
-               for (btn $$7 : $$4) {
-                  if ($$7.fY() && $$7.ga() == this) {
-                     $$7.a(true, false);
-                     $$6 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$6) {
-            this.a(dxw.b, $$0);
-         }
-
-         return bqq.c;
+   protected final void p() {
+      if (this.d != null) {
+         ewv $$0 = this.a(this.b, this.d);
+         exa $$1 = $$0.f();
+         this.o($$1.c, $$1.d, $$1.e);
+         this.a($$0);
       }
    }
+
+   protected abstract ewv a(jd var1, ji var2);
 
    @Override
    public boolean s() {
-      return this.dQ().a_(this.b).a(awd.S);
+      if (!this.dP().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = jd.a(this.B()).allMatch($$0x -> {
+            dtc $$1 = this.dP().a_($$0x);
+            return $$1.e() || dia.m($$1);
+         });
+         return !$$0 ? false : this.dP().a(this, this.cL(), c).isEmpty();
+      }
    }
 
-   public static ciz b(dcu $$0, jd $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
+   protected ewv B() {
+      return this.cL().a(this.d.m().mul(-0.5F)).h(1.0E-7);
+   }
 
-      for (ciz $$6 : $$0.a(ciz.class, new ewr((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.t().equals($$1)) {
-            return $$6;
+   @Override
+   public ji cI() {
+      return this.d;
+   }
+
+   public abstract void C();
+
+   @Override
+   public cjh a(cuq $$0, float $$1) {
+      cjh $$2 = new cjh(
+         this.dP(), this.du() + (double)((float)this.d.j() * 0.15F), this.dw() + (double)$$1, this.dA() + (double)((float)this.d.l() * 0.15F), $$0
+      );
+      $$2.v();
+      this.dP().b($$2);
+      return $$2;
+   }
+
+   @Override
+   public float a(dmm $$0) {
+      if (this.d.o() != ji.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
          }
       }
 
-      ciz $$7 = new ciz($$0, $$1);
-      $$0.b($$7);
-      return $$7;
+      float $$1 = ayo.g(this.dF());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
    }
 
    @Override
-   public void v() {
-      this.a(avo.nT, 1.0F, 1.0F);
-   }
-
-   @Override
-   public zf<abt> dm() {
-      return new abu(this, 0, this.t());
-   }
-
-   @Override
-   public eww r(float $$0) {
-      return this.m($$0).b(0.0, 0.2, 0.0);
-   }
-
-   @Override
-   public cuo dD() {
-      return new cuo(cur.uK);
+   public float a(dkv $$0) {
+      return this.a($$0.a(this.d));
    }
 }

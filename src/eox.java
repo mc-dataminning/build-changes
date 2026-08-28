@@ -1,93 +1,213 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public abstract class eox {
-   public static final js<eoy> c = new js<>();
-   protected final dtb<eox, eoy> d;
-   private eoy a;
-   private final jm.c<eox> b = lt.c.f(this);
+public class eox extends LongLinkedOpenHashSet {
+   private final eox.a a;
 
-   protected eox() {
-      dtb.a<eox, eoy> $$0 = new dtb.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(eox::g, eoy::new);
-      this.f(this.d.b());
+   public eox(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new eox.a($$0 / 64, $$1);
    }
 
-   protected void a(dtb.a<eox, eoy> $$0) {
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public dtb<eox, eoy> f() {
-      return this.d;
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   protected final void f(eoy $$0) {
-      this.a = $$0;
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public final eoy g() {
-      return this.a;
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public abstract cuj a();
-
-   protected void a(dcu $$0, jd $$1, eoy $$2, ayv $$3) {
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   protected void b(dcu $$0, jd $$1, eoy $$2) {
-   }
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = ayo.f(60000000);
+      private static final int b = ayo.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-   protected void b(dcu $$0, jd $$1, eoy $$2, ayv $$3) {
-   }
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
+      }
 
-   @Nullable
-   protected lk h() {
-      return null;
-   }
+      static long a(long $$0) {
+         return $$0 & ~h;
+      }
 
-   protected abstract boolean a(eoy var1, dca var2, jd var3, eox var4, ji var5);
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
 
-   protected abstract eww a(dca var1, jd var2, eoy var3);
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
 
-   public abstract int a(dcx var1);
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
 
-   protected boolean i() {
-      return false;
-   }
+            this.containsNullKey = true;
+            $$4 = this.n;
+         } else {
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
 
-   protected boolean b() {
-      return false;
-   }
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
 
-   protected abstract float c();
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
 
-   public abstract float a(eoy var1, dca var2, jd var3);
+               $$4 = $$4 + 1 & this.mask;
+            }
+         }
 
-   public abstract float a(eoy var1);
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
 
-   protected abstract dta b(eoy var1);
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
 
-   public abstract boolean c(eoy var1);
+         return false;
+      }
 
-   public abstract int d(eoy var1);
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
 
-   public boolean a(eox $$0) {
-      return $$0 == this;
-   }
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
 
-   @Deprecated
-   public boolean a(awt<eox> $$0) {
-      return this.b.a($$0);
-   }
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
 
-   public abstract exp b(eoy var1, dca var2, jd var3);
+               $$5 = $$5 + 1 & this.mask;
+            }
 
-   public Optional<avn> j() {
-      return Optional.empty();
-   }
+            return false;
+         }
+      }
 
-   @Deprecated
-   public jm.c<eox> k() {
-      return this.b;
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
+
+            return a($$1, $$2);
+         }
+      }
+
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
+      }
    }
 }

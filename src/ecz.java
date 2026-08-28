@@ -1,24 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ecz extends eca<eeq> {
+public class ecz extends ecd<eeq> {
    public ecz(Codec<eeq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eeq> $$0) {
-      eeq $$1 = $$0.f();
-      ayv $$2 = $$0.d();
-      ddq $$3 = $$0.b();
-      dux $$4 = $$0.c();
-      jd $$5 = $$0.e();
+   public boolean a(ecf<eeq> $$0) {
+      dcx $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      ayw $$3 = $$0.d();
+      eeq $$4 = $$0.f();
+      Optional<ji> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jd $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && ebz.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         ebz.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-      for (edu $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+   private static Optional<ji> a(dcx $$0, jd $$1, ayw $$2) {
+      boolean $$3 = ebz.b($$0.a_($$1.d()));
+      boolean $$4 = ebz.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ji.a : ji.b);
+      } else if ($$3) {
+         return Optional.of(ji.a);
+      } else {
+         return $$4 ? Optional.of(ji.b) : Optional.empty();
+      }
+   }
+
+   private static void a(dcx $$0, ayw $$1, jd $$2, eeq $$3) {
+      ebz.c($$0, $$2);
+
+      for (ji $$4 : ji.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            jd $$5 = $$2.a($$4);
+            ebz.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               jd $$6 = $$5.a(ji.b($$1));
+               ebz.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  jd $$7 = $$6.a(ji.b($$1));
+                  ebz.c($$0, $$7);
+               }
+            }
          }
       }
-
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

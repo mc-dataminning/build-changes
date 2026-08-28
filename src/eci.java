@@ -1,46 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eci extends ebd {
-   public eci(Codec<eeg> $$0) {
-      super($$0);
-   }
+public class eci implements eeh {
+   public static final Codec<eci> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akr.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               akr.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               enq.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               enq.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eci::new)
+   );
+   public final List<akr> b;
+   public final List<akr> c;
+   public final jm<enp> d;
+   public final jm<enp> e;
+   public final int f;
 
-   @Override
-   protected void a(dcv $$0, ayv $$1, jd $$2, int $$3, jd.a $$4, eeg $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dta $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(djt.e) && $$19.b(djt.c) && $$19.b(djt.b) && $$19.b(djt.d)) {
-                     $$19 = $$19.a(djt.e, Boolean.valueOf($$15))
-                        .a(djt.c, Boolean.valueOf($$16))
-                        .a(djt.b, Boolean.valueOf($$17))
-                        .a(djt.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
+   public eci(List<akr> $$0, List<akr> $$1, jm<enp> $$2, jm<enp> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
    }
 }

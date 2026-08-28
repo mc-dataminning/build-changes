@@ -1,27 +1,26 @@
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public interface fqh {
-   static fqh a(axz $$0) {
-      return new fqg($$0);
+public class fqh implements fqm {
+   private final fmq a;
+
+   public fqh(fmq $$0) {
+      this.a = $$0;
    }
 
-   static fqh a(cry $$0) {
-      if ($$0 instanceof crx $$1) {
-         return new fqf($$1.a());
-      } else if ($$0 instanceof fqe.a $$2) {
-         return new fqe($$2);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
-   }
 
-   int a();
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   int a(fhr var1);
-
-   default void a(fhr $$0, int $$1, int $$2, Matrix4f $$3, get.a $$4) {
-   }
-
-   default void a(fhr $$0, int $$1, int $$2, fht $$3) {
+      return $$6;
    }
 }

@@ -1,33 +1,32 @@
-public class afu implements zf<abt> {
-   public static final yw<vv, afu> a = zf.a(afu::a, afu::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public afu(int $$0, int $$1, int $$2) {
+public class afu implements zg<abu> {
+   public static final yx<vw, afu> a = zg.a(afu::a, afu::new);
+   private final int b;
+   @Nullable
+   private final ub c;
+
+   public afu(int $$0, @Nullable ub $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private afu(vv $$0) {
+   private afu(vw $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((uy)this.c);
    }
 
    @Override
-   public zh<afu> a() {
-      return agf.aY;
+   public zi<afu> a() {
+      return agg.aX;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class afu implements zf<abt> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public ub e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

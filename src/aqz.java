@@ -1,113 +1,41 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
 
-public class aqz extends aqe {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azf<aqx<?>>> d = new Long2ObjectOpenHashMap();
+public class aqz<T> {
+   private final String h;
+   private final Comparator<T> i;
+   private final long j;
+   public static final aqz<azs> a = a("start", ($$0, $$1) -> 0);
+   public static final aqz<azs> b = a("dragon", ($$0, $$1) -> 0);
+   public static final aqz<dcd> c = a("player", Comparator.comparingLong(dcd::a));
+   public static final aqz<dcd> d = a("forced", Comparator.comparingLong(dcd::a));
+   public static final aqz<jd> e = a("portal", kh::i, 300);
+   public static final aqz<Integer> f = a("post_teleport", Integer::compareTo, 5);
+   public static final aqz<dcd> g = a("unknown", Comparator.comparingLong(dcd::a), 1);
 
-   public aqz() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public static <T> aqz<T> a(String $$0, Comparator<T> $$1) {
+      return new aqz<>($$0, $$1, 0L);
    }
 
-   private azf<aqx<?>> g(long $$0) {
-      return (azf<aqx<?>>)this.d.computeIfAbsent($$0, $$0x -> azf.a(4));
+   public static <T> aqz<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new aqz<>($$0, $$1, (long)$$2);
    }
 
-   private int a(azf<aqx<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, aqx<?> $$1) {
-      azf<aqx<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, aqx<?> $$1) {
-      azf<aqx<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(aqy<T> $$0, dcb $$1, int $$2, T $$3) {
-      this.a($$1.a(), new aqx<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(aqy<T> $$0, dcb $$1, int $$2, T $$3) {
-      aqx<T> $$4 = new aqx<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<aqx<dcb>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<azf<aqx<?>>> $$2 = (Entry<azf<aqx<?>>>)var3.next();
-
-         for (aqx<?> $$3 : (azf)$$2.getValue()) {
-            if ($$3.a() == aqy.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<aqx<dcb>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         aqx<dcb> $$6 = (aqx<dcb>)$$4.getFirst();
-         this.b($$5, $$6);
-         dcb $$7 = new dcb($$5);
-         aqy<dcb> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+   protected aqz(String $$0, Comparator<T> $$1, long $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
    @Override
-   protected int b(long $$0) {
-      azf<aqx<?>> $$1 = (azf<aqx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   public String toString() {
+      return this.h;
    }
 
-   public int a(dcb $$0) {
-      return this.c($$0.a());
+   public Comparator<T> a() {
+      return this.i;
    }
 
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public void a() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      azf<aqx<?>> $$1 = (azf<aqx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   public long b() {
+      return this.j;
    }
 }

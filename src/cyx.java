@@ -1,56 +1,67 @@
-import com.mojang.serialization.Codec;
+public class cyx extends cyr {
+   public cyx(cyo $$0) {
+      super($$0);
+   }
 
-public interface cyx<T extends cza> {
-   Codec<cyx<?>> h = lt.r.r().dispatch(cyx::ap_, czc::a);
-   yw<wj, cyx<?>> i = yu.a(lu.ae).b(cyx::ap_, czc::b);
+   public boolean a(cyp $$0, dcw $$1) {
+      int $$2 = 0;
+      cuq $$3 = cuq.l;
 
-   boolean a(T var1, dcu var2);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cut.rU)) {
+               if (!$$3.e()) {
+                  return false;
+               }
 
-   cuo a(T var1, jo.a var2);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cut.uj)) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
-
-   cuo a(jo.a var1);
-
-   default jv<cuo> a(T $$0) {
-      jv<cuo> $$1 = jv.a($$0.a(), cuo.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cuj $$3 = $$0.a($$2).g();
-         if ($$3.v()) {
-            $$1.set($$2, new cuo($$3.u()));
+               $$2++;
+            }
          }
       }
 
-      return $$1;
+      return !$$3.e() && $$2 > 0;
    }
 
-   default jv<cyu> a() {
-      return jv.a();
+   public cuq a(cyp $$0, jo.a $$1) {
+      int $$2 = 0;
+      cuq $$3 = cuq.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cut.rU)) {
+               if (!$$3.e()) {
+                  return cuq.l;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cut.uj)) {
+                  return cuq.l;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.e() && $$2 >= 1 ? $$3.c($$2 + 1) : cuq.l;
    }
 
-   default boolean ao_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cuo g() {
-      return new cuo(dfy.cA);
-   }
-
-   czc<?> ap_();
-
-   czd<?> e();
-
-   default boolean i() {
-      jv<cyu> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cze<?> at_() {
+      return cze.e;
    }
 }

@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public record ek(@Nullable Float c, @Nullable Float d) {
    public static final ek a = new ek(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.range.ints"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("argument.range.ints"));
 
    public static ek a(float $$0) {
       return new ek($$0, $$0);
@@ -66,13 +66,13 @@ public record ek(@Nullable Float c, @Nullable Float d) {
    public static ek a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (ayd.b($$0)) {
-         float $$1 = ayd.e($$0, "value");
+      } else if (aye.b($$0)) {
+         float $$1 = aye.e($$0, "value");
          return new ek($$1, $$1);
       } else {
-         JsonObject $$2 = ayd.m($$0, "value");
-         Float $$3 = $$2.has("min") ? ayd.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? ayd.m($$2, "max") : null;
+         JsonObject $$2 = aye.m($$0, "value");
+         Float $$3 = $$2.has("min") ? aye.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? aye.m($$2, "max") : null;
          return new ek($$3, $$4);
       }
    }

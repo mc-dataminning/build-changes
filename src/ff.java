@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class ff implements ArgumentType<ff.a> {
    private static final Collection<String> a = Arrays.asList("eyes", "feet");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("argument.anchor.invalid", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("argument.anchor.invalid", $$0));
 
    public static ff.a a(CommandContext<et> $$0, String $$1) {
       return (ff.a)$$0.getArgument($$1, ff.a.class);
@@ -47,7 +47,7 @@ public class ff implements ArgumentType<ff.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new eww($$0.c, $$0.d + (double)$$1.cM(), $$0.e));
+      b("eyes", ($$0, $$1) -> new exa($$0.c, $$0.d + (double)$$1.cM(), $$0.e));
 
       static final Map<String, ff.a> c = ad.a(Maps.newHashMap(), $$0 -> {
          for (ff.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class ff implements ArgumentType<ff.a> {
          }
       });
       private final String d;
-      private final BiFunction<eww, bsq, eww> e;
+      private final BiFunction<exa, bsr, exa> e;
 
-      private a(final String $$0, final BiFunction<eww, bsq, eww> $$1) {
+      private a(final String $$0, final BiFunction<exa, bsr, exa> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class ff implements ArgumentType<ff.a> {
          return c.get($$0);
       }
 
-      public eww a(bsq $$0) {
-         return this.e.apply($$0.do(), $$0);
+      public exa a(bsr $$0) {
+         return this.e.apply($$0.dn(), $$0);
       }
 
-      public eww a(et $$0) {
-         bsq $$1 = $$0.f();
+      public exa a(et $$0) {
+         bsr $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

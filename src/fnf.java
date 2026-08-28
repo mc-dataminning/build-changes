@@ -1,80 +1,156 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fnf extends fnx {
-   private static final wy a = wy.c("addServer.enterName");
-   private static final wy b = wy.c("addServer.enterIp");
-   private fig c;
-   private final BooleanConsumer q;
-   private final fzn r;
-   private fip s;
-   private fip u;
-   private final fnx v;
+public class fnf extends fob {
+   private static final akr a = akr.b("icon/draft_report");
+   private int b;
+   private final wz c;
+   private final boolean r;
+   private wz s;
+   private final List<fik> u = Lists.newArrayList();
+   @Nullable
+   private fik v;
 
-   public fnf(fnx $$0, BooleanConsumer $$1, fzn $$2) {
-      super(wy.c("addServer.title"));
-      this.v = $$0;
-      this.q = $$1;
-      this.r = $$2;
+   public fnf(@Nullable wz $$0, boolean $$1) {
+      super(wz.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.r = $$1;
    }
 
    @Override
-   protected void aP_() {
-      this.u = new fip(this.o, this.m / 2 - 100, 66, 200, 20, wy.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.D());
-      this.d(this.u);
-      this.s = new fip(this.o, this.m / 2 - 100, 106, 200, 20, wy.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.D());
-      this.d(this.s);
-      this.c(
-         fin.a(fzn.a::a)
-            .a(fzn.a.values())
-            .a(this.r.b())
-            .a(this.m / 2 - 100, this.n / 4 + 72, 200, 20, wy.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+   protected void aT_() {
+      this.b = 0;
+      this.u.clear();
+      wz $$0 = this.r ? wz.c("deathScreen.spectate") : wz.c("deathScreen.respawn");
+      this.u.add(this.c(fik.a($$0, $$0x -> {
+         this.l.s.fX();
+         $$0x.j = false;
+      }).a(this.m / 2 - 100, this.n / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fik.a(wz.c("deathScreen.titleScreen"), $$0x -> this.l.aX().a(this.l, this, this::m, true)).a(this.m / 2 - 100, this.n / 4 + 96, 200, 20).a()
       );
-      this.c = this.c(fig.a(wy.c("addServer.add"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 18, 200, 20).a());
-      this.c(fig.a(wx.e, $$0 -> this.q.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 18, 200, 20).a());
-      this.D();
+      this.u.add(this.v);
+      this.c(false);
+      this.s = wz.a("deathScreen.score.value", wz.b(Integer.toString(this.l.s.fT())).a(n.o));
    }
 
    @Override
-   protected void aE_() {
-      this.b(this.u);
-   }
-
-   @Override
-   public void a(fgi $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
+   public boolean aJ_() {
+      return false;
    }
 
    private void m() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.q.accept(true);
+      if (this.r) {
+         this.C();
+      } else {
+         fmz $$0 = new fnf.a($$0x -> {
+            if ($$0x) {
+               this.C();
+            } else {
+               this.l.s.fX();
+               this.l.a(null);
+            }
+         }, wz.c("deathScreen.quit.confirm"), wy.a, wz.c("deathScreen.titleScreen"), wz.c("deathScreen.respawn"));
+         this.l.a($$0);
+         $$0.b(20);
+      }
+   }
+
+   private void C() {
+      if (this.l.r != null) {
+         this.l.r.Y();
+      }
+
+      this.l.b(new fnm(wz.c("menu.savingLevel")));
+      this.l.a(new fod());
    }
 
    @Override
-   public void d() {
-      this.l.a(this.v);
-   }
-
-   private void D() {
-      this.c.j = gar.b(this.s.a()) && !this.u.a().isEmpty();
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
+   public void a(fhx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 17, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.o, b, this.m / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.o, this.k, this.m / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.o, this.c, this.m / 2, 85, 16777215);
+      }
+
+      $$0.a(this.o, this.s, this.m / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         xw $$4 = this.a($$1);
+         $$0.a(this.o, $$4, $$1, $$2);
+      }
+
+      if (this.v != null && this.l.aX().c()) {
+         $$0.a(a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fhx $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.m, this.n);
+   }
+
+   static void a(fhx $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private xw a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.l.h.a(this.c);
+         int $$2 = this.m / 2 - $$1 / 2;
+         int $$3 = this.m / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.l.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         xw $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == wx.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (fik $$1 : this.u) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends fmz {
+      public a(BooleanConsumer $$0, wz $$1, wz $$2, wz $$3, wz $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(fhx $$0, int $$1, int $$2, float $$3) {
+         fnf.a($$0, this.m, this.n);
+      }
    }
 }

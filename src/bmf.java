@@ -1,6 +1,10 @@
-public interface bmf {
-   bmf a = () -> {
-   };
+public record bmf<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-   void cut();
+   public static <T> bmf<T> a(String $$0) {
+      return new bmf<>($$0);
+   }
 }

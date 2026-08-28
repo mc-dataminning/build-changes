@@ -1,20 +1,9 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class fya implements aue {
-   private Map<fyc, fyk> a = ImmutableMap.of();
-
-   public fye a(fyc $$0) {
-      fyk $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
-      } else {
-         return $$1.a();
-      }
+public class fya<T extends ckw> extends fub<T> {
+   public fya(fyi $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(aud $$0) {
-      this.a = ImmutableMap.copyOf(fyb.a());
+   public boolean a(T $$0) {
+      return $$0.gc();
    }
 }

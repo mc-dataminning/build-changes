@@ -1,108 +1,76 @@
-public class dpy extends drl {
-   private jv<cuo> d = jv.a(27, cuo.l);
-   private final dqs e = new dqs() {
-      @Override
-      protected void a(dcu $$0, jd $$1, dta $$2) {
-         dpy.this.a($$2, avo.bz);
-         dpy.this.a($$2, true);
-      }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dcu $$0, jd $$1, dta $$2) {
-         dpy.this.a($$2, avo.by);
-         dpy.this.a($$2, false);
-      }
+public record dpy(List<dpy.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dpy a = new dpy(List.of());
+   public static final Codec<dpy> b = dpy.b.a.listOf().xmap(dpy::new, dpy::b);
+   public static final yx<wk, dpy> c = dpy.b.b.a(yv.a()).a(dpy::new, dpy::b);
 
-      @Override
-      protected void a(dcu $$0, jd $$1, dta $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cmv $$0) {
-         if ($$0.cd instanceof cqa) {
-            bqj $$1 = ((cqa)$$0.cd).l();
-            return $$1 == dpy.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dpy(jd $$0, dta $$1) {
-      super(dqh.A, $$0, $$1);
+   public dpy a() {
+      return new dpy(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   @Override
-   protected void b(ua $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqk.a($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      this.d = jv.a(this.b(), cuo.l);
-      if (!this.a_($$0)) {
-         bqk.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jv<cuo> j() {
+   public List<dpy.b> b() {
       return this.d;
    }
 
-   @Override
-   protected void a(jv<cuo> $$0) {
-      this.d = $$0;
-   }
+   public static class a {
+      private final Builder<dpy.b> a = ImmutableList.builder();
 
-   @Override
-   protected wy k() {
-      return wy.c("container.barrel");
-   }
+      @Deprecated
+      public dpy.a a(jn<dpx> $$0, akq<dpx> $$1, cti $$2) {
+         Optional<jm.c<dpx>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dpy.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
 
-   @Override
-   protected cps a(int $$0, cmu $$1) {
-      return cqa.a($$0, $$1, this);
-   }
+      public dpy.a a(jm<dpx> $$0, cti $$1) {
+         return this.a(new dpy.b($$0, $$1));
+      }
 
-   @Override
-   public void d_(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.a($$0, this.i(), this.az_(), this.n());
+      public dpy.a a(dpy.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dpy.a a(dpy $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dpy a() {
+         return new dpy(this.a.build());
       }
    }
 
-   @Override
-   public void c(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.b($$0, this.i(), this.az_(), this.n());
+   public static record b(jm<dpx> c, cti d) {
+      public static final Codec<dpy.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dpx.c.fieldOf("pattern").forGetter(dpy.b::b), cti.q.fieldOf("color").forGetter(dpy.b::c)).apply($$0, dpy.b::new)
+      );
+      public static final yx<wk, dpy.b> b = yx.a(dpx.d, dpy.b::b, cti.r, dpy.b::c, dpy.b::new);
+
+      public xn a() {
+         String $$0 = this.c.a().b();
+         return wz.c($$0 + "." + this.d.b());
       }
-   }
 
-   public void l() {
-      if (!this.p) {
-         this.e.c(this.i(), this.az_(), this.n());
+      public jm<dpx> b() {
+         return this.c;
       }
-   }
 
-   void a(dta $$0, boolean $$1) {
-      this.n.a(this.az_(), $$0.a(dfc.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dta $$0, avn $$1) {
-      kh $$2 = $$0.c(dfc.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, avp.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+      public cti c() {
+         return this.d;
+      }
    }
 }

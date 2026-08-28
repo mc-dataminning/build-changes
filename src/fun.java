@@ -1,108 +1,94 @@
-public class fun<T extends ckx> extends fvn<T> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float f = 1.0F;
-   private final fye g;
-   private final fye h;
-   private final fye i;
-   private final fye j;
-   private final fye k;
-   private final fye l;
-   private final fye m;
-   private final fye n;
+import java.util.Arrays;
 
-   public fun(fye $$0) {
-      super(gfb::i);
-      this.g = $$0;
-      this.j = $$0.b("wind_body");
-      this.m = this.j.b("wind_bottom");
-      this.l = this.m.b("wind_mid");
-      this.k = this.l.b("wind_top");
-      this.h = $$0.b("body").b("head");
-      this.i = this.h.b("eyes");
-      this.n = $$0.b("body").b("rods");
+public class fun<T extends bsr> extends fvr<T> {
+   private final fyi a;
+   private final fyi[] b;
+   private final fyi f;
+
+   public fun(fyi $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fyi[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fyk a(int $$0, int $$1) {
-      fym $$2 = new fym();
-      fyn $$3 = $$2.a();
-      fyn $$4 = $$3.a("body", fyj.c(), fyg.a(0.0F, 0.0F, 0.0F));
-      fyn $$5 = $$4.a("rods", fyj.c(), fyg.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      fyn $$6 = $$4.a(
-         "head",
-         fyj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyi(0.0F)),
-         fyg.a(0.0F, 4.0F, 0.0F)
-      );
-      $$6.a(
-         "eyes",
-         fyj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyi(0.0F)),
-         fyg.a(0.0F, 0.0F, 0.0F)
-      );
-      fyn $$7 = $$3.a("wind_body", fyj.c(), fyg.a(0.0F, 0.0F, 0.0F));
-      fyn $$8 = $$7.a("wind_bottom", fyj.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fyi(0.0F)), fyg.a(0.0F, 24.0F, 0.0F));
-      fyn $$9 = $$8.a(
-         "wind_mid",
-         fyj.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fyi(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fyi(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fyi(0.0F)),
-         fyg.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         fyj.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fyi(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fyi(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fyi(0.0F)),
-         fyg.a(0.0F, -6.0F, 0.0F)
-      );
-      return fyk.a($$2, $$0, $$1);
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fye::c);
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
-      this.k.b = ayn.b($$6) * 1.0F * 0.6F;
-      this.k.d = ayn.a($$6) * 1.0F * 0.6F;
-      this.l.b = ayn.a($$6) * 0.5F * 0.8F;
-      this.l.d = ayn.b($$6) * 0.8F;
-      this.m.b = ayn.b($$6) * -0.25F * 1.0F;
-      this.m.d = ayn.a($$6) * -0.25F * 1.0F;
-      this.h.c = 4.0F + ayn.b($$6) / 4.0F;
-      this.n.f = $$3 * (float) Math.PI * 0.1F;
-      this.a($$0.ca, fhc.a, $$3);
-      this.a($$0.c, fhc.c, $$3);
-      this.a($$0.d, fhc.d, $$3);
-      this.a($$0.e, fhc.b, $$3);
+   public static fyo b() {
+      fyq $$0 = new fyq();
+      fyr $$1 = $$0.a();
+      $$1.a("head", fyn.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyk.a);
+      float $$2 = 0.0F;
+      fyn $$3 = fyn.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = ayo.b($$2) * 9.0F;
+         float $$6 = -2.0F + ayo.b((float)($$4 * 2) * 0.25F);
+         float $$7 = ayo.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fyk.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = ayo.b($$2) * 7.0F;
+         float $$10 = 2.0F + ayo.b((float)($$8 * 2) * 0.25F);
+         float $$11 = ayo.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fyk.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = ayo.b($$2) * 5.0F;
+         float $$14 = 11.0F + ayo.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = ayo.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fyk.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fyo.a($$0, 64, 32);
    }
 
    @Override
-   public fye a() {
-      return this.g;
+   public fyi a() {
+      return this.a;
    }
 
-   public fye b() {
-      return this.h;
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-   public fye c() {
-      return this.i;
-   }
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + ayo.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = ayo.b($$6) * 9.0F;
+         this.b[$$7].d = ayo.a($$6) * 9.0F;
+         $$6++;
+      }
 
-   public fye d() {
-      return this.n;
-   }
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
 
-   public fye e() {
-      return this.j;
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + ayo.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = ayo.b($$6) * 7.0F;
+         this.b[$$8].d = ayo.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + ayo.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = ayo.b($$6) * 5.0F;
+         this.b[$$9].d = ayo.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

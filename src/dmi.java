@@ -1,26 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmi extends dgf {
-   public static final MapCodec<dmi> a = b(dmi::new);
-   protected static final float b = 6.0F;
-   protected static final exp c = dfw.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public abstract class dmi extends dib {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ext h = dfy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ext i = dfy.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ext j = dfy.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dmi> a() {
-      return a;
-   }
-
-   protected dmi(dsz.d $$0) {
+   protected dmi(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      return c;
+   protected abstract MapCodec<? extends dmi> a();
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
    @Override
-   protected boolean b(dta $$0, dca $$1, jd $$2) {
-      return $$0.a(awd.aL) || $$0.a(dfy.dX) || super.b($$0, $$1, $$2);
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

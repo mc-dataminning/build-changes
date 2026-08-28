@@ -1,41 +1,86 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class glt extends gku<btn, fwi<btn>> {
-   private static final Map<bsw<?>, akq> a = ImmutableMap.of(
-      bsw.aA,
-      akq.b("textures/entity/piglin/piglin.png"),
-      bsw.bx,
-      akq.b("textures/entity/piglin/zombified_piglin.png"),
-      bsw.aB,
-      akq.b("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
+public class glt extends gln<cft, fwh<cft>> {
+   private static final Map<cft.a, akr> a = ad.a(Maps.newEnumMap(cft.a.class), $$0 -> {
+      $$0.put(cft.a.a, akr.b("textures/entity/panda/panda.png"));
+      $$0.put(cft.a.b, akr.b("textures/entity/panda/lazy_panda.png"));
+      $$0.put(cft.a.c, akr.b("textures/entity/panda/worried_panda.png"));
+      $$0.put(cft.a.d, akr.b("textures/entity/panda/playful_panda.png"));
+      $$0.put(cft.a.e, akr.b("textures/entity/panda/brown_panda.png"));
+      $$0.put(cft.a.f, akr.b("textures/entity/panda/weak_panda.png"));
+      $$0.put(cft.a.g, akr.b("textures/entity/panda/aggressive_panda.png"));
+   });
 
-   public glt(gkd.a $$0, fyc $$1, fyc $$2, fyc $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new gof<>(this, new fvq($$0.a($$2)), new fvq($$0.a($$3)), $$0.g()));
+   public glt(gkh.a $$0) {
+      super($$0, new fwh<>($$0.a(fyh.aG)), 0.9F);
+      this.a(new gop(this, $$0.d()));
    }
 
-   private static fwi<btn> a(fya $$0, fyc $$1, boolean $$2) {
-      fwi<btn> $$3 = new fwi<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
+   public akr a(cft $$0) {
+      return a.getOrDefault($$0.gx(), a.get(cft.a.a));
+   }
+
+   protected void a(cft $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.cb > 0) {
+         int $$6 = $$0.cb;
+         int $$7 = $$6 + 1;
+         float $$8 = 7.0F;
+         float $$9 = $$0.o_() ? 0.3F : 0.8F;
+         if ($$6 < 8) {
+            float $$10 = (float)(90 * $$6) / 7.0F;
+            float $$11 = (float)(90 * $$7) / 7.0F;
+            float $$12 = this.a($$10, $$11, $$7, $$4, 8.0F);
+            $$1.a(0.0F, ($$9 + 0.2F) * ($$12 / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$12));
+         } else if ($$6 < 16) {
+            float $$13 = ((float)$$6 - 8.0F) / 7.0F;
+            float $$14 = 90.0F + 90.0F * $$13;
+            float $$15 = 90.0F + 90.0F * ((float)$$7 - 8.0F) / 7.0F;
+            float $$16 = this.a($$14, $$15, $$7, $$4, 16.0F);
+            $$1.a(0.0F, $$9 + 0.2F + ($$9 - 0.2F) * ($$16 - 90.0F) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$16));
+         } else if ((float)$$6 < 24.0F) {
+            float $$17 = ((float)$$6 - 16.0F) / 7.0F;
+            float $$18 = 180.0F + 90.0F * $$17;
+            float $$19 = 180.0F + 90.0F * ((float)$$7 - 16.0F) / 7.0F;
+            float $$20 = this.a($$18, $$19, $$7, $$4, 24.0F);
+            $$1.a(0.0F, $$9 + $$9 * (270.0F - $$20) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$20));
+         } else if ($$6 < 32) {
+            float $$21 = ((float)$$6 - 24.0F) / 7.0F;
+            float $$22 = 270.0F + 90.0F * $$21;
+            float $$23 = 270.0F + 90.0F * ((float)$$7 - 24.0F) / 7.0F;
+            float $$24 = this.a($$22, $$23, $$7, $$4, 32.0F);
+            $$1.a(0.0F, $$9 * ((360.0F - $$24) / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$24));
+         }
       }
 
-      return $$3;
-   }
+      float $$25 = $$0.H($$4);
+      if ($$25 > 0.0F) {
+         $$1.a(0.0F, 0.8F * $$25, 0.0F);
+         $$1.a(a.b.rotationDegrees(ayo.i($$25, $$0.dH(), $$0.dH() + 90.0F)));
+         $$1.a(0.0F, -1.0F * $$25, 0.0F);
+         if ($$0.gD()) {
+            float $$26 = (float)(Math.cos((double)$$0.ai * 1.25) * Math.PI * 0.05F);
+            $$1.a(a.d.rotationDegrees($$26));
+            if ($$0.o_()) {
+               $$1.a(0.0F, 0.8F, 0.55F);
+            }
+         }
+      }
 
-   public akq c(btn $$0) {
-      akq $$1 = a.get($$0.am());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.am());
-      } else {
-         return $$1;
+      float $$27 = $$0.I($$4);
+      if ($$27 > 0.0F) {
+         float $$28 = $$0.o_() ? 0.5F : 1.3F;
+         $$1.a(0.0F, $$28 * $$27, 0.0F);
+         $$1.a(a.b.rotationDegrees(ayo.i($$27, $$0.dH(), $$0.dH() + 180.0F)));
       }
    }
 
-   protected boolean d(btn $$0) {
-      return super.a($$0) || $$0 instanceof clk && ((clk)$$0).gm();
+   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
+      return (float)$$2 < $$4 ? ayo.i($$3, $$0, $$1) : $$0;
    }
 }

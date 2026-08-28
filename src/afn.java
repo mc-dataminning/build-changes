@@ -1,69 +1,45 @@
-public class afn implements zf<abt> {
-   public static final yw<wj, afn> a = zf.a(afn::a, afn::new);
-   private final jm<avn> b;
-   private final avp c;
+public class afn implements zg<abu> {
+   public static final yx<vw, afn> a = zg.a(afn::a, afn::new);
+   private final int b;
+   private final int c;
    private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
 
-   public afn(jm<avn> $$0, avp $$1, bsq $$2, float $$3, float $$4, long $$5) {
+   public afn(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.an();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.d = $$2;
    }
 
-   private afn(wj $$0) {
-      this.b = avn.d.decode($$0);
-      this.c = $$0.b(avp.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
+   private afn(vw $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(wj $$0) {
-      avn.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
+   private void a(vw $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zh<afn> a() {
-      return agf.aR;
+   public zi<afn> a() {
+      return agg.aQ;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public jm<avn> b() {
+   public int b() {
       return this.b;
    }
 
-   public avp e() {
+   public int e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

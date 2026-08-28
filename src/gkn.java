@@ -1,19 +1,26 @@
-public class gkn extends glj<cjv, fvi<cjv>> {
-   private static final akq a = akq.b("textures/entity/ghast/ghast.png");
-   private static final akq i = akq.b("textures/entity/ghast/ghast_shooting.png");
+public class gkn extends gkg<cnk> {
+   private final glf a;
 
-   public gkn(gkd.a $$0) {
-      super($$0, new fvi<>($$0.a(fyd.ah)), 1.5F);
+   public gkn(gkh.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public akq a(cjv $$0) {
-      return $$0.s() ? i : a;
+   public void a(cnk $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.d.b());
+      if ($$0.t()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), cun.h, $$5, gqa.d, $$3, $$4, $$0.dP(), $$0.an());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(cjv $$0, fbc $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public akr a(cnk $$0) {
+      return gqi.e;
    }
 }

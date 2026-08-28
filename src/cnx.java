@@ -1,84 +1,67 @@
-import org.jetbrains.annotations.Nullable;
-
-public class cnx extends cnu {
-   public cnx(bsw<? extends cnx> $$0, dcu $$1) {
+public abstract class cnx extends cnp {
+   protected cnx(bsx<? extends cnx> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   public cnx(dcu $$0, btl $$1) {
-      super(bsw.G, $$1, $$0);
+   protected cnx(bsx<? extends cnx> $$0, double $$1, double $$2, double $$3, dcw $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
+   }
+
+   protected cnx(bsx<? extends cnx> $$0, btn $$1, dcw $$2) {
+      this($$0, $$1.du(), $$1.dy() - 0.1F, $$1.dA(), $$2);
+      this.c($$1);
    }
 
    @Override
-   protected cuj t() {
-      return cur.sf;
-   }
-
-   @Override
-   protected void a(ewt $$0) {
-      super.a($$0);
-      $$0.a().a(this.dR().b(this, this.s()), 0.0F);
-   }
-
-   @Override
-   protected void a(ewu $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dQ().a(lm.ac, this.dv(), this.dx() + this.ah.j() * 2.0, this.dB(), this.ah.k(), 0.0, this.ah.k());
+   public boolean a(double $$0) {
+      double $$1 = this.cL().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
 
-      if (this.dQ() instanceof aqt $$2 && !this.dL()) {
-         bsq $$3 = this.s();
-         if ($$3 instanceof aqu $$4) {
-            if ($$4.c.c() && $$4.cx()) {
-               if (this.ah.i() < 0.05F && $$2.ab().b(dcq.e)) {
-                  cjs $$5 = bsw.I.a((dcu)$$2);
-                  if ($$5 != null) {
-                     $$5.b($$3.dv(), $$3.dx(), $$3.dB(), $$3.dG(), $$3.dI());
-                     $$2.b($$5);
-                  }
-               }
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
 
-               if ($$3.bS()) {
-                  this.ak();
-               }
-
-               $$3.a(new epw($$2, this.do(), $$3.dt(), $$3.dG(), $$3.dI()));
-               $$3.n();
-               $$3.a(this.dR().l(), 5.0F);
-               this.a($$2, this.do());
-            }
-         } else if ($$3 != null) {
-            $$3.a(new epw($$2, this.do(), $$3.dt(), $$3.dG(), $$3.dI()));
-            $$3.n();
-         }
-
-         this.aq();
-      }
+   @Override
+   public boolean cx() {
+      return true;
    }
 
    @Override
    public void l() {
-      bsq $$0 = this.s();
-      if ($$0 instanceof aqu && !$$0.bE() && this.dQ().ab().b(dcq.Y)) {
-         this.aq();
+      super.l();
+      ewy $$0 = cnr.a(this, this::b);
+      if ($$0.c() != ewy.a.a) {
+         this.b($$0);
+      }
+
+      this.aT();
+      exa $$1 = this.ds();
+      double $$2 = this.du() + $$1.c;
+      double $$3 = this.dw() + $$1.d;
+      double $$4 = this.dA() + $$1.e;
+      this.I();
+      float $$7;
+      if (this.bf()) {
+         for (int $$5 = 0; $$5 < 4; $$5++) {
+            float $$6 = 0.25F;
+            this.dP().a(lm.d, $$2 - $$1.c * 0.25, $$3 - $$1.d * 0.25, $$4 - $$1.e * 0.25, $$1.c, $$1.d, $$1.e);
+         }
+
+         $$7 = 0.8F;
       } else {
-         super.l();
+         $$7 = 0.99F;
       }
+
+      this.i($$1.a((double)$$7));
+      this.bb();
+      this.a_($$2, $$3, $$4);
    }
 
-   @Nullable
    @Override
-   public bsq a(epw $$0) {
-      if (this.dQ().af() != $$0.a().af()) {
-         this.I();
-      }
-
-      return super.a($$0);
-   }
-
-   private void a(dcu $$0, eww $$1) {
-      $$0.a(null, $$1.c, $$1.d, $$1.e, avo.uv, avp.h);
+   protected double aZ() {
+      return 0.03;
    }
 }

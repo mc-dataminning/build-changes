@@ -1,28 +1,23 @@
 import javax.annotation.Nullable;
 
-public record aeg(String b, @Nullable String c) implements zf<abt> {
-   public static final yw<vv, aeg> a = zf.a(aeg::a, aeg::new);
-
-   private aeg(vv $$0) {
-      this($$0.p(), $$0.c(vv::p));
-   }
-
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vv::a);
-   }
+public record aeg(int b, jm<brx> c) implements zg<abu> {
+   public static final yx<wk, aeg> a = yx.a(yv.g, aeg::b, brx.b, aeg::e, aeg::new);
 
    @Override
-   public zh<aeg> a() {
-      return agf.ce;
+   public zi<aeg> a() {
+      return agg.ak;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public String e() {
+   public bsr a(dcw $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jm<brx> e() {
       return this.c;
    }
 }

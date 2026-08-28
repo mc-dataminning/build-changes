@@ -1,11 +1,19 @@
-public interface dir {
-   default void a(dcu $$0, jd $$1, dta $$2, dta $$3, cje $$4) {
+import com.mojang.serialization.MapCodec;
+
+public class dir extends dgs implements cts {
+   public static final MapCodec<dir> c = b(dir::new);
+
+   @Override
+   public MapCodec<dir> a() {
+      return c;
    }
 
-   default void a(dcu $$0, jd $$1, cje $$2) {
+   protected dir(dtb.d $$0) {
+      super($$0);
    }
 
-   default brj a(bsq $$0) {
-      return $$0.dR().a($$0);
+   @Override
+   public bsy m() {
+      return bsy.f;
    }
 }

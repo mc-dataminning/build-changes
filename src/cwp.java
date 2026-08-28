@@ -1,56 +1,44 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cwp extends cul implements cvm {
+   private static final int a = 10;
 
-public class cwp extends cuj {
-   public cwp(cuj.a $$0) {
+   public cwp(cul.a $$0) {
       super($$0);
    }
 
    @Override
-   public wy n(cuo $$0) {
-      cxz $$1 = $$0.a(kq.J);
-      if ($$1 != null) {
-         String $$2 = $$1.d().a();
-         if (!azk.h($$2)) {
-            return wy.b($$2);
-         }
+   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
+      if (!$$0.x_()) {
+         coh $$3 = new coh($$1, $$0, $$1.dn().a(), $$1.by().b(), $$1.dn().c());
+         $$3.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$3);
       }
 
-      return super.n($$0);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avp.Cr, avq.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      cuq $$4 = $$1.b($$2);
+      $$1.gu().a(this, 10);
+      $$1.b(avz.c.b(this));
+      $$4.a(1, $$1);
+      return bqs.a($$4, $$0.x_());
    }
 
    @Override
-   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
-      cxz $$4 = $$0.a(kq.J);
-      if ($$4 != null) {
-         if (!azk.h($$4.e())) {
-            $$2.add(wy.a("book.byAuthor", $$4.e()).a(n.h));
-         }
-
-         $$2.add(wy.c("book.generation." + $$4.f()).a(n.h));
-      }
+   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
+      ayw $$4 = $$0.E_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      exa $$8 = new exa($$5, $$6, $$7);
+      coh $$9 = new coh($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
+      $$9.i($$8);
+      return $$9;
    }
 
    @Override
-   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
-      cuo $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avy.c.b(this));
-      return bqr.a($$3, $$0.x_());
+   public void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   public static boolean a(cuo $$0, et $$1, @Nullable cmv $$2) {
-      cxz $$3 = $$0.a(kq.J);
-      if ($$3 != null && !$$3.g()) {
-         cxz $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(kq.J, $$4);
-            return true;
-         }
-
-         $$0.b(kq.J, $$3.c());
-      }
-
-      return false;
+   @Override
+   public cvm.a c() {
+      return cvm.a.a().a(($$0, $$1) -> did.a($$0, 1.0, exa.b)).a(6.6666665F).b(1.0F).a(1051).a();
    }
 }

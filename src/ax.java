@@ -9,10 +9,10 @@ public class ax extends dv<ax.a> {
       return ax.a.a;
    }
 
-   public void a(aqu $$0, cfc $$1, cfc $$2, @Nullable bsk $$3) {
-      erl $$4 = bv.b($$0, $$1);
-      erl $$5 = bv.b($$0, $$2);
-      erl $$6 = $$3 != null ? bv.b($$0, $$3) : null;
+   public void a(aqv $$0, cfe $$1, cfe $$2, @Nullable bsl $$3) {
+      erp $$4 = bv.b($$0, $$1);
+      erp $$5 = bv.b($$0, $$2);
+      erp $$6 = $$3 != null ? bv.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class ax extends dv<ax.a> {
          return an.p.a(new ax.a(Optional.empty(), bv.a($$0), bv.a($$1), bv.a($$2)));
       }
 
-      public boolean a(erl $$0, erl $$1, @Nullable erl $$2) {
+      public boolean a(erp $$0, erp $$1, @Nullable erp $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bg> $$0, erl $$1) {
+      private static boolean a(Optional<bg> $$0, erp $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

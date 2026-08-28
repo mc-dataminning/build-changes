@@ -23,18 +23,18 @@ public class jd extends kh {
    public static final Codec<jd> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ad.a($$0, 3).map($$0x -> new jd($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final yw<ByteBuf, jd> b = new yw<ByteBuf, jd>() {
+   public static final yx<ByteBuf, jd> b = new yx<ByteBuf, jd>() {
       public jd a(ByteBuf $$0) {
-         return vv.b($$0);
+         return vw.b($$0);
       }
 
       public void a(ByteBuf $$0, jd $$1) {
-         vv.a($$0, $$1);
+         vw.a($$0, $$1);
       }
    };
    private static final Logger e = LogUtils.getLogger();
    public static final jd c = new jd(0, 0, 0);
-   private static final int h = 1 + ayn.f(ayn.c(30000000));
+   private static final int h = 1 + ayo.f(ayo.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class jd extends kh {
    }
 
    public static jd a(double $$0, double $$1, double $$2) {
-      return new jd(ayn.a($$0), ayn.a($$1), ayn.a($$2));
+      return new jd(ayo.a($$0), ayo.a($$1), ayo.a($$2));
    }
 
    public static jd a(jw $$0) {
@@ -111,8 +111,12 @@ public class jd extends kh {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jd(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public eww b() {
-      return eww.b(this);
+   public exa b() {
+      return exa.b(this);
+   }
+
+   public exa c() {
+      return exa.c(this);
    }
 
    public jd a(kh $$0) {
@@ -131,7 +135,7 @@ public class jd extends kh {
       }
    }
 
-   public jd c() {
+   public jd d() {
       return this.a(ji.b);
    }
 
@@ -139,7 +143,7 @@ public class jd extends kh {
       return this.a(ji.b, $$0);
    }
 
-   public jd d() {
+   public jd e() {
       return this.a(ji.a);
    }
 
@@ -147,7 +151,7 @@ public class jd extends kh {
       return this.a(ji.a, $$0);
    }
 
-   public jd e() {
+   public jd f() {
       return this.a(ji.c);
    }
 
@@ -155,7 +159,7 @@ public class jd extends kh {
       return this.a(ji.c, $$0);
    }
 
-   public jd f() {
+   public jd g() {
       return this.a(ji.d);
    }
 
@@ -163,7 +167,7 @@ public class jd extends kh {
       return this.a(ji.d, $$0);
    }
 
-   public jd g() {
+   public jd h() {
       return this.a(ji.e);
    }
 
@@ -171,7 +175,7 @@ public class jd extends kh {
       return this.a(ji.e, $$0);
    }
 
-   public jd h() {
+   public jd i() {
       return this.a(ji.f);
    }
 
@@ -198,7 +202,7 @@ public class jd extends kh {
       }
    }
 
-   public jd a(dmk $$0) {
+   public jd a(dmm $$0) {
       switch ($$0) {
          case a:
          default:
@@ -220,32 +224,32 @@ public class jd extends kh {
       return new jd(this.u(), $$0, this.w());
    }
 
-   public jd i() {
+   public jd j() {
       return this;
    }
 
-   public jd.a j() {
+   public jd.a k() {
       return new jd.a(this.u(), this.v(), this.w());
    }
 
-   public eww a(eww $$0) {
-      return new eww(
-         ayn.a($$0.c, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
-         ayn.a($$0.d, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
-         ayn.a($$0.e, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
+   public exa a(exa $$0) {
+      return new exa(
+         ayo.a($$0.c, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
+         ayo.a($$0.d, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
+         ayo.a($$0.e, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
       );
    }
 
-   public static Iterable<jd> a(ayv $$0, int $$1, jd $$2, int $$3) {
+   public static Iterable<jd> a(ayw $$0, int $$1, jd $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
    @Deprecated
    public static Stream<jd> a(jd $$0) {
-      return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
+      return Stream.of($$0, $$0.g(), $$0.i(), $$0.g().i());
    }
 
-   public static Iterable<jd> a(ayv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<jd> a(ayw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -347,7 +351,7 @@ public class jd extends kh {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<jd> a(eje $$0) {
+   public static Stream<jd> a(ejh $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -358,8 +362,8 @@ public class jd extends kh {
       );
    }
 
-   public static Stream<jd> a(ewr $$0) {
-      return a(ayn.a($$0.a), ayn.a($$0.b), ayn.a($$0.c), ayn.a($$0.d), ayn.a($$0.e), ayn.a($$0.f));
+   public static Stream<jd> a(ewv $$0) {
+      return a(ayo.a($$0.a), ayo.a($$0.b), ayo.a($$0.c), ayo.a($$0.d), ayo.a($$0.e), ayo.a($$0.f));
    }
 
    public static Stream<jd> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -394,7 +398,7 @@ public class jd extends kh {
       Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
       return () -> new AbstractIterator<jd.a>() {
             private final ji[] e = new ji[]{$$2, $$3, $$2.g(), $$3.g()};
-            private final jd.a f = $$0.j().c($$3);
+            private final jd.a f = $$0.k().c($$3);
             private final int g = 4 * $$1;
             private int h = -1;
             private int i;
@@ -459,32 +463,32 @@ public class jd extends kh {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(ayn.a($$0), ayn.a($$1), ayn.a($$2));
+         this(ayo.a($$0), ayo.a($$1), ayo.a($$2));
       }
 
       @Override
       public jd b(int $$0, int $$1, int $$2) {
-         return super.b($$0, $$1, $$2).i();
+         return super.b($$0, $$1, $$2).j();
       }
 
       @Override
       public jd a(int $$0) {
-         return super.a($$0).i();
+         return super.a($$0).j();
       }
 
       @Override
       public jd a(ji $$0, int $$1) {
-         return super.a($$0, $$1).i();
+         return super.a($$0, $$1).j();
       }
 
       @Override
       public jd a(ji.a $$0, int $$1) {
-         return super.a($$0, $$1).i();
+         return super.a($$0, $$1).j();
       }
 
       @Override
-      public jd a(dmk $$0) {
-         return super.a($$0).i();
+      public jd a(dmm $$0) {
+         return super.a($$0).j();
       }
 
       public jd.a d(int $$0, int $$1, int $$2) {
@@ -495,7 +499,7 @@ public class jd extends kh {
       }
 
       public jd.a b(double $$0, double $$1, double $$2) {
-         return this.d(ayn.a($$0), ayn.a($$1), ayn.a($$2));
+         return this.d(ayo.a($$0), ayo.a($$1), ayo.a($$2));
       }
 
       public jd.a g(kh $$0) {
@@ -541,11 +545,11 @@ public class jd extends kh {
       public jd.a a(ji.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(ayn.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(ayo.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), ayn.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), ayo.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), ayn.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), ayo.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }
@@ -567,7 +571,7 @@ public class jd extends kh {
       }
 
       @Override
-      public jd i() {
+      public jd j() {
          return new jd(this);
       }
    }

@@ -1,18 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class erz {
-   public static final Codec<esb> a = lt.D.r().dispatch(esb::a, esc::a);
-   public static final esc b = a("empty", erw.a);
-   public static final esc c = a("item", ery.a);
-   public static final esc d = a("loot_table", ese.a);
-   public static final esc e = a("dynamic", erv.a);
-   public static final esc f = a("tag", esg.a);
-   public static final esc g = a("alternatives", ers.a);
-   public static final esc h = a("sequence", esf.a);
-   public static final esc i = a("group", erx.a);
+public class erz extends esh {
+   public static final MapCodec<erz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akr.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erz::new)
+   );
+   private final akr j;
 
-   private static esc a(String $$0, MapCodec<? extends esb> $$1) {
-      return jz.a(lt.D, akq.b($$0), new esc($$1));
+   private erz(akr $$0, int $$1, int $$2, List<eva> $$3, List<etd> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
+   }
+
+   @Override
+   public esg a() {
+      return esd.e;
+   }
+
+   @Override
+   public void a(Consumer<cuq> $$0, erp $$1) {
+      $$1.a(this.j, $$0);
+   }
+
+   public static esh.a<?> a(akr $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erz($$0, $$1, $$2, $$3, $$4));
    }
 }

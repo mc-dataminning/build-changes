@@ -1,37 +1,38 @@
-public class ahb implements zf<agh> {
-   public static final yw<vv, ahb> a = zf.a(ahb::a, ahb::new);
-   private final int b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahb(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahb(int c, List<String> d, Optional<String> e) implements zg<agi> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final yx<vw, ahb> b = yx.a(yv.g, ahb::b, yv.b(8192).a(yv.c(200)), ahb::e, yv.b(128).a(yv::a), ahb::f, ahb::new);
 
-   private ahb(vv $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vv $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public ahb(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zh<ahb> a() {
-      return agf.bx;
+   public zi<ahb> a() {
+      return agg.bw;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public List<String> e() {
+      return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

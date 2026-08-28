@@ -1,45 +1,64 @@
-public class aho implements zf<agh> {
-   public static final yw<vv, aho> a = zf.a(aho::a, aho::new);
-   private final crh b;
-   private final boolean c;
-   private final boolean d;
+public class aho implements zg<agi> {
+   public static final yx<vw, aho> a = zg.a(aho::a, aho::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private final float d;
+   private final float e;
+   private final boolean f;
+   private final boolean g;
 
-   public aho(crh $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public aho(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   private aho(vv $$0) {
-      this.b = $$0.b(crh.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   private aho(vw $$0) {
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) > 0;
+      this.g = ($$1 & 2) > 0;
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vw $$0) {
       $$0.a(this.d);
+      $$0.a(this.e);
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public zh<aho> a() {
-      return agf.bN;
+   public zi<aho> a() {
+      return agg.bM;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
-   public crh b() {
-      return this.b;
+   public float b() {
+      return this.d;
    }
 
-   public boolean e() {
-      return this.c;
+   public float e() {
+      return this.e;
    }
 
    public boolean f() {
-      return this.d;
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
    }
 }

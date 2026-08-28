@@ -1,89 +1,36 @@
-public interface vi extends uu {
-   vi a = new vi() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default uu.b a() {
-      return uu.b.a;
+public record vi(int a, Map<String, va<?>> b, Map<String, vi> c) {
+   private vi(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default uu.b a(String $$0) {
-      return uu.b.a;
+   public static vi a() {
+      return new vi(1);
    }
 
-   @Override
-   default uu.b a(byte $$0) {
-      return uu.b.a;
+   public void a(vh $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vi(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default uu.b a(short $$0) {
-      return uu.b.a;
+   public boolean a(va<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default uu.b a(int $$0) {
-      return uu.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default uu.b a(long $$0) {
-      return uu.b.a;
+   public Map<String, va<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default uu.b a(float $$0) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b a(double $$0) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b a(byte[] $$0) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b a(int[] $$0) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b a(long[] $$0) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b a(uz<?> $$0, int $$1) {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.a b(uz<?> $$0, int $$1) {
-      return uu.a.b;
-   }
-
-   @Override
-   default uu.a a(uz<?> $$0) {
-      return uu.a.b;
-   }
-
-   @Override
-   default uu.a a(uz<?> $$0, String $$1) {
-      return uu.a.b;
-   }
-
-   @Override
-   default uu.b b() {
-      return uu.b.a;
-   }
-
-   @Override
-   default uu.b b(uz<?> $$0) {
-      return uu.b.a;
+   public Map<String, vi> d() {
+      return this.c;
    }
 }

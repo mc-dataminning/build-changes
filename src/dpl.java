@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpl extends djl {
-   public static final MapCodec<dpl> c = b(dpl::new);
-   protected static final exp g = dfw.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dpl extends dom implements dpe {
+   public static final MapCodec<dpl> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dtr.a.fieldOf("block_set_type").forGetter(dom::m), dpe.a.e.fieldOf("weathering_state").forGetter(dpl::n), u()).apply($$0, dpl::new)
+   );
+   private final dpe.a n;
 
    @Override
    public MapCodec<dpl> a() {
-      return c;
+      return m;
    }
 
-   public dpl(dsz.d $$0) {
-      super($$0, ji.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(ayv $$0) {
-      return dlc.a($$0);
+   protected dpl(dtr $$0, dpe.a $$1, dtb.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected dfw b() {
-      return dfy.oA;
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dta $$0) {
-      return dlc.a($$0);
+   protected boolean d_(dtc $$0) {
+      return dpe.c($$0.b()).isPresent();
+   }
+
+   public dpe.a n() {
+      return this.n;
    }
 }

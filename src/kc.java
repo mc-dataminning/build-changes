@@ -22,16 +22,16 @@ public class kc {
    static <T> jn<T> a(final jo.b<T> $$0) {
       return new kc.c<T>($$0) {
          @Override
-         public Optional<jm.c<T>> a(akp<T> $$0x) {
+         public Optional<jm.c<T>> a(akq<T> $$0x) {
             return $$0.a($$0);
          }
       };
    }
 
-   static <T> jo.b<T> a(final akp<? extends jz<? extends T>> $$0, final Lifecycle $$1, jp<T> $$2, final Map<akp<T>, jm.c<T>> $$3) {
+   static <T> jo.b<T> a(final akq<? extends jz<? extends T>> $$0, final Lifecycle $$1, jp<T> $$2, final Map<akq<T>, jm.c<T>> $$3) {
       return new kc.e<T>($$2) {
          @Override
-         public akp<? extends jz<? extends T>> f() {
+         public akq<? extends jz<? extends T>> f() {
             return $$0;
          }
 
@@ -41,7 +41,7 @@ public class kc {
          }
 
          @Override
-         public Optional<jm.c<T>> a(akp<T> $$0x) {
+         public Optional<jm.c<T>> a(akq<T> $$0x) {
             return Optional.ofNullable($$3.get($$0));
          }
 
@@ -52,12 +52,12 @@ public class kc {
       };
    }
 
-   public <T> kc a(akp<? extends jz<T>> $$0, Lifecycle $$1, kc.i<T> $$2) {
+   public <T> kc a(akq<? extends jz<T>> $$0, Lifecycle $$1, kc.i<T> $$2) {
       this.a.add(new kc.k<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> kc a(akp<? extends jz<T>> $$0, kc.i<T> $$1) {
+   public <T> kc a(akq<? extends jz<T>> $$0, kc.i<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
@@ -68,39 +68,39 @@ public class kc {
    }
 
    private static jo.a a(kc.m $$0, ka $$1, Stream<jo.b<?>> $$2) {
-      record a<T>(jo.b<T> a, ako.b<T> b) {
+      record a<T>(jo.b<T> a, akp.b<T> b) {
          public static <T> a<T> a(jo.b<T> $$0) {
-            return new a<>(new kc.d<>($$0, $$0), ako.b.a($$0));
+            return new a<>(new kc.d<>($$0, $$0), akp.b.a($$0));
          }
 
          public static <T> a<T> a(kc.m $$0, jo.b<T> $$1) {
-            return new a<>(new kc.d<>($$0.a(), $$1), new ako.b<>($$0.a(), $$1, $$1.g()));
+            return new a<>(new kc.d<>($$0.a(), $$1), new akp.b<>($$0.a(), $$1, $$1.g()));
          }
       }
 
-      final Map<akp<? extends jz<?>>, a<?>> $$3 = new HashMap<>();
+      final Map<akq<? extends jz<?>>, a<?>> $$3 = new HashMap<>();
       $$1.c().forEach($$1x -> $$3.put($$1x.a(), kc$a.a($$1x.b().q())));
       $$2.forEach($$2x -> $$3.put($$2x.f(), kc$a.a($$0, $$2x)));
       return new jo.a() {
          @Override
-         public Stream<akp<? extends jz<?>>> a() {
+         public Stream<akq<? extends jz<?>>> a() {
             return $$3.keySet().stream();
          }
 
-         <T> Optional<a<T>> c(akp<? extends jz<? extends T>> $$0) {
+         <T> Optional<a<T>> c(akq<? extends jz<? extends T>> $$0) {
             return Optional.ofNullable((a<T>)$$3.get($$0));
          }
 
          @Override
-         public <T> Optional<jo.b<T>> a(akp<? extends jz<? extends T>> $$0) {
+         public <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> $$0) {
             return this.c($$0).map(a::a);
          }
 
          @Override
-         public <V> ako<V> a(DynamicOps<V> $$0) {
-            return ako.a($$0, new ako.c() {
+         public <V> akp<V> a(DynamicOps<V> $$0) {
+            return akp.a($$0, new akp.c() {
                @Override
-               public <T> Optional<ako.b<T>> a(akp<? extends jz<? extends T>> $$0) {
+               public <T> Optional<akp.b<T>> a(akq<? extends jz<? extends T>> $$0) {
                   return c($$0).map(a::b);
                }
             });
@@ -118,7 +118,7 @@ public class kc {
       return $$3;
    }
 
-   private jo.a a(ka $$0, jo.a $$1, je.a $$2, Map<akp<? extends jz<?>>, kc.j<?>> $$3, jo.a $$4) {
+   private jo.a a(ka $$0, jo.a $$1, je.a $$2, Map<akq<? extends jz<?>>, kc.j<?>> $$3, jo.a $$4) {
       kc.m $$5 = new kc.m();
       MutableObject<jo.a> $$6 = new MutableObject();
       List<jo.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).collect(Collectors.toUnmodifiableList());
@@ -127,22 +127,22 @@ public class kc {
       return $$8;
    }
 
-   private <T> jo.b<T> a(jp<T> $$0, je.a $$1, akp<? extends jz<? extends T>> $$2, jo.a $$3, jo.a $$4, MutableObject<jo.a> $$5) {
+   private <T> jo.b<T> a(jp<T> $$0, je.a $$1, akq<? extends jz<? extends T>> $$2, jo.a $$3, jo.a $$4, MutableObject<jo.a> $$5) {
       je<T> $$6 = $$1.a($$2);
       if ($$6 == null) {
          throw new NullPointerException("No cloner for " + $$2.a());
       } else {
-         Map<akp<T>, jm.c<T>> $$7 = new HashMap<>();
+         Map<akq<T>, jm.c<T>> $$7 = new HashMap<>();
          jo.b<T> $$8 = $$3.b($$2);
          $$8.b().forEach($$5x -> {
-            akp<T> $$6x = $$5x.h();
+            akq<T> $$6x = $$5x.h();
             kc.f<T> $$7x = new kc.f<>($$0, $$6x);
             $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (jo.a)$$5.getValue());
             $$7.put($$6x, $$7x);
          });
          jo.b<T> $$9 = $$4.b($$2);
          $$9.b().forEach($$5x -> {
-            akp<T> $$6x = $$5x.h();
+            akq<T> $$6x = $$5x.h();
             $$7.computeIfAbsent($$6x, $$6xx -> {
                kc.f<T> $$7x = new kc.f<>($$0, $$6x);
                $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (jo.a)$$5.getValue());
@@ -156,9 +156,9 @@ public class kc {
 
    public kc.g a(ka $$0, jo.a $$1, je.a $$2) {
       kc.b $$3 = this.b($$0);
-      Map<akp<? extends jz<?>>, kc.j<?>> $$4 = new HashMap<>();
+      Map<akq<? extends jz<?>>, kc.j<?>> $$4 = new HashMap<>();
       this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
-      Set<akp<? extends jz<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
+      Set<akq<? extends jz<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
       $$1.a().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new kc.j($$1x, Lifecycle.stable(), Map.of())));
       Stream<jo.b<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
       jo.a $$7 = a($$3.a, $$0, $$6);
@@ -168,22 +168,22 @@ public class kc {
       return new kc.g($$8, $$7);
    }
 
-   static record b(kc.m a, kc.l b, Map<akq, jn<?>> c, Map<akp<?>, kc.h<?>> d, List<RuntimeException> e) {
+   static record b(kc.m a, kc.l b, Map<akr, jn<?>> c, Map<akq<?>, kc.h<?>> d, List<RuntimeException> e) {
 
-      public static kc.b a(ka $$0, Stream<akp<? extends jz<?>>> $$1) {
+      public static kc.b a(ka $$0, Stream<akq<? extends jz<?>>> $$1) {
          kc.m $$2 = new kc.m();
          List<RuntimeException> $$3 = new ArrayList<>();
          kc.l $$4 = new kc.l($$2);
-         Builder<akq, jn<?>> $$5 = ImmutableMap.builder();
+         Builder<akr, jn<?>> $$5 = ImmutableMap.builder();
          $$0.c().forEach($$1x -> $$5.put($$1x.a().a(), kc.a($$1x.b().q())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
          return new kc.b($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
-      public <T> qp<T> a() {
-         return new qp<T>() {
+      public <T> qq<T> a() {
+         return new qq<T>() {
             @Override
-            public jm.c<T> a(akp<T> $$0, T $$1, Lifecycle $$2) {
+            public jm.c<T> a(akq<T> $$0, T $$1, Lifecycle $$2) {
                kc.h<?> $$3 = b.this.d.put($$0, new kc.h($$1, $$2));
                if ($$3 != null) {
                   b.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
@@ -193,7 +193,7 @@ public class kc {
             }
 
             @Override
-            public <S> jn<S> a(akp<? extends jz<? extends S>> $$0) {
+            public <S> jn<S> a(akq<? extends jz<? extends S>> $$0) {
                return (jn<S>)b.this.c.getOrDefault($$0.a(), b.this.b);
             }
          };
@@ -204,7 +204,7 @@ public class kc {
       }
 
       public void c() {
-         for (akp<Object> $$0 : this.b.a.keySet()) {
+         for (akq<Object> $$0 : this.b.a.keySet()) {
             this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
          }
       }
@@ -229,11 +229,11 @@ public class kc {
          return this.b;
       }
 
-      public Map<akq, jn<?>> g() {
+      public Map<akr, jn<?>> g() {
          return this.c;
       }
 
-      public Map<akp<?>, kc.h<?>> h() {
+      public Map<akq<?>, kc.h<?>> h() {
          return this.d;
       }
 
@@ -250,7 +250,7 @@ public class kc {
       }
 
       @Override
-      public Optional<jq.c<T>> a(awt<T> $$0) {
+      public Optional<jq.c<T>> a(awu<T> $$0) {
          return Optional.of(jq.a(this.d, $$0));
       }
    }
@@ -284,7 +284,7 @@ public class kc {
       @Nullable
       Supplier<T> a;
 
-      protected f(jp<T> $$0, @Nullable akp<T> $$1) {
+      protected f(jp<T> $$0, @Nullable akq<T> $$1) {
          super(jm.c.a.a, $$0, $$1, null);
       }
 
@@ -312,15 +312,15 @@ public class kc {
 
    @FunctionalInterface
    public interface i<T> {
-      void run(qp<T> var1);
+      void run(qq<T> var1);
    }
 
-   static record j<T>(akp<? extends jz<? extends T>> a, Lifecycle b, Map<akp<T>, kc.n<T>> c) {
+   static record j<T>(akq<? extends jz<? extends T>> a, Lifecycle b, Map<akq<T>, kc.n<T>> c) {
 
       public jo.b<T> a(kc.m $$0) {
-         Map<akp<T>, jm.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
+         Map<akq<T>, jm.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
             kc.n<T> $$2 = (kc.n<T>)$$1x.getValue();
-            jm.c<T> $$3 = $$2.b().orElseGet(() -> jm.c.a($$0.a(), (akp<T>)$$1x.getKey()));
+            jm.c<T> $$3 = $$2.b().orElseGet(() -> jm.c.a($$0.a(), (akq<T>)$$1x.getKey()));
             $$3.b($$2.a().a());
             return $$3;
          }));
@@ -328,22 +328,22 @@ public class kc {
       }
    }
 
-   static record k<T>(akp<? extends jz<T>> a, Lifecycle b, kc.i<T> c) {
+   static record k<T>(akq<? extends jz<T>> a, Lifecycle b, kc.i<T> c) {
       void b(kc.b $$0) {
          this.c.run($$0.a());
       }
 
       public kc.j<T> a(kc.b $$0) {
-         Map<akp<T>, kc.n<T>> $$1 = new HashMap<>();
-         Iterator<Entry<akp<?>, kc.h<?>>> $$2 = $$0.d.entrySet().iterator();
+         Map<akq<T>, kc.n<T>> $$1 = new HashMap<>();
+         Iterator<Entry<akq<?>, kc.h<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<akp<?>, kc.h<?>> $$3 = $$2.next();
-            akp<?> $$4 = $$3.getKey();
+            Entry<akq<?>, kc.h<?>> $$3 = $$2.next();
+            akq<?> $$4 = $$3.getKey();
             if ($$4.c(this.a)) {
                kc.h<T> $$6 = (kc.h<T>)$$3.getValue();
                jm.c<T> $$7 = (jm.c<T>)$$0.b.a.remove($$4);
-               $$1.put((akp<T>)$$4, new kc.n<>($$6, Optional.ofNullable($$7)));
+               $$1.put((akq<T>)$$4, new kc.n<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
@@ -353,18 +353,18 @@ public class kc {
    }
 
    static class l extends kc.c<Object> {
-      final Map<akp<Object>, jm.c<Object>> a = new HashMap<>();
+      final Map<akq<Object>, jm.c<Object>> a = new HashMap<>();
 
       public l(jp<Object> $$0) {
          super($$0);
       }
 
       @Override
-      public Optional<jm.c<Object>> a(akp<Object> $$0) {
+      public Optional<jm.c<Object>> a(akq<Object> $$0) {
          return Optional.of(this.c($$0));
       }
 
-      <T> jm.c<T> c(akp<T> $$0) {
+      <T> jm.c<T> c(akq<T> $$0) {
          return (jm.c<T>)this.a.computeIfAbsent($$0, $$0x -> jm.c.a(this.d, $$0x));
       }
    }

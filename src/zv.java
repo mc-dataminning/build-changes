@@ -1,25 +1,33 @@
-public record zv(String b, int c) implements zf<zl> {
-   public static final yw<vv, zv> a = zf.a(zv::a, zv::new);
+import io.netty.buffer.ByteBuf;
 
-   private zv(vv $$0) {
-      this($$0.p(), $$0.l());
+public record zv(akr c, byte[] d) implements zg<zm> {
+   public static final yx<vw, zv> a = zg.a(zv::a, zv::new);
+   private static final int e = 5120;
+   public static final yx<ByteBuf, byte[]> b = yv.a(5120);
+
+   private zv(vw $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private void a(vv $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vw $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zh<zv> a() {
-      return zx.j;
+   public zi<zv> a() {
+      return zy.i;
    }
 
-   public void a(zl $$0) {
+   public void a(zm $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public akr b() {
       return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

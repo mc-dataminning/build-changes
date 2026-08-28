@@ -1,35 +1,96 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class dpe extends dic implements dpc {
-   public static final MapCodec<dpe> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtp.a.fieldOf("block_set_type").forGetter(dic::b), dpc.a.e.fieldOf("weathering_state").forGetter(dpe::m), u()).apply($$0, dpe::new)
+public interface dpe extends dgz<dpe.a> {
+   Supplier<BiMap<dfy, dfy>> u_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dga.qW, dga.qX)
+            .put(dga.qX, dga.qY)
+            .put(dga.qY, dga.qZ)
+            .put(dga.rf, dga.re)
+            .put(dga.re, dga.rd)
+            .put(dga.rd, dga.rc)
+            .put(dga.rj, dga.ri)
+            .put(dga.ri, dga.rh)
+            .put(dga.rh, dga.rg)
+            .put(dga.rv, dga.ru)
+            .put(dga.ru, dga.rt)
+            .put(dga.rt, dga.rs)
+            .put(dga.rr, dga.rq)
+            .put(dga.rq, dga.rp)
+            .put(dga.rp, dga.ro)
+            .put(dga.rM, dga.rN)
+            .put(dga.rN, dga.rP)
+            .put(dga.rP, dga.rO)
+            .put(dga.rU, dga.rV)
+            .put(dga.rV, dga.rX)
+            .put(dga.rX, dga.rW)
+            .put(dga.sc, dga.sd)
+            .put(dga.sd, dga.se)
+            .put(dga.se, dga.sf)
+            .put(dga.sk, dga.sl)
+            .put(dga.sl, dga.sm)
+            .put(dga.sm, dga.sn)
+            .build()
    );
-   private final dpc.a m;
+   Supplier<BiMap<dfy, dfy>> v_ = Suppliers.memoize(() -> u_.get().inverse());
 
-   @Override
-   public MapCodec<dpe> a() {
-      return l;
+   static Optional<dfy> a(dfy $$0) {
+      return Optional.ofNullable((dfy)v_.get().get($$0));
    }
 
-   protected dpe(dtp $$0, dpc.a $$1, dsz.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
-   }
+   static dfy b(dfy $$0) {
+      dfy $$1 = $$0;
 
-   @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if ($$0.c(dic.f) == dtw.b) {
-         this.a_($$0, $$1, $$2, $$3);
+      for (dfy $$2 = (dfy)v_.get().get($$0); $$2 != null; $$2 = (dfy)v_.get().get($$2)) {
+         $$1 = $$2;
       }
+
+      return $$1;
+   }
+
+   static Optional<dtc> b(dtc $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<dfy> c(dfy $$0) {
+      return Optional.ofNullable((dfy)u_.get().get($$0));
+   }
+
+   static dtc c(dtc $$0) {
+      return b($$0.b()).l($$0);
    }
 
    @Override
-   protected boolean d_(dta $$0) {
-      return dpc.c($$0.b()).isPresent();
+   default Optional<dtc> i_(dtc $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
    }
 
-   public dpc.a m() {
-      return this.m;
+   @Override
+   default float ay_() {
+      return this.c() == dpe.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements azk {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<dpe.a> e = azk.a(dpe.a::values);
+      private final String f;
+
+      private a(final String $$0) {
+         this.f = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

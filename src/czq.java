@@ -1,33 +1,15 @@
-public record czq(cuo a, cuo b, cuo c) implements cza {
-   @Override
-   public cuo a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+public class czq extends cyh {
+   public czq(String $$0, cyn $$1, cyw $$2, cuq $$3, float $$4, int $$5) {
+      super(czf.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a() {
-      return 3;
+   public cuq g() {
+      return new cuq(dga.cD);
    }
 
    @Override
-   public boolean b() {
-      return this.a.e() && this.b.e() && this.c.e();
-   }
-
-   public cuo c() {
-      return this.a;
-   }
-
-   public cuo d() {
-      return this.b;
-   }
-
-   public cuo e() {
-      return this.c;
+   public cze<?> at_() {
+      return cze.p;
    }
 }

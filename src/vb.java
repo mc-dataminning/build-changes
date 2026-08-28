@@ -1,27 +1,7 @@
-public interface vb {
-   void a(uv var1);
+public class vb {
+   private static final va<?>[] a = new va[]{ud.a, tz.a, ut.a, ug.a, uj.a, ue.b, uc.b, ty.a, uw.a, uh.a, ub.b, uf.a, ui.a};
 
-   void a(ty var1);
-
-   void a(us var1);
-
-   void a(uf var1);
-
-   void a(ui var1);
-
-   void a(ud var1);
-
-   void a(ub var1);
-
-   void a(tx var1);
-
-   void a(ue var1);
-
-   void a(uh var1);
-
-   void a(ug var1);
-
-   void a(ua var1);
-
-   void a(uc var1);
+   public static va<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : va.a($$0);
+   }
 }

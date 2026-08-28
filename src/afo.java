@@ -1,86 +1,69 @@
-public class afo implements zf<abt> {
-   public static final yw<wj, afo> a = zf.a(afo::a, afo::new);
-   public static final float b = 8.0F;
-   private final jm<avn> c;
-   private final avp d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
+public class afo implements zg<abu> {
+   public static final yx<wk, afo> a = zg.a(afo::a, afo::new);
+   private final jm<avo> b;
+   private final avq c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-   public afo(jm<avn> $$0, avp $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
+   public afo(jm<avo> $$0, avq $$1, bsr $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.an();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private afo(wj $$0) {
-      this.c = avn.d.decode($$0);
-      this.d = $$0.b(avp.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
+   private afo(wk $$0) {
+      this.b = avo.d.decode($$0);
+      this.c = $$0.b(avq.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(wj $$0) {
-      avn.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.p(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
+   private void a(wk $$0) {
+      avo.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public zh<afo> a() {
-      return agf.aS;
+   public zi<afo> a() {
+      return agg.aR;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public jm<avn> b() {
+   public jm<avo> b() {
+      return this.b;
+   }
+
+   public avq e() {
       return this.c;
    }
 
-   public avp e() {
+   public int f() {
       return this.d;
    }
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
+   public float g() {
+      return this.e;
    }
 
-   public double g() {
-      return (double)((float)this.f / 8.0F);
+   public float h() {
+      return this.f;
    }
 
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
-      return this.i;
-   }
-
-   public long k() {
-      return this.j;
+   public long i() {
+      return this.g;
    }
 }

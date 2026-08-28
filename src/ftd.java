@@ -1,173 +1,81 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-class ftd {
-   private static final int a = 44;
-   private final List<ftd.c> b;
+public class ftd extends fob {
+   private static final wz a = wz.c("selectWorld.experiments");
+   private static final wz b = wz.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final flx r = new flx(this);
+   private final fob s;
+   private final atp u;
+   private final Consumer<atp> v;
+   private final Object2BooleanMap<atm> w = new Object2BooleanLinkedOpenHashMap();
 
-   ftd(List<ftd.c> $$0) {
-      this.b = $$0;
-   }
+   public ftd(fob $$0, atp $$1, Consumer<atp> $$2) {
+      super(a);
+      this.s = $$0;
+      this.u = $$1;
+      this.v = $$2;
 
-   public void a() {
-      this.b.forEach(ftd.c::a);
-   }
-
-   public static ftd.a a(int $$0) {
-      return new ftd.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<ftd.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<ftd.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public ftd.d a(wy $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         ftd.d $$3 = new ftd.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public ftd.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ftd.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ftd a(Consumer<flv> $$0) {
-         fls $$1 = new fls().b(this.d);
-         $$1.a(fly.a(this.a - 44), 0, 0);
-         $$1.a(fly.a(44), 0, 1);
-         List<ftd.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (ftd.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+      for (atm $$3 : $$1.c()) {
+         if ($$3.l() == atq.d) {
+            this.w.put($$3, $$1.f().contains($$3));
          }
-
-         $$1.a();
-         $$0.accept($$1);
-         ftd $$4 = new ftd($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public ftd.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new ftd.b($$0, $$1));
-         return this;
       }
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   protected void aT_() {
+      this.r.a(a, this.o);
+      fmb $$0 = this.r.c(fmb.d());
+      $$0.a(new fje(b, this.o).d(310), $$0x -> $$0x.e(15));
+      fth.a $$1 = fth.a(310).a(2, true).b(4);
+      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      fmb $$2 = this.r.b(fmb.e().a(8));
+      $$2.a(fik.a(wy.d, $$0x -> this.m()).a());
+      $$2.a(fik.a(wy.e, $$0x -> this.d()).a());
+      this.r.a($$1x -> {
+         fii var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   static record c(fin<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fin<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
+   private static wz a(atm $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (wz)(grp.a($$1) ? wz.c($$1) : $$0.b());
    }
 
-   public static class d {
-      private final wy a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wy d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   @Override
+   protected void c() {
+      this.r.a();
+   }
 
-      d(wy $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
+   @Override
+   public wz i() {
+      return wy.a(super.i(), b);
+   }
 
-      public ftd.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
+   @Override
+   public void d() {
+      this.l.a(this.s);
+   }
 
-      public ftd.d a(wy $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      ftd.c a(ftd.a $$0, fls $$1, int $$2) {
-         $$0.a();
-         fjn $$3 = new fjn(this.a, fgi.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<ftd.b> $$4 = $$0.f;
-         fin.a<Boolean> $$5 = fin.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fjr $$7 = fjr.a(this.d);
-            $$5.a($$1x -> $$7);
+   private void m() {
+      List<atm> $$0 = new ArrayList<>(this.u.f());
+      List<atm> $$1 = new ArrayList<>();
+      this.w.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
          }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wx.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> wx.a(this.a, $$0x.c()));
-         }
-
-         fin<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wy.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wy $$4x = this.d.f().a(n.h);
-               fhr $$5x = fgi.Q().h;
-               fja $$6x = new fja($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new ftd.c($$8, this.b, this.e);
-      }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.u.b($$0.stream().map(atm::g).toList());
+      this.v.accept(this.u);
    }
 }

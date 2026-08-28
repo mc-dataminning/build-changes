@@ -1,29 +1,29 @@
-public class aeq implements zf<abt> {
-   public static final yw<vv, aeq> a = zf.a(aeq::a, aeq::new);
-   private final int b;
+public class aeq implements zg<abu> {
+   public static final yx<vw, aeq> a = zg.a(aeq::a, aeq::new);
+   private final double b;
 
-   public aeq(dur $$0) {
-      this.b = $$0.q();
+   public aeq(dut $$0) {
+      this.b = $$0.k();
    }
 
-   private aeq(vv $$0) {
-      this.b = $$0.l();
+   private aeq(vw $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vv $$0) {
-      $$0.c(this.b);
+   private void a(vw $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zh<aeq> a() {
-      return agf.au;
+   public zi<aeq> a() {
+      return agg.at;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

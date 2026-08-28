@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
-
-public class aes implements zf<abt> {
-   public static final yw<vv, aes> a = zf.a(aes::a, aes::new);
+public class aes implements zg<abu> {
+   public static final yx<vw, aes> a = zg.a(aes::a, aes::new);
    private final int b;
 
-   public aes(bsq $$0) {
-      this.b = $$0.an();
+   public aes(dut $$0) {
+      this.b = $$0.r();
    }
 
-   private aes(vv $$0) {
+   private aes(vw $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zh<aes> a() {
-      return agf.aw;
+   public zi<aes> a() {
+      return agg.av;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsq a(dcu $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

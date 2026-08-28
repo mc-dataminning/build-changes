@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@Deprecated
-public interface gpn {
-   float call(cuo var1, @Nullable fyz var2, @Nullable btl var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gpn {
 }

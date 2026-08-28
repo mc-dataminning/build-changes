@@ -1,59 +1,84 @@
-public class fsj extends fnx {
-   private static final wy a = wy.c("gui.abuseReport.title");
-   private static final wy b = wy.c("gui.abuseReport.message");
-   private static final wy c = wy.c("gui.abuseReport.type.chat");
-   private static final wy q = wy.c("gui.abuseReport.type.skin");
-   private static final wy r = wy.c("gui.abuseReport.type.name");
-   private static final int s = 6;
-   private final fnx u;
-   private final gai v;
-   private final fsn w;
-   private final flx x = flx.d().a(6);
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-   public fsj(fnx $$0, gai $$1, fsn $$2) {
-      super(a);
-      this.u = $$0;
-      this.v = $$1;
-      this.w = $$2;
+public class fsj extends fsi<gaf.a> {
+   private static final int z = 120;
+   private static final wz A = wz.c("gui.chatReport.title");
+   private static final wz B = wz.c("gui.chatReport.select_chat");
+   private final fmb C = fmb.d().a(8);
+   private fjc D;
+   private fik E;
+   private fik F;
+   private fik G;
+
+   private fsj(fob $$0, gam $$1, gaf.a $$2) {
+      super(A, $$0, $$1, $$2);
+   }
+
+   public fsj(fob $$0, gam $$1, UUID $$2) {
+      this($$0, $$1, new gaf.a($$2, $$1.a().b()));
+   }
+
+   public fsj(fob $$0, gam $$1, gaf $$2) {
+      this($$0, $$1, new gaf.a($$2, $$1.a().b()));
    }
 
    @Override
-   public wy i() {
-      return wx.a(super.i(), b);
-   }
-
-   @Override
-   protected void aP_() {
-      this.x.c().b();
-      this.x.a(new fjn(this.k, this.o), this.x.b().e(6));
-      this.x.a(new fja(b, this.o).b(true), this.x.b().e(6));
-      fig $$0 = this.x.a(fig.a(c, $$0x -> this.l.a(new fsf(this.u, this.v, this.w.d()))).a());
-      if (!this.w.k()) {
-         $$0.j = false;
-         $$0.a(fjr.a(wy.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.w.j()) {
-         $$0.j = false;
-         $$0.a(fjr.a(wy.a("gui.socialInteractions.tooltip.report.no_messages", this.w.c())));
-      }
-
-      this.x.a(fig.a(q, $$0x -> this.l.a(new fsl(this.u, this.v, this.w.d(), this.w.h()))).a());
-      this.x.a(fig.a(r, $$0x -> this.l.a(new fsi(this.u, this.v, this.w.d(), this.w.c()))).a());
-      this.x.a(fly.b(20));
-      this.x.a(fig.a(wx.e, $$0x -> this.d()).a());
-      this.x.a($$1 -> {
-         fie var10000 = this.c($$1);
+   protected void aT_() {
+      this.C.c().b();
+      this.C.a(new fjr(this.k, this.o));
+      this.F = this.C.a(fik.a(B, $$0x -> this.l.a(new fsl(this, this.x, this.y, $$0xx -> {
+            this.y = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.G = fik.a(c, $$0x -> this.l.a(new fso(this, this.y.h(), $$0xx -> {
+            this.y.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.C.a(flt.a(this.o, this.G, b));
+      this.D = this.a(280, 9 * 8, $$0x -> {
+         this.y.a($$0x);
+         this.C();
+      });
+      this.C.a(flt.a(this.o, this.D, r, $$0x -> $$0x.e(12)));
+      fmb $$0 = this.C.a(fmb.e().a(8));
+      $$0.a(fik.a(wy.k, $$0x -> this.d()).a(120).a());
+      this.E = $$0.a(fik.a(a, $$0x -> this.m()).a(120).a());
+      this.C.a($$1 -> {
+         fii var10000 = this.c($$1);
       });
       this.c();
+      this.C();
    }
 
    @Override
    protected void c() {
-      this.x.a();
-      flr.a(this.x, this.H());
+      this.C.a();
+      flv.a(this.C, this.H());
+   }
+
+   private void C() {
+      IntSet $$0 = this.y.a();
+      if ($$0.isEmpty()) {
+         this.F.b(B);
+      } else {
+         this.F.b(wz.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      gak $$1 = this.y.h();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      gai.b $$2 = this.y.c();
+      this.E.j = $$2 == null;
+      this.E.a(x.a($$2, gai.b::a));
    }
 
    @Override
-   public void d() {
-      this.l.a(this.u);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
    }
 }

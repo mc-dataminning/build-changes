@@ -1,29 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bvc {
-   public static bwq<bsk> a(bqb $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
+public class bvc<E extends btw> extends bvh<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<btw, awu<brm>> h;
+
+   public bvc(float $$0) {
+      this($$0, $$0x -> awg.F);
    }
 
-   public static bwq<bsk> a(bqb $$0, Function<btl, Float> $$1) {
-      return bys.a(
-         (Function<bys.b<bsk>, ? extends App<bys.c<bsk>, byv<bsk>>>)($$2 -> $$2.group($$2.b(ccq.K), $$2.a(ccq.n), $$2.c(ccq.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.o_()) {
-                        return false;
-                     } else {
-                        bsk $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           cct $$10 = new cct(new bvq($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bvq($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   public bvc(float $$0, Function<btw, awu<brm>> $$1) {
+      super(Map.of(ccs.Z, cct.c, ccs.x, cct.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   protected boolean a(aqu $$0, E $$1) {
+      return $$1.dU().c(ccs.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.dU().a(ccs.Z);
+   }
+
+   protected boolean a(aqu $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqu $$0, E $$1, long $$2) {
+      $$1.dU().a(ccs.Z, true);
+      $$1.dU().b(ccs.m);
+   }
+
+   protected void c(aqu $$0, E $$1, long $$2) {
+      buq<?> $$3 = $$1.dU();
+      $$3.b(ccs.Z);
+   }
+
+   protected void d(aqu $$0, E $$1, long $$2) {
+      if ($$1.N().l()) {
+         exa $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dU().a(ccs.m, new ccv($$3, this.g, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private exa a(E $$0, aqu $$1) {
+      if ($$0.bR()) {
+         Optional<exa> $$2 = this.a((dcc)$$1, $$0).map(exa::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return cem.a($$0, 5, 4);
+   }
+
+   private Optional<jd> a(dcc $$0, bsr $$1) {
+      jd $$2 = $$1.dp();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<jd> $$3;
+         if (ayo.f($$1.dk()) == 2) {
+            $$3 = $$1x -> jd.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awk.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(awk.a);
+         }
+
+         return jd.a($$2, 5, 1, $$3);
+      }
    }
 }

@@ -1,48 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efu extends efq {
-   public static final MapCodec<efu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bpv.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, efu::new)
-   );
-   private final bpv b;
+public class efu<P extends eft> {
+   public static final efu<efo> a = a("blob_foliage_placer", efo.a);
+   public static final efu<efz> b = a("spruce_foliage_placer", efz.a);
+   public static final efu<efx> c = a("pine_foliage_placer", efx.a);
+   public static final efu<efn> d = a("acacia_foliage_placer", efn.a);
+   public static final efu<efp> e = a("bush_foliage_placer", efp.c);
+   public static final efu<efs> f = a("fancy_foliage_placer", efs.c);
+   public static final efu<efv> g = a("jungle_foliage_placer", efv.a);
+   public static final efu<efw> h = a("mega_pine_foliage_placer", efw.a);
+   public static final efu<efr> i = a("dark_oak_foliage_placer", efr.a);
+   public static final efu<efy> j = a("random_spread_foliage_placer", efy.a);
+   public static final efu<efq> k = a("cherry_foliage_placer", efq.a);
+   private final MapCodec<P> l;
 
-   public efu(bpv $$0, bpv $$1, bpv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends eft> efu<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.U, $$0, new efu<>($$1));
    }
 
-   @Override
-   protected efr<?> a() {
-      return efr.c;
+   private efu(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
-   }
-
-   @Override
-   public int a(ayv $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(ayv $$0, int $$1, efa $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

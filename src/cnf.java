@@ -1,139 +1,121 @@
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cnf extends bsq implements bul {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private btl i;
-   @Nullable
-   private UUID j;
+public class cnf extends cnd {
+   private static final int f = 600;
+   private static final int g = -1;
+   private static final ajw<Integer> h = aka.a(cnf.class, ajy.b);
+   private static final byte i = 0;
 
-   public cnf(bsw<? extends cnf> $$0, dcu $$1) {
+   public cnf(bsx<? extends cnf> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   public cnf(dcu $$0, double $$1, double $$2, double $$3, float $$4, int $$5, btl $$6) {
-      this(bsw.K, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.s($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
+   public cnf(dcw $$0, double $$1, double $$2, double $$3, cuq $$4, @Nullable cuq $$5) {
+      super(bsx.e, $$1, $$2, $$3, $$0, $$4, $$5);
+      this.K();
+   }
+
+   public cnf(dcw $$0, btn $$1, cuq $$2, @Nullable cuq $$3) {
+      super(bsx.e, $$1, $$0, $$2, $$3);
+      this.K();
+   }
+
+   private cwu J() {
+      return this.y().a(kq.G, cwu.a);
+   }
+
+   private void a(cwu $$0) {
+      this.y().b(kq.G, $$0);
+      this.K();
    }
 
    @Override
-   protected void a(ajz.a $$0) {
+   protected void a(cuq $$0) {
+      super.a($$0);
+      this.K();
    }
 
-   public void a(@Nullable btl $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cA();
+   private void K() {
+      cwu $$0 = this.J();
+      this.ao.a(h, $$0.equals(cwu.a) ? -1 : $$0.b());
    }
 
-   @Nullable
-   public btl p() {
-      if (this.i == null && this.j != null && this.dQ() instanceof aqt) {
-         bsq $$0 = ((aqt)this.dQ()).a(this.j);
-         if ($$0 instanceof btl) {
-            this.i = (btl)$$0;
-         }
-      }
-
-      return this.i;
+   public void a(brz $$0) {
+      this.a(this.J().a($$0));
    }
 
    @Override
-   protected void a(ua $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
-   }
-
-   @Override
-   protected void b(ua $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
-      }
+   protected void a(aka.a $$0) {
+      super.a($$0);
+      $$0.a(h, -1);
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.dQ().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dv() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
-                  double $$2 = this.dx() + 0.05 + this.ah.j();
-                  double $$3 = this.dB() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
-                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ah.j() * 0.3;
-                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  this.dQ().a(lm.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
+      if (this.dP().B) {
+         if (this.b) {
+            if (this.c % 5 == 0) {
+               this.b(1);
             }
+         } else {
+            this.b(2);
          }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (btl $$8 : this.dQ().a(btl.class, this.cL().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
+      } else if (this.b && this.c != 0 && !this.J().equals(cwu.a) && this.c >= 600) {
+         this.dP().a(this, (byte)0);
+         this.a(new cuq(cut.ow));
+      }
+   }
 
-         if (!this.f) {
-            this.dQ().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.aq();
+   private void b(int $$0) {
+      int $$1 = this.F();
+      if ($$1 != -1 && $$0 > 0) {
+         for (int $$2 = 0; $$2 < $$0; $$2++) {
+            this.dP().a(lf.a(lm.u, $$1), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
    }
 
-   private void c(btl $$0) {
-      btl $$1 = this.p();
-      if ($$0.bE() && !$$0.cv() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dR().p(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
+   public int F() {
+      return this.ao.a(h);
+   }
 
-            brj $$2 = this.dR().c(this, (bsq)$$1);
-            if ($$0.a($$2, 6.0F) && this.dQ() instanceof aqt $$3) {
-               dac.a($$3, (bsq)$$0, $$2);
-            }
+   @Override
+   protected void a(btn $$0) {
+      super.a($$0);
+      bsr $$1 = this.H();
+      cwu $$2 = this.J();
+      if ($$2.e().isPresent()) {
+         for (brz $$3 : $$2.e().get().a().a()) {
+            $$0.b(new brz($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
          }
+      }
+
+      for (brz $$4 : $$2.d()) {
+         $$0.b($$4, $$1);
       }
    }
 
    @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.aX()) {
-            this.dQ().a(this.dv(), this.dx(), this.dB(), avo.iB, this.df(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
-         }
-      }
+   protected cuq x() {
+      return new cuq(cut.ow);
    }
 
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 0) {
+         int $$1 = this.F();
+         if ($$1 != -1) {
+            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
+            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
+            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
+
+            for (int $$5 = 0; $$5 < 20; $$5++) {
+               this.dP().a(lf.a(lm.u, $$2, $$3, $$4), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
+            }
+         }
       } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+         super.b($$0);
       }
    }
 }

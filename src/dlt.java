@@ -1,253 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dlt extends dfl {
-   public static final MapCodec<dlt> d = b(dlt::new);
-   public static final dty<due> e = dtq.ah;
-   public static final dtr f = dtq.w;
+public class dlt extends dfy implements dgf {
+   public static final MapCodec<dlt> a = b(dlt::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final ext f = exq.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dlt> a() {
-      return d;
+      return a;
    }
 
-   protected dlt(dsz.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, due.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   public dlt(dtb.d $$0) {
+      super($$0);
    }
 
-   protected boolean a(dcu $$0, jd $$1, dta $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
+   @Override
+   protected boolean a(dtc $$0, dtc $$1, ji $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected ext f(dtc $$0, dcc $$1, jd $$2) {
+      return exq.a();
+   }
+
+   @Override
+   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
+      if (!($$3 instanceof btn) || $$3.dq().a(this)) {
+         $$3.a($$0, new exa(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            ayw $$4 = $$1.E_();
+            boolean $$5 = $$3.ad != $$3.du() || $$3.af != $$3.dA();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  lm.aK,
+                  $$3.du(),
+                  (double)($$2.v() + 1),
+                  $$3.dA(),
+                  (double)(ayo.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(ayo.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      $$3.p(true);
+      if (!$$1.B) {
+         if ($$3.bR() && ($$1.ab().b(dcs.c) || $$3 instanceof cmx) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.c(false);
+      }
+   }
+
+   @Override
+   public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof btn $$5) {
+         btn.a $$7 = $$5.eI();
+         avo $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      if ($$3 instanceof exk $$4) {
+         bsr $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.ac > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cjg;
+            if ($$6 || a($$5) && $$3.a(exq.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return exq.a();
+   }
+
+   @Override
+   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return exq.a();
+   }
+
+   public static boolean a(bsr $$0) {
+      if ($$0.am().a(awi.h)) {
+         return true;
       } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         due $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = due.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
-
-               $$9 = due.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = due.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = due.a;
-         }
-
-         return this.a($$0, new jd($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new jd($$5, $$6 - 1, $$7), $$3, $$4, $$9);
-      }
-   }
-
-   protected boolean a(dcu $$0, jd $$1, boolean $$2, int $$3, due $$4) {
-      dta $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
-         return false;
-      } else {
-         due $$6 = $$5.c(e);
-         if ($$4 != due.b || $$6 != due.a && $$6 != due.e && $$6 != due.f) {
-            if ($$4 != due.a || $$6 != due.b && $$6 != due.c && $$6 != due.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
-            }
-         } else {
-            return false;
-         }
+         return $$0 instanceof btn ? ((btn)$$0).a(bsy.c).a(cut.pB) : false;
       }
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.d(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.c(), this);
-         }
-      }
-   }
-
-   @Override
-   public dud<due> c() {
-      return e;
-   }
-
-   @Override
-   protected dta a(dta $$0, dmk $$1) {
-      switch ($$1) {
-         case c:
-            switch ((due)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, due.d);
-               case d:
-                  return $$0.a(e, due.c);
-               case e:
-                  return $$0.a(e, due.f);
-               case f:
-                  return $$0.a(e, due.e);
-               case g:
-                  return $$0.a(e, due.i);
-               case h:
-                  return $$0.a(e, due.j);
-               case i:
-                  return $$0.a(e, due.g);
-               case j:
-                  return $$0.a(e, due.h);
-            }
-         case d:
-            switch ((due)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, due.b);
-               case b:
-                  return $$0.a(e, due.a);
-               case c:
-                  return $$0.a(e, due.e);
-               case d:
-                  return $$0.a(e, due.f);
-               case e:
-                  return $$0.a(e, due.d);
-               case f:
-                  return $$0.a(e, due.c);
-               case g:
-                  return $$0.a(e, due.j);
-               case h:
-                  return $$0.a(e, due.g);
-               case i:
-                  return $$0.a(e, due.h);
-               case j:
-                  return $$0.a(e, due.i);
-            }
-         case b:
-            switch ((due)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, due.b);
-               case b:
-                  return $$0.a(e, due.a);
-               case c:
-                  return $$0.a(e, due.f);
-               case d:
-                  return $$0.a(e, due.e);
-               case e:
-                  return $$0.a(e, due.c);
-               case f:
-                  return $$0.a(e, due.d);
-               case g:
-                  return $$0.a(e, due.h);
-               case h:
-                  return $$0.a(e, due.i);
-               case i:
-                  return $$0.a(e, due.j);
-               case j:
-                  return $$0.a(e, due.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dta a(dta $$0, dkt $$1) {
-      due $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, due.f);
-               case f:
-                  return $$0.a(e, due.e);
-               case g:
-                  return $$0.a(e, due.j);
-               case h:
-                  return $$0.a(e, due.i);
-               case i:
-                  return $$0.a(e, due.h);
-               case j:
-                  return $$0.a(e, due.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, due.d);
-               case d:
-                  return $$0.a(e, due.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, due.h);
-               case h:
-                  return $$0.a(e, due.g);
-               case i:
-                  return $$0.a(e, due.j);
-               case j:
-                  return $$0.a(e, due.i);
-            }
+   public cuq a(@Nullable cmx $$0, dcx $$1, jd $$2, dtc $$3) {
+      $$1.a($$2, dga.a.o(), 11);
+      if (!$$1.x_()) {
+         $$1.c(2001, $$2, dfy.i($$3));
       }
 
-      return super.a($$0, $$1);
+      return new cuq(cut.qB);
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(e, f, c);
+   public Optional<avo> aw_() {
+      return Optional.of(avp.dm);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return true;
    }
 }

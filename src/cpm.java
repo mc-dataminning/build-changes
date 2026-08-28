@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cpm {
+   private final String a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cpm {
+   public cpm(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

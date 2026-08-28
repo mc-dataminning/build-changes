@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eeb(egn b, eac c, bpv d, int e) implements eee {
+public class eeb implements eeh {
    public static final Codec<eeb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egn.a.fieldOf("state_provider").forGetter(eeb::a),
-               eac.b.fieldOf("target").forGetter(eeb::b),
-               bpv.b(0, 8).fieldOf("radius").forGetter(eeb::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eeb::d)
-            )
-            .apply($$0, eeb::new)
+      $$0 -> $$0.group(bpw.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bpw.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eeb::new)
    );
+   private final bpw b;
+   private final bpw c;
 
-   public egn a() {
+   public eeb(bpw $$0, bpw $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bpw a() {
       return this.b;
    }
 
-   public eac b() {
+   public bpw b() {
       return this.c;
-   }
-
-   public bpv c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

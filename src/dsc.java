@@ -1,64 +1,77 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface dsc {
-   dsc a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dq().a($$2, $$3) && !$$2x.f() && !$$2x.N_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.by()))
-         .map(bsq::cA)
-         .toList();
-   dsc b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dq().a($$2, $$3) && !$$2x.N_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.by()))
-         .map(bsq::cA)
-         .toList();
-   dsc c = ($$0, $$1, $$2, $$3, $$4) -> {
-      ewr $$5 = new ewr($$2).g($$3);
-      return $$1.a($$0, bsw.aJ, $$5, btl::bE).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.by())).map(bsq::cA).toList();
-   };
+public class dsc extends dqh implements ddp, dsf.b {
+   private static final Logger a = LogUtils.getLogger();
+   private dsf b;
 
-   List<UUID> detect(aqt var1, dsc.a var2, jd var3, double var4, boolean var6);
-
-   private static boolean a(dcu $$0, eww $$1, eww $$2) {
-      ews $$3 = $$0.a(new dcd($$2, $$1, dcd.a.c, dcd.b.a, exb.a()));
-      return $$3.a().equals(jd.a((jw)$$1)) || $$3.c() == ewu.a.a;
+   public dsc(jd $$0, dtc $$1) {
+      super(dqj.Q, $$0, $$1);
+      dse $$2 = dse.a;
+      dse.a $$3 = dse.a.a;
+      this.b = new dsf(this, $$2, $$3);
    }
 
-   public interface a {
-      dsc.a a = new dsc.a() {
-         @Override
-         public List<aqu> a(aqt $$0, Predicate<? super cmv> $$1) {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public <T extends bsq> List<T> a(aqt $$0, dxk<bsq, T> $$1, ewr $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends cmv> a(aqt var1, Predicate<? super cmv> var2);
-
-      <T extends bsq> List<T> a(aqt var1, dxk<bsq, T> var2, ewr var3, Predicate<? super T> var4);
-
-      static dsc.a a(cmv $$0) {
-         return a(List.of($$0));
+   @Override
+   protected void a(ub $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.e("normal_config")) {
+         ub $$2 = $$0.p("normal_config").i();
+         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
       }
 
-      static dsc.a a(final List<cmv> $$0) {
-         return new dsc.a() {
-            @Override
-            public List<cmv> a(aqt $$0x, Predicate<? super cmv> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+      this.b.a().parse(up.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.n != null) {
+         this.f();
+      }
+   }
 
-            @Override
-            public <T extends bsq> List<T> a(aqt $$0x, dxk<bsq, T> $$1, ewr $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   @Override
+   protected void b(ub $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      this.b.a().encodeStart(up.a, this.b).ifSuccess($$1x -> $$0.a((ub)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+   }
+
+   public acb b() {
+      return acb.a(this);
+   }
+
+   @Override
+   public ub a(jo.a $$0) {
+      return this.b.f().a(this.n().c(doo.b));
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public void a(bsx<?> $$0, ayw $$1) {
+      this.b.f().a(this.b, $$1, $$0);
+      this.e();
+   }
+
+   public dsf c() {
+      return this.b;
+   }
+
+   @Override
+   public dsi d() {
+      return !this.n().b(dts.by) ? dsi.a : this.n().c(dts.by);
+   }
+
+   @Override
+   public void a(dcw $$0, dsi $$1) {
+      this.e();
+      $$0.b(this.o, this.n().a(dts.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.n != null) {
+         this.n.a(this.o, this.n(), this.n(), 3);
       }
    }
 }

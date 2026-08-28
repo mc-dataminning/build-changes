@@ -1,30 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class bas extends bfm {
-   public bas(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", bgq.s, "minecraft:banner");
+public class bas extends DataFix {
+   public bas(Schema $$0) {
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
-      return $$0.update(
-         "Patterns",
-         $$0x -> (Dynamic)DataFixUtils.orElse(
-               $$0x.asStreamOpt()
-                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
-                  .map($$0x::createList)
-                  .result(),
-               $$0x
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bgr.c);
+      return this.fixTypeEverywhereTyped(
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
       );
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

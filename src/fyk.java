@@ -1,17 +1,30 @@
 public class fyk {
-   private final fym a;
-   private final fyl b;
+   public static final fyk a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   private fyk(fym $$0, fyl $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private fyk(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public fye a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   public static fyk a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public static fyk a(fym $$0, int $$1, int $$2) {
-      return new fyk($$0, new fyl($$1, $$2));
+   public static fyk b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static fyk a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fyk($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

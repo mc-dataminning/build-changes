@@ -1,56 +1,36 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class ecw extends eca<een> {
+public class ecw extends ecd<een> {
    public ecw(Codec<een> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<een> $$0) {
-      dcv $$1 = $$0.b();
+   public boolean a(ecf<een> $$0) {
+      dds $$1 = $$0.b();
       jd $$2 = $$0.e();
-      ayv $$3 = $$0.d();
+      dtc $$3 = $$1.a_($$2.e());
       een $$4 = $$0.f();
-      Optional<ji> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      ayw $$5 = $$0.d();
+      if (!$$3.a(awe.aL)) {
          return false;
       } else {
-         jd $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && ebw.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         ebw.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.am()) {
+            int $$7 = 0;
 
-   private static Optional<ji> a(dcv $$0, jd $$1, ayv $$2) {
-      boolean $$3 = ebw.b($$0.a_($$1.c()));
-      boolean $$4 = ebw.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ji.a : ji.b);
-      } else if ($$3) {
-         return Optional.of(ji.a);
-      } else {
-         return $$4 ? Optional.of(ji.b) : Optional.empty();
-      }
-   }
-
-   private static void a(dcv $$0, ayv $$1, jd $$2, een $$3) {
-      ebw.c($$0, $$2);
-
-      for (ji $$4 : ji.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jd $$5 = $$2.a($$4);
-            ebw.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jd $$6 = $$5.a(ji.b($$1));
-               ebw.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jd $$7 = $$6.a(ji.b($$1));
-                  ebw.c($$0, $$7);
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               jd $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dtc $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
                }
             }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
    }

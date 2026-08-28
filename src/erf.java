@@ -1,94 +1,54 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface erf {
-   int d = 19133;
-   int e = 19132;
+public class erf {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final eqv d;
+   private final boolean e;
 
-   ddp D();
-
-   void a(ddp var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   private erf(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new eqv($$3, $$4);
+      this.e = $$5;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   public static erf a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new erf(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(eqv.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new erf($$1, $$2, "", 0, eqv.a, false);
    }
 
-   @Nullable
-   ua E();
+   public int a() {
+      return this.a;
+   }
 
-   void a(@Nullable ua var1);
+   public long b() {
+      return this.b;
+   }
 
-   ere I();
+   public String c() {
+      return this.c;
+   }
 
-   dcy J();
+   public eqv d() {
+      return this.d;
+   }
 
-   ua a(ka var1, @Nullable ua var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dcr k();
-
-   void a(dcr var1);
-
-   boolean m();
-
-   bqn q();
-
-   void a(bqn var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dcq o();
-
-   @Nullable
-   ua w();
-
-   dwy.a C();
-
-   void a(dwy.a var1);
-
-   dzt y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cpj K() {
-      return this.D().b();
+   public boolean e() {
+      return this.e;
    }
 }

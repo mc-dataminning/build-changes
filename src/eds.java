@@ -3,50 +3,94 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class eds extends edp {
-   public eds(Codec<efd> $$0) {
+public class eds extends ecd<efg> {
+   public eds(Codec<efg> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<jd> a(ddq $$0, efd $$1, ayv $$2, jd $$3, Predicate<dta> $$4, int $$5, int $$6) {
-      Set<jd> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<jd> $$8 = new HashSet<>();
-      jd.a $$9 = new jd.a();
+   public boolean a(ecf<efg> $$0) {
+      dds $$1 = $$0.b();
+      efg $$2 = $$0.f();
+      ayw $$3 = $$0.d();
+      jd $$4 = $$0.e();
+      Predicate<dtc> $$5 = $$1x -> $$1x.a($$2.b);
+      int $$6 = $$2.j.a($$3) + 1;
+      int $$7 = $$2.j.a($$3) + 1;
+      Set<jd> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
+      return !$$8.isEmpty();
+   }
 
-      for (jd $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+   protected Set<jd> a(dds $$0, efg $$1, ayw $$2, jd $$3, Predicate<dtc> $$4, int $$5, int $$6) {
+      jd.a $$7 = $$3.k();
+      jd.a $$8 = $$7.k();
+      ji $$9 = $$1.e.a();
+      ji $$10 = $$9.g();
+      Set<jd> $$11 = new HashSet<>();
+
+      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
+         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+
+         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
+            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
+            boolean $$16 = $$13 || $$15;
+            boolean $$17 = $$13 && $$15;
+            boolean $$18 = $$16 && !$$17;
+            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
+               $$7.a($$3, $$12, 0, $$14);
+
+               for (int $$19 = 0; $$0.a($$7, dtb.a::i) && $$19 < $$1.h; $$19++) {
+                  $$7.c($$9);
+               }
+
+               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
+                  $$7.c($$10);
+               }
+
+               $$8.a($$7, $$1.e.a());
+               dtc $$20 = $$0.a_($$8);
+               if ($$0.u($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
+                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
+                  jd $$22 = $$8.j();
+                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
+                  if ($$23) {
+                     $$11.add($$22);
+                  }
+               }
+            }
          }
       }
 
-      for (jd $$11 : $$8) {
-         $$0.a($$11, dfy.G.o(), 2);
-      }
-
-      return $$8;
+      return $$11;
    }
 
-   private static boolean a(ddq $$0, Set<jd> $$1, jd $$2, jd.a $$3) {
-      return a($$0, $$2, $$3, ji.c) || a($$0, $$2, $$3, ji.f) || a($$0, $$2, $$3, ji.d) || a($$0, $$2, $$3, ji.e) || a($$0, $$2, $$3, ji.a);
-   }
-
-   private static boolean a(ddq $$0, jd $$1, jd.a $$2, ji $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(ddq $$0, efd $$1, dux $$2, ayv $$3, jd $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dta $$5 = $$0.a_($$4);
-         if ($$5.b(dtq.C) && !$$5.c(dtq.C)) {
-            $$0.a($$4, $$5.a(dtq.C, Boolean.valueOf(true)), 2);
+   protected void a(ecf<efg> $$0, dds $$1, efg $$2, ayw $$3, Set<jd> $$4, int $$5, int $$6) {
+      for (jd $$7 : $$4) {
+         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
+            this.a($$1, $$2, $$0.c(), $$3, $$7);
          }
-
-         return true;
-      } else {
-         return false;
       }
+   }
+
+   protected boolean a(dds $$0, efg $$1, duz $$2, ayw $$3, jd $$4) {
+      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
+   }
+
+   protected boolean a(dds $$0, efg $$1, Predicate<dtc> $$2, ayw $$3, jd.a $$4, int $$5) {
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         dtc $$7 = $$1.c.a($$3, $$4);
+         dtc $$8 = $$0.a_($$4);
+         if (!$$7.a($$8.b())) {
+            if (!$$2.test($$8)) {
+               return $$6 != 0;
+            }
+
+            $$0.a($$4, $$7, 2);
+            $$4.c($$1.e.a());
+         }
+      }
+
+      return true;
    }
 }

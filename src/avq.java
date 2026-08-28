@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum avq {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface avq {
+   private final String k;
+
+   private avq(final String $$0) {
+      this.k = $$0;
+   }
+
+   public String a() {
+      return this.k;
+   }
 }

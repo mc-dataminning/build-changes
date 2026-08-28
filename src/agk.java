@@ -1,37 +1,29 @@
-public class agk implements zf<agh> {
-   public static final yw<vv, agk> a = zf.a(agk::a, agk::new);
+public class agk implements zg<agi> {
+   public static final yx<vw, agk> a = zg.a(agk::a, agk::new);
    private final int b;
-   private final jd c;
 
-   public agk(int $$0, jd $$1) {
+   public agk(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private agk(vv $$0) {
+   private agk(vw $$0) {
       this.b = $$0.l();
-      this.c = $$0.e();
    }
 
-   private void a(vv $$0) {
+   private void a(vw $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zh<agk> a() {
-      return agf.bg;
+   public zi<agk> a() {
+      return agg.bf;
    }
 
-   public void a(agh $$0) {
+   public void a(agi $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public jd e() {
-      return this.c;
    }
 }

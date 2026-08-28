@@ -1,11 +1,17 @@
-public class gjq extends glj<cfj, fux<cfj>> {
-   private static final akq a = akq.b("textures/entity/cow/cow.png");
+public class gjq extends gmo<cjo> {
+   private static final akr a = akr.b("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public gjq(gkd.a $$0) {
-      super($$0, new fux<>($$0.a(fyd.H)), 0.7F);
+   public gjq(gkh.a $$0) {
+      super($$0, fyh.x);
+      this.e *= 0.7F;
    }
 
-   public akq a(cfj $$0) {
+   protected void a(cjo $$0, fbg $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
+
+   public akr a(cjo $$0) {
       return a;
    }
 }

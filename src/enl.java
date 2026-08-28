@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class enl {
-   private final List<enk> a;
+public abstract class enl {
+   public static final Codec<enl> c = lt.m.r().dispatch("predicate_type", enl::a, enm::codec);
 
-   public enl(List<enk> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(dtc var1, ayw var2);
 
-   public List<enk> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract enm<?> a();
 }

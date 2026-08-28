@@ -1,40 +1,109 @@
-public class fwm<T extends bsq> extends fvn<T> {
-   private final fye a;
-   private final fye b;
-   private final fye f;
+public class fwm<T extends btp> extends fwn<T> {
+   public final fyi a = this.k.b("right_ear");
+   private final fyi A = this.k.b("left_ear");
+   private final fyk B = this.m.a();
+   private final fyk C = this.k.a();
+   private final fyk D = this.o.a();
+   private final fyk E = this.n.a();
 
-   public fwm(fye $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+   public fwm(fyi $$0) {
+      super($$0, false);
    }
 
-   public static fyk b() {
-      fym $$0 = new fym();
-      fyn $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fyj.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fyg.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fyj.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyg.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fyj.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyg.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fyj.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fyg.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fyj.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fyg.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fyj.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fyg.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fyj.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fyg.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fyj.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fyg.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fyj.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fyg.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fyj.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fyg.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fyj.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fyg.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fyk.a($$0, 32, 32);
+   public static fyq a(fym $$0) {
+      fyq $$1 = fwn.a($$0, false);
+      fyr $$2 = $$1.a();
+      $$2.a("body", fyn.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fyk.a);
+      a($$0, $$1);
+      $$2.a("hat", fyn.c(), fyk.a);
+      return $$1;
    }
 
-   @Override
-   public fye a() {
-      return this.a;
+   public static void a(fym $$0, fyq $$1) {
+      fyr $$2 = $$1.a();
+      fyr $$3 = $$2.a(
+         "head",
+         fyn.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         fyk.a
+      );
+      $$3.a("left_ear", fyn.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fyk.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", fyn.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fyk.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * ayn.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * ayn.a($$3 * 0.2F);
+      this.m.b(this.B);
+      this.k.b(this.C);
+      this.o.b(this.D);
+      this.n.b(this.E);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = (float) (Math.PI / 6);
+      float $$7 = $$3 * 0.1F + $$1 * 0.5F;
+      float $$8 = 0.08F + $$2 * 0.4F;
+      this.A.g = (float) (-Math.PI / 6) - ayo.b($$7 * 1.2F) * $$8;
+      this.a.g = (float) (Math.PI / 6) + ayo.b($$7) * $$8;
+      if ($$0 instanceof clm $$9) {
+         clp $$10 = $$9.gn();
+         if ($$10 == clp.e) {
+            float $$11 = $$3 / 60.0F;
+            this.a.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * ayo.a($$11 * 30.0F) * 10.0F;
+            this.A.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * ayo.b($$11 * 30.0F) * 10.0F;
+            this.k.b = ayo.a($$11 * 10.0F);
+            this.k.c = ayo.a($$11 * 40.0F) + 0.4F;
+            this.n.g = (float) (Math.PI / 180.0) * (70.0F + ayo.b($$11 * 40.0F) * 10.0F);
+            this.o.g = this.n.g * -1.0F;
+            this.n.c = ayo.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.o.c = ayo.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.m.c = ayo.a($$11 * 40.0F) * 0.35F;
+         } else if ($$10 == clp.a && this.c == 0.0F) {
+            this.a($$0);
+         } else if ($$10 == clp.b) {
+            fuf.a(this.n, this.o, this.k, !$$0.gb());
+         } else if ($$10 == clp.c) {
+            fuf.a(this.n, this.o, $$0, !$$0.gb());
+         } else if ($$10 == clp.d) {
+            this.k.e = 0.5F;
+            this.k.f = 0.0F;
+            if ($$0.gb()) {
+               this.n.f = -0.5F;
+               this.n.e = -0.9F;
+            } else {
+               this.o.f = 0.5F;
+               this.o.e = -0.9F;
+            }
+         }
+      } else if ($$0.am() == bsx.bx) {
+         fuf.a(this.o, this.n, $$0.gc(), this.c, $$3);
+      }
+
+      this.x.a(this.q);
+      this.y.a(this.p);
+      this.b.a(this.o);
+      this.w.a(this.n);
+      this.z.a(this.m);
+      this.l.a(this.k);
+   }
+
+   protected void a(T $$0, float $$1) {
+      if (this.c > 0.0F && $$0 instanceof cln && ((cln)$$0).gn() == clp.a) {
+         fuf.a(this.n, this.o, $$0, this.c, $$1);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void a(T $$0) {
+      if ($$0.gb()) {
+         this.o.e = -1.8F;
+      } else {
+         this.n.e = -1.8F;
+      }
    }
 }

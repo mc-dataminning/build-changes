@@ -1,75 +1,67 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class gaj extends gae {
-   final Supplier<grf> f;
-
-   gaj(UUID $$0, Instant $$1, UUID $$2, Supplier<grf> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public record gaj(String a, @Nullable gaj.a b) {
+   public static gaj a() {
+      return a(null);
    }
 
-   public Supplier<grf> a() {
-      return this.f;
+   public static gaj a(String $$0) {
+      return a(new gaj.a.b($$0));
    }
 
-   public gaj c() {
-      gaj $$0 = new gaj(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   public static gaj a(fcn $$0) {
+      return a(new gaj.a.a($$0));
    }
 
-   @Override
-   public fnx a(fnx $$0, gai $$1) {
-      return new fsl($$0, $$1, this);
+   public static gaj a(@Nullable gaj.a $$0) {
+      return new gaj(g(), $$0);
    }
 
-   public static class a extends gae.a<gaj> {
-      public a(gaj $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gaj.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gaj.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.21-pre1");
+      if (fgm.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public a(UUID $$0, Supplier<grf> $$1, AbuseReportLimits $$2) {
-         super(new gaj(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+      return $$0.toString();
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
+   public String e() {
+      return this.a;
+   }
 
-      @Nullable
-      @Override
-      public gae.b c() {
-         if (this.a.e == null) {
-            return gae.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gae.b.d : null;
+   @Nullable
+   public gaj.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gaj.a {
+         public a(fcn $$0) {
+            this($$0.a, $$0.n);
          }
       }
 
-      @Override
-      public Either<gae.c, gae.b> a(gai $$0) {
-         gae.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            grf $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new gae.c(this.a.a, gah.b, $$6));
-         }
+      public static record b(String a) implements gaj.a {
       }
    }
 }

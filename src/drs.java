@@ -1,215 +1,251 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class drs extends dqf {
-   private static final String b = "profile";
-   private static final String c = "note_block_sound";
-   private static final String d = "custom_name";
-   private static final Logger e = LogUtils.getLogger();
+public class drs extends dqh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private static Executor f;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> g;
-   @Nullable
-   private static LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> h;
-   public static final Executor a = $$0 -> {
-      Executor $$1 = f;
-      if ($$1 != null) {
-         $$1.execute($$0);
+   private UUID d;
+   private drt e = this.f();
+   private drt f = this.f();
+   private boolean g;
+
+   public drs(jd $$0, dtc $$1) {
+      this(dqj.h, $$0, $$1);
+   }
+
+   public drs(dqj $$0, jd $$1, dtc $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   protected drt f() {
+      return new drt();
+   }
+
+   public boolean a(cmx $$0) {
+      if (this.n().b() instanceof dmz $$1) {
+         exa $$2 = $$1.m(this.n());
+         double $$3 = $$0.du() - ((double)this.aD_().u() + $$2.c);
+         double $$4 = $$0.dA() - ((double)this.aD_().w() + $$2.e);
+         float $$5 = $$1.g(this.n());
+         float $$6 = (float)(ayo.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return ayo.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
       }
-   };
-   @Nullable
-   private cxs i;
-   @Nullable
-   private akq j;
-   private int k;
-   private boolean l;
-   @Nullable
-   private wy m;
-
-   public drs(jd $$0, dta $$1) {
-      super(dqh.p, $$0, $$1);
    }
 
-   public static void a(final all $$0, Executor $$1) {
-      f = $$1;
-      final BooleanSupplier $$2 = () -> h == null;
-      g = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return drs.a($$0, $$0);
-            }
-         });
-      h = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<UUID, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(UUID $$0x) {
-               return drs.a($$0, $$0, $$2);
-            }
-         });
+   public drt a(boolean $$0) {
+      return $$0 ? this.e : this.f;
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, all $$1) {
-      return $$1.f()
-         .b($$0)
-         .thenCompose(
-            $$0x -> {
-               LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1x = h;
-               return $$1x != null && !$$0x.isEmpty()
-                  ? ((CompletableFuture)$$1x.getUnchecked(((GameProfile)$$0x.get()).getId())).thenApply($$1xx -> $$1xx.or(() -> $$0x))
-                  : CompletableFuture.completedFuture(Optional.empty());
-            }
-         );
+   public drt j() {
+      return this.e;
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(UUID $$0, all $$1, BooleanSupplier $$2) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$2.getAsBoolean()) {
-            return Optional.empty();
-         } else {
-            ProfileResult $$3 = $$1.c().fetchProfile($$0, true);
-            return Optional.ofNullable($$3).map(ProfileResult::profile);
-         }
-      }, ad.g());
+   public drt k() {
+      return this.f;
    }
 
-   public static void b() {
-      f = null;
-      g = null;
-      h = null;
+   public int b() {
+      return 10;
+   }
+
+   public int c() {
+      return 90;
    }
 
    @Override
-   protected void b(ua $$0, jo.a $$1) {
+   protected void b(ub $$0, jo.a $$1) {
       super.b($$0, $$1);
-      if (this.i != null) {
-         $$0.a("profile", (ux)cxs.a.encodeStart(uo.a, this.i).getOrThrow());
-      }
-
-      if (this.j != null) {
-         $$0.a("note_block_sound", this.j.toString());
-      }
-
-      if (this.m != null) {
-         $$0.a("custom_name", wy.a.a(this.m, $$1));
-      }
+      DynamicOps<uy> $$2 = $$1.a(up.a);
+      drt.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      drt.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
    }
 
    @Override
-   protected void a(ua $$0, jo.a $$1) {
+   protected void a(ub $$0, jo.a $$1) {
       super.a($$0, $$1);
-      if ($$0.e("profile")) {
-         cxs.a.parse(uo.a, $$0.c("profile")).resultOrPartial($$0x -> e.error("Failed to load profile from player head: {}", $$0x)).ifPresent(this::a);
+      DynamicOps<uy> $$2 = $$1.a(up.a);
+      if ($$0.e("front_text")) {
+         drt.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
       }
 
-      if ($$0.b("note_block_sound", 8)) {
-         this.j = akq.c($$0.l("note_block_sound"));
+      if ($$0.e("back_text")) {
+         drt.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
       }
 
-      if ($$0.b("custom_name", 8)) {
-         this.m = a($$0.l("custom_name"), $$1);
+      this.g = $$0.q("is_waxed");
+   }
+
+   private drt a(drt $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         wz $$2 = this.a($$0.a($$1, false));
+         wz $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
+   }
+
+   private wz a(wz $$0) {
+      if (this.n instanceof aqu $$1) {
+         try {
+            return xc.a(a(null, $$1, this.o), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(cmx $$0, boolean $$1, List<arm> $$2) {
+      if (!this.v() && $$0.cA().equals(this.u()) && this.n != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.n.a(this.aD_(), this.n(), this.n(), 3);
       } else {
-         this.m = null;
+         a.warn("Player {} just tried to change non-editable sign", $$0.ah().getString());
       }
    }
 
-   public static void a(dcu $$0, jd $$1, dta $$2, drs $$3) {
-      if ($$2.b(dmz.a) && $$2.c(dmz.a)) {
-         $$3.l = true;
-         $$3.k++;
+   public boolean a(UnaryOperator<drt> $$0, boolean $$1) {
+      drt $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private drt a(cmx $$0, List<arm> $$1, drt $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         arm $$4 = $$1.get($$3);
+         xw $$5 = $$2.a($$3, $$0.Z()).a();
+         if ($$0.Z()) {
+            $$2 = $$2.a($$3, wz.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, wz.b($$4.d()).b($$5), wz.b($$4.b()).b($$5));
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean a(drt $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(drt $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.w();
+         return true;
       } else {
-         $$3.l = false;
+         return false;
       }
    }
 
-   public float a(float $$0) {
-      return this.l ? (float)this.k + $$0 : (float)this.k;
+   private boolean c(drt $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
-   public cxs c() {
-      return this.i;
+   public boolean a(boolean $$0, cmx $$1) {
+      return this.v() && this.a($$0).b($$1);
    }
 
-   @Nullable
-   public akq d() {
-      return this.j;
+   public boolean a(cmx $$0, dcw $$1, jd $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (wz $$5 : this.a($$3).b($$0.Z())) {
+         xw $$6 = $$5.a();
+         wx $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == wx.a.c) {
+            $$0.cP().aH().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
+         }
+      }
+
+      return $$4;
    }
 
-   public aca f() {
-      return aca.a(this);
+   private static et a(@Nullable cmx $$0, dcw $$1, jd $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.ah().getString();
+      wz $$4 = (wz)($$0 == null ? wz.b("Sign") : $$0.S_());
+      return new et(es.a, exa.b($$2), ewz.a, (aqu)$$1, 2, $$3, $$4, $$1.o(), $$0);
+   }
+
+   public acb l() {
+      return acb.a(this);
    }
 
    @Override
-   public ua a(jo.a $$0) {
+   public ub a(jo.a $$0) {
       return this.e($$0);
    }
 
-   public void a(@Nullable cxs $$0) {
-      synchronized (this) {
-         this.i = $$0;
-      }
-
-      this.j();
+   @Override
+   public boolean q() {
+      return true;
    }
 
-   private void j() {
-      if (this.i != null && !this.i.b()) {
-         this.i.a().thenAcceptAsync($$0 -> {
-            this.i = $$0;
-            this.e();
-         }, a);
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID u() {
+      return this.d;
+   }
+
+   private void w() {
+      this.e();
+      this.n.a(this.aD_(), this.n(), this.n(), 3);
+   }
+
+   public boolean v() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.w();
+         return true;
       } else {
-         this.e();
+         return false;
       }
    }
 
-   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = g;
-      return $$1 != null && azk.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
+   public boolean b(UUID $$0) {
+      cmx $$1 = this.n.b($$0);
+      return $$1 == null || !$$1.a(this.aD_(), 4.0);
    }
 
-   public static CompletableFuture<Optional<GameProfile>> a(UUID $$0) {
-      LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1 = h;
-      return $$1 != null ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
+   public static void a(dcw $$0, jd $$1, dtc $$2, drs $$3) {
+      UUID $$4 = $$3.u();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
    }
 
-   @Override
-   protected void a(dqf.b $$0) {
-      super.a($$0);
-      this.a($$0.a(kq.W));
-      this.j = $$0.a(kq.X);
-      this.m = $$0.a(kq.g);
+   private void a(drs $$0, dcw $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
    }
 
-   @Override
-   protected void a(km.a $$0) {
-      super.a($$0);
-      $$0.a(kq.W, this.i);
-      $$0.a(kq.X, this.j);
-      $$0.a(kq.g, this.m);
-   }
-
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      $$0.r("profile");
-      $$0.r("note_block_sound");
-      $$0.r("custom_name");
+   public avo d() {
+      return avp.Cb;
    }
 }

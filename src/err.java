@@ -1,53 +1,53 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class err {
-   private final ayt a;
-   private final euf b;
-   private final jn.a c;
-   private final Set<akp<?>> d;
+public record err<T>(akq<jz<T>> d, Codec<T> e, err.a<T> f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final err<eva> a = new err<>(lu.be, eva.e, e());
+   public static final err<etd> b = new err<>(lu.bd, etf.c, e());
+   public static final err<eru> c = new err<>(lu.bc, eru.d, f());
 
-   public err(ayt $$0, euf $$1, jn.a $$2) {
-      this($$0, $$1, $$2, Set.of());
+   public void a(erv $$0, akq<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   private err(ayt $$0, euf $$1, jn.a $$2, Set<akp<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public <V> Optional<T> a(akr $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public err a(String $$0) {
-      return new err(this.a.a($$0), this.b, this.c, this.d);
+   public static Stream<err<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public err a(String $$0, akp<?> $$1) {
-      Set<akp<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new err(this.a.a($$0), this.b, this.c, $$2);
+   private static <T extends erq> err.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public boolean a(akp<?> $$0) {
-      return this.d.contains($$0);
+   private static err.a<eru> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public akq<jz<T>> b() {
+      return this.d;
    }
 
-   public void a(erm $$0) {
-      this.b.a(this, $$0);
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public jn.a a() {
-      return this.c;
+   public err.a<T> d() {
+      return this.f;
    }
 
-   public err a(euf $$0) {
-      return new err(this.a, $$0, this.c, this.d);
-   }
-
-   public ayt b() {
-      return this.a;
+   @FunctionalInterface
+   public interface a<T> {
+      void run(erv var1, akq<T> var2, T var3);
    }
 }

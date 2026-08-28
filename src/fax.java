@@ -1,261 +1,517 @@
-import java.nio.ByteOrder;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class fax implements fbg {
-   private static final long a = -1L;
-   private static final long b = -1L;
-   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
-   private final faz d;
-   private long e = -1L;
-   private int f;
-   private final fbh g;
-   private final fbh.c h;
-   private final boolean i;
-   private final boolean j;
-   private final int k;
-   private final int l;
-   private final int[] m;
+public class fax extends fap implements AutoCloseable {
+   private static final Logger l = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   public static final int g = 6;
+   public static final int h = 7;
+   public static final int i = 8;
+   public static final int j = 9;
+   public static final int k = 10;
+   private static final boolean m = false;
    private int n;
-   private boolean o = true;
+   private final int o;
+   private final int p;
+   private final IntBuffer q;
+   private final FloatBuffer r;
+   private final String s;
+   private boolean t;
+   private final faw u;
 
-   public fax(faz $$0, fbh.c $$1, fbh $$2) {
-      if (!$$2.b(fbi.b)) {
-         throw new IllegalArgumentException("Cannot build mesh with no position element");
+   public fax(String $$0, int $$1, int $$2, faw $$3) {
+      this.s = $$0;
+      this.o = $$2;
+      this.p = $$1;
+      this.u = $$3;
+      if ($$1 <= 3) {
+         this.q = MemoryUtil.memAllocInt($$2);
+         this.r = null;
       } else {
-         this.d = $$0;
-         this.h = $$1;
-         this.g = $$2;
-         this.k = $$2.b();
-         this.l = $$2.f() & ~fbi.b.a();
-         this.m = $$2.e();
-         boolean $$3 = $$2 == fba.c;
-         boolean $$4 = $$2 == fba.b;
-         this.i = $$3 || $$4;
-         this.j = $$3;
+         this.q = null;
+         this.r = MemoryUtil.memAllocFloat($$2);
+      }
+
+      this.n = -1;
+      this.h();
+   }
+
+   public static int a(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetUniformLocation($$0, $$1);
+   }
+
+   public static void b(int $$0, int $$1) {
+      RenderSystem.glUniform1i($$0, $$1);
+   }
+
+   public static int b(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetAttribLocation($$0, $$1);
+   }
+
+   public static void a(int $$0, int $$1, CharSequence $$2) {
+      GlStateManager._glBindAttribLocation($$0, $$1, $$2);
+   }
+
+   @Override
+   public void close() {
+      if (this.q != null) {
+         MemoryUtil.memFree(this.q);
+      }
+
+      if (this.r != null) {
+         MemoryUtil.memFree(this.r);
       }
    }
 
-   @Nullable
-   public fbb a() {
-      this.c();
-      this.f();
-      fbb $$0 = this.d();
-      this.o = false;
-      this.e = -1L;
-      return $$0;
-   }
-
-   public fbb b() {
-      fbb $$0 = this.a();
-      if ($$0 == null) {
-         throw new IllegalStateException("BufferBuilder was empty");
-      } else {
-         return $$0;
+   private void h() {
+      this.t = true;
+      if (this.u != null) {
+         this.u.b();
       }
    }
 
-   private void c() {
-      if (!this.o) {
-         throw new IllegalStateException("Not building!");
-      }
-   }
-
-   @Nullable
-   private fbb d() {
-      if (this.f == 0) {
-         return null;
-      } else {
-         faz.a $$0 = this.d.a();
-         if ($$0 == null) {
-            return null;
-         } else {
-            int $$1 = this.h.a(this.f);
-            fbh.b $$2 = fbh.b.a(this.f);
-            return new fbb($$0, new fbb.a(this.g, this.f, $$1, this.h, $$2));
+   public static int a(String $$0) {
+      int $$1 = -1;
+      if ("int".equals($$0)) {
+         $$1 = 0;
+      } else if ("float".equals($$0)) {
+         $$1 = 4;
+      } else if ($$0.startsWith("matrix")) {
+         if ($$0.endsWith("2x2")) {
+            $$1 = 8;
+         } else if ($$0.endsWith("3x3")) {
+            $$1 = 9;
+         } else if ($$0.endsWith("4x4")) {
+            $$1 = 10;
          }
       }
+
+      return $$1;
    }
 
-   private long e() {
-      this.c();
-      this.f();
-      this.f++;
-      long $$0 = this.d.a(this.k);
-      this.e = $$0;
-      return $$0;
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
-   private long a(fbi $$0) {
-      int $$1 = this.n;
-      int $$2 = $$1 & ~$$0.a();
-      if ($$2 == $$1) {
-         return -1L;
+   public String a() {
+      return this.s;
+   }
+
+   @Override
+   public final void a(float $$0) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.h();
+   }
+
+   public final void a(int $$0, float $$1) {
+      this.r.position(0);
+      this.r.put($$0, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put($$0);
+      this.r.put($$1);
+      this.r.put($$2);
+      this.r.put($$3);
+      this.r.flip();
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      if (this.p >= 4) {
+         this.r.put(0, $$0);
+      }
+
+      if (this.p >= 5) {
+         this.r.put(1, $$1);
+      }
+
+      if (this.p >= 6) {
+         this.r.put(2, $$2);
+      }
+
+      if (this.p >= 7) {
+         this.r.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      if (this.p >= 0) {
+         this.q.put(0, $$0);
+      }
+
+      if (this.p >= 1) {
+         this.q.put(1, $$1);
+      }
+
+      if (this.p >= 2) {
+         this.q.put(2, $$2);
+      }
+
+      if (this.p >= 3) {
+         this.q.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void b(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.q.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float[] $$0) {
+      if ($$0.length < this.o) {
+         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
       } else {
-         this.n = $$2;
-         long $$3 = this.e;
-         if ($$3 == -1L) {
-            throw new IllegalArgumentException("Not currently building vertex");
-         } else {
-            return $$3 + (long)this.m[$$0.c()];
-         }
+         this.r.position(0);
+         this.r.put($$0);
+         this.r.position(0);
+         this.h();
       }
    }
 
-   private void f() {
-      if (this.f != 0) {
-         if (this.n != 0) {
-            String $$0 = fbi.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
-            throw new IllegalStateException("Missing elements in vertex: " + $$0);
-         } else {
-            if (this.h == fbh.c.a || this.h == fbh.c.b) {
-               long $$1 = this.d.a(this.k);
-               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
-               this.f++;
-            }
-         }
+   @Override
+   public final void c(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.r.put(12, $$12);
+      this.r.put(13, $$13);
+      this.r.put(14, $$14);
+      this.r.put(15, $$15);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   public void b() {
+      if (!this.t) {
       }
-   }
 
-   private static void a(long $$0, int $$1) {
-      int $$2 = axx.a.g($$1);
-      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
-   }
-
-   private static void b(long $$0, int $$1) {
-      if (c) {
-         MemoryUtil.memPutInt($$0, $$1);
+      this.t = false;
+      if (this.p <= 3) {
+         this.i();
+      } else if (this.p <= 7) {
+         this.j();
       } else {
-         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
-         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
-      }
-   }
-
-   @Override
-   public fbg a(float $$0, float $$1, float $$2) {
-      long $$3 = this.e() + (long)this.m[fbi.b.c()];
-      this.n = this.l;
-      MemoryUtil.memPutFloat($$3, $$0);
-      MemoryUtil.memPutFloat($$3 + 4L, $$1);
-      MemoryUtil.memPutFloat($$3 + 8L, $$2);
-      return this;
-   }
-
-   @Override
-   public fbg a(int $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.a(fbi.c);
-      if ($$4 != -1L) {
-         MemoryUtil.memPutByte($$4, (byte)$$0);
-         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
-         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
-         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
-      }
-
-      return this;
-   }
-
-   @Override
-   public fbg a(int $$0) {
-      long $$1 = this.a(fbi.c);
-      if ($$1 != -1L) {
-         a($$1, $$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public fbg a(float $$0, float $$1) {
-      long $$2 = this.a(fbi.d);
-      if ($$2 != -1L) {
-         MemoryUtil.memPutFloat($$2, $$0);
-         MemoryUtil.memPutFloat($$2 + 4L, $$1);
-      }
-
-      return this;
-   }
-
-   @Override
-   public fbg a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, fbi.f);
-   }
-
-   @Override
-   public fbg b(int $$0) {
-      long $$1 = this.a(fbi.f);
-      if ($$1 != -1L) {
-         b($$1, $$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public fbg b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, fbi.g);
-   }
-
-   @Override
-   public fbg c(int $$0) {
-      long $$1 = this.a(fbi.g);
-      if ($$1 != -1L) {
-         b($$1, $$0);
-      }
-
-      return this;
-   }
-
-   private fbg a(short $$0, short $$1, fbi $$2) {
-      long $$3 = this.a($$2);
-      if ($$3 != -1L) {
-         MemoryUtil.memPutShort($$3, $$0);
-         MemoryUtil.memPutShort($$3 + 2L, $$1);
-      }
-
-      return this;
-   }
-
-   @Override
-   public fbg b(float $$0, float $$1, float $$2) {
-      long $$3 = this.a(fbi.h);
-      if ($$3 != -1L) {
-         MemoryUtil.memPutByte($$3, a($$0));
-         MemoryUtil.memPutByte($$3 + 1L, a($$1));
-         MemoryUtil.memPutByte($$3 + 2L, a($$2));
-      }
-
-      return this;
-   }
-
-   private static byte a(float $$0) {
-      return (byte)((int)(ayn.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      if (this.i) {
-         long $$11 = this.e();
-         MemoryUtil.memPutFloat($$11 + 0L, $$0);
-         MemoryUtil.memPutFloat($$11 + 4L, $$1);
-         MemoryUtil.memPutFloat($$11 + 8L, $$2);
-         a($$11 + 12L, $$3);
-         MemoryUtil.memPutFloat($$11 + 16L, $$4);
-         MemoryUtil.memPutFloat($$11 + 20L, $$5);
-         long $$12;
-         if (this.j) {
-            b($$11 + 24L, $$6);
-            $$12 = $$11 + 28L;
-         } else {
-            $$12 = $$11 + 24L;
+         if (this.p > 10) {
+            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
+            return;
          }
 
-         b($$12 + 0L, $$7);
-         MemoryUtil.memPutByte($$12 + 4L, a($$8));
-         MemoryUtil.memPutByte($$12 + 5L, a($$9));
-         MemoryUtil.memPutByte($$12 + 6L, a($$10));
-      } else {
-         fbg.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.k();
       }
+   }
+
+   private void i() {
+      this.q.rewind();
+      switch (this.p) {
+         case 0:
+            RenderSystem.glUniform1(this.n, this.q);
+            break;
+         case 1:
+            RenderSystem.glUniform2(this.n, this.q);
+            break;
+         case 2:
+            RenderSystem.glUniform3(this.n, this.q);
+            break;
+         case 3:
+            RenderSystem.glUniform4(this.n, this.q);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
+      }
+   }
+
+   private void j() {
+      this.r.rewind();
+      switch (this.p) {
+         case 4:
+            RenderSystem.glUniform1(this.n, this.r);
+            break;
+         case 5:
+            RenderSystem.glUniform2(this.n, this.r);
+            break;
+         case 6:
+            RenderSystem.glUniform3(this.n, this.r);
+            break;
+         case 7:
+            RenderSystem.glUniform4(this.n, this.r);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
+      }
+   }
+
+   private void k() {
+      this.r.clear();
+      switch (this.p) {
+         case 8:
+            RenderSystem.glUniformMatrix2(this.n, false, this.r);
+            break;
+         case 9:
+            RenderSystem.glUniformMatrix3(this.n, false, this.r);
+            break;
+         case 10:
+            RenderSystem.glUniformMatrix4(this.n, false, this.r);
+      }
+   }
+
+   public int c() {
+      return this.n;
+   }
+
+   public int d() {
+      return this.o;
+   }
+
+   public int e() {
+      return this.p;
+   }
+
+   public IntBuffer f() {
+      return this.q;
+   }
+
+   public FloatBuffer g() {
+      return this.r;
    }
 }

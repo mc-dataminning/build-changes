@@ -1,44 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class edd extends eca<eem> {
-   private static final int a = 7;
-
-   edd(Codec<eem> $$0) {
+public class edd extends ecd<eew> {
+   public edd(Codec<eew> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecc<eem> $$0) {
-      ddq $$1 = $$0.b();
-      ayv $$2 = $$0.d();
-      eem $$3 = $$0.f();
-      jd $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      jd.a $$6 = new jd.a();
+   public boolean a(ecf<eew> $$0) {
+      eew $$1 = $$0.f();
+      dds $$2 = $$0.b();
+      ayw $$3 = $$0.d();
+      dfy $$4 = $$1.b.b();
+      jd $$5 = a($$2, $$0.e().k().a(ji.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dta $$8 = $$1.a_($$6);
-
-         for (eem.a $$9 : $$3.b) {
-            if (ecv.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
+         for (jd $$11 : jd.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
                break;
             }
+
+            dtc $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static jd a(dcx $$0, jd.a $$1, dfy $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dtc $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ji.a);
       }
 
-      return true;
-   }
-
-   private void a(jd.a $$0, ayv $$1, jd $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ayv $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return null;
    }
 }

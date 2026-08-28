@@ -1,12 +1,15 @@
-public class gmi extends glj<cga, fxe<cga>> {
-   private static final akq a = akq.b("textures/entity/snow_golem.png");
+public class gmi extends gln<ckk, fxc<ckk>> {
+   private static final akr a = akr.b("textures/entity/silverfish.png");
 
-   public gmi(gkd.a $$0) {
-      super($$0, new fxe<>($$0.a(fyd.bw)), 0.5F);
-      this.a(new gov(this, $$0.c(), $$0.b()));
+   public gmi(gkh.a $$0) {
+      super($$0, new fxc<>($$0.a(fyh.bn)), 0.3F);
    }
 
-   public akq a(cga $$0) {
+   protected float a(ckk $$0) {
+      return 180.0F;
+   }
+
+   public akr b(ckk $$0) {
       return a;
    }
 }

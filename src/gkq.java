@@ -1,11 +1,9 @@
-public class gkq extends glj<chc, fvk<chc>> {
-   private static final akq a = akq.b("textures/entity/goat/goat.png");
-
-   public gkq(gkd.a $$0) {
-      super($$0, new fvk<>($$0.a(fyd.am)), 0.7F);
+public class gkq extends gln<cgy, fvl<cgy>> {
+   public gkq(gkh.a $$0) {
+      super($$0, new fvl<>($$0.a(fyh.af)), 0.3F);
    }
 
-   public akq a(chc $$0) {
-      return a;
+   public akr a(cgy $$0) {
+      return $$0.x().a().a();
    }
 }

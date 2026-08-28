@@ -1,90 +1,255 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
 public class ggc {
-   public static final ggc a = new ggc();
-   public final ggb b;
-   public final ggb c;
-   public final ggb d;
-   public final ggb e;
-   public final ggb f;
-   public final ggb g;
-   public final ggb h;
-   public final ggb i;
+   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
+   private static final float b = 7.5F;
+   private static final float c = 8.5F;
 
-   private ggc() {
-      this(ggb.a, ggb.a, ggb.a, ggb.a, ggb.a, ggb.a, ggb.a, ggb.a);
-   }
+   public gfz a(Function<gso, gqj> $$0, gfz $$1) {
+      Map<String, Either<gso, String>> $$2 = Maps.newHashMap();
+      List<gfv> $$3 = Lists.newArrayList();
 
-   public ggc(ggc $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
-   }
-
-   public ggc(ggb $$0, ggb $$1, ggb $$2, ggb $$3, ggb $$4, ggb $$5, ggb $$6, ggb $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public ggb a(cul $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> ggb.a;
-      };
-   }
-
-   public boolean b(cul $$0) {
-      return this.a($$0) != ggb.a;
-   }
-
-   protected static class a implements JsonDeserializer<ggc> {
-      public ggc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ggb $$4 = this.a($$2, $$3, cul.c);
-         ggb $$5 = this.a($$2, $$3, cul.b);
-         if ($$5 == ggb.a) {
-            $$5 = $$4;
+      for (int $$4 = 0; $$4 < a.size(); $$4++) {
+         String $$5 = a.get($$4);
+         if (!$$1.b($$5)) {
+            break;
          }
 
-         ggb $$6 = this.a($$2, $$3, cul.e);
-         ggb $$7 = this.a($$2, $$3, cul.d);
-         if ($$7 == ggb.a) {
-            $$7 = $$6;
-         }
-
-         ggb $$8 = this.a($$2, $$3, cul.f);
-         ggb $$9 = this.a($$2, $$3, cul.g);
-         ggb $$10 = this.a($$2, $$3, cul.h);
-         ggb $$11 = this.a($$2, $$3, cul.i);
-         return new ggc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+         gso $$6 = $$1.c($$5);
+         $$2.put($$5, Either.left($$6));
+         gqd $$7 = $$0.apply($$6).e();
+         $$3.addAll(this.a($$4, $$5, $$7));
       }
 
-      private ggb a(JsonDeserializationContext $$0, JsonObject $$1, cul $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (ggb)$$0.deserialize($$1.get($$3), ggb.class) : ggb.a;
+      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
+      gfz $$8 = new gfz(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
+      $$8.c = $$1.c;
+      return $$8;
+   }
+
+   private List<gfv> a(int $$0, String $$1, gqd $$2) {
+      Map<ji, gfw> $$3 = Maps.newHashMap();
+      $$3.put(ji.d, new gfw(null, $$0, $$1, new gfy(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
+      $$3.put(ji.c, new gfw(null, $$0, $$1, new gfy(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
+      List<gfv> $$4 = Lists.newArrayList();
+      $$4.add(new gfv(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
+
+   private List<gfv> a(gqd $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gfv> $$5 = Lists.newArrayList();
+
+      for (ggc.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         ggc.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<ji, gfw> $$21 = Maps.newHashMap();
+         $$21.put($$20.a(), new gfw(null, $$2, $$1, new gfy(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gfv(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
+               break;
+            case b:
+               $$5.add(new gfv(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+               break;
+            case c:
+               $$5.add(new gfv(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
+               break;
+            case d:
+               $$5.add(new gfv(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+         }
+      }
+
+      return $$5;
+   }
+
+   private List<ggc.a> a(gqd $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<ggc.a> $$3 = Lists.newArrayList();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(ggc.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ggc.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ggc.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(ggc.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+            }
+         }
+      });
+      return $$3;
+   }
+
+   private void a(ggc.b $$0, List<ggc.a> $$1, gqd $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
+      }
+   }
+
+   private void a(List<ggc.a> $$0, ggc.b $$1, int $$2, int $$3) {
+      ggc.a $$4 = null;
+
+      for (ggc.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
+         }
+      }
+
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new ggc.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(gqd $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final ggc.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(ggc.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public ggc.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(ji.b, 0, -1),
+      b(ji.a, 0, 1),
+      c(ji.f, -1, 0),
+      d(ji.e, 1, 0);
+
+      private final ji e;
+      private final int f;
+      private final int g;
+
+      private b(final ji $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public ji a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
       }
    }
 }

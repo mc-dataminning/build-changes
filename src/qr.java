@@ -1,219 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class qr {
-   public static final akp<ekw> a = qw.a("village/desert/town_centers");
-   private static final akp<ekw> b = qw.a("village/desert/terminators");
-   private static final akp<ekw> c = qw.a("village/desert/zombie/terminators");
+   public static final akq<ebc<?>> a = a("cave");
+   public static final akq<ebc<?>> b = a("cave_extra_underground");
+   public static final akq<ebc<?>> c = a("canyon");
+   public static final akq<ebc<?>> d = a("nether_cave");
 
-   public static void a(qp<ekw> $$0) {
-      jn<eiq> $$1 = $$0.a(lu.aQ);
-      jm<eiq> $$2 = $$1.b(si.j);
-      jm<eiq> $$3 = $$1.b(si.a);
-      jn<enl> $$4 = $$0.a(lu.aS);
-      jm<enl> $$5 = $$4.b(qx.e);
-      jm<enl> $$6 = $$4.b(qx.p);
-      jn<ekw> $$7 = $$0.a(lu.aU);
-      jm<ekw> $$8 = $$7.b(qw.a);
-      jm<ekw> $$9 = $$7.b(b);
-      jm<ekw> $$10 = $$7.b(c);
+   private static akq<ebc<?>> a(String $$0) {
+      return akq.a(lu.aH, akr.b($$0));
+   }
+
+   public static void a(qq<ebc<?>> $$0) {
+      jn<dfy> $$1 = $$0.a(lu.f);
       $$0.a(
          a,
-         new ekw(
-            $$8,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/town_centers/desert_meeting_point_1"), 98),
-               Pair.of(eku.a("village/desert/town_centers/desert_meeting_point_2"), 98),
-               Pair.of(eku.a("village/desert/town_centers/desert_meeting_point_3"), 49),
-               Pair.of(eku.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/streets",
-         new ekw(
-            $$9,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/streets/corner_01"), 3),
-               Pair.of(eku.a("village/desert/streets/corner_02"), 3),
-               Pair.of(eku.a("village/desert/streets/straight_01"), 4),
-               Pair.of(eku.a("village/desert/streets/straight_02"), 4),
-               Pair.of(eku.a("village/desert/streets/straight_03"), 3),
-               Pair.of(eku.a("village/desert/streets/crossroad_01"), 3),
-               Pair.of(eku.a("village/desert/streets/crossroad_02"), 3),
-               Pair.of(eku.a("village/desert/streets/crossroad_03"), 3),
-               Pair.of(eku.a("village/desert/streets/square_01"), 3),
-               Pair.of(eku.a("village/desert/streets/square_02"), 3),
-               Pair.of(eku.a("village/desert/streets/turn_01"), 3)
-            ),
-            ekw.a.a
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/zombie/streets",
-         new ekw(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/zombie/streets/corner_01"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/corner_02"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/straight_01"), 4),
-               Pair.of(eku.a("village/desert/zombie/streets/straight_02"), 4),
-               Pair.of(eku.a("village/desert/zombie/streets/straight_03"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/crossroad_01"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/crossroad_02"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/crossroad_03"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/square_01"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/square_02"), 3),
-               Pair.of(eku.a("village/desert/zombie/streets/turn_01"), 3)
-            ),
-            ekw.a.a
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/houses",
-         new ekw(
-            $$9,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/houses/desert_small_house_1"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_2"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_3"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_4"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_5"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_6"), 1),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_7"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_small_house_8"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_medium_house_1"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_medium_house_2"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_butcher_shop_1"), 2),
-               Pair.of(eku.a("village/desert/houses/desert_tool_smith_1"), 2),
-               new Pair[]{
-                  Pair.of(eku.a("village/desert/houses/desert_fletcher_house_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_shepherd_house_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_armorer_1"), 1),
-                  Pair.of(eku.a("village/desert/houses/desert_fisher_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_tannery_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_cartographer_house_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_library_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_mason_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_weaponsmith_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_temple_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_temple_2"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_large_farm_1", $$6), 11),
-                  Pair.of(eku.a("village/desert/houses/desert_farm_1", $$6), 4),
-                  Pair.of(eku.a("village/desert/houses/desert_farm_2", $$6), 4),
-                  Pair.of(eku.a("village/desert/houses/desert_animal_pen_1"), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_animal_pen_2"), 2),
-                  Pair.of(eku.g(), 5)
-               }
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/zombie/houses",
-         new ekw(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
-               Pair.of(eku.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
-               Pair.of(eku.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
-               Pair.of(eku.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
-               new Pair[]{
-                  Pair.of(eku.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_armorer_1", $$5), 1),
-                  Pair.of(eku.a("village/desert/houses/desert_fisher_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_tannery_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_library_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_mason_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_temple_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_temple_2", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_large_farm_1", $$5), 7),
-                  Pair.of(eku.a("village/desert/houses/desert_farm_1", $$5), 4),
-                  Pair.of(eku.a("village/desert/houses/desert_farm_2", $$5), 4),
-                  Pair.of(eku.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
-                  Pair.of(eku.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
-                  Pair.of(eku.g(), 5)
-               }
-            ),
-            ekw.a.b
-         )
+         ebe.a
+            .a(
+               new eba(
+                  0.15F,
+                  ehz.a(dzs.b(8), dzs.a(180)),
+                  bqb.b(0.1F, 0.9F),
+                  dzs.b(8),
+                  eay.a(false, dga.oS.o()),
+                  $$1.b(awe.bi),
+                  bqb.b(0.7F, 1.4F),
+                  bqb.b(0.8F, 1.3F),
+                  bqb.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
          b,
-         new ekw(
-            $$8,
-            ImmutableList.of(Pair.of(eku.a("village/desert/terminators/terminator_01"), 1), Pair.of(eku.a("village/desert/terminators/terminator_02"), 1)),
-            ekw.a.a
-         )
+         ebe.a
+            .a(
+               new eba(
+                  0.07F,
+                  ehz.a(dzs.b(8), dzs.a(47)),
+                  bqb.b(0.1F, 0.9F),
+                  dzs.b(8),
+                  eay.a(false, dga.gv.o()),
+                  $$1.b(awe.bi),
+                  bqb.b(0.7F, 1.4F),
+                  bqb.b(0.8F, 1.3F),
+                  bqb.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
          c,
-         new ekw(
-            $$8,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/terminators/terminator_01"), 1), Pair.of(eku.a("village/desert/zombie/terminators/terminator_02"), 1)
-            ),
-            ekw.a.a
-         )
+         ebe.c
+            .a(
+               new eav(
+                  0.01F,
+                  ehz.a(dzs.a(10), dzs.a(67)),
+                  bps.a(3.0F),
+                  dzs.b(8),
+                  eay.a(false, dga.oT.o()),
+                  $$1.b(awe.bi),
+                  bqb.b(-0.125F, 0.125F),
+                  new eav.a(bqb.b(0.75F, 1.0F), bqa.a(0.0F, 6.0F, 2.0F), 3, bqb.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
       );
-      qw.a(
-         $$0,
-         "village/desert/decor",
-         new ekw(
-            $$8,
-            ImmutableList.of(Pair.of(eku.a("village/desert/desert_lamp_1"), 10), Pair.of(eku.a($$2), 4), Pair.of(eku.a($$3), 4), Pair.of(eku.g(), 10)),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/zombie/decor",
-         new ekw(
-            $$8,
-            ImmutableList.of(Pair.of(eku.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(eku.a($$2), 4), Pair.of(eku.a($$3), 4), Pair.of(eku.g(), 10)),
-            ekw.a.b
-         )
-      );
-      qw.a(
-         $$0,
-         "village/desert/villagers",
-         new ekw(
-            $$8,
-            ImmutableList.of(
-               Pair.of(eku.a("village/desert/villagers/nitwit"), 1),
-               Pair.of(eku.a("village/desert/villagers/baby"), 1),
-               Pair.of(eku.a("village/desert/villagers/unemployed"), 10)
-            ),
-            ekw.a.b
-         )
-      );
-      qw.a($$0, "village/desert/camel", new ekw($$8, ImmutableList.of(Pair.of(eku.a("village/desert/camel_spawn"), 1)), ekw.a.b));
-      qw.a(
-         $$0,
-         "village/desert/zombie/villagers",
-         new ekw(
-            $$8,
-            ImmutableList.of(Pair.of(eku.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(eku.a("village/desert/zombie/villagers/unemployed"), 10)),
-            ekw.a.b
-         )
-      );
+      $$0.a(d, ebe.b.a(new eba(0.2F, ehz.a(dzs.a(0), dzs.c(1)), bps.a(0.5F), dzs.b(10), $$1.b(awe.bj), bps.a(1.0F), bps.a(1.0F), bps.a(-0.7F))));
    }
 }

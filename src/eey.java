@@ -1,43 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class eey implements eee {
+public record eey(int b, int c, int d, int e, int f, bpw g, float h) implements eeh {
    public static final Codec<eey> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               edk.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               jd.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eey::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eey::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eey::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eey::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eey::f),
+               bpw.c.fieldOf("extra_rare_growths").forGetter(eey::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eey::h)
             )
             .apply($$0, eey::new)
    );
-   private final boolean b;
-   private final List<edk.a> c;
-   @Nullable
-   private final jd d;
 
-   public eey(boolean $$0, List<edk.a> $$1, @Nullable jd $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private eey(boolean $$0, List<edk.a> $$1, Optional<jd> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
-   }
-
-   public boolean a() {
+   public int a() {
       return this.b;
    }
 
-   public List<edk.a> b() {
+   public int b() {
       return this.c;
    }
 
-   @Nullable
-   public jd c() {
+   public int c() {
       return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

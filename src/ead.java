@@ -1,23 +1,25 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface ead<P extends eac> {
-   ead<eai> a = a("matching_blocks", eai.a);
-   ead<eah> b = a("matching_block_tag", eah.e);
-   ead<eaj> c = a("matching_fluids", eaj.a);
-   ead<eaf> d = a("has_sturdy_face", eaf.a);
-   ead<eam> e = a("solid", eam.a);
-   ead<eal> f = a("replaceable", eal.a);
-   ead<eaq> g = a("would_survive", eaq.a);
-   ead<eag> h = a("inside_world_bounds", eag.a);
-   ead<eab> i = a("any_of", eab.a);
-   ead<eaa> j = a("all_of", eaa.a);
-   ead<eak> k = a("not", eak.a);
-   ead<eao> l = a("true", eao.e);
-   ead<eap> m = a("unobstructed", eap.a);
+class ead extends eah {
+   public static final MapCodec<ead> a = a(ead::new);
 
-   MapCodec<P> codec();
+   public ead(List<eaf> $$0) {
+      super($$0);
+   }
 
-   private static <P extends eac> ead<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.M, $$0, () -> $$1);
+   public boolean a(dds $$0, jd $$1) {
+      for (eaf $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public eag<?> a() {
+      return eag.j;
    }
 }

@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eih implements azj {
-   a(ji.b, 1, "ceiling"),
-   b(ji.a, -1, "floor");
+public class eih extends eiv {
+   private static final eih c = new eih();
+   public static MapCodec<eih> a = MapCodec.unit(() -> c);
 
-   public static final Codec<eih> c = azj.a(eih::values);
-   private final ji d;
-   private final int e;
-   private final String f;
-
-   private eih(final ji $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eih() {
    }
 
-   public ji a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static eih a() {
+      return c;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(eiu $$0, ayw $$1, jd $$2) {
+      eit $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jm<ddw> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public eix<?> b() {
+      return eix.e;
    }
 }

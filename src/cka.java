@@ -1,93 +1,63 @@
-public class cka extends ckk {
-   public cka(bsw<? extends cka> $$0, dcu $$1) {
+public class cka extends ckw {
+   public cka(bsx<? extends cka> $$0, dcw $$1) {
       super($$0, $$1);
    }
 
-   public static but.a s() {
-      return ckb.gs().a(buu.v, 0.2F);
-   }
-
-   public static boolean b(bsw<cka> $$0, dcv $$1, btp $$2, jd $$3, ayv $$4) {
-      return $$1.al() != bqn.a;
+   public static boolean a(bsx<cka> $$0, ddl $$1, btr $$2, jd $$3, ayw $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (btr.a($$2) || $$1.h($$3));
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.f(buu.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bu() {
-      return 1.0F;
-   }
-
-   @Override
-   protected lk t() {
-      return lm.F;
-   }
-
-   @Override
-   public boolean bR() {
+   protected boolean ah_() {
       return false;
    }
 
    @Override
-   protected int x() {
-      return super.x() * 4;
+   protected avo v() {
+      return avp.mZ;
    }
 
    @Override
-   protected void gi() {
-      this.e *= 0.9F;
+   protected avo d(brk $$0) {
+      return avp.nc;
    }
 
    @Override
-   protected void fg() {
-      eww $$0 = this.dt();
-      float $$1 = (float)this.gn() * 0.1F;
-      this.n($$0.c, (double)(this.fe() + $$1), $$0.e);
-      this.av = true;
+   protected avo n_() {
+      return avp.nb;
    }
 
    @Override
-   protected void c(awt<eox> $$0) {
-      if ($$0 == awj.b) {
-         eww $$1 = this.dt();
-         this.n($$1.c, (double)(0.22F + (float)this.gn() * 0.05F), $$1.e);
-         this.av = true;
-      } else {
-         super.c($$0);
+   protected avo gl() {
+      return avp.nd;
+   }
+
+   @Override
+   public boolean D(bsr $$0) {
+      boolean $$1 = super.D($$0);
+      if ($$1 && this.eU().e() && $$0 instanceof btn) {
+         float $$2 = this.dP().d_(this.dp()).b();
+         ((btn)$$0).b(new brz(bsb.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean gn() {
+      return true;
+   }
+
+   @Override
+   protected void ag_() {
+      this.b(bsx.bu);
+      if (!this.aX()) {
+         this.dP().a(null, 1041, this.dp(), 0);
       }
    }
 
    @Override
-   protected boolean gj() {
-      return this.dc();
-   }
-
-   @Override
-   protected float gk() {
-      return super.gk() + 2.0F;
-   }
-
-   @Override
-   protected avn d(brj $$0) {
-      return this.go() ? avo.ot : avo.os;
-   }
-
-   @Override
-   protected avn n_() {
-      return this.go() ? avo.oh : avo.or;
-   }
-
-   @Override
-   protected avn gl() {
-      return this.go() ? avo.ow : avo.ov;
-   }
-
-   @Override
-   protected avn gm() {
-      return avo.ou;
+   protected cuq gm() {
+      return cuq.l;
    }
 }

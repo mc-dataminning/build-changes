@@ -1,53 +1,62 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 
-public class eem implements eee {
+public class eem implements eeh {
    public static final Codec<eem> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.list(eem.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+               lt.e.r().fieldOf("block").flatXmap(eem::a, DataResult::success).orElse((dky)dga.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               kb.a(lu.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, eem::new)
    );
-   public final List<eem.a> b;
+   public final dky b;
    public final int c;
-   public final float d;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final jq<dfy> h;
+   private final ObjectArrayList<ji> i;
 
-   public eem(List<eem.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
+   private static DataResult<dky> a(dfy $$0) {
+      return $$0 instanceof dky $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   }
+
+   public eem(dky $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jq<dfy> $$6) {
       this.b = $$0;
+      this.c = $$1;
       this.d = $$2;
-   }
-
-   public eem(List<eem.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
-   }
-
-   public eem(enh $$0, dta $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new eem.a($$0, $$1)), $$2, $$3);
-   }
-
-   public eem(enh $$0, dta $$1, int $$2) {
-      this(ImmutableList.of(new eem.a($$0, $$1)), $$2, 0.0F);
-   }
-
-   public static eem.a a(enh $$0, dta $$1) {
-      return new eem.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<eem.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(enh.c.fieldOf("target").forGetter($$0x -> $$0x.b), dta.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, eem.a::new)
-      );
-      public final enh b;
-      public final dta c;
-
-      a(enh $$0, dta $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(ji.b);
       }
+
+      if ($$2) {
+         this.i.add(ji.a);
+      }
+
+      if ($$4) {
+         ji.c.a.forEach(this.i::add);
+      }
+   }
+
+   public List<ji> a(ayw $$0, ji $$1) {
+      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<ji> a(ayw $$0) {
+      return ad.a(this.i, $$0);
    }
 }

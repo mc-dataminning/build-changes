@@ -1,67 +1,69 @@
-import java.util.Locale;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public class azh<T> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Object[] e;
+public class azh {
+   public static <T extends btp> Optional<T> a(bsx<T> $$0, btr $$1, aqu $$2, jd $$3, int $$4, int $$5, int $$6, azh.a $$7) {
+      jd.a $$8 = $$3.k();
 
-   public static <T> azh<T> a(int $$0, int $$1, int $$2, azh.a<T> $$3) {
-      int $$4 = $$0 - $$2;
-      int $$5 = $$1 - $$2;
-      int $$6 = 2 * $$2 + 1;
-      return new azh<>($$4, $$5, $$6, $$6, $$3);
-   }
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = ayo.b($$2.z, -$$5, $$5);
+         int $$11 = ayo.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
+               }
 
-   private azh(int $$0, int $$1, int $$2, int $$3, azh.a<T> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = new Object[this.c * this.d];
-
-      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
-         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
-            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
+               $$12.aq();
+            }
          }
       }
+
+      return Optional.empty();
    }
 
-   public void a(Consumer<T> $$0) {
-      for (Object $$1 : this.e) {
-         $$0.accept((T)$$1);
+   private static boolean a(aqu $$0, int $$1, jd.a $$2, azh.a $$3) {
+      jd.a $$4 = new jd.a().g($$2);
+      dtc $$5 = $$0.a_($$4);
+
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(ji.a);
+         $$4.a($$2, ji.b);
+         dtc $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(ji.b);
+            return true;
+         }
+
+         $$5 = $$7;
       }
+
+      return false;
    }
 
-   public T a(int $$0, int $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
-      } else {
-         return (T)this.e[this.c($$0, $$1)];
-      }
-   }
+   public interface a {
+      @Deprecated
+      azh.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dga.bs)
+               && !$$2.a(dga.dQ)
+               && !$$2.a(dga.eY)
+               && !($$2.b() instanceof dns)
+               && !($$2.b() instanceof dnr)
+               && !($$2.b() instanceof dki)
+               && !$$2.a(dga.mX)
+               && !$$2.a(dga.dO)
+               && !$$2.a(dga.ck)
+               && !$$2.a(dga.ec)
+               && !$$2.a(dga.fO)
+               && !$$2.a(dga.ii)
+               && !$$2.a(dga.kI)
+               && !$$2.a(dga.qO)
+               && !$$2.a(dga.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(dga.qP))
+            : false;
+      azh.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dfy.a($$2.k($$0, $$1), ji.b);
 
-   public boolean b(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
-   }
-
-   private int c(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 * this.d + $$3;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      T get(int var1, int var2);
+      boolean canSpawnOn(aqu var1, jd var2, dtc var3, jd var4, dtc var5);
    }
 }

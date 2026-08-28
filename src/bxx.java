@@ -1,23 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxx {
-   public static bvg<btu> a(ccq<jl> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return bys.a(
-         (Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$5 -> $$5.group($$5.a(ccq.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  jl $$10 = $$5.b($$6);
-                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.do(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new cct($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
+   public static bvi<btn> a() {
+      return byu.a(
+         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.group($$0.b(ccs.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof btn $$1xx ? $$1xx : null)
+                           .filter(btn::ey)
+                           .filter($$1xx -> $$1xx.am() != bsx.by || $$2.ab().b(dcs.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
       );
    }
 }

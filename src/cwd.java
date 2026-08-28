@@ -1,36 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+public class cwd extends cul {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cwd extends cuj {
-   public static final int a = 160;
-
-   public cwd(cuj.a $$0) {
+   public cwd(cul.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bry> $$4 = new ArrayList<>();
-         cxu $$5 = $$0.a(kq.H, cxu.a);
-
-         for (cxu.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
-         }
-
-         cws.a($$4, $$2::add, 1.0F, $$1.b());
-      }
+   public int a(cuq $$0, btn $$1) {
+      return 1200;
    }
 
    @Override
-   public cuo a(cuo $$0, dcu $$1, btl $$2) {
-      cxu $$3 = $$0.a(kq.H, cxu.a);
+   public cwo b(cuq $$0) {
+      return cwo.h;
+   }
 
-      for (cxu.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
+   @Override
+   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
+      $$1.a(avp.yX, 1.0F, 1.0F);
+      $$1.b(avz.c.b(this));
+      return cus.a($$0, $$1, $$2);
+   }
 
-      return super.a($$0, $$1, $$2);
+   @Override
+   public cuq a(cuq $$0, dcw $$1, btn $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cuq $$0, dcw $$1, btn $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(btn $$0) {
+      $$0.a(avp.yY, 1.0F, 1.0F);
    }
 }

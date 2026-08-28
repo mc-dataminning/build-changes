@@ -1,27 +1,38 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class gci extends gcl {
+   private final fwe a;
+   private final gff b = gff.i(gka.a);
 
-public class gci {
-   private final List<akq> a;
-
-   private gci(List<akq> $$0) {
-      this.a = $$0;
+   gci(fzd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fvp(fgm.Q().aP().a(fyh.W));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
-   public List<akq> a() {
-      return this.a;
+   @Override
+   public gcp b() {
+      return gcp.e;
    }
 
-   public static gci a(JsonObject $$0) {
-      JsonArray $$1 = ayd.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gci(List.of());
-      } else {
-         List<akq> $$2 = Streams.stream($$1).map($$0x -> ayd.a($$0x, "texture")).map(akq::a).collect(ImmutableList.toImmutableList());
-         return new gci($$2);
+   @Override
+   public void a(fbk $$0, ffw $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ayo.a($$3 * (float) Math.PI);
+      int $$5 = axy.b.a($$4, 1.0F, 1.0F, 1.0F);
+      fbg $$6 = new fbg();
+      $$6.a($$1.f());
+      $$6.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$6.b(1.0F, -1.0F, -1.0F);
+      $$6.a(0.0F, -1.101F, 1.5F);
+      gex.a $$7 = fgm.Q().aO().c();
+      fbk $$8 = $$7.getBuffer(this.b);
+      this.a.a($$6, $$8, 15728880, gqa.d, $$5);
+      $$7.b();
+   }
+
+   public static class a implements gco<lq> {
+      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gci($$1, $$2, $$3, $$4);
       }
    }
 }

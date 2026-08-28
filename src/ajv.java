@@ -1,23 +1,8 @@
-public record ajv<T>(int a, ajw<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ajv<?> $$1 = (ajv<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajv {
 }

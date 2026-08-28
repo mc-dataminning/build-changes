@@ -1,49 +1,119 @@
-public class cwn extends cuj implements cvk {
-   private static final int a = 10;
+import java.util.List;
 
-   public cwn(cuj.a $$0) {
+public class cwn extends cul implements cvm {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+
+   public cwn(cul.a $$0) {
       super($$0);
    }
 
+   public static cxn h() {
+      return cxn.a().a(buw.c, new buu(e, 8.0, buu.a.a), bsz.b).a(buw.e, new buu(f, -2.9F, buu.a.a), bsz.b).a();
+   }
+
+   public static cxx k() {
+      return new cxx(List.of(), 1.0F, 2);
+   }
+
    @Override
-   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
-      if (!$$0.x_()) {
-         eww $$3 = $$1.by().e($$1.bO().a(0.8F));
-         if (!$$0.a_(jd.a((jw)$$3)).r()) {
-            $$3 = $$1.by().e($$1.bO().a(0.05F));
+   public boolean a(dtc $$0, dcw $$1, jd $$2, cmx $$3) {
+      return !$$3.f();
+   }
+
+   @Override
+   public cwo b(cuq $$0) {
+      return cwo.f;
+   }
+
+   @Override
+   public int a(cuq $$0, btn $$1) {
+      return 72000;
+   }
+
+   @Override
+   public void a(cuq $$0, dcw $$1, btn $$2, int $$3) {
+      if ($$2 instanceof cmx $$4) {
+         int $$5 = this.a($$0, $$2) - $$3;
+         if ($$5 >= 10) {
+            float $$6 = dae.a($$0, $$4);
+            if (!($$6 > 0.0F) || $$4.bg()) {
+               jm<avo> $$7 = dae.b($$0, dad.C).orElse(avp.zG);
+               if (!$$1.B) {
+                  $$0.a(1, $$4, btn.d($$2.ft()));
+                  if ($$6 == 0.0F) {
+                     coc $$8 = new coc($$1, $$4, $$0);
+                     $$8.a($$4, $$4.dH(), $$4.dF(), 0.0F, 2.5F, 1.0F);
+                     if ($$4.fM()) {
+                        $$8.d = cnd.a.c;
+                     }
+
+                     $$1.b($$8);
+                     $$1.a(null, $$8, $$7.a(), avq.h, 1.0F, 1.0F);
+                     if (!$$4.fM()) {
+                        $$4.fZ().h($$0);
+                     }
+                  }
+               }
+
+               $$4.b(avz.c.b(this));
+               if ($$6 > 0.0F) {
+                  float $$9 = $$4.dF();
+                  float $$10 = $$4.dH();
+                  float $$11 = -ayo.a($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
+                  float $$12 = -ayo.a($$10 * (float) (Math.PI / 180.0));
+                  float $$13 = ayo.b($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
+                  float $$14 = ayo.c($$11 * $$11 + $$12 * $$12 + $$13 * $$13);
+                  $$11 *= $$6 / $$14;
+                  $$12 *= $$6 / $$14;
+                  $$13 *= $$6 / $$14;
+                  $$4.j((double)$$11, (double)$$12, (double)$$13);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aF()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bts.a, new exa(0.0, 1.1999999F, 0.0));
+                  }
+
+                  $$1.a(null, $$4, $$7.a(), avq.h, 1.0F, 1.0F);
+               }
+            }
          }
-
-         cof $$4 = new cof($$1, $$0, $$3.a(), $$3.b(), $$3.c());
-         $$4.a($$1, $$1.dI(), $$1.dG(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
       }
-
-      $$0.a(null, $$1.dv(), $$1.dx(), $$1.dB(), avo.Cr, avp.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      cuo $$5 = $$1.b($$2);
-      $$1.gu().a(this, 10);
-      $$1.b(avy.c.b(this));
-      $$5.a(1, $$1);
-      return bqr.a($$5, $$0.x_());
    }
 
    @Override
-   public cnn a(dcu $$0, jw $$1, cuo $$2, ji $$3) {
-      ayv $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      eww $$8 = new eww($$5, $$6, $$7);
-      cof $$9 = new cof($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
+   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
+      cuq $$3 = $$1.b($$2);
+      if ($$3.n() >= $$3.o() - 1) {
+         return bqs.d($$3);
+      } else if (dae.a($$3, $$1) > 0.0F && !$$1.bg()) {
+         return bqs.d($$3);
+      } else {
+         $$1.c($$2);
+         return bqs.b($$3);
+      }
    }
 
    @Override
-   public void a(cnn $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   public boolean a(cuq $$0, btn $$1, btn $$2) {
+      return true;
    }
 
    @Override
-   public cvk.a c() {
-      return cvk.a.a().a(($$0, $$1) -> dib.a($$0, 1.0, eww.b)).a(6.6666665F).b(1.0F).a(1051).a();
+   public void b(cuq $$0, btn $$1, btn $$2) {
+      $$0.a(1, $$2, bsy.a);
+   }
+
+   @Override
+   public int g() {
+      return 1;
+   }
+
+   @Override
+   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
+      coc $$4 = new coc($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.d = cnd.a.b;
+      return $$4;
    }
 }

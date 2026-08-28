@@ -1,156 +1,109 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fnb extends fnx {
-   private static final akq a = akq.b("icon/draft_report");
-   private int b;
-   private final wy c;
-   private final boolean q;
-   private wy r;
-   private final List<fig> s = Lists.newArrayList();
-   @Nullable
-   private fig u;
+public class fnb extends fob {
+   private static final wz a = wz.c("createWorld.customize.buffet.biome").b(-8355712);
+   private static final int b = 8;
+   private final flx c = new flx(this);
+   private final fob r;
+   private final Consumer<jm<ddw>> s;
+   final jz<ddw> u;
+   private fnb.a v;
+   jm<ddw> w;
+   private fik x;
 
-   public fnb(@Nullable wy $$0, boolean $$1) {
-      super(wy.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.q = $$1;
+   public fnb(fob $$0, fti $$1, Consumer<jm<ddw>> $$2) {
+      super(wz.c("createWorld.customize.buffet.title"));
+      this.r = $$0;
+      this.s = $$2;
+      this.u = $$1.a().d(lu.aF);
+      jm<ddw> $$3 = this.u.b(ded.b).or(() -> this.u.i().findAny()).orElseThrow();
+      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
    }
 
    @Override
-   protected void aP_() {
-      this.b = 0;
-      this.s.clear();
-      wy $$0 = this.q ? wy.c("deathScreen.spectate") : wy.c("deathScreen.respawn");
-      this.s.add(this.c(fig.a($$0, $$0x -> {
-         this.l.s.fX();
-         $$0x.j = false;
-      }).a(this.m / 2 - 100, this.n / 4 + 72, 200, 20).a()));
-      this.u = this.c(
-         fig.a(wy.c("deathScreen.titleScreen"), $$0x -> this.l.aX().a(this.l, this, this::m, true)).a(this.m / 2 - 100, this.n / 4 + 96, 200, 20).a()
-      );
-      this.s.add(this.u);
-      this.c(false);
-      this.r = wy.a("deathScreen.score.value", wy.b(Integer.toString(this.l.s.fT())).a(n.o));
+   public void d() {
+      this.l.a(this.r);
    }
 
    @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.q) {
-         this.D();
-      } else {
-         fmv $$0 = new fnb.a($$0x -> {
-            if ($$0x) {
-               this.D();
-            } else {
-               this.l.s.fX();
-               this.l.a(null);
-            }
-         }, wy.c("deathScreen.quit.confirm"), wx.a, wy.c("deathScreen.titleScreen"), wy.c("deathScreen.respawn"));
-         this.l.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void D() {
-      if (this.l.r != null) {
-         this.l.r.Y();
-      }
-
-      this.l.b(new fni(wy.c("menu.savingLevel")));
-      this.l.a(new fnz());
-   }
-
-   @Override
-   public void a(fht $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.o, this.k, this.m / 2 / 2, 30, 16777215);
+   protected void aT_() {
+      fmb $$0 = this.c.a(fmb.d().a(8));
       $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.o, this.c, this.m / 2, 85, 16777215);
-      }
-
-      $$0.a(this.o, this.r, this.m / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         xv $$4 = this.a($$1);
-         $$0.a(this.o, $$4, $$1, $$2);
-      }
-
-      if (this.u != null && this.l.aX().c()) {
-         $$0.a(a, this.u.D() + this.u.y() - 17, this.u.E() + 3, 15, 15);
-      }
+      $$0.a(new fjr(this.n(), this.o));
+      $$0.a(new fjr(a, this.o));
+      this.v = this.c.c(new fnb.a());
+      fmb $$1 = this.c.b(fmb.e().a(8));
+      this.x = $$1.a(fik.a(wy.d, $$0x -> {
+         this.s.accept(this.w);
+         this.d();
+      }).a());
+      $$1.a(fik.a(wy.e, $$0x -> this.d()).a());
+      this.v.a(this.v.aK_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
+      this.c.a(this::c);
+      this.c();
    }
 
    @Override
-   public void b(fht $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.m, this.n);
+   protected void c() {
+      this.c.a();
+      this.v.a(this.m, this.c);
    }
 
-   static void a(fht $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   void m() {
+      this.x.j = this.v.h() != null;
    }
 
-   @Nullable
-   private xv a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.l.h.a(this.c);
-         int $$2 = this.m / 2 - $$1 / 2;
-         int $$3 = this.m / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.l.h.b().a(this.c, $$0 - $$2) : null;
+   class a extends fjg<fnb.a.a> {
+      a() {
+         super(fnb.this.l, fnb.this.m, fnb.this.n - 77, 40, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         fnb.this.u.i().map($$0x -> new fnb.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
       }
-   }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         xv $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == ww.a.a) {
-            this.a($$3);
-            return false;
+      public void a(@Nullable fnb.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            fnb.this.w = $$0.b;
          }
+
+         fnb.this.m();
       }
 
-      return super.a($$0, $$1, $$2);
-   }
+      class a extends fjg.a<fnb.a.a> {
+         final jm.c<ddw> b;
+         final wz c;
 
-   @Override
-   public boolean k() {
-      return false;
-   }
+         public a(final jm.c<ddw> $$0) {
+            this.b = $$0;
+            akr $$1 = $$0.h().a();
+            String $$2 = $$1.h("biome");
+            if (tw.a().b($$2)) {
+               this.c = wz.c($$2);
+            } else {
+               this.c = wz.b($$1.toString());
+            }
+         }
 
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
+         @Override
+         public wz a() {
+            return wz.a("narrator.select", this.c);
+         }
 
-   private void c(boolean $$0) {
-      for (fig $$1 : this.s) {
-         $$1.j = $$0;
-      }
-   }
+         @Override
+         public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(fnb.this.o, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
 
-   public static class a extends fmv {
-      public a(BooleanConsumer $$0, wy $$1, wy $$2, wy $$3, wy $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(fht $$0, int $$1, int $$2, float $$3) {
-         fnb.a($$0, this.m, this.n);
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
       }
    }
 }

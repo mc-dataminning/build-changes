@@ -55,7 +55,7 @@ public class lz {
    }
 
    static {
-      aks.a();
+      akt.a();
    }
 
    public class a {

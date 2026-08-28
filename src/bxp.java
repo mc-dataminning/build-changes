@@ -1,81 +1,124 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bxp extends bvf<btl> {
-   public static final int c = 100;
-   private long d;
+public class bxp extends bvh<cmk> {
+   private static final int c = 900;
+   private static final int d = 40;
+   @Nullable
+   private cuq e;
+   private final List<cuq> f = Lists.newArrayList();
+   private int g;
+   private int h;
+   private int i;
 
-   public bxp() {
-      super(ImmutableMap.of(ccq.b, ccr.a, ccq.I, ccr.c));
+   public bxp(int $$0, int $$1) {
+      super(ImmutableMap.of(ccs.q, cct.a), $$0, $$1);
    }
 
-   @Override
-   protected boolean a(aqt $$0, btl $$1) {
-      if ($$1.bS()) {
+   public boolean a(aqu $$0, cmk $$1) {
+      buq<?> $$2 = $$1.dU();
+      if ($$2.c(ccs.q).isEmpty()) {
          return false;
       } else {
-         buo<?> $$2 = $$1.dU();
-         jl $$3 = $$2.c(ccq.b).get();
-         if ($$0.af() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(ccq.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.Z() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
+         btn $$3 = $$2.c(ccs.q).get();
+         return $$3.am() == bsx.by && $$1.bE() && $$3.bE() && !$$1.o_() && $$1.g((bsr)$$3) <= 17.0;
+      }
+   }
 
-            dta $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.do(), 2.0) && $$6.a(awd.R) && !$$6.c(dfp.c);
+   public boolean a(aqu $$0, cmk $$1, long $$2) {
+      return this.a($$0, $$1) && this.i > 0 && $$1.dU().c(ccs.q).isPresent();
+   }
+
+   public void b(aqu $$0, cmk $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.d($$1);
+      this.g = 0;
+      this.h = 0;
+      this.i = 40;
+   }
+
+   public void c(aqu $$0, cmk $$1, long $$2) {
+      btn $$3 = this.d($$1);
+      this.a($$3, $$1);
+      if (!this.f.isEmpty()) {
+         this.e($$1);
+      } else {
+         c($$1);
+         this.i = Math.min(this.i, 40);
+      }
+
+      this.i--;
+   }
+
+   public void d(aqu $$0, cmk $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      $$1.dU().b(ccs.q);
+      c($$1);
+      this.e = null;
+   }
+
+   private void a(btn $$0, cmk $$1) {
+      boolean $$2 = false;
+      cuq $$3 = $$0.eU();
+      if (this.e == null || !cuq.b(this.e, $$3)) {
+         this.e = $$3;
+         $$2 = true;
+         this.f.clear();
+      }
+
+      if ($$2 && !this.e.e()) {
+         this.b($$1);
+         if (!this.f.isEmpty()) {
+            this.i = 900;
+            this.a($$1);
          }
       }
    }
 
-   @Override
-   protected boolean a(aqt $$0, btl $$1, long $$2) {
-      Optional<jl> $$3 = $$1.dU().c(ccq.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jd $$4 = $$3.get().b();
-         return $$1.dU().c(cok.e) && $$1.dx() > (double)$$4.v() + 0.4 && $$4.a($$1.do(), 1.14);
+   private void a(cmk $$0) {
+      a($$0, this.f.get(0));
+   }
+
+   private void b(cmk $$0) {
+      for (dbu $$1 : $$0.gn()) {
+         if (!$$1.r() && this.a($$1)) {
+            this.f.add($$1.h());
+         }
       }
    }
 
-   @Override
-   protected void d(aqt $$0, btl $$1, long $$2) {
-      if ($$2 > this.d) {
-         buo<?> $$3 = $$1.dU();
-         if ($$3.a(ccq.v)) {
-            Set<jl> $$4 = $$3.c(ccq.v).get();
-            Optional<List<btl>> $$5;
-            if ($$3.a(ccq.g)) {
-               $$5 = $$3.c(ccq.g);
-            } else {
-               $$5 = Optional.empty();
-            }
+   private boolean a(dbu $$0) {
+      return cuq.b(this.e, $$0.b()) || cuq.b(this.e, $$0.c());
+   }
 
-            bwd.a($$0, $$1, null, null, $$4, $$5);
+   private static void c(cmk $$0) {
+      $$0.a(bsy.a, cuq.l);
+      $$0.a(bsy.a, 0.085F);
+   }
+
+   private static void a(cmk $$0, cuq $$1) {
+      $$0.a(bsy.a, $$1);
+      $$0.a(bsy.a, 0.0F);
+   }
+
+   private btn d(cmk $$0) {
+      buq<?> $$1 = $$0.dU();
+      btn $$2 = $$1.c(ccs.q).get();
+      $$1.a(ccs.n, new bvs($$2, true));
+      return $$2;
+   }
+
+   private void e(cmk $$0) {
+      if (this.f.size() >= 2 && ++this.g >= 40) {
+         this.h++;
+         this.g = 0;
+         if (this.h > this.f.size() - 1) {
+            this.h = 0;
          }
 
-         $$1.b($$1.dU().c(ccq.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(aqt $$0, btl $$1, long $$2) {
-      if ($$1.fI()) {
-         $$1.fJ();
-         this.d = $$2 + 40L;
+         a($$0, this.f.get(this.h));
       }
    }
 }

@@ -1,81 +1,28 @@
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class azm {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile z f;
+@FunctionalInterface
+public interface azm {
+   Logger a = LogUtils.getLogger();
 
-   public azm(String $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
+   static azm immediate(final Executor $$0) {
+      return new azm() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
          }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
-      }
+      };
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
-      }
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
    }
 
-   public static z a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azm::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
-   }
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

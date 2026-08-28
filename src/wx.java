@@ -1,76 +1,81 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class wx {
-   public static final wy a = wy.i();
-   public static final wy b = wy.c("options.on");
-   public static final wy c = wy.c("options.off");
-   public static final wy d = wy.c("gui.done");
-   public static final wy e = wy.c("gui.cancel");
-   public static final wy f = wy.c("gui.yes");
-   public static final wy g = wy.c("gui.no");
-   public static final wy h = wy.c("gui.ok");
-   public static final wy i = wy.c("gui.proceed");
-   public static final wy j = wy.c("gui.continue");
-   public static final wy k = wy.c("gui.back");
-   public static final wy l = wy.c("gui.toTitle");
-   public static final wy m = wy.c("gui.acknowledge");
-   public static final wy n = wy.c("chat.link.open");
-   public static final wy o = wy.c("gui.copy_link_to_clipboard");
-   public static final wy p = wy.c("menu.disconnect");
-   public static final wy q = wy.c("connect.failed.transfer");
-   public static final wy r = wy.c("connect.failed");
-   public static final wy s = wy.b("\n");
-   public static final wy t = wy.b(". ");
-   public static final wy u = wy.b("...");
-   public static final wy v = a();
+   public static final Codec<wx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wx.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, wx::new)
+   );
+   private final wx.a b;
+   private final String c;
 
-   public static xm a() {
-      return wy.b(" ");
+   public wx(wx.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static xm a(long $$0) {
-      return wy.a("gui.days", $$0);
+   public wx.a a() {
+      return this.b;
    }
 
-   public static xm b(long $$0) {
-      return wy.a("gui.hours", $$0);
+   public String b() {
+      return this.c;
    }
 
-   public static xm c(long $$0) {
-      return wy.a("gui.minutes", $$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         wx $$1 = (wx)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public static wy a(boolean $$0) {
-      return $$0 ? b : c;
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   public static xm a(wy $$0, boolean $$1) {
-      return wy.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public static xm a(wy $$0, wy $$1) {
-      return wy.a("options.generic_value", $$0, $$1);
-   }
+   public static enum a implements azk {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-   public static xm a(wy... $$0) {
-      xm $$1 = wy.i();
+      public static final MapCodec<wx.a> g = azk.a(wx.a::values).fieldOf("action");
+      public static final MapCodec<wx.a> h = g.validate(wx.a::a);
+      private final boolean i;
+      private final String j;
 
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      private a(final String $$0, final boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
+      public boolean a() {
+         return this.i;
+      }
 
-   public static wy b(wy... $$0) {
-      return a(Arrays.asList($$0));
-   }
+      @Override
+      public String c() {
+         return this.j;
+      }
 
-   public static wy a(Collection<? extends wy> $$0) {
-      return xb.a($$0, s);
+      public static DataResult<wx.a> a(wx.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 }

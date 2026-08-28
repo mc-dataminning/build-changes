@@ -1,24 +1,32 @@
-public class glr extends glj<ckd, fwf<ckd>> {
-   private static final akq a = akq.b("textures/entity/phantom.png");
+public class glr extends gkg<btu> {
+   private static final float a = 40.0F;
+   private static final int g = 50;
+   private final glf h;
 
-   public glr(gkd.a $$0) {
-      super($$0, new fwf<>($$0.a(fyd.aI)), 0.75F);
-      this.a(new gon<>(this));
+   protected glr(gkh.a $$0) {
+      super($$0);
+      this.h = $$0.b();
    }
 
-   public akq a(ckd $$0) {
-      return a;
+   public akr a(btu $$0) {
+      return gqi.e;
    }
 
-   protected void a(ckd $$0, fbc $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
+   public void a(btu $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
+      cuq $$6 = $$0.s();
+      if (!$$6.e()) {
+         $$3.a();
+         if ($$0.ai <= 50) {
+            float $$7 = Math.min((float)$$0.ai + $$2, 50.0F) / 50.0F;
+            $$3.b($$7, $$7, $$7);
+         }
 
-   protected void a(ckd $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dI()));
+         dcw $$8 = $$0.dP();
+         float $$9 = ayo.g((float)($$8.Z() - 1L)) * 40.0F;
+         float $$10 = ayo.g((float)$$8.Z()) * 40.0F;
+         $$3.a(a.d.rotationDegrees(ayo.j($$2, $$9, $$10)));
+         gld.a(this.h, $$3, $$4, 15728880, $$6, $$8.z, $$8);
+         $$3.b();
+      }
    }
 }

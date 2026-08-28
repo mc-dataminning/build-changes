@@ -1,169 +1,109 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class div extends djs {
-   public static final MapCodec<div> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dun.a.fieldOf("wood_type").forGetter($$0x -> $$0x.G), u()).apply($$0, div::new)
-   );
-   public static final dtr b = dtq.u;
-   public static final dtr c = dtq.w;
-   public static final dtr d = dtq.q;
-   protected static final exp e = dfw.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final exp f = dfw.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
-   protected static final exp g = dfw.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
-   protected static final exp h = dfw.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
-   protected static final exp i = dfw.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final exp j = dfw.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final exp k = dfw.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final exp l = dfw.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final exp m = exm.a(dfw.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), dfw.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
-   protected static final exp n = exm.a(dfw.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), dfw.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
-   protected static final exp o = exm.a(dfw.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), dfw.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
-   protected static final exp F = exm.a(dfw.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), dfw.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
-   private final dun G;
+public class div extends dfy {
+   public static final MapCodec<div> a = b(div::new);
+   public static final duc b = dts.aQ;
+   protected static final ext c = dfy.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<div> a() {
       return a;
    }
 
-   public div(dun $$0, dsz.d $$1) {
-      super($$1.a($$0.d()));
-      this.G = $$0;
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   protected div(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      if ($$0.c(d)) {
-         return $$0.c(aE).o() == ji.a.a ? h : g;
-      } else {
-         return $$0.c(aE).o() == ji.a.a ? f : e;
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if ($$1 == ji.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
+      dtc $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dix || $$3.b() instanceof dsu;
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      return !this.o().a((dcz)$$0.q(), $$0.a()) ? dga.j.o() : super.a($$0);
+   }
+
+   @Override
+   protected boolean f_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return c;
+   }
+
+   @Override
+   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      ji.a $$6 = $$1.o();
-      if ($$0.c(aE).h().o() != $$6) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$7 = this.m($$2) || this.m($$3.a_($$4.a($$1.g())));
-         return $$0.a(d, Boolean.valueOf($$7));
-      }
-   }
-
-   @Override
-   protected exp b_(dta $$0, dca $$1, jd $$2) {
-      if ($$0.c(b)) {
-         return exm.a();
-      } else {
-         return $$0.c(aE).o() == ji.a.c ? k : l;
-      }
-   }
-
-   @Override
-   protected exp b(dta $$0, dca $$1, jd $$2, exb $$3) {
-      if ($$0.c(b)) {
-         return exm.a();
-      } else {
-         return $$0.c(aE).o() == ji.a.c ? i : j;
-      }
-   }
-
-   @Override
-   protected exp f(dta $$0, dca $$1, jd $$2) {
-      if ($$0.c(d)) {
-         return $$0.c(aE).o() == ji.a.a ? F : o;
-      } else {
-         return $$0.c(aE).o() == ji.a.a ? n : m;
-      }
-   }
-
-   @Override
-   protected boolean a(dta $$0, epn $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(b);
-         case b:
-            return false;
-         case c:
-            return $$0.c(b);
-         default:
-            return false;
-      }
-   }
-
-   @Override
-   public dta a(cyb $$0) {
-      dcu $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      boolean $$3 = $$1.C($$2);
-      ji $$4 = $$0.g();
-      ji.a $$5 = $$4.o();
-      boolean $$6 = $$5 == ji.a.c && (this.m($$1.a_($$2.g())) || this.m($$1.a_($$2.h())))
-         || $$5 == ji.a.a && (this.m($$1.a_($$2.e())) || this.m($$1.a_($$2.f())));
-      return this.o().a(aE, $$4).a(b, Boolean.valueOf($$3)).a(c, Boolean.valueOf($$3)).a(d, Boolean.valueOf($$6));
-   }
-
-   private boolean m(dta $$0) {
-      return $$0.a(awd.L);
-   }
-
-   @Override
-   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
-      if ($$0.c(b)) {
-         $$0 = $$0.a(b, Boolean.valueOf(false));
-         $$1.a($$2, $$0, 10);
-      } else {
-         ji $$5 = $$3.cI();
-         if ($$0.c(aE) == $$5.g()) {
-            $$0 = $$0.a(aE, $$5);
+   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((dcz)$$1, $$2) && !$$1.r($$2.d())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((dcc)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
          }
-
-         $$0 = $$0.a(b, Boolean.valueOf(true));
-         $$1.a($$2, $$0, 10);
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
       }
-
-      boolean $$6 = $$0.c(b);
-      $$1.a($$3, $$2, $$6 ? this.G.g() : this.G.f(), avp.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
-      $$1.a($$3, $$6 ? dxw.h : dxw.d, $$2);
-      return bqq.a($$1.B);
    }
 
    @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dcm $$3, BiConsumer<cuo, jd> $$4) {
-      if ($$3.n() && !$$0.c(c)) {
-         boolean $$5 = $$0.c(b);
-         $$1.b($$2, $$0.a(b, Boolean.valueOf(!$$5)));
-         $$1.a(null, $$2, $$5 ? this.G.f() : this.G.g(), avp.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
-         $$1.a($$5 ? dxw.d : dxw.h, $$2, dxw.a.a($$0));
+   public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof btn && ($$3 instanceof cmx || $$0.ab().b(dcs.c)) && $$3.dk() * $$3.dk() * $$3.dl() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
       }
 
       super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3, jd $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.C($$2);
-         if ($$0.c(c) != $$6) {
-            $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)).a(b, Boolean.valueOf($$6)), 2);
-            if ($$0.c(b) != $$6) {
-               $$1.a(null, $$2, $$6 ? this.G.g() : this.G.f(), avp.e, 1.0F, $$1.E_().i() * 0.1F + 0.9F);
-               $$1.a(null, $$6 ? dxw.h : dxw.d, $$2);
-            }
+   public static void a(@Nullable bsr $$0, dtc $$1, dcw $$2, jd $$3) {
+      dtc $$4 = a($$1, dga.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dxz.c, $$3, dxz.a.a($$0, $$4));
+   }
+
+   private static boolean a(dcc $$0, jd $$1) {
+      return $$0.a_($$1.d()).a(awe.cx);
+   }
+
+   private static boolean a(dcz $$0, jd $$1) {
+      for (jd $$2 : jd.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(awk.a)) {
+            return true;
          }
       }
+
+      return false;
    }
 
    @Override
-   protected void a(dtb.a<dfw, dta> $$0) {
-      $$0.a(aE, b, c, d);
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b);
    }
 
-   public static boolean a(dta $$0, ji $$1) {
-      return $$0.c(aE).o() == $$1.h().o();
+   @Override
+   protected boolean a(dtc $$0, epr $$1) {
+      return false;
    }
 }

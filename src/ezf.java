@@ -1,26 +1,7 @@
-import java.util.function.Function;
+public record ezf(exa b, exa c, exa d) {
+   public static final ezf a = new ezf(exa.b, new exa(0.0, 0.0, -1.0), new exa(0.0, 1.0, 0.0));
 
-public interface ezf {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   flb bake(Function<ezh, flb> var1);
-
-   public interface a extends ezf {
-      @Override
-      default flb bake(Function<ezh, flb> $$0) {
-         return flc.a;
-      }
+   public exa a() {
+      return this.c.c(this.d);
    }
 }

@@ -1,20 +1,44 @@
 import javax.annotation.Nullable;
 
-public interface cjo extends ckf {
-   void b(boolean var1);
+public class cjo extends cko {
+   public cjo(bsx<? extends cjo> $$0, dcw $$1) {
+      super($$0, $$1);
+   }
+
+   public static buv.a s() {
+      return cko.t().a(buw.s, 12.0);
+   }
+
+   @Override
+   public boolean D(bsr $$0) {
+      if (super.D($$0)) {
+         if ($$0 instanceof btn) {
+            int $$1 = 0;
+            if (this.dP().al() == bqo.c) {
+               $$1 = 7;
+            } else if (this.dP().al() == bqo.d) {
+               $$1 = 15;
+            }
+
+            if ($$1 > 0) {
+               ((btn)$$0).b(new brz(bsb.s, $$1 * 20, 0), this);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
 
    @Nullable
-   btl p();
+   @Override
+   public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
+      return $$3;
+   }
 
-   void a();
-
-   default void b(btl $$0, float $$1) {
-      bqp $$2 = cnp.a($$0, cur.vW);
-      cuo $$3 = $$0.b($$2);
-      if ($$3.g() instanceof cta $$4) {
-         $$4.a($$0.dQ(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dQ().al().a() * 4), this.p());
-      }
-
-      this.a();
+   @Override
+   public exa l(bsr $$0) {
+      return $$0.dk() <= this.dk() ? new exa(0.0, 0.21875 * (double)this.ec(), 0.0) : super.l($$0);
    }
 }

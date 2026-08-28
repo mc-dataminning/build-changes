@@ -1,24 +1,29 @@
-public record afx(int b) implements zf<abt> {
-   public static final yw<vv, afx> a = zf.a(afx::a, afx::new);
+public record afx(float b, boolean c) implements zg<abu> {
+   public static final yx<vw, afx> a = zg.a(afx::a, afx::new);
 
-   private afx(vv $$0) {
-      this($$0.l());
+   private afx(vw $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static afx a(brb $$0) {
-      return new afx($$0.k());
+   public static afx a(brc $$0) {
+      return new afx($$0.f(), $$0.l());
    }
 
-   private void a(vv $$0) {
-      $$0.c(this.b);
+   private void a(vw $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<afx> a() {
-      return agf.cg;
+   public zi<afx> a() {
+      return agg.cf;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

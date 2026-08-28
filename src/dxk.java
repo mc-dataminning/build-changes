@@ -1,38 +1,72 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface dxk<B, T extends B> {
-   static <B, T extends B> dxk<B, T> a(final Class<T> $$0) {
-      return new dxk<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public class dxk<T extends dxg> {
+   private static final Logger a = LogUtils.getLogger();
+   private final axf<T> b;
+   private dxt c;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public dxk(Class<T> $$0, dxt $$1) {
+      this.c = $$1;
+      this.b = new axf<>($$0);
    }
 
-   static <B, T extends B> dxk<B, T> b(final Class<T> $$0) {
-      return new dxk<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   @Nullable
-   T a(B var1);
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-   Class<? extends B> a();
+   public axa.a a(ewv $$0, axa<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cL().c($$0) && $$1.accept($$2).a()) {
+            return axa.a.b;
+         }
+      }
+
+      return axa.a.a;
+   }
+
+   public <U extends T> axa.a a(dxn<T, U> $$0, ewv $$1, axa<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return axa.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cL().c($$1) && $$2.accept($$5).a()) {
+               return axa.a.b;
+            }
+         }
+
+         return axa.a.a;
+      }
+   }
+
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public dxt c() {
+      return this.c;
+   }
+
+   public dxt a(dxt $$0) {
+      dxt $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @azt
+   public int d() {
+      return this.b.size();
+   }
 }

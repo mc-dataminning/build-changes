@@ -9,8 +9,8 @@ public class dl extends dv<dl.a> {
       return dl.a.a;
    }
 
-   public void a(aqu $$0, cuo $$1, @Nullable bsq $$2) {
-      erl $$3 = bv.b($$0, $$2);
+   public void a(aqv $$0, cuq $$1, @Nullable bsr $$2) {
+      erp $$3 = bv.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class dl extends dv<dl.a> {
          return an.S.a(new dl.a($$0, $$1, $$2));
       }
 
-      public boolean a(aqu $$0, cuo $$1, erl $$2) {
+      public boolean a(aqv $$0, cuq $$1, erp $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

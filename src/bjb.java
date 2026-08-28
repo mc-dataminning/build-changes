@@ -3,14 +3,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjb extends bic {
+public class bjb extends bid {
    public bjb(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:cat", () -> bid.a($$0));
+      $$0.register($$1, "minecraft:illager_beast", () -> bie.a($$0));
       return $$1;
    }
 }

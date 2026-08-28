@@ -1,30 +1,15 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum cym implements azj {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
-
-   public static final Codec<cym> e = azj.a(cym::values);
-   public static final IntFunction<cym> f = axd.a(cym::a, values(), axd.a.a);
-   public static final yw<ByteBuf, cym> g = yu.a(f, cym::a);
-   private final String h;
-   private final int i;
-
-   private cym(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+public class cym extends cyh {
+   public cym(String $$0, cyn $$1, cyw $$2, cuq $$3, float $$4, int $$5) {
+      super(czf.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public cuq g() {
+      return new cuq(dga.og);
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public cze<?> at_() {
+      return cze.s;
    }
 }

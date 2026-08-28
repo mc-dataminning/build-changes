@@ -1,59 +1,76 @@
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpw implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final gps f = new gps(16, 16, false);
+public class gpw extends gpu implements gpv {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private fah f;
 
-   public gpw() {
-      fad $$0 = this.f.e();
+   public gpw(fah $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
-         }
+   public gpw(int $$0, int $$1, boolean $$2) {
+      this.f = new fah($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   }
+
+   @Override
+   public void a(aue $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public fah e() {
+      return this.f;
+   }
+
+   public void a(fah $$0) {
+      if (this.f != null) {
+         this.f.close();
       }
 
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
+      this.f = $$0;
    }
 
    @Override
    public void close() {
-      this.f.close();
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
    }
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f.a(), 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+   @Override
+   public void a(akr $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

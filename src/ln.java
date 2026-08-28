@@ -9,7 +9,7 @@ public abstract class ln implements lk {
    private final float a;
 
    public ln(float $$0) {
-      this.a = ayn.a($$0, 0.01F, 4.0F);
+      this.a = ayo.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

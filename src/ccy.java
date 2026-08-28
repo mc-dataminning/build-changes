@@ -1,181 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public abstract class ccy {
-   private static final int p = 20;
-   private static final int q = 100;
-   private static final float r = 0.25F;
-   protected final btn a;
-   protected final dcu b;
-   @Nullable
-   protected epm c;
-   protected double d;
-   protected int e;
-   protected int f;
-   protected eww g = eww.b;
-   protected kh h = kh.g;
-   protected long i;
-   protected long j;
-   protected double k;
-   protected float l = 0.5F;
-   protected boolean m;
-   protected long n;
-   protected epl o;
-   @Nullable
-   private jd s;
-   private int t;
-   private float u = 1.0F;
-   private final epo v;
-   private boolean w;
-
-   public ccy(btn $$0, dcu $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      int $$2 = ayn.a($$0.g(buu.m) * 16.0);
-      this.v = this.a($$2);
+public class ccy extends cda {
+   public ccy(btp $$0, dcw $$1) {
+      super($$0, $$1);
    }
 
-   public void g() {
-      this.u = 1.0F;
+   @Override
+   protected eps a(int $$0) {
+      this.o = new epn();
+      this.o.a(true);
+      return new eps(this.o, $$0);
    }
 
-   public void a(float $$0) {
-      this.u = $$0;
+   @Override
+   protected boolean a(exa $$0, exa $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
-   @Nullable
-   public jd h() {
-      return this.s;
+   @Override
+   protected boolean a() {
+      return this.p() && this.a.bj() || !this.a.bS();
    }
 
-   protected abstract epo a(int var1);
-
-   public void a(double $$0) {
-      this.d = $$0;
+   @Override
+   protected exa b() {
+      return this.a.dn();
    }
 
-   public void i() {
-      if (this.b.Z() - this.n > 20L) {
-         if (this.s != null) {
-            this.c = null;
-            this.c = this.a(this.s, this.t);
-            this.n = this.b.Z();
-            this.m = false;
-         }
-      } else {
-         this.m = true;
-      }
+   @Override
+   public epq a(bsr $$0, int $$1) {
+      return this.a($$0.dp(), $$1);
    }
 
-   @Nullable
-   public final epm a(double $$0, double $$1, double $$2, int $$3) {
-      return this.a(jd.a($$0, $$1, $$2), $$3);
-   }
-
-   @Nullable
-   public epm a(Stream<jd> $$0, int $$1) {
-      return this.a($$0.collect(Collectors.toSet()), 8, false, $$1);
-   }
-
-   @Nullable
-   public epm a(Set<jd> $$0, int $$1) {
-      return this.a($$0, 8, false, $$1);
-   }
-
-   @Nullable
-   public epm a(jd $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1);
-   }
-
-   @Nullable
-   public epm a(jd $$0, int $$1, int $$2) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1, (float)$$2);
-   }
-
-   @Nullable
-   public epm a(bsq $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0.dq()), 16, true, $$1);
-   }
-
-   @Nullable
-   protected epm a(Set<jd> $$0, int $$1, boolean $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, (float)this.a.g(buu.m));
-   }
-
-   @Nullable
-   protected epm a(Set<jd> $$0, int $$1, boolean $$2, int $$3, float $$4) {
-      if ($$0.isEmpty()) {
-         return null;
-      } else if (this.a.dx() < (double)this.b.I_()) {
-         return null;
-      } else if (!this.a()) {
-         return null;
-      } else if (this.c != null && !this.c.c() && $$0.contains(this.s)) {
-         return this.c;
-      } else {
-         this.b.ag().a("pathfind");
-         jd $$5 = $$2 ? this.a.dq().c() : this.a.dq();
-         int $$6 = (int)($$4 + (float)$$1);
-         ddh $$7 = new ddh(this.b, $$5.b(-$$6, -$$6, -$$6), $$5.b($$6, $$6, $$6));
-         epm $$8 = this.v.a($$7, this.a, $$0, $$4, $$3, this.u);
-         this.b.ag().c();
-         if ($$8 != null && $$8.l() != null) {
-            this.s = $$8.l();
-            this.t = $$3;
-            this.f();
-         }
-
-         return $$8;
-      }
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.a($$0, $$1, $$2, 1), $$3);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, int $$3, double $$4) {
-      return this.a(this.a($$0, $$1, $$2, $$3), $$4);
-   }
-
-   public boolean a(bsq $$0, double $$1) {
-      epm $$2 = this.a($$0, 1);
-      return $$2 != null && this.a($$2, $$1);
-   }
-
-   public boolean a(@Nullable epm $$0, double $$1) {
-      if ($$0 == null) {
-         this.c = null;
-         return false;
-      } else {
-         if (!$$0.a(this.c)) {
-            this.c = $$0;
-         }
-
-         if (this.l()) {
-            return false;
-         } else {
-            this.S_();
-            if (this.c.e() <= 0) {
-               return false;
-            } else {
-               this.d = $$1;
-               eww $$2 = this.b();
-               this.f = this.e;
-               this.g = $$2;
-               return true;
-            }
-         }
-      }
-   }
-
-   @Nullable
-   public epm j() {
-      return this.c;
-   }
-
+   @Override
    public void c() {
       this.e++;
       if (this.m) {
@@ -186,194 +41,38 @@ public abstract class ccy {
          if (this.a()) {
             this.k();
          } else if (this.c != null && !this.c.c()) {
-            eww $$0 = this.b();
-            eww $$1 = this.c.a(this.a);
-            if ($$0.d > $$1.d && !this.a.aF() && ayn.a($$0.c) == ayn.a($$1.c) && ayn.a($$0.e) == ayn.a($$1.e)) {
+            exa $$0 = this.c.a(this.a);
+            if (this.a.dt() == ayo.a($$0.c) && this.a.dv() == ayo.a($$0.d) && this.a.dz() == ayo.a($$0.e)) {
                this.c.a();
             }
          }
 
-         age.a(this.b, this.a, this.c, this.l);
+         agf.a(this.b, this.a, this.c, this.l);
          if (!this.l()) {
-            eww $$2 = this.c.a(this.a);
-            this.a.H().a($$2.c, this.a($$2), $$2.e, this.d);
+            exa $$1 = this.c.a(this.a);
+            this.a.J().a($$1.c, $$1.d, $$1.e, this.d);
          }
       }
    }
 
-   protected double a(eww $$0) {
-      jd $$1 = jd.a((jw)$$0);
-      return this.b.a_($$1.d()).i() ? $$0.d : epu.a(this.b, $$1);
+   public void b(boolean $$0) {
+      this.o.b($$0);
    }
 
-   protected void k() {
-      eww $$0 = this.b();
-      this.l = this.a.dk() > 0.75F ? this.a.dk() / 2.0F : 0.75F - this.a.dk() / 2.0F;
-      kh $$1 = this.c.g();
-      double $$2 = Math.abs(this.a.dv() - ((double)$$1.u() + 0.5));
-      double $$3 = Math.abs(this.a.dx() - (double)$$1.v());
-      double $$4 = Math.abs(this.a.dB() - ((double)$$1.w() + 0.5));
-      boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
-      if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
-         this.c.a();
-      }
-
-      this.b($$0);
+   public boolean d() {
+      return this.o.d();
    }
 
-   private boolean c(eww $$0) {
-      if (this.c.f() + 1 >= this.c.e()) {
-         return false;
-      } else {
-         eww $$1 = eww.c(this.c.g());
-         if (!$$0.a((jw)$$1, 2.0)) {
-            return false;
-         } else if (this.a($$0, this.c.a(this.a))) {
-            return true;
-         } else {
-            eww $$2 = eww.c(this.c.d(this.c.f() + 1));
-            eww $$3 = $$1.d($$0);
-            eww $$4 = $$2.d($$0);
-            double $$5 = $$3.g();
-            double $$6 = $$4.g();
-            boolean $$7 = $$6 < $$5;
-            boolean $$8 = $$5 < 0.5;
-            if (!$$7 && !$$8) {
-               return false;
-            } else {
-               eww $$9 = $$3.d();
-               eww $$10 = $$4.d();
-               return $$10.b($$9) < 0.0;
-            }
-         }
-      }
+   public void c(boolean $$0) {
+      this.o.a($$0);
    }
 
-   protected void b(eww $$0) {
-      if (this.e - this.f > 100) {
-         float $$1 = this.a.fk() >= 1.0F ? this.a.fk() : this.a.fk() * this.a.fk();
-         float $$2 = $$1 * 100.0F * 0.25F;
-         if ($$0.g(this.g) < (double)($$2 * $$2)) {
-            this.w = true;
-            this.n();
-         } else {
-            this.w = false;
-         }
-
-         this.f = this.e;
-         this.g = $$0;
-      }
-
-      if (this.c != null && !this.c.c()) {
-         kh $$3 = this.c.g();
-         long $$4 = this.b.Z();
-         if ($$3.equals(this.h)) {
-            this.i = this.i + ($$4 - this.j);
-         } else {
-            this.h = $$3;
-            double $$5 = $$0.f(eww.c(this.h));
-            this.k = this.a.fk() > 0.0F ? $$5 / (double)this.a.fk() * 20.0 : 0.0;
-         }
-
-         if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
-            this.e();
-         }
-
-         this.j = $$4;
-      }
+   public boolean e() {
+      return this.o.d();
    }
 
-   private void e() {
-      this.f();
-      this.n();
-   }
-
-   private void f() {
-      this.h = kh.g;
-      this.i = 0L;
-      this.k = 0.0;
-      this.w = false;
-   }
-
-   public boolean l() {
-      return this.c == null || this.c.c();
-   }
-
-   public boolean m() {
-      return !this.l();
-   }
-
-   public void n() {
-      this.c = null;
-   }
-
-   protected abstract eww b();
-
-   protected abstract boolean a();
-
-   protected void S_() {
-      if (this.c != null) {
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            epk $$1 = this.c.a($$0);
-            epk $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
-            dta $$3 = this.b.a_(new jd($$1.a, $$1.b, $$1.c));
-            if ($$3.a(awd.bl)) {
-               this.c.a($$0, $$1.a($$1.a, $$1.b + 1, $$1.c));
-               if ($$2 != null && $$1.b >= $$2.b) {
-                  this.c.a($$0 + 1, $$1.a($$2.a, $$1.b + 1, $$2.c));
-               }
-            }
-         }
-      }
-   }
-
-   protected boolean a(eww $$0, eww $$1) {
-      return false;
-   }
-
-   public boolean b(epp $$0) {
-      return $$0 != epp.n && $$0 != epp.p && $$0 != epp.d;
-   }
-
-   protected static boolean a(btn $$0, eww $$1, eww $$2, boolean $$3) {
-      eww $$4 = new eww($$2.c, $$2.d + (double)$$0.dl() * 0.5, $$2.e);
-      return $$0.dQ().a(new dcd($$1, $$4, dcd.a.a, $$3 ? dcd.b.c : dcd.b.a, $$0)).c() == ewu.a.a;
-   }
-
+   @Override
    public boolean a(jd $$0) {
-      jd $$1 = $$0.d();
-      return this.b.a_($$1).i(this.b, $$1);
-   }
-
-   public epl o() {
-      return this.o;
-   }
-
-   public void a(boolean $$0) {
-      this.o.c($$0);
-   }
-
-   public boolean p() {
-      return this.o.f();
-   }
-
-   public boolean b(jd $$0) {
-      if (this.m) {
-         return false;
-      } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
-         epk $$1 = this.c.d();
-         eww $$2 = new eww(((double)$$1.a + this.a.dv()) / 2.0, ((double)$$1.b + this.a.dx()) / 2.0, ((double)$$1.c + this.a.dB()) / 2.0);
-         return $$0.a($$2, (double)(this.c.e() - this.c.f()));
-      } else {
-         return false;
-      }
-   }
-
-   public float q() {
-      return this.l;
-   }
-
-   public boolean r() {
-      return this.w;
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

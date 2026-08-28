@@ -81,8 +81,8 @@ public class jt<T> {
       return this.c;
    }
 
-   private static Map<akp<? extends jz<?>>, jz<?>> a(Stream<? extends ka> $$0) {
-      Map<akp<? extends jz<?>>, jz<?>> $$1 = new HashMap<>();
+   private static Map<akq<? extends jz<?>>, jz<?>> a(Stream<? extends ka> $$0) {
+      Map<akq<? extends jz<?>>, jz<?>> $$1 = new HashMap<>();
       $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
             if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
                throw new IllegalStateException("Duplicated registry " + $$1xx.a());

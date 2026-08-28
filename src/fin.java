@@ -1,278 +1,528 @@
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.SuggestionContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.tree.CommandNode;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class fin<T> extends fhx {
-   public static final BooleanSupplier a = fnx::t;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final wy c;
-   private int d;
-   private T f;
-   private final fin.c<T> m;
-   private final Function<T, wy> n;
-   private final Function<fin<T>, xm> o;
-   private final fin.b<T> p;
-   private final boolean q;
-   private final fgl.l<T> r;
+public class fin {
+   private static final Pattern a = Pattern.compile("(\\s+)");
+   private static final xw b = xw.a.a(n.m);
+   private static final xw c = xw.a.a(n.h);
+   private static final List<xw> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(xw.a::a).collect(ImmutableList.toImmutableList());
+   final fgm e;
+   private final fob f;
+   final fit g;
+   final fhv h;
+   private final boolean i;
+   private final boolean j;
+   final int k;
+   final int l;
+   final boolean m;
+   final int n;
+   private final List<aya> o = Lists.newArrayList();
+   private int p;
+   private int q;
+   @Nullable
+   private ParseResults<ey> r;
+   @Nullable
+   private CompletableFuture<Suggestions> s;
+   @Nullable
+   private fin.a t;
+   private boolean u;
+   boolean v;
+   private boolean w = true;
 
-   fin(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      wy $$4,
-      wy $$5,
-      int $$6,
-      T $$7,
-      fin.c<T> $$8,
-      Function<T, wy> $$9,
-      Function<fin<T>, xm> $$10,
-      fin.b<T> $$11,
-      fgl.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
+   public fin(fgm $$0, fob $$1, fit $$2, fhv $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
       this.m = $$8;
       this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
+      $$2.a(this::a);
+   }
+
+   public void a(boolean $$0) {
+      this.u = $$0;
+      if (!$$0) {
+         this.t = null;
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.w = $$0;
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = this.t != null;
+      if ($$3 && this.t.b($$0, $$1, $$2)) {
+         return true;
+      } else if (this.f.aN_() != this.g || $$0 != 258 || this.w && !$$3) {
+         return false;
+      } else {
+         this.c(true);
+         return true;
+      }
+   }
+
+   public boolean a(double $$0) {
+      return this.t != null && this.t.a(ayo.a($$0, -1.0, 1.0));
+   }
+
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
+   }
+
+   public void c(boolean $$0) {
+      if (this.s != null && this.s.isDone()) {
+         Suggestions $$1 = this.s.join();
+         if (!$$1.isEmpty()) {
+            int $$2 = 0;
+
+            for (Suggestion $$3 : $$1.getList()) {
+               $$2 = Math.max($$2, this.h.b($$3.getText()));
+            }
+
+            int $$4 = ayo.a(this.g.p($$1.getRange().getStart()), 0, this.g.p(0) + this.g.h() - $$2);
+            int $$5 = this.m ? this.f.n - 12 : 72;
+            this.t = new fin.a($$4, $$5, $$2, this.a($$1), $$0);
+         }
+      }
+   }
+
+   public boolean a() {
+      return this.t != null;
+   }
+
+   public wz b() {
+      if (this.t != null && this.t.h) {
+         return this.w ? wz.c("narration.suggestion.usage.cycle.hidable") : wz.c("narration.suggestion.usage.cycle.fixed");
+      } else {
+         return this.w ? wz.c("narration.suggestion.usage.fill.hidable") : wz.c("narration.suggestion.usage.fill.fixed");
+      }
+   }
+
+   public void c() {
+      this.t = null;
+   }
+
+   private List<Suggestion> a(Suggestions $$0) {
+      String $$1 = this.g.a().substring(0, this.g.e());
+      int $$2 = a($$1);
+      String $$3 = $$1.substring($$2).toLowerCase(Locale.ROOT);
+      List<Suggestion> $$4 = Lists.newArrayList();
+      List<Suggestion> $$5 = Lists.newArrayList();
+
+      for (Suggestion $$6 : $$0.getList()) {
+         if (!$$6.getText().startsWith($$3) && !$$6.getText().startsWith("minecraft:" + $$3)) {
+            $$5.add($$6);
+         } else {
+            $$4.add($$6);
+         }
+      }
+
+      $$4.addAll($$5);
+      return $$4;
+   }
+
+   public void d() {
+      String $$0 = this.g.a();
+      if (this.r != null && !this.r.getReader().getString().equals($$0)) {
+         this.r = null;
+      }
+
+      if (!this.v) {
+         this.g.c(null);
+         this.t = null;
+      }
+
+      this.o.clear();
+      StringReader $$1 = new StringReader($$0);
+      boolean $$2 = $$1.canRead() && $$1.peek() == '/';
+      if ($$2) {
+         $$1.skip();
+      }
+
+      boolean $$3 = this.i || $$2;
+      int $$4 = this.g.e();
+      if ($$3) {
+         CommandDispatcher<ey> $$5 = this.e.s.h.q();
+         if (this.r == null) {
+            this.r = $$5.parse($$1, this.e.s.h.g());
+         }
+
+         int $$6 = this.j ? $$1.getCursor() : 1;
+         if ($$4 >= $$6 && (this.t == null || !this.v)) {
+            this.s = $$5.getCompletionSuggestions(this.r, $$4);
+            this.s.thenRun(() -> {
+               if (this.s.isDone()) {
+                  this.f();
+               }
+            });
+         }
+      } else {
+         String $$7 = $$0.substring(0, $$4);
+         int $$8 = a($$7);
+         Collection<String> $$9 = this.e.s.h.g().z();
+         this.s = ey.b($$9, new SuggestionsBuilder($$7, $$8));
+      }
+   }
+
+   private static int a(String $$0) {
+      if (Strings.isNullOrEmpty($$0)) {
+         return 0;
+      } else {
+         int $$1 = 0;
+         Matcher $$2 = a.matcher($$0);
+
+         while ($$2.find()) {
+            $$1 = $$2.end();
+         }
+
+         return $$1;
+      }
+   }
+
+   private static aya a(CommandSyntaxException $$0) {
+      wz $$1 = xc.a($$0.getRawMessage());
+      String $$2 = $$0.getContext();
+      return $$2 == null ? $$1.g() : wz.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).g();
    }
 
    private void f() {
-      this.a(this.r.apply(this.f));
+      boolean $$0 = false;
+      if (this.g.e() == this.g.a().length()) {
+         if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
+            int $$1 = 0;
+
+            for (Entry<CommandNode<ey>, CommandSyntaxException> $$2 : this.r.getExceptions().entrySet()) {
+               CommandSyntaxException $$3 = $$2.getValue();
+               if ($$3.getType() == CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect()) {
+                  $$1++;
+               } else {
+                  this.o.add(a($$3));
+               }
+            }
+
+            if ($$1 > 0) {
+               this.o.add(a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().create()));
+            }
+         } else if (this.r.getReader().canRead()) {
+            $$0 = true;
+         }
+      }
+
+      this.p = 0;
+      this.q = this.f.m;
+      if (this.o.isEmpty() && !this.a(n.h) && $$0) {
+         this.o.add(a(eu.b(this.r)));
+      }
+
+      this.t = null;
+      if (this.u && this.e.m.J().c()) {
+         this.c(false);
+      }
    }
 
-   @Override
-   public void b() {
-      if (fnx.s()) {
-         this.a(-1);
+   private boolean a(n $$0) {
+      CommandContextBuilder<ey> $$1 = this.r.getContext();
+      SuggestionContext<ey> $$2 = $$1.findSuggestionContext(this.g.e());
+      Map<CommandNode<ey>, String> $$3 = this.e.s.h.q().getSmartUsage($$2.parent, this.e.s.h.g());
+      List<aya> $$4 = Lists.newArrayList();
+      int $$5 = 0;
+      xw $$6 = xw.a.a($$0);
+
+      for (Entry<CommandNode<ey>, String> $$7 : $$3.entrySet()) {
+         if (!($$7.getKey() instanceof LiteralCommandNode)) {
+            $$4.add(aya.forward($$7.getValue(), $$6));
+            $$5 = Math.max($$5, this.h.b($$7.getValue()));
+         }
+      }
+
+      if (!$$4.isEmpty()) {
+         this.o.addAll($$4);
+         this.p = ayo.a(this.g.p($$2.startPos), 0, this.g.p(0) + this.g.h() - $$5);
+         this.q = $$5;
+         return true;
       } else {
-         this.a(1);
+         return false;
       }
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = ayn.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
+   private aya a(String $$0, int $$1) {
+      return this.r != null ? a(this.r, $$0, $$1) : aya.forward($$0, xw.a);
    }
 
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(ayn.b(this.d + $$0, $$1.size()));
+   @Nullable
+   static String a(String $$0, String $$1) {
+      return $$1.startsWith($$0) ? $$1.substring($$0.length()) : null;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
+   private static aya a(ParseResults<ey> $$0, String $$1, int $$2) {
+      List<aya> $$3 = Lists.newArrayList();
+      int $$4 = 0;
+      int $$5 = -1;
+      CommandContextBuilder<ey> $$6 = $$0.getContext().getLastChild();
 
-      return true;
-   }
+      for (ParsedArgument<ey, ?> $$7 : $$6.getArguments().values()) {
+         if (++$$5 >= d.size()) {
+            $$5 = 0;
+         }
 
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
+         int $$8 = Math.max($$7.getRange().getStart() - $$2, 0);
+         if ($$8 >= $$1.length()) {
+            break;
+         }
 
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      wy $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.f();
-   }
-
-   private wy c(T $$0) {
-      return (wy)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private xm d(T $$0) {
-      return wx.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected xm aM_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fmc $$0) {
-      $$0.a(fmb.a, this.aM_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         wy $$2 = this.c($$1);
-         if (this.aK_()) {
-            $$0.a(fmb.d, wy.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(fmb.d, wy.a("narration.cycle_button.usage.hovered", $$2));
+         int $$9 = Math.min($$7.getRange().getEnd() - $$2, $$1.length());
+         if ($$9 > 0) {
+            $$3.add(aya.forward($$1.substring($$4, $$8), c));
+            $$3.add(aya.forward($$1.substring($$8, $$9), d.get($$5)));
+            $$4 = $$9;
          }
       }
-   }
 
-   public xm c() {
-      return a_((wy)(this.q ? this.d(this.f) : this.z()));
-   }
-
-   public static <T> fin.a<T> a(Function<T, wy> $$0) {
-      return new fin.a<>($$0);
-   }
-
-   public static fin.a<Boolean> a(wy $$0, wy $$1) {
-      return new fin.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
-   }
-
-   public static fin.a<Boolean> e() {
-      return new fin.a<Boolean>($$0 -> $$0 ? wx.b : wx.c).a(b);
-   }
-
-   public static fin.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
-      @Nullable
-      private T b;
-      private final Function<T, wy> c;
-      private fgl.l<T> d = $$0x -> null;
-      private Function<fin<T>, xm> e = fin::c;
-      private fin.c<T> f = fin.c.a(ImmutableList.of());
-      private boolean g;
-
-      public a(Function<T, wy> $$0) {
-         this.c = $$0;
+      if ($$0.getReader().canRead()) {
+         int $$10 = Math.max($$0.getReader().getCursor() - $$2, 0);
+         if ($$10 < $$1.length()) {
+            int $$11 = Math.min($$10 + $$0.getReader().getRemainingLength(), $$1.length());
+            $$3.add(aya.forward($$1.substring($$4, $$10), c));
+            $$3.add(aya.forward($$1.substring($$10, $$11), b));
+            $$4 = $$11;
+         }
       }
 
-      public fin.a<T> a(Collection<T> $$0) {
-         return this.a(fin.c.a($$0));
+      $$3.add(aya.forward($$1.substring($$4), c));
+      return aya.composite($$3);
+   }
+
+   public void a(fhx $$0, int $$1, int $$2) {
+      if (!this.b($$0, $$1, $$2)) {
+         this.a($$0);
+      }
+   }
+
+   public boolean b(fhx $$0, int $$1, int $$2) {
+      if (this.t != null) {
+         this.t.a($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(fhx $$0) {
+      int $$1 = 0;
+
+      for (aya $$2 : this.o) {
+         int $$3 = this.m ? this.f.n - 14 - 13 - 12 * $$1 : 72 + 12 * $$1;
+         $$0.a(this.p - 1, $$3, this.p + this.q + 1, $$3 + 12, this.n);
+         $$0.b(this.h, $$2, this.p, $$3 + 2, -1);
+         $$1++;
+      }
+   }
+
+   public wz e() {
+      return (wz)(this.t != null ? wy.s.f().b(this.t.b()) : wy.a);
+   }
+
+   public class a {
+      private final gfc b;
+      private final String c;
+      private final List<Suggestion> d;
+      private int e;
+      private int f;
+      private ewz g = ewz.a;
+      boolean h;
+      private int i;
+
+      a(final int $$1, final int $$2, final int $$3, final List<Suggestion> $$4, final boolean $$5) {
+         int $$6 = $$1 - (fin.this.g.f() ? 0 : 1);
+         int $$7 = fin.this.m ? $$2 - 3 - Math.min($$4.size(), fin.this.l) * 12 : $$2 - (fin.this.g.f() ? 1 : 0);
+         this.b = new gfc($$6, $$7, $$3 + 1, Math.min($$4.size(), fin.this.l) * 12);
+         this.c = fin.this.g.a();
+         this.i = $$5 ? -1 : 0;
+         this.d = $$4;
+         this.b(0);
       }
 
-      @SafeVarargs
-      public final fin.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
+      public void a(fhx $$0, int $$1, int $$2) {
+         int $$3 = Math.min(this.d.size(), fin.this.l);
+         int $$4 = -5592406;
+         boolean $$5 = this.e > 0;
+         boolean $$6 = this.d.size() > this.e + $$3;
+         boolean $$7 = $$5 || $$6;
+         boolean $$8 = this.g.i != (float)$$1 || this.g.j != (float)$$2;
+         if ($$8) {
+            this.g = new ewz((float)$$1, (float)$$2);
+         }
+
+         if ($$7) {
+            $$0.a(this.b.a(), this.b.b() - 1, this.b.a() + this.b.c(), this.b.b(), fin.this.n);
+            $$0.a(this.b.a(), this.b.b() + this.b.d(), this.b.a() + this.b.c(), this.b.b() + this.b.d() + 1, fin.this.n);
+            if ($$5) {
+               for (int $$9 = 0; $$9 < this.b.c(); $$9++) {
+                  if ($$9 % 2 == 0) {
+                     $$0.a(this.b.a() + $$9, this.b.b() - 1, this.b.a() + $$9 + 1, this.b.b(), -1);
+                  }
+               }
+            }
+
+            if ($$6) {
+               for (int $$10 = 0; $$10 < this.b.c(); $$10++) {
+                  if ($$10 % 2 == 0) {
+                     $$0.a(this.b.a() + $$10, this.b.b() + this.b.d(), this.b.a() + $$10 + 1, this.b.b() + this.b.d() + 1, -1);
+                  }
+               }
+            }
+         }
+
+         boolean $$11 = false;
+
+         for (int $$12 = 0; $$12 < $$3; $$12++) {
+            Suggestion $$13 = this.d.get($$12 + this.e);
+            $$0.a(this.b.a(), this.b.b() + 12 * $$12, this.b.a() + this.b.c(), this.b.b() + 12 * $$12 + 12, fin.this.n);
+            if ($$1 > this.b.a() && $$1 < this.b.a() + this.b.c() && $$2 > this.b.b() + 12 * $$12 && $$2 < this.b.b() + 12 * $$12 + 12) {
+               if ($$8) {
+                  this.b($$12 + this.e);
+               }
+
+               $$11 = true;
+            }
+
+            $$0.b(fin.this.h, $$13.getText(), this.b.a() + 1, this.b.b() + 2 + 12 * $$12, $$12 + this.e == this.f ? -256 : -5592406);
+         }
+
+         if ($$11) {
+            Message $$14 = this.d.get(this.f).getTooltip();
+            if ($$14 != null) {
+               $$0.a(fin.this.h, xc.a($$14), $$1, $$2);
+            }
+         }
       }
 
-      public fin.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(fin.c.a(fin.a, $$0, $$1));
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (!this.b.b($$0, $$1)) {
+            return false;
+         } else {
+            int $$3 = ($$1 - this.b.b()) / 12 + this.e;
+            if ($$3 >= 0 && $$3 < this.d.size()) {
+               this.b($$3);
+               this.a();
+            }
+
+            return true;
+         }
       }
 
-      public fin.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(fin.c.a($$0, $$1, $$2));
+      public boolean a(double $$0) {
+         int $$1 = (int)(fin.this.e.n.e() * (double)fin.this.e.aM().p() / (double)fin.this.e.aM().n());
+         int $$2 = (int)(fin.this.e.n.f() * (double)fin.this.e.aM().q() / (double)fin.this.e.aM().o());
+         if (this.b.b($$1, $$2)) {
+            this.e = ayo.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - fin.this.l, 0));
+            return true;
+         } else {
+            return false;
+         }
       }
 
-      public fin.a<T> a(fin.c<T> $$0) {
+      public boolean b(int $$0, int $$1, int $$2) {
+         if ($$0 == 265) {
+            this.a(-1);
+            this.h = false;
+            return true;
+         } else if ($$0 == 264) {
+            this.a(1);
+            this.h = false;
+            return true;
+         } else if ($$0 == 258) {
+            if (this.h) {
+               this.a(fob.s() ? -1 : 1);
+            }
+
+            this.a();
+            return true;
+         } else if ($$0 == 256) {
+            fin.this.c();
+            fin.this.g.c(null);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public void a(int $$0) {
+         this.b(this.f + $$0);
+         int $$1 = this.e;
+         int $$2 = this.e + fin.this.l - 1;
+         if (this.f < $$1) {
+            this.e = ayo.a(this.f, 0, Math.max(this.d.size() - fin.this.l, 0));
+         } else if (this.f > $$2) {
+            this.e = ayo.a(this.f + fin.this.k - fin.this.l, 0, Math.max(this.d.size() - fin.this.l, 0));
+         }
+      }
+
+      public void b(int $$0) {
          this.f = $$0;
-         return this;
-      }
-
-      public fin.a<T> a(fgl.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fin.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+         if (this.f < 0) {
+            this.f = this.f + this.d.size();
          }
 
-         return this;
-      }
+         if (this.f >= this.d.size()) {
+            this.f = this.f - this.d.size();
+         }
 
-      public fin.a<T> a(Function<fin<T>, xm> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fin.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public fin<T> a(wy $$0, fin.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
-      }
-
-      public fin<T> a(int $$0, int $$1, int $$2, int $$3, wy $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public fin<T> a(int $$0, int $$1, int $$2, int $$3, wy $$4, fin.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            wy $$8 = this.c.apply($$7);
-            wy $$9 = (wy)(this.g ? $$8 : wx.a($$4, $$8));
-            return new fin<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+         Suggestion $$1 = this.d.get(this.f);
+         fin.this.g.c(fin.a(fin.this.g.a(), $$1.apply(this.c)));
+         if (this.i != this.f) {
+            fin.this.e.aV().c(this.b());
          }
       }
-   }
 
-   public interface b<T> {
-      void onValueChange(fin<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> fin.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new fin.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
+      public void a() {
+         Suggestion $$0 = this.d.get(this.f);
+         fin.this.v = true;
+         fin.this.g.a($$0.apply(this.c));
+         int $$1 = $$0.getRange().getStart() + $$0.getText().length();
+         fin.this.g.e($$1);
+         fin.this.g.i($$1);
+         this.b(this.f);
+         fin.this.v = false;
+         this.h = true;
       }
 
-      static <T> fin.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new fin.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
+      wz b() {
+         this.i = this.f;
+         Suggestion $$0 = this.d.get(this.f);
+         Message $$1 = $$0.getTooltip();
+         return $$1 != null
+            ? wz.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), wz.a($$1))
+            : wz.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
       }
    }
 }

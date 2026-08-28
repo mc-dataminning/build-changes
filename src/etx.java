@@ -1,61 +1,59 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class etx extends esy {
-   private static final Codec<List<etx.b>> b = etx.b.a.listOf().validate($$0 -> {
-      Set<jm<brw>> $$1 = new ObjectOpenHashSet();
-
-      for (etx.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
+public class etx extends etc {
    public static final MapCodec<etx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, etx::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  xb.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  etb.a(256).forGetter($$0x -> $$0x.c),
+                  erp.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, etx::new)
    );
-   private final List<etx.b> c;
+   private final List<wz> b;
+   private final etb c;
+   private final Optional<erp.b> d;
 
-   etx(List<euw> $$0, List<etx.b> $$1) {
+   public etx(List<eva> $$0, List<wz> $$1, etb $$2, Optional<erp.b> $$3) {
       super($$0);
-      this.c = $$1;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public eta<etx> b() {
-      return etb.r;
+   public ete<etx> b() {
+      return etf.A;
    }
 
    @Override
-   public Set<eue<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<eui<?>> a() {
+      return this.d.<Set<eui<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cuo a(cuo $$0, erl $$1) {
-      if ($$0.a(cur.vX) && !this.c.isEmpty()) {
-         etx.b $$2 = ad.a(this.c, $$1.b());
-         jm<brw> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
+   public cuq a(cuq $$0, erp $$1) {
+      $$0.a(kq.i, cxp.a, $$1x -> new cxp(this.a($$1x, $$1)));
+      return $$0;
+   }
 
-         cxu.a $$5 = new cxu.a($$3, $$4);
-         $$0.a(kq.H, cxu.a, $$5, cxu::a);
-         return $$0;
+   private List<wz> a(@Nullable cxp $$0, erp $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         return $$0;
+         UnaryOperator<wz> $$2 = ety.a($$1, this.d.orElse(null));
+         List<wz> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
@@ -63,35 +61,33 @@ public class etx extends esy {
       return new etx.a();
    }
 
-   public static class a extends esy.a<etx.a> {
-      private final Builder<etx.b> a = ImmutableList.builder();
+   public static class a extends etc.a<etx.a> {
+      private Optional<erp.b> a = Optional.empty();
+      private final Builder<wz> b = ImmutableList.builder();
+      private etb c = etb.a.b;
+
+      public etx.a a(etb $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public etx.a a(erp.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public etx.a a(wz $$0) {
+         this.b.add($$0);
+         return this;
+      }
 
       protected etx.a a() {
          return this;
       }
 
-      public etx.a a(jm<brw> $$0, evs $$1) {
-         this.a.add(new etx.b($$0, $$1));
-         return this;
-      }
-
       @Override
-      public esz b() {
-         return new etx(this.g(), this.a.build());
-      }
-   }
-
-   static record b(jm<brw> b, evs c) {
-      public static final Codec<etx.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brw.a.fieldOf("type").forGetter(etx.b::a), evt.a.fieldOf("duration").forGetter(etx.b::b)).apply($$0, etx.b::new)
-      );
-
-      public jm<brw> a() {
-         return this.b;
-      }
-
-      public evs b() {
-         return this.c;
+      public etd b() {
+         return new etx(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

@@ -1,17 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gmw extends glm<cpf> {
+   private final gfr g;
 
-public class gmw extends gix<chg, fvp<chg>> {
-   private static final Map<bsw<?>, akq> a = Maps.newHashMap(
-      ImmutableMap.of(bsw.bv, akq.b("textures/entity/horse/horse_zombie.png"), bsw.aO, akq.b("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gmw(gkd.a $$0, fyc $$1) {
-      super($$0, new fvp<>($$0.a($$1)), 1.0F);
+   public gmw(gkh.a $$0) {
+      super($$0, fyh.bH);
+      this.g = $$0.c();
    }
 
-   public akq a(chg $$0) {
-      return a.get($$0.am());
+   protected void a(cpf $$0, float $$1, dtc $$2, fbg $$3, gex $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = ayo.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.g, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(gfr $$0, dtc $$1, fbg $$2, gex $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gqa.a(gqa.a(1.0F), 10);
+      } else {
+         $$6 = gqa.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

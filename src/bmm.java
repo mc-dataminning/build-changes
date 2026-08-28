@@ -1,9 +1,66 @@
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bmm<S> {
-   Stream<String> possibleValues(bmj<S> var1);
+public final class bmm {
+   private final Object2ObjectMap<bmf<?>, Object> a = new Object2ObjectArrayMap();
 
-   static <S> bmm<S> b() {
-      return $$0 -> Stream.empty();
+   public <T> void a(bmf<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T a(bmf<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(bmf<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bmf<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bmf<T>... $$0) {
+      for (bmf<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bmf<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bmm $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof bmm $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

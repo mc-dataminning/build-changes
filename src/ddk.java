@@ -1,92 +1,41 @@
-public interface ddk extends dca {
-   ji[] C = ji.values();
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   default int a(jd $$0, ji $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
-   }
+public class ddk {
+   private final List<ddk.a> a = Lists.newArrayList();
 
-   default int e_(jd $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), ji.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), ji.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.e(), ji.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), ji.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), ji.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), ji.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
+   public void a(jd $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new ddk.a($$0, $$1));
       }
    }
 
-   default int a(jd $$0, ji $$1, boolean $$2) {
-      dta $$3 = this.a_($$0);
-      if ($$2) {
-         return dhy.m($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dfy.ha)) {
-         return 15;
-      } else if ($$3.a(dfy.cw)) {
-         return $$3.c(dlz.f);
+   public double b(jd $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
       } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
-   }
+         double $$2 = 0.0;
 
-   default boolean b(jd $$0, ji $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(jd $$0, ji $$1) {
-      dta $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean C(jd $$0) {
-      if (this.c($$0.d(), ji.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), ji.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), ji.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ji.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), ji.e) > 0 ? true : this.c($$0.h(), ji.f) > 0;
-      }
-   }
-
-   default int D(jd $$0) {
-      int $$1 = 0;
-
-      for (ji $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
+         for (ddk.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
 
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+         return $$2 * $$1;
+      }
+   }
+
+   static class a {
+      private final jd a;
+      private final double b;
+
+      public a(jd $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1;
+      public double a(jd $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

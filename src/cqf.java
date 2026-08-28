@@ -1,5 +1,7 @@
 public interface cqf {
-   void a(cps var1, int var2, cuo var3);
+   int a(int var1);
 
-   void a(cps var1, int var2, int var3);
+   void a(int var1, int var2);
+
+   int a();
 }

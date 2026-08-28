@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class cey extends btp {
+   protected cey(bsx<? extends cey> $$0, dcw $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cey {
+   @Override
+   public boolean y() {
+      return false;
+   }
 }

@@ -1,20 +1,17 @@
-public class gno extends gop<ckx, fun<ckx>> {
-   private static final akq a = akq.b("textures/entity/breeze/breeze_wind.png");
-   private final fun<ckx> b;
+public class gno extends gky<ckx, fyb<ckx>> {
+   private static final akr a = akr.b("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gno(gkd.a $$0, glz<ckx, fun<ckx>> $$1) {
-      super($$1);
-      this.b = new fun<>($$0.a(fyd.t));
+   public gno(gkh.a $$0) {
+      super($$0, new fyb<>($$0.a(fyh.cl)), 0.5F);
+      this.a(new goj<>(this, new fyb($$0.a(fyh.cm)), new fyb($$0.a(fyh.cn)), $$0.g()));
+      this.a(new gpe<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(fbc $$0, get $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      fbg $$11 = $$1.getBuffer(gfb.a(a, this.a($$10) % 1.0F, 0.0F));
-      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gjj.a(this.b, this.b.e()).a($$0, $$11, $$2, gpw.d);
+   public akr a(ckx $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   protected boolean b(ckx $$0) {
+      return super.a($$0) || $$0.gv();
    }
 }

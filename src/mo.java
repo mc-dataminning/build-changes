@@ -22,17 +22,17 @@ public class mo implements ma {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               ako<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               akp<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.b(lu.f)
                   .b()
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        dtb<dfw, dta> $$4x = ((dfw)$$2x.a()).l();
+                        dtd<dfy, dtc> $$4x = ((dfy)$$2x.a()).l();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (dud<?> $$6 : $$4x.d()) {
+                           for (duf<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class mo implements ma {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           dta $$10 = (dta)var13.next();
+                           dtc $$10 = (dtc)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (dud<?> $$13 : $$4x.d()) {
+                           for (duf<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ad.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class mo implements ma {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dfw.i($$10));
-                           if ($$10 == ((dfw)$$2x.a()).o()) {
+                           $$11.addProperty("id", dfy.i($$10));
+                           if ($$10 == ((dfy)$$2x.a()).o()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class mo implements ma {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dfx.a
+                        JsonElement $$15 = (JsonElement)dfz.a
                            .codec()
-                           .encodeStart($$4, (dfw)$$2x.a())
+                           .encodeStart($$4, (dfy)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

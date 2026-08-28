@@ -1,105 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dmk implements azj {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dmk extends dgh {
+   public static final MapCodec<dmk> a = b(dmk::new);
+   protected static final float b = 6.0F;
+   protected static final ext c = dfy.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   public static final Codec<dmk> e = azj.a(dmk::values);
-   private final String f;
-   private final h g;
-
-   private dmk(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dmk> a() {
+      return a;
    }
 
-   public dmk a(dmk $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ji a(ji $$0) {
-      if ($$0.o() == ji.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dmk a(ayv $$0) {
-      return ad.a(values(), $$0);
-   }
-
-   public static List<dmk> b(ayv $$0) {
-      return ad.b(values(), $$0);
+   protected dmk(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
+      return $$0.a(awe.aL) || $$0.a(dga.dX) || super.b($$0, $$1, $$2);
    }
 }

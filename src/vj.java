@@ -1,42 +1,89 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface vj extends uv {
+   vj a = new vj() {
+   };
 
-public class vj extends vf {
-   private final Deque<vh> a = new ArrayDeque<>();
-
-   public vj(vg... $$0) {
-      vh $$1 = vh.a();
-
-      for (vg $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   @Override
+   default uv.b a() {
+      return uv.b.a;
    }
 
    @Override
-   public uu.a a(uz<?> $$0, String $$1) {
-      vh $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return uu.a.b;
-      } else {
-         if ($$0 == ua.b) {
-            vh $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   default uv.b a(String $$0) {
+      return uv.b.a;
    }
 
    @Override
-   public uu.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   default uv.b a(byte $$0) {
+      return uv.b.a;
+   }
 
-      return super.b();
+   @Override
+   default uv.b a(short $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(int $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(long $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(float $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(double $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(byte[] $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(int[] $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(long[] $$0) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b a(va<?> $$0, int $$1) {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.a b(va<?> $$0, int $$1) {
+      return uv.a.b;
+   }
+
+   @Override
+   default uv.a a(va<?> $$0) {
+      return uv.a.b;
+   }
+
+   @Override
+   default uv.a a(va<?> $$0, String $$1) {
+      return uv.a.b;
+   }
+
+   @Override
+   default uv.b b() {
+      return uv.b.a;
+   }
+
+   @Override
+   default uv.b b(va<?> $$0) {
+      return uv.b.a;
    }
 }

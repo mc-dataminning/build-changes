@@ -1,7 +1,54 @@
-public interface eyp<T> {
-   void a(eyn<T> var1);
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
-   boolean a(jd var1, T var2);
+public class eyp<T> implements eys<T>, eyu<T> {
+   private final List<eyq<T>> a = Lists.newArrayList();
+   private final Set<eyq<?>> b = new ObjectOpenCustomHashSet(eyq.a);
 
-   int a();
+   @Override
+   public void a(eyr<T> $$0) {
+      eyq<T> $$1 = new eyq<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
+   }
+
+   private void a(eyq<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
+      }
+   }
+
+   @Override
+   public boolean a(jd $$0, T $$1) {
+      return this.b.contains(eyq.a($$1, $$0));
+   }
+
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public uy b(long $$0, Function<T, String> $$1) {
+      uh $$2 = new uh();
+
+      for (eyq<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
+      }
+
+      return $$2;
+   }
+
+   public List<eyq<T>> b() {
+      return List.copyOf(this.a);
+   }
+
+   public static <T> eyp<T> a(uh $$0, Function<String, Optional<T>> $$1, dcd $$2) {
+      eyp<T> $$3 = new eyp<>();
+      eyq.a($$0, $$1, $$2, $$3::a);
+      return $$3;
+   }
 }

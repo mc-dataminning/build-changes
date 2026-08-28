@@ -1,76 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class dez extends dfw implements dfz {
-   public static final MapCodec<dez> a = b(dez::new);
-   protected static final float b = 4.0F;
-   protected static final exp c = dfw.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class dez extends dgh {
+   public static final MapCodec<dez> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akq.a(lu.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               akq.a(lu.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               akq.a(lu.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, dez::new)
+   );
+   public static final dtw b = dju.aE;
+   protected static final float c = 2.0F;
+   private static final Map<ji, ext> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         ji.d,
+         dfy.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         ji.e,
+         dfy.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         ji.c,
+         dfy.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         ji.f,
+         dfy.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final akq<dfy> e;
+   private final akq<dfy> f;
+   private final akq<cul> g;
 
    @Override
    public MapCodec<dez> a() {
       return a;
    }
 
-   public dez(dsz.d $$0) {
-      super($$0);
+   protected dez(akq<dfy> $$0, akq<dfy> $$1, akq<cul> $$2, dtb.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, ji.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
-      eww $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
-   }
-
-   @Override
-   protected boolean a(dta $$0, dcx $$1, jd $$2) {
-      return $$1.a_($$2.d()).a(awd.au);
-   }
-
-   @Override
-   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dfy.a.o();
-      } else {
-         if ($$1 == ji.b && $$2.a(dfy.mZ)) {
-            $$3.a($$4, dfy.mZ.o(), 2);
+   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dfy> $$6 = $$3.H_().d(lu.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().o().b(dnv.c, Integer.valueOf(7));
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cuo a(dcx $$0, jd $$1, dta $$2) {
-      return new cuo(cur.dR);
+   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
+      return $$0.a(dga.cC);
    }
 
    @Override
-   public boolean b(dcx $$0, jd $$1, dta $$2) {
-      return $$0.a_($$1.c()).i();
+   public cuq a(dcz $$0, jd $$1, dtc $$2) {
+      return new cuq((dcv)DataFixUtils.orElse($$0.H_().d(lu.K).e(this.g), this));
    }
 
    @Override
-   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
-      return true;
+   protected dtc a(dtc $$0, dmm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
-      this.a($$0, $$2);
+   protected dtc a(dtc $$0, dkv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected float a(dta $$0, cmv $$1, dca $$2, jd $$3) {
-      return $$1.eU().g() instanceof cwe ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dcu $$0, jd $$1) {
-      $$0.a($$1.c(), dfy.mZ.o().a(dfa.i, dtm.b), 3);
+   protected void a(dtd.a<dfy, dtc> $$0) {
+      $$0.a(b);
    }
 }

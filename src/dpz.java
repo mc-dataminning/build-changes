@@ -1,147 +1,99 @@
-import javax.annotation.Nullable;
+public class dpz {
+   public static final akq<dpx> a = a("base");
+   public static final akq<dpx> b = a("square_bottom_left");
+   public static final akq<dpx> c = a("square_bottom_right");
+   public static final akq<dpx> d = a("square_top_left");
+   public static final akq<dpx> e = a("square_top_right");
+   public static final akq<dpx> f = a("stripe_bottom");
+   public static final akq<dpx> g = a("stripe_top");
+   public static final akq<dpx> h = a("stripe_left");
+   public static final akq<dpx> i = a("stripe_right");
+   public static final akq<dpx> j = a("stripe_center");
+   public static final akq<dpx> k = a("stripe_middle");
+   public static final akq<dpx> l = a("stripe_downright");
+   public static final akq<dpx> m = a("stripe_downleft");
+   public static final akq<dpx> n = a("small_stripes");
+   public static final akq<dpx> o = a("cross");
+   public static final akq<dpx> p = a("straight_cross");
+   public static final akq<dpx> q = a("triangle_bottom");
+   public static final akq<dpx> r = a("triangle_top");
+   public static final akq<dpx> s = a("triangles_bottom");
+   public static final akq<dpx> t = a("triangles_top");
+   public static final akq<dpx> u = a("diagonal_left");
+   public static final akq<dpx> v = a("diagonal_up_right");
+   public static final akq<dpx> w = a("diagonal_up_left");
+   public static final akq<dpx> x = a("diagonal_right");
+   public static final akq<dpx> y = a("circle");
+   public static final akq<dpx> z = a("rhombus");
+   public static final akq<dpx> A = a("half_vertical");
+   public static final akq<dpx> B = a("half_horizontal");
+   public static final akq<dpx> C = a("half_vertical_right");
+   public static final akq<dpx> D = a("half_horizontal_bottom");
+   public static final akq<dpx> E = a("border");
+   public static final akq<dpx> F = a("curly_border");
+   public static final akq<dpx> G = a("gradient");
+   public static final akq<dpx> H = a("gradient_up");
+   public static final akq<dpx> I = a("bricks");
+   public static final akq<dpx> J = a("globe");
+   public static final akq<dpx> K = a("creeper");
+   public static final akq<dpx> L = a("skull");
+   public static final akq<dpx> M = a("flower");
+   public static final akq<dpx> N = a("mojang");
+   public static final akq<dpx> O = a("piglin");
+   public static final akq<dpx> P = a("flow");
+   public static final akq<dpx> Q = a("guster");
 
-public abstract class dpz extends dqf implements bqj, bqu, bqv {
-   private bqt d = bqt.a;
-   @Nullable
-   private wy e;
-
-   protected dpz(dqh<?> $$0, jd $$1, dta $$2) {
-      super($$0, $$1, $$2);
+   private static akq<dpx> a(String $$0) {
+      return akq.a(lu.d, akr.b($$0));
    }
 
-   @Override
-   protected void a(ua $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      this.d = bqt.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = a($$0.l("CustomName"), $$1);
-      }
+   public static void a(qq<dpx> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
+      a($$0, P);
+      a($$0, Q);
    }
 
-   @Override
-   protected void b(ua $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      if (this.e != null) {
-         $$0.a("CustomName", wy.a.a(this.e, $$1));
-      }
-   }
-
-   @Override
-   public wy ah() {
-      return this.e != null ? this.e : this.k();
-   }
-
-   @Override
-   public wy O_() {
-      return this.ah();
-   }
-
-   @Nullable
-   @Override
-   public wy aj() {
-      return this.e;
-   }
-
-   protected abstract wy k();
-
-   public boolean d(cmv $$0) {
-      return a($$0, this.d, this.O_());
-   }
-
-   public static boolean a(cmv $$0, bqt $$1, wy $$2) {
-      if (!$$0.N_() && !$$1.a($$0.eU())) {
-         $$0.a(wy.a("container.isLocked", $$2), true);
-         $$0.a(avo.eP, avp.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract jv<cuo> j();
-
-   protected abstract void a(jv<cuo> var1);
-
-   @Override
-   public boolean c() {
-      for (cuo $$0 : this.j()) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cuo a(int $$0) {
-      return this.j().get($$0);
-   }
-
-   @Override
-   public cuo a(int $$0, int $$1) {
-      cuo $$2 = bqk.a(this.j(), $$0, $$1);
-      if (!$$2.e()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cuo b(int $$0) {
-      return bqk.a(this.j(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cuo $$1) {
-      this.j().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cmv $$0) {
-      return bqj.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.j().clear();
-   }
-
-   @Nullable
-   @Override
-   public cps createMenu(int $$0, cmu $$1, cmv $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cps a(int var1, cmu var2);
-
-   @Override
-   protected void a(dqf.b $$0) {
-      super.a($$0);
-      this.e = $$0.a(kq.g);
-      this.d = $$0.a(kq.ae, bqt.a);
-      $$0.a(kq.ab, cxm.a).a(this.j());
-   }
-
-   @Override
-   protected void a(km.a $$0) {
-      super.a($$0);
-      $$0.a(kq.g, this.e);
-      if (!this.d.equals(bqt.a)) {
-         $$0.a(kq.ae, this.d);
-      }
-
-      $$0.a(kq.ab, cxm.a(this.j()));
-   }
-
-   @Override
-   public void a(ua $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
-      $$0.r("Items");
+   public static void a(qq<dpx> $$0, akq<dpx> $$1) {
+      $$0.a($$1, new dpx($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

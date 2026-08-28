@@ -1,57 +1,19 @@
-import java.util.OptionalInt;
-
-public interface cvk {
-   cnn a(dcu var1, jw var2, cuo var3, ji var4);
-
-   default cvk.a c() {
-      return cvk.a.a;
+public class cvk extends cwe {
+   public cvk(dfy $$0, dfy $$1, cul.a $$2) {
+      super($$0, $$1, $$2, ji.a);
    }
 
-   default void a(cnn $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   @Override
+   public wz n(cuq $$0) {
+      cxu $$1 = $$0.a(kq.W);
+      return (wz)($$1 != null && $$1.c().isPresent() ? wz.a(this.a() + ".named", $$1.c().get()) : super.n($$0));
    }
 
-   public static record a(cvk.b b, float c, float d, OptionalInt e) {
-      public static final cvk.a a = a().a();
-
-      public static cvk.a.a a() {
-         return new cvk.a.a();
+   @Override
+   public void m(cuq $$0) {
+      cxu $$1 = $$0.a(kq.W);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kq.W, $$1x), dru.a);
       }
-
-      public static class a {
-         private cvk.b a = ($$0, $$1) -> dib.a($$0, 0.7, new eww(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cvk.a.a a(cvk.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public cvk.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cvk.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cvk.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cvk.a a() {
-            return new cvk.a(this.a, this.b, this.c, this.d);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      jw getDispensePosition(ku var1, ji var2);
    }
 }

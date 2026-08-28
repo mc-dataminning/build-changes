@@ -1,43 +1,21 @@
-public class gbp extends gdh {
-   private final gdc a;
-
-   protected gbp(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdc $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+public class gbp extends gbq<lh> {
+   protected gbp(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lh $$7, gdg $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.b().x(), $$9);
+      this.w = this.a($$7.b().y(), $$9);
+      this.x = this.a($$7.b().z(), $$9);
    }
 
-   @Override
-   public gcl b() {
-      return gcl.b;
-   }
+   public static class a implements gco<lh> {
+      private final gdg a;
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static class a implements gck<lq> {
-      private final gdc a;
-
-      public a(gdc $$0) {
+      public a(gdg $$0) {
          this.a = $$0;
       }
 
-      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gcl a(lh $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

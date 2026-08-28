@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ewb {
-   @Nullable
-   exz a(erl var1);
-
-   ewa a();
-
-   Set<eue<?>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ewb {
 }

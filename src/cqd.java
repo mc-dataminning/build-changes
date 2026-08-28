@@ -1,7 +1,4 @@
-public interface cqd {
-   int a(int var1);
-
-   void a(int var1, int var2);
-
-   int a();
+public enum cqd {
+   a,
+   b;
 }

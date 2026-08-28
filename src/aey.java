@@ -1,52 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record aey(int c, List<ajz.c<?>> d) implements zf<abt> {
-   public static final yw<wj, aey> a = zf.a(aey::b, aey::new);
-   public static final int b = 255;
+public class aey implements zg<abu> {
+   public static final yx<vw, aey> a = zg.a(aey::a, aey::new);
+   private final exv b;
+   private final String c;
 
-   private aey(wj $$0) {
-      this($$0.l(), a($$0));
-   }
-
-   private static void a(List<ajz.c<?>> $$0, wj $$1) {
-      for (ajz.c<?> $$2 : $$0) {
-         $$2.a($$1);
+   public aey(exv $$0, @Nullable exw $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
       }
-
-      $$1.k(255);
    }
 
-   private static List<ajz.c<?>> a(wj $$0) {
-      List<ajz.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ajz.c.a($$0, $$2));
-      }
-
-      return $$1;
+   private aey(vw $$0) {
+      this.b = $$0.a(exv.u);
+      this.c = $$0.p();
    }
 
-   private void b(wj $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vw $$0) {
+      $$0.a(exv::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zh<aey> a() {
-      return agf.aC;
+   public zi<aey> a() {
+      return agg.aB;
    }
 
-   public void a(abt $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public exv b() {
+      return this.b;
    }
 
-   public List<ajz.c<?>> e() {
-      return this.d;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

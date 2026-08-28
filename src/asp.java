@@ -1,41 +1,9 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
 
-public interface asp extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
-
-   @Nullable
-   atv<InputStream> a(String... var1);
-
-   @Nullable
-   atv<InputStream> a(asr var1, akq var2);
-
-   void a(asr var1, String var2, String var3, asp.a var4);
-
-   Set<String> a(asr var1);
-
-   @Nullable
-   <T> T a(atc<T> var1) throws IOException;
-
-   aso a();
-
-   default String b() {
-      return this.a().a();
-   }
-
-   default Optional<atk> c() {
-      return this.a().d();
-   }
-
-   @Override
-   void close();
-
-   @FunctionalInterface
-   public interface a extends BiConsumer<akq, atv<InputStream>> {
+public record asp(String a, wz b, atq c, Optional<atl> d) {
+   public wz a(boolean $$0, wz $$1) {
+      return xc.a(this.c.a(wz.b(this.a)))
+         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xf(xf.a.a, wz.i().b(this.b).f("\n").b($$1))));
    }
 }

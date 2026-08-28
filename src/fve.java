@@ -1,26 +1,51 @@
-import java.util.function.Function;
-
-public abstract class fve<T extends bsq> extends fwa {
-   public float c;
-   public boolean d;
-   public boolean e = true;
-
-   protected fve() {
-      this(gfb::e);
-   }
-
-   protected fve(Function<akq, gfb> $$0) {
+public class fve<T extends ckw> extends fya<T> {
+   public fve(fyi $$0) {
       super($$0);
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+   public static fyo a(fym $$0) {
+      fyq $$1 = fvv.a($$0, 0.0F);
+      fyr $$2 = $$1.a();
+      $$2.a("left_arm", fyn.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fyk.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fyn.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fyk.a(1.9F, 12.0F, 0.0F));
+      return fyo.a($$1, 64, 64);
    }
 
-   public void a(fve<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fvv.a.a;
+      this.r = fvv.a.a;
+      cuq $$4 = $$0.b(bqq.a);
+      if ($$4.a(cut.vS) && $$0.gc()) {
+         if ($$0.fr() == btg.b) {
+            this.s = fvv.a.e;
+         } else {
+            this.r = fvv.a.e;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.r == fvv.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
+      }
+
+      if (this.s == fvv.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
+
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * ayo.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * ayo.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * ayo.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * ayo.a(0.1F * $$3);
+         this.k.e = 0.0F;
+      }
    }
 }
