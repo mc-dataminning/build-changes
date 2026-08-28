@@ -98,7 +98,7 @@ public class eae implements eab, AutoCloseable {
    }
 
    private boolean a(tq $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 4185 ? $$0.b("blending_data", 10) : true;
    }
 
    public CompletableFuture<Void> a(dfo $$0, @Nullable tq $$1) {

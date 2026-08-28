@@ -1,4 +1,4 @@
-// 1.21.4 Release Candidate 1	2026-08-28T03:16:53.881307984	vanilla/Loot Tables
+// 1.21.4 Release Candidate 2	2026-08-28T03:19:19.134528549	vanilla/Loot Tables
 6a9c523b197b53b50ee100e38af9bba416c8381d data/minecraft/loot_table/gameplay/chicken_lay.json
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
@@ -26,8 +26,8 @@ ed568c20d6aa288f0a53b535b478e4a8ebcf1d66 data/minecraft/loot_table/blocks/warped
 444703f9e53c6b1271c9218ffc307f023741d5ab data/minecraft/loot_table/blocks/pale_oak_trapdoor.json
 c79ea731ff803064f411186e2c83228bd69de6b7 data/minecraft/loot_table/blocks/brain_coral_fan.json
 c6b0ea0952d8724062deb5e0bd9b6efff0e4cc9f data/minecraft/loot_table/blocks/mossy_cobblestone_wall.json
-c88a549d73777c0a5facb18981a014432e739943 data/minecraft/loot_table/chests/ancient_city_ice_box.json
 42bc34b00648ba8c73cb4a60d7d33b6a8a26ce03 data/minecraft/loot_table/blocks/trapped_chest.json
+c88a549d73777c0a5facb18981a014432e739943 data/minecraft/loot_table/chests/ancient_city_ice_box.json
 61592d755f68b3a5ae3f7ad9aee731f604bf7916 data/minecraft/loot_table/blocks/tuff.json
 168cdd50fcf3ff4ca9cfb124424523c215b07fb6 data/minecraft/loot_table/chests/buried_treasure.json
 f5d98aca4c35fe078667a5f2bc868efaa4765f0d data/minecraft/loot_table/blocks/oak_wood.json
@@ -197,8 +197,8 @@ d078f86b2b259414390c3f73d0ec47cf5aa82e2f data/minecraft/loot_table/entities/armo
 9c84229faeb59a6cb7ff392155bec5f484e7485d data/minecraft/loot_table/blocks/decorated_pot.json
 55fd98ba68df9d0e4eb1bf9a247bb768a5f34305 data/minecraft/loot_table/dispensers/trial_chambers/water.json
 4e3bbbbc0c7e42061371761bdf5497163de92965 data/minecraft/loot_table/blocks/mangrove_roots.json
-109e929006eecafbb68188317d7704680c4909ea data/minecraft/loot_table/gameplay/hero_of_the_village/farmer_gift.json
 929dca7fc2ac2043de4eab615743d90a9660f2bc data/minecraft/loot_table/blocks/quartz_pillar.json
+109e929006eecafbb68188317d7704680c4909ea data/minecraft/loot_table/gameplay/hero_of_the_village/farmer_gift.json
 55b992fe23f26d0de1d34a671daebd21284f611a data/minecraft/loot_table/blocks/weathered_copper.json
 bc4058702b02da09b5e5b0c287e821296c45a3a5 data/minecraft/loot_table/blocks/cyan_candle_cake.json
 01c6978c4667b10e44caefd1a395394fb1970064 data/minecraft/loot_table/chests/village/village_mason.json
