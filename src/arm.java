@@ -196,7 +196,7 @@ public class arm extends eaz implements ark.b, arx {
    protected IntSupplier c(long $$0) {
       return () -> {
          ark $$1 = this.b($$0);
-         return $$1 == null ? arp.a - 1 : Math.min($$1.j(), arp.a - 1);
+         return $$1 == null ? arp.a - 1 : Math.min($$1.k(), arp.a - 1);
       };
    }
 
@@ -205,9 +205,9 @@ public class arm extends eaz implements ark.b, arx {
       if ($$1 == null) {
          return "null";
       } else {
-         String $$2 = $$1.i() + "\n";
-         eaq $$3 = $$1.t();
-         dzp $$4 = $$1.o();
+         String $$2 = $$1.j() + "\n";
+         eaq $$3 = $$1.u();
+         dzp $$4 = $$1.p();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.b() + $$3 + "§r\n";
          }
@@ -216,7 +216,7 @@ public class arm extends eaz implements ark.b, arx {
             $$2 = $$2 + "Ch: §" + $$4.n().b() + $$4.n() + "§r\n";
          }
 
-         arw $$5 = $$1.r();
+         arw $$5 = $$1.s();
          $$2 = $$2 + '§' + $$5.ordinal() + $$5;
          return $$2 + "§r";
       }
@@ -229,7 +229,7 @@ public class arm extends eaz implements ark.b, arx {
       } else {
          int $$4 = bae.h($$1 * 2 + 1);
          List<CompletableFuture<arn<dzp>>> $$5 = new ArrayList<>($$4);
-         dgn $$6 = $$0.q();
+         dgn $$6 = $$0.r();
 
          for (int $$7 = -$$1; $$7 <= $$1; $$7++) {
             for (int $$8 = -$$1; $$8 <= $$1; $$8++) {
@@ -268,11 +268,11 @@ public class arm extends eaz implements ark.b, arx {
 
    public z a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
-      Consumer<ark> $$3 = $$1x -> $$1x.s().forEach($$2x -> {
+      Consumer<ark> $$3 = $$1x -> $$1x.t().forEach($$2x -> {
             eaq $$3x = (eaq)$$2x.getFirst();
             CompletableFuture<arn<dzp>> $$4x = (CompletableFuture<arn<dzp>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
-               $$2.append($$1x.q()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
+               $$2.append($$1x.r()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
          });
       $$2.append("Updating:").append(System.lineSeparator());
@@ -341,14 +341,14 @@ public class arm extends eaz implements ark.b, arx {
 
    protected void a(boolean $$0) {
       if ($$0) {
-         List<ark> $$1 = this.q.values().stream().filter(ark::k).peek(ark::l).toList();
+         List<ark> $$1 = this.q.values().stream().filter(ark::l).peek(ark::m).toList();
          MutableBoolean $$2 = new MutableBoolean();
 
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
                this.v.b($$0x::h);
-               return $$0x.o();
+               return $$0x.p();
             }).filter($$0x -> $$0x instanceof dzy || $$0x instanceof dzz).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
@@ -422,7 +422,7 @@ public class arm extends eaz implements ark.b, arx {
       while ($$2 < 20 && this.P.get() < 128 && $$0.getAsBoolean() && $$3.hasNext()) {
          long $$4 = $$3.nextLong();
          ark $$5 = (ark)this.q.get($$4);
-         dzp $$6 = $$5 != null ? $$5.o() : null;
+         dzp $$6 = $$5 != null ? $$5.p() : null;
          if ($$6 == null || !$$6.k()) {
             $$3.remove();
          } else if (this.a($$5, $$1)) {
@@ -439,7 +439,7 @@ public class arm extends eaz implements ark.b, arx {
          if ($$3 != $$2) {
             this.a($$0, $$1);
          } else {
-            dzp $$4 = $$1.o();
+            dzp $$4 = $$1.p();
             if (this.r.remove($$0, $$1) && $$4 != null) {
                if ($$4 instanceof dzz $$5) {
                   $$5.b(false);
@@ -458,7 +458,7 @@ public class arm extends eaz implements ark.b, arx {
          }
       }, this.O::add).whenComplete(($$1x, $$2x) -> {
          if ($$2x != null) {
-            k.error("Failed to save chunk {}", $$1.q(), $$2x);
+            k.error("Failed to save chunk {}", $$1.r(), $$2x);
          }
       });
    }
@@ -531,18 +531,18 @@ public class arm extends eaz implements ark.b, arx {
    @Override
    public ary d(long $$0) {
       ark $$1 = (ark)this.p.get($$0);
-      $$1.m();
+      $$1.n();
       return $$1;
    }
 
    @Override
    public void a(ary $$0) {
-      $$0.n();
+      $$0.o();
    }
 
    @Override
    public CompletableFuture<dzp> a(ary $$0, eat $$1, bay<ary> $$2) {
-      dgn $$3 = $$0.q();
+      dgn $$3 = $$0.r();
       if ($$1.a() == eaq.c) {
          return this.g($$3);
       } else {
@@ -586,7 +586,7 @@ public class arm extends eaz implements ark.b, arx {
          if ($$1x != null) {
             $$1x.thenRun(() -> this.a($$0));
          }
-      }, $$1.q().a(), $$1::j);
+      }, $$1.r().a(), $$1::k);
    }
 
    @Override
@@ -603,9 +603,9 @@ public class arm extends eaz implements ark.b, arx {
             this.t.b($$2x);
             CompletableFuture<?> $$3 = $$0.f();
             if ($$3.isDone()) {
-               this.a($$2x);
+               this.a($$0, $$2x);
             } else {
-               $$3.thenAcceptAsync($$1xxx -> this.a($$2x), this.v);
+               $$3.thenAcceptAsync($$2xx -> this.a($$0, $$2x), this.v);
             }
 
             return $$2x;
@@ -617,14 +617,16 @@ public class arm extends eaz implements ark.b, arx {
       return $$2;
    }
 
-   private void a(dzz $$0) {
-      dgn $$1 = $$0.f();
+   private void a(ark $$0, dzz $$1) {
+      dgn $$2 = $$1.f();
 
-      for (asi $$2 : this.J.a()) {
-         if ($$2.Y().a($$1)) {
-            a($$2, $$0);
+      for (asi $$3 : this.J.a()) {
+         if ($$3.Y().a($$2)) {
+            a($$3, $$1);
          }
       }
+
+      this.t.m().a($$0);
    }
 
    public CompletableFuture<arn<dzz>> c(ark $$0) {
@@ -636,8 +638,8 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private boolean a(ark $$0, long $$1) {
-      if ($$0.k() && $$0.h()) {
-         dzp $$2 = $$0.o();
+      if ($$0.l() && $$0.h()) {
+         dzp $$2 = $$0.p();
          if (!($$2 instanceof dzy) && !($$2 instanceof dzz)) {
             return false;
          } else if (!$$2.k()) {
@@ -649,7 +651,7 @@ public class arm extends eaz implements ark.b, arx {
                return false;
             } else {
                boolean $$5 = this.a($$2);
-               $$0.l();
+               $$0.m();
                if ($$5) {
                   this.M.put($$3, $$1 + 10000L);
                }
@@ -801,12 +803,12 @@ public class arm extends eaz implements ark.b, arx {
          long $$4 = $$3.getLongKey();
          dgn $$5 = new dgn($$4);
          ark $$6 = (ark)$$3.getValue();
-         Optional<dzp> $$7 = Optional.ofNullable($$6.o());
+         Optional<dzp> $$7 = Optional.ofNullable($$6.p());
          Optional<dzz> $$8 = $$7.flatMap($$0x -> $$0x instanceof dzz ? Optional.of((dzz)$$0x) : Optional.empty());
          $$1.a(
             $$5.h,
             $$5.i,
-            $$6.i(),
+            $$6.j(),
             $$7.isPresent(),
             $$7.map(dzp::n).orElse(null),
             $$8.map(dzz::F).orElse(null),
@@ -853,7 +855,7 @@ public class arm extends eaz implements ark.b, arx {
       while ($$1.hasNext()) {
          long $$2 = $$1.nextLong();
          ark $$3 = (ark)this.q.get($$2);
-         if ($$3 != null && this.l($$3.q())) {
+         if ($$3 != null && this.l($$3.r())) {
             $$0.accept($$3);
          }
       }

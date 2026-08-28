@@ -192,7 +192,7 @@ public class ase extends dzt {
    }
 
    private boolean a(@Nullable ark $$0, int $$1) {
-      return $$0 == null || $$0.i() > $$1;
+      return $$0 == null || $$0.j() > $$1;
    }
 
    @Override
@@ -317,7 +317,7 @@ public class ase extends dzt {
    private void a(List<dzz> $$0) {
       this.a.a($$1 -> {
          dzz $$2 = $$1.d();
-         if ($$2 != null && this.d.a($$1.q())) {
+         if ($$2 != null && this.d.a($$1.r())) {
             $$0.add($$2);
          }
       });
@@ -483,6 +483,12 @@ public class ase extends dzt {
 
    public void o() {
       this.c.g();
+   }
+
+   public void a(ark $$0) {
+      if ($$0.i()) {
+         this.q.add($$0);
+      }
    }
 
    static record a(dzz a, ark b) {

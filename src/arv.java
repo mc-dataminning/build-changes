@@ -345,7 +345,7 @@ public abstract class arv {
          if (!arv.this.a($$0)) {
             ark $$1 = arv.this.b($$0);
             if ($$1 != null) {
-               return $$1.i();
+               return $$1.j();
             }
          }
 
@@ -355,7 +355,7 @@ public abstract class arv {
       @Override
       protected void a(long $$0, int $$1) {
          ark $$2 = arv.this.b($$0);
-         int $$3 = $$2 == null ? b : $$2.i();
+         int $$3 = $$2 == null ? b : $$2.j();
          if ($$3 != $$1) {
             $$2 = arv.this.a($$0, $$1, $$2, $$3);
             if ($$2 != null) {

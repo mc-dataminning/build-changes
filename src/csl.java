@@ -84,7 +84,6 @@ public class csl extends csd {
          }
 
          this.a.aK();
-         this.a.aK();
          this.a(0.0F);
          double $$5 = this.a.K - this.l();
          double $$6 = this.a.M - this.n();

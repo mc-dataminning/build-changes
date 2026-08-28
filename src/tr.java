@@ -628,7 +628,8 @@ public class tr {
       jh $$2 = this.j($$0);
       duw $$3 = this.a().c_($$2);
       if (!($$3 instanceof duq)) {
-         throw new tk("Expected a container at " + $$0 + ", found " + ma.j.b($$3.q()));
+         alz $$4 = $$3 != null ? ma.j.b($$3.q()) : null;
+         throw new tk("Expected a container at " + $$0 + ", found " + $$4);
       } else if (((duq)$$3).a_($$1) != 1) {
          throw new tk("Container should contain: " + $$1);
       }

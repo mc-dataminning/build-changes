@@ -80,7 +80,7 @@ public class asp implements dif {
       $$10.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
       $$10.a("Generating status", () -> this.m.a().f());
       $$10.a("Requested status", $$2::f);
-      $$10.a("Actual status", () -> $$6 == null ? "[out of cache bounds]" : $$6.p().f());
+      $$10.a("Actual status", () -> $$6 == null ? "[out of cache bounds]" : $$6.q().f());
       $$10.a("Maximum allowed status", () -> $$5 == null ? "null" : $$5.f());
       $$10.a("Dependencies", this.m.b()::toString);
       $$10.a("Requested distance", $$4);

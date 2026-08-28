@@ -547,18 +547,15 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          boolean $$6 = !bae.b($$1.d, $$3.d);
          boolean $$7 = !bae.b($$1.f, $$3.f);
          this.P = $$6 || $$7;
-         if (Math.abs($$1.e) > 0.0 || this.dh()) {
-            this.Q = $$1.e != $$3.e;
-            this.R = this.Q && $$1.e < 0.0;
-            this.a(this.R, this.P, $$3);
-         }
-
+         this.Q = $$1.e != $$3.e;
+         this.R = this.Q && $$1.e < 0.0;
          if (this.P) {
             this.S = this.c($$3);
          } else {
             this.S = false;
          }
 
+         this.a(this.R, this.P, $$3);
          jh $$8 = this.aP();
          dxu $$9 = this.dW().a_($$8);
          if (!this.dW().B_() || this.di()) {

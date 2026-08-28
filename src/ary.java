@@ -67,7 +67,7 @@ public abstract class ary {
 
    protected void a(arm $$0) {
       eaq $$1 = this.f;
-      eaq $$2 = arl.a(this.i());
+      eaq $$2 = arl.a(this.j());
       this.f = $$2;
       boolean $$3 = $$1 != null && ($$2 == null || $$2.d($$1));
       if ($$3) {
@@ -102,7 +102,7 @@ public abstract class ary {
    private void a(arm $$0, @Nullable eaq $$1) {
       arj $$2;
       if ($$1 != null) {
-         $$2 = $$0.a($$1, this.q());
+         $$2 = $$0.a($$1, this.r());
       } else {
          $$2 = null;
       }
@@ -219,14 +219,14 @@ public abstract class ary {
 
    protected abstract void b(CompletableFuture<?> var1);
 
-   public void m() {
+   public void n() {
       if (this.j.getAndIncrement() == 0) {
          this.k = new CompletableFuture<>();
          this.b(this.k);
       }
    }
 
-   public void n() {
+   public void o() {
       CompletableFuture<Void> $$0 = this.k;
       int $$1 = this.j.decrementAndGet();
       if ($$1 == 0) {
@@ -250,7 +250,7 @@ public abstract class ary {
    }
 
    @Nullable
-   public dzp o() {
+   public dzp p() {
       eaq $$0 = this.g.get();
       if ($$0 == null) {
          return null;
@@ -261,26 +261,26 @@ public abstract class ary {
    }
 
    @Nullable
-   public eaq p() {
+   public eaq q() {
       CompletableFuture<arn<dzp>> $$0 = this.h.get(eaq.c.b());
       dzp $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
       return $$1 == null ? null : $$1.n();
    }
 
-   public dgn q() {
+   public dgn r() {
       return this.d;
    }
 
-   public arw r() {
-      return arl.c(this.i());
+   public arw s() {
+      return arl.c(this.j());
    }
-
-   public abstract int i();
 
    public abstract int j();
 
+   public abstract int k();
+
    @bbl
-   public List<Pair<eaq, CompletableFuture<arn<dzp>>>> s() {
+   public List<Pair<eaq, CompletableFuture<arn<dzp>>>> t() {
       List<Pair<eaq, CompletableFuture<arn<dzp>>>> $$0 = new ArrayList<>();
 
       for (int $$1 = 0; $$1 < a.size(); $$1++) {
@@ -292,7 +292,7 @@ public abstract class ary {
 
    @Nullable
    @bbl
-   public eaq t() {
+   public eaq u() {
       for (int $$0 = a.size() - 1; $$0 >= 0; $$0--) {
          eaq $$1 = a.get($$0);
          dzp $$2 = this.a($$1);

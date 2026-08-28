@@ -353,6 +353,16 @@ public abstract class crv extends csn {
          }
       } else {
          super.a($$0, $$1);
+         this.aK();
+      }
+   }
+
+   @Override
+   public void aK() {
+      if (!b(this.dW())) {
+         this.a(this.du(), this.du());
+      } else {
+         super.aK();
       }
    }
 

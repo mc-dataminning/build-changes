@@ -140,8 +140,12 @@ public class ark extends ary {
       }
    }
 
+   public boolean i() {
+      return this.m || !this.p.isEmpty() || !this.o.isEmpty();
+   }
+
    public void a(dzz $$0) {
-      if (this.m || !this.p.isEmpty() || !this.o.isEmpty()) {
+      if (this.i()) {
          dhh $$1 = $$0.H();
          if (!this.p.isEmpty() || !this.o.isEmpty()) {
             List<asi> $$2 = this.s.a(this.d, true);
@@ -205,12 +209,12 @@ public class ark extends ary {
    }
 
    @Override
-   public int i() {
+   public int j() {
       return this.k;
    }
 
    @Override
-   public int j() {
+   public int k() {
       return this.l;
    }
 
@@ -286,15 +290,15 @@ public class ark extends ary {
          this.a($$0, $$3);
       }
 
-      this.r.onLevelChange(this.d, this::j, this.k, this::b);
+      this.r.onLevelChange(this.d, this::k, this.k, this::b);
       this.j = this.k;
    }
 
-   public boolean k() {
+   public boolean l() {
       return this.t;
    }
 
-   public void l() {
+   public void m() {
       this.t = arl.c(this.k).a(arw.b);
    }
 
