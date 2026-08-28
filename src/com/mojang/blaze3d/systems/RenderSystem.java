@@ -208,6 +208,18 @@ public class RenderSystem {
    public static void initRenderer(long $$0, int $$1, boolean $$2, BiFunction<alr, ShaderType, String> $$3, boolean $$4) {
       DEVICE = new fjg($$0, $$1, $$2, $$3, $$4);
       apiDescription = getDevice().getImplementationInformation();
+
+      try (fla $$5 = new fla(flb.e.getVertexSize() * 4)) {
+         fkz $$6 = new fkz($$5, VertexFormat.b.h, flb.e);
+         $$6.a(0.0F, 0.0F, 0.0F);
+         $$6.a(1.0F, 0.0F, 0.0F);
+         $$6.a(1.0F, 1.0F, 0.0F);
+         $$6.a(0.0F, 1.0F, 0.0F);
+
+         try (flc $$7 = $$6.b()) {
+            QUAD_VERTEX_BUFFER = getDevice().createBuffer(() -> "Quad", BufferType.VERTICES, BufferUsage.STATIC_WRITE, $$7.a());
+         }
+      }
    }
 
    public static void setErrorCallback(GLFWErrorCallbackI $$0) {
@@ -339,20 +351,10 @@ public class RenderSystem {
 
    public static GpuBuffer getQuadVertexBuffer() {
       if (QUAD_VERTEX_BUFFER == null) {
-         try (fla $$0 = new fla(flb.e.getVertexSize() * 4)) {
-            fkz $$1 = new fkz($$0, VertexFormat.b.h, flb.e);
-            $$1.a(0.0F, 0.0F, 0.0F);
-            $$1.a(1.0F, 0.0F, 0.0F);
-            $$1.a(1.0F, 1.0F, 0.0F);
-            $$1.a(0.0F, 1.0F, 0.0F);
-
-            try (flc $$2 = $$1.b()) {
-               QUAD_VERTEX_BUFFER = getDevice().createBuffer(() -> "Quad", BufferType.VERTICES, BufferUsage.STATIC_WRITE, $$2.a());
-            }
-         }
+         throw new IllegalStateException("Can't getQuadVertexBuffer() before renderer was initialized");
+      } else {
+         return QUAD_VERTEX_BUFFER;
       }
-
-      return QUAD_VERTEX_BUFFER;
    }
 
    public static void setModelOffset(float $$0, float $$1, float $$2) {

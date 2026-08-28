@@ -127,6 +127,10 @@ public abstract class fjn {
          } else {
             GlStateManager._glBindVertexArray($$2.a);
             if ($$2.c != $$1) {
+               if ($$2.c != null && $$2.c.e == $$1.e) {
+                  ARBVertexAttribBinding.glBindVertexBuffer(0, 0, 0L, 0);
+               }
+
                ARBVertexAttribBinding.glBindVertexBuffer(0, $$1.e, 0L, $$0.getVertexSize());
                $$2.c = $$1;
             }

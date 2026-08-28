@@ -8,22 +8,22 @@ public class ac {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 4320;
+   public static final int b = 4321;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21.5-pre1";
+   public static final String d = "1.21.5-pre2";
    @Deprecated
    public static final int e = 770;
    @Deprecated
-   public static final int f = 239;
+   public static final int f = 240;
    public static final int g = 4292;
    private static final int bl = 30;
    public static final boolean h = true;
    @Deprecated
    public static final int i = 55;
    @Deprecated
-   public static final int j = 70;
+   public static final int j = 71;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -156,7 +156,7 @@ public class ac {
    }
 
    public static int c() {
-      return 1073742063;
+      return 1073742064;
    }
 
    public static boolean a(djo $$0) {

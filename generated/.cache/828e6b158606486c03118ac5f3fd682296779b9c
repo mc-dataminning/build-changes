@@ -1,4 +1,4 @@
-// 1.21.5 Pre-Release 1	2026-08-28T03:51:04.229316537	vanilla/Loot Tables
+// 1.21.5 Pre-release 2	2026-08-28T03:53:35.063729845	vanilla/Loot Tables
 415fbbb37d98668ba0c268122a5227bc70bc1d0e data/minecraft/loot_table/gameplay/chicken_lay.json
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
@@ -539,8 +539,8 @@ a6f5dcab396da144e62d09f60756e41aae623be5 data/minecraft/loot_table/blocks/hopper
 8a493a39eba33b8987fbee21f65487dcb56d92a6 data/minecraft/loot_table/blocks/dead_brain_coral.json
 00051cebaac54eb5ed474043ce5ee2442c5b5c0e data/minecraft/loot_table/entities/warden.json
 e25a6ff33ac003569b77cd57db6b17ca5b5afb44 data/minecraft/loot_table/blocks/activator_rail.json
-286133d6f6887bac55cdf07dab34ca4f98635e60 data/minecraft/loot_table/blocks/sugar_cane.json
 17f4edd6709c202d9d3306ce5bc0a6d5f0068815 data/minecraft/loot_table/blocks/sandstone_wall.json
+286133d6f6887bac55cdf07dab34ca4f98635e60 data/minecraft/loot_table/blocks/sugar_cane.json
 d3b668f8c69004607f5c31e73ee3b7219e47549a data/minecraft/loot_table/blocks/bamboo_sign.json
 39a0eb3f34a7fd55913c39f690ae96c002dbb5c3 data/minecraft/loot_table/blocks/pale_hanging_moss.json
 6c6df67e8a42832a7eed2ef8b106ff67f86409b6 data/minecraft/loot_table/blocks/light_gray_banner.json
@@ -948,8 +948,8 @@ eb24f3b3e64b2491f9e694e345587620638dc12f data/minecraft/loot_table/blocks/light_
 11825d89af166e949a2a8c229375c5ea229f530d data/minecraft/loot_table/blocks/lectern.json
 e0f7f3fe1a9436bb501df23835d114122cfed569 data/minecraft/loot_table/blocks/brown_carpet.json
 54ef459374cf7c8918fee03025ae4fba942d7914 data/minecraft/loot_table/blocks/granite_stairs.json
-cd0a30a1af2c56c518b4298c89881edb40cc7eca data/minecraft/loot_table/blocks/tube_coral.json
 6e798815925fea107000149530bc3c62a36e1fa6 data/minecraft/loot_table/blocks/gray_stained_glass_pane.json
+cd0a30a1af2c56c518b4298c89881edb40cc7eca data/minecraft/loot_table/blocks/tube_coral.json
 4f58c4268a59ce2191d47792116a6894c652b4ec data/minecraft/loot_table/blocks/polished_tuff_slab.json
 e4bb2c55aad7087a5449650b9c4a3fd9c1754da4 data/minecraft/loot_table/blocks/blue_banner.json
 b6d75f48c896aa11316f56a95557b330b186145a data/minecraft/loot_table/blocks/enchanting_table.json
@@ -1048,8 +1048,8 @@ a2a914987a78bc1a6b97a53ab047177c374148a6 data/minecraft/loot_table/blocks/bamboo
 9f05cc0d560515835a7c8fef640e9994850b8c6b data/minecraft/loot_table/blocks/tuff_brick_slab.json
 b420cb1816d45da1cf8c64ea4f9a562fea6c3416 data/minecraft/loot_table/blocks/potted_torchflower.json
 37864a05c49621cb59b72e1cebd506f8f08553cf data/minecraft/loot_table/gameplay/hero_of_the_village/cartographer_gift.json
-99543fed0f100e89c4b5a6bd6ed5a4fddbce72c3 data/minecraft/loot_table/blocks/polished_blackstone_stairs.json
 b1f6ad6e81f5d40a39c07bb15a6b13b6598e6e35 data/minecraft/loot_table/blocks/polished_granite.json
+99543fed0f100e89c4b5a6bd6ed5a4fddbce72c3 data/minecraft/loot_table/blocks/polished_blackstone_stairs.json
 d346f35e3c33bb2da7f52d2006d2e13089fea09c data/minecraft/loot_table/blocks/cherry_slab.json
 ed230b71d3a627c59849fd62623a3583e7920f8e data/minecraft/loot_table/gameplay/panda_sneeze.json
 2093989caf17486bcca5de761ebc8f7bce557037 data/minecraft/loot_table/blocks/hay_block.json

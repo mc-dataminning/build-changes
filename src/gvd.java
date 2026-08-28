@@ -329,21 +329,26 @@ public class gvd {
                () -> {
                   try (brr $$2 = brl.a().d("Upload Section Indices")) {
                      gvd.c $$3 = this.a($$1);
-                     if ($$3.b == null) {
-                        $$3.a(
-                           RenderSystem.getDevice()
-                              .createBuffer(
-                                 () -> "Section index buffer - layer: " + $$1.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
-                                 BufferType.INDICES,
-                                 BufferUsage.STATIC_WRITE,
-                                 $$0.a()
-                              )
-                        );
-                     } else {
-                        CommandEncoder $$4 = RenderSystem.getDevice().createCommandEncoder();
-                        if (!$$3.b.isClosed()) {
-                           $$4.writeToBuffer($$3.b, $$0.a(), 0);
+                     if ($$3 != null && !gvd.this.f) {
+                        if ($$3.b == null) {
+                           $$3.a(
+                              RenderSystem.getDevice()
+                                 .createBuffer(
+                                    () -> "Section index buffer - layer: " + $$1.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
+                                    BufferType.INDICES,
+                                    BufferUsage.STATIC_WRITE,
+                                    $$0.a()
+                                 )
+                           );
+                        } else {
+                           CommandEncoder $$4 = RenderSystem.getDevice().createCommandEncoder();
+                           if (!$$3.b.isClosed()) {
+                              $$4.writeToBuffer($$3.b, $$0.a(), 0);
+                           }
                         }
+
+                        $$0.close();
+                        return;
                      }
 
                      $$0.close();

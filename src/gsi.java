@@ -26,9 +26,10 @@ public class gsi implements AutoCloseable {
    private final GpuBuffer j;
    private final GpuBuffer k;
    private final GpuBuffer l;
+   private int m;
 
    public gsi() {
-      this.h = c();
+      this.h = this.c();
       this.l = d();
 
       try (fla $$0 = new fla(10 * flb.e.getVertexSize())) {
@@ -48,11 +49,11 @@ public class gsi implements AutoCloseable {
       }
    }
 
-   private static GpuBuffer c() {
+   private GpuBuffer c() {
       bai $$0 = bai.a(10842L);
       float $$1 = 100.0F;
 
-      GpuBuffer var18;
+      GpuBuffer var19;
       try (fla $$2 = new fla(flb.e.getVertexSize() * 1500 * 4)) {
          fkz $$3 = new fkz($$2, VertexFormat.b.h, flb.e);
 
@@ -74,11 +75,12 @@ public class gsi implements AutoCloseable {
          }
 
          try (flc $$13 = $$3.b()) {
-            var18 = RenderSystem.getDevice().createBuffer(() -> "Stars vertex buffer", BufferType.VERTICES, BufferUsage.STATIC_WRITE, $$13.a());
+            this.m = $$13.c().c();
+            var19 = RenderSystem.getDevice().createBuffer(() -> "Stars vertex buffer", BufferType.VERTICES, BufferUsage.STATIC_WRITE, $$13.a());
          }
       }
 
-      return var18;
+      return var19;
    }
 
    private void a(flg $$0, float $$1) {
@@ -175,13 +177,13 @@ public class gsi implements AutoCloseable {
       RenderPipeline $$4 = grw.an;
       GpuTexture $$5 = fqq.Q().h().c();
       GpuTexture $$6 = fqq.Q().h().d();
-      GpuBuffer $$7 = this.i.b(9000);
+      GpuBuffer $$7 = this.i.b(this.m);
 
       try (RenderPass $$8 = RenderSystem.getDevice().createCommandEncoder().createRenderPass($$5, OptionalInt.empty(), $$6, OptionalDouble.empty())) {
          $$8.setPipeline($$4);
          $$8.setVertexBuffer(0, this.h);
          $$8.setIndexBuffer($$7, this.i.a());
-         $$8.drawIndexed(0, 9000);
+         $$8.drawIndexed(0, this.m);
       }
 
       RenderSystem.setShaderFog($$0);
