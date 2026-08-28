@@ -1,32 +1,11 @@
-public class gid extends gkb<cfg, ftj<cfg>> {
-   public gid(giv.a $$0) {
-      super($$0, new ftj<>($$0.a(fwx.t)), 0.4F);
-      this.a(new gmj(this, $$0.f()));
+public class gid extends gkc<cgv, ftj<cgv>> {
+   private static final ale a = new ale("textures/entity/camel/camel.png");
+
+   public gid(giw.a $$0, fwx $$1) {
+      super($$0, new ftj<>($$0.a($$1)), 0.7F);
    }
 
-   public ale a(cfg $$0) {
-      return $$0.gw();
-   }
-
-   protected void a(cfg $$0, ezw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
-
-   protected void a(cfg $$0, ezw $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.G($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(ayx.j($$6, 0.0F, 90.0F)));
-         iz $$7 = $$0.dp();
-
-         for (cmv $$9 : $$0.dP().a(cmv.class, new evk($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fL()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
-            }
-         }
-      }
+   public ale a(cgv $$0) {
+      return a;
    }
 }

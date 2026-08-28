@@ -85,9 +85,9 @@ public class aod {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ep $$0, Collection<arf> $$1, ale $$2, awa $$3, evp $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arf> $$1, ale $$2, awa $$3, evq $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       ji<avy> $$8 = ji.a(avy.a($$2));
-      double $$9 = (double)ayx.k($$8.a().a($$5));
+      double $$9 = (double)ayy.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().E_().g();
 
@@ -96,7 +96,7 @@ public class aod {
          double $$14 = $$4.d - $$12.dw();
          double $$15 = $$4.e - $$12.dA();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         evp $$17 = $$4;
+         evq $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class aod {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new evp($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
+            $$17 = new evq($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

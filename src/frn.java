@@ -1,110 +1,149 @@
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class frn extends fnb {
-   private static final xo a = xo.c("telemetry_info.screen.title");
-   private static final xo b = xo.c("telemetry_info.screen.description").b(-4539718);
-   private static final xo c = xo.c("telemetry_info.button.privacy_statement");
-   private static final xo d = xo.c("telemetry_info.button.give_feedback");
-   private static final xo r = xo.c("telemetry_info.button.show_data");
-   private static final xo s = xo.c("telemetry_info.opt_in.description");
-   private static final int u = 8;
-   private static final boolean v = ffd.Q().D();
-   private final fnb w;
-   private final ffh x;
-   private final fkp y = new fkp(this, 16 + 9 * 5 + 20, v ? 33 + fhe.a(ffd.Q().h) : 33);
+public class frn extends fgx {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xo e = xo.c("telemetry_info.property_title").a(n.t);
+   private final fgo f;
+   private frn.a m;
    @Nullable
-   private frm z;
-   @Nullable
-   private fhw A;
-   private double B;
+   private DoubleConsumer n;
 
-   public frn(fnb $$0, ffh $$1) {
-      super(a);
-      this.w = $$0;
-      this.x = $$1;
+   public frn(int $$0, int $$1, int $$2, int $$3, fgo $$4) {
+      super($$0, $$1, $$2, $$3, xo.i());
+      this.f = $$4;
+      this.m = this.c(ffe.Q().C());
+   }
+
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   public void j() {
+      this.m = this.c(ffe.Q().C());
+      this.a(this.c());
+   }
+
+   private frn.a c(boolean $$0) {
+      frn.b $$1 = new frn.b(this.k());
+      List<gud> $$2 = new ArrayList<>(gud.g());
+      $$2.sort(Comparator.comparing(gud::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gud $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public xo i() {
-      return xn.a(super.i(), b);
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
    }
 
    @Override
-   protected void aM_() {
-      fkt $$0 = this.y.a(fkt.d().a(4));
+   protected int h() {
+      return this.m.a().v();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fgq $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.a();
+      int $$5 = this.C() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
       $$0.c().b();
-      $$0.a(new fij(a, this.p));
-      this.A = $$0.a(new fhw(b, this.p).b(true));
-      fkt $$1 = $$0.a(fkt.e().a(8));
-      $$1.a(fhc.a(c, this::a).a());
-      $$1.a(fhc.a(d, this::b).a());
-      fkt $$2 = this.y.b(fkt.d().a(4));
-      if (v) {
-         $$2.a(this.m());
-      }
-
-      fkt $$3 = $$2.a(fkt.e().a(8));
-      $$3.a(fhc.a(r, this::c).a());
-      $$3.a(fhc.a(xn.d, $$0x -> this.d()).a());
-      fkt $$4 = this.y.c(fkt.d().a(8));
-      this.z = $$4.a(new frm(0, 0, this.n - 40, this.y.d(), this.p));
-      this.z.a($$0x -> this.B = $$0x);
-      this.y.a($$1x -> {
-         fha var10000 = this.c($$1x);
-      });
-      this.c();
    }
 
    @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.a(this.B);
-         this.z.k(this.n - 40);
-         this.z.l(this.y.d());
-         this.z.j();
-      }
-
-      if (this.A != null) {
-         this.A.d(this.n - 16);
-      }
-
-      this.y.a();
+   protected void a(fkz $$0) {
+      $$0.a(fky.a, this.m.b());
    }
 
-   @Override
-   protected void aC_() {
-      if (this.z != null) {
-         this.b(this.z);
-      }
+   private xo a(xo $$0, boolean $$1) {
+      return (xo)($$1 ? $$0.f().a(n.h) : $$0);
    }
 
-   private fha m() {
-      ffg<Boolean> $$0 = this.x.ai();
-      return fhe.a(s, this.p).a($$0).a(this::a).a();
+   private void a(frn.b $$0, gud $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xo.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
    }
 
-   private void a(fha $$0, boolean $$1) {
-      if (this.z != null) {
-         this.z.b($$1);
+   private void a(gud $$0, frn.b $$1, boolean $$2) {
+      for (guf<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
       }
    }
 
-   private void a(fhc $$0) {
-      fls.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   private int k() {
+      return this.g - this.b();
    }
 
-   private void b(fhc $$0) {
-      fls.a(this, "https://aka.ms/javafeedback?ref=game");
+   static record a(fkr a, xo b) {
    }
 
-   private void c(fhc $$0) {
-      Path $$1 = this.m.u().b();
-      ac.k().a($$1.toUri());
-   }
+   static class b {
+      private final int a;
+      private final fku b;
+      private final yc c = xo.i();
 
-   @Override
-   public void d() {
-      this.m.a(this.w);
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fku.d();
+         this.b.c().a();
+         this.b.a(fkv.a($$0));
+      }
+
+      public void a(fgo $$0, xo $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fgo $$0, xo $$1, int $$2) {
+         this.b.a(new fhx($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fgo $$0, xo $$1) {
+         this.b.a(new fhx($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fkv.b($$0));
+      }
+
+      public frn.a a() {
+         this.b.a();
+         return new frn.a(this.b, this.c);
+      }
    }
 }

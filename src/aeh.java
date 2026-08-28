@@ -11,7 +11,7 @@ public class aeh implements zv<ach> {
    private final float j;
    private final float k;
 
-   public aeh(cms $$0) {
+   public aeh(cmt $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

@@ -1,193 +1,118 @@
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class buk extends cfd implements btv {
-   protected static final akj<Byte> bY = akn.a(buk.class, akl.a);
-   protected static final akj<Optional<UUID>> bZ = akn.a(buk.class, akl.r);
-   private boolean cb;
+public class buk {
+   private static final Map<bsz<?>, buk.a> a = Maps.newHashMap();
 
-   protected buk(bsy<? extends buk> $$0, dbw $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(bY, (byte)0);
-      $$0.a(bZ, Optional.empty());
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      if (this.W_() != null) {
-         $$0.a("Owner", this.W_());
-      }
-
-      $$0.a("Sitting", this.cb);
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      UUID $$1;
-      if ($$0.b("Owner")) {
-         $$1 = $$0.a("Owner");
-      } else {
-         String $$2 = $$0.l("Owner");
-         $$1 = avb.a(this.cO(), $$2);
-      }
-
-      if ($$1 != null) {
-         try {
-            this.b($$1);
-            this.b(true, false);
-         } catch (Throwable var4) {
-            this.b(false, true);
-         }
-      }
-
-      this.cb = $$0.q("Sitting");
-      this.x(this.cb);
-   }
-
-   @Override
-   public boolean a(cmv $$0) {
-      return !this.gd();
-   }
-
-   protected void w(boolean $$0) {
-      lg $$1 = li.Q;
-      if (!$$0) {
-         $$1 = li.ae;
-      }
-
-      for (int $$2 = 0; $$2 < 7; $$2++) {
-         double $$3 = this.ah.k() * 0.02;
-         double $$4 = this.ah.k() * 0.02;
-         double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
+   private static <T extends btq> void a(bsz<T> $$0, bui $$1, dxt.a $$2, buk.b<T> $$3) {
+      buk.a $$4 = a.put($$0, new buk.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + lp.g.b($$0));
       }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 7) {
-         this.w(true);
-      } else if ($$0 == 6) {
-         this.w(false);
-      } else {
-         super.b($$0);
-      }
+   public static bui a(bsz<?> $$0) {
+      buk.a $$1 = a.get($$0);
+      return $$1 == null ? buj.a : $$1.b;
    }
 
-   public boolean s() {
-      return (this.ao.a(bY) & 4) != 0;
+   public static boolean a(bsz<?> $$0, dca $$1, iz $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public void b(boolean $$0, boolean $$1) {
-      byte $$2 = this.ao.a(bY);
-      if ($$0) {
-         this.ao.a(bY, (byte)($$2 | 4));
-      } else {
-         this.ao.a(bY, (byte)($$2 & -5));
-      }
-
-      if ($$1) {
-         this.u();
-      }
+   public static dxt.a b(@Nullable bsz<?> $$0) {
+      buk.a $$1 = a.get($$0);
+      return $$1 == null ? dxt.a.f : $$1.a;
    }
 
-   protected void u() {
+   public static <T extends bst> boolean a(bsz<T> $$0, dcm $$1, bts $$2, iz $$3, azg $$4) {
+      buk.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean y() {
-      return (this.ao.a(bY) & 1) != 0;
+   static {
+      a(bsz.f, buj.b, dxt.a.f, cgq::a);
+      a(bsz.u, buj.b, dxt.a.f, cgg::c);
+      a(bsz.y, buj.b, dxt.a.f, cgg::c);
+      a(bsz.B, buj.b, dxt.a.f, cjq::a);
+      a(bsz.Y, buj.b, dxt.a.f, cjy::b);
+      a(bsz.aF, buj.b, dxt.a.f, cgg::c);
+      a(bsz.aI, buj.b, dxt.a.f, cgg::c);
+      a(bsz.aX, buj.b, dxt.a.f, cgg::c);
+      a(bsz.bg, buj.b, dxt.a.f, cge::b);
+      a(bsz.c, buj.d, dxt.a.f, cgn::c);
+      a(bsz.g, buj.d, dxt.a.f, cez::b);
+      a(bsz.i, buj.d, dxt.a.f, ckc::c);
+      a(bsz.l, buj.d, dxt.a.f, ckc::b);
+      a(bsz.q, buj.d, dxt.a.f, ckc::b);
+      a(bsz.t, buj.d, dxt.a.f, cfe::b);
+      a(bsz.w, buj.d, dxt.a.f, cfe::b);
+      a(bsz.x, buj.d, dxt.a.f, ckc::b);
+      a(bsz.z, buj.d, dxt.a.f, cfe::b);
+      a(bsz.H, buj.d, dxt.a.f, ckc::b);
+      a(bsz.I, buj.d, dxt.a.f, cjt::b);
+      a(bsz.F, buj.d, dxt.a.f, btq::a);
+      a(bsz.R, buj.d, dxt.a.f, cgy::c);
+      a(bsz.T, buj.d, dxt.a.f, cjw::b);
+      a(bsz.U, buj.d, dxt.a.f, ckc::b);
+      a(bsz.W, buj.b, dxt.a.f, btg::a);
+      a(bsz.X, buj.d, dxt.a.f, che::c);
+      a(bsz.ab, buj.d, dxt.a.f, cfe::b);
+      a(bsz.ac, buj.d, dxt.a.f, cjz::a);
+      a(bsz.af, buj.d, dxt.a.f, btq::a);
+      a(bsz.an, buj.d, dxt.a.f, cfe::b);
+      a(bsz.ap, buj.d, dxt.a.f, ckb::b);
+      a(bsz.as, buj.d, dxt.a.f, cfr::c);
+      a(bsz.at, buj.d, dxt.a.f, cfe::b);
+      a(bsz.au, buj.d, dxt.a.e, cfs::c);
+      a(bsz.ax, buj.d, dxt.a.e, cfu::c);
+      a(bsz.az, buj.d, dxt.a.f, cfe::b);
+      a(bsz.Z, buj.d, dxt.a.f, clg::c);
+      a(bsz.aA, buj.d, dxt.a.f, clm::b);
+      a(bsz.aC, buj.d, dxt.a.f, ckd::b);
+      a(bsz.aD, buj.d, dxt.a.f, cfw::c);
+      a(bsz.aG, buj.d, dxt.a.f, cfy::c);
+      a(bsz.aJ, buj.d, dxt.a.f, cfe::b);
+      a(bsz.aM, buj.d, dxt.a.f, ckj::b);
+      a(bsz.aN, buj.d, dxt.a.f, ckc::b);
+      a(bsz.aO, buj.d, dxt.a.f, cho::c);
+      a(bsz.aP, buj.d, dxt.a.f, ckl::c);
+      a(bsz.aS, buj.d, dxt.a.f, btq::a);
+      a(bsz.aW, buj.d, dxt.a.f, ckc::b);
+      a(bsz.aY, buj.d, dxt.a.f, cko::a);
+      a(bsz.aZ, buj.c, dxt.a.f, ckp::c);
+      a(bsz.bh, buj.d, dxt.a.f, cgf::c);
+      a(bsz.bj, buj.d, dxt.a.f, btq::a);
+      a(bsz.bo, buj.d, dxt.a.f, ckc::b);
+      a(bsz.bp, buj.d, dxt.a.f, ckc::b);
+      a(bsz.bq, buj.d, dxt.a.f, ckc::b);
+      a(bsz.bs, buj.d, dxt.a.f, cgh::c);
+      a(bsz.bu, buj.d, dxt.a.f, ckc::b);
+      a(bsz.bv, buj.d, dxt.a.f, chs::c);
+      a(bsz.bx, buj.d, dxt.a.f, ckx::b);
+      a(bsz.bw, buj.d, dxt.a.f, ckc::b);
+      a(bsz.p, buj.d, dxt.a.f, cfe::b);
+      a(bsz.D, buj.b, dxt.a.f, cjy::b);
+      a(bsz.J, buj.a, dxt.a.f, ckc::b);
+      a(bsz.Q, buj.a, dxt.a.f, cfo::c);
+      a(bsz.ad, buj.a, dxt.a.f, ckc::b);
+      a(bsz.aw, buj.a, dxt.a.f, cfe::b);
+      a(bsz.ay, buj.a, dxt.a.f, btq::a);
+      a(bsz.aH, buj.d, dxt.a.f, ckc::b);
+      a(bsz.aK, buj.a, dxt.a.f, btq::a);
+      a(bsz.be, buj.a, dxt.a.f, cfe::b);
+      a(bsz.bi, buj.a, dxt.a.f, ckc::b);
+      a(bsz.bk, buj.a, dxt.a.f, ckc::b);
+      a(bsz.bl, buj.d, dxt.a.f, btq::a);
+      a(bsz.bm, buj.a, dxt.a.f, btq::a);
    }
 
-   public void x(boolean $$0) {
-      byte $$1 = this.ao.a(bY);
-      if ($$0) {
-         this.ao.a(bY, (byte)($$1 | 1));
-      } else {
-         this.ao.a(bY, (byte)($$1 & -2));
-      }
+   static record a(dxt.a a, bui b, buk.b<?> c) {
    }
 
-   @Nullable
-   @Override
-   public UUID W_() {
-      return this.ao.a(bZ).orElse(null);
-   }
-
-   public void b(@Nullable UUID $$0) {
-      this.ao.a(bZ, Optional.ofNullable($$0));
-   }
-
-   public void f(cmv $$0) {
-      this.b(true, true);
-      this.b($$0.cz());
-      if ($$0 instanceof arf $$1) {
-         am.y.a($$1, this);
-      }
-   }
-
-   @Override
-   public boolean c(btn $$0) {
-      return this.j($$0) ? false : super.c($$0);
-   }
-
-   public boolean j(btn $$0) {
-      return $$0 == this.P_();
-   }
-
-   public boolean a(btn $$0, btn $$1) {
-      return true;
-   }
-
-   @Override
-   public ewo cj() {
-      if (this.s()) {
-         btn $$0 = this.P_();
-         if ($$0 != null) {
-            return $$0.cj();
-         }
-      }
-
-      return super.cj();
-   }
-
-   @Override
-   public boolean s(bss $$0) {
-      if (this.s()) {
-         btn $$1 = this.P_();
-         if ($$0 == $$1) {
-            return true;
-         }
-
-         if ($$1 != null) {
-            return $$1.s($$0);
-         }
-      }
-
-      return super.s($$0);
-   }
-
-   @Override
-   public void a(brl $$0) {
-      if (!this.dP().B && this.dP().ab().b(dbs.n) && this.P_() instanceof arf) {
-         this.P_().a(this.eP().a());
-      }
-
-      super.a($$0);
-   }
-
-   public boolean gq() {
-      return this.cb;
-   }
-
-   public void y(boolean $$0) {
-      this.cb = $$0;
+   @FunctionalInterface
+   public interface b<T extends bst> {
+      boolean test(bsz<T> var1, dcm var2, bts var3, iz var4, azg var5);
    }
 }

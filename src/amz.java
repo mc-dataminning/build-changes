@@ -16,11 +16,11 @@ public class amz {
    }
 
    private static int a(ep $$0, iz $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof btp $$3)) {
+      if (!($$0.f() instanceof btq $$3)) {
          throw a.create();
       } else {
-         ccz $$4 = new ccy($$3, $$0.e());
-         eoh $$5 = $$4.a($$1, 0);
+         cda $$4 = new ccz($$3, $$0.e());
+         eoi $$5 = $$4.a($$1, 0);
          ags.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

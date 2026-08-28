@@ -1,64 +1,52 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class ghc implements ggy.a {
-   private final ffd a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class ghc implements ggz.a {
+   private static final int a = 160;
+   private final ffe b;
+   private final Int2ObjectMap<ghc.a> c = new Int2ObjectOpenHashMap();
 
-   public ghc(ffd $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, iz $$1, List<abc.a> $$2) {
+      this.c.put($$0, new ghc.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public ghc(ffe $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ezw $$0, gdm $$1, double $$2, double $$3, double $$4) {
-      dbx $$5 = this.a.r;
-      faa $$6 = $$1.getBuffer(gdu.A());
-      iz $$7 = iz.a($$2, 0.0, $$4);
+   public void a(ezx $$0, gdn $$1, double $$2, double $$3, double $$4) {
+      fep $$5 = this.b.j.l();
+      iz $$6 = iz.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dtw $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dxs.a, dxs> $$11 : $$10.e()) {
-               dxs.a $$12 = $$11.getKey();
-               dbd $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kb.a($$13.e, $$15);
-                     int $$18 = kb.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gdk.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
+      while (var11.hasNext()) {
+         ghc.a $$7 = (ghc.a)var11.next();
+         iz $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               abc.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               ggz.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
             }
          }
       }
    }
 
-   private Vector3f a(dxs.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   static record a(iz a, List<abc.a> b) {
    }
 }

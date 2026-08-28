@@ -1,23 +1,43 @@
-public class gjq extends gkb<cfp, fun<cfp>> {
-   private static final ale a = new ale("textures/entity/iron_golem/iron_golem.png");
+public class gjq extends gjp<cka> {
+   private static final ale a = new ale("textures/entity/illager/illusioner.png");
 
-   public gjq(giv.a $$0) {
-      super($$0, new fun<>($$0.a(fwx.av)), 0.7F);
-      this.a(new gmy(this));
-      this.a(new gmz(this, $$0.c()));
+   public gjq(giw.a $$0) {
+      super($$0, new fun<>($$0.a(fwy.au)), 0.5F);
+      this.a(new gnb<cka, fun<cka>>(this, $$0.d()) {
+         public void a(ezx $$0, gdn $$1, int $$2, cka $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gA() || $$3.gi()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
+      this.f.c().k = true;
    }
 
-   public ale a(cfp $$0) {
+   public ale a(cka $$0) {
       return a;
    }
 
-   protected void a(cfp $$0, ezw $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!((double)$$0.aU.a() < 0.01)) {
-         float $$6 = 13.0F;
-         float $$7 = $$0.aU.c($$4) + 6.0F;
-         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$8));
+   public void a(cka $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      if ($$0.ch()) {
+         evq[] $$6 = $$0.G($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)ayy.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)ayy.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)ayy.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   protected boolean b(cka $$0) {
+      return true;
    }
 }

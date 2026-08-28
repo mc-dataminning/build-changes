@@ -1,15 +1,15 @@
-public class fuv {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+import java.util.function.Function;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
+public abstract class fuv {
+   protected final Function<ale, gdv> v;
 
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
-
-      return $$0 + $$2 * $$3;
+   public fuv(Function<ale, gdv> $$0) {
+      this.v = $$0;
    }
+
+   public final gdv a(ale $$0) {
+      return this.v.apply($$0);
+   }
+
+   public abstract void a(ezx var1, fab var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

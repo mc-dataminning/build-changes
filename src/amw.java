@@ -49,8 +49,8 @@ public class amw {
       if (!$$1.bi()) {
          throw b.create();
       } else {
-         bnf $$2 = $$1.bk();
-         double $$3 = (double)$$2.g() / (double)azx.a;
+         bng $$2 = $$1.bk();
+         double $$3 = (double)$$2.g() / (double)azy.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> xo.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
          return (int)$$4;

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class aqn extends dvd implements aql.c {
+public class aqn extends dve implements aql.c {
    private static final byte f = -1;
    private static final byte g = 0;
    private static final byte h = 1;
@@ -65,19 +65,19 @@ public class aqn extends dvd implements aql.c {
    private final LongSet p = new LongOpenHashSet();
    final are q;
    private final arh r;
-   private final bpi<Runnable> s;
-   private dtx t;
-   private final dyg u;
-   private final dty v;
-   private final Supplier<epo> w;
-   private final cer x;
+   private final bpj<Runnable> s;
+   private dty t;
+   private final dyh u;
+   private final dtz v;
+   private final Supplier<epp> w;
+   private final ces x;
    final LongSet y = new LongOpenHashSet();
    private boolean z;
    private final aqq A;
-   private final bpk<aqq.a<Runnable>> B;
-   private final bpk<aqq.a<Runnable>> C;
+   private final bpl<aqq.a<Runnable>> B;
+   private final bpl<aqq.a<Runnable>> C;
    private final arn D;
-   private final dvz E;
+   private final dwa E;
    private final aqn.a F;
    private final AtomicInteger G = new AtomicInteger();
    private final String H;
@@ -87,76 +87,76 @@ public class aqn extends dvd implements aql.c {
    private final Long2LongMap L = new Long2LongOpenHashMap();
    private final Queue<Runnable> M = Queues.newConcurrentLinkedQueue();
    private int N;
-   private duz O;
+   private dva O;
 
    public aqn(
       are $$0,
-      epu.c $$1,
+      epv.c $$1,
       DataFixer $$2,
-      emj $$3,
+      emk $$3,
       Executor $$4,
-      bpi<Runnable> $$5,
-      duj $$6,
-      dtx $$7,
+      bpj<Runnable> $$5,
+      duk $$6,
+      dty $$7,
       arn $$8,
-      dvz $$9,
-      Supplier<epo> $$10,
+      dwa $$9,
+      Supplier<epp> $$10,
       int $$11,
       boolean $$12
    ) {
-      super(new dvm($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
+      super(new dvn($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
       Path $$13 = $$1.a($$0.af());
       this.H = $$13.getFileName().toString();
       this.q = $$0;
       this.t = $$7;
       jw $$14 = $$0.H_();
       long $$15 = $$0.C();
-      if ($$7 instanceof dxv $$16) {
-         this.u = dyg.a($$16.h().a(), $$14.b(lq.aH), $$15);
+      if ($$7 instanceof dxw $$16) {
+         this.u = dyh.a($$16.h().a(), $$14.b(lq.aH), $$15);
       } else {
-         this.u = dyg.a(dxx.e(), $$14.b(lq.aH), $$15);
+         this.u = dyh.a(dxy.e(), $$14.b(lq.aH), $$15);
       }
 
       this.v = $$7.a($$14.b(lq.aL), this.u, $$15);
       this.s = $$5;
-      bpl<Runnable> $$17 = bpl.a($$4, "worldgen");
-      bpk<Runnable> $$18 = bpk.a("main", $$5::i);
+      bpm<Runnable> $$17 = bpm.a($$4, "worldgen");
+      bpl<Runnable> $$18 = bpl.a("main", $$5::i);
       this.D = $$8;
       this.E = $$9;
-      bpl<Runnable> $$19 = bpl.a($$4, "light");
+      bpm<Runnable> $$19 = bpm.a($$4, "light");
       this.A = new aqq(ImmutableList.of($$17, $$18, $$19), $$4, Integer.MAX_VALUE);
       this.B = this.A.a($$17, false);
       this.C = this.A.a($$18, false);
       this.r = new arh($$6, this, this.q.D_().g(), $$19, this.A.a($$19, false));
       this.F = new aqn.a($$4, $$5);
       this.w = $$10;
-      this.x = new cer(new dvm($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.x = new ces(new dvn($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
-      this.O = new duz($$0, $$7, $$3, this.r);
+      this.O = new dva($$0, $$7, $$3, this.r);
    }
 
-   protected dtx a() {
+   protected dty a() {
       return this.t;
    }
 
-   protected dty b() {
+   protected dtz b() {
       return this.v;
    }
 
-   protected dyg c() {
+   protected dyh c() {
       return this.u;
    }
 
    public void d() {
-      DataResult<JsonElement> $$0 = dtx.a.encodeStart(JsonOps.INSTANCE, this.t);
-      DataResult<dtx> $$1 = $$0.flatMap($$0x -> dtx.a.parse(JsonOps.INSTANCE, $$0x));
+      DataResult<JsonElement> $$0 = dty.a.encodeStart(JsonOps.INSTANCE, this.t);
+      DataResult<dty> $$1 = $$0.flatMap($$0x -> dty.a.parse(JsonOps.INSTANCE, $$0x));
       $$1.ifSuccess($$0x -> {
          this.t = $$0x;
-         this.O = new duz(this.O.a(), $$0x, this.O.c(), this.O.d());
+         this.O = new dva(this.O.a(), $$0x, this.O.c(), this.O.d());
       });
    }
 
-   private static double a(dbd $$0, bss $$1) {
+   private static double a(dbe $$0, bst $$1) {
       double $$2 = (double)kb.a($$0.e, 8);
       double $$3 = (double)kb.a($$0.f, 8);
       double $$4 = $$2 - $$1.du();
@@ -165,7 +165,7 @@ public class aqn extends dvd implements aql.c {
    }
 
    boolean a(arf $$0, int $$1, int $$2) {
-      return $$0.W().a($$1, $$2) && !$$0.c.g.a(dbd.c($$1, $$2));
+      return $$0.W().a($$1, $$2) && !$$0.c.g.a(dbe.c($$1, $$2));
    }
 
    private boolean b(arf $$0, int $$1, int $$2) {
@@ -205,14 +205,14 @@ public class aqn extends dvd implements aql.c {
       };
    }
 
-   public String a(dbd $$0) {
+   public String a(dbe $$0) {
       aql $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.l() + "\n";
-         duv $$3 = $$1.g();
-         dtw $$4 = $$1.h();
+         duw $$3 = $$1.g();
+         dtx $$4 = $$1.h();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.c() + $$3 + "§r\n";
          }
@@ -227,48 +227,48 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private CompletableFuture<aqo<List<dtw>>> a(aql $$0, int $$1, IntFunction<duv> $$2) {
+   private CompletableFuture<aqo<List<dtx>>> a(aql $$0, int $$1, IntFunction<duw> $$2) {
       if ($$1 == 0) {
-         duv $$3 = $$2.apply(0);
+         duw $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.a(List::of));
       } else {
-         List<CompletableFuture<aqo<dtw>>> $$4 = new ArrayList<>();
+         List<CompletableFuture<aqo<dtx>>> $$4 = new ArrayList<>();
          List<aql> $$5 = new ArrayList<>();
-         dbd $$6 = $$0.k();
+         dbe $$6 = $$0.k();
          int $$7 = $$6.e;
          int $$8 = $$6.f;
 
          for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
             for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
                int $$11 = Math.max(Math.abs($$10), Math.abs($$9));
-               dbd $$12 = new dbd($$7 + $$10, $$8 + $$9);
+               dbe $$12 = new dbe($$7 + $$10, $$8 + $$9);
                long $$13 = $$12.a();
                aql $$14 = this.a($$13);
                if ($$14 == null) {
                   return CompletableFuture.completedFuture(aqo.a(() -> "Unloaded " + $$12));
                }
 
-               duv $$15 = $$2.apply($$11);
-               CompletableFuture<aqo<dtw>> $$16 = $$14.a($$15, this);
+               duw $$15 = $$2.apply($$11);
+               CompletableFuture<aqo<dtx>> $$16 = $$14.a($$15, this);
                $$5.add($$14);
                $$4.add($$16);
             }
          }
 
-         CompletableFuture<List<aqo<dtw>>> $$17 = ac.d($$4);
-         CompletableFuture<aqo<List<dtw>>> $$18 = $$17.thenApply($$3 -> {
-            List<dtw> $$4x = Lists.newArrayList();
+         CompletableFuture<List<aqo<dtx>>> $$17 = ac.d($$4);
+         CompletableFuture<aqo<List<dtx>>> $$18 = $$17.thenApply($$3 -> {
+            List<dtx> $$4x = Lists.newArrayList();
             int $$5x = 0;
 
-            for (aqo<dtw> $$6x : $$3) {
+            for (aqo<dtx> $$6x : $$3) {
                if ($$6x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               dtw $$7x = $$6x.b(null);
+               dtx $$7x = $$6x.b(null);
                if ($$7x == null) {
                   int $$8x = $$5x;
-                  return aqo.a(() -> "Unloaded " + new dbd($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.b());
+                  return aqo.a(() -> "Unloaded " + new dbe($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.b());
                }
 
                $$4x.add($$7x);
@@ -289,8 +289,8 @@ public class aqn extends dvd implements aql.c {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<aql> $$3 = $$1x -> $$1x.p().forEach($$2x -> {
-            duv $$3x = (duv)$$2x.getFirst();
-            CompletableFuture<aqo<dtw>> $$4x = (CompletableFuture<aqo<dtw>>)$$2x.getSecond();
+            duw $$3x = (duw)$$2x.getFirst();
+            CompletableFuture<aqo<dtx>> $$4x = (CompletableFuture<aqo<dtx>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.k()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -306,8 +306,8 @@ public class aqn extends dvd implements aql.c {
       return new y($$4);
    }
 
-   public CompletableFuture<aqo<dug>> a(aql $$0) {
-      return this.a($$0, 2, $$0x -> duv.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dug)$$0xx.get($$0xx.size() / 2)), this.s);
+   public CompletableFuture<aqo<duh>> a(aql $$0) {
+      return this.a($$0, 2, $$0x -> duw.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duh)$$0xx.get($$0xx.size() / 2)), this.s);
    }
 
    @Nullable
@@ -332,7 +332,7 @@ public class aqn extends dvd implements aql.c {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new aql(new dbd($$0), $$1, this.q, this.r, this.A, this);
+               $$2 = new aql(new dbe($$0), $$1, this.q, this.r, this.A, this);
             }
 
             this.m.put($$0, $$2);
@@ -361,14 +361,14 @@ public class aqn extends dvd implements aql.c {
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               CompletableFuture<dtw> $$1x;
+               CompletableFuture<dtx> $$1x;
                do {
                   $$1x = $$0x.i();
                   this.s.c($$1x::isDone);
                } while ($$1x != $$0x.i());
 
                return $$1x.join();
-            }).filter($$0x -> $$0x instanceof duf || $$0x instanceof dug).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof dug || $$0x instanceof duh).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b(() -> true);
@@ -379,7 +379,7 @@ public class aqn extends dvd implements aql.c {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bng $$1 = this.q.ag();
+      bnh $$1 = this.q.ag();
       $$1.a("poi");
       this.x.a($$0);
       $$1.b("chunk_unload");
@@ -427,19 +427,19 @@ public class aqn extends dvd implements aql.c {
    }
 
    private void a(long $$0, aql $$1) {
-      CompletableFuture<dtw> $$2 = $$1.i();
+      CompletableFuture<dtx> $$2 = $$1.i();
       $$2.thenAcceptAsync($$3 -> {
-         CompletableFuture<dtw> $$4 = $$1.i();
+         CompletableFuture<dtx> $$4 = $$1.i();
          if ($$4 != $$2) {
             this.a($$0, $$1);
          } else {
             if (this.o.remove($$0, $$1) && $$3 != null) {
-               if ($$3 instanceof dug) {
-                  ((dug)$$3).c(false);
+               if ($$3 instanceof duh) {
+                  ((duh)$$3).c(false);
                }
 
                this.a($$3);
-               if (this.p.remove($$0) && $$3 instanceof dug $$5) {
+               if (this.p.remove($$0) && $$3 instanceof duh $$5) {
                   this.q.a($$5);
                }
 
@@ -466,19 +466,19 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   public CompletableFuture<aqo<dtw>> a(aql $$0, duv $$1) {
-      dbd $$2 = $$0.k();
-      if ($$1 == duv.c) {
+   public CompletableFuture<aqo<dtx>> a(aql $$0, duw $$1) {
+      dbe $$2 = $$0.k();
+      if ($$1 == duw.c) {
          return this.g($$2).thenApply(aqo::a);
       } else {
-         if ($$1 == duv.l) {
-            this.F.a(arj.e, $$2, aqm.a(duv.l), $$2);
+         if ($$1 == duw.l) {
+            this.F.a(arj.e, $$2, aqm.a(duw.l), $$2);
          }
 
          if (!$$1.f()) {
-            dtw $$3 = $$0.a($$1.d(), this).getNow(aql.a).b(null);
+            dtx $$3 = $$0.a($$1.d(), this).getNow(aql.a).b(null);
             if ($$3 != null && $$3.j().b($$1)) {
-               CompletableFuture<dtw> $$4 = $$1.a(this.O, $$1x -> this.a($$0, $$1x), $$3);
+               CompletableFuture<dtx> $$4 = $$1.a(this.O, $$1x -> this.a($$0, $$1x), $$3);
                this.D.a($$2, $$1);
                return $$4.thenApply(aqo::a);
             }
@@ -488,7 +488,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private CompletableFuture<dtw> g(dbd $$0) {
+   private CompletableFuture<dtx> g(dbe $$0) {
       return this.k($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -499,7 +499,7 @@ public class aqn extends dvd implements aql.c {
          })).thenApplyAsync($$1 -> {
          this.q.ag().d("chunkLoad");
          if ($$1.isPresent()) {
-            dtw $$2 = dvc.a(this.q, this.x, $$0, $$1.get());
+            dtx $$2 = dvd.a(this.q, this.x, $$0, $$1.get());
             this.a($$0, $$2.j().g());
             return $$2;
          } else {
@@ -512,7 +512,7 @@ public class aqn extends dvd implements aql.c {
       return $$0.b("Status", 8);
    }
 
-   private dtw a(Throwable $$0, dbd $$1) {
+   private dtx a(Throwable $$0, dbe $$1) {
       Throwable $$3 = $$0 instanceof CompletionException $$2 ? $$2.getCause() : $$0;
       Throwable $$5 = $$3 instanceof y $$4 ? $$4.getCause() : $$3;
       boolean $$6 = $$5 instanceof Error;
@@ -530,33 +530,33 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private dtw h(dbd $$0) {
+   private dtx h(dbe $$0) {
       this.i($$0);
-      return new duq($$0, dut.a, this.q, this.q.H_().d(lq.az), null);
+      return new dur($$0, duu.a, this.q, this.q.H_().d(lq.az), null);
    }
 
-   private void i(dbd $$0) {
+   private void i(dbe $$0) {
       this.K.put($$0.a(), (byte)-1);
    }
 
-   private byte a(dbd $$0, dux $$1) {
-      return this.K.put($$0.a(), (byte)($$1 == dux.a ? -1 : 1));
+   private byte a(dbe $$0, duy $$1) {
+      return this.K.put($$0.a(), (byte)($$1 == duy.a ? -1 : 1));
    }
 
-   private CompletableFuture<aqo<dtw>> b(aql $$0, duv $$1) {
-      dbd $$2 = $$0.k();
-      CompletableFuture<aqo<List<dtw>>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
+   private CompletableFuture<aqo<dtx>> b(aql $$0, duw $$1) {
+      dbe $$2 = $$0.k();
+      CompletableFuture<aqo<List<dtx>>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
       this.q.ag().c(() -> "chunkGenerate " + $$1);
       Executor $$4 = $$1x -> this.B.a(aqq.a($$0, $$1x));
       return $$3.thenComposeAsync($$4x -> {
-         List<dtw> $$5 = (List<dtw>)$$4x.b(null);
+         List<dtx> $$5 = (List<dtx>)$$4x.b(null);
          if ($$5 == null) {
             this.b($$2);
             return CompletableFuture.completedFuture(aqo.a($$4x::b));
          } else {
             try {
-               dtw $$6 = $$5.get($$5.size() / 2);
-               CompletableFuture<dtw> $$7;
+               dtx $$6 = $$5.get($$5.size() / 2);
+               CompletableFuture<dtx> $$7;
                if ($$6.j().b($$1)) {
                   $$7 = $$1.a(this.O, $$1xx -> this.a($$0, $$1xx), $$6);
                } else {
@@ -571,7 +571,7 @@ public class aqn extends dvd implements aql.c {
                p $$11 = $$10.a("Chunk to be generated");
                $$11.a("Status being generated", () -> lp.n.b($$1).toString());
                $$11.a("Location", String.format(Locale.ROOT, "%d,%d", $$2.e, $$2.f));
-               $$11.a("Position hash", dbd.c($$2.e, $$2.f));
+               $$11.a("Position hash", dbe.c($$2.e, $$2.f));
                $$11.a("Generator", this.t);
                this.s.execute(() -> {
                   throw new y($$10);
@@ -582,16 +582,16 @@ public class aqn extends dvd implements aql.c {
       }, $$4);
    }
 
-   protected void b(dbd $$0) {
-      this.s.i(ac.a((Runnable)(() -> this.F.b(arj.e, $$0, aqm.a(duv.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
+   protected void b(dbe $$0) {
+      this.s.i(ac.a((Runnable)(() -> this.F.b(arj.e, $$0, aqm.a(duw.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
    }
 
-   private duv a(duv $$0, int $$1) {
-      duv $$2;
+   private duw a(duw $$0, int $$1) {
+      duw $$2;
       if ($$1 == 0) {
          $$2 = $$0.d();
       } else {
-         $$2 = duv.a(duv.a($$0) + $$1);
+         $$2 = duw.a(duw.a($$0) + $$1);
       }
 
       return $$2;
@@ -599,20 +599,20 @@ public class aqn extends dvd implements aql.c {
 
    private static void a(are $$0, List<ur> $$1) {
       if (!$$1.isEmpty()) {
-         $$0.b(bsy.a($$1, $$0));
+         $$0.b(bsz.a($$1, $$0));
       }
    }
 
-   private CompletableFuture<dtw> a(aql $$0, dtw $$1) {
+   private CompletableFuture<dtx> a(aql $$0, dtx $$1) {
       return CompletableFuture.supplyAsync(() -> {
-         dbd $$2 = $$0.k();
-         duq $$3 = (duq)$$1;
-         dug $$4;
-         if ($$3 instanceof duf) {
-            $$4 = ((duf)$$3).C();
+         dbe $$2 = $$0.k();
+         dur $$3 = (dur)$$1;
+         duh $$4;
+         if ($$3 instanceof dug) {
+            $$4 = ((dug)$$3).C();
          } else {
-            $$4 = new dug(this.q, $$3, $$1xx -> a(this.q, $$3.E()));
-            $$0.a(new duf($$4, false));
+            $$4 = new duh(this.q, $$3, $$1xx -> a(this.q, $$3.E()));
+            $$0.a(new dug($$4, false));
          }
 
          $$4.b(() -> aqm.b($$0.l()));
@@ -627,10 +627,10 @@ public class aqn extends dvd implements aql.c {
       }, $$1x -> this.C.a(aqq.a($$1x, $$0.k().a(), $$0::l)));
    }
 
-   public CompletableFuture<aqo<dug>> b(aql $$0) {
-      CompletableFuture<aqo<List<dtw>>> $$1 = this.a($$0, 1, $$0x -> duv.n);
-      CompletableFuture<aqo<dug>> $$2 = $$1.<aqo<dug>>thenApplyAsync(
-            $$0x -> $$0x.a($$0xx -> (dug)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aqq.a($$0, $$1x))
+   public CompletableFuture<aqo<duh>> b(aql $$0) {
+      CompletableFuture<aqo<List<dtx>>> $$1 = this.a($$0, 1, $$0x -> duw.n);
+      CompletableFuture<aqo<duh>> $$2 = $$1.<aqo<duh>>thenApplyAsync(
+            $$0x -> $$0x.a($$0xx -> (duh)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aqq.a($$0, $$1x))
          )
          .thenApplyAsync($$1x -> $$1x.a($$1xx -> {
                $$1xx.H();
@@ -649,8 +649,8 @@ public class aqn extends dvd implements aql.c {
       return $$2;
    }
 
-   private void a(dug $$0) {
-      dbd $$1 = $$0.f();
+   private void a(duh $$0) {
+      dbe $$1 = $$0.f();
 
       for (arf $$2 : this.I.a()) {
          if ($$2.W().a($$1)) {
@@ -659,8 +659,8 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   public CompletableFuture<aqo<dug>> c(aql $$0) {
-      return this.a($$0, 1, duv::a).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dug)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aqq.a($$0, $$1)));
+   public CompletableFuture<aqo<duh>> c(aql $$0) {
+      return this.a($$0, 1, duw::a).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duh)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aqq.a($$0, $$1)));
    }
 
    public int h() {
@@ -671,8 +671,8 @@ public class aqn extends dvd implements aql.c {
       if (!$$0.n()) {
          return false;
       } else {
-         dtw $$1 = $$0.i().getNow(null);
-         if (!($$1 instanceof duf) && !($$1 instanceof dug)) {
+         dtx $$1 = $$0.i().getNow(null);
+         if (!($$1 instanceof dug) && !($$1 instanceof duh)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -693,28 +693,28 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private boolean a(dtw $$0) {
+   private boolean a(dtx $$0) {
       this.x.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         dbd $$1 = $$0.f();
+         dbe $$1 = $$0.f();
 
          try {
-            duv $$2 = $$0.j();
-            if ($$2.g() != dux.b) {
+            duw $$2 = $$0.j();
+            if ($$2.g() != duy.b) {
                if (this.j($$1)) {
                   return false;
                }
 
-               if ($$2 == duv.c && $$0.g().values().stream().noneMatch(eiq::b)) {
+               if ($$2 == duw.c && $$0.g().values().stream().noneMatch(eir::b)) {
                   return false;
                }
             }
 
             this.q.ag().d("chunkSave");
-            ur $$3 = dvc.a(this.q, $$0);
+            ur $$3 = dvd.a(this.q, $$0);
             this.a($$1, $$3).exceptionallyAsync($$1x -> {
                this.q.o().b($$1);
                return null;
@@ -729,7 +729,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private boolean j(dbd $$0) {
+   private boolean j(dbe $$0) {
       byte $$1 = this.K.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -747,13 +747,13 @@ public class aqn extends dvd implements aql.c {
             return false;
          }
 
-         dux $$5 = dvc.a($$2);
+         duy $$5 = dvd.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
 
    protected void a(int $$0) {
-      int $$1 = ayx.a($$0, 2, 32);
+      int $$1 = ayy.a($$0, 2, 32);
       if ($$1 != this.N) {
          this.N = $$1;
          this.F.a(this.N);
@@ -765,26 +765,26 @@ public class aqn extends dvd implements aql.c {
    }
 
    int b(arf $$0) {
-      return ayx.a($$0.E(), 2, this.N);
+      return ayy.a($$0.E(), 2, this.N);
    }
 
-   private void a(arf $$0, dbd $$1) {
-      dug $$2 = this.d($$1.a());
+   private void a(arf $$0, dbe $$1) {
+      duh $$2 = this.d($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(arf $$0, dug $$1) {
+   private static void a(arf $$0, duh $$1) {
       $$0.c.g.a($$1);
    }
 
-   private static void b(arf $$0, dbd $$1) {
+   private static void b(arf $$0, dbe $$1) {
       $$0.c.g.a($$0, $$1);
    }
 
    @Nullable
-   public dug d(long $$0) {
+   public duh d(long $$0) {
       aql $$1 = this.b($$0);
       return $$1 == null ? null : $$1.f();
    }
@@ -826,17 +826,17 @@ public class aqn extends dvd implements aql.c {
       while (var4.hasNext()) {
          Entry<aql> $$3 = (Entry<aql>)var4.next();
          long $$4 = $$3.getLongKey();
-         dbd $$5 = new dbd($$4);
+         dbe $$5 = new dbe($$4);
          aql $$6 = (aql)$$3.getValue();
-         Optional<dtw> $$7 = Optional.ofNullable($$6.h());
-         Optional<dug> $$8 = $$7.flatMap($$0x -> $$0x instanceof dug ? Optional.of((dug)$$0x) : Optional.empty());
+         Optional<dtx> $$7 = Optional.ofNullable($$6.h());
+         Optional<duh> $$8 = $$7.flatMap($$0x -> $$0x instanceof duh ? Optional.of((duh)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.l(),
             $$7.isPresent(),
-            $$7.map(dtw::j).orElse(null),
-            $$8.map(dug::D).orElse(null),
+            $$7.map(dtx::j).orElse(null),
+            $$8.map(duh::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -851,9 +851,9 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private static String a(CompletableFuture<aqo<dug>> $$0) {
+   private static String a(CompletableFuture<aqo<duh>> $$0) {
       try {
-         aqo<dug> $$1 = $$0.getNow(null);
+         aqo<duh> $$1 = $$0.getNow(null);
          if ($$1 != null) {
             return $$1.a() ? "done" : "unloaded";
          } else {
@@ -866,7 +866,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private CompletableFuture<Optional<ur>> k(dbd $$0) {
+   private CompletableFuture<Optional<ur>> k(dbe $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.g());
    }
 
@@ -874,7 +874,7 @@ public class aqn extends dvd implements aql.c {
       return this.a(this.q.af(), this.w, $$0, this.t.c());
    }
 
-   boolean c(dbd $$0) {
+   boolean c(dbe $$0) {
       if (!this.F.f($$0.a())) {
          return false;
       } else {
@@ -888,7 +888,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   public List<arf> d(dbd $$0) {
+   public List<arf> d(dbe $$0) {
       long $$1 = $$0.a();
       if (!this.F.f($$1)) {
          return List.of();
@@ -905,7 +905,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   private boolean c(arf $$0, dbd $$1) {
+   private boolean c(arf $$0, dbe $$1) {
       if ($$0.N_()) {
          return false;
       } else {
@@ -915,7 +915,7 @@ public class aqn extends dvd implements aql.c {
    }
 
    private boolean c(arf $$0) {
-      return $$0.N_() && !this.q.ab().b(dbs.r);
+      return $$0.N_() && !this.q.ab().b(dbt.r);
    }
 
    void a(arf $$0, boolean $$1) {
@@ -986,7 +986,7 @@ public class aqn extends dvd implements aql.c {
    }
 
    private void e(arf $$0) {
-      dbd $$1 = $$0.dr();
+      dbe $$1 = $$0.dr();
       int $$2 = this.b($$0);
       if ($$0.W() instanceof aqs.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -1008,7 +1008,7 @@ public class aqn extends dvd implements aql.c {
    }
 
    @Override
-   public List<arf> a(dbd $$0, boolean $$1) {
+   public List<arf> a(dbe $$0, boolean $$1) {
       Set<arf> $$2 = this.I.a();
       Builder<arf> $$3 = ImmutableList.builder();
 
@@ -1021,9 +1021,9 @@ public class aqn extends dvd implements aql.c {
       return $$3.build();
    }
 
-   protected void a(bss $$0) {
-      if (!($$0 instanceof chx)) {
-         bsy<?> $$1 = $$0.ak();
+   protected void a(bst $$0) {
+      if (!($$0 instanceof chy)) {
+         bsz<?> $$1 = $$0.ak();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
@@ -1049,7 +1049,7 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   protected void b(bss $$0) {
+   protected void b(bst $$0) {
       if ($$0 instanceof arf $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.J.values().iterator();
@@ -1082,7 +1082,7 @@ public class aqn extends dvd implements aql.c {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            bss $$7 = $$3.c;
+            bst $$7 = $$3.c;
             if ($$7 instanceof arf) {
                $$1.add((arf)$$7);
             }
@@ -1105,27 +1105,27 @@ public class aqn extends dvd implements aql.c {
       }
    }
 
-   public void a(bss $$0, zv<?> $$1) {
+   public void a(bst $$0, zv<?> $$1) {
       aqn.b $$2 = (aqn.b)this.J.get($$0.al());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(bss $$0, zv<?> $$1) {
+   protected void b(bst $$0, zv<?> $$1) {
       aqn.b $$2 = (aqn.b)this.J.get($$0.al());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<dtw> $$0) {
-      Map<arf, List<dug>> $$1 = new HashMap<>();
+   public void a(List<dtx> $$0) {
+      Map<arf, List<duh>> $$1 = new HashMap<>();
 
-      for (dtw $$2 : $$0) {
-         dbd $$3 = $$2.f();
-         dug $$5;
-         if ($$2 instanceof dug $$4) {
+      for (dtx $$2 : $$0) {
+         dbe $$3 = $$2.f();
+         duh $$5;
+         if ($$2 instanceof duh $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.q.d($$3.e, $$3.f);
@@ -1139,7 +1139,7 @@ public class aqn extends dvd implements aql.c {
       $$1.forEach(($$0x, $$1x) -> $$0x.c.b(acx.a($$1x)));
    }
 
-   protected cer m() {
+   protected ces m() {
       return this.x;
    }
 
@@ -1147,13 +1147,13 @@ public class aqn extends dvd implements aql.c {
       return this.H;
    }
 
-   void a(dbd $$0, aqx $$1) {
+   void a(dbe $$0, aqx $$1) {
       this.E.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(dbd $$0, int $$1) {
+   public void a(dbe $$0, int $$1) {
       int $$2 = $$1 + 1;
-      dbd.a($$0, $$2).forEach($$0x -> {
+      dbe.a($$0, $$2).forEach($$0x -> {
          aql $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.r.a($$0x.e, $$0x.f));
@@ -1186,12 +1186,12 @@ public class aqn extends dvd implements aql.c {
 
    class b {
       final ard b;
-      final bss c;
+      final bst c;
       private final int d;
       kb e;
       private final Set<ash> f = Sets.newIdentityHashSet();
 
-      public b(final bss $$0, final int $$1, final int $$2, final boolean $$3) {
+      public b(final bst $$0, final int $$1, final int $$2, final boolean $$3) {
          this.b = new ard(aqn.this.q, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1235,7 +1235,7 @@ public class aqn extends dvd implements aql.c {
 
       public void b(arf $$0) {
          if ($$0 != this.c) {
-            evp $$1 = $$0.dn().d(this.c.dn());
+            evq $$1 = $$0.dn().d(this.c.dn());
             int $$2 = aqn.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
@@ -1258,7 +1258,7 @@ public class aqn extends dvd implements aql.c {
       private int b() {
          int $$0 = this.d;
 
-         for (bss $$1 : this.c.cW()) {
+         for (bst $$1 : this.c.cW()) {
             int $$2 = $$1.ak().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

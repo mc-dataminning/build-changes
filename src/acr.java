@@ -34,7 +34,7 @@ public class acr implements zv<ach> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static acr a(bqi $$0) {
+   public static acr a(bqj $$0) {
       return new acr($$0.h(), new acr.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class acr implements zv<ach> {
       return new acr($$0, g);
    }
 
-   public static acr b(bqi $$0) {
+   public static acr b(bqj $$0) {
       return new acr($$0.h(), new acr.f($$0.j()));
    }
 
-   public static acr c(bqi $$0) {
+   public static acr c(bqj $$0) {
       return new acr($$0.h(), new acr.e($$0.i()));
    }
 
-   public static acr d(bqi $$0) {
+   public static acr d(bqj $$0) {
       return new acr($$0.h(), new acr.h($$0.k(), $$0.l()));
    }
 
-   public static acr e(bqi $$0) {
+   public static acr e(bqj $$0) {
       return new acr($$0.h(), new acr.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class acr implements zv<ach> {
    static class a implements acr.c {
       private final xo a;
       private final float b;
-      private final bqi.a c;
-      private final bqi.b d;
+      private final bqj.a c;
+      private final bqj.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bqi $$0) {
+      a(bqj $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class acr implements zv<ach> {
       private a(wz $$0) {
          this.a = xq.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bqi.a.class);
-         this.d = $$0.b(bqi.b.class);
+         this.c = $$0.b(bqj.a.class);
+         this.d = $$0.b(bqj.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class acr implements zv<ach> {
    }
 
    public interface b {
-      default void a(UUID $$0, xo $$1, float $$2, bqi.a $$3, bqi.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, xo $$1, float $$2, bqj.a $$3, bqj.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class acr implements zv<ach> {
       default void a(UUID $$0, xo $$1) {
       }
 
-      default void a(UUID $$0, bqi.a $$1, bqi.b $$2) {
+      default void a(UUID $$0, bqj.a $$1, bqj.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class acr implements zv<ach> {
    }
 
    static class h implements acr.c {
-      private final bqi.a a;
-      private final bqi.b b;
+      private final bqj.a a;
+      private final bqj.b b;
 
-      h(bqi.a $$0, bqi.b $$1) {
+      h(bqj.a $$0, bqj.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wz $$0) {
-         this.a = $$0.b(bqi.a.class);
-         this.b = $$0.b(bqi.b.class);
+         this.a = $$0.b(bqj.a.class);
+         this.b = $$0.b(bqj.b.class);
       }
 
       @Override

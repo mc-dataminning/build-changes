@@ -1,37 +1,26 @@
-public class fvp extends fuu {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fwy e;
-   private final fwy f;
-   private final fwy g;
+public class fvp<T extends cga> extends fvj<T> {
+   private float j;
 
-   public fvp(fwy $$0) {
-      super(gdu::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fvp(fwz $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxe a() {
-      fxg $$0 = new fxg();
-      fxh $$1 = $$0.a();
-      $$1.a("plate", fxd.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fxa.a);
-      $$1.a("handle", fxd.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fxa.a);
-      return fxe.a($$0, 64, 64);
+   public static fxf c() {
+      fxh $$0 = fvj.a(12, fxd.a);
+      fxi $$1 = $$0.a();
+      $$1.a("head", fxe.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fxb.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fxe.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fxb.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return fxf.a($$0, 64, 32);
    }
 
-   public fwy b() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
+      this.j = $$0.H($$3);
    }
 
-   public fwy c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

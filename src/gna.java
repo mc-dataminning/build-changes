@@ -1,39 +1,24 @@
-public class gna<T extends btn, M extends fty<T> & fsx> extends gnh<T, M> {
-   private final gdi a;
+public class gna extends gni<cfq, fuo<cfq>> {
+   private final geh a;
 
-   public gna(gkr<T, M> $$0, gdi $$1) {
+   public gna(gks<cfq, fuo<cfq>> $$0, geh $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fu() == bth.b;
-      cun $$11 = $$10 ? $$3.eY() : $$3.eX();
-      cun $$12 = $$10 ? $$3.eX() : $$3.eY();
-      if (!$$11.e() || !$$12.e()) {
+   public void a(ezx $$0, gdn $$1, int $$2, cfq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gq() != 0) {
          $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, cuk.c, bth.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cuk.b, bth.a, $$0, $$1, $$2);
+         fwz $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dfa.bT.o(), $$0, $$1, $$2, gop.d);
          $$0.b();
-      }
-   }
-
-   protected void a(btn $$0, cun $$1, cuk $$2, bth $$3, ezw $$4, gdm $$5, int $$6) {
-      if (!$$1.e()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bth.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
       }
    }
 }

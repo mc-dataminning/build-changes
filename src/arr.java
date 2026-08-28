@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class arr implements arn {
    private final arp a;
-   private final Long2ObjectOpenHashMap<duv> b = new Long2ObjectOpenHashMap();
-   private dbd c = new dbd(0, 0);
+   private final Long2ObjectOpenHashMap<duw> b = new Long2ObjectOpenHashMap();
+   private dbe c = new dbe(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -24,7 +24,7 @@ public class arr implements arn {
    public static arr c(int $$0) {
       arp $$1 = arp.c($$0);
       int $$2 = arn.a($$0);
-      int $$3 = $$0 + duv.b();
+      int $$3 = $$0 + duw.b();
       int $$4 = arn.a($$3);
       return new arr($$1, $$2, $$3, $$4);
    }
@@ -34,7 +34,7 @@ public class arr implements arn {
    }
 
    @Override
-   public void a(dbd $$0) {
+   public void a(dbe $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class arr implements arn {
    }
 
    @Override
-   public void a(dbd $$0, @Nullable duv $$1) {
+   public void a(dbe $$0, @Nullable duw $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class arr implements arn {
    }
 
    @Nullable
-   public duv a(int $$0, int $$1) {
-      return (duv)this.b.get(dbd.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+   public duw a(int $$0, int $$1) {
+      return (duw)this.b.get(dbe.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

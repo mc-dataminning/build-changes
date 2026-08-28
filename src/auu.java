@@ -11,7 +11,7 @@ public class auu<S> implements auk {
    private static final int c = 2;
    private static final int d = 2;
    private static final int e = 1;
-   protected final CompletableFuture<baa> a = new CompletableFuture<>();
+   protected final CompletableFuture<bab> a = new CompletableFuture<>();
    protected CompletableFuture<List<S>> b;
    final Set<aui> f;
    private final int g;
@@ -20,11 +20,11 @@ public class auu<S> implements auk {
    private final AtomicInteger j = new AtomicInteger();
    private final AtomicInteger k = new AtomicInteger();
 
-   public static auu<Void> a(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<baa> $$4) {
-      return new auu<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bnd.a, bnd.a, $$2, $$5), $$4);
+   public static auu<Void> a(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<bab> $$4) {
+      return new auu<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bne.a, bne.a, $$2, $$5), $$4);
    }
 
-   protected auu(Executor $$0, final Executor $$1, auo $$2, List<aui> $$3, auu.a<S> $$4, CompletableFuture<baa> $$5) {
+   protected auu(Executor $$0, final Executor $$1, auo $$2, List<aui> $$3, auu.a<S> $$4, CompletableFuture<bab> $$5) {
       this.g = $$3.size();
       this.j.incrementAndGet();
       $$5.thenRun(this.k::incrementAndGet);
@@ -40,7 +40,7 @@ public class auu<S> implements auk {
                $$1.execute(() -> {
                   auu.this.f.remove($$8);
                   if (auu.this.f.isEmpty()) {
-                     auu.this.a.complete(baa.a);
+                     auu.this.a.complete(bab.a);
                   }
                });
                return auu.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
@@ -78,7 +78,7 @@ public class auu<S> implements auk {
       return $$1 / $$2;
    }
 
-   public static auk a(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<baa> $$4, boolean $$5) {
+   public static auk a(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<bab> $$4, boolean $$5) {
       return (auk)($$5 ? new auj($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
    }
 

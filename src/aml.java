@@ -95,7 +95,7 @@ public class aml {
                                                                                  gf.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 but.a.a
+                                                                                 buu.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class aml {
                                                                               gf.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              but.a.b
+                                                                              buu.a.b
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class aml {
                                                                            gf.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           but.a.c
+                                                                           buu.a.c
                                                                         )
                                                                   )
                                                             )
@@ -168,8 +168,8 @@ public class aml {
       );
    }
 
-   private static bur a(bss $$0, ji<buq> $$1) throws CommandSyntaxException {
-      bur $$2 = a($$0).eW().a($$1);
+   private static bus a(bst $$0, ji<bur> $$1) throws CommandSyntaxException {
+      bus $$2 = a($$0).eW().a($$1);
       if ($$2 == null) {
          throw b.create($$0.af(), a($$1));
       } else {
@@ -177,16 +177,16 @@ public class aml {
       }
    }
 
-   private static btn a(bss $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof btn)) {
+   private static bto a(bst $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bto)) {
          throw a.create($$0.af());
       } else {
-         return (btn)$$0;
+         return (bto)$$0;
       }
    }
 
-   private static btn b(bss $$0, ji<buq> $$1) throws CommandSyntaxException {
-      btn $$2 = a($$0);
+   private static bto b(bst $$0, ji<bur> $$1) throws CommandSyntaxException {
+      bto $$2 = a($$0);
       if (!$$2.eW().b($$1)) {
          throw b.create($$0.af(), a($$1));
       } else {
@@ -194,23 +194,23 @@ public class aml {
       }
    }
 
-   private static int a(ep $$0, bss $$1, ji<buq> $$2, double $$3) throws CommandSyntaxException {
-      btn $$4 = b($$1, $$2);
+   private static int a(ep $$0, bst $$1, ji<bur> $$2, double $$3) throws CommandSyntaxException {
+      bto $$4 = b($$1, $$2);
       double $$5 = $$4.g($$2);
       $$0.a(() -> xo.a("commands.attribute.value.get.success", a($$2), $$1.af(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ep $$0, bss $$1, ji<buq> $$2, double $$3) throws CommandSyntaxException {
-      btn $$4 = b($$1, $$2);
+   private static int b(ep $$0, bst $$1, ji<bur> $$2, double $$3) throws CommandSyntaxException {
+      bto $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> xo.a("commands.attribute.base_value.get.success", a($$2), $$1.af(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ep $$0, bss $$1, ji<buq> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      btn $$5 = b($$1, $$2);
-      bus $$6 = $$5.eW();
+   private static int a(ep $$0, bst $$1, ji<bur> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      bto $$5 = b($$1, $$2);
+      but $$6 = $$5.eW();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.af(), a($$2), $$3);
       } else {
@@ -220,15 +220,15 @@ public class aml {
       }
    }
 
-   private static int c(ep $$0, bss $$1, ji<buq> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ep $$0, bst $$1, ji<bur> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> xo.a("commands.attribute.base_value.set.success", a($$2), $$1.af(), $$3), false);
       return 1;
    }
 
-   private static int a(ep $$0, bss $$1, ji<buq> $$2, UUID $$3, String $$4, double $$5, but.a $$6) throws CommandSyntaxException {
-      bur $$7 = a($$1, $$2);
-      but $$8 = new but($$3, $$4, $$5, $$6);
+   private static int a(ep $$0, bst $$1, ji<bur> $$2, UUID $$3, String $$4, double $$5, buu.a $$6) throws CommandSyntaxException {
+      bus $$7 = a($$1, $$2);
+      buu $$8 = new buu($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
          throw d.create($$1.af(), a($$2), $$3);
       } else {
@@ -238,8 +238,8 @@ public class aml {
       }
    }
 
-   private static int a(ep $$0, bss $$1, ji<buq> $$2, UUID $$3) throws CommandSyntaxException {
-      bur $$4 = a($$1, $$2);
+   private static int a(ep $$0, bst $$1, ji<bur> $$2, UUID $$3) throws CommandSyntaxException {
+      bus $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> xo.a("commands.attribute.modifier.remove.success", xo.a($$3), a($$2), $$1.af()), false);
          return 1;
@@ -248,7 +248,7 @@ public class aml {
       }
    }
 
-   private static xo a(ji<buq> $$0) {
+   private static xo a(ji<bur> $$0) {
       return xo.c($$0.a().c());
    }
 }

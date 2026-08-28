@@ -1,85 +1,34 @@
-public class cab extends cap {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cfl b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
 
-   public cab(cfl $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class cab extends cam {
+   private final btq a;
+   private final dbx b;
+
+   public cab(btq $$0, dbx $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cam.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.b.el().a(this.c) != 0) {
-         return false;
+      boolean $$0 = this.a.aC || this.a.aB;
+      if ($$0 && this.a.ak().a(aws.h)) {
+         iz $$1 = this.a.dp().c();
+         dsb $$2 = this.b.a_($$1);
+         return $$2.a(dfa.qP) || $$2.k(this.b, $$1) == ewg.a();
       } else {
-         je $$0 = this.b.cI();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         iz $$3 = this.b.dp();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
+         return false;
       }
    }
 
-   private boolean a(iz $$0, int $$1, int $$2, int $$3) {
-      iz $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dP().b_($$4).a(awu.a) && !this.b.dP().a_($$4).d();
-   }
-
-   private boolean b(iz $$0, int $$1, int $$2, int $$3) {
-      return this.b.dP().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dP().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
    @Override
-   public boolean b() {
-      double $$0 = this.b.ds().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dH() == 0.0F || !(Math.abs(this.b.dH()) < 10.0F) || !this.b.be()) && !this.b.aE();
-   }
-
-   @Override
-   public boolean Q_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      je $$0 = this.b.cI();
-      this.b.h(this.b.ds().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.b.s(0.0F);
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         ent $$1 = this.b.dP().b_(this.b.dp());
-         this.d = $$1.a(awu.a);
-      }
-
-      if (this.d && !$$0) {
-         this.b.a(avz.hb, 1.0F, 1.0F);
-      }
-
-      evp $$2 = this.b.ds();
-      if ($$2.d * $$2.d < 0.03F && this.b.dH() != 0.0F) {
-         this.b.s(ayx.j(0.2F, this.b.dH(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+      this.a.I().a();
    }
 }

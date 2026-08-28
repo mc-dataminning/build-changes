@@ -12,7 +12,7 @@ public class ant {
    }
 
    private static int a(ep $$0) {
-      return a($$0, cmv::O_);
+      return a($$0, cmw::O_);
    }
 
    private static int b(ep $$0) {

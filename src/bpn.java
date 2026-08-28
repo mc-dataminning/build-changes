@@ -1,111 +1,27 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+public abstract class bpn<R extends Runnable> extends bpj<R> {
+   private int b;
 
-public interface bpn<T, F> {
-   @Nullable
-   F a();
-
-   boolean a(T var1);
-
-   boolean b();
-
-   int c();
-
-   public static final class a implements bpn<bpn.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean a(bpn.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
-      }
+   public bpn(String $$0) {
+      super($$0);
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
-
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public boolean ay() {
+      return this.bB() || super.ay();
    }
 
-   public static final class c<T> implements bpn<T, T> {
-      private final Queue<T> a;
+   protected boolean bB() {
+      return this.b != 0;
+   }
 
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public void d(R $$0) {
+      this.b++;
 
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
-
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
       }
    }
 }

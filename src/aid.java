@@ -2,7 +2,7 @@ public class aid implements zv<agv> {
    public static final zm<wl, aid> a = zv.a(aid::a, aid::new);
    private final ale b;
 
-   public aid(cyv<?> $$0) {
+   public aid(cyw<?> $$0) {
       this.b = $$0.a();
    }
 

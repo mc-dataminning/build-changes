@@ -27,7 +27,7 @@ public class amt {
                                              (ep)$$0x.getSource(),
                                              fc.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new brl(fo.a($$0x, "damageType", lq.s))
+                                             new brm(fo.a($$0x, "damageType", lq.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class amt {
                                                       (ep)$$0x.getSource(),
                                                       fc.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brl(fo.a($$0x, "damageType", lq.s), gs.a($$0x, "location"))
+                                                      new brm(fo.a($$0x, "damageType", lq.s), gs.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class amt {
                                                       (ep)$$0x.getSource(),
                                                       fc.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brl(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"))
+                                                      new brm(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class amt {
                                                                (ep)$$0x.getSource(),
                                                                fc.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new brl(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"), fc.a($$0x, "cause"))
+                                                               new brm(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"), fc.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class amt {
       );
    }
 
-   private static int a(ep $$0, bss $$1, float $$2, brl $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, bst $$1, float $$2, brm $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> xo.a("commands.damage.success", $$2, $$1.O_()), true);
          return 1;

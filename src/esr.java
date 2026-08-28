@@ -1,28 +1,39 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class esr extends ers {
-   public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(lp.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, esr::new));
-   private final ji<cwm> b;
+public class esr extends ert {
+   static final MapCodec<esr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eun.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, esr::new));
+   private final eum b;
 
-   private esr(List<etq> $$0, ji<cwm> $$1) {
+   private esr(List<etr> $$0, eum $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public eru<esr> b() {
-      return erv.F;
+   public Set<eta<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      $$0.a(km.F, cwo.a, this.b, cwo::b);
+   public erv<esr> b() {
+      return erw.Q;
+   }
+
+   @Override
+   public cuo a(cuo $$0, eqh $$1) {
+      int $$2 = ayy.a(this.b.a($$1), 0, 4);
+      $$0.b(km.Q, Integer.valueOf($$2));
       return $$0;
    }
 
-   public static ers.a<?> a(ji<cwm> $$0) {
+   public eum c() {
+      return this.b;
+   }
+
+   public static ert.a<?> a(eum $$0) {
       return a($$1 -> new esr($$1, $$0));
    }
 }

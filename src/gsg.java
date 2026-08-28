@@ -1,58 +1,44 @@
-public class gsg extends grt {
-   public gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, iz $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public class gsg extends grv {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cmw p;
+   private final cos q;
+   private final boolean r;
+
+   public gsg(cmw $$0, cos $$1, boolean $$2) {
+      super($$2 ? avz.oL : avz.oM, awa.g, gsm.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gsm.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public static gsg a(avy $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public boolean s() {
+      return !this.q.aW();
    }
 
-   public static gsg a(ji<avy> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public static gsg a(avy $$0, float $$1, float $$2) {
-      return new gsg($$0.a(), awa.a, $$2, $$1, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsg a(avy $$0) {
-      return new gsg($$0.a(), awa.b, 1.0F, 1.0F, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsg a(avy $$0, evp $$1) {
-      return new gsg($$0, awa.c, 4.0F, 1.0F, gsl.t(), false, 0, gsl.a.b, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static gsg b(avy $$0, float $$1, float $$2) {
-      return new gsg($$0.a(), awa.i, $$2, $$1, gsl.t(), false, 0, gsl.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsg b(avy $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static gsg a(avy $$0, azf $$1, double $$2, double $$3, double $$4) {
-      return new gsg($$0, awa.i, 1.0F, 1.0F, $$1, false, 0, gsl.a.b, $$2, $$3, $$4);
-   }
-
-   public gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gsl.a.b, $$5, $$6, $$7);
-   }
-
-   private gsg(avy $$0, awa $$1, float $$2, float $$3, azf $$4, boolean $$5, int $$6, gsl.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gsg(ale $$0, awa $$1, float $$2, float $$3, azf $$4, boolean $$5, int $$6, gsl.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public void q() {
+      if (this.q.dK() || !this.p.bR() || this.p.dc() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bj()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.ds().h();
+         if ($$0 >= 0.01F) {
+            this.d = ayy.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
    }
 }

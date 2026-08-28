@@ -1,111 +1,85 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dib extends dex {
-   public static final MapCodec<dib> a = b(dib::new);
-   private static final int c = 2;
-   private static final int d = 5;
-   private static final int e = 3600;
-   private static final int f = 12000;
-   protected static final ewi b = dex.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
-   private static int g = 3600;
-   private static int h = 12000;
+public class dib extends dey {
+   public static final MapCodec<dib> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dib::new)
+   );
+   private static final Map<dey, dey> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ewj c = dey.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dey e;
 
    @Override
    public MapCodec<dib> a() {
       return a;
    }
 
-   public dib(drz.d $$0) {
-      super($$0);
+   public dib(dey $$0, dsa.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return b;
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return c;
    }
 
    @Override
-   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
-      return a($$1, $$2.d());
-   }
-
-   @Override
-   protected void b(dsa $$0, dbw $$1, iz $$2, dsa $$3, boolean $$4) {
-      $$1.a($$2, this, a($$1.E_()));
-   }
-
-   private static int a(azf $$0) {
-      return $$0.b(g, h);
-   }
-
-   @Override
-   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
-      return !this.a($$0, $$3, $$4) ? dez.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dsa $$0, are $$1, iz $$2, azf $$3) {
-      if (!this.a($$0, $$1, $$2)) {
-         this.a((dbw)$$1, $$2);
+   protected bqv a(cuo $$0, dsb $$1, dbx $$2, iz $$3, cmw $$4, bqs $$5, evm $$6) {
+      dsb $$8 = ($$0.g() instanceof csm $$7 ? d.getOrDefault($$7.d(), dfa.a) : dfa.a).o();
+      if ($$8.i()) {
+         return bqv.d;
+      } else if (!this.m()) {
+         return bqv.b;
       } else {
-         this.a($$1, $$2, $$3);
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dwu.c, $$3);
+         $$4.a(awj.ah);
+         $$0.a(1, $$4);
+         return bqv.a($$2.B);
       }
    }
 
    @Override
-   protected void a(dsa $$0, dbw $$1, iz $$2, bss $$3) {
-      if ($$3.ak().equals(bsy.O)) {
-         this.a($$1, $$2);
-      }
-   }
-
-   private static boolean a(dbc $$0, iz $$1) {
-      ent $$2 = $$0.b_($$1);
-      ent $$3 = $$0.b_($$1.c());
-      return $$2.a() == enu.c && $$3.a() == enu.a;
-   }
-
-   private void a(are $$0, iz $$1, azf $$2) {
-      this.a((dbw)$$0, $$1);
-      $$0.a(null, $$1, avz.jI, awa.e, 1.0F, 1.0F);
-      this.b($$0, $$1, $$2);
-   }
-
-   private void a(dbw $$0, iz $$1) {
-      $$0.b($$1, false);
-   }
-
-   private void b(are $$0, iz $$1, azf $$2) {
-      int $$3 = $$2.b(2, 6);
-
-      for (int $$4 = 1; $$4 <= $$3; $$4++) {
-         cha $$5 = bsy.ba.a((dbw)$$0);
-         if ($$5 != null) {
-            double $$6 = (double)$$1.u() + this.b($$2);
-            double $$7 = (double)$$1.w() + this.b($$2);
-            int $$8 = $$2.b(1, 361);
-            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
-            $$5.fU();
-            $$0.b($$5);
+   protected bqt a(dsb $$0, dbx $$1, iz $$2, cmw $$3, evm $$4) {
+      if (this.m()) {
+         return bqt.c;
+      } else {
+         cuo $$5 = new cuo(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
          }
+
+         $$1.a($$2, dfa.fR.o(), 3);
+         $$1.a($$3, dwu.c, $$2);
+         return bqt.a($$1.B);
       }
    }
 
-   private double b(azf $$0) {
-      double $$1 = (double)(cha.c / 2.0F);
-      return ayx.a($$0.j(), $$1, 1.0 - $$1);
+   @Override
+   public cuo a(dca $$0, iz $$1, dsb $$2) {
+      return this.m() ? super.a($$0, $$1, $$2) : new cuo(this.e);
    }
 
-   @VisibleForTesting
-   public static void a(int $$0, int $$1) {
-      g = $$0;
-      h = $$1;
+   private boolean m() {
+      return this.e == dfa.a;
    }
 
-   @VisibleForTesting
-   public static void b() {
-      g = 3600;
-      h = 12000;
+   @Override
+   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !$$0.a($$3, $$4) ? dfa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dey b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dsb $$0, eoj $$1) {
+      return false;
    }
 }

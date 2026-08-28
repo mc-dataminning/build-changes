@@ -1,38 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
 public class dxp {
-   public final efb a;
-   public final efb b;
-   public final efb c;
-   public final efb d;
-   public final efb e;
-   public final List<dsa> f;
-   public final axe<dex> g;
-   public final axe<dex> h;
-   public static final Codec<dxp> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efb.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               efb.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               efb.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               efb.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               efb.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayf.a(dsa.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axe.b(lq.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axe.b(lq.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dxp::new)
-   );
+   public static enum a implements azt {
+      a("air"),
+      b("liquid");
 
-   public dxp(efb $$0, efb $$1, efb $$2, efb $$3, efb $$4, List<dsa> $$5, axe<dex> $$6, axe<dex> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+      public static final Codec<dxp.a> c = azt.a(dxp.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum b implements azt {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
+
+      public static final Codec<dxp.b> l = azt.a(dxp.b::values);
+      private final String m;
+
+      private b(final String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

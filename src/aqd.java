@@ -19,7 +19,7 @@ public class aqd implements Runnable {
 
    public aqd(aqa $$0) {
       this.d = $$0;
-      this.e = $$0.bu() * azx.b;
+      this.e = $$0.bu() * azy.b;
    }
 
    @Override
@@ -32,8 +32,8 @@ public class aqd implements Runnable {
             a.error(
                LogUtils.FATAL_MARKER,
                "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)azx.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aQ().g() / (float)azx.c)
+               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)azy.a),
+               String.format(Locale.ROOT, "%.2f", this.d.aQ().g() / (float)azy.c)
             );
             a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
             ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
@@ -55,7 +55,7 @@ public class aqd implements Runnable {
             p $$9 = $$8.a("Thread Dump");
             $$9.a("Threads", $$5);
             p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.bb().o().a(dbs.o).toString());
+            $$10.a("Random tick rate", () -> this.d.bb().o().a(dbt.o).toString());
             $$10.a("Level stats", () -> Streams.stream(this.d.K()).map($$0x -> $$0x.af() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
             alg.a("Crash report:\n" + $$8.e());
             File $$11 = new File(new File(this.d.C(), "crash-reports"), "crash-" + ac.f() + "-server.txt");
@@ -69,7 +69,7 @@ public class aqd implements Runnable {
          }
 
          try {
-            Thread.sleep(($$0 + this.e - $$1) / azx.b);
+            Thread.sleep(($$0 + this.e - $$1) / azy.b);
          } catch (InterruptedException var15) {
          }
       }

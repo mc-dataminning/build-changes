@@ -1,11 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface dwx {
-   Codec<dwx> c = lp.v.q().dispatch(dwx::a, dwy::a);
-   zm<wz, dwx> d = zk.a(lq.W).b(dwx::a, dwy::b);
+   dwx a = new dwx() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   Optional<evp> a(dbw var1);
+      @Override
+      public void a(dww $$0) {
+      }
 
-   dwy<? extends dwx> a();
+      @Override
+      public void b(dww $$0) {
+      }
+
+      @Override
+      public boolean a(ji<dwu> $$0, evq $$1, dwu.a $$2, dwx.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dww var1);
+
+   void b(dww var1);
+
+   boolean a(ji<dwu> var1, evq var2, dwu.a var3, dwx.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dww var1, evq var2);
+   }
 }

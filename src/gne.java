@@ -1,25 +1,25 @@
-public class gne<T extends cmv> extends gnh<T, fvd<T>> {
-   private final fuy a;
+public class gne extends gni<cft, fuy<cft>> {
+   private final gdj a;
 
-   public gne(gkr<T, fvd<T>> $$0, fwu $$1) {
+   public gne(gks<cft, fuy<cft>> $$0, gdj $$1) {
       super($$0);
-      this.a = new fuy($$1.a(fwx.aG));
+      this.a = $$1;
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
+   public void a(ezx $$0, gdn $$1, int $$2, cft $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cuo $$10 = $$3.a(bta.a);
+      if ($$3.y() && !$$3.gI()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gw()) {
+            $$11 -= 0.2F * ayy.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * ayy.a($$7 * 0.6F);
+         }
 
-   private void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      ur $$9 = $$8 ? $$3.gt() : $$3.gu();
-      bsy.a($$9.l("id")).filter($$0x -> $$0x == bsy.ax).ifPresent($$10 -> {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.ca() ? -1.3F : -1.5F, 0.0F);
-         cft.b $$11 = cft.b.a($$9.h("Variant"));
-         faa $$12 = $$1.getBuffer(this.a.a(gki.a($$11)));
-         this.a.a($$0, $$12, $$2, goo.d, $$4, $$5, $$6, $$7, $$3.ai);
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cul.h, false, $$0, $$1, $$2);
          $$0.b();
-      });
+      }
    }
 }

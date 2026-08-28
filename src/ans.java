@@ -12,8 +12,8 @@ public class ans {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1) {
-      for (bss $$2 : $$1) {
+   private static int a(ep $$0, Collection<? extends bst> $$1) {
+      for (bst $$2 : $$1) {
          $$2.an();
       }
 

@@ -1,5 +1,8 @@
-public interface dtt {
-   dsa a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dsa var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dtt {
 }

@@ -1,52 +1,46 @@
-public class gnc<T extends cfq> extends gnh<T, ftr<T>> {
-   private final geg a;
+public class gnc extends gni<chl, fus<chl>> {
+   private static final ale[] a = new ale[]{
+      new ale("textures/entity/llama/decor/white.png"),
+      new ale("textures/entity/llama/decor/orange.png"),
+      new ale("textures/entity/llama/decor/magenta.png"),
+      new ale("textures/entity/llama/decor/light_blue.png"),
+      new ale("textures/entity/llama/decor/yellow.png"),
+      new ale("textures/entity/llama/decor/lime.png"),
+      new ale("textures/entity/llama/decor/pink.png"),
+      new ale("textures/entity/llama/decor/gray.png"),
+      new ale("textures/entity/llama/decor/light_gray.png"),
+      new ale("textures/entity/llama/decor/cyan.png"),
+      new ale("textures/entity/llama/decor/purple.png"),
+      new ale("textures/entity/llama/decor/blue.png"),
+      new ale("textures/entity/llama/decor/brown.png"),
+      new ale("textures/entity/llama/decor/green.png"),
+      new ale("textures/entity/llama/decor/red.png"),
+      new ale("textures/entity/llama/decor/black.png")
+   };
+   private static final ale b = new ale("textures/entity/llama/decor/trader_llama.png");
+   private final fus<chl> c;
 
-   public gnc(gkr<T, ftr<T>> $$0, geg $$1) {
+   public gnc(gks<chl, fus<chl>> $$0, fwv $$1) {
       super($$0);
-      this.a = $$1;
+      this.c = new fus<>($$1.a(fwy.ay));
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.p_()) {
-         ffd $$10 = ffd.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ch();
-         if (!$$3.ch() || $$11) {
-            dsa $$12 = $$3.u().a();
-            int $$13 = gjw.c($$3, 0.0F);
-            gqy $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
-   }
-
-   private void a(ezw $$0, gdm $$1, int $$2, boolean $$3, dsa $$4, int $$5, gqy $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gdu.r(gow.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+   public void a(ezx $$0, gdn $$1, int $$2, chl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cth $$10 = $$3.gD();
+      ale $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
       } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+         if (!$$3.gz()) {
+            return;
+         }
+
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      fab $$14 = $$1.getBuffer(gdv.e($$11));
+      this.c.a($$0, $$14, $$2, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record av(Optional<jm<dex>> c, Optional<dx> d, Optional<dg> e) {
+public record av(Optional<jm<dey>> c, Optional<dx> d, Optional<dg> e) {
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                jx.a(lq.f).optionalFieldOf("blocks").forGetter(av::b),
@@ -23,15 +23,15 @@ public record av(Optional<jm<dex>> c, Optional<dx> d, Optional<dg> e) {
       }
    }
 
-   public boolean a(dse $$0) {
+   public boolean a(dsf $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(dsa $$0) {
+   private boolean a(dsb $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(dbz $$0, @Nullable dpf $$1, dg $$2) {
+   private static boolean a(dca $$0, @Nullable dpg $$1, dg $$2) {
       return $$1 != null && $$2.a($$1.b($$0.H_()));
    }
 
@@ -39,7 +39,7 @@ public record av(Optional<jm<dex>> c, Optional<dx> d, Optional<dg> e) {
       return this.e.isPresent();
    }
 
-   public Optional<jm<dex>> b() {
+   public Optional<jm<dey>> b() {
       return this.c;
    }
 
@@ -52,7 +52,7 @@ public record av(Optional<jm<dex>> c, Optional<dx> d, Optional<dg> e) {
    }
 
    public static class a {
-      private Optional<jm<dex>> a = Optional.empty();
+      private Optional<jm<dey>> a = Optional.empty();
       private Optional<dx> b = Optional.empty();
       private Optional<dg> c = Optional.empty();
 
@@ -63,17 +63,17 @@ public record av(Optional<jm<dex>> c, Optional<dx> d, Optional<dg> e) {
          return new av.a();
       }
 
-      public av.a a(dex... $$0) {
-         this.a = Optional.of(jm.a(dex::s, $$0));
+      public av.a a(dey... $$0) {
+         this.a = Optional.of(jm.a(dey::s, $$0));
          return this;
       }
 
-      public av.a a(Collection<dex> $$0) {
-         this.a = Optional.of(jm.a(dex::s, $$0));
+      public av.a a(Collection<dey> $$0) {
+         this.a = Optional.of(jm.a(dey::s, $$0));
          return this;
       }
 
-      public av.a a(axe<dex> $$0) {
+      public av.a a(axe<dey> $$0) {
          this.a = Optional.of(lp.e.a($$0));
          return this;
       }

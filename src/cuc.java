@@ -1,58 +1,73 @@
-public class cuc extends cui {
-   private static final int a = 40;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-   public cuc(cui.a $$0) {
-      super($$0);
+public class cuc extends ctd {
+   protected static final Map<dey, Pair<Predicate<cyb>, Consumer<cyb>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dfa.i,
+         Pair.of(cuc::b, a(dfa.cC.o())),
+         dfa.kE,
+         Pair.of(cuc::b, a(dfa.cC.o())),
+         dfa.j,
+         Pair.of(cuc::b, a(dfa.cC.o())),
+         dfa.k,
+         Pair.of(cuc::b, a(dfa.j.o())),
+         dfa.sH,
+         Pair.of((Predicate<cyb>)$$0 -> true, a(dfa.j.o(), cur.dO))
+      )
+   );
+
+   public cuc(cwd $$0, cuj.a $$1) {
+      super($$0, awo.bB, $$1);
    }
 
    @Override
-   public cun a(cun $$0, dbw $$1, btn $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof arf $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(awj.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.e(bsc.s);
-      }
-
-      if ($$0.e()) {
-         return new cun(cuq.sl);
+   public bqt a(cyb $$0) {
+      dbx $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      Pair<Predicate<cyb>, Consumer<cyb>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bqt.e;
       } else {
-         if ($$2 instanceof cmv $$4 && !$$4.fP()) {
-            cun $$5 = new cun(cuq.sl);
-            if (!$$4.gc().f($$5)) {
-               $$4.a($$5, false);
+         Predicate<cyb> $$4 = (Predicate<cyb>)$$3.getFirst();
+         Consumer<cyb> $$5 = (Consumer<cyb>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cmw $$6 = $$0.o();
+            $$1.a($$6, $$2, avz.mn, awa.e, 1.0F, 1.0F);
+            if (!$$1.B) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bto.d($$0.p()));
+               }
             }
-         }
 
-         return $$0;
+            return bqt.a($$1.B);
+         } else {
+            return bqt.e;
+         }
       }
    }
 
-   @Override
-   public int b(cun $$0) {
-      return 40;
+   public static Consumer<cyb> a(dsb $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(dwu.c, $$1.a(), dwu.a.a($$1.o(), $$0));
+      };
    }
 
-   @Override
-   public cwi c(cun $$0) {
-      return cwi.c;
+   public static Consumer<cyb> a(dsb $$0, dbw $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(dwu.c, $$2.a(), dwu.a.a($$2.o(), $$0));
+         dey.a($$2.q(), $$2.a(), $$2.k(), new cuo($$1));
+      };
    }
 
-   @Override
-   public avy al_() {
-      return avz.mD;
-   }
-
-   @Override
-   public avy am_() {
-      return avz.mD;
-   }
-
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      return cup.a($$0, $$1, $$2);
+   public static boolean b(cyb $$0) {
+      return $$0.k() != je.a && $$0.q().a_($$0.a().c()).i();
    }
 }

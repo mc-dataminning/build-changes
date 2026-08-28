@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dwb {
-   dwb a = new dwb() {
-      @Override
-      public void a() {
-      }
+   int al();
 
-      @Override
-      public void a(bss.c $$0) {
-      }
-   };
+   UUID cz();
 
-   void a();
+   iz dp();
 
-   void a(bss.c var1);
+   evl cK();
+
+   void a(dwc var1);
+
+   Stream<? extends dwb> cU();
+
+   Stream<? extends dwb> cV();
+
+   void b(bst.c var1);
+
+   boolean dN();
+
+   boolean dO();
 }

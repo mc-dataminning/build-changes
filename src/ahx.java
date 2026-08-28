@@ -4,7 +4,7 @@ public class ahx implements zv<agv> {
    private final ale c;
    private final boolean d;
 
-   public ahx(int $$0, cyv<?> $$1, boolean $$2) {
+   public ahx(int $$0, cyw<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;

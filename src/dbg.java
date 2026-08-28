@@ -1,123 +1,76 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface dbg extends dbc {
-   dtr C_();
+public class dbg {
+   private final evq a;
+   private final evq b;
+   private final dbg.a c;
+   private final dbg.b d;
+   private final evv e;
 
-   @Nullable
-   dbc c(int var1, int var2);
-
-   default boolean a(@Nullable bss $$0, ewi $$1) {
-      return true;
+   public dbg(evq $$0, evq $$1, dbg.a $$2, dbg.b $$3, bst $$4) {
+      this($$0, $$1, $$2, $$3, evv.a($$4));
    }
 
-   default boolean a(dsa $$0, iz $$1, evu $$2) {
-      ewi $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public dbg(evq $$0, evq $$1, dbg.a $$2, dbg.b $$3, evv $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   default boolean f(bss $$0) {
-      return this.a($$0, ewf.a($$0.cK()));
+   public evq a() {
+      return this.b;
    }
 
-   default boolean b(evk $$0) {
-      return this.a(null, $$0);
+   public evq b() {
+      return this.a;
    }
 
-   default boolean g(bss $$0) {
-      return this.a($$0, $$0.cK());
+   public ewj a(dsb $$0, dbd $$1, iz $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   default boolean a(@Nullable bss $$0, evk $$1) {
-      for (ewi $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
+   public ewj a(enu $$0, dbd $$1, iz $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : ewg.a();
+   }
+
+   public static enum a implements dbg.c {
+      a(dsa.a::b),
+      b(dsa.a::a),
+      c(dsa.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(awo.aQ) ? ewg.b() : ewg.a());
+
+      private final dbg.c e;
+
+      private a(final dbg.c $$0) {
+         this.e = $$0;
       }
 
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         ewi $$3 = this.h($$0, $$1);
-         return $$3 == null || !ewf.c($$3, ewf.a($$1), evt.i);
+      @Override
+      public ewj get(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
       }
    }
 
-   default boolean b(@Nullable bss $$0, evk $$1) {
-      for (ewi $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
+   public static enum b {
+      a($$0 -> false),
+      b(enu::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(awu.a));
+
+      private final Predicate<enu> e;
+
+      private b(final Predicate<enu> $$0) {
+         this.e = $$0;
       }
 
-      return true;
-   }
-
-   List<ewi> c(@Nullable bss var1, evk var2);
-
-   default Iterable<ewi> d(@Nullable bss $$0, evk $$1) {
-      List<ewi> $$2 = this.c($$0, $$1);
-      Iterable<ewi> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<ewi> e(@Nullable bss $$0, evk $$1) {
-      return () -> new dba<ewi>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   @Nullable
-   private ewi h(bss $$0, evk $$1) {
-      dtr $$2 = this.C_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable bss $$0, evk $$1) {
-      dba<ewi> $$2 = new dba<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((ewi)$$2.next()).c()) {
-            return true;
-         }
+      public boolean a(enu $$0) {
+         return this.e.test($$0);
       }
-
-      return false;
    }
 
-   default Optional<iz> g(bss $$0, evk $$1) {
-      iz $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dba<iz> $$4 = new dba<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         iz $$5 = (iz)$$4.next();
-         double $$6 = $$5.b($$0.dn());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<evp> a(@Nullable bss $$0, ewi $$1, evp $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         evk $$6 = $$1.a().c($$3, $$4, $$5);
-         ewi $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(ewf::a)
-            .reduce(ewf.a(), ewf::a);
-         ewi $$8 = ewf.a($$1, $$7, evt.e);
-         return $$8.a($$2);
-      }
+   public interface c {
+      ewj get(dsb var1, dbd var2, iz var3, evv var4);
    }
 }

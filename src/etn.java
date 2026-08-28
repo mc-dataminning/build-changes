@@ -1,36 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record etn(etq b) implements etq {
-   public static final MapCodec<etn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ets.a.fieldOf("term").forGetter(etn::c)).apply($$0, etn::new));
+public class etn implements etr {
+   private static final etn b = new etn();
+   public static final MapCodec<etn> a = MapCodec.unit(b);
 
-   @Override
-   public etr b() {
-      return ets.c;
-   }
-
-   public boolean a(eqg $$0) {
-      return !this.b.test($$0);
+   private etn() {
    }
 
    @Override
-   public Set<esz<?>> a() {
-      return this.b.a();
+   public ets b() {
+      return ett.n;
    }
 
    @Override
-   public void a(eqm $$0) {
-      etq.super.a($$0);
-      this.b.a($$0);
+   public Set<eta<?>> a() {
+      return ImmutableSet.of(etd.j);
    }
 
-   public static etq.a a(etq.a $$0) {
-      etn $$1 = new etn($$0.build());
-      return () -> $$1;
+   public boolean a(eqh $$0) {
+      Float $$1 = $$0.c(etd.j);
+      if ($$1 != null) {
+         azg $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public etq c() {
-      return this.b;
+   public static etr.a c() {
+      return () -> b;
    }
 }

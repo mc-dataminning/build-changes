@@ -148,7 +148,7 @@ public abstract class asb implements aam {
 
    protected abstract GameProfile i();
 
-   @bab
+   @bac
    public GameProfile j() {
       return this.i();
    }

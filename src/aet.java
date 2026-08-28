@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public record aet(int b, ji<bry> c) implements zv<ach> {
+public record aet(int b, ji<brz> c) implements zv<ach> {
    public static final zm<wz, aet> a = zm.a(zk.g, $$0 -> $$0.b, zk.b(lq.R), aet::e, aet::new);
 
    @Override
@@ -13,11 +13,11 @@ public record aet(int b, ji<bry> c) implements zv<ach> {
    }
 
    @Nullable
-   public bss a(dbw $$0) {
+   public bst a(dbx $$0) {
       return $$0.a(this.b);
    }
 
-   public ji<bry> e() {
+   public ji<brz> e() {
       return this.c;
    }
 }

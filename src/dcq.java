@@ -1,25 +1,154 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record dcq(dbk d, cpj e) {
-   public static final String a = "enabled_features";
-   public static final Codec<dcq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dbk.b.lenientOptionalFieldOf("DataPacks", dbk.a).forGetter(dcq::a), cpl.f.lenientOptionalFieldOf("enabled_features", cpl.h).forGetter(dcq::b)
-            )
-            .apply($$0, dcq::new)
-   );
-   public static final dcq c = new dcq(dbk.a, cpl.h);
+public class dcq {
+   private final dby a;
+   private final dyr b;
+   private final eik c;
 
-   public dcq a(cpj $$0) {
-      return new dcq(this.d, this.e.c($$0));
+   public dcq(dby $$0, dyr $$1, eik $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public dbk a() {
-      return this.d;
+   public dcq a(arl $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
+      } else {
+         return new dcq($$0, this.b, this.c);
+      }
    }
 
-   public cpj b() {
-      return this.e;
+   public List<eir> a(dbe $$0, Predicate<eij> $$1) {
+      Map<eij, LongSet> $$2 = this.a.a($$0.e, $$0.f, duw.e).h();
+      Builder<eir> $$3 = ImmutableList.builder();
+
+      for (Entry<eij, LongSet> $$4 : $$2.entrySet()) {
+         eij $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
+   }
+
+   public List<eir> a(kb $$0, eij $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), duw.e).b($$1);
+      Builder<eir> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(eij $$0, LongSet $$1, Consumer<eir> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         kb $$4 = kb.a(new dbe($$3), this.a.ao());
+         eir $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), duw.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
+   }
+
+   @Nullable
+   public eir a(kb $$0, eij $$1, dut $$2) {
+      return $$2.a($$1);
+   }
+
+   public void a(kb $$0, eij $$1, eir $$2, dut $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(kb $$0, eij $$1, long $$2, dut $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public eir a(iz $$0, eij $$1) {
+      for (eir $$2 : this.a(kb.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return eir.b;
+   }
+
+   public eir a(iz $$0, axe<eij> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public eir a(iz $$0, jm<eij> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public eir a(iz $$0, Predicate<ji<eij>> $$1) {
+      jv<eij> $$2 = this.b().d(lq.aJ);
+
+      for (eir $$3 : this.a(new dbe($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return eir.b;
+   }
+
+   public eir b(iz $$0, eij $$1) {
+      for (eir $$2 : this.a(kb.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return eir.b;
+   }
+
+   public boolean a(iz $$0, eir $$1) {
+      for (ein $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(iz $$0) {
+      kb $$1 = kb.a($$0);
+      return this.a.a($$1.a(), $$1.c(), duw.e).w();
+   }
+
+   public Map<eij, LongSet> b(iz $$0) {
+      kb $$1 = kb.a($$0);
+      return this.a.a($$1.a(), $$1.c(), duw.e).h();
+   }
+
+   public eil a(dbe $$0, eij $$1, ejg $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(eir $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public jw b() {
+      return this.a.H_();
    }
 }

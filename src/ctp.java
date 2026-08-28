@@ -1,48 +1,22 @@
-import javax.annotation.Nullable;
-
-public interface ctp {
-   bsz m();
-
-   default ji<avy> n() {
-      return avz.as;
+public class ctp extends cuj {
+   public ctp(cuj.a $$0) {
+      super($$0);
    }
 
-   default bqt<cun> a(cui $$0, dbw $$1, cmv $$2, bqr $$3) {
-      cun $$4 = $$2.b($$3);
-      bsz $$5 = btp.h($$4);
-      if (!$$2.d($$5)) {
-         return bqt.c($$4);
-      } else {
-         cun $$6 = $$2.a($$5);
-         if ((!czz.f($$6) || $$2.f()) && !cun.a($$4, $$6)) {
-            if (!$$1.x_()) {
-               $$2.b(awj.c.b($$0));
-            }
-
-            cun $$7 = $$6.e() ? $$4 : $$6.f();
-            cun $$8 = $$2.f() ? $$4.s() : $$4.f();
-            $$2.a($$5, $$8);
-            return bqt.a($$7, $$1.x_());
-         } else {
-            return bqt.d($$4);
-         }
+   @Override
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.it, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      $$1.gx().a(this, 20);
+      if (!$$0.B) {
+         cny $$4 = new cny($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Nullable
-   static ctp c_(cun $$0) {
-      cui $$3 = $$0.g();
-      if ($$3 instanceof ctp) {
-         return (ctp)$$3;
-      } else {
-         if ($$0.g() instanceof csl $$2) {
-            dex var6 = $$2.d();
-            if (var6 instanceof ctp) {
-               return (ctp)var6;
-            }
-         }
-
-         return null;
-      }
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bqu.a($$3, $$0.x_());
    }
 }

@@ -4,7 +4,7 @@ public class afc implements zv<ach> {
    private final double c;
    private final long d;
 
-   public afc(dtr $$0) {
+   public afc(dts $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

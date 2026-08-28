@@ -1,13 +1,13 @@
 public class aed implements zv<ach> {
    public static final zm<wl, aed> a = zv.a(aed::a, aed::new);
-   private final bqr b;
+   private final bqs b;
 
-   public aed(bqr $$0) {
+   public aed(bqs $$0) {
       this.b = $$0;
    }
 
    private aed(wl $$0) {
-      this.b = $$0.b(bqr.class);
+      this.b = $$0.b(bqs.class);
    }
 
    private void a(wl $$0) {
@@ -23,7 +23,7 @@ public class aed implements zv<ach> {
       $$0.a(this);
    }
 
-   public bqr b() {
+   public bqs b() {
       return this.b;
    }
 }

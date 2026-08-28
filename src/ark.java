@@ -11,23 +11,23 @@ public class ark extends aqr {
    public static final int a = 33;
    private static final int c = 4;
    protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azp<ari<?>>> d = new Long2ObjectOpenHashMap();
+   private final Long2ObjectOpenHashMap<azq<ari<?>>> d = new Long2ObjectOpenHashMap();
 
    public ark() {
       super(34, 16, 256);
       this.b.defaultReturnValue((byte)33);
    }
 
-   private azp<ari<?>> g(long $$0) {
-      return (azp<ari<?>>)this.d.computeIfAbsent($$0, $$0x -> azp.a(4));
+   private azq<ari<?>> g(long $$0) {
+      return (azq<ari<?>>)this.d.computeIfAbsent($$0, $$0x -> azq.a(4));
    }
 
-   private int a(azp<ari<?>> $$0) {
+   private int a(azq<ari<?>> $$0) {
       return $$0.isEmpty() ? 34 : $$0.b().b();
    }
 
    public void a(long $$0, ari<?> $$1) {
-      azp<ari<?>> $$2 = this.g($$0);
+      azq<ari<?>> $$2 = this.g($$0);
       int $$3 = this.a($$2);
       $$2.add($$1);
       if ($$1.b() < $$3) {
@@ -36,7 +36,7 @@ public class ark extends aqr {
    }
 
    public void b(long $$0, ari<?> $$1) {
-      azp<ari<?>> $$2 = this.g($$0);
+      azq<ari<?>> $$2 = this.g($$0);
       $$2.remove($$1);
       if ($$2.isEmpty()) {
          this.d.remove($$0);
@@ -45,46 +45,46 @@ public class ark extends aqr {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       this.a($$1.a(), new ari<>($$0, $$2, $$3));
    }
 
-   public <T> void b(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<ari<dbd>, Long>> $$1 = new ArrayList<>();
+      List<Pair<ari<dbe>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
-         Entry<azp<ari<?>>> $$2 = (Entry<azp<ari<?>>>)var3.next();
+         Entry<azq<ari<?>>> $$2 = (Entry<azq<ari<?>>>)var3.next();
 
-         for (ari<?> $$3 : (azp)$$2.getValue()) {
+         for (ari<?> $$3 : (azq)$$2.getValue()) {
             if ($$3.a() == arj.c) {
                $$1.add(Pair.of($$3, $$2.getLongKey()));
             }
          }
       }
 
-      for (Pair<ari<dbd>, Long> $$4 : $$1) {
+      for (Pair<ari<dbe>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         ari<dbd> $$6 = (ari<dbd>)$$4.getFirst();
+         ari<dbe> $$6 = (ari<dbe>)$$4.getFirst();
          this.b($$5, $$6);
-         dbd $$7 = new dbd($$5);
-         arj<dbd> $$8 = $$6.a();
+         dbe $$7 = new dbe($$5);
+         arj<dbe> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
 
    @Override
    protected int b(long $$0) {
-      azp<ari<?>> $$1 = (azp<ari<?>>)this.d.get($$0);
+      azq<ari<?>> $$1 = (azq<ari<?>>)this.d.get($$0);
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(dbd $$0) {
+   public int a(dbe $$0) {
       return this.c($$0.a());
    }
 
@@ -107,7 +107,7 @@ public class ark extends aqr {
    }
 
    public String d(long $$0) {
-      azp<ari<?>> $$1 = (azp<ari<?>>)this.d.get($$0);
+      azq<ari<?>> $$1 = (azq<ari<?>>)this.d.get($$0);
       return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 }

@@ -2,10 +2,10 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class ait {
    private static final double a = 4096.0;
-   private evp b;
+   private evq b;
 
    public ait() {
-      this.b = evp.b;
+      this.b = evq.b;
    }
 
    @VisibleForTesting
@@ -18,34 +18,34 @@ public class ait {
       return (double)$$0 / 4096.0;
    }
 
-   public evp a(long $$0, long $$1, long $$2) {
+   public evq a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
          double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
          double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new evp($$3, $$4, $$5);
+         return new evq($$3, $$4, $$5);
       }
    }
 
-   public long a(evp $$0) {
+   public long a(evq $$0) {
       return a($$0.c) - a(this.b.c);
    }
 
-   public long b(evp $$0) {
+   public long b(evq $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long c(evp $$0) {
+   public long c(evq $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public evp d(evp $$0) {
+   public evq d(evq $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(evp $$0) {
+   public void e(evq $$0) {
       this.b = $$0;
    }
 }

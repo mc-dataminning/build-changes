@@ -1,57 +1,47 @@
-public class flo extends fnb {
-   private final Runnable c;
-   protected final flo.a a;
-   private final xo d;
-   private final boolean r;
-   private fhv s = fhv.a;
-   protected int b;
-   private fhe u;
+public class flo extends fnc {
+   private static final int a = 90;
+   private final xo b;
+   private fhw c = fhw.a;
+   private final Runnable d;
+   private final xo r;
+   private final boolean s;
 
-   public flo(Runnable $$0, flo.a $$1, xo $$2, xo $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.d = $$3;
-      this.r = $$4;
+   public flo(Runnable $$0, xo $$1, xo $$2) {
+      this($$0, $$1, $$2, xn.k, true);
+   }
+
+   public flo(Runnable $$0, xo $$1, xo $$2, xo $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.r = $$3;
+      this.s = $$4;
+   }
+
+   @Override
+   public xo i() {
+      return xn.a(super.i(), this.b);
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      this.s = fhv.a(this.p, this.d, this.n - 50);
-      int $$0 = (this.s.a() + 1) * 9;
-      this.c(fhc.a(xo.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fhc.a(xo.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fhc.a(xn.e, $$0x -> this.c.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.u = fhe.a(xo.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.r) {
-         this.c(this.u);
-      }
+      this.c = fhw.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = ayy.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(fhd.a(this.r, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.s.a($$0, this.n / 2, 70);
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public boolean aC_() {
+      return this.s;
    }
 }

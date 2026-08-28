@@ -6,26 +6,26 @@ public class axy {
    private axy() {
    }
 
-   public static evp a(evp $$0, axy.a $$1) {
-      int $$2 = ayx.a($$0.a());
-      int $$3 = ayx.a($$0.b());
-      int $$4 = ayx.a($$0.c());
+   public static evq a(evq $$0, axy.a $$1) {
+      int $$2 = ayy.a($$0.a());
+      int $$3 = ayy.a($$0.b());
+      int $$4 = ayy.a($$0.c());
       double $$5 = $$0.a() - (double)$$2;
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      evp $$9 = evp.b;
+      evq $$9 = evq.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = ayx.d($$5, c[$$10 + 1], c[$$10]);
+         double $$11 = ayy.d($$5, c[$$10 + 1], c[$$10]);
          int $$12 = $$2 - 2 + $$10;
 
          for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = ayx.d($$6, c[$$13 + 1], c[$$13]);
+            double $$14 = ayy.d($$6, c[$$13 + 1], c[$$13]);
             int $$15 = $$3 - 2 + $$13;
 
             for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = ayx.d($$7, c[$$16 + 1], c[$$16]);
+               double $$17 = ayy.d($$7, c[$$16 + 1], c[$$16]);
                int $$18 = $$4 - 2 + $$16;
                double $$19 = $$11 * $$14 * $$17;
                $$8 += $$19;
@@ -39,6 +39,6 @@ public class axy {
 
    @FunctionalInterface
    public interface a {
-      evp fetch(int var1, int var2, int var3);
+      evq fetch(int var1, int var2, int var3);
    }
 }

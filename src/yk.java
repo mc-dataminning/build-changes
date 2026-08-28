@@ -16,13 +16,13 @@ public interface yk {
    ye updateAndValidate(ye var1);
 
    public static class a implements yk {
-      private final azk d;
+      private final azl d;
       private final BooleanSupplier e;
       @Nullable
       private ye f;
       private boolean g = true;
 
-      public a(azk $$0, BooleanSupplier $$1) {
+      public a(azl $$0, BooleanSupplier $$1) {
          this.d = $$0;
          this.e = $$1;
       }

@@ -24,15 +24,15 @@ public class afu implements zv<ach> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afu a(ewo $$0, boolean $$1) {
+   public static afu a(ewp $$0, boolean $$1) {
       return new afu($$0.b(), $$1 ? 0 : 2, Optional.of(new afu.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afu a(ewo $$0) {
+   public static afu a(ewp $$0) {
       return new afu($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afu a(ewo $$0, String $$1, afu.a $$2) {
+   public static afu a(ewp $$0, String $$1, afu.a $$2) {
       return new afu($$0.b(), $$2 == afu.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afu implements zv<ach> {
       private final n f;
       private final int g;
 
-      public b(ewo $$0) {
+      public b(ewp $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

@@ -35,7 +35,7 @@ public interface jv<T> extends Keyable, jn<T> {
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> $$0x.h().a()
          );
-      return ayf.a($$0, (Function<ji.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(ju::b).orElse(Lifecycle.experimental())));
+      return ayg.a($$0, (Function<ji.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(ju::b).orElse(Lifecycle.experimental())));
    }
 
    private DataResult<ji.c<T>> a(ji<T> $$0) {
@@ -87,7 +87,7 @@ public interface jv<T> extends Keyable, jn<T> {
 
    Set<ald<T>> f();
 
-   Optional<ji.c<T>> a(azf var1);
+   Optional<ji.c<T>> a(azg var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
@@ -142,7 +142,7 @@ public interface jv<T> extends Keyable, jn<T> {
       return (Iterable<ji<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   default Optional<ji<T>> a(axe<T> $$0, azf $$1) {
+   default Optional<ji<T>> a(axe<T> $$0, azg $$1) {
       return this.b($$0).flatMap($$1x -> $$1x.a($$1));
    }
 

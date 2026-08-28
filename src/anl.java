@@ -19,12 +19,12 @@ public class anl {
       );
    }
 
-   private static void a(ep $$0, arf $$1, dbt $$2) {
+   private static void a(ep $$0, arf $$1, dbu $$2) {
       xo $$3 = xo.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> xo.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().ab().b(dbs.p)) {
+         if ($$0.e().ab().b(dbt.p)) {
             $$1.a(xo.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class anl {
       }
    }
 
-   private static int a(CommandContext<ep> $$0, Collection<arf> $$1, dbt $$2) {
+   private static int a(CommandContext<ep> $$0, Collection<arf> $$1, dbu $$2) {
       int $$3 = 0;
 
       for (arf $$4 : $$1) {

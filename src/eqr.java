@@ -3,23 +3,28 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class eqr extends eqy {
-   public static final MapCodec<eqr> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eqr::new));
+public class eqr extends eqz {
+   public static final MapCodec<eqr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqr::new)
+   );
+   private final ale j;
 
-   private eqr(int $$0, int $$1, List<etq> $$2, List<ert> $$3) {
-      super($$0, $$1, $$2, $$3);
+   private eqr(ale $$0, int $$1, int $$2, List<etr> $$3, List<eru> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eqx a() {
-      return equ.b;
+   public eqy a() {
+      return eqv.e;
    }
 
    @Override
-   public void a(Consumer<cun> $$0, eqg $$1) {
+   public void a(Consumer<cuo> $$0, eqh $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static eqy.a<?> b() {
-      return a(eqr::new);
+   public static eqz.a<?> a(ale $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqr($$0, $$1, $$2, $$3, $$4));
    }
 }

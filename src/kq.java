@@ -1,5 +1,5 @@
-public record kq(are a, iz b, dsa c, dpx d) {
-   public evp a() {
+public record kq(are a, iz b, dsb c, dpy d) {
+   public evq a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record kq(are a, iz b, dsa c, dpx d) {
       return this.b;
    }
 
-   public dsa d() {
+   public dsb d() {
       return this.c;
    }
 
-   public dpx e() {
+   public dpy e() {
       return this.d;
    }
 }

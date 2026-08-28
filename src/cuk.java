@@ -1,37 +1,65 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public enum cuk implements azs {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
+public class cuk {
+   private final Map<cuj, cuk.a> a = Maps.newHashMap();
+   private int b;
 
-   public static final Codec<cuk> j = azs.a(cuk::values);
-   public static final IntFunction<cuk> k = axo.a(cuk::a, values(), axo.a.a);
-   private final byte l;
-   private final String m;
-
-   private cuk(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   public boolean a(cuj $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public float a(cuj $$0, float $$1) {
+      cuk.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return ayy.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   public byte a() {
-      return this.l;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cuj, cuk.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cuj, cuk.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
    }
 
-   public boolean b() {
-      return this == d || this == e;
+   public void a(cuj $$0, int $$1) {
+      this.a.put($$0, new cuk.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cuj $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cuj $$0, int $$1) {
+   }
+
+   protected void c(cuj $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

@@ -144,7 +144,7 @@ public class uf {
                            ((LiteralArgumentBuilder)eq.a("clearall").executes($$0x -> l.a($$0x, 200).b()))
                               .then(
                                  eq.a("radius", IntegerArgumentType.integer())
-                                    .executes($$0x -> l.a($$0x, ayx.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
+                                    .executes($$0x -> l.a($$0x, ayy.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
                               )
                         ))
                      .then(
@@ -198,7 +198,7 @@ public class uf {
    }
 
    private static int a(tn $$0) {
-      $$0.f().a_(null, $$0.d()).stream().forEach($$0x -> $$0x.a(bss.c.b));
+      $$0.f().a_(null, $$0.d()).stream().forEach($$0x -> $$0x.a(bst.c.b));
       $$0.e().c($$0.f());
       ud.a($$0.d(), $$0.f());
       a($$0.f(), "Reset succeded for: " + $$0.b(), n.k);
@@ -214,7 +214,7 @@ public class uf {
    }
 
    private static Optional<tn> a(iz $$0, are $$1, ua $$2) {
-      dqu $$3 = (dqu)$$1.c_($$0);
+      dqv $$3 = (dqv)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -237,11 +237,11 @@ public class uf {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          are $$5 = $$0.e();
          iz $$6 = a($$0).d();
-         ud.a($$1.toLowerCase(), $$6, new kd($$2, $$3, $$4), dlk.a, $$5);
+         ud.a($$1.toLowerCase(), $$6, new kd($$2, $$3, $$4), dll.a, $$5);
          iz $$7 = $$6.c();
          iz $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         iz.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dez.F.o()));
-         ud.a($$6, new iz(1, 0, -1), dlk.a, $$5);
+         iz.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dfa.F.o()));
+         ud.a($$6, new iz(1, 0, -1), dll.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -249,7 +249,7 @@ public class uf {
    }
 
    private static int a(ep $$0, String $$1) throws CommandSyntaxException {
-      evl $$2 = (evl)$$0.h().a(10.0, 1.0F, false);
+      evm $$2 = (evm)$$0.h().a(10.0, 1.0F, false);
       iz $$3 = $$2.a();
       are $$4 = $$0.e();
       Optional<iz> $$5 = ud.a($$3, 15, $$4);
@@ -261,7 +261,7 @@ public class uf {
          $$0.b(xo.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dqu $$6 = (dqu)$$4.c_($$5.get());
+         dqv $$6 = (dqv)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -298,7 +298,7 @@ public class uf {
       return 1;
    }
 
-   static int a(ep $$0, dqu $$1) {
+   static int a(ep $$0, dqv $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -340,7 +340,7 @@ public class uf {
 
    static iz a(ep $$0) {
       iz $$1 = iz.a($$0.d());
-      int $$2 = $$0.e().a(dxs.a.b, $$1).v();
+      int $$2 = $$0.e().a(dxt.a.b, $$1).v();
       return new iz($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -402,11 +402,11 @@ public class uf {
          are $$1 = $$0.e();
          tq.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dqu $$2 = (dqu)$$1.c_($$1x);
+            dqv $$2 = (dqv)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               eia $$3 = ud.b($$2);
+               eib $$3 = ud.b($$2);
                ud.a($$3, $$1);
                return 1;
             }
@@ -419,7 +419,7 @@ public class uf {
          ep $$1 = this.a.a();
          are $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dqu $$4 = (dqu)$$2.c_($$3);
+            dqv $$4 = (dqv)$$2.c_($$3);
             if ($$4 == null) {
                uf.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -481,15 +481,15 @@ public class uf {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dqu $$3 = (dqu)this.a.a().e().c_($$2x);
+                  dqv $$3 = (dqv)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      je $$4 = $$3.l().a(je.c);
-                     iz $$5 = $$3.az_().a($$4, 2);
+                     iz $$5 = $$3.ay_().a($$4, 2);
                      int $$6 = (int)$$4.g().p();
                      String $$7 = String.format("/tp @s %d %d %d %d 0", $$5.u(), $$5.v(), $$5.w(), $$6);
                      int $$8 = $$1.u() - $$2x.u();
                      int $$9 = $$1.w() - $$2x.w();
-                     int $$10 = ayx.d(ayx.c((float)($$8 * $$8 + $$9 * $$9)));
+                     int $$10 = ayy.d(ayy.c((float)($$8 * $$8 + $$9 * $$9)));
                      xo $$11 = xr.a((xo)xo.a("chat.coordinates", $$2x.u(), $$2x.v(), $$2x.w()))
                         .a($$1xx -> $$1xx.a(n.k).a(new xm(xm.a.d, $$7)).a(new xu(xu.a.a, xo.c("chat.coordinates.tooltip"))));
                      xo $$12 = xo.b("Found structure at: ").b($$11).f(" (distance: " + $$10 + ")");

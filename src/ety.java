@@ -1,61 +1,32 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record ety(Optional<Long> b, eqf c) implements etq {
-   public static final MapCodec<ety> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(ety::c), eqf.a.fieldOf("value").forGetter(ety::d)).apply($$0, ety::new)
-   );
+public record ety(Optional<cp> b) implements etr {
+   public static final MapCodec<ety> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cp.a.optionalFieldOf("predicate").forGetter(ety::c)).apply($$0, ety::new));
 
    @Override
-   public etr b() {
-      return ets.s;
+   public ets b() {
+      return ett.l;
    }
 
    @Override
-   public Set<esz<?>> a() {
-      return this.c.a();
+   public Set<eta<?>> a() {
+      return ImmutableSet.of(etd.i);
    }
 
-   public boolean a(eqg $$0) {
-      are $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(eqh $$0) {
+      cuo $$1 = $$0.c(etd.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   public static ety.a a(eqf $$0) {
-      return new ety.a($$0);
+   public static etr.a a(cp.a $$0) {
+      return () -> new ety(Optional.of($$0.b()));
    }
 
-   public Optional<Long> c() {
+   public Optional<cp> c() {
       return this.b;
-   }
-
-   public eqf d() {
-      return this.c;
-   }
-
-   public static class a implements etq.a {
-      private Optional<Long> a = Optional.empty();
-      private final eqf b;
-
-      public a(eqf $$0) {
-         this.b = $$0;
-      }
-
-      public ety.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ety a() {
-         return new ety(this.a, this.b);
-      }
    }
 }

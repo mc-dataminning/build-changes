@@ -1,47 +1,48 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bpf {
-   private bpf() {
+public interface bpf {
+   bpe a();
+
+   static <T> bpf.b<T> a(T $$0, int $$1) {
+      return new bpf.b<>($$0, bpe.a($$1));
    }
 
-   public static int a(List<? extends bpe> $$0) {
-      long $$1 = 0L;
+   public static class a implements bpf {
+      private final bpe a;
 
-      for (bpe $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+      public a(int $$0) {
+         this.a = bpe.a($$0);
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
+      public a(bpe $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static <T extends bpe> Optional<T> a(azf $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
+      @Override
+      public bpe a() {
+         return this.a;
       }
    }
 
-   public static <T extends bpe> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
+   public static record b<T>(T a, bpe b) implements bpf {
+      @Override
+      public bpe a() {
+         return this.b;
       }
 
-      return Optional.empty();
-   }
+      public static <E> Codec<bpf.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bpf.b::b), bpe.a.fieldOf("weight").forGetter(bpf.b::c)).apply($$1, bpf.b::new)
+         );
+      }
 
-   public static <T extends bpe> Optional<T> a(azf $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+      public T b() {
+         return this.a;
+      }
+
+      public bpe c() {
+         return this.b;
+      }
    }
 }

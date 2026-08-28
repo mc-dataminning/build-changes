@@ -1,8 +1,8 @@
-public record adi(long[] b, blt c) implements zv<ach> {
+public record adi(long[] b, blu c) implements zv<ach> {
    public static final zm<wl, adi> a = zv.a(adi::a, adi::new);
 
    private adi(wl $$0) {
-      this($$0.d(), $$0.b(blt.class));
+      this($$0.d(), $$0.b(blu.class));
    }
 
    private void a(wl $$0) {
@@ -19,7 +19,7 @@ public record adi(long[] b, blt c) implements zv<ach> {
       $$0.a(this);
    }
 
-   public blt e() {
+   public blu e() {
       return this.c;
    }
 }

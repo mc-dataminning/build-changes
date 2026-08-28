@@ -1,39 +1,49 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fht extends fhd {
+   private boolean a;
 
-public class fht {
-   public static final ale a = new ale("textures/gui/title/minecraft.png");
-   public static final ale b = new ale("textures/gui/title/minceraft.png");
-   public static final ale c = new ale("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azf.a().i() < 1.0E-4;
-   private final boolean o;
-
-   public fht(boolean $$0) {
-      this.o = $$0;
+   public fht(int $$0, int $$1, fhd.c $$2) {
+      super($$0, $$1, 20, 20, xo.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
-   public void a(fgp $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   protected yc aJ_() {
+      return xn.a(super.aJ_(), this.a() ? xo.c("narrator.button.difficulty_lock.locked") : xo.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public void a(fgp $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      fht.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fht.a.c : fht.a.f;
+      } else if (this.A()) {
+         $$4 = this.a ? fht.a.b : fht.a.e;
+      } else {
+         $$4 = this.a ? fht.a.a : fht.a.d;
+      }
+
+      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new ale("widget/locked_button")),
+      b(new ale("widget/locked_button_highlighted")),
+      c(new ale("widget/locked_button_disabled")),
+      d(new ale("widget/unlocked_button")),
+      e(new ale("widget/unlocked_button_highlighted")),
+      f(new ale("widget/unlocked_button_disabled"));
+
+      final ale g;
+
+      private a(final ale $$0) {
+         this.g = $$0;
+      }
    }
 }

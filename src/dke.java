@@ -1,57 +1,19 @@
-import com.mojang.serialization.MapCodec;
+public class dke {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dke extends dfg {
-   public static final MapCodec<dke> a = b(dke::new);
-   public static final int b = 3;
-   public static final dta c = dsq.as;
-   private static final ewi[] d = new ewi[]{
-      dex.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dex.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dex.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      dex.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<dke> a() {
-      return a;
+   public static boolean a(dsb $$0) {
+      return $$0.i();
    }
 
-   protected dke(drz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
-   }
+   public static int a(azg $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean b(dsa $$0, dbc $$1, iz $$2) {
-      return $$0.a(dez.dW);
-   }
-
-   @Override
-   protected boolean d_(dsa $$0) {
-      return $$0.c(c) < 3;
-   }
-
-   @Override
-   protected void b(dsa $$0, are $$1, iz $$2, azf $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
       }
-   }
 
-   @Override
-   public cun a(dbz $$0, iz $$1, dsa $$2) {
-      return new cun(cuq.sj);
-   }
-
-   @Override
-   protected void a(dsb.a<dex, dsa> $$0) {
-      $$0.a(c);
+      return $$2;
    }
 }

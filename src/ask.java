@@ -64,7 +64,7 @@ public class ask implements AutoCloseable {
    }
 
    private static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? ayn.a($$0, $$1, $$2) : $$2;
+      return $$0 != null ? ayo.a($$0, $$1, $$2) : $$2;
    }
 
    @Nullable
@@ -73,18 +73,18 @@ public class ask implements AutoCloseable {
          return null;
       } else {
          try {
-            JsonObject $$1 = ayn.a($$0);
-            URI $$2 = new URI(ayn.i($$1, "apiServer"));
-            String $$3 = ayn.i($$1, "apiKey");
+            JsonObject $$1 = ayo.a($$0);
+            URI $$2 = new URI(ayo.i($$1, "apiServer"));
+            String $$3 = ayo.i($$1, "apiKey");
             if ($$3.isEmpty()) {
                throw new IllegalArgumentException("Missing API key");
             } else {
-               int $$4 = ayn.a($$1, "ruleId", 1);
-               String $$5 = ayn.a($$1, "serverId", "");
-               String $$6 = ayn.a($$1, "roomId", "Java:Chat");
-               int $$7 = ayn.a($$1, "hashesToDrop", -1);
-               int $$8 = ayn.a($$1, "maxConcurrentRequests", 7);
-               JsonObject $$9 = ayn.a($$1, "endpoints", null);
+               int $$4 = ayo.a($$1, "ruleId", 1);
+               String $$5 = ayo.a($$1, "serverId", "");
+               String $$6 = ayo.a($$1, "roomId", "Java:Chat");
+               int $$7 = ayo.a($$1, "hashesToDrop", -1);
+               int $$8 = ayo.a($$1, "maxConcurrentRequests", 7);
+               JsonObject $$9 = ayo.a($$1, "endpoints", null);
                String $$10 = a($$9, "chat", "v1/chat");
                boolean $$11 = $$10.equals("v1/chat");
                URL $$12 = $$2.resolve("/" + $$10).toURL();
@@ -155,15 +155,15 @@ public class ask implements AutoCloseable {
 
          try {
             JsonObject $$4 = this.a($$3x, this.e);
-            boolean $$5 = ayn.a($$4, "response", false);
+            boolean $$5 = ayo.a($$4, "response", false);
             if ($$5) {
                return arw.a($$1);
             } else {
-               String $$6 = ayn.a($$4, "hashed", null);
+               String $$6 = ayo.a($$4, "hashed", null);
                if ($$6 == null) {
                   return arw.b($$1);
                } else {
-                  JsonArray $$7 = ayn.v($$4, "hashes");
+                  JsonArray $$7 = ayo.v($$4, "hashes");
                   xs $$8 = this.a($$1, $$7, $$2);
                   return new arw($$1, $$8);
                }
@@ -319,7 +319,7 @@ public class ask implements AutoCloseable {
 
       d(final GameProfile $$0) {
          this.c = $$0;
-         bpl<Runnable> $$1 = bpl.a(ask.this.m, "chat stream for " + $$0.getName());
+         bpm<Runnable> $$1 = bpm.a(ask.this.m, "chat stream for " + $$0.getName());
          this.d = $$1::a;
       }
 

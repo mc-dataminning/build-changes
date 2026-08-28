@@ -1,146 +1,135 @@
-public class gao extends gca {
-   static final azf a = azf.a();
-   private final gbv b;
+public class gao extends gcb {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final gbb.a H;
 
-   gao(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbv $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
+   gao(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gbb.a.a);
+   }
+
+   gao(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gbb.a $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
       this.n = false;
-      this.b($$7);
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public gbe b() {
-      return gbe.c;
+   public gbf b() {
+      return this.H.a() ? gbf.b : gbf.c;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
    public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayx.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
 
-      return $$3 | $$4 << 16;
+         return $$3 | $$4 << 16;
+      }
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gbd<lm> {
-      private final double a = 0.25;
-      private final gbv b;
-
-      public a(gbv $$0) {
-         this.b = $$0;
-      }
-
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gao $$8 = new gao($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
       }
    }
 
-   public static class b implements gbd<lm> {
-      private final gbv a;
+   @Override
+   public void a(fab $$0, fep $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
 
-      public b(gbv $$0) {
+   public static class a implements gbe<lm> {
+      private final gbw a;
+
+      public a(gbw $$0) {
          this.a = $$0;
       }
 
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gao $$8 = new gao($$1, $$2, $$3, $$4, 0.5 - gao.a.j(), $$6, 0.5 - gao.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gao $$8 = new gao($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class c implements gbd<lm> {
-      private final double a = 0.01;
-      private final gbv b;
+   public static class b implements gbe<lm> {
+      private final gbw a;
 
-      public c(gbv $$0) {
-         this.b = $$0;
+      public b(gbw $$0) {
+         this.a = $$0;
       }
 
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gao $$8 = new gao($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gao $$8 = new gao($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class d implements gbd<lm> {
-      private final double a = 0.01;
-      private final gbv b;
+   public static class c implements gbe<lm> {
+      private final gbw a;
 
-      public d(gbv $$0) {
-         this.b = $$0;
+      public c(gbw $$0) {
+         this.a = $$0;
       }
 
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gao $$8 = new gao($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements gbd<lm> {
-      private final double a = 0.01;
-      private final gbv b;
-
-      public e(gbv $$0) {
-         this.b = $$0;
-      }
-
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gao $$8 = new gao($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gao $$8 = new gao($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gbb.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
          return $$8;
       }
    }

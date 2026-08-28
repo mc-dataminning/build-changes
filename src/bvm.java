@@ -1,37 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bvm extends bvg<btn> {
-   private final ccr<Integer> c;
-
-   public bvm(ccr<Integer> $$0) {
-      super(ImmutableMap.of($$0, ccs.a));
-      this.c = $$0;
-   }
-
-   private Optional<Integer> b(btn $$0) {
-      return $$0.dS().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(are $$0, btn $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(are $$0, btn $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dS().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(are $$0, btn $$1, long $$2) {
-      $$1.dS().b(this.c);
+public class bvm {
+   public static <E extends bto, T> bvi<E> a(Predicate<E> $$0, ccs<? extends T> $$1, ccs<T> $$2, bqe $$3) {
+      return byu.a(
+         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

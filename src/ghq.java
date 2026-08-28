@@ -1,16 +1,13 @@
-public abstract class ghq<T extends cku, M extends fwq<T>> extends gjm<T, M> {
-   private static final ale a = new ale("textures/entity/zombie/zombie.png");
+public abstract class ghq<T extends chi, M extends fuk<T>> extends gkc<T, M> {
+   private final float a;
 
-   protected ghq(giv.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gmx<>(this, $$2, $$3, $$0.g()));
+   public ghq(giw.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public ale a(cku $$0) {
-      return a;
-   }
-
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gx();
+   protected void a(T $$0, ezx $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

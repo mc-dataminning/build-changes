@@ -7,10 +7,10 @@ public class aep implements zv<ach> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<bub> g;
+   private final Set<buc> g;
    private final int h;
 
-   public aep(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bub> $$5, int $$6) {
+   public aep(double $$0, double $$1, double $$2, float $$3, float $$4, Set<buc> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class aep implements zv<ach> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = bub.a($$0.readUnsignedByte());
+      this.g = buc.a($$0.readUnsignedByte());
       this.h = $$0.l();
    }
 
@@ -36,7 +36,7 @@ public class aep implements zv<ach> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.k(bub.a(this.g));
+      $$0.k(buc.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class aep implements zv<ach> {
       return this.h;
    }
 
-   public Set<bub> j() {
+   public Set<buc> j() {
       return this.g;
    }
 }

@@ -1,87 +1,66 @@
-import java.util.Objects;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class ewl {
-   private final ewt a;
-   private final String b;
-   private final eww c;
-   private xo d;
-   private xo e;
-   private eww.a f;
-   private boolean g;
-   @Nullable
-   private ze h;
+public enum ewl implements azt {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   public ewl(ewt $$0, String $$1, eww $$2, xo $$3, eww.a $$4, boolean $$5, @Nullable ze $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.i();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
+   public static final azt.a<ewl> t = azt.a(ewl::values);
+   public static final IntFunction<ewl> u = axo.a(ewl::a, values(), axo.a.a);
+   private final int v;
+   private final String w;
+
+   private ewl(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   public ewt a() {
-      return this.a;
+   public int a() {
+      return this.v;
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public eww c() {
-      return this.c;
-   }
-
-   public xo d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.g;
+   @Override
+   public String c() {
+      return this.w;
    }
 
    @Nullable
-   public ze f() {
-      return this.h;
-   }
-
-   public ze a(ze $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
-   }
-
-   private xo i() {
-      return xr.a((xo)this.d.f().a($$0 -> $$0.a(new xu(xu.a.a, xo.b(this.b)))));
-   }
-
-   public xo g() {
-      return this.e;
-   }
-
-   public void a(xo $$0) {
-      this.d = $$0;
-      this.e = this.i();
-      this.a.b(this);
-   }
-
-   public eww.a h() {
-      return this.f;
-   }
-
-   public void a(eww.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
-   }
-
-   public void b(@Nullable ze $$0) {
-      this.h = $$0;
-      this.a.b(this);
+   public static ewl a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

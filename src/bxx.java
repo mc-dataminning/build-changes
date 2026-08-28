@@ -1,29 +1,22 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxx {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
-
-   public static bwr<btw> a(ccr<jh> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return byt.a(
-         (Function<byt.b<btw>, ? extends App<byt.c<btw>, byw<btw>>>)($$4 -> $$4.group($$4.a(ccr.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  jh $$9 = $$4.b($$5);
-                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dn(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<evp> $$10 = Optional.ofNullable(cel.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new ccu($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static bvi<bto> a() {
+      return byu.a(
+         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$0 -> $$0.group($$0.b(ccs.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bto $$1xx ? $$1xx : null)
+                           .filter(bto::eB)
+                           .filter($$1xx -> $$1xx.ak() != bsz.by || $$2.ab().b(dbt.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
       );
    }
 }

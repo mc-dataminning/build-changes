@@ -1,21 +1,33 @@
-public class fpj extends fnz<crk> {
-   private static final ale D = new ale("textures/gui/container/shulker_box.png");
+public class fpj extends fhd {
+   private static final ale a = new ale("widget/page_forward_highlighted");
+   private static final ale b = new ale("widget/page_forward");
+   private static final ale c = new ale("widget/page_backward_highlighted");
+   private static final ale d = new ale("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fpj(crk $$0, cmu $$1, xo $$2) {
-      super($$0, $$1, $$2);
-      this.d++;
+   public fpj(int $$0, int $$1, boolean $$2, fhd.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xn.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      ale $$4;
+      if (this.u) {
+         $$4 = this.A() ? a : b;
+      } else {
+         $$4 = this.A() ? c : d;
+      }
+
+      $$0.a($$4, this.C(), this.D(), 23, 13);
    }
 
    @Override
-   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(gtu $$0) {
+      if (this.v) {
+         $$0.a(gsh.a(avz.cy, 1.0F));
+      }
    }
 }

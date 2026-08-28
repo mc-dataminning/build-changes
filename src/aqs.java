@@ -9,15 +9,15 @@ public interface aqs {
       }
 
       @Override
-      public void a(Consumer<dbd> $$0) {
+      public void a(Consumer<dbe> $$0) {
       }
    };
 
-   static aqs a(dbd $$0, int $$1) {
+   static aqs a(dbe $$0, int $$1) {
       return new aqs.a($$0, $$1);
    }
 
-   static void a(aqs $$0, aqs $$1, Consumer<dbd> $$2, Consumer<dbd> $$3) {
+   static void a(aqs $$0, aqs $$1, Consumer<dbe> $$2, Consumer<dbe> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof aqs.a $$4 && $$1 instanceof aqs.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface aqs {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dbd($$10, $$11));
+                        $$2.accept(new dbe($$10, $$11));
                      } else {
-                        $$3.accept(new dbd($$10, $$11));
+                        $$3.accept(new dbe($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface aqs {
       }
    }
 
-   default boolean a(dbd $$0) {
+   default boolean a(dbe $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface aqs {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dbd> var1);
+   void a(Consumer<dbe> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface aqs {
       return $$10 < (long)$$11;
    }
 
-   public static record a(dbd b, int c) implements aqs {
+   public static record a(dbe b, int c) implements aqs {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface aqs {
       }
 
       @Override
-      public void a(Consumer<dbd> $$0) {
+      public void a(Consumer<dbe> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dbd($$1, $$2));
+                  $$0.accept(new dbe($$1, $$2));
                }
             }
          }
       }
 
-      public dbd a() {
+      public dbe a() {
          return this.b;
       }
 

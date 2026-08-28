@@ -6,7 +6,7 @@ public class acj implements zv<ach> {
    private final double e;
    private final int f;
 
-   public acj(btd $$0) {
+   public acj(bte $$0) {
       this.b = $$0.al();
       this.c = $$0.du();
       this.d = $$0.dw();

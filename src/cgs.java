@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cgs {
-   public static bvh<btn> a() {
-      return byt.a(
-         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.b(ccr.N), $$0.a(ccr.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dS().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class cgs extends bvh<cgq> {
+   public cgs() {
+      super(ImmutableMap.of(ccs.N, cct.a, ccs.y, cct.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(are $$0, cgq $$1) {
+      return $$1.bh();
+   }
+
+   protected boolean a(are $$0, cgq $$1, long $$2) {
+      return $$1.bh() && $$1.dS().a(ccs.N);
+   }
+
+   protected void b(are $$0, cgq $$1, long $$2) {
+      buq<cgq> $$3 = $$1.dS();
+      $$3.b(ccs.m);
+      $$3.b(ccs.n);
+      $$1.b(new bsb(bsd.j, 200, 0));
    }
 }

@@ -1,11 +1,18 @@
-public abstract class gjo<T extends cji> extends gkb<T, fum<T>> {
-   protected gjo(giv.a $$0, fum<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gmm<>(this, $$0.f(), $$0.d()));
+public class gjo extends gmc {
+   private static final ale a = new ale("textures/entity/zombie/husk.png");
+
+   public gjo(giw.a $$0) {
+      super($$0, fwy.ar, fwy.as, fwy.at);
    }
 
-   protected void a(T $$0, ezw $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(ckv $$0, ezx $$1, float $$2) {
+      float $$3 = 1.0625F;
+      $$1.b(1.0625F, 1.0625F, 1.0625F);
+      super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public ale a(ckv $$0) {
+      return a;
    }
 }

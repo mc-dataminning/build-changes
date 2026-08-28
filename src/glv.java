@@ -1,22 +1,25 @@
-public class glv extends gkb<ckr, fwn<ckr>> {
-   private static final ale a = new ale("textures/entity/witch.png");
+public class glv extends giv<coe> {
+   private static final ale a = new ale("textures/entity/projectiles/wind_charge.png");
+   private final fwn f;
 
-   public glv(giv.a $$0) {
-      super($$0, new fwn<>($$0.a(fwx.bU)), 0.5F);
-      this.a(new gnu<>(this, $$0.d()));
+   public glv(giw.a $$0) {
+      super($$0);
+      this.f = new fwn($$0.a(fwy.bT));
    }
 
-   public void a(ckr $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      this.f.b(!$$0.eX().e());
+   public void a(coe $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      float $$6 = (float)$$0.ai + $$2;
+      fab $$7 = $$4.getBuffer(gdv.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ale a(ckr $$0) {
-      return a;
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   protected void a(ckr $$0, ezw $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public ale a(coe $$0) {
+      return a;
    }
 }

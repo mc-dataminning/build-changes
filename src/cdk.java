@@ -1,43 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cdk extends cdx<clf> {
-   @Override
-   public Set<ccr<?>> a() {
-      return ImmutableSet.of(ccr.h, ccr.aw, ccr.aq, ccr.ap, ccr.as, ccr.at, new ccr[0]);
+public class cdk extends cdy<bto> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public cdk() {
+      this(200);
    }
 
-   protected void a(are $$0, clf $$1) {
-      bup<?> $$2 = $$1.dS();
-      $$2.a(ccr.aw, this.b($$0, $$1));
-      Optional<cll> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<clf> $$5 = Lists.newArrayList();
-      cct $$6 = $$2.c(ccr.h).orElse(cct.a());
+   public cdk(int $$0) {
+      super($$0);
+   }
 
-      for (btn $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cll || $$0x instanceof clf))) {
-         if ($$7 instanceof cll $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
+   @Override
+   protected void a(are $$0, bto $$1) {
+      a($$1);
+   }
 
-         if ($$7 instanceof clf $$9) {
-            $$5.add($$9);
+   @Override
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.g);
+   }
+
+   public static void a(bto $$0) {
+      Optional<List<bto>> $$1 = $$0.dS().c(ccs.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(bsz.af));
+         if ($$2) {
+            b($$0);
          }
       }
-
-      $$2.a(ccr.aq, $$3);
-      $$2.a(ccr.ap, $$5);
-      $$2.a(ccr.as, $$4);
-      $$2.a(ccr.at, $$5.size());
    }
 
-   private Optional<iz> b(are $$0, clf $$1) {
-      return iz.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(awo.aS));
+   public static void b(bto $$0) {
+      $$0.dS().a(ccs.F, true, 599L);
    }
 }

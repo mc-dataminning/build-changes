@@ -1,73 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnd extends dhf implements djo {
-   public static final MapCodec<dnd> c = b(dnd::new);
-   public static final dsy<dsw> d = dhf.b;
-   protected static final float e = 6.0F;
-   protected static final ewi f = dex.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dnd extends dfh implements dfb {
+   public static final MapCodec<dnd> a = b(dnd::new);
+   protected static final float b = 6.0F;
+   protected static final ewj c = dey.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dnd> a() {
-      return c;
+      return a;
    }
 
-   public dnd(drz.d $$0) {
+   protected dnd(dsa.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return f;
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return c;
    }
 
    @Override
-   protected boolean b(dsa $$0, dbc $$1, iz $$2) {
-      return $$0.d($$1, $$2, je.b) && !$$0.a(dez.kJ);
+   public boolean b(dca $$0, iz $$1, dsb $$2) {
+      return true;
    }
 
    @Override
-   public cun a(dbz $$0, iz $$1, dsa $$2) {
-      return new cun(dez.bw);
+   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
+      return true;
    }
 
-   @Nullable
    @Override
-   public dsa a(cxy $$0) {
-      dsa $$1 = super.a($$0);
-      if ($$1 != null) {
-         ent $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(awu.a) && $$2.e() == 8) {
-            return $$1;
-         }
+   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
+      dhg $$4 = (dhg)($$3.a(dfa.bu) ? dfa.iI : dfa.iH);
+      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
+         dhg.a($$0, $$4.o(), $$2, 2);
       }
-
-      return null;
-   }
-
-   @Override
-   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
-      if ($$0.c(d) == dsw.a) {
-         dsa $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dsw.b;
-      } else {
-         ent $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(awu.a) && $$4.e() == 8;
-      }
-   }
-
-   @Override
-   protected ent b_(dsa $$0) {
-      return enu.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cmv $$0, dbc $$1, iz $$2, dsa $$3, ens $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dbx $$0, iz $$1, dsa $$2, ent $$3) {
-      return false;
    }
 }

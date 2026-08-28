@@ -7,7 +7,7 @@ public class adw implements zv<ach> {
    private final int c;
    private final adx d;
 
-   public adw(dbd $$0, eni $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adw(dbe $$0, enj $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new adx($$0, $$1, $$2, $$3);

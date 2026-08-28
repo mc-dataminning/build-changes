@@ -1,112 +1,57 @@
-public class ccy extends ccz {
-   private boolean p;
-
-   public ccy(btp $$0, dbw $$1) {
+public class ccy extends cda {
+   public ccy(btq $$0, dbx $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eoj a(int $$0) {
-      this.o = new eop();
+   protected eok a(int $$0) {
+      this.o = new eof();
       this.o.a(true);
-      return new eoj(this.o, $$0);
+      return new eok(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(evq $$0, evq $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
    @Override
    protected boolean a() {
-      return this.a.aE() || this.a.bi() || this.a.bR();
+      return this.p() && this.a.bi() || !this.a.bR();
    }
 
    @Override
-   protected evp b() {
-      return new evp(this.a.du(), (double)this.s(), this.a.dA());
+   protected evq b() {
+      return this.a.dn();
    }
 
    @Override
-   public eoh a(iz $$0, int $$1) {
-      dug $$2 = this.b.N().a(kb.a($$0.u()), kb.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).i()) {
-            iz $$3 = $$0.d();
-
-            while ($$3.v() > this.b.I_() && $$2.a_($$3).i()) {
-               $$3 = $$3.d();
-            }
-
-            if ($$3.v() > this.b.I_()) {
-               return super.a($$3.c(), $$1);
-            }
-
-            while ($$3.v() < this.b.am() && $$2.a_($$3).i()) {
-               $$3 = $$3.c();
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            iz $$4 = $$0.c();
-
-            while ($$4.v() < this.b.am() && $$2.a_($$4).e()) {
-               $$4 = $$4.c();
-            }
-
-            return super.a($$4, $$1);
-         }
-      }
-   }
-
-   @Override
-   public eoh a(bss $$0, int $$1) {
+   public eoi a(bst $$0, int $$1) {
       return this.a($$0.dp(), $$1);
    }
 
-   private int s() {
-      if (this.a.be() && this.p()) {
-         int $$0 = this.a.dv();
-         dsa $$1 = this.b.a_(iz.a(this.a.du(), (double)$$0, this.a.dA()));
-         int $$2 = 0;
-
-         while ($$1.a(dez.G)) {
-            $$1 = this.b.a_(iz.a(this.a.du(), (double)(++$$0), this.a.dA()));
-            if (++$$2 > 16) {
-               return this.a.dv();
-            }
-         }
-
-         return $$0;
-      } else {
-         return ayx.a(this.a.dw() + 0.5);
-      }
-   }
-
    @Override
-   protected void S_() {
-      super.S_();
-      if (this.p) {
-         if (this.b.h(iz.a(this.a.du(), this.a.dw() + 0.5, this.a.dA()))) {
-            return;
-         }
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.i();
+      }
 
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eof $$1 = this.c.a($$0);
-            if (this.b.h(new iz($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
+      if (!this.l()) {
+         if (this.a()) {
+            this.k();
+         } else if (this.c != null && !this.c.c()) {
+            evq $$0 = this.c.a(this.a);
+            if (this.a.dt() == ayy.a($$0.c) && this.a.dv() == ayy.a($$0.d) && this.a.dz() == ayy.a($$0.e)) {
+               this.c.a();
             }
          }
-      }
-   }
 
-   protected boolean a(eok $$0) {
-      if ($$0 == eok.j) {
-         return false;
-      } else {
-         return $$0 == eok.i ? false : $$0 != eok.b;
+         ags.a(this.b, this.a, this.c, this.l);
+         if (!this.l()) {
+            evq $$1 = this.c.a(this.a);
+            this.a.H().a($$1.c, $$1.d, $$1.e, this.d);
+         }
       }
    }
 
@@ -114,7 +59,7 @@ public class ccy extends ccz {
       this.o.b($$0);
    }
 
-   public boolean e() {
+   public boolean d() {
       return this.o.d();
    }
 
@@ -122,15 +67,12 @@ public class ccy extends ccz {
       this.o.a($$0);
    }
 
-   public boolean f() {
+   public boolean e() {
       return this.o.d();
    }
 
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   @Override
+   public boolean a(iz $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

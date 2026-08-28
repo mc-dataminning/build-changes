@@ -1,58 +1,117 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class eqz extends eqy {
-   public static final MapCodec<eqz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(ald.a(lq.aU), eql.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqz::new)
-   );
-   private final Either<ald<eql>, eql> j;
+public abstract class eqz extends eqx {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<eru> i;
+   final BiFunction<cuo, eqh, cuo> a;
+   private final eqw j = new eqz.c() {
+      @Override
+      public void a(Consumer<cuo> $$0, eqh $$1) {
+         eqz.this.a(eru.a(eqz.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   private eqz(Either<ald<eql>, eql> $$0, int $$1, int $$2, List<etq> $$3, List<ert> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected eqz(int $$0, int $$1, List<etr> $$2, List<eru> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = erw.a($$3);
+   }
+
+   protected static <T extends eqz> P4<Mu<T>, Integer, Integer, List<etr>, List<eru>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(erw.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public eqx a() {
-      return equ.d;
+   public void a(eqn $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public void a(Consumer<cun> $$0, eqg $$1) {
-      ((eql)this.j.map($$1x -> $$1.a().a(lq.aU, $$1x).map(ji::a).orElse(eql.a), $$0x -> $$0x)).a($$1, $$0);
-   }
+   protected abstract void a(Consumer<cuo> var1, eqh var2);
 
    @Override
-   public void a(eqm $$0) {
-      Optional<ald<eql>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         ald<eql> $$2 = $$1.get();
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   public boolean expand(eqh $$0, Consumer<eqw> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static eqz.a<?> a(eqz.d $$0) {
+      return new eqz.b($$0);
+   }
+
+   public abstract static class a<T extends eqz.a<T>> extends eqx.a<T> implements erq<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<eru> c = ImmutableList.builder();
+
+      public T a(eru.a $$0) {
+         this.c.add($$0.b());
+         return this.aA_();
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .a(lq.aU, $$1x)
-                  .ifPresentOrElse($$2x -> ((eql)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+      protected List<eru> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aA_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aA_();
+      }
    }
 
-   public static eqy.a<?> a(ald<eql> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqz(Either.left($$0), $$1, $$2, $$3, $$4));
+   static class b extends eqz.a<eqz.b> {
+      private final eqz.d c;
+
+      public b(eqz.d $$0) {
+         this.c = $$0;
+      }
+
+      protected eqz.b g() {
+         return this;
+      }
+
+      @Override
+      public eqx b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
+      }
    }
 
-   public static eqy.a<?> a(eql $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqz(Either.right($$0), $$1, $$2, $$3, $$4));
+   protected abstract class c implements eqw {
+      @Override
+      public int a(float $$0) {
+         return Math.max(ayy.d((float)eqz.this.g + (float)eqz.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      eqz build(int var1, int var2, List<etr> var3, List<eru> var4);
    }
 }

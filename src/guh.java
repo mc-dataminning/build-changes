@@ -1,51 +1,65 @@
 import java.time.Duration;
-import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public abstract class guh {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public class guh {
+   private final UUID a = UUID.randomUUID();
+   private final guc b;
+   private final gul c;
+   private final gun d = new gun();
+   private final guk e;
+   private final gum f;
+
+   public guh(guc $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gul($$3);
+      this.e = new guk();
+      this.f = new gum($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(guf.i, this.a);
+      });
+   }
 
    public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+      this.e.a(this.b);
    }
 
-   public void a(gub $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   public void a(dbu $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
+   }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(dbx $$0, af $$1) {
+      ale $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.Z();
+         this.b.send(gud.f, $$2x -> {
+            $$2x.a(guf.D, $$2.toString());
+            $$2x.a(guf.E, $$3);
+         });
       }
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(gub var1);
 }

@@ -1,5 +1,6 @@
-public interface bun<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T d();
+public interface bun {
+   @Nullable
+   bst s();
 }

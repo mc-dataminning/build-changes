@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class ceb extends cdr {
-   private static final ImmutableMap<bsy<?>, Float> a = ImmutableMap.builder()
-      .put(bsy.B, 8.0F)
-      .put(bsy.J, 12.0F)
-      .put(bsy.ac, 8.0F)
-      .put(bsy.ad, 12.0F)
-      .put(bsy.aC, 15.0F)
-      .put(bsy.aH, 12.0F)
-      .put(bsy.bi, 8.0F)
-      .put(bsy.bk, 10.0F)
-      .put(bsy.bt, 10.0F)
-      .put(bsy.bu, 8.0F)
-      .put(bsy.bw, 8.0F)
-      .build();
-
+public class ceb extends cdy<bto> {
    @Override
-   protected boolean a(btn $$0, btn $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(btn $$0, btn $$1) {
-      float $$2 = (Float)a.get($$1.ak());
-      return $$1.g((bss)$$0) <= (double)($$2 * $$2);
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.i);
    }
 
    @Override
-   protected ccr<btn> b() {
-      return ccr.A;
+   protected void a(are $$0, bto $$1) {
+      $$1.dS().a(ccs.i, this.a($$1));
    }
 
-   private boolean b(btn $$0) {
-      return a.containsKey($$0.ak());
+   private List<bto> a(bto $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bto $$0) {
+      return $$0.ak() == bsz.bj && $$0.p_();
+   }
+
+   private ccu c(bto $$0) {
+      return $$0.dS().c(ccs.h).orElse(ccu.a());
    }
 }

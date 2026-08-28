@@ -1,79 +1,49 @@
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class csq extends cvg {
-   public static final int a = 20;
-   public static final int b = 15;
-
-   public csq(cui.a $$0) {
+public class csq extends cuj {
+   public csq(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cun $$0, dbw $$1, btn $$2, int $$3) {
-      if ($$2 instanceof cmv $$4) {
-         cun $$5 = $$4.g($$0);
-         if (!$$5.e()) {
-            int $$6 = this.b($$0) - $$3;
-            float $$7 = a($$6);
-            if (!((double)$$7 < 0.1)) {
-               List<cun> $$8 = a($$0, $$5, $$4);
-               if (!$$1.x_() && !$$8.isEmpty()) {
-                  this.a($$1, $$4, $$4.fw(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      List<bsp> $$3 = $$0.a(bsp.class, $$1.cK().g(2.0), $$0x -> $$0x != null && $$0x.bD() && $$0x.q() instanceof cia);
+      cuo $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bsp $$5 = $$3.get(0);
+         $$5.a($$5.g() - 0.5F);
+         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.cD, awa.g, 1.0F, 1.0F);
+         $$0.a($$1, dwu.y, $$1.dn());
+         if ($$1 instanceof arf $$6) {
+            am.T.a($$6, $$4, $$5);
+         }
+
+         return bqu.a(this.a($$4, $$1, new cuo(cur.vn)), $$0.x_());
+      } else {
+         evm $$7 = a($$0, $$1, dbg.b.b);
+         if ($$7.c() == evo.a.a) {
+            return bqu.c($$4);
+         } else {
+            if ($$7.c() == evo.a.b) {
+               iz $$8 = $$7.a();
+               if (!$$0.a($$1, $$8)) {
+                  return bqu.c($$4);
                }
 
-               $$1.a(null, $$4.du(), $$4.dw(), $$4.dA(), avz.aG, awa.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awj.c.b(this));
+               if ($$0.b_($$8).a(awu.a)) {
+                  $$0.a($$1, $$1.du(), $$1.dw(), $$1.dA(), avz.cC, awa.g, 1.0F, 1.0F);
+                  $$0.a($$1, dwu.y, $$8);
+                  return bqu.a(this.a($$4, $$1, cwp.a(cur.sk, cwq.a)), $$0.x_());
+               }
             }
+
+            return bqu.c($$4);
          }
       }
    }
 
-   @Override
-   protected void a(btn $$0, cnn $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btn $$6) {
-      $$1.a($$0, $$0.dH(), $$0.dF() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public int b(cun $$0) {
-      return 72000;
-   }
-
-   @Override
-   public cwi c(cun $$0) {
-      return cwi.e;
-   }
-
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).e();
-      if (!$$1.fP() && !$$4) {
-         return bqt.d($$3);
-      } else {
-         $$1.c($$2);
-         return bqt.b($$3);
-      }
-   }
-
-   @Override
-   public Predicate<cun> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   protected cuo a(cuo $$0, cmw $$1, cuo $$2) {
+      $$1.b(awj.c.b(this));
+      return cuq.a($$0, $$1, $$2);
    }
 }

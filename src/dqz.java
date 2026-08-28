@@ -1,77 +1,15 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class dqz extends dpf implements dco, drd.b {
-   private static final Logger a = LogUtils.getLogger();
-   private drd b;
-
-   public dqz(iz $$0, dsa $$1) {
-      super(dph.Q, $$0, $$1);
-      drc $$2 = drc.a;
-      drc.a $$3 = drc.a.a;
-      this.b = new drd(this, $$2, $$3);
+public class dqz extends dpn {
+   public dqz(iz $$0, dsb $$1) {
+      super(dpi.c, $$0, $$1);
    }
 
    @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("normal_config")) {
-         ur $$2 = $$0.p("normal_config").h();
-         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
-      }
-
-      this.b.a().parse(vf.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.n != null) {
-         this.f();
-      }
-   }
-
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      this.b.a().encodeStart(vf.a, this.b).ifSuccess($$1x -> $$0.a((ur)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
-   }
-
-   public aco b() {
-      return aco.a(this);
-   }
-
-   @Override
-   public ur a(jk.a $$0) {
-      return this.b.f().a(this.n().c(dnm.b));
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public void a(bsy<?> $$0, azf $$1) {
-      this.b.f().a(this.b, $$1, $$0);
-      this.e();
-   }
-
-   public drd c() {
-      return this.b;
-   }
-
-   @Override
-   public drg d() {
-      return !this.n().b(dsq.by) ? drg.a : this.n().c(dsq.by);
-   }
-
-   @Override
-   public void a(dbw $$0, drg $$1) {
-      this.e();
-      $$0.b(this.o, this.n().a(dsq.by, $$1));
-   }
-
-   @Override
-   public void f() {
-      this.e();
-      if (this.n != null) {
-         this.n.a(this.o, this.n(), this.n(), 3);
+   protected void a(dbx $$0, iz $$1, dsb $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 != $$4) {
+         dey $$5 = $$2.b();
+         $$0.a($$1, $$5);
+         $$0.a($$1.d(), $$5);
       }
    }
 }

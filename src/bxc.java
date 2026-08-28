@@ -2,25 +2,20 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bxc {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static bvh<btn> a() {
-      return byt.a((Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.b(ccr.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  iz $$5 = $$0.<jh>b($$1).b();
-                  if ($$5.a($$3.dp(), 3.0)) {
-                     dsa $$6 = $$2.a_($$5);
-                     if ($$6.a(dez.od)) {
-                        det $$7 = (det)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
+   public static bvi<bto> a() {
+      return byu.a((Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$0 -> $$0.a((byx<bto>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               buq<?> $$3 = $$1.dS();
+               coh $$4 = $$0x.d($$1.dp());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(col.b);
+                  $$3.a($$0x.aa(), $$0x.Z());
                }
-            })));
+
+               return true;
+            }
+         }))));
    }
 }

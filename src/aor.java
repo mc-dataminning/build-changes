@@ -280,23 +280,23 @@ public class aor {
    private static LiteralArgumentBuilder<ep> a() {
       LiteralArgumentBuilder<ep> $$0 = eq.a("rendertype");
 
-      for (eww.a $$1 : eww.a.values()) {
+      for (ewx.a $$1 : ewx.a.values()) {
          $$0.then(eq.a($$1.a()).executes($$1x -> a((ep)$$1x.getSource(), fj.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(ep $$0, Collection<ews> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(ep $$0, Collection<ewt> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      ewt $$4 = $$0.l().aK();
+      ewu $$4 = $$0.l().aK();
 
-      for (ewl $$5 : $$4.c()) {
-         if ($$5.c() == eww.c) {
+      for (ewm $$5 : $$4.c()) {
+         if ($$5.c() == ewx.c) {
             boolean $$6 = false;
 
-            for (ews $$7 : $$1) {
-               ewp $$8 = $$4.d($$7, $$5);
+            for (ewt $$7 : $$1) {
+               ewq $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,9 +312,9 @@ public class aor {
       return eu.b($$3, $$2);
    }
 
-   private static int a(ep $$0, ews $$1, ewl $$2) throws CommandSyntaxException {
-      ewt $$3 = $$0.l().aK();
-      ewp $$4 = $$3.d($$1, $$2);
+   private static int a(ep $$0, ewt $$1, ewm $$2) throws CommandSyntaxException {
+      ewu $$3 = $$0.l().aK();
+      ewq $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
          throw f.create($$2.b(), $$1.he());
       } else {
@@ -323,19 +323,19 @@ public class aor {
       }
    }
 
-   private static xo a(Collection<ews> $$0) {
+   private static xo a(Collection<ewt> $$0) {
       return $$0.iterator().next().he();
    }
 
-   private static int a(ep $$0, Collection<ews> $$1, ewl $$2, fl.a $$3, Collection<ews> $$4, ewl $$5) throws CommandSyntaxException {
-      ewt $$6 = $$0.l().aK();
+   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, fl.a $$3, Collection<ewt> $$4, ewm $$5) throws CommandSyntaxException {
+      ewu $$6 = $$0.l().aK();
       int $$7 = 0;
 
-      for (ews $$8 : $$1) {
-         ewr $$9 = $$6.c($$8, $$2);
+      for (ewt $$8 : $$1) {
+         ews $$9 = $$6.c($$8, $$2);
 
-         for (ews $$10 : $$4) {
-            ewr $$11 = $$6.c($$10, $$5);
+         for (ewt $$10 : $$4) {
+            ews $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class aor {
       return $$7;
    }
 
-   private static int a(ep $$0, Collection<ews> $$1, ewl $$2) throws CommandSyntaxException {
-      if ($$2.c() != eww.c) {
+   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2) throws CommandSyntaxException {
+      if ($$2.c() != ewx.c) {
          throw e.create();
       } else {
-         ewt $$3 = $$0.l().aK();
+         ewu $$3 = $$0.l().aK();
          int $$4 = 0;
 
-         for (ews $$5 : $$1) {
-            ewr $$6 = $$3.c($$5, $$2);
+         for (ewt $$5 : $$1) {
+            ews $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class aor {
       }
    }
 
-   private static int a(ep $$0, Collection<ews> $$1) {
-      ewt $$2 = $$0.l().aK();
+   private static int a(ep $$0, Collection<ewt> $$1) {
+      ewu $$2 = $$0.l().aK();
 
-      for (ews $$3 : $$1) {
+      for (ewt $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class aor {
       return $$1.size();
    }
 
-   private static int b(ep $$0, Collection<ews> $$1, ewl $$2) {
-      ewt $$3 = $$0.l().aK();
+   private static int b(ep $$0, Collection<ewt> $$1, ewm $$2) {
+      ewu $$3 = $$0.l().aK();
 
-      for (ews $$4 : $$1) {
+      for (ewt $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class aor {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<ews> $$1, ewl $$2, int $$3) {
-      ewt $$4 = $$0.l().aK();
+   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
+      ewu $$4 = $$0.l().aK();
 
-      for (ews $$5 : $$1) {
+      for (ewt $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class aor {
       return $$3 * $$1.size();
    }
 
-   private static int a(ep $$0, Collection<ews> $$1, ewl $$2, @Nullable xo $$3) {
-      ewt $$4 = $$0.l().aK();
+   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, @Nullable xo $$3) {
+      ewu $$4 = $$0.l().aK();
 
-      for (ews $$5 : $$1) {
+      for (ewt $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class aor {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<ews> $$1, ewl $$2, @Nullable ze $$3) {
-      ewt $$4 = $$0.l().aK();
+   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, @Nullable ze $$3) {
+      ewu $$4 = $$0.l().aK();
 
-      for (ews $$5 : $$1) {
+      for (ewt $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class aor {
       return $$1.size();
    }
 
-   private static int b(ep $$0, Collection<ews> $$1, ewl $$2, int $$3) {
-      ewt $$4 = $$0.l().aK();
+   private static int b(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
+      ewu $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (ews $$6 : $$1) {
-         ewr $$7 = $$4.c($$6, $$2);
+      for (ewt $$6 : $$1) {
+         ews $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class aor {
       return $$5;
    }
 
-   private static int c(ep $$0, Collection<ews> $$1, ewl $$2, int $$3) {
-      ewt $$4 = $$0.l().aK();
+   private static int c(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
+      ewu $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (ews $$6 : $$1) {
-         ewr $$7 = $$4.c($$6, $$2);
+      for (ewt $$6 : $$1) {
+         ews $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class aor {
    }
 
    private static int a(ep $$0) {
-      Collection<ews> $$1 = $$0.l().aK().e();
+      Collection<ewt> $$1 = $$0.l().aK().e();
       if ($$1.isEmpty()) {
          $$0.a(() -> xo.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.list.success", $$1.size(), xr.b($$1, ews::he)), false);
+         $$0.a(() -> xo.a("commands.scoreboard.players.list.success", $$1.size(), xr.b($$1, ewt::he)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(ep $$0, ews $$1) {
-      Object2IntMap<ewl> $$2 = $$0.l().aK().c($$1);
+   private static int a(ep $$0, ewt $$1) {
+      Object2IntMap<ewm> $$2 = $$0.l().aK().c($$1);
       if ($$2.isEmpty()) {
          $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.empty", $$1.he()), false);
       } else {
          $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.success", $$1.he(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.entry", ((ewl)$$1x.getKey()).g(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.entry", ((ewm)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(ep $$0, ewk $$1) throws CommandSyntaxException {
-      ewt $$2 = $$0.l().aK();
+   private static int a(ep $$0, ewl $$1) throws CommandSyntaxException {
+      ewu $$2 = $$0.l().aK();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class aor {
       }
    }
 
-   private static int a(ep $$0, ewk $$1, ewl $$2) throws CommandSyntaxException {
-      ewt $$3 = $$0.l().aK();
+   private static int a(ep $$0, ewl $$1, ewm $$2) throws CommandSyntaxException {
+      ewu $$3 = $$0.l().aK();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class aor {
       }
    }
 
-   private static int a(ep $$0, ewl $$1, xo $$2) {
+   private static int a(ep $$0, ewm $$1, xo $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
@@ -569,7 +569,7 @@ public class aor {
       return 0;
    }
 
-   private static int a(ep $$0, ewl $$1, boolean $$2) {
+   private static int a(ep $$0, ewm $$1, boolean $$2) {
       if ($$1.e() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class aor {
       return 0;
    }
 
-   private static int a(ep $$0, ewl $$1, @Nullable ze $$2) {
+   private static int a(ep $$0, ewm $$1, @Nullable ze $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
@@ -593,7 +593,7 @@ public class aor {
       return 0;
    }
 
-   private static int a(ep $$0, ewl $$1, eww.a $$2) {
+   private static int a(ep $$0, ewm $$1, ewx.a $$2) {
       if ($$1.h() != $$2) {
          $$1.a($$2);
          $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
@@ -602,31 +602,31 @@ public class aor {
       return 0;
    }
 
-   private static int a(ep $$0, ewl $$1) {
-      ewt $$2 = $$0.l().aK();
+   private static int a(ep $$0, ewm $$1) {
+      ewu $$2 = $$0.l().aK();
       $$2.j($$1);
       $$0.a(() -> xo.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
       return $$2.c().size();
    }
 
-   private static int a(ep $$0, String $$1, eww $$2, xo $$3) throws CommandSyntaxException {
-      ewt $$4 = $$0.l().aK();
+   private static int a(ep $$0, String $$1, ewx $$2, xo $$3) throws CommandSyntaxException {
+      ewu $$4 = $$0.l().aK();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         ewl $$5 = $$4.a($$1);
+         ewm $$5 = $$4.a($$1);
          $$0.a(() -> xo.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(ep $$0) {
-      Collection<ewl> $$1 = $$0.l().aK().c();
+      Collection<ewm> $$1 = $$0.l().aK().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> xo.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.list.success", $$1.size(), xr.b($$1, ewl::g)), false);
+         $$0.a(() -> xo.a("commands.scoreboard.objectives.list.success", $$1.size(), xr.b($$1, ewm::g)), false);
       }
 
       return $$1.size();

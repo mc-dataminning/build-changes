@@ -63,7 +63,7 @@ public class Main {
 
          o.h();
          if ($$18.has($$15)) {
-            bnm.f.a(bnk.b);
+            bnn.f.a(bnl.b);
          }
 
          alg.a();
@@ -72,7 +72,7 @@ public class Main {
          Path $$20 = Paths.get("server.properties");
          aqc $$21 = new aqc($$20);
          $$21.b();
-         dvl.a($$21.a().N);
+         dvm.a($$21.a().N);
          Path $$22 = Paths.get("eula.txt");
          alk $$23 = new alk($$22);
          if ($$18.has($$3)) {
@@ -88,16 +88,16 @@ public class Main {
          File $$24 = new File((String)$$18.valueOf($$11));
          aly $$25 = aly.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().m);
-         epu $$27 = epu.b($$24.toPath());
-         epu.c $$28 = $$27.d($$26);
+         epv $$27 = epv.b($$24.toPath());
+         epv.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            epv $$30;
+            epw $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
             } catch (vc | vi | IOException var41) {
-               epu.b $$32 = $$28.e();
+               epv.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -138,29 +138,29 @@ public class Main {
          try {
             ama.c $$42 = a($$21.a(), $$39, $$40, $$41);
             $$43 = ac.<amb>c($$6x -> ama.a($$42, $$5xx -> {
-                  jv<dvt> $$6xx = $$5xx.d().d(lq.aT);
+                  jv<dvu> $$6xx = $$5xx.d().d(lq.aT);
                   if ($$39 != null) {
-                     epr $$7x = epu.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     eps $$7x = epv.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new ama.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     dca $$8x;
-                     dyq $$9x;
-                     dyn $$10x;
+                     dcb $$8x;
+                     dyr $$9x;
+                     dyo $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = dyq.b;
-                        $$10x = ehy.a($$5xx.c());
+                        $$9x = dyr.b;
+                        $$10x = ehz.a($$5xx.c());
                      } else {
                         aqb $$11x = $$21.a();
-                        $$8x = new dca($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new dbs(), $$5xx.b());
+                        $$8x = new dcb($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new dbt(), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.Z.a(true) : $$11x.Z;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     dyn.b $$15x = $$10x.a($$6xx);
+                     dyo.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().e());
-                     return new ama.b<>(new epy($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new ama.b<>(new epz($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, amb::new, ac.g(), $$6x)).get();
          } catch (Exception var39) {
@@ -171,13 +171,13 @@ public class Main {
          jw.b $$46 = $$43.c().a();
          boolean $$47 = $$18.has($$8);
          if ($$18.has($$6) || $$47) {
-            a($$28, baf.a(), $$18.has($$7), () -> true, $$46, $$47);
+            a($$28, bag.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         eqa $$48 = $$43.d();
+         eqb $$48 = $$43.d();
          $$28.a($$46, $$48);
          final aqa $$49 = MinecraftServer.a((Function<Thread, aqa>)($$11x -> {
-            aqa $$12x = new aqa($$11x, $$28, $$41, $$43, $$21, baf.a(), $$25, arp::b);
+            aqa $$12x = new aqa($$11x, $$28, $$41, $$43, $$21, bag.a(), $$25, arp::b);
             $$12x.a((Integer)$$18.valueOf($$13));
             $$12x.c($$18.has($$4));
             $$12x.b((String)$$18.valueOf($$14));
@@ -212,23 +212,23 @@ public class Main {
 
    private static ama.c a(aqb $$0, @Nullable Dynamic<?> $$1, boolean $$2, atz $$3) {
       boolean $$5;
-      dcq $$6;
+      dcr $$6;
       if ($$1 != null) {
-         dcq $$4 = epu.a($$1);
+         dcr $$4 = epv.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new dcq($$0.U, cpl.h);
+         $$6 = new dcr($$0.U, cpm.h);
       }
 
       ama.d $$9 = new ama.d($$3, $$6, $$2, $$5);
       return new ama.c($$9, eq.a.b, $$0.B);
    }
 
-   private static void a(epu.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, jw $$4, boolean $$5) {
+   private static void a(epv.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, jw $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
-      bqg $$6 = new bqg($$0, $$1, $$4, $$2, $$5);
+      bqh $$6 = new bqh($$0, $$1, $$4, $$2, $$5);
       xo $$7 = null;
 
       while (!$$6.b()) {
@@ -241,7 +241,7 @@ public class Main {
          int $$9 = $$6.e();
          if ($$9 > 0) {
             int $$10 = $$6.f() + $$6.g();
-            a.info("{}% completed ({} / {} chunks)...", new Object[]{ayx.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{ayy.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
          }
 
          if (!$$3.getAsBoolean()) {

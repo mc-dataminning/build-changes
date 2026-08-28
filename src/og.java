@@ -22,19 +22,19 @@ public class og {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public ale a(dex $$0) {
+   public ale a(dey $$0) {
       return of.a($$0, this.c.orElse(""));
    }
 
-   public ale a(dex $$0, oi $$1, BiConsumer<ale, Supplier<JsonElement>> $$2) {
+   public ale a(dey $$0, oi $$1, BiConsumer<ale, Supplier<JsonElement>> $$2) {
       return this.a(of.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public ale a(dex $$0, String $$1, oi $$2, BiConsumer<ale, Supplier<JsonElement>> $$3) {
+   public ale a(dey $$0, String $$1, oi $$2, BiConsumer<ale, Supplier<JsonElement>> $$3) {
       return this.a(of.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public ale b(dex $$0, String $$1, oi $$2, BiConsumer<ale, Supplier<JsonElement>> $$3) {
+   public ale b(dey $$0, String $$1, oi $$2, BiConsumer<ale, Supplier<JsonElement>> $$3) {
       return this.a(of.a($$0, $$1), $$2, $$3);
    }
 

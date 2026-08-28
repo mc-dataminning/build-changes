@@ -1,351 +1,233 @@
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import com.google.common.collect.Sets;
 import java.util.Set;
 import java.util.stream.Stream;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public final class fwy {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<fwy.a> m;
-   private final Map<String, fwy> n;
-   private fxa o = fxa.a;
+public class fwy {
+   private static final String cq = "main";
+   private static final Set<fwx> cr = Sets.newHashSet();
+   public static final fwx a = a("allay");
+   public static final fwx b = a("armadillo");
+   public static final fwx c = a("armor_stand");
+   public static final fwx d = b("armor_stand");
+   public static final fwx e = c("armor_stand");
+   public static final fwx f = a("axolotl");
+   public static final fwx g = a("banner");
+   public static final fwx h = a("bat");
+   public static final fwx i = a("bed_foot");
+   public static final fwx j = a("bed_head");
+   public static final fwx k = a("bee");
+   public static final fwx l = a("bell");
+   public static final fwx m = a("blaze");
+   public static final fwx n = a("bogged");
+   public static final fwx o = b("bogged");
+   public static final fwx p = c("bogged");
+   public static final fwx q = a("bogged", "outer");
+   public static final fwx r = a("book");
+   public static final fwx s = a("breeze");
+   public static final fwx t = a("cat");
+   public static final fwx u = a("cat", "collar");
+   public static final fwx v = a("camel");
+   public static final fwx w = a("cave_spider");
+   public static final fwx x = a("chest");
+   public static final fwx y = a("chest_minecart");
+   public static final fwx z = a("chicken");
+   public static final fwx A = a("cod");
+   public static final fwx B = a("command_block_minecart");
+   public static final fwx C = a("conduit", "cage");
+   public static final fwx D = a("conduit", "eye");
+   public static final fwx E = a("conduit", "shell");
+   public static final fwx F = a("conduit", "wind");
+   public static final fwx G = a("cow");
+   public static final fwx H = a("creeper");
+   public static final fwx I = a("creeper", "armor");
+   public static final fwx J = a("creeper_head");
+   public static final fwx K = a("decorated_pot_base");
+   public static final fwx L = a("decorated_pot_sides");
+   public static final fwx M = a("dolphin");
+   public static final fwx N = a("donkey");
+   public static final fwx O = a("double_chest_left");
+   public static final fwx P = a("double_chest_right");
+   public static final fwx Q = a("dragon_skull");
+   public static final fwx R = a("drowned");
+   public static final fwx S = b("drowned");
+   public static final fwx T = c("drowned");
+   public static final fwx U = a("drowned", "outer");
+   public static final fwx V = a("elder_guardian");
+   public static final fwx W = a("elytra");
+   public static final fwx X = a("enderman");
+   public static final fwx Y = a("endermite");
+   public static final fwx Z = a("ender_dragon");
+   public static final fwx aa = a("end_crystal");
+   public static final fwx ab = a("evoker");
+   public static final fwx ac = a("evoker_fangs");
+   public static final fwx ad = a("fox");
+   public static final fwx ae = a("frog");
+   public static final fwx af = a("furnace_minecart");
+   public static final fwx ag = a("ghast");
+   public static final fwx ah = a("giant");
+   public static final fwx ai = b("giant");
+   public static final fwx aj = c("giant");
+   public static final fwx ak = a("glow_squid");
+   public static final fwx al = a("goat");
+   public static final fwx am = a("guardian");
+   public static final fwx an = a("hoglin");
+   public static final fwx ao = a("hopper_minecart");
+   public static final fwx ap = a("horse");
+   public static final fwx aq = a("horse_armor");
+   public static final fwx ar = a("husk");
+   public static final fwx as = b("husk");
+   public static final fwx at = c("husk");
+   public static final fwx au = a("illusioner");
+   public static final fwx av = a("iron_golem");
+   public static final fwx aw = a("leash_knot");
+   public static final fwx ax = a("llama");
+   public static final fwx ay = a("llama", "decor");
+   public static final fwx az = a("llama_spit");
+   public static final fwx aA = a("magma_cube");
+   public static final fwx aB = a("minecart");
+   public static final fwx aC = a("mooshroom");
+   public static final fwx aD = a("mule");
+   public static final fwx aE = a("ocelot");
+   public static final fwx aF = a("panda");
+   public static final fwx aG = a("parrot");
+   public static final fwx aH = a("phantom");
+   public static final fwx aI = a("pig");
+   public static final fwx aJ = a("piglin");
+   public static final fwx aK = a("piglin_brute");
+   public static final fwx aL = b("piglin_brute");
+   public static final fwx aM = c("piglin_brute");
+   public static final fwx aN = a("piglin_head");
+   public static final fwx aO = b("piglin");
+   public static final fwx aP = c("piglin");
+   public static final fwx aQ = a("pig", "saddle");
+   public static final fwx aR = a("pillager");
+   public static final fwx aS = a("player");
+   public static final fwx aT = a("player_head");
+   public static final fwx aU = b("player");
+   public static final fwx aV = c("player");
+   public static final fwx aW = a("player_slim");
+   public static final fwx aX = b("player_slim");
+   public static final fwx aY = c("player_slim");
+   public static final fwx aZ = a("spin_attack");
+   public static final fwx ba = a("polar_bear");
+   public static final fwx bb = a("pufferfish_big");
+   public static final fwx bc = a("pufferfish_medium");
+   public static final fwx bd = a("pufferfish_small");
+   public static final fwx be = a("rabbit");
+   public static final fwx bf = a("ravager");
+   public static final fwx bg = a("salmon");
+   public static final fwx bh = a("sheep");
+   public static final fwx bi = a("sheep", "fur");
+   public static final fwx bj = a("shield");
+   public static final fwx bk = a("shulker");
+   public static final fwx bl = a("shulker_bullet");
+   public static final fwx bm = a("silverfish");
+   public static final fwx bn = a("skeleton");
+   public static final fwx bo = a("skeleton_horse");
+   public static final fwx bp = b("skeleton");
+   public static final fwx bq = c("skeleton");
+   public static final fwx br = a("skeleton_skull");
+   public static final fwx bs = a("slime");
+   public static final fwx bt = a("slime", "outer");
+   public static final fwx bu = a("sniffer");
+   public static final fwx bv = a("snow_golem");
+   public static final fwx bw = a("spawner_minecart");
+   public static final fwx bx = a("spider");
+   public static final fwx by = a("squid");
+   public static final fwx bz = a("stray");
+   public static final fwx bA = b("stray");
+   public static final fwx bB = c("stray");
+   public static final fwx bC = a("stray", "outer");
+   public static final fwx bD = a("strider");
+   public static final fwx bE = a("strider", "saddle");
+   public static final fwx bF = a("tadpole");
+   public static final fwx bG = a("tnt_minecart");
+   public static final fwx bH = a("trader_llama");
+   public static final fwx bI = a("trident");
+   public static final fwx bJ = a("tropical_fish_large");
+   public static final fwx bK = a("tropical_fish_large", "pattern");
+   public static final fwx bL = a("tropical_fish_small");
+   public static final fwx bM = a("tropical_fish_small", "pattern");
+   public static final fwx bN = a("turtle");
+   public static final fwx bO = a("vex");
+   public static final fwx bP = a("villager");
+   public static final fwx bQ = a("vindicator");
+   public static final fwx bR = a("warden");
+   public static final fwx bS = a("wandering_trader");
+   public static final fwx bT = a("wind_charge");
+   public static final fwx bU = a("witch");
+   public static final fwx bV = a("wither");
+   public static final fwx bW = a("wither", "armor");
+   public static final fwx bX = a("wither_skeleton");
+   public static final fwx bY = b("wither_skeleton");
+   public static final fwx bZ = c("wither_skeleton");
+   public static final fwx ca = a("wither_skeleton_skull");
+   public static final fwx cb = a("wither_skull");
+   public static final fwx cc = a("wolf");
+   public static final fwx cd = a("wolf_armor");
+   public static final fwx ce = a("zoglin");
+   public static final fwx cf = a("zombie");
+   public static final fwx cg = a("zombie_head");
+   public static final fwx ch = a("zombie_horse");
+   public static final fwx ci = b("zombie");
+   public static final fwx cj = c("zombie");
+   public static final fwx ck = a("zombie_villager");
+   public static final fwx cl = b("zombie_villager");
+   public static final fwx cm = c("zombie_villager");
+   public static final fwx cn = a("zombified_piglin");
+   public static final fwx co = b("zombified_piglin");
+   public static final fwx cp = c("zombified_piglin");
 
-   public fwy(List<fwy.a> $$0, Map<String, fwy> $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   private static fwx a(String $$0) {
+      return a($$0, "main");
    }
 
-   public fxa a() {
-      return fxa.a(this.b, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public fxa b() {
-      return this.o;
-   }
-
-   public void a(fxa $$0) {
-      this.o = $$0;
-   }
-
-   public void c() {
-      this.b(this.o);
-   }
-
-   public void b(fxa $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = 1.0F;
-      this.i = 1.0F;
-      this.j = 1.0F;
-   }
-
-   public void a(fwy $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-   }
-
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
-   }
-
-   public fwy b(String $$0) {
-      fwy $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
+   private static fwx a(String $$0, String $$1) {
+      fwx $$2 = b($$0, $$1);
+      if (!cr.add($$2)) {
+         throw new IllegalStateException("Duplicate registration for " + $$2);
       } else {
-         return $$1;
+         return $$2;
       }
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static fwx b(String $$0, String $$1) {
+      return new fwx(new ale("minecraft", $$0), $$1);
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private static fwx b(String $$0) {
+      return a($$0, "inner_armor");
    }
 
-   public void a(ezw $$0, faa $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
+   private static fwx c(String $$0) {
+      return a($$0, "outer_armor");
    }
 
-   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            for (fwy $$8 : this.n.values()) {
-               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            $$0.b();
-         }
-      }
+   public static fwx a(cou.b $$0) {
+      return b("raft/" + $$0.a(), "main");
    }
 
-   public void a(ezw $$0, fwy.d $$1) {
-      this.a($$0, $$1, "");
+   public static fwx b(cou.b $$0) {
+      return b("chest_raft/" + $$0.a(), "main");
    }
 
-   private void a(ezw $$0, fwy.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         ezw.a $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
-      }
+   public static fwx c(cou.b $$0) {
+      return b("boat/" + $$0.a(), "main");
    }
 
-   public void a(ezw $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
+   public static fwx d(cou.b $$0) {
+      return b("chest_boat/" + $$0.a(), "main");
    }
 
-   private void a(ezw.a $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      for (fwy.a $$8 : this.m) {
-         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public static fwx a(dto $$0) {
+      return b("sign/" + $$0.b(), "main");
    }
 
-   public fwy.a a(azf $$0) {
-      return this.m.get($$0.a(this.m.size()));
+   public static fwx b(dto $$0) {
+      return b("hanging_sign/" + $$0.b(), "main");
    }
 
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<fwy> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(fwy::e));
-   }
-
-   public static class a {
-      private final fwy.b[] g;
-      public final float a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<je> $$14
-      ) {
-         this.a = $$2;
-         this.b = $$3;
-         this.c = $$4;
-         this.d = $$2 + $$5;
-         this.e = $$3 + $$6;
-         this.f = $$4 + $$7;
-         this.g = new fwy.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         fwy.c $$19 = new fwy.c($$2, $$3, $$4, 0.0F, 0.0F);
-         fwy.c $$20 = new fwy.c($$15, $$3, $$4, 0.0F, 8.0F);
-         fwy.c $$21 = new fwy.c($$15, $$16, $$4, 8.0F, 8.0F);
-         fwy.c $$22 = new fwy.c($$2, $$16, $$4, 8.0F, 0.0F);
-         fwy.c $$23 = new fwy.c($$2, $$3, $$17, 0.0F, 0.0F);
-         fwy.c $$24 = new fwy.c($$15, $$3, $$17, 0.0F, 8.0F);
-         fwy.c $$25 = new fwy.c($$15, $$16, $$17, 8.0F, 8.0F);
-         fwy.c $$26 = new fwy.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(je.a)) {
-            this.g[$$36++] = new fwy.b(new fwy.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, je.a);
-         }
-
-         if ($$14.contains(je.b)) {
-            this.g[$$36++] = new fwy.b(new fwy.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, je.b);
-         }
-
-         if ($$14.contains(je.e)) {
-            this.g[$$36++] = new fwy.b(new fwy.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, je.e);
-         }
-
-         if ($$14.contains(je.c)) {
-            this.g[$$36++] = new fwy.b(new fwy.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, je.c);
-         }
-
-         if ($$14.contains(je.f)) {
-            this.g[$$36++] = new fwy.b(new fwy.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, je.f);
-         }
-
-         if ($$14.contains(je.d)) {
-            this.g[$$36] = new fwy.b(new fwy.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, je.d);
-         }
-      }
-
-      public void a(ezw.a $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         Matrix4f $$8 = $$0.a();
-         Vector3f $$9 = new Vector3f();
-
-         for (fwy.b $$10 : this.g) {
-            Vector3f $$11 = $$0.a($$10.b, $$9);
-            float $$12 = $$11.x();
-            float $$13 = $$11.y();
-            float $$14 = $$11.z();
-
-            for (fwy.c $$15 : $$10.a) {
-               float $$16 = $$15.a.x() / 16.0F;
-               float $$17 = $$15.a.y() / 16.0F;
-               float $$18 = $$15.a.z() / 16.0F;
-               Vector3f $$19 = $$8.transformPosition($$16, $$17, $$18, $$9);
-               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
-            }
-         }
-      }
-   }
-
-   static class b {
-      public final fwy.c[] a;
-      public final Vector3f b;
-
-      public b(fwy.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, je $$8) {
-         this.a = $$0;
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               fwy.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         this.b = $$8.m();
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   static class c {
-      public final Vector3f a;
-      public final float b;
-      public final float c;
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public fwy.c a(float $$0, float $$1) {
-         return new fwy.c(this.a, $$0, $$1);
-      }
-
-      public c(Vector3f $$0, float $$1, float $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(ezw.a var1, String var2, int var3, fwy.a var4);
+   public static Stream<fwx> a() {
+      return cr.stream();
    }
 }

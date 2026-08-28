@@ -27,21 +27,21 @@ public class arp implements arn {
    }
 
    @Override
-   public void a(dbd $$0) {
+   public void a(dbe $$0) {
       this.e = ac.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dbd $$0, @Nullable duv $$1) {
-      if ($$1 == duv.n) {
+   public void a(dbe $$0, @Nullable duw $$1) {
+      if ($$1 == duw.n) {
          this.c++;
       }
 
       int $$2 = this.d();
       if (ac.c() > this.e) {
          this.e += 500L;
-         a.info(xo.a("menu.preparingSpawn", ayx.a($$2, 0, 100)).getString());
+         a.info(xo.a("menu.preparingSpawn", ayy.a($$2, 0, 100)).getString());
       }
    }
 
@@ -56,6 +56,6 @@ public class arp implements arn {
    }
 
    public int d() {
-      return this.b == 0 ? 100 : ayx.d((float)this.c * 100.0F / (float)this.b);
+      return this.b == 0 ? 100 : ayy.d((float)this.c * 100.0F / (float)this.b);
    }
 }

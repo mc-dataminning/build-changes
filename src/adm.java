@@ -14,10 +14,10 @@ public class adm implements zv<ach> {
    private final float i;
    private final lg j;
    private final lg k;
-   private final dbo.a l;
+   private final dbp.a l;
    private final ji<avy> m;
 
-   public adm(double $$0, double $$1, double $$2, float $$3, List<iz> $$4, @Nullable evp $$5, dbo.a $$6, lg $$7, lg $$8, ji<avy> $$9) {
+   public adm(double $$0, double $$1, double $$2, float $$3, List<iz> $$4, @Nullable evq $$5, dbp.a $$6, lg $$7, lg $$8, ji<avy> $$9) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -44,9 +44,9 @@ public class adm implements zv<ach> {
       this.c = $$0.readDouble();
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
-      int $$1 = ayx.a(this.b);
-      int $$2 = ayx.a(this.c);
-      int $$3 = ayx.a(this.d);
+      int $$1 = ayy.a(this.b);
+      int $$2 = ayy.a(this.c);
+      int $$3 = ayy.a(this.d);
       this.f = $$0.a($$3x -> {
          int $$4 = $$3x.readByte() + $$1;
          int $$5 = $$3x.readByte() + $$2;
@@ -56,7 +56,7 @@ public class adm implements zv<ach> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.i = $$0.readFloat();
-      this.l = $$0.b(dbo.a.class);
+      this.l = $$0.b(dbp.a.class);
       this.j = li.bg.decode($$0);
       this.k = li.bg.decode($$0);
       this.m = avy.d.decode($$0);
@@ -67,9 +67,9 @@ public class adm implements zv<ach> {
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      int $$1 = ayx.a(this.b);
-      int $$2 = ayx.a(this.c);
-      int $$3 = ayx.a(this.d);
+      int $$1 = ayy.a(this.b);
+      int $$2 = ayy.a(this.c);
+      int $$3 = ayy.a(this.d);
       $$0.a(this.f, ($$3x, $$4) -> {
          int $$5 = $$4.u() - $$1;
          int $$6 = $$4.v() - $$2;
@@ -128,7 +128,7 @@ public class adm implements zv<ach> {
       return this.f;
    }
 
-   public dbo.a l() {
+   public dbp.a l() {
       return this.l;
    }
 

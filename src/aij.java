@@ -8,9 +8,9 @@ public class aij implements zv<agv> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dpp.a j;
+   private final dpq.a j;
 
-   public aij(iz $$0, String $$1, dpp.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public aij(iz $$0, String $$1, dpq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class aij implements zv<agv> {
    private aij(wl $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dpp.a.class);
+      this.j = $$0.b(dpq.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class aij implements zv<agv> {
       return this.i;
    }
 
-   public dpp.a i() {
+   public dpq.a i() {
       return this.j;
    }
 }

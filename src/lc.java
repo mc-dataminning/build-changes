@@ -3,11 +3,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class lc extends lj {
-   public static final Vector3f a = evp.a(3790560).j();
+   public static final Vector3f a = evq.a(3790560).j();
    public static final lc b = new lc(a, ld.a, 1.0F);
    public static final MapCodec<lc> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ayf.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), ayf.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lj::d)
+               ayg.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), ayg.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lj::d)
             )
             .apply($$0, lc::new)
    );

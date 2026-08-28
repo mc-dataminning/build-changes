@@ -1,23 +1,15 @@
-public class dqc extends dqp {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dqc(iz $$0, dsa $$1) {
-      super(dph.i, $$0, $$1);
+public class dqc extends dou {
+   public dqc(iz $$0, dsb $$1) {
+      super(dpi.a, $$0, $$1, cyz.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected xo k() {
+      return xo.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public avy d() {
-      return avz.BW;
+   protected cpt a(int $$0, cmv $$1) {
+      return new cqp($$0, $$1, this, this.m);
    }
 }

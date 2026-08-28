@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -17,8 +17,8 @@ import javax.annotation.Nullable;
 public class ur implements vo {
    public static final Codec<ur> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
       vo $$1 = (vo)$$0.convert(vf.a).getValue();
-      return $$1 instanceof ur $$2 ? DataResult.success($$2 == $$0.getValue() ? $$2.h() : $$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
-   }, $$0 -> new Dynamic(vf.a, $$0.h()));
+      return $$1 instanceof ur $$2 ? DataResult.success($$2 == $$0.getValue() ? $$2.i() : $$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
+   }, $$0 -> new Dynamic(vf.a, $$0.i()));
    private static final int c = 48;
    private static final int w = 32;
    public static final vq<ur> b = new vq.b<ur>() {
@@ -463,7 +463,11 @@ public class ur implements vo {
       return $$3;
    }
 
-   public ur h() {
+   protected ur h() {
+      return new ur(new HashMap<>(this.x));
+   }
+
+   public ur i() {
       Map<String, vo> $$0 = Maps.newHashMap(Maps.transformValues(this.x, vo::d));
       return new ur($$0);
    }
@@ -521,8 +525,8 @@ public class ur implements vo {
       $$0.a(this);
    }
 
-   protected Map<String, vo> i() {
-      return Collections.unmodifiableMap(this.x);
+   protected Set<Entry<String, vo>> j() {
+      return this.x.entrySet();
    }
 
    @Override

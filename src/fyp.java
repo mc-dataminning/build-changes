@@ -1,31 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface fyp {
-   Codec<fyp> a = azs.a(fyp.a::values).dispatch(fyp::a, fyp.a::a);
+public enum fyp implements azt {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   fyp.a a();
+   public static final Codec<fyp> d = azt.a(fyp::values);
+   private final String e;
 
-   public static enum a implements azs {
-      a("player", () -> fyq.a.b),
-      b("system", () -> fyq.b.b);
+   private fyp(final String $$0) {
+      this.e = $$0;
+   }
 
-      private final String c;
-      private final Supplier<MapCodec<? extends fyp>> d;
-
-      private a(final String $$0, final Supplier<MapCodec<? extends fyp>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   public static fyp a(ye $$0, xo $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
+   }
 
-      private MapCodec<? extends fyp> a() {
-         return this.d.get();
+   private static boolean a(ye $$0, xo $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xo $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      @Override
-      public String c() {
-         return this.c;
-      }
+   private static boolean a(xo $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), yl.a).orElse(false);
+   }
+
+   private static boolean a(yl $$0) {
+      return !$$0.k().equals(yl.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fez a(ye $$0) {
+      return switch (this) {
+         case b -> fez.a($$0.c());
+         case c -> fez.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

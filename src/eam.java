@@ -1,34 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eam extends eal {
-   public eam(Codec<edh> $$0) {
+public abstract class eam extends eax<edi> {
+   public eam(Codec<edi> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dbx $$0, azf $$1, iz $$2, dsa $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      iz.a $$8 = $$2.j();
+   public boolean a(eaz<edi> $$0) {
+      azg $$1 = $$0.d();
+      dcs $$2 = $$0.b();
+      iz $$3 = $$0.e();
+      Optional<dey> $$4 = lp.e.a(awo.aq, $$1).map(ji::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(je.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+   protected abstract boolean a(dby var1, azg var2, iz var3, dsb var4);
+
+   protected boolean b(dby $$0, azg $$1, iz $$2, dsb $$3) {
+      iz $$4 = $$2.c();
+      dsb $$5 = $$0.a_($$2);
+      if (($$5.a(dfa.G) || $$5.a(awo.at)) && $$0.a_($$4).a(dfa.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lp.e.a(awo.at, $$1).map(ji::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dfa.mV.o().a(dlv.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (je $$6 : je.c.a) {
+            if ($$1.i() < 0.2F) {
+               iz $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dfa.G)) {
+                  lp.e.a(awo.ar, $$1).map(ji::a).ifPresent($$3x -> {
+                     dsb $$4x = $$3x.o();
+                     if ($$4x.b(dej.c)) {
+                        $$4x = $$4x.a(dej.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
                }
             }
          }
-      }
 
-      return true;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -10,11 +10,11 @@ public class ana {
       );
    }
 
-   private static int a(ep $$0, dbt $$1) {
+   private static int a(ep $$0, dbu $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dbt $$4 = $$3.bf();
+      dbu $$4 = $$3.bf();
       if ($$4 != null) {
          for (arf $$5 : $$3.ah().t()) {
             if ($$5.a($$4)) {

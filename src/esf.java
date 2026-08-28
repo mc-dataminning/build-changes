@@ -1,29 +1,59 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class esf extends ers {
-   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(vp.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, esf::new));
-   private final ur b;
+public class esf extends ert {
+   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ald.a(lq.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lp.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, esf::new)
+   );
+   private final ald<eqm> b;
+   private final long c;
+   private final ji<dpi<?>> d;
 
-   private esf(List<etq> $$0, ur $$1) {
+   private esf(List<etr> $$0, ald<eqm> $$1, long $$2, ji<dpi<?>> $$3) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public eru<esf> b() {
-      return erv.j;
+   public erv<esf> b() {
+      return erw.y;
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      cxc.a(km.a, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
+   public cuo a(cuo $$0, eqh $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         $$0.b(km.ae, new cxr(this.b, this.c));
+         return $$0;
+      }
    }
 
-   @Deprecated
-   public static ers.a<?> a(ur $$0) {
-      return a($$1 -> new esf($$1, $$0));
+   @Override
+   public void a(eqn $$0) {
+      super.a($$0);
+      if ($$0.a().a(lq.aU, this.b).isEmpty()) {
+         $$0.b("Missing loot table used for container: " + this.b.a());
+      }
+   }
+
+   public static ert.a<?> a(dpi<?> $$0, ald<eqm> $$1) {
+      return a($$2 -> new esf($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static ert.a<?> a(dpi<?> $$0, ald<eqm> $$1, long $$2) {
+      return a($$3 -> new esf($$3, $$1, $$2, $$0.a()));
    }
 }

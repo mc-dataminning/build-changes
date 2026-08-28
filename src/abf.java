@@ -1,9 +1,9 @@
-public record abf(int c, eoh d, float e) implements aaw {
+public record abf(int c, eoi d, float e) implements aaw {
    public static final zm<wl, abf> a = aaw.a(abf::a, abf::new);
    public static final aaw.b<abf> b = aaw.a("debug/path");
 
    private abf(wl $$0) {
-      this($$0.readInt(), eoh.b($$0), $$0.readFloat());
+      this($$0.readInt(), eoi.b($$0), $$0.readFloat());
    }
 
    private void a(wl $$0) {
@@ -21,7 +21,7 @@ public record abf(int c, eoh d, float e) implements aaw {
       return this.c;
    }
 
-   public eoh c() {
+   public eoi c() {
       return this.d;
    }
 

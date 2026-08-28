@@ -1,2 +1,30 @@
-public record epr(eqa a, dyn.b b) {
+import java.util.Locale;
+
+public interface epr {
+   iz a();
+
+   float b();
+
+   long c();
+
+   long d();
+
+   boolean g();
+
+   boolean i();
+
+   void b(boolean var1);
+
+   boolean l();
+
+   dbt o();
+
+   bqq q();
+
+   boolean r();
+
+   default void a(p $$0, dbz $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   }
 }

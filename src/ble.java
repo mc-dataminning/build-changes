@@ -4,13 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class ble extends big {
+public class ble extends bih {
    public ble(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bgv.t, () -> DSL.optionalFields("id", bgv.D.in($$0), "components", bgv.w.in($$0)));
+      $$0.registerType(true, bgw.y, () -> DSL.optionalFields("item", bgw.t.in($$0), "block_state", bgw.u.in($$0)));
    }
 }

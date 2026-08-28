@@ -1,45 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface bmj<S> {
-   void a(int var1, bmo<S> var2, Object var3);
+public class bmj<S> {
+   private final Map<bmh<?>, bmn<S, ?>> a = new HashMap<>();
 
-   default void a(int $$0, Object $$1) {
-      this.a($$0, bmo.b(), $$1);
+   public <T> void a(bmh<T> $$0, bmn<S, T> $$1) {
+      bmn<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
+      }
    }
 
-   void a(int var1);
+   public <T> void a(bmh<T> $$0, bmq<S> $$1, bmn.a<S, T> $$2) {
+      this.a($$0, bmn.a($$1, $$2));
+   }
 
-   public static class a<S> implements bmj<S> {
-      private final List<bmk<S>> a = new ArrayList<>();
-      private int b = -1;
+   public <T> void a(bmh<T> $$0, bmq<S> $$1, bmn.b<T> $$2) {
+      this.a($$0, bmn.a($$1, $$2));
+   }
 
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
-         }
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
-
-      @Override
-      public void a(int $$0, bmo<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new bmk<>($$0, $$1, $$2));
-         }
-      }
-
-      public List<bmk<S>> a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
+   @Nullable
+   public <T> bmn<S, T> a(bmh<T> $$0) {
+      return (bmn<S, T>)this.a.get($$0);
    }
 }

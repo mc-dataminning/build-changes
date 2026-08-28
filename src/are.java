@@ -36,97 +36,97 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class are extends dbw implements dcr {
+public class are extends dbx implements dcs {
    public static final iz a = new iz(100, 50, 0);
-   public static final bpx b = bqd.a(12000, 180000);
-   public static final bpx c = bqd.a(12000, 24000);
-   private static final bpx D = bqd.a(12000, 180000);
-   public static final bpx d = bqd.a(3600, 15600);
+   public static final bpy b = bqe.a(12000, 180000);
+   public static final bpy c = bqe.a(12000, 24000);
+   private static final bpy D = bqe.a(12000, 180000);
+   public static final bpy d = bqe.a(3600, 15600);
    private static final Logger E = LogUtils.getLogger();
    private static final int F = 300;
    private static final int G = 65536;
    final List<arf> H = Lists.newArrayList();
    private final arc I;
    private final MinecraftServer J;
-   private final epz K;
+   private final eqa K;
    private int L;
-   final dwg M = new dwg();
-   private final dwl<bss> N;
-   private final dwu O;
+   final dwh M = new dwh();
+   private final dwm<bst> N;
+   private final dwv O;
    public boolean e;
    private final avf P;
    private int Q;
-   private final eor R;
-   private final exd<dex> S = new exd<>(this::d, this.ah());
-   private final exd<ens> T = new exd<>(this::d, this.ah());
-   private final eol U = new eol();
-   final Set<btp> V = new ObjectOpenHashSet();
+   private final eos R;
+   private final exe<dey> S = new exe<>(this::d, this.ah());
+   private final exe<ent> T = new exe<>(this::d, this.ah());
+   private final eom U = new eom();
+   final Set<btq> V = new ObjectOpenHashSet();
    volatile boolean W;
-   protected final coi f;
-   private final ObjectLinkedOpenHashSet<dbb> X = new ObjectLinkedOpenHashSet();
-   private final List<dbb> Y = new ArrayList<>(64);
+   protected final coj f;
+   private final ObjectLinkedOpenHashSet<dbc> X = new ObjectLinkedOpenHashSet();
+   private final List<dbc> Y = new ArrayList<>(64);
    private boolean Z;
-   private final List<dbj> aa;
+   private final List<dbk> aa;
    @Nullable
-   private dvv ab;
-   final Int2ObjectMap<chx> ac = new Int2ObjectOpenHashMap();
-   private final dcp ad;
-   private final eij ae;
+   private dvw ab;
+   final Int2ObjectMap<chy> ac = new Int2ObjectOpenHashMap();
+   private final dcq ad;
+   private final eik ae;
    private final boolean af;
-   private final bqz ag;
+   private final bra ag;
 
    public are(
       MinecraftServer $$0,
       Executor $$1,
-      epu.c $$2,
-      epz $$3,
-      ald<dbw> $$4,
-      dvt $$5,
+      epv.c $$2,
+      eqa $$3,
+      ald<dbx> $$4,
+      dvu $$5,
       arn $$6,
       boolean $$7,
       long $$8,
-      List<dbj> $$9,
+      List<dbk> $$9,
       boolean $$10,
-      @Nullable bqz $$11
+      @Nullable bra $$11
    ) {
       super($$3, $$4, $$0.bc(), $$5.a(), $$0::aT, false, $$7, $$8, $$0.bl());
       this.af = $$10;
       this.J = $$0;
       this.aa = $$9;
       this.K = $$3;
-      dtx $$12 = $$5.b();
+      dty $$12 = $$5.b();
       boolean $$13 = $$0.aZ();
       DataFixer $$14 = $$0.aD();
-      dwd<bss> $$15 = new dve(new dvo(new dvm($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bae.s), this, $$0);
-      this.N = new dwl<>(bss.class, new are.a(), $$15);
+      dwe<bst> $$15 = new dvf(new dvp(new dvn($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, baf.s), this, $$0);
+      this.N = new dwm<>(bst.class, new are.a(), $$15);
       this.I = new arc(this, $$2, $$14, $$0.ba(), $$1, $$12, $$0.ah().p(), $$0.ah().q(), $$13, $$6, this.N::a, () -> $$0.I().u());
       this.I.h().b();
-      this.R = new eor(this);
+      this.R = new eos(this);
       this.U();
       this.X();
       this.C_().a($$0.ax());
-      this.f = this.u().a(coi.a(this), coi.a(this.ae()));
+      this.f = this.u().a(coj.a(this), coj.a(this.ae()));
       if (!$$0.T()) {
          $$3.a($$0.u_());
       }
 
       long $$16 = $$0.bb().y().b();
-      this.ae = new eij(this.I.m(), this.H_(), $$0.ba(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
-      this.ad = new dcp(this, $$0.bb().y(), this.ae);
-      if (this.af() == dbw.j && this.ae().a(dvq.c)) {
-         this.ab = new dvv(this, $$16, $$0.bb().C());
+      this.ae = new eik(this.I.m(), this.H_(), $$0.ba(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
+      this.ad = new dcq(this, $$0.bb().y(), this.ae);
+      if (this.af() == dbx.j && this.ae().a(dvr.c)) {
+         this.ab = new dvw(this, $$16, $$0.bb().C());
       } else {
          this.ab = null;
       }
 
       this.P = new avf();
-      this.O = new dwu(this);
-      this.ag = Objects.requireNonNullElseGet($$11, () -> this.u().a(bqz.a($$16), "random_sequences"));
+      this.O = new dwv(this);
+      this.ag = Objects.requireNonNullElseGet($$11, () -> this.u().a(bra.a($$16), "random_sequences"));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable dvv $$0) {
+   public void a(@Nullable dvw $$0) {
       this.ab = $$0;
    }
 
@@ -139,18 +139,18 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public ji<dcv> a(int $$0, int $$1, int $$2) {
+   public ji<dcw> a(int $$0, int $$1, int $$2) {
       return this.l().g().d().getNoiseBiome($$0, $$1, $$2, this.l().i().b());
    }
 
-   public dcp a() {
+   public dcq a() {
       return this.ad;
    }
 
    public void a(BooleanSupplier $$0) {
-      bng $$1 = this.ag();
+      bnh $$1 = this.ag();
       this.Z = true;
-      brd $$2 = this.s();
+      bre $$2 = this.s();
       boolean $$3 = $$2.i();
       if ($$3) {
          $$1.a("world border");
@@ -159,15 +159,15 @@ public class are extends dbw implements dcr {
          this.au();
       }
 
-      int $$4 = this.ab().c(dbs.P);
+      int $$4 = this.ab().c(dbt.P);
       if (this.P.a($$4) && this.P.a($$4, this.H)) {
-         if (this.ab().b(dbs.l)) {
+         if (this.ab().b(dbt.l)) {
             long $$5 = this.A.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
          this.as();
-         if (this.ab().b(dbs.v) && this.ad()) {
+         if (this.ab().b(dbt.v) && this.ad()) {
             this.g();
          }
       }
@@ -223,7 +223,7 @@ public class are extends dbw implements dcr {
                   $$2x.dB();
                   $$1.c();
                   if (this.I.a.j().c($$2x.dr().a())) {
-                     bss $$3x = $$2x.dc();
+                     bst $$3x = $$2x.dc();
                      if ($$3x != null) {
                         if (!$$3x.dK() && $$3x.x($$2x)) {
                            return;
@@ -258,7 +258,7 @@ public class are extends dbw implements dcr {
          long $$0 = this.A.c() + 1L;
          this.K.a($$0);
          this.K.s().a(this.J, $$0);
-         if (this.A.o().b(dbs.l)) {
+         if (this.A.o().b(dbt.l)) {
             this.b(this.A.d() + 1L);
          }
       }
@@ -269,34 +269,34 @@ public class are extends dbw implements dcr {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (dbj $$2 : this.aa) {
+      for (dbk $$2 : this.aa) {
          $$2.a(this, $$0, $$1);
       }
    }
 
-   private boolean i(bss $$0) {
-      return this.J.ab() || !($$0 instanceof cfd) && !($$0 instanceof cgf) ? !this.J.ac() && $$0 instanceof cmh : true;
+   private boolean i(bst $$0) {
+      return this.J.ab() || !($$0 instanceof cfe) && !($$0 instanceof cgg) ? !this.J.ac() && $$0 instanceof cmi : true;
    }
 
    private void as() {
       this.P.a();
-      this.H.stream().filter(btn::fL).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.H.stream().filter(bto::fL).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(dug $$0, int $$1) {
-      dbd $$2 = $$0.f();
+   public void a(duh $$0, int $$1) {
+      dbe $$2 = $$0.f();
       boolean $$3 = this.ad();
       int $$4 = $$2.d();
       int $$5 = $$2.e();
-      bng $$6 = this.ag();
+      bnh $$6 = this.ag();
       $$6.a("thunder");
       if ($$3 && this.ac() && this.z.a(100000) == 0) {
          iz $$7 = this.b(this.a($$4, 0, $$5, 15));
          if (this.r($$7)) {
-            bqq $$8 = this.d_($$7);
-            boolean $$9 = this.ab().b(dbs.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dez.ss);
+            bqr $$8 = this.d_($$7);
+            boolean $$9 = this.ab().b(dbt.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dfa.ss);
             if ($$9) {
-               chn $$10 = bsy.aO.a((dbw)this);
+               cho $$10 = bsz.aO.a((dbx)this);
                if ($$10 != null) {
                   $$10.w(true);
                   $$10.c_(0);
@@ -305,9 +305,9 @@ public class are extends dbw implements dcr {
                }
             }
 
-            btm $$11 = bsy.am.a((dbw)this);
+            btn $$11 = bsz.am.a((dbx)this);
             if ($$11 != null) {
-               $$11.e(evp.c($$7));
+               $$11.e(evq.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -324,10 +324,10 @@ public class are extends dbw implements dcr {
 
       $$6.b("tickBlocks");
       if ($$1 > 0) {
-         duh[] $$13 = $$0.d();
+         dui[] $$13 = $$0.d();
 
          for (int $$14 = 0; $$14 < $$13.length; $$14++) {
-            duh $$15 = $$13[$$14];
+            dui $$15 = $$13[$$14];
             if ($$15.d()) {
                int $$16 = $$0.g($$14);
                int $$17 = kb.c($$16);
@@ -335,12 +335,12 @@ public class are extends dbw implements dcr {
                for (int $$18 = 0; $$18 < $$1; $$18++) {
                   iz $$19 = this.a($$4, $$17, $$5, 15);
                   $$6.a("randomTick");
-                  dsa $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
+                  dsb $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
                   if ($$20.v()) {
                      $$20.b(this, $$19, this.z);
                   }
 
-                  ent $$21 = $$20.u();
+                  enu $$21 = $$20.u();
                   if ($$21.f()) {
                      $$21.b(this, $$19, this.z);
                   }
@@ -356,50 +356,50 @@ public class are extends dbw implements dcr {
 
    @VisibleForTesting
    public void a(iz $$0) {
-      iz $$1 = this.a(dxs.a.e, $$0);
+      iz $$1 = this.a(dxt.a.e, $$0);
       iz $$2 = $$1.d();
-      dcv $$3 = this.t($$1).a();
+      dcw $$3 = this.t($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, dez.dO.o());
+         this.b($$2, dfa.dO.o());
       }
 
       if (this.ad()) {
-         int $$4 = this.ab().c(dbs.T);
+         int $$4 = this.ab().c(dbt.T);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            dsa $$5 = this.a_($$1);
-            if ($$5.a(dez.dN)) {
-               int $$6 = $$5.c(dmg.c);
+            dsb $$5 = this.a_($$1);
+            if ($$5.a(dfa.dN)) {
+               int $$6 = $$5.c(dmh.c);
                if ($$6 < Math.min($$4, 8)) {
-                  dsa $$7 = $$5.a(dmg.c, Integer.valueOf($$6 + 1));
-                  dex.a($$5, $$7, this, $$1);
+                  dsb $$7 = $$5.a(dmh.c, Integer.valueOf($$6 + 1));
+                  dey.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, dez.dN.o());
+               this.b($$1, dfa.dN.o());
             }
          }
 
-         dcv.c $$8 = $$3.a($$2);
-         if ($$8 != dcv.c.a) {
-            dsa $$9 = this.a_($$2);
+         dcw.c $$8 = $$3.a($$2);
+         if ($$8 != dcw.c.a) {
+            dsb $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<iz> E(iz $$0) {
-      Optional<iz> $$1 = this.y().e($$0x -> $$0x.a(cev.t), $$0x -> $$0x.v() == this.a(dxs.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cer.b.c);
+      Optional<iz> $$1 = this.y().e($$0x -> $$0x.a(cew.t), $$0x -> $$0x.v() == this.a(dxt.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, ces.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected iz b(iz $$0) {
-      iz $$1 = this.a(dxs.a.e, $$0);
+      iz $$1 = this.a(dxt.a.e, $$0);
       Optional<iz> $$2 = this.E($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         evk $$3 = evk.a($$1, new iz($$1.h(this.am()))).g(3.0);
-         List<btn> $$4 = this.a(btn.class, $$3, $$0x -> $$0x != null && $$0x.bD() && this.h($$0x.dp()));
+         evl $$3 = evl.a($$1, new iz($$1.h(this.am()))).g(3.0);
+         List<bto> $$4 = this.a(bto.class, $$3, $$0x -> $$0x != null && $$0x.bD() && this.h($$0x.dp()));
          if (!$$4.isEmpty()) {
             return $$4.get(this.z.a($$4.size())).dp();
          } else {
@@ -417,13 +417,13 @@ public class are extends dbw implements dcr {
    }
 
    public boolean d() {
-      return this.ab().c(dbs.P) <= 100;
+      return this.ab().c(dbt.P) <= 100;
    }
 
    private void at() {
       if (this.d()) {
          if (!this.o().T() || this.o().r()) {
-            int $$0 = this.ab().c(dbs.P);
+            int $$0 = this.ab().c(dbt.P);
             xo $$1;
             if (this.P.a($$0)) {
                $$1 = xo.c("sleep.skipping_night");
@@ -451,7 +451,7 @@ public class are extends dbw implements dcr {
    private void au() {
       boolean $$0 = this.ad();
       if (this.D_().g()) {
-         if (this.ab().b(dbs.v)) {
+         if (this.ab().b(dbt.v)) {
             int $$1 = this.K.f();
             int $$2 = this.K.h();
             int $$3 = this.K.j();
@@ -499,7 +499,7 @@ public class are extends dbw implements dcr {
             this.y -= 0.01F;
          }
 
-         this.y = ayx.a(this.y, 0.0F, 1.0F);
+         this.y = ayy.a(this.y, 0.0F, 1.0F);
          this.v = this.w;
          if (this.A.i()) {
             this.w += 0.01F;
@@ -507,7 +507,7 @@ public class are extends dbw implements dcr {
             this.w -= 0.01F;
          }
 
-         this.w = ayx.a(this.w, 0.0F, 1.0F);
+         this.w = ayy.a(this.w, 0.0F, 1.0F);
       }
 
       if (this.v != this.w) {
@@ -542,58 +542,58 @@ public class are extends dbw implements dcr {
       this.Q = 0;
    }
 
-   private void a(iz $$0, ens $$1) {
-      ent $$2 = this.b_($$0);
+   private void a(iz $$0, ent $$1) {
+      enu $$2 = this.b_($$0);
       if ($$2.b($$1)) {
-         $$2.a((dbw)this, $$0);
+         $$2.a((dbx)this, $$0);
       }
    }
 
-   private void d(iz $$0, dex $$1) {
-      dsa $$2 = this.a_($$0);
+   private void d(iz $$0, dey $$1) {
+      dsb $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.z);
       }
    }
 
-   public void a(bss $$0) {
+   public void a(bst $$0) {
       $$0.bu();
-      bng $$1 = this.ag();
+      bnh $$1 = this.ag();
       $$0.ai++;
       this.ag().a(() -> lp.g.b($$0.ak()).toString());
       $$1.d("tickNonPassenger");
       $$0.l();
       this.ag().c();
 
-      for (bss $$2 : $$0.cS()) {
+      for (bst $$2 : $$0.cS()) {
          this.a($$0, $$2);
       }
    }
 
-   private void a(bss $$0, bss $$1) {
+   private void a(bst $$0, bst $$1) {
       if ($$1.dK() || $$1.dc() != $$0) {
          $$1.ac();
-      } else if ($$1 instanceof cmv || this.M.c($$1)) {
+      } else if ($$1 instanceof cmw || this.M.c($$1)) {
          $$1.bu();
          $$1.ai++;
-         bng $$2 = this.ag();
+         bnh $$2 = this.ag();
          $$2.a(() -> lp.g.b($$1.ak()).toString());
          $$2.d("tickPassenger");
          $$1.t();
          $$2.c();
 
-         for (bss $$3 : $$1.cS()) {
+         for (bst $$3 : $$1.cS()) {
             this.a($$1, $$3);
          }
       }
    }
 
    @Override
-   public boolean a(cmv $$0, iz $$1) {
+   public boolean a(cmw $$0, iz $$1) {
       return !this.J.a(this, $$1, $$0) && this.C_().a($$1);
    }
 
-   public void a(@Nullable aze $$0, boolean $$1, boolean $$2) {
+   public void a(@Nullable azf $$0, boolean $$1, boolean $$2) {
       arc $$3 = this.l();
       if (!$$2) {
          if ($$0 != null) {
@@ -622,17 +622,17 @@ public class are extends dbw implements dcr {
       this.l().k().a();
    }
 
-   public <T extends bss> List<? extends T> a(dwh<bss, T> $$0, Predicate<? super T> $$1) {
+   public <T extends bst> List<? extends T> a(dwi<bst, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bss> void a(dwh<bss, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends bst> void a(dwi<bst, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bss> void a(dwh<bss, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends bst> void a(dwi<bst, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.G().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -645,8 +645,8 @@ public class are extends dbw implements dcr {
       });
    }
 
-   public List<? extends chz> i() {
-      return this.a(bsy.F, btn::bD);
+   public List<? extends cia> i() {
+      return this.a(bsz.F, bto::bD);
    }
 
    public List<arf> a(Predicate<? super arf> $$0) {
@@ -670,20 +670,20 @@ public class are extends dbw implements dcr {
 
    @Nullable
    public arf j() {
-      List<arf> $$0 = this.a(btn::bD);
+      List<arf> $$0 = this.a(bto::bD);
       return $$0.isEmpty() ? null : $$0.get(this.z.a($$0.size()));
    }
 
    @Override
-   public boolean b(bss $$0) {
+   public boolean b(bst $$0) {
       return this.j($$0);
    }
 
-   public boolean c(bss $$0) {
+   public boolean c(bst $$0) {
       return this.j($$0);
    }
 
-   public void d(bss $$0) {
+   public void d(bst $$0) {
       this.j($$0);
    }
 
@@ -704,27 +704,27 @@ public class are extends dbw implements dcr {
    }
 
    private void e(arf $$0) {
-      bss $$1 = this.G().a($$0.cz());
+      bst $$1 = this.G().a($$0.cz());
       if ($$1 != null) {
          E.warn("Force-added player with duplicate UUID {}", $$0.cz());
          $$1.ai();
-         this.a((arf)$$1, bss.c.b);
+         this.a((arf)$$1, bst.c.b);
       }
 
       this.N.a($$0);
    }
 
-   private boolean j(bss $$0) {
+   private boolean j(bst $$0) {
       if ($$0.dK()) {
-         E.warn("Tried to add entity {} but it was marked as removed already", bsy.a($$0.ak()));
+         E.warn("Tried to add entity {} but it was marked as removed already", bsz.a($$0.ak()));
          return false;
       } else {
          return this.N.a($$0);
       }
    }
 
-   public boolean e(bss $$0) {
-      if ($$0.cU().map(bss::cz).anyMatch(this.N::a)) {
+   public boolean e(bst $$0) {
+      if ($$0.cU().map(bst::cz).anyMatch(this.N::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -732,12 +732,12 @@ public class are extends dbw implements dcr {
       }
    }
 
-   public void a(dug $$0) {
+   public void a(duh $$0) {
       $$0.I();
       $$0.b(this);
    }
 
-   public void a(arf $$0, bss.c $$1) {
+   public void a(arf $$0, bst.c $$1) {
       $$0.a($$1);
    }
 
@@ -756,18 +756,18 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(@Nullable cmv $$0, double $$1, double $$2, double $$3, ji<avy> $$4, awa $$5, float $$6, float $$7, long $$8) {
+   public void a(@Nullable cmw $$0, double $$1, double $$2, double $$3, ji<avy> $$4, awa $$5, float $$6, float $$7, long $$8) {
       this.J.ah().a($$0, $$1, $$2, $$3, (double)$$4.a().a($$6), this.af(), new agc($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
-   public void a(@Nullable cmv $$0, bss $$1, ji<avy> $$2, awa $$3, float $$4, float $$5, long $$6) {
+   public void a(@Nullable cmw $$0, bst $$1, ji<avy> $$2, awa $$3, float $$4, float $$5, long $$6) {
       this.J.ah().a($$0, $$1.du(), $$1.dw(), $$1.dA(), (double)$$2.a().a($$4), this.af(), new agb($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, iz $$1, int $$2) {
-      if (this.ab().b(dbs.W)) {
+      if (this.ab().b(dbt.W)) {
          this.J.ah().a(new adu($$0, $$1, $$2, true));
       } else {
          this.a(null, $$0, $$1, $$2);
@@ -775,7 +775,7 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(@Nullable cmv $$0, int $$1, iz $$2, int $$3) {
+   public void a(@Nullable cmw $$0, int $$1, iz $$2, int $$3) {
       this.J.ah().a($$0, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.af(), new adu($$1, $$2, $$3, false));
    }
 
@@ -784,12 +784,12 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(ji<dwt> $$0, evp $$1, dwt.a $$2) {
+   public void a(ji<dwu> $$0, evq $$1, dwu.a $$2) {
       this.O.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(iz $$0, dsa $$1, dsa $$2, int $$3) {
+   public void a(iz $$0, dsb $$1, dsb $$2, int $$3) {
       if (this.W) {
          String $$4 = "recursive call to sendBlockUpdated";
          ac.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -797,13 +797,13 @@ public class are extends dbw implements dcr {
 
       this.l().a($$0);
       this.U.a($$0);
-      ewi $$5 = $$1.k(this, $$0);
-      ewi $$6 = $$2.k(this, $$0);
-      if (ewf.c($$5, $$6, evt.g)) {
-         List<ccz> $$7 = new ObjectArrayList();
+      ewj $$5 = $$1.k(this, $$0);
+      ewj $$6 = $$2.k(this, $$0);
+      if (ewg.c($$5, $$6, evu.g)) {
+         List<cda> $$7 = new ObjectArrayList();
 
-         for (btp $$8 : this.V) {
-            ccz $$9 = $$8.K();
+         for (btq $$8 : this.V) {
+            cda $$9 = $$8.K();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -812,7 +812,7 @@ public class are extends dbw implements dcr {
          try {
             this.W = true;
 
-            for (ccz $$10 : $$7) {
+            for (cda $$10 : $$7) {
                $$10.i();
             }
          } finally {
@@ -822,32 +822,32 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(iz $$0, dex $$1) {
+   public void a(iz $$0, dey $$1) {
       this.s.a($$0, $$1, null);
    }
 
    @Override
-   public void a(iz $$0, dex $$1, je $$2) {
+   public void a(iz $$0, dey $$1, je $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(iz $$0, dex $$1, iz $$2) {
+   public void a(iz $$0, dey $$1, iz $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dsa $$0, iz $$1, dex $$2, iz $$3, boolean $$4) {
+   public void a(dsb $$0, iz $$1, dey $$2, iz $$3, boolean $$4) {
       this.s.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(bss $$0, byte $$1) {
+   public void a(bst $$0, byte $$1) {
       this.l().a($$0, new adl($$0, $$1));
    }
 
    @Override
-   public void a(bss $$0, brl $$1) {
+   public void a(bst $$0, brm $$1) {
       this.l().a($$0, new adh($$0, $$1));
    }
 
@@ -856,21 +856,21 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public dbo a(
-      @Nullable bss $$0,
-      @Nullable brl $$1,
-      @Nullable dbp $$2,
+   public dbp a(
+      @Nullable bst $$0,
+      @Nullable brm $$1,
+      @Nullable dbq $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      dbw.a $$8,
+      dbx.a $$8,
       lg $$9,
       lg $$10,
       ji<avy> $$11
    ) {
-      dbo $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
+      dbp $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
       if (!$$12.d()) {
          $$12.h();
       }
@@ -885,15 +885,15 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(iz $$0, dex $$1, int $$2, int $$3) {
-      this.X.add(new dbb($$0, $$1, $$2, $$3));
+   public void a(iz $$0, dey $$1, int $$2, int $$3) {
+      this.X.add(new dbc($$0, $$1, $$2, $$3));
    }
 
    private void aw() {
       this.Y.clear();
 
       while (!this.X.isEmpty()) {
-         dbb $$0 = (dbb)this.X.removeFirst();
+         dbc $$0 = (dbc)this.X.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
                this.J.ah().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.af(), new acp($$0.a(), $$0.b(), $$0.c(), $$0.d()));
@@ -906,16 +906,16 @@ public class are extends dbw implements dcr {
       this.X.addAll(this.Y);
    }
 
-   private boolean a(dbb $$0) {
-      dsa $$1 = this.a_($$0.a());
+   private boolean a(dbc $$0) {
+      dsb $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public exd<dex> m() {
+   public exe<dey> m() {
       return this.S;
    }
 
-   public exd<ens> n() {
+   public exe<ent> n() {
       return this.T;
    }
 
@@ -925,11 +925,11 @@ public class are extends dbw implements dcr {
       return this.J;
    }
 
-   public eor p() {
+   public eos p() {
       return this.R;
    }
 
-   public emj q() {
+   public emk q() {
       return this.J.ba();
    }
 
@@ -957,7 +957,7 @@ public class are extends dbw implements dcr {
          return false;
       } else {
          iz $$6 = $$0.dp();
-         if ($$6.a(new evp($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         if ($$6.a(new evq($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.c.b($$5);
             return true;
          } else {
@@ -968,49 +968,49 @@ public class are extends dbw implements dcr {
 
    @Nullable
    @Override
-   public bss a(int $$0) {
+   public bst a(int $$0) {
       return this.G().a($$0);
    }
 
    @Deprecated
    @Nullable
-   public bss b(int $$0) {
-      bss $$1 = this.G().a($$0);
-      return $$1 != null ? $$1 : (bss)this.ac.get($$0);
+   public bst b(int $$0) {
+      bst $$1 = this.G().a($$0);
+      return $$1 != null ? $$1 : (bst)this.ac.get($$0);
    }
 
    @Nullable
-   public bss a(UUID $$0) {
+   public bst a(UUID $$0) {
       return this.G().a($$0);
    }
 
    @Nullable
-   public iz a(axe<eii> $$0, iz $$1, int $$2, boolean $$3) {
+   public iz a(axe<eij> $$0, iz $$1, int $$2, boolean $$3) {
       if (!this.J.bb().y().c()) {
          return null;
       } else {
-         Optional<jm.c<eii>> $$4 = this.H_().d(lq.aJ).b($$0);
+         Optional<jm.c<eij>> $$4 = this.H_().d(lq.aJ).b($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<iz, ji<eii>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<iz, ji<eij>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (iz)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<iz, ji<dcv>> a(Predicate<ji<dcv>> $$0, iz $$1, int $$2, int $$3, int $$4) {
+   public Pair<iz, ji<dcw>> a(Predicate<ji<dcw>> $$0, iz $$1, int $$2, int $$3, int $$4) {
       return this.l().g().d().a($$1, $$2, $$3, $$4, $$0, this.l().i().b(), this);
    }
 
    @Override
-   public cyw r() {
+   public cyx r() {
       return this.J.aJ();
    }
 
    @Override
-   public brd s() {
+   public bre s() {
       return this.J.aQ();
    }
 
@@ -1019,24 +1019,24 @@ public class are extends dbw implements dcr {
       return this.e;
    }
 
-   public epo u() {
+   public epp u() {
       return this.l().k();
    }
 
    @Nullable
    @Override
-   public epi a(epg $$0) {
-      return this.o().I().u().b(epi.a(), $$0.a());
+   public epj a(eph $$0) {
+      return this.o().I().u().b(epj.a(), $$0.a());
    }
 
    @Override
-   public void a(epg $$0, epi $$1) {
+   public void a(eph $$0, epj $$1) {
       this.o().I().u().a($$0.a(), $$1);
    }
 
    @Override
-   public epg v() {
-      return this.o().I().u().a(eph.a(), "idcounts").b();
+   public eph v() {
+      return this.o().I().u().a(epi.a(), "idcounts").b();
    }
 
    public void a(iz $$0, float $$1) {
@@ -1048,25 +1048,25 @@ public class are extends dbw implements dcr {
       }
 
       if (this.L > 1) {
-         this.l().b(arj.a, new dbd($$2), this.L, baa.a);
+         this.l().b(arj.a, new dbe($$2), this.L, bab.a);
       }
 
-      int $$4 = this.ab().c(dbs.Z) + 1;
+      int $$4 = this.ab().c(dbt.Z) + 1;
       if ($$4 > 1) {
-         this.l().a(arj.a, new dbd($$0), $$4, baa.a);
+         this.l().a(arj.a, new dbe($$0), $$4, bab.a);
       }
 
       this.L = $$4;
    }
 
    public LongSet w() {
-      dbr $$0 = this.u().b(dbr.a(), "chunks");
+      dbs $$0 = this.u().b(dbs.a(), "chunks");
       return (LongSet)($$0 != null ? LongSets.unmodifiable($$0.b()) : LongSets.EMPTY_SET);
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      dbr $$3 = this.u().a(dbr.a(), "chunks");
-      dbd $$4 = new dbd($$0, $$1);
+      dbs $$3 = this.u().a(dbs.a(), "chunks");
+      dbe $$4 = new dbe($$0, $$1);
       long $$5 = $$4.a();
       boolean $$6;
       if ($$2) {
@@ -1092,9 +1092,9 @@ public class are extends dbw implements dcr {
    }
 
    @Override
-   public void a(iz $$0, dsa $$1, dsa $$2) {
-      Optional<ji<ceu>> $$3 = cev.a($$1);
-      Optional<ji<ceu>> $$4 = cev.a($$2);
+   public void a(iz $$0, dsb $$1, dsb $$2) {
+      Optional<ji<cev>> $$3 = cew.a($$1);
+      Optional<ji<cev>> $$4 = cew.a($$2);
       if (!Objects.equals($$3, $$4)) {
          iz $$5 = $$0.i();
          $$3.ifPresent($$1x -> this.o().execute(() -> {
@@ -1108,7 +1108,7 @@ public class are extends dbw implements dcr {
       }
    }
 
-   public cer y() {
+   public ces y() {
       return this.l().l();
    }
 
@@ -1128,12 +1128,12 @@ public class are extends dbw implements dcr {
       return this.y().a($$0);
    }
 
-   public coi z() {
+   public coj z() {
       return this.f;
    }
 
    @Nullable
-   public cog d(iz $$0) {
+   public coh d(iz $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1141,7 +1141,7 @@ public class are extends dbw implements dcr {
       return this.d($$0) != null;
    }
 
-   public void a(ceo $$0, bss $$1, buc $$2) {
+   public void a(cep $$0, bst $$1, bud $$2) {
       $$2.a($$0, $$1);
    }
 
@@ -1150,13 +1150,13 @@ public class are extends dbw implements dcr {
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
          $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().b()));
-         dch.d $$3 = this.l().n();
+         dci.d $$3 = this.l().n();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
             while ($$9.hasNext()) {
-               Entry<btq> $$4 = (Entry<btq>)$$9.next();
-               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((btq)$$4.getKey()).a(), $$4.getIntValue()));
+               Entry<btr> $$4 = (Entry<btr>)$$9.next();
+               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((btr)$$4.getKey()).a(), $$4.getIntValue()));
             }
          }
 
@@ -1200,10 +1200,10 @@ public class are extends dbw implements dcr {
       }
    }
 
-   private static void a(Writer $$0, Iterable<bss> $$1) throws IOException {
+   private static void a(Writer $$0, Iterable<bst> $$1) throws IOException {
       axx $$2 = axx.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
-      for (bss $$3 : $$1) {
+      for (bst $$3 : $$1) {
          xo $$4 = $$3.ah();
          xo $$5 = $$3.O_();
          $$2.a($$3.du(), $$3.dw(), $$3.dA(), $$3.cz(), lp.g.b($$3.ak()), $$3.bD(), $$5.getString(), $$4 != null ? $$4.getString() : null);
@@ -1213,19 +1213,19 @@ public class are extends dbw implements dcr {
    private void a(Writer $$0) throws IOException {
       axx $$1 = axx.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dqx $$2 : this.r) {
+      for (dqy $$2 : this.r) {
          iz $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(eia $$0) {
+   public void a(eib $$0) {
       this.X.removeIf($$1 -> $$0.b($$1.a()));
    }
 
    @Override
-   public void b(iz $$0, dex $$1) {
+   public void b(iz $$0, dey $$1) {
       if (!this.ai()) {
          this.a($$0, $$1);
       }
@@ -1236,7 +1236,7 @@ public class are extends dbw implements dcr {
       return 1.0F;
    }
 
-   public Iterable<bss> A() {
+   public Iterable<bst> A() {
       return this.G().a();
    }
 
@@ -1255,7 +1255,7 @@ public class are extends dbw implements dcr {
    }
 
    @Nullable
-   public dvv D() {
+   public dvw D() {
       return this.ab;
    }
 
@@ -1273,7 +1273,7 @@ public class are extends dbw implements dcr {
          this.N.e(),
          a(this.N.d().a(), $$0 -> lp.g.b($$0.ak()).toString()),
          this.r.size(),
-         a(this.r, dqx::d),
+         a(this.r, dqy::d),
          this.m().a(),
          this.n().a(),
          this.I()
@@ -1305,32 +1305,32 @@ public class are extends dbw implements dcr {
       int $$2 = $$1.u();
       int $$3 = $$1.v() - 2;
       int $$4 = $$1.w();
-      iz.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dez.a.o()));
-      iz.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dez.co.o()));
+      iz.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfa.a.o()));
+      iz.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfa.co.o()));
    }
 
    @Override
-   protected dwj<bss> G() {
+   protected dwk<bst> G() {
       return this.N.d();
    }
 
-   public void a(Stream<bss> $$0) {
+   public void a(Stream<bst> $$0) {
       this.N.a($$0);
    }
 
-   public void b(Stream<bss> $$0) {
+   public void b(Stream<bst> $$0) {
       this.N.b($$0);
    }
 
-   public void b(dug $$0) {
+   public void b(duh $$0) {
       $$0.c(this.A_().c());
    }
 
-   public void a(dtw $$0) {
+   public void a(dtx $$0) {
       this.J.execute(() -> this.ae.a($$0.f(), $$0.g()));
    }
 
-   public eol H() {
+   public eom H() {
       return this.U;
    }
 
@@ -1354,32 +1354,32 @@ public class are extends dbw implements dcr {
    }
 
    public boolean f(iz $$0) {
-      return this.N.a($$0) && this.I.a.j().c(dbd.a($$0));
+      return this.N.a($$0) && this.I.a.j().c(dbe.a($$0));
    }
 
    public boolean g(iz $$0) {
       return this.N.a($$0);
    }
 
-   public boolean a(dbd $$0) {
+   public boolean a(dbe $$0) {
       return this.N.a($$0);
    }
 
    @Override
-   public cpj J() {
+   public cpk J() {
       return this.J.bb().K();
    }
 
    @Override
-   public cwn K() {
+   public cwo K() {
       return this.J.bp();
    }
 
-   public azf a(ale $$0) {
+   public azg a(ale $$0) {
       return this.ag.a($$0);
    }
 
-   public bqz L() {
+   public bra L() {
       return this.ag;
    }
 
@@ -1390,30 +1390,30 @@ public class are extends dbw implements dcr {
       return $$1;
    }
 
-   final class a implements dwi<bss> {
-      public void a(bss $$0) {
+   final class a implements dwj<bst> {
+      public void a(bst $$0) {
       }
 
-      public void b(bss $$0) {
+      public void b(bst $$0) {
          are.this.f().a($$0);
       }
 
-      public void c(bss $$0) {
+      public void c(bst $$0) {
          are.this.M.a($$0);
       }
 
-      public void d(bss $$0) {
+      public void d(bst $$0) {
          are.this.M.b($$0);
       }
 
-      public void e(bss $$0) {
+      public void e(bst $$0) {
          are.this.l().b($$0);
          if ($$0 instanceof arf $$1) {
             are.this.H.add($$1);
             are.this.e();
          }
 
-         if ($$0 instanceof btp $$2) {
+         if ($$0 instanceof btq $$2) {
             if (are.this.W) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1422,23 +1422,23 @@ public class are extends dbw implements dcr {
             are.this.V.add($$2);
          }
 
-         if ($$0 instanceof chz $$4) {
-            for (chx $$5 : $$4.gm()) {
+         if ($$0 instanceof cia $$4) {
+            for (chy $$5 : $$4.gm()) {
                are.this.ac.put($$5.al(), $$5);
             }
          }
 
-         $$0.a(dwq::a);
+         $$0.a(dwr::a);
       }
 
-      public void f(bss $$0) {
+      public void f(bst $$0) {
          are.this.l().a($$0);
          if ($$0 instanceof arf $$1) {
             are.this.H.remove($$1);
             are.this.e();
          }
 
-         if ($$0 instanceof btp $$2) {
+         if ($$0 instanceof btq $$2) {
             if (are.this.W) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1447,17 +1447,17 @@ public class are extends dbw implements dcr {
             are.this.V.remove($$2);
          }
 
-         if ($$0 instanceof chz $$4) {
-            for (chx $$5 : $$4.gm()) {
+         if ($$0 instanceof cia $$4) {
+            for (chy $$5 : $$4.gm()) {
                are.this.ac.remove($$5.al());
             }
          }
 
-         $$0.a(dwq::b);
+         $$0.a(dwr::b);
       }
 
-      public void g(bss $$0) {
-         $$0.a(dwq::c);
+      public void g(bst $$0) {
+         $$0.a(dwr::c);
       }
    }
 }

@@ -1,63 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class efh extends efb {
+public class efh extends eff {
    public static final MapCodec<efh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               efb.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bpx.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dsb.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dsb.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dsb.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
             )
             .apply($$0, efh::new)
    );
-   private final efb c;
-   private final String d;
-   @Nullable
-   private dta e;
-   private final bpx f;
+   private final float g;
+   private final float h;
+   private final dsb i;
+   private final List<dsb> j;
+   private final List<dsb> k;
 
-   public efh(efb $$0, dta $$1, bpx $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public efh(efb $$0, String $$1, bpx $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public efh(long $$0, emx.a $$1, float $$2, float $$3, float $$4, dsb $$5, List<dsb> $$6, List<dsb> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected efc<?> a() {
-      return efc.g;
+   protected efd<?> a() {
+      return efd.c;
    }
 
    @Override
-   public dsa a(azf $$0, iz $$1) {
-      dsa $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
+   public dsb a(azg $$0, iz $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   private static dta a(dsa $$0, String $$1) {
-      Collection<dtd<?>> $$2 = $$0.B();
-      Optional<dta> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dta).map($$0x -> (dta)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

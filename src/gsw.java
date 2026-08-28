@@ -1,54 +1,10 @@
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface gsw<T> {
-   static <T> gsw<T> a() {
-      return new gsw<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+public interface gsw<T> extends gsz<T> {
+   static <T> gsw<T> b() {
+      return $$0 -> List.of();
    }
 
-   static <T> gsw<T> a(List<T> $$0, Function<T, Stream<ale>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gsz<T> $$2 = new gsz<>();
-         final gsz<T> $$3 = new gsz<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gsw<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   default void a() {
    }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
 }

@@ -1,21 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class edl implements eda {
-   public static final Codec<edl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehm.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), ehm.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, edl::new)
+public class edl implements edb {
+   public static final Codec<edl> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, edl::new)
    );
-   public final ji<ehm> b;
-   public final ji<ehm> c;
+   public final float l;
 
-   public edl(ji<ehm> $$0, ji<ehm> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<eaj<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public edl(float $$0) {
+      this.l = $$0;
    }
 }

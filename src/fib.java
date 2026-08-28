@@ -1,39 +1,18 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fib extends fhd {
+   private final fgo a;
+   private final xo b;
+   private final xo c;
 
-public class fib {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
-
-   public static void a(fgp $$0, gpx $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public fib(int $$0, int $$1, int $$2, int $$3, xo $$4, fhd.c $$5, fgo $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = xr.a($$4.f(), yl.a.c(true));
    }
 
-   public static void a(fgp $$0, ale $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
-   }
-
-   public static void a(fgp $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
-      }
-   }
-
-   private static void a(fgp $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   @Override
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      xo $$4 = this.A() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.C(), this.D(), 16777215 | ayy.f(this.l * 255.0F) << 24);
    }
 }

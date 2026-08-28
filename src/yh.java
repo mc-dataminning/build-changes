@@ -12,7 +12,7 @@ public record yh(String b, Instant c, long d, xv e) {
    public static final MapCodec<yh> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("content").forGetter(yh::a),
-               ayf.o.fieldOf("time_stamp").forGetter(yh::b),
+               ayg.o.fieldOf("time_stamp").forGetter(yh::b),
                Codec.LONG.fieldOf("salt").forGetter(yh::c),
                xv.a.optionalFieldOf("last_seen", xv.b).forGetter(yh::d)
             )
@@ -23,7 +23,7 @@ public record yh(String b, Instant c, long d, xv e) {
       return new yh($$0, Instant.now(), 0L, xv.b);
    }
 
-   public void a(azj.a $$0) throws SignatureException {
+   public void a(azk.a $$0) throws SignatureException {
       $$0.update(Longs.toByteArray(this.d));
       $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
       byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);

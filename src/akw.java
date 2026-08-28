@@ -8,6 +8,7 @@ import com.mojang.serialization.ListBuilder.Builder;
 import com.mojang.serialization.RecordBuilder.MapBuilder;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -23,6 +24,14 @@ public abstract class akw<T> implements DynamicOps<T> {
 
    public T empty() {
       return (T)this.a.empty();
+   }
+
+   public T emptyMap() {
+      return (T)this.a.emptyMap();
+   }
+
+   public T emptyList() {
+      return (T)this.a.emptyList();
    }
 
    public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
@@ -93,12 +102,24 @@ public abstract class akw<T> implements DynamicOps<T> {
       return this.a.mergeToMap($$0, $$1);
    }
 
+   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
+      return this.a.mergeToPrimitive($$0, $$1);
+   }
+
    public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
       return this.a.getMapValues($$0);
    }
 
    public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
       return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Map<T, T> $$0) {
+      return (T)this.a.createMap($$0);
    }
 
    public T createMap(Stream<Pair<T, T>> $$0) {

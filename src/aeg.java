@@ -3,7 +3,7 @@ public class aeg implements zv<ach> {
    private final int b;
    private final ale c;
 
-   public aeg(int $$0, cyv<?> $$1) {
+   public aeg(int $$0, cyw<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }

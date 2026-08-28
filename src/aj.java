@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record aj(int c, List<ald<eql>> d, List<ale> e, Optional<ek> f) {
+public record aj(int c, List<ald<eqm>> d, List<ale> e, Optional<ek> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(aj::a),
@@ -21,19 +21,19 @@ public record aj(int c, List<ald<eql>> d, List<ale> e, Optional<ek> f) {
 
    public void a(arf $$0) {
       $$0.d(this.c);
-      eqj $$1 = new eqj.a($$0.z()).a(etc.a, $$0).a(etc.f, $$0.dn()).a(etb.m);
+      eqk $$1 = new eqk.a($$0.z()).a(etd.a, $$0).a(etd.f, $$0.dn()).a(etc.m);
       boolean $$2 = false;
 
-      for (ald<eql> $$3 : this.d) {
+      for (ald<eqm> $$3 : this.d) {
          ObjectListIterator var6 = $$0.d.be().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cun $$4 = (cun)var6.next();
+            cuo $$4 = (cuo)var6.next();
             if ($$0.i($$4)) {
                $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), avz.nC, awa.h, 0.2F, (($$0.el().i() - $$0.el().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cjf $$5 = $$0.a($$4, false);
+               cjg $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
                   $$5.b($$0.cz());
@@ -58,7 +58,7 @@ public record aj(int c, List<ald<eql>> d, List<ale> e, Optional<ek> f) {
       return this.c;
    }
 
-   public List<ald<eql>> b() {
+   public List<ald<eqm>> b() {
       return this.d;
    }
 
@@ -72,7 +72,7 @@ public record aj(int c, List<ald<eql>> d, List<ale> e, Optional<ek> f) {
 
    public static class a {
       private int a;
-      private final Builder<ald<eql>> b = ImmutableList.builder();
+      private final Builder<ald<eqm>> b = ImmutableList.builder();
       private final Builder<ale> c = ImmutableList.builder();
       private Optional<ale> d = Optional.empty();
 
@@ -85,11 +85,11 @@ public record aj(int c, List<ald<eql>> d, List<ale> e, Optional<ek> f) {
          return this;
       }
 
-      public static aj.a a(ald<eql> $$0) {
+      public static aj.a a(ald<eqm> $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(ald<eql> $$0) {
+      public aj.a b(ald<eqm> $$0) {
          this.b.add($$0);
          return this;
       }

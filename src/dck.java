@@ -1,41 +1,112 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Suppliers;
 import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dck {
-   private final List<dck.a> a = Lists.newArrayList();
+public class dck implements dbd, dbh {
+   protected final int a;
+   protected final int b;
+   protected final dtx[][] c;
+   protected boolean d;
+   protected final dbx e;
+   private final Supplier<ji<dcw>> f;
 
-   public void a(iz $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dck.a($$0, $$1));
-      }
-   }
+   public dck(dbx $$0, iz $$1, iz $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.H_().d(lq.az).g(ddd.b));
+      this.a = kb.a($$1.u());
+      this.b = kb.a($$1.w());
+      int $$3 = kb.a($$2.u());
+      int $$4 = kb.a($$2.w());
+      this.c = new dtx[$$3 - this.a + 1][$$4 - this.b + 1];
+      dub $$5 = $$0.N();
+      this.d = true;
 
-   public double b(iz $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (dck.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
          }
+      }
 
-         return $$2 * $$1;
+      for (int $$8 = kb.a($$1.u()); $$8 <= kb.a($$2.u()); $$8++) {
+         for (int $$9 = kb.a($$1.w()); $$9 <= kb.a($$2.w()); $$9++) {
+            dtx $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
       }
    }
 
-   static class a {
-      private final iz a;
-      private final double b;
+   private dtx d(iz $$0) {
+      return this.a(kb.a($$0.u()), kb.a($$0.w()));
+   }
 
-      public a(iz $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private dtx a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dtx $$4 = this.c[$$2][$$3];
+         return (dtx)($$4 != null ? $$4 : new dud(this.e, new dbe($$0, $$1), this.f.get()));
+      } else {
+         return new dud(this.e, new dbe($$0, $$1), this.f.get());
       }
+   }
 
-      public double a(iz $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+   @Override
+   public dts C_() {
+      return this.e.C_();
+   }
+
+   @Override
+   public dbd c(int $$0, int $$1) {
+      return this.a($$0, $$1);
+   }
+
+   @Override
+   public List<ewj> c(@Nullable bst $$0, evl $$1) {
+      return List.of();
+   }
+
+   @Nullable
+   @Override
+   public dpg c_(iz $$0) {
+      dtx $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public dsb a_(iz $$0) {
+      if (this.s($$0)) {
+         return dfa.a.o();
+      } else {
+         dtx $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
+   }
+
+   @Override
+   public enu b_(iz $$0) {
+      if (this.s($$0)) {
+         return env.a.g();
+      } else {
+         dtx $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
+   }
+
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
+   }
+
+   public bnh a() {
+      return this.e.ag();
    }
 }

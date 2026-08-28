@@ -1,59 +1,45 @@
-public interface exa extends bql {
-   cun f();
-
-   default cun c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cun var1);
-
-   default cun h() {
-      return this.c(this.ai_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().e();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cun b(int $$0) {
-      return this.a($$0, this.ai_());
-   }
-
-   @Override
-   default cun a(int $$0) {
-      return $$0 == 0 ? this.f() : cun.l;
-   }
-
-   @Override
-   default cun a(int $$0, int $$1) {
-      return $$0 != 0 ? cun.l : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cun $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+public class exa {
+   private static final exk<Object> a = new exk<Object>() {
+      @Override
+      public void a(exh<Object> $$0) {
       }
-   }
-
-   public interface a extends exa {
-      dpf v();
 
       @Override
-      default boolean a(cmv $$0) {
-         return bql.a(this.v(), $$0);
+      public boolean a(iz $$0, Object $$1) {
+         return false;
       }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final exd<Object> b = new exd<Object>() {
+      @Override
+      public void a(exh<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> exk<T> a() {
+      return (exk<T>)a;
+   }
+
+   public static <T> exd<T> b() {
+      return (exd<T>)b;
    }
 }

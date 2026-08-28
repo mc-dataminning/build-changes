@@ -1,31 +1,16 @@
-public class fvb extends fvv {
-   private final fwy a;
-   private final fwy b;
-   private final fwy c;
-
-   public fvb(fwy $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+public class fvb<T extends bst> extends fvj<T> {
+   public fvb(fwz $$0) {
+      super($$0, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxg a() {
-      fxg $$0 = new fxg();
-      fvc.a(fxc.a, $$0);
-      return $$0;
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
-   }
-
-   @Override
-   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static fxf a(fxd $$0) {
+      fxh $$1 = fvj.a(6, $$0);
+      fxi $$2 = $$1.a();
+      $$2.a(
+         "head",
+         fxe.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
+         fxb.a(0.0F, 12.0F, -6.0F)
+      );
+      return fxf.a($$1, 64, 32);
    }
 }

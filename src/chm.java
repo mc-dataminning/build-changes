@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class chm extends chg {
-   public chm(bsy<? extends chm> $$0, dbw $$1) {
-      super($$0, $$1);
+public enum chm {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<chm> f = axo.a(chm::a, values(), axo.a.b);
+   private final int g;
+
+   private chm(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected avy v() {
-      return avz.px;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected avy gO() {
-      return avz.py;
-   }
-
-   @Override
-   protected avy o_() {
-      return avz.pA;
-   }
-
-   @Nullable
-   @Override
-   protected avy gx() {
-      return avz.pB;
-   }
-
-   @Override
-   protected avy d(brl $$0) {
-      return avz.pC;
-   }
-
-   @Override
-   protected void gW() {
-      this.a(avz.pD, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void gq() {
-      this.a(avz.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bsm a(are $$0, bsm $$1) {
-      return bsy.at.a((dbw)$$0);
+   public static chm a(int $$0) {
+      return f.apply($$0);
    }
 }

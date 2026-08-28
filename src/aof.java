@@ -33,10 +33,10 @@ public class aof {
    }
 
    private static int a(ep $$0) throws CommandSyntaxException {
-      cog $$1 = a($$0.h());
+      coh $$1 = a($$0.h());
       if ($$1 != null) {
-         for (coh $$3 : $$1.h()) {
-            $$3.b(new bsa(bsc.x, 1000, 1));
+         for (coi $$3 : $$1.h()) {
+            $$3.b(new bsb(bsd.x, 1000, 1));
          }
       }
 
@@ -44,7 +44,7 @@ public class aof {
    }
 
    private static int a(ep $$0, int $$1) throws CommandSyntaxException {
-      cog $$2 = a($$0.h());
+      coh $$2 = a($$0.h());
       if ($$2 != null) {
          int $$3 = $$2.l();
          if ($$1 > $$3) {
@@ -63,15 +63,15 @@ public class aof {
 
    private static int b(ep $$0) {
       $$0.a(() -> xo.b("Spawned a raid captain"), false);
-      coh $$1 = bsy.aC.a((dbw)$$0.e());
+      coi $$1 = bsz.aC.a((dbx)$$0.e());
       if ($$1 == null) {
          $$0.b(xo.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.w(true);
-         $$1.a(bsz.f, cog.a($$0.v().b(lq.d)));
+         $$1.a(bta.f, coh.a($$0.v().b(lq.d)));
          $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(iz.a($$0.d())), btr.n, null);
+         $$1.a($$0.e(), $$0.e().d_(iz.a($$0.d())), bts.n, null);
          $$0.e().a_($$1);
          return 1;
       }
@@ -80,7 +80,7 @@ public class aof {
    private static int a(ep $$0, @Nullable xo $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
          are $$2 = $$0.e();
-         evp $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         evq $$3 = $$0.d().b(5.0, 0.0, 0.0);
          $$2.a(null, $$3.c, $$3.d, $$3.e, avz.uZ, awa.g, 2.0F, 1.0F, $$2.z.g());
       }
 
@@ -94,8 +94,8 @@ public class aof {
          $$0.b(xo.b("Raid already started close by"));
          return -1;
       } else {
-         coi $$4 = $$2.z().z();
-         cog $$5 = $$4.a($$2, $$2.dp());
+         coj $$4 = $$2.z().z();
+         coh $$5 = $$4.a($$2, $$2.dp());
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
@@ -111,7 +111,7 @@ public class aof {
    private static int c(ep $$0) throws CommandSyntaxException {
       arf $$1 = $$0.h();
       iz $$2 = $$1.dp();
-      cog $$3 = $$1.z().d($$2);
+      coh $$3 = $$1.z().d($$2);
       if ($$3 != null) {
          $$3.n();
          $$0.a(() -> xo.b("Stopped raid"), false);
@@ -123,7 +123,7 @@ public class aof {
    }
 
    private static int d(ep $$0) throws CommandSyntaxException {
-      cog $$1 = a($$0.h());
+      coh $$1 = a($$0.h());
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
@@ -148,7 +148,7 @@ public class aof {
    }
 
    @Nullable
-   private static cog a(arf $$0) {
+   private static coh a(arf $$0) {
       return $$0.z().d($$0.dp());
    }
 }

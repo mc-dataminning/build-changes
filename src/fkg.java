@@ -1,17 +1,28 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fkg(ale c) implements fke {
-   public static final MapCodec<fkg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("id").forGetter(fkg::c)).apply($$0, fkg::new));
+public enum fkg implements azt {
+   a("bitmap", fkd.a.a),
+   b("ttf", fki.a),
+   c("space", eyc.a.a),
+   d("unihex", fkj.b.a),
+   e("reference", fkh.a);
 
-   @Override
-   public fkf a() {
-      return fkf.e;
+   public static final Codec<fkg> f = azt.a(fkg::values);
+   private final String g;
+   private final MapCodec<? extends fkf> h;
+
+   private fkg(final String $$0, final MapCodec<? extends fkf> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public Either<fke.b, fke.c> b() {
-      return Either.right(new fke.c(this.c));
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends fkf> a() {
+      return this.h;
    }
 }

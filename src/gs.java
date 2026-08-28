@@ -28,7 +28,7 @@ public class gs implements ArgumentType<gn> {
       return new gs($$0);
    }
 
-   public static evp a(CommandContext<ep> $$0, String $$1) {
+   public static evq a(CommandContext<ep> $$0, String $$1) {
       return ((gn)$$0.getArgument($$1, gn.class)).a((ep)$$0.getSource());
    }
 

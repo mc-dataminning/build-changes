@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cbw extends cam {
+   private final btx a;
 
-public class cbw<T extends btp> extends cal {
-   private final T a;
-   private final cun b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avy d;
-
-   public cbw(T $$0, cun $$1, @Nullable avy $$2, Predicate<? super T> $$3) {
+   public cbw(btx $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fv();
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awu.a);
    }
 
    @Override
    public void c() {
-      this.a.a(bsz.a, this.b.s());
-      this.a.c(bqr.a);
-   }
+      iz $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.a(bsz.a, cun.l);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.el().i() * 0.2F + 0.9F);
+      for (iz $$2 : iz.b(
+         ayy.a(this.a.du() - 2.0), ayy.a(this.a.dw() - 2.0), ayy.a(this.a.dA() - 2.0), ayy.a(this.a.du() + 2.0), this.a.dv(), ayy.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awu.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

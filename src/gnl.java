@@ -1,14 +1,11 @@
-public class gnl<T extends btp & ckf, M extends fty<T>> extends gnh<T, M> {
-   private final fvt<T> a;
-   private final ale b;
-
-   public gnl(gkr<T, M> $$0, fwu $$1, fww $$2, ale $$3) {
+public class gnl extends gni<cki, fvs<cki>> {
+   public gnl(gks<cki, fvs<cki>> $$0) {
       super($$0);
-      this.b = $$3;
-      this.a = new fvt<>($$1.a($$2));
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(ezx $$0, gdn $$1, int $$2, cki $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ale $$10 = gkw.a($$3.gr());
+      fab $$11 = $$1.getBuffer(gdv.c($$10));
+      this.c().c().a($$0, $$11, $$2, gjx.c($$3, 0.0F));
    }
 }

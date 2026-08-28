@@ -27,7 +27,7 @@ public class ha {
    public static final char c = ',';
    public static final char d = '=';
    static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> k = SuggestionsBuilder::buildFuture;
-   final jk.b<cui> l;
+   final jk.b<cuj> l;
    final DynamicOps<vo> m;
 
    public ha(jk.a $$0) {
@@ -36,11 +36,11 @@ public class ha {
    }
 
    public ha.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<ji<cui>> $$1 = new MutableObject();
+      final MutableObject<ji<cuj>> $$1 = new MutableObject();
       final ki.a $$2 = ki.a();
       this.a($$0, new ha.d() {
          @Override
-         public void a(ji<cui> $$0) {
+         public void a(ji<cuj> $$0) {
             $$1.setValue($$0);
          }
 
@@ -49,15 +49,15 @@ public class ha {
             $$2.a($$0, $$1);
          }
       });
-      ji<cui> $$3 = Objects.requireNonNull((ji<cui>)$$1.getValue(), "Parser gave no item");
+      ji<cuj> $$3 = Objects.requireNonNull((ji<cuj>)$$1.getValue(), "Parser gave no item");
       ki $$4 = $$2.a();
       a($$0, $$3, $$4);
       return new ha.a($$3, $$4);
    }
 
-   private static void a(StringReader $$0, ji<cui> $$1, ki $$2) throws CommandSyntaxException {
+   private static void a(StringReader $$0, ji<cuj> $$1, ki $$2) throws CommandSyntaxException {
       ki $$3 = ki.a($$1.a().p(), $$2);
-      DataResult<baa> $$4 = cun.a($$3);
+      DataResult<bab> $$4 = cuo.a($$3);
       $$4.getOrThrow($$1x -> j.createWithContext($$0, $$1x));
    }
 
@@ -86,7 +86,7 @@ public class ha {
       return $$2.a($$0, $$1);
    }
 
-   public static record a(ji<cui> a, ki b) {
+   public static record a(ji<cuj> a, ki b) {
    }
 
    class b {
@@ -235,7 +235,7 @@ public class ha {
    }
 
    public interface d {
-      default void a(ji<cui> $$0) {
+      default void a(ji<cuj> $$0) {
       }
 
       default <T> void a(kl<T> $$0, T $$1) {

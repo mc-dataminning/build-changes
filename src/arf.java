@@ -15,14 +15,14 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arf extends cmv {
+public class arf extends cmw {
    private static final Logger cz = LogUtils.getLogger();
    private static final int cA = 32;
    private static final int cB = 10;
    private static final int cC = 25;
    public static final double b = 1.0;
-   private static final but cD = new but(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "Creative block interaction range modifier", 0.5, but.a.a);
-   private static final but cE = new but(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "Creative entity interaction range modifier", 2.0, but.a.a);
+   private static final buu cD = new buu(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "Creative block interaction range modifier", 0.5, buu.a.a);
+   private static final buu cE = new buu(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "Creative entity interaction range modifier", 2.0, buu.a.a);
    public ase c;
    public final MinecraftServer d;
    public final arg e;
@@ -39,29 +39,29 @@ public class arf extends cmv {
    private boolean cP = true;
    private int cQ = -99999999;
    private int cR = 60;
-   private cmt cS = cmt.a;
+   private cmu cS = cmu.a;
    private boolean cT = true;
    private long cU = ac.c();
    @Nullable
-   private bss cV;
+   private bst cV;
    private boolean cW;
    private boolean cX;
    private final awe cY = new awe();
    @Nullable
-   private evp cZ;
+   private evq cZ;
    private int da;
    private boolean db;
    private int dc = 2;
    private String dd = "en_us";
    @Nullable
-   private evp de;
+   private evq de;
    @Nullable
-   private evp df;
+   private evq df;
    @Nullable
-   private evp dg;
+   private evq dg;
    private kb dh = kb.a(0, 0, 0);
    private aqs di = aqs.a;
-   private ald<dbw> dj = dbw.h;
+   private ald<dbx> dj = dbx.h;
    @Nullable
    private iz dk;
    private boolean dl;
@@ -70,12 +70,12 @@ public class arf extends cmv {
    private boolean do;
    private boolean dp;
    private boolean dq;
-   private cmb dr = new cmb(0, 0, 0);
+   private cmc dr = new cmc(0, 0, 0);
    @Nullable
    private iz ds;
-   private final cqf dt = new cqf() {
+   private final cqg dt = new cqg() {
       @Override
-      public void a(cps $$0, jr<cun> $$1, cun $$2, int[] $$3) {
+      public void a(cpt $$0, jr<cuo> $$1, cuo $$2, int[] $$3) {
          arf.this.c.b(new adc($$0.j, $$0.k(), $$1, $$2));
 
          for (int $$4 = 0; $$4 < $$3.length; $$4++) {
@@ -84,29 +84,29 @@ public class arf extends cmv {
       }
 
       @Override
-      public void a(cps $$0, int $$1, cun $$2) {
+      public void a(cpt $$0, int $$1, cuo $$2) {
          arf.this.c.b(new ade($$0.j, $$0.k(), $$1, $$2));
       }
 
       @Override
-      public void a(cps $$0, cun $$1) {
+      public void a(cpt $$0, cuo $$1) {
          arf.this.c.b(new ade(-1, $$0.k(), -1, $$1));
       }
 
       @Override
-      public void a(cps $$0, int $$1, int $$2) {
+      public void a(cpt $$0, int $$1, int $$2) {
          this.b($$0, $$1, $$2);
       }
 
-      private void b(cps $$0, int $$1, int $$2) {
+      private void b(cpt $$0, int $$1, int $$2) {
          arf.this.c.b(new add($$0.j, $$1, $$2));
       }
    };
-   private final cqe du = new cqe() {
+   private final cqf du = new cqf() {
       @Override
-      public void a(cps $$0, int $$1, cun $$2) {
-         crn $$3 = $$0.b($$1);
-         if (!($$3 instanceof crj)) {
+      public void a(cpt $$0, int $$1, cuo $$2) {
+         cro $$3 = $$0.b($$1);
+         if (!($$3 instanceof crk)) {
             if ($$3.c == arf.this.gc()) {
                am.f.a(arf.this, arf.this.gc(), $$2);
             }
@@ -114,7 +114,7 @@ public class arf extends cmv {
       }
 
       @Override
-      public void a(cps $$0, int $$1, int $$2) {
+      public void a(cpt $$0, int $$1, int $$2) {
       }
    };
    @Nullable
@@ -129,7 +129,7 @@ public class arf extends cmv {
       this.dn = $$0.a(this);
       this.e = $$0.b(this);
       this.d = $$0;
-      this.cG = $$0.ah().a((cmv)this);
+      this.cG = $$0.ah().a((cmw)this);
       this.cF = $$0.ah().f(this);
       this.e($$1);
       this.a($$3);
@@ -138,9 +138,9 @@ public class arf extends cmv {
 
    private void e(are $$0) {
       iz $$1 = $$0.V();
-      if ($$0.D_().g() && $$0.o().bb().k() != dbt.c) {
+      if ($$0.D_().g() && $$0.o().bb().k() != dbu.c) {
          int $$2 = Math.max(0, this.d.a($$0));
-         int $$3 = ayx.a($$0.C_().b((double)$$1.u(), (double)$$1.w()));
+         int $$3 = ayy.a($$0.C_().b((double)$$1.u(), (double)$$1.w()));
          if ($$3 < $$2) {
             $$2 = $$3;
          }
@@ -153,7 +153,7 @@ public class arf extends cmv {
          long $$5 = $$4 * $$4;
          int $$6 = $$5 > 2147483647L ? Integer.MAX_VALUE : (int)$$5;
          int $$7 = this.v($$6);
-         int $$8 = azf.a().a($$6);
+         int $$8 = azg.a().a($$6);
 
          for (int $$9 = 0; $$9 < $$6; $$9++) {
             int $$10 = ($$8 + $$7 * $$9) % $$6;
@@ -184,12 +184,12 @@ public class arf extends cmv {
    public void a(ur $$0) {
       super.a($$0);
       if ($$0.b("warden_spawn_tracker", 10)) {
-         cmb.a.parse(new Dynamic(vf.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cz::error).ifPresent($$0x -> this.dr = $$0x);
+         cmc.a.parse(new Dynamic(vf.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cz::error).ifPresent($$0x -> this.dr = $$0x);
       }
 
       if ($$0.b("enteredNetherPosition", 10)) {
          ur $$1 = $$0.p("enteredNetherPosition");
-         this.df = new evp($$1.k("x"), $$1.k("y"), $$1.k("z"));
+         this.df = new evq($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
       this.cX = $$0.q("seenCredits");
@@ -206,7 +206,7 @@ public class arf extends cmv {
          this.dl = $$0.q("SpawnForced");
          this.dm = $$0.j("SpawnAngle");
          if ($$0.e("SpawnDimension")) {
-            this.dj = dbw.g.parse(vf.a, $$0.c("SpawnDimension")).resultOrPartial(cz::error).orElse(dbw.h);
+            this.dj = dbx.g.parse(vf.a, $$0.c("SpawnDimension")).resultOrPartial(cz::error).orElse(dbx.h);
          }
       }
 
@@ -220,7 +220,7 @@ public class arf extends cmv {
    @Override
    public void b(ur $$0) {
       super.b($$0);
-      cmb.a.encodeStart(vf.a, this.dr).resultOrPartial(cz::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
+      cmc.a.encodeStart(vf.a, this.dr).resultOrPartial(cz::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
       this.k($$0);
       $$0.a("seenCredits", this.cX);
       if (this.df != null) {
@@ -231,8 +231,8 @@ public class arf extends cmv {
          $$0.a("enteredNetherPosition", $$1);
       }
 
-      bss $$2 = this.cZ();
-      bss $$3 = this.dc();
+      bst $$2 = this.cZ();
+      bst $$3 = this.dc();
       if ($$3 != null && $$2 != this && $$2.cY()) {
          ur $$4 = new ur();
          ur $$5 = new ur();
@@ -262,7 +262,7 @@ public class arf extends cmv {
    public void a(int $$0) {
       float $$1 = (float)this.gl();
       float $$2 = ($$1 - 1.0F) / $$1;
-      this.cq = ayx.a((float)$$0 / $$1, 0.0F, $$2);
+      this.cq = ayy.a((float)$$0 / $$1, 0.0F, $$2);
       this.cQ = -1;
    }
 
@@ -278,12 +278,12 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(cun $$0, int $$1) {
+   public void a(cuo $$0, int $$1) {
       super.a($$0, $$1);
       this.cQ = -1;
    }
 
-   private void a(cps $$0) {
+   private void a(cpt $$0) {
       $$0.a(this.du);
       $$0.a(this.dt);
    }
@@ -305,13 +305,13 @@ public class arf extends cmv {
    }
 
    @Override
-   protected void a(dsa $$0) {
+   protected void a(dsb $$0) {
       am.e.a(this, $$0);
    }
 
    @Override
-   protected cuj k() {
-      return new cvl(this);
+   protected cuk k() {
+      return new cvm(this);
    }
 
    @Override
@@ -329,7 +329,7 @@ public class arf extends cmv {
          this.cb = this.ca;
       }
 
-      bss $$0 = this.K();
+      bst $$0 = this.K();
       if ($$0 != this) {
          if ($$0.bD()) {
             this.a($$0.du(), $$0.dw(), $$0.dA(), $$0.dF(), $$0.dH());
@@ -354,7 +354,7 @@ public class arf extends cmv {
    }
 
    private void gF() {
-      bur $$0 = this.f(buv.g);
+      bus $$0 = this.f(buw.g);
       if ($$0 != null) {
          if (this.f()) {
             $$0.b(cD);
@@ -363,7 +363,7 @@ public class arf extends cmv {
          }
       }
 
-      bur $$1 = this.f(buv.h);
+      bus $$1 = this.f(buw.h);
       if ($$1 != null) {
          if (this.f()) {
             $$1.b(cE);
@@ -380,9 +380,9 @@ public class arf extends cmv {
          }
 
          for (int $$0 = 0; $$0 < this.gc().b(); $$0++) {
-            cun $$1 = this.gc().a($$0);
-            if ($$1.g().ak_()) {
-               zv<?> $$2 = ((csx)$$1.g()).a($$1, this.dP(), this);
+            cuo $$1 = this.gc().a($$0);
+            if ($$1.g().aj_()) {
+               zv<?> $$2 = ((csy)$$1.g()).a($$1, this.dP(), this);
                if ($$2 != null) {
                   this.c.b($$2);
                }
@@ -398,32 +398,32 @@ public class arf extends cmv {
 
          if (this.eA() + this.fs() != this.cH) {
             this.cH = this.eA() + this.fs();
-            this.a(eww.g, ayx.f(this.cH));
+            this.a(ewx.g, ayy.f(this.cH));
          }
 
          if (this.cc.a() != this.cI) {
             this.cI = this.cc.a();
-            this.a(eww.h, ayx.f((float)this.cI));
+            this.a(ewx.h, ayy.f((float)this.cI));
          }
 
          if (this.cl() != this.cJ) {
             this.cJ = this.cl();
-            this.a(eww.i, ayx.f((float)this.cJ));
+            this.a(ewx.i, ayy.f((float)this.cJ));
          }
 
          if (this.eO() != this.cK) {
             this.cK = this.eO();
-            this.a(eww.j, ayx.f((float)this.cK));
+            this.a(ewx.j, ayy.f((float)this.cK));
          }
 
          if (this.cp != this.cM) {
             this.cM = this.cp;
-            this.a(eww.k, ayx.f((float)this.cM));
+            this.a(ewx.k, ayy.f((float)this.cM));
          }
 
          if (this.co != this.cL) {
             this.cL = this.co;
-            this.a(eww.l, ayx.f((float)this.cL));
+            this.a(ewx.l, ayy.f((float)this.cL));
          }
 
          if (this.cp != this.cQ) {
@@ -475,14 +475,14 @@ public class arf extends cmv {
       }
    }
 
-   private void a(eww $$0, int $$1) {
+   private void a(ewx $$0, int $$1) {
       this.gr().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
-   public void a(brl $$0) {
-      this.a(dwt.p);
-      boolean $$1 = this.dP().ab().b(dbs.n);
+   public void a(brm $$0) {
+      this.a(dwu.p);
+      boolean $$1 = this.dP().ab().b(dbt.n);
       if ($$1) {
          xo $$2 = this.eP().a();
          this.c.a(new ael(this.al(), $$2), wv.a(() -> {
@@ -492,12 +492,12 @@ public class arf extends cmv {
             xo $$4x = xo.a("death.attack.even_more_magic", this.O_()).a($$1xx -> $$1xx.a(new xu(xu.a.a, $$3x)));
             return new ael(this.al(), $$4x);
          }));
-         ewv $$3 = this.cj();
-         if ($$3 == null || $$3.k() == ewv.b.a) {
+         eww $$3 = this.cj();
+         if ($$3 == null || $$3.k() == eww.b.a) {
             this.d.ah().a($$2, false);
-         } else if ($$3.k() == ewv.b.c) {
+         } else if ($$3.k() == eww.b.c) {
             this.d.ah().a(this, $$2);
-         } else if ($$3.k() == ewv.b.d) {
+         } else if ($$3.k() == eww.b.d) {
             this.d.ah().b(this, $$2);
          }
       } else {
@@ -505,7 +505,7 @@ public class arf extends cmv {
       }
 
       this.gq();
-      if (this.dP().ab().b(dbs.N)) {
+      if (this.dP().ab().b(dbt.N)) {
          this.gG();
       }
 
@@ -513,8 +513,8 @@ public class arf extends cmv {
          this.g($$0);
       }
 
-      this.gr().a(eww.d, this, ewr::b);
-      btn $$4 = this.eQ();
+      this.gr().a(ewx.d, this, ews::b);
+      bto $$4 = this.eQ();
       if ($$4 != null) {
          this.b(awj.h.b($$4.ak()));
          $$4.a(this, this.bl, $$0);
@@ -533,41 +533,41 @@ public class arf extends cmv {
    }
 
    private void gG() {
-      evk $$0 = new evk(this.dp()).c(32.0, 10.0, 32.0);
-      this.dP().a(btp.class, $$0, bsx.f).stream().filter($$0x -> $$0x instanceof btt).forEach($$0x -> ((btt)$$0x).a_((cmv)this));
+      evl $$0 = new evl(this.dp()).c(32.0, 10.0, 32.0);
+      this.dP().a(btq.class, $$0, bsy.f).stream().filter($$0x -> $$0x instanceof btu).forEach($$0x -> ((btu)$$0x).a_((cmw)this));
    }
 
    @Override
-   public void a(bss $$0, int $$1, brl $$2) {
+   public void a(bst $$0, int $$1, brm $$2) {
       if ($$0 != this) {
          super.a($$0, $$1, $$2);
          this.t($$1);
-         this.gr().a(eww.f, this, ewr::b);
-         if ($$0 instanceof cmv) {
+         this.gr().a(ewx.f, this, ews::b);
+         if ($$0 instanceof cmw) {
             this.a(awj.Q);
-            this.gr().a(eww.e, this, ewr::b);
+            this.gr().a(ewx.e, this, ews::b);
          } else {
             this.a(awj.O);
          }
 
-         this.a(this, $$0, eww.m);
-         this.a($$0, this, eww.n);
+         this.a(this, $$0, ewx.m);
+         this.a($$0, this, ewx.n);
          am.c.a(this, $$0, $$2);
       }
    }
 
-   private void a(ews $$0, ews $$1, eww[] $$2) {
-      ewo $$3 = this.gr().e($$1.cB());
+   private void a(ewt $$0, ewt $$1, ewx[] $$2) {
+      ewp $$3 = this.gr().e($$1.cB());
       if ($$3 != null) {
          int $$4 = $$3.n().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gr().a($$2[$$4], $$0, ewr::b);
+            this.gr().a($$2[$$4], $$0, ews::b);
          }
       }
    }
 
    @Override
-   public boolean a(brl $$0, float $$1) {
+   public boolean a(brm $$0, float $$1) {
       if (this.b($$0)) {
          return false;
       } else {
@@ -575,12 +575,12 @@ public class arf extends cmv {
          if (!$$2 && this.cR > 0 && !$$0.a(awq.e)) {
             return false;
          } else {
-            bss $$3 = $$0.d();
-            if ($$3 instanceof cmv $$4 && !this.a($$4)) {
+            bst $$3 = $$0.d();
+            if ($$3 instanceof cmw $$4 && !this.a($$4)) {
                return false;
             }
 
-            if ($$3 instanceof cnb $$5 && $$5.s() instanceof cmv $$7 && !this.a($$7)) {
+            if ($$3 instanceof cnc $$5 && $$5.s() instanceof cmw $$7 && !this.a($$7)) {
                return false;
             }
 
@@ -590,7 +590,7 @@ public class arf extends cmv {
    }
 
    @Override
-   public boolean a(cmv $$0) {
+   public boolean a(cmw $$0) {
       return !this.gH() ? false : super.a($$0);
    }
 
@@ -600,11 +600,11 @@ public class arf extends cmv {
 
    @Nullable
    @Override
-   protected eos a(are $$0) {
-      eos $$1 = super.a($$0);
-      if ($$1 != null && this.dP().af() == dbw.h && $$0.af() == dbw.j) {
-         evp $$2 = $$1.a.b(0.0, -1.0, 0.0);
-         return new eos($$2, evp.b, 90.0F, 0.0F);
+   protected eot a(are $$0) {
+      eot $$1 = super.a($$0);
+      if ($$1 != null && this.dP().af() == dbx.h && $$0.af() == dbx.j) {
+         evq $$2 = $$1.a.b(0.0, -1.0, 0.0);
+         return new eot($$2, evq.b, 90.0F, 0.0F);
       } else {
          return $$1;
       }
@@ -612,13 +612,13 @@ public class arf extends cmv {
 
    @Nullable
    @Override
-   public bss b(are $$0) {
+   public bst b(are $$0) {
       this.cW = true;
       are $$1 = this.z();
-      ald<dbw> $$2 = $$1.af();
-      if ($$2 == dbw.j && $$0.af() == dbw.h) {
+      ald<dbx> $$2 = $$1.af();
+      if ($$2 == dbx.j && $$0.af() == dbx.h) {
          this.ai();
-         this.z().a(this, bss.c.e);
+         this.z().a(this, bst.c.e);
          if (!this.g) {
             this.g = true;
             this.c.b(new ado(ado.f, this.cX ? 0.0F : 1.0F));
@@ -627,19 +627,19 @@ public class arf extends cmv {
 
          return this;
       } else {
-         epq $$3 = $$0.A_();
+         epr $$3 = $$0.A_();
          this.c.b(new aev(this.d($$0), (byte)3));
          this.c.b(new acu($$3.q(), $$3.r()));
          avc $$4 = this.d.ah();
          $$4.d(this);
-         $$1.a(this, bss.c.e);
+         $$1.a(this, bst.c.e);
          this.dM();
-         eos $$5 = this.a($$0);
+         eot $$5 = this.a($$0);
          if ($$5 != null) {
             $$1.ag().a("moving");
-            if ($$2 == dbw.h && $$0.af() == dbw.i) {
+            if ($$2 == dbx.h && $$0.af() == dbx.i) {
                this.df = this.dn();
-            } else if ($$0.af() == dbw.j) {
+            } else if ($$0.af() == dbx.j) {
                this.a($$0, iz.a($$5.a));
             }
 
@@ -655,7 +655,7 @@ public class arf extends cmv {
             $$4.a(this, $$0);
             $$4.e(this);
 
-            for (bsa $$6 : this.ex()) {
+            for (bsb $$6 : this.ex()) {
                this.c.b(new ago(this.al(), $$6, false));
             }
 
@@ -675,7 +675,7 @@ public class arf extends cmv {
       for (int $$3 = -2; $$3 <= 2; $$3++) {
          for (int $$4 = -2; $$4 <= 2; $$4++) {
             for (int $$5 = -1; $$5 < 3; $$5++) {
-               dsa $$6 = $$5 == -1 ? dez.co.o() : dez.a.o();
+               dsb $$6 = $$5 == -1 ? dfa.co.o() : dfa.a.o();
                $$0.b($$2.g($$1).e($$4, $$5, $$3), $$6);
             }
          }
@@ -683,12 +683,12 @@ public class arf extends cmv {
    }
 
    @Override
-   protected Optional<l.a> a(are $$0, iz $$1, boolean $$2, dtr $$3) {
+   protected Optional<l.a> a(are $$0, iz $$1, boolean $$2, dts $$3) {
       Optional<l.a> $$4 = super.a($$0, $$1, $$2, $$3);
       if ($$4.isPresent()) {
          return $$4;
       } else {
-         je.a $$5 = this.dP().a_(this.ay).d(dkb.b).orElse(je.a.a);
+         je.a $$5 = this.dP().a_(this.ay).d(dkc.b).orElse(je.a.a);
          Optional<l.a> $$6 = $$0.p().a($$1, $$5);
          if ($$6.isEmpty()) {
             cz.error("Unable to create a portal, likely target out of worldborder");
@@ -699,14 +699,14 @@ public class arf extends cmv {
    }
 
    private void f(are $$0) {
-      ald<dbw> $$1 = $$0.af();
-      ald<dbw> $$2 = this.dP().af();
+      ald<dbx> $$1 = $$0.af();
+      ald<dbx> $$2 = this.dP().af();
       am.w.a(this, $$1, $$2);
-      if ($$1 == dbw.i && $$2 == dbw.h && this.df != null) {
+      if ($$1 == dbx.i && $$2 == dbx.h && this.df != null) {
          am.D.a(this, this.df);
       }
 
-      if ($$2 != dbw.i) {
+      if ($$2 != dbx.i) {
          this.df = null;
       }
    }
@@ -721,39 +721,39 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(bss $$0, int $$1) {
+   public void a(bst $$0, int $$1) {
       super.a($$0, $$1);
       this.cb.d();
    }
 
    @Override
-   public Either<cmv.a, baa> a(iz $$0) {
-      je $$1 = this.dP().a_($$0).c(dit.aE);
+   public Either<cmw.a, bab> a(iz $$0) {
+      je $$1 = this.dP().a_($$0).c(diu.aE);
       if (this.fL() || !this.bD()) {
-         return Either.left(cmv.a.e);
+         return Either.left(cmw.a.e);
       } else if (!this.dP().D_().j()) {
-         return Either.left(cmv.a.a);
+         return Either.left(cmw.a.a);
       } else if (!this.a($$0, $$1)) {
-         return Either.left(cmv.a.c);
+         return Either.left(cmw.a.c);
       } else if (this.b($$0, $$1)) {
-         return Either.left(cmv.a.d);
+         return Either.left(cmw.a.d);
       } else {
          this.a(this.dP().af(), $$0, this.dF(), false, true);
          if (this.dP().R()) {
-            return Either.left(cmv.a.b);
+            return Either.left(cmw.a.b);
          } else {
             if (!this.f()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               evp $$4 = evp.c($$0);
-               List<ckb> $$5 = this.dP()
-                  .a(ckb.class, new evk($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
+               evq $$4 = evq.c($$0);
+               List<ckc> $$5 = this.dP()
+                  .a(ckc.class, new evl($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
                if (!$$5.isEmpty()) {
-                  return Either.left(cmv.a.f);
+                  return Either.left(cmw.a.f);
                }
             }
 
-            Either<cmv.a, baa> $$6 = super.a($$0).ifRight($$0x -> {
+            Either<cmw.a, bab> $$6 = super.a($$0).ifRight($$0x -> {
                this.a(awj.ap);
                am.r.a(this);
             });
@@ -778,7 +778,7 @@ public class arf extends cmv {
    }
 
    private boolean j(iz $$0) {
-      evp $$1 = evp.c($$0);
+      evq $$1 = evq.c($$0);
       return Math.abs(this.du() - $$1.a()) <= 3.0 && Math.abs(this.dw() - $$1.b()) <= 2.0 && Math.abs(this.dA() - $$1.c()) <= 3.0;
    }
 
@@ -806,12 +806,12 @@ public class arf extends cmv {
    }
 
    @Override
-   public boolean b(brl $$0) {
+   public boolean b(brm $$0) {
       return super.b($$0) || this.O();
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dsa $$2, iz $$3) {
+   protected void a(double $$0, boolean $$1, dsb $$2, iz $$3) {
    }
 
    @Override
@@ -823,11 +823,11 @@ public class arf extends cmv {
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.dh()) {
-         this.b($$3, new evp($$0, $$1, $$2));
+         this.b($$3, new evq($$0, $$1, $$2));
          iz $$4 = this.aJ();
-         dsa $$5 = this.dP().a_($$4);
+         dsb $$5 = this.dP().a_($$4);
          if (this.dq && $$3 && this.ac > 0.0F) {
-            evp $$6 = $$4.b().b(0.0, 0.5, 0.0);
+            evq $$6 = $$4.b().b(0.0, 0.5, 0.0);
             int $$7 = (int)(50.0F * this.ac);
             this.z().a(new la(li.b, $$5), $$6.c, $$6.d, $$6.e, $$7, 0.3F, 0.3F, 0.3F, 0.15F);
             this.dq = false;
@@ -838,11 +838,11 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(@Nullable bss $$0) {
+   public void a(@Nullable bst $$0) {
       super.a($$0);
       this.cv = this.dn();
       this.cw = $$0;
-      this.cx = $$0 != null && $$0.ak() == bsy.bn;
+      this.cx = $$0 != null && $$0.ak() == bsz.bn;
    }
 
    @Override
@@ -853,9 +853,9 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(dqp $$0, boolean $$1) {
-      this.c.b(new acq(this.dP(), $$0.az_()));
-      this.c.b(new aef($$0.az_(), $$1));
+   public void a(dqq $$0, boolean $$1) {
+      this.c.b(new acq(this.dP(), $$0.ay_()));
+      this.c.b(new aef($$0.ay_(), $$1));
    }
 
    private void gI() {
@@ -863,7 +863,7 @@ public class arf extends cmv {
    }
 
    @Override
-   public OptionalInt a(@Nullable bqw $$0) {
+   public OptionalInt a(@Nullable bqx $$0) {
       if ($$0 == null) {
          return OptionalInt.empty();
       } else {
@@ -872,7 +872,7 @@ public class arf extends cmv {
          }
 
          this.gI();
-         cps $$1 = $$0.createMenu(this.dw, this.gc(), this);
+         cpt $$1 = $$0.createMenu(this.dw, this.gc(), this);
          if ($$1 == null) {
             if (this.N_()) {
                this.a(xo.c("container.spectatorCantOpen").a(n.m), true);
@@ -889,26 +889,26 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(int $$0, dav $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public void a(int $$0, daw $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.c.b(new aea($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(chh $$0, bql $$1) {
+   public void a(chi $$0, bqm $$1) {
       if (this.cb != this.ca) {
          this.r();
       }
 
       this.gI();
       this.c.b(new adp(this.dw, $$1.b(), $$0.al()));
-      this.cb = new cqs(this.dw, this.gc(), $$1, $$0);
+      this.cb = new cqt(this.dw, this.gc(), $$1, $$0);
       this.a(this.cb);
    }
 
    @Override
-   public void a(cun $$0, bqr $$1) {
-      if ($$0.a(cuq.ua)) {
-         if (cwl.a($$0, this.dg(), this)) {
+   public void a(cuo $$0, bqs $$1) {
+      if ($$0.a(cur.ua)) {
+         if (cwm.a($$0, this.dg(), this)) {
             this.cb.d();
          }
 
@@ -917,8 +917,8 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(dpp $$0) {
-      this.c.b(aco.a($$0, dpf::e));
+   public void a(dpq $$0) {
+      this.c.b(aco.a($$0, dpg::e));
    }
 
    @Override
@@ -950,7 +950,7 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(evp $$0) {
+   public void a(evq $$0) {
       double $$1 = this.du();
       double $$2 = this.dw();
       double $$3 = this.dA();
@@ -1020,16 +1020,16 @@ public class arf extends cmv {
    private void r(double $$0, double $$1, double $$2) {
       if (this.bR() && !s($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-         bss $$4 = this.dc();
-         if ($$4 instanceof cor) {
+         bst $$4 = this.dc();
+         if ($$4 instanceof cos) {
             this.a(awj.x, $$3);
-         } else if ($$4 instanceof cot) {
+         } else if ($$4 instanceof cou) {
             this.a(awj.y, $$3);
-         } else if ($$4 instanceof cfu) {
+         } else if ($$4 instanceof cfv) {
             this.a(awj.z, $$3);
-         } else if ($$4 instanceof chh) {
+         } else if ($$4 instanceof chi) {
             this.a(awj.A, $$3);
-         } else if ($$4 instanceof cko) {
+         } else if ($$4 instanceof ckp) {
             this.a(awj.D, $$3);
          }
       }
@@ -1048,27 +1048,27 @@ public class arf extends cmv {
    @Override
    public void a(awg<?> $$0) {
       this.cG.a(this, $$0, 0);
-      this.gr().a($$0, this, ewr::c);
+      this.gr().a($$0, this, ews::c);
    }
 
    @Override
-   public int a(Collection<cyv<?>> $$0) {
+   public int a(Collection<cyw<?>> $$0) {
       return this.cY.a($$0, this);
    }
 
    @Override
-   public void a(cyv<?> $$0, List<cun> $$1) {
+   public void a(cyw<?> $$0, List<cuo> $$1) {
       am.ac.a(this, $$0.a(), $$1);
    }
 
    @Override
    public void b(List<ale> $$0) {
-      List<cyv<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aJ().a($$0x).stream()).collect(Collectors.toList());
+      List<cyw<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aJ().a($$0x).stream()).collect(Collectors.toList());
       this.a($$1);
    }
 
    @Override
-   public int b(Collection<cyv<?>> $$0) {
+   public int b(Collection<cyw<?>> $$0) {
       return this.cY.b($$0, this);
    }
 
@@ -1109,13 +1109,13 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(fb.a $$0, evp $$1) {
+   public void a(fb.a $$0, evq $$1) {
       super.a($$0, $$1);
       this.c.b(new aeo($$0, $$1.c, $$1.d, $$1.e));
    }
 
-   public void a(fb.a $$0, bss $$1, fb.a $$2) {
-      evp $$3 = $$2.a($$1);
+   public void a(fb.a $$0, bst $$1, fb.a $$2) {
+      evq $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.c.b(new aeo($$0, $$1, $$2));
    }
@@ -1134,7 +1134,7 @@ public class arf extends cmv {
          this.cq = $$0.cq;
          this.s($$0.fW());
          this.ay = $$0.ay;
-      } else if (this.dP().ab().b(dbs.d) || $$0.N_()) {
+      } else if (this.dP().ab().b(dbt.d) || $$0.N_()) {
          this.gc().a($$0.gc());
          this.co = $$0.co;
          this.cp = $$0.cp;
@@ -1158,10 +1158,10 @@ public class arf extends cmv {
    }
 
    @Override
-   protected void a(bsa $$0, @Nullable bss $$1) {
+   protected void a(bsb $$0, @Nullable bst $$1) {
       super.a($$0, $$1);
       this.c.b(new ago(this.al(), $$0, true));
-      if ($$0.a(bsc.y)) {
+      if ($$0.a(bsd.y)) {
          this.da = this.ai;
          this.cZ = this.dn();
       }
@@ -1170,17 +1170,17 @@ public class arf extends cmv {
    }
 
    @Override
-   protected void a(bsa $$0, boolean $$1, @Nullable bss $$2) {
+   protected void a(bsb $$0, boolean $$1, @Nullable bst $$2) {
       super.a($$0, $$1, $$2);
       this.c.b(new ago(this.al(), $$0, false));
       am.B.a(this, $$2);
    }
 
    @Override
-   protected void a(bsa $$0) {
+   protected void a(bsb $$0) {
       super.a($$0);
       this.c.b(new aet(this.al(), $$0.c()));
-      if ($$0.a(bsc.y)) {
+      if ($$0.a(bsd.y)) {
          this.cZ = null;
       }
 
@@ -1189,17 +1189,17 @@ public class arf extends cmv {
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.c.a($$0, $$1, $$2, this.dF(), this.dH(), bub.g);
+      this.c.a($$0, $$1, $$2, this.dF(), this.dH(), buc.g);
    }
 
    @Override
    public void d(double $$0, double $$1, double $$2) {
-      this.c.a(this.du() + $$0, this.dw() + $$1, this.dA() + $$2, this.dF(), this.dH(), bub.f);
+      this.c.a(this.du() + $$0, this.dw() + $$1, this.dA() + $$2, this.dF(), this.dH(), buc.f);
    }
 
    @Override
-   public boolean a(are $$0, double $$1, double $$2, double $$3, Set<bub> $$4, float $$5, float $$6) {
-      dbd $$7 = new dbd(iz.a($$1, $$2, $$3));
+   public boolean a(are $$0, double $$1, double $$2, double $$3, Set<buc> $$4, float $$5, float $$6) {
+      dbe $$7 = new dbe(iz.a($$1, $$2, $$3));
       $$0.l().a(arj.g, $$7, 1, this.al());
       this.ac();
       if (this.fL()) {
@@ -1223,12 +1223,12 @@ public class arf extends cmv {
    }
 
    @Override
-   public void b(bss $$0) {
+   public void b(bst $$0) {
       this.z().l().a(this, new ack($$0, 4));
    }
 
    @Override
-   public void c(bss $$0) {
+   public void c(bst $$0) {
       this.z().l().a(this, new ack($$0, 5));
    }
 
@@ -1244,12 +1244,12 @@ public class arf extends cmv {
       return (are)this.dP();
    }
 
-   public boolean a(dbt $$0) {
+   public boolean a(dbu $$0) {
       if (!this.e.a($$0)) {
          return false;
       } else {
          this.c.b(new ado(ado.e, (float)$$0.a()));
-         if ($$0 == dbt.d) {
+         if ($$0 == dbu.d) {
             this.gq();
             this.ac();
          } else {
@@ -1264,12 +1264,12 @@ public class arf extends cmv {
 
    @Override
    public boolean N_() {
-      return this.e.b() == dbt.d;
+      return this.e.b() == dbu.d;
    }
 
    @Override
    public boolean f() {
-      return this.e.b() == dbt.b;
+      return this.e.b() == dbu.b;
    }
 
    @Override
@@ -1315,7 +1315,7 @@ public class arf extends cmv {
 
    public aqt B() {
       int $$0 = this.ap().a(bV);
-      bth $$1 = bth.d.apply(this.ap().a(bW));
+      bti $$1 = bti.d.apply(this.ap().a(bW));
       return new aqt(this.dd, this.dc, this.cS, this.cT, $$0, $$1, this.do, this.dp);
    }
 
@@ -1323,16 +1323,16 @@ public class arf extends cmv {
       return this.cT;
    }
 
-   public cmt D() {
+   public cmu D() {
       return this.cS;
    }
 
    private boolean v(boolean $$0) {
-      return this.cS == cmt.c ? $$0 : true;
+      return this.cS == cmu.c ? $$0 : true;
    }
 
    private boolean gJ() {
-      return this.cS == cmt.a;
+      return this.cS == cmu.a;
    }
 
    public int E() {
@@ -1371,14 +1371,14 @@ public class arf extends cmv {
       }
    }
 
-   public bss K() {
-      return (bss)(this.cV == null ? this : this.cV);
+   public bst K() {
+      return (bst)(this.cV == null ? this : this.cV);
    }
 
    @Override
-   public void d(@Nullable bss $$0) {
-      bss $$1 = this.K();
-      this.cV = (bss)($$0 == null ? this : $$0);
+   public void d(@Nullable bst $$0) {
+      bst $$1 = this.K();
+      this.cV = (bst)($$0 == null ? this : $$0);
       if ($$1 != this.cV) {
          if (this.cV.dP() instanceof are $$2) {
             this.a($$2, this.cV.du(), this.cV.dw(), this.cV.dA(), Set.of(), this.dF(), this.dH());
@@ -1401,8 +1401,8 @@ public class arf extends cmv {
    }
 
    @Override
-   public void e(bss $$0) {
-      if (this.e.b() == dbt.d) {
+   public void e(bst $$0) {
+      if (this.e.b() == dbu.d) {
          this.d($$0);
       } else {
          super.e($$0);
@@ -1419,7 +1419,7 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(bqr $$0) {
+   public void a(bqs $$0) {
       super.a($$0);
       this.gw();
    }
@@ -1443,11 +1443,11 @@ public class arf extends cmv {
          this.c.a($$1, $$2, $$3, $$4, $$5);
       } else {
          are $$6 = this.z();
-         epq $$7 = $$0.A_();
+         epr $$7 = $$0.A_();
          this.c.b(new aev(this.d($$0), (byte)3));
          this.c.b(new acu($$7.q(), $$7.r()));
          this.d.ah().d(this);
-         $$6.a(this, bss.c.e);
+         $$6.a(this, bst.c.e);
          this.dM();
          this.b($$1, $$2, $$3, $$4, $$5);
          this.c($$0);
@@ -1468,7 +1468,7 @@ public class arf extends cmv {
       return this.dm;
    }
 
-   public ald<dbw> T() {
+   public ald<dbx> T() {
       return this.dj;
    }
 
@@ -1476,7 +1476,7 @@ public class arf extends cmv {
       return this.dl;
    }
 
-   public void a(ald<dbw> $$0, @Nullable iz $$1, float $$2, boolean $$3, boolean $$4) {
+   public void a(ald<dbx> $$0, @Nullable iz $$1, float $$2, boolean $$3, boolean $$4) {
       if ($$1 != null) {
          boolean $$5 = $$1.equals(this.dk) && $$0.equals(this.dj);
          if ($$4 && !$$5) {
@@ -1489,7 +1489,7 @@ public class arf extends cmv {
          this.dl = $$3;
       } else {
          this.dk = null;
-         this.dj = dbw.h;
+         this.dj = dbx.h;
          this.dm = 0.0F;
          this.dl = false;
       }
@@ -1517,13 +1517,13 @@ public class arf extends cmv {
    }
 
    @Override
-   public cjf a(cun $$0, boolean $$1, boolean $$2) {
-      cjf $$3 = super.a($$0, $$1, $$2);
+   public cjg a(cuo $$0, boolean $$1, boolean $$2) {
+      cjg $$3 = super.a($$0, $$1, $$2);
       if ($$3 == null) {
          return null;
       } else {
          this.dP().b($$3);
-         cun $$4 = $$3.p();
+         cuo $$4 = $$3.p();
          if ($$2) {
             if (!$$4.e()) {
                this.a(awj.f.b($$4.g()), $$0.I());
@@ -1541,17 +1541,17 @@ public class arf extends cmv {
    }
 
    public void c(are $$0) {
-      this.a((dbw)$$0);
+      this.a((dbx)$$0);
       this.e.a($$0);
    }
 
    @Nullable
-   private static dbt a(@Nullable ur $$0, String $$1) {
-      return $$0 != null && $$0.b($$1, 99) ? dbt.a($$0.h($$1)) : null;
+   private static dbu a(@Nullable ur $$0, String $$1) {
+      return $$0 != null && $$0.b($$1, 99) ? dbu.a($$0.h($$1)) : null;
    }
 
-   private dbt b(@Nullable dbt $$0) {
-      dbt $$1 = this.d.bf();
+   private dbu b(@Nullable dbu $$0) {
+      dbu $$1 = this.d.bf();
       if ($$1 != null) {
          return $$1;
       } else {
@@ -1566,7 +1566,7 @@ public class arf extends cmv {
 
    private void k(ur $$0) {
       $$0.a("playerGameType", this.e.b().a());
-      dbt $$1 = this.e.c();
+      dbu $$1 = this.e.c();
       if ($$1 != null) {
          $$0.a("previousPlayerGameType", $$1.a());
       }
@@ -1582,19 +1582,19 @@ public class arf extends cmv {
    }
 
    @Override
-   public boolean a(dbw $$0, iz $$1) {
+   public boolean a(dbx $$0, iz $$1) {
       return super.a($$0, $$1) && $$0.a(this, $$1);
    }
 
    @Override
-   protected void a(cun $$0) {
+   protected void a(cuo $$0) {
       am.W.a(this, $$0);
       super.a($$0);
    }
 
    public boolean a(boolean $$0) {
-      cmu $$1 = this.gc();
-      cun $$2 = $$1.a($$0);
+      cmv $$1 = this.gc();
+      cuo $$2 = $$1.a($$0);
       this.cb.b($$1, $$1.k).ifPresent($$1x -> this.cb.a($$1x, $$1.f()));
       return this.a($$2, false, true) != null;
    }
@@ -1604,7 +1604,7 @@ public class arf extends cmv {
    }
 
    @Override
-   public Optional<cmb> aa() {
+   public Optional<cmc> aa() {
       return Optional.of(this.dr);
    }
 
@@ -1613,9 +1613,9 @@ public class arf extends cmv {
    }
 
    @Override
-   public void a(cjf $$0) {
+   public void a(cjg $$0) {
       super.a($$0);
-      bss $$1 = $$0.s();
+      bst $$1 = $$0.s();
       if ($$1 != null) {
          am.S.a(this, $$0.p(), $$1);
       }
@@ -1632,19 +1632,19 @@ public class arf extends cmv {
 
    @Override
    public void a(double $$0, double $$1) {
-      this.cu = (float)(ayx.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dF());
+      this.cu = (float)(ayy.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dF());
       this.c.b(new adq(this));
    }
 
    @Override
-   public boolean a(bss $$0, boolean $$1) {
+   public boolean a(bst $$0, boolean $$1) {
       if (!super.a($$0, $$1)) {
          return false;
       } else {
          $$0.j(this);
          this.c.a(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-         if ($$0 instanceof btn $$2) {
-            for (bsa $$3 : $$2.ex()) {
+         if ($$0 instanceof bto $$2) {
+            for (bsb $$3 : $$2.ex()) {
                this.c.b(new ago($$0.al(), $$3, false));
             }
          }
@@ -1655,17 +1655,17 @@ public class arf extends cmv {
 
    @Override
    public void ac() {
-      bss $$0 = this.dc();
+      bst $$0 = this.dc();
       super.ac();
-      if ($$0 instanceof btn $$1) {
-         for (bsa $$2 : $$1.ex()) {
+      if ($$0 instanceof bto $$1) {
+         for (bsb $$2 : $$1.ex()) {
             this.c.b(new aet($$0.al(), $$2.c()));
          }
       }
    }
 
    public agq d(are $$0) {
-      return new agq($$0.ae(), $$0.af(), dcx.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gB(), this.ax());
+      return new agq($$0.ae(), $$0.af(), dcy.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gB(), this.ax());
    }
 
    @Override

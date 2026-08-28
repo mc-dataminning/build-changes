@@ -1,54 +1,67 @@
-import java.util.Map;
-
-public class cys extends cza {
-   public cys(cyj $$0) {
-      super("", $$0, czb.a(Map.of('#', cyq.a(cuq.qO), 'x', cyq.a(cuq.rU)), "###", "#x#", "###"), new cun(cuq.uj));
+public class cys extends cym {
+   public cys(cyk $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(cqi $$0, dbw $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cun $$2 = a($$0);
-         if ($$2.e()) {
-            return false;
-         } else {
-            epi $$3 = cuv.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
+   public boolean a(cqj $$0, dbx $$1) {
+      int $$2 = 0;
+      cuo $$3 = cuo.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cur.rU)) {
+               if (!$$3.e()) {
+                  return false;
+               }
+
+               $$3 = $$5;
             } else {
-               return $$3.g() ? false : $$3.f < 4;
+               if (!$$5.a(cur.uj)) {
+                  return false;
+               }
+
+               $$2++;
             }
          }
       }
+
+      return !$$3.e() && $$2 > 0;
    }
 
-   @Override
-   public cun a(cqi $$0, jk.a $$1) {
-      cun $$2 = a($$0).c(1);
-      $$2.b(km.C, cxo.b);
-      return $$2;
-   }
+   public cuo a(cqj $$0, jk.a $$1) {
+      int $$2 = 0;
+      cuo $$3 = cuo.l;
 
-   private static cun a(cqi $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cun $$2 = $$0.a($$1);
-         if ($$2.a(cuq.rU)) {
-            return $$2;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cur.rU)) {
+               if (!$$3.e()) {
+                  return cuo.l;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cur.uj)) {
+                  return cuo.l;
+               }
+
+               $$2++;
+            }
          }
       }
 
-      return cun.l;
+      return !$$3.e() && $$2 >= 1 ? $$3.c($$2 + 1) : cuo.l;
    }
 
    @Override
-   public boolean ao_() {
-      return true;
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
    @Override
-   public cyx<?> ap_() {
-      return cyx.f;
+   public cyy<?> ao_() {
+      return cyy.e;
    }
 }

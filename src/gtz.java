@@ -1,33 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gtz implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final blz<gty> b;
-   private final bpl<Runnable> c;
+public record gtz(gud b, gug c) {
+   public static final Codec<gtz> a = gud.a.dispatchStable(gtz::a, gud::c);
 
-   public gtz(FileChannel $$0, Executor $$1) {
-      this.b = new blz<>(gty.a, $$0);
-      this.c = bpl.a($$1, "telemetry-event-log");
+   public gtz(gud b, gug c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public gua a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public gud a() {
+      return this.b;
+   }
+
+   public gug b() {
+      return this.c;
    }
 }

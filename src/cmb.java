@@ -1,117 +1,153 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
 public class cmb {
-   public static final Codec<cmb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayf.k.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayf.k.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayf.k.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cmb::new)
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = ayy.f(100.0F);
+   public static final int a = ayy.f(133.59999F);
+   public static final int b = ayy.f(84.0F);
+   private static final int i = ayy.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cdz<? extends cdy<? super cma>>> k = List.of(cdz.d, cdz.x);
+   private static final List<ccs<?>> l = List.of(
+      ccs.g,
+      ccs.h,
+      ccs.k,
+      ccs.l,
+      ccs.M,
+      ccs.n,
+      ccs.m,
+      ccs.E,
+      ccs.t,
+      ccs.o,
+      ccs.p,
+      ccs.B,
+      ccs.ay,
+      ccs.az,
+      ccs.aA,
+      ccs.aB,
+      ccs.aC,
+      ccs.aD,
+      ccs.aE,
+      ccs.aF,
+      ccs.aG,
+      ccs.aH,
+      ccs.aI,
+      ccs.aJ,
+      ccs.aK,
+      ccs.aL
    );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   private static final bvi<cma> m = byu.a(
+      (Function<byu.b<cma>, ? extends App<byu.c<cma>, byx<cma>>>)($$0 -> $$0.group($$0.a(ccs.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(bab.a, 1200L);
+               }
 
-   public cmb(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+               return true;
+            }))
+   );
+
+   public static void a(cma $$0) {
+      $$0.dS().a(ImmutableList.of(col.y, col.z, col.x, col.k, col.w, col.v, col.b));
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
+   protected static buq<?> a(cma $$0, Dynamic<?> $$1) {
+      buq.b<cma> $$2 = buq.a(l, k);
+      buq<cma> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(col.a));
+      $$3.b(col.b);
+      $$3.f();
+      return $$3;
+   }
+
+   private static void a(buq<cma> $$0) {
+      $$0.a(col.a, 0, ImmutableList.of(new byb(0.8F), bzf.a(), new bwn(45, 90), new bwr()));
+   }
+
+   private static void b(buq<cma> $$0) {
+      $$0.a(col.y, 5, ImmutableList.of(new bzb(a)), ccs.aC);
+   }
+
+   private static void c(buq<cma> $$0) {
+      $$0.a(col.z, ImmutableList.of(Pair.of(0, new bzc()), Pair.of(1, new bza(h))), ImmutableSet.of(Pair.of(ccs.ay, cct.b), Pair.of(ccs.aE, cct.b)));
+   }
+
+   private static void d(buq<cma> $$0) {
+      $$0.a(
+         col.b,
+         10,
+         ImmutableList.of(
+            bze.a(cma::gq), bzi.a(), new bxe(ImmutableMap.of(ccs.aB, cct.b), ImmutableList.of(Pair.of(bwz.a(0.5F), 2), Pair.of(new bvr(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(buq<cma> $$0) {
+      $$0.a(col.w, 5, ImmutableList.of(bze.a(cma::gq), bwa.a(ccs.az, 2, 0.7F)), ccs.az);
+   }
+
+   private static void f(buq<cma> $$0) {
+      $$0.a(col.v, 5, ImmutableList.of(bze.a(cma::gq), new bzg(i)), ccs.aB);
+   }
+
+   private static void g(buq<cma> $$0) {
+      $$0.a(col.x, 10, ImmutableList.of(new bzd()), ccs.ay);
+   }
+
+   private static void a(cma $$0, buq<cma> $$1) {
+      $$1.a(
+         col.k,
+         10,
+         ImmutableList.of(
+            m, bxw.a($$1x -> !$$0.y().d() || !$$0.b($$1x), cmb::b, false), bxg.a($$1x -> a($$0, $$1x), (float)$$0.g(buw.k)), bxm.a(1.2F), new bzh(), bwo.a(18)
+         ),
+         ccs.o
+      );
+   }
+
+   private static boolean a(cma $$0, bto $$1) {
+      return $$0.dS().c(ccs.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cma $$0, bto $$1) {
+      if (!$$0.b($$1)) {
+         $$0.c($$1);
       }
 
-      if (this.i > 0) {
-         this.i--;
+      a((bto)$$0);
+   }
+
+   public static void a(bto $$0) {
+      if ($$0.dS().a(ccs.aE)) {
+         $$0.dS().a(ccs.aE, bab.a, 1200L);
       }
    }
 
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(are $$0, iz $$1, arf $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<arf> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(cmb::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cmb> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(cmb::c));
-            if ($$4.isPresent()) {
-               cmb $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
+   public static void a(cma $$0, iz $$1) {
+      if ($$0.dP().C_().a($$1) && !$$0.gq().isPresent() && !$$0.dS().c(ccs.o).isPresent()) {
+         a((bto)$$0);
+         $$0.dS().a(ccs.aG, bab.a, 100L);
+         $$0.dS().a(ccs.n, new bvk($$1), 100L);
+         $$0.dS().a(ccs.az, $$1, 100L);
+         $$0.dS().b(ccs.m);
       }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(are $$0, iz $$1) {
-      evk $$2 = evk.a(evp.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(clz.class, $$2).isEmpty();
-   }
-
-   private static List<arf> b(are $$0, iz $$1) {
-      evp $$2 = evp.b($$1);
-      Predicate<arf> $$3 = $$1x -> $$1x.dn().a((js)$$2, 16.0);
-      return $$0.a($$3.and(btn::bD).and(bsx.f));
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = ayx.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cmb $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
    }
 }

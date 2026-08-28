@@ -106,8 +106,8 @@ public class anc {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1, ji<bry> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      bry $$6 = $$2.a();
+   private static int a(ep $$0, Collection<? extends bst> $$1, ji<brz> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      brz $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class anc {
          $$8 = 600;
       }
 
-      for (bss $$13 : $$1) {
-         if ($$13 instanceof btn) {
-            bsa $$14 = new bsa($$2, $$8, $$4, false, $$5);
-            if (((btn)$$13).b($$14, $$0.f())) {
+      for (bst $$13 : $$1) {
+         if ($$13 instanceof bto) {
+            bsb $$14 = new bsb($$2, $$8, $$4, false, $$5);
+            if (((bto)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class anc {
       }
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<? extends bst> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (bss $$3 : $$1) {
-         if ($$3 instanceof btn && ((btn)$$3).ew()) {
+      for (bst $$3 : $$1) {
+         if ($$3 instanceof bto && ((bto)$$3).ew()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class anc {
       }
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1, ji<bry> $$2) throws CommandSyntaxException {
-      bry $$3 = $$2.a();
+   private static int a(ep $$0, Collection<? extends bst> $$1, ji<brz> $$2) throws CommandSyntaxException {
+      brz $$3 = $$2.a();
       int $$4 = 0;
 
-      for (bss $$5 : $$1) {
-         if ($$5 instanceof btn && ((btn)$$5).e($$2)) {
+      for (bst $$5 : $$1) {
+         if ($$5 instanceof bto && ((bto)$$5).e($$2)) {
             $$4++;
          }
       }

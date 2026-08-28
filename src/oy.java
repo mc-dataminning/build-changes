@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public class oy {
-   private final Function<cyj, cyt<?>> a;
+   private final Function<cyk, cyu<?>> a;
 
-   public oy(Function<cyj, cyt<?>> $$0) {
+   public oy(Function<cyk, cyu<?>> $$0) {
       this.a = $$0;
    }
 
-   public static oy a(Function<cyj, cyt<?>> $$0) {
+   public static oy a(Function<cyk, cyu<?>> $$0) {
       return new oy($$0);
    }
 
@@ -16,6 +16,6 @@ public class oy {
    }
 
    public void a(oq $$0, ale $$1) {
-      $$0.a($$1, this.a.apply(cyj.d), null);
+      $$0.a($$1, this.a.apply(cyk.d), null);
    }
 }

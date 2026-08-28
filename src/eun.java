@@ -1,62 +1,20 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record eun(euu b, String c, float d) implements eul {
-   public static final MapCodec<eun> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               euv.a.fieldOf("target").forGetter(eun::c),
-               Codec.STRING.fieldOf("score").forGetter(eun::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eun::e)
-            )
-            .apply($$0, eun::new)
-   );
+public class eun {
+   private static final Codec<eum> g = lp.I.q().dispatch(eum::b, eul::a);
+   public static final Codec<eum> a = Codec.lazyInitialized(() -> {
+      Codec<eum> $$0 = Codec.withAlternative(g, euq.a.codec());
+      return Codec.either(euk.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof euk $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final eul b = a("constant", euk.a);
+   public static final eul c = a("uniform", euq.a);
+   public static final eul d = a("binomial", euj.a);
+   public static final eul e = a("score", euo.a);
+   public static final eul f = a("storage", eup.a);
 
-   @Override
-   public euk b() {
-      return eum.e;
-   }
-
-   @Override
-   public Set<esz<?>> a() {
-      return this.b.b();
-   }
-
-   public static eun a(eqg.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eun a(eqg.b $$0, String $$1, float $$2) {
-      return new eun(eur.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(eqg $$0) {
-      ews $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         ewt $$2 = $$0.d().f();
-         ewl $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            ewp $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public euu c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   private static eul a(String $$0, MapCodec<? extends eum> $$1) {
+      return jv.a(lp.I, new ale($$0), new eul($$1));
    }
 }

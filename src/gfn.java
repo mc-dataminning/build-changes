@@ -1,50 +1,15 @@
-@FunctionalInterface
-public interface gfn<T extends dpf> {
-   gfm<T> create(gfn.a var1);
+public interface gfn<T extends dpg> {
+   void a(T var1, float var2, ezx var3, gdn var4, int var5, int var6);
 
-   public static class a {
-      private final gfl a;
-      private final geg b;
-      private final gjt c;
-      private final git d;
-      private final fwu e;
-      private final fgn f;
+   default boolean a(T $$0) {
+      return false;
+   }
 
-      public a(gfl $$0, geg $$1, gjt $$2, git $$3, fwu $$4, fgn $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   default int aP_() {
+      return 64;
+   }
 
-      public gfl a() {
-         return this.a;
-      }
-
-      public geg b() {
-         return this.b;
-      }
-
-      public git c() {
-         return this.d;
-      }
-
-      public gjt d() {
-         return this.c;
-      }
-
-      public fwu e() {
-         return this.e;
-      }
-
-      public fwy a(fww $$0) {
-         return this.e.a($$0);
-      }
-
-      public fgn f() {
-         return this.f;
-      }
+   default boolean a(T $$0, evq $$1) {
+      return evq.b($$0.ay_()).a((js)$$1, (double)this.aP_());
    }
 }

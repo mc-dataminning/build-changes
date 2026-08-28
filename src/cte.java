@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cte {
-   default void a(@Nullable cmv $$0, dbw $$1, cun $$2, iz $$3) {
+public class cte extends cuj {
+   public cte(cuj.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cmv var1, dbw var2, iz var3, @Nullable evl var4);
+   @Override
+   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yc c() {
+      return xo.c(this.a() + ".desc");
+   }
 }

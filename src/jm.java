@@ -17,7 +17,7 @@ public interface jm<T> extends Iterable<ji<T>> {
 
    Either<axe<T>, List<ji<T>>> c();
 
-   Optional<ji<T>> a(azf var1);
+   Optional<ji<T>> a(azg var1);
 
    ji<T> a(int var1);
 
@@ -142,7 +142,7 @@ public interface jm<T> extends Iterable<ji<T>> {
       }
 
       @Override
-      public Optional<ji<T>> a(azf $$0) {
+      public Optional<ji<T>> a(azg $$0) {
          return ac.b(this.f(), $$0);
       }
 

@@ -1,339 +1,84 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fid {
-   private static final ale b = new ale("icon/ping_unknown");
-   private static final ale c = new ale("icon/ping_1");
-   private static final ale d = new ale("icon/ping_2");
-   private static final ale e = new ale("icon/ping_3");
-   private static final ale f = new ale("icon/ping_4");
-   private static final ale g = new ale("icon/ping_5");
-   private static final ale h = new ale("hud/heart/container_blinking");
-   private static final ale i = new ale("hud/heart/container");
-   private static final ale j = new ale("hud/heart/full_blinking");
-   private static final ale k = new ale("hud/heart/half_blinking");
-   private static final ale l = new ale("hud/heart/absorbing_full_blinking");
-   private static final ale m = new ale("hud/heart/full");
-   private static final ale n = new ale("hud/heart/absorbing_half_blinking");
-   private static final ale o = new ale("hud/heart/half");
-   private static final Comparator<fye> p = Comparator.<fye>comparingInt($$0 -> $$0.e() == dbt.d ? 1 : 0)
-      .thenComparing($$0 -> x.a($$0.h(), ewo::b, ""))
-      .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
-   public static final int a = 20;
-   private final ffd q;
-   private final fgo r;
-   @Nullable
-   private xo s;
-   @Nullable
-   private xo t;
-   private boolean u;
-   private final Map<UUID, fid.a> v = new Object2ObjectOpenHashMap();
+public class fid extends fhb {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fid.a n;
+   private final Supplier<gpy> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fid(ffd $$0, fgo $$1) {
-      this.q = $$0;
-      this.r = $$1;
+   public fid(int $$0, int $$1, fwv $$2, Supplier<gpy> $$3) {
+      super(0, 0, $$0, $$1, xn.a);
+      this.n = fid.a.a($$2);
+      this.o = $$3;
    }
 
-   public xo a(fye $$0) {
-      return $$0.i() != null ? this.a($$0, $$0.i().f()) : this.a($$0, ewo.a($$0.h(), xo.b($$0.a().getName())));
-   }
-
-   private xo a(fye $$0, yc $$1) {
-      return $$0.e() == dbt.d ? $$1.a(n.u) : $$1;
-   }
-
-   public void a(boolean $$0) {
-      if (this.u != $$0) {
-         this.v.clear();
-         this.u = $$0;
-         if ($$0) {
-            xo $$1 = xr.a(this.b(), xo.b(", "), this::a);
-            this.q.aX().c(xo.a("multiplayer.player.list.narration", $$1));
-         }
-      }
-   }
-
-   private List<fye> b() {
-      return this.q.s.cz.l().stream().sorted(p).limit(80L).toList();
-   }
-
-   public void a(fgp $$0, int $$1, ewt $$2, @Nullable ewl $$3) {
-      List<fye> $$4 = this.b();
-      List<fid.b> $$5 = new ArrayList<>($$4.size());
-      int $$6 = this.q.h.b(" ");
-      int $$7 = 0;
-      int $$8 = 0;
-
-      for (fye $$9 : $$4) {
-         xo $$10 = this.a($$9);
-         $$7 = Math.max($$7, this.q.h.a($$10));
-         int $$11 = 0;
-         xo $$12 = null;
-         int $$13 = 0;
-         if ($$3 != null) {
-            ews $$14 = ews.a($$9.a());
-            ewp $$15 = $$2.d($$14, $$3);
-            if ($$15 != null) {
-               $$11 = $$15.a();
-            }
-
-            if ($$3.h() != eww.a.b) {
-               ze $$16 = $$3.a(zh.d);
-               $$12 = ewp.a($$15, $$16);
-               $$13 = this.q.h.a($$12);
-               $$8 = Math.max($$8, $$13 > 0 ? $$6 + $$13 : 0);
-            }
-         }
-
-         $$5.add(new fid.b($$10, $$11, $$12, $$13));
-      }
-
-      if (!this.v.isEmpty()) {
-         Set<UUID> $$17 = $$4.stream().map($$0x -> $$0x.a().getId()).collect(Collectors.toSet());
-         this.v.keySet().removeIf($$1x -> !$$17.contains($$1x));
-      }
-
-      int $$18 = $$4.size();
-      int $$19 = $$18;
-
-      int $$20;
-      for ($$20 = 1; $$19 > 20; $$19 = ($$18 + $$20 - 1) / $$20) {
-         $$20++;
-      }
-
-      boolean $$21 = this.q.T() || this.q.L().k().h();
-      int $$22;
-      if ($$3 != null) {
-         if ($$3.h() == eww.a.b) {
-            $$22 = 90;
-         } else {
-            $$22 = $$8;
-         }
-      } else {
-         $$22 = 0;
-      }
-
-      int $$25 = Math.min($$20 * (($$21 ? 9 : 0) + $$7 + $$22 + 13), $$1 - 50) / $$20;
-      int $$26 = $$1 / 2 - ($$25 * $$20 + ($$20 - 1) * 5) / 2;
-      int $$27 = 10;
-      int $$28 = $$25 * $$20 + ($$20 - 1) * 5;
-      List<ayj> $$29 = null;
-      if (this.t != null) {
-         $$29 = this.q.h.c(this.t, $$1 - 50);
-
-         for (ayj $$30 : $$29) {
-            $$28 = Math.max($$28, this.q.h.a($$30));
-         }
-      }
-
-      List<ayj> $$31 = null;
-      if (this.s != null) {
-         $$31 = this.q.h.c(this.s, $$1 - 50);
-
-         for (ayj $$32 : $$31) {
-            $$28 = Math.max($$28, this.q.h.a($$32));
-         }
-      }
-
-      if ($$29 != null) {
-         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$29.size() * 9, Integer.MIN_VALUE);
-
-         for (ayj $$33 : $$29) {
-            int $$34 = this.q.h.a($$33);
-            $$0.b(this.q.h, $$33, $$1 / 2 - $$34 / 2, $$27, -1);
-            $$27 += 9;
-         }
-
-         $$27++;
-      }
-
-      $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$19 * 9, Integer.MIN_VALUE);
-      int $$35 = this.q.m.a(553648127);
-
-      for (int $$36 = 0; $$36 < $$18; $$36++) {
-         int $$37 = $$36 / $$19;
-         int $$38 = $$36 % $$19;
-         int $$39 = $$26 + $$37 * $$25 + $$37 * 5;
-         int $$40 = $$27 + $$38 * 9;
-         $$0.a($$39, $$40, $$39 + $$25, $$40 + 8, $$35);
-         RenderSystem.enableBlend();
-         if ($$36 < $$4.size()) {
-            fye $$41 = $$4.get($$36);
-            fid.b $$42 = $$5.get($$36);
-            GameProfile $$43 = $$41.a();
-            if ($$21) {
-               cmv $$44 = this.q.r.b($$43.getId());
-               boolean $$45 = $$44 != null && gjw.e($$44);
-               boolean $$46 = $$44 != null && $$44.a(cmw.g);
-               fib.a($$0, $$41.g().a(), $$39, $$40, 8, $$46, $$45);
-               $$39 += 9;
-            }
-
-            $$0.b(this.q.h, $$42.a, $$39, $$40, $$41.e() == dbt.d ? -1862270977 : -1);
-            if ($$3 != null && $$41.e() != dbt.d) {
-               int $$47 = $$39 + $$7 + 1;
-               int $$48 = $$47 + $$22;
-               if ($$48 - $$47 > 5) {
-                  this.a($$3, $$40, $$42, $$47, $$48, $$43.getId(), $$0);
-               }
-            }
-
-            this.a($$0, $$25, $$39 - ($$21 ? 9 : 0), $$40, $$41);
-         }
-      }
-
-      if ($$31 != null) {
-         $$27 += $$19 * 9 + 1;
-         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$31.size() * 9, Integer.MIN_VALUE);
-
-         for (ayj $$49 : $$31) {
-            int $$50 = this.q.h.a($$49);
-            $$0.b(this.q.h, $$49, $$1 / 2 - $$50 / 2, $$27, -1);
-            $$27 += 9;
-         }
-      }
-   }
-
-   protected void a(fgp $$0, int $$1, int $$2, int $$3, fye $$4) {
-      ale $$5;
-      if ($$4.f() < 0) {
-         $$5 = b;
-      } else if ($$4.f() < 150) {
-         $$5 = g;
-      } else if ($$4.f() < 300) {
-         $$5 = f;
-      } else if ($$4.f() < 600) {
-         $$5 = e;
-      } else if ($$4.f() < 1000) {
-         $$5 = d;
-      } else {
-         $$5 = c;
-      }
-
+   @Override
+   protected void b(fgq $$0, int $$1, int $$2, float $$3) {
       $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a($$5, $$2 + $$1 - 11, $$3, 10, 8);
+      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
+      float $$4 = (float)this.v() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.e();
+      eyt.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.e();
+      eyt.d();
       $$0.c().b();
    }
 
-   private void a(ewl $$0, int $$1, fid.b $$2, int $$3, int $$4, UUID $$5, fgp $$6) {
-      if ($$0.h() == eww.a.b) {
-         this.a($$1, $$3, $$4, $$5, $$6, $$2.b);
-      } else if ($$2.c != null) {
-         $$6.b(this.q.h, $$2.c, $$4 - $$2.d, $$1, 16777215);
-      }
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = ayy.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   private void a(int $$0, int $$1, int $$2, UUID $$3, fgp $$4, int $$5) {
-      fid.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new fid.a($$5));
-      $$6.a($$5, (long)this.r.e());
-      int $$7 = ayx.e(Math.max($$5, $$6.a()), 2);
-      int $$8 = Math.max($$5, Math.max($$6.a(), 20)) / 2;
-      boolean $$9 = $$6.a((long)this.r.e());
-      if ($$7 > 0) {
-         int $$10 = ayx.d(Math.min((float)($$2 - $$1 - 4) / (float)$$8, 9.0F));
-         if ($$10 <= 3) {
-            float $$11 = ayx.a((float)$$5 / 20.0F, 0.0F, 1.0F);
-            int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
-            float $$13 = (float)$$5 / 2.0F;
-            xo $$14 = xo.a("multiplayer.player.list.hp", $$13);
-            xo $$15;
-            if ($$2 - this.q.h.a($$14) >= $$1) {
-               $$15 = $$14;
-            } else {
-               $$15 = xo.b(Float.toString($$13));
-            }
-
-            $$4.b(this.q.h, $$15, ($$2 + $$1 - this.q.h.a($$15)) / 2, $$0, $$12);
-         } else {
-            ale $$17 = $$9 ? h : i;
-
-            for (int $$18 = $$7; $$18 < $$8; $$18++) {
-               $$4.a($$17, $$1 + $$18 * $$10, $$0, 9, 9);
-            }
-
-            for (int $$19 = 0; $$19 < $$7; $$19++) {
-               $$4.a($$17, $$1 + $$19 * $$10, $$0, 9, 9);
-               if ($$9) {
-                  if ($$19 * 2 + 1 < $$6.a()) {
-                     $$4.a(j, $$1 + $$19 * $$10, $$0, 9, 9);
-                  }
-
-                  if ($$19 * 2 + 1 == $$6.a()) {
-                     $$4.a(k, $$1 + $$19 * $$10, $$0, 9, 9);
-                  }
-               }
-
-               if ($$19 * 2 + 1 < $$5) {
-                  $$4.a($$19 >= 10 ? l : m, $$1 + $$19 * $$10, $$0, 9, 9);
-               }
-
-               if ($$19 * 2 + 1 == $$5) {
-                  $$4.a($$19 >= 10 ? n : o, $$1 + $$19 * $$10, $$0, 9, 9);
-               }
-            }
-         }
-      }
+   @Override
+   public void a(gtu $$0) {
    }
 
-   public void a(@Nullable xo $$0) {
-      this.s = $$0;
+   @Override
+   protected void a(fkz $$0) {
    }
 
-   public void b(@Nullable xo $$0) {
-      this.t = $$0;
+   @Override
+   public boolean B() {
+      return false;
    }
 
-   public void a() {
-      this.t = null;
-      this.s = null;
+   @Nullable
+   @Override
+   public fgn a(flf $$0) {
+      return null;
    }
 
-   static class a {
-      private static final long a = 20L;
-      private static final long b = 20L;
-      private static final long c = 10L;
-      private int d;
-      private int e;
-      private long f;
-      private long g;
-
-      public a(int $$0) {
-         this.e = $$0;
-         this.d = $$0;
+   static record a(fve<?> a, fve<?> b) {
+      public static fid.a a(fwv $$0) {
+         fve<?> $$1 = new fve($$0.a(fwy.aS), false);
+         fve<?> $$2 = new fve($$0.a(fwy.aW), true);
+         $$1.e = false;
+         $$2.e = false;
+         return new fid.a($$1, $$2);
       }
 
-      public void a(int $$0, long $$1) {
-         if ($$0 != this.d) {
-            long $$2 = $$0 < this.d ? 20L : 10L;
-            this.g = $$1 + $$2;
-            this.d = $$0;
-            this.f = $$1;
-         }
-
-         if ($$1 - this.f > 20L) {
-            this.e = $$0;
-         }
+      public void a(fgq $$0, gpy $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.5F, 0.0F);
+         fve<?> $$2 = $$1.e() == gpy.a.a ? this.b : this.a;
+         gdv $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
       }
-
-      public int a() {
-         return this.e;
-      }
-
-      public boolean a(long $$0) {
-         return this.g > $$0 && (this.g - $$0) % 6L >= 3L;
-      }
-   }
-
-   static record b(xo a, int b, @Nullable xo c, int d) {
    }
 }

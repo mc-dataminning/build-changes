@@ -12,10 +12,10 @@ public class ads {
    private final byte[] c;
    private final List<ads.a> d;
 
-   public ads(dug $$0) {
+   public ads(duh $$0) {
       this.b = new ur();
 
-      for (Entry<dxs.a, dxs> $$1 : $$0.e()) {
+      for (Entry<dxt.a, dxt> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new uy($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class ads {
       a(new wl(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<iz, dpf> $$2 : $$0.G().entrySet()) {
+      for (Entry<iz, dpg> $$2 : $$0.G().entrySet()) {
          this.d.add(ads.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class ads {
       ads.a.b.encode($$0, this.d);
    }
 
-   private static int a(dug $$0) {
+   private static int a(duh $$0) {
       int $$1 = 0;
 
-      for (duh $$2 : $$0.d()) {
+      for (dui $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class ads {
       return $$0;
    }
 
-   public static void a(wl $$0, dug $$1) {
-      for (duh $$2 : $$1.d()) {
+   public static void a(wl $$0, duh $$1) {
+      for (dui $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class ads {
       public static final zm<wz, List<ads.a>> b = a.a(zk.a());
       final int c;
       final int d;
-      final dph<?> e;
+      final dpi<?> e;
       @Nullable
       final ur f;
 
-      private a(int $$0, int $$1, dph<?> $$2, @Nullable ur $$3) {
+      private a(int $$0, int $$1, dpi<?> $$2, @Nullable ur $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,9 +130,9 @@ public class ads {
          $$0.a(this.f);
       }
 
-      static ads.a a(dpf $$0) {
+      static ads.a a(dpg $$0) {
          ur $$1 = $$0.a($$0.i().H_());
-         iz $$2 = $$0.az_();
+         iz $$2 = $$0.ay_();
          int $$3 = kb.b($$2.u()) << 4 | kb.b($$2.w());
          return new ads.a($$3, $$2.v(), $$0.r(), $$1.g() ? null : $$1);
       }
@@ -140,6 +140,6 @@ public class ads {
 
    @FunctionalInterface
    public interface b {
-      void accept(iz var1, dph<?> var2, @Nullable ur var3);
+      void accept(iz var1, dpi<?> var2, @Nullable ur var3);
    }
 }

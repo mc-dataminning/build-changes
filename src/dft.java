@@ -1,29 +1,62 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dft {
-   ewi q_ = dex.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dsr r_ = dsq.D;
+public class dft extends ddr {
+   public static final MapCodec<dft> d = b(dft::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   static bqs a(@Nullable bss $$0, dsa $$1, dbw $$2, iz $$3) {
-      if ($$1.c(r_)) {
-         dex.a($$2, $$3, new cun(cuq.ws, 1));
-         float $$4 = ayx.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, avz.ee, awa.e, 1.0F, $$4);
-         dsa $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dwt.c, $$3, dwt.a.a($$0, $$5));
-         return bqs.a($$2.B);
+   @Override
+   public MapCodec<dft> a() {
+      return d;
+   }
+
+   public dft(dsa.d $$0) {
+      super($$0, kf.c);
+   }
+
+   @Override
+   public boolean d(dsb $$0) {
+      return false;
+   }
+
+   protected static boolean a(dbx $$0, dcw.c $$1) {
+      if ($$1 == dcw.c.b) {
+         return $$0.E_().i() < 0.05F;
       } else {
-         return bqs.e;
+         return $$1 == dcw.c.c ? $$0.E_().i() < 0.1F : false;
       }
    }
 
-   static boolean h_(dsa $$0) {
-      return $$0.b(r_) && $$0.c(r_);
+   @Override
+   public void a(dsb $$0, dbx $$1, iz $$2, dcw.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dcw.c.b) {
+            $$1.b($$2, dfa.fu.o());
+            $$1.a(null, dwu.c, $$2);
+         } else if ($$3 == dcw.c.c) {
+            $$1.b($$2, dfa.fw.o());
+            $$1.a(null, dwu.c, $$2);
+         }
+      }
    }
 
-   static ToIntFunction<dsa> h_(int $$0) {
-      return $$1 -> $$1.c(dsq.D) ? $$0 : 0;
+   @Override
+   protected boolean a(ent $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dsb $$0, dbx $$1, iz $$2, ent $$3) {
+      if ($$3 == env.c) {
+         dsb $$4 = dfa.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dwu.c, $$2, dwu.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == env.e) {
+         dsb $$5 = dfa.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dwu.c, $$2, dwu.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

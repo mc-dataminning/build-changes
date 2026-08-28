@@ -1,38 +1,38 @@
-import javax.annotation.Nullable;
+public class gkv extends giv<cnr> {
+   private static final ale a = new ale("textures/entity/shulker/spark.png");
+   private static final gdv f = gdv.i(a);
+   private final fvr<cnr> g;
 
-public class gkv extends gkb<ckh, fvr<ckh>> {
-   private static final ale a = new ale("textures/" + geb.i.b().a() + ".png");
-   private static final ale[] i = geb.j.stream().map($$0 -> new ale("textures/" + $$0.b().a() + ".png")).toArray(ale[]::new);
-
-   public gkv(giv.a $$0) {
-      super($$0, new fvr<>($$0.a(fwx.bk)), 0.0F);
-      this.a(new gnk(this));
+   public gkv(giw.a $$0) {
+      super($$0);
+      this.g = new fvr<>($$0.a(fwy.bl));
    }
 
-   public evp a(ckh $$0, float $$1) {
-      return $$0.H($$1).orElse(super.a($$0, $$1)).a((double)$$0.ee());
+   protected int a(cnr $$0, iz $$1) {
+      return 15;
    }
 
-   public boolean a(ckh $$0, ggq $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.H(0.0F).filter($$2x -> {
-         bsy<?> $$3x = $$0.ak();
-         float $$4x = $$3x.m() / 2.0F;
-         float $$5 = $$3x.l() / 2.0F;
-         evp $$6 = evp.c($$0.dp());
-         return $$1.a(new evk($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
-      }).isPresent();
+   public void a(cnr $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      $$3.a();
+      float $$6 = ayy.j($$2, $$0.O, $$0.dF());
+      float $$7 = ayy.i($$2, $$0.P, $$0.dH());
+      float $$8 = (float)$$0.ai + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayy.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(ayy.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(ayy.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      fab $$9 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$9, $$5, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      fab $$10 = $$4.getBuffer(f);
+      this.g.a($$3, $$10, $$5, gop.d, 1.0F, 1.0F, 1.0F, 0.15F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ale a(ckh $$0) {
-      return a($$0.gr());
-   }
-
-   public static ale a(@Nullable ctg $$0) {
-      return $$0 == null ? a : i[$$0.a()];
-   }
-
-   protected void a(ckh $$0, ezw $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
-      $$1.a($$0.y().g().b(), 0.0F, 0.5F, 0.0F);
+   public ale a(cnr $$0) {
+      return a;
    }
 }

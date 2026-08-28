@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gc extends fz<dju> {
+public class gc extends fz<djv> {
    private gc() {
-      super(dju.d, dju::values);
+      super(djv.d, djv::values);
    }
 
-   public static fz<dju> a() {
+   public static fz<djv> a() {
       return new gc();
    }
 
-   public static dju a(CommandContext<ep> $$0, String $$1) {
-      return (dju)$$0.getArgument($$1, dju.class);
+   public static djv a(CommandContext<ep> $$0, String $$1) {
+      return (djv)$$0.getArgument($$1, djv.class);
    }
 }

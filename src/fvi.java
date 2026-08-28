@@ -1,53 +1,35 @@
-import com.google.common.collect.ImmutableList;
+public class fvi<T extends bst> extends fui<T> {
+   private final fwz a;
+   private final fwz b;
+   private final fwz f;
 
-public class fvi<T extends bss> extends fst<T> {
-   protected final fwy a;
-   protected final fwy b;
-   protected final fwy f;
-   protected final fwy g;
-   protected final fwy h;
-   protected final fwy i;
-
-   protected fvi(fwy $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+   public fvi(fwz $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fxg a(int $$0, fxc $$1) {
-      fxg $$2 = new fxg();
-      fxh $$3 = $$2.a();
-      $$3.a("head", fxd.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), fxa.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", fxd.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), fxa.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fxd $$4 = fxd.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, fxa.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, fxa.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, fxa.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, fxa.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static fxf b() {
+      fxh $$0 = new fxh();
+      fxi $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fxe.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fxb.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fxe.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxb.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fxe.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxb.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fxe.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fxb.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fxe.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxb.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fxe.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxb.a(1.5F, 22.0F, -1.5F));
+      return fxf.a($$0, 32, 32);
    }
 
    @Override
-   protected Iterable<fwy> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fwy> b() {
-      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
+   public fwz a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = ayx.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ayx.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ayx.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ayx.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.f.g = -0.2F + 0.4F * ayy.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayy.a($$3 * 0.2F);
    }
 }

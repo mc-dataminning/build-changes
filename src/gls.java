@@ -1,18 +1,18 @@
-public class gls extends gkb<cmo, fwj<cmo>> {
-   private static final ale a = new ale("textures/entity/wandering_trader.png");
+public class gls extends gjp<ckr> {
+   private static final ale a = new ale("textures/entity/illager/vindicator.png");
 
-   public gls(giv.a $$0) {
-      super($$0, new fwj<>($$0.a(fwx.bS)), 0.5F);
-      this.a(new gmm<>(this, $$0.f(), $$0.d()));
-      this.a(new gml<>(this, $$0.d()));
+   public gls(giw.a $$0) {
+      super($$0, new fun<>($$0.a(fwy.bQ)), 0.5F);
+      this.a(new gnb<ckr, fun<ckr>>(this, $$0.d()) {
+         public void a(ezx $$0, gdn $$1, int $$2, ckr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gi()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public ale a(cmo $$0) {
+   public ale a(ckr $$0) {
       return a;
-   }
-
-   protected void a(cmo $$0, ezw $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

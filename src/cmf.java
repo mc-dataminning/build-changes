@@ -1,64 +1,75 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cmf implements dat {
-   private final cmv a;
-   private dav b = new dav();
-   private int c;
-
-   public cmf(cmv $$0) {
-      this.a = $$0;
-   }
+public class cmf implements dbk {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public cmv gq() {
-      return this.a;
+   public int a(are $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.ab().b(dbt.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            cmw $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               azg $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               iz $$7 = $$3.dp().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (buk.a(bsz.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, axa.n).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   @Override
-   public void f(@Nullable cmv $$0) {
+   private int a(are $$0, iz $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(cew.n), $$1, 48, ces.b.b) > 4L) {
+         List<cfh> $$3 = $$0.a(cfh.class, new evl($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   @Override
-   public dav gs() {
-      return this.b;
+   private int b(are $$0, iz $$1) {
+      int $$2 = 16;
+      List<cfh> $$3 = $$0.a(cfh.class, new evl($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   @Override
-   public void a(dav $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(dau $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void n(cun $$0) {
-   }
-
-   @Override
-   public boolean gy() {
-      return this.a.dP().B;
-   }
-
-   @Override
-   public int u() {
-      return this.c;
-   }
-
-   @Override
-   public void u(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gt() {
-      return true;
-   }
-
-   @Override
-   public avy gu() {
-      return avz.AU;
+   private int a(iz $$0, are $$1) {
+      cfh $$2 = bsz.p.a((dbx)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bts.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

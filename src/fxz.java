@@ -1,41 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.EnumMap;
 
 public class fxz {
-   private final atz a = auc.c();
-   private final Map<atv, String> b;
+   public static final int a = 5000;
+   private final fxv b;
+   private final fhl c;
+   private final EnumMap<blu, Long> d;
 
-   public fxz() {
-      this.a.a();
-      Builder<atv, String> $$0 = ImmutableMap.builder();
-      this.a.c().forEach($$1 -> {
-         asz $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public fxz(fxv $$0, fhl $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(blu.class);
    }
 
-   public List<atv> a(List<atv> $$0) {
-      List<atv> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (atv $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public void a() {
+      if (this.c.g()) {
+         this.a(blu.a);
       }
-
-      this.a.b($$2);
-      return $$1;
    }
 
-   public aue a() {
-      List<ata> $$0 = this.a.g();
-      return new auh(atc.b, $$0);
+   private void a(blu $$0) {
+      long $$1 = ac.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new ahn($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

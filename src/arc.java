@@ -12,33 +12,33 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class arc extends dua {
-   private static final List<duv> b = duv.a();
+public class arc extends dub {
+   private static final List<duw> b = duw.a();
    private final aqw c;
    final are d;
    final Thread e;
    final arh f;
    private final arc.b g;
    public final aqn a;
-   private final epo h;
+   private final epp h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final duv[] n = new duv[4];
-   private final dtw[] o = new dtw[4];
+   private final duw[] n = new duw[4];
+   private final dtx[] o = new dtx[4];
    @Nullable
-   @bab
-   private dch.d p;
+   @bac
+   private dci.d p;
 
-   public arc(are $$0, epu.c $$1, DataFixer $$2, emj $$3, Executor $$4, dtx $$5, int $$6, int $$7, boolean $$8, arn $$9, dvz $$10, Supplier<epo> $$11) {
+   public arc(are $$0, epv.c $$1, DataFixer $$2, emk $$3, Executor $$4, dty $$5, int $$6, int $$7, boolean $$8, arn $$9, dwa $$10, Supplier<epp> $$11) {
       this.d = $$0;
       this.g = new arc.b($$0);
       this.e = Thread.currentThread();
       File $$12 = $$1.a($$0.af()).resolve("data").toFile();
       $$12.mkdirs();
-      this.h = new epo($$12, $$2, $$0.H_());
+      this.h = new epp($$12, $$2, $$0.H_());
       this.a = new aqn($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.e();
       this.c = this.a.j();
@@ -59,7 +59,7 @@ public class arc extends dua {
       return this.a.h();
    }
 
-   private void a(long $$0, @Nullable dtw $$1, duv $$2) {
+   private void a(long $$0, @Nullable dtx $$1, duw $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -73,17 +73,17 @@ public class arc extends dua {
 
    @Nullable
    @Override
-   public dtw a(int $$0, int $$1, duv $$2, boolean $$3) {
+   public dtx a(int $$0, int $$1, duw $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dtw>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dtx>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bng $$4 = this.d.ag();
+         bnh $$4 = this.d.ag();
          $$4.d("getChunk");
-         long $$5 = dbd.c($$0, $$1);
+         long $$5 = dbe.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dtw $$7 = this.o[$$6];
+               dtx $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -91,10 +91,10 @@ public class arc extends dua {
          }
 
          $$4.d("getChunkCacheMiss");
-         CompletableFuture<aqo<dtw>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<aqo<dtx>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$8::isDone);
-         aqo<dtw> $$9 = $$8.join();
-         dtw $$10 = $$9.b(null);
+         aqo<dtx> $$9 = $$8.join();
+         dtx $$10 = $$9.b(null);
          if ($$10 == null && $$3) {
             throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
          } else {
@@ -106,17 +106,17 @@ public class arc extends dua {
 
    @Nullable
    @Override
-   public dug a(int $$0, int $$1) {
+   public duh a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
          this.d.ag().d("getChunkNow");
-         long $$2 = dbd.c($$0, $$1);
+         long $$2 = dbe.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == duv.n) {
-               dtw $$4 = this.o[$$3];
-               return $$4 instanceof dug ? (dug)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == duw.n) {
+               dtx $$4 = this.o[$$3];
+               return $$4 instanceof duh ? (duh)$$4 : null;
             }
          }
 
@@ -124,15 +124,15 @@ public class arc extends dua {
          if ($$5 == null) {
             return null;
          } else {
-            aqo<dtw> $$6 = $$5.b(duv.n).getNow(null);
+            aqo<dtx> $$6 = $$5.b(duw.n).getNow(null);
             if ($$6 == null) {
                return null;
             } else {
-               dtw $$7 = $$6.b(null);
+               dtx $$7 = $$6.b(null);
                if ($$7 != null) {
-                  this.a($$2, $$7, duv.n);
-                  if ($$7 instanceof dug) {
-                     return (dug)$$7;
+                  this.a($$2, $$7, duw.n);
+                  if ($$7 instanceof duh) {
+                     return (duh)$$7;
                   }
                }
 
@@ -143,33 +143,33 @@ public class arc extends dua {
    }
 
    private void r() {
-      Arrays.fill(this.m, dbd.a);
+      Arrays.fill(this.m, dbe.a);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<aqo<dtw>> b(int $$0, int $$1, duv $$2, boolean $$3) {
+   public CompletableFuture<aqo<dtx>> b(int $$0, int $$1, duw $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<aqo<dtw>> $$5;
+      CompletableFuture<aqo<dtx>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<aqo<dtw>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<aqo<dtx>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<aqo<dtw>> c(int $$0, int $$1, duv $$2, boolean $$3) {
-      dbd $$4 = new dbd($$0, $$1);
+   private CompletableFuture<aqo<dtx>> c(int $$0, int $$1, duw $$2, boolean $$3) {
+      dbe $$4 = new dbe($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = aqm.a($$2);
       aql $$7 = this.b($$5);
       if ($$3) {
          this.c.a(arj.h, $$4, $$6, $$4);
          if (this.a($$7, $$6)) {
-            bng $$8 = this.d.ag();
+            bnh $$8 = this.d.ag();
             $$8.a("chunkLoad");
             this.s();
             $$7 = this.b($$5);
@@ -189,15 +189,15 @@ public class arc extends dua {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      aql $$2 = this.b(new dbd($$0, $$1).a());
-      int $$3 = aqm.a(duv.n);
+      aql $$2 = this.b(new dbe($$0, $$1).a());
+      int $$3 = aqm.a(duw.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dui c(int $$0, int $$1) {
-      long $$2 = dbd.c($$0, $$1);
+   public duj c(int $$0, int $$1) {
+      long $$2 = dbe.c($$0, $$1);
       aql $$3 = this.b($$2);
       if ($$3 == null) {
          return null;
@@ -205,13 +205,13 @@ public class arc extends dua {
          int $$4 = b.size() - 1;
 
          while (true) {
-            duv $$5 = b.get($$4);
-            dtw $$6 = $$3.a($$5).getNow(aql.a).b(null);
+            duw $$5 = b.get($$4);
+            dtx $$6 = $$3.a($$5).getNow(aql.a).b(null);
             if ($$6 != null) {
                return $$6;
             }
 
-            if ($$5 == duv.k.d()) {
+            if ($$5 == duw.k.d()) {
                return null;
             }
 
@@ -220,7 +220,7 @@ public class arc extends dua {
       }
    }
 
-   public dbw c() {
+   public dbx c() {
       return this.d;
    }
 
@@ -285,13 +285,13 @@ public class arc extends dua {
       long $$1 = $$0 - this.i;
       this.i = $$0;
       if (!this.d.ai()) {
-         bng $$2 = this.d.ag();
+         bnh $$2 = this.d.ag();
          $$2.a("pollingChunks");
          $$2.a("filteringLoadedChunks");
          List<arc.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
 
          for (aql $$4 : this.a.k()) {
-            dug $$5 = $$4.d();
+            duh $$5 = $$4.d();
             if ($$5 != null) {
                $$3.add(new arc.a($$5, $$4));
             }
@@ -300,21 +300,21 @@ public class arc extends dua {
          if (this.d.s().i()) {
             $$2.b("naturalSpawnCount");
             int $$6 = this.c.b();
-            dch.d $$7 = dch.a($$6, this.d.A(), this::a, new dcg(this.a));
+            dci.d $$7 = dci.a($$6, this.d.A(), this::a, new dch(this.a));
             this.p = $$7;
             $$2.b("spawnAndTick");
-            boolean $$8 = this.d.ab().b(dbs.e);
+            boolean $$8 = this.d.ab().b(dbt.e);
             ac.c($$3, this.d.z);
-            int $$9 = this.d.ab().c(dbs.o);
+            int $$9 = this.d.ab().c(dbt.o);
             boolean $$10 = this.d.A_().c() % 400L == 0L;
 
             for (arc.a $$11 : $$3) {
-               dug $$12 = $$11.a;
-               dbd $$13 = $$12.f();
+               duh $$12 = $$11.a;
+               dbe $$13 = $$12.f();
                if (this.d.a($$13) && this.a.c($$13)) {
                   $$12.a($$1);
                   if ($$8 && (this.j || this.k) && this.d.C_().a($$13)) {
-                     dch.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                     dci.a(this.d, $$12, $$7, this.k, this.j, $$10);
                   }
 
                   if (this.d.a($$13.a())) {
@@ -336,7 +336,7 @@ public class arc extends dua {
       }
    }
 
-   private void a(long $$0, Consumer<dug> $$1) {
+   private void a(long $$0, Consumer<duh> $$1) {
       aql $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(aql.c).a($$1);
@@ -353,15 +353,15 @@ public class arc extends dua {
       return this.g.bx();
    }
 
-   public dtx g() {
+   public dty g() {
       return this.a.a();
    }
 
-   public dty h() {
+   public dtz h() {
       return this.a.b();
    }
 
-   public dyg i() {
+   public dyh i() {
       return this.a.c();
    }
 
@@ -373,14 +373,14 @@ public class arc extends dua {
    public void a(iz $$0) {
       int $$1 = kb.a($$0.u());
       int $$2 = kb.a($$0.w());
-      aql $$3 = this.b(dbd.c($$1, $$2));
+      aql $$3 = this.b(dbe.c($$1, $$2));
       if ($$3 != null) {
          $$3.a($$0);
       }
    }
 
    @Override
-   public void a(dcf $$0, kb $$1) {
+   public void a(dcg $$0, kb $$1) {
       this.g.execute(() -> {
          aql $$2 = this.b($$1.r().a());
          if ($$2 != null) {
@@ -389,16 +389,16 @@ public class arc extends dua {
       });
    }
 
-   public <T> void a(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dbd $$0, boolean $$1) {
+   public void a(dbe $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -408,19 +408,19 @@ public class arc extends dua {
       }
    }
 
-   public void a(bss $$0) {
+   public void a(bst $$0) {
       this.a.b($$0);
    }
 
-   public void b(bss $$0) {
+   public void b(bst $$0) {
       this.a.a($$0);
    }
 
-   public void a(bss $$0, zv<?> $$1) {
+   public void a(bst $$0, zv<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(bss $$0, zv<?> $$1) {
+   public void b(bst $$0, zv<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -438,25 +438,25 @@ public class arc extends dua {
       this.k = $$1;
    }
 
-   public String a(dbd $$0) {
+   public String a(dbe $$0) {
       return this.a.a($$0);
    }
 
-   public epo k() {
+   public epp k() {
       return this.h;
    }
 
-   public cer l() {
+   public ces l() {
       return this.a.m();
    }
 
-   public dvb m() {
+   public dvc m() {
       return this.a.p();
    }
 
    @Nullable
-   @bab
-   public dch.d n() {
+   @bac
+   public dci.d n() {
       return this.p;
    }
 
@@ -464,11 +464,11 @@ public class arc extends dua {
       this.c.e();
    }
 
-   static record a(dug a, aql b) {
+   static record a(duh a, aql b) {
    }
 
-   final class b extends bpi<Runnable> {
-      b(final dbw $$0) {
+   final class b extends bpj<Runnable> {
+      b(final dbx $$0) {
          super("Chunk source main thread executor for " + $$0.af().a());
       }
 

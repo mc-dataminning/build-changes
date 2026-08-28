@@ -1,39 +1,20 @@
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+
 public class cup {
-   public static bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      $$1.c($$2);
-      return bqt.b($$1.b($$2));
-   }
-
-   public static cun a(cun $$0, cmv $$1, cun $$2, boolean $$3) {
-      boolean $$4 = $$1.fP();
-      if ($$3 && $$4) {
-         if (!$$1.gc().i($$2)) {
-            $$1.gc().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.e()) {
-            return $$2;
-         } else {
-            if (!$$1.gc().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
+   private static final Strategy<? super cuo> a = new Strategy<cuo>() {
+      public int a(@Nullable cuo $$0) {
+         return cuo.a($$0);
       }
-   }
 
-   public static cun a(cun $$0, cmv $$1, cun $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cjf $$0, Iterable<cun> $$1) {
-      dbw $$2 = $$0.dP();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cjf($$2, $$0.du(), $$0.dw(), $$0.dA(), $$2x)));
+      public boolean a(@Nullable cuo $$0, @Nullable cuo $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.e() == $$1.e() && cuo.c($$0, $$1);
       }
+   };
+
+   public static Set<cuo> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

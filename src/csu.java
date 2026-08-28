@@ -1,155 +1,135 @@
-import java.util.List;
-import java.util.Optional;
-import org.apache.commons.lang3.math.Fraction;
+import javax.annotation.Nullable;
 
-public class csu extends cui {
-   private static final int a = ayx.f(0.4F, 0.4F, 1.0F);
-   private static final int b = 64;
+public class csu extends cuj implements ctf {
+   private final ent a;
 
-   public csu(cui.a $$0) {
-      super($$0);
-   }
-
-   public static float d(cun $$0) {
-      cxa $$1 = $$0.a(km.E, cxa.a);
-      return $$1.e().floatValue();
+   public csu(ent $$0, cuj.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cun $$0, crn $$1, cqa $$2, cmv $$3) {
-      if ($$2 != cqa.b) {
-         return false;
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      evm $$4 = a($$0, $$1, this.a == env.a ? dbg.b.b : dbg.b.a);
+      if ($$4.c() == evo.a.a) {
+         return bqu.c($$3);
+      } else if ($$4.c() != evo.a.b) {
+         return bqu.c($$3);
       } else {
-         cxa $$4 = $$0.a(km.E);
-         if ($$4 == null) {
-            return false;
-         } else {
-            cun $$5 = $$1.g();
-            cxa.a $$6 = new cxa.a($$4);
-            if ($$5.e()) {
-               this.a($$3);
-               cun $$7 = $$6.b();
-               if ($$7 != null) {
-                  cun $$8 = $$1.d($$7);
-                  $$6.a($$8);
-               }
-            } else if ($$5.g().an_()) {
-               int $$9 = $$6.a($$1, $$3);
-               if ($$9 > 0) {
-                  this.b($$3);
+         iz $$5 = $$4.a();
+         je $$6 = $$4.b();
+         iz $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bqu.d($$3);
+         } else if (this.a == env.a) {
+            dsb $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof dff $$9) {
+               cuo $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.e()) {
+                  $$1.b(awj.c.b(this));
+                  $$9.ar_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, dwu.y, $$5);
+                  cuo $$11 = cuq.a($$3, $$1, $$10);
+                  if (!$$0.B) {
+                     am.k.a((arf)$$1, $$10);
+                  }
+
+                  return bqu.a($$11, $$0.x_());
                }
             }
 
-            $$0.b(km.E, $$6.d());
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(cun $$0, cun $$1, crn $$2, cqa $$3, cmv $$4, buf $$5) {
-      if ($$3 == cqa.b && $$2.b($$4)) {
-         cxa $$6 = $$0.a(km.E);
-         if ($$6 == null) {
-            return false;
+            return bqu.d($$3);
          } else {
-            cxa.a $$7 = new cxa.a($$6);
-            if ($$1.e()) {
-               cun $$8 = $$7.b();
-               if ($$8 != null) {
-                  this.a($$4);
-                  $$5.a($$8);
+            dsb $$12 = $$0.a_($$5);
+            iz $$13 = $$12.b() instanceof djp && this.a == env.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof arf) {
+                  am.z.a((arf)$$1, $$13, $$3);
                }
+
+               $$1.b(awj.c.b(this));
+               return bqu.a(a($$3, $$1), $$0.x_());
             } else {
-               int $$9 = $$7.a($$1);
-               if ($$9 > 0) {
-                  this.b($$4);
+               return bqu.d($$3);
+            }
+         }
+      }
+   }
+
+   public static cuo a(cuo $$0, cmw $$1) {
+      return !$$1.fP() ? new cuo(cur.qy) : $$0;
+   }
+
+   @Override
+   public void a(@Nullable cmw $$0, dbx $$1, cuo $$2, iz $$3) {
+   }
+
+   @Override
+   public boolean a(@Nullable cmw $$0, dbx $$1, iz $$2, @Nullable evm $$3) {
+      if (!(this.a instanceof ens $$4)) {
+         return false;
+      } else {
+         dey $$7;
+         boolean $$8;
+         dsb $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.i() && !$$8) {
+               if ($$7 instanceof djp $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
                }
+
+               var10000 = false;
+               break label82;
             }
 
-            $$0.b(km.E, $$7.d());
+            var10000 = true;
+         }
+
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
+         } else if ($$1.D_().i() && this.a.a(awu.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, avz.iU, awa.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(li.X, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
             return true;
+         } else {
+            if ($$7 instanceof djp $$15 && this.a == env.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.B && $$8 && !$$6.k()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
          }
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(awj.c.b(this));
-         return bqt.a($$3, $$0.x_());
-      } else {
-         return bqt.d($$3);
-      }
-   }
-
-   @Override
-   public boolean e(cun $$0) {
-      cxa $$1 = $$0.a(km.E, cxa.a);
-      return $$1.e().compareTo(Fraction.ZERO) > 0;
-   }
-
-   @Override
-   public int f(cun $$0) {
-      cxa $$1 = $$0.a(km.E, cxa.a);
-      return Math.min(1 + ayx.a($$1.e(), 12), 13);
-   }
-
-   @Override
-   public int g(cun $$0) {
-      return a;
-   }
-
-   private static boolean a(cun $$0, cmv $$1) {
-      cxa $$2 = $$0.a(km.E);
-      if ($$2 != null && !$$2.f()) {
-         $$0.b(km.E, cxa.a);
-         if ($$1 instanceof arf) {
-            $$2.c().forEach($$1x -> $$1.a($$1x, true));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public Optional<crx> h(cun $$0) {
-      return !$$0.b(km.p) && !$$0.b(km.o) ? Optional.ofNullable($$0.a(km.E)).map(crw::new) : Optional.empty();
-   }
-
-   @Override
-   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
-      cxa $$4 = $$0.a(km.E);
-      if ($$4 != null) {
-         int $$5 = ayx.a($$4.e(), 64);
-         $$2.add(xo.a("item.minecraft.bundle.fullness", $$5, 64).a(n.h));
-      }
-   }
-
-   @Override
-   public void a(cjf $$0) {
-      cxa $$1 = $$0.p().a(km.E);
-      if ($$1 != null) {
-         $$0.p().b(km.E, cxa.a);
-         cup.a($$0, $$1.c());
-      }
-   }
-
-   private void a(bss $$0) {
-      $$0.a(avz.dq, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void b(bss $$0) {
-      $$0.a(avz.dp, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void c(bss $$0) {
-      $$0.a(avz.do, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+   protected void a(@Nullable cmw $$0, dby $$1, iz $$2) {
+      avy $$3 = this.a.a(awu.b) ? avz.df : avz.dc;
+      $$1.a($$0, $$2, $$3, awa.e, 1.0F, 1.0F);
+      $$1.a($$0, dwu.z, $$2);
    }
 }

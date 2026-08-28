@@ -1,98 +1,219 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public abstract class evz {
+   private static final je.a[] d = je.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-public class evz implements evu {
-   protected static final evu a = new evz(false, -Double.MAX_VALUE, cun.l, $$0 -> false, null) {
-      @Override
-      public boolean a(ewi $$0, iz $$1, boolean $$2) {
-         return $$2;
+   protected evz(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      } else {
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
-   };
-   private final boolean b;
-   private final double c;
-   private final cun d;
-   private final Predicate<ent> e;
-   @Nullable
-   private final bss f;
-
-   protected evz(boolean $$0, double $$1, cun $$2, Predicate<ent> $$3, @Nullable bss $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 
-   @Deprecated
-   protected evz(bss $$0) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual bss.bZ ()Z
-      // 05: aload 1
-      // 06: invokevirtual bss.dw ()D
-      // 09: aload 1
-      // 0a: instanceof btn
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast btn
-      // 14: invokevirtual btn.eX ()Lcun;
-      // 17: goto 1d
-      // 1a: getstatic cun.l Lcun;
-      // 1d: aload 1
-      // 1e: instanceof btn
-      // 21: ifeq 35
-      // 24: aload 1
-      // 25: checkcast btn
-      // 28: dup
-      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 2c: pop
-      // 2d: invokedynamic test (Lbtn;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, btn.a (Lent;)Z, (Lent;)Z ]
-      // 32: goto 3a
-      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, evz.a (Lent;)Z, (Lent;)Z ]
-      // 3a: aload 1
-      // 3b: invokespecial evz.<init> (ZDLcun;Ljava/util/function/Predicate;Lbss;)V
-      // 3e: return
+   public boolean a(iw $$0, int $$1, int $$2, int $$3) {
+      return this.e($$0.a($$1, $$2, $$3, je.a.a), $$0.a($$1, $$2, $$3, je.a.b), $$0.a($$1, $$2, $$3, je.a.c));
    }
 
-   @Override
-   public boolean a(cui $$0) {
-      return this.d.a($$0);
+   public boolean e(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
+      } else {
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
    }
 
-   @Override
-   public boolean a(ent $$0, ent $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
+   public boolean b(iw $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, je.a.a), $$0.a($$1, $$2, $$3, je.a.b), $$0.a($$1, $$2, $$3, je.a.c));
    }
 
-   @Override
-   public boolean b() {
-      return this.b;
+   public abstract boolean b(int var1, int var2, int var3);
+
+   public abstract void c(int var1, int var2, int var3);
+
+   public boolean a() {
+      for (je.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public boolean a(ewi $$0, iz $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(je.a.b) - 1.0E-5F;
+   public abstract int a(je.a var1);
+
+   public abstract int b(je.a var1);
+
+   public int a(je.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         je.a $$4 = iw.b.a($$0);
+         je.a $$5 = iw.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            iw $$6 = iw.a(je.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
+            }
+
+            return $$3;
+         } else {
+            return $$3;
+         }
+      } else {
+         return $$3;
+      }
    }
 
-   @Nullable
-   public bss c() {
-      return this.f;
+   public int b(je.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         je.a $$3 = iw.b.a($$0);
+         je.a $$4 = iw.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            iw $$6 = iw.a(je.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
+      } else {
+         return 0;
+      }
+   }
+
+   public int c(je.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public int b() {
+      return this.c(je.a.a);
+   }
+
+   public int c() {
+      return this.c(je.a.b);
+   }
+
+   public int d() {
+      return this.c(je.a.c);
+   }
+
+   public void a(evz.b $$0, boolean $$1) {
+      this.a($$0, iw.a, $$1);
+      this.a($$0, iw.b, $$1);
+      this.a($$0, iw.c, $$1);
+   }
+
+   private void a(evz.b $$0, iw $$1, boolean $$2) {
+      iw $$3 = $$1.a();
+      int $$4 = this.c($$3.a(je.a.a));
+      int $$5 = this.c($$3.a(je.a.b));
+      int $$6 = this.c($$3.a(je.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
+                     }
+                  }
+               }
+
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
+                     }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, je.a.a),
+                        $$3.a($$7, $$8, $$10, je.a.b),
+                        $$3.a($$7, $$8, $$10, je.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, je.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, je.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, je.a.c)
+                     );
+                  }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, je.a.a),
+                     $$3.a($$7, $$8, $$9, je.a.b),
+                     $$3.a($$7, $$8, $$9, je.a.c),
+                     $$3.a($$7, $$8, $$10, je.a.a),
+                     $$3.a($$7, $$8, $$10, je.a.b),
+                     $$3.a($$7, $$8, $$10, je.a.c)
+                  );
+                  $$9 = -1;
+               }
+            }
+         }
+      }
+   }
+
+   public void b(evz.b $$0, boolean $$1) {
+      evt.a(this, $$0, $$1);
+   }
+
+   public void a(evz.a $$0) {
+      this.a($$0, iw.a);
+      this.a($$0, iw.b);
+      this.a($$0, iw.c);
+   }
+
+   private void a(evz.a $$0, iw $$1) {
+      iw $$2 = $$1.a();
+      je.a $$3 = $$2.a(je.a.c);
+      int $$4 = this.c($$2.a(je.a.a));
+      int $$5 = this.c($$2.a(je.a.b));
+      int $$6 = this.c($$3);
+      je $$7 = je.a($$3, je.b.b);
+      je $$8 = je.a($$3, je.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, je.a.a), $$2.a($$9, $$10, $$12, je.a.b), $$2.a($$9, $$10, $$12, je.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, je.a.a), $$2.a($$9, $$10, $$12 - 1, je.a.b), $$2.a($$9, $$10, $$12 - 1, je.a.c));
+               }
+
+               $$11 = $$13;
+            }
+         }
+      }
+   }
+
+   public interface a {
+      void consume(je var1, int var2, int var3, int var4);
+   }
+
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

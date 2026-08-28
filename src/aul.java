@@ -31,7 +31,7 @@ public class aul implements auo, AutoCloseable {
       this.d.add($$0);
    }
 
-   public auk a(Executor $$0, Executor $$1, CompletableFuture<baa> $$2, List<ata> $$3) {
+   public auk a(Executor $$0, Executor $$1, CompletableFuture<bab> $$2, List<ata> $$3) {
       a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(ata::b).collect(Collectors.joining(", "))));
       this.c.close();
       this.c = new auh(this.e, $$3);

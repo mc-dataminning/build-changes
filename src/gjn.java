@@ -1,18 +1,12 @@
-public class gjn extends gmb {
-   private static final ale a = new ale("textures/entity/zombie/husk.png");
-
-   public gjn(giv.a $$0) {
-      super($$0, fwx.ar, fwx.as, fwx.at);
+public abstract class gjn<T extends btq, M extends fum<T>> extends gkc<T, M> {
+   public gjn(giw.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   protected void a(cku $$0, ezw $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public ale a(cku $$0) {
-      return a;
+   public gjn(giw.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new gmn<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new gmr<>(this, $$0.f()));
+      this.a(new gnb<>(this, $$0.d()));
    }
 }

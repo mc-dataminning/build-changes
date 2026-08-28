@@ -36,11 +36,11 @@ public class aqa extends MinecraftServer implements alv {
    @Nullable
    private final ask t;
    @Nullable
-   private blu u;
+   private blv u;
    @Nullable
-   private blr v;
+   private bls v;
 
-   public aqa(Thread $$0, epu.c $$1, atz $$2, amb $$3, aqc $$4, DataFixer $$5, aly $$6, aro $$7) {
+   public aqa(Thread $$0, epv.c $$1, atz $$2, amb $$3, aqc $$4, DataFixer $$5, aly $$6, aro $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.r = $$4;
       this.p = new avp(this);
@@ -127,10 +127,10 @@ public class aqa extends MinecraftServer implements alv {
          return false;
       } else {
          this.a(new apz(this, this.bd(), this.g));
-         this.v = new blr(this.br());
-         this.u = new blu(blx.values().length, this.v, blt.a);
+         this.v = new bls(this.br());
+         this.u = new blv(bly.values().length, this.v, blu.a);
          long $$4 = ac.d();
-         dqr.a(this.i, this);
+         dqs.a(this.i, this);
          auy.a(this.Z());
          k.info("Preparing level \"{}\"", this.s());
          this.t_();
@@ -138,7 +138,7 @@ public class aqa extends MinecraftServer implements alv {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          k.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aM().a(dbs.A).a($$1.o, this);
+            this.aM().a(dbt.A).a($$1.o, this);
          }
 
          if ($$1.p) {
@@ -160,7 +160,7 @@ public class aqa extends MinecraftServer implements alv {
          }
 
          if ($$1.O) {
-            bmc.a(this);
+            bmd.a(this);
             k.info("JMX monitoring enabled");
          }
 
@@ -329,8 +329,8 @@ public class aqa extends MinecraftServer implements alv {
    }
 
    @Override
-   public boolean a(are $$0, iz $$1, cmv $$2) {
-      if ($$0.af() != dbw.h) {
+   public boolean a(are $$0, iz $$1, cmw $$2) {
+      if ($$0.af() != dbx.h) {
          return false;
       } else if (this.br().k().c()) {
          return false;
@@ -340,8 +340,8 @@ public class aqa extends MinecraftServer implements alv {
          return false;
       } else {
          iz $$3 = $$0.V();
-         int $$4 = ayx.a($$1.u() - $$3.u());
-         int $$5 = ayx.a($$1.w() - $$3.w());
+         int $$4 = ayy.a($$1.u() - $$3.u());
+         int $$5 = ayy.a($$1.w() - $$3.w());
          int $$6 = Math.max($$4, $$5);
          return $$6 <= this.am();
       }
@@ -500,7 +500,7 @@ public class aqa extends MinecraftServer implements alv {
    public void v() {
       super.v();
       ac.j();
-      dqr.b();
+      dqs.b();
    }
 
    @Override
@@ -530,7 +530,7 @@ public class aqa extends MinecraftServer implements alv {
 
    @Nullable
    @Override
-   public dbt bf() {
+   public dbu bf() {
       return this.r.a().i ? this.j.k() : null;
    }
 
@@ -546,17 +546,17 @@ public class aqa extends MinecraftServer implements alv {
    }
 
    @Override
-   public blv f() {
+   public blw f() {
       return this.u;
    }
 
    @Override
    public boolean g() {
-      return this.v.a(blt.a);
+      return this.v.a(blu.a);
    }
 
    @Override
-   public void a(arf $$0, blt $$1) {
+   public void a(arf $$0, blu $$1) {
       this.v.a($$0, $$1);
    }
 

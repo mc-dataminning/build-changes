@@ -1,51 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface gfo<T extends dpg> {
+   gfn<T> create(gfo.a var1);
 
-public class gfo {
-   private static final Map<dph<?>, gfn<?>> a = Maps.newHashMap();
+   public static class a {
+      private final gfm a;
+      private final geh b;
+      private final gju c;
+      private final giu d;
+      private final fwv e;
+      private final fgo f;
 
-   private static <T extends dpf> void a(dph<? extends T> $$0, gfn<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(gfm $$0, geh $$1, gju $$2, giu $$3, fwv $$4, fgo $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public static Map<dph<?>, gfm<?>> a(gfn.a $$0) {
-      Builder<dph<?>, gfm<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lp.k.b((dph<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public gfm a() {
+         return this.a;
+      }
 
-   static {
-      a(dph.h, gga::new);
-      a(dph.i, gfw::new);
-      a(dph.j, ggc::new);
-      a(dph.k, gfy::new);
-      a(dph.b, gfs::new);
-      a(dph.d, gfs::new);
-      a(dph.c, gfs::new);
-      a(dph.m, gfv::new);
-      a(dph.D, gfx::new);
-      a(dph.n, ggf::new);
-      a(dph.v, gge::new);
-      a(dph.o, gfi::new);
-      a(dph.p, ggb::new);
-      a(dph.t, gfh::new);
-      a(dph.u, ggd::new);
-      a(dph.x, gfz::new);
-      a(dph.y, gfj::new);
-      a(dph.z, gft::new);
-      a(dph.E, gfk::new);
-      a(dph.G, gfr::new);
-      a(dph.N, gfq::new);
-      a(dph.O, gfu::new);
-      a(dph.Q, ggg::new);
-      a(dph.R, ggh::new);
+      public geh b() {
+         return this.b;
+      }
+
+      public giu c() {
+         return this.d;
+      }
+
+      public gju d() {
+         return this.c;
+      }
+
+      public fwv e() {
+         return this.e;
+      }
+
+      public fwz a(fwx $$0) {
+         return this.e.a($$0);
+      }
+
+      public fgo f() {
+         return this.f;
+      }
    }
 }

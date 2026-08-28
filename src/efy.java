@@ -1,72 +1,117 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class efy extends ege {
-   public static final MapCodec<efy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efy::new));
+public class efy extends egf {
+   private static final Codec<bqe> b = bqe.a
+      .codec()
+      .validate(
+         $$0 -> $$0.b() - $$0.a() < 1
+               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+               : DataResult.success($$0)
+      );
+   public static final MapCodec<efy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bpy.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  bpy.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  bpy.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  bpy.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, efy::new)
+   );
+   private final bpy h;
+   private final bpy i;
+   private final bqe j;
+   private final bqe k;
+   private final bpy l;
 
-   public efy(int $$0, int $$1, int $$2) {
+   public efy(int $$0, int $$1, int $$2, bpy $$3, bpy $$4, bqe $$5, bpy $$6) {
       super($$0, $$1, $$2);
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = bqe.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
    }
 
    @Override
-   protected egf<?> a() {
-      return egf.e;
+   protected egg<?> a() {
+      return egg.i;
    }
 
    @Override
-   public List<eem.a> a(dcc $$0, BiConsumer<iz, dsa> $$1, azf $$2, int $$3, iz $$4, edw $$5) {
-      List<eem.a> $$6 = Lists.newArrayList();
-      iz $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      je $$8 = je.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         iz $$19 = new iz($$14, $$18, $$15);
-         if (eci.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
+   public List<een.a> a(dcd $$0, BiConsumer<iz, dsb> $$1, azg $$2, int $$3, iz $$4, edx $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
       }
 
-      $$6.add(new eem.a(new iz($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new iz($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new eem.a(new iz($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
-         }
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
+      } else {
+         $$11 = $$6 + 1;
       }
 
-      return $$6;
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
+      }
+
+      List<een.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new een.a($$4.b($$11), 0, false));
+      }
+
+      iz.a $$16 = new iz.a();
+      je $$17 = je.c.a.a($$2);
+      Function<dsb, dsb> $$18 = $$1x -> $$1x.b(dlk.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
+   }
+
+   private een.a a(dcd $$0, BiConsumer<iz, dsb> $$1, azg $$2, int $$3, iz $$4, edx $$5, Function<dsb, dsb> $$6, je $$7, int $$8, boolean $$9, iz.a $$10) {
+      $$10.g($$4).c(je.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      iz $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
+
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      }
+
+      je $$17 = $$14.v() > $$10.v() ? je.b : je.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new een.a($$14.c(), 0, false);
+         }
+
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.c($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+      }
    }
 }

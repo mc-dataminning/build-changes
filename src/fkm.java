@@ -1,163 +1,20 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.function.Consumer;
 
-public class fkm extends fkk {
-   private final fkm.b c;
-   private final List<fkm.a> d = new ArrayList<>();
-   private final fks e = fks.i();
+public class fkm {
+   private static final int a = 4;
 
-   public fkm(int $$0, int $$1, fkm.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
+   private fkm() {
    }
 
-   public fkm(int $$0, int $$1, int $$2, int $$3, fkm.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   public static fkr a(fgo $$0, fks $$1, xo $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
-
-         for (fkm.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
-
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fkm.a> $$5 = this.d.iterator();
-         fkm.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
-
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fkm.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
-            }
-         }
-
-         int $$9 = this.c.d(this);
-
-         for (fkm.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void b(Consumer<fkr> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public fks b() {
-      return this.e.g();
-   }
-
-   public fks c() {
-      return this.e;
-   }
-
-   public <T extends fkr> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fkr> T a(T $$0, fks $$1) {
-      this.d.add(new fkm.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fkr> T a(T $$0, Consumer<fks> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   static class a extends fkk.a {
-      protected a(fkr $$0, fks $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fkr $$0) {
-         return switch (this) {
-            case a -> $$0.x();
-            case b -> $$0.v();
-         };
-      }
-
-      int a(fkm.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(fkr $$0) {
-         return switch (this) {
-            case a -> $$0.v();
-            case b -> $$0.x();
-         };
-      }
-
-      int b(fkm.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(fkm.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(fkm.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(fkr $$0) {
-         return switch (this) {
-            case a -> $$0.C();
-            case b -> $$0.D();
-         };
-      }
-
-      int d(fkr $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.C();
-         };
-      }
+   public static fkr a(fgo $$0, fks $$1, xo $$2, Consumer<fkt> $$3) {
+      fku $$4 = fku.d().a(4);
+      $$4.a(new fik($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

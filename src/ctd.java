@@ -1,16 +1,18 @@
-import java.util.List;
+public class ctd extends cwe {
+   protected ctd(cwd $$0, axe<dey> $$1, cuj.a $$2) {
+      super($$0, $$2.a(km.x, $$0.a($$1)));
+   }
 
-public class ctd extends cui {
-   public ctd(cui.a $$0) {
-      super($$0);
+   public static cxj a(cwd $$0, float $$1, float $$2) {
+      return cxj.a()
+         .a(buw.c, new buu(e, "Tool modifier", (double)($$1 + $$0.c()), buu.a.a), btb.b)
+         .a(buw.e, new buu(f, "Tool modifier", (double)$$2, buu.a.a), btb.b)
+         .a();
    }
 
    @Override
-   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
-      $$2.add(this.c().a(n.h));
-   }
-
-   public yc c() {
-      return xo.c(this.a() + ".desc");
+   public boolean a(cuo $$0, bto $$1, bto $$2) {
+      $$0.a(2, $$2, bta.a);
+      return true;
    }
 }

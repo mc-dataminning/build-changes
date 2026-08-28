@@ -5,7 +5,7 @@ public record agk(float b, boolean c) implements zv<ach> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static agk a(brd $$0) {
+   public static agk a(bre $$0) {
       return new agk($$0.f(), $$0.l());
    }
 

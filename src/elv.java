@@ -1,9 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class elv {
-   public static final Codec<elv> c = lp.q.q().dispatch("predicate_type", elv::a, elw::codec);
+public class elv extends elw {
+   public static final MapCodec<elv> a = MapCodec.unit(() -> elv.b);
+   public static final elv b = new elv();
 
-   public abstract boolean a(iz var1, iz var2, iz var3, azf var4);
+   private elv() {
+   }
 
-   protected abstract elw<?> a();
+   @Override
+   public boolean a(iz $$0, iz $$1, iz $$2, azg $$3) {
+      return true;
+   }
+
+   @Override
+   protected elx<?> a() {
+      return elx.a;
+   }
 }

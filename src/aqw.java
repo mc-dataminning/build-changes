@@ -33,22 +33,22 @@ public abstract class aqw {
    static final int b = aqm.a(aqx.d);
    private static final int c = 4;
    final Long2ObjectMap<ObjectSet<arf>> d = new Long2ObjectOpenHashMap();
-   final Long2ObjectOpenHashMap<azp<ari<?>>> e = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<azq<ari<?>>> e = new Long2ObjectOpenHashMap();
    private final aqw.a f = new aqw.a();
    private final aqw.b g = new aqw.b(8);
    private final ark h = new ark();
    private final aqw.c i = new aqw.c(32);
    final Set<aql> j = Sets.newHashSet();
    final aqq k;
-   final bpk<aqq.a<Runnable>> l;
-   final bpk<aqq.b> m;
+   final bpl<aqq.a<Runnable>> l;
+   final bpl<aqq.b> m;
    final LongSet n = new LongOpenHashSet();
    final Executor o;
    private long p;
    private int q = 10;
 
    protected aqw(Executor $$0, Executor $$1) {
-      bpk<Runnable> $$2 = bpk.a("player ticket throttler", $$1::execute);
+      bpl<Runnable> $$2 = bpl.a("player ticket throttler", $$1::execute);
       aqq $$3 = new aqq(ImmutableList.of($$2), $$0, 4);
       this.k = $$3;
       this.l = $$3.a($$2, true);
@@ -58,11 +58,11 @@ public abstract class aqw {
 
    protected void a() {
       this.p++;
-      ObjectIterator<Entry<azp<ari<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
+      ObjectIterator<Entry<azq<ari<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$0.hasNext()) {
-         Entry<azp<ari<?>>> $$1 = (Entry<azp<ari<?>>>)$$0.next();
-         Iterator<ari<?>> $$2 = ((azp)$$1.getValue()).iterator();
+         Entry<azq<ari<?>>> $$1 = (Entry<azq<ari<?>>>)$$0.next();
+         Iterator<ari<?>> $$2 = ((azq)$$1.getValue()).iterator();
          boolean $$3 = false;
 
          while ($$2.hasNext()) {
@@ -75,16 +75,16 @@ public abstract class aqw {
          }
 
          if ($$3) {
-            this.f.b($$1.getLongKey(), a((azp<ari<?>>)$$1.getValue()), false);
+            this.f.b($$1.getLongKey(), a((azq<ari<?>>)$$1.getValue()), false);
          }
 
-         if (((azp)$$1.getValue()).isEmpty()) {
+         if (((azq)$$1.getValue()).isEmpty()) {
             $$0.remove();
          }
       }
    }
 
-   private static int a(azp<ari<?>> $$0) {
+   private static int a(azq<ari<?>> $$0) {
       return !$$0.isEmpty() ? $$0.b().b() : aqm.a + 1;
    }
 
@@ -121,7 +121,7 @@ public abstract class aqw {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<aqo<dug>> $$6 = $$5.b();
+                  CompletableFuture<aqo<duh>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(aqq.a(() -> {
                         }, $$4, false))));
                }
@@ -135,7 +135,7 @@ public abstract class aqw {
    }
 
    void a(long $$0, ari<?> $$1) {
-      azp<ari<?>> $$2 = this.g($$0);
+      azq<ari<?>> $$2 = this.g($$0);
       int $$3 = a($$2);
       ari<?> $$4 = $$2.a($$1);
       $$4.a(this.p);
@@ -145,7 +145,7 @@ public abstract class aqw {
    }
 
    void b(long $$0, ari<?> $$1) {
-      azp<ari<?>> $$2 = this.g($$0);
+      azq<ari<?>> $$2 = this.g($$0);
       if ($$2.remove($$1)) {
       }
 
@@ -156,35 +156,35 @@ public abstract class aqw {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void a(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       this.a($$1.a(), new ari<>($$0, $$2, $$3));
    }
 
-   public <T> void b(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void b(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void c(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, aqm.a(aqx.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(arj<T> $$0, dbd $$1, int $$2, T $$3) {
+   public <T> void d(arj<T> $$0, dbe $$1, int $$2, T $$3) {
       ari<T> $$4 = new ari<>($$0, aqm.a(aqx.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
       this.h.b($$5, $$4);
    }
 
-   private azp<ari<?>> g(long $$0) {
-      return (azp<ari<?>>)this.e.computeIfAbsent($$0, $$0x -> azp.a(4));
+   private azq<ari<?>> g(long $$0) {
+      return (azq<ari<?>>)this.e.computeIfAbsent($$0, $$0x -> azq.a(4));
    }
 
-   protected void a(dbd $$0, boolean $$1) {
-      ari<dbd> $$2 = new ari<>(arj.d, aqn.c, $$0);
+   protected void a(dbe $$0, boolean $$1) {
+      ari<dbe> $$2 = new ari<>(arj.d, aqn.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -196,7 +196,7 @@ public abstract class aqw {
    }
 
    public void a(kb $$0, arf $$1) {
-      dbd $$2 = $$0.r();
+      dbe $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -205,7 +205,7 @@ public abstract class aqw {
    }
 
    public void b(kb $$0, arf $$1) {
-      dbd $$2 = $$0.r();
+      dbe $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<arf> $$4 = (ObjectSet<arf>)this.d.get($$3);
       $$4.remove($$1);
@@ -230,7 +230,7 @@ public abstract class aqw {
    }
 
    protected String e(long $$0) {
-      azp<ari<?>> $$1 = (azp<ari<?>>)this.e.get($$0);
+      azq<ari<?>> $$1 = (azq<ari<?>>)this.e.get($$0);
       return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 
@@ -264,10 +264,10 @@ public abstract class aqw {
          ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
 
          while (var3.hasNext()) {
-            Entry<azp<ari<?>>> $$2 = (Entry<azp<ari<?>>>)var3.next();
-            dbd $$3 = new dbd($$2.getLongKey());
+            Entry<azq<ari<?>>> $$2 = (Entry<azq<ari<?>>>)var3.next();
+            dbe $$3 = new dbe($$2.getLongKey());
 
-            for (ari<?> $$4 : (azp)$$2.getValue()) {
+            for (ari<?> $$4 : (azq)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
             }
          }
@@ -283,11 +283,11 @@ public abstract class aqw {
 
    public void e() {
       ImmutableSet<arj<?>> $$0 = ImmutableSet.of(arj.h, arj.g, arj.e);
-      ObjectIterator<Entry<azp<ari<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+      ObjectIterator<Entry<azq<ari<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$1.hasNext()) {
-         Entry<azp<ari<?>>> $$2 = (Entry<azp<ari<?>>>)$$1.next();
-         Iterator<ari<?>> $$3 = ((azp)$$2.getValue()).iterator();
+         Entry<azq<ari<?>>> $$2 = (Entry<azq<ari<?>>>)$$1.next();
+         Iterator<ari<?>> $$3 = ((azq)$$2.getValue()).iterator();
          boolean $$4 = false;
 
          while ($$3.hasNext()) {
@@ -300,10 +300,10 @@ public abstract class aqw {
          }
 
          if ($$4) {
-            this.f.b($$2.getLongKey(), a((azp<ari<?>>)$$2.getValue()), false);
+            this.f.b($$2.getLongKey(), a((azq<ari<?>>)$$2.getValue()), false);
          }
 
-         if (((azp)$$2.getValue()).isEmpty()) {
+         if (((azq)$$2.getValue()).isEmpty()) {
             $$1.remove();
          }
       }
@@ -322,7 +322,7 @@ public abstract class aqw {
 
       @Override
       protected int b(long $$0) {
-         azp<ari<?>> $$1 = (azp<ari<?>>)aqw.this.e.get($$0);
+         azq<ari<?>> $$1 = (azq<ari<?>>)aqw.this.e.get($$0);
          if ($$1 == null) {
             return Integer.MAX_VALUE;
          } else {
@@ -409,7 +409,7 @@ public abstract class aqw {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dbd $$3 = new dbd($$2.getLongKey());
+               dbe $$3 = new dbe($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -450,7 +450,7 @@ public abstract class aqw {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            ari<?> $$4 = new ari<>(arj.c, aqw.b, new dbd($$0));
+            ari<?> $$4 = new ari<>(arj.c, aqw.b, new dbe($$0));
             if ($$3) {
                aqw.this.l.a(aqq.a(() -> aqw.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -478,7 +478,7 @@ public abstract class aqw {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  aqw.this.k.onLevelChange(new dbd($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  aqw.this.k.onLevelChange(new dbe($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

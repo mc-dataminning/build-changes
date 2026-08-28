@@ -1,96 +1,116 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dqv extends dqw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
+public class dqv extends dpg {
+   private static final int d = 5;
+   public static final int a = 48;
+   public static final int b = 48;
+   public static final String c = "author";
    @Nullable
-   private iz i;
-   private boolean j;
+   private ale e;
+   private String f = "";
+   private String g = "";
+   private iz h = new iz(0, 1, 0);
+   private kd i = kd.g;
+   private djv j = djv.a;
+   private dll k = dll.a;
+   private dtl l;
+   private boolean m = true;
+   private boolean q;
+   private boolean r;
+   private boolean s = true;
+   private float t = 1.0F;
+   private long u;
 
-   public dqv(iz $$0, dsa $$1) {
-      super(dph.v, $$0, $$1);
+   public dqv(iz $$0, dsb $$1) {
+      super(dpi.u, $$0, $$1);
+      this.l = $$1.c(dmw.b);
    }
 
    @Override
    protected void b(ur $$0, jk.a $$1) {
       super.b($$0, $$1);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("exit_portal", vg.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
+      $$0.a("name", this.c());
+      $$0.a("author", this.f);
+      $$0.a("metadata", this.g);
+      $$0.a("posX", this.h.u());
+      $$0.a("posY", this.h.v());
+      $$0.a("posZ", this.h.w());
+      $$0.a("sizeX", this.i.u());
+      $$0.a("sizeY", this.i.v());
+      $$0.a("sizeZ", this.i.w());
+      $$0.a("rotation", this.k.toString());
+      $$0.a("mirror", this.j.toString());
+      $$0.a("mode", this.l.toString());
+      $$0.a("ignoreEntities", this.m);
+      $$0.a("powered", this.q);
+      $$0.a("showair", this.r);
+      $$0.a("showboundingbox", this.s);
+      $$0.a("integrity", this.t);
+      $$0.a("seed", this.u);
    }
 
    @Override
    protected void a(ur $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.g = $$0.i("Age");
-      vg.a($$0, "exit_portal").filter(dbw::l).ifPresent($$0x -> this.i = $$0x);
-      this.j = $$0.q("ExactTeleport");
-   }
+      this.a($$0.l("name"));
+      this.f = $$0.l("author");
+      this.g = $$0.l("metadata");
+      int $$2 = ayy.a($$0.h("posX"), -48, 48);
+      int $$3 = ayy.a($$0.h("posY"), -48, 48);
+      int $$4 = ayy.a($$0.h("posZ"), -48, 48);
+      this.h = new iz($$2, $$3, $$4);
+      int $$5 = ayy.a($$0.h("sizeX"), 0, 48);
+      int $$6 = ayy.a($$0.h("sizeY"), 0, 48);
+      int $$7 = ayy.a($$0.h("sizeZ"), 0, 48);
+      this.i = new kd($$5, $$6, $$7);
 
-   public static void a(dbw $$0, iz $$1, dsa $$2, dqv $$3) {
-      $$3.g++;
-      if ($$3.c()) {
-         $$3.h--;
+      try {
+         this.k = dll.valueOf($$0.l("rotation"));
+      } catch (IllegalArgumentException var12) {
+         this.k = dll.a;
       }
-   }
 
-   public static void b(dbw $$0, iz $$1, dsa $$2, dqv $$3) {
-      boolean $$4 = $$3.b();
-      boolean $$5 = $$3.c();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
+      try {
+         this.j = djv.valueOf($$0.l("mirror"));
+      } catch (IllegalArgumentException var11) {
+         this.j = djv.a;
+      }
+
+      try {
+         this.l = dtl.valueOf($$0.l("mode"));
+      } catch (IllegalArgumentException var10) {
+         this.l = dtl.d;
+      }
+
+      this.m = $$0.q("ignoreEntities");
+      this.q = $$0.q("powered");
+      this.r = $$0.q("showair");
+      this.s = $$0.q("showboundingbox");
+      if ($$0.e("integrity")) {
+         this.t = $$0.j("integrity");
       } else {
-         List<bss> $$6 = $$0.a(bss.class, new evk($$1), dqv::a);
-         if (!$$6.isEmpty()) {
-            a($$0, $$1, $$2, $$6.get($$0.z.a($$6.size())), $$3);
-         }
-
-         if ($$3.g % 2400L == 0L) {
-            c($$0, $$1, $$2, $$3);
-         }
+         this.t = 1.0F;
       }
 
-      if ($$4 != $$3.b() || $$5 != $$3.c()) {
-         a($$0, $$1, $$2);
+      this.u = $$0.i("seed");
+      this.G();
+   }
+
+   private void G() {
+      if (this.n != null) {
+         iz $$0 = this.ay_();
+         dsb $$1 = this.n.a_($$0);
+         if ($$1.a(dfa.pa)) {
+            this.n.a($$0, $$1.a(dmw.b, this.l), 2);
+         }
       }
    }
 
-   public static boolean a(bss $$0) {
-      return bsx.f.test($$0) && !$$0.cZ().ay();
-   }
-
-   public boolean b() {
-      return this.g < 200L;
-   }
-
-   public boolean c() {
-      return this.h > 0;
-   }
-
-   public float a(float $$0) {
-      return ayx.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float b(float $$0) {
-      return 1.0F - ayx.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public aco d() {
+   public aco b() {
       return aco.a(this);
    }
 
@@ -99,177 +119,312 @@ public class dqv extends dqw {
       return this.e($$0);
    }
 
-   private static void c(dbw $$0, iz $$1, dsa $$2, dqv $$3) {
-      if (!$$0.B) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
-      }
-   }
+   public boolean a(cmw $$0) {
+      if (!$$0.gz()) {
+         return false;
+      } else {
+         if ($$0.cN().B) {
+            $$0.a(this);
+         }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
          return true;
-      } else {
-         return super.a_($$0, $$1);
       }
    }
 
-   public static void a(dbw $$0, iz $$1, dsa $$2, bss $$3, dqv $$4) {
-      if ($$0 instanceof are && !$$4.c()) {
-         are $$5 = (are)$$0;
-         $$4.h = 100;
-         if ($$4.i == null && $$0.af() == dbw.j) {
-            iz $$6 = a($$5, $$1);
-            $$6 = $$6.b(10);
-            a.debug("Creating portal at {}", $$6);
-            a($$5, $$6, ecz.a($$1, false));
-            $$4.i = $$6;
-         }
+   public String c() {
+      return this.e == null ? "" : this.e.toString();
+   }
 
-         if ($$4.i != null) {
-            iz $$7 = $$4.j ? $$4.i : a($$0, $$4.i);
-            bss $$9;
-            if ($$3 instanceof cnx) {
-               bss $$8 = ((cnx)$$3).s();
-               if ($$8 instanceof arf) {
-                  am.e.a((arf)$$8, $$2);
-               }
+   public boolean d() {
+      return this.e != null;
+   }
 
-               if ($$8 != null) {
-                  $$9 = $$8;
-                  $$3.ao();
-               } else {
-                  $$9 = $$3;
-               }
+   public void a(@Nullable String $$0) {
+      this.a(azu.b($$0) ? null : ale.a($$0));
+   }
+
+   public void a(@Nullable ale $$0) {
+      this.e = $$0;
+   }
+
+   public void a(bto $$0) {
+      this.f = $$0.af().getString();
+   }
+
+   public iz f() {
+      return this.h;
+   }
+
+   public void a(iz $$0) {
+      this.h = $$0;
+   }
+
+   public kd j() {
+      return this.i;
+   }
+
+   public void a(kd $$0) {
+      this.i = $$0;
+   }
+
+   public djv k() {
+      return this.j;
+   }
+
+   public void a(djv $$0) {
+      this.j = $$0;
+   }
+
+   public dll l() {
+      return this.k;
+   }
+
+   public void a(dll $$0) {
+      this.k = $$0;
+   }
+
+   public String u() {
+      return this.g;
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+   }
+
+   public dtl v() {
+      return this.l;
+   }
+
+   public void a(dtl $$0) {
+      this.l = $$0;
+      dsb $$1 = this.n.a_(this.ay_());
+      if ($$1.a(dfa.pa)) {
+         this.n.a(this.ay_(), $$1.a(dmw.b, $$0), 2);
+      }
+   }
+
+   public boolean w() {
+      return this.m;
+   }
+
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   public float x() {
+      return this.t;
+   }
+
+   public void a(float $$0) {
+      this.t = $$0;
+   }
+
+   public long y() {
+      return this.u;
+   }
+
+   public void a(long $$0) {
+      this.u = $$0;
+   }
+
+   public boolean z() {
+      if (this.l != dtl.a) {
+         return false;
+      } else {
+         iz $$0 = this.ay_();
+         int $$1 = 80;
+         iz $$2 = new iz($$0.u() - 80, this.n.I_(), $$0.w() - 80);
+         iz $$3 = new iz($$0.u() + 80, this.n.am() - 1, $$0.w() + 80);
+         Stream<iz> $$4 = this.a($$2, $$3);
+         return a($$0, $$4).filter($$1x -> {
+            int $$2x = $$1x.k() - $$1x.h();
+            int $$3x = $$1x.l() - $$1x.i();
+            int $$4x = $$1x.m() - $$1x.j();
+            if ($$2x > 1 && $$3x > 1 && $$4x > 1) {
+               this.h = new iz($$1x.h() - $$0.u() + 1, $$1x.i() - $$0.v() + 1, $$1x.j() - $$0.w() + 1);
+               this.i = new kd($$2x - 1, $$3x - 1, $$4x - 1);
+               this.e();
+               dsb $$5 = this.n.a_($$0);
+               this.n.a($$0, $$5, $$5, 3);
+               return true;
             } else {
-               $$9 = $$3.cZ();
+               return false;
             }
-
-            $$9.aw();
-            $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
-         }
-
-         c($$0, $$1, $$2, $$4);
+         }).isPresent();
       }
    }
 
-   private static iz a(dbw $$0, iz $$1) {
-      iz $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.c();
+   private Stream<iz> a(iz $$0, iz $$1) {
+      return iz.d($$0, $$1)
+         .filter($$0x -> this.n.a_($$0x).a(dfa.pa))
+         .map(this.n::c_)
+         .filter($$0x -> $$0x instanceof dqv)
+         .map($$0x -> (dqv)$$0x)
+         .filter($$0x -> $$0x.l == dtl.c && Objects.equals(this.e, $$0x.e))
+         .map(dpg::ay_);
    }
 
-   private static iz a(are $$0, iz $$1) {
-      evp $$2 = b($$0, $$1);
-      dug $$3 = a((dbw)$$0, $$2);
-      iz $$4 = a($$3);
-      if ($$4 == null) {
-         iz $$5 = iz.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.H_().c(lq.aC).flatMap($$0x -> $$0x.b(sg.e)).ifPresent($$2x -> ((eaj)$$2x.a()).a($$0, $$0.l().g(), azf.a($$5.a()), $$5));
-         $$4 = $$5;
+   private static Optional<eib> a(iz $$0, Stream<iz> $$1) {
+      Iterator<iz> $$2 = $$1.iterator();
+      if (!$$2.hasNext()) {
+         return Optional.empty();
       } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
+         iz $$3 = $$2.next();
+         eib $$4 = new eib($$3);
+         if ($$2.hasNext()) {
+            $$2.forEachRemaining($$4::a);
+         } else {
+            $$4.a($$0);
+         }
 
-      return a($$0, $$4, 16, true);
+         return Optional.of($$4);
+      }
    }
 
-   private static evp b(are $$0, iz $$1) {
-      evp $$2 = new evp((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      evp $$4 = $$2.a(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.a(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
+   public boolean A() {
+      return this.l != dtl.a ? false : this.b(true);
    }
 
-   private static boolean a(are $$0, evp $$1) {
-      return a((dbw)$$0, $$1).a() == -1;
-   }
+   public boolean b(boolean $$0) {
+      if (this.e == null) {
+         return false;
+      } else {
+         iz $$1 = this.ay_().a((kd)this.h);
+         are $$2 = (are)this.n;
+         emk $$3 = $$2.q();
 
-   private static iz a(dbc $$0, iz $$1, int $$2, boolean $$3) {
-      iz $$4 = null;
+         emj $$4;
+         try {
+            $$4 = $$3.a(this.e);
+         } catch (z var8) {
+            return false;
+         }
 
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.am() - 1; $$7 > ($$4 == null ? $$0.I_() : $$4.v()); $$7--) {
-                  iz $$8 = new iz($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  dsa $$9 = $$0.a_($$8);
-                  if ($$9.r($$0, $$8) && ($$3 || !$$9.a(dez.F))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
+         $$4.a(this.n, $$1, this.i, !this.m, dfa.kN);
+         $$4.a(this.f);
+         if ($$0) {
+            try {
+               return $$3.c(this.e);
+            } catch (z var7) {
+               return false;
             }
+         } else {
+            return true;
          }
       }
-
-      return $$4 == null ? $$1 : $$4;
    }
 
-   private static dug a(dbw $$0, evp $$1) {
-      return $$0.d(ayx.a($$1.c / 16.0), ayx.a($$1.e / 16.0));
+   public static azg b(long $$0) {
+      return $$0 == 0L ? azg.a(ac.c()) : azg.a($$0);
+   }
+
+   public boolean a(are $$0) {
+      if (this.l == dtl.b && this.e != null) {
+         emj $$1 = $$0.q().b(this.e).orElse(null);
+         if ($$1 == null) {
+            return false;
+         } else if ($$1.a().equals(this.i)) {
+            this.a($$0, $$1);
+            return true;
+         } else {
+            this.a($$1);
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(are $$0) {
+      emj $$1 = this.d($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1);
+         return true;
+      }
+   }
+
+   private void a(emj $$0) {
+      this.f = !azu.b($$0.b()) ? $$0.b() : "";
+      this.i = $$0.a();
+      this.e();
+   }
+
+   public void c(are $$0) {
+      emj $$1 = this.d($$0);
+      if ($$1 != null) {
+         this.a($$0, $$1);
+      }
    }
 
    @Nullable
-   private static iz a(dug $$0) {
-      dbd $$1 = $$0.f();
-      iz $$2 = new iz($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      iz $$4 = new iz($$1.f(), $$3, $$1.g());
-      iz $$5 = null;
-      double $$6 = 0.0;
+   private emj d(are $$0) {
+      return this.e == null ? null : $$0.q().b(this.e).orElse(null);
+   }
 
-      for (iz $$7 : iz.c($$2, $$4)) {
-         dsa $$8 = $$0.a_($$7);
-         iz $$9 = $$7.c();
-         iz $$10 = $$7.b(2);
-         if ($$8.a(dez.fz) && !$$0.a_($$9).r($$0, $$9) && !$$0.a_($$10).r($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
+   private void a(are $$0, emj $$1) {
+      this.a($$1);
+      emf $$2 = new emf().a(this.j).a(this.k).a(this.m);
+      if (this.t < 1.0F) {
+         $$2.b().a(new eln(ayy.a(this.t, 0.0F, 1.0F))).a(b(this.u));
+      }
+
+      iz $$3 = this.ay_().a((kd)this.h);
+      $$1.a($$0, $$3, $$3, $$2, b(this.u), 2);
+   }
+
+   public void B() {
+      if (this.e != null) {
+         are $$0 = (are)this.n;
+         emk $$1 = $$0.q();
+         $$1.d(this.e);
+      }
+   }
+
+   public boolean C() {
+      if (this.l == dtl.b && !this.n.B && this.e != null) {
+         are $$0 = (are)this.n;
+         emk $$1 = $$0.q();
+
+         try {
+            return $$1.b(this.e).isPresent();
+         } catch (z var4) {
+            return false;
          }
+      } else {
+         return false;
       }
-
-      return $$5;
    }
 
-   private static void a(are $$0, iz $$1, ecz $$2) {
-      eaw.L.a($$2, $$0, $$0.l().g(), azf.a(), $$1);
+   public boolean D() {
+      return this.q;
    }
 
-   @Override
-   public boolean a(je $$0) {
-      return dex.a(this.n(), this.n, this.az_(), $$0, this.az_().a($$0));
+   public void c(boolean $$0) {
+      this.q = $$0;
    }
 
-   public int f() {
-      int $$0 = 0;
-
-      for (je $$1 : je.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
-      }
-
-      return $$0;
+   public boolean E() {
+      return this.r;
    }
 
-   public void a(iz $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
+   public void d(boolean $$0) {
+      this.r = $$0;
+   }
+
+   public boolean F() {
+      return this.s;
+   }
+
+   public void e(boolean $$0) {
+      this.s = $$0;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

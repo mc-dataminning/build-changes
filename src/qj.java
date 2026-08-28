@@ -1,5 +1,5 @@
 public class qj {
-   public static void a(rc<brn> $$0) {
-      $$0.a(bro.G, new brn("mob", 0.1F));
+   public static void a(rc<bro> $$0) {
+      $$0.a(brp.G, new bro("mob", 0.1F));
    }
 }

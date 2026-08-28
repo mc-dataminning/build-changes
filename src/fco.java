@@ -1,79 +1,27 @@
-public class fco extends gve {
-   private static final xo a = xo.c("mco.selectServer.create");
-   private static final xo b = xo.c("mco.configure.world.name");
-   private static final xo c = xo.c("mco.configure.world.description");
-   private static final int B = 10;
-   private static final int C = 210;
-   private final fah D;
-   private final fkp E = new fkp(this);
-   private fhl F;
-   private fhl G;
-   private final Runnable H;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fco(fah $$0, fbd $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
-   }
+public class fco extends gvf {
+   protected BooleanConsumer a;
+   private final xo b;
+   private final xo c;
 
-   public fco(fah $$0, long $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
+   public fco(BooleanConsumer $$0, xo $$1, xo $$2) {
+      super(few.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
    public void aM_() {
-      this.E.a(this.l, this.p);
-      fkt $$0 = this.E.c(fkt.d()).a(10);
-      fhc $$1 = fhc.a(xn.j, $$0x -> this.H.run()).a();
-      $$1.j = false;
-      this.F = new fhl(this.p, 210, 20, b);
-      this.F.b($$1x -> $$1.j = !azt.h($$1x));
-      this.G = new fhl(this.p, 210, 20, c);
-      $$0.a(fkl.a(this.p, this.F, b));
-      $$0.a(fkl.a(this.p, this.G, c));
-      fkt $$2 = this.E.b(fkt.e().a(10));
-      $$2.a($$1);
-      $$2.a(fhc.a(xn.k, $$0x -> this.d()).a());
-      this.E.a($$1x -> {
-         fha var10000 = this.c($$1x);
-      });
-      this.c();
+      this.c(fhd.a(xn.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fhd.a(xn.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.F);
-   }
-
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   private void a(fbd $$0) {
-      fef $$1 = new fef($$0.a, this.F.a(), this.G.a());
-      fdb $$2 = fdb.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            fah.g();
-            this.m.a(this.D);
-         }));
-      this.m.a($$2);
-   }
-
-   private void a(long $$0) {
-      fnb $$1 = new fda($$1x -> {
-         if ($$1x == null) {
-            this.m.a(this);
-         } else {
-            this.m.a(new fct(this, new fea(this.D, $$0, $$1x, this.F.a(), this.G.a())));
-         }
-      }, a);
-      this.m.a($$1);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.D);
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

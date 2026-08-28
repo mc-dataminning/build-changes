@@ -64,20 +64,20 @@ public class aqv extends arg {
    }
 
    @Override
-   public bqs a(arf $$0, dbw $$1, cun $$2, bqr $$3) {
+   public bqt a(arf $$0, dbx $$1, cuo $$2, bqs $$3) {
       if (this.f) {
          this.f();
-         return bqs.e;
+         return bqt.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bqs a(arf $$0, dbw $$1, cun $$2, bqr $$3, evl $$4) {
+   public bqt a(arf $$0, dbx $$1, cuo $$2, bqs $$3, evm $$4) {
       if (this.f) {
          this.f();
-         return bqs.e;
+         return bqt.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

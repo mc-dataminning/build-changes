@@ -1,70 +1,245 @@
-public abstract class ddc {
-   public static final ald<dcv> a = a("the_void");
-   public static final ald<dcv> b = a("plains");
-   public static final ald<dcv> c = a("sunflower_plains");
-   public static final ald<dcv> d = a("snowy_plains");
-   public static final ald<dcv> e = a("ice_spikes");
-   public static final ald<dcv> f = a("desert");
-   public static final ald<dcv> g = a("swamp");
-   public static final ald<dcv> h = a("mangrove_swamp");
-   public static final ald<dcv> i = a("forest");
-   public static final ald<dcv> j = a("flower_forest");
-   public static final ald<dcv> k = a("birch_forest");
-   public static final ald<dcv> l = a("dark_forest");
-   public static final ald<dcv> m = a("old_growth_birch_forest");
-   public static final ald<dcv> n = a("old_growth_pine_taiga");
-   public static final ald<dcv> o = a("old_growth_spruce_taiga");
-   public static final ald<dcv> p = a("taiga");
-   public static final ald<dcv> q = a("snowy_taiga");
-   public static final ald<dcv> r = a("savanna");
-   public static final ald<dcv> s = a("savanna_plateau");
-   public static final ald<dcv> t = a("windswept_hills");
-   public static final ald<dcv> u = a("windswept_gravelly_hills");
-   public static final ald<dcv> v = a("windswept_forest");
-   public static final ald<dcv> w = a("windswept_savanna");
-   public static final ald<dcv> x = a("jungle");
-   public static final ald<dcv> y = a("sparse_jungle");
-   public static final ald<dcv> z = a("bamboo_jungle");
-   public static final ald<dcv> A = a("badlands");
-   public static final ald<dcv> B = a("eroded_badlands");
-   public static final ald<dcv> C = a("wooded_badlands");
-   public static final ald<dcv> D = a("meadow");
-   public static final ald<dcv> E = a("cherry_grove");
-   public static final ald<dcv> F = a("grove");
-   public static final ald<dcv> G = a("snowy_slopes");
-   public static final ald<dcv> H = a("frozen_peaks");
-   public static final ald<dcv> I = a("jagged_peaks");
-   public static final ald<dcv> J = a("stony_peaks");
-   public static final ald<dcv> K = a("river");
-   public static final ald<dcv> L = a("frozen_river");
-   public static final ald<dcv> M = a("beach");
-   public static final ald<dcv> N = a("snowy_beach");
-   public static final ald<dcv> O = a("stony_shore");
-   public static final ald<dcv> P = a("warm_ocean");
-   public static final ald<dcv> Q = a("lukewarm_ocean");
-   public static final ald<dcv> R = a("deep_lukewarm_ocean");
-   public static final ald<dcv> S = a("ocean");
-   public static final ald<dcv> T = a("deep_ocean");
-   public static final ald<dcv> U = a("cold_ocean");
-   public static final ald<dcv> V = a("deep_cold_ocean");
-   public static final ald<dcv> W = a("frozen_ocean");
-   public static final ald<dcv> X = a("deep_frozen_ocean");
-   public static final ald<dcv> Y = a("mushroom_fields");
-   public static final ald<dcv> Z = a("dripstone_caves");
-   public static final ald<dcv> aa = a("lush_caves");
-   public static final ald<dcv> ab = a("deep_dark");
-   public static final ald<dcv> ac = a("nether_wastes");
-   public static final ald<dcv> ad = a("warped_forest");
-   public static final ald<dcv> ae = a("crimson_forest");
-   public static final ald<dcv> af = a("soul_sand_valley");
-   public static final ald<dcv> ag = a("basalt_deltas");
-   public static final ald<dcv> ah = a("the_end");
-   public static final ald<dcv> ai = a("end_highlands");
-   public static final ald<dcv> aj = a("end_midlands");
-   public static final ald<dcv> ak = a("small_end_islands");
-   public static final ald<dcv> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-   private static ald<dcv> a(String $$0) {
-      return ald.a(lq.az, new ale($$0));
+public class ddc {
+   public static final Codec<ddc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               ddc.b.d.optionalFieldOf("grass_color_modifier", ddc.b.a).forGetter($$0x -> $$0x.h),
+               dcv.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               avy.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dcu.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dct.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               avw.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, ddc::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final ddc.b h;
+   private final Optional<dcv> i;
+   private final Optional<ji<avy>> j;
+   private final Optional<dcu> k;
+   private final Optional<dct> l;
+   private final Optional<avw> m;
+
+   ddc(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      ddc.b $$6,
+      Optional<dcv> $$7,
+      Optional<ji<avy>> $$8,
+      Optional<dcu> $$9,
+      Optional<dct> $$10,
+      Optional<avw> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public ddc.b g() {
+      return this.h;
+   }
+
+   public Optional<dcv> h() {
+      return this.i;
+   }
+
+   public Optional<ji<avy>> i() {
+      return this.j;
+   }
+
+   public Optional<dcu> j() {
+      return this.k;
+   }
+
+   public Optional<dct> k() {
+      return this.l;
+   }
+
+   public Optional<avw> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private ddc.b g = ddc.b.a;
+      private Optional<dcv> h = Optional.empty();
+      private Optional<ji<avy>> i = Optional.empty();
+      private Optional<dcu> j = Optional.empty();
+      private Optional<dct> k = Optional.empty();
+      private Optional<avw> l = Optional.empty();
+
+      public ddc.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddc.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddc.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddc.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public ddc.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a a(ddc.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public ddc.a a(dcv $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a a(ji<avy> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a a(dcu $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a a(dct $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public ddc.a a(@Nullable avw $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public ddc a() {
+         return new ddc(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
+      }
+   }
+
+   public static enum b implements azt {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dcw.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<ddc.b> d = azt.a(ddc.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

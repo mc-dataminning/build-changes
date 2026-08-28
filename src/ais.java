@@ -1,15 +1,15 @@
 public class ais implements zv<agv> {
    public static final zm<wl, ais> a = zv.a(ais::a, ais::new);
-   private final bqr b;
+   private final bqs b;
    private final int c;
 
-   public ais(bqr $$0, int $$1) {
+   public ais(bqs $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private ais(wl $$0) {
-      this.b = $$0.b(bqr.class);
+      this.b = $$0.b(bqs.class);
       this.c = $$0.l();
    }
 
@@ -27,7 +27,7 @@ public class ais implements zv<agv> {
       $$0.a(this);
    }
 
-   public bqr b() {
+   public bqs b() {
       return this.b;
    }
 

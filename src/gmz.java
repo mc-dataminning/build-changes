@@ -1,24 +1,27 @@
-public class gmz extends gnh<cfp, fun<cfp>> {
-   private final geg a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gmz(gkr<cfp, fun<cfp>> $$0, geg $$1) {
+public class gmz extends gni<cfq, fuo<cfq>> {
+   private static final Map<bsr.a, ale> a = ImmutableMap.of(
+      bsr.a.b,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bsr.a.c,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bsr.a.d,
+      new ale("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gmz(gks<cfq, fuo<cfq>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, cfp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gq() != 0) {
-         $$0.a();
-         fwy $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dez.bT.o(), $$0, $$1, $$2, goo.d);
-         $$0.b();
+   public void a(ezx $$0, gdn $$1, int $$2, cfq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ch()) {
+         bsr.a $$10 = $$3.u();
+         if ($$10 != bsr.a.a) {
+            ale $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         }
       }
    }
 }

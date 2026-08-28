@@ -1,39 +1,51 @@
+import com.google.common.base.Suppliers;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Supplier;
 
-public class bdx extends bft {
-   private static final int a = 6;
-   private static final azf b = azf.a();
+public class bdx extends bdm {
+   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bgw.B, "ZombieVillager"));
 
-   public bdx(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bgv.B, "Zombie");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(b.a(6));
-            }
-
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
-         }
-
-         $$0 = $$0.remove("IsVillager");
-      }
-
-      return $$0;
-   }
-
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+   public bdx(Schema $$0) {
+      super("EntityZombieSplitFix", $$0, true);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Zombie")) {
+         return Pair.of($$0, $$1);
+      } else {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.getOptional(DSL.remainderFinder()).orElseThrow();
+         int $$3 = $$2.get("ZombieType").asInt(0);
+         String $$4;
+         Typed<?> $$5;
+         switch ($$3) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$4 = "ZombieVillager";
+               $$5 = this.a($$1, $$3 - 1);
+               break;
+            case 6:
+               $$4 = "Husk";
+               $$5 = $$1;
+               break;
+            default:
+               $$4 = "Zombie";
+               $$5 = $$1;
+         }
+
+         return Pair.of($$4, $$5.update(DSL.remainderFinder(), $$0x -> $$0x.remove("ZombieType")));
+      }
+   }
+
+   private Typed<?> a(Typed<?> $$0, int $$1) {
+      return ac.a($$0, this.b.get(), $$1x -> $$1x.set("Profession", $$1x.createInt($$1)));
    }
 }

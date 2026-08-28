@@ -1,82 +1,41 @@
 import javax.annotation.Nullable;
 
-public class fmi extends fnb {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class fmi extends fnc {
    @Nullable
-   private final xo d;
-   private final xo r;
-   private final Runnable s;
-   @Nullable
-   private fhv u;
-   private fhc v;
-   private int w;
+   private fho a;
 
-   public static fmi a(xo $$0, xo $$1, Runnable $$2) {
-      return new fmi($$0, null, $$1, $$2, 0);
-   }
-
-   public static fmi a(xo $$0, xo $$1, xo $$2, Runnable $$3) {
-      return new fmi($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fmi(xo $$0, @Nullable xo $$1, xo $$2, Runnable $$3, int $$4) {
+   public fmi(xo $$0) {
       super($$0);
-      this.d = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.w = $$4;
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      if (this.d != null) {
-         this.u = fhv.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.u != null ? this.u.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.v = this.c(fhc.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
+      this.a = this.c(new fho(this.n, this.l, this.p, 12));
+      this.c();
    }
 
    @Override
-   public void e() {
-      if (this.w > 0) {
-         this.w--;
-      }
-
-      this.v.j = this.w == 0;
-   }
-
-   @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.u == null) {
-         String $$4 = fmm.a(ac.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.u.a($$0, this.n / 2, 120);
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.x() / 2, this.o / 2 - 9 / 2);
       }
    }
 
    @Override
-   public boolean aD_() {
-      return this.u != null && this.v.j;
+   public boolean aC_() {
+      return false;
    }
 
    @Override
-   public void d() {
-      this.s.run();
+   protected boolean aL_() {
+      return false;
    }
 
    @Override
-   public xo i() {
-      return xn.a(this.l, this.d != null ? this.d : xn.a);
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.a($$3);
+      this.a($$0);
    }
 }

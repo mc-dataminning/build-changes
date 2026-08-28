@@ -66,7 +66,7 @@ public class auy {
    }
 
    private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
-      if (!azt.f($$1)) {
+      if (!azu.f($$1)) {
          return c($$1);
       } else {
          final AtomicReference<GameProfile> $$2 = new AtomicReference<>();

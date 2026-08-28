@@ -82,7 +82,7 @@ public class tq {
                   tq.this.k.d().accept(tq.this.c);
                   tq.this.g.forEach($$0xxx -> $$0xxx.b(tq.this.k));
                   LongSet $$0 = new LongArraySet(tq.this.c.w());
-                  $$0.forEach($$0xxx -> tq.this.c.a(dbd.a($$0xxx), dbd.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> tq.this.c.a(dbe.a($$0xxx), dbe.b($$0xxx), false));
                   tq.this.a($$0 + 1);
                }
             }

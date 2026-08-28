@@ -1,66 +1,74 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fez {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gcq[] e = new gcq[9];
-   private boolean f;
+public record fez(int a, @Nullable fez.a b, @Nullable xo c, @Nullable String d) {
+   private static final xo e = xo.c("chat.tag.system");
+   private static final xo f = xo.c("chat.tag.system_single_player");
+   private static final xo g = xo.c("chat.tag.not_secure");
+   private static final xo h = xo.c("chat.tag.modified");
+   private static final xo i = xo.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fez l = new fez(13684944, null, e, "System");
+   private static final fez m = new fez(13684944, null, f, "System");
+   private static final fez n = new fez(13684944, null, g, "Not Secure");
+   private static final fez o = new fez(16733525, null, i, "Chat Error");
 
-   public fez(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gcq();
-      }
+   public static fez a() {
+      return l;
    }
 
-   private void b() {
-      try {
-         ur $$0 = ve.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = vg.b($$0, 1343);
-         $$0 = bae.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gcq.a.parse(vf.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gcq::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public static fez b() {
+      return m;
    }
 
-   public void a() {
-      try {
-         ur $$0 = vg.e(new ur());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gcq $$2 = this.a($$1);
-            DataResult<vo> $$3 = gcq.a.encodeStart(vf.a, $$2);
-            $$0.a(String.valueOf($$1), (vo)$$3.getOrThrow());
-         }
-
-         ve.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   public static fez c() {
+      return n;
    }
 
-   public gcq a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   public static fez a(String $$0) {
+      xo $$1 = xo.b($$0).a(n.h);
+      xo $$2 = xo.i().b(h).b(xn.s).b($$1);
+      return new fez(6316128, fez.a.a, $$2, "Modified");
+   }
+
+   public static fez d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fez.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public xo g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new ale("icon/chat_modified"), 9, 9);
+
+      public final ale b;
+      public final int c;
+      public final int d;
+
+      private a(final ale $$0, final int $$1, final int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return this.e[$$0];
+      public void a(fgq $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

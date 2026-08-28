@@ -1,18 +1,17 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class emp implements emq {
-   public static final emp a = new emp();
-   public static final MapCodec<emp> b = MapCodec.unit(a);
+public class emp implements emr {
+   private static final emp b = new emp();
+   public static final MapCodec<emp> a = MapCodec.unit(b);
 
-   @Nullable
    @Override
-   public ur a(azf $$0, @Nullable ur $$1) {
-      return $$1;
+   public ur a(azg $$0, @Nullable ur $$1) {
+      return new ur();
    }
 
    @Override
-   public emr<?> a() {
-      return emr.b;
+   public ems<?> a() {
+      return ems.a;
    }
 }

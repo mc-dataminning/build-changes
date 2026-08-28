@@ -7,7 +7,7 @@ public class agb implements zv<ach> {
    private final float f;
    private final long g;
 
-   public agb(ji<avy> $$0, awa $$1, bss $$2, float $$3, float $$4, long $$5) {
+   public agb(ji<avy> $$0, awa $$1, bst $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.al();

@@ -1,38 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehk extends eht {
-   public static final MapCodec<ehk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehk::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class ehk extends ehq {
+   private static final ehk c = new ehk();
+   public static final MapCodec<ehk> a = MapCodec.unit(() -> c);
 
-   private ehk(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static ehk a(int $$0, double $$1, double $$2) {
-      return new ehk($$0, $$1, $$2);
+   public static ehk a() {
+      return c;
    }
 
    @Override
-   protected int a(azf $$0, iz $$1) {
-      double $$2 = dcv.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<iz> a_(eho $$0, azg $$1, iz $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new iz($$3, $$2.v(), $$4));
    }
 
    @Override
-   public ehq<?> b() {
-      return ehq.g;
+   public ehr<?> b() {
+      return ehr.m;
    }
 }

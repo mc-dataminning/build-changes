@@ -1,44 +1,40 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cvy extends cuj {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cvy extends csl {
-   protected final dex a;
-   private final je b;
-
-   public cvy(dex $$0, dex $$1, cui.a $$2, je $$3) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-   }
-
-   protected boolean a(dbz $$0, dsa $$1, iz $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dsa c(cxy $$0) {
-      dsa $$1 = this.a.a($$0);
-      dsa $$2 = null;
-      dbz $$3 = $$0.q();
-      iz $$4 = $$0.a();
-
-      for (je $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dsa $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, evu.a()) ? $$2 : null;
+   public cvy(cuj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(Map<dex, cui> $$0, cui $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public int b(cuo $$0) {
+      return 1200;
+   }
+
+   @Override
+   public cwj c(cuo $$0) {
+      return cwj.h;
+   }
+
+   @Override
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      $$1.a(avz.yU, 1.0F, 1.0F);
+      $$1.b(awj.c.b(this));
+      return cuq.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cuo a(cuo $$0, dbx $$1, bto $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cuo $$0, dbx $$1, bto $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bto $$0) {
+      $$0.a(avz.yV, 1.0F, 1.0F);
    }
 }

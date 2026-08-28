@@ -1,102 +1,42 @@
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ccd extends ccl {
-   private static final cee a = cee.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
+public class ccd extends ccm {
+   private final cfq a;
    @Nullable
-   private Class<?>[] j;
+   private bto b;
+   private final cef c = cef.a().a(64.0);
 
-   public ccd(btw $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(cal.a.d));
+   public ccd(cfq $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(cam.a.d));
    }
 
    @Override
    public boolean a() {
-      int $$0 = this.e.en();
-      btn $$1 = this.e.em();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ak() == bsy.by && this.e.dP().ab().b(dbs.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
+      evl $$0 = this.a.cK().c(10.0, 8.0, 10.0);
+      List<? extends bto> $$1 = this.a.dP().a(cmj.class, this.c, this.a, $$0);
+      List<cmw> $$2 = this.a.dP().a(this.c, this.a, $$0);
+
+      for (bto $$3 : $$1) {
+         cmj $$4 = (cmj)$$3;
+
+         for (cmw $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
             }
-
-            return this.a($$1, a);
          }
-      } else {
-         return false;
       }
-   }
 
-   public ccd a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+      return this.b == null ? false : !(this.b instanceof cmw) || !this.b.N_() && !((cmw)this.b).f();
    }
 
    @Override
    public void c() {
-      this.e.h(this.e.em());
-      this.g = this.e.p();
-      this.d = this.e.en();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
+      this.a.h(this.b);
       super.c();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      evk $$1 = evk.a(this.e.dn()).c($$0, 10.0, $$0);
-      List<? extends btp> $$2 = this.e.dP().a((Class<? extends btp>)this.e.getClass(), $$1, bsx.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         btp $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (btp)var5.next();
-            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof buk) || ((buk)this.e).P_() == ((buk)$$3).P_()) && !$$3.s(this.e.em())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.em());
-      }
-   }
-
-   protected void a(btp $$0, btn $$1) {
-      $$0.h($$1);
    }
 }

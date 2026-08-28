@@ -1,12 +1,12 @@
 import java.util.UUID;
 
-public record xz(UUID a, cmx b) {
-   public static xz a(cmx $$0) {
+public record xz(UUID a, cmy b) {
+   public static xz a(cmy $$0) {
       return new xz(UUID.randomUUID(), $$0);
    }
 
    public yi.c a(UUID $$0) {
-      return new yi($$0, this.a).a(azl.a(this.b.b(), "SHA256withRSA"));
+      return new yi($$0, this.a).a(azm.a(this.b.b(), "SHA256withRSA"));
    }
 
    public yf a() {
@@ -17,7 +17,7 @@ public record xz(UUID a, cmx b) {
       return this.a;
    }
 
-   public cmx c() {
+   public cmy c() {
       return this.b;
    }
 }

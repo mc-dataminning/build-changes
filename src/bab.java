@@ -1,2 +1,3 @@
-public @interface bab {
+public enum bab {
+   a;
 }

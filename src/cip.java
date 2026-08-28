@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cip<T extends cij> {
-   private static cip<?>[] l = new cip[0];
-   public static final cip<cif> a = a(cif.class, "HoldingPattern");
-   public static final cip<cin> b = a(cin.class, "StrafePlayer");
-   public static final cip<cih> c = a(cih.class, "LandingApproach");
-   public static final cip<cii> d = a(cii.class, "Landing");
-   public static final cip<cio> e = a(cio.class, "Takeoff");
-   public static final cip<cil> f = a(cil.class, "SittingFlaming");
-   public static final cip<cim> g = a(cim.class, "SittingScanning");
-   public static final cip<cik> h = a(cik.class, "SittingAttacking");
-   public static final cip<cid> i = a(cid.class, "ChargingPlayer");
-   public static final cip<cie> j = a(cie.class, "Dying");
-   public static final cip<cig> k = a(cig.class, "Hover");
-   private final Class<? extends cij> m;
-   private final int n;
-   private final String o;
+public class cip extends cic {
+   private boolean b;
+   @Nullable
+   private eoi c;
+   @Nullable
+   private evq d;
 
-   private cip(int $$0, Class<? extends cij> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cij a(chz $$0) {
-      try {
-         Constructor<? extends cij> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cij> a() throws NoSuchMethodException {
-      return this.m.getConstructor(chz.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cip(cia $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      if (!this.b && this.c != null) {
+         iz $$0 = this.a.dP().a(dxt.a.f, eaw.a(this.a.s()));
+         if (!$$0.a(this.a.dn(), 10.0)) {
+            this.a.gn().a(ciq.a);
+         }
+      } else {
+         this.b = false;
+         this.j();
+      }
    }
 
-   public static cip<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void j() {
+      int $$0 = this.a.y();
+      evq $$1 = this.a.F(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.go() != null && this.a.go().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
    }
 
-   private static <T extends cij> cip<T> a(Class<T> $$0, String $$1) {
-      cip<T> $$2 = new cip<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            kd $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new evq((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public evq g() {
+      return this.d;
+   }
+
+   @Override
+   public ciq<cip> i() {
+      return ciq.e;
    }
 }

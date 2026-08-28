@@ -27,7 +27,7 @@ public class aiq implements zv<agv> {
    }
 
    @Nullable
-   public bss a(are $$0) {
+   public bst a(are $$0) {
       return $$0.a(this.b);
    }
 }

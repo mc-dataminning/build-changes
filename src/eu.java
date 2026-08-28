@@ -42,11 +42,11 @@ public interface eu {
       return Collections.singleton(eu.b.b);
    }
 
-   Set<ald<dbw>> u();
+   Set<ald<dbx>> u();
 
    jw v();
 
-   cpj w();
+   cpk w();
 
    default void a(jv<?> $$0, eu.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

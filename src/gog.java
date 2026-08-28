@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gog {
+@Deprecated
+public interface gog {
+   float call(cuo var1, @Nullable fxu var2, @Nullable bto var3, int var4);
 }

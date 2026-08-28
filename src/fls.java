@@ -1,69 +1,226 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fls extends flt {
-   private static final xo d = xo.c("chat.copy");
-   private static final xo r = xo.c("chat.link.warning");
-   private final String s;
-   private final boolean u;
+public class fls extends fnc {
+   public static final double a = 7.0;
+   private static final xo c = xo.c("chat_screen.usage");
+   private static final int d = 210;
+   private String r = "";
+   private int s = -1;
+   protected fhm b;
+   private String u;
+   fhg v;
 
-   public fls(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xo.b($$1), $$1, $$2 ? xn.e : xn.g, $$2);
-   }
-
-   public fls(BooleanConsumer $$0, xo $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xn.e : xn.g, $$3);
-   }
-
-   public fls(BooleanConsumer $$0, xo $$1, xo $$2, String $$3, xo $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xo)($$5 ? xo.c("chat.link.open") : xn.f);
-      this.b = $$4;
-      this.u = !$$5;
-      this.s = $$3;
-   }
-
-   protected static yc a(boolean $$0, String $$1) {
-      return c($$0).b(xn.v).b(xo.b($$1));
-   }
-
-   protected static yc c(boolean $$0) {
-      return xo.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public fls(String $$0) {
+      super(xo.c("chat_screen.title"));
+      this.u = $$0;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fhc.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fhc.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fhc.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.m.o.a(this.s);
+   protected void aM_() {
+      this.s = this.m.l.d().c().size();
+      this.b = new fhm(this.m.i, 4, this.o - 12, this.n - 4, 12, xo.c("chat.editBox")) {
+         @Override
+         protected yc aJ_() {
+            return super.aJ_().b(fls.this.v.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.u);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.v = new fhg(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.v.b(false);
+      this.v.d();
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.u) {
-         $$0.a(this.p, r, this.n / 2, 110, 16764108);
+   protected void aB_() {
+      this.b(this.b);
+   }
+
+   @Override
+   public void a(ffe $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.v.d();
+   }
+
+   @Override
+   public void j() {
+      this.m.l.d().d();
+   }
+
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.v.a(!$$1.equals(this.u));
+      this.v.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.v.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.l.d().a(this.m.l.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.l.d().a(-this.m.l.d().j() + 1);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static void a(fnb $$0, String $$1) {
-      ffd $$2 = ffd.Q();
-      $$2.a(new fls($$3 -> {
-         if ($$3) {
-            ac.k().a($$1);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = ayy.a($$3, -1.0, 1.0);
+      if (this.v.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
          }
 
-         $$2.a($$0);
-      }, $$1, true));
+         this.m.l.d().a((int)$$3);
+         return true;
+      }
    }
 
-   public static fhc.c b(fnb $$0, String $$1) {
-      return $$2 -> a($$0, $$1);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.v.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fhe $$3 = this.m.l.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
+
+            yl $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.u = this.b.a();
+               return true;
+            }
+         }
+
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.s + $$0;
+      int $$2 = this.m.l.d().c().size();
+      $$1 = ayy.a($$1, 0, $$2);
+      if ($$1 != this.s) {
+         if ($$1 == $$2) {
+            this.s = $$2;
+            this.b.a(this.r);
+         } else {
+            if (this.s == $$2) {
+               this.r = this.b.a();
+            }
+
+            this.b.a(this.m.l.d().c().get($$1));
+            this.v.a(false);
+            this.s = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
+      this.m.l.d().a($$0, this.m.l.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.v.a($$0, $$1, $$2);
+      $$0.c().b();
+      fez $$4 = this.m.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         yl $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fkz $$0) {
+      $$0.a(fky.a, this.n());
+      $$0.a(fky.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fky.a, xo.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private yl b(double $$0, double $$1) {
+      return this.m.l.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.s.cz.c($$0.substring(1));
+         } else {
+            this.m.s.cz.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return azu.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

@@ -1,19 +1,32 @@
-import java.util.List;
+public class cwc extends cvf implements cvg {
+   public cwc(cuj.a $$0) {
+      super($$0);
+   }
 
-public interface cwc {
-   int a();
+   @Override
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         coa $$4 = new coa($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   float b();
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bqu.a($$3, $$0.x_());
+   }
 
-   float c();
+   @Override
+   public cno a(dbx $$0, js $$1, cuo $$2, je $$3) {
+      coa $$4 = new coa($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
+   }
 
-   axe<dex> d();
-
-   int e();
-
-   cyq f();
-
-   default cxs a(axe<dex> $$0) {
-      return new cxs(List.of(cxs.a.a(this.d()), cxs.a.a($$0, this.b())), 1.0F, 1);
+   @Override
+   public cvg.a c() {
+      return cvg.a.a().a(cvg.a.a.c() * 0.5F).b(cvg.a.a.d() * 1.25F).a();
    }
 }

@@ -1,13 +1,32 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-interface ewb {
-   DoubleList a();
+public class ewb implements ewc {
+   private final DoubleList a;
 
-   boolean a(ewb.a var1);
+   public ewb(DoubleList $$0) {
+      this.a = $$0;
+   }
 
-   int size();
+   @Override
+   public boolean a(ewc.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

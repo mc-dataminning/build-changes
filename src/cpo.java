@@ -1,121 +1,31 @@
 public class cpo {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+   public static final int a = 20;
+   public static final float b = 20.0F;
+   public static final float c = 5.0F;
+   public static final float d = 2.5F;
+   public static final float e = 4.0F;
+   public static final int f = 80;
+   public static final int g = 10;
+   public static final int h = 18;
+   public static final int i = 6;
+   public static final int j = 0;
+   public static final float k = 0.1F;
+   public static final float l = 0.3F;
+   public static final float m = 0.6F;
+   public static final float n = 0.8F;
+   public static final float o = 1.0F;
+   public static final float p = 1.2F;
+   public static final float q = 6.0F;
+   public static final float r = 0.05F;
+   public static final float s = 0.2F;
+   public static final float t = 0.005F;
+   public static final float u = 0.1F;
+   public static final float v = 0.0F;
+   public static final float w = 0.0F;
+   public static final float x = 0.1F;
+   public static final float y = 0.01F;
 
-   public cpo() {
-      this.b = 5.0F;
-   }
-
-   private void b(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min($$1 + this.b, (float)this.a);
-   }
-
-   public void a(int $$0, float $$1) {
-      this.b($$0, cpn.a($$0, $$1));
-   }
-
-   public void a(cun $$0) {
-      cpp $$1 = $$0.a(km.u);
-      if ($$1 != null) {
-         this.b($$1.b(), $$1.c());
-      }
-   }
-
-   public void a(cmv $$0) {
-      bqp $$1 = $$0.dP().al();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bqp.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dP().ab().b(dbs.k);
-      if ($$2 && this.b > 0.0F && $$0.gn() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gn()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eA() > 10.0F || $$1 == bqp.d || $$0.eA() > 1.0F && $$1 == bqp.c) {
-               $$0.a($$0.dQ().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(ur $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(ur $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
-      this.c = $$0;
+   public static float a(int $$0, float $$1) {
+      return (float)$$0 * $$1 * 2.0F;
    }
 }

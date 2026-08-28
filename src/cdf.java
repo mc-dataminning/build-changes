@@ -1,25 +1,19 @@
-public class cdf extends cdr {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cdf extends cdy<bsn> {
    @Override
-   protected boolean a(btn $$0, btn $$1) {
-      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && cdx.c($$0, $$1);
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(ccs.K, ccs.h);
    }
 
-   private boolean e(btn $$0, btn $$1) {
-      return !$$0.dS().a(ccr.U) && $$1.ak().a(aws.j);
+   protected void a(are $$0, bsn $$1) {
+      $$1.dS().c(ccs.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(btn $$0) {
-      return $$0.ak().a(aws.i);
-   }
-
-   private boolean f(btn $$0, btn $$1) {
-      return $$1.g((bss)$$0) <= 64.0;
-   }
-
-   @Override
-   protected ccr<btn> b() {
-      return ccr.B;
+   private void a(bsn $$0, ccu $$1) {
+      Optional<bsn> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(bsn.class::cast);
+      $$0.dS().a(ccs.K, $$2);
    }
 }

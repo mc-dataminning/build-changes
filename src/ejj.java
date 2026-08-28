@@ -1,61 +1,42 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
 
-public class ejj extends ejp {
-   public static final MapCodec<ejj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ehm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejj::new)
-   );
-   private final ji<ehm> b;
-   private final ur c;
+public class ejj extends ejq {
+   public static final MapCodec<ejj> a = MapCodec.unit(() -> ejj.b);
+   public static final ejj b = new ejj();
 
-   protected ejj(ji<ehm> $$0, ejr.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
-
-   private ur b() {
-      ur $$0 = new ur();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dqf.a.a.c());
-      return $$0;
+   private ejj() {
+      super(ejs.a.a);
    }
 
    @Override
-   public kd a(emj $$0, dlk $$1) {
+   public kd a(emk $$0, dll $$1) {
       return kd.g;
    }
 
    @Override
-   public List<emi.c> a(emj $$0, iz $$1, dlk $$2, azf $$3) {
-      List<emi.c> $$4 = Lists.newArrayList();
-      $$4.add(new emi.c($$1, dez.pb.o().a(diz.b, jg.a(je.a, je.d)), this.c));
-      return $$4;
+   public List<emj.c> a(emk $$0, iz $$1, dll $$2, azg $$3) {
+      return Collections.emptyList();
    }
 
    @Override
-   public eia a(emj $$0, iz $$1, dlk $$2) {
-      kd $$3 = this.a($$0, $$2);
-      return new eia($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public eib a(emk $$0, iz $$1, dll $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
    }
 
    @Override
-   public boolean a(emj $$0, dcr $$1, dcp $$2, dtx $$3, iz $$4, iz $$5, dlk $$6, eia $$7, azf $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   public boolean a(emk $$0, dcs $$1, dcq $$2, dty $$3, iz $$4, iz $$5, dll $$6, eib $$7, azg $$8, boolean $$9) {
+      return true;
    }
 
    @Override
-   public ejq<?> a() {
-      return ejq.c;
+   public ejr<?> a() {
+      return ejr.d;
    }
 
    @Override
    public String toString() {
-      return "Feature[" + this.b + "]";
+      return "Empty";
    }
 }

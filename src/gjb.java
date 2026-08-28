@@ -1,27 +1,28 @@
-public class gjb extends giu<cni> {
-   private final gjt a;
+public class gjb extends giv<cjf> {
+   private final geh a;
 
-   public gjb(giv.a $$0) {
+   public gjb(giw.a $$0) {
       super($$0);
-      this.a = $$0.b();
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(cni $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.u()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
+   public void a(cjf $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      dsb $$6 = $$0.u();
+      if ($$6.l() == dle.c) {
+         dbx $$7 = $$0.dP();
+         if ($$6 != $$7.a_($$0.dp()) && $$6.l() != dle.a) {
+            $$3.a();
+            iz $$8 = iz.a($$0.du(), $$0.cK().e, $$0.dA());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(gdi.b($$6)), false, azg.a(), $$6.a($$0.p()), gop.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
-
-      this.a.a($$0.p(), cuk.h, $$5, goo.d, $$3, $$4, $$0.dP(), $$0.al());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ale a(cni $$0) {
-      return gow.e;
+   public ale a(cjf $$0) {
+      return gox.e;
    }
 }

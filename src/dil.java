@@ -1,73 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dil extends dik implements dfa {
-   protected dil(drz.d $$0, je $$1, ewi $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public abstract class dil extends dey {
+   protected final je a;
+   protected final boolean b;
+   protected final ewj d;
+
+   protected dil(dsa.d $$0, je $$1, ewj $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends dil> a();
 
-   protected dsa a(dsa $$0, dsa $$1) {
-      return $$1;
+   @Nullable
+   @Override
+   public dsb a(cxz $$0) {
+      dsb $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dsb a(dby $$0) {
+      return this.o();
    }
 
    @Override
-   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected boolean a(dsb $$0, dca $$1, iz $$2) {
+      iz $$3 = $$2.a(this.a.g());
+      dsb $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dsb $$0, are $$1, iz $$2, azg $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
-
-      dim $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, enu.c, enu.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
    }
 
-   @Override
-   public cun a(dbz $$0, iz $$1, dsa $$2) {
-      return new cun(this.c());
-   }
-
-   @Override
-   public boolean b(dbz $$0, iz $$1, dsa $$2) {
-      Optional<iz> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
+   protected boolean m(dsb $$0) {
       return true;
    }
 
    @Override
-   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
-      Optional<iz> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dsa $$5 = $$0.a_($$4.get());
-         ((dim)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return this.d;
    }
 
-   private Optional<iz> a(dbc $$0, iz $$1, dex $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
+   protected abstract din c();
 
-   @Override
-   protected boolean a(dsa $$0, cxy $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
-   }
-
-   @Override
-   protected dex b() {
-      return this;
-   }
+   protected abstract dey b();
 }

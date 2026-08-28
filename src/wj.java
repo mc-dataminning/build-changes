@@ -360,8 +360,8 @@ public class wj extends SimpleChannelInboundHandler<zv<?>> {
    }
 
    protected void c() {
-      this.x = ayx.i(0.75F, (float)this.v, this.x);
-      this.w = ayx.i(0.75F, (float)this.u, this.w);
+      this.x = ayy.i(0.75F, (float)this.v, this.x);
+      this.w = ayy.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -401,7 +401,7 @@ public class wj extends SimpleChannelInboundHandler<zv<?>> {
       return this.k.a();
    }
 
-   public static wj a(InetSocketAddress $$0, boolean $$1, @Nullable bls $$2) {
+   public static wj a(InetSocketAddress $$0, boolean $$1, @Nullable blt $$2) {
       wj $$3 = new wj(zw.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -574,7 +574,7 @@ public class wj extends SimpleChannelInboundHandler<zv<?>> {
       return this.x;
    }
 
-   public void a(bls $$0) {
+   public void a(blt $$0) {
       this.B = new wc($$0);
    }
 }

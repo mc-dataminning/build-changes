@@ -1,62 +1,71 @@
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ggk implements daz {
-   private final int c;
-   private final int d;
-   protected final ggj[][] a;
-   protected final dbw b;
+class ggk {
+   private final Map<iz, dpg> a;
+   @Nullable
+   private final List<dup<dsb>> b;
+   private final boolean c;
+   private final duh d;
 
-   ggk(dbw $$0, int $$1, int $$2, ggj[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
-   }
+   ggk(duh $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ai();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dud) {
+         this.b = null;
+      } else {
+         dui[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public dsa a_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
-   }
-
-   @Override
-   public ent b_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
-   }
-
-   @Override
-   public float a(je $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public eni y_() {
-      return this.b.y_();
+         for (dui $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public dpf c_(iz $$0) {
-      int $$1 = kb.a($$0.u()) - this.c;
-      int $$2 = kb.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
+   public dpg a(iz $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public int a(iz $$0, dbh $$1) {
-      return this.b.a($$0, $$1);
-   }
+   public dsb b(iz $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dsb $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dfa.hW.o();
+         }
 
-   @Override
-   public int I_() {
-      return this.b.I_();
-   }
+         if ($$2 == 70) {
+            $$4 = dxk.a($$1, $$3);
+         }
 
-   @Override
-   public int J_() {
-      return this.b.J_();
+         return $$4 == null ? dfa.a.o() : $$4;
+      } else if (this.b == null) {
+         return dfa.a.o();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dup<dsb> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dfa.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
+         }
+      }
    }
 }

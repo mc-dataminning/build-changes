@@ -5,11 +5,11 @@ public class aim implements zv<agv> {
    private final ale d;
    private final ale e;
    private final String f;
-   private final dqf.a g;
+   private final dqg.a g;
    private final int h;
    private final int i;
 
-   public aim(iz $$0, ale $$1, ale $$2, ale $$3, String $$4, dqf.a $$5, int $$6, int $$7) {
+   public aim(iz $$0, ale $$1, ale $$2, ale $$3, String $$4, dqg.a $$5, int $$6, int $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class aim implements zv<agv> {
       this.d = $$0.q();
       this.e = $$0.q();
       this.f = $$0.p();
-      this.g = dqf.a.a($$0.p()).orElse(dqf.a.b);
+      this.g = dqg.a.a($$0.p()).orElse(dqg.a.b);
       this.h = $$0.l();
       this.i = $$0.l();
    }
@@ -71,7 +71,7 @@ public class aim implements zv<agv> {
       return this.f;
    }
 
-   public dqf.a i() {
+   public dqg.a i() {
       return this.g;
    }
 

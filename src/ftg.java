@@ -1,61 +1,37 @@
-public class ftg extends fuu {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fwy e;
-   private final fwy f;
-   private final fwy g;
-   private final fwy h;
-   private final fwy i;
-   private final fwy j;
-   private final fwy k;
+public class ftg extends fvu<cjm> {
+   private final fwz a;
 
-   public ftg(fwy $$0) {
-      super(gdu::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+   public ftg(fwz $$0) {
+      super($$0);
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   public static fxe a() {
-      fxg $$0 = new fxg();
-      fxh $$1 = $$0.a();
-      $$1.a("left_lid", fxd.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fxa.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fxd.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fxa.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fxd.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fxa.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fxd.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fxa.a);
-      $$1.a("right_pages", fxd.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fxa.a);
-      fxd $$2 = fxd.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fxa.a);
-      $$1.a("flip_page2", $$2, fxa.a);
-      return fxe.a($$0, 64, 32);
+   public static fxf c() {
+      fxh $$0 = fum.a(fxd.a, 0.0F);
+      fxi $$1 = $$0.a();
+      fvu.a($$1);
+      fxi $$2 = $$1.a("head").a("mushrooms", fxe.c(), fxb.a);
+      $$2.a("red_mushroom_1", fxe.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxb.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", fxe.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxb.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", fxe.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxb.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", fxe.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxb.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
+      );
+      $$2.a(
+         "brown_mushroom_3",
+         fxe.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fxb.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
+      );
+      $$2.a(
+         "brown_mushroom_4",
+         fxe.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fxb.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return fxf.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void b(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (ayx.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = ayx.a($$4);
-      this.i.b = ayx.a($$4);
-      this.j.b = ayx.a($$4);
-      this.k.b = ayx.a($$4);
+   public void a(cjm $$0, float $$1, float $$2, float $$3) {
+      this.a.k = !$$0.gu();
+      super.a($$0, $$1, $$2, $$3);
    }
 }

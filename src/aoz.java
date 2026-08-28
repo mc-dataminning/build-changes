@@ -21,10 +21,10 @@ public class aoz {
       );
    }
 
-   private static int a(ep $$0, @Nullable bss $$1, arf $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, @Nullable bst $$1, arf $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.e.b() != dbt.d) {
+      } else if ($$2.e.b() != dbu.d) {
          throw b.create($$2.O_());
       } else {
          $$2.d($$1);

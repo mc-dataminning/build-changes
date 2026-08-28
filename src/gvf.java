@@ -1,29 +1,34 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class gvf {
-   private final float a;
-   private final AtomicReference<gvf.a> b = new AtomicReference<>();
+public abstract class gvf extends fnc {
+   protected static final int d = 17;
+   protected static final int r = 7;
+   protected static final long s = 5368709120L;
+   protected static final int u = 5000268;
+   protected static final int v = 7105644;
+   protected static final int w = 8388479;
+   protected static final int x = 3368635;
+   protected static final int y = 7107012;
+   protected static final int z = 8226750;
+   protected static final int A = 32;
+   private final List<gvd> a = Lists.newArrayList();
 
-   public gvf(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gvf(xo $$0) {
+      super($$0);
    }
 
-   public void a(fev $$0, xo $$1) {
-      gvf.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gvf.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   protected static int g(int $$0) {
+      return 40 + $$0 * 13;
    }
 
-   static class a {
-      final xo a;
-      final RateLimiter b;
+   protected gvd a(gvd $$0) {
+      this.a.add($$0);
+      return this.a($$0);
+   }
 
-      a(xo $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public xo m() {
+      return xn.a(this.a.stream().map(gvd::a).collect(Collectors.toList()));
    }
 }

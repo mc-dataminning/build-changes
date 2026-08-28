@@ -1,63 +1,54 @@
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gsx implements aup {
-   public static final gsx.a<cun> a = new gsx.a<>();
-   public static final gsx.a<cun> b = new gsx.a<>();
-   public static final gsx.a<fqs> c = new gsx.a<>();
-   private final Map<gsx.a<?>, gsx.c<?>> d = new HashMap<>();
+public interface gsx<T> {
+   static <T> gsx<T> a() {
+      return new gsx<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   @Override
-   public void a(auo $$0) {
-      for (gsx.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public <T> void a(gsx.a<T> $$0, gsx.b<T> $$1) {
-      this.d.put($$0, new gsx.c<>($$1));
-   }
-
-   private <T> gsx.c<T> b(gsx.a<T> $$0) {
-      gsx.c<T> $$1 = (gsx.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
+   static <T> gsx<T> a(List<T> $$0, Function<T, Stream<ale>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
       } else {
-         return $$1;
+         final gta<T> $$2 = new gta<>();
+         final gta<T> $$3 = new gta<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gsx<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   public <T> void a(gsx.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
+   List<T> a(String var1);
 
-   public <T> gsy<T> a(gsx.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gsv<T>> {
-   }
-
-   static class c<T> {
-      private final gsx.b<T> a;
-      gsv<T> b = gsv.b();
-
-      c(gsx.b<T> $$0) {
-         this.a = $$0;
-      }
-
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
-      }
-
-      void a() {
-         this.b.a();
-      }
-   }
+   List<T> b(String var1);
 }

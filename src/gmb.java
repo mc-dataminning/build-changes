@@ -1,9 +1,11 @@
-public class gmb extends ghq<cku, fwq<cku>> {
-   public gmb(giv.a $$0) {
-      this($$0, fwx.cf, fwx.ci, fwx.cj);
+public class gmb extends gkc<cku, fuj<cku>> {
+   private static final ale a = new ale("textures/entity/hoglin/zoglin.png");
+
+   public gmb(giw.a $$0) {
+      super($$0, new fuj<>($$0.a(fwy.ce)), 0.7F);
    }
 
-   public gmb(giv.a $$0, fww $$1, fww $$2, fww $$3) {
-      super($$0, new fwq<>($$0.a($$1)), new fwq<>($$0.a($$2)), new fwq<>($$0.a($$3)));
+   public ale a(cku $$0) {
+      return a;
    }
 }

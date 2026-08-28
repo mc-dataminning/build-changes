@@ -117,7 +117,7 @@ public abstract class avh<K, V extends avg<K>> {
             }
 
             for (JsonElement $$2 : $$1) {
-               JsonObject $$3 = ayn.m($$2, "entry");
+               JsonObject $$3 = ayo.m($$2, "entry");
                avg<K> $$4 = this.a($$3);
                if ($$4.g() != null) {
                   this.d.put(this.a($$4.g()), (V)$$4);

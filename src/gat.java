@@ -1,27 +1,49 @@
-public class gat extends gay {
-   gat(fxt $$0, double $$1, double $$2, double $$3) {
+public class gat extends gcb {
+   private final gbw a;
+
+   protected gat(fxu $$0, double $$1, double $$2, double $$3, double $$4, gbw $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(li.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class a implements gbd<lm> {
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gat($$1, $$2, $$3, $$4);
+   @Override
+   public gbf b() {
+      return gbf.d;
+   }
+
+   public static class a implements gbe<lm> {
+      private final gbw a;
+
+      public a(gbw $$0) {
+         this.a = $$0;
+      }
+
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gat($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

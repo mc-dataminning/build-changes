@@ -1,33 +1,30 @@
-public class ftm<T extends chg> extends fuj<T> {
-   private final fwy g = this.b.b("left_chest");
-   private final fwy h = this.b.b("right_chest");
+import com.google.common.collect.ImmutableList.Builder;
 
-   public ftm(fwy $$0) {
+public class ftm extends fvl {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
+
+   public ftm(fwz $$0) {
       super($$0);
    }
 
-   public static fxe c() {
-      fxg $$0 = fuj.a(fxc.a);
-      fxh $$1 = $$0.a();
-      fxh $$2 = $$1.a("body");
-      fxd $$3 = fxd.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fxa.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fxa.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fxh $$4 = $$1.a("head_parts").a("head");
-      fxd $$5 = fxd.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fxa.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fxa.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fxe.a($$0, 64, 64);
+   @Override
+   protected Builder<fwz> a(fwz $$0) {
+      Builder<fwz> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.u()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
-      }
+   public static fxf a() {
+      fxh $$0 = new fxh();
+      fxi $$1 = $$0.a();
+      fvl.a($$1);
+      $$1.a("chest_bottom", fxe.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fxb.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fxe.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fxb.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fxe.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fxb.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fxf.a($$0, 128, 128);
    }
 }

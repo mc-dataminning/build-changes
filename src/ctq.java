@@ -1,33 +1,48 @@
-public class ctq extends cui implements cvf {
-   public ctq(cui.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface ctq {
+   bta m();
+
+   default ji<avy> n() {
+      return avz.as;
    }
 
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.iG, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cny $$4 = new cny($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
+   default bqu<cuo> a(cuj $$0, dbx $$1, cmw $$2, bqs $$3) {
+      cuo $$4 = $$2.b($$3);
+      bta $$5 = btq.h($$4);
+      if (!$$2.d($$5)) {
+         return bqu.c($$4);
+      } else {
+         cuo $$6 = $$2.a($$5);
+         if ((!daa.f($$6) || $$2.f()) && !cuo.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awj.c.b($$0));
+            }
+
+            cuo $$7 = $$6.e() ? $$4 : $$6.f();
+            cuo $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqu.a($$7, $$1.x_());
+         } else {
+            return bqu.d($$4);
+         }
       }
-
-      $$1.b(awj.c.b(this));
-      $$3.a(1, $$1);
-      return bqt.a($$3, $$0.x_());
    }
 
-   @Override
-   public cnn a(dbw $$0, js $$1, cun $$2, je $$3) {
-      cny $$4 = new cny($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
+   @Nullable
+   static ctq c_(cuo $$0) {
+      cuj $$3 = $$0.g();
+      if ($$3 instanceof ctq) {
+         return (ctq)$$3;
+      } else {
+         if ($$0.g() instanceof csm $$2) {
+            dey var6 = $$2.d();
+            if (var6 instanceof ctq) {
+               return (ctq)var6;
+            }
+         }
 
-   @Override
-   public cvf.a c() {
-      return cvf.a.a().a(cvf.a.a.c() * 0.5F).b(cvf.a.a.d() * 1.25F).a();
+         return null;
+      }
    }
 }

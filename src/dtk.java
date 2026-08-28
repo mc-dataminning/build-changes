@@ -1,23 +1,23 @@
-public enum dtk implements azs {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dtk implements azt {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final String e;
-   private final xo f;
+   private final String f;
 
    private dtk(final String $$0) {
-      this.e = $$0;
-      this.f = xo.c("structure_block.mode_info." + $$0);
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public xo a() {
       return this.f;
    }
 }

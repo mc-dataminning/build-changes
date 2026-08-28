@@ -1,111 +1,163 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class fkn extends fkk {
-   private final List<fkn.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fks f = fks.i().a(0.5F, 0.5F);
+public class fkn extends fkl {
+   private final fkn.b c;
+   private final List<fkn.a> d = new ArrayList<>();
+   private final fkt e = fkt.i();
 
-   public fkn() {
-      this(0, 0, 0, 0);
+   public fkn(int $$0, int $$1, fkn.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public fkn(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fkn(int $$0, int $$1, int $$2, int $$3) {
+   public fkn(int $$0, int $$1, int $$2, int $$3, fkn.b $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fkn a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fkn a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fkn b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fks b() {
-      return this.f.g();
-   }
-
-   public fks c() {
-      return this.f;
+      this.c = $$4;
    }
 
    @Override
    public void a() {
       super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-      for (fkn.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+         for (fkn.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fkn.a> $$5 = this.d.iterator();
+         fkn.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fkn.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fkn.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
-
-      for (fkn.a $$3 : this.c) {
-         $$3.a(this.C(), $$0);
-         $$3.b(this.D(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends fkr> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fkr> T a(T $$0, fks $$1) {
-      this.c.add(new fkn.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fkr> T a(T $$0, Consumer<fks> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   public void b(Consumer<fkr> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
+   public void b(Consumer<fks> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public static void a(fkr $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   public fkt b() {
+      return this.e.g();
    }
 
-   public static void a(fkr $$0, fli $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   public fkt c() {
+      return this.e;
    }
 
-   public static void a(fkr $$0, fli $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   public <T extends fks> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public static void a(fkr $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.x(), $$0::m, $$5);
-      a($$2, $$4, $$0.v(), $$0::n, $$6);
+   public <T extends fks> T a(T $$0, fkt $$1) {
+      this.d.add(new fkn.a($$0, $$1));
+      return $$0;
    }
 
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)ayx.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
+   public <T extends fks> T a(T $$0, Consumer<fkt> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
-   static class a extends fkk.a {
-      protected a(fkr $$0, fks $$1) {
+   static class a extends fkl.a {
+      protected a(fks $$0, fkt $$1) {
          super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fks $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
+
+      int a(fkn.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fks $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
+
+      int b(fkn.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fkn.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fkn.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fks $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
+      }
+
+      int d(fks $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
       }
    }
 }

@@ -1,88 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class flb {
-   int a;
-   final Map<flb.a, flb.b> b = Maps.newTreeMap(Comparator.<flb.a, fkx>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class flb<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final flb<?> a = new flb<>(bab.a, ($$0, $$1) -> {
+   });
 
-   public void a(Consumer<fky> $$0) {
-      this.a++;
-      $$0.accept(new flb.c(0));
+   private flb(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public static flb<?> a(String $$0) {
+      return new flb<>($$0, Consumer::accept);
    }
 
-   static class a {
-      final fkx a;
-      final int b;
+   public static flb<?> a(xo $$0) {
+      return new flb<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
 
-      a(fkx $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static flb<?> a(List<xo> $$0) {
+      return new flb<>($$0, ($$1, $$2) -> $$0.stream().map(xo::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof flb<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
       }
    }
 
-   static class b {
-      fla<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fla.a;
-         this.b = -1;
-      }
-
-      public flb.b a(int $$0, fla<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements fky {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fkx $$0, fla<?> $$1) {
-         flb.this.b.computeIfAbsent(new flb.a($$0, this.b), $$0x -> new flb.b()).a(flb.this.a, $$1);
-      }
-
-      @Override
-      public fky a() {
-         return flb.this.new c(this.b + 1);
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

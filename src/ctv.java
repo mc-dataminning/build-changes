@@ -1,40 +1,36 @@
-public class ctv extends cui {
-   public ctv(cui.a $$0) {
+public class ctv extends cuj {
+   public ctv(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqs a(cya $$0) {
-      cmv $$1 = $$0.o();
-      dbw $$2 = $$0.q();
-      iz $$3 = $$0.a();
-      dsa $$4 = $$2.a_($$3);
-      if (!dfl.h($$4) && !dfm.g($$4) && !dfn.g($$4)) {
-         iz $$5 = $$3.a($$0.k());
-         if (dek.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, avz.iZ, awa.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            dsa $$6 = dek.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dwt.i, $$3);
-            cun $$7 = $$0.n();
-            if ($$1 instanceof arf) {
-               am.z.a((arf)$$1, $$5, $$7);
-               $$7.a(1, $$1, btn.d($$0.p()));
-            }
-
-            return bqs.a($$2.x_());
-         } else {
-            return bqs.f;
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      if ($$1.ct != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.ct.a($$3);
+            $$3.a($$4, $$1, bto.d($$2));
          }
+
+         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.iW, awa.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         $$1.a(dwu.C);
       } else {
-         $$2.a($$1, $$3, avz.iZ, awa.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dsq.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dwt.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, btn.d($$0.p()));
+         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.iY, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = daa.e($$3);
+            int $$6 = daa.d($$3);
+            $$0.b(new cnk($$1, $$0, $$6, $$5));
          }
 
-         return bqs.a($$2.x_());
+         $$1.b(awj.c.b(this));
+         $$1.a(dwu.D);
       }
+
+      return bqu.a($$3, $$0.x_());
+   }
+
+   @Override
+   public int g() {
+      return 1;
    }
 }

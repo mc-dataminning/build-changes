@@ -3,7 +3,7 @@ public class aew implements zv<ach> {
    private final int b;
    private final byte c;
 
-   public aew(bss $$0, byte $$1) {
+   public aew(bst $$0, byte $$1) {
       this.b = $$0.al();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class aew implements zv<ach> {
       $$0.a(this);
    }
 
-   public bss a(dbw $$0) {
+   public bst a(dbx $$0) {
       return $$0.a(this.b);
    }
 

@@ -1,99 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class eap extends eaw<edh> {
-   private static final dsj a = dsj.a(dez.I);
-   private final dsa b = dez.I.o();
-   private final dsa c = dez.jF.o();
-   private final dsa d = dez.aV.o();
-   private final dsa an = dez.G.o();
+public class eap extends eax<ecx> {
+   private static final ImmutableList<dey> a = ImmutableList.of(dfa.F, dfa.fn, dfa.fo, dfa.fp, dfa.fq, dfa.cv, dfa.ct);
+   private static final je[] b = je.values();
+   private static final double c = 0.9;
 
-   public eap(Codec<edh> $$0) {
+   public eap(Codec<ecx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eay<edh> $$0) {
-      dcr $$1 = $$0.b();
-      iz $$2 = $$0.e();
-      $$2 = $$2.c();
+   public boolean a(eaz<ecx> $$0) {
+      boolean $$1 = false;
+      azg $$2 = $$0.d();
+      dcs $$3 = $$0.b();
+      ecx $$4 = $$0.f();
+      iz $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.d();
+      for (iz $$13 : iz.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            iz $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
+         }
       }
 
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (je $$8 : je.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         iz $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (je $$10 : je.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<iz> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         azf $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
-      }
+      return $$1;
    }
 
-   private static void b(dcr $$0, iz $$1) {
-      $$0.a($$1, dez.J.o(), 3);
-      $$0.a($$1, dph.N).ifPresent($$1x -> $$1x.a(eqc.bd, $$1.a()));
+   private static boolean a(dby $$0, iz $$1, ecx $$2) {
+      dsb $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (je $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != je.b || !$$5 && $$4 == je.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

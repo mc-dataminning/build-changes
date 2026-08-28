@@ -8,7 +8,7 @@ public class zy {
       a($$0, $$1, $$2.o());
    }
 
-   public static <T extends wu> void a(zv<T> $$0, T $$1, bpi<?> $$2) throws alq {
+   public static <T extends wu> void a(zv<T> $$0, T $$1, bpj<?> $$2) throws alq {
       if (!$$2.bw()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {

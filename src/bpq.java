@@ -3,51 +3,50 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bpq extends bpx {
+public class bpq extends bpy {
    public static final MapCodec<bpq> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  bpx.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
                .apply($$0, bpq::new)
       )
       .validate(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
                : DataResult.success($$0)
       );
-   private final bpx b;
+   private final int b;
    private final int f;
-   private final int g;
 
-   public static bpq a(bpx $$0, int $$1, int $$2) {
-      return new bpq($$0, $$1, $$2);
-   }
-
-   public bpq(bpx $$0, int $$1, int $$2) {
+   private bpq(int $$0, int $$1) {
       this.b = $$0;
       this.f = $$1;
-      this.g = $$2;
+   }
+
+   public static bpq a(int $$0, int $$1) {
+      return new bpq($$0, $$1);
    }
 
    @Override
-   public int a(azf $$0) {
-      return ayx.a(this.b.a($$0), this.f, this.g);
+   public int a(azg $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
    public int a() {
-      return Math.max(this.f, this.b.a());
+      return this.b;
    }
 
    @Override
    public int b() {
-      return Math.min(this.g, this.b.b());
+      return this.f;
    }
 
    @Override
-   public bpy<?> c() {
-      return bpy.d;
+   public bpz<?> c() {
+      return bpz.c;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

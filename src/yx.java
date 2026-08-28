@@ -58,10 +58,10 @@ public class yx implements xp {
    }
 
    @Override
-   public yc a(@Nullable ep $$0, @Nullable bss $$1, int $$2) throws CommandSyntaxException {
+   public yc a(@Nullable ep $$0, @Nullable bst $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends xo> $$3 = xr.a($$0, this.c, $$1, $$2);
-         return xr.a(this.f.b($$0), $$3, bss::O_);
+         return xr.a(this.f.b($$0), $$3, bst::O_);
       } else {
          return xo.i();
       }

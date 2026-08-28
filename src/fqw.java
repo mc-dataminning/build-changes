@@ -1,7 +1,7 @@
 import java.util.Set;
 
-public class fqw extends fqk {
-   private static final xo i = xo.c("gui.recipebook.toggleRecipes.smokable");
+public class fqw extends fql {
+   private static final xo i = xo.c("gui.recipebook.toggleRecipes.smeltable");
 
    @Override
    protected xo c() {
@@ -9,7 +9,7 @@ public class fqw extends fqk {
    }
 
    @Override
-   protected Set<cui> b() {
-      return dot.g().keySet();
+   protected Set<cuj> b() {
+      return dou.g().keySet();
    }
 }

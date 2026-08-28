@@ -1,36 +1,27 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emb extends emf {
-   public static final MapCodec<emb> a = elx.b.listOf().fieldOf("rules").xmap(emb::new, $$0 -> $$0.b);
-   private final ImmutableList<elx> b;
+public class emb extends emd {
+   public static final MapCodec<emb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsb.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, emb::new)
+   );
+   private final dsb b;
+   private final float d;
 
-   public emb(List<? extends elx> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public emi.c a(dbz $$0, iz $$1, iz $$2, emi.c $$3, emi.c $$4, eme $$5) {
-      azf $$6 = azf.a(ayx.a($$4.a()));
-      dsa $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         elx $$8 = (elx)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new emi.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
+   public emb(dsb $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected emh<?> a() {
-      return emh.i;
+   public boolean a(dsb $$0, azg $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
+
+   @Override
+   protected eme<?> a() {
+      return eme.f;
    }
 }

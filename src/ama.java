@@ -11,13 +11,13 @@ public class ama {
 
    public static <D, R> CompletableFuture<R> a(ama.c $$0, ama.f<D> $$1, ama.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<dcq, aue> $$5 = $$0.a.a();
+         Pair<dcr, aue> $$5 = $$0.a.a();
          aue $$6 = (aue)$$5.getSecond();
          jp<aln> $$7 = aln.a();
          jp<aln> $$8 = b($$6, $$7, aln.b, akz.a);
          jw.b $$9 = $$8.b(aln.c);
          jw.b $$10 = akz.a($$6, $$9, akz.b);
-         dcq $$11 = (dcq)$$5.getFirst();
+         dcr $$11 = (dcr)$$5.getFirst();
          ama.b<D> $$12 = $$1.get(new ama.a($$6, $$11, $$9, $$10));
          jp<aln> $$13 = $$8.a(aln.c, $$12.b);
          return alp.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
@@ -43,7 +43,7 @@ public class ama {
       return $$1.a($$2, $$4);
    }
 
-   public static record a(auo a, dcq b, jw.b c, jw.b d) {
+   public static record a(auo a, dcr b, jw.b c, jw.b d) {
    }
 
    public static record b<D>(D a, jw.b b) {
@@ -52,9 +52,9 @@ public class ama {
    public static record c(ama.d a, eq.a b, int c) {
    }
 
-   public static record d(atz a, dcq b, boolean c, boolean d) {
-      public Pair<dcq, aue> a() {
-         dcq $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(atz a, dcr b, boolean c, boolean d) {
+      public Pair<dcr, aue> a() {
+         dcr $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<ata> $$1 = this.a.g();
          aue $$2 = new auh(atc.b, $$1);
          return Pair.of($$0, $$2);
@@ -64,7 +64,7 @@ public class ama {
          return this.a;
       }
 
-      public dcq c() {
+      public dcr c() {
          return this.b;
       }
 

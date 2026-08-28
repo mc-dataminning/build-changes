@@ -49,7 +49,7 @@ public class alt {
    }
 
    public void a(ib<ep> $$0, ep $$1) {
-      bng $$2 = this.d.aT();
+      bnh $$2 = this.d.aT();
       $$2.a(() -> "function " + $$0.a());
 
       try {

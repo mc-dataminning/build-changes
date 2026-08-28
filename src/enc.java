@@ -1,24 +1,113 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
 
-public class enc extends enh<enc.a> {
-   protected enc(duj $$0) {
-      super(dcf.b, $$0, new enc.a(new Long2ObjectOpenHashMap()));
+public final class enc extends enl<end.a, end> {
+   private final iz.a g = new iz.a();
+
+   public enc(duk $$0) {
+      this($$0, new end($$0));
+   }
+
+   @VisibleForTesting
+   public enc(duk $$0, end $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected int a(long $$0) {
+   protected void a(long $$0) {
       long $$1 = kb.e($$0);
-      dub $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(kb.b(iz.a($$0)), kb.b(iz.b($$0)), kb.b(iz.c($$0)));
+      if (this.f.b($$1)) {
+         dsb $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, enl.a.a($$4));
+         } else {
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, enl.a.a($$3, a($$2)));
+         }
+      }
    }
 
-   protected static final class a extends ene<enc.a> {
-      public a(Long2ObjectOpenHashMap<dub> $$0) {
-         super($$0);
-      }
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dsb $$3 = null;
 
-      public enc.a a() {
-         return new enc.a(this.a.clone());
+      for (je $$4 : d) {
+         if (enl.a.a($$1, $$4)) {
+            long $$5 = iz.a($$0, $$4);
+            if (this.f.b(kb.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dsb $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = enl.a.b($$1) ? dfa.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, enl.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = enl.a.a($$1);
+
+      for (je $$3 : d) {
+         if (enl.a.a($$1, $$3)) {
+            long $$4 = iz.a($$0, $$3);
+            if (this.f.b(kb.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dsb $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, enl.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, enl.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, enl.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int a(long $$0, dsb $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(kb.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(dbe $$0) {
+      this.a($$0, true);
+      duj $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), enl.a.a($$2, a($$1x)));
+         });
       }
    }
 }

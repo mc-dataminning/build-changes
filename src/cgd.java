@@ -1,258 +1,277 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class cgd extends cgg {
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float bY;
+   public float bZ;
+   public float ca;
+   public float cb;
+   private float cc;
+   private float cd;
+   private float ce;
+   private float cf;
+   private float cg;
+   private float ch;
 
-public class cgd extends cfc implements bun<cgd.b> {
-   public static final String b = "BucketVariantTag";
-   private static final akj<Integer> d = akn.a(cgd.class, akl.b);
-   public static final List<cgd.d> c = List.of(
-      new cgd.d(cgd.b.h, ctg.b, ctg.h),
-      new cgd.d(cgd.b.g, ctg.h, ctg.h),
-      new cgd.d(cgd.b.g, ctg.h, ctg.l),
-      new cgd.d(cgd.b.l, ctg.a, ctg.h),
-      new cgd.d(cgd.b.b, ctg.l, ctg.h),
-      new cgd.d(cgd.b.a, ctg.b, ctg.a),
-      new cgd.d(cgd.b.f, ctg.g, ctg.d),
-      new cgd.d(cgd.b.j, ctg.k, ctg.e),
-      new cgd.d(cgd.b.l, ctg.a, ctg.o),
-      new cgd.d(cgd.b.f, ctg.a, ctg.e),
-      new cgd.d(cgd.b.i, ctg.a, ctg.h),
-      new cgd.d(cgd.b.l, ctg.a, ctg.b),
-      new cgd.d(cgd.b.d, ctg.j, ctg.g),
-      new cgd.d(cgd.b.e, ctg.f, ctg.d),
-      new cgd.d(cgd.b.k, ctg.o, ctg.a),
-      new cgd.d(cgd.b.c, ctg.h, ctg.o),
-      new cgd.d(cgd.b.j, ctg.o, ctg.a),
-      new cgd.d(cgd.b.g, ctg.a, ctg.e),
-      new cgd.d(cgd.b.a, ctg.o, ctg.a),
-      new cgd.d(cgd.b.b, ctg.h, ctg.a),
-      new cgd.d(cgd.b.d, ctg.j, ctg.e),
-      new cgd.d(cgd.b.g, ctg.e, ctg.e)
-   );
-   private boolean e = true;
-
-   public cgd(bsy<? extends cgd> $$0, dbw $$1) {
+   public cgd(bsz<? extends cgd> $$0, dbx $$1) {
       super($$0, $$1);
-   }
-
-   public static String c(int $$0) {
-      return "entity.minecraft.tropical_fish.predefined." + $$0;
-   }
-
-   static int a(cgd.b $$0, ctg $$1, ctg $$2) {
-      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
-   }
-
-   public static ctg t(int $$0) {
-      return ctg.a($$0 >> 16 & 0xFF);
-   }
-
-   public static ctg u(int $$0) {
-      return ctg.a($$0 >> 24 & 0xFF);
-   }
-
-   public static cgd.b v(int $$0) {
-      return cgd.b.a($$0 & 65535);
+      this.ah.b((long)this.al());
+      this.cd = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(d, 0);
+   protected void z() {
+      this.bS.a(0, new cgd.b(this));
+      this.bS.a(1, new cgd.a());
    }
 
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("Variant", this.gC());
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      this.w($$0.h("Variant"));
-   }
-
-   private void w(int $$0) {
-      this.ao.a(d, $$0);
-   }
-
-   @Override
-   public boolean d(int $$0) {
-      return !this.e;
-   }
-
-   private int gC() {
-      return this.ao.a(d);
-   }
-
-   public ctg gz() {
-      return t(this.gC());
-   }
-
-   public ctg gA() {
-      return u(this.gC());
-   }
-
-   public cgd.b gB() {
-      return v(this.gC());
-   }
-
-   public void a(cgd.b $$0) {
-      int $$1 = this.gC();
-      ctg $$2 = t($$1);
-      ctg $$3 = u($$1);
-      this.w(a($$0, $$2, $$3));
-   }
-
-   @Override
-   public void n(cun $$0) {
-      super.n($$0);
-      cxc.a(km.M, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gC()));
-   }
-
-   @Override
-   public cun b() {
-      return new cun(cuq.qI);
+   public static buv.a gq() {
+      return btq.A().a(buw.q, 10.0);
    }
 
    @Override
    protected avy v() {
-      return avz.zJ;
+      return avz.yW;
+   }
+
+   @Override
+   protected avy d(brm $$0) {
+      return avz.yY;
    }
 
    @Override
    protected avy o_() {
-      return avz.zK;
+      return avz.yX;
+   }
+
+   protected avy u() {
+      return avz.yZ;
    }
 
    @Override
-   protected avy d(brl $$0) {
-      return avz.zM;
+   public boolean a(cmw $$0) {
+      return !this.gd();
    }
 
    @Override
-   protected avy gr() {
-      return avz.zL;
+   protected float fe() {
+      return 0.4F;
    }
 
    @Override
-   public void c(ur $$0) {
-      super.c($$0);
-      if ($$0.b("BucketVariantTag", 3)) {
-         this.w($$0.h("BucketVariantTag"));
+   protected bst.b bb() {
+      return bst.b.c;
+   }
+
+   @Override
+   protected double aY() {
+      return 0.08;
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      this.c = this.b;
+      this.e = this.d;
+      this.bZ = this.bY;
+      this.cb = this.ca;
+      this.bY = this.bY + this.cd;
+      if ((double)this.bY > Math.PI * 2) {
+         if (this.dP().B) {
+            this.bY = (float) (Math.PI * 2);
+         } else {
+            this.bY -= (float) (Math.PI * 2);
+            if (this.ah.a(10) == 0) {
+               this.cd = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
+            }
+
+            this.dP().a(this, (byte)19);
+         }
       }
-   }
 
-   @Nullable
-   @Override
-   public bug a(dcl $$0, bqq $$1, btr $$2, @Nullable bug $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azf $$4 = $$0.E_();
-      cgd.d $$6;
-      if ($$3 instanceof cgd.c $$5) {
-         $$6 = $$5.b;
-      } else if ((double)$$4.i() < 0.9) {
-         $$6 = ac.a(c, $$4);
-         $$3 = new cgd.c(this, $$6);
+      if (this.bh()) {
+         if (this.bY < (float) Math.PI) {
+            float $$0 = this.bY / (float) Math.PI;
+            this.ca = ayy.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
+            if ((double)$$0 > 0.75) {
+               this.cc = 1.0F;
+               this.ce = 1.0F;
+            } else {
+               this.ce *= 0.8F;
+            }
+         } else {
+            this.ca = 0.0F;
+            this.cc *= 0.9F;
+            this.ce *= 0.99F;
+         }
+
+         if (!this.dP().B) {
+            this.o((double)(this.cf * this.cc), (double)(this.cg * this.cc), (double)(this.ch * this.cc));
+         }
+
+         evq $$1 = this.ds();
+         double $$2 = $$1.h();
+         this.aY = this.aY + (-((float)ayy.d($$1.c, $$1.e)) * (180.0F / (float)Math.PI) - this.aY) * 0.1F;
+         this.r(this.aY);
+         this.d = this.d + (float) Math.PI * this.ce * 1.5F;
+         this.b = this.b + (-((float)ayy.d($$2, $$1.d)) * (180.0F / (float)Math.PI) - this.b) * 0.1F;
       } else {
-         this.e = false;
-         cgd.b[] $$8 = cgd.b.values();
-         ctg[] $$9 = ctg.values();
-         cgd.b $$10 = ac.a($$8, $$4);
-         ctg $$11 = ac.a($$9, $$4);
-         ctg $$12 = ac.a($$9, $$4);
-         $$6 = new cgd.d($$10, $$11, $$12);
-      }
+         this.ca = ayy.e(ayy.a(this.bY)) * (float) Math.PI * 0.25F;
+         if (!this.dP().B) {
+            double $$3 = this.ds().d;
+            if (this.b(bsd.y)) {
+               $$3 = 0.05 * (double)(this.c(bsd.y).e() + 1);
+            } else {
+               $$3 -= this.aZ();
+            }
 
-      this.w($$6.a());
-      return $$3;
-   }
+            this.o(0.0, $$3 * 0.98F, 0.0);
+         }
 
-   public static boolean b(bsy<cgd> $$0, dbx $$1, btr $$2, iz $$3, azf $$4) {
-      return $$1.b_($$3.d()).a(awu.a) && $$1.a_($$3.c()).a(dez.G) && ($$1.t($$3).a(awn.an) || cgf.c($$0, $$1, $$2, $$3, $$4));
-   }
-
-   public static enum a {
-      a(0),
-      b(1);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
+         this.b = this.b + (-90.0F - this.b) * 0.02F;
       }
    }
 
-   public static enum b implements azs {
-      a("kob", cgd.a.a, 0),
-      b("sunstreak", cgd.a.a, 1),
-      c("snooper", cgd.a.a, 2),
-      d("dasher", cgd.a.a, 3),
-      e("brinely", cgd.a.a, 4),
-      f("spotty", cgd.a.a, 5),
-      g("flopper", cgd.a.b, 0),
-      h("stripey", cgd.a.b, 1),
-      i("glitter", cgd.a.b, 2),
-      j("blockfish", cgd.a.b, 3),
-      k("betty", cgd.a.b, 4),
-      l("clayfish", cgd.a.b, 5);
+   @Override
+   public boolean a(brm $$0, float $$1) {
+      if (super.a($$0, $$1) && this.em() != null) {
+         if (!this.dP().B) {
+            this.y();
+         }
 
-      public static final Codec<cgd.b> m = azs.a(cgd.b::values);
-      private static final IntFunction<cgd.b> n = axo.a(cgd.b::b, values(), a);
-      private final String o;
-      private final xo p;
-      private final cgd.a q;
-      private final int r;
-
-      private b(final String $$0, final cgd.a $$1, final int $$2) {
-         this.o = $$0;
-         this.q = $$1;
-         this.r = $$1.c | $$2 << 8;
-         this.p = xo.c("entity.minecraft.tropical_fish.type." + this.o);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public static cgd.b a(int $$0) {
-         return n.apply($$0);
+   private evq k(evq $$0) {
+      evq $$1 = $$0.a(this.c * (float) (Math.PI / 180.0));
+      return $$1.b(-this.aZ * (float) (Math.PI / 180.0));
+   }
+
+   private void y() {
+      this.b(this.u());
+      evq $$0 = this.k(new evq(0.0, -1.0, 0.0)).b(this.du(), this.dw(), this.dA());
+
+      for (int $$1 = 0; $$1 < 30; $$1++) {
+         evq $$2 = this.k(new evq((double)this.ah.i() * 0.6 - 0.3, -1.0, (double)this.ah.i() * 0.6 - 0.3));
+         evq $$3 = $$2.a(0.3 + (double)(this.ah.i() * 2.0F));
+         ((are)this.dP()).a(this.s(), $$0.c, $$0.d + 0.5, $$0.e, 0, $$3.c, $$3.d, $$3.e, 0.1F);
       }
+   }
 
-      public cgd.a a() {
-         return this.q;
+   protected lg s() {
+      return li.ai;
+   }
+
+   @Override
+   public void a(evq $$0) {
+      this.a(btt.a, this.ds());
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 19) {
+         this.bY = 0.0F;
+      } else {
+         super.b($$0);
       }
+   }
 
-      public int b() {
-         return this.r;
+   public void a(float $$0, float $$1, float $$2) {
+      this.cf = $$0;
+      this.cg = $$1;
+      this.ch = $$2;
+   }
+
+   public boolean gr() {
+      return this.cf != 0.0F || this.cg != 0.0F || this.ch != 0.0F;
+   }
+
+   class a extends cam {
+      private static final float b = 3.0F;
+      private static final float c = 5.0F;
+      private static final float d = 10.0F;
+      private int e;
+
+      @Override
+      public boolean a() {
+         bto $$0 = cgd.this.em();
+         return cgd.this.be() && $$0 != null ? cgd.this.g((bst)$$0) < 100.0 : false;
       }
 
       @Override
-      public String c() {
-         return this.o;
+      public void c() {
+         this.e = 0;
       }
 
-      public xo d() {
-         return this.p;
+      @Override
+      public boolean R_() {
+         return true;
+      }
+
+      @Override
+      public void e() {
+         this.e++;
+         bto $$0 = cgd.this.em();
+         if ($$0 != null) {
+            evq $$1 = new evq(cgd.this.du() - $$0.du(), cgd.this.dw() - $$0.dw(), cgd.this.dA() - $$0.dA());
+            dsb $$2 = cgd.this.dP().a_(iz.a(cgd.this.du() + $$1.c, cgd.this.dw() + $$1.d, cgd.this.dA() + $$1.e));
+            enu $$3 = cgd.this.dP().b_(iz.a(cgd.this.du() + $$1.c, cgd.this.dw() + $$1.d, cgd.this.dA() + $$1.e));
+            if ($$3.a(awu.a) || $$2.i()) {
+               double $$4 = $$1.f();
+               if ($$4 > 0.0) {
+                  $$1.d();
+                  double $$5 = 3.0;
+                  if ($$4 > 5.0) {
+                     $$5 -= ($$4 - 5.0) / 5.0;
+                  }
+
+                  if ($$5 > 0.0) {
+                     $$1 = $$1.a($$5);
+                  }
+               }
+
+               if ($$2.i()) {
+                  $$1 = $$1.a(0.0, $$1.d, 0.0);
+               }
+
+               cgd.this.a((float)$$1.c / 20.0F, (float)$$1.d / 20.0F, (float)$$1.e / 20.0F);
+            }
+
+            if (this.e % 10 == 5) {
+               cgd.this.dP().a(li.d, cgd.this.du(), cgd.this.dw(), cgd.this.dA(), 0.0, 0.0, 0.0);
+            }
+         }
       }
    }
 
-   static class c extends cfc.a {
-      final cgd.d b;
+   class b extends cam {
+      private final cgd a;
 
-      c(cgd $$0, cgd.d $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-   }
-
-   public static record d(cgd.b b, ctg c, ctg d) {
-      public static final Codec<cgd.d> a = Codec.INT.xmap(cgd.d::new, cgd.d::a);
-
-      public d(int $$0) {
-         this(cgd.v($$0), cgd.t($$0), cgd.u($$0));
+      public b(final cgd $$0) {
+         this.a = $$0;
       }
 
-      public int a() {
-         return cgd.a(this.b, this.c, this.d);
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      @Override
+      public void e() {
+         int $$0 = this.a.eq();
+         if ($$0 > 100) {
+            this.a.a(0.0F, 0.0F, 0.0F);
+         } else if (this.a.el().a(b(50)) == 0 || !this.a.aj || !this.a.gr()) {
+            float $$1 = this.a.el().i() * (float) (Math.PI * 2);
+            float $$2 = ayy.b($$1) * 0.2F;
+            float $$3 = -0.1F + this.a.el().i() * 0.2F;
+            float $$4 = ayy.a($$1) * 0.2F;
+            this.a.a($$2, $$3, $$4);
+         }
       }
    }
 }

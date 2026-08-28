@@ -1,60 +1,53 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class guk {
-   private boolean a;
-   @Nullable
-   private gue.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public final class guk extends gui {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public guk(@Nullable String $$0) {
-      this.d = $$0;
-   }
-
-   public void a(guf.a $$0) {
-      if (this.c != null) {
-         $$0.a(gue.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(gue.k, this.a());
-   }
-
-   private gue.c a() {
-      fyh $$0 = ffd.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gue.c.a;
-      } else {
-         return ffd.Q().U() ? gue.c.b : gue.c.c;
+   @Override
+   public void a(guc $$0) {
+      if (ffe.Q().C()) {
+         super.a($$0);
       }
    }
 
-   public boolean a(gub $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(guc.b, $$0x -> {
-            $$0x.a(gue.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gue.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
-   public void a(dbt $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gue.b.e : gue.b.a;
-         case b -> gue.b.b;
-         case c -> gue.b.c;
-         case d -> gue.b.d;
-      };
+   @Override
+   public void f() {
+      this.b.add((long)ffe.Q().o());
+      this.h();
+      this.c.add(ffe.Q().p());
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(guc $$0) {
+      $$0.send(gud.c, $$0x -> {
+         $$0x.a(guf.r, new LongArrayList(this.b));
+         $$0x.a(guf.s, new LongArrayList(this.c));
+         $$0x.a(guf.t, new LongArrayList(this.d));
+         $$0x.a(guf.u, this.e());
+         $$0x.a(guf.v, ffe.Q().m.aD());
+         $$0x.a(guf.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

@@ -1,4 +1,4 @@
-public record aay(ald<dwt> c, evp d) implements aaw {
+public record aay(ald<dwu> c, evq d) implements aaw {
    public static final zm<wl, aay> a = aaw.a(aay::a, aay::new);
    public static final aaw.b<aay> b = aaw.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aay(ald<dwt> c, evp d) implements aaw {
       return b;
    }
 
-   public ald<dwt> b() {
+   public ald<dwu> b() {
       return this.c;
    }
 
-   public evp c() {
+   public evq c() {
       return this.d;
    }
 }

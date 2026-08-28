@@ -13,7 +13,7 @@ public class adx {
    private final List<byte[]> f;
    private final List<byte[]> g;
 
-   public adx(dbd $$0, eni $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adx(dbe $$0, enj $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = new BitSet();
       this.c = new BitSet();
       this.d = new BitSet();
@@ -23,11 +23,11 @@ public class adx {
 
       for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
          if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dcf.a, $$4, this.b, this.d, this.f);
+            this.a($$0, $$1, dcg.a, $$4, this.b, this.d, this.f);
          }
 
          if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dcf.b, $$4, this.c, this.e, this.g);
+            this.a($$0, $$1, dcg.b, $$4, this.c, this.e, this.g);
          }
       }
    }
@@ -50,8 +50,8 @@ public class adx {
       $$0.a(this.g, a);
    }
 
-   private void a(dbd $$0, eni $$1, dcf $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dub $$7 = $$1.a($$2).a(kb.a($$0, $$1.d() + $$3));
+   private void a(dbe $$0, enj $$1, dcg $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      duc $$7 = $$1.a($$2).a(kb.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {
             $$5.set($$3);

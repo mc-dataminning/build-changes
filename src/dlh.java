@@ -1,34 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlh extends dex implements dfa {
-   public static final MapCodec<dlh> a = b(dlh::new);
+public abstract class dlh extends dhb {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ewj h = dey.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ewj i = dey.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ewj j = dey.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dlh> a() {
-      return a;
-   }
-
-   public dlh(drz.d $$0) {
+   protected dlh(dsa.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dbz $$0, iz $$1, dsa $$2) {
-      return $$0.a_($$1.d()).i();
+   protected abstract MapCodec<? extends dlh> a();
+
+   @Override
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
    @Override
-   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
-      return true;
+   protected dsb a(dsb $$0, dll $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
-      $$0.b($$2.d(), dez.sG.o());
+   protected dsb a(dsb $$0, djv $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   public iz a(iz $$0) {
-      return $$0.d();
+   protected boolean a(dsb $$0, eoj $$1) {
+      return false;
    }
 }

@@ -1,127 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class ccl extends cal {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final btp e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected btn g;
-   protected int h = 60;
+public class ccl<T extends btq & btu> extends cam {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public ccl(btp $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public ccl(btp $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public ccl(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean b() {
-      btn $$0 = this.e.p();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         ewv $$1 = this.e.cj();
-         ewv $$2 = $$0.cj();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
+   public boolean a() {
+      return this.b.dP().ab().b(dbt.O) && this.h();
    }
 
-   protected double l() {
-      return this.e.g(buv.k);
+   private boolean h() {
+      return this.b.em() != null && this.b.em().ak() == bsz.by && this.b.en() > this.d;
    }
 
    @Override
    public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable btn $$0, cee $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dp())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+      this.d = this.b.en();
+      this.b.aa_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btu)$$0).forEach(btu::aa_);
       }
+
+      super.c();
    }
 
-   private boolean a(btn $$0) {
-      this.j = b(10 + this.e.el().a(5));
-      eoh $$1 = this.e.K().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         eof $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dt();
-            int $$4 = $$2.c - $$0.dz();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public ccl c(int $$0) {
-      this.h = $$0;
-      return this;
+   private List<? extends btq> i() {
+      double $$0 = this.b.g(buw.k);
+      evl $$1 = evl.a(this.b.dn()).c($$0, 10.0, $$0);
+      return this.b.dP().a((Class<? extends btq>)this.b.getClass(), $$1, bsy.f);
    }
 }

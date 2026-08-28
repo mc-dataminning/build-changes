@@ -1,9 +1,4 @@
-public interface eul extends eqh {
-   float b(eqg var1);
+import com.mojang.serialization.MapCodec;
 
-   default int a(eqg $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   euk b();
+public record eul(MapCodec<? extends eum> a) {
 }

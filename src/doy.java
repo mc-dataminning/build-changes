@@ -1,108 +1,97 @@
-public class doy extends dqk {
-   private jr<cun> d = jr.a(27, cun.l);
-   private final dps e = new dps() {
-      @Override
-      protected void a(dbw $$0, iz $$1, dsa $$2) {
-         doy.this.a($$2, avz.bz);
-         doy.this.a($$2, true);
-      }
+public class doy {
+   public static final ald<dow> a = a("base");
+   public static final ald<dow> b = a("square_bottom_left");
+   public static final ald<dow> c = a("square_bottom_right");
+   public static final ald<dow> d = a("square_top_left");
+   public static final ald<dow> e = a("square_top_right");
+   public static final ald<dow> f = a("stripe_bottom");
+   public static final ald<dow> g = a("stripe_top");
+   public static final ald<dow> h = a("stripe_left");
+   public static final ald<dow> i = a("stripe_right");
+   public static final ald<dow> j = a("stripe_center");
+   public static final ald<dow> k = a("stripe_middle");
+   public static final ald<dow> l = a("stripe_downright");
+   public static final ald<dow> m = a("stripe_downleft");
+   public static final ald<dow> n = a("small_stripes");
+   public static final ald<dow> o = a("cross");
+   public static final ald<dow> p = a("straight_cross");
+   public static final ald<dow> q = a("triangle_bottom");
+   public static final ald<dow> r = a("triangle_top");
+   public static final ald<dow> s = a("triangles_bottom");
+   public static final ald<dow> t = a("triangles_top");
+   public static final ald<dow> u = a("diagonal_left");
+   public static final ald<dow> v = a("diagonal_up_right");
+   public static final ald<dow> w = a("diagonal_up_left");
+   public static final ald<dow> x = a("diagonal_right");
+   public static final ald<dow> y = a("circle");
+   public static final ald<dow> z = a("rhombus");
+   public static final ald<dow> A = a("half_vertical");
+   public static final ald<dow> B = a("half_horizontal");
+   public static final ald<dow> C = a("half_vertical_right");
+   public static final ald<dow> D = a("half_horizontal_bottom");
+   public static final ald<dow> E = a("border");
+   public static final ald<dow> F = a("curly_border");
+   public static final ald<dow> G = a("gradient");
+   public static final ald<dow> H = a("gradient_up");
+   public static final ald<dow> I = a("bricks");
+   public static final ald<dow> J = a("globe");
+   public static final ald<dow> K = a("creeper");
+   public static final ald<dow> L = a("skull");
+   public static final ald<dow> M = a("flower");
+   public static final ald<dow> N = a("mojang");
+   public static final ald<dow> O = a("piglin");
+   public static final ald<dow> P = a("flow");
+   public static final ald<dow> Q = a("guster");
 
-      @Override
-      protected void b(dbw $$0, iz $$1, dsa $$2) {
-         doy.this.a($$2, avz.by);
-         doy.this.a($$2, false);
-      }
-
-      @Override
-      protected void a(dbw $$0, iz $$1, dsa $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cmv $$0) {
-         if ($$0.cb instanceof cpz) {
-            bql $$1 = ((cpz)$$0.cb).l();
-            return $$1 == doy.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public doy(iz $$0, dsa $$1) {
-      super(dph.A, $$0, $$1);
+   private static ald<dow> a(String $$0) {
+      return ald.a(lq.d, new ale($$0));
    }
 
-   @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqm.a($$0, this.d, $$1);
-      }
+   public static void a(rc<dow> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
    }
 
-   @Override
-   protected void a(ur $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.d = jr.a(this.b(), cun.l);
-      if (!this.a_($$0)) {
-         bqm.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jr<cun> j() {
-      return this.d;
-   }
-
-   @Override
-   protected void a(jr<cun> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected xo k() {
-      return xo.c("container.barrel");
-   }
-
-   @Override
-   protected cps a(int $$0, cmu $$1) {
-      return cpz.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.a($$0, this.i(), this.az_(), this.n());
-      }
-   }
-
-   @Override
-   public void c(cmv $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.b($$0, this.i(), this.az_(), this.n());
-      }
-   }
-
-   public void l() {
-      if (!this.p) {
-         this.e.c(this.i(), this.az_(), this.n());
-      }
-   }
-
-   void a(dsa $$0, boolean $$1) {
-      this.n.a(this.az_(), $$0.a(ded.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dsa $$0, avy $$1) {
-      kd $$2 = $$0.c(ded.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, awa.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+   public static void a(rc<dow> $$0, ald<dow> $$1) {
+      $$0.a($$1, new dow($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

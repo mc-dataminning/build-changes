@@ -1,5 +1,5 @@
-public class daj extends czy {
-   public daj(czy.b $$0) {
+public class daj extends czz {
+   public daj(czz.b $$0) {
       super($$0);
    }
 

@@ -1,28 +1,34 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public enum fkf implements azs {
-   a("bitmap", fkc.a.a),
-   b("ttf", fkh.a),
-   c("space", eyb.a.a),
-   d("unihex", fki.b.a),
-   e("reference", fkg.a);
+public interface fkf {
+   MapCodec<fkf> b = fkg.f.dispatchMap(fkf::a, fkg::a);
 
-   public static final Codec<fkf> f = azs.a(fkf::values);
-   private final String g;
-   private final MapCodec<? extends fke> h;
+   fkg a();
 
-   private fkf(final String $$0, final MapCodec<? extends fke> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<fkf.b, fkf.c> b();
+
+   public static record a(fkf b, fjt.a c) {
+      public static final Codec<fkf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fkf.b.forGetter(fkf.a::a), fjt.a.a.optionalFieldOf("filter", fjt.a.b).forGetter(fkf.a::b)).apply($$0, fkf.a::new)
+      );
+
+      public fkf a() {
+         return this.b;
+      }
+
+      public fjt.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public interface b {
+      eya load(auo var1) throws IOException;
    }
 
-   public MapCodec<? extends fke> a() {
-      return this.h;
+   public static record c(ale a) {
    }
 }

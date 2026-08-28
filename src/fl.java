@@ -62,14 +62,14 @@ public class fl implements ArgumentType<fl.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayx.a($$0x, $$1);
+            return ayy.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayx.b($$0x, $$1);
+            return ayy.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class fl implements ArgumentType<fl.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(ewr var1, ewr var2) throws CommandSyntaxException;
+      void apply(ews var1, ews var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class fl implements ArgumentType<fl.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(ewr $$0, ewr $$1) throws CommandSyntaxException {
+      default void apply(ews $$0, ews $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

@@ -58,12 +58,12 @@ public record xl(String b, List<xl.a> c, yl d) {
       return this.d;
    }
 
-   public static enum a implements azs {
+   public static enum a implements azt {
       a("sender", ($$0, $$1) -> $$1.b()),
       b("target", ($$0, $$1) -> $$1.c().orElse(xn.a)),
       c("content", ($$0, $$1) -> $$0);
 
-      public static final Codec<xl.a> d = azs.a(xl.a::values);
+      public static final Codec<xl.a> d = azt.a(xl.a::values);
       private final String e;
       private final xl.a.a f;
 

@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record abk(ald<dbw> c, eia d, List<abk.a> e) implements aaw {
+public record abk(ald<dbx> c, eib d, List<abk.a> e) implements aaw {
    public static final zm<wl, abk> a = aaw.a(abk::a, abk::new);
    public static final aaw.b<abk> b = aaw.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record abk(ald<dbw> c, eia d, List<abk.a> e) implements aaw {
       return b;
    }
 
-   static eia b(wl $$0) {
-      return new eia($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eib b(wl $$0) {
+      return new eib($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(wl $$0, eia $$1) {
+   static void a(wl $$0, eib $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -32,11 +32,11 @@ public record abk(ald<dbw> c, eia d, List<abk.a> e) implements aaw {
       $$0.p($$1.m());
    }
 
-   public ald<dbw> b() {
+   public ald<dbx> b() {
       return this.c;
    }
 
-   public eia c() {
+   public eib c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record abk(ald<dbw> c, eia d, List<abk.a> e) implements aaw {
       return this.e;
    }
 
-   public static record a(eia a, boolean b) {
+   public static record a(eib a, boolean b) {
       public a(wl $$0) {
          this(abk.b($$0), $$0.readBoolean());
       }

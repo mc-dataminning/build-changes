@@ -2,8 +2,8 @@ public record aqu(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dbd a() {
-      return new dbd(kb.a(this.a), kb.a(this.b));
+   public dbe a() {
+      return new dbe(kb.a(this.a), kb.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aqu(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dbd.d(this.a, this.b);
+      return dbe.d(this.a, this.b);
    }
 
    public int c() {

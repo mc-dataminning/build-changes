@@ -9,32 +9,32 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arl implements dcr {
+public class arl implements dcs {
    private static final Logger a = LogUtils.getLogger();
-   private final List<dtw> b;
-   private final dtw c;
+   private final List<dtx> b;
+   private final dtx c;
    private final int d;
    private final are e;
    private final long f;
-   private final epq g;
-   private final azf h;
-   private final dvs i;
-   private final exl<dex> j = new exl<>($$0x -> this.y($$0x).o());
-   private final exl<ens> k = new exl<>($$0x -> this.y($$0x).p());
-   private final dcx l;
-   private final dbd m;
-   private final dbd n;
-   private final duv o;
+   private final epr g;
+   private final azg h;
+   private final dvt i;
+   private final exm<dey> j = new exm<>($$0x -> this.y($$0x).o());
+   private final exm<ent> k = new exm<>($$0x -> this.y($$0x).p());
+   private final dcy l;
+   private final dbe m;
+   private final dbe n;
+   private final duw o;
    private final int p;
    @Nullable
    private Supplier<String> q;
    private final AtomicLong r = new AtomicLong();
    private static final ale s = new ale("worldgen_region_random");
 
-   public arl(are $$0, List<dtw> $$1, duv $$2, int $$3) {
+   public arl(are $$0, List<dtx> $$1, duw $$2, int $$3) {
       this.o = $$2;
       this.p = $$3;
-      int $$4 = ayx.a(Math.sqrt((double)$$1.size()));
+      int $$4 = ayy.a(Math.sqrt((double)$$1.size()));
       if ($$4 * $$4 != $$1.size()) {
          throw (IllegalStateException)ac.b(new IllegalStateException("Cache size is not a square."));
       } else {
@@ -46,17 +46,17 @@ public class arl implements dcr {
          this.g = $$0.A_();
          this.h = $$0.l().i().a(s).a(this.c.f().l());
          this.i = $$0.D_();
-         this.l = new dcx(this, dcx.a(this.f));
+         this.l = new dcy(this, dcy.a(this.f));
          this.m = $$1.get(0).f();
          this.n = $$1.get($$1.size() - 1).f();
       }
    }
 
-   public boolean a(dbd $$0, int $$1) {
+   public boolean a(dbe $$0, int $$1) {
       return this.e.l().a.b($$0, $$1);
    }
 
-   public dbd a() {
+   public dbe a() {
       return this.c.f();
    }
 
@@ -66,14 +66,14 @@ public class arl implements dcr {
    }
 
    @Override
-   public dtw a(int $$0, int $$1) {
-      return this.a($$0, $$1, duv.c);
+   public dtx a(int $$0, int $$1) {
+      return this.a($$0, $$1, duw.c);
    }
 
    @Nullable
    @Override
-   public dtw a(int $$0, int $$1, duv $$2, boolean $$3) {
-      dtw $$6;
+   public dtx a(int $$0, int $$1, duw $$2, boolean $$3) {
+      dtx $$6;
       if (this.b($$0, $$1)) {
          int $$4 = $$0 - this.m.e;
          int $$5 = $$1 - this.m.f;
@@ -103,18 +103,18 @@ public class arl implements dcr {
    }
 
    @Override
-   public dsa a_(iz $$0) {
+   public dsb a_(iz $$0) {
       return this.a(kb.a($$0.u()), kb.a($$0.w())).a_($$0);
    }
 
    @Override
-   public ent b_(iz $$0) {
+   public enu b_(iz $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cmv a(double $$0, double $$1, double $$2, double $$3, Predicate<bss> $$4) {
+   public cmw a(double $$0, double $$1, double $$2, double $$3, Predicate<bst> $$4) {
       return null;
    }
 
@@ -124,12 +124,12 @@ public class arl implements dcr {
    }
 
    @Override
-   public dcx F_() {
+   public dcy F_() {
       return this.l;
    }
 
    @Override
-   public ji<dcv> a(int $$0, int $$1, int $$2) {
+   public ji<dcw> a(int $$0, int $$1, int $$2) {
       return this.e.a($$0, $$1, $$2);
    }
 
@@ -139,44 +139,44 @@ public class arl implements dcr {
    }
 
    @Override
-   public eni y_() {
+   public enj y_() {
       return this.e.y_();
    }
 
    @Override
-   public boolean a(iz $$0, boolean $$1, @Nullable bss $$2, int $$3) {
-      dsa $$4 = this.a_($$0);
+   public boolean a(iz $$0, boolean $$1, @Nullable bst $$2, int $$3) {
+      dsb $$4 = this.a_($$0);
       if ($$4.i()) {
          return false;
       } else {
          if ($$1) {
-            dpf $$5 = $$4.t() ? this.c_($$0) : null;
-            dex.a($$4, (dbw)this.e, $$0, $$5, $$2, cun.l);
+            dpg $$5 = $$4.t() ? this.c_($$0) : null;
+            dey.a($$4, (dbx)this.e, $$0, $$5, $$2, cuo.l);
          }
 
-         return this.a($$0, dez.a.o(), 3, $$3);
+         return this.a($$0, dfa.a.o(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dpf c_(iz $$0) {
-      dtw $$1 = this.y($$0);
-      dpf $$2 = $$1.c_($$0);
+   public dpg c_(iz $$0) {
+      dtx $$1 = this.y($$0);
+      dpg $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          ur $$3 = $$1.f($$0);
-         dsa $$4 = $$1.a_($$0);
+         dsb $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.t()) {
                   return null;
                }
 
-               $$2 = ((dhp)$$4.b()).a($$0, $$4);
+               $$2 = ((dhq)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dpf.a($$0, $$4, $$3, this.e.H_());
+               $$2 = dpg.a($$0, $$4, $$3, this.e.H_());
             }
 
             if ($$2 != null) {
@@ -197,12 +197,12 @@ public class arl implements dcr {
    public boolean f_(iz $$0) {
       int $$1 = kb.a($$0.u());
       int $$2 = kb.a($$0.w());
-      dbd $$3 = this.a();
+      dbe $$3 = this.a();
       int $$4 = Math.abs($$3.e - $$1);
       int $$5 = Math.abs($$3.f - $$2);
       if ($$4 <= this.p && $$5 <= this.p) {
          if (this.c.y()) {
-            dby $$6 = this.c.z();
+            dbz $$6 = this.c.z();
             if ($$0.v() < $$6.I_() || $$0.v() >= $$6.am()) {
                return false;
             }
@@ -226,19 +226,19 @@ public class arl implements dcr {
    }
 
    @Override
-   public boolean a(iz $$0, dsa $$1, int $$2, int $$3) {
+   public boolean a(iz $$0, dsb $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dtw $$4 = this.y($$0);
-         dsa $$5 = $$4.a($$0, $$1, false);
+         dtx $$4 = this.y($$0);
+         dsb $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.e.a($$0, $$5, $$1);
          }
 
          if ($$1.t()) {
-            if ($$4.j().g() == dux.b) {
-               dpf $$6 = ((dhp)$$1.b()).a($$0, $$1);
+            if ($$4.j().g() == duy.b) {
+               dpg $$6 = ((dhq)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -269,7 +269,7 @@ public class arl implements dcr {
    }
 
    @Override
-   public boolean b(bss $$0) {
+   public boolean b(bst $$0) {
       int $$1 = kb.a($$0.dt());
       int $$2 = kb.a($$0.dz());
       this.a($$1, $$2).a($$0);
@@ -278,11 +278,11 @@ public class arl implements dcr {
 
    @Override
    public boolean a(iz $$0, boolean $$1) {
-      return this.a($$0, dez.a.o(), 3);
+      return this.a($$0, dfa.a.o(), 3);
    }
 
    @Override
-   public dtr C_() {
+   public dts C_() {
       return this.e.C_();
    }
 
@@ -303,21 +303,21 @@ public class arl implements dcr {
    }
 
    @Override
-   public cpj J() {
+   public cpk J() {
       return this.e.J();
    }
 
    @Override
-   public epq A_() {
+   public epr A_() {
       return this.g;
    }
 
    @Override
-   public bqq d_(iz $$0) {
+   public bqr d_(iz $$0) {
       if (!this.b(kb.a($$0.u()), kb.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bqq(this.e.al(), this.e.aa(), 0L, this.e.aq());
+         return new bqr(this.e.al(), this.e.aa(), 0L, this.e.aq());
       }
    }
 
@@ -328,7 +328,7 @@ public class arl implements dcr {
    }
 
    @Override
-   public dua N() {
+   public dub N() {
       return this.e.l();
    }
 
@@ -338,12 +338,12 @@ public class arl implements dcr {
    }
 
    @Override
-   public exc<dex> P() {
+   public exd<dey> P() {
       return this.j;
    }
 
    @Override
-   public exc<ens> O() {
+   public exd<ent> O() {
       return this.k;
    }
 
@@ -353,17 +353,17 @@ public class arl implements dcr {
    }
 
    @Override
-   public azf E_() {
+   public azg E_() {
       return this.h;
    }
 
    @Override
-   public int a(dxs.a $$0, int $$1, int $$2) {
+   public int a(dxt.a $$0, int $$1, int $$2) {
       return this.a(kb.a($$1), kb.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cmv $$0, iz $$1, avy $$2, awa $$3, float $$4, float $$5) {
+   public void a(@Nullable cmw $$0, iz $$1, avy $$2, awa $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -371,40 +371,40 @@ public class arl implements dcr {
    }
 
    @Override
-   public void a(@Nullable cmv $$0, int $$1, iz $$2, int $$3) {
+   public void a(@Nullable cmw $$0, int $$1, iz $$2, int $$3) {
    }
 
    @Override
-   public void a(ji<dwt> $$0, evp $$1, dwt.a $$2) {
+   public void a(ji<dwu> $$0, evq $$1, dwu.a $$2) {
    }
 
    @Override
-   public dvs D_() {
+   public dvt D_() {
       return this.i;
    }
 
    @Override
-   public boolean a(iz $$0, Predicate<dsa> $$1) {
+   public boolean a(iz $$0, Predicate<dsb> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(iz $$0, Predicate<ent> $$1) {
+   public boolean b(iz $$0, Predicate<enu> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bss> List<T> a(dwh<bss, T> $$0, evk $$1, Predicate<? super T> $$2) {
+   public <T extends bst> List<T> a(dwi<bst, T> $$0, evl $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bss> a(@Nullable bss $$0, evk $$1, @Nullable Predicate<? super bss> $$2) {
+   public List<bst> a(@Nullable bst $$0, evl $$1, @Nullable Predicate<? super bst> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cmv> x() {
+   public List<cmw> x() {
       return Collections.emptyList();
    }
 

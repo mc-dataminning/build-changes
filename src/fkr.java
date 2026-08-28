@@ -1,26 +1,18 @@
 import java.util.function.Consumer;
 
-public interface fkr {
-   void m(int var1);
+public interface fkr extends fks {
+   void b(Consumer<fks> var1);
 
-   void n(int var1);
-
-   int C();
-
-   int D();
-
-   int x();
-
-   int v();
-
-   default fli G() {
-      return new fli(this.C(), this.D(), this.x(), this.v());
+   @Override
+   default void a(Consumer<fhb> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void c(int $$0, int $$1) {
-      this.m($$0);
-      this.n($$1);
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fkr $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   void a(Consumer<fha> var1);
 }

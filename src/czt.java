@@ -1,15 +1,10 @@
-public class czt extends czy {
-   public czt(czy.b $$0) {
+public class czt extends czz {
+   public czt(czz.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public boolean a(czz $$0) {
+      return super.a($$0) && $$0 != dac.I;
    }
 }

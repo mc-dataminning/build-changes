@@ -17,7 +17,7 @@ public class aoi {
       });
    }
 
-   private static Collection<String> a(atz $$0, eqa $$1, Collection<String> $$2) {
+   private static Collection<String> a(atz $$0, eqb $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -36,7 +36,7 @@ public class aoi {
          ep $$1 = (ep)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          atz $$3 = $$2.aG();
-         eqa $$4 = $$2.bb();
+         eqb $$4 = $$2.bb();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> xo.c("commands.reload.success"), true);

@@ -1,40 +1,33 @@
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class fcd {
-   private final fdr a;
-   private boolean b;
-   private String c;
+   public final fdm a = new fdm(ac.h(), TimeUnit.MILLISECONDS, ac.c);
+   private final List<fdm.e<?>> h;
+   public final fdm.e<List<fbd>> b;
+   public final fdm.e<fcd.a> c;
+   public final fdm.e<Integer> d;
+   public final fdm.e<Boolean> e;
+   public final fdm.e<fbc> f;
+   public final fce g = new fce(new fds());
 
-   public fcd(fdr $$0) {
-      this.a = $$0;
-      fdr.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+   public fcd(fan $$0) {
+      this.c = this.a.a("server list", () -> {
+         fbg $$1 = $$0.b();
+         return fai.b() ? new fcd.a($$1.a, $$0.c()) : new fcd.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fdn.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fdn.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fdn.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fdn.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fdn.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   public boolean a() {
-      return this.b;
+   public List<fdm.e<?>> a() {
+      return this.h;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fbb $$0) {
-      fdr.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fdr.a b(fbb $$0) {
-      fdr.a $$1 = new fdr.a();
-      $$1.a = $$0.a;
-      fdr.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+   public static record a(List<fbe> a, List<fbe> b) {
    }
 }

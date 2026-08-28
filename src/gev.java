@@ -1,90 +1,96 @@
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class gev {
-   public static final gev a = new gev();
-   public final geu b;
-   public final geu c;
-   public final geu d;
-   public final geu e;
-   public final geu f;
-   public final geu g;
-   public final geu h;
-   public final geu i;
+   public static final gev a = new gev(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   private gev() {
-      this(geu.a, geu.a, geu.a, geu.a, geu.a, geu.a, geu.a, geu.a);
+   public gev(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public gev(gev $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public void a(boolean $$0, ezx $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
+         }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   public gev(geu $$0, geu $$1, geu $$2, geu $$3, geu $$4, geu $$5, geu $$6, geu $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         gev $$1 = (gev)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
    }
 
-   public geu a(cuk $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> geu.a;
-      };
-   }
-
-   public boolean b(cuk $$0) {
-      return this.a($$0) != geu.a;
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
    }
 
    protected static class a implements JsonDeserializer<gev> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
       public gev a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         geu $$4 = this.a($$2, $$3, cuk.c);
-         geu $$5 = this.a($$2, $$3, cuk.b);
-         if ($$5 == geu.a) {
-            $$5 = $$4;
-         }
-
-         geu $$6 = this.a($$2, $$3, cuk.e);
-         geu $$7 = this.a($$2, $$3, cuk.d);
-         if ($$7 == geu.a) {
-            $$7 = $$6;
-         }
-
-         geu $$8 = this.a($$2, $$3, cuk.f);
-         geu $$9 = this.a($$2, $$3, cuk.g);
-         geu $$10 = this.a($$2, $$3, cuk.h);
-         geu $$11 = this.a($$2, $$3, cuk.i);
-         return new gev($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(ayy.a($$5.x, -5.0F, 5.0F), ayy.a($$5.y, -5.0F, 5.0F), ayy.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(ayy.a($$6.x, -4.0F, 4.0F), ayy.a($$6.y, -4.0F, 4.0F), ayy.a($$6.z, -4.0F, 4.0F));
+         return new gev($$4, $$5, $$6);
       }
 
-      private geu a(JsonDeserializationContext $$0, JsonObject $$1, cuk $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (geu)$$0.deserialize($$1.get($$3), geu.class) : geu.a;
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = ayo.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = ayo.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
       }
    }
 }

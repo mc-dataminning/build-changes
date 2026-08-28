@@ -6,7 +6,7 @@ public class aec implements zv<ach> {
    private final float e;
    private final float f;
 
-   public aec(bss $$0) {
+   public aec(bst $$0) {
       this.b = $$0.du();
       this.c = $$0.dw();
       this.d = $$0.dA();

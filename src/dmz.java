@@ -1,25 +1,28 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public interface dmz {
-   cxr b();
-
-   static List<dmz> c() {
-      return lp.h.s().map(dmz::a).filter(Objects::nonNull).collect(Collectors.toList());
-   }
-
-   @Nullable
-   static dmz a(dbv $$0) {
-      if ($$0.r() instanceof csl $$1) {
-         dex var6 = $$1.d();
-         if (var6 instanceof dmz) {
-            return (dmz)var6;
-         }
+public enum dmz {
+   a {
+      @Override
+      public boolean a(dsb $$0, dbd $$1, iz $$2, je $$3) {
+         return dey.a($$0.l($$1, $$2), $$3);
       }
+   },
+   b {
+      private final int d = 1;
+      private final ewj e = dey.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-      cui $$2 = $$0.r();
-      return $$2 instanceof dmz ? (dmz)$$2 : null;
-   }
+      @Override
+      public boolean a(dsb $$0, dbd $$1, iz $$2, je $$3) {
+         return !ewg.c($$0.l($$1, $$2).a($$3), this.e, evu.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final ewj e = ewg.a(ewg.b(), dey.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), evu.e);
+
+      @Override
+      public boolean a(dsb $$0, dbd $$1, iz $$2, je $$3) {
+         return !ewg.c($$0.l($$1, $$2).a($$3), this.e, evu.c);
+      }
+   };
+
+   public abstract boolean a(dsb var1, dbd var2, iz var3, je var4);
 }

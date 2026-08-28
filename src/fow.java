@@ -1,24 +1,9 @@
-public class fow extends fnz<cqq> {
-   private static final ale D = new ale("container/grindstone/error");
-   private static final ale E = new ale("textures/gui/container/grindstone.png");
+public class fow extends fob<cqp> {
+   private static final ale E = new ale("container/furnace/lit_progress");
+   private static final ale F = new ale("container/furnace/burn_progress");
+   private static final ale G = new ale("textures/gui/container/furnace.png");
 
-   public fow(cqq $$0, cmu $$1, xo $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fgp $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
-         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
-      }
+   public fow(cqp $$0, cmv $$1, xo $$2) {
+      super($$0, new fqw(), $$1, $$2, G, E, F);
    }
 }

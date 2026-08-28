@@ -1,7 +1,7 @@
 public record adq(int b, float c) implements zv<ach> {
    public static final zm<wl, adq> a = zv.a(adq::a, adq::new);
 
-   public adq(btn $$0) {
+   public adq(bto $$0) {
       this($$0.al(), $$0.eJ());
    }
 

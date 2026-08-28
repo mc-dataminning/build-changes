@@ -1,24 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record etv(float b) implements etq {
-   public static final MapCodec<etv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(etv::c)).apply($$0, etv::new));
+public class etv implements etr {
+   private static final etv b = new etv();
+   public static final MapCodec<etv> a = MapCodec.unit(b);
+
+   private etv() {
+   }
 
    @Override
-   public etr b() {
-      return ets.f;
+   public ets b() {
+      return ett.i;
    }
 
-   public boolean a(eqg $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public Set<eta<?>> a() {
+      return ImmutableSet.of(etd.b);
    }
 
-   public static etq.a a(float $$0) {
-      return () -> new etv($$0);
+   public boolean a(eqh $$0) {
+      return $$0.a(etd.b);
    }
 
-   public float c() {
-      return this.b;
+   public static etr.a c() {
+      return () -> b;
    }
 }

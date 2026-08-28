@@ -1,49 +1,53 @@
-public class gas extends gca {
-   private final gbv a;
-
-   protected gas(fxt $$0, double $$1, double $$2, double $$3, double $$4, gbv $$5) {
+public class gas extends gcb {
+   gas(fxu $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gbf b() {
+      return gbf.b;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+   public float b(float $$0) {
+      return this.D * ayy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public gbe b() {
-      return gbe.d;
-   }
+   public static class a implements gbe<lm> {
+      private final gbw a;
 
-   public static class a implements gbd<lm> {
-      private final gbv a;
-
-      public a(gbv $$0) {
+      public a(gbw $$0) {
          this.a = $$0;
       }
 
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gas($$1, $$2, $$3, $$4, $$5, this.a);
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gas $$8 = new gas($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbe<lm> {
+      private final gbw a;
+
+      public b(gbw $$0) {
+         this.a = $$0;
+      }
+
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gas $$8 = new gas($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -24,13 +24,13 @@ public class asv implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final blz<asv.e> d;
-   private final bpl<Runnable> e = bpl.a(ac.i(), "download-queue");
+   private final bma<asv.e> d;
+   private final bpm<Runnable> e = bpm.a(ac.i(), "download-queue");
 
    public asv(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = blz.a(asv.e.a, $$0.resolve("log.json"));
+      this.d = bma.a(asv.e.a, $$0.resolve("log.json"));
       asu.a($$0, 20);
    }
 
@@ -42,7 +42,7 @@ public class asv implements AutoCloseable {
             Path $$5 = null;
 
             try {
-               $$5 = ayo.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$5 = ayp.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
                $$2.a.put($$2x, $$5);
             } catch (Exception var9) {
                a.error("Failed to download {}", $$3.a, var9);
@@ -89,7 +89,7 @@ public class asv implements AutoCloseable {
       this.d.close();
    }
 
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, ayo.a e) {
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, ayp.a e) {
    }
 
    public static record b(Map<UUID, Path> a, Set<UUID> b) {
@@ -121,7 +121,7 @@ public class asv implements AutoCloseable {
          $$0 -> $$0.group(
                   kc.d.fieldOf("id").forGetter(asv.e::a),
                   Codec.STRING.fieldOf("url").forGetter(asv.e::b),
-                  ayf.o.fieldOf("time").forGetter(asv.e::c),
+                  ayg.o.fieldOf("time").forGetter(asv.e::c),
                   Codec.STRING.optionalFieldOf("hash").forGetter(asv.e::d),
                   Codec.mapEither(Codec.STRING.fieldOf("error"), asv.d.a.fieldOf("file")).forGetter(asv.e::e)
                )

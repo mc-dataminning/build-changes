@@ -1,9 +1,11 @@
-public class cph {
-   final cpk a;
-   final long b;
+import java.util.Set;
 
-   cph(cpk $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface cph {
+   Set<ald<? extends jv<? extends cph>>> bA = Set.of(lq.G, lq.f, lq.v, lq.Q, lq.u, lq.Y, lq.R);
+
+   cpk i();
+
+   default boolean a(cpk $$0) {
+      return this.i().a($$0);
    }
 }

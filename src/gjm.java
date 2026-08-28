@@ -1,12 +1,24 @@
-public abstract class gjm<T extends btp, M extends ful<T>> extends gkb<T, M> {
-   public gjm(giv.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public final class gjm extends ghq<chk, fuk<chk>> {
+   private static final Map<chr, ale> a = ac.a(Maps.newEnumMap(chr.class), $$0 -> {
+      $$0.put(chr.a, new ale("textures/entity/horse/horse_white.png"));
+      $$0.put(chr.b, new ale("textures/entity/horse/horse_creamy.png"));
+      $$0.put(chr.c, new ale("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(chr.d, new ale("textures/entity/horse/horse_brown.png"));
+      $$0.put(chr.e, new ale("textures/entity/horse/horse_black.png"));
+      $$0.put(chr.f, new ale("textures/entity/horse/horse_gray.png"));
+      $$0.put(chr.g, new ale("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gjm(giw.a $$0) {
+      super($$0, new fuk<>($$0.a(fwy.ap)), 1.1F);
+      this.a(new gmx(this));
+      this.a(new gmw(this, $$0.f()));
    }
 
-   public gjm(giv.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gmm<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gmq<>(this, $$0.f()));
-      this.a(new gna<>(this, $$0.d()));
+   public ale a(chk $$0) {
+      return a.get($$0.s());
    }
 }

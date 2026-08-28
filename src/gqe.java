@@ -1,17 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.IllegalFormatException;
 
-public record gqe(String b, String c, boolean d) {
-   public static final Codec<gqe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayf.y.fieldOf("region").forGetter(gqe::b),
-               ayf.y.fieldOf("name").forGetter(gqe::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gqe::d)
-            )
-            .apply($$0, gqe::new)
-   );
+public class gqe {
+   private static volatile um a = um.a();
 
-   public xo a() {
-      return xo.b(this.c + " (" + this.b + ")");
+   private gqe() {
+   }
+
+   static void a(um $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

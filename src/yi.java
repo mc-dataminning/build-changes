@@ -15,7 +15,7 @@ public class yi {
       this.b = yj.a($$0, $$1);
    }
 
-   public yi.c a(azl $$0) {
+   public yi.c a(azm $$0) {
       return $$1 -> {
          yj $$2 = this.b;
          if ($$2 == null) {
@@ -27,8 +27,8 @@ public class yi {
       };
    }
 
-   public yi.b a(final cmy $$0) {
-      final azk $$1 = $$0.a();
+   public yi.b a(final cmz $$0) {
+      final azl $$1 = $$0.a();
       return new yi.b() {
          @Override
          public ye unpack(@Nullable ya $$0x, yh $$1x) throws yi.a {

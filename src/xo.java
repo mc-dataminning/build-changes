@@ -64,7 +64,7 @@ public interface xo extends Message, xt {
       return new yc(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   ayj g();
+   ayk g();
 
    @Override
    default <T> Optional<T> a(xt.b<T> $$0, yl $$1) {
@@ -198,7 +198,7 @@ public interface xo extends Message, xt {
       return b($$0.toString());
    }
 
-   static xo a(dbd $$0) {
+   static xo a(dbe $$0) {
       return b($$0.toString());
    }
 

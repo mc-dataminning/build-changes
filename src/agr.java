@@ -69,8 +69,8 @@ public class agr {
       "Fist"
    };
 
-   public static String a(bss $$0) {
-      if ($$0 instanceof cmv) {
+   public static String a(bst $$0) {
+      if ($$0 instanceof cmw) {
          return $$0.af().getString();
       } else {
          xo $$1 = $$0.ah();
@@ -79,15 +79,15 @@ public class agr {
    }
 
    public static String a(UUID $$0) {
-      azf $$1 = b($$0);
+      azg $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(azf $$0, String[] $$1) {
+   private static String a(azg $$0, String[] $$1) {
       return ac.a($$1, $$0);
    }
 
-   private static azf b(UUID $$0) {
-      return azf.a((long)($$0.hashCode() >> 2));
+   private static azg b(UUID $$0) {
+      return azg.a((long)($$0.hashCode() >> 2));
    }
 }

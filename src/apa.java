@@ -81,13 +81,13 @@ public class apa {
       );
    }
 
-   private static int a(ep $$0, evo $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bss> $$6) throws CommandSyntaxException {
+   private static int a(ep $$0, evp $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bst> $$6) throws CommandSyntaxException {
       are $$7 = $$0.e();
       int $$8 = $$7.I_();
       if ($$4 < $$8) {
          throw d.create($$4, $$8);
       } else {
-         azf $$9 = azf.a();
+         azg $$9 = azg.a();
          double $$10 = (double)($$1.i - $$3);
          double $$11 = (double)($$1.j - $$3);
          double $$12 = (double)($$1.i + $$3);
@@ -103,11 +103,11 @@ public class apa {
       }
    }
 
-   private static int a(Collection<? extends bss> $$0) {
-      Set<ewv> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bst> $$0) {
+      Set<eww> $$1 = Sets.newHashSet();
 
-      for (bss $$2 : $$0) {
-         if ($$2 instanceof cmv) {
+      for (bst $$2 : $$0) {
+         if ($$2 instanceof cmw) {
             $$1.add($$2.cj());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class apa {
       return $$1.size();
    }
 
-   private static void a(evo $$0, double $$1, are $$2, azf $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apa.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(evp $$0, double $$1, are $$2, azg $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apa.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class apa {
       }
    }
 
-   private static double a(Collection<? extends bss> $$0, are $$1, apa.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bst> $$0, are $$1, apa.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<ewv, apa.a> $$7 = Maps.newHashMap();
+      Map<eww, apa.a> $$7 = Maps.newHashMap();
 
-      for (bss $$8 : $$0) {
+      for (bst $$8 : $$0) {
          apa.a $$10;
          if ($$4) {
-            ewv $$9 = $$8 instanceof cmv ? $$8.cj() : null;
+            eww $$9 = $$8 instanceof cmw ? $$8.cj() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class apa {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)ayx.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayx.a($$10.b) + 0.5, Set.of(), $$8.dF(), $$8.dH());
+         $$8.a($$1, (double)ayy.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayy.a($$10.b) + 0.5, Set.of(), $$8.dF(), $$8.dH());
          double $$12 = Double.MAX_VALUE;
 
          for (apa.a $$13 : $$2) {
@@ -220,7 +220,7 @@ public class apa {
       return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
    }
 
-   private static apa.a[] a(azf $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+   private static apa.a[] a(azg $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
       apa.a[] $$6 = new apa.a[$$1];
 
       for (int $$7 = 0; $$7 < $$6.length; $$7++) {
@@ -278,7 +278,7 @@ public class apa {
          return $$4;
       }
 
-      public int a(dbc $$0, int $$1) {
+      public int a(dbd $$0, int $$1) {
          iz.a $$2 = new iz.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).i();
          $$2.c(je.a);
@@ -298,15 +298,15 @@ public class apa {
          return $$1 + 1;
       }
 
-      public boolean b(dbc $$0, int $$1) {
+      public boolean b(dbd $$0, int $$1) {
          iz $$2 = iz.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dsa $$3 = $$0.a_($$2);
+         dsb $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.k() && !$$3.a(awo.aK);
       }
 
-      public void a(azf $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = ayx.a($$0, $$1, $$3);
-         this.b = ayx.a($$0, $$2, $$4);
+      public void a(azg $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = ayy.a($$0, $$1, $$3);
+         this.b = ayy.a($$0, $$2, $$4);
       }
    }
 }

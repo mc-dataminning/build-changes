@@ -1,61 +1,108 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public abstract class eey {
-   public static final Codec<eey> d = lp.Y.q().dispatch(eey::a, eez::a);
-   protected final bpx e;
-   protected final efb f;
-   protected final Optional<eev> g;
+public class eey extends eez {
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final MapCodec<eey> c = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eex.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eey::new)
+   );
+   private final eex h;
 
-   protected static <P extends eey> P3<Mu<P>, bpx, efb, Optional<eev>> a(Instance<P> $$0) {
-      return $$0.group(
-         bpx.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         efb.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eev.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public eey(bpy $$0, efc $$1, Optional<eew> $$2, eex $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   public eey(bpx $$0, efb $$1, Optional<eev> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   public boolean a(dcd $$0, BiConsumer<iz, dsb> $$1, azg $$2, iz $$3, iz $$4, edx $$5) {
+      List<iz> $$6 = Lists.newArrayList();
+      iz.a $$7 = $$3.j();
+
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
+         }
+
+         $$7.c(je.b);
+      }
+
+      $$6.add($$4.d());
+
+      for (je $$8 : je.c.a) {
+         iz $$9 = $$4.a($$8);
+         List<iz> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
+
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
+      }
+
+      for (iz $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
+      }
+
+      return true;
    }
 
-   protected abstract eez<?> a();
-
-   public abstract boolean a(dcc var1, BiConsumer<iz, dsa> var2, azf var3, iz var4, iz var5, edw var6);
-
-   protected boolean a(dcc $$0, iz $$1) {
-      return eci.c($$0, $$1);
-   }
-
-   protected void a(dcc $$0, BiConsumer<iz, dsa> $$1, azf $$2, iz $$3, edw $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eev $$5 = this.g.get();
-            iz $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, drz.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+   private boolean a(dcd $$0, azg $$1, iz $$2, je $$3, iz $$4, List<iz> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (iz $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
             }
          }
-      }
-   }
 
-   protected dsa a(dcc $$0, iz $$1, dsa $$2) {
-      if ($$2.b(dsq.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awu.a));
-         return $$2.a(dsq.C, Boolean.valueOf($$3));
+         return true;
       } else {
-         return $$2;
+         return false;
       }
    }
 
-   public iz a(iz $$0, azf $$1) {
-      return $$0.b(this.e.a($$1));
+   protected List<iz> a(iz $$0, je $$1, azg $$2, iz $$3) {
+      iz $$4 = $$0.d();
+      iz $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dcd $$0, iz $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   }
+
+   @Override
+   protected void a(dcd $$0, BiConsumer<iz, dsb> $$1, azg $$2, iz $$3, edx $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         dsb $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected efa<?> a() {
+      return efa.a;
    }
 }

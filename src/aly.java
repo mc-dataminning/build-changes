@@ -17,8 +17,8 @@ public record aly(MinecraftSessionService a, ServicesKeySet b, GameProfileReposi
    }
 
    @Nullable
-   public azk a() {
-      return azk.a(this.b, ServicesKeyType.PROFILE_KEY);
+   public azl a() {
+      return azl.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
    public boolean b() {

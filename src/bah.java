@@ -1,42 +1,20 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public class bah extends bft {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
-
-   public bah(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bgv.B, "minecraft:wolf");
+public class bah {
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
+         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
+         : $$0;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(big.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
-
-            return $$0x;
-         }
-      );
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
    }
 }

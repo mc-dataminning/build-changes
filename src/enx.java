@@ -1,135 +1,213 @@
-import com.google.common.base.Preconditions;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class enx {
-   private static final enx[] am = new enx[64];
-   public static final enx a = new enx(0, 0);
-   public static final enx b = new enx(1, 8368696);
-   public static final enx c = new enx(2, 16247203);
-   public static final enx d = new enx(3, 13092807);
-   public static final enx e = new enx(4, 16711680);
-   public static final enx f = new enx(5, 10526975);
-   public static final enx g = new enx(6, 10987431);
-   public static final enx h = new enx(7, 31744);
-   public static final enx i = new enx(8, 16777215);
-   public static final enx j = new enx(9, 10791096);
-   public static final enx k = new enx(10, 9923917);
-   public static final enx l = new enx(11, 7368816);
-   public static final enx m = new enx(12, 4210943);
-   public static final enx n = new enx(13, 9402184);
-   public static final enx o = new enx(14, 16776437);
-   public static final enx p = new enx(15, 14188339);
-   public static final enx q = new enx(16, 11685080);
-   public static final enx r = new enx(17, 6724056);
-   public static final enx s = new enx(18, 15066419);
-   public static final enx t = new enx(19, 8375321);
-   public static final enx u = new enx(20, 15892389);
-   public static final enx v = new enx(21, 5000268);
-   public static final enx w = new enx(22, 10066329);
-   public static final enx x = new enx(23, 5013401);
-   public static final enx y = new enx(24, 8339378);
-   public static final enx z = new enx(25, 3361970);
-   public static final enx A = new enx(26, 6704179);
-   public static final enx B = new enx(27, 6717235);
-   public static final enx C = new enx(28, 10040115);
-   public static final enx D = new enx(29, 1644825);
-   public static final enx E = new enx(30, 16445005);
-   public static final enx F = new enx(31, 6085589);
-   public static final enx G = new enx(32, 4882687);
-   public static final enx H = new enx(33, 55610);
-   public static final enx I = new enx(34, 8476209);
-   public static final enx J = new enx(35, 7340544);
-   public static final enx K = new enx(36, 13742497);
-   public static final enx L = new enx(37, 10441252);
-   public static final enx M = new enx(38, 9787244);
-   public static final enx N = new enx(39, 7367818);
-   public static final enx O = new enx(40, 12223780);
-   public static final enx P = new enx(41, 6780213);
-   public static final enx Q = new enx(42, 10505550);
-   public static final enx R = new enx(43, 3746083);
-   public static final enx S = new enx(44, 8874850);
-   public static final enx T = new enx(45, 5725276);
-   public static final enx U = new enx(46, 8014168);
-   public static final enx V = new enx(47, 4996700);
-   public static final enx W = new enx(48, 4993571);
-   public static final enx X = new enx(49, 5001770);
-   public static final enx Y = new enx(50, 9321518);
-   public static final enx Z = new enx(51, 2430480);
-   public static final enx aa = new enx(52, 12398641);
-   public static final enx ab = new enx(53, 9715553);
-   public static final enx ac = new enx(54, 6035741);
-   public static final enx ad = new enx(55, 1474182);
-   public static final enx ae = new enx(56, 3837580);
-   public static final enx af = new enx(57, 5647422);
-   public static final enx ag = new enx(58, 1356933);
-   public static final enx ah = new enx(59, 6579300);
-   public static final enx ai = new enx(60, 14200723);
-   public static final enx aj = new enx(61, 8365974);
-   public final int ak;
-   public final int al;
+public abstract class enx extends ens {
+   public static final float e = 0.44444445F;
 
-   private enx(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
-      } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+   @Override
+   public ent d() {
+      return env.d;
+   }
+
+   @Override
+   public ent e() {
+      return env.e;
+   }
+
+   @Override
+   public cuj a() {
+      return cur.qA;
+   }
+
+   @Override
+   public void a(dbx $$0, iz $$1, enu $$2, azg $$3) {
+      iz $$4 = $$1.c();
+      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(li.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, avz.nR, awa.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), avz.nP, awa.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
    }
 
-   public int a(enx.a $$0) {
-      if (this == a) {
-         return 0;
-      } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+   @Override
+   public void b(dbx $$0, iz $$1, enu $$2, azg $$3) {
+      if ($$0.ab().b(dbt.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            iz $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               dsb $$7 = $$0.a_($$5);
+               if ($$7.i()) {
+                  if (this.a((dca)$$0, $$5)) {
+                     $$0.b($$5, del.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               iz $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
+                  $$0.b($$9.c(), del.a($$0, $$9));
+               }
+            }
+         }
       }
    }
 
-   public static enx a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static enx c(int $$0) {
-      enx $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(enx.a.b($$1 & 3));
-   }
-
-   public byte b(enx.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final enx.a[] g = new enx.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(final int $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private boolean a(dca $$0, iz $$1) {
+      for (je $$2 : je.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
+         }
       }
 
-      public static enx.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      return false;
+   }
+
+   private boolean b(dca $$0, iz $$1) {
+      return $$1.v() >= $$0.I_() && $$1.v() < $$0.am() && !$$0.B($$1) ? false : $$0.a_($$1).j();
+   }
+
+   @Nullable
+   @Override
+   public lg h() {
+      return li.i;
+   }
+
+   @Override
+   protected void a(dby $$0, iz $$1, dsb $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(dca $$0) {
+      return $$0.D_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dsb b(enu $$0) {
+      return dfa.H.o().a(djo.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ent $$0) {
+      return $$0 == env.e || $$0 == env.d;
+   }
+
+   @Override
+   public int c(dca $$0) {
+      return $$0.D_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(enu $$0, dbd $$1, iz $$2, ent $$3, je $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awu.a);
+   }
+
+   @Override
+   public int a(dca $$0) {
+      return $$0.D_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(dbx $$0, iz $$1, enu $$2, enu $$3) {
+      int $$4 = this.a((dca)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((dbd)$$0, $$1) > $$2.a((dbd)$$0, $$1) && $$0.E_().a(4) != 0) {
+         $$4 *= 4;
       }
 
-      static enx.a b(int $$0) {
-         return g[$$0];
+      return $$4;
+   }
+
+   private void a(dby $$0, iz $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(dbx $$0) {
+      return $$0.ab().b(dbt.V);
+   }
+
+   @Override
+   protected void a(dby $$0, iz $$1, dsb $$2, je $$3, enu $$4) {
+      if ($$3 == je.a) {
+         enu $$5 = $$0.b_($$1);
+         if (this.a(awu.b) && $$5.a(awu.a)) {
+            if ($$2.b() instanceof djo) {
+               $$0.a($$1, dfa.b.o(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avy> j() {
+      return Optional.of(avz.dl);
+   }
+
+   public static class a extends enx {
+      @Override
+      protected void a(dsc.a<ent, enu> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(enu $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(enu $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends enx {
+      @Override
+      public int d(enu $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(enu $$0) {
+         return true;
       }
    }
 }

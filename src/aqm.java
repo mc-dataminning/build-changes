@@ -2,14 +2,14 @@ public class aqm {
    private static final int b = 33;
    private static final int c = 32;
    private static final int d = 31;
-   public static final int a = 33 + duv.b();
+   public static final int a = 33 + duw.b();
 
-   public static duv a(int $$0) {
-      return $$0 < 33 ? duv.n : duv.a($$0 - 33);
+   public static duw a(int $$0) {
+      return $$0 < 33 ? duw.n : duw.a($$0 - 33);
    }
 
-   public static int a(duv $$0) {
-      return 33 + duv.a($$0);
+   public static int a(duw $$0) {
+      return 33 + duw.a($$0);
    }
 
    public static aqx b(int $$0) {

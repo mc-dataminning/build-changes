@@ -11,7 +11,7 @@ public class dn extends dr<dn.a> {
       return dn.a.a;
    }
 
-   public void a(arf $$0, ale $$1, List<cun> $$2) {
+   public void a(arf $$0, ale $$1, List<cuo> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
@@ -37,15 +37,15 @@ public class dn extends dr<dn.a> {
          return am.ad.a(new dn.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(ale $$0, List<cun> $$1) {
+      boolean b(ale $$0, List<cuo> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cun> $$2 = new ArrayList<>($$1);
+            List<cuo> $$2 = new ArrayList<>($$1);
 
             for (cp $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cun> $$5 = $$2.iterator();
+               Iterator<cuo> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {

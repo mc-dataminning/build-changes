@@ -1,26 +1,27 @@
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class ehc extends ehp {
-   public static final MapCodec<ehc> a = dxo.a.c.fieldOf("step").xmap(ehc::new, $$0 -> $$0.c);
-   private final dxo.a c;
+   public static final MapCodec<ehc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dza.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ehc::new)
+   );
+   private final dza c;
 
-   private ehc(dxo.a $$0) {
+   private ehc(dza $$0) {
       this.c = $$0;
    }
 
-   public static ehc a(dxo.a $$0) {
+   public static ehc a(dza $$0) {
       return new ehc($$0);
    }
 
    @Override
-   public Stream<iz> a_(ehn $$0, azf $$1, iz $$2) {
-      dbd $$3 = new dbd($$2);
-      return $$0.a($$3, this.c).a($$3);
+   protected boolean a(eho $$0, azg $$1, iz $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public ehq<?> b() {
-      return ehq.o;
+   public ehr<?> b() {
+      return ehr.a;
    }
 }

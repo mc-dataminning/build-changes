@@ -1,119 +1,49 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class evc<T> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Callback";
-   private static final String c = "Name";
-   private static final String d = "TriggerTime";
-   private final evb<T> e;
-   private final Queue<evc.a<T>> f = new PriorityQueue<>(c());
-   private UnsignedLong g = UnsignedLong.ZERO;
-   private final Table<String, Long, evc.a<T>> h = HashBasedTable.create();
+public class evc<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final evc<MinecraftServer> a = new evc<MinecraftServer>().a(new euz.a()).a(new eva.a());
+   private final Map<ale, evb.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, evb.a<C, ?>> d = Maps.newHashMap();
 
-   private static <T> Comparator<evc.a<T>> c() {
-      return Comparator.<evc.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   public evc<C> a(evb.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   public evc(evb<T> $$0, Stream<? extends Dynamic<?>> $$1) {
-      this($$0);
-      this.f.clear();
-      this.h.clear();
-      this.g = UnsignedLong.ZERO;
-      $$1.forEach($$0x -> {
-         vo $$1x = (vo)$$0x.convert(vf.a).getValue();
-         if ($$1x instanceof ur $$2) {
-            this.a($$2);
-         } else {
-            a.warn("Invalid format of events: {}", $$1x);
-         }
-      });
+   private <T extends evb<C>> evb.a<C, T> a(Class<?> $$0) {
+      return (evb.a<C, T>)this.d.get($$0);
    }
 
-   public evc(evb<T> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(T $$0, long $$1) {
-      while (true) {
-         evc.a<T> $$2 = this.f.peek();
-         if ($$2 == null || $$2.a > $$1) {
-            return;
-         }
-
-         this.f.remove();
-         this.h.remove($$2.c, $$1);
-         $$2.d.handle($$0, this, $$1);
-      }
-   }
-
-   public void a(String $$0, long $$1, eva<T> $$2) {
-      if (!this.h.contains($$0, $$1)) {
-         this.g = this.g.plus(UnsignedLong.ONE);
-         evc.a<T> $$3 = new evc.a<>($$1, this.g, $$0, $$2);
-         this.h.put($$0, $$1, $$3);
-         this.f.add($$3);
-      }
-   }
-
-   public int a(String $$0) {
-      Collection<evc.a<T>> $$1 = this.h.row($$0).values();
-      $$1.forEach(this.f::remove);
-      int $$2 = $$1.size();
-      $$1.clear();
+   public <T extends evb<C>> ur a(T $$0) {
+      evb.a<C, T> $$1 = this.a($$0.getClass());
+      ur $$2 = new ur();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
       return $$2;
    }
 
-   public Set<String> a() {
-      return Collections.unmodifiableSet(this.h.rowKeySet());
-   }
-
-   private void a(ur $$0) {
-      ur $$1 = $$0.p("Callback");
-      eva<T> $$2 = this.e.a($$1);
-      if ($$2 != null) {
-         String $$3 = $$0.l("Name");
-         long $$4 = $$0.i("TriggerTime");
-         this.a($$3, $$4, $$2);
-      }
-   }
-
-   private ur a(evc.a<T> $$0) {
-      ur $$1 = new ur();
-      $$1.a("Name", $$0.c);
-      $$1.a("TriggerTime", $$0.a);
-      $$1.a("Callback", this.e.a($$0.d));
-      return $$1;
-   }
-
-   public ux b() {
-      ux $$0 = new ux();
-      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
-      return $$0;
-   }
-
-   public static class a<T> {
-      public final long a;
-      public final UnsignedLong b;
-      public final String c;
-      public final eva<T> d;
-
-      a(long $$0, UnsignedLong $$1, String $$2, eva<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   @Nullable
+   public evb<C> a(ur $$0) {
+      ale $$1 = ale.a($$0.l("Type"));
+      evb.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
+         }
       }
    }
 }

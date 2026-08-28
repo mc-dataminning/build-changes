@@ -1,267 +1,60 @@
-import com.mojang.serialization.Codec;
-import java.util.EnumSet;
-import java.util.List;
-import org.joml.Vector3f;
+public class evp {
+   public static final evp a = new evp(0.0F, 0.0F);
+   public static final evp b = new evp(1.0F, 1.0F);
+   public static final evp c = new evp(1.0F, 0.0F);
+   public static final evp d = new evp(-1.0F, 0.0F);
+   public static final evp e = new evp(0.0F, 1.0F);
+   public static final evp f = new evp(0.0F, -1.0F);
+   public static final evp g = new evp(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final evp h = new evp(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public class evp implements js {
-   public static final Codec<evp> a = Codec.DOUBLE
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 3).map($$0x -> new evp((Double)$$0x.get(0), (Double)$$0x.get(1), (Double)$$0x.get(2))), $$0 -> List.of($$0.a(), $$0.b(), $$0.c())
-      );
-   public static final evp b = new evp(0.0, 0.0, 0.0);
-   public final double c;
-   public final double d;
-   public final double e;
-
-   public static evp a(int $$0) {
-      double $$1 = (double)($$0 >> 16 & 0xFF) / 255.0;
-      double $$2 = (double)($$0 >> 8 & 0xFF) / 255.0;
-      double $$3 = (double)($$0 & 0xFF) / 255.0;
-      return new evp($$1, $$2, $$3);
-   }
-
-   public static evp a(kd $$0) {
-      return new evp((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public static evp a(kd $$0, double $$1, double $$2, double $$3) {
-      return new evp((double)$$0.u() + $$1, (double)$$0.v() + $$2, (double)$$0.w() + $$3);
-   }
-
-   public static evp b(kd $$0) {
-      return a($$0, 0.5, 0.5, 0.5);
-   }
-
-   public static evp c(kd $$0) {
-      return a($$0, 0.5, 0.0, 0.5);
-   }
-
-   public static evp a(kd $$0, double $$1) {
-      return a($$0, 0.5, $$1, 0.5);
-   }
-
-   public evp(double $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public evp(Vector3f $$0) {
-      this((double)$$0.x(), (double)$$0.y(), (double)$$0.z());
-   }
-
-   public evp a(evp $$0) {
-      return new evp($$0.c - this.c, $$0.d - this.d, $$0.e - this.e);
-   }
-
-   public evp d() {
-      double $$0 = Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
-      return $$0 < 1.0E-4 ? b : new evp(this.c / $$0, this.d / $$0, this.e / $$0);
-   }
-
-   public double b(evp $$0) {
-      return this.c * $$0.c + this.d * $$0.d + this.e * $$0.e;
-   }
-
-   public evp c(evp $$0) {
-      return new evp(this.d * $$0.e - this.e * $$0.d, this.e * $$0.c - this.c * $$0.e, this.c * $$0.d - this.d * $$0.c);
-   }
-
-   public evp d(evp $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
-   }
-
-   public evp a(double $$0, double $$1, double $$2) {
-      return this.b(-$$0, -$$1, -$$2);
-   }
-
-   public evp e(evp $$0) {
-      return this.b($$0.c, $$0.d, $$0.e);
-   }
-
-   public evp b(double $$0, double $$1, double $$2) {
-      return new evp(this.c + $$0, this.d + $$1, this.e + $$2);
-   }
-
-   public boolean a(js $$0, double $$1) {
-      return this.c($$0.a(), $$0.b(), $$0.c()) < $$1 * $$1;
-   }
-
-   public double f(evp $$0) {
-      double $$1 = $$0.c - this.c;
-      double $$2 = $$0.d - this.d;
-      double $$3 = $$0.e - this.e;
-      return Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public double g(evp $$0) {
-      double $$1 = $$0.c - this.c;
-      double $$2 = $$0.d - this.d;
-      double $$3 = $$0.e - this.e;
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public double c(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 - this.c;
-      double $$4 = $$1 - this.d;
-      double $$5 = $$2 - this.e;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public boolean a(evp $$0, double $$1, double $$2) {
-      double $$3 = $$0.a() - this.c;
-      double $$4 = $$0.b() - this.d;
-      double $$5 = $$0.c() - this.e;
-      return ayx.e($$3, $$5) < ayx.k($$1) && Math.abs($$4) < $$2;
-   }
-
-   public evp a(double $$0) {
-      return this.d($$0, $$0, $$0);
-   }
-
-   public evp e() {
-      return this.a(-1.0);
-   }
-
-   public evp h(evp $$0) {
-      return this.d($$0.c, $$0.d, $$0.e);
-   }
-
-   public evp d(double $$0, double $$1, double $$2) {
-      return new evp(this.c * $$0, this.d * $$1, this.e * $$2);
-   }
-
-   public evp a(azf $$0, float $$1) {
-      return this.b((double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1), (double)(($$0.i() - 0.5F) * $$1));
-   }
-
-   public double f() {
-      return Math.sqrt(this.c * this.c + this.d * this.d + this.e * this.e);
-   }
-
-   public double g() {
-      return this.c * this.c + this.d * this.d + this.e * this.e;
-   }
-
-   public double h() {
-      return Math.sqrt(this.c * this.c + this.e * this.e);
-   }
-
-   public double i() {
-      return this.c * this.c + this.e * this.e;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof evp $$1)) {
-         return false;
-      } else if (Double.compare($$1.c, this.c) != 0) {
-         return false;
-      } else {
-         return Double.compare($$1.d, this.d) != 0 ? false : Double.compare($$1.e, this.e) == 0;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.c);
-      int $$1 = (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.d);
-      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-      $$0 = Double.doubleToLongBits(this.e);
-      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.c + ", " + this.d + ", " + this.e + ")";
-   }
-
-   public evp a(evp $$0, double $$1) {
-      return new evp(ayx.d($$1, this.c, $$0.c), ayx.d($$1, this.d, $$0.d), ayx.d($$1, this.e, $$0.e));
+   public evp(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    public evp a(float $$0) {
-      float $$1 = ayx.b($$0);
-      float $$2 = ayx.a($$0);
-      double $$3 = this.c;
-      double $$4 = this.d * (double)$$1 + this.e * (double)$$2;
-      double $$5 = this.e * (double)$$1 - this.d * (double)$$2;
-      return new evp($$3, $$4, $$5);
+      return new evp(this.i * $$0, this.j * $$0);
+   }
+
+   public float a(evp $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
+   }
+
+   public evp b(evp $$0) {
+      return new evp(this.i + $$0.i, this.j + $$0.j);
    }
 
    public evp b(float $$0) {
-      float $$1 = ayx.b($$0);
-      float $$2 = ayx.a($$0);
-      double $$3 = this.c * (double)$$1 + this.e * (double)$$2;
-      double $$4 = this.d;
-      double $$5 = this.e * (double)$$1 - this.c * (double)$$2;
-      return new evp($$3, $$4, $$5);
+      return new evp(this.i + $$0, this.j + $$0);
    }
 
-   public evp c(float $$0) {
-      float $$1 = ayx.b($$0);
-      float $$2 = ayx.a($$0);
-      double $$3 = this.c * (double)$$1 + this.d * (double)$$2;
-      double $$4 = this.d * (double)$$1 - this.c * (double)$$2;
-      double $$5 = this.e;
-      return new evp($$3, $$4, $$5);
+   public boolean c(evp $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
    }
 
-   public static evp a(evo $$0) {
-      return a($$0.i, $$0.j);
+   public evp a() {
+      float $$0 = ayy.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new evp(this.i / $$0, this.j / $$0);
    }
 
-   public static evp a(float $$0, float $$1) {
-      float $$2 = ayx.b(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      float $$3 = ayx.a(-$$1 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      float $$4 = -ayx.b(-$$0 * (float) (Math.PI / 180.0));
-      float $$5 = ayx.a(-$$0 * (float) (Math.PI / 180.0));
-      return new evp((double)($$3 * $$4), (double)$$5, (double)($$2 * $$4));
+   public float b() {
+      return ayy.c(this.i * this.i + this.j * this.j);
    }
 
-   public evp a(EnumSet<je.a> $$0) {
-      double $$1 = $$0.contains(je.a.a) ? (double)ayx.a(this.c) : this.c;
-      double $$2 = $$0.contains(je.a.b) ? (double)ayx.a(this.d) : this.d;
-      double $$3 = $$0.contains(je.a.c) ? (double)ayx.a(this.e) : this.e;
-      return new evp($$1, $$2, $$3);
+   public float c() {
+      return this.i * this.i + this.j * this.j;
    }
 
-   public double a(je.a $$0) {
-      return $$0.a(this.c, this.d, this.e);
+   public float d(evp $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
    }
 
-   public evp a(je.a $$0, double $$1) {
-      double $$2 = $$0 == je.a.a ? $$1 : this.c;
-      double $$3 = $$0 == je.a.b ? $$1 : this.d;
-      double $$4 = $$0 == je.a.c ? $$1 : this.e;
-      return new evp($$2, $$3, $$4);
-   }
-
-   public evp a(je $$0, double $$1) {
-      kd $$2 = $$0.q();
-      return new evp(this.c + $$1 * (double)$$2.u(), this.d + $$1 * (double)$$2.v(), this.e + $$1 * (double)$$2.w());
-   }
-
-   @Override
-   public final double a() {
-      return this.c;
-   }
-
-   @Override
-   public final double b() {
-      return this.d;
-   }
-
-   @Override
-   public final double c() {
-      return this.e;
-   }
-
-   public Vector3f j() {
-      return new Vector3f((float)this.c, (float)this.d, (float)this.e);
+   public evp d() {
+      return new evp(-this.i, -this.j);
    }
 }

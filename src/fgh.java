@@ -1,164 +1,75 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
 public class fgh {
-   private static final int a = 256;
-   private final ThreadLocal<fgh.b> b = ThreadLocal.withInitial(fgh.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fgh.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<iz> e;
+   private static final int a = -1;
+   private final jo<fgg> b = new jo<>(32);
+   private final Map<dey, Set<dte<?>>> c = Maps.newHashMap();
 
-   public fgh(ToIntFunction<iz> $$0) {
-      this.e = $$0;
+   public static fgh a() {
+      fgh $$0 = new fgh();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gcz.a($$1, $$0x.c(dhg.b) == dsx.a ? $$2.d() : $$2) : dbv.a(), dfa.iI, dfa.iH);
+      $$0.a(dhg.b, dfa.iI, dfa.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gcz.a($$1, $$2) : dbv.a(), dfa.i, dfa.bu, dfa.bt, dfa.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? gcz.a($$1, $$2) : dbv.a();
+         } else {
+            return -1;
+         }
+      }, dfa.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dbr.a(), dfa.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dbr.b(), dfa.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gcz.b($$1, $$2) : dbr.c(), dfa.aE, dfa.aH, dfa.aI, dfa.aK, dfa.ff, dfa.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gcz.c($$1, $$2) : -1, dfa.G, dfa.nd, dfa.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dla.b($$0x.c(dla.f)), dfa.cw);
+      $$0.a(dla.f, dfa.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gcz.a($$1, $$2) : -1, dfa.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dfa.fc, dfa.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dmu.c);
+         return ayi.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
+      }, dfa.fe, dfa.fd);
+      $$0.a(dmu.c, dfa.fe, dfa.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dfa.fm);
+      return $$0;
    }
 
-   public int a(iz $$0) {
-      int $$1 = kb.a($$0.u());
-      int $$2 = kb.a($$0.w());
-      fgh.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
+   public int a(dsb $$0, dbx $$1, iz $$2) {
+      fgg $$3 = this.b.a(lp.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
       } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
+         eny $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
+   public int a(dsb $$0, @Nullable dba $$1, @Nullable iz $$2, int $$3) {
+      fgg $$4 = this.b.a(lp.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   }
 
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dbd.c($$0 + $$2, $$1 + $$3);
-               fgh.a $$5 = (fgh.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
+   public void a(fgg $$0, dey... $$1) {
+      for (dey $$2 : $$1) {
+         this.b.a($$0, lp.e.a($$2));
       }
    }
 
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fgh.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
+   private void a(Set<dte<?>> $$0, dey... $$1) {
+      for (dey $$2 : $$1) {
+         this.c.put($$2, $$0);
       }
    }
 
-   private fgh.a b(int $$0, int $$1) {
-      long $$2 = dbd.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fgh.a $$3 = (fgh.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      fgh.a $$5;
-      try {
-         fgh.a $$4 = (fgh.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fgh.a();
-            if (this.c.size() >= 256) {
-               fgh.a $$6 = (fgh.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
+   private void a(dte<?> $$0, dey... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
    }
 
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = ayx.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fgh.a c;
-
-      private b() {
-      }
+   public Set<dte<?>> a(dey $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

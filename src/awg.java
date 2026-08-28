@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class awg<T> extends eww {
+public class awg<T> extends ewx {
    public static final zm<wz, awg<?>> a = zk.a(lq.ah).b(awg::a, awi::a);
    private final awh o;
    private final T p;

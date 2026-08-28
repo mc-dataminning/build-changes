@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dhq extends dfr implements ctp {
-   public static final MapCodec<dhq> c = b(dhq::new);
+public interface dhq {
+   @Nullable
+   dpg a(iz var1, dsb var2);
 
-   @Override
-   public MapCodec<dhq> a() {
-      return c;
+   @Nullable
+   default <T extends dpg> dph<T> a(dbx $$0, dsb $$1, dpi<T> $$2) {
+      return null;
    }
 
-   protected dhq(drz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public bsz m() {
-      return bsz.f;
+   @Nullable
+   default <T extends dpg> dww a(are $$0, T $$1) {
+      return $$1 instanceof dww.b<?> $$2 ? $$2.c() : null;
    }
 }

@@ -1,81 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ejn extends ejp {
-   public static final MapCodec<ejn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ejp.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, ejn::new)
-   );
-   private final List<ejp> b;
+   public static final MapCodec<ejn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ejn::new));
 
-   public ejn(List<ejp> $$0, ejr.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   protected ejn(Either<ale, emj> $$0, ji<emh> $$1, ejs.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public kd a(emj $$0, dlk $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (ejp $$5 : this.b) {
-         kd $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new kd($$2, $$3, $$4);
+   protected emf a(dll $$0, eib $$1, boolean $$2) {
+      emf $$3 = super.a($$0, $$1, $$2);
+      $$3.b(ell.b);
+      $$3.a(ell.d);
+      return $$3;
    }
 
    @Override
-   public List<emi.c> a(emj $$0, iz $$1, dlk $$2, azf $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public eia a(emj $$0, iz $$1, dlk $$2) {
-      Stream<eia> $$3 = this.b.stream().filter($$0x -> $$0x != eji.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return eia.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(emj $$0, dcr $$1, dcp $$2, dtx $$3, iz $$4, iz $$5, dlk $$6, eia $$7, azf $$8, boolean $$9) {
-      for (ejp $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public ejq<?> a() {
-      return ejq.b;
-   }
-
-   @Override
-   public ejp a(ejr.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public ejr<?> a() {
+      return ejr.e;
    }
 
    @Override
    public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(ejr.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+      return "LegacySingle[" + this.c + "]";
    }
 }

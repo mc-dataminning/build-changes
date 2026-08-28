@@ -1,87 +1,47 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cbi extends cam {
+   private final chi a;
+   private int b;
 
-public class cbi extends cal {
-   public static final int a = 120;
-   protected final btw b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
-
-   public cbi(btw $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public cbi(btw $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public cbi(btw $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cal.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.b.cR()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.eq() >= 100) {
-               return false;
-            }
-
-            if (this.b.el().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         evp $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected evp h() {
-      return cei.a(this.b, 10, 7);
-   }
-
-   @Override
-   public boolean b() {
-      return !this.b.K().l() && !this.b.cR();
+   public cbi(chi $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      this.b.K().a(this.c, this.d, this.e, this.f);
+      this.a.gU();
+      this.h();
+   }
+
+   private void h() {
+      avy $$0 = this.a.gT();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void d() {
-      this.b.K().n();
-      super.d();
+   public boolean b() {
+      return false;
    }
 
-   public void i() {
-      this.h = true;
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.el().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fg() && this.a.el().a(10) == 0;
+      } else {
+         return false;
+      }
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   private void a(chi $$0) {
+      this.b = -$$0.gY();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

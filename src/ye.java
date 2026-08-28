@@ -57,13 +57,13 @@ public record ye(yj d, @Nullable ya e, yh f, @Nullable xo g, xs h) {
       return new ye($$1, null, $$0, this.g, this.h);
    }
 
-   public static void a(azj.a $$0, yj $$1, yh $$2) throws SignatureException {
+   public static void a(azk.a $$0, yj $$1, yh $$2) throws SignatureException {
       $$0.update(Ints.toByteArray(1));
       $$1.a($$0);
       $$2.a($$0);
    }
 
-   public boolean a(azk $$0) {
+   public boolean a(azl $$0) {
       return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
    }
 

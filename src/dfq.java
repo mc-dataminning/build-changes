@@ -1,33 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfq extends dex {
+public class dfq extends dgt {
    public static final MapCodec<dfq> a = b(dfq::new);
-   private static final xo b = xo.c("container.cartography_table");
+   private static final ewj[] b = new ewj[]{
+      dey.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dfq> a() {
       return a;
    }
 
-   protected dfq(drz.d $$0) {
+   public dfq(dsa.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
-      if ($$1.B) {
-         return bqs.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awj.aw);
-         return bqs.c;
-      }
+   protected dbw d() {
+      return cur.uf;
    }
 
-   @Nullable
    @Override
-   protected bqw b(dsa $$0, dbw $$1, iz $$2) {
-      return new brc(($$2x, $$3, $$4) -> new cpy($$2x, $$3, cqd.a($$1, $$2)), b);
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return b[this.g($$0)];
    }
 }

@@ -1,6 +1,6 @@
-// 1.20.5 Pre-Release 2	2026-08-28T02:02:50.9789933	vanilla/Tags for minecraft:banner_pattern
-da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data\minecraft\tags\banner_pattern\pattern_item\creeper.json
+// 1.20.5 Pre-Release 3	2026-08-28T02:05:31.3448849	vanilla/Tags for minecraft:banner_pattern
 cdfcfddb70869c41a037d2fa9d13cebce67d276b data\minecraft\tags\banner_pattern\pattern_item\mojang.json
+da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data\minecraft\tags\banner_pattern\pattern_item\creeper.json
 2fde436967c97bd28b21e6d604d3e3d0909aa5fa data\minecraft\tags\banner_pattern\pattern_item\globe.json
 fd8784340c4bcf8c4f20feea086ceebd965d20d7 data\minecraft\tags\banner_pattern\pattern_item\skull.json
 6ba9481de22a553378d51ce2d4b366ce404b2b17 data\minecraft\tags\banner_pattern\no_item_required.json

@@ -89,7 +89,7 @@ public class aen implements zv<ach> {
          zk.t.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(yf.a::a), ($$0, $$1) -> $$0.a($$1.g, yf.a::a)),
-      c(($$0, $$1) -> $$0.e = dbt.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dbu.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = wl.a($$1, xq.d), ($$0, $$1) -> wl.a($$0, $$1.f(), xq.d));
@@ -111,7 +111,7 @@ public class aen implements zv<ach> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dbt e, @Nullable xo f, @Nullable yf.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dbu e, @Nullable xo f, @Nullable yf.a g) {
 
       b(arf $$0) {
          this($$0.cz(), $$0.gb(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), yf::a));
@@ -124,14 +124,14 @@ public class aen implements zv<ach> {
       GameProfile b;
       boolean c;
       int d;
-      dbt e;
+      dbu e;
       @Nullable
       xo f;
       @Nullable
       yf.a g;
 
       c(UUID $$0) {
-         this.e = dbt.e;
+         this.e = dbu.e;
          this.a = $$0;
       }
 

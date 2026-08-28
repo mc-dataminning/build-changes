@@ -1,28 +1,46 @@
-public class cti extends cui implements cvf {
-   public cti(cui.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class cti extends cuj implements cvq {
+   private static final Map<cth, cti> a = Maps.newEnumMap(cth.class);
+   private final cth b;
+
+   public cti(cth $$0, cuj.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.hN, awa.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnw $$4 = new cnw($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bqt a(cuo $$0, cmw $$1, bto $$2, bqs $$3) {
+      if ($$2 instanceof cga $$4 && $$4.bD() && !$$4.y() && $$4.u() != this.b) {
+         $$4.dP().a($$1, $$4, avz.hM, awa.h, 1.0F, 1.0F);
+         if (!$$1.dP().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bqt.a($$1.dP().B);
       }
 
-      $$1.b(awj.c.b(this));
-      $$3.a(1, $$1);
-      return bqt.a($$3, $$0.x_());
+      return bqt.e;
+   }
+
+   public cth c() {
+      return this.b;
+   }
+
+   public static cti a(cth $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public cnn a(dbw $$0, js $$1, cun $$2, je $$3) {
-      cnw $$4 = new cnw($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public boolean a(dbx $$0, dqq $$1, boolean $$2, cmw $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.ay_(), avz.hM, awa.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

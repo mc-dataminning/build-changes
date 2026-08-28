@@ -1,33 +1,56 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bxh {
-   private static final int a = 300;
+   public static bvi<bto> a(float $$0, bqe $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
 
-   public static bvh<btn> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return byt.a(
-         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$3x -> $$3x.group($$3x.b(ccr.C), $$3x.b(ccr.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        iz $$11 = $$3x.<jh>b($$4).b();
-                        if ($$11.a($$7.dp(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public static bvi<bto> a(bsz<?> $$0, float $$1, bqe $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ak()));
+   }
 
-                        return true;
+   private static bvi<bto> a(float $$0, bqe $$1, Predicate<bto> $$2) {
+      float $$3 = $$0 * $$0;
+      bxh.a $$4 = new bxh.a($$1);
+      return byu.a(
+         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$3x -> $$3x.group($$3x.c(ccs.n), $$3x.b(ccs.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bto> $$9 = $$3x.<ccu>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bst)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
                      } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dS().a($$6.aa(), $$6.Z());
-                        $$3.setValue(0);
+                        $$4x.a(new bvs($$9.get(), true));
                         return true;
                      }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bqe a;
+      private int b;
+
+      public a(bqe $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(azg $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

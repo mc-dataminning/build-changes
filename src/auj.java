@@ -11,12 +11,12 @@ public class auj extends auu<auj.a> {
    private static final Logger c = LogUtils.getLogger();
    private final Stopwatch d = Stopwatch.createUnstarted();
 
-   public auj(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<baa> $$4) {
+   public auj(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<bab> $$4) {
       super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
          AtomicLong $$6 = new AtomicLong();
          AtomicLong $$7 = new AtomicLong();
-         bmz $$8 = new bmz(ac.c, () -> 0, false);
-         bmz $$9 = new bmz(ac.c, () -> 0, false);
+         bna $$8 = new bna(ac.c, () -> 0, false);
+         bna $$9 = new bna(ac.c, () -> 0, false);
          CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
                long $$2xxx = ac.d();
                $$2xx.run();
@@ -41,8 +41,8 @@ public class auj extends auu<auj.a> {
       c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
       for (auj.a $$2 : $$0) {
-         bnf $$3 = $$2.b;
-         bnf $$4 = $$2.c;
+         bng $$3 = $$2.b;
+         bng $$4 = $$2.c;
          long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
          long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
          long $$7 = $$5 + $$6;
@@ -57,12 +57,12 @@ public class auj extends auu<auj.a> {
 
    public static class a {
       final String a;
-      final bnf b;
-      final bnf c;
+      final bng b;
+      final bng c;
       final AtomicLong d;
       final AtomicLong e;
 
-      a(String $$0, bnf $$1, bnf $$2, AtomicLong $$3, AtomicLong $$4) {
+      a(String $$0, bng $$1, bng $$2, AtomicLong $$3, AtomicLong $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

@@ -35,20 +35,20 @@ public class fu implements ArgumentType<fu.b> {
       this.d = $$0;
    }
 
-   public static ews a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ewt a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<ews> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<ewt> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<ews> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<ewt> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ((ep)$$0.getSource()).l().aK()::e);
    }
 
-   public static Collection<ews> a(CommandContext<ep> $$0, String $$1, Supplier<Collection<ews>> $$2) throws CommandSyntaxException {
-      Collection<ews> $$3 = ((fu.b)$$0.getArgument($$1, fu.b.class)).getNames((ep)$$0.getSource(), $$2);
+   public static Collection<ewt> a(CommandContext<ep> $$0, String $$1, Supplier<Collection<ewt>> $$2) throws CommandSyntaxException {
+      Collection<ewt> $$3 = ((fu.b)$$0.getArgument($$1, fu.b.class)).getNames((ep)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw fc.d.create();
       } else {
@@ -83,7 +83,7 @@ public class fu implements ArgumentType<fu.b> {
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          if ($$4.equals("*")) {
             return ($$0x, $$1) -> {
-               Collection<ews> $$2 = $$1.get();
+               Collection<ewt> $$2 = $$1.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -91,7 +91,7 @@ public class fu implements ArgumentType<fu.b> {
                }
             };
          } else {
-            List<ews> $$5 = List.of(ews.c($$4));
+            List<ewt> $$5 = List.of(ewt.c($$4));
             if ($$4.startsWith("#")) {
                return ($$1, $$2) -> $$5;
             } else {
@@ -99,11 +99,11 @@ public class fu implements ArgumentType<fu.b> {
                   UUID $$6 = UUID.fromString($$4);
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     ews $$5x = null;
-                     List<ews> $$6x = null;
+                     ewt $$5x = null;
+                     List<ewt> $$6x = null;
 
                      for (are $$7 : $$4x.K()) {
-                        bss $$8 = $$7.a($$6);
+                        bst $$8 = $$7.a($$6);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -186,7 +186,7 @@ public class fu implements ArgumentType<fu.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<ews> getNames(ep var1, Supplier<Collection<ews>> var2) throws CommandSyntaxException;
+      Collection<ewt> getNames(ep var1, Supplier<Collection<ewt>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements fu.b {
@@ -197,8 +197,8 @@ public class fu implements ArgumentType<fu.b> {
       }
 
       @Override
-      public Collection<ews> getNames(ep $$0, Supplier<Collection<ews>> $$1) throws CommandSyntaxException {
-         List<? extends bss> $$2 = this.a.b($$0);
+      public Collection<ewt> getNames(ep $$0, Supplier<Collection<ewt>> $$1) throws CommandSyntaxException {
+         List<? extends bst> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw fc.d.create();
          } else {

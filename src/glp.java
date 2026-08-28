@@ -1,17 +1,17 @@
-public class glp extends gkb<ckp, fwh> {
-   private static final ale a = new ale("textures/entity/illager/vex.png");
-   private static final ale i = new ale("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public glp(giv.a $$0) {
-      super($$0, new fwh($$0.a(fwx.bO)), 0.3F);
-      this.a(new gna<>(this, $$0.d()));
+public class glp extends ghq<chi, fuk<chi>> {
+   private static final Map<bsz<?>, ale> a = Maps.newHashMap(
+      ImmutableMap.of(bsz.bv, new ale("textures/entity/horse/horse_zombie.png"), bsz.aO, new ale("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public glp(giw.a $$0, fwx $$1) {
+      super($$0, new fuk<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(ckp $$0, iz $$1) {
-      return 15;
-   }
-
-   public ale a(ckp $$0) {
-      return $$0.gr() ? i : a;
+   public ale a(chi $$0) {
+      return a.get($$0.ak());
    }
 }

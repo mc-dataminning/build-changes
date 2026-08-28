@@ -1,22 +1,15 @@
-public interface czj extends cyt<bql> {
-   @Override
-   default cyy<?> e() {
-      return cyy.g;
+public class czj extends cyd {
+   public czj(String $$0, cyj $$1, cyr $$2, cuo $$3, float $$4, int $$5) {
+      super(cyz.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cuo g() {
+      return new cuo(dfa.cD);
    }
 
    @Override
-   default cun g() {
-      return new cun(dez.ob);
+   public cyy<?> ao_() {
+      return cyy.p;
    }
-
-   boolean a(cun var1);
-
-   boolean b(cun var1);
-
-   boolean c(cun var1);
 }

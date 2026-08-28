@@ -33,8 +33,8 @@ public class aqb extends aqe<aqb> {
    public final String h = this.a("motd", "A Minecraft Server");
    public final boolean i = this.a("force-gamemode", false);
    public final boolean j = this.a("enforce-whitelist", false);
-   public final bqp k = this.a("difficulty", a(bqp::a, bqp::a), bqp::e, bqp.b);
-   public final dbt l = this.a("gamemode", a(dbt::a, dbt::a), dbt::b, dbt.a);
+   public final bqq k = this.a("difficulty", a(bqq::a, bqq::a), bqq::e, bqq.b);
+   public final dbu l = this.a("gamemode", a(dbu::a, dbu::a), dbu::b, dbu.a);
    public final String m = this.a("level-name", "world");
    public final int n = this.a("server-port", 25565);
    @Nullable
@@ -61,33 +61,33 @@ public class aqb extends aqe<aqb> {
    public final int I = this.a("network-compression-threshold", 256);
    public final boolean J = this.a("broadcast-rcon-to-ops", true);
    public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> ayx.a($$0x, 1, 29999984), 29999984);
+   public final int L = this.a("max-world-size", $$0x -> ayy.a($$0x, 1, 29999984), 29999984);
    public final boolean M = this.a("sync-chunk-writes", true);
    public final String N = this.a("region-file-compression", "deflate");
    public final boolean O = this.a("enable-jmx-monitoring", false);
    public final boolean P = this.a("enable-status", true);
    public final boolean Q = this.a("hide-online-players", false);
-   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayx.a($$0x, 10, 1000), 100);
+   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayy.a($$0x, 10, 1000), 100);
    public final String S = this.a("text-filtering-config", "");
    public final Optional<MinecraftServer.b> T;
-   public final dbk U;
+   public final dbl U;
    public final aqe<aqb>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final aqe<aqb>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    private final aqb.a af;
-   public final dyq Z;
+   public final dyr Z;
    public boolean aa = this.a("accepts-transfers", false);
 
    public aqb(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dyq.a($$1).orElse(dyq.f());
-      this.Z = new dyq($$3, $$2, false);
+      long $$3 = dyr.a($$1).orElse(dyr.f());
+      this.Z = new dyr($$3, $$2, false);
       this.af = new aqb.a(
-         this.a("generator-settings", $$0x -> ayn.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ehy.a.a().toString())
+         this.a("generator-settings", $$0x -> ayo.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ehz.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -97,7 +97,7 @@ public class aqb extends aqe<aqb> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dcq.c.a().a())), this.a("initial-disabled-packs", String.join(",", dcq.c.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dcr.c.a().a())), this.a("initial-disabled-packs", String.join(",", dcr.c.a().b())));
    }
 
    public static aqb a(Path $$0) {
@@ -162,25 +162,25 @@ public class aqb extends aqe<aqb> {
       }
    }
 
-   private static dbk b(String $$0, String $$1) {
+   private static dbl b(String $$0, String $$1) {
       List<String> $$2 = ae.splitToList($$0);
       List<String> $$3 = ae.splitToList($$1);
-      return new dbk($$2, $$3);
+      return new dbl($$2, $$3);
    }
 
-   public dyn a(jw $$0) {
+   public dyo a(jw $$0) {
       return this.af.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, ald<ehx>> c = Map.of("default", ehy.a, "largebiomes", ehy.c);
+      private static final Map<String, ald<ehy>> c = Map.of("default", ehz.a, "largebiomes", ehz.c);
 
-      public dyn a(jw $$0) {
-         jv<ehx> $$1 = $$0.d(lq.aQ);
-         ji.c<ehx> $$2 = $$1.b(ehy.a)
+      public dyo a(jw $$0) {
+         jv<ehy> $$1 = $$0.d(lq.aQ);
+         ji.c<ehy> $$2 = $$1.b(ehz.a)
             .or(() -> $$1.h().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         ji<ehx> $$3 = Optional.ofNullable(ale.a(this.b))
+         ji<ehy> $$3 = Optional.ofNullable(ale.a(this.b))
             .map($$0x -> ald.a(lq.aQ, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -188,12 +188,12 @@ public class aqb extends aqe<aqb> {
                aqb.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         dyn $$4 = $$3.a().a();
-         if ($$3.a(ehy.b)) {
+         dyo $$4 = $$3.a().a();
+         if ($$3.a(ehz.b)) {
             alc<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<egl> $$6 = egl.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqb.ac::error);
+            Optional<egm> $$6 = egm.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqb.ac::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new dxn($$6.get()));
+               return $$4.a($$0, new dxo($$6.get()));
             }
          }
 

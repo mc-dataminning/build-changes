@@ -1,85 +1,37 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+public abstract class bws<E extends bto> implements bvi<E>, byx<E> {
+   private bvh.a a;
 
-public class bws {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
-
-   public static bvh<btw> a() {
-      return byt.a(
-         (Function<byt.b<btw>, ? extends App<byt.c<btw>, byw<btw>>>)($$0 -> $$0.group($$0.b(ccr.i), $$0.c(ccr.m), $$0.a(ccr.n), $$0.a(ccr.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.E_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<btn> $$8 = $$0.b($$1);
-                        Optional<btn> $$9 = $$8.stream().filter($$1xx -> a((btn)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<btn> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              evp $$11 = cel.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(iz.a($$11))) {
-                                 $$2.a(new ccu($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public bws() {
+      this.a = bvh.a.a;
    }
 
-   private static void a(byu<?, btn> $$0, byu<?, bwu> $$1, byu<?, ccu> $$2, btn $$3) {
-      $$0.a($$3);
-      $$1.a(new bvr($$3, true));
-      $$2.a(new ccu(new bvr($$3, false), 0.6F, 1));
+   @Override
+   public final bvh.a a() {
+      return this.a;
    }
 
-   private static Optional<btn> a(List<btn> $$0) {
-      Map<btn, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   @Override
+   public final boolean e(are $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bvh.a.b;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private static Map<btn, Integer> b(List<btn> $$0) {
-      Map<btn, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bws::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   @Override
+   public final void f(are $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
    }
 
-   private static btn a(btn $$0) {
-      return $$0.dS().c(ccr.q).get();
+   @Override
+   public final void g(are $$0, E $$1, long $$2) {
+      this.a = bvh.a.a;
    }
 
-   private static boolean b(btn $$0) {
-      return $$0.dS().c(ccr.q).isPresent();
-   }
-
-   private static boolean a(btn $$0, btn $$1) {
-      return $$1.dS().c(ccr.q).filter($$1x -> $$1x == $$0).isPresent();
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

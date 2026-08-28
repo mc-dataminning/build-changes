@@ -1,16 +1,19 @@
-public class gjh extends gld<btf> {
-   private static final ale a = new ale("textures/entity/squid/glow_squid.png");
+public class gjh extends gkc<cjx, fum<cjx>> {
+   private static final ale a = new ale("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gjh(giv.a $$0, fwa<btf> $$1) {
-      super($$0, $$1);
+   public gjh(giw.a $$0, float $$1) {
+      super($$0, new fue($$0.a(fwy.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gnb<>(this, $$0.d()));
+      this.a(new gmy<>(this, new fue($$0.a(fwy.ai)), new fue($$0.a(fwy.aj)), $$0.g()));
    }
 
-   public ale a(btf $$0) {
+   protected void a(cjx $$0, ezx $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ale a(cjx $$0) {
       return a;
-   }
-
-   protected int a(btf $$0, iz $$1) {
-      int $$2 = (int)ayx.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

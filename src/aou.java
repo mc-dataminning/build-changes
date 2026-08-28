@@ -28,9 +28,9 @@ public class aou {
       );
    }
 
-   private static int a(ep $$0, iz $$1, gg $$2, aou.b $$3, @Nullable Predicate<dse> $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, iz $$1, gg $$2, aou.b $$3, @Nullable Predicate<dsf> $$4) throws CommandSyntaxException {
       are $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dse($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dsf($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class aou {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dpf $$7 = $$5.c_($$1);
-            bqj.a_($$7);
+            dpg $$7 = $$5.c_($$1);
+            bqk.a_($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class aou {
 
    public interface a {
       @Nullable
-      gg filter(eia var1, iz var2, gg var3, are var4);
+      gg filter(eib var1, iz var2, gg var3, are var4);
    }
 
    public static enum b {

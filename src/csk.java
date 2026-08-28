@@ -1,10 +1,23 @@
-public class csk extends csl {
-   public csk(dex $$0, cui.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class csk extends cuj {
+   private final axe<dow> a;
+
+   public csk(axe<dow> $$0, cuj.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public axe<dow> b() {
+      return this.a;
    }
 
    @Override
-   protected boolean a(cxy $$0, dsa $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yc c() {
+      return xo.c(this.a() + ".desc");
    }
 }

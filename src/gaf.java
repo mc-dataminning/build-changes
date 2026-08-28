@@ -1,37 +1,21 @@
-public class gaf<T extends lj> extends gca {
-   private final gbv a;
-
-   protected gaf(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gbv $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public class gaf extends gag<ld> {
+   protected gaf(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gbw $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.b().x(), $$9);
+      this.w = this.a($$7.b().y(), $$9);
+      this.x = this.a($$7.b().z(), $$9);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
+   public static class a implements gbe<ld> {
+      private final gbw a;
 
-   @Override
-   public gbe b() {
-      return gbe.b;
-   }
+      public a(gbw $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayx.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      public gbb a(ld $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gaf($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

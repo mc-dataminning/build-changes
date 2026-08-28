@@ -1,17 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egj(ji<cui> c, egl d) {
+public class egj {
    public static final Codec<egj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alb.a(lq.G).fieldOf("display").forGetter($$0x -> $$0x.c), egl.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, egj::new)
+      $$0 -> $$0.group(Codec.intRange(0, dvt.c).fieldOf("height").forGetter(egj::a), lp.e.q().fieldOf("block").orElse(dfa.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, egj::new)
    );
-   public static final Codec<ji<egj>> b = ala.a(lq.aF, a);
+   private final dey b;
+   private final int c;
 
-   public ji<cui> a() {
+   public egj(int $$0, dey $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
       return this.c;
    }
 
-   public egl b() {
-      return this.d;
+   public dsb b() {
+      return this.b.o();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + lp.e.b(this.b);
    }
 }

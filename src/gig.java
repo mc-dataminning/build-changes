@@ -1,17 +1,17 @@
-public class gig extends gkb<cfi, ftn<cfi>> {
-   private static final ale a = new ale("textures/entity/chicken.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gig(giv.a $$0) {
-      super($$0, new ftn<>($$0.a(fwx.z)), 0.3F);
+public class gig<T extends chh> extends ghq<T, ftn<T>> {
+   private static final Map<bsz<?>, ale> a = Maps.newHashMap(
+      ImmutableMap.of(bsz.z, new ale("textures/entity/horse/donkey.png"), bsz.at, new ale("textures/entity/horse/mule.png"))
+   );
+
+   public gig(giw.a $$0, float $$1, fwx $$2) {
+      super($$0, new ftn<>($$0.a($$2)), $$1);
    }
 
-   public ale a(cfi $$0) {
-      return a;
-   }
-
-   protected float a(cfi $$0, float $$1) {
-      float $$2 = ayx.i($$1, $$0.cc, $$0.bY);
-      float $$3 = ayx.i($$1, $$0.cb, $$0.bZ);
-      return (ayx.a($$2) + 1.0F) * $$3;
+   public ale a(T $$0) {
+      return a.get($$0.ak());
    }
 }

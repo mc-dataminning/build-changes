@@ -1,24 +1,21 @@
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class fmz extends fnb {
-   private static final xo a = xo.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
-   private final fmz.a r;
+public class fmz extends fnc implements azf {
    @Nullable
-   private gox s;
+   private xo a;
+   @Nullable
+   private xo b;
+   private int c;
+   private boolean d;
+   private final boolean r;
 
-   public fmz(BooleanSupplier $$0, fmz.a $$1) {
-      super(fev.a);
-      this.d = $$0;
-      this.r = $$1;
-      this.c = System.currentTimeMillis();
+   public fmz(boolean $$0) {
+      super(few.a);
+      this.r = $$0;
    }
 
    @Override
-   public boolean aD_() {
+   public boolean aC_() {
       return false;
    }
 
@@ -28,57 +25,47 @@ public class fmz extends fnb {
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, 16777215);
+   public void a(xo $$0) {
+      this.b($$0);
    }
 
    @Override
-   public void b(fgp $$0, int $$1, int $$2, float $$3) {
-      switch (this.r) {
-         case a:
-            $$0.a(0, 0, -90, $$0.a(), $$0.b(), this.m());
-            break;
-         case b:
-            $$0.b(gdu.u(), 0, 0, this.n, this.o, 0);
-            break;
-         case c:
-            this.a($$0, $$3);
-            this.a($$3);
-            this.a($$0);
-      }
+   public void b(xo $$0) {
+      this.a = $$0;
+      this.c(xo.c("menu.working"));
    }
 
-   private gox m() {
-      if (this.s != null) {
-         return this.s;
+   @Override
+   public void c(xo $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.r) {
+            this.m.a(null);
+         }
       } else {
-         this.s = this.m.ao().a().a(dez.ed.o());
-         return this.s;
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, xo.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
+         }
       }
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.m.aX().c(xo.c("narrator.ready_to_play"));
-      super.d();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

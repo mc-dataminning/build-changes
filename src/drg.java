@@ -1,257 +1,253 @@
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public enum drg implements azs {
-   a("inactive", 0, drg.b.a, -1.0, false),
-   b("waiting_for_players", 4, drg.b.b, 200.0, true),
-   c("active", 8, drg.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, drg.b.b, -1.0, false),
-   e("ejecting_reward", 8, drg.b.b, -1.0, false),
-   f("cooldown", 0, drg.b.d, -1.0, false);
+public class drg {
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<drg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kc.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               kc.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dco.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               ald.a(lq.aU).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, drg::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dco> h;
+   protected Optional<ald<eqm>> i;
+   @Nullable
+   protected bst j;
+   @Nullable
+   private bpd<cuo> p;
+   protected double k;
+   protected double l;
 
-   private static final float g = 40.0F;
-   private static final int h = ayx.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final drg.b l;
-   private final boolean m;
-
-   private drg(final String $$0, final int $$1, final drg.b $$2, final double $$3, final boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public drg() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   drg a(iz $$0, drd $$1, are $$2) {
-      drf $$3 = $$1.f();
-      dre $$4 = $$1.b();
+   public drg(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dco> $$5, Optional<ald<eqm>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
 
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$1);
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               int $$5 = $$3.a($$0);
-               $$3.a($$2, $$0, $$1);
-               if ($$1.e()) {
-                  this.a($$2, $$0, $$1);
-               }
+   public void a() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+      this.d.clear();
+   }
 
-               if ($$3.a($$4, $$5)) {
-                  if ($$3.b()) {
-                     $$3.e = $$2.Z() + (long)$$1.g();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
+   public boolean a(dre $$0, azg $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().h().d();
+   }
+
+   public boolean a(drf $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(are $$0, drf $$1, int $$2) {
+      return $$0.Z() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(iz $$0) {
+      if (this.c.isEmpty()) {
+         ac.a("Trial Spawner at " + $$0 + " has no detected players");
+      }
+
+      return Math.max(0, this.c.size() - 1);
+   }
+
+   public void a(are $$0, iz $$1, dre $$2) {
+      boolean $$3 = ($$1.a() + $$0.Z()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(drh.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            cmw $$5 = null;
+
+            for (UUID $$6 : $$4) {
+               cmw $$7 = $$0.b($$6);
+               if ($$7 != null) {
+                  if ($$7.b(bsd.E)) {
+                     this.a($$7, $$7.c(bsd.E));
+                     $$5 = $$7;
+                  } else if ($$7.b(bsd.H)) {
+                     $$5 = $$7;
                   }
-               } else if ($$3.a($$2, $$4, $$5)) {
-                  $$1.c($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.Z() + (long)$$4.g();
-                     $$4.h().b($$2.E_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((dcn)$$2xx.b());
-                        $$1.j();
-                     });
-                  });
+               }
+            }
+
+            boolean $$8 = !$$2.e() && $$5 != null;
+            if (!$$2.i().equals(drh.f) || $$8) {
+               if ($$8) {
+                  $$0.c(3020, iz.a($$5.bx()), 0);
+                  $$2.a($$0, $$1);
                }
 
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, 40.0F, $$1.g())) {
-               $$2.a(null, $$0, avz.mk, awa.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, (float)h, $$1.g())) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, avz.ml, awa.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.i().a($$2.E_());
+               boolean $$9 = $$2.f().c.isEmpty();
+               List<UUID> $$10 = $$9 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$10)) {
+                  this.f = Math.max($$0.Z() + 40L, this.f);
+                  if (!$$8) {
+                     int $$11 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$11, $$1, this.c.size());
+                  }
                }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
             }
-         }
-         case f -> {
-            $$3.a($$2, $$0, $$1);
-            if (!$$3.c.isEmpty()) {
-               $$3.g = 0;
-               $$3.f = 0L;
-               yield c;
-            } else if ($$3.a($$2)) {
-               $$3.e = 0L;
-               $$1.b($$2, $$0);
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
-   }
-
-   private void a(are $$0, iz $$1, drd $$2) {
-      drf $$3 = $$2.f();
-      dre $$4 = $$2.b();
-      cun $$5 = $$3.a($$0, $$4, $$1).a($$0.z).orElse(cun.l);
-      if (!$$5.e()) {
-         if (this.a($$0, $$3)) {
-            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
-               btu $$5x = btu.a($$0, $$5);
-               $$5x.e($$4x);
-               $$0.b($$5x);
-               float $$6 = ($$0.E_().i() - $$0.E_().i()) * 0.2F + 1.0F;
-               $$0.a(null, iz.a($$4x), avz.mf, awa.e, 1.0F, $$6);
-               $$3.e = $$0.Z() + $$2.d().a();
-            });
          }
       }
    }
 
-   private static Optional<evp> a(are $$0, iz $$1, drd $$2, drf $$3) {
-      List<cmv> $$4 = $$3.c
-         .stream()
-         .map($$0::b)
-         .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.f() && !$$2x.N_() && $$2x.bD() && $$2x.f($$1.b()) <= (double)ayx.h($$2.h()))
-         .toList();
-      if ($$4.isEmpty()) {
-         return Optional.empty();
+   public void a(dre $$0, are $$1) {
+      this.d.stream().map($$1::a).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.dp(), dre.a.a.a());
+            $$1x.a(bst.c.b);
+         }
+      });
+      if (!$$0.d().h().d()) {
+         this.h = Optional.empty();
+      }
+
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.Z() + (long)$$0.d().g();
+      $$0.j();
+      this.e = $$1.Z() + $$0.d().a();
+   }
+
+   private void a(cmw $$0, bsb $$1) {
+      int $$2 = $$1.e() + 1;
+      int $$3 = 18000 * $$2;
+      $$0.e(bsd.E);
+      $$0.b(new bsb(bsd.H, $$3, 0));
+   }
+
+   public boolean a(are $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.Z() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(are $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.Z() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(are $$0) {
+      return $$0.Z() >= this.e;
+   }
+
+   public void a(dre $$0, azg $$1, bsz<?> $$2) {
+      this.b($$0, $$1).a().a("id", lp.g.b($$2).toString());
+   }
+
+   protected dco b(dre $$0, azg $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
       } else {
-         bss $$5 = a($$4, $$3.d, $$2, $$1, $$0);
-         return $$5 == null ? Optional.empty() : a($$5, $$0);
+         bpd<dco> $$2 = $$0.b().h();
+         Optional<dco> $$3 = $$2.d() ? this.h : $$2.b($$1).map(bpf.b::b);
+         this.h = Optional.of($$3.orElseGet(dco::new));
+         $$0.j();
+         return this.h.get();
       }
-   }
-
-   private static Optional<evp> a(bss $$0, are $$1) {
-      evp $$2 = $$0.dn();
-      evp $$3 = $$2.a(je.b, (double)($$0.dk() + 2.0F + (float)$$1.z.a(4)));
-      evl $$4 = $$1.a(new dbf($$2, $$3, dbf.a.c, dbf.b.a, evu.a()));
-      evp $$5 = $$4.a().b().a(je.a, 1.0);
-      iz $$6 = iz.a($$5);
-      return !$$1.a_($$6).k($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
    }
 
    @Nullable
-   private static bss a(List<cmv> $$0, Set<UUID> $$1, drd $$2, iz $$3, are $$4) {
-      Stream<bss> $$5 = $$1.stream().map($$4::a).filter(Objects::nonNull).filter($$2x -> $$2x.bD() && $$2x.f($$3.b()) <= (double)ayx.h($$2.h()));
-      List<? extends bss> $$6 = $$4.z.h() ? $$5.toList() : $$0;
-      if ($$6.isEmpty()) {
-         return null;
+   public bst a(dre $$0, dbx $$1, drh $$2) {
+      if ($$0.a($$1) && $$2.d()) {
+         if (this.j == null) {
+            ur $$3 = this.b($$0, $$1.E_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bsz.a($$3, $$1, Function.identity());
+            }
+         }
+
+         return this.j;
       } else {
-         return $$6.size() == 1 ? $$6.getFirst() : ac.a($$6, $$4.z);
+         return null;
       }
    }
 
-   private boolean a(are $$0, drf $$1) {
-      return $$0.Z() >= $$1.e;
+   public ur a(drh $$0) {
+      ur $$1 = new ur();
+      if ($$0 == drh.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (vo)dco.b.encodeStart(vf.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
    }
 
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
+   public double c() {
       return this.k;
    }
 
-   public boolean d() {
-      return this.k >= 0.0;
+   public double d() {
+      return this.l;
    }
 
-   public boolean e() {
-      return this.m;
-   }
+   bpd<cuo> a(are $$0, drf $$1, iz $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         eqm $$3 = $$0.o().be().b($$1.j());
+         eqk $$4 = new eqk.a($$0).a(etc.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<cuo> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return bpd.b();
+         } else {
+            bpd.a<cuo> $$7 = new bpd.a<>();
+            ObjectListIterator var10 = $$6.iterator();
 
-   public void a(dbw $$0, iz $$1, boolean $$2) {
-      this.l.emit($$0, $$0.E_(), $$1, $$2);
-   }
-
-   @Override
-   public String c() {
-      return this.i;
-   }
-
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
-      }
-   }
-
-   interface b {
-      drg.b a = ($$0, $$1, $$2, $$3) -> {
-      };
-      drg.b b = ($$0, $$1, $$2, $$3) -> {
-         if ($$1.a(2) == 0) {
-            evp $$4 = $$2.b().a($$1, 0.9F);
-            a($$3 ? li.L : li.aJ, $$4, $$0);
-         }
-      };
-      drg.b c = ($$0, $$1, $$2, $$3) -> {
-         evp $$4 = $$2.b().a($$1, 1.0F);
-         a(li.ae, $$4, $$0);
-         a($$3 ? li.L : li.F, $$4, $$0);
-      };
-      drg.b d = ($$0, $$1, $$2, $$3) -> {
-         evp $$4 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(li.ae, $$4, $$0);
-         }
-
-         if ($$0.Z() % 20L == 0L) {
-            evp $$5 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$6 = $$0.E_().a(4) + 20;
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               a(li.ae, $$5, $$0);
+            while (var10.hasNext()) {
+               cuo $$8 = (cuo)var10.next();
+               $$7.a($$8.c(1), $$8.I());
             }
+
+            this.p = $$7.a();
+            return this.p;
          }
-      };
-
-      private static void a(lm $$0, evp $$1, dbw $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
-
-      void emit(dbw var1, azf var2, iz var3, boolean var4);
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
-
-      private c() {
-      }
+   private static long a(are $$0, iz $$1) {
+      iz $$2 = new iz(ayy.d((float)$$1.u() / 30.0F), ayy.d((float)$$1.v() / 20.0F), ayy.d((float)$$1.w() / 30.0F));
+      return $$0.C() + $$2.a();
    }
 }

@@ -1,79 +1,47 @@
-public abstract class cnv extends cnn {
-   protected cnv(bsy<? extends cnv> $$0, dbw $$1) {
+public abstract class cnv extends cnw implements cnl {
+   private static final akj<cuo> b = akn.a(cnv.class, akl.h);
+
+   public cnv(bsz<? extends cnv> $$0, dbx $$1) {
       super($$0, $$1);
    }
 
-   protected cnv(bsy<? extends cnv> $$0, double $$1, double $$2, double $$3, dbw $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cnv(bsz<? extends cnv> $$0, double $$1, double $$2, double $$3, dbx $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected cnv(bsy<? extends cnv> $$0, btn $$1, dbw $$2) {
-      this($$0, $$1.du(), $$1.dy() - 0.1F, $$1.dA(), $$2);
-      this.c($$1);
+   public cnv(bsz<? extends cnv> $$0, bto $$1, dbx $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(cuo $$0) {
+      this.ap().a(b, $$0.c(1));
+   }
+
+   protected abstract cuj u();
+
+   @Override
+   public cuo p() {
+      return this.ap().a(b);
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cK().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
+   protected void a(akn.a $$0) {
+      $$0.a(b, new cuo(this.u()));
    }
 
    @Override
-   public void l() {
-      super.l();
-      evn $$0 = cnp.a(this, this::b);
-      boolean $$1 = false;
-      if ($$0.c() == evn.a.b) {
-         iz $$2 = ((evl)$$0).a();
-         dsa $$3 = this.dP().a_($$2);
-         if ($$3.a(dez.ed)) {
-            this.g($$2);
-            $$1 = true;
-         } else if ($$3.a(dez.kF)) {
-            dpf $$4 = this.dP().c_($$2);
-            if ($$4 instanceof dqv && dqv.a(this)) {
-               dqv.a(this.dP(), $$2, $$3, this, (dqv)$$4);
-            }
+   public void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().a(this.dR()));
+   }
 
-            $$1 = true;
-         }
-      }
-
-      if ($$0.c() != evn.a.a && !$$1) {
-         this.b($$0);
-      }
-
-      this.aS();
-      evp $$5 = this.ds();
-      double $$6 = this.du() + $$5.c;
-      double $$7 = this.dw() + $$5.d;
-      double $$8 = this.dA() + $$5.e;
-      this.J();
-      float $$11;
-      if (this.be()) {
-         for (int $$9 = 0; $$9 < 4; $$9++) {
-            float $$10 = 0.25F;
-            this.dP().a(li.d, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
-         }
-
-         $$11 = 0.8F;
+   @Override
+   public void a(ur $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cuo.a(this.dR(), (vo)$$0.p("Item")).orElseGet(() -> new cuo(this.u())));
       } else {
-         $$11 = 0.99F;
+         this.a(new cuo(this.u()));
       }
-
-      this.h($$5.a((double)$$11));
-      this.ba();
-      this.a_($$6, $$7, $$8);
-   }
-
-   @Override
-   protected double aY() {
-      return 0.03;
    }
 }

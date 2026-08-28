@@ -2,43 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class esb extends ers {
+public class esb extends ert {
    public static final MapCodec<esb> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayf.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(dox.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, esb::new)
    );
-   private final Optional<String> b;
-   private final Optional<arv<String>> c;
-   private final Optional<Integer> d;
+   private final dox b;
+   private final boolean c;
 
-   public esb(List<etq> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   esb(List<etr> $$0, dox $$1, boolean $$2) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cun a(cun $$0, eqg $$1) {
-      $$0.a(km.I, cxw.a, this::a);
+   protected cuo a(cuo $$0, eqh $$1) {
+      if (this.c) {
+         $$0.a(km.X, dox.a, this.b, ($$0x, $$1x) -> new dox.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(km.X, this.b);
+      }
+
       return $$0;
    }
 
-   private cxw a(cxw $$0) {
-      return new cxw(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   @Override
+   public erv<esb> b() {
+      return erw.E;
    }
 
-   @Override
-   public eru<esb> b() {
-      return erv.M;
+   public static esb.a a(boolean $$0) {
+      return new esb.a($$0);
+   }
+
+   public static class a extends ert.a<esb.a> {
+      private final dox.a a = new dox.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected esb.a a() {
+         return this;
+      }
+
+      @Override
+      public eru b() {
+         return new esb(this.g(), this.a.a(), this.b);
+      }
+
+      public esb.a a(ji<dow> $$0, cth $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

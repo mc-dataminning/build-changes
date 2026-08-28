@@ -36,7 +36,7 @@ public abstract class asr implements ata {
    public static <T> T a(atn<T> $$0, InputStream $$1) {
       JsonObject $$3;
       try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
-         $$3 = ayn.a($$2);
+         $$3 = ayo.a($$2);
       } catch (Exception var9) {
          c.error("Couldn't load {} metadata", $$0.a(), var9);
          return null;
@@ -46,7 +46,7 @@ public abstract class asr implements ata {
          return null;
       } else {
          try {
-            return $$0.a(ayn.u($$3, $$0.a()));
+            return $$0.a(ayo.u($$3, $$0.a()));
          } catch (Exception var7) {
             c.error("Couldn't load {} metadata", $$0.a(), var7);
             return null;

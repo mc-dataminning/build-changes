@@ -28,15 +28,15 @@ public class ahq implements zv<agv> {
       this.d = $$1;
    }
 
-   public static ahq a(bss $$0, boolean $$1) {
+   public static ahq a(bst $$0, boolean $$1) {
       return new ahq($$0.al(), $$1, e);
    }
 
-   public static ahq a(bss $$0, boolean $$1, bqr $$2) {
+   public static ahq a(bst $$0, boolean $$1, bqs $$2) {
       return new ahq($$0.al(), $$1, new ahq.d($$2));
    }
 
-   public static ahq a(bss $$0, boolean $$1, bqr $$2, evp $$3) {
+   public static ahq a(bst $$0, boolean $$1, bqs $$2, evq $$3) {
       return new ahq($$0.al(), $$1, new ahq.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahq implements zv<agv> {
    }
 
    @Nullable
-   public bss a(are $$0) {
+   public bst a(are $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahq implements zv<agv> {
    }
 
    public interface c {
-      void a(bqr var1);
+      void a(bqs var1);
 
-      void a(bqr var1, evp var2);
+      void a(bqs var1, evq var2);
 
       void a();
    }
 
    static class d implements ahq.a {
-      private final bqr a;
+      private final bqs a;
 
-      d(bqr $$0) {
+      d(bqs $$0) {
          this.a = $$0;
       }
 
       private d(wl $$0) {
-         this.a = $$0.b(bqr.class);
+         this.a = $$0.b(bqs.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahq implements zv<agv> {
    }
 
    static class e implements ahq.a {
-      private final bqr a;
-      private final evp b;
+      private final bqs a;
+      private final evq b;
 
-      e(bqr $$0, evp $$1) {
+      e(bqs $$0, evq $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(wl $$0) {
-         this.b = new evp((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bqr.class);
+         this.b = new evq((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bqs.class);
       }
 
       @Override

@@ -19,7 +19,7 @@ public abstract class aus extends aut<Map<ale, JsonElement>> {
       this.c = $$1;
    }
 
-   protected Map<ale, JsonElement> a(auo $$0, bng $$1) {
+   protected Map<ale, JsonElement> a(auo $$0, bnh $$1) {
       Map<ale, JsonElement> $$2 = new HashMap<>();
       a($$0, this.c, this.b, $$2);
       return $$2;
@@ -33,7 +33,7 @@ public abstract class aus extends aut<Map<ale, JsonElement>> {
          ale $$7 = $$4.b($$6);
 
          try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = ayn.a($$2, $$8, JsonElement.class);
+            JsonElement $$9 = ayo.a($$2, $$8, JsonElement.class);
             JsonElement $$10 = $$3.put($$7, $$9);
             if ($$10 != null) {
                throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);

@@ -1,15 +1,15 @@
 public class acu implements zv<ach> {
    public static final zm<wl, acu> a = zv.a(acu::a, acu::new);
-   private final bqp b;
+   private final bqq b;
    private final boolean c;
 
-   public acu(bqp $$0, boolean $$1) {
+   public acu(bqq $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private acu(wl $$0) {
-      this.b = bqp.a($$0.readUnsignedByte());
+      this.b = bqq.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class acu implements zv<ach> {
       return this.c;
    }
 
-   public bqp e() {
+   public bqq e() {
       return this.b;
    }
 }

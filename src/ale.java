@@ -253,7 +253,7 @@ public class ale implements Comparable<ale> {
 
    public static class b implements JsonDeserializer<ale>, JsonSerializer<ale> {
       public ale a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new ale(ayn.a($$0, "location"));
+         return new ale(ayo.a($$0, "location"));
       }
 
       public JsonElement a(ale $$0, Type $$1, JsonSerializationContext $$2) {

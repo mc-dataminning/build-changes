@@ -1,9 +1,19 @@
-import java.util.List;
+public class cqi extends cro {
+   private final cqh a;
 
-public interface cqi extends bql, crs {
-   int f();
+   public cqi(bqm $$0, int $$1, int $$2, int $$3, cqh $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+   }
 
-   int g();
+   @Override
+   public boolean a(cuo $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
 
-   List<cun> h();
+   @Override
+   public void b() {
+      super.b();
+      this.a.a(this.c);
+   }
 }

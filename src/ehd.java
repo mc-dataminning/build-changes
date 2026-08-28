@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public enum ehd implements azs {
-   a(je.b, 1, "ceiling"),
-   b(je.a, -1, "floor");
+public class ehd extends ehq {
+   public static final MapCodec<ehd> a = dxp.a.c.fieldOf("step").xmap(ehd::new, $$0 -> $$0.c);
+   private final dxp.a c;
 
-   public static final Codec<ehd> c = azs.a(ehd::values);
-   private final je d;
-   private final int e;
-   private final String f;
-
-   private ehd(final je $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private ehd(dxp.a $$0) {
+      this.c = $$0;
    }
 
-   public je a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static ehd a(dxp.a $$0) {
+      return new ehd($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<iz> a_(eho $$0, azg $$1, iz $$2) {
+      dbe $$3 = new dbe($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public ehr<?> b() {
+      return ehr.o;
    }
 }

@@ -1,15 +1,15 @@
-public enum dtl implements azs {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dtl implements azt {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
    private final String e;
-   private final boolean f;
+   private final xo f;
 
-   private dtl(final String $$0, final boolean $$1) {
+   private dtl(final String $$0) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = xo.c("structure_block.mode_info." + $$0);
    }
 
    @Override
@@ -17,7 +17,7 @@ public enum dtl implements azs {
       return this.e;
    }
 
-   public boolean a() {
+   public xo a() {
       return this.f;
    }
 }

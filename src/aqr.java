@@ -1,23 +1,23 @@
-public abstract class aqr extends enf {
+public abstract class aqr extends eng {
    protected aqr(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
    protected boolean a(long $$0) {
-      return $$0 == dbd.a;
+      return $$0 == dbe.a;
    }
 
    @Override
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
-         dbd $$3 = new dbd($$0);
+         dbe $$3 = new dbe($$0);
          int $$4 = $$3.e;
          int $$5 = $$3.f;
 
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dbd.c($$4 + $$6, $$5 + $$7);
+               long $$8 = dbe.c($$4 + $$6, $$5 + $$7);
                if ($$8 != $$0) {
                   this.b($$0, $$8, $$1, $$2);
                }
@@ -29,15 +29,15 @@ public abstract class aqr extends enf {
    @Override
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
-      dbd $$4 = new dbd($$0);
+      dbe $$4 = new dbe($$0);
       int $$5 = $$4.e;
       int $$6 = $$4.f;
 
       for (int $$7 = -1; $$7 <= 1; $$7++) {
          for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dbd.c($$5 + $$7, $$6 + $$8);
+            long $$9 = dbe.c($$5 + $$7, $$6 + $$8);
             if ($$9 == $$0) {
-               $$9 = dbd.a;
+               $$9 = dbe.a;
             }
 
             if ($$9 != $$1) {
@@ -58,12 +58,12 @@ public abstract class aqr extends enf {
 
    @Override
    protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dbd.a ? this.b($$1) : $$2 + 1;
+      return $$0 == dbe.a ? this.b($$1) : $$2 + 1;
    }
 
    protected abstract int b(long var1);
 
    public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dbd.a, $$0, $$1, $$2);
+      this.a(dbe.a, $$0, $$1, $$2);
    }
 }

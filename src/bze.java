@@ -3,15 +3,16 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bze {
-   public static bvh<btn> a() {
-      return byt.a(
-         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.a(ccr.n), $$0.a(ccr.az), $$0.a(ccr.ay), $$0.c(ccr.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<iz> $$7 = $$0.<btn>a($$3).map(bss::dp).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
+   public static <E extends cma> bvi<E> a(Function<E, Optional<? extends bto>> $$0) {
+      return byu.a(
+         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$1 -> $$1.group($$1.c(ccs.ay), $$1.c(ccs.o), $$1.a(ccs.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bto> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
                         return false;
                      } else {
-                        $$1.a(new bvj($$7.get()));
+                        $$1x.a($$6.get());
+                        $$3.b();
                         return true;
                      }
                   }))

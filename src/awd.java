@@ -4,50 +4,50 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
 public final class awd {
-   private static final Map<crg, Pair<String, String>> a = ImmutableMap.of(
-      crg.a,
+   private static final Map<crh, Pair<String, String>> a = ImmutableMap.of(
+      crh.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      crg.b,
+      crh.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      crg.c,
+      crh.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      crg.d,
+      crh.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<crg, awd.a> b;
+   private final Map<crh, awd.a> b;
 
-   private awd(Map<crg, awd.a> $$0) {
+   private awd(Map<crh, awd.a> $$0) {
       this.b = $$0;
    }
 
    public awd() {
-      this(ac.a(Maps.newEnumMap(crg.class), $$0 -> {
-         for (crg $$1 : crg.values()) {
+      this(ac.a(Maps.newEnumMap(crh.class), $$0 -> {
+         for (crh $$1 : crh.values()) {
             $$0.put($$1, new awd.a(false, false));
          }
       }));
    }
 
-   public boolean a(crg $$0) {
+   public boolean a(crh $$0) {
       return this.b.get($$0).a;
    }
 
-   public void a(crg $$0, boolean $$1) {
+   public void a(crh $$0, boolean $$1) {
       this.b.get($$0).a = $$1;
    }
 
-   public boolean b(crg $$0) {
+   public boolean b(crh $$0) {
       return this.b.get($$0).b;
    }
 
-   public void b(crg $$0, boolean $$1) {
+   public void b(crh $$0, boolean $$1) {
       this.b.get($$0).b = $$1;
    }
 
    public static awd a(wl $$0) {
-      Map<crg, awd.a> $$1 = Maps.newEnumMap(crg.class);
+      Map<crh, awd.a> $$1 = Maps.newEnumMap(crh.class);
 
-      for (crg $$2 : crg.values()) {
+      for (crh $$2 : crh.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          $$1.put($$2, new awd.a($$3, $$4));
@@ -57,7 +57,7 @@ public final class awd {
    }
 
    public void b(wl $$0) {
-      for (crg $$1 : crg.values()) {
+      for (crh $$1 : crh.values()) {
          awd.a $$2 = this.b.get($$1);
          if ($$2 == null) {
             $$0.a(false);
@@ -70,7 +70,7 @@ public final class awd {
    }
 
    public static awd a(ur $$0) {
-      Map<crg, awd.a> $$1 = Maps.newEnumMap(crg.class);
+      Map<crh, awd.a> $$1 = Maps.newEnumMap(crh.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());
@@ -88,9 +88,9 @@ public final class awd {
    }
 
    public awd a() {
-      Map<crg, awd.a> $$0 = Maps.newEnumMap(crg.class);
+      Map<crh, awd.a> $$0 = Maps.newEnumMap(crh.class);
 
-      for (crg $$1 : crg.values()) {
+      for (crh $$1 : crh.values()) {
          awd.a $$2 = this.b.get($$1);
          $$0.put($$1, $$2.a());
       }
@@ -101,7 +101,7 @@ public final class awd {
    public void a(awd $$0) {
       this.b.clear();
 
-      for (crg $$1 : crg.values()) {
+      for (crh $$1 : crh.values()) {
          awd.a $$2 = $$0.b.get($$1);
          this.b.put($$1, $$2.a());
       }

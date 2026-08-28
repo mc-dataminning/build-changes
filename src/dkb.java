@@ -1,115 +1,22 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkb extends dex {
+public class dkb extends dmp {
    public static final MapCodec<dkb> a = b(dkb::new);
-   public static final dsy<je.a> b = dsq.H;
-   protected static final int c = 2;
-   protected static final ewi d = dex.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final ewi e = dex.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dkb> a() {
       return a;
    }
 
-   public dkb(drz.d $$0) {
+   public dkb(dsa.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, je.a.a));
    }
 
    @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      switch ((je.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
+   public void a(dsb $$0, dbx $$1, iz $$2, azg $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(li.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected void b(dsa $$0, are $$1, iz $$2, azf $$3) {
-      if ($$1.D_().j() && $$1.ab().b(dbs.e) && $$3.a(2000) < $$1.al().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
-
-         if ($$1.a_($$2).a($$1, $$2, bsy.bx)) {
-            bss $$4 = bsy.bx.a($$1, $$2.c(), btr.d);
-            if ($$4 != null) {
-               $$4.aw();
-            }
-         }
-      }
-   }
-
-   @Override
-   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
-      je.a $$6 = $$1.o();
-      je.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new eot($$3, $$4, $$7).c() ? dez.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dsa $$0, dbw $$1, iz $$2, bss $$3) {
-      if ($$3.cw()) {
-         $$3.g($$2);
-      }
-   }
-
-   @Override
-   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avz.uE, awa.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
-         } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
-         }
-
-         $$1.a(li.ac, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public cun a(dbz $$0, iz $$1, dsa $$2) {
-      return cun.l;
-   }
-
-   @Override
-   protected dsa a(dsa $$0, dlk $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((je.a)$$0.c(b)) {
-               case c:
-                  return $$0.a(b, je.a.a);
-               case a:
-                  return $$0.a(b, je.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected void a(dsb.a<dex, dsa> $$0) {
-      $$0.a(b);
    }
 }

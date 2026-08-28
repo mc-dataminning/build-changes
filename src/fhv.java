@@ -1,146 +1,213 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.function.Consumer;
 
-public interface fhv {
-   fhv a = new fhv() {
-      @Override
-      public int a(fgp $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class fhv extends fgx {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int f = 300;
+   private final fgo m;
+   private final xo n;
+   private final fhy o;
+   private long p = ac.c();
 
-      @Override
-      public int a(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(fgp $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static fhv a(fgn $$0, xt $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fhv.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public fhv(fgo $$0, int $$1, int $$2, int $$3, int $$4, xo $$5, xo $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new fhy($$0, $$3 - this.b());
+      this.o.a(this::k);
    }
 
-   static fhv a(fgn $$0, xt $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fhv.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public void a(int $$0) {
+      this.o.a($$0);
    }
 
-   static fhv a(fgn $$0, xo... $$1) {
-      return b($$0, Arrays.stream($$1).map(xo::g).map($$1x -> new fhv.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
    }
 
-   static fhv a(fgn $$0, List<xo> $$1) {
-      return b($$0, $$1.stream().map(xo::g).map($$1x -> new fhv.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public void a(String $$0) {
+      this.o.a($$0);
    }
 
-   static fhv b(final fgn $$0, final List<fhv.a> $$1) {
-      return $$1.isEmpty() ? a : new fhv() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+   public String j() {
+      return this.o.c();
+   }
 
-         @Override
-         public int a(fgp $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
+   @Override
+   public void a(fkz $$0) {
+      $$0.a(fky.a, xo.a("gui.narrate.editBox", this.y(), this.j()));
+   }
 
-         @Override
-         public int a(fgp $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(fnc.t());
+         this.e($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
 
-            for (fhv.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.e($$0, $$1);
+         this.o.a(fnc.t());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aH_() && azu.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   protected void c(fgq $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aH_()) {
+         $$0.a(this.m, this.n, this.C() + this.a(), this.D() + this.a(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aH_() && (ac.c() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.D() + this.a();
+
+         for (fhy.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.C() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.C() + this.a(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
             }
 
-            return $$5;
+            $$10 += 9;
          }
 
-         @Override
-         public int b(fgp $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
 
-            for (fhv.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
+         if (this.o.i()) {
+            fhy.a $$13 = this.o.e();
+            int $$14 = this.C() + this.a();
+            $$10 = this.D() + this.a();
+
+            for (fhy.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
+               }
             }
-
-            return $$5;
          }
-
-         @Override
-         public int c(fgp $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (fhv.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(fgp $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
+      }
    }
 
-   int a(fgp var1, int var2, int var3);
+   @Override
+   protected void a(fgq $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         xo $$2 = xo.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.C() + this.g - this.m.a($$2), this.D() + this.h + 4, 10526880);
+      }
+   }
 
-   int a(fgp var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int h() {
+      return 9 * this.o.f();
+   }
 
-   int b(fgp var1, int var2, int var3, int var4, int var5);
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.l();
+   }
 
-   int c(fgp var1, int var2, int var3, int var4, int var5);
+   @Override
+   protected double i() {
+      return 9.0 / 2.0;
+   }
 
-   void a(fgp var1, int var2, int var3, int var4, int var5, int var6);
+   private void b(fgq $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(gdv.F(), $$1, $$2, $$3, $$4, -16776961);
+   }
 
-   int a();
+   private void k() {
+      double $$0 = this.c();
+      fhy.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         fhy.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+         }
+      }
 
-   int b();
+      this.a($$0);
+   }
 
-   public static class a {
-      final ayj a;
-      final int b;
+   private double l() {
+      return (double)(this.h - this.b()) / 9.0;
+   }
 
-      a(ayj $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private void e(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.C() - (double)this.a();
+      double $$3 = $$1 - (double)this.D() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.p = ac.c();
       }
    }
 }

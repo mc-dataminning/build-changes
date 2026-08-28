@@ -1,59 +1,49 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
 
-public class cvo extends ctc {
-   protected static final Map<dex, dsa> a = Maps.newHashMap(
-      new Builder()
-         .put(dez.i, dez.kE.o())
-         .put(dez.j, dez.kE.o())
-         .put(dez.l, dez.kE.o())
-         .put(dez.k, dez.kE.o())
-         .put(dez.fl, dez.kE.o())
-         .put(dez.sH, dez.kE.o())
-         .build()
-   );
+public class cvo extends cuj implements ctq {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public cvo(cwc $$0, cui.a $$1) {
-      super($$0, awo.bD, $$1);
+   public cvo(cuj.a $$0) {
+      super($$0);
+      dhd.a(this, csd.a);
    }
 
    @Override
-   public bqs a(cya $$0) {
-      dbw $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dsa $$3 = $$1.a_($$2);
-      if ($$0.k() == je.a) {
-         return bqs.e;
-      } else {
-         cmv $$4 = $$0.o();
-         dsa $$5 = a.get($$3.b());
-         dsa $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, avz.wH, awa.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dfl && $$3.c(dfl.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public String i(cuo $$0) {
+      cth $$1 = $$0.a(km.Y);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   }
 
-            dfl.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(dfl.c, Boolean.valueOf(false));
-         }
+   @Override
+   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
+      csj.a($$0, $$2);
+   }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dwt.c, $$2, dwt.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, btn.d($$0.p()));
-               }
-            }
+   @Override
+   public cwj c(cuo $$0) {
+      return cwj.d;
+   }
 
-            return bqs.a($$1.B);
-         } else {
-            return bqs.e;
-         }
-      }
+   @Override
+   public int b(cuo $$0) {
+      return 72000;
+   }
+
+   @Override
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bqu.b($$3);
+   }
+
+   @Override
+   public boolean a(cuo $$0, cuo $$1) {
+      return $$1.a(awx.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bta m() {
+      return bta.b;
    }
 }

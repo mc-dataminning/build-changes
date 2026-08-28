@@ -5,7 +5,7 @@ public class afn implements zv<ach> {
    private final int b;
    private final int c;
 
-   public afn(bss $$0, @Nullable bss $$1) {
+   public afn(bst $$0, @Nullable bst $$1) {
       this.b = $$0.al();
       this.c = $$1 != null ? $$1.al() : 0;
    }

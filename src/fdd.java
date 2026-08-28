@@ -1,339 +1,167 @@
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Collections;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fdd extends gve {
-   static final Logger a = LogUtils.getLogger();
-   static final ale b = new ale("widget/slot_frame");
-   private static final xo c = xo.c("mco.template.button.select");
-   private static final xo B = xo.c("mco.template.button.trailer");
-   private static final xo C = xo.c("mco.template.button.publisher");
-   private static final int D = 100;
-   private static final int E = 10;
-   private final fkp F = new fkp(this);
-   final Consumer<fbu> G;
-   fdd.b H;
-   private final fbd.d I;
-   private fhc J;
-   private fhc K;
-   private fhc L;
+public class fdd extends gvf {
+   private static final Logger b = LogUtils.getLogger();
+   public static final xo a = xo.c("mco.upload.select.world.title");
+   private static final xo c = xo.c("selectWorld.unable_to_load");
+   static final xo B = xo.c("selectWorld.world");
+   private static final xo C = xo.c("mco.upload.hardcore").b(-65536);
+   private static final xo D = xo.c("selectWorld.commands");
+   private static final DateFormat E = new SimpleDateFormat();
    @Nullable
-   fbu M = null;
-   @Nullable
-   String N;
-   @Nullable
-   private xo[] O;
-   @Nullable
-   List<fdu.a> P;
+   private final feg F;
+   private final fdc G;
+   private final long H;
+   private final int I;
+   fhd J;
+   List<epw> K = Lists.newArrayList();
+   int L = -1;
+   fdd.b M;
 
-   public fdd(xo $$0, Consumer<fbu> $$1, fbd.d $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public fdd(xo $$0, Consumer<fbu> $$1, fbd.d $$2, @Nullable fbv $$3) {
-      super($$0);
-      this.G = $$1;
+   public fdd(@Nullable feg $$0, long $$1, int $$2, fdc $$3) {
+      super(a);
+      this.F = $$0;
+      this.G = $$3;
+      this.H = $$1;
       this.I = $$2;
-      if ($$3 == null) {
-         this.H = new fdd.b(this);
-         this.a(new fbv(10));
-      } else {
-         this.H = new fdd.b(this, Lists.newArrayList($$3.a));
-         this.a($$3);
-      }
    }
 
-   public void a(xo... $$0) {
-      this.O = $$0;
+   private void E() {
+      epv.a $$0 = this.m.m().b();
+      this.K = this.m.m().a($$0).join().stream().filter(epw::v).collect(Collectors.toList());
+
+      for (epw $$1 : this.K) {
+         this.M.a($$1);
+      }
    }
 
    @Override
    public void aM_() {
-      this.F.a(this.l, this.p);
-      this.H = this.F.c(new fdd.b(this, this.H.d()));
-      fkt $$0 = this.F.b(fkt.e().a(10));
-      $$0.c().b();
-      this.K = $$0.a(fhc.a(B, $$0x -> this.F()).a(100).a());
-      this.J = $$0.a(fhc.a(c, $$0x -> this.E()).a(100).a());
-      $$0.a(fhc.a(xn.e, $$0x -> this.d()).a(100).a());
-      this.L = $$0.a(fhc.a(C, $$0x -> this.I()).a(100).a());
-      this.D();
-      this.F.a($$1 -> {
-         fha var10000 = this.c($$1);
-      });
-      this.c();
-   }
+      this.M = this.c(new fdd.b());
 
-   @Override
-   protected void c() {
-      this.H.b(this.n, this.o - this.F.b() - this.J());
-      this.F.a();
+      try {
+         this.E();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.m.a(new fcr(c, xo.a(var2.getMessage()), this.G));
+         return;
+      }
+
+      this.J = this.c(fhd.a(xo.c("mco.upload.button.name"), $$0 -> this.F()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
+      this.J.j = this.L >= 0 && this.L < this.K.size();
+      this.c(fhd.a(xn.k, $$0 -> this.m.a(this.G)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
+      this.a(new gvd(xo.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
+      if (this.K.isEmpty()) {
+         this.a(new gvd(xo.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
+      }
    }
 
    @Override
    public xo i() {
-      List<xo> $$0 = Lists.newArrayListWithCapacity(2);
-      $$0.add(this.l);
-      if (this.O != null) {
-         $$0.addAll(Arrays.asList(this.O));
-      }
-
-      return xn.a($$0);
-   }
-
-   void D() {
-      this.L.k = this.M != null && !this.M.e.isEmpty();
-      this.K.k = this.M != null && !this.M.g.isEmpty();
-      this.J.j = this.M != null;
-   }
-
-   @Override
-   public void d() {
-      this.G.accept(null);
-   }
-
-   private void E() {
-      if (this.M != null) {
-         this.G.accept(this.M);
-      }
+      return xn.a(this.n(), this.m());
    }
 
    private void F() {
-      if (this.M != null && !this.M.g.isBlank()) {
-         fls.a(this, this.M.g);
-      }
-   }
-
-   private void I() {
-      if (this.M != null && !this.M.e.isBlank()) {
-         fls.a(this, this.M.e);
-      }
-   }
-
-   private void a(final fbv $$0) {
-      (new Thread("realms-template-fetcher") {
-         @Override
-         public void run() {
-            fbv $$0 = $$0;
-            fam $$1 = fam.a();
-
-            while ($$0 != null) {
-               Either<fbv, Exception> $$2 = fdd.this.a($$0, $$1);
-               $$0 = fdd.this.m.a(() -> {
-                  if ($$2.right().isPresent()) {
-                     fdd.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
-                     if (fdd.this.H.c()) {
-                        fdd.this.P = fdu.a(gqd.a("mco.template.select.failure"));
-                     }
-
-                     return null;
-                  } else {
-                     fbv $$1x = (fbv)$$2.left().get();
-
-                     for (fbu $$2x : $$1x.a) {
-                        fdd.this.H.a($$2x);
-                     }
-
-                     if ($$1x.a.isEmpty()) {
-                        if (fdd.this.H.c()) {
-                           String $$3 = gqd.a("mco.template.select.none", "%link");
-                           fdu.b $$4 = fdu.b.a(gqd.a("mco.template.select.none.linkTitle"), "https://aka.ms/MinecraftRealmsContentCreator");
-                           fdd.this.P = fdu.a($$3, $$4);
-                        }
-
-                        return null;
-                     } else {
-                        return $$1x;
-                     }
-                  }
-               }).join();
-            }
-         }
-      }).start();
-   }
-
-   Either<fbv, Exception> a(fbv $$0, fam $$1) {
-      try {
-         return Either.left($$1.a($$0.b + 1, $$0.c, this.I));
-      } catch (fbz var4) {
-         return Either.right(var4);
+      if (this.L != -1 && !this.K.get(this.L).i()) {
+         epw $$0 = this.K.get(this.L);
+         this.m.a(new fdj(this.F, this.H, this.I, this.G, $$0));
       }
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.N = null;
-      if (this.P != null) {
-         this.a($$0, $$1, $$2, this.P);
-      }
-
-      if (this.O != null) {
-         for (int $$4 = 0; $$4 < this.O.length; $$4++) {
-            xo $$5 = this.O[$$4];
-            $$0.a(this.p, $$5, this.n / 2, g(-1 + $$4), -6250336);
-         }
-      }
+      $$0.a(this.p, this.l, this.n / 2, 13, -1);
    }
 
-   private void a(fgp $$0, int $$1, int $$2, List<fdu.a> $$3) {
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         fdu.a $$5 = $$3.get($$4);
-         int $$6 = g(4 + $$4);
-         int $$7 = $$5.a.stream().mapToInt($$0x -> this.p.b($$0x.a())).sum();
-         int $$8 = this.n / 2 - $$7 / 2;
-
-         for (fdu.b $$9 : $$5.a) {
-            int $$10 = $$9.b() ? 3368635 : -1;
-            int $$11 = $$0.b(this.p, $$9.a(), $$8, $$6, $$10);
-            if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
-               this.d(xo.b($$9.c()));
-               this.N = $$9.c();
-            }
-
-            $$8 = $$11;
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.G);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   int J() {
-      return this.O != null ? g(1) : 33;
+   static xo a(epw $$0) {
+      return $$0.h().d();
    }
 
-   class a extends fhy.a<fdd.a> {
-      private static final fip c = new fip(new ale("icon/link"), new ale("icon/link_highlighted"));
-      private static final fip d = new fip(new ale("icon/video_link"), new ale("icon/video_link_highlighted"));
-      private static final xo e = xo.c("mco.template.info.tooltip");
-      private static final xo f = xo.c("mco.template.trailer.tooltip");
-      public final fbu a;
-      private long g;
-      @Nullable
-      private fho h;
-      @Nullable
-      private fho i;
+   static String b(epw $$0) {
+      return E.format(new Date($$0.f()));
+   }
 
-      public a(final fbu $$0) {
-         this.a = $$0;
-         if (!$$0.e.isBlank()) {
-            this.h = new fho(15, 15, c, fls.b(fdd.this, $$0.e), e);
-            this.h.a(fin.a(e));
-         }
+   class a extends fhz.a<fdd.a> {
+      private final epw b;
+      private final String c;
+      private final xo d;
+      private final xo e;
 
-         if (!$$0.g.isBlank()) {
-            this.i = new fho(15, 15, d, fls.b(fdd.this, $$0.g), f);
-            this.i.a(fin.a(f));
-         }
+      public a(final epw $$0) {
+         this.b = $$0;
+         this.c = $$0.b();
+         this.d = xo.a("mco.upload.entry.id", $$0.a(), fdd.b($$0));
+         this.e = $$0.s();
+      }
+
+      @Override
+      public void a(fgq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
       }
 
       @Override
       public boolean a(double $$0, double $$1, int $$2) {
-         fdd.this.M = this.a;
-         fdd.this.D();
-         if (ac.c() - this.g < 250L && this.aI_()) {
-            fdd.this.G.accept(this.a);
-         }
-
-         this.g = ac.c();
-         if (this.h != null) {
-            this.h.a($$0, $$1, $$2);
-         }
-
-         if (this.i != null) {
-            this.i.a($$0, $$1, $$2);
-         }
-
+         fdd.this.M.b(fdd.this.K.indexOf(this.b));
          return super.a($$0, $$1, $$2);
       }
 
-      @Override
-      public void a(fgp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fds.a(this.a.a, this.a.f), $$3 + 1, $$2 + 1 + 1, 0.0F, 0.0F, 38, 38, 38, 38);
-         $$0.a(fdd.b, $$3, $$2 + 1, 40, 40);
-         int $$10 = 5;
-         int $$11 = fdd.this.p.b(this.a.c);
-         if (this.h != null) {
-            this.h.c($$3 + $$4 - $$11 - this.h.x() - 10, $$2);
-            this.h.a($$0, $$6, $$7, $$9);
+      protected void a(fgq $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = fdd.B + " " + ($$1 + 1);
+         } else {
+            $$4 = this.c;
          }
 
-         if (this.i != null) {
-            this.i.c($$3 + $$4 - $$11 - this.i.x() * 2 - 15, $$2);
-            this.i.a($$0, $$6, $$7, $$9);
-         }
-
-         int $$12 = $$3 + 45 + 20;
-         int $$13 = $$2 + 5;
-         $$0.a(fdd.this.p, this.a.b, $$12, $$13, -1, false);
-         $$0.a(fdd.this.p, this.a.c, $$3 + $$4 - $$11 - 5, $$13, 7105644, false);
-         $$0.a(fdd.this.p, this.a.d, $$12, $$13 + 9 + 5, -6250336, false);
-         if (!this.a.h.isBlank()) {
-            $$0.a(fdd.this.p, this.a.h, $$12, $$2 + $$5 - 9 / 2 - 5, 5000268, false);
-         }
+         $$0.a(fdd.this.p, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(fdd.this.p, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(fdd.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
       }
 
       @Override
       public xo a() {
-         xo $$0 = xn.b(
-            xo.b(this.a.b), xo.a("mco.template.select.narrate.authors", this.a.d), xo.b(this.a.h), xo.a("mco.template.select.narrate.version", this.a.c)
-         );
+         xo $$0 = xn.b(xo.b(this.b.b()), xo.b(fdd.b(this.b)), fdd.a(this.b));
          return xo.a("narrator.select", $$0);
       }
    }
 
-   class b extends gvd<fdd.a> {
-      public b(final fdd param1) {
-         this(var1, Collections.emptyList());
+   class b extends gve<fdd.a> {
+      public b() {
+         super(fdd.this.n, fdd.this.o - 40 - fdd.g(0), fdd.g(0), 36);
       }
 
-      public b(final Iterable<fbu> param1, final Iterable $$0) {
-         super(var1.n, var1.o - 33 - var1.J(), var1.J(), 46);
-         this.a = var1;
-         $$0.forEach(this::a);
-      }
-
-      public void a(fbu $$0) {
-         this.a((fdd.a)(this.a.new a($$0)));
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.a.N != null) {
-            fls.a(this.a, this.a.N);
-            return true;
-         } else {
-            return super.a($$0, $$1, $$2);
-         }
-      }
-
-      public void a(@Nullable fdd.a $$0) {
-         super.a($$0);
-         this.a.M = $$0 == null ? null : $$0.a;
-         this.a.D();
+      public void a(epw $$0) {
+         this.a((fdd.a)(fdd.this.new a($$0)));
       }
 
       @Override
       public int a() {
-         return this.l() * 46;
+         return fdd.this.K.size() * 36;
       }
 
-      @Override
-      public int b() {
-         return 300;
-      }
-
-      public boolean c() {
-         return this.l() == 0;
-      }
-
-      public List<fbu> d() {
-         return this.aE_().stream().map($$0 -> $$0.a).collect(Collectors.toList());
+      public void a(@Nullable fdd.a $$0) {
+         super.a($$0);
+         fdd.this.L = this.aD_().indexOf($$0);
+         fdd.this.J.j = fdd.this.L >= 0 && fdd.this.L < this.l() && !fdd.this.K.get(fdd.this.L).i();
       }
    }
 }

@@ -20,11 +20,11 @@ public class ym {
       return this.a;
    }
 
-   public List<ayj> a(int $$0, int $$1, boolean $$2) {
+   public List<ayk> a(int $$0, int $$1, boolean $$2) {
       if ($$1 == 0) {
          return ImmutableList.of();
       } else {
-         List<ayj> $$3 = Lists.newArrayList();
+         List<ayk> $$3 = Lists.newArrayList();
          yl $$4 = this.b.get($$0);
          int $$5 = $$0;
 
@@ -33,7 +33,7 @@ public class ym {
             yl $$8 = this.b.get($$7);
             if (!$$8.equals($$4)) {
                String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? ayj.backward($$9, $$4, this.c) : ayj.forward($$9, $$4));
+               $$3.add($$2 ? ayk.backward($$9, $$4, this.c) : ayk.forward($$9, $$4));
                $$4 = $$8;
                $$5 = $$7;
             }
@@ -41,7 +41,7 @@ public class ym {
 
          if ($$5 < $$0 + $$1) {
             String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? ayj.backward($$10, $$4, this.c) : ayj.forward($$10, $$4));
+            $$3.add($$2 ? ayk.backward($$10, $$4, this.c) : ayk.forward($$10, $$4));
          }
 
          return $$2 ? Lists.reverse($$3) : $$3;
@@ -56,7 +56,7 @@ public class ym {
       StringBuilder $$3 = new StringBuilder();
       List<yl> $$4 = Lists.newArrayList();
       $$0.a(($$2x, $$3x) -> {
-         azr.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+         azs.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
             $$3.appendCodePoint($$4x);
             int $$5 = Character.charCount($$4x);
 

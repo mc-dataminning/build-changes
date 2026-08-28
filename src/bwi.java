@@ -1,48 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwi<E extends btp> extends bwj<E> {
-   private final axe<dex> m;
-   private final float n;
-   private final List<bwj.a> o = new ArrayList<>();
-   private boolean p;
+public class bwi extends bvh<btq> {
+   public static final int c = 100;
+   private final bqe d;
+   private final avy e;
 
-   public bwi(bqd $$0, int $$1, int $$2, float $$3, Function<E, avy> $$4, axe<dex> $$5, float $$6, BiPredicate<E, iz> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bwi(bqe $$0, avy $$1) {
+      super(ImmutableMap.of(ccs.n, cct.c, ccs.T, cct.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void a(are $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.el().i() < this.n;
+   protected boolean a(are $$0, btq $$1, long $$2) {
+      return !$$1.aE();
    }
 
-   @Override
-   protected Optional<bwj.a> a(are $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         iz.a $$1 = new iz.a();
+   protected void b(are $$0, btq $$1, long $$2) {
+      $$1.q(true);
+      $$1.b(bua.g);
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<bwj.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bwj.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), je.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+   protected void c(are $$0, btq $$1, long $$2) {
+      if ($$1.aE()) {
+         $$1.h($$1.ds().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awa.g, 2.0F, 1.0F);
       }
+
+      $$1.q(false);
+      $$1.b(bua.a);
+      $$1.dS().b(ccs.T);
+      $$1.dS().a(ccs.S, this.d.a($$0.z));
    }
 }

@@ -1,4 +1,4 @@
-public record adn(dbd b) implements zv<ach> {
+public record adn(dbe b) implements zv<ach> {
    public static final zm<wl, adn> a = zv.a(adn::a, adn::new);
 
    private adn(wl $$0) {

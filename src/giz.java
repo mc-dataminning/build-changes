@@ -1,52 +1,18 @@
-public class giz extends giu<btd> {
-   private static final ale a = new ale("textures/entity/experience_orb.png");
-   private static final gdu f = gdu.g(a);
+public class giz<T extends ckm> extends gjp<T> {
+   private static final ale a = new ale("textures/entity/illager/evoker.png");
 
-   public giz(giv.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+   public giz(giw.a $$0) {
+      super($$0, new fun<>($$0.a(fwy.ab)), 0.5F);
+      this.a(new gnb<T, fun<T>>(this, $$0.d()) {
+         public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gA()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   protected int a(btd $$0, iz $$1) {
-      return ayx.a(super.a($$0, $$1) + 7, 0, 15);
-   }
-
-   public void a(btd $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
-      int $$16 = (int)((ayx.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((ayx.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      faa $$20 = $$4.getBuffer(f);
-      ezw.a $$21 = $$3.c();
-      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private static void a(faa $$0, ezw.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(goo.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public ale a(btd $$0) {
+   public ale a(T $$0) {
       return a;
    }
 }

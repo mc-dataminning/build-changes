@@ -1,75 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
 
-public class esd extends ers {
+public class esd extends ert {
    public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eqe.e.fieldOf("component").forGetter($$0x -> $$0x.b), equ.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, esd::new)
+      $$0 -> a($$0).and(kj.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, esd::new)
    );
-   private final eqd<?> b;
-   private final List<eqw> c;
+   private final kj b;
 
-   esd(List<etq> $$0, eqd<?> $$1, List<eqw> $$2) {
+   private esd(List<etr> $$0, kj $$1) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eru<esd> b() {
-      return erv.t;
+   public erv<esd> b() {
+      return erw.k;
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Builder<cun> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eql.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
-      }
+   public cuo a(cuo $$0, eqh $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   @Override
-   public void a(eqm $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
-   }
-
-   public static esd.a a(eqd<?> $$0) {
-      return new esd.a($$0);
-   }
-
-   public static class a extends ers.a<esd.a> {
-      private final com.google.common.collect.ImmutableList.Builder<eqw> a = ImmutableList.builder();
-      private final eqd<?> b;
-
-      public a(eqd<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected esd.a a() {
-         return this;
-      }
-
-      public esd.a a(eqw.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ert b() {
-         return new esd(this.g(), this.b, this.a.build());
-      }
+   public static <T> ert.a<?> a(kl<T> $$0, T $$1) {
+      return a($$2 -> new esd($$2, kj.a().a($$0, $$1).a()));
    }
 }

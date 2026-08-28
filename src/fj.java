@@ -18,10 +18,10 @@ public class fj implements ArgumentType<String> {
       return new fj();
    }
 
-   public static ewl a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ewm a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ewt $$3 = ((ep)$$0.getSource()).l().aK();
-      ewl $$4 = $$3.a($$2);
+      ewu $$3 = ((ep)$$0.getSource()).l().aK();
+      ewm $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fj implements ArgumentType<String> {
       }
    }
 
-   public static ewl b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      ewl $$2 = a($$0, $$1);
+   public static ewm b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      ewm $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

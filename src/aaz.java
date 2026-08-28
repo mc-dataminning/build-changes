@@ -1,5 +1,5 @@
-public record aaz(dwx c, int d) implements aaw {
-   public static final zm<wz, aaz> a = zm.a(dwx.d, aaz::b, zk.g, aaz::c, aaz::new);
+public record aaz(dwy c, int d) implements aaw {
+   public static final zm<wz, aaz> a = zm.a(dwy.d, aaz::b, zk.g, aaz::c, aaz::new);
    public static final aaw.b<aaz> b = aaw.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record aaz(dwx c, int d) implements aaw {
       return b;
    }
 
-   public dwx b() {
+   public dwy b() {
       return this.c;
    }
 

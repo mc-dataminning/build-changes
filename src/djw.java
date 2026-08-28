@@ -1,40 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class djw extends dex {
+public class djw extends dey implements dfb {
    public static final MapCodec<djw> a = b(djw::new);
-   protected static final ewi b = dex.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<djw> a() {
       return a;
    }
 
-   public djw(drz.d $$0) {
+   public djw(dsa.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewi b(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return b;
+   public boolean b(dca $$0, iz $$1, dsb $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected ewi b_(dsa $$0, dbc $$1, iz $$2) {
-      return ewf.b();
+   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
+      return true;
    }
 
    @Override
-   protected ewi c(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return ewf.b();
+   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
+      $$0.H_().c(lq.aC).flatMap($$0x -> $$0x.b(sf.n)).ifPresent($$3x -> ((eak)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
    }
 
    @Override
-   protected boolean a(dsa $$0, eoi $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dsa $$0, dbc $$1, iz $$2) {
-      return 0.2F;
+   public dfb.a ap_() {
+      return dfb.a.a;
    }
 }

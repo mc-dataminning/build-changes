@@ -1,69 +1,80 @@
 import javax.annotation.Nullable;
 
-public class cii extends cib {
+public class cii extends cic {
+   private static final cef b = cef.a().d();
    @Nullable
-   private evp b;
+   private eoi c;
+   @Nullable
+   private evq d;
 
-   public cii(chz $$0) {
+   public cii(cia $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      evp $$0 = this.a.F(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.du();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dA();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azf $$5 = this.a.el();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         evp $$9 = this.a.ds();
-         this.a.dP().a(li.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
-   }
-
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = evp.c(this.a.dP().a(dxs.a.f, eav.a(this.a.s())));
-      }
-
-      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
-         this.a.gn().b(cip.f).j();
-         this.a.gn().a(cip.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.ds().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
+   public ciq<cii> i() {
+      return ciq.c;
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.c = null;
+      this.d = null;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
+      }
    }
 
    @Nullable
    @Override
-   public evp g() {
-      return this.b;
+   public evq g() {
+      return this.d;
    }
 
-   @Override
-   public cip<cii> i() {
-      return cip.d;
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         iz $$1 = this.a.dP().a(dxt.a.f, eaw.a(this.a.s()));
+         cmw $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            evq $$3 = new evq($$2.du(), 0.0, $$2.dA()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         eog $$6 = new eog($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gn().a(ciq.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         kd $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new evq($$1, $$3, $$2);
+      }
    }
 }

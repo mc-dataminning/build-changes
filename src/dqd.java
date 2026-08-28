@@ -1,15 +1,23 @@
-public interface dqd extends bql {
-   evk p_ = dex.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class dqd extends dqq {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default evk aj_() {
-      return p_;
+   public dqd(iz $$0, dsb $$1) {
+      super(dpi.i, $$0, $$1);
    }
 
-   double H();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double I();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double J();
-
-   boolean K();
+   @Override
+   public avy d() {
+      return avz.BW;
+   }
 }

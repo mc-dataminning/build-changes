@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record ady(int b, boolean c, Set<ald<dbw>> d, int e, int f, int g, boolean h, boolean i, boolean j, agq k, boolean l) implements zv<ach> {
+public record ady(int b, boolean c, Set<ald<dbx>> d, int e, int f, int g, boolean h, boolean i, boolean j, agq k, boolean l) implements zv<ach> {
    public static final zm<wz, ady> a = zv.a(ady::a, ady::new);
 
    private ady(wz $$0) {
@@ -47,7 +47,7 @@ public record ady(int b, boolean c, Set<ald<dbw>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<ald<dbw>> f() {
+   public Set<ald<dbx>> f() {
       return this.d;
    }
 

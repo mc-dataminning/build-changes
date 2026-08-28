@@ -9,12 +9,12 @@ public class avf {
    }
 
    public boolean a(int $$0, List<arf> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmv::gf).count();
+      int $$2 = (int)$$1.stream().filter(cmw::gf).count();
       return $$2 >= this.b($$0);
    }
 
    public int b(int $$0) {
-      return Math.max(1, ayx.f((float)(this.a * $$0) / 100.0F));
+      return Math.max(1, ayy.f((float)(this.a * $$0) / 100.0F));
    }
 
    public void a() {

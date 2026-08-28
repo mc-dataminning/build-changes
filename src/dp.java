@@ -8,7 +8,7 @@ public class dp extends dr<dp.a> {
       return dp.a.a;
    }
 
-   public void a(arf $$0, cyv<?> $$1) {
+   public void a(arf $$0, cyw<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class dp extends dr<dp.a> {
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dp.a::a), ale.a.fieldOf("recipe").forGetter(dp.a::b)).apply($$0, dp.a::new)
       );
 
-      public boolean a(cyv<?> $$0) {
+      public boolean a(cyw<?> $$0) {
          return this.c.equals($$0.a());
       }
 

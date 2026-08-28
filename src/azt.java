@@ -1,93 +1,97 @@
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class azt {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+public interface azt {
+   int W = 16;
 
-   public static String a(int $$0, float $$1) {
-      int $$2 = ayx.d((float)$$0 / $$1);
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      int $$4 = $$3 / 60;
-      $$3 %= 60;
-      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
+   String c();
+
+   static <E extends Enum<E> & azt> azt.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
    }
 
-   public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
+   static <E extends Enum<E> & azt> azt.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      Function<String, E> $$3 = a($$2, $$1);
+      return new azt.a<>($$2, $$3);
    }
 
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
+   static <T extends azt> Codec<T> b(Supplier<T[]> $$0) {
+      T[] $$1 = (T[])$$0.get();
+      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
+      ToIntFunction<T> $$3 = ac.g(Arrays.asList($$1));
+      return new azt.b<>($$1, $$2, $$3);
    }
 
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
-         return $$0;
+   static <T extends azt> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
+      if ($$0.length > 16) {
+         Map<String, T> $$2 = Arrays.<azt>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
+         return $$1x -> $$1x == null ? null : $$2.get($$1x);
       } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
+         return $$2x -> {
+            for (T $$3 : $$0) {
+               if ($$1.apply($$3.c()).equals($$2x)) {
+                  return $$3;
+               }
+            }
+
+            return null;
+         };
       }
    }
 
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
-      } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
-
-         while ($$1.find()) {
-            $$2++;
+   static Keyable a(final azt[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(azt::c).map($$0::createString);
          }
+      };
+   }
 
-         return $$2;
+   @Deprecated
+   public static class a<E extends Enum<E> & azt> extends azt.b<E> {
+      private final Function<String, E> a;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
+         this.a = $$1;
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.a.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
       }
    }
 
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
-   }
+   public static class b<S extends azt> implements Codec<S> {
+      private final Codec<S> a;
 
-   public static String e(String $$0) {
-      return a($$0, 256, false);
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
-   }
-
-   public static boolean f(String $$0) {
-      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
-   }
-
-   public static String g(String $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(String $$0, boolean $$1) {
-      StringBuilder $$2 = new StringBuilder();
-
-      for (char $$3 : $$0.toCharArray()) {
-         if (a($$3)) {
-            $$2.append($$3);
-         } else if ($$1 && $$3 == '\n') {
-            $$2.append($$3);
-         }
+      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
+         this.a = ayg.a(Codec.stringResolver(azt::c, $$1), ayg.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
       }
 
-      return $$2.toString();
-   }
+      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
 
-   public static boolean a(int $$0) {
-      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
-   }
-
-   public static boolean h(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(azt::a) : true;
+      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
    }
 }

@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class ff extends fz<dxs.a> {
-   private static final Codec<dxs.a> a = azs.a(ff::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class ff extends fz<dxt.a> {
+   private static final Codec<dxt.a> a = azt.a(ff::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static dxs.a[] b() {
-      return Arrays.stream(dxs.a.values()).filter(dxs.a::d).toArray(dxs.a[]::new);
+   private static dxt.a[] b() {
+      return Arrays.stream(dxt.a.values()).filter(dxt.a::d).toArray(dxt.a[]::new);
    }
 
    private ff() {
@@ -18,8 +18,8 @@ public class ff extends fz<dxs.a> {
       return new ff();
    }
 
-   public static dxs.a a(CommandContext<ep> $$0, String $$1) {
-      return (dxs.a)$$0.getArgument($$1, dxs.a.class);
+   public static dxt.a a(CommandContext<ep> $$0, String $$1) {
+      return (dxt.a)$$0.getArgument($$1, dxt.a.class);
    }
 
    @Override

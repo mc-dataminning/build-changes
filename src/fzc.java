@@ -1,75 +1,73 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.minecraft.UserApiService;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fzc extends fyx {
-   final Supplier<gpx> f;
+public final class fzc {
+   private static final int a = 1024;
+   private final fyt b;
+   private final fyz c;
+   private final fyo d;
+   @Nullable
+   private fyy e;
 
-   fzc(UUID $$0, Instant $$1, UUID $$2, Supplier<gpx> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fzc(fyt $$0, fyz $$1, fyo $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public Supplier<gpx> a() {
-      return this.f;
+   public static fzc a(fyz $$0, UserApiService $$1) {
+      fyo $$2 = new fyo(1024);
+      fyt $$3 = fyt.a($$0, $$1);
+      return new fzc($$3, $$0, $$2);
    }
 
-   public fzc c() {
-      fzc $$0 = new fzc(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   public void a(ffe $$0, fnc $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fyy $$4 = this.e.b();
+         $$0.a(
+            new flu(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xo.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xo.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xo.c("gui.abuseReport.draft.edit"),
+               xo.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
+      }
    }
 
-   @Override
-   public fnb a(fnb $$0, fzb $$1) {
-      return new frf($$0, $$1, this);
+   public fyt a() {
+      return this.b;
    }
 
-   public static class a extends fyx.a<fzc> {
-      public a(fzc $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   public fyo b() {
+      return this.d;
+   }
 
-      public a(UUID $$0, Supplier<gpx> $$1, AbuseReportLimits $$2) {
-         super(new fzc(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public boolean a(fyz $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
+   public void a(@Nullable fyy $$0) {
+      this.e = $$0;
+   }
 
-      @Nullable
-      @Override
-      public fyx.b c() {
-         if (this.a.e == null) {
-            return fyx.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyx.b.d : null;
-         }
-      }
+   public boolean c() {
+      return this.e != null;
+   }
 
-      @Override
-      public Either<fyx.c, fyx.b> a(fzb $$0) {
-         fyx.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gpx $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fyx.c(this.a.a, fza.b, $$6));
-         }
-      }
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

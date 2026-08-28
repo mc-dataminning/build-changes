@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gg implements Predicate<dse> {
-   private final dsa a;
-   private final Set<dtd<?>> b;
+public class gg implements Predicate<dsf> {
+   private final dsb a;
+   private final Set<dte<?>> b;
    @Nullable
    private final ur c;
 
-   public gg(dsa $$0, Set<dtd<?>> $$1, @Nullable ur $$2) {
+   public gg(dsb $$0, Set<dte<?>> $$1, @Nullable ur $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dsa a() {
+   public dsb a() {
       return this.a;
    }
 
-   public Set<dtd<?>> b() {
+   public Set<dte<?>> b() {
       return this.b;
    }
 
-   public boolean a(dse $$0) {
-      dsa $$1 = $$0.a();
+   public boolean a(dsf $$0) {
+      dsb $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dtd<?> $$2 : this.b) {
+         for (dte<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class gg implements Predicate<dse> {
          if (this.c == null) {
             return true;
          } else {
-            dpf $$3 = $$0.b();
+            dpg $$3 = $$0.b();
             return $$3 != null && vg.a(this.c, $$3.b($$0.c().H_()), true);
          }
       }
    }
 
    public boolean a(are $$0, iz $$1) {
-      return this.a(new dse($$0, $$1, false));
+      return this.a(new dsf($$0, $$1, false));
    }
 
    public boolean a(are $$0, iz $$1, int $$2) {
-      dsa $$3 = dex.b(this.a, $$0, $$1);
+      dsb $$3 = dey.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class gg implements Predicate<dse> {
          return false;
       } else {
          if (this.c != null) {
-            dpf $$4 = $$0.c_($$1);
+            dpg $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.c(this.c, $$0.H_());
             }

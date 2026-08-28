@@ -15,7 +15,7 @@ public enum atx {
       return this == c;
    }
 
-   public static atx a(ayp<Integer> $$0, int $$1) {
+   public static atx a(ayq<Integer> $$0, int $$1) {
       if ($$0.b() < $$1) {
          return a;
       } else {

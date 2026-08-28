@@ -1,89 +1,65 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class fyx {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected fyz e;
+public class fyx extends fyy {
+   private final String f;
 
-   public fyx(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   fyx(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   public String a() {
+      return this.f;
    }
 
-   public abstract fyx b();
+   public fyx c() {
+      fyx $$0 = new fyx(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
+   }
 
-   public abstract fnb a(fnb var1, fzb var2);
+   @Override
+   public fnc a(fnc $$0, fzc $$1) {
+      return new frd($$0, $$1, this);
+   }
 
-   public abstract static class a<R extends fyx> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static class a extends fyy.a<fyx> {
+      public a(fyx $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public R e() {
-         return this.a;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fyx(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
       }
 
       @Nullable
-      public fyz h() {
-         return this.a.e;
+      @Override
+      public fyy.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyy.b.d : null;
       }
 
-      public void a(fyz $$0) {
-         this.a.e = $$0;
+      @Override
+      public Either<fyy.c, fyy.b> a(fzc $$0) {
+         fyy.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fyy.c(this.a.a, fzb.c, $$3));
+         }
       }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fyx.b c();
-
-      public abstract Either<fyx.c, fyx.b> a(fzb var1);
-   }
-
-   public static record b(xo e) {
-      public static final fyx.b a = new fyx.b(xo.c("gui.abuseReport.send.no_reason"));
-      public static final fyx.b b = new fyx.b(xo.c("gui.chatReport.send.no_reported_messages"));
-      public static final fyx.b c = new fyx.b(xo.c("gui.chatReport.send.too_many_messages"));
-      public static final fyx.b d = new fyx.b(xo.c("gui.abuseReport.send.comment_too_long"));
-
-      public fin a() {
-         return fin.a(this.e);
-      }
-
-      public xo b() {
-         return this.e;
-      }
-   }
-
-   public static record c(UUID a, fza b, AbuseReport c) {
    }
 }

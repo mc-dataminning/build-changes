@@ -1,8 +1,7 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dzj extends dzk {
+class dzj extends dzl {
    public static final MapCodec<dzj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, dzj::new));
 
    public dzj(kd $$0) {
@@ -10,12 +9,12 @@ public class dzj extends dzk {
    }
 
    @Override
-   protected boolean a(dsa $$0) {
-      return $$0.e();
+   protected boolean a(dsb $$0) {
+      return $$0.r();
    }
 
    @Override
-   public dza<?> a() {
-      return dza.e;
+   public dzb<?> a() {
+      return dzb.f;
    }
 }

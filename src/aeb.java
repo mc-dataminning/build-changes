@@ -36,7 +36,7 @@ public abstract class aeb implements zv<ach> {
    }
 
    @Nullable
-   public bss a(dbw $$0) {
+   public bst a(dbx $$0) {
       return $$0.a(this.a);
    }
 

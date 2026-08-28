@@ -1,26 +1,69 @@
 import javax.annotation.Nullable;
 
-public interface cij {
-   boolean a();
+public class cij extends cic {
+   @Nullable
+   private evq b;
 
-   void b();
+   public cij(cia $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void b() {
+      evq $$0 = this.a.F(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.du();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dA();
 
-   void a(chy var1, iz var2, brl var3, @Nullable cmv var4);
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azg $$5 = this.a.el();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         evq $$9 = this.a.ds();
+         this.a.dP().a(li.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
+      }
+   }
 
-   void d();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = evq.c(this.a.dP().a(dxt.a.f, eaw.a(this.a.s())));
+      }
 
-   void e();
+      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
+         this.a.gn().b(ciq.f).j();
+         this.a.gn().a(ciq.g);
+      }
+   }
 
-   float f();
+   @Override
+   public float f() {
+      return 1.5F;
+   }
 
-   float h();
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
 
-   cip<? extends cij> i();
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
    @Nullable
-   evp g();
+   @Override
+   public evq g() {
+      return this.b;
+   }
 
-   float a(brl var1, float var2);
+   @Override
+   public ciq<cij> i() {
+      return ciq.d;
+   }
 }

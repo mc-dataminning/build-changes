@@ -7,7 +7,7 @@ public interface oo {
 
    oo a(@Nullable String var1);
 
-   cui a();
+   cuj a();
 
    void a(oq var1, ale var2);
 
@@ -25,16 +25,16 @@ public interface oo {
       }
    }
 
-   static ale a(dbv $$0) {
+   static ale a(dbw $$0) {
       return lp.h.b($$0.r());
    }
 
-   static cyj a(op $$0) {
+   static cyk a(op $$0) {
       return switch ($$0) {
-         case a -> cyj.a;
-         case e, f -> cyj.c;
-         case c -> cyj.b;
-         default -> cyj.d;
+         case a -> cyk.a;
+         case e, f -> cyk.c;
+         case c -> cyk.b;
+         default -> cyk.d;
       };
    }
 }

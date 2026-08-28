@@ -1,20 +1,18 @@
-public class glt extends gkb<clz, fwk<clz>> {
-   private static final ale a = new ale("textures/entity/warden/warden.png");
-   private static final ale i = new ale("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ale j = new ale("textures/entity/warden/warden_heart.png");
-   private static final ale k = new ale("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ale l = new ale("textures/entity/warden/warden_pulsating_spots_2.png");
+public class glt extends gkc<cmp, fwk<cmp>> {
+   private static final ale a = new ale("textures/entity/wandering_trader.png");
 
-   public glt(giv.a $$0) {
-      super($$0, new fwk<>($$0.a(fwx.bR)), 0.9F);
-      this.a(new gnt<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fwk::e));
-      this.a(new gnt<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayx.b($$2 * 0.045F) * 0.25F), fwk::f));
-      this.a(new gnt<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayx.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fwk::f));
-      this.a(new gnt<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fwk::c));
-      this.a(new gnt<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fwk::d));
+   public glt(giw.a $$0) {
+      super($$0, new fwk<>($$0.a(fwy.bS)), 0.5F);
+      this.a(new gmn<>(this, $$0.f(), $$0.d()));
+      this.a(new gmm<>(this, $$0.d()));
    }
 
-   public ale a(clz $$0) {
+   public ale a(cmp $$0) {
       return a;
+   }
+
+   protected void a(cmp $$0, ezx $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

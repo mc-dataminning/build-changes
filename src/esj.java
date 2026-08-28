@@ -1,41 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
 
-public class esj extends ers {
+public class esj extends ert {
    public static final MapCodec<esj> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  err.e.a(cxg.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayf.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+                  cxh.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cxh.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cxh.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, esj::new)
    );
-   public static final cxh b = new cxh(0, List.of());
-   private final Optional<err.e<cxg>> c;
-   private final Optional<Integer> d;
+   public static final cxh b = new cxh(cxh.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cxh.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   protected esj(List<etq> $$0, Optional<err.e<cxg>> $$1, Optional<Integer> $$2) {
+   public esj(List<etr> $$0, Optional<cxh.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   protected cun a(cun $$0, eqg $$1) {
+   protected cuo a(cuo $$0, eqh $$1) {
       $$0.a(km.T, b, this::a);
       return $$0;
    }
 
    private cxh a(cxh $$0) {
-      return new cxh(this.d.orElseGet($$0::a), this.c.<List<cxg>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+      return new cxh(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
    @Override
-   public eru<esj> b() {
-      return erv.K;
+   public erv<esj> b() {
+      return erw.L;
    }
 }

@@ -35,7 +35,7 @@ public class np implements lw {
       return new np($$0).a(atp.b, new atp($$1, t.a.a(atc.b), Optional.empty()));
    }
 
-   public static np a(ly $$0, xo $$1, cpj $$2) {
+   public static np a(ly $$0, xo $$1, cpk $$2) {
       return a($$0, $$1).a(asw.a, new asw($$2));
    }
 }

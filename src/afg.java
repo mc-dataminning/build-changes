@@ -4,7 +4,7 @@ public class afg implements zv<ach> {
    public static final zm<wl, afg> a = zv.a(afg::a, afg::new);
    private final int b;
 
-   public afg(bss $$0) {
+   public afg(bst $$0) {
       this.b = $$0.al();
    }
 
@@ -26,7 +26,7 @@ public class afg implements zv<ach> {
    }
 
    @Nullable
-   public bss a(dbw $$0) {
+   public bst a(dbx $$0) {
       return $$0.a(this.b);
    }
 }

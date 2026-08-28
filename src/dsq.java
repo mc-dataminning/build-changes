@@ -1,133 +1,101 @@
-public class dsq {
-   public static final dsr a = dsr.a("attached");
-   public static final dsr b = dsr.a("bottom");
-   public static final dsr c = dsr.a("conditional");
-   public static final dsr d = dsr.a("disarmed");
-   public static final dsr e = dsr.a("drag");
-   public static final dsr f = dsr.a("enabled");
-   public static final dsr g = dsr.a("extended");
-   public static final dsr h = dsr.a("eye");
-   public static final dsr i = dsr.a("falling");
-   public static final dsr j = dsr.a("hanging");
-   public static final dsr k = dsr.a("has_bottle_0");
-   public static final dsr l = dsr.a("has_bottle_1");
-   public static final dsr m = dsr.a("has_bottle_2");
-   public static final dsr n = dsr.a("has_record");
-   public static final dsr o = dsr.a("has_book");
-   public static final dsr p = dsr.a("inverted");
-   public static final dsr q = dsr.a("in_wall");
-   public static final dsr r = dsr.a("lit");
-   public static final dsr s = dsr.a("locked");
-   public static final dsr t = dsr.a("occupied");
-   public static final dsr u = dsr.a("open");
-   public static final dsr v = dsr.a("persistent");
-   public static final dsr w = dsr.a("powered");
-   public static final dsr x = dsr.a("short");
-   public static final dsr y = dsr.a("signal_fire");
-   public static final dsr z = dsr.a("snowy");
-   public static final dsr A = dsr.a("triggered");
-   public static final dsr B = dsr.a("unstable");
-   public static final dsr C = dsr.a("waterlogged");
-   public static final dsr D = dsr.a("berries");
-   public static final dsr E = dsr.a("bloom");
-   public static final dsr F = dsr.a("shrieking");
-   public static final dsr G = dsr.a("can_summon");
-   public static final dsy<je.a> H = dsy.a("axis", je.a.class, je.a.a, je.a.c);
-   public static final dsy<je.a> I = dsy.a("axis", je.a.class);
-   public static final dsr J = dsr.a("up");
-   public static final dsr K = dsr.a("down");
-   public static final dsr L = dsr.a("north");
-   public static final dsr M = dsr.a("east");
-   public static final dsr N = dsr.a("south");
-   public static final dsr O = dsr.a("west");
-   public static final dsu P = dsu.a("facing", je.c, je.f, je.d, je.e, je.b, je.a);
-   public static final dsu Q = dsu.a("facing", $$0 -> $$0 != je.b);
-   public static final dsu R = dsu.a("facing", je.c.a);
-   public static final dta S = dta.a("flower_amount", 1, 4);
-   public static final dsy<jg> T = dsy.a("orientation", jg.class);
-   public static final dsy<dsl> U = dsy.a("face", dsl.class);
-   public static final dsy<dso> V = dsy.a("attachment", dso.class);
-   public static final dsy<dtm> W = dsy.a("east", dtm.class);
-   public static final dsy<dtm> X = dsy.a("north", dtm.class);
-   public static final dsy<dtm> Y = dsy.a("south", dtm.class);
-   public static final dsy<dtm> Z = dsy.a("west", dtm.class);
-   public static final dsy<dtf> aa = dsy.a("east", dtf.class);
-   public static final dsy<dtf> ab = dsy.a("north", dtf.class);
-   public static final dsy<dtf> ac = dsy.a("south", dtf.class);
-   public static final dsy<dtf> ad = dsy.a("west", dtf.class);
-   public static final dsy<dsw> ae = dsy.a("half", dsw.class);
-   public static final dsy<dsz> af = dsy.a("half", dsz.class);
-   public static final dsy<dte> ag = dsy.a("shape", dte.class);
-   public static final dsy<dte> ah = dsy.a("shape", dte.class, $$0 -> $$0 != dte.j && $$0 != dte.i && $$0 != dte.g && $$0 != dte.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dta aq = dta.a("age", 0, 1);
-   public static final dta ar = dta.a("age", 0, 2);
-   public static final dta as = dta.a("age", 0, 3);
-   public static final dta at = dta.a("age", 0, 4);
-   public static final dta au = dta.a("age", 0, 5);
-   public static final dta av = dta.a("age", 0, 7);
-   public static final dta aw = dta.a("age", 0, 15);
-   public static final dta ax = dta.a("age", 0, 25);
-   public static final dta ay = dta.a("bites", 0, 6);
-   public static final dta az = dta.a("candles", 1, 4);
-   public static final dta aA = dta.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dta aC = dta.a("distance", 1, 7);
-   public static final dta aD = dta.a("eggs", 1, 4);
-   public static final dta aE = dta.a("hatch", 0, 2);
-   public static final dta aF = dta.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dta aK = dta.a("level", 1, 3);
-   public static final dta aL = dta.a("level", 0, 8);
-   public static final dta aM = dta.a("level", 1, 8);
-   public static final dta aN = dta.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dta aP = dta.a("level", 0, 15);
-   public static final dta aQ = dta.a("moisture", 0, 7);
-   public static final dta aR = dta.a("note", 0, 24);
-   public static final dta aS = dta.a("pickles", 1, 4);
-   public static final dta aT = dta.a("power", 0, 15);
-   public static final dta aU = dta.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dta aW = dta.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dta aZ = dta.a("charges", 0, 4);
-   public static final dta ba = dta.a("rotation", 0, dtg.a());
-   public static final dsy<dsn> bb = dsy.a("part", dsn.class);
-   public static final dsy<dss> bc = dsy.a("type", dss.class);
-   public static final dsy<dst> bd = dsy.a("mode", dst.class);
-   public static final dsy<dsv> be = dsy.a("hinge", dsv.class);
-   public static final dsy<dtb> bf = dsy.a("instrument", dtb.class);
-   public static final dsy<dtc> bg = dsy.a("type", dtc.class);
-   public static final dsy<dti> bh = dsy.a("type", dti.class);
-   public static final dsy<dtj> bi = dsy.a("shape", dtj.class);
-   public static final dsy<dtk> bj = dsy.a("mode", dtk.class);
-   public static final dsy<dsm> bk = dsy.a("leaves", dsm.class);
-   public static final dsy<dtl> bl = dsy.a("tilt", dtl.class);
-   public static final dsu bm = dsu.a("vertical_direction", je.b, je.a);
-   public static final dsy<dsx> bn = dsy.a("thickness", dsx.class);
-   public static final dsy<dth> bo = dsy.a("sculk_sensor_phase", dth.class);
-   public static final dsr bp = dsr.a("slot_0_occupied");
-   public static final dsr bq = dsr.a("slot_1_occupied");
-   public static final dsr br = dsr.a("slot_2_occupied");
-   public static final dsr bs = dsr.a("slot_3_occupied");
-   public static final dsr bt = dsr.a("slot_4_occupied");
-   public static final dsr bu = dsr.a("slot_5_occupied");
-   public static final dta bv = dta.a("dusted", 0, 3);
-   public static final dsr bw = dsr.a("cracked");
-   public static final dsr bx = dsr.a("crafting");
-   public static final dsy<drg> by = dsy.a("trial_spawner_state", drg.class);
-   public static final dsy<drn> bz = dsy.a("vault_state", drn.class);
-   public static final dsr bA = dsr.a("ominous");
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
+
+public record dsq(String r, boolean s, boolean t, boolean u, dsq.a v, dml w, avy x, avy y, avy z, avy A, avy B, avy C, avy D, avy E) {
+   private static final Map<String, dsq> F = new Object2ObjectArrayMap();
+   public static final Codec<dsq> a = Codec.stringResolver(dsq::b, F::get);
+   public static final dsq b = a(new dsq("iron", false, false, false, dsq.a.a, dml.g, avz.nm, avz.nn, avz.nu, avz.nv, avz.oI, avz.oJ, avz.zb, avz.zc));
+   public static final dsq c = a(new dsq("copper", true, true, false, dsq.a.a, dml.aj, avz.fN, avz.fO, avz.fU, avz.fV, avz.oI, avz.oJ, avz.zb, avz.zc));
+   public static final dsq d = a(new dsq("gold", false, true, false, dsq.a.a, dml.g, avz.nm, avz.nn, avz.nu, avz.nv, avz.oI, avz.oJ, avz.zb, avz.zc));
+   public static final dsq e = a(new dsq("stone", true, true, false, dsq.a.b, dml.f, avz.nm, avz.nn, avz.nu, avz.nv, avz.zg, avz.zh, avz.zb, avz.zc));
+   public static final dsq f = a(
+      new dsq("polished_blackstone", true, true, false, dsq.a.b, dml.f, avz.nm, avz.nn, avz.nu, avz.nv, avz.zg, avz.zh, avz.zb, avz.zc)
+   );
+   public static final dsq g = a(new dsq("oak"));
+   public static final dsq h = a(new dsq("spruce"));
+   public static final dsq i = a(new dsq("birch"));
+   public static final dsq j = a(new dsq("acacia"));
+   public static final dsq k = a(new dsq("cherry", true, true, true, dsq.a.a, dml.aU, avz.eE, avz.eF, avz.eG, avz.eH, avz.eK, avz.eL, avz.eI, avz.eJ));
+   public static final dsq l = a(new dsq("jungle"));
+   public static final dsq m = a(new dsq("dark_oak"));
+   public static final dsq n = a(new dsq("crimson", true, true, true, dsq.a.a, dml.aT, avz.qL, avz.qM, avz.qN, avz.qO, avz.qR, avz.qS, avz.qP, avz.qQ));
+   public static final dsq o = a(new dsq("warped", true, true, true, dsq.a.a, dml.aT, avz.qL, avz.qM, avz.qN, avz.qO, avz.qR, avz.qS, avz.qP, avz.qQ));
+   public static final dsq p = a(new dsq("mangrove"));
+   public static final dsq q = a(new dsq("bamboo", true, true, true, dsq.a.a, dml.aS, avz.bo, avz.bp, avz.bq, avz.br, avz.bu, avz.bv, avz.bs, avz.bt));
+
+   public dsq(String $$0) {
+      this($$0, true, true, true, dsq.a.a, dml.b, avz.CR, avz.CS, avz.CT, avz.CU, avz.CX, avz.CY, avz.CV, avz.CW);
+   }
+
+   private static dsq a(dsq $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
+   }
+
+   public static Stream<dsq> a() {
+      return F.values().stream();
+   }
+
+   public String b() {
+      return this.r;
+   }
+
+   public boolean c() {
+      return this.s;
+   }
+
+   public boolean d() {
+      return this.t;
+   }
+
+   public boolean e() {
+      return this.u;
+   }
+
+   public dsq.a f() {
+      return this.v;
+   }
+
+   public dml g() {
+      return this.w;
+   }
+
+   public avy h() {
+      return this.x;
+   }
+
+   public avy i() {
+      return this.y;
+   }
+
+   public avy j() {
+      return this.z;
+   }
+
+   public avy k() {
+      return this.A;
+   }
+
+   public avy l() {
+      return this.B;
+   }
+
+   public avy m() {
+      return this.C;
+   }
+
+   public avy n() {
+      return this.D;
+   }
+
+   public avy o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
 }

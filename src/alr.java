@@ -25,7 +25,7 @@ public class alr extends aus {
       this.e = $$0;
    }
 
-   protected void a(Map<ale, JsonElement> $$0, auo $$1, bng $$2) {
+   protected void a(Map<ale, JsonElement> $$0, auo $$1, bnh $$2) {
       alc<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
       Builder<ale, af> $$4 = ImmutableMap.builder();
       $$0.forEach(($$2x, $$3x) -> {
@@ -51,7 +51,7 @@ public class alr extends aus {
    }
 
    private void a(ale $$0, ae $$1) {
-      azd.a $$2 = new azd.a();
+      aze.a $$2 = new aze.a();
       $$1.a($$2, this.e.b());
       Multimap<String, String> $$3 = $$2.a();
       if (!$$3.isEmpty()) {

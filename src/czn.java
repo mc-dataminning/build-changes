@@ -1,15 +1,15 @@
-public class czn extends czh {
-   public czn(String $$0, cyq $$1, cun $$2) {
-      super(cyy.f, cyx.t, $$0, $$1, $$2);
+public class czn extends cyd {
+   public czn(String $$0, cyj $$1, cyr $$2, cuo $$3, float $$4, int $$5) {
+      super(cyz.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(bql $$0, dbw $$1) {
-      return this.a.a($$0.a(0));
+   public cuo g() {
+      return new cuo(dfa.nV);
    }
 
    @Override
-   public cun g() {
-      return new cun(dez.oc);
+   public cyy<?> ao_() {
+      return cyy.r;
    }
 }

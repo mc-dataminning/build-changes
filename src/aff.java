@@ -2,7 +2,7 @@ public class aff implements zv<ach> {
    public static final zm<wl, aff> a = zv.a(aff::a, aff::new);
    private final int b;
 
-   public aff(dtr $$0) {
+   public aff(dts $$0) {
       this.b = $$0.r();
    }
 

@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class wc {
    private final AtomicInteger a = new AtomicInteger();
-   private final bls b;
+   private final blt b;
 
-   public wc(bls $$0) {
+   public wc(blt $$0) {
       this.b = $$0;
    }
 

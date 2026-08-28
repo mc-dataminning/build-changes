@@ -119,14 +119,14 @@ public class ang {
    }
 
    static enum a {
-      a("points", cmv::d, ($$0, $$1) -> {
+      a("points", cmw::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gl()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> ayx.d($$0.cq * (float)$$0.gl())),
+      }, $$0 -> ayy.d($$0.cq * (float)$$0.gl())),
       b("levels", arf::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;

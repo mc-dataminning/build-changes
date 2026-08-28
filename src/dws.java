@@ -1,104 +1,70 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class dws implements dww {
-   private final List<dwv> b = Lists.newArrayList();
-   private final Set<dwv> c = Sets.newHashSet();
-   private final List<dwv> d = Lists.newArrayList();
-   private boolean e;
-   private final are f;
-   private final int g;
-   private final dws.a h;
+public class dws implements dwy {
+   public static final MapCodec<dws> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kc.a.fieldOf("source_entity").forGetter(dws::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dws(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final zm<ByteBuf, dws> b = zm.a(zk.g, dws::c, zk.i, $$0 -> $$0.f, ($$0, $$1) -> new dws(Either.right(Either.right($$0)), $$1));
+   private Either<bst, Either<UUID, Integer>> e;
+   private final float f;
 
-   public dws(are $$0, int $$1, dws.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public dws(bst $$0, float $$1) {
+      this(Either.left($$0), $$1);
+   }
+
+   private dws(Either<bst, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public boolean a() {
-      return this.b.isEmpty();
+   public Optional<evq> a(dbx $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.e.left().map($$0x -> $$0x.dn().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dbx $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bst)$$1.map($$1x -> $$0 instanceof are $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bst::cz, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bst::al, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
    @Override
-   public void a(dwv $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
-
-      ags.a(this.f, $$0);
+   public dwz<dws> a() {
+      return dwz.b;
    }
 
-   @Override
-   public void b(dwv $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
+   public static class a implements dwz<dws> {
+      @Override
+      public MapCodec<dws> a() {
+         return dws.a;
       }
 
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
+      @Override
+      public zm<ByteBuf, dws> b() {
+         return dws.b;
       }
-   }
-
-   @Override
-   public boolean a(ji<dwt> $$0, evp $$1, dwt.a $$2, dww.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<dwv> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            dwv $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<evp> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
-         }
-      } finally {
-         this.e = false;
-      }
-
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
-      }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<evp> a(are $$0, evp $$1, dwv $$2) {
-      Optional<evp> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = iz.a($$3.get()).j(iz.a($$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
    }
 }

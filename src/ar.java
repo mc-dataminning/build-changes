@@ -5,7 +5,7 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cun.d.fieldOf("icon").forGetter(ar::c),
+               cuo.d.fieldOf("icon").forGetter(ar::c),
                xq.a.fieldOf("title").forGetter(ar::a),
                xq.a.fieldOf("description").forGetter(ar::b),
                ale.a.optionalFieldOf("background").forGetter(ar::d),
@@ -19,7 +19,7 @@ public class ar {
    public static final zm<wz, ar> b = zm.a(ar::a, ar::b);
    private final xo c;
    private final xo d;
-   private final cun e;
+   private final cuo e;
    private final Optional<ale> f;
    private final al g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(cun $$0, xo $$1, xo $$2, Optional<ale> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cuo $$0, xo $$1, xo $$2, Optional<ale> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class ar {
       return this.d;
    }
 
-   public cun c() {
+   public cuo c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class ar {
    private void a(wz $$0) {
       xq.d.encode($$0, this.c);
       xq.d.encode($$0, this.d);
-      cun.i.encode($$0, this.e);
+      cuo.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class ar {
    private static ar b(wz $$0) {
       xo $$1 = xq.d.decode($$0);
       xo $$2 = xq.d.decode($$0);
-      cun $$3 = cun.i.decode($$0);
+      cuo $$3 = cuo.i.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
       Optional<ale> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();

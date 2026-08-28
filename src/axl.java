@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class axl<T> extends AbstractList<T> implements ayt<T> {
+public class axl<T> extends AbstractList<T> implements ayu<T> {
    private static final int a = 1;
    private Object[] b;
    private int c;
@@ -211,7 +211,7 @@ public class axl<T> extends AbstractList<T> implements ayt<T> {
    }
 
    @Override
-   public ayt<T> b() {
+   public ayu<T> b() {
       return new axl.b(this);
    }
 
@@ -310,7 +310,7 @@ public class axl<T> extends AbstractList<T> implements ayt<T> {
       }
    }
 
-   class b extends AbstractList<T> implements ayt<T> {
+   class b extends AbstractList<T> implements ayu<T> {
       private final axl<T> b;
 
       public b(final axl<T> $$0) {
@@ -318,7 +318,7 @@ public class axl<T> extends AbstractList<T> implements ayt<T> {
       }
 
       @Override
-      public ayt<T> b() {
+      public ayu<T> b() {
          return this.b;
       }
 

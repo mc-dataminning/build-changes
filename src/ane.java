@@ -36,19 +36,19 @@ public class ane {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1, ji<czy> $$2, int $$3) throws CommandSyntaxException {
-      czy $$4 = $$2.a();
+   private static int a(ep $$0, Collection<? extends bst> $$1, ji<czz> $$2, int $$3) throws CommandSyntaxException {
+      czz $$4 = $$2.a();
       if ($$3 > $$4.g()) {
          throw d.create($$3, $$4.g());
       } else {
          int $$5 = 0;
 
-         for (bss $$6 : $$1) {
-            if ($$6 instanceof btn) {
-               btn $$7 = (btn)$$6;
-               cun $$8 = $$7.eX();
+         for (bst $$6 : $$1) {
+            if ($$6 instanceof bto) {
+               bto $$7 = (bto)$$6;
+               cuo $$8 = $$7.eX();
                if (!$$8.e()) {
-                  if ($$4.b($$8) && czz.a(czz.b($$8).a(), $$4)) {
+                  if ($$4.b($$8) && daa.a(daa.b($$8).a(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

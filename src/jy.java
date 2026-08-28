@@ -68,13 +68,13 @@ public class jy {
    }
 
    private static jk.a a(jy.m $$0, jw $$1, Stream<jk.b<?>> $$2) {
-      record a<T>(jk.b<T> a, alc.a<T> b) {
+      record a<T>(jk.b<T> a, alc.b<T> b) {
          public static <T> a<T> a(jk.b<T> $$0) {
-            return new a<>(new jy.d<>($$0, $$0), alc.a.a($$0));
+            return new a<>(new jy.d<>($$0, $$0), alc.b.a($$0));
          }
 
          public static <T> a<T> a(jy.m $$0, jk.b<T> $$1) {
-            return new a<>(new jy.d<>($$0.a(), $$1), new alc.a<>($$0.a(), $$1, $$1.g()));
+            return new a<>(new jy.d<>($$0.a(), $$1), new alc.b<>($$0.a(), $$1, $$1.g()));
          }
       }
 
@@ -98,9 +98,9 @@ public class jy {
 
          @Override
          public <V> alc<V> a(DynamicOps<V> $$0) {
-            return alc.a($$0, new alc.b() {
+            return alc.a($$0, new alc.c() {
                @Override
-               public <T> Optional<alc.a<T>> a(ald<? extends jv<? extends T>> $$0) {
+               public <T> Optional<alc.b<T>> a(ald<? extends jv<? extends T>> $$0) {
                   return c($$0).map(a::b);
                }
             });

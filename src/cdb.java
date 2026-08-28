@@ -1,43 +1,50 @@
-public class cdb extends ccz {
-   private boolean p;
+import javax.annotation.Nullable;
 
-   public cdb(btp $$0, dbw $$1) {
+public class cdb extends ccz {
+   @Nullable
+   private iz p;
+
+   public cdb(btq $$0, dbx $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eoj a(int $$0) {
-      this.p = this.a.ak() == bsy.y;
-      this.o = new eon(this.p);
-      return new eoj(this.o, $$0);
+   public eoi a(iz $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bi();
+   public eoi a(bst $$0, int $$1) {
+      this.p = $$0.dp();
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected evp b() {
-      return new evp(this.a.du(), this.a.e(0.5), this.a.dA());
+   public boolean a(bst $$0, double $$1) {
+      eoi $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dp();
+         this.d = $$1;
+         return true;
+      }
    }
 
    @Override
-   protected double a(evp $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(evp $$0, evp $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(iz $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dn(), (double)this.a.dj())
+               && (!(this.a.dw() > (double)this.p.v()) || !iz.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

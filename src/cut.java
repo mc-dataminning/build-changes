@@ -1,19 +1,50 @@
 import java.util.List;
 
-public class cut extends cwb {
-   public cut(cui.a $$0) {
+public class cut extends cuj {
+   public cut(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
-      cwo $$4 = $$0.a(km.F, cwo.a);
-      $$4.a($$2::add, 0.25F, $$1.b());
+   public bqt a(cyb $$0) {
+      dbx $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsb $$3 = $$1.a_($$2);
+      if ($$3.a(awo.S)) {
+         cmw $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bqt.a($$1.B);
+      } else {
+         return bqt.e;
+      }
    }
 
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.nX, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static bqt a(cmw $$0, dbx $$1, iz $$2) {
+      cja $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      evl $$8 = new evl((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<btq> $$9 = $$1.a(btq.class, $$8, $$1x -> $$1x.gf() == $$0);
+
+      for (btq $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cja.b($$1, $$2);
+            $$3.C();
+         }
+
+         $$10.b($$3, true);
+      }
+
+      if (!$$9.isEmpty()) {
+         $$1.a(dwu.b, $$2, dwu.a.a($$0));
+         return bqt.a;
+      } else {
+         return bqt.e;
+      }
    }
 }

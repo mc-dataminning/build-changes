@@ -15,7 +15,7 @@ public class io {
    public static final SuggestionProvider<ep> c = a(new ale("available_sounds"), ($$0, $$1) -> eu.a(((eu)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ep> d = a(
       new ale("summonable_entities"),
-      ($$0, $$1) -> eu.a(lp.g.s().filter($$1x -> $$1x.a(((eu)$$0.getSource()).w()) && $$1x.c()), $$1, bsy::a, $$0x -> xo.c(ac.a("entity", bsy.a($$0x))))
+      ($$0, $$1) -> eu.a(lp.g.s().filter($$1x -> $$1x.a(((eu)$$0.getSource()).w()) && $$1x.c()), $$1, bsz::a, $$0x -> xo.c(ac.a("entity", bsz.a($$0x))))
    );
 
    public static <S extends eu> SuggestionProvider<S> a(ale $$0, SuggestionProvider<eu> $$1) {

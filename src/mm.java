@@ -28,11 +28,11 @@ public class mm implements lw {
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        dsb<dex, dsa> $$4x = ((dex)$$2x.a()).l();
+                        dsc<dey, dsb> $$4x = ((dey)$$2x.a()).l();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (dtd<?> $$6 : $$4x.d()) {
+                           for (dte<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class mm implements lw {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           dsa $$10 = (dsa)var13.next();
+                           dsb $$10 = (dsb)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (dtd<?> $$13 : $$4x.d()) {
+                           for (dte<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ac.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class mm implements lw {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dex.i($$10));
-                           if ($$10 == ((dex)$$2x.a()).o()) {
+                           $$11.addProperty("id", dey.i($$10));
+                           if ($$10 == ((dey)$$2x.a()).o()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class mm implements lw {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dey.a
+                        JsonElement $$15 = (JsonElement)dez.a
                            .codec()
-                           .encodeStart($$4, (dex)$$2x.a())
+                           .encodeStart($$4, (dey)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

@@ -1,45 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bpt extends bpv {
-   public static final bpt a = new bpt(0.0F);
-   public static final MapCodec<bpt> b = Codec.FLOAT.fieldOf("value").xmap(bpt::a, bpt::d);
-   private final float d;
+public class bpt extends bpy {
+   public static final MapCodec<bpt> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bpt::new)
+      )
+      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
+   private final float b;
+   private final float f;
+   private final int g;
+   private final int h;
 
-   public static bpt a(float $$0) {
-      return $$0 == 0.0F ? a : new bpt($$0);
+   public static bpt a(float $$0, float $$1, int $$2, int $$3) {
+      return new bpt($$0, $$1, $$2, $$3);
    }
 
-   private bpt(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(azf $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d + 1.0F;
+   private bpt(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
    }
 
    @Override
-   public bpw<?> c() {
-      return bpw.a;
+   public int a(azg $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
+
+   public static int a(azg $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)ayy.a(ayy.c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   @Override
+   public int a() {
+      return this.g;
+   }
+
+   @Override
+   public int b() {
+      return this.h;
+   }
+
+   @Override
+   public bpz<?> c() {
+      return bpz.f;
    }
 
    @Override
    public String toString() {
-      return Float.toString(this.d);
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

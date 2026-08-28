@@ -37,8 +37,8 @@ public class atw {
             }
 
             asw $$5 = $$3.a(asw.a);
-            cpj $$6 = $$5 != null ? $$5.a() : cpj.a();
-            ayp<Integer> $$7 = a($$0.a(), $$4);
+            cpk $$6 = $$5 != null ? $$5.a() : cpk.a();
+            ayq<Integer> $$7 = a($$0.a(), $$4);
             atx $$8 = atx.a($$7, $$2);
             asy $$9 = $$3.a(asy.a);
             List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
@@ -52,15 +52,15 @@ public class atw {
       }
    }
 
-   private static ayp<Integer> a(String $$0, atp $$1) {
+   private static ayq<Integer> a(String $$0, atp $$1) {
       int $$2 = $$1.b();
       if ($$1.c().isEmpty()) {
-         return new ayp<>($$2);
+         return new ayq<>($$2);
       } else {
-         ayp<Integer> $$3 = $$1.c().get();
+         ayq<Integer> $$3 = $$1.c().get();
          if (!$$3.a($$2)) {
             a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new ayp<>($$2);
+            return new ayq<>($$2);
          } else {
             return $$3;
          }
@@ -87,7 +87,7 @@ public class atw {
       return this.d.b();
    }
 
-   public cpj e() {
+   public cpk e() {
       return this.d.c();
    }
 
@@ -133,7 +133,7 @@ public class atw {
       return this.b.hashCode();
    }
 
-   public static record a(xo a, atx b, cpj c, List<String> d) {
+   public static record a(xo a, atx b, cpk c, List<String> d) {
    }
 
    public static enum b {

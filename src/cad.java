@@ -1,72 +1,95 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+public abstract class cad extends cam {
+   protected btq d;
+   protected iz e = iz.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class cad extends cal {
-   private static final int a = 40;
-   private static final Predicate<dsa> b = dsj.a(dez.bt);
-   private final btp c;
-   private final dbw d;
-   private int e;
-
-   public cad(btp $$0) {
-      this.c = $$0;
-      this.d = $$0.dP();
-      this.a(EnumSet.of(cal.a.a, cal.a.b, cal.a.c));
+   public cad(btq $$0) {
+      this.d = $$0;
+      if (!cek.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   @Override
-   public boolean a() {
-      if (this.c.el().a(this.c.p_() ? 50 : 1000) != 0) {
+   protected boolean h() {
+      if (!this.f) {
          return false;
       } else {
-         iz $$0 = this.c.dp();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dez.i);
+         dsb $$0 = this.d.dP().a_(this.e);
+         if (!($$0.b() instanceof dhe)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dhe.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dsb $$1 = this.d.dP().a_(this.e);
+         if ($$1.b() instanceof dhe) {
+            ((dhe)$$1.b()).a(this.d, this.d.dP(), $$1, this.e, $$0);
+         }
       }
    }
 
    @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.K().n();
-   }
+   public boolean a() {
+      if (!cek.a(this.d)) {
+         return false;
+      } else if (!this.d.Q) {
+         return false;
+      } else {
+         ccz $$0 = (ccz)this.d.K();
+         eoi $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eog $$3 = $$1.a($$2);
+               this.e = new iz($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dw(), (double)this.e.w()) > 2.25)) {
+                  this.f = dhe.a(this.d.dP(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
 
-   @Override
-   public void d() {
-      this.e = 0;
+            this.e = this.d.dp().c();
+            this.f = dhe.a(this.d.dP(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return !this.a;
    }
 
-   public int h() {
-      return this.e;
+   @Override
+   public void c() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.du());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dA());
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         iz $$0 = this.c.dp();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.ab().b(dbs.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.O();
-         } else {
-            iz $$1 = $$0.d();
-            if (this.d.a_($$1).a(dez.i)) {
-               if (this.d.ab().b(dbs.c)) {
-                  this.d.c(2001, $$1, dex.i(dez.i.o()));
-                  this.d.a($$1, dez.j.o(), 2);
-               }
-
-               this.c.O();
-            }
-         }
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.du());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dA());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

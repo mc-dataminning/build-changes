@@ -1,36 +1,26 @@
-public class gnn extends gnh<cgb, fvy<cgb>> {
-   private final geg a;
-   private final gjt b;
+public class gnn<T extends bto> extends gni<T, fvx<T>> {
+   private final ftz<T> a;
 
-   public gnn(gkr<cgb, fvy<cgb>> $$0, geg $$1, gjt $$2) {
+   public gnn(gks<T, fvx<T>> $$0, fwv $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.a = new fvx<>($$1.a(fwy.bt));
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, cgb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         boolean $$10 = ffd.Q().b($$3) && $$3.ch();
-         if (!$$3.ch() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cun $$12 = new cun(dez.ee);
-            if ($$10) {
-               dsa $$13 = dez.ee.o();
-               gqy $$14 = this.a.a($$13);
-               int $$15 = gjw.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gdu.r(gow.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cuk.f, false, $$0, $$1, $$3.dP(), $$2, gjw.c($$3, 0.0F), $$3.al());
-            }
-
-            $$0.b();
+   public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ffe $$10 = ffe.Q();
+      boolean $$11 = $$10.b($$3) && $$3.ch();
+      if (!$$3.ch() || $$11) {
+         fab $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(gdv.r(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(gdv.i(this.a($$3)));
          }
+
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, gjx.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

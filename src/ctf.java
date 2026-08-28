@@ -1,14 +1,8 @@
-public class ctf extends csl {
-   public ctf(dex $$0, cui.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public interface ctf {
+   default void a(@Nullable cmw $$0, dbx $$1, cuo $$2, iz $$3) {
    }
 
-   @Override
-   protected boolean a(cxy $$0, dsa $$1) {
-      dbw $$2 = $$0.q();
-      iz $$3 = $$0.a().c();
-      dsa $$4 = $$2.z($$3) ? dez.G.o() : dez.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
-   }
+   boolean a(@Nullable cmw var1, dbx var2, iz var3, @Nullable evm var4);
 }

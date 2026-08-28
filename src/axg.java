@@ -26,7 +26,7 @@ public class axg implements aui {
    }
 
    @Override
-   public CompletableFuture<Void> a(aui.a $$0, auo $$1, bng $$2, bng $$3, Executor $$4, Executor $$5) {
+   public CompletableFuture<Void> a(aui.a $$0, auo $$1, bnh $$2, bnh $$3, Executor $$4, Executor $$5) {
       List<? extends CompletableFuture<? extends axg.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
       return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
          .thenCompose($$0::a)

@@ -1,37 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkv extends dex {
-   public static final MapCodec<dkv> a = b(dkv::new);
+public class dkv extends dem {
+   public static final MapCodec<dkv> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsq.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dkv::new)
+   );
+   public static final dss f = dsr.w;
 
    @Override
    public MapCodec<dkv> a() {
-      return a;
+      return e;
    }
 
-   protected dkv(drz.d $$0) {
-      super($$0);
+   protected dkv(dsq $$0, dsa.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bqu a(cun $$0, dsa $$1, dbw $$2, iz $$3, cmv $$4, bqr $$5, evl $$6) {
-      if (!$$0.a(cuq.rV)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.B) {
-         return bqu.a($$2.B);
-      } else {
-         je $$7 = $$6.b();
-         je $$8 = $$7.o() == je.a.b ? $$4.cH().g() : $$7;
-         $$2.a(null, $$3, avz.uT, awa.e, 1.0F, 1.0F);
-         $$2.a($$3, dez.ee.o().a(dfr.b, $$8), 11);
-         cjf $$9 = new cjf(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cun(cuq.rY, 4)
-         );
-         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, btn.d($$5));
-         $$2.a($$4, dwt.M, $$3);
-         $$4.b(awj.c.b(cuq.rV));
-         return bqu.a($$2.B);
-      }
+   protected int g(dsb $$0) {
+      return $$0.c(f) ? 15 : 0;
+   }
+
+   @Override
+   protected dsb a(dsb $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(dbx $$0, iz $$1) {
+      Class<? extends bst> $$2 = switch (this.d.f()) {
+         case a -> bst.class;
+         case b -> bto.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dsc.a<dey, dsb> $$0) {
+      $$0.a(f);
    }
 }

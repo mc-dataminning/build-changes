@@ -1,56 +1,46 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class esm extends ers {
-   private static final Logger b = LogUtils.getLogger();
+public class esm extends ert {
    public static final MapCodec<esm> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(eum.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(eun.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, esm::new)
    );
-   private final eul c;
-   private final boolean d;
+   private final eum b;
+   private final boolean c;
 
-   private esm(List<etq> $$0, eul $$1, boolean $$2) {
+   private esm(List<etr> $$0, eum $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public eru<esm> b() {
-      return erv.n;
+   public erv<esm> b() {
+      return erw.e;
    }
 
    @Override
-   public Set<esz<?>> a() {
-      return this.c.a();
+   public Set<eta<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      if ($$0.l()) {
-         int $$2 = $$0.o();
-         float $$3 = this.d ? 1.0F - (float)$$0.n() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - ayx.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(ayx.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cuo a(cuo $$0, eqh $$1) {
+      int $$2 = this.c ? $$0.I() : 0;
+      $$0.e($$2 + this.b.a($$1));
       return $$0;
    }
 
-   public static ers.a<?> a(eul $$0) {
+   public static ert.a<?> a(eum $$0) {
       return a($$1 -> new esm($$1, $$0, false));
    }
 
-   public static ers.a<?> a(eul $$0, boolean $$1) {
+   public static ert.a<?> a(eum $$0, boolean $$1) {
       return a($$2 -> new esm($$2, $$0, $$1));
    }
 }

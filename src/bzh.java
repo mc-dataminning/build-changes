@@ -1,19 +1,63 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzh {
-   private static final bpx a = bqd.a(100, 200);
+public class bzh extends bvh<cma> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = ayy.c(34.0);
+   private static final int i = ayy.f(60.0F);
 
-   public static bvh<btn> a() {
-      return byt.a(
-         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.a(ccr.aB), $$0.a(ccr.m), $$0.c(ccr.aG), $$0.b(ccr.B), $$0.c(ccr.az))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(baa.a);
-                     $$2.a(baa.a, (long)a.a($$3x.E_()));
-                     $$1.b();
-                     $$4x.b(btz.m);
-                     return true;
-                  }))
-      );
+   public bzh() {
+      super(ImmutableMap.of(ccs.o, cct.a, ccs.aJ, cct.b, ccs.aK, cct.c, ccs.aL, cct.c), i);
+   }
+
+   protected boolean a(are $$0, cma $$1) {
+      return $$1.a($$1.dS().c(ccs.o).get(), 15.0, 20.0);
+   }
+
+   protected boolean a(are $$0, cma $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(are $$0, cma $$1, long $$2) {
+      $$1.dS().a(ccs.p, true, (long)i);
+      $$1.dS().a(ccs.aL, bab.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(avz.BT, 3.0F, 1.0F);
+   }
+
+   protected void c(are $$0, cma $$1, long $$2) {
+      $$1.dS().c(ccs.o).ifPresent($$1x -> $$1.G().a($$1x.dn()));
+      if (!$$1.dS().a(ccs.aL) && !$$1.dS().a(ccs.aK)) {
+         $$1.dS().a(ccs.aK, bab.a, (long)(i - h));
+         $$1.dS().c(ccs.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            evq $$3 = $$1.dn().e($$1.dm().b(bsu.d, 0, $$1.dF()));
+            evq $$4 = $$2x.bx().d($$3);
+            evq $$5 = $$4.d();
+            int $$6 = ayy.a($$4.f()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               evq $$8 = $$3.e($$5.a((double)$$7));
+               $$0.a(li.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(avz.BS, 3.0F, 1.0F);
+            if ($$2x.a($$0.aj().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.g(buw.n));
+               double $$10 = 2.5 * (1.0 - $$2x.g(buw.n));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
+      }
+   }
+
+   protected void d(are $$0, cma $$1, long $$2) {
+      a($$1, 40);
+   }
+
+   public static void a(bto $$0, int $$1) {
+      $$0.dS().a(ccs.aJ, bab.a, (long)$$1);
    }
 }

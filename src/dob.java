@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dob extends dnj implements dly {
+public class dob extends dfh {
    public static final MapCodec<dob> a = b(dob::new);
-   public static final dsr c = dsq.C;
+   protected static final ewj b = dey.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends dob> a() {
+   public MapCodec<dob> a() {
       return a;
    }
 
-   protected dob(drz.d $$0) {
+   protected dob(dsa.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dsa a(cxy $$0) {
-      ent $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(enu.c)));
    }
 
    @Override
-   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enu.c, enu.c.a($$3));
+   protected void a(dsb $$0, dbx $$1, iz $$2, bst $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof are && $$3 instanceof cou) {
+         $$1.a(new iz($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected ent b_(dsa $$0) {
-      return $$0.c(c) ? enu.c.a(true) : super.b_($$0);
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dsb.a<dex, dsa> $$0) {
-      $$0.a(c);
+   protected boolean b(dsb $$0, dbd $$1, iz $$2) {
+      enu $$3 = $$1.b_($$2);
+      enu $$4 = $$1.b_($$2.c());
+      return ($$3.a() == env.c || $$0.b() instanceof diw) && $$4.a() == env.a;
    }
 }

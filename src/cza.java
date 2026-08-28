@@ -1,121 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class cza implements cyk {
-   final czb a;
-   final cun b;
-   final String c;
-   final cyj d;
-   final boolean e;
-
-   public cza(String $$0, cyj $$1, czb $$2, cun $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class cza extends cym {
+   public cza(cyk $$0) {
+      super($$0);
    }
 
-   public cza(String $$0, cyj $$1, czb $$2, cun $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   @Nullable
+   private Pair<cuo, cuo> a(cqj $$0) {
+      cuo $$1 = null;
+      cuo $$2 = null;
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cuo $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else {
+               if ($$2 != null) {
+                  return null;
+               }
+
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
    }
 
-   @Override
-   public cyx<?> ap_() {
-      return cyx.a;
+   private static boolean a(cuo $$0, cuo $$1) {
+      return $$1.a($$0.g()) && $$0.I() == 1 && $$1.I() == 1 && $$0.b(km.d) && $$1.b(km.d) && $$0.b(km.e) && $$1.b(km.e);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(cqj $$0, dbx $$1) {
+      return this.a($$0) != null;
    }
 
-   @Override
-   public cyj d() {
-      return this.d;
-   }
-
-   @Override
-   public cun a(jk.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jr<cyq> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+   public cuo a(cqj $$0, jk.a $$1) {
+      Pair<cuo, cuo> $$2 = this.a($$0);
+      if ($$2 == null) {
+         return cuo.l;
+      } else {
+         cuo $$3 = (cuo)$$2.getFirst();
+         cuo $$4 = (cuo)$$2.getSecond();
+         int $$5 = Math.max($$3.o(), $$4.o());
+         int $$6 = $$3.o() - $$3.n();
+         int $$7 = $$4.o() - $$4.n();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cuo $$9 = new cuo($$3.g());
+         $$9.b(km.d, Integer.valueOf($$5));
+         $$9.b(Math.max($$5 - $$8, 0));
+         dae $$10 = daa.b($$3);
+         dae $$11 = daa.b($$4);
+         daa.a($$9, $$3x -> $$1.b(lq.u).b().map(ji::a).filter(czz::b).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cqi $$0, dbw $$1) {
-      return this.a.a($$0);
-   }
-
-   public cun a(cqi $$0, jk.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      jr<cyq> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cyx<cza> {
-      public static final MapCodec<cza> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cyj.e.fieldOf("category").orElse(cyj.d).forGetter($$0x -> $$0x.d),
-                  czb.a.forGetter($$0x -> $$0x.a),
-                  cun.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cza::new)
-      );
-      public static final zm<wz, cza> y = zm.a(cza.a::a, cza.a::a);
-
-      @Override
-      public MapCodec<cza> a() {
-         return x;
-      }
-
-      @Override
-      public zm<wz, cza> b() {
-         return y;
-      }
-
-      private static cza a(wz $$0) {
-         String $$1 = $$0.p();
-         cyj $$2 = $$0.b(cyj.class);
-         czb $$3 = czb.b.decode($$0);
-         cun $$4 = cun.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cza($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wz $$0, cza $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         czb.b.encode($$0, $$1.a);
-         cun.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   public cyy<?> ao_() {
+      return cyy.o;
    }
 }

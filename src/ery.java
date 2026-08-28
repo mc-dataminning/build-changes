@@ -1,41 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 
-public class ery implements ert {
+public class ery extends ert {
    public static final MapCodec<ery> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(erv.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ery::new)
+      $$0 -> a($$0)
+            .and($$0.group(eqf.e.fieldOf("component").forGetter($$0x -> $$0x.b), erw.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ery::new)
    );
-   public static final Codec<ery> b = erv.b.listOf().xmap(ery::new, $$0 -> $$0.c);
-   private final List<ert> c;
-   private final BiFunction<cun, eqg, cun> d;
+   private final eqe<?> b;
+   private final eru c;
 
-   private ery(List<ert> $$0) {
-      this.c = $$0;
-      this.d = erv.a($$0);
-   }
-
-   public static ery a(List<ert> $$0) {
-      return new ery(List.copyOf($$0));
-   }
-
-   public cun a(cun $$0, eqg $$1) {
-      return this.d.apply($$0, $$1);
+   private ery(List<etr> $$0, eqe<?> $$1, eru $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(eqm $$0) {
-      ert.super.a($$0);
+   public erv<ery> b() {
+      return erw.u;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public cuo a(cuo $$0, eqh $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
       }
    }
 
    @Override
-   public eru<ery> b() {
-      return erv.I;
+   public void a(eqn $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

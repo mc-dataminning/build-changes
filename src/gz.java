@@ -7,20 +7,20 @@ import java.util.stream.Stream;
 
 public class gz {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("arguments.item.overstacked", $$0, $$1));
-   private final ji<cui> b;
+   private final ji<cuj> b;
    private final ki c;
 
-   public gz(ji<cui> $$0, ki $$1) {
+   public gz(ji<cuj> $$0, ki $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public cui a() {
+   public cuj a() {
       return this.b.a();
    }
 
-   public cun a(int $$0, boolean $$1) throws CommandSyntaxException {
-      cun $$2 = new cun(this.b, $$0);
+   public cuo a(int $$0, boolean $$1) throws CommandSyntaxException {
+      cuo $$2 = new cuo(this.b, $$0);
       $$2.b(this.c);
       if ($$1 && $$0 > $$2.j()) {
          throw a.create(this.b(), $$2.j());

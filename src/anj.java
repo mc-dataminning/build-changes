@@ -42,9 +42,9 @@ public class anj {
    }
 
    private static int a(ep $$0, aqu $$1) throws CommandSyntaxException {
-      dbd $$2 = $$1.a();
+      dbe $$2 = $$1.a();
       are $$3 = $$0.e();
-      ald<dbw> $$4 = $$3.af();
+      ald<dbx> $$4 = $$3.af();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> xo.a("commands.forceload.query.success", xo.a($$2), xo.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class anj {
 
    private static int a(ep $$0) {
       are $$1 = $$0.e();
-      ald<dbw> $$2 = $$1.af();
+      ald<dbx> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbd::new).map(dbd::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbe::new).map(dbe::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> xo.a("commands.forceload.list.single", xo.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class anj {
 
    private static int b(ep $$0) {
       are $$1 = $$0.e();
-      ald<dbw> $$2 = $$1.af();
+      ald<dbx> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(dbd.a($$1x), dbd.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dbe.a($$1x), dbe.b($$1x), false));
       $$0.a(() -> xo.a("commands.forceload.removed.all", xo.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class anj {
             throw b.create(256, $$12);
          } else {
             are $$13 = $$0.e();
-            ald<dbw> $$14 = $$13.af();
-            dbd $$15 = null;
+            ald<dbx> $$14 = $$13.af();
+            dbe $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class anj {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dbd($$17, $$18);
+                        $$15 = new dbe($$17, $$18);
                      }
                   }
                }
             }
 
-            dbd $$20 = $$15;
+            dbe $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class anj {
                if ($$21 == 1) {
                   $$0.a(() -> xo.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xo.a($$20), xo.a($$14.a())), true);
                } else {
-                  dbd $$22 = new dbd($$8, $$9);
-                  dbd $$23 = new dbd($$10, $$11);
+                  dbe $$22 = new dbe($$8, $$9);
+                  dbe $$23 = new dbe($$10, $$11);
                   $$0.a(() -> xo.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xo.a($$14.a()), xo.a($$22), xo.a($$23)), true);
                }
 

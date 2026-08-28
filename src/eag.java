@@ -1,58 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class eag extends eaw<edh> {
-   public eag(Codec<edh> $$0) {
+public class eag extends eax<ect> {
+   public eag(Codec<ect> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eay<edh> $$0) {
+   public boolean a(eaz<ect> $$0) {
       iz $$1 = $$0.e();
-      dcr $$2 = $$0.b();
-      azf $$3 = $$0.d();
-      if ($$1.v() > $$2.z_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dez.G) && !$$2.a_($$1.d()).a(dez.G)) {
+      dcs $$2 = $$0.b();
+      azg $$3 = $$0.d();
+      ect $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
          return false;
       } else {
-         boolean $$4 = false;
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (je $$5 : je.values()) {
-            if ($$5 != je.a && $$2.a_($$1.a($$5)).a(dez.iC)) {
-               $$4 = true;
-               break;
+         for (iz $$7 : iz.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dez.mW.o(), 2);
+         return true;
+      }
+   }
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
+   private boolean a(dby $$0, iz $$1, azg $$2) {
+      iz $$3 = $$1.d();
+      dsb $$4 = $$0.a_($$3);
+      return $$4.a(dfa.kE) ? $$2.h() : $$4.d($$0, $$3, je.b);
+   }
 
-               if ($$8 >= 1) {
-                  iz $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dsa $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(dez.G) || $$10.a(dez.iC) || $$10.a(dez.dO)) {
-                     for (je $$11 : je.values()) {
-                        dsa $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dez.mW)) {
-                           $$2.a($$9, dez.mW.o(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
+   private void a(dby $$0, iz $$1, azg $$2, ect $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

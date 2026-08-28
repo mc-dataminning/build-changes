@@ -8,7 +8,7 @@ public class ack implements zv<ach> {
    private final int g;
    private final int h;
 
-   public ack(bss $$0, int $$1) {
+   public ack(bst $$0, int $$1) {
       this.g = $$0.al();
       this.h = $$1;
    }

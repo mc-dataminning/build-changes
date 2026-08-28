@@ -1,127 +1,251 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dqq {
-   private static final Codec<xo[]> c = xq.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new xo[]{(xo)$$0x.get(0), (xo)$$0x.get(1), (xo)$$0x.get(2), (xo)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dqq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dqq::d),
-               ctg.q.fieldOf("color").orElse(ctg.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dqq::a)
-   );
-   public static final int b = 4;
-   private final xo[] d;
-   private final xo[] e;
-   private final ctg f;
-   private final boolean g;
+public class dqq extends dpg {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private ayj[] h;
-   private boolean i;
+   private UUID d;
+   private dqr e = this.f();
+   private dqr f = this.f();
+   private boolean g;
 
-   public dqq() {
-      this(c(), c(), ctg.p, false);
+   public dqq(iz $$0, dsb $$1) {
+      this(dpi.h, $$0, $$1);
    }
 
-   public dqq(xo[] $$0, xo[] $$1, ctg $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dqq(dpi $$0, iz $$1, dsb $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static xo[] c() {
-      return new xo[]{xn.a, xn.a, xn.a, xn.a};
+   protected dqr f() {
+      return new dqr();
    }
 
-   private static dqq a(xo[] $$0, Optional<xo[]> $$1, ctg $$2, boolean $$3) {
-      return new dqq($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public boolean a(cmw $$0) {
+      if (this.n().b() instanceof dly $$1) {
+         evq $$2 = $$1.m(this.n());
+         double $$3 = $$0.du() - ((double)this.ay_().u() + $$2.c);
+         double $$4 = $$0.dA() - ((double)this.ay_().w() + $$2.e);
+         float $$5 = $$1.g(this.n());
+         float $$6 = (float)(ayy.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return ayy.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public dqr a(boolean $$0) {
+      return $$0 ? this.e : this.f;
    }
 
-   public dqq a(boolean $$0) {
-      return $$0 == this.g ? this : new dqq(this.d, this.e, this.f, $$0);
+   public dqr j() {
+      return this.e;
    }
 
-   public ctg b() {
+   public dqr k() {
       return this.f;
    }
 
-   public dqq a(ctg $$0) {
-      return $$0 == this.b() ? this : new dqq(this.d, this.e, $$0, this.g);
+   public int b() {
+      return 10;
    }
 
-   public xo a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   public int c() {
+      return 90;
    }
 
-   public dqq a(int $$0, xo $$1) {
-      return this.a($$0, $$1, $$1);
+   @Override
+   protected void b(ur $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<vo> $$2 = $$1.a(vf.a);
+      dqr.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      dqr.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
    }
 
-   public dqq a(int $$0, xo $$1, xo $$2) {
-      xo[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xo[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dqq($$3, $$4, this.f, this.g);
+   @Override
+   protected void a(ur $$0, jk.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<vo> $$2 = $$1.a(vf.a);
+      if ($$0.e("front_text")) {
+         dqr.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         dqr.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
    }
 
-   public boolean a(cmv $$0) {
-      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   private dqr a(dqr $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         xo $$2 = this.a($$0.a($$1, false));
+         xo $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
    }
 
-   public xo[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayj[] a(boolean $$0, Function<xo, ayj> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayj[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   private xo a(xo $$0) {
+      if (this.n instanceof are $$1) {
+         try {
+            return xr.a(a(null, $$1, this.o), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
          }
       }
 
-      return this.h;
+      return $$0;
    }
 
-   private Optional<xo[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
+   public void a(cmw $$0, boolean $$1, List<arw> $$2) {
+      if (!this.v() && $$0.cz().equals(this.u()) && this.n != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.n.a(this.ay_(), this.n(), this.n(), 3);
+      } else {
+         a.warn("Player {} just tried to change non-editable sign", $$0.af().getString());
+      }
+   }
+
+   public boolean a(UnaryOperator<dqr> $$0, boolean $$1) {
+      dqr $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private dqr a(cmw $$0, List<arw> $$1, dqr $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         arw $$4 = $$1.get($$3);
+         yl $$5 = $$2.a($$3, $$0.Y()).a();
+         if ($$0.Y()) {
+            $$2 = $$2.a($$3, xo.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, xo.b($$4.d()).b($$5), xo.b($$4.b()).b($$5));
          }
       }
 
-      return Optional.empty();
+      return $$2;
    }
 
-   public boolean b(cmv $$0) {
-      for (xo $$1 : this.b($$0.Y())) {
-         yl $$2 = $$1.a();
-         xm $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == xm.a.c) {
-            return true;
+   public boolean a(dqr $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(dqr $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(dqr $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cmw $$1) {
+      return this.v() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cmw $$0, dbx $$1, iz $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (xo $$5 : this.a($$3).b($$0.Y())) {
+         yl $$6 = $$5.a();
+         xm $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == xm.a.c) {
+            $$0.cO().aH().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
          }
       }
 
-      return false;
+      return $$4;
+   }
+
+   private static ep a(@Nullable cmw $$0, dbx $$1, iz $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.af().getString();
+      xo $$4 = (xo)($$0 == null ? xo.b("Sign") : $$0.O_());
+      return new ep(eo.a, evq.b($$2), evp.a, (are)$$1, 2, $$3, $$4, $$1.o(), $$0);
+   }
+
+   public aco l() {
+      return aco.a(this);
+   }
+
+   @Override
+   public ur a(jk.a $$0) {
+      return this.e($$0);
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID u() {
+      return this.d;
+   }
+
+   private void w() {
+      this.e();
+      this.n.a(this.ay_(), this.n(), this.n(), 3);
+   }
+
+   public boolean v() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.w();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      cmw $$1 = this.n.b($$0);
+      return $$1 == null || !$$1.a(this.ay_(), 4.0);
+   }
+
+   public static void a(dbx $$0, iz $$1, dsb $$2, dqq $$3) {
+      UUID $$4 = $$3.u();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(dqq $$0, dbx $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public avy d() {
+      return avz.BX;
    }
 }

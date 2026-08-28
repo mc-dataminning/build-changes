@@ -48,7 +48,7 @@ public class xq {
             DynamicOps<JsonElement> $$3 = a($$1);
             return xq.a.encodeStart($$3, $$0).flatMap($$2x -> {
                try {
-                  return $$1.encodeStart($$1, ayn.e($$2x));
+                  return $$1.encodeStart($$1, ayo.e($$2x));
                } catch (IllegalArgumentException var4x) {
                   return DataResult.error(var4x::getMessage);
                }
@@ -71,22 +71,22 @@ public class xq {
       return $$1;
    }
 
-   public static <T extends azs, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+   public static <T extends azt, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
       MapCodec<E> $$4 = new xq.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = azs.b((Supplier<T[]>)(() -> $$0));
+      Codec<T> $$5 = azt.b((Supplier<T[]>)(() -> $$0));
       MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
       MapCodec<E> $$7 = new xq.b($$3, $$6, $$4);
-      return ayf.a($$7, $$6);
+      return ayg.a($$7, $$6);
    }
 
    private static Codec<xo> a(Codec<xo> $$0) {
       xp.a<?>[] $$1 = new xp.a[]{yv.b, yz.c, ys.b, yw.c, yx.b, yu.b};
       MapCodec<xp> $$2 = a($$1, xp.a::a, xp::a, "type");
       Codec<xo> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(xo::b), ayf.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xo::c), yl.b.a.forGetter(xo::a))
+         $$2x -> $$2x.group($$2.forGetter(xo::b), ayg.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xo::c), yl.b.a.forGetter(xo::a))
                .apply($$2x, yc::new)
       );
-      return Codec.either(Codec.either(Codec.STRING, ayf.a($$0.listOf())), $$3)
+      return Codec.either(Codec.either(Codec.STRING, ayg.a($$0.listOf())), $$3)
          .xmap($$0x -> (xo)$$0x.map($$0xx -> (xo)$$0xx.map(xo::b, xq::a), $$0xx -> $$0xx), $$0x -> {
             String $$1x = $$0x.d();
             return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);

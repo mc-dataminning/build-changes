@@ -1,26 +1,26 @@
 import java.util.List;
 
 public class rv {
-   public static final ald<emg> a = ald.a(lq.aK, new ale("trial_chambers_copper_bulb_degradation"));
+   public static final ald<emh> a = ald.a(lq.aK, new ale("trial_chambers_copper_bulb_degradation"));
 
-   public static void a(rc<emg> $$0) {
+   public static void a(rc<emh> $$0) {
       a(
          $$0,
          a,
          List.of(
-            new emb(
+            new emc(
                List.of(
-                  new elx(new elz(dez.so, 0.1F), elg.b, dez.sr.o().a(dgl.c, Boolean.valueOf(true))),
-                  new elx(new elz(dez.so, 0.33333334F), elg.b, dez.sq.o().a(dgl.c, Boolean.valueOf(true))),
-                  new elx(new elz(dez.so, 0.5F), elg.b, dez.sp.o().a(dgl.c, Boolean.valueOf(true)))
+                  new ely(new ema(dfa.so, 0.1F), elh.b, dfa.sr.o().a(dgm.c, Boolean.valueOf(true))),
+                  new ely(new ema(dfa.so, 0.33333334F), elh.b, dfa.sq.o().a(dgm.c, Boolean.valueOf(true))),
+                  new ely(new ema(dfa.so, 0.5F), elh.b, dfa.sp.o().a(dgm.c, Boolean.valueOf(true)))
                )
             ),
-            new ely(awo.bO)
+            new elz(awo.bO)
          )
       );
    }
 
-   private static void a(rc<emg> $$0, ald<emg> $$1, List<emf> $$2) {
-      $$0.a($$1, new emg($$2));
+   private static void a(rc<emh> $$0, ald<emh> $$1, List<emg> $$2) {
+      $$0.a($$1, new emh($$2));
    }
 }

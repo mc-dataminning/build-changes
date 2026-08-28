@@ -1,12 +1,25 @@
-public class gnf<T extends ckd> extends gmt<T, fuz<T>> {
-   private static final gdu a = gdu.p(new ale("textures/entity/phantom_eyes.png"));
+public class gnf<T extends cmw> extends gni<T, fve<T>> {
+   private final fuz a;
 
-   public gnf(gkr<T, fuz<T>> $$0) {
+   public gnf(gks<T, fve<T>> $$0, fwv $$1) {
       super($$0);
+      this.a = new fuz($$1.a(fwy.aG));
    }
 
-   @Override
-   public gdu a() {
-      return a;
+   public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
+
+   private void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      ur $$9 = $$8 ? $$3.gt() : $$3.gu();
+      bsz.a($$9.l("id")).filter($$0x -> $$0x == bsz.ax).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.ca() ? -1.3F : -1.5F, 0.0F);
+         cfu.b $$11 = cfu.b.a($$9.h("Variant"));
+         fab $$12 = $$1.getBuffer(this.a.a(gkj.a($$11)));
+         this.a.a($$0, $$12, $$2, gop.d, $$4, $$5, $$6, $$7, $$3.ai);
+         $$0.b();
+      });
    }
 }

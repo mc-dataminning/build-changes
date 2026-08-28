@@ -1,12 +1,12 @@
 public class awj {
-   public static final awi<dex> a = a("mined", lp.e);
-   public static final awi<cui> b = a("crafted", lp.h);
-   public static final awi<cui> c = a("used", lp.h);
-   public static final awi<cui> d = a("broken", lp.h);
-   public static final awi<cui> e = a("picked_up", lp.h);
-   public static final awi<cui> f = a("dropped", lp.h);
-   public static final awi<bsy<?>> g = a("killed", lp.g);
-   public static final awi<bsy<?>> h = a("killed_by", lp.g);
+   public static final awi<dey> a = a("mined", lp.e);
+   public static final awi<cuj> b = a("crafted", lp.h);
+   public static final awi<cuj> c = a("used", lp.h);
+   public static final awi<cuj> d = a("broken", lp.h);
+   public static final awi<cuj> e = a("picked_up", lp.h);
+   public static final awi<cuj> f = a("dropped", lp.h);
+   public static final awi<bsz<?>> g = a("killed", lp.g);
+   public static final awi<bsz<?>> h = a("killed_by", lp.g);
    public static final awi<ale> i = a("custom", lp.m);
    public static final ale j = a("leave_game", awh.b);
    public static final ale k = a("play_time", awh.e);

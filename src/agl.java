@@ -5,7 +5,7 @@ public record agl(int b) implements zv<ach> {
       this($$0.l());
    }
 
-   public static agl a(brd $$0) {
+   public static agl a(bre $$0) {
       return new agl($$0.k());
    }
 

@@ -27,7 +27,7 @@ public class ann {
    }
 
    private static int a(ep $$0, gz $$1, Collection<arf> $$2, int $$3) throws CommandSyntaxException {
-      cun $$4 = $$1.a(1, false);
+      cuo $$4 = $$1.a(1, false);
       int $$5 = $$4.j();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,10 +40,10 @@ public class ann {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               cun $$10 = $$1.a($$9, false);
+               cuo $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.gc().f($$10);
                if ($$11 && $$10.e()) {
-                  cjf $$13 = $$7.a($$4, false);
+                  cjg $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.B();
                   }
@@ -51,7 +51,7 @@ public class ann {
                   $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avz.nC, awa.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cb.d();
                } else {
-                  cjf $$12 = $$7.a($$10, false);
+                  cjg $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.w();
                      $$12.b($$7.cz());

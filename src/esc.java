@@ -1,30 +1,44 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class esc extends ers {
+public class esc extends ert {
    public static final MapCodec<esc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kj.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, esc::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayg.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, esc::new)
    );
-   private final kj b;
+   private final Optional<String> b;
+   private final Optional<arv<String>> c;
+   private final Optional<Integer> d;
 
-   private esc(List<etq> $$0, kj $$1) {
+   public esc(List<etr> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = $$1;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
    @Override
-   public eru<esc> b() {
-      return erv.k;
-   }
-
-   @Override
-   public cun a(cun $$0, eqg $$1) {
-      $$0.a(this.b);
+   protected cuo a(cuo $$0, eqh $$1) {
+      $$0.a(km.J, cxx.a, this::a);
       return $$0;
    }
 
-   public static <T> ers.a<?> a(kl<T> $$0, T $$1) {
-      return a($$2 -> new esc($$2, kj.a().a($$0, $$1).a()));
+   private cxx a(cxx $$0) {
+      return new cxx(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
+
+   @Override
+   public erv<esc> b() {
+      return erw.M;
    }
 }

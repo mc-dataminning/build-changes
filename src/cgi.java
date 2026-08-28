@@ -1,47 +1,74 @@
-public class cgi {
-   public static final ald<cgh> a = a("pale");
-   public static final ald<cgh> b = a("spotted");
-   public static final ald<cgh> c = a("snowy");
-   public static final ald<cgh> d = a("black");
-   public static final ald<cgh> e = a("ashen");
-   public static final ald<cgh> f = a("rusty");
-   public static final ald<cgh> g = a("woods");
-   public static final ald<cgh> h = a("chestnut");
-   public static final ald<cgh> i = a("striped");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-   private static ald<cgh> a(String $$0) {
-      return ald.a(lq.m, new ale($$0));
+public final class cgi {
+   public static final Codec<cgi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ale.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
+               ale.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
+               ale.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
+               jx.a(lq.az).fieldOf("biomes").forGetter(cgi::d)
+            )
+            .apply($$0, cgi::new)
+   );
+   public static final Codec<ji<cgi>> b = ala.a(lq.m, a);
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final ale f;
+   private final ale g;
+   private final ale h;
+   private final jm<dcw> i;
+
+   public cgi(ale $$0, ale $$1, ale $$2, jm<dcw> $$3) {
+      this.c = $$0;
+      this.f = a($$0);
+      this.d = $$1;
+      this.g = a($$1);
+      this.e = $$2;
+      this.h = a($$2);
+      this.i = $$3;
    }
 
-   static void a(rc<cgh> $$0, ald<cgh> $$1, String $$2, ald<dcv> $$3) {
-      a($$0, $$1, $$2, jm.a($$0.a(lq.az).b($$3)));
+   private static ale a(ale $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   static void a(rc<cgh> $$0, ald<cgh> $$1, String $$2, axe<dcv> $$3) {
-      a($$0, $$1, $$2, $$0.a(lq.az).b($$3));
+   public ale a() {
+      return this.f;
    }
 
-   static void a(rc<cgh> $$0, ald<cgh> $$1, String $$2, jm<dcv> $$3) {
-      ale $$4 = new ale("entity/wolf/" + $$2);
-      ale $$5 = new ale("entity/wolf/" + $$2 + "_tame");
-      ale $$6 = new ale("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cgh($$4, $$5, $$6, $$3));
+   public ale b() {
+      return this.g;
    }
 
-   public static ji<cgh> a(jw $$0, ji<dcv> $$1) {
-      jv<cgh> $$2 = $$0.d(lq.m);
-      return $$2.h().filter($$1x -> ((cgh)$$1x.a()).d().a($$1)).findFirst().orElse($$2.g(a));
+   public ale c() {
+      return this.h;
    }
 
-   public static void a(rc<cgh> $$0) {
-      a($$0, a, "wolf", ddc.p);
-      a($$0, b, "wolf_spotted", awn.k);
-      a($$0, c, "wolf_snowy", ddc.F);
-      a($$0, d, "wolf_black", ddc.n);
-      a($$0, e, "wolf_ashen", ddc.q);
-      a($$0, f, "wolf_rusty", awn.i);
-      a($$0, g, "wolf_woods", ddc.i);
-      a($$0, h, "wolf_chestnut", ddc.o);
-      a($$0, i, "wolf_striped", awn.f);
+   public jm<dcw> d() {
+      return this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cgi $$1)
+            ? false
+            : Objects.equals(this.c, $$1.c) && Objects.equals(this.d, $$1.d) && Objects.equals(this.e, $$1.e) && Objects.equals(this.i, $$1.i);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.c.hashCode();
+      $$0 = 31 * $$0 + this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + this.i.hashCode();
    }
 }

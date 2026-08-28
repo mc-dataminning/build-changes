@@ -1,61 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzr {
-   public static final dzr a = new dzr(false, dez.gz.o(), dez.pL.o(), dez.ej.o(), dez.aQ.o());
-   public static final Codec<dzr> b = RecordCodecBuilder.create(
+public class dzr extends edl {
+   public static final MapCodec<dzr> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dzr::a),
-               dsa.b.optionalFieldOf("air_state", a.b()).forGetter(dzr::b),
-               dsa.b.optionalFieldOf("water_state", a.b()).forGetter(dzr::c),
-               dsa.b.optionalFieldOf("lava_state", a.b()).forGetter(dzr::d),
-               dsa.b.optionalFieldOf("barrier_state", a.b()).forGetter(dzr::e)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               egq.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bpw.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dyn.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dzs.b.optionalFieldOf("debug_settings", dzs.a).forGetter($$0x -> $$0x.h),
+               jx.a(lq.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
             )
             .apply($$0, dzr::new)
    );
-   private final boolean c;
-   private final dsa d;
-   private final dsa e;
-   private final dsa f;
-   private final dsa g;
+   public final egq e;
+   public final bpw f;
+   public final dyn g;
+   public final dzs h;
+   public final jm<dey> i;
 
-   public static dzr a(boolean $$0, dsa $$1, dsa $$2, dsa $$3, dsa $$4) {
-      return new dzr($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static dzr a(dsa $$0, dsa $$1, dsa $$2, dsa $$3) {
-      return new dzr(false, $$0, $$1, $$2, $$3);
-   }
-
-   public static dzr a(boolean $$0, dsa $$1) {
-      return new dzr($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private dzr(boolean $$0, dsa $$1, dsa $$2, dsa $$3, dsa $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dsa b() {
-      return this.d;
-   }
-
-   public dsa c() {
-      return this.e;
-   }
-
-   public dsa d() {
-      return this.f;
-   }
-
-   public dsa e() {
-      return this.g;
+   public dzr(float $$0, egq $$1, bpw $$2, dyn $$3, dzs $$4, jm<dey> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

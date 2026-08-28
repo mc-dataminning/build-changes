@@ -1,17 +1,20 @@
 public interface evu {
-   static evu a() {
-      return evz.a;
-   }
+   evu a = ($$0, $$1) -> false;
+   evu b = ($$0, $$1) -> !$$0 && !$$1;
+   evu c = ($$0, $$1) -> $$1 && !$$0;
+   evu d = ($$0, $$1) -> !$$0;
+   evu e = ($$0, $$1) -> $$0 && !$$1;
+   evu f = ($$0, $$1) -> !$$1;
+   evu g = ($$0, $$1) -> $$0 != $$1;
+   evu h = ($$0, $$1) -> !$$0 || !$$1;
+   evu i = ($$0, $$1) -> $$0 && $$1;
+   evu j = ($$0, $$1) -> $$0 == $$1;
+   evu k = ($$0, $$1) -> $$1;
+   evu l = ($$0, $$1) -> !$$0 || $$1;
+   evu m = ($$0, $$1) -> $$0;
+   evu n = ($$0, $$1) -> $$0 || !$$1;
+   evu o = ($$0, $$1) -> $$0 || $$1;
+   evu p = ($$0, $$1) -> true;
 
-   static evu a(bss $$0) {
-      return new evz($$0);
-   }
-
-   boolean b();
-
-   boolean a(ewi var1, iz var2, boolean var3);
-
-   boolean a(cui var1);
-
-   boolean a(ent var1, ent var2);
+   boolean apply(boolean var1, boolean var2);
 }

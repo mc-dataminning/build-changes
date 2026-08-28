@@ -1,66 +1,22 @@
-import javax.annotation.Nullable;
+public class fhp extends fhd {
+   protected final fiq a;
 
-public abstract class fhp extends fha {
-   fhp(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, xn.a);
+   public fhp(int $$0, int $$1, int $$2, int $$3, fiq $$4, fhd.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, xn.a);
    }
 
-   public static fhp a(int $$0, int $$1, ale $$2, int $$3, int $$4) {
-      return new fhp.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fhp(int $$0, int $$1, int $$2, int $$3, fiq $$4, fhd.c $$5, xo $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   public static fhp a(int $$0, int $$1, ale $$2) {
-      return new fhp.a(0, 0, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fky $$0) {
+   public fhp(int $$0, int $$1, fiq $$2, fhd.c $$3, xo $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(gtt $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fgm a(fle $$0) {
-      return null;
-   }
-
-   static class a extends fhp {
-      private final ale a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, ale $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(fgp $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v());
-      }
-   }
-
-   static class b extends fhp {
-      private final ale a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, ale $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(fgp $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v(), 0.0F, 0.0F, this.x(), this.v(), this.b, this.c);
-      }
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      ale $$4 = this.a.a(this.B(), this.A());
+      $$0.a($$4, this.C(), this.D(), this.g, this.h);
    }
 }

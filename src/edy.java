@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edy implements eda {
+public record edy(int b, int c, int d) implements edb {
    public static final Codec<edy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               ayg.l.fieldOf("spread_width").forGetter(edy::a), ayg.l.fieldOf("spread_height").forGetter(edy::b), ayg.l.fieldOf("max_height").forGetter(edy::c)
             )
             .apply($$0, edy::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public edy(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,50 +1,46 @@
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cus extends cui {
-   public cus(cui.a $$0) {
+public class cus extends cuj {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cus(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqs a(cya $$0) {
-      dbw $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dsa $$3 = $$1.a_($$2);
-      if ($$3.a(awo.S)) {
-         cmv $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bqs.a($$1.B);
-      } else {
-         return bqs.e;
-      }
-   }
-
-   public static bqs a(cmv $$0, dbw $$1, iz $$2) {
-      ciz $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      evk $$8 = new evk((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<btp> $$9 = $$1.a(btp.class, $$8, $$1x -> $$1x.gf() == $$0);
-
-      for (btp $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = ciz.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      if (!$$1.fP()) {
+         $$1.a($$2, cuo.l);
       }
 
-      if (!$$9.isEmpty()) {
-         $$1.a(dwt.b, $$2, dwt.a.a($$0));
-         return bqs.a;
+      List<ale> $$4 = $$3.a(km.R, List.of());
+      if ($$4.isEmpty()) {
+         return bqu.d($$3);
       } else {
-         return bqs.e;
+         if (!$$0.B) {
+            cyx $$5 = $$0.o().aJ();
+            List<cyw<?>> $$6 = new ArrayList<>($$4.size());
+
+            for (ale $$7 : $$4) {
+               Optional<cyw<?>> $$8 = $$5.a($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bqu.d($$3);
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awj.c.b(this));
+         }
+
+         return bqu.a($$3, $$0.x_());
       }
    }
 }

@@ -1,12 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pu extends qd<egj> {
+public class pu extends qd<egk> {
    public pu(ly $$0, CompletableFuture<jk.a> $$1) {
       super($$0, lq.aF, $$1);
    }
 
    @Override
    protected void a(jk.a $$0) {
-      this.b(awt.a).a(egk.a).a(egk.b).a(egk.c).a(egk.d).a(egk.e).a(egk.f).a(egk.g).a(egk.h).a(egk.i);
+      this.b(awt.a).a(egl.a).a(egl.b).a(egl.c).a(egl.d).a(egl.e).a(egl.f).a(egl.g).a(egl.h).a(egl.i);
    }
 }

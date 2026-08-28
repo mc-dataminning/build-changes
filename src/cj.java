@@ -9,10 +9,10 @@ public record cj(de.d c, de.d d) implements ds<Integer> {
 
    @Override
    public kl<Integer> a() {
-      return km.d;
+      return km.e;
    }
 
-   public boolean a(cun $$0, Integer $$1) {
+   public boolean a(cuo $$0, Integer $$1) {
       return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
    }
 

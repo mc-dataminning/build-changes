@@ -1,32 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ecz implements eda {
+public class ecz implements edb {
    public static final Codec<ecz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ecz::new)
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bpy.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bpy.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bpy.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bpw.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bpw.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, ecz::new)
    );
-   private final Optional<iz> b;
-   private final boolean c;
+   public final int b;
+   public final bpy c;
+   public final bpy d;
+   public final int e;
+   public final int f;
+   public final bpy g;
+   public final bpw h;
+   public final bpw i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   private ecz(Optional<iz> $$0, boolean $$1) {
+   public ecz(int $$0, bpy $$1, bpy $$2, int $$3, int $$4, bpy $$5, bpw $$6, bpw $$7, float $$8, int $$9, int $$10) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   public static ecz a(iz $$0, boolean $$1) {
-      return new ecz(Optional.of($$0), $$1);
-   }
-
-   public static ecz a() {
-      return new ecz(Optional.empty(), false);
-   }
-
-   public Optional<iz> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

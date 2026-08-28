@@ -1,38 +1,19 @@
 import java.util.Map;
 
-public class cld extends bvg<ckx> {
+public class cld extends bvh<cky> {
    public cld() {
-      super(Map.of(ccr.o, ccs.a, ccr.m, ccs.b, ccr.aU, ccs.b, ccr.aV, ccs.b));
+      super(Map.of(ccs.o, cct.a, ccs.aZ, cct.b, ccs.ba, cct.b, ccs.m, cct.b, ccs.aV, cct.b));
    }
 
-   protected boolean a(are $$0, ckx $$1) {
-      return $$1.aE() && !$$1.be() && $$1.ar() == btz.a;
+   protected boolean a(are $$0, cky $$1) {
+      return $$1.bR() || $$1.be() || $$1.c(bsd.y) != null;
    }
 
-   protected void a(are $$0, ckx $$1, long $$2) {
-      btn $$3 = $$1.dS().c(ccr.o).orElse(null);
-      if ($$3 != null) {
-         boolean $$4 = $$1.k($$3.dn());
-         evp $$5 = null;
-         if ($$4) {
-            evp $$6 = cei.a($$1, 5, 5, $$3.dn());
-            if ($$6 != null && ckz.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.g($$1)) {
-               $$5 = $$6;
-            }
-         }
-
-         if ($$5 == null) {
-            $$5 = $$1.el().h() ? ckz.a($$3, $$1.el()) : a($$1, $$3);
-         }
-
-         $$1.dS().a(ccr.m, new ccu(iz.a($$5), 0.6F, 1));
-      }
+   protected boolean a(are $$0, cky $$1, long $$2) {
+      return false;
    }
 
-   private static evp a(ckx $$0, btn $$1) {
-      evp $$2 = $$1.dn().d($$0.dn());
-      double $$3 = $$2.f() - ayx.d($$0.el().j(), 8.0, 4.0);
-      evp $$4 = $$2.d().d($$3, $$3, $$3);
-      return $$0.dn().e($$4);
+   protected void b(are $$0, cky $$1, long $$2) {
+      $$1.dS().a(ccs.aV, bab.a, 60L);
    }
 }

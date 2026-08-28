@@ -1,46 +1,39 @@
-public class gnb extends gnh<chk, fur<chk>> {
-   private static final ale[] a = new ale[]{
-      new ale("textures/entity/llama/decor/white.png"),
-      new ale("textures/entity/llama/decor/orange.png"),
-      new ale("textures/entity/llama/decor/magenta.png"),
-      new ale("textures/entity/llama/decor/light_blue.png"),
-      new ale("textures/entity/llama/decor/yellow.png"),
-      new ale("textures/entity/llama/decor/lime.png"),
-      new ale("textures/entity/llama/decor/pink.png"),
-      new ale("textures/entity/llama/decor/gray.png"),
-      new ale("textures/entity/llama/decor/light_gray.png"),
-      new ale("textures/entity/llama/decor/cyan.png"),
-      new ale("textures/entity/llama/decor/purple.png"),
-      new ale("textures/entity/llama/decor/blue.png"),
-      new ale("textures/entity/llama/decor/brown.png"),
-      new ale("textures/entity/llama/decor/green.png"),
-      new ale("textures/entity/llama/decor/red.png"),
-      new ale("textures/entity/llama/decor/black.png")
-   };
-   private static final ale b = new ale("textures/entity/llama/decor/trader_llama.png");
-   private final fur<chk> c;
+public class gnb<T extends bto, M extends ftz<T> & fsy> extends gni<T, M> {
+   private final gdj a;
 
-   public gnb(gkr<chk, fur<chk>> $$0, fwu $$1) {
+   public gnb(gks<T, M> $$0, gdj $$1) {
       super($$0);
-      this.c = new fur<>($$1.a(fwx.ay));
+      this.a = $$1;
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, chk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ctg $$10 = $$3.gD();
-      ale $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gz()) {
-            return;
+   public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fu() == bti.b;
+      cuo $$11 = $$10 ? $$3.eY() : $$3.eX();
+      cuo $$12 = $$10 ? $$3.eX() : $$3.eY();
+      if (!$$11.e() || !$$12.e()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
          }
 
-         $$11 = b;
+         this.a($$3, $$12, cul.c, bti.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cul.b, bti.a, $$0, $$1, $$2);
+         $$0.b();
       }
+   }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      faa $$14 = $$1.getBuffer(gdu.e($$11));
-      this.c.a($$0, $$14, $$2, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected void a(bto $$0, cuo $$1, cul $$2, bti $$3, ezx $$4, gdn $$5, int $$6) {
+      if (!$$1.e()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bti.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
 }

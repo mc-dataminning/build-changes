@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class apz extends avc {
    private static final Logger h = LogUtils.getLogger();
 
-   public apz(aqa $$0, jp<aln> $$1, epx $$2) {
+   public apz(aqa $$0, jp<aln> $$1, epy $$2) {
       super($$0, $$1, $$2, $$0.a().H);
       aqb $$3 = $$0.a();
       this.a($$3.F);

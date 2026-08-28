@@ -4,11 +4,11 @@ public class aia implements zv<agv> {
    private final aia.a c;
    private final int d;
 
-   public aia(bss $$0, aia.a $$1) {
+   public aia(bst $$0, aia.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public aia(bss $$0, aia.a $$1, int $$2) {
+   public aia(bst $$0, aia.a $$1, int $$2) {
       this.b = $$0.al();
       this.c = $$1;
       this.d = $$2;

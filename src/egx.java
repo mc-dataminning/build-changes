@@ -1,6 +1,17 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface egx {
+public record egx(List<dxx.c> a) implements dxx.c {
    @Nullable
-   dsa a(dxw var1, int var2, int var3, int var4);
+   @Override
+   public dsb calculate(dxm.b $$0) {
+      for (dxx.c $$1 : this.a) {
+         dsb $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
 }

@@ -286,7 +286,7 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Optional<ji.c<T>> a(azf $$0) {
+   public Optional<ji.c<T>> a(azg $$0) {
       return ac.b(this.d, $$0);
    }
 

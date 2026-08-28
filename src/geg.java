@@ -1,84 +1,61 @@
-public class geg implements aup {
-   private final gef a;
-   private final gei b;
-   private final gcz c;
-   private final geh d;
-   private final azf e = azf.a();
-   private final fgg f;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public geg(gef $$0, gcz $$1, fgg $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gei(this.f);
-      this.d = new geh();
+public class geg {
+   private Map<dsb, gqz> a = Map.of();
+   private final grf b;
+
+   public geg(grf $$0) {
+      this.b = $$0;
    }
 
-   public gef a() {
-      return this.a;
+   public goy a(dsb $$0) {
+      return this.b($$0).e();
    }
 
-   public void a(dsa $$0, iz $$1, daz $$2, ezw $$3, faa $$4) {
-      if ($$0.l() == dld.c) {
-         gqy $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, goo.d);
+   public gqz b(dsb $$0) {
+      gqz $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   public void a(dsa $$0, iz $$1, daz $$2, ezw $$3, faa $$4, boolean $$5, azf $$6) {
-      try {
-         dld $$7 = $$0.l();
-         if ($$7 == dld.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), goo.d);
-         }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
-
-   public void a(iz $$0, daz $$1, faa $$2, dsa $$3, ent $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
-
-   public gei b() {
+   public grf a() {
       return this.b;
    }
 
-   public gqy a(dsa $$0) {
-      return this.a.b($$0);
+   public void a(Map<dsb, gqz> $$0) {
+      this.a = $$0;
    }
 
-   public void a(dsa $$0, ezw $$1, gdm $$2, int $$3, int $$4) {
-      dld $$5 = $$0.l();
-      if ($$5 != dld.a) {
-         switch ($$5) {
-            case c:
-               gqy $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(gdh.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cun($$0.b()), cuk.a, $$1, $$2, $$3, $$4);
+   public static grg c(dsb $$0) {
+      return a(lp.e.b($$0.b()), $$0);
+   }
+
+   public static grg a(ale $$0, dsb $$1) {
+      return new grg($$0, b($$1.C()));
+   }
+
+   public static String b(Map<dte<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dte<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
+
+         dte<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
    }
 
-   @Override
-   public void a(auo $$0) {
-      this.d.a();
+   private static <T extends Comparable<T>> String a(dte<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

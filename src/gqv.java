@@ -1,14 +1,20 @@
-import com.google.gson.JsonObject;
+public class gqv {
+   public static final gqw a = new gqw();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public class gqv implements atn<gqu> {
-   public gqu b(JsonObject $$0) {
-      boolean $$1 = ayn.a($$0, "blur", false);
-      boolean $$2 = ayn.a($$0, "clamp", false);
-      return new gqu($$1, $$2);
+   public gqv(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
    }
 }

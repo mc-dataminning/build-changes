@@ -45,7 +45,7 @@ public class asc extends asb implements abx, xc {
       this.b(new aac(new aau(this.d.getServerModName())));
       jp<aln> $$0 = this.d.bd();
       List<atv> $$1 = this.d.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abu(cpl.e.b(this.d.bb().K())));
+      this.b(new abu(cpm.e.b(this.d.bb().K())));
       this.l = new asn($$1, $$0);
       this.i.add(this.l);
       this.n();

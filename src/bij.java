@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -12,21 +13,28 @@ public class bij extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bgv.J, () -> DSL.constType(big.a()));
       $$0.registerType(
-         false,
-         bgv.b,
-         () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bgv.A.in($$0))),
-                  Pair.of("Inventory", DSL.list(bgv.t.in($$0))),
-                  Pair.of("EnderItems", DSL.list(bgv.t.in($$0))),
-                  Pair.of("ShoulderEntityLeft", bgv.A.in($$0)),
-                  Pair.of("ShoulderEntityRight", bgv.A.in($$0)),
-                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bgv.J.in($$0)), "toBeDisplayed", DSL.list(bgv.J.in($$0))))
-               }
+         true,
+         bgw.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  bgw.D.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     new Pair[]{
+                        Pair.of("EntityTag", bgw.A.in($$0)),
+                        Pair.of("BlockEntityTag", bgw.s.in($$0)),
+                        Pair.of("CanDestroy", DSL.list(bgw.C.in($$0))),
+                        Pair.of("CanPlaceOn", DSL.list(bgw.C.in($$0))),
+                        Pair.of("Items", DSL.list(bgw.t.in($$0))),
+                        Pair.of("ChargedProjectiles", DSL.list(bgw.t.in($$0)))
+                     }
+                  )
+               ),
+               blp.b,
+               HookFunction.IDENTITY
             )
       );
-      $$0.registerType(false, bgv.d, () -> DSL.compoundList(DSL.list(bgv.t.in($$0))));
    }
 }

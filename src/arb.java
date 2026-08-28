@@ -6,13 +6,13 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class arb extends bqi {
+public class arb extends bqj {
    private final Set<arf> h = Sets.newHashSet();
    private final Set<arf> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public arb(xo $$0, bqi.a $$1, bqi.b $$2) {
-      super(ayx.a(), $$0, $$1, $$2);
+   public arb(xo $$0, bqj.a $$1, bqj.b $$2) {
+      super(ayy.a(), $$0, $$1, $$2);
    }
 
    @Override
@@ -24,7 +24,7 @@ public class arb extends bqi {
    }
 
    @Override
-   public void a(bqi.a $$0) {
+   public void a(bqj.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(acr::d);
@@ -32,7 +32,7 @@ public class arb extends bqi {
    }
 
    @Override
-   public void a(bqi.b $$0) {
+   public void a(bqj.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(acr::d);
@@ -40,7 +40,7 @@ public class arb extends bqi {
    }
 
    @Override
-   public bqi a(boolean $$0) {
+   public bqj a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(acr::e);
@@ -50,7 +50,7 @@ public class arb extends bqi {
    }
 
    @Override
-   public bqi b(boolean $$0) {
+   public bqj b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(acr::e);
@@ -60,7 +60,7 @@ public class arb extends bqi {
    }
 
    @Override
-   public bqi c(boolean $$0) {
+   public bqj c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(acr::e);
@@ -77,7 +77,7 @@ public class arb extends bqi {
       }
    }
 
-   private void a(Function<bqi, acr> $$0) {
+   private void a(Function<bqj, acr> $$0) {
       if (this.j) {
          acr $$1 = $$0.apply(this);
 

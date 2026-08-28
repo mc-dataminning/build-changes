@@ -1,22 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class byl {
-   private static final int a = 36;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bvh<btn> a() {
-      return byt.a(
-         (Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.group($$0.a(ccr.x), $$0.a(ccr.y), $$0.a(ccr.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<btn>a($$2).filter($$1xx -> $$1xx.g((bss)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dS().a($$4.aa(), $$4.Z());
-                     }
+   public static bws<btx> a(float $$0) {
+      return a($$0, 10, 7);
+   }
 
-                     return true;
-                  }))
-      );
+   public static bws<btx> a(float $$0, int $$1, int $$2) {
+      return byu.a((Function<byu.b<btx>, ? extends App<byu.c<btx>, byx<btx>>>)($$3 -> $$3.group($$3.c(ccs.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               iz $$7 = $$5.dp();
+               evq $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cem.a($$5, $$1, $$2);
+               } else {
+                  kb $$9 = kb.a($$7);
+                  kb $$10 = bvj.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cej.a($$5, $$1, $$2, evq.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cem.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new ccv($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

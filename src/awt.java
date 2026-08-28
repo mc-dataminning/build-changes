@@ -1,10 +1,10 @@
 public class awt {
-   public static final axe<egj> a = a("visible");
+   public static final axe<egk> a = a("visible");
 
    private awt() {
    }
 
-   private static axe<egj> a(String $$0) {
+   private static axe<egk> a(String $$0) {
       return axe.a(lq.aF, new ale($$0));
    }
 }

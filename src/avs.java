@@ -275,7 +275,7 @@ public class avs extends avr {
          this.c[2] = $$1[5];
          this.c[3] = $$1[6];
          this.e = new String(this.c, StandardCharsets.UTF_8);
-         this.b = azf.a().a(16777216);
+         this.b = azg.a().a(16777216);
          this.d = String.format(Locale.ROOT, "\t%s%d\u0000", this.e, this.b).getBytes(StandardCharsets.UTF_8);
       }
 

@@ -30,17 +30,17 @@ public class anu {
       );
    }
 
-   private static Optional<? extends jm.b<eii>> a(ft.c<eii> $$0, jv<eii> $$1) {
-      return (Optional<? extends jm.b<eii>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jm.a($$0xx)), $$1::b);
+   private static Optional<? extends jm.b<eij>> a(ft.c<eij> $$0, jv<eij> $$1) {
+      return (Optional<? extends jm.b<eij>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jm.a($$0xx)), $$1::b);
    }
 
-   private static int a(ep $$0, ft.c<eii> $$1) throws CommandSyntaxException {
-      jv<eii> $$2 = $$0.e().H_().d(lq.aJ);
-      jm<eii> $$3 = (jm<eii>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ep $$0, ft.c<eij> $$1) throws CommandSyntaxException {
+      jv<eij> $$2 = $$0.e().H_().d(lq.aJ);
+      jm<eij> $$3 = (jm<eij>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       iz $$4 = iz.a($$0.d());
       are $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ac.d);
-      Pair<iz, ji<eii>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      Pair<iz, ji<eij>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class anu {
       }
    }
 
-   private static int a(ep $$0, fs.c<dcv> $$1) throws CommandSyntaxException {
+   private static int a(ep $$0, fs.c<dcw> $$1) throws CommandSyntaxException {
       iz $$2 = iz.a($$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ac.d);
-      Pair<iz, ji<dcv>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<iz, ji<dcw>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class anu {
       }
    }
 
-   private static int b(ep $$0, fs.c<ceu> $$1) throws CommandSyntaxException {
+   private static int b(ep $$0, fs.c<cev> $$1) throws CommandSyntaxException {
       iz $$2 = iz.a($$0.d());
       are $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ac.d);
-      Optional<Pair<ji<ceu>, iz>> $$5 = $$3.y().e($$1, $$2, 256, cer.b.c);
+      Optional<Pair<ji<cev>, iz>> $$5 = $$3.y().e($$1, $$2, 256, ces.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());
@@ -86,7 +86,7 @@ public class anu {
 
    private static int a(ep $$0, iz $$1, Pair<iz, ? extends ji<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
       iz $$7 = (iz)$$2.getFirst();
-      int $$8 = $$4 ? ayx.d(ayx.c((float)$$1.j($$7))) : ayx.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      int $$8 = $$4 ? ayy.d(ayy.c((float)$$1.j($$7))) : ayy.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
       xo $$10 = xr.a((xo)xo.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
          .a($$2x -> $$2x.a(n.k).a(new xm(xm.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xu(xu.a.a, xo.c("chat.coordinates.tooltip"))));
@@ -98,6 +98,6 @@ public class anu {
    private static float a(int $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$2 - $$0;
       int $$5 = $$3 - $$1;
-      return ayx.c((float)($$4 * $$4 + $$5 * $$5));
+      return ayy.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

@@ -21,12 +21,12 @@ public interface auq {
    static auq a(InputStream $$0) throws IOException {
       auq var3;
       try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = ayn.a($$1);
+         final JsonObject $$2 = ayo.a($$1);
          var3 = new auq() {
             @Override
             public <T> Optional<T> a(atn<T> $$0) {
                String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(ayn.u($$2, $$1))) : Optional.empty();
+               return $$2.has($$1) ? Optional.of($$0.a(ayo.u($$2, $$1))) : Optional.empty();
             }
          };
       }

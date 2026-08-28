@@ -1,53 +1,42 @@
-public class ekp {
-   private static final ale[] a = new ale[]{
-      new ale("nether_fossils/fossil_1"),
-      new ale("nether_fossils/fossil_2"),
-      new ale("nether_fossils/fossil_3"),
-      new ale("nether_fossils/fossil_4"),
-      new ale("nether_fossils/fossil_5"),
-      new ale("nether_fossils/fossil_6"),
-      new ale("nether_fossils/fossil_7"),
-      new ale("nether_fossils/fossil_8"),
-      new ale("nether_fossils/fossil_9"),
-      new ale("nether_fossils/fossil_10"),
-      new ale("nether_fossils/fossil_11"),
-      new ale("nether_fossils/fossil_12"),
-      new ale("nether_fossils/fossil_13"),
-      new ale("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-   public static void a(emj $$0, ein $$1, azf $$2, iz $$3) {
-      dlk $$4 = dlk.a($$2);
-      $$1.a(new ekp.a($$0, ac.a(a, $$2), $$3, $$4));
+public class ekp extends eij {
+   public static final bph<ddi.c> d = bph.a(
+      new ddi.c(bsz.i, 10, 2, 3), new ddi.c(bsz.bx, 5, 4, 4), new ddi.c(bsz.bq, 8, 5, 5), new ddi.c(bsz.aN, 2, 5, 5), new ddi.c(bsz.ap, 3, 4, 4)
+   );
+   public static final MapCodec<ekp> e = a(ekp::new);
+
+   public ekp(eij.c $$0) {
+      super($$0);
    }
 
-   public static class a extends eis {
-      public a(emj $$0, ale $$1, iz $$2, dlk $$3) {
-         super(eiz.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Override
+   public Optional<eij.b> a(eij.a $$0) {
+      dbe $$1 = $$0.h();
+      iz $$2 = new iz($$1.d(), 64, $$1.e());
+      return Optional.of(new eij.b($$2, (Consumer<ejb>)($$1x -> a($$1x, $$0))));
+   }
+
+   private static void a(ejb $$0, eij.a $$1) {
+      eko.q $$2 = new eko.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<ein> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         ein $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      public a(emj $$0, ur $$1) {
-         super(eiz.ac, $$1, $$0, $$1x -> a(dlk.valueOf($$1.l("Rot"))));
-      }
+      $$0.a($$1.f(), 48, 70);
+   }
 
-      private static eme a(dlk $$0) {
-         return new eme().a($$0).a(dju.a).a(elk.d);
-      }
-
-      @Override
-      protected void a(eiy $$0, ur $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, iz $$1, dcl $$2, azf $$3, eia $$4) {
-      }
-
-      @Override
-      public void a(dcr $$0, dcp $$1, dtx $$2, azf $$3, eia $$4, dbd $$5, iz $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public eis<?> e() {
+      return eis.d;
    }
 }

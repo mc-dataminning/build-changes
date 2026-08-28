@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ecr(List<ecr.a> b, je c, dyz d, boolean e) implements eda {
+public class ecr {
    public static final Codec<ecr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecr.a.a.listOf().fieldOf("layers").forGetter(ecr::a),
-               je.g.fieldOf("direction").forGetter(ecr::b),
-               dyz.b.fieldOf("allowed_placement").forGetter(ecr::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ecr::d)
-            )
+      $$0 -> $$0.group(ehn.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, ecr::new)
    );
+   public final ji<ehn> b;
+   public final float c;
 
-   public static ecr.a a(bpx $$0, efb $$1) {
-      return new ecr.a($$0, $$1);
+   public ecr(ji<ehn> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ecr b(bpx $$0, efb $$1) {
-      return new ecr(List.of(a($$0, $$1)), je.b, dyz.c, false);
-   }
-
-   public List<ecr.a> a() {
-      return this.b;
-   }
-
-   public je b() {
-      return this.c;
-   }
-
-   public dyz c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpx b, efb c) {
-      public static final Codec<ecr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpx.d.fieldOf("height").forGetter(ecr.a::a), efb.a.fieldOf("provider").forGetter(ecr.a::b)).apply($$0, ecr.a::new)
-      );
-
-      public bpx a() {
-         return this.b;
-      }
-
-      public efb b() {
-         return this.c;
-      }
+   public boolean a(dcs $$0, dty $$1, azg $$2, iz $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

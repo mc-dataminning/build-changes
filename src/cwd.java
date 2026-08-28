@@ -1,22 +1,19 @@
-public class cwd extends cui {
-   private final cwc a;
+import java.util.List;
 
-   public cwd(cwc $$0, cui.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+public interface cwd {
+   int a();
 
-   public cwc h() {
-      return this.a;
-   }
+   float b();
 
-   @Override
-   public int g() {
-      return this.a.e();
-   }
+   float c();
 
-   @Override
-   public boolean a(cun $$0, cun $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   axe<dey> d();
+
+   int e();
+
+   cyr f();
+
+   default cxt a(axe<dey> $$0) {
+      return new cxt(List.of(cxt.a.a(this.d()), cxt.a.a($$0, this.b())), 1.0F, 1);
    }
 }

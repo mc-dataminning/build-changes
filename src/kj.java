@@ -42,7 +42,7 @@ public final class kj {
             if ($$4.isPresent()) {
                $$1.put(new kj.b($$3, false), $$4.get());
             } else {
-               $$1.put(new kj.b($$3, true), baa.a);
+               $$1.put(new kj.b($$3, true), bab.a);
             }
          }
       }
@@ -274,7 +274,7 @@ public final class kj {
       });
 
       public Codec<?> a() {
-         return this.c ? Codec.unit(baa.a) : this.b.c();
+         return this.c ? Codec.EMPTY.codec() : this.b.c();
       }
    }
 

@@ -14,11 +14,11 @@ import org.slf4j.Logger;
 public class mt implements lw {
    private static final Logger d = LogUtils.getLogger();
    private final ly.a e;
-   private final Set<ald<eql>> f;
+   private final Set<ald<eqm>> f;
    private final List<mt.a> g;
    private final CompletableFuture<jk.a> h;
 
-   public mt(ly $$0, Set<ald<eql>> $$1, List<mt.a> $$2, CompletableFuture<jk.a> $$3) {
+   public mt(ly $$0, Set<ald<eqm>> $$1, List<mt.a> $$2, CompletableFuture<jk.a> $$3) {
       this.e = $$0.a(ly.b.a, "loot_tables");
       this.g = $$2;
       this.f = $$1;
@@ -31,44 +31,44 @@ public class mt implements lw {
    }
 
    private CompletableFuture<?> a(lu $$0, jk.a $$1) {
-      ke<eql> $$2 = new jq<>(lq.aU, Lifecycle.experimental());
-      Map<dyh.a, ale> $$3 = new Object2ObjectOpenHashMap();
+      ke<eqm> $$2 = new jq<>(lq.aU, Lifecycle.experimental());
+      Map<dyi.a, ale> $$3 = new Object2ObjectOpenHashMap();
       this.g.forEach($$3x -> $$3x.a().get().generate($$1, ($$3xx, $$4x) -> {
             ale $$5x = a($$3xx);
-            ale $$6x = $$3.put(bqy.a($$5x), $$5x);
+            ale $$6x = $$3.put(bqz.a($$5x), $$5x);
             if ($$6x != null) {
                ac.a("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
             }
 
             $$4x.a($$5x);
-            eql $$7 = $$4x.a($$3x.b).b();
+            eqm $$7 = $$4x.a($$3x.b).b();
             $$2.a($$3xx, $$7, ju.a);
          }));
       $$2.l();
-      azd.a $$4 = new azd.a();
+      aze.a $$4 = new aze.a();
       jj.a $$5 = new jw.c(List.of($$2)).d().b();
-      eqm $$6 = new eqm($$4, etb.q, $$5);
+      eqn $$6 = new eqn($$4, etc.q, $$5);
 
-      for (ald<eql> $$8 : Sets.difference(this.f, $$2.f())) {
+      for (ald<eqm> $$8 : Sets.difference(this.f, $$2.f())) {
          $$4.b("Missing built-in table: " + $$8.a());
       }
 
-      $$2.h().forEach($$1x -> ((eql)$$1x.a()).a($$6.a(((eql)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
+      $$2.h().forEach($$1x -> ((eqm)$$1x.a()).a($$6.a(((eqm)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
       Multimap<String, String> $$9 = $$4.a();
       if (!$$9.isEmpty()) {
          $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
          throw new IllegalStateException("Failed to validate loot tables, see logs");
       } else {
          return CompletableFuture.allOf($$2.g().stream().map($$2x -> {
-            ald<eql> $$3x = (ald<eql>)$$2x.getKey();
-            eql $$4x = (eql)$$2x.getValue();
+            ald<eqm> $$3x = (ald<eqm>)$$2x.getKey();
+            eqm $$4x = (eqm)$$2x.getValue();
             Path $$5x = this.e.a($$3x.a());
-            return lw.a($$0, $$1, eql.d, $$4x, $$5x);
+            return lw.a($$0, $$1, eqm.d, $$4x, $$5x);
          }).toArray(CompletableFuture[]::new));
       }
    }
 
-   private static ale a(ald<eql> $$0) {
+   private static ale a(ald<eqm> $$0) {
       return $$0.a();
    }
 
@@ -77,6 +77,6 @@ public class mt implements lw {
       return "Loot Tables";
    }
 
-   public static record a(Supplier<mu> a, eta b) {
+   public static record a(Supplier<mu> a, etb b) {
    }
 }

@@ -110,7 +110,7 @@ public class amh {
    }
 
    private Optional<amh.a> b(Scanner $$0) {
-      ald<dbw> $$1 = (ald<dbw>)amq.a.get($$0.next());
+      ald<dbx> $$1 = (ald<dbx>)amq.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class amh {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new amh.a($$1, new evp((double)$$2, (double)$$3, (double)$$4), new evo($$6, $$5)));
+         return Optional.of(new amh.a($$1, new evq((double)$$2, (double)$$3, (double)$$4), new evp($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class amh {
          if (!$$1.isEmpty()) {
             arf $$2 = $$1.get(0);
             are $$3 = this.e.I();
-            ep $$4 = new ep($$2, evp.a($$3.V()), evo.a, $$3, 4, "", xn.a, this.e, $$2);
+            ep $$4 = new ep($$2, evq.a($$3.V()), evp.a, $$3, 4, "", xn.a, this.e, $$2);
             eq $$5 = this.e.aH();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(ald<dbw> a, evp b, evo c) {
+   static record a(ald<dbx> a, evq b, evp c) {
    }
 }

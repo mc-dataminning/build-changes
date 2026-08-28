@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements azs {
+public enum al implements azt {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = azs.a(al::values);
+   public static final Codec<al> d = azt.a(al::values);
    private final String e;
    private final n f;
    private final xo g;

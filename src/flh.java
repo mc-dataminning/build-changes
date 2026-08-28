@@ -1,24 +1,45 @@
-public record flh(int a, int b) {
-   public static flh a(flf $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new flh($$1, $$2);
-         case b -> new flh($$2, $$1);
+import it.unimi.dsi.fastutil.ints.IntComparator;
+
+public enum flh {
+   a,
+   b,
+   c,
+   d;
+
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public flg a() {
+      return switch (this) {
+         case a, b -> flg.b;
+         case c, d -> flg.a;
       };
    }
 
-   public flh a(flg $$0) {
-      return switch ($$0) {
-         case b -> new flh(this.a, this.b + 1);
-         case a -> new flh(this.a, this.b - 1);
-         case c -> new flh(this.a - 1, this.b);
-         case d -> new flh(this.a + 1, this.b);
+   public flh b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
       };
    }
 
-   public int a(flf $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
       };
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   }
+
+   public IntComparator d() {
+      return this.e;
    }
 }

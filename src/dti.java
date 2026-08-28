@@ -1,7 +1,7 @@
-public enum dti implements azs {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dti implements azt {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

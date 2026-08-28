@@ -1,100 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dve implements dwd<bss> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final are d;
-   private final dvo e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bpl<Runnable> g;
+public class dve implements AutoCloseable {
+   public static final int d = 1493;
+   private final dvg a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile eie b;
 
-   public dve(dvo $$0, are $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = bpl.a($$2, "entity-deserializer");
+   public dve(dvn $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dvg($$0, $$1, $$3);
    }
 
-   @Override
-   public CompletableFuture<dvy<bss>> a(dbd $$0) {
-      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
-         if ($$1.isEmpty()) {
-            this.f.add($$0.a());
-            return b($$0);
-         } else {
-            try {
-               dbd $$2 = a($$1.get());
-               if (!Objects.equals($$0, $$2)) {
-                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-               }
-            } catch (Exception var6) {
-               a.warn("Failed to parse chunk {} position info", $$0, var6);
+   public boolean b(dbe $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public ur a(ald<dbx> $$0, Supplier<epp> $$1, ur $$2, Optional<ald<MapCodec<? extends dty>>> $$3) {
+      int $$4 = a($$2);
+
+      try {
+         if ($$4 < 1493) {
+            $$2 = baf.c.a(this.e, $$2, $$4, 1493);
+            if ($$2.p("Level").q("hasLegacyStructureData")) {
+               eie $$5 = this.a($$0, $$1);
+               $$2 = $$5.a($$2);
             }
-
-            ur $$4 = this.e.a($$1.get(), -1);
-            ux $$5 = $$4.c("Entities", 10);
-            List<bss> $$6 = bsy.a($$5, this.d).collect(ImmutableList.toImmutableList());
-            return new dvy<>($$0, $$6);
          }
-      }, this.g::a);
-   }
 
-   private static dbd a(ur $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dbd($$1[0], $$1[1]);
-   }
-
-   private static void a(ur $$0, dbd $$1) {
-      $$0.a("Position", new uv(new int[]{$$1.e, $$1.f}));
-   }
-
-   private static dvy<bss> b(dbd $$0) {
-      return new dvy<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(dvy<bss> $$0) {
-      dbd $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.e.a($$1, null);
+         a($$2, $$0, $$3);
+         $$2 = baf.c.a(this.e, $$2, Math.max(1493, $$4));
+         if ($$4 < aa.b().d().c()) {
+            vg.e($$2);
          }
-      } else {
-         ux $$2 = new ux();
-         $$0.b().forEach($$1x -> {
-            ur $$2x = new ur();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         ur $$3 = vg.e(new ur());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.e.a($$1, $$3).exceptionally($$1x -> {
-            a.error("Failed to store chunk {}", $$1, $$1x);
-            return null;
-         });
-         this.f.remove($$1.a());
+
+         $$2.r("__context");
+         return $$2;
+      } catch (Exception var9) {
+         o $$7 = o.a(var9, "Updated chunk");
+         p $$8 = $$7.a("Updated chunk details");
+         $$8.a("Data version", $$4);
+         throw new y($$7);
       }
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   private eie a(ald<dbx> $$0, Supplier<epp> $$1) {
+      eie $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = eie.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(ur $$0, ald<dbx> $$1, Optional<ald<MapCodec<? extends dty>>> $$2) {
+      ur $$3 = new ur();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(ur $$0) {
+      return vg.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<ur>> e(dbe $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dbe $$0, ur $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void f(dbe $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      this.e.close();
+      this.a.close();
+   }
+
+   public dvc p() {
+      return this.a;
    }
 }

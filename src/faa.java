@@ -1,132 +1,208 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
 
-public interface faa {
-   faa a(double var1, double var3, double var5);
+public class faa implements AutoCloseable {
+   private final faa.a a;
+   private int b;
+   private int c;
+   private int d;
+   @Nullable
+   private fac e;
+   @Nullable
+   private RenderSystem.a f;
+   private fac.a g;
+   private int h;
+   private fac.b i;
 
-   faa a(int var1, int var2, int var3, int var4);
-
-   faa a(float var1, float var2);
-
-   faa a(int var1, int var2);
-
-   faa b(int var1, int var2);
-
-   faa a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
+   public faa(faa.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   void b(int var1, int var2, int var3, int var4);
-
-   void l();
-
-   default faa a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default faa a(int $$0) {
-      return this.a(ayh.b.b($$0), ayh.b.c($$0), ayh.b.d($$0), ayh.b.a($$0));
-   }
-
-   default faa b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default faa c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(ezw.a $$0, gej $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(ezw.a $$0, gej $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
-      int[] $$12 = $$1.b();
-      kd $$13 = $$1.e().q();
-      Matrix4f $$14 = $$0.a();
-      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
-      int $$16 = 8;
-      int $$17 = $$12.length / 8;
-      MemoryStack $$18 = MemoryStack.stackPush();
-
+   public void a(ezs.b $$0) {
       try {
-         ByteBuffer $$19 = $$18.malloc(ezu.j.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$17; $$21++) {
-            $$20.clear();
-            $$20.put($$12, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
-               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
-               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
-               $$28 = $$25 * $$10[$$21] * $$3;
-               $$29 = $$26 * $$10[$$21] * $$4;
-               $$30 = $$27 * $$10[$$21] * $$5;
-            } else {
-               $$28 = $$10[$$21] * $$3;
-               $$29 = $$10[$$21] * $$4;
-               $$30 = $$10[$$21] * $$5;
-            }
-
-            int $$34 = $$11[$$21];
-            float $$35 = $$19.getFloat(16);
-            float $$36 = $$19.getFloat(20);
-            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
-            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
+         if (!this.e()) {
+            RenderSystem.assertOnRenderThread();
+            ezs.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.i();
+            this.g = $$1.k();
+            this.i = $$1.j();
+            return;
          }
-      } catch (Throwable var34) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var33) {
-               var34.addSuppressed(var33);
-            }
-         }
-
-         throw var34;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
+      } finally {
+         $$0.e();
       }
    }
 
-   default faa a(ezw.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   private fac a(ezs.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.g().equals(this.e)) {
+         if (this.e != null) {
+            this.e.f();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.g().e();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.g();
    }
 
-   default faa a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   @Nullable
+   private RenderSystem.a b(ezs.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
+         if ($$2 != this.f || !$$2.a($$0.i())) {
+            $$2.b($$0.i());
+         }
+
+         return $$2;
+      }
    }
 
-   default faa b(ezw.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public void a() {
+      ezt.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      ezt.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fac.a f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, geb $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+      } else {
+         this.b($$0, $$1, $$2);
+      }
+   }
+
+   private void b(Matrix4f $$0, Matrix4f $$1, geb $$2) {
+      for (int $$3 = 0; $$3 < 12; $$3++) {
+         int $$4 = RenderSystem.getShaderTexture($$3);
+         $$2.a("Sampler" + $$3, $$4);
+      }
+
+      if ($$2.b != null) {
+         $$2.b.a($$0);
+      }
+
+      if ($$2.c != null) {
+         $$2.c.a($$1);
+      }
+
+      if ($$2.f != null) {
+         $$2.f.a(RenderSystem.getShaderColor());
+      }
+
+      if ($$2.i != null) {
+         $$2.i.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if ($$2.j != null) {
+         $$2.j.a(RenderSystem.getShaderFogStart());
+      }
+
+      if ($$2.k != null) {
+         $$2.k.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if ($$2.l != null) {
+         $$2.l.a(RenderSystem.getShaderFogColor());
+      }
+
+      if ($$2.m != null) {
+         $$2.m.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if ($$2.d != null) {
+         $$2.d.a(RenderSystem.getTextureMatrix());
+      }
+
+      if ($$2.o != null) {
+         $$2.o.a(RenderSystem.getShaderGameTime());
+      }
+
+      if ($$2.e != null) {
+         ezb $$5 = ffe.Q().aO();
+         $$2.e.a((float)$$5.k(), (float)$$5.l());
+      }
+
+      if ($$2.n != null && (this.i == fac.b.a || this.i == fac.b.b)) {
+         $$2.n.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights($$2);
+      $$2.g();
+      this.c();
+      $$2.f();
+   }
+
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
+      }
+
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
+      }
+
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
+      }
+   }
+
+   public fac d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d == -1;
+   }
+
+   public static enum a {
+      a(35044),
+      b(35048);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

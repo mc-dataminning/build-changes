@@ -1,37 +1,19 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ccg<T extends btn> extends cce<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class ccg<T extends bto> extends ccf<T> {
+   private boolean i = true;
 
-   public ccg(coh $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btn> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public ccg(coi $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bto> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.j > 0 || !this.e.el().h()) {
-         return false;
-      } else if (!((coh)this.e).gH()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.j = b(200);
-      super.c();
+      return this.i && super.a();
    }
 }

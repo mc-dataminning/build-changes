@@ -2,7 +2,7 @@ public class afe implements zv<ach> {
    public static final zm<wl, afe> a = zv.a(afe::a, afe::new);
    private final int b;
 
-   public afe(dtr $$0) {
+   public afe(dts $$0) {
       this.b = $$0.q();
    }
 

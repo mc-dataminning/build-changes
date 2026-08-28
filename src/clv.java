@@ -1,15 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class clv {
-   public static bvh<cll> a() {
-      return byt.a((Function<byt.b<cll>, ? extends App<byt.c<cll>, byw<cll>>>)($$0 -> $$0.group($$0.c(ccr.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if (!$$1.eY().e() && !$$1.eY().a(cuq.vs)) {
-                  clm.a($$1, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bvi<bto> a(int $$0, int $$1) {
+      return byu.a(
+         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$2 -> $$2.group($$2.b(ccs.ad), $$2.b(ccs.L), $$2.a(ccs.ae), $$2.a(ccs.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.eY().e()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
+
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -5,12 +5,12 @@ public class ago implements zv<ach> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final ji<bry> g;
+   private final ji<brz> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public ago(int $$0, bsa $$1, boolean $$2) {
+   public ago(int $$0, bsb $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -64,7 +64,7 @@ public class ago implements zv<ach> {
       return this.f;
    }
 
-   public ji<bry> e() {
+   public ji<brz> e() {
       return this.g;
    }
 

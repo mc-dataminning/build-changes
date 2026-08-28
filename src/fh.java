@@ -352,7 +352,7 @@ public class fh implements ArgumentType<fh.g> {
                $$3.setTrue();
             });
             if ($$3.isFalse()) {
-               ur $$5 = this.a.h();
+               ur $$5 = this.a.i();
                $$4.add($$5);
                $$2.add($$5);
             }
@@ -430,7 +430,7 @@ public class fh implements ArgumentType<fh.g> {
          if ($$0 instanceof ur $$3) {
             vo $$4 = $$3.c(this.a);
             if ($$4 == null) {
-               vo var6 = this.b.h();
+               vo var6 = this.b.i();
                $$3.a(this.a, var6);
                $$2.add(var6);
             } else if (this.c.test($$4)) {

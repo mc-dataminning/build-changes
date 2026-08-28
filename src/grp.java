@@ -1,20 +1,7 @@
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface grp {
-   void a(UUID var1, grp.b var2);
-
-   void a(UUID var1, grp.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
-   }
+   void a(Map<UUID, asv.c> var1, Consumer<asv.b> var2);
 }

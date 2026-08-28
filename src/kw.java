@@ -1,9 +1,9 @@
 public class kw extends ku {
    @Override
-   protected cun a(kq $$0, cun $$1) {
+   protected cuo a(kq $$0, cuo $$1) {
       are $$2 = $$0.b();
       if (!$$2.x_()) {
-         iz $$3 = $$0.c().a($$0.d().c(dhc.b));
+         iz $$3 = $$0.c().a($$0.d().c(dhd.b));
          this.a(a($$2, $$3) || b($$2, $$3));
          if (this.b()) {
             $$1.a(1, $$2.E_(), null, () -> $$1.e(0));
@@ -14,14 +14,14 @@ public class kw extends ku {
    }
 
    private static boolean a(are $$0, iz $$1) {
-      dsa $$2 = $$0.a_($$1);
-      if ($$2.a(awo.aG, $$0x -> $$0x.b(der.c) && $$0x.b() instanceof der)) {
-         int $$3 = $$2.c(der.c);
+      dsb $$2 = $$0.a_($$1);
+      if ($$2.a(awo.aG, $$0x -> $$0x.b(des.c) && $$0x.b() instanceof des)) {
+         int $$3 = $$2.c(des.c);
          if ($$3 >= 5) {
             $$0.a(null, $$1, avz.bX, awa.e, 1.0F, 1.0F);
-            der.a($$0, $$1);
-            ((der)$$2.b()).a($$0, $$2, $$1, null, dpc.b.b);
-            $$0.a(null, dwt.M, $$1);
+            des.a($$0, $$1);
+            ((des)$$2.b()).a($$0, $$2, $$1, null, dpd.b.b);
+            $$0.a(null, dwu.M, $$1);
             return true;
          }
       }
@@ -30,10 +30,10 @@ public class kw extends ku {
    }
 
    private static boolean b(are $$0, iz $$1) {
-      for (btn $$3 : $$0.a(btn.class, new evk($$1), bsx.f)) {
-         if ($$3 instanceof bue $$4 && $$4.a()) {
+      for (bto $$3 : $$0.a(bto.class, new evl($$1), bsy.f)) {
+         if ($$3 instanceof buf $$4 && $$4.a()) {
             $$4.a(awa.e);
-            $$0.a(null, dwt.M, $$1);
+            $$0.a(null, dwu.M, $$1);
             return true;
          }
       }

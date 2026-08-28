@@ -1,35 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fne extends fmt {
-   private static final xo a = xo.c("options.skinCustomisation.title");
+public abstract class fne extends fmu {
+   protected final ffh<?>[] r;
    @Nullable
-   private fhz r;
+   private fhb a;
+   protected fia s;
 
-   public fne(fnb $$0, ffh $$1) {
-      super($$0, $$1, a);
+   public fne(fnc $$0, ffi $$1, xo $$2, ffh<?>[] $$3) {
+      super($$0, $$1, $$2);
+      this.r = $$3;
    }
 
    @Override
    protected void aM_() {
-      this.r = this.c(new fhz(this.m, this.n, this.o, this));
-      List<fha> $$0 = new ArrayList<>();
-
-      for (cmw $$1 : cmw.values()) {
-         $$0.add(fhj.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      this.s = this.c(new fia(this.m, this.n, this.o, this));
+      this.s.a(this.r);
+      this.a = this.s.b(this.c.as());
+      if (this.a != null) {
+         this.a.j = this.m.aX().a();
       }
 
-      $$0.add(this.c.v().a(this.c));
-      this.r.a($$0);
       super.aM_();
    }
 
    @Override
    protected void c() {
       super.c();
-      if (this.r != null) {
-         this.r.a(this.n, this.d);
+      this.s.a(this.n, this.d);
+   }
+
+   public void E() {
+      if (this.a instanceof fhk) {
+         ((fhk)this.a).a(this.c.as().c());
       }
    }
 }

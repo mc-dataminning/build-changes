@@ -9,9 +9,9 @@ public class by extends dr<by.a> {
       return by.a.a;
    }
 
-   public void a(arf $$0, evp $$1, @Nullable bss $$2) {
-      evp $$3 = $$0.dn();
-      eqg $$4 = $$2 != null ? bu.b($$0, $$2) : null;
+   public void a(arf $$0, evq $$1, @Nullable bst $$2) {
+      evq $$3 = $$0.dn();
+      eqh $$4 = $$2 != null ? bu.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.z(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class by extends dr<by.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(are $$0, evp $$1, evp $$2, @Nullable eqg $$3) {
+      public boolean a(are $$0, evq $$1, evq $$2, @Nullable eqh $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
             return false;
          } else {

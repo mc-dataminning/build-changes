@@ -3,7 +3,7 @@ public class ahy implements zv<agv> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahy(cms $$0) {
+   public ahy(cmt $$0) {
       this.c = $$0.b;
    }
 

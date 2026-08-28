@@ -1,17 +1,17 @@
 public class air implements zv<agv> {
    public static final zm<wl, air> a = zv.a(air::a, air::new);
-   private final evl b;
-   private final bqr c;
+   private final evm b;
+   private final bqs c;
    private final int d;
 
-   public air(bqr $$0, evl $$1, int $$2) {
+   public air(bqs $$0, evm $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private air(wl $$0) {
-      this.c = $$0.b(bqr.class);
+      this.c = $$0.b(bqs.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class air implements zv<agv> {
       $$0.a(this);
    }
 
-   public bqr b() {
+   public bqs b() {
       return this.c;
    }
 
-   public evl e() {
+   public evm e() {
       return this.b;
    }
 

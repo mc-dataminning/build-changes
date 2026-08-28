@@ -1,46 +1,37 @@
-public class fts<T extends bss> extends fuh<T> {
-   private final fwy a;
-   private final fwy b;
-   private final fwy f;
-   private final fwy g;
-   private final fwy h;
-   private final fwy i;
-   private static final int j = 6;
-
-   public fts(fwy $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+public class fts<T extends bst> extends fvj<T> {
+   public fts(fwz $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxe a(fxc $$0) {
-      fxg $$1 = new fxg();
-      fxh $$2 = $$1.a();
-      $$2.a("head", fxd.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fxa.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fxd.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fxa.a(0.0F, 6.0F, 0.0F));
-      fxd $$3 = fxd.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fxa.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fxa.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fxa.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fxa.a(2.0F, 18.0F, -4.0F));
-      return fxe.a($$1, 64, 32);
+   public static fxf c() {
+      fxh $$0 = new fxh();
+      fxi $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         fxe.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fxb.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         fxe.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fxb.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      fxe $$3 = fxe.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fxb.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fxb.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fxb.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fxb.a(4.0F, 12.0F, -6.0F));
+      return fxf.a($$0, 64, 32);
    }
 
-   @Override
-   public fwy a() {
+   public fwz d() {
       return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = ayx.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ayx.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ayx.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ayx.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

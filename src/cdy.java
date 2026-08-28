@@ -1,43 +1,47 @@
-import java.util.function.Supplier;
+import java.util.Set;
 
-public class cdy<U extends cdx<?>> {
-   public static final cdy<cdh> a = a("dummy", cdh::new);
-   public static final cdy<cdp> b = a("nearest_items", cdp::new);
-   public static final cdy<cdq<btn>> c = a("nearest_living_entities", cdq::new);
-   public static final cdy<cdu> d = a("nearest_players", cdu::new);
-   public static final cdy<cdo> e = a("nearest_bed", cdo::new);
-   public static final cdy<cdl> f = a("hurt_by", cdl::new);
-   public static final cdy<ceb> g = a("villager_hostiles", ceb::new);
-   public static final cdy<cea> h = a("villager_babies", cea::new);
-   public static final cdy<cdv> i = a("secondary_pois", cdv::new);
-   public static final cdy<cdj> j = a("golem_detected", cdj::new);
-   public static final cdy<cdn<cgm>> k = a("armadillo_scare_detected", () -> new cdn<>(5, cgm::j, cgm::gB, ccr.G, 80));
-   public static final cdy<cdt> l = a("piglin_specific_sensor", cdt::new);
-   public static final cdy<cds> m = a("piglin_brute_specific_sensor", cds::new);
-   public static final cdy<cdk> n = a("hoglin_specific_sensor", cdk::new);
-   public static final cdy<cde> o = a("nearest_adult", cde::new);
-   public static final cdy<cdf> p = a("axolotl_attackables", cdf::new);
-   public static final cdy<cdz> q = a("axolotl_temptations", () -> new cdz(cgq.a()));
-   public static final cdy<cdz> r = a("goat_temptations", () -> new cdz(che.a()));
-   public static final cdy<cdz> s = a("frog_temptations", () -> new cdz(cgy.a()));
-   public static final cdy<cdz> t = a("camel_temptations", () -> new cdz(cgv.b()));
-   public static final cdy<cdz> u = a("armadillo_temptations", () -> new cdz(cgn.b()));
-   public static final cdy<cdi> v = a("frog_attackables", cdi::new);
-   public static final cdy<cdm> w = a("is_in_water", cdm::new);
-   public static final cdy<cec> x = a("warden_entity_sensor", cec::new);
-   public static final cdy<cdz> y = a("sniffer_temptations", () -> new cdz(chv.a()));
-   public static final cdy<cdg> z = a("breeze_attack_entity_sensor", cdg::new);
-   private final Supplier<U> A;
+public abstract class cdy<E extends bto> {
+   private static final azg a = azg.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final cef d = cef.b().a(16.0);
+   private static final cef e = cef.b().a(16.0).e();
+   private static final cef f = cef.a().a(16.0);
+   private static final cef g = cef.a().a(16.0).e();
+   private static final cef h = cef.a().a(16.0).d();
+   private static final cef i = cef.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   private cdy(Supplier<U> $$0) {
-      this.A = $$0;
+   public cdy(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public U a() {
-      return this.A.get();
+   public cdy() {
+      this(20);
    }
 
-   private static <U extends cdx<?>> cdy<U> a(String $$0, Supplier<U> $$1) {
-      return jv.a(lp.C, new ale($$0), new cdy<>($$1));
+   public final void b(are $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
+   }
+
+   protected abstract void a(are var1, E var2);
+
+   public abstract Set<ccs<?>> a();
+
+   public static boolean b(bto $$0, bto $$1) {
+      return $$0.dS().b(ccs.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(bto $$0, bto $$1) {
+      return $$0.dS().b(ccs.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bto $$0, bto $$1) {
+      return $$0.dS().b(ccs.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

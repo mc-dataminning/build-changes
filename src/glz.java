@@ -1,27 +1,37 @@
-public class glz extends gkb<cgg, fwp<cgg>> {
-   public glz(giv.a $$0) {
-      super($$0, new fwp<>($$0.a(fwx.cc)), 0.5F);
-      this.a(new gnw(this, $$0.f()));
-      this.a(new gnx(this));
+public class glz extends giv<coc> {
+   private static final ale a = new ale("textures/entity/wither/wither_invulnerable.png");
+   private static final ale f = new ale("textures/entity/wither/wither.png");
+   private final fvv g;
+
+   public glz(giw.a $$0) {
+      super($$0);
+      this.g = new fvv($$0.a(fwy.cb));
    }
 
-   protected float a(cgg $$0, float $$1) {
-      return $$0.gA();
+   public static fxf a() {
+      fxh $$0 = new fxh();
+      fxi $$1 = $$0.a();
+      $$1.a("head", fxe.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxb.a);
+      return fxf.a($$0, 64, 64);
    }
 
-   public void a(cgg $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      if ($$0.gz()) {
-         float $$6 = $$0.G($$2);
-         this.f.a($$6, $$6, $$6);
-      }
+   protected int a(coc $$0, iz $$1) {
+      return 15;
+   }
 
+   public void a(coc $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = ayy.j($$2, $$0.O, $$0.dF());
+      float $$7 = ayy.i($$2, $$0.P, $$0.dH());
+      fab $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gz()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
    }
 
-   public ale a(cgg $$0) {
-      return $$0.gw();
+   public ale a(coc $$0) {
+      return $$0.y() ? a : f;
    }
 }

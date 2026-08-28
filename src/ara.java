@@ -1,4 +1,4 @@
-public abstract class ara extends enf {
+public abstract class ara extends eng {
    protected ara(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

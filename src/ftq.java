@@ -1,4 +1,4 @@
-public abstract class ftq<E extends bss> extends fuh<E> {
+public abstract class ftq<E extends bst> extends fsu<E> {
    private float a = 1.0F;
    private float b = 1.0F;
    private float f = 1.0F;
@@ -10,7 +10,7 @@ public abstract class ftq<E extends bss> extends fuh<E> {
    }
 
    @Override
-   public void a(ezw $$0, faa $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+   public void a(ezx $$0, fab $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
       super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
    }
 }

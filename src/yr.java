@@ -28,7 +28,7 @@ public record yr(String d, @Nullable he e) implements yq {
    @Override
    public Stream<ur> a(ep $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bss> $$1 = this.e.b($$0);
+         List<? extends bst> $$1 = this.e.b($$0);
          return $$1.stream().map(dg::b);
       } else {
          return Stream.empty();

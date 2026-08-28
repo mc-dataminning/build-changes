@@ -16,7 +16,7 @@ public class aox {
 
    private static int a(ep $$0, iz $$1, float $$2) {
       are $$3 = $$0.e();
-      if ($$3.af() != dbw.h) {
+      if ($$3.af() != dbx.h) {
          $$0.b(xo.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

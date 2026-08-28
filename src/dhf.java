@@ -1,102 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dhf extends dfg {
-   public static final MapCodec<dhf> a = b(dhf::new);
-   public static final dsy<dsw> b = dsq.ae;
-
-   @Override
-   public MapCodec<? extends dhf> a() {
-      return a;
-   }
-
-   public dhf(drz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dsw.b));
-   }
-
-   @Override
-   protected dsa a(dsa $$0, je $$1, dsa $$2, dbx $$3, iz $$4, iz $$5) {
-      dsw $$6 = $$0.c(b);
-      if ($$1.o() != je.a.b || $$6 == dsw.b != ($$1 == je.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dsw.b && $$1 == je.a && !$$0.a($$3, $$4) ? dez.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+public class dhf {
+   public static <S extends dpg> dhf.c<S> a(
+      dpi<S> $$0, Function<dsb, dhf.a> $$1, Function<dsb, je> $$2, dsv $$3, dsb $$4, dby $$5, iz $$6, BiPredicate<dby, iz> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dhf.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dhf.b::b;
       } else {
-         return dez.a.o();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dsa a(cxy $$0) {
-      iz $$1 = $$0.a();
-      dbw $$2 = $$0.q();
-      return $$1.v() < $$2.am() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
-   }
-
-   @Override
-   public void a(dbw $$0, iz $$1, dsa $$2, btn $$3, cun $$4) {
-      iz $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.o().a(b, dsw.a)), 3);
-   }
-
-   @Override
-   protected boolean a(dsa $$0, dbz $$1, iz $$2) {
-      if ($$0.c(b) != dsw.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dsa $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == dsw.b;
-      }
-   }
-
-   public static void a(dbx $$0, dsa $$1, iz $$2, int $$3) {
-      iz $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, dsw.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, dsw.a)), $$3);
-   }
-
-   public static dsa c(dbz $$0, iz $$1, dsa $$2) {
-      return $$2.b(dsq.C) ? $$2.a(dsq.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public dsa a(dbw $$0, iz $$1, dsa $$2, cmv $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
+         dhf.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dhf.a.a;
+         boolean $$11 = $$9 == dhf.a.b;
+         if ($$10) {
+            return new dhf.c.b<>($$8);
          } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eX());
+            iz $$12 = $$6.a($$2.apply($$4));
+            dsb $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dhf.a $$14 = $$1.apply($$13);
+               if ($$14 != dhf.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dhf.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dhf.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new dhf.c.b<>($$8);
+         }
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(dhf.b<? super S, T> var1);
+
+      public static final class a<S> implements dhf.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dhf.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
+      public static final class b<S> implements dhf.c<S> {
+         private final S a;
 
-   @Override
-   public void a(dbw $$0, cmv $$1, iz $$2, dsa $$3, @Nullable dpf $$4, cun $$5) {
-      super.a($$0, $$1, $$2, dez.a.o(), $$4, $$5);
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   protected static void b(dbw $$0, iz $$1, dsa $$2, cmv $$3) {
-      dsw $$4 = $$2.c(b);
-      if ($$4 == dsw.a) {
-         iz $$5 = $$1.d();
-         dsa $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dsw.b) {
-            dsa $$7 = $$6.u().b(enu.c) ? dez.G.o() : dez.a.o();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, dex.i($$6));
+         @Override
+         public <T> T apply(dhf.b<? super S, T> $$0) {
+            return $$0.a(this.a);
          }
       }
-   }
-
-   @Override
-   protected void a(dsb.a<dex, dsa> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected long a(dsa $$0, iz $$1) {
-      return ayx.b($$1.u(), $$1.c($$0.c(b) == dsw.b ? 0 : 1).v(), $$1.w());
    }
 }

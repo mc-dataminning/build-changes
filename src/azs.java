@@ -1,97 +1,144 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface azs {
-   int W = 16;
+public class azs {
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(bab.a);
 
-   String c();
-
-   static <E extends Enum<E> & azs> azs.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
+   private static boolean a(yl $$0, ayl $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   static <E extends Enum<E> & azs> azs.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new azs.a<>($$2, $$3);
-   }
+   public static boolean a(String $$0, yl $$1, ayl $$2) {
+      int $$3 = $$0.length();
 
-   static <T extends azs> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = ac.g(Arrays.asList($$1));
-      return new azs.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends azs> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<azs>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
-      } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
                }
+               break;
             }
 
-            return null;
-         };
-      }
-   }
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
 
-   static Keyable a(final azs[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(azs::c).map($$0::createString);
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
          }
-      };
+      }
+
+      return true;
    }
 
-   @Deprecated
-   public static class a<E extends Enum<E> & azs> extends azs.b<E> {
-      private final Function<String, E> a;
+   public static boolean b(String $$0, yl $$1, ayl $$2) {
+      int $$3 = $$0.length();
 
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
       }
 
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
-      }
+      return true;
    }
 
-   public static class b<S extends azs> implements Codec<S> {
-      private final Codec<S> a;
+   public static boolean c(String $$0, yl $$1, ayl $$2) {
+      return a($$0, 0, $$1, $$2);
+   }
 
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = ayf.a(Codec.stringResolver(azs::c, $$1), ayf.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+   public static boolean a(String $$0, int $$1, yl $$2, ayl $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, yl $$2, yl $$3, ayl $$4) {
+      int $$5 = $$0.length();
+      yl $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
       }
 
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
-      }
+      return true;
+   }
 
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+   public static boolean a(xt $$0, yl $$1, ayl $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   }
+
+   public static String a(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yl.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
+   }
+
+   public static String a(xt $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yl.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

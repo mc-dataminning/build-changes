@@ -1,54 +1,268 @@
-import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMaps;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.LongSummaryStatistics;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.LongPredicate;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class exe<T> implements exh<T>, exj<T> {
-   private final List<exf<T>> a = Lists.newArrayList();
-   private final Set<exf<?>> b = new ObjectOpenCustomHashSet(exf.a);
+public class exe<T> implements exd<T> {
+   private static final Comparator<exc<?>> a = ($$0, $$1) -> exh.b.compare($$0.b(), $$1.b());
+   private final LongPredicate b;
+   private final Supplier<bnh> c;
+   private final Long2ObjectMap<exc<T>> d = new Long2ObjectOpenHashMap();
+   private final Long2LongMap e = ac.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
+   private final Queue<exc<T>> f = new PriorityQueue<>(a);
+   private final Queue<exh<T>> g = new ArrayDeque<>();
+   private final List<exh<T>> h = new ArrayList<>();
+   private final Set<exh<?>> i = new ObjectOpenCustomHashSet(exh.c);
+   private final BiConsumer<exc<T>, exh<T>> j = ($$0x, $$1x) -> {
+      if ($$1x.equals($$0x.b())) {
+         this.b($$1x);
+      }
+   };
 
-   @Override
-   public void a(exg<T> $$0) {
-      exf<T> $$1 = new exf<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public exe(LongPredicate $$0, Supplier<bnh> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(exf<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public void a(dbe $$0, exc<T> $$1) {
+      long $$2 = $$0.a();
+      this.d.put($$2, $$1);
+      exh<T> $$3 = $$1.b();
+      if ($$3 != null) {
+         this.e.put($$2, $$3.c());
       }
+
+      $$1.a(this.j);
+   }
+
+   public void a(dbe $$0) {
+      long $$1 = $$0.a();
+      exc<T> $$2 = (exc<T>)this.d.remove($$1);
+      this.e.remove($$1);
+      if ($$2 != null) {
+         $$2.a(null);
+      }
+   }
+
+   @Override
+   public void a(exh<T> $$0) {
+      long $$1 = dbe.a($$0.b());
+      exc<T> $$2 = (exc<T>)this.d.get($$1);
+      if ($$2 == null) {
+         ac.b(new IllegalStateException("Trying to schedule tick in not loaded position " + $$0.b()));
+      } else {
+         $$2.a($$0);
+      }
+   }
+
+   public void a(long $$0, int $$1, BiConsumer<iz, T> $$2) {
+      bnh $$3 = this.c.get();
+      $$3.a("collect");
+      this.a($$0, $$1, $$3);
+      $$3.b("run");
+      $$3.a("ticksToRun", this.g.size());
+      this.a($$2);
+      $$3.b("cleanup");
+      this.c();
+      $$3.c();
+   }
+
+   private void a(long $$0, int $$1, bnh $$2) {
+      this.a($$0);
+      $$2.a("containersToTick", this.f.size());
+      this.a($$0, $$1);
+      this.b();
+   }
+
+   private void a(long $$0) {
+      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
+
+      while ($$1.hasNext()) {
+         Entry $$2 = (Entry)$$1.next();
+         long $$3 = $$2.getLongKey();
+         long $$4 = $$2.getLongValue();
+         if ($$4 <= $$0) {
+            exc<T> $$5 = (exc<T>)this.d.get($$3);
+            if ($$5 == null) {
+               $$1.remove();
+            } else {
+               exh<T> $$6 = $$5.b();
+               if ($$6 == null) {
+                  $$1.remove();
+               } else if ($$6.c() > $$0) {
+                  $$2.setValue($$6.c());
+               } else if (this.b.test($$3)) {
+                  $$1.remove();
+                  this.f.add($$5);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, int $$1) {
+      exc<T> $$2;
+      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
+         exh<T> $$3 = $$2.c();
+         this.c($$3);
+         this.a(this.f, $$2, $$0, $$1);
+         exh<T> $$4 = $$2.b();
+         if ($$4 != null) {
+            if ($$4.c() <= $$0 && this.a($$1)) {
+               this.f.add($$2);
+            } else {
+               this.b($$4);
+            }
+         }
+      }
+   }
+
+   private void b() {
+      for (exc<T> $$0 : this.f) {
+         this.b($$0.b());
+      }
+   }
+
+   private void b(exh<T> $$0) {
+      this.e.put(dbe.a($$0.b()), $$0.c());
+   }
+
+   private void a(Queue<exc<T>> $$0, exc<T> $$1, long $$2, int $$3) {
+      if (this.a($$3)) {
+         exc<T> $$4 = $$0.peek();
+         exh<T> $$5 = $$4 != null ? $$4.b() : null;
+
+         while (this.a($$3)) {
+            exh<T> $$6 = $$1.b();
+            if ($$6 == null || $$6.c() > $$2 || $$5 != null && exh.b.compare($$6, $$5) > 0) {
+               break;
+            }
+
+            $$1.c();
+            this.c($$6);
+         }
+      }
+   }
+
+   private void c(exh<T> $$0) {
+      this.g.add($$0);
+   }
+
+   private boolean a(int $$0) {
+      return this.g.size() < $$0;
+   }
+
+   private void a(BiConsumer<iz, T> $$0) {
+      while (!this.g.isEmpty()) {
+         exh<T> $$1 = this.g.poll();
+         if (!this.i.isEmpty()) {
+            this.i.remove($$1);
+         }
+
+         this.h.add($$1);
+         $$0.accept($$1.b(), $$1.a());
+      }
+   }
+
+   private void c() {
+      this.g.clear();
+      this.f.clear();
+      this.h.clear();
+      this.i.clear();
    }
 
    @Override
    public boolean a(iz $$0, T $$1) {
-      return this.b.contains(exf.a($$1, $$0));
+      exc<T> $$2 = (exc<T>)this.d.get(dbe.a($$0));
+      return $$2 != null && $$2.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(iz $$0, T $$1) {
+      this.d();
+      return this.i.contains(exh.a($$1, $$0));
+   }
+
+   private void d() {
+      if (this.i.isEmpty() && !this.g.isEmpty()) {
+         this.i.addAll(this.g);
+      }
+   }
+
+   private void a(eib $$0, exe.a<T> $$1) {
+      int $$2 = kb.a((double)$$0.h());
+      int $$3 = kb.a((double)$$0.j());
+      int $$4 = kb.a((double)$$0.k());
+      int $$5 = kb.a((double)$$0.m());
+
+      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
+         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
+            long $$8 = dbe.c($$6, $$7);
+            exc<T> $$9 = (exc<T>)this.d.get($$8);
+            if ($$9 != null) {
+               $$1.accept($$8, $$9);
+            }
+         }
+      }
+   }
+
+   public void a(eib $$0) {
+      Predicate<exh<T>> $$1 = $$1x -> $$0.b($$1x.b());
+      this.a($$0, ($$1x, $$2) -> {
+         exh<T> $$3 = $$2.b();
+         $$2.a($$1);
+         exh<T> $$4 = $$2.b();
+         if ($$4 != $$3) {
+            if ($$4 != null) {
+               this.b($$4);
+            } else {
+               this.e.remove($$1x);
+            }
+         }
+      });
+      this.h.removeIf($$1);
+      this.g.removeIf($$1);
+   }
+
+   public void a(eib $$0, kd $$1) {
+      this.a(this, $$0, $$1);
+   }
+
+   public void a(exe<T> $$0, eib $$1, kd $$2) {
+      List<exh<T>> $$3 = new ArrayList<>();
+      Predicate<exh<T>> $$4 = $$1x -> $$1.b($$1x.b());
+      $$0.h.stream().filter($$4).forEach($$3::add);
+      $$0.g.stream().filter($$4).forEach($$3::add);
+      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
+      LongSummaryStatistics $$5 = $$3.stream().mapToLong(exh::e).summaryStatistics();
+      long $$6 = $$5.getMin();
+      long $$7 = $$5.getMax();
+      $$3.forEach($$3x -> this.a(new exh<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
    }
 
    @Override
    public int a() {
-      return this.a.size();
+      return this.d.values().stream().mapToInt(exj::a).sum();
    }
 
-   @Override
-   public vo b(long $$0, Function<T, String> $$1) {
-      ux $$2 = new ux();
-
-      for (exf<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
-      }
-
-      return $$2;
-   }
-
-   public List<exf<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> exe<T> a(ux $$0, Function<String, Optional<T>> $$1, dbd $$2) {
-      exe<T> $$3 = new exe<>();
-      exf.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   @FunctionalInterface
+   interface a<T> {
+      void accept(long var1, exc<T> var3);
    }
 }

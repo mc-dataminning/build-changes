@@ -1,88 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class erg extends ers {
+public class erg extends ert {
    public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  erg.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kl.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kl.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+                  lp.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dte::f).toList())
                )
             )
             .apply($$0, erg::new)
    );
-   private final erg.b b;
-   private final Optional<List<kl<?>>> c;
-   private final Optional<List<kl<?>>> d;
-   private final Predicate<kl<?>> e;
+   private final ji<dey> b;
+   private final Set<dte<?>> c;
 
-   erg(List<etq> $$0, erg.b $$1, Optional<List<kl<?>>> $$2, Optional<List<kl<?>>> $$3) {
+   erg(List<etr> $$0, ji<dey> $$1, Set<dte<?>> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kl<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ac.a($$4);
+      this.c = $$2;
+   }
+
+   private erg(List<etr> $$0, ji<dey> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public eru<erg> b() {
-      return erv.J;
+   public erv<erg> b() {
+      return erw.D;
    }
 
    @Override
-   public Set<esz<?>> a() {
-      return this.b.a();
+   public Set<eta<?>> a() {
+      return ImmutableSet.of(etd.g);
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      ki $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
+   protected cuo a(cuo $$0, eqh $$1) {
+      dsb $$2 = $$1.c(etd.g);
+      if ($$2 != null) {
+         $$0.a(km.ab, cwz.a, $$1x -> {
+            for (dte<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
       return $$0;
    }
 
-   public static erg.a a(erg.b $$0) {
+   public static erg.a a(dey $$0) {
       return new erg.a($$0);
    }
 
-   public static class a extends ers.a<erg.a> {
-      private final erg.b a;
-      private Optional<Builder<kl<?>>> b = Optional.empty();
-      private Optional<Builder<kl<?>>> c = Optional.empty();
+   public static class a extends ert.a<erg.a> {
+      private final ji<dey> a;
+      private final Builder<dte<?>> b = ImmutableSet.builder();
 
-      a(erg.b $$0) {
-         this.a = $$0;
+      a(dey $$0) {
+         this.a = $$0.s();
       }
 
-      public erg.a a(kl<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public erg.a a(dte<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
          }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public erg.a b(kl<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
       }
 
       protected erg.a a() {
@@ -90,43 +86,8 @@ public class erg extends ers {
       }
 
       @Override
-      public ert b() {
-         return new erg(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements azs {
-      a("block_entity");
-
-      public static final Codec<erg.b> b = azs.b(erg.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public ki a(eqg $$0) {
-         switch (this) {
-            case a:
-               dpf $$1 = $$0.c(etc.h);
-               return $$1 != null ? $$1.s() : ki.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<esz<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(etc.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
+      public eru b() {
+         return new erg(this.g(), this.a, this.b.build());
       }
    }
 }

@@ -1,77 +1,122 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fda extends gve {
-   private static final xo b = xo.c("mco.reset.world.seed");
-   public static final xo a = xo.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int B = 210;
-   private final fkp C = new fkp(this);
-   private final Consumer<fdw> D;
-   private fhl E;
-   private fdq F = fdq.a;
-   private boolean G = true;
-   private final Set<String> H = new HashSet<>();
-   private final xo I;
+public class fda extends gvf {
+   private static final xo a = xo.c("mco.selectServer.popup");
+   private static final xo b = xo.c("mco.selectServer.close");
+   private static final ale c = new ale("popup/background");
+   private static final ale B = new ale("icon/trial_available");
+   private static final fiq C = new fiq(new ale("widget/cross_button"), new ale("widget/cross_button_highlighted"));
+   private static final int D = 236;
+   private static final int E = 34;
+   private static final int F = 6;
+   private static final int G = 195;
+   private static final int H = 152;
+   private static final int I = 4;
+   private static final int J = 10;
+   private static final int K = 320;
+   private static final int L = 172;
+   private static final int M = 100;
+   private static final int N = 99;
+   private static final int O = 100;
+   private static List<ale> P = List.of();
+   private final fnc Q;
+   private final boolean R;
+   @Nullable
+   private fhd S;
+   private int T;
+   private int U;
 
-   public fda(Consumer<fdw> $$0, xo $$1) {
+   public fda(fnc $$0, boolean $$1) {
       super(a);
-      this.D = $$0;
-      this.I = $$1;
+      this.Q = $$0;
+      this.R = $$1;
+   }
+
+   public static void a(auo $$0) {
+      Collection<ale> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aM_() {
-      this.E = new fhl(this.p, 210, 20, xo.c("mco.reset.world.seed"));
-      this.E.f(32);
-      this.C.a(this.l, this.p);
-      fkt $$0 = this.C.c(fkt.d()).a(10);
-      $$0.a(fkl.a(this.p, this.E, b));
-      $$0.a(fhj.a(fdq::a).a(fdq.values()).a(this.F).a(0, 0, 210, 20, xo.c("selectWorld.mapType"), ($$0x, $$1x) -> this.F = $$1x));
-      $$0.a(fhj.b(this.G).a(0, 0, 210, 20, xo.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.G = $$1x));
-      this.a($$0);
-      fkt $$1 = this.C.b(fkt.e().a(10));
-      $$1.a(fhc.a(this.I, $$0x -> this.D.accept(this.D())).a());
-      $$1.a(fhc.a(xn.k, $$0x -> this.d()).a());
-      this.C.a($$1x -> {
-         fha var10000 = this.c($$1x);
-      });
-      this.c();
+   protected void aM_() {
+      this.Q.a(this.m, this.n, this.o);
+      if (this.R) {
+         this.S = this.c(
+            fhd.a(xo.c("mco.selectServer.trial"), flt.b(this, "https://aka.ms/startjavarealmstrial")).a(this.I() - 10 - 99, this.J() - 10 - 4 - 40, 99, 20).a()
+         );
+      }
+
+      this.c(fhd.a(xo.c("mco.selectServer.buy"), flt.b(this, "https://aka.ms/BuyJavaRealms")).a(this.I() - 10 - 99, this.J() - 10 - 20, 99, 20).a());
+      fhp $$0 = this.c(new fhp(this.E() + 4, this.F() + 4, 14, 14, C, $$0x -> this.d(), b));
+      $$0.a(fio.a(b));
+      int $$1 = 142 - (this.R ? 40 : 20);
+      fhn $$2 = new fhn(this.I() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.E);
-   }
-
-   private void a(fkt $$0) {
-      atz $$1 = auc.c();
-      $$1.a();
-      $$0.a(fhc.a(xo.c("selectWorld.experiments"), $$1x -> this.m.a(new frt(this, $$1, $$0xx -> {
-            this.H.clear();
-
-            for (atw $$1xx : $$0xx.f()) {
-               if ($$1xx.l() == aua.d) {
-                  this.H.add($$1xx.g());
-               }
-            }
-
-            this.m.a(this);
-         }))).a(210).a());
-   }
-
-   private fdw D() {
-      return new fdw(this.E.a(), this.F, this.G, this.H);
+   public void e() {
+      super.e();
+      if (++this.U > 100) {
+         this.U = 0;
+         this.T = (this.T + 1) % P.size();
+      }
    }
 
    @Override
-   protected void c() {
-      this.C.a();
+   public void a(fgq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.S != null) {
+         a($$0, this.S);
+      }
+   }
+
+   public static void a(fgq $$0, fhd $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(B, $$1.C() + $$1.x() - 8 - 4, $$1.D() + $$1.v() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
+
+   @Override
+   public void b(fgq $$0, int $$1, int $$2, float $$3) {
+      this.Q.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, ffe.a);
+      this.C();
+      this.b($$0);
+      $$0.a(c, this.E(), this.F(), 320, 172);
+      if (!P.isEmpty()) {
+         $$0.a(P.get(this.T), this.E() + 10, this.F() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+      }
+   }
+
+   private int E() {
+      return (this.n - 320) / 2;
+   }
+
+   private int F() {
+      return (this.o - 172) / 2;
+   }
+
+   private int I() {
+      return this.E() + 320;
+   }
+
+   private int J() {
+      return this.F() + 172;
    }
 
    @Override
    public void d() {
-      this.D.accept(null);
+      this.m.a(this.Q);
    }
 }

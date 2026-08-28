@@ -26,11 +26,11 @@ public class xr {
       }
    }
 
-   public static Optional<yc> a(@Nullable ep $$0, Optional<xo> $$1, @Nullable bss $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<yc> a(@Nullable ep $$0, Optional<xo> $$1, @Nullable bst $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static yc a(@Nullable ep $$0, xo $$1, @Nullable bss $$2, int $$3) throws CommandSyntaxException {
+   public static yc a(@Nullable ep $$0, xo $$1, @Nullable bst $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class xr {
       }
    }
 
-   private static yl a(@Nullable ep $$0, yl $$1, @Nullable bss $$2, int $$3) throws CommandSyntaxException {
+   private static yl a(@Nullable ep $$0, yl $$1, @Nullable bst $$2, int $$3) throws CommandSyntaxException {
       xu $$4 = $$1.i();
       if ($$4 != null) {
          xo $$5 = $$4.a(xu.a.a);

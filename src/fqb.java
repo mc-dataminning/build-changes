@@ -1,50 +1,32 @@
-public class fqb extends fnb {
-   private static final int a = 600;
-   private final wj b;
-   private fhc c;
-   private int d;
-   private final fkt r = fkt.d();
+public class fqb extends fqe {
+   private static final xo b = xo.c("multiplayerWarning.header").a(n.r);
+   private static final xo c = xo.c("multiplayerWarning.message");
+   private static final xo d = xo.c("multiplayerWarning.check");
+   private static final xo r = b.f().f("\n").b(c);
+   private final fnc s;
 
-   public fqb(xo $$0, wj $$1) {
-      super($$0);
-      this.b = $$1;
+   public fqb(fnc $$0) {
+      super(b, c, d, r);
+      this.s = $$0;
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   protected fkr m() {
+      fku $$0 = fku.e().a(8);
+      $$0.a(fhd.a(xn.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.m.v = true;
+            this.m.m.av();
+         }
+
+         this.m.a(new fqa(this.s));
+      }).a());
+      $$0.a(fhd.a(xn.k, $$0x -> this.d()).a());
+      return $$0;
    }
 
    @Override
-   protected void aM_() {
-      this.r.c().b().a(10);
-      this.r.a(new fij(this.l, this.p));
-      this.c = this.r.a(fhc.a(xn.p, $$0 -> this.b.a(flu.a)).a());
-      this.c.j = false;
-      this.r.a();
-      this.r.a($$1 -> {
-         fha var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fkn.a(this.r, this.G());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+   public void d() {
+      this.m.a(this.s);
    }
 }

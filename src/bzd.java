@@ -1,21 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzd {
-   public static <E extends clz> bvh<E> a(Function<E, Optional<? extends btn>> $$0) {
-      return byt.a(
-         (Function<byt.b<E>, ? extends App<byt.c<E>, byw<E>>>)($$1 -> $$1.group($$1.c(ccr.ay), $$1.c(ccr.o), $$1.a(ccr.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends btn> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bzd extends bvh<cma> {
+   private static final int c = 25;
+   private static final int d = 20;
+
+   public bzd() {
+      super(ImmutableMap.of(ccs.ay, cct.a, ccs.o, cct.b, ccs.aF, cct.c, ccs.aD, cct.c), cmb.b);
+   }
+
+   protected void a(are $$0, cma $$1, long $$2) {
+      buq<cma> $$3 = $$1.dS();
+      $$3.a(ccs.aD, bab.a, 25L);
+      $$3.b(ccs.m);
+      bto $$4 = $$1.dS().c(ccs.ay).get();
+      bvj.a($$1, $$4);
+      $$1.b(bua.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(are $$0, cma $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(are $$0, cma $$1, long $$2) {
+      if (!$$1.dS().a(ccs.aD) && !$$1.dS().a(ccs.aF)) {
+         $$1.dS().a(ccs.aF, bab.a, (long)(cmb.b - 25));
+         $$1.a(avz.BQ, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(are $$0, cma $$1, long $$2) {
+      if ($$1.c(bua.l)) {
+         $$1.b(bua.a);
+      }
+
+      $$1.dS().c(ccs.ay).ifPresent($$1::j);
+      $$1.dS().b(ccs.ay);
    }
 }

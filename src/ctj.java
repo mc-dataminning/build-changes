@@ -1,30 +1,28 @@
-public class ctj extends cui implements ctp {
-   public ctj(cui.a $$0) {
+public class ctj extends cuj implements cvg {
+   public ctj(cuj.a $$0) {
       super($$0);
-      dhc.a(this, csc.a);
-   }
-
-   public static boolean j(cun $$0) {
-      return $$0.n() < $$0.o() - 1;
    }
 
    @Override
-   public boolean a(cun $$0, cun $$1) {
-      return $$1.a(cuq.vQ);
+   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
+      cuo $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.hN, awa.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cnx $$4 = new cnx($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
+
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bqu.a($$3, $$0.x_());
    }
 
    @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public ji<avy> n() {
-      return avz.ar;
-   }
-
-   @Override
-   public bsz m() {
-      return bsz.e;
+   public cno a(dbx $$0, js $$1, cuo $$2, je $$3) {
+      cnx $$4 = new cnx($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 }

@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dol extends dim {
-   public static final MapCodec<dol> c = b(dol::new);
-   protected static final ewi g = dex.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dol extends dey {
+   public static final MapCodec<dol> a = b(dol::new);
 
    @Override
    public MapCodec<dol> a() {
-      return c;
+      return a;
    }
 
-   public dol(drz.d $$0) {
-      super($$0, je.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azf $$0) {
-      return dkd.a($$0);
+   public dol(dsa.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dex b() {
-      return dez.oA;
-   }
+   protected void a(dsb $$0, dbx $$1, iz $$2, bst $$3) {
+      evq $$4 = new evq(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bto $$5 && $$5.b(bsd.K)) {
+         $$4 = new evq(0.5, 0.25, 0.5);
+      }
 
-   @Override
-   protected boolean g(dsa $$0) {
-      return dkd.a($$0);
+      $$3.a($$0, $$4);
    }
 }

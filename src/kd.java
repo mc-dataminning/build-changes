@@ -172,11 +172,11 @@ public class kd implements Comparable<kd> {
    }
 
    public boolean a(kd $$0, double $$1) {
-      return this.j($$0) < ayx.k($$1);
+      return this.j($$0) < ayy.k($$1);
    }
 
    public boolean a(js $$0, double $$1) {
-      return this.b($$0) < ayx.k($$1);
+      return this.b($$0) < ayy.k($$1);
    }
 
    public double j(kd $$0) {

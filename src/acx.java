@@ -10,7 +10,7 @@ public record acx(List<acx.a> b) implements zv<ach> {
       this($$0.a(acx.a::new));
    }
 
-   public static acx a(List<dug> $$0) {
+   public static acx a(List<duh> $$0) {
       return new acx($$0.stream().map(acx.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acx(List<acx.a> b) implements zv<ach> {
       $$0.a(this);
    }
 
-   public static record a(dbd a, byte[] b) {
-      public a(dug $$0) {
+   public static record a(dbe a, byte[] b) {
+      public a(duh $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new wl(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acx(List<acx.a> b) implements zv<ach> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dug $$0) {
+      private static int a(duh $$0) {
          int $$1 = 0;
 
-         for (duh $$2 : $$0.d()) {
+         for (dui $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acx(List<acx.a> b) implements zv<ach> {
          return $$0;
       }
 
-      public static void a(wl $$0, dug $$1) {
-         for (duh $$2 : $$1.d()) {
+      public static void a(wl $$0, duh $$1) {
+         for (dui $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acx(List<acx.a> b) implements zv<ach> {
          $$0.a(this.b);
       }
 
-      public dbd b() {
+      public dbe b() {
          return this.a;
       }
 

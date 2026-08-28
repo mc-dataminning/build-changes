@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class afl implements zv<ach> {
    public static final zm<wl, afl> a = zv.a(afl::a, afl::new);
-   private final ewk b;
+   private final ewl b;
    private final String c;
 
-   public afl(ewk $$0, @Nullable ewl $$1) {
+   public afl(ewl $$0, @Nullable ewm $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class afl implements zv<ach> {
    }
 
    private afl(wl $$0) {
-      this.b = $$0.a(ewk.u);
+      this.b = $$0.a(ewl.u);
       this.c = $$0.p();
    }
 
    private void a(wl $$0) {
-      $$0.a(ewk::a, this.b);
+      $$0.a(ewl::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class afl implements zv<ach> {
       $$0.a(this);
    }
 
-   public ewk b() {
+   public ewl b() {
       return this.b;
    }
 

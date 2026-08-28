@@ -1,135 +1,55 @@
-import javax.annotation.Nullable;
+public class cra<T extends cpt> implements cph {
+   public static final cra<cqa> a = a("generic_9x1", cqa::a);
+   public static final cra<cqa> b = a("generic_9x2", cqa::b);
+   public static final cra<cqa> c = a("generic_9x3", cqa::c);
+   public static final cra<cqa> d = a("generic_9x4", cqa::d);
+   public static final cra<cqa> e = a("generic_9x5", cqa::e);
+   public static final cra<cqa> f = a("generic_9x6", cqa::f);
+   public static final cra<cqm> g = a("generic_3x3", cqm::new);
+   public static final cra<cqh> h = a("crafter_3x3", cqh::new);
+   public static final cra<cpv> i = a("anvil", cpv::new);
+   public static final cra<cpw> j = a("beacon", cpw::new);
+   public static final cra<cpx> k = a("blast_furnace", cpx::new);
+   public static final cra<cpy> l = a("brewing_stand", cpy::new);
+   public static final cra<cqk> m = a("crafting", cqk::new);
+   public static final cra<cqn> n = a("enchantment", cqn::new);
+   public static final cra<cqp> o = a("furnace", cqp::new);
+   public static final cra<cqr> p = a("grindstone", cqr::new);
+   public static final cra<cqs> q = a("hopper", cqs::new);
+   public static final cra<cqx> r = a("lectern", ($$0, $$1) -> new cqx($$0));
+   public static final cra<cqy> s = a("loom", cqy::new);
+   public static final cra<crc> t = a("merchant", crc::new);
+   public static final cra<crl> u = a("shulker_box", crl::new);
+   public static final cra<crr> v = a("smithing", crr::new);
+   public static final cra<crs> w = a("smoker", crs::new);
+   public static final cra<cpz> x = a("cartography_table", cpz::new);
+   public static final cra<cru> y = a("stonecutter", cru::new);
+   private final cpk z;
+   private final cra.a<T> A;
 
-public class cra implements bql {
-   private final dat b;
-   private final jr<cun> c = jr.a(3, cun.l);
-   @Nullable
-   private dau d;
-   private int e;
-   private int f;
+   private static <T extends cpt> cra<T> a(String $$0, cra.a<T> $$1) {
+      return jv.a(lp.r, $$0, new cra<>($$1, cpm.g));
+   }
 
-   public cra(dat $$0) {
-      this.b = $$0;
+   private static <T extends cpt> cra<T> a(String $$0, cra.a<T> $$1, cpi... $$2) {
+      return jv.a(lp.r, $$0, new cra<>($$1, cpm.e.a($$2)));
+   }
+
+   private cra(cra.a<T> $$0, cpk $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cmv $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.c.size();
+   public cpk i() {
+      return this.z;
    }
 
-   @Override
-   public boolean c() {
-      for (cun $$0 : this.c) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cun a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cun a(int $$0, int $$1) {
-      cun $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.e()) {
-         return bqm.a(this.c, $$0, $$2.I());
-      } else {
-         cun $$3 = bqm.a(this.c, $$0, $$1);
-         if (!$$3.e() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cun b(int $$0) {
-      return bqm.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cun $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cmv $$0) {
-      return this.b.gq() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      cun $$0;
-      cun $$1;
-      if (this.c.get(0).e()) {
-         $$0 = this.c.get(1);
-         $$1 = cun.l;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.e()) {
-         this.a(2, cun.l);
-         this.f = 0;
-      } else {
-         dav $$4 = this.b.gs();
-         if (!$$4.isEmpty()) {
-            dau $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cun.l);
-               this.f = 0;
-            }
-         }
-
-         this.b.n(this.a(2));
-      }
-   }
-
-   @Nullable
-   public dau g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   interface a<T extends cpt> {
+      T create(int var1, cmv var2);
    }
 }

@@ -1,16 +1,12 @@
-public class gkn extends gkb<cfv, fve<cfv>> {
-   private static final ale a = new ale("textures/entity/bear/polarbear.png");
+public class gkn extends gjp<ckf> {
+   private static final ale a = new ale("textures/entity/illager/pillager.png");
 
-   public gkn(giv.a $$0) {
-      super($$0, new fve<>($$0.a(fwx.ba)), 0.9F);
+   public gkn(giw.a $$0) {
+      super($$0, new fun<>($$0.a(fwy.aR)), 0.5F);
+      this.a(new gnb<>(this, $$0.d()));
    }
 
-   public ale a(cfv $$0) {
+   public ale a(ckf $$0) {
       return a;
-   }
-
-   protected void a(cfv $$0, ezw $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
    }
 }

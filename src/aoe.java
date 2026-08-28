@@ -15,13 +15,13 @@ public class aoe {
    public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ep)$$0x.getSource(), ayo.a(), false, null)))
+               .executes($$0x -> a((ep)$$0x.getSource(), ayp.a(), false, null)))
             .then(
                ((RequiredArgumentBuilder)eq.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ep)$$0x.getSource(), ayo.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                     .executes($$0x -> a((ep)$$0x.getSource(), ayp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
                      ((RequiredArgumentBuilder)eq.a("gamemode", fd.a())
-                           .executes($$0x -> a((ep)$$0x.getSource(), ayo.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fd.a($$0x, "gamemode"))))
+                           .executes($$0x -> a((ep)$$0x.getSource(), ayp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fd.a($$0x, "gamemode"))))
                         .then(
                            eq.a("port", IntegerArgumentType.integer(0, 65535))
                               .executes(
@@ -38,7 +38,7 @@ public class aoe {
       );
    }
 
-   private static int a(ep $$0, int $$1, boolean $$2, @Nullable dbt $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, int $$1, boolean $$2, @Nullable dbu $$3) throws CommandSyntaxException {
       if ($$0.l().r()) {
          throw b.create($$0.l().R());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

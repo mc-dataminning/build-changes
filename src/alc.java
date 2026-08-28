@@ -9,29 +9,13 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class alc<T> extends akw<T> {
-   private final alc.b b;
+   private final alc.c b;
 
-   private static alc.b a(final alc.b $$0) {
-      return new alc.b() {
-         private final Map<ald<? extends jv<?>>, Optional<? extends alc.a<?>>> b = new HashMap<>();
-
-         @Override
-         public <T> Optional<alc.a<T>> a(ald<? extends jv<? extends T>> $$0x) {
-            return (Optional<alc.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
-         }
-      };
+   public static <T> alc<T> a(DynamicOps<T> $$0, jk.a $$1) {
+      return a($$0, new alc.a($$1));
    }
 
-   public static <T> alc<T> a(DynamicOps<T> $$0, final jk.a $$1) {
-      return a($$0, a(new alc.b() {
-         @Override
-         public <E> Optional<alc.a<E>> a(ald<? extends jv<? extends E>> $$0) {
-            return $$1.a($$0).map(alc.a::a);
-         }
-      }));
-   }
-
-   public static <T> alc<T> a(DynamicOps<T> $$0, alc.b $$1) {
+   public static <T> alc<T> a(DynamicOps<T> $$0, alc.c $$1) {
       return new alc<>($$0, $$1);
    }
 
@@ -39,7 +23,7 @@ public class alc<T> extends akw<T> {
       return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   private alc(DynamicOps<T> $$0, alc.b $$1) {
+   private alc(DynamicOps<T> $$0, alc.c $$1) {
       super($$0);
       this.b = $$1;
    }
@@ -49,15 +33,32 @@ public class alc<T> extends akw<T> {
    }
 
    public <E> Optional<jl<E>> a(ald<? extends jv<? extends E>> $$0) {
-      return this.b.a($$0).map(alc.a::a);
+      return this.b.a($$0).map(alc.b::a);
    }
 
    public <E> Optional<jj<E>> b(ald<? extends jv<? extends E>> $$0) {
-      return this.b.a($$0).map(alc.a::b);
+      return this.b.a($$0).map(alc.b::b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alc<?> $$1 = (alc<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode() * 31 + this.b.hashCode();
    }
 
    public static <E, O> RecordCodecBuilder<O, jj<E>> c(ald<? extends jv<? extends E>> $$0) {
-      return ayf.a(
+      return ayg.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof alc<?> $$2
                   ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
                   : DataResult.error(() -> "Not a registry ops"))
@@ -67,7 +68,7 @@ public class alc<T> extends akw<T> {
 
    public static <E, O> RecordCodecBuilder<O, ji.c<E>> d(ald<E> $$0) {
       ald<? extends jv<E>> $$1 = ald.a($$0.b());
-      return ayf.a(
+      return ayg.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof alc<?> $$3
                   ? $$3.b
                      .a($$1)
@@ -79,13 +80,49 @@ public class alc<T> extends akw<T> {
          .forGetter($$0x -> null);
    }
 
-   public static record a<T>(jl<T> a, jj<T> b, Lifecycle c) {
-      public static <T> alc.a<T> a(jk.b<T> $$0) {
-         return new alc.a<>($$0, $$0, $$0.g());
+   static final class a implements alc.c {
+      private final jk.a a;
+      private final Map<ald<? extends jv<?>>, Optional<? extends alc.b<?>>> b = new HashMap<>();
+
+      public a(jk.a $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public <E> Optional<alc.b<E>> a(ald<? extends jv<? extends E>> $$0) {
+         return (Optional<alc.b<E>>)this.b.computeIfAbsent($$0, this::b);
+      }
+
+      private Optional<alc.b<Object>> b(ald<? extends jv<?>> $$0) {
+         return this.a.a($$0).map(alc.b::a);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof alc.a $$1 && this.a.equals($$1.a)) {
+               return true;
+            }
+
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
       }
    }
 
-   public interface b {
-      <T> Optional<alc.a<T>> a(ald<? extends jv<? extends T>> var1);
+   public static record b<T>(jl<T> a, jj<T> b, Lifecycle c) {
+      public static <T> alc.b<T> a(jk.b<T> $$0) {
+         return new alc.b<>($$0, $$0, $$0.g());
+      }
+   }
+
+   public interface c {
+      <T> Optional<alc.b<T>> a(ald<? extends jv<? extends T>> var1);
    }
 }

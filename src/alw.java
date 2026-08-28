@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class alw extends ewt {
+public class alw extends ewu {
    private final MinecraftServer b;
-   private final Set<ewl> c = Sets.newHashSet();
+   private final Set<ewm> c = Sets.newHashSet();
    private final List<Runnable> d = Lists.newArrayList();
 
    public alw(MinecraftServer $$0) {
@@ -16,7 +16,7 @@ public class alw extends ewt {
    }
 
    @Override
-   protected void a(ews $$0, ewl $$1, ewq $$2) {
+   protected void a(ewt $$0, ewm $$1, ewr $$2) {
       super.a($$0, $$1, $$2);
       if (this.c.contains($$1)) {
          this.b.ah().a(new afv($$0.cB(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
@@ -26,20 +26,20 @@ public class alw extends ewt {
    }
 
    @Override
-   protected void a(ews $$0, ewl $$1) {
+   protected void a(ewt $$0, ewm $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(ews $$0) {
+   public void a(ewt $$0) {
       super.a($$0);
       this.b.ah().a(new aeu($$0.cB(), null));
       this.a();
    }
 
    @Override
-   public void b(ews $$0, ewl $$1) {
+   public void b(ewt $$0, ewm $$1) {
       super.b($$0, $$1);
       if (this.c.contains($$1)) {
          this.b.ah().a(new aeu($$0.cB(), $$1.b()));
@@ -49,8 +49,8 @@ public class alw extends ewt {
    }
 
    @Override
-   public void a(ewk $$0, @Nullable ewl $$1) {
-      ewl $$2 = this.a($$0);
+   public void a(ewl $$0, @Nullable ewm $$1) {
+      ewm $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -72,7 +72,7 @@ public class alw extends ewt {
    }
 
    @Override
-   public boolean a(String $$0, ewo $$1) {
+   public boolean a(String $$0, ewp $$1) {
       if (super.a($$0, $$1)) {
          this.b.ah().a(afu.a($$1, $$0, afu.a.a));
          this.a();
@@ -83,20 +83,20 @@ public class alw extends ewt {
    }
 
    @Override
-   public void b(String $$0, ewo $$1) {
+   public void b(String $$0, ewp $$1) {
       super.b($$0, $$1);
       this.b.ah().a(afu.a($$1, $$0, afu.a.b));
       this.a();
    }
 
    @Override
-   public void a(ewl $$0) {
+   public void a(ewm $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(ewl $$0) {
+   public void b(ewm $$0) {
       super.b($$0);
       if (this.c.contains($$0)) {
          this.b.ah().a(new afs($$0, 2));
@@ -106,7 +106,7 @@ public class alw extends ewt {
    }
 
    @Override
-   public void c(ewl $$0) {
+   public void c(ewm $$0) {
       super.c($$0);
       if (this.c.contains($$0)) {
          this.g($$0);
@@ -116,21 +116,21 @@ public class alw extends ewt {
    }
 
    @Override
-   public void a(ewo $$0) {
+   public void a(ewp $$0) {
       super.a($$0);
       this.b.ah().a(afu.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(ewo $$0) {
+   public void b(ewp $$0) {
       super.b($$0);
       this.b.ah().a(afu.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(ewo $$0) {
+   public void c(ewp $$0) {
       super.c($$0);
       this.b.ah().a(afu.a($$0));
       this.a();
@@ -146,24 +146,24 @@ public class alw extends ewt {
       }
    }
 
-   public List<zv<?>> d(ewl $$0) {
+   public List<zv<?>> d(ewm $$0) {
       List<zv<?>> $$1 = Lists.newArrayList();
       $$1.add(new afs($$0, 0));
 
-      for (ewk $$2 : ewk.values()) {
+      for (ewl $$2 : ewl.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new afl($$2, $$0));
          }
       }
 
-      for (ewm $$3 : this.i($$0)) {
+      for (ewn $$3 : this.i($$0)) {
          $$1.add(new afv($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(ewl $$0) {
+   public void e(ewm $$0) {
       List<zv<?>> $$1 = this.d($$0);
 
       for (arf $$2 : this.b.ah().t()) {
@@ -175,11 +175,11 @@ public class alw extends ewt {
       this.c.add($$0);
    }
 
-   public List<zv<?>> f(ewl $$0) {
+   public List<zv<?>> f(ewm $$0) {
       List<zv<?>> $$1 = Lists.newArrayList();
       $$1.add(new afs($$0, 1));
 
-      for (ewk $$2 : ewk.values()) {
+      for (ewl $$2 : ewl.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new afl($$2, $$0));
          }
@@ -188,7 +188,7 @@ public class alw extends ewt {
       return $$1;
    }
 
-   public void g(ewl $$0) {
+   public void g(ewm $$0) {
       List<zv<?>> $$1 = this.f($$0);
 
       for (arf $$2 : this.b.ah().t()) {
@@ -200,10 +200,10 @@ public class alw extends ewt {
       this.c.remove($$0);
    }
 
-   public int h(ewl $$0) {
+   public int h(ewm $$0) {
       int $$1 = 0;
 
-      for (ewk $$2 : ewk.values()) {
+      for (ewl $$2 : ewl.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -212,17 +212,17 @@ public class alw extends ewt {
       return $$1;
    }
 
-   public epa.a<ewu> b() {
-      return new epa.a<>(this::h, this::a, bae.n);
+   public epb.a<ewv> b() {
+      return new epb.a<>(this::h, this::a, baf.n);
    }
 
-   private ewu h() {
-      ewu $$0 = new ewu(this);
+   private ewv h() {
+      ewv $$0 = new ewv(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private ewu a(ur $$0, jk.a $$1) {
+   private ewv a(ur $$0, jk.a $$1) {
       return this.h().b($$0, $$1);
    }
 

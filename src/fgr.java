@@ -1,38 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import java.util.Set;
 
-public class fgr {
-   public static final float a = 200.0F;
-   private final List<fgr.a> b = new ArrayList<>();
+public class fgr extends gqb {
+   private static final Set<atn<?>> a = Set.of(gqj.a, gqp.c);
 
-   public fgr a(fgr.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fgr(goz $$0) {
+      super($$0, new ale("textures/atlas/gui.png"), new ale("gui"), a);
    }
 
-   public fgr a(fgr $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
+   @Override
+   public goy a(ale $$0) {
+      return super.a($$0);
    }
 
-   public void a(fgp $$0, float $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
+   public gqq a(goy $$0) {
+      return this.b($$0).a();
    }
 
-   private void b(fgp $$0, float $$1) {
-      for (fgr.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
-   public interface a {
-      void render(fgp var1, float var2);
+   private gqp b(goy $$0) {
+      return $$0.e().f().a(gqp.c).orElse(gqp.a);
    }
 }

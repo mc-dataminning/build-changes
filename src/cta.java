@@ -1,243 +1,1745 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class cta extends cvg {
-   private static final int k = 25;
-   public static final int a = 8;
-   private boolean l = false;
-   private boolean m = false;
-   private static final float n = 0.2F;
-   private static final float o = 0.5F;
-   private static final float p = 3.15F;
-   private static final float q = 1.6F;
-   public static final float b = 1.6F;
+public class cta {
+   private static final ald<csz> a = a("building_blocks");
+   private static final ald<csz> b = a("colored_blocks");
+   private static final ald<csz> c = a("natural_blocks");
+   private static final ald<csz> d = a("functional_blocks");
+   private static final ald<csz> e = a("redstone_blocks");
+   private static final ald<csz> f = a("hotbar");
+   private static final ald<csz> g = a("search");
+   private static final ald<csz> h = a("tools_and_utilities");
+   private static final ald<csz> i = a("combat");
+   private static final ald<csz> j = a("food_and_drinks");
+   private static final ald<csz> k = a("ingredients");
+   private static final ald<csz> l = a("spawn_eggs");
+   private static final ald<csz> m = a("op_blocks");
+   private static final ald<csz> n = a("inventory");
+   private static final Comparator<ji<cjc>> o = Comparator.comparing(ji::a, Comparator.<cjc>comparingInt($$0 -> $$0.b() * $$0.a()).thenComparing(cjc::a));
+   @Nullable
+   private static csz.d p;
 
-   public cta(cui.a $$0) {
-      super($$0);
+   private static ald<csz> a(String $$0) {
+      return ald.a(lq.q, new ale($$0));
    }
 
-   @Override
-   public Predicate<cun> d() {
-      return j;
-   }
+   public static csz a(jv<csz> $$0) {
+      jv.a($$0, a, csz.a(csz.f.a, 0).a(xo.c("itemGroup.buildingBlocks")).a(() -> new cuo(dfa.cj)).a(($$0x, $$1) -> {
+         $$1.a(cur.bC);
+         $$1.a(cur.ck);
+         $$1.a(cur.bP);
+         $$1.a(cur.bZ);
+         $$1.a(cur.K);
+         $$1.a(cur.gt);
+         $$1.a(cur.dS);
+         $$1.a(cur.eZ);
+         $$1.a(cur.nw);
+         $$1.a(cur.mJ);
+         $$1.a(cur.nd);
+         $$1.a(cur.mx);
+         $$1.a(cur.mi);
+         $$1.a(cur.bD);
+         $$1.a(cur.cl);
+         $$1.a(cur.bQ);
+         $$1.a(cur.ca);
+         $$1.a(cur.L);
+         $$1.a(cur.gu);
+         $$1.a(cur.dT);
+         $$1.a(cur.fa);
+         $$1.a(cur.nx);
+         $$1.a(cur.mK);
+         $$1.a(cur.ne);
+         $$1.a(cur.my);
+         $$1.a(cur.mj);
+         $$1.a(cur.bE);
+         $$1.a(cur.cm);
+         $$1.a(cur.bR);
+         $$1.a(cur.cb);
+         $$1.a(cur.M);
+         $$1.a(cur.gv);
+         $$1.a(cur.dU);
+         $$1.a(cur.fb);
+         $$1.a(cur.ny);
+         $$1.a(cur.mL);
+         $$1.a(cur.nf);
+         $$1.a(cur.mz);
+         $$1.a(cur.mk);
+         $$1.a(cur.bF);
+         $$1.a(cur.cn);
+         $$1.a(cur.bS);
+         $$1.a(cur.cc);
+         $$1.a(cur.N);
+         $$1.a(cur.gw);
+         $$1.a(cur.dV);
+         $$1.a(cur.fc);
+         $$1.a(cur.nz);
+         $$1.a(cur.mM);
+         $$1.a(cur.ng);
+         $$1.a(cur.mA);
+         $$1.a(cur.ml);
+         $$1.a(cur.bG);
+         $$1.a(cur.co);
+         $$1.a(cur.bT);
+         $$1.a(cur.cd);
+         $$1.a(cur.O);
+         $$1.a(cur.gx);
+         $$1.a(cur.dW);
+         $$1.a(cur.fd);
+         $$1.a(cur.nA);
+         $$1.a(cur.mN);
+         $$1.a(cur.nh);
+         $$1.a(cur.mB);
+         $$1.a(cur.mm);
+         $$1.a(cur.bI);
+         $$1.a(cur.cq);
+         $$1.a(cur.bV);
+         $$1.a(cur.cf);
+         $$1.a(cur.Q);
+         $$1.a(cur.gz);
+         $$1.a(cur.dY);
+         $$1.a(cur.ff);
+         $$1.a(cur.nC);
+         $$1.a(cur.mP);
+         $$1.a(cur.nj);
+         $$1.a(cur.mD);
+         $$1.a(cur.mo);
+         $$1.a(cur.bJ);
+         $$1.a(cur.cr);
+         $$1.a(cur.bW);
+         $$1.a(cur.cg);
+         $$1.a(cur.R);
+         $$1.a(cur.gA);
+         $$1.a(cur.dZ);
+         $$1.a(cur.fg);
+         $$1.a(cur.nD);
+         $$1.a(cur.mQ);
+         $$1.a(cur.nk);
+         $$1.a(cur.mE);
+         $$1.a(cur.mp);
+         $$1.a(cur.bH);
+         $$1.a(cur.cp);
+         $$1.a(cur.bU);
+         $$1.a(cur.ce);
+         $$1.a(cur.P);
+         $$1.a(cur.gy);
+         $$1.a(cur.dX);
+         $$1.a(cur.fe);
+         $$1.a(cur.nB);
+         $$1.a(cur.mO);
+         $$1.a(cur.ni);
+         $$1.a(cur.mC);
+         $$1.a(cur.mn);
+         $$1.a(cur.bO);
+         $$1.a(cur.cj);
+         $$1.a(cur.S);
+         $$1.a(cur.V);
+         $$1.a(cur.gB);
+         $$1.a(cur.gC);
+         $$1.a(cur.ea);
+         $$1.a(cur.eb);
+         $$1.a(cur.fh);
+         $$1.a(cur.nE);
+         $$1.a(cur.mR);
+         $$1.a(cur.nl);
+         $$1.a(cur.mF);
+         $$1.a(cur.mq);
+         $$1.a(cur.bM);
+         $$1.a(cur.cs);
+         $$1.a(cur.bX);
+         $$1.a(cur.ch);
+         $$1.a(cur.T);
+         $$1.a(cur.gD);
+         $$1.a(cur.ec);
+         $$1.a(cur.fi);
+         $$1.a(cur.nF);
+         $$1.a(cur.mS);
+         $$1.a(cur.nm);
+         $$1.a(cur.mG);
+         $$1.a(cur.mr);
+         $$1.a(cur.bN);
+         $$1.a(cur.ct);
+         $$1.a(cur.bY);
+         $$1.a(cur.ci);
+         $$1.a(cur.U);
+         $$1.a(cur.gE);
+         $$1.a(cur.ed);
+         $$1.a(cur.fj);
+         $$1.a(cur.nG);
+         $$1.a(cur.mT);
+         $$1.a(cur.nn);
+         $$1.a(cur.mH);
+         $$1.a(cur.ms);
+         $$1.a(cur.b);
+         $$1.a(cur.ld);
+         $$1.a(cur.ee);
+         $$1.a(cur.mt);
+         $$1.a(cur.mg);
+         $$1.a(cur.J);
+         $$1.a(cur.eS);
+         $$1.a(cur.ej);
+         $$1.a(cur.gH);
+         $$1.a(cur.eD);
+         $$1.a(cur.lb);
+         $$1.a(cur.lt);
+         $$1.a(cur.gI);
+         $$1.a(cur.ey);
+         $$1.a(cur.ef);
+         $$1.a(cur.fC);
+         $$1.a(cur.fE);
+         $$1.a(cur.fY);
+         $$1.a(cur.el);
+         $$1.a(cur.gO);
+         $$1.a(cur.fF);
+         $$1.a(cur.fD);
+         $$1.a(cur.kZ);
+         $$1.a(cur.lr);
+         $$1.a(cur.gM);
+         $$1.a(cur.c);
+         $$1.a(cur.lg);
+         $$1.a(cur.lx);
+         $$1.a(cur.gN);
+         $$1.a(cur.d);
+         $$1.a(cur.kX);
+         $$1.a(cur.lp);
+         $$1.a(cur.e);
+         $$1.a(cur.lk);
+         $$1.a(cur.lB);
+         $$1.a(cur.gV);
+         $$1.a(cur.f);
+         $$1.a(cur.la);
+         $$1.a(cur.ls);
+         $$1.a(cur.g);
+         $$1.a(cur.lh);
+         $$1.a(cur.ly);
+         $$1.a(cur.gR);
+         $$1.a(cur.h);
+         $$1.a(cur.lj);
+         $$1.a(cur.lA);
+         $$1.a(cur.i);
+         $$1.a(cur.j);
+         $$1.a(cur.ll);
+         $$1.a(cur.lC);
+         $$1.a(cur.gZ);
+         $$1.a(cur.fM);
+         $$1.a(cur.k);
+         $$1.a(cur.lm);
+         $$1.a(cur.lD);
+         $$1.a(cur.ha);
+         $$1.a(cur.fI);
+         $$1.a(cur.fJ);
+         $$1.a(cur.ln);
+         $$1.a(cur.lE);
+         $$1.a(cur.hb);
+         $$1.a(cur.fK);
+         $$1.a(cur.fL);
+         $$1.a(cur.lo);
+         $$1.a(cur.lF);
+         $$1.a(cur.hc);
+         $$1.a(cur.fN);
+         $$1.a(cur.m);
+         $$1.a(cur.o);
+         $$1.a(cur.n);
+         $$1.a(cur.p);
+         $$1.a(cur.q);
+         $$1.a(cur.r);
+         $$1.a(cur.t);
+         $$1.a(cur.s);
+         $$1.a(cur.u);
+         $$1.a(cur.v);
+         $$1.a(cur.x);
+         $$1.a(cur.w);
+         $$1.a(cur.y);
+         $$1.a(cur.z);
+         $$1.a(cur.ez);
+         $$1.a(cur.fX);
+         $$1.a(cur.ek);
+         $$1.a(cur.gJ);
+         $$1.a(cur.fG);
+         $$1.a(cur.fH);
+         $$1.a(cur.fZ);
+         $$1.a(cur.em);
+         $$1.a(cur.gP);
+         $$1.a(cur.cJ);
+         $$1.a(cur.gq);
+         $$1.a(cur.eg);
+         $$1.a(cur.gT);
+         $$1.a(cur.cK);
+         $$1.a(cur.ex);
+         $$1.a(cur.le);
+         $$1.a(cur.lv);
+         $$1.a(cur.cL);
+         $$1.a(cur.eh);
+         $$1.a(cur.iQ);
+         $$1.a(cur.iT);
+         $$1.a(cur.ep);
+         $$1.a(cur.gL);
+         $$1.a(cur.iR);
+         $$1.a(cur.ew);
+         $$1.a(cur.kY);
+         $$1.a(cur.lq);
+         $$1.a(cur.iS);
+         $$1.a(cur.eq);
+         $$1.a(cur.iP);
+         $$1.a(cur.iJ);
+         $$1.a(cur.iM);
+         $$1.a(cur.es);
+         $$1.a(cur.gK);
+         $$1.a(cur.iK);
+         $$1.a(cur.iN);
+         $$1.a(cur.et);
+         $$1.a(cur.iL);
+         $$1.a(cur.iO);
+         $$1.a(cur.eu);
+         $$1.a(cur.fn);
+         $$1.a(cur.gc);
+         $$1.a(cur.gd);
+         $$1.a(cur.gg);
+         $$1.a(cur.en);
+         $$1.a(cur.gQ);
+         $$1.a(cur.gf);
+         $$1.a(cur.ge);
+         $$1.a(cur.iZ);
+         $$1.a(cur.li);
+         $$1.a(cur.lz);
+         $$1.a(cur.gS);
+         $$1.a(cur.fq);
+         $$1.a(cur.fs);
+         $$1.a(cur.fr);
+         $$1.a(cur.wD);
+         $$1.a(cur.wG);
+         $$1.a(cur.wF);
+         $$1.a(cur.wE);
+         $$1.a(cur.gW);
+         $$1.a(cur.wK);
+         $$1.a(cur.wH);
+         $$1.a(cur.wJ);
+         $$1.a(cur.wI);
+         $$1.a(cur.gX);
+         $$1.a(cur.mu);
+         $$1.a(cur.mh);
+         $$1.a(cur.wL);
+         $$1.a(cur.wO);
+         $$1.a(cur.wN);
+         $$1.a(cur.wM);
+         $$1.a(cur.gY);
+         $$1.a(cur.gn);
+         $$1.a(cur.go);
+         $$1.a(cur.lc);
+         $$1.a(cur.lu);
+         $$1.a(cur.gU);
+         $$1.a(cur.eJ);
+         $$1.a(cur.eK);
+         $$1.a(cur.eL);
+         $$1.a(cur.er);
+         $$1.a(cur.aD);
+         $$1.a(cur.aK);
+         $$1.a(cur.fR);
+         $$1.a(cur.mI);
+         $$1.a(cur.nc);
+         $$1.a(cur.mw);
+         $$1.a(cur.fS);
+         $$1.a(cur.aM);
+         $$1.a(cur.mv);
+         $$1.a(cur.lJ);
+         $$1.a(cur.gs);
+         $$1.a(cur.cI);
+         $$1.a(cur.aN);
+         $$1.a(cur.aO);
+         $$1.a(cur.hh);
+         $$1.a(cur.hk);
+         $$1.a(cur.eo);
+         $$1.a(cur.hg);
+         $$1.a(cur.hi);
+         $$1.a(cur.hj);
+         $$1.a(cur.ev);
+         $$1.a(cur.lf);
+         $$1.a(cur.lw);
+         $$1.a(cur.aI);
+         $$1.a(cur.aL);
+         $$1.a(cur.aS);
+         $$1.a(cur.yi);
+         $$1.a(cur.aW);
+         $$1.a(cur.ba);
+         $$1.a(cur.be);
+         $$1.a(cur.mU);
+         $$1.a(cur.no);
+         $$1.a(cur.yq);
+         $$1.a(cur.aP);
+         $$1.a(cur.aT);
+         $$1.a(cur.yj);
+         $$1.a(cur.aX);
+         $$1.a(cur.bb);
+         $$1.a(cur.bf);
+         $$1.a(cur.mV);
+         $$1.a(cur.np);
+         $$1.a(cur.yr);
+         $$1.a(cur.aQ);
+         $$1.a(cur.aU);
+         $$1.a(cur.yk);
+         $$1.a(cur.aY);
+         $$1.a(cur.bc);
+         $$1.a(cur.bg);
+         $$1.a(cur.mW);
+         $$1.a(cur.nq);
+         $$1.a(cur.ys);
+         $$1.a(cur.aR);
+         $$1.a(cur.aV);
+         $$1.a(cur.yl);
+         $$1.a(cur.aZ);
+         $$1.a(cur.bd);
+         $$1.a(cur.bh);
+         $$1.a(cur.mX);
+         $$1.a(cur.nr);
+         $$1.a(cur.yt);
+         $$1.a(cur.bi);
+         $$1.a(cur.bm);
+         $$1.a(cur.ym);
+         $$1.a(cur.bq);
+         $$1.a(cur.bu);
+         $$1.a(cur.by);
+         $$1.a(cur.mY);
+         $$1.a(cur.ns);
+         $$1.a(cur.yu);
+         $$1.a(cur.bj);
+         $$1.a(cur.bn);
+         $$1.a(cur.yn);
+         $$1.a(cur.br);
+         $$1.a(cur.bv);
+         $$1.a(cur.bz);
+         $$1.a(cur.mZ);
+         $$1.a(cur.nt);
+         $$1.a(cur.yv);
+         $$1.a(cur.bk);
+         $$1.a(cur.bo);
+         $$1.a(cur.yo);
+         $$1.a(cur.bs);
+         $$1.a(cur.bw);
+         $$1.a(cur.bA);
+         $$1.a(cur.na);
+         $$1.a(cur.nu);
+         $$1.a(cur.yw);
+         $$1.a(cur.bl);
+         $$1.a(cur.bp);
+         $$1.a(cur.yp);
+         $$1.a(cur.bt);
+         $$1.a(cur.bx);
+         $$1.a(cur.bB);
+         $$1.a(cur.nb);
+         $$1.a(cur.nv);
+         $$1.a(cur.yx);
+      }).d());
+      jv.a($$0, b, csz.a(csz.f.a, 1).a(xo.c("itemGroup.coloredBlocks")).a(() -> new cuo(dfa.bJ)).a(($$0x, $$1) -> {
+         $$1.a(cur.cU);
+         $$1.a(cur.dc);
+         $$1.a(cur.db);
+         $$1.a(cur.dj);
+         $$1.a(cur.dg);
+         $$1.a(cur.di);
+         $$1.a(cur.cV);
+         $$1.a(cur.cY);
+         $$1.a(cur.cZ);
+         $$1.a(cur.dh);
+         $$1.a(cur.dd);
+         $$1.a(cur.cX);
+         $$1.a(cur.df);
+         $$1.a(cur.de);
+         $$1.a(cur.cW);
+         $$1.a(cur.da);
+         $$1.a(cur.hE);
+         $$1.a(cur.hM);
+         $$1.a(cur.hL);
+         $$1.a(cur.hT);
+         $$1.a(cur.hQ);
+         $$1.a(cur.hS);
+         $$1.a(cur.hF);
+         $$1.a(cur.hI);
+         $$1.a(cur.hJ);
+         $$1.a(cur.hR);
+         $$1.a(cur.hN);
+         $$1.a(cur.hH);
+         $$1.a(cur.hP);
+         $$1.a(cur.hO);
+         $$1.a(cur.hG);
+         $$1.a(cur.hK);
+         $$1.a(cur.hU);
+         $$1.a(cur.hl);
+         $$1.a(cur.ht);
+         $$1.a(cur.hs);
+         $$1.a(cur.hA);
+         $$1.a(cur.hx);
+         $$1.a(cur.hz);
+         $$1.a(cur.hm);
+         $$1.a(cur.hp);
+         $$1.a(cur.hq);
+         $$1.a(cur.hy);
+         $$1.a(cur.hu);
+         $$1.a(cur.ho);
+         $$1.a(cur.hw);
+         $$1.a(cur.hv);
+         $$1.a(cur.hn);
+         $$1.a(cur.hr);
+         $$1.a(cur.jJ);
+         $$1.a(cur.jR);
+         $$1.a(cur.jQ);
+         $$1.a(cur.jY);
+         $$1.a(cur.jV);
+         $$1.a(cur.jX);
+         $$1.a(cur.jK);
+         $$1.a(cur.jN);
+         $$1.a(cur.jO);
+         $$1.a(cur.jW);
+         $$1.a(cur.jS);
+         $$1.a(cur.jM);
+         $$1.a(cur.jU);
+         $$1.a(cur.jT);
+         $$1.a(cur.jL);
+         $$1.a(cur.jP);
+         $$1.a(cur.jZ);
+         $$1.a(cur.kh);
+         $$1.a(cur.kg);
+         $$1.a(cur.ko);
+         $$1.a(cur.kl);
+         $$1.a(cur.kn);
+         $$1.a(cur.ka);
+         $$1.a(cur.kd);
+         $$1.a(cur.ke);
+         $$1.a(cur.km);
+         $$1.a(cur.ki);
+         $$1.a(cur.kc);
+         $$1.a(cur.kk);
+         $$1.a(cur.kj);
+         $$1.a(cur.kb);
+         $$1.a(cur.kf);
+         $$1.a(cur.jt);
+         $$1.a(cur.jB);
+         $$1.a(cur.jA);
+         $$1.a(cur.jI);
+         $$1.a(cur.jF);
+         $$1.a(cur.jH);
+         $$1.a(cur.ju);
+         $$1.a(cur.jx);
+         $$1.a(cur.jy);
+         $$1.a(cur.jG);
+         $$1.a(cur.jC);
+         $$1.a(cur.jw);
+         $$1.a(cur.jE);
+         $$1.a(cur.jD);
+         $$1.a(cur.jv);
+         $$1.a(cur.jz);
+         $$1.a(cur.cG);
+         $$1.a(cur.cH);
+         $$1.a(cur.id);
+         $$1.a(cur.il);
+         $$1.a(cur.ik);
+         $$1.a(cur.is);
+         $$1.a(cur.ip);
+         $$1.a(cur.ir);
+         $$1.a(cur.ie);
+         $$1.a(cur.ih);
+         $$1.a(cur.ii);
+         $$1.a(cur.iq);
+         $$1.a(cur.im);
+         $$1.a(cur.ig);
+         $$1.a(cur.io);
+         $$1.a(cur.in);
+         $$1.a(cur.if);
+         $$1.a(cur.ij);
+         $$1.a(cur.fT);
+         $$1.a(cur.it);
+         $$1.a(cur.iB);
+         $$1.a(cur.iA);
+         $$1.a(cur.iI);
+         $$1.a(cur.iF);
+         $$1.a(cur.iH);
+         $$1.a(cur.iu);
+         $$1.a(cur.ix);
+         $$1.a(cur.iy);
+         $$1.a(cur.iG);
+         $$1.a(cur.iC);
+         $$1.a(cur.iw);
+         $$1.a(cur.iE);
+         $$1.a(cur.iD);
+         $$1.a(cur.iv);
+         $$1.a(cur.iz);
+         $$1.a(cur.jc);
+         $$1.a(cur.jd);
+         $$1.a(cur.jl);
+         $$1.a(cur.jk);
+         $$1.a(cur.js);
+         $$1.a(cur.jp);
+         $$1.a(cur.jr);
+         $$1.a(cur.je);
+         $$1.a(cur.jh);
+         $$1.a(cur.ji);
+         $$1.a(cur.jq);
+         $$1.a(cur.jm);
+         $$1.a(cur.jg);
+         $$1.a(cur.jo);
+         $$1.a(cur.jn);
+         $$1.a(cur.jf);
+         $$1.a(cur.jj);
+         $$1.a(cur.rC);
+         $$1.a(cur.rK);
+         $$1.a(cur.rJ);
+         $$1.a(cur.rR);
+         $$1.a(cur.rO);
+         $$1.a(cur.rQ);
+         $$1.a(cur.rD);
+         $$1.a(cur.rG);
+         $$1.a(cur.rH);
+         $$1.a(cur.rP);
+         $$1.a(cur.rL);
+         $$1.a(cur.rF);
+         $$1.a(cur.rN);
+         $$1.a(cur.rM);
+         $$1.a(cur.rE);
+         $$1.a(cur.rI);
+         $$1.a(cur.wQ);
+         $$1.a(cur.wR);
+         $$1.a(cur.wZ);
+         $$1.a(cur.wY);
+         $$1.a(cur.xg);
+         $$1.a(cur.xd);
+         $$1.a(cur.xf);
+         $$1.a(cur.wS);
+         $$1.a(cur.wV);
+         $$1.a(cur.wW);
+         $$1.a(cur.xe);
+         $$1.a(cur.xa);
+         $$1.a(cur.wU);
+         $$1.a(cur.xc);
+         $$1.a(cur.xb);
+         $$1.a(cur.wT);
+         $$1.a(cur.wX);
+         $$1.a(cur.uP);
+         $$1.a(cur.uX);
+         $$1.a(cur.uW);
+         $$1.a(cur.ve);
+         $$1.a(cur.vb);
+         $$1.a(cur.vd);
+         $$1.a(cur.uQ);
+         $$1.a(cur.uT);
+         $$1.a(cur.uU);
+         $$1.a(cur.vc);
+         $$1.a(cur.uY);
+         $$1.a(cur.uS);
+         $$1.a(cur.va);
+         $$1.a(cur.uZ);
+         $$1.a(cur.uR);
+         $$1.a(cur.uV);
+      }).d());
+      jv.a($$0, c, csz.a(csz.f.a, 2).a(xo.c("itemGroup.natural")).a(() -> new cuo(dfa.i)).a(($$0x, $$1) -> {
+         $$1.a(cur.B);
+         $$1.a(cur.E);
+         $$1.a(cur.ga);
+         $$1.a(cur.hW);
+         $$1.a(cur.C);
+         $$1.a(cur.D);
+         $$1.a(cur.F);
+         $$1.a(cur.eP);
+         $$1.a(cur.G);
+         $$1.a(cur.eX);
+         $$1.a(cur.aj);
+         $$1.a(cur.af);
+         $$1.a(cur.cJ);
+         $$1.a(cur.ai);
+         $$1.a(cur.iQ);
+         $$1.a(cur.eU);
+         $$1.a(cur.hV);
+         $$1.a(cur.kV);
+         $$1.a(cur.eV);
+         $$1.a(cur.eT);
+         $$1.a(cur.dN);
+         $$1.a(cur.dL);
+         $$1.a(cur.b);
+         $$1.a(cur.i);
+         $$1.a(cur.c);
+         $$1.a(cur.e);
+         $$1.a(cur.g);
+         $$1.a(cur.l);
+         $$1.a(cur.m);
+         $$1.a(cur.A);
+         $$1.a(cur.xl);
+         $$1.a(cur.iJ);
+         $$1.a(cur.iW);
+         $$1.a(cur.eE);
+         $$1.a(cur.wC);
+         $$1.a(cur.fn);
+         $$1.a(cur.H);
+         $$1.a(cur.I);
+         $$1.a(cur.fo);
+         $$1.a(cur.fp);
+         $$1.a(cur.ja);
+         $$1.a(cur.wD);
+         $$1.a(cur.fq);
+         $$1.a(cur.fs);
+         $$1.a(cur.gn);
+         $$1.a(cur.ak);
+         $$1.a(cur.al);
+         $$1.a(cur.am);
+         $$1.a(cur.an);
+         $$1.a(cur.ao);
+         $$1.a(cur.ap);
+         $$1.a(cur.aq);
+         $$1.a(cur.ar);
+         $$1.a(cur.as);
+         $$1.a(cur.at);
+         $$1.a(cur.au);
+         $$1.a(cur.av);
+         $$1.a(cur.aw);
+         $$1.a(cur.ax);
+         $$1.a(cur.ay);
+         $$1.a(cur.az);
+         $$1.a(cur.aA);
+         $$1.a(cur.aB);
+         $$1.a(cur.aC);
+         $$1.a(cur.aE);
+         $$1.a(cur.aF);
+         $$1.a(cur.aG);
+         $$1.a(cur.fu);
+         $$1.a(cur.aI);
+         $$1.a(cur.aJ);
+         $$1.a(cur.xh);
+         $$1.a(cur.xi);
+         $$1.a(cur.xj);
+         $$1.a(cur.xk);
+         $$1.a(cur.bC);
+         $$1.a(cur.bD);
+         $$1.a(cur.bE);
+         $$1.a(cur.bF);
+         $$1.a(cur.bG);
+         $$1.a(cur.bI);
+         $$1.a(cur.bJ);
+         $$1.a(cur.bK);
+         $$1.a(cur.bL);
+         $$1.a(cur.bH);
+         $$1.a(cur.fQ);
+         $$1.a(cur.bM);
+         $$1.a(cur.bN);
+         $$1.a(cur.cu);
+         $$1.a(cur.cv);
+         $$1.a(cur.cw);
+         $$1.a(cur.cx);
+         $$1.a(cur.cy);
+         $$1.a(cur.cA);
+         $$1.a(cur.cB);
+         $$1.a(cur.cz);
+         $$1.a(cur.cC);
+         $$1.a(cur.cD);
+         $$1.a(cur.fO);
+         $$1.a(cur.fP);
+         $$1.a(cur.iX);
+         $$1.a(cur.iY);
+         $$1.a(cur.wv);
+         $$1.a(cur.W);
+         $$1.a(cur.X);
+         $$1.a(cur.Y);
+         $$1.a(cur.Z);
+         $$1.a(cur.aa);
+         $$1.a(cur.ac);
+         $$1.a(cur.ad);
+         $$1.a(cur.ab);
+         $$1.a(cur.cP);
+         $$1.a(cur.cQ);
+         $$1.a(cur.dA);
+         $$1.a(cur.dB);
+         $$1.a(cur.dC);
+         $$1.a(cur.dD);
+         $$1.a(cur.cN);
+         $$1.a(cur.cO);
+         $$1.a(cur.cR);
+         $$1.a(cur.dk);
+         $$1.a(cur.dl);
+         $$1.a(cur.dm);
+         $$1.a(cur.dn);
+         $$1.a(cur.do);
+         $$1.a(cur.dp);
+         $$1.a(cur.dq);
+         $$1.a(cur.dr);
+         $$1.a(cur.ds);
+         $$1.a(cur.dt);
+         $$1.a(cur.du);
+         $$1.a(cur.dv);
+         $$1.a(cur.dx);
+         $$1.a(cur.dw);
+         $$1.a(cur.dM);
+         $$1.a(cur.dz);
+         $$1.a(cur.dR);
+         $$1.a(cur.dJ);
+         $$1.a(cur.eW);
+         $$1.a(cur.dE);
+         $$1.a(cur.dF);
+         $$1.a(cur.dG);
+         $$1.a(cur.dH);
+         $$1.a(cur.dI);
+         $$1.a(cur.fV);
+         $$1.a(cur.ib);
+         $$1.a(cur.ic);
+         $$1.a(cur.hX);
+         $$1.a(cur.hY);
+         $$1.a(cur.hZ);
+         $$1.a(cur.ia);
+         $$1.a(cur.dy);
+         $$1.a(cur.dP);
+         $$1.a(cur.dQ);
+         $$1.a(cur.eH);
+         $$1.a(cur.eI);
+         $$1.a(cur.fW);
+         $$1.a(cur.dO);
+         $$1.a(cur.xp);
+         $$1.a(cur.kp);
+         $$1.a(cur.kq);
+         $$1.a(cur.pv);
+         $$1.a(cur.rh);
+         $$1.a(cur.rY);
+         $$1.a(cur.rZ);
+         $$1.a(cur.vl);
+         $$1.a(cur.vi);
+         $$1.a(cur.vj);
+         $$1.a(cur.ws);
+         $$1.a(cur.wr);
+         $$1.a(cur.sj);
+         $$1.a(cur.gb);
+         $$1.a(cur.cS);
+         $$1.a(cur.cT);
+         $$1.a(cur.dK);
+         $$1.a(cur.qN);
+         $$1.a(cur.kw);
+         $$1.a(cur.kx);
+         $$1.a(cur.ky);
+         $$1.a(cur.kz);
+         $$1.a(cur.kA);
+         $$1.a(cur.kr);
+         $$1.a(cur.ks);
+         $$1.a(cur.kt);
+         $$1.a(cur.ku);
+         $$1.a(cur.kv);
+         $$1.a(cur.kB);
+         $$1.a(cur.kC);
+         $$1.a(cur.kD);
+         $$1.a(cur.kE);
+         $$1.a(cur.kF);
+         $$1.a(cur.kK);
+         $$1.a(cur.kG);
+         $$1.a(cur.kH);
+         $$1.a(cur.kI);
+         $$1.a(cur.kJ);
+         $$1.a(cur.kL);
+         $$1.a(cur.kM);
+         $$1.a(cur.kN);
+         $$1.a(cur.kO);
+         $$1.a(cur.kP);
+         $$1.a(cur.kQ);
+         $$1.a(cur.kR);
+         $$1.a(cur.kS);
+         $$1.a(cur.kT);
+         $$1.a(cur.kU);
+         $$1.a(cur.cE);
+         $$1.a(cur.cF);
+         $$1.a(cur.fU);
+         $$1.a(cur.fk);
+         $$1.a(cur.fl);
+         $$1.a(cur.fm);
+         $$1.a(cur.hD);
+         $$1.a(cur.wx);
+         $$1.a(cur.wA);
+         $$1.a(cur.lO);
+         $$1.a(cur.lP);
+         $$1.a(cur.xm);
+         $$1.a(cur.xn);
+         $$1.a(cur.xo);
+         $$1.a(cur.gh);
+         $$1.a(cur.gi);
+         $$1.a(cur.gj);
+         $$1.a(cur.gk);
+         $$1.a(cur.lZ);
+         $$1.a(cur.cM);
+         $$1.a(cur.ae);
+      }).d());
+      jv.a($$0, d, csz.a(csz.f.a, 3).a(xo.c("itemGroup.functional")).a(() -> new cuo(cur.qc)).a(($$0x, $$1) -> {
+         $$1.a(cur.eF);
+         $$1.a(cur.ft);
+         $$1.a(cur.lI);
+         $$1.a(cur.wp);
+         $$1.a(cur.wq);
+         $$1.a(cur.fS);
+         $$1.a(cur.eG);
+         $$1.a(cur.iP);
+         $$1.a(cur.me);
+         $$1.a(cur.yq);
+         $$1.a(cur.yr);
+         $$1.a(cur.ys);
+         $$1.a(cur.yt);
+         $$1.a(cur.yu);
+         $$1.a(cur.yv);
+         $$1.a(cur.yw);
+         $$1.a(cur.yx);
+         $$1.a(cur.fu);
+         $$1.a(cur.wv);
+         $$1.a(cur.xm);
+         $$1.a(cur.xn);
+         $$1.a(cur.xo);
+         $$1.a(cur.wC);
+         $$1.a(cur.fW);
+         $$1.a(cur.iW);
+         $$1.a(cur.eO);
+         $$1.a(cur.wn);
+         $$1.a(cur.wj);
+         $$1.a(cur.wk);
+         $$1.a(cur.wm);
+         $$1.a(cur.wl);
+         $$1.a(cur.vV);
+         $$1.a(cur.eQ);
+         $$1.a(cur.wh);
+         $$1.a(cur.wi);
+         $$1.a(cur.wt);
+         $$1.a(cur.wu);
+         $$1.a(cur.hd);
+         $$1.a(cur.he);
+         $$1.a(cur.hf);
+         $$1.a(cur.wf);
+         $$1.a(cur.mf);
+         $$1.a(cur.eY);
+         $$1.a(cur.gl);
+         $$1.a(cur.vf);
+         $$1.a(cur.sq);
+         $$1.a(cur.sr);
+         $$1.a(cur.wo);
+         $$1.a(cur.gG);
+         $$1.a(cur.kW);
+         $$1.a(cur.wB);
+         $$1.a(cur.eR);
+         $$1.a(cur.lG);
+         $$1.a(cur.wx);
+         $$1.a(cur.wy);
+         $$1.a(cur.ag);
+         $$1.a(cur.ah);
+         $$1.a(cur.lX);
+         $$1.a(cur.ue);
+         $$1.a(cur.eC);
+         $$1.a(cur.uF);
+         $$1.a(cur.uc);
+         $$1.a(cur.ud);
+         $$1.a(cur.pZ);
+         $$0x.c().a(lq.S).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> $$0xxx.a(awy.a), csz.g.a));
+         $$1.a(cur.eA);
+         $$1.a(cur.eB);
+         $$1.a(cur.lU);
+         $$1.a(cur.cH);
+         $$1.a(cur.qc);
+         $$1.a(cur.qn);
+         $$1.a(cur.qd);
+         $$1.a(cur.qo);
+         $$1.a(cur.qe);
+         $$1.a(cur.qp);
+         $$1.a(cur.qf);
+         $$1.a(cur.qq);
+         $$1.a(cur.qg);
+         $$1.a(cur.qr);
+         $$1.a(cur.qi);
+         $$1.a(cur.qt);
+         $$1.a(cur.qj);
+         $$1.a(cur.qu);
+         $$1.a(cur.qh);
+         $$1.a(cur.qs);
+         $$1.a(cur.qk);
+         $$1.a(cur.qv);
+         $$1.a(cur.ql);
+         $$1.a(cur.qw);
+         $$1.a(cur.qm);
+         $$1.a(cur.qx);
+         $$1.a(cur.eN);
+         $$1.a(cur.wg);
+         $$1.a(cur.gr);
+         $$1.a(cur.jc);
+         $$1.a(cur.jd);
+         $$1.a(cur.jl);
+         $$1.a(cur.jk);
+         $$1.a(cur.js);
+         $$1.a(cur.jp);
+         $$1.a(cur.jr);
+         $$1.a(cur.je);
+         $$1.a(cur.jh);
+         $$1.a(cur.ji);
+         $$1.a(cur.jq);
+         $$1.a(cur.jm);
+         $$1.a(cur.jg);
+         $$1.a(cur.jo);
+         $$1.a(cur.jn);
+         $$1.a(cur.jf);
+         $$1.a(cur.jj);
+         $$1.a(cur.wP);
+         $$1.a(cur.rC);
+         $$1.a(cur.rK);
+         $$1.a(cur.rJ);
+         $$1.a(cur.rR);
+         $$1.a(cur.rO);
+         $$1.a(cur.rQ);
+         $$1.a(cur.rD);
+         $$1.a(cur.rG);
+         $$1.a(cur.rH);
+         $$1.a(cur.rP);
+         $$1.a(cur.rL);
+         $$1.a(cur.rF);
+         $$1.a(cur.rN);
+         $$1.a(cur.rM);
+         $$1.a(cur.rE);
+         $$1.a(cur.rI);
+         $$1.a(cur.wQ);
+         $$1.a(cur.wR);
+         $$1.a(cur.wZ);
+         $$1.a(cur.wY);
+         $$1.a(cur.xg);
+         $$1.a(cur.xd);
+         $$1.a(cur.xf);
+         $$1.a(cur.wS);
+         $$1.a(cur.wV);
+         $$1.a(cur.wW);
+         $$1.a(cur.xe);
+         $$1.a(cur.xa);
+         $$1.a(cur.wU);
+         $$1.a(cur.xc);
+         $$1.a(cur.xb);
+         $$1.a(cur.wT);
+         $$1.a(cur.wX);
+         $$1.a(cur.uP);
+         $$1.a(cur.uX);
+         $$1.a(cur.uW);
+         $$1.a(cur.ve);
+         $$1.a(cur.vb);
+         $$1.a(cur.vd);
+         $$1.a(cur.uQ);
+         $$1.a(cur.uT);
+         $$1.a(cur.uU);
+         $$1.a(cur.vc);
+         $$1.a(cur.uY);
+         $$1.a(cur.uS);
+         $$1.a(cur.va);
+         $$1.a(cur.uZ);
+         $$1.a(cur.uR);
+         $$1.a(cur.uV);
+         $$1.a(coh.a($$0x.c().b(lq.d)));
+         $$1.a(cur.ul);
+         $$1.a(cur.um);
+         $$1.a(cur.un);
+         $$1.a(cur.uo);
+         $$1.a(cur.up);
+         $$1.a(cur.ur);
+         $$1.a(cur.uq);
+         $$1.a(cur.gp);
+         $$1.a(cur.gm);
+         $$1.a(cur.ss);
+         $$1.a(cur.yB);
+         $$1.a(cur.fv);
+         $$1.a(cur.fw);
+         $$1.a(cur.fx);
+         $$1.a(cur.fy);
+         $$1.a(cur.fz);
+         $$1.a(cur.fA);
+         $$1.a(cur.fB);
+      }).d());
+      jv.a($$0, e, csz.a(csz.f.a, 4).a(xo.c("itemGroup.redstone")).a(() -> new cuo(cur.lH)).a(($$0x, $$1) -> {
+         $$1.a(cur.lH);
+         $$1.a(cur.lI);
+         $$1.a(cur.lJ);
+         $$1.a(cur.lK);
+         $$1.a(cur.lL);
+         $$1.a(cur.lV);
+         $$1.a(cur.yu);
+         $$1.a(cur.yv);
+         $$1.a(cur.yw);
+         $$1.a(cur.yx);
+         $$1.a(cur.lW);
+         $$1.a(cur.mi);
+         $$1.a(cur.mg);
+         $$1.a(cur.mx);
+         $$1.a(cur.mt);
+         $$1.a(cur.mv);
+         $$1.a(cur.mw);
+         $$1.a(cur.lZ);
+         $$1.a(cur.ma);
+         $$1.a(cur.gk);
+         $$1.a(cur.aI);
+         $$1.a(cur.cU);
+         $$1.a(cur.mb);
+         $$1.a(cur.ps);
+         $$1.a(cur.lU);
+         $$1.a(cur.lY);
+         $$1.a(cur.lX);
+         $$1.a(cur.lM);
+         $$1.a(cur.lN);
+         $$1.a(cur.lO);
+         $$1.a(cur.lP);
+         $$1.a(cur.lS);
+         $$1.a(cur.lT);
+         $$1.a(cur.rT);
+         $$1.a(cur.lR);
+         $$1.a(cur.eN);
+         $$1.a(cur.wg);
+         $$1.a(cur.eB);
+         $$1.a(cur.eQ);
+         $$1.a(cur.mc);
+         $$1.a(cur.eY);
+         $$1.a(cur.eC);
+         $$1.a(cur.lQ);
+         $$1.a(cur.mf);
+         $$1.a(cur.wf);
+         $$1.a(cur.sr);
+         $$1.a(cur.nJ);
+         $$1.a(cur.nH);
+         $$1.a(cur.nI);
+         $$1.a(cur.nK);
+         $$1.a(cur.nM);
+         $$1.a(cur.nQ);
+         $$1.a(cur.nN);
+         $$1.a(cur.nO);
+         $$1.a(cur.nP);
+         $$1.a(cur.nV);
+         $$1.a(cur.ol);
+         $$1.a(cur.mJ);
+         $$1.a(cur.mI);
+         $$1.a(cur.nw);
+         $$1.a(cur.nd);
+         $$1.a(cur.nc);
+         $$1.a(cur.md);
+         $$1.a(cur.me);
+         $$1.a(cur.wo);
+         $$1.a(cur.dP);
+         $$1.a(cur.uF);
+         $$1.a(cur.as);
+      }).d());
+      jv.a($$0, f, csz.a(csz.f.a, 5).a(xo.c("itemGroup.hotbar")).a(() -> new cuo(dfa.cl)).a().a(csz.h.c).d());
+      jv.a($$0, g, csz.a(csz.f.a, 6).a(xo.c("itemGroup.search")).a(() -> new cuo(cur.qS)).a(($$1, $$2) -> {
+         Set<cuo> $$3 = cup.a();
 
-   @Override
-   public Predicate<cun> b() {
-      return c;
-   }
-
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      cxb $$4 = $$3.a(km.D);
-      if ($$4 != null && !$$4.b()) {
-         this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
-         return bqt.b($$3);
-      } else if (!$$1.g($$3).e()) {
-         this.l = false;
-         this.m = false;
-         $$1.c($$2);
-         return bqt.b($$3);
-      } else {
-         return bqt.d($$3);
-      }
-   }
-
-   private static float a(cxb $$0) {
-      return $$0.a(cuq.uu) ? 1.6F : 3.15F;
-   }
-
-   @Override
-   public void a(cun $$0, dbw $$1, btn $$2, int $$3) {
-      int $$4 = this.b($$0) - $$3;
-      float $$5 = a($$4, $$0);
-      if ($$5 >= 1.0F && !j($$0) && a($$2, $$0)) {
-         $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), avz.go, $$2.de(), 1.0F, 1.0F / ($$1.E_().i() * 0.5F + 1.0F) + 0.2F);
-      }
-   }
-
-   private static boolean a(btn $$0, cun $$1) {
-      List<cun> $$2 = a($$1, $$0.g($$1), $$0);
-      if (!$$2.isEmpty()) {
-         $$1.b(km.D, cxb.a($$2));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean j(cun $$0) {
-      cxb $$1 = $$0.a(km.D, cxb.a);
-      return !$$1.b();
-   }
-
-   @Override
-   protected void a(btn $$0, cnn $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btn $$6) {
-      Vector3f $$11;
-      if ($$6 != null) {
-         double $$7 = $$6.du() - $$0.du();
-         double $$8 = $$6.dA() - $$0.dA();
-         double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dw() + $$9 * 0.2F;
-         $$11 = a($$0, new evp($$7, $$10, $$8), $$5);
-      } else {
-         evp $$12 = $$0.i(1.0F);
-         Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.c, $$12.d, $$12.e);
-         evp $$14 = $$0.f(1.0F);
-         $$11 = $$14.j().rotate($$13);
-      }
-
-      $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.el(), $$2);
-      $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), avz.gu, $$0.de(), 1.0F, $$16);
-   }
-
-   private static Vector3f a(btn $$0, evp $$1, float $$2) {
-      Vector3f $$3 = $$1.j().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         evp $$5 = $$0.i(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.j());
-      }
-
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
-   }
-
-   @Override
-   protected cnn a(dbw $$0, btn $$1, cun $$2, cun $$3, boolean $$4) {
-      if ($$3.a(cuq.uu)) {
-         return new cni($$0, $$3, $$1, $$1.du(), $$1.dy() - 0.15F, $$1.dA(), true);
-      } else {
-         cnn $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$5 instanceof cnb $$6) {
-            $$6.q(true);
-            $$6.b(avz.gn);
-         }
-
-         return $$5;
-      }
-   }
-
-   @Override
-   protected int k(cun $$0) {
-      return $$0.a(cuq.uu) ? 3 : 1;
-   }
-
-   public void a(dbw $$0, btn $$1, bqr $$2, cun $$3, float $$4, float $$5, @Nullable btn $$6) {
-      if (!$$0.x_()) {
-         cxb $$7 = $$3.b(km.D, cxb.a);
-         if ($$7 != null && !$$7.b()) {
-            this.a($$0, $$1, $$2, $$3, $$7.a(), $$4, $$5, $$1 instanceof cmv, $$6);
-            if ($$1 instanceof arf $$8) {
-               am.G.a($$8, $$3);
-               $$8.b(awj.c.b($$3.g()));
+         for (csz $$4 : $$0) {
+            if ($$4.k() != csz.h.d) {
+               $$3.addAll($$4.m());
             }
          }
-      }
-   }
 
-   private static float a(azf $$0, int $$1) {
-      return $$1 == 0 ? 1.0F : a(($$1 & 1) == 1, $$0);
-   }
-
-   private static float a(boolean $$0, azf $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
-   }
-
-   @Override
-   public void a(dbw $$0, btn $$1, cun $$2, int $$3) {
-      if (!$$0.B) {
-         int $$4 = czz.a(dab.J, $$2);
-         avy $$5 = this.a($$4);
-         avy $$6 = $$4 == 0 ? avz.gp : null;
-         float $$7 = (float)($$2.u() - $$3) / (float)l($$2);
-         if ($$7 < 0.2F) {
-            this.l = false;
-            this.m = false;
+         $$2.a($$3);
+      }).a("item_search.png").a().a(csz.h.d).d());
+      jv.a($$0, h, csz.a(csz.f.b, 0).a(xo.c("itemGroup.tools")).a(() -> new cuo(cur.ph)).a(($$0x, $$1) -> {
+         $$1.a(cur.oM);
+         $$1.a(cur.oN);
+         $$1.a(cur.oO);
+         $$1.a(cur.oP);
+         $$1.a(cur.oR);
+         $$1.a(cur.oS);
+         $$1.a(cur.oT);
+         $$1.a(cur.oU);
+         $$1.a(cur.pb);
+         $$1.a(cur.pc);
+         $$1.a(cur.pd);
+         $$1.a(cur.pe);
+         $$1.a(cur.oW);
+         $$1.a(cur.oX);
+         $$1.a(cur.oY);
+         $$1.a(cur.oZ);
+         $$1.a(cur.pg);
+         $$1.a(cur.ph);
+         $$1.a(cur.pi);
+         $$1.a(cur.pj);
+         $$1.a(cur.pl);
+         $$1.a(cur.pm);
+         $$1.a(cur.pn);
+         $$1.a(cur.po);
+         $$1.a(cur.qy);
+         $$1.a(cur.qz);
+         $$1.a(cur.qH);
+         $$1.a(cur.qG);
+         $$1.a(cur.qI);
+         $$1.a(cur.qF);
+         $$1.a(cur.qJ);
+         $$1.a(cur.qK);
+         $$1.a(cur.qA);
+         $$1.a(cur.qB);
+         $$1.a(cur.qE);
+         $$1.a(cur.qV);
+         $$1.a(cur.os);
+         $$1.a(cur.tX);
+         $$1.a(cur.ry);
+         $$1.a(cur.rV);
+         $$1.a(cur.xr);
+         $$1.a(cur.uL);
+         $$1.a(cur.uK);
+         if ($$0x.a().b(cpm.b)) {
+            $$1.a(cur.qU);
          }
 
-         if ($$7 >= 0.2F && !this.l) {
-            this.l = true;
-            $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), $$5, awa.h, 0.5F, 1.0F);
-         }
-
-         if ($$7 >= 0.5F && $$6 != null && !this.m) {
-            this.m = true;
-            $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), $$6, awa.h, 0.5F, 1.0F);
-         }
-      }
-   }
-
-   @Override
-   public int b(cun $$0) {
-      return l($$0) + 3;
-   }
-
-   public static int l(cun $$0) {
-      int $$1 = czz.a(dab.J, $$0);
-      return $$1 == 0 ? 25 : 25 - 5 * $$1;
-   }
-
-   @Override
-   public cwi c(cun $$0) {
-      return cwi.g;
-   }
-
-   private avy a(int $$0) {
-      switch ($$0) {
-         case 1:
-            return avz.gr;
-         case 2:
-            return avz.gs;
-         case 3:
-            return avz.gt;
-         default:
-            return avz.gq;
-      }
-   }
-
-   private static float a(int $$0, cun $$1) {
-      float $$2 = (float)$$0 / (float)l($$1);
-      if ($$2 > 1.0F) {
-         $$2 = 1.0F;
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
-      cxb $$4 = $$0.a(km.D);
-      if ($$4 != null && !$$4.b()) {
-         cun $$5 = $$4.a().get(0);
-         $$2.add(xo.c("item.minecraft.crossbow.projectile").b(xn.v).b($$5.G()));
-         if ($$3.a() && $$5.a(cuq.uu)) {
-            List<xo> $$6 = Lists.newArrayList();
-            cuq.uu.a($$5, $$1, $$6, $$3);
-            if (!$$6.isEmpty()) {
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, xo.b("  ").b($$6.get($$7)).a(n.h));
+         $$1.a(cur.qS);
+         $$1.a(cur.qT);
+         $$1.a(cur.qW);
+         $$1.a(cur.qX);
+         $$1.a(cur.uj);
+         $$1.a(cur.tZ);
+         $$1.a(cur.tY);
+         $$1.a(cur.sf);
+         $$1.a(cur.ss);
+         $$1.a(cur.nT);
+         c($$1, csz.g.a);
+         $$1.a(cur.nL);
+         $$1.a(cur.nR);
+         $$1.a(cur.nS);
+         $$1.a(cur.nU);
+         $$1.a(cur.nV);
+         $$1.a(cur.nW);
+         $$1.a(cur.nX);
+         $$1.a(cur.nY);
+         $$1.a(cur.nZ);
+         $$1.a(cur.oa);
+         $$1.a(cur.ob);
+         $$1.a(cur.oc);
+         $$1.a(cur.od);
+         $$1.a(cur.og);
+         $$1.a(cur.oh);
+         $$1.a(cur.oi);
+         $$1.a(cur.oj);
+         $$1.a(cur.oe);
+         $$1.a(cur.of);
+         $$1.a(cur.ok);
+         $$1.a(cur.ol);
+         $$1.a(cur.nJ);
+         $$1.a(cur.nH);
+         $$1.a(cur.nI);
+         $$1.a(cur.nK);
+         $$1.a(cur.nM);
+         $$1.a(cur.nQ);
+         $$1.a(cur.nN);
+         $$1.a(cur.nO);
+         $$1.a(cur.nP);
+         $$0x.c().a(lq.E).ifPresent($$1x -> a($$1, $$1x, cur.we, aww.c, csz.g.a));
+         $$1.a(cur.vy);
+         $$1.a(cur.vz);
+         $$1.a(cur.vA);
+         $$1.a(cur.vB);
+         $$1.a(cur.vC);
+         $$1.a(cur.vD);
+         $$1.a(cur.vE);
+         $$1.a(cur.vF);
+         $$1.a(cur.vG);
+         $$1.a(cur.vH);
+         $$1.a(cur.vI);
+         $$1.a(cur.vJ);
+         $$1.a(cur.vK);
+         $$1.a(cur.vL);
+         $$1.a(cur.vM);
+         $$1.a(cur.vN);
+      }).d());
+      jv.a($$0, i, csz.a(csz.f.b, 1).a(xo.c("itemGroup.combat")).a(() -> new cuo(cur.pk)).a(($$0x, $$1) -> {
+         $$1.a(cur.oL);
+         $$1.a(cur.oQ);
+         $$1.a(cur.pa);
+         $$1.a(cur.oV);
+         $$1.a(cur.pf);
+         $$1.a(cur.pk);
+         $$1.a(cur.oO);
+         $$1.a(cur.oT);
+         $$1.a(cur.pd);
+         $$1.a(cur.oY);
+         $$1.a(cur.pi);
+         $$1.a(cur.pn);
+         $$1.a(cur.vP);
+         $$1.a(cur.ub);
+         $$1.a(cur.vs);
+         $$1.a(cur.py);
+         $$1.a(cur.pz);
+         $$1.a(cur.pA);
+         $$1.a(cur.pB);
+         $$1.a(cur.pC);
+         $$1.a(cur.pD);
+         $$1.a(cur.pE);
+         $$1.a(cur.pF);
+         $$1.a(cur.pG);
+         $$1.a(cur.pH);
+         $$1.a(cur.pI);
+         $$1.a(cur.pJ);
+         $$1.a(cur.pO);
+         $$1.a(cur.pP);
+         $$1.a(cur.pQ);
+         $$1.a(cur.pR);
+         $$1.a(cur.pK);
+         $$1.a(cur.pL);
+         $$1.a(cur.pM);
+         $$1.a(cur.pN);
+         $$1.a(cur.pS);
+         $$1.a(cur.pT);
+         $$1.a(cur.pU);
+         $$1.a(cur.pV);
+         $$1.a(cur.oo);
+         $$1.a(cur.uJ);
+         $$1.a(cur.uG);
+         $$1.a(cur.uH);
+         $$1.a(cur.uI);
+         $$1.a(cur.or);
+         $$1.a(cur.vt);
+         $$1.a(cur.md);
+         $$1.a(cur.vf);
+         $$1.a(cur.qC);
+         $$1.a(cur.qR);
+         $$1.a(cur.tY);
+         $$1.a(cur.ou);
+         $$1.a(cur.vT);
+         c($$1, csz.g.a);
+         $$1.a(cur.ov);
+         $$1.a(cur.vp);
+         $$0x.c().a(lq.Y).ifPresent($$2 -> a($$1, $$2, cur.vq, csz.g.a, $$0x.a()));
+      }).d());
+      jv.a($$0, j, csz.a(csz.f.b, 2).a(xo.c("itemGroup.foodAndDrink")).a(() -> new cuo(cur.qa)).a(($$0x, $$1) -> {
+         $$1.a(cur.ot);
+         $$1.a(cur.qa);
+         $$1.a(cur.qb);
+         $$1.a(cur.rW);
+         $$1.a(cur.wr);
+         $$1.a(cur.ws);
+         $$1.a(cur.vg);
+         $$1.a(cur.uf);
+         $$1.a(cur.uk);
+         $$1.a(cur.ug);
+         $$1.a(cur.uh);
+         $$1.a(cur.ui);
+         $$1.a(cur.vk);
+         $$1.a(cur.rX);
+         $$1.a(cur.sa);
+         $$1.a(cur.sb);
+         $$1.a(cur.pX);
+         $$1.a(cur.pY);
+         $$1.a(cur.uN);
+         $$1.a(cur.uO);
+         $$1.a(cur.sc);
+         $$1.a(cur.sd);
+         $$1.a(cur.uA);
+         $$1.a(cur.uB);
+         $$1.a(cur.qZ);
+         $$1.a(cur.rd);
+         $$1.a(cur.ra);
+         $$1.a(cur.re);
+         $$1.a(cur.rb);
+         $$1.a(cur.rc);
+         $$1.a(cur.px);
+         $$1.a(cur.rS);
+         $$1.a(cur.rB);
+         $$1.a(cur.ut);
+         $$1.a(cur.se);
+         $$1.a(cur.sm);
+         $$1.a(cur.pr);
+         $$1.a(cur.vm);
+         $$1.a(cur.uC);
+         a($$1, csz.g.a);
+         $$1.a(cur.qE);
+         $$1.a(cur.wz);
+         b($$1, csz.g.a);
+         $$0x.c().a(lq.Y).ifPresent($$2 -> {
+            a($$1, $$2, cur.sk, csz.g.a, $$0x.a());
+            a($$1, $$2, cur.vo, csz.g.a, $$0x.a());
+            a($$1, $$2, cur.vr, csz.g.a, $$0x.a());
+         });
+      }).d());
+      jv.a(
+         $$0,
+         k,
+         csz.a(csz.f.b, 3)
+            .a(xo.c("itemGroup.ingredients"))
+            .a(() -> new cuo(cur.oE))
+            .a(
+               ($$0x, $$1) -> {
+                  $$1.a(cur.ow);
+                  $$1.a(cur.ox);
+                  $$1.a(cur.oD);
+                  $$1.a(cur.oF);
+                  $$1.a(cur.oH);
+                  $$1.a(cur.oz);
+                  $$1.a(cur.oA);
+                  $$1.a(cur.oy);
+                  $$1.a(cur.aC);
+                  $$1.a(cur.oB);
+                  $$1.a(cur.oC);
+                  $$1.a(cur.vv);
+                  $$1.a(cur.si);
+                  $$1.a(cur.oE);
+                  $$1.a(cur.oG);
+                  $$1.a(cur.oI);
+                  $$1.a(cur.oK);
+                  $$1.a(cur.oJ);
+                  $$1.a(cur.pp);
+                  $$1.a(cur.pW);
+                  $$1.a(cur.pw);
+                  $$1.a(cur.rz);
+                  $$1.a(cur.ry);
+                  $$1.a(cur.ps);
+                  $$1.a(cur.pt);
+                  $$1.a(cur.qC);
+                  $$1.a(cur.qR);
+                  $$1.a(cur.qD);
+                  $$1.a(cur.uE);
+                  $$1.a(cur.ww);
+                  $$1.a(cur.rf);
+                  $$1.a(cur.rg);
+                  $$1.a(cur.op);
+                  $$1.a(cur.oq);
+                  $$1.a(cur.qQ);
+                  $$1.a(cur.qM);
+                  $$1.a(cur.uy);
+                  $$1.a(cur.uz);
+                  $$1.a(cur.vR);
+                  $$1.a(cur.vS);
+                  $$1.a(cur.tX);
+                  $$1.a(cur.sg);
+                  $$1.a(cur.yD);
+                  $$1.a(cur.aH);
+                  $$1.a(cur.us);
+                  $$1.a(cur.sf);
+                  $$1.a(cur.ss);
+                  $$1.a(cur.vu);
+                  $$1.a(cur.vh);
+                  $$1.a(cur.xq);
+                  $$1.a(cur.vO);
+                  $$1.a(cur.ri);
+                  $$1.a(cur.rq);
+                  $$1.a(cur.rp);
+                  $$1.a(cur.rx);
+                  $$1.a(cur.ru);
+                  $$1.a(cur.rw);
+                  $$1.a(cur.rj);
+                  $$1.a(cur.rm);
+                  $$1.a(cur.rn);
+                  $$1.a(cur.rv);
+                  $$1.a(cur.rr);
+                  $$1.a(cur.rl);
+                  $$1.a(cur.rt);
+                  $$1.a(cur.rs);
+                  $$1.a(cur.rk);
+                  $$1.a(cur.ro);
+                  $$1.a(cur.pq);
+                  $$1.a(cur.qL);
+                  $$1.a(cur.ux);
+                  $$1.a(cur.qO);
+                  $$1.a(cur.qP);
+                  $$1.a(cur.uv);
+                  $$1.a(cur.sl);
+                  $$1.a(cur.sj);
+                  $$1.a(cur.lH);
+                  $$1.a(cur.qY);
+                  $$1.a(cur.pu);
+                  $$1.a(cur.vn);
+                  $$1.a(cur.sn);
+                  $$1.a(cur.so);
+                  $$1.a(cur.rA);
+                  $$1.a(cur.uD);
+                  $$1.a(cur.st);
+                  $$1.a(cur.sm);
+                  $$1.a(cur.rc);
+                  $$1.a(cur.sp);
+                  $$1.a(cur.uk);
+                  $$1.a(cur.sh);
+                  $$1.a(cur.oo);
+                  $$1.a(cur.vQ);
+                  $$1.a(cur.vW);
+                  $$1.a(cur.vX);
+                  $$1.a(cur.vY);
+                  $$1.a(cur.vZ);
+                  $$1.a(cur.wa);
+                  $$1.a(cur.wb);
+                  $$1.a(cur.wc);
+                  $$1.a(cur.wd);
+                  $$1.a(cur.xL);
+                  $$1.a(cur.xM);
+                  $$1.a(cur.xN);
+                  $$1.a(cur.xO);
+                  $$1.a(cur.xP);
+                  $$1.a(cur.xQ);
+                  $$1.a(cur.xR);
+                  $$1.a(cur.xT);
+                  $$1.a(cur.xS);
+                  $$1.a(cur.xU);
+                  $$1.a(cur.xV);
+                  $$1.a(cur.xW);
+                  $$1.a(cur.xX);
+                  $$1.a(cur.xY);
+                  $$1.a(cur.xZ);
+                  $$1.a(cur.ya);
+                  $$1.a(cur.yb);
+                  $$1.a(cur.yc);
+                  $$1.a(cur.yd);
+                  $$1.a(cur.ye);
+                  $$1.a(cur.yf);
+                  $$1.a(cur.yg);
+                  $$1.a(cur.yh);
+                  $$1.a(cur.xs);
+                  $$1.a(cur.xt);
+                  $$1.a(cur.xz);
+                  $$1.a(cur.xw);
+                  $$1.a(cur.xv);
+                  $$1.a(cur.xu);
+                  $$1.a(cur.xE);
+                  $$1.a(cur.xH);
+                  $$1.a(cur.xF);
+                  $$1.a(cur.xI);
+                  $$1.a(cur.xx);
+                  $$1.a(cur.xG);
+                  $$1.a(cur.xA);
+                  $$1.a(cur.xB);
+                  $$1.a(cur.xC);
+                  $$1.a(cur.xy);
+                  $$1.a(cur.xD);
+                  $$1.a(cur.xJ);
+                  $$1.a(cur.xK);
+                  $$1.a(cur.tW);
+                  $$1.a(cur.yz);
+                  $$1.a(cur.yA);
+                  Set<axe<cuj>> $$2 = Set.of(
+                     awx.bz,
+                     awx.bA,
+                     awx.bB,
+                     awx.bC,
+                     awx.bD,
+                     awx.bE,
+                     awx.bG,
+                     awx.bR,
+                     awx.bF,
+                     awx.bH,
+                     awx.bI,
+                     awx.bJ,
+                     awx.bK,
+                     awx.bL,
+                     awx.bM,
+                     awx.bN,
+                     awx.bO,
+                     awx.bP,
+                     awx.bQ
+                  );
+                  $$0x.c().a(lq.u).ifPresent($$3 -> {
+                     a($$1, $$3, $$2, csz.g.b, $$0x.a());
+                     b($$1, $$3, $$2, csz.g.c, $$0x.a());
+                  });
                }
+            )
+            .d()
+      );
+      jv.a($$0, l, csz.a(csz.f.b, 4).a(xo.c("itemGroup.spawnEggs")).a(() -> new cuo(cur.tj)).a(($$0x, $$1) -> {
+         $$1.a(cur.eM);
+         $$1.a(cur.yy);
+         $$1.a(cur.sv);
+         $$1.a(cur.su);
+         $$1.a(cur.sw);
+         $$1.a(cur.sx);
+         $$1.a(cur.sy);
+         $$1.a(cur.sz);
+         $$1.a(cur.sA);
+         $$1.a(cur.sB);
+         $$1.a(cur.sD);
+         $$1.a(cur.sC);
+         $$1.a(cur.sE);
+         $$1.a(cur.sF);
+         $$1.a(cur.sG);
+         $$1.a(cur.sH);
+         $$1.a(cur.sI);
+         $$1.a(cur.sJ);
+         $$1.a(cur.sK);
+         $$1.a(cur.sL);
+         $$1.a(cur.sM);
+         $$1.a(cur.sO);
+         $$1.a(cur.sP);
+         $$1.a(cur.sQ);
+         $$1.a(cur.sR);
+         $$1.a(cur.sS);
+         $$1.a(cur.sT);
+         $$1.a(cur.sU);
+         $$1.a(cur.sV);
+         $$1.a(cur.sW);
+         $$1.a(cur.sX);
+         $$1.a(cur.sY);
+         $$1.a(cur.sZ);
+         $$1.a(cur.ta);
+         $$1.a(cur.tb);
+         $$1.a(cur.tc);
+         $$1.a(cur.td);
+         $$1.a(cur.te);
+         $$1.a(cur.tf);
+         $$1.a(cur.tg);
+         $$1.a(cur.th);
+         $$1.a(cur.ti);
+         $$1.a(cur.tj);
+         $$1.a(cur.tk);
+         $$1.a(cur.tl);
+         $$1.a(cur.tm);
+         $$1.a(cur.tn);
+         $$1.a(cur.to);
+         $$1.a(cur.tp);
+         $$1.a(cur.tq);
+         $$1.a(cur.tr);
+         $$1.a(cur.ts);
+         $$1.a(cur.tt);
+         $$1.a(cur.tu);
+         $$1.a(cur.tv);
+         $$1.a(cur.tw);
+         $$1.a(cur.tx);
+         $$1.a(cur.ty);
+         $$1.a(cur.tz);
+         $$1.a(cur.tA);
+         $$1.a(cur.tB);
+         $$1.a(cur.tC);
+         $$1.a(cur.tD);
+         $$1.a(cur.tE);
+         $$1.a(cur.tF);
+         $$1.a(cur.tG);
+         $$1.a(cur.tH);
+         $$1.a(cur.tI);
+         $$1.a(cur.tJ);
+         $$1.a(cur.tK);
+         $$1.a(cur.tL);
+         $$1.a(cur.tM);
+         $$1.a(cur.tN);
+         $$1.a(cur.tP);
+         $$1.a(cur.tQ);
+         $$1.a(cur.tR);
+         $$1.a(cur.tS);
+         $$1.a(cur.tT);
+         $$1.a(cur.tU);
+         $$1.a(cur.tV);
+      }).d());
+      jv.a($$0, m, csz.a(csz.f.b, 5).a(xo.c("itemGroup.op")).a(() -> new cuo(cur.gF)).a().a(($$0x, $$1) -> {
+         if ($$0x.b()) {
+            $$1.a(cur.gF);
+            $$1.a(cur.iV);
+            $$1.a(cur.iU);
+            $$1.a(cur.uM);
+            $$1.a(cur.on);
+            $$1.a(cur.om);
+            $$1.a(cur.jb);
+            $$1.a(cur.hB);
+            $$1.a(cur.vx);
 
-               $$2.addAll($$6);
+            for (int $$2 = 15; $$2 >= 0; $$2--) {
+               $$1.a(djm.a(new cuo(cur.hC), $$2));
             }
+
+            $$0x.c().a(lq.S).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> !$$0xxx.a(awy.a), csz.g.a));
+         }
+      }).d());
+      return jv.a($$0, n, csz.a(csz.f.b, 6).a(xo.c("itemGroup.inventory")).a(() -> new cuo(dfa.cv)).a("inventory.png").b().a().a(csz.h.b).c().d());
+   }
+
+   public static void a() {
+      Map<Pair<csz.f, Integer>, String> $$0 = new HashMap<>();
+
+      for (ald<csz> $$1 : lp.ao.f()) {
+         csz $$2 = lp.ao.f($$1);
+         String $$3 = $$2.a().getString();
+         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
+         if ($$4 != null) {
+            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
          }
       }
    }
 
-   @Override
-   public boolean m(cun $$0) {
-      return $$0.a(this);
+   public static csz b() {
+      return lp.ao.f(a);
    }
 
-   @Override
-   public int c() {
-      return 8;
+   private static void a(csz.e $$0, jk<cwn> $$1, cuj $$2, csz.g $$3, cpk $$4) {
+      $$1.b().filter($$1x -> ((cwn)$$1x.a()).a($$4)).map($$1x -> cwp.a($$2, $$1x)).forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(csz.e $$0, jk<czz> $$1, Set<axe<cuj>> $$2, csz.g $$3, cpk $$4) {
+      $$1.b()
+         .map(ji::a)
+         .filter($$1x -> $$1x.a($$4))
+         .filter($$1x -> $$2.contains($$1x.c()))
+         .map($$0x -> ctm.a(new dab($$0x, $$0x.g())))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void b(csz.e $$0, jk<czz> $$1, Set<axe<cuj>> $$2, csz.g $$3, cpk $$4) {
+      $$1.b()
+         .map(ji::a)
+         .filter($$1x -> $$1x.a($$4))
+         .filter($$1x -> $$2.contains($$1x.c()))
+         .flatMap($$0x -> IntStream.rangeClosed($$0x.f(), $$0x.g()).mapToObj($$1x -> ctm.a(new dab($$0x, $$1x))))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(csz.e $$0, jk<cug> $$1, cuj $$2, axe<cug> $$3, csz.g $$4) {
+      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cuh.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
+   }
+
+   private static void a(csz.e $$0, csz.g $$1) {
+      List<dna> $$2 = dna.c();
+      Set<cuo> $$3 = cup.a();
+
+      for (dna $$4 : $$2) {
+         cuo $$5 = new cuo(cur.vU);
+         $$5.b(km.H, $$4.b());
+         $$3.add($$5);
+      }
+
+      $$0.a($$3, $$1);
+   }
+
+   private static void b(csz.e $$0, csz.g $$1) {
+      for (int $$2 = 0; $$2 <= 4; $$2++) {
+         cuo $$3 = new cuo(cur.yC);
+         $$3.b(km.Q, Integer.valueOf($$2));
+         $$0.a($$3, $$1);
+      }
+   }
+
+   private static void c(csz.e $$0, csz.g $$1) {
+      for (byte $$2 : ctt.a) {
+         cuo $$3 = new cuo(cur.uu);
+         $$3.b(km.U, new cxi($$2, List.of()));
+         $$0.a($$3, $$1);
+      }
+   }
+
+   private static void a(csz.e $$0, jk.b<cjc> $$1, Predicate<ji<cjc>> $$2, csz.g $$3) {
+      $$1.b().filter($$2).sorted(o).forEach($$2x -> {
+         cxd $$3x = ((cxd)cxd.a.a(cjb.e, $$2x).getOrThrow()).a((Consumer<ur>)($$0xx -> $$0xx.a("id", "minecraft:painting")));
+         cuo $$4 = new cuo(cur.pZ);
+         $$4.b(km.M, $$3x);
+         $$0.a($$4, $$3);
+      });
+   }
+
+   public static List<csz> c() {
+      return f().filter(csz::i).toList();
+   }
+
+   public static List<csz> d() {
+      return f().toList();
+   }
+
+   private static Stream<csz> f() {
+      return lp.ao.s();
+   }
+
+   public static csz e() {
+      return lp.ao.f(g);
+   }
+
+   private static void a(csz.d $$0) {
+      f().filter($$0x -> $$0x.k() == csz.h.a).forEach($$1 -> $$1.a($$0));
+      f().filter($$0x -> $$0x.k() != csz.h.a).forEach($$1 -> $$1.a($$0));
+   }
+
+   public static boolean a(cpk $$0, boolean $$1, jk.a $$2) {
+      if (p != null && !p.a($$0, $$1, $$2)) {
+         return false;
+      } else {
+         p = new csz.d($$0, $$1, $$2);
+         a(p);
+         return true;
+      }
    }
 }

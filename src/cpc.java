@@ -1,70 +1,111 @@
-public class cpc extends cor {
-   private final day c = new day() {
-      @Override
-      public void a(dbw $$0, iz $$1, int $$2) {
-         $$0.a(cpc.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class cpc extends cot implements dqe {
+   private boolean c = true;
 
-   public cpc(bsy<? extends cpc> $$0, dbw $$1) {
+   public cpc(bsz<? extends cpc> $$0, dbx $$1) {
       super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public cpc(dbw $$0, double $$1, double $$2, double $$3) {
-      super(bsy.aU, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
-   }
-
-   @Override
-   protected cui ah_() {
-      return cuq.nM;
-   }
-
-   private Runnable b(dbw $$0) {
-      return $$0 instanceof are ? () -> this.c.a((are)$$0, this.dp()) : () -> this.c.a($$0, this.dp());
+   public cpc(dbx $$0, double $$1, double $$2, double $$3) {
+      super(bsz.aa, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public cor.a v() {
-      return cor.a.e;
+   public cos.a v() {
+      return cos.a.f;
    }
 
    @Override
-   public dsa x() {
-      return dez.ct.o();
+   public dsb x() {
+      return dfa.hc.o();
    }
 
    @Override
-   protected void a(ur $$0) {
-      super.a($$0);
-      this.c.a(this.dP(), this.dp(), $$0);
+   public int z() {
+      return 1;
    }
 
    @Override
-   protected void b(ur $$0) {
-      super.b($$0);
-      this.c.a($$0);
+   public int b() {
+      return 5;
    }
 
    @Override
-   public void b(byte $$0) {
-      this.c.a(this.dP(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.G()) {
+         this.b($$4);
+      }
+   }
+
+   public boolean G() {
+      return this.c;
+   }
+
+   public void b(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double H() {
+      return this.du();
+   }
+
+   @Override
+   public double I() {
+      return this.dw() + 0.5;
+   }
+
+   @Override
+   public double J() {
+      return this.dA();
+   }
+
+   @Override
+   public boolean K() {
+      return false;
    }
 
    @Override
    public void l() {
       super.l();
-      this.d.run();
+      if (!this.dP().B && this.bD() && this.G() && this.M()) {
+         this.e();
+      }
    }
 
-   public day B() {
-      return this.c;
+   public boolean M() {
+      if (dqf.a(this.dP(), this)) {
+         return true;
+      } else {
+         for (cjg $$1 : this.dP().a(cjg.class, this.cK().c(0.25, 0.0, 0.25), bsy.a)) {
+            if (dqf.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public boolean cP() {
-      return true;
+   protected cuj ag_() {
+      return cur.nQ;
+   }
+
+   @Override
+   protected void b(ur $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
+   }
+
+   @Override
+   protected void a(ur $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cpt a(int $$0, cmv $$1) {
+      return new cqs($$0, $$1, this);
    }
 }

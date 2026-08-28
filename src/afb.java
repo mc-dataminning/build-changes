@@ -3,7 +3,7 @@ public class afb implements zv<ach> {
    private final double b;
    private final double c;
 
-   public afb(dtr $$0) {
+   public afb(dts $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

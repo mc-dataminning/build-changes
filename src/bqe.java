@@ -1,49 +1,52 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class bqe extends bpx {
+public class bqe extends bpy {
    public static final MapCodec<bqe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpc.b(bpx.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bqe::new)
-   );
-   private final bpc<bpx> b;
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bqe::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
    private final int f;
-   private final int g;
 
-   public bqe(bpc<bpx> $$0) {
+   private bqe(int $$0, int $$1) {
       this.b = $$0;
-      List<bpe.b<bpx>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+      this.f = $$1;
+   }
 
-      for (bpe.b<bpx> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
+   public static bqe a(int $$0, int $$1) {
+      return new bqe($$0, $$1);
    }
 
    @Override
-   public int a(azf $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public int a(azg $$0) {
+      return ayy.b($$0, this.b, this.f);
    }
 
    @Override
    public int a() {
-      return this.f;
+      return this.b;
    }
 
    @Override
    public int b() {
-      return this.g;
+      return this.f;
    }
 
    @Override
-   public bpy<?> c() {
-      return bpy.e;
+   public bpz<?> c() {
+      return bpz.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

@@ -6,7 +6,7 @@ public class ahu implements zv<agv> {
    private final float e;
    private final float f;
 
-   public ahu(bss $$0) {
+   public ahu(bst $$0) {
       this.b = $$0.du();
       this.c = $$0.dw();
       this.d = $$0.dA();

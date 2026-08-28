@@ -1,88 +1,89 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.function.BiFunction;
 
-public abstract class dkl extends dex {
-   private static final je[] a = je.values();
-   public static final dsr b = dsq.L;
-   public static final dsr c = dsq.M;
-   public static final dsr d = dsq.N;
-   public static final dsr e = dsq.O;
-   public static final dsr f = dsq.J;
-   public static final dsr g = dsq.K;
-   public static final Map<je, dsr> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(je.class), $$0 -> {
-      $$0.put(je.c, b);
-      $$0.put(je.f, c);
-      $$0.put(je.d, d);
-      $$0.put(je.e, e);
-      $$0.put(je.b, f);
-      $$0.put(je.a, g);
-   }));
-   protected final ewi[] i;
+public class dkl extends dfh implements dfb {
+   public static final MapCodec<dkl> a = b(dkl::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dsv d = dsr.R;
+   public static final dtb e = dsr.S;
+   private static final BiFunction<je, Integer, ewj> f = ac.a(
+      ($$0, $$1) -> {
+         ewj[] $$2 = new ewj[]{
+            dey.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dey.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dey.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dey.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         ewj $$3 = ewg.a();
 
-   protected dkl(float $$0, drz.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dkl> a();
-
-   private ewi[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ewi $$3 = dex.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ewi[] $$4 = new ewi[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         je $$6 = a[$$5];
-         $$4[$$5] = ewf.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      ewi[] $$7 = new ewi[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ewi $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ewf.a($$9, $$4[$$10]);
-            }
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = ewg.a($$3, $$2[$$5]);
          }
 
-         $$7[$$8] = $$9;
+         return $$3.b();
       }
+   );
 
-      return $$7;
+   @Override
+   public MapCodec<dkl> a() {
+      return a;
+   }
+
+   protected dkl(dsa.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, je.c).a(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean a_(dsa $$0, dbc $$1, iz $$2) {
-      return false;
+   public dsb a(dsb $$0, dll $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return this.i[this.m($$0)];
+   public dsb a(dsb $$0, djv $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
-   protected int m(dsa $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean a(dsb $$0, cxz $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+   @Override
+   public ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dsb a(cxz $$0) {
+      dsb $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dsc.a<dey, dsb> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dca $$0, iz $$1, dsb $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cuo(this));
       }
-
-      return $$1;
    }
 }

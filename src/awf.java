@@ -52,7 +52,7 @@ public class awf extends awk {
    }
 
    @Override
-   public void a(cmv $$0, awg<?> $$1, int $$2) {
+   public void a(cmw $$0, awg<?> $$1, int $$2) {
       super.a($$0, $$1, $$2);
       this.e.add($$1);
    }
@@ -73,7 +73,7 @@ public class awf extends awk {
                JsonElement $$3 = Streams.parse($$2);
                if (!$$3.isJsonNull()) {
                   ur $$4 = a($$3.getAsJsonObject());
-                  $$4 = bae.g.a($$0, $$4, vg.b($$4, 1343));
+                  $$4 = baf.g.a($$0, $$4, vg.b($$4, 1343));
                   if (!$$4.b("stats", 10)) {
                      break label47;
                   }

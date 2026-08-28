@@ -10,9 +10,9 @@ public class db extends dr<db.a> {
       return db.a.a;
    }
 
-   public void a(arf $$0, btm $$1, List<bss> $$2) {
-      List<eqg> $$3 = $$2.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
-      eqg $$4 = bu.b($$0, $$1);
+   public void a(arf $$0, btn $$1, List<bst> $$2) {
+      List<eqh> $$3 = $$2.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
+      eqh $$4 = bu.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -30,7 +30,7 @@ public class db extends dr<db.a> {
          return am.V.a(new db.a(Optional.empty(), bu.a($$0), bu.a($$1)));
       }
 
-      public boolean a(eqg $$0, List<eqg> $$1) {
+      public boolean a(eqh $$0, List<eqh> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

@@ -1,41 +1,22 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class cdj extends cdx<btn> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class cdj extends cds {
+   public static final float a = 10.0F;
 
-   public cdj() {
-      this(200);
+   @Override
+   protected boolean a(bto $$0, bto $$1) {
+      return !$$0.dS().a(ccs.U) && cdy.c($$0, $$1) && cgy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   public cdj(int $$0) {
-      super($$0);
+   private boolean e(bto $$0, bto $$1) {
+      List<UUID> $$2 = $$0.dS().c(ccs.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
    @Override
-   protected void a(are $$0, btn $$1) {
-      a($$1);
-   }
-
-   @Override
-   public Set<ccr<?>> a() {
-      return ImmutableSet.of(ccr.g);
-   }
-
-   public static void a(btn $$0) {
-      Optional<List<btn>> $$1 = $$0.dS().c(ccr.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(bsy.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(btn $$0) {
-      $$0.dS().a(ccr.F, true, 599L);
+   protected ccs<bto> b() {
+      return ccs.B;
    }
 }

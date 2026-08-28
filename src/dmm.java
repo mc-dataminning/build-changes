@@ -1,73 +1,47 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dmm extends dex {
+public class dmm extends dek {
    public static final MapCodec<dmm> a = b(dmm::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final je[] d = je.values();
 
    @Override
    public MapCodec<dmm> a() {
       return a;
    }
 
-   protected dmm(drz.d $$0) {
+   protected dmm(dsa.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dsa $$0, dbw $$1, iz $$2, dsa $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   public dpg a(iz $$0, dsb $$1) {
+      return new dqu($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpg> dph<T> a(dbx $$0, dsb $$1, dpi<T> $$2) {
+      return a($$2, dpi.j, $$0.B ? dqu::a : dqu::b);
+   }
+
+   @Override
+   protected void a(dsb $$0, are $$1, iz $$2, cuo $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   protected void a(dsa $$0, dbw $$1, iz $$2, dex $$3, iz $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dle a_(dsb $$0) {
+      return dle.c;
    }
 
-   protected void a(dbw $$0, iz $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dez.aP.o(), 2);
-         $$0.a(null, $$1, avz.yT, awa.e, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean b(dbw $$0, iz $$1) {
-      return iz.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (je $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dsa $$3 = $$0.a_($$2);
-            ent $$4 = $$0.b_($$2);
-            if (!$$4.a(awu.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof dfe $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof djn) {
-                  $$0.a($$2, dez.a.o(), 3);
-               } else {
-                  if (!$$3.a(dez.mc) && !$$3.a(dez.md) && !$$3.a(dez.bw) && !$$3.a(dez.bx)) {
-                     return false;
-                  }
-
-                  dpf $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dez.a.o(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   @Override
+   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dcp.a($$0, $$2, "SpawnData");
    }
 }

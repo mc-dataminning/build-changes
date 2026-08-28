@@ -1,13 +1,12 @@
-public class guv implements gux {
+public class guv implements guy {
    private static final int a = 600;
-   private static final xo b = xo.c("tutorial.punch_tree.title");
-   private static final xo c = xo.a("tutorial.punch_tree.description", guw.a("attack"));
-   private final guw d;
-   private fjn e;
+   private static final xo b = xo.c("tutorial.open_inventory.title");
+   private static final xo c = xo.a("tutorial.open_inventory.description", gux.a("inventory"));
+   private final gux d;
+   private fjo e;
    private int f;
-   private int g;
 
-   public guv(guw $$0) {
+   public guv(gux $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,10 @@ public class guv implements gux {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(guy.f);
+         this.d.a(guz.f);
       } else {
-         if (this.f == 1) {
-            gco $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.gc().a(awx.r)) {
-                  this.d.a(guy.e);
-                  return;
-               }
-
-               if (gus.a($$0)) {
-                  this.d.a(guy.e);
-                  return;
-               }
-            }
-         }
-
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fjn(fjn.a.c, b, c, true);
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fjo(fjo.a.d, b, c, false);
             this.d.e().ax().a(this.e);
          }
       }
@@ -48,27 +32,7 @@ public class guv implements gux {
    }
 
    @Override
-   public void a(fxt $$0, iz $$1, dsa $$2, float $$3) {
-      boolean $$4 = $$2.a(awo.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(guy.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
-   }
-
-   @Override
-   public void a(cun $$0) {
-      if ($$0.a(awx.r)) {
-         this.d.a(guy.e);
-      }
+   public void c() {
+      this.d.a(guz.e);
    }
 }

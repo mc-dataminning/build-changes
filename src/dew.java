@@ -1,56 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dew extends dds {
-   public static final MapCodec<dew> c = b(dew::new);
+public class dew extends diu implements dfb, dlz {
+   public static final MapCodec<dew> a = b(dew::new);
+   private static final dss f = dsr.C;
+   private static final int g = 6;
+   protected static final ewj b = dey.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final ewj c = dey.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final ewj d = dey.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final ewj e = dey.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dew> a() {
-      return c;
+      return a;
    }
 
-   protected dew(drz.d $$0) {
+   protected dew(dsa.d $$0) {
       super($$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(aE, je.c));
    }
 
    @Override
-   public dpf a(iz $$0, dsa $$1) {
-      return new dpe($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpf> dpg<T> a(dbw $$0, dsa $$1, dph<T> $$2) {
-      return a($$0, $$2, dph.C);
-   }
-
-   @Override
-   protected void a(dbw $$0, iz $$1, cmv $$2) {
-      dpf $$3 = $$0.c_($$1);
-      if ($$3 instanceof dpe) {
-         $$2.a((bqw)$$3);
-         $$2.a(awj.as);
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      switch ((je)$$0.c(aE)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
       }
    }
 
    @Override
-   public void a(dsa $$0, dbw $$1, iz $$2, azf $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avz.cA, awa.e, 1.0F, 1.0F, false);
-         }
+   protected void a(dsc.a<dey, dsb> $$0) {
+      $$0.a(f, aE);
+   }
 
-         je $$7 = $$0.c(a);
-         je.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == je.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == je.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(li.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+   @Override
+   protected enu b_(dsb $$0) {
+      return $$0.c(f) ? env.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dsb $$0, dca $$1, iz $$2) {
+      iz $$3 = $$2.d();
+      dsb $$4 = $$1.a_($$3);
+      dsb $$5 = $$1.a_($$2.c());
+      return ($$4.a(this) || $$4.a(awo.by)) && ($$5.a(this) || $$5.a(dfa.sD));
+   }
+
+   protected static boolean a(dby $$0, iz $$1, enu $$2, je $$3) {
+      dsb $$4 = dfa.sE.o().a(f, Boolean.valueOf($$2.a(env.c))).a(aE, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
+      if (($$1 == je.a || $$1 == je.b) && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      if ($$0.c(f)) {
+         $$3.a($$4, env.c, env.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dsb $$0, are $$1, iz $$2, azg $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public boolean b(dca $$0, iz $$1, dsb $$2) {
+      Optional<iz> $$3 = l.a($$0, $$1, $$2.b(), je.b, dfa.sD);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         iz $$4 = $$3.get().c();
+         dsb $$5 = $$0.a_($$4);
+         return dev.a($$0, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
+      Optional<iz> $$4 = l.a($$0, $$2, $$3.b(), je.b, dfa.sD);
+      if (!$$4.isEmpty()) {
+         iz $$5 = $$4.get();
+         iz $$6 = $$5.c();
+         je $$7 = $$3.c(aE);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         dev.a($$0, $$6, $$0.b_($$6), $$7);
+      }
+   }
+
+   @Override
+   public cuo a(dca $$0, iz $$1, dsb $$2) {
+      return new cuo(dfa.sD);
    }
 }

@@ -17,10 +17,10 @@ public class gb implements ArgumentType<String> {
       return new gb();
    }
 
-   public static ewo a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ewp a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ewt $$3 = ((ep)$$0.getSource()).l().aK();
-      ewo $$4 = $$3.b($$2);
+      ewu $$3 = ((ep)$$0.getSource()).l().aK();
+      ewp $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

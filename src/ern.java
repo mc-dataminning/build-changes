@@ -1,35 +1,40 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ern extends ers {
+public class ern extends ert {
    public static final MapCodec<ern> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cp.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), erv.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, ern::new)
+      $$0 -> a($$0).and(eqh.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ern::new)
    );
-   private final cp b;
-   private final ert c;
+   private final eqh.b b;
 
-   private ern(List<etq> $$0, cp $$1, ert $$2) {
+   public ern(List<etr> $$0, eqh.b $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public eru<ern> b() {
-      return erv.v;
+   public erv<ern> b() {
+      return erw.B;
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public Set<eta<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
    @Override
-   public void a(eqm $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public cuo a(cuo $$0, eqh $$1) {
+      if ($$0.a(cur.un) && $$1.c(this.b.a()) instanceof cmw $$2) {
+         $$0.b(km.V, new cxq($$2.gb()));
+      }
+
+      return $$0;
+   }
+
+   public static ert.a<?> a(eqh.b $$0) {
+      return a($$1 -> new ern($$1, $$0));
    }
 }

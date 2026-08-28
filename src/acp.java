@@ -3,9 +3,9 @@ public class acp implements zv<ach> {
    private final iz b;
    private final int c;
    private final int d;
-   private final dex e;
+   private final dey e;
 
-   public acp(iz $$0, dex $$1, int $$2, int $$3) {
+   public acp(iz $$0, dey $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class acp implements zv<ach> {
       return this.d;
    }
 
-   public dex g() {
+   public dey g() {
       return this.e;
    }
 }

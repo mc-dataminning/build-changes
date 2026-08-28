@@ -40,7 +40,7 @@ public class aoh {
       );
    }
 
-   private static int a(ep $$0, Collection<arf> $$1, Collection<cyv<?>> $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arf> $$1, Collection<cyw<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arf $$4 : $$1) {
@@ -60,7 +60,7 @@ public class aoh {
       }
    }
 
-   private static int b(ep $$0, Collection<arf> $$1, Collection<cyv<?>> $$2) throws CommandSyntaxException {
+   private static int b(ep $$0, Collection<arf> $$1, Collection<cyw<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arf $$4 : $$1) {

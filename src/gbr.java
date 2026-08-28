@@ -1,56 +1,20 @@
-public class gbr extends gbi {
-   private final gbv b;
-   protected boolean a;
-
-   gbr(fxt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbv $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
+public class gbr extends gat {
+   protected gbr(fxu $$0, double $$1, double $$2, double $$3, double $$4, gbw $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
+   public static class a implements gbe<lm> {
+      private final gbw a;
 
-   @Override
-   public gbe b() {
-      return gbe.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gbd<lm> {
-      private final gbv a;
-
-      public a(gbv $$0) {
+      public a(gbw $$0) {
          this.a = $$0;
       }
 
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbr $$8 = new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements gbd<lm> {
-      private final gbv a;
-
-      public b(gbv $$0) {
-         this.a = $$0;
-      }
-
-      public gba a(lm $$0, fxt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbr $$8 = new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbr($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

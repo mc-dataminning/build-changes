@@ -1,49 +1,54 @@
 import java.util.List;
 
-public class cvn extends cui implements ctp {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public cvn(cui.a $$0) {
+public class cvn extends cuj {
+   public cvn(cuj.a $$0) {
       super($$0);
-      dhc.a(this, csc.a);
+   }
+
+   public static cxt h() {
+      return new cxt(List.of(cxt.a.a(List.of(dfa.bs), 15.0F), cxt.a.b(awo.O, 15.0F), cxt.a.b(awo.a, 5.0F), cxt.a.b(List.of(dfa.ff, dfa.fg), 2.0F)), 1.0F, 1);
    }
 
    @Override
-   public String i(cun $$0) {
-      ctg $$1 = $$0.a(km.X);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   public boolean a(cuo $$0, dbx $$1, dsb $$2, iz $$3, bto $$4) {
+      if (!$$1.B && !$$2.a(awo.aK)) {
+         $$0.a(1, $$4, bta.a);
+      }
+
+      return $$2.a(awo.O)
+         || $$2.a(dfa.bs)
+         || $$2.a(dfa.bt)
+         || $$2.a(dfa.bu)
+         || $$2.a(dfa.bv)
+         || $$2.a(dfa.sG)
+         || $$2.a(dfa.ff)
+         || $$2.a(dfa.fI)
+         || $$2.a(awo.a);
    }
 
    @Override
-   public void a(cun $$0, cui.b $$1, List<xo> $$2, cwg $$3) {
-      csi.a($$0, $$2);
-   }
+   public bqt a(cyb $$0) {
+      dbx $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsb $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof din $$5 && !$$5.o($$3)) {
+         cmw $$6 = $$0.o();
+         cuo $$7 = $$0.n();
+         if ($$6 instanceof arf) {
+            am.N.a((arf)$$6, $$2, $$7);
+         }
 
-   @Override
-   public cwi c(cun $$0) {
-      return cwi.d;
-   }
+         $$1.a($$6, $$2, avz.lp, awa.e, 1.0F, 1.0F);
+         dsb $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dwu.c, $$2, dwu.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bto.d($$0.p()));
+         }
 
-   @Override
-   public int b(cun $$0) {
-      return 72000;
-   }
+         return bqt.a($$1.B);
+      }
 
-   @Override
-   public bqt<cun> a(dbw $$0, cmv $$1, bqr $$2) {
-      cun $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqt.b($$3);
-   }
-
-   @Override
-   public boolean a(cun $$0, cun $$1) {
-      return $$1.a(awx.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bsz m() {
-      return bsz.b;
+      return super.a($$0);
    }
 }

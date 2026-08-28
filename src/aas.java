@@ -26,9 +26,9 @@ public record aas(aas.a c) implements aaw {
       return this.c;
    }
 
-   public static record a(UUID a, int b, evp c, @Nullable eoh d, @Nullable iz e, @Nullable iz f, int g, Set<String> h, List<iz> i) {
+   public static record a(UUID a, int b, evq c, @Nullable eoi d, @Nullable iz e, @Nullable iz f, int g, Set<String> h, List<iz> i) {
       public a(wl $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eoh::b), $$0.c(iz.b), $$0.c(iz.b), $$0.readInt(), $$0.a(HashSet::new, wl::p), $$0.a(iz.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eoi::b), $$0.c(iz.b), $$0.c(iz.b), $$0.readInt(), $$0.a(HashSet::new, wl::p), $$0.a(iz.b));
       }
 
       public void a(wl $$0) {
@@ -64,12 +64,12 @@ public record aas(aas.a c) implements aaw {
          return this.b;
       }
 
-      public evp d() {
+      public evq d() {
          return this.c;
       }
 
       @Nullable
-      public eoh e() {
+      public eoi e() {
          return this.d;
       }
 

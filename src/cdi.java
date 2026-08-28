@@ -1,22 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cdi extends cdr {
-   public static final float a = 10.0F;
-
+public class cdi extends cdy<bto> {
    @Override
-   protected boolean a(btn $$0, btn $$1) {
-      return !$$0.dS().a(ccr.U) && cdx.c($$0, $$1) && cgx.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
-   }
-
-   private boolean e(btn $$0, btn $$1) {
-      List<UUID> $$2 = $$0.dS().c(ccr.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cz());
+   protected void a(are $$0, bto $$1) {
    }
 
    @Override
-   protected ccr<btn> b() {
-      return ccr.B;
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of();
    }
 }

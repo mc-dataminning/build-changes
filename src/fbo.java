@@ -1,20 +1,23 @@
-import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fbo extends fbs {
-   public String a;
-   public long b;
-   public long c;
+public class fbo extends fbt implements fbn {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public static fbo a(JsonObject $$0) {
-      fbo $$1 = new fbo();
+   public fbo(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      try {
-         $$1.a = fdp.b("profileUuid", $$0, null);
-         $$1.b = fdp.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fdp.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
-      }
+   public int a() {
+      return this.b;
+   }
 
-      return $$1;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

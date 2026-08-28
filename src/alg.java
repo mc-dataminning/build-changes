@@ -22,16 +22,16 @@ public class alg {
          if (lp.aw.e().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dhx.b();
-            dgi.b();
-            if (bsy.a(bsy.by) == null) {
+            dhy.b();
+            dgj.b();
+            if (bsz.a(bsz.by) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
                hg.a();
                kt.a();
                kf.a();
                lp.a();
-               csz.a();
+               cta.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -51,9 +51,9 @@ public class alg {
 
    private static void a(final Set<String> $$0) {
       final um $$1 = um.a();
-      dbs.a(new dbs.c() {
+      dbt.a(new dbt.c() {
          @Override
-         public <T extends dbs.g<T>> void a(dbs.e<T> $$0x, dbs.f<T> $$1x) {
+         public <T extends dbt.g<T>> void a(dbt.e<T> $$0x, dbt.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -63,12 +63,12 @@ public class alg {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(lp.u, buq::c, $$0);
-      a(lp.g, bsy::g, $$0);
-      a(lp.d, bry::d, $$0);
-      a(lp.h, cui::a, $$0);
-      a(lp.f, czy::j, $$0);
-      a(lp.e, dex::g, $$0);
+      a(lp.u, bur::c, $$0);
+      a(lp.g, bsz::g, $$0);
+      a(lp.d, brz::d, $$0);
+      a(lp.h, cuj::a, $$0);
+      a(lp.f, czz::j, $$0);
+      a(lp.e, dey::g, $$0);
       a(lp.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -98,7 +98,7 @@ public class alg {
          eq.b();
       }
 
-      buw.a();
+      bux.a();
    }
 
    private static void d() {

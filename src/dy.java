@@ -8,8 +8,8 @@ public class dy extends dr<dy.a> {
       return dy.a.a;
    }
 
-   public void a(arf $$0, bss $$1) {
-      eqg $$2 = bu.b($$0, $$1);
+   public void a(arf $$0, bst $$1) {
+      eqh $$2 = bu.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class dy extends dr<dy.a> {
          return am.o.a(new dy.a(Optional.empty(), Optional.of(bu.a($$0))));
       }
 
-      public boolean a(eqg $$0) {
+      public boolean a(eqh $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

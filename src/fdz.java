@@ -1,34 +1,53 @@
-public class fdz extends fed {
-   private static final xo b = xo.c("mco.connect.connecting");
-   private final gvb c;
-   private final fbd d;
-   private final fbe e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fdz(fnb $$0, fbd $$1, fbe $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gvb($$0);
+public class fdz extends fee {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xo c = xo.c("mco.configure.world.closing");
+   private final fbe d;
+   private final fcn e;
+
+   public fdz(fbe $$0, fcn $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      this.c.a(this.d, fzk.a(this.e.a));
-   }
+      fan $$0 = fan.a();
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      ffd.Q().ae().i();
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   @Override
-   public void c() {
-      this.c.b();
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = fbe.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fcb var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
    public xo a() {
-      return b;
+      return c;
    }
 }

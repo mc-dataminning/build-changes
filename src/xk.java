@@ -29,7 +29,7 @@ public record xk(xl j, xl k) {
       $$0.a(i, new xk(xl.a("chat.type.emote"), xl.a("chat.type.emote")));
    }
 
-   public static xk.a a(ald<xk> $$0, bss $$1) {
+   public static xk.a a(ald<xk> $$0, bst $$1) {
       return a($$0, $$1.dP().H_(), $$1.O_());
    }
 

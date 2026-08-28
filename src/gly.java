@@ -1,37 +1,15 @@
-public class gly extends giu<cob> {
-   private static final ale a = new ale("textures/entity/wither/wither_invulnerable.png");
-   private static final ale f = new ale("textures/entity/wither/wither.png");
-   private final fvu g;
+public class gly extends gky<ckt> {
+   private static final ale a = new ale("textures/entity/skeleton/wither_skeleton.png");
 
-   public gly(giv.a $$0) {
-      super($$0);
-      this.g = new fvu($$0.a(fwx.cb));
+   public gly(giw.a $$0) {
+      super($$0, fwy.bX, fwy.bY, fwy.bZ);
    }
 
-   public static fxe a() {
-      fxg $$0 = new fxg();
-      fxh $$1 = $$0.a();
-      $$1.a("head", fxd.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxa.a);
-      return fxe.a($$0, 64, 64);
+   public ale a(ckt $$0) {
+      return a;
    }
 
-   protected int a(cob $$0, iz $$1) {
-      return 15;
-   }
-
-   public void a(cob $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = ayx.j($$2, $$0.O, $$0.dF());
-      float $$7 = ayx.i($$2, $$0.P, $$0.dH());
-      faa $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ale a(cob $$0) {
-      return $$0.z() ? a : f;
+   protected void a(ckt $$0, ezx $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

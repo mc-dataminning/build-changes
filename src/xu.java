@@ -55,11 +55,11 @@ public class xu {
       return this.b.hashCode();
    }
 
-   public static class a<T> implements azs {
+   public static class a<T> implements azt {
       public static final xu.a<xo> a = new xu.a<>("show_text", true, xq.a, ($$0, $$1) -> DataResult.success($$0));
       public static final xu.a<xu.c> b = new xu.a<>("show_item", true, xu.c.b, xu.c::a);
       public static final xu.a<xu.b> c = new xu.a<>("show_entity", true, xu.b.a, xu.b::a);
-      public static final Codec<xu.a<?>> d = azs.b(() -> new xu.a[]{a, b, c});
+      public static final Codec<xu.a<?>> d = azt.b(() -> new xu.a[]{a, b, c});
       public static final Codec<xu.a<?>> e = d.validate(xu.a::a);
       private final String f;
       private final boolean g;
@@ -126,17 +126,17 @@ public class xu {
                )
                .apply($$0, xu.b::new)
       );
-      public final bsy<?> b;
+      public final bsz<?> b;
       public final UUID c;
       public final Optional<xo> d;
       @Nullable
       private List<xo> e;
 
-      public b(bsy<?> $$0, UUID $$1, @Nullable xo $$2) {
+      public b(bsz<?> $$0, UUID $$1, @Nullable xo $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bsy<?> $$0, UUID $$1, Optional<xo> $$2) {
+      public b(bsz<?> $$0, UUID $$1, Optional<xo> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class xu {
             ur $$2 = vp.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<xo> $$4 = xq.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bsy<?> $$5 = lp.g.a(new ale($$2.l("type")));
+            bsz<?> $$5 = lp.g.a(new ale($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new xu.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class xu {
    }
 
    public static class c {
-      public static final Codec<xu.c> a = cun.b.xmap(xu.c::new, xu.c::a);
-      private static final Codec<xu.c> c = cun.g.xmap(xu.c::new, xu.c::a);
+      public static final Codec<xu.c> a = cuo.b.xmap(xu.c::new, xu.c::a);
+      private static final Codec<xu.c> c = cuo.g.xmap(xu.c::new, xu.c::a);
       public static final Codec<xu.c> b = Codec.withAlternative(a, c);
-      private final ji<cui> d;
+      private final ji<cuj> d;
       private final int e;
       private final kj f;
       @Nullable
-      private cun g;
+      private cuo g;
 
-      c(ji<cui> $$0, int $$1, kj $$2) {
+      c(ji<cuj> $$0, int $$1, kj $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cun $$0) {
+      public c(cuo $$0) {
          this($$0.h(), $$0.I(), $$0.d());
       }
 
@@ -225,9 +225,9 @@ public class xu {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cun a() {
+      public cuo a() {
          if (this.g == null) {
-            this.g = new cun(this.d, this.e, this.f);
+            this.g = new cuo(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class xu {
          try {
             ur $$2 = vp.a($$0.getString());
             DynamicOps<vo> $$3 = (DynamicOps<vo>)($$1 != null ? $$1.a(vf.a) : vf.a);
-            return cun.b.parse($$3, $$2).map(xu.c::new);
+            return cuo.b.parse($$3, $$2).map(xu.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

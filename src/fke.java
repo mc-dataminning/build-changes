@@ -1,34 +1,81 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import com.mojang.logging.LogUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
+import org.slf4j.Logger;
 
-public interface fke {
-   MapCodec<fke> b = fkf.f.dispatchMap(fke::a, fkf::a);
+public class fke {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Object a = new Object();
+   private static long c = 0L;
 
-   fkf a();
+   public static long a() {
+      synchronized (a) {
+         if (c == 0L) {
+            MemoryStack $$0 = MemoryStack.stackPush();
 
-   Either<fke.b, fke.c> b();
+            try {
+               PointerBuffer $$1 = $$0.mallocPointer(1);
+               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+               c = $$1.get();
+            } catch (Throwable var6) {
+               if ($$0 != null) {
+                  try {
+                     $$0.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
+               }
 
-   public static record a(fke b, fjs.a c) {
-      public static final Codec<fke.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fke.b.forGetter(fke.a::a), fjs.a.a.optionalFieldOf("filter", fjs.a.b).forGetter(fke.a::b)).apply($$0, fke.a::new)
-      );
+               throw var6;
+            }
 
-      public fke a() {
-         return this.b;
-      }
+            if ($$0 != null) {
+               $$0.close();
+            }
+         }
 
-      public fjs.a b() {
-         return this.c;
+         return c;
       }
    }
 
-   public interface b {
-      exz load(auo var1) throws IOException;
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
    }
 
-   public static record c(ale a) {
+   public static boolean b(int $$0, String $$1) {
+      if ($$0 != 0) {
+         b.error("FreeType error: {} ({})", a($$0), $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      synchronized (a) {
+         if (c != 0L) {
+            FreeType.FT_Done_Library(c);
+            c = 0L;
+         }
+      }
    }
 }

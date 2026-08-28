@@ -1,14 +1,66 @@
-public enum ffa {
-   a,
-   b,
-   c,
-   d;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-   public boolean a() {
-      return this == b;
+public class ffa {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gcr[] e = new gcr[9];
+   private boolean f;
+
+   public ffa(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gcr();
+      }
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   private void b() {
+      try {
+         ur $$0 = ve.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = vg.b($$0, 1343);
+         $$0 = baf.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gcr.a.parse(vf.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gcr::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         ur $$0 = vg.e(new ur());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gcr $$2 = this.a($$1);
+            DataResult<vo> $$3 = gcr.a.encodeStart(vf.a, $$2);
+            $$0.a(String.valueOf($$1), (vo)$$3.getOrThrow());
+         }
+
+         ve.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gcr a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

@@ -1,26 +1,22 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class elz extends emc {
-   public static final MapCodec<elz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, elz::new)
-   );
-   private final dex b;
-   private final float d;
+public class elz extends emg {
+   public final axe<dey> a;
+   public static final MapCodec<elz> b = axe.b(lq.f).xmap(elz::new, $$0 -> $$0.a).fieldOf("value");
 
-   public elz(dex $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public elz(axe<dey> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public emj.c a(dca $$0, iz $$1, iz $$2, emj.c $$3, emj.c $$4, emf $$5) {
+      return eax.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public boolean a(dsa $$0, azf $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected emd<?> a() {
-      return emd.e;
+   protected emi<?> a() {
+      return emi.n;
    }
 }

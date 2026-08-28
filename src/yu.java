@@ -94,7 +94,7 @@ public class yu implements xp {
    }
 
    @Override
-   public yc a(@Nullable ep $$0, @Nullable bss $$1, int $$2) throws CommandSyntaxException {
+   public yc a(@Nullable ep $$0, @Nullable bst $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

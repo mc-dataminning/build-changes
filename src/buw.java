@@ -1,106 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.slf4j.Logger;
-
 public class buw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bsy<? extends btn>, buu> b = ImmutableMap.builder()
-      .put(bsy.a, cgj.s().a())
-      .put(bsy.c, cgm.s().a())
-      .put(bsy.d, civ.s().a())
-      .put(bsy.f, cgp.gx().a())
-      .put(bsy.g, cey.s().a())
-      .put(bsy.h, cfe.gC().a())
-      .put(bsy.i, cjk.s().a())
-      .put(bsy.l, cjl.gt().a())
-      .put(bsy.p, cfg.gB().a())
-      .put(bsy.o, cgu.s().a())
-      .put(bsy.q, cjm.s().a())
-      .put(bsy.t, cfi.s().a())
-      .put(bsy.u, cfa.s().a())
-      .put(bsy.w, cfk.s().a())
-      .put(bsy.x, cjn.s().a())
-      .put(bsy.y, cfl.gq().a())
-      .put(bsy.z, chg.s().a())
-      .put(bsy.B, cjp.s().a())
-      .put(bsy.D, cjq.s().a())
-      .put(bsy.H, cjr.s().a())
-      .put(bsy.I, cjs.s().a())
-      .put(bsy.F, chz.u().a())
-      .put(bsy.J, cju.u().a())
-      .put(bsy.m, ckx.s().a())
-      .put(bsy.Q, cfn.s().a())
-      .put(bsy.R, cgx.gq().a())
-      .put(bsy.T, cjv.y().a())
-      .put(bsy.U, cjw.s().a())
-      .put(bsy.W, btf.gq().a())
-      .put(bsy.X, chd.u().a())
-      .put(bsy.Y, cjx.gq().a())
-      .put(bsy.Z, clf.s().a())
-      .put(bsy.ab, chh.gP().a())
-      .put(bsy.ac, cku.gu().a())
-      .put(bsy.ad, cjz.u().a())
-      .put(bsy.af, cfp.s().a())
-      .put(bsy.an, chk.gB().a())
-      .put(bsy.ap, cka.s().a())
-      .put(bsy.as, cfk.s().a())
-      .put(bsy.at, chg.s().a())
-      .put(bsy.au, cfr.s().a())
-      .put(bsy.aw, cfs.gB().a())
-      .put(bsy.ax, cft.gw().a())
-      .put(bsy.ay, ckb.gw().a())
-      .put(bsy.az, cfu.s().a())
-      .put(bsy.aA, cll.gx().a())
-      .put(bsy.aB, clo.y().a())
-      .put(bsy.aC, cke.u().a())
-      .put(bsy.by, cmv.fQ().a())
-      .put(bsy.aD, cfv.s().a())
-      .put(bsy.aF, cfa.s().a())
-      .put(bsy.aG, cfx.u().a())
-      .put(bsy.aH, ckg.s().a())
-      .put(bsy.aI, cfa.s().a())
-      .put(bsy.aJ, cfz.s().a())
-      .put(bsy.aK, ckh.s().a())
-      .put(bsy.aM, cki.s().a())
-      .put(bsy.aN, cjj.s().a())
-      .put(bsy.aO, chn.s().a())
-      .put(bsy.aP, ckb.gw().a())
-      .put(bsy.aR, chu.s().a())
-      .put(bsy.aS, cgb.s().a())
-      .put(bsy.aW, ckm.u().a())
-      .put(bsy.aX, cgc.gq().a())
-      .put(bsy.aY, cjj.s().a())
-      .put(bsy.aZ, cko.u().a())
-      .put(bsy.ba, cha.gs().a())
-      .put(bsy.be, chk.gB().a())
-      .put(bsy.bg, cfa.s().a())
-      .put(bsy.bh, cge.y().a())
-      .put(bsy.bi, ckp.u().a())
-      .put(bsy.bj, cmi.gz().a())
-      .put(bsy.bk, ckq.u().a())
-      .put(bsy.bm, clz.s().a())
-      .put(bsy.bl, btp.A().a())
-      .put(bsy.bo, ckr.u().a())
-      .put(bsy.bp, cit.u().a())
-      .put(bsy.bq, cjj.s().a())
-      .put(bsy.bs, cgg.gy().a())
-      .put(bsy.bt, ckt.s().a())
-      .put(bsy.bu, cku.gu().a())
-      .put(bsy.bv, chr.s().a())
-      .put(bsy.bw, cku.gu().a())
-      .put(bsy.bx, ckw.gA().a())
-      .build();
+   public static final ji<bur> a = a("generic.armor", new buy("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final ji<bur> b = a("generic.armor_toughness", new buy("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final ji<bur> c = a("generic.attack_damage", new buy("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final ji<bur> d = a("generic.attack_knockback", new buy("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final ji<bur> e = a("generic.attack_speed", new buy("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final ji<bur> f = a("player.block_break_speed", new buy("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final ji<bur> g = a("player.block_interaction_range", new buy("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final ji<bur> h = a("player.entity_interaction_range", new buy("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final ji<bur> i = a("generic.fall_damage_multiplier", new buy("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
+   public static final ji<bur> j = a("generic.flying_speed", new buy("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final ji<bur> k = a("generic.follow_range", new buy("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final ji<bur> l = a("generic.gravity", new buy("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
+   public static final ji<bur> m = a("generic.jump_strength", new buy("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final ji<bur> n = a("generic.knockback_resistance", new buy("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final ji<bur> o = a("generic.luck", new buy("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final ji<bur> p = a("generic.max_absorption", new buy("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final ji<bur> q = a("generic.max_health", new buy("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final ji<bur> r = a("generic.movement_speed", new buy("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final ji<bur> s = a("generic.safe_fall_distance", new buy("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final ji<bur> t = a("generic.scale", new buy("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final ji<bur> u = a("zombie.spawn_reinforcements", new buy("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final ji<bur> v = a("generic.step_height", new buy("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-   public static buu a(bsy<? extends btn> $$0) {
-      return b.get($$0);
+   private static ji<bur> a(String $$0, bur $$1) {
+      return jv.b(lp.u, new ale($$0), $$1);
    }
 
-   public static boolean b(bsy<?> $$0) {
-      return b.containsKey($$0);
-   }
-
-   public static void a() {
-      lp.g.s().filter($$0 -> $$0.f() != btq.h).filter($$0 -> !b((bsy<?>)$$0)).map(lp.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
+   public static ji<bur> a(jv<bur> $$0) {
+      return q;
    }
 }

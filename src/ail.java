@@ -1,7 +1,7 @@
-public record ail(short b, cun c) implements zv<agv> {
-   public static final zm<wz, ail> a = zm.a(zk.d, ail::b, cun.a(cun.h), ail::e, ail::new);
+public record ail(short b, cuo c) implements zv<agv> {
+   public static final zm<wz, ail> a = zm.a(zk.d, ail::b, cuo.a(cuo.h), ail::e, ail::new);
 
-   public ail(int $$0, cun $$1) {
+   public ail(int $$0, cuo $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record ail(short b, cun c) implements zv<agv> {
       $$0.a(this);
    }
 
-   public cun e() {
+   public cuo e() {
       return this.c;
    }
 }

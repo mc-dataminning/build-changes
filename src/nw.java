@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class nw implements nu {
-   private final dex a;
+   private final dey a;
    private final List<nw.b> b = Lists.newArrayList();
 
-   private nw(dex $$0) {
+   private nw(dey $$0) {
       this.a = $$0;
    }
 
    @Override
-   public dex a() {
+   public dey a() {
       return this.a;
    }
 
-   public static nw a(dex $$0) {
+   public static nw a(dey $$0) {
       return new nw($$0);
    }
 
@@ -46,7 +46,7 @@ public class nw implements nu {
    }
 
    public JsonElement b() {
-      dsb<dex, dsa> $$0 = this.a.l();
+      dsc<dey, dsb> $$0 = this.a.l();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(nw.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class nw implements nu {
       }
 
       @Override
-      public void a(dsb<?, ?> $$0) {
+      public void a(dsc<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class nw implements nu {
          this.a = $$0;
       }
 
-      public void a(dsb<?, ?> $$0) {
+      public void a(dsc<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

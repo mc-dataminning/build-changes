@@ -1,19 +1,13 @@
-public class gmg extends gnh<ckx, fth<ckx>> {
-   private static final ale a = new ale("textures/entity/breeze/breeze_wind.png");
-   private static final fth<ckx> b = new fth<>(fth.a(128, 128).a());
+public class gmg extends gni<cky, fti<cky>> {
+   private static final gdv a = gdv.q(new ale("textures/entity/breeze/breeze_eyes.png"));
 
-   public gmg(gkr<ckx, fth<ckx>> $$0) {
+   public gmg(gks<cky, fti<cky>> $$0) {
       super($$0);
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      faa $$11 = $$1.getBuffer(gdu.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gib.a(b, b.e()).a($$0, $$11, $$2, goo.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public void a(ezx $$0, gdn $$1, int $$2, cky $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      fab $$10 = $$1.getBuffer(a);
+      fti<cky> $$11 = this.c();
+      gic.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

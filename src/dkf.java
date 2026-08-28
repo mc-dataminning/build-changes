@@ -1,68 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkf extends dex implements dfa {
+public class dkf extends dfh {
    public static final MapCodec<dkf> a = b(dkf::new);
+   public static final int b = 3;
+   public static final dtb c = dsr.as;
+   private static final ewj[] d = new ewj[]{
+      dey.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dey.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dkf> a() {
       return a;
    }
 
-   public dkf(drz.d $$0) {
+   protected dkf(dsa.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean b(dbz $$0, iz $$1, dsa $$2) {
-      if (!$$0.a_($$1.c()).a((dbc)$$0, $$1)) {
-         return false;
-      } else {
-         for (iz $$3 : iz.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awo.aL)) {
-               return true;
-            }
-         }
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return d[$$0.c(c)];
+   }
 
-         return false;
+   @Override
+   protected boolean b(dsb $$0, dbd $$1, iz $$2) {
+      return $$0.a(dfa.dW);
+   }
+
+   @Override
+   protected boolean d_(dsb $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   public boolean a(dbw $$0, azf $$1, iz $$2, dsa $$3) {
-      return true;
+   public cuo a(dca $$0, iz $$1, dsb $$2) {
+      return new cuo(cur.sj);
    }
 
    @Override
-   public void a(are $$0, azf $$1, iz $$2, dsa $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (iz $$6 : iz.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dsa $$7 = $$0.a_($$6);
-         if ($$7.a(dez.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dez.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dez.on.o() : dez.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dez.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dez.ow.o(), 3);
-      }
-   }
-
-   @Override
-   public dfa.a aq_() {
-      return dfa.a.a;
+   protected void a(dsc.a<dey, dsb> $$0) {
+      $$0.a(c);
    }
 }

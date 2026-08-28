@@ -1,13 +1,13 @@
 public class aip implements zv<agv> {
    public static final zm<wl, aip> a = zv.a(aip::a, aip::new);
-   private final bqr b;
+   private final bqs b;
 
-   public aip(bqr $$0) {
+   public aip(bqs $$0) {
       this.b = $$0;
    }
 
    private aip(wl $$0) {
-      this.b = $$0.b(bqr.class);
+      this.b = $$0.b(bqs.class);
    }
 
    private void a(wl $$0) {
@@ -23,7 +23,7 @@ public class aip implements zv<agv> {
       $$0.a(this);
    }
 
-   public bqr b() {
+   public bqs b() {
       return this.b;
    }
 }

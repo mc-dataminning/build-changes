@@ -1,68 +1,30 @@
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cri implements bql, crh {
-   private final jr<cun> b = jr.a(1, cun.l);
+public interface cri {
+   void a(@Nullable cyw<?> var1);
+
    @Nullable
-   private cyv<?> c;
+   cyw<?> d();
 
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public boolean c() {
-      for (cun $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
+   default void a(cmw $$0, List<cuo> $$1) {
+      cyw<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().an_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
          }
       }
-
-      return true;
    }
 
-   @Override
-   public cun a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cun a(int $$0, int $$1) {
-      return bqm.a(this.b, 0);
-   }
-
-   @Override
-   public cun b(int $$0) {
-      return bqm.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cun $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cmv $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable cyv<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cyv<?> d() {
-      return this.c;
+   default boolean a(dbx $$0, arf $$1, cyw<?> $$2) {
+      if (!$$2.b().an_() && $$0.ab().b(dbt.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
    }
 }

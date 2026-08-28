@@ -1,178 +1,48 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
-public class fjt implements AutoCloseable {
-   private static final azf a = azf.a();
-   private static final float b = 32.0F;
-   private final goy c;
-   private final ale d;
-   private fjx e;
-   private fjx f;
-   private List<exz.a> g = List.of();
-   private List<exz> h = List.of();
-   private final fjq<fjx> i = new fjq<>(fjx[]::new, fjx[][]::new);
-   private final fjq<fjt.a> j = new fjq<>(fjt.a[]::new, fjt.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fju> l = Lists.newArrayList();
+public enum fjt implements azt {
+   a("uniform"),
+   b("jp");
 
-   public fjt(goy $$0, ale $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public static final Codec<fjt> c = azt.a(fjt::values);
+   private final String d;
 
-   public void a(List<exz.a> $$0, Set<fjs> $$1) {
-      this.g = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fjs> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fjz.b.bake(this::a);
-      this.f = fjz.a.bake(this::a);
-   }
-
-   private List<exz> b(List<exz.a> $$0, Set<fjs> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<exz> $$3 = new ArrayList<>();
-
-      for (exz.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<exz> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (exz $$3x : $$3) {
-            exy $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fjz.b) {
-                  ((IntList)this.k.computeIfAbsent(ayx.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   private fjt(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void close() {
-      this.d();
-   }
-
-   private void d() {
-      for (fju $$0 : this.l) {
-         $$0.close();
-      }
-
-      this.l.clear();
-   }
-
-   private static boolean b(exy $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private fjt.a b(int $$0) {
-      exy $$1 = null;
-
-      for (exz $$2 : this.h) {
-         exy $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fjt.a($$1, $$3);
-            }
-         }
-      }
-
-      return $$1 != null ? new fjt.a($$1, fjz.b) : fjt.a.c;
-   }
-
-   public exy a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
-   }
-
-   private fjx c(int $$0) {
-      for (exz $$1 : this.h) {
-         exy $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
-      }
-
-      return this.e;
-   }
-
-   public fjx a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fjx a(eya $$0) {
-      for (fju $$1 : this.l) {
-         fjx $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      ale $$3 = this.d.e("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      fjv $$5 = $$4 ? fjv.b($$3) : fjv.a($$3);
-      fju $$6 = new fju($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fjx $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fjx a(exy $$0) {
-      IntList $$1 = (IntList)this.k.get(ayx.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public ale a() {
+   public String c() {
       return this.d;
    }
 
-   public fjx b() {
-      return this.f;
-   }
+   public static class a {
+      private final Map<fjt, Boolean> c;
+      public static final Codec<fjt.a> a = Codec.unboundedMap(fjt.c, Codec.BOOL).xmap(fjt.a::new, $$0 -> $$0.c);
+      public static final fjt.a b = new fjt.a(Map.of());
 
-   static record a(exy a, exy b) {
-      static final fjt.a c = new fjt.a(fjz.b, fjz.b);
+      public a(Map<fjt, Boolean> $$0) {
+         this.c = $$0;
+      }
 
-      exy a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      public boolean a(Set<fjt> $$0) {
+         for (Entry<fjt, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public fjt.a a(fjt.a $$0) {
+         Map<fjt, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fjt.a(Map.copyOf($$1));
       }
    }
 }

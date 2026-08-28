@@ -1,26 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bxj {
-   public static bvh<btn> a() {
-      return byt.a((Function<byt.b<btn>, ? extends App<byt.c<btn>, byw<btn>>>)($$0 -> $$0.a((byw<btn>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bup<?> $$3 = $$1.dS();
-               cog $$4 = $$0x.d($$1.dp());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cok.h);
-                     $$3.a(cok.h);
-                  } else {
-                     $$3.b(cok.i);
-                     $$3.a(cok.i);
-                  }
-               }
-
-               return true;
-            }
-         }))));
+   public static bvi<bto> a(bsz<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return byu.a(
+         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$2x -> $$2x.group($$2x.a(ccs.n), $$2x.c(ccs.q), $$2x.b(ccs.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bto> $$9 = $$2x.<ccu>b($$5).a($$3xx -> $$3xx.g((bst)$$7) <= (double)$$2 && $$0.equals($$3xx.ak()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        bto $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bvs($$10, true));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

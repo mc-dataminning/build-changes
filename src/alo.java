@@ -22,12 +22,12 @@ public class alo {
    public static CompletableFuture<jp<aln>> a(jp<aln> $$0, auo $$1, Executor $$2) {
       jw.b $$3 = $$0.b(aln.d);
       alc<JsonElement> $$4 = new alo.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<ke<?>>> $$5 = eqi.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      List<CompletableFuture<ke<?>>> $$5 = eqj.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
       CompletableFuture<List<ke<?>>> $$6 = ac.d($$5);
       return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   private static <T> CompletableFuture<ke<?>> a(eqi<T> $$0, alc<JsonElement> $$1, auo $$2, Executor $$3) {
+   private static <T> CompletableFuture<ke<?>> a(eqj<T> $$0, alc<JsonElement> $$1, auo $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          ke<T> $$3x = new jq<>($$0.b(), Lifecycle.experimental());
          Map<ale, JsonElement> $$4 = new HashMap<>();
@@ -39,21 +39,21 @@ public class alo {
 
    private static jp<aln> a(jp<aln> $$0, List<ke<?>> $$1) {
       jp<aln> $$2 = b($$0, $$1);
-      azd.a $$3 = new azd.a();
+      aze.a $$3 = new aze.a();
       jw.b $$4 = $$2.a();
-      eqm $$5 = new eqm($$3, etb.q, $$4.b());
-      eqi.a().forEach($$2x -> a($$5, $$2x, $$4));
+      eqn $$5 = new eqn($$3, etc.q, $$4.b());
+      eqj.a().forEach($$2x -> a($$5, $$2x, $$4));
       $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
       return $$2;
    }
 
    private static jp<aln> b(jp<aln> $$0, List<ke<?>> $$1) {
       jw $$2 = new jw.c($$1);
-      ((ke)$$2.<eql>d(lq.aU)).a(eqc.a, eql.a, c);
+      ((ke)$$2.<eqm>d(lq.aU)).a(eqd.a, eqm.a, c);
       return $$0.a(aln.d, $$2.d());
    }
 
-   private static <T> void a(eqm $$0, eqi<T> $$1, jw $$2) {
+   private static <T> void a(eqn $$0, eqj<T> $$1, jw $$2) {
       jv<T> $$3 = $$2.d($$1.b());
       $$3.h().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
@@ -95,8 +95,8 @@ public class alo {
          return this.a.c($$0).stream().flatMap($$0x -> $$0x.h().map($$0xx -> $$0xx.h().a())).toList();
       }
 
-      public eql b(ald<eql> $$0) {
-         return this.a.a(lq.aU).flatMap($$1 -> $$1.a($$0)).map(ji::a).orElse(eql.a);
+      public eqm b(ald<eqm> $$0) {
+         return this.a.a(lq.aU).flatMap($$1 -> $$1.a($$0)).map(ji::a).orElse(eqm.a);
       }
    }
 }

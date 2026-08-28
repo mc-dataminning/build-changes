@@ -1,41 +1,57 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public interface dat {
-   void f(@Nullable cmv var1);
+public record dat(ji<cuj> d, int e, kk f, cuo g) {
+   public static final Codec<dat> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cuo.a.fieldOf("id").forGetter(dat::a),
+               ayg.l.fieldOf("count").orElse(1).forGetter(dat::b),
+               kk.a.optionalFieldOf("components", kk.c).forGetter(dat::c)
+            )
+            .apply($$0, dat::new)
+   );
+   public static final zm<wz, dat> b = zm.a(zk.b(lq.G), dat::a, zk.g, dat::b, kk.b, dat::c, dat::new);
+   public static final zm<wz, Optional<dat>> c = b.a(zk::a);
 
-   @Nullable
-   cmv gq();
-
-   dav gs();
-
-   void a(dav var1);
-
-   void a(dau var1);
-
-   void n(cun var1);
-
-   int u();
-
-   void u(int var1);
-
-   boolean gt();
-
-   avy gu();
-
-   default boolean gC() {
-      return false;
+   public dat(dbw $$0) {
+      this($$0, 1);
    }
 
-   default void a(cmv $$0, xo $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new brc(($$0x, $$1x, $$2x) -> new crb($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dav $$4 = this.gs();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.u(), this.gt(), this.gC());
-         }
-      }
+   public dat(dbw $$0, int $$1) {
+      this($$0.r().o(), $$1, kk.c);
    }
 
-   boolean gy();
+   public dat(ji<cuj> $$0, int $$1, kk $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   }
+
+   public dat a(UnaryOperator<kk.a> $$0) {
+      return new dat(this.d, this.e, $$0.apply(kk.a()).a());
+   }
+
+   private static cuo a(ji<cuj> $$0, int $$1, kk $$2) {
+      return new cuo($$0, $$1, $$2.c());
+   }
+
+   public boolean a(cuo $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public ji<cuj> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kk c() {
+      return this.f;
+   }
+
+   public cuo d() {
+      return this.g;
+   }
 }

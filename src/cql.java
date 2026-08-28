@@ -1,77 +1,58 @@
-public class cql extends cps {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bql p;
+public abstract class cql {
+   private int a;
 
-   public cql(int $$0, cmu $$1) {
-      this($$0, $$1, new brb(9));
+   public static cql a(final cqd $$0, final int $$1) {
+      return new cql() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   public cql(int $$0, cmu $$1, bql $$2) {
-      super(cqz.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.l);
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new crn($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+   public static cql a(final int[] $$0, final int $$1) {
+      return new cql() {
+         @Override
+         public int b() {
+            return $$0[$$1];
          }
-      }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crn($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
          }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new crn($$1, $$7, 8 + $$7 * 18, 142));
-      }
+      };
    }
 
-   @Override
-   public boolean a(cmv $$0) {
-      return this.p.a($$0);
+   public static cql a() {
+      return new cql() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
    }
 
-   @Override
-   public cun a(cmv $$0, int $$1) {
-      cun $$2 = cun.l;
-      crn $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cun $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cun.l;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cun.l;
-         }
+   public abstract int b();
 
-         if ($$4.e()) {
-            $$3.e(cun.l);
-         } else {
-            $$3.b();
-         }
+   public abstract void a(int var1);
 
-         if ($$4.I() == $$2.I()) {
-            return cun.l;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void b(cmv $$0) {
-      super.b($$0);
-      this.p.c($$0);
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

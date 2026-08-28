@@ -13,36 +13,36 @@ import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 
 public class aql {
-   public static final aqo<dtw> a = aqo.a("Unloaded chunk");
-   public static final CompletableFuture<aqo<dtw>> b = CompletableFuture.completedFuture(a);
-   public static final aqo<dug> c = aqo.a("Unloaded level chunk");
-   public static final aqo<dtw> d = aqo.a("Not done yet");
-   private static final CompletableFuture<aqo<dug>> e = CompletableFuture.completedFuture(c);
-   private static final List<duv> f = duv.a();
-   private final AtomicReferenceArray<CompletableFuture<aqo<dtw>>> g = new AtomicReferenceArray<>(f.size());
-   private final dby h;
-   private volatile CompletableFuture<aqo<dug>> i = e;
-   private volatile CompletableFuture<aqo<dug>> j = e;
-   private volatile CompletableFuture<aqo<dug>> k = e;
-   private CompletableFuture<dtw> l = CompletableFuture.completedFuture(null);
+   public static final aqo<dtx> a = aqo.a("Unloaded chunk");
+   public static final CompletableFuture<aqo<dtx>> b = CompletableFuture.completedFuture(a);
+   public static final aqo<duh> c = aqo.a("Unloaded level chunk");
+   public static final aqo<dtx> d = aqo.a("Not done yet");
+   private static final CompletableFuture<aqo<duh>> e = CompletableFuture.completedFuture(c);
+   private static final List<duw> f = duw.a();
+   private final AtomicReferenceArray<CompletableFuture<aqo<dtx>>> g = new AtomicReferenceArray<>(f.size());
+   private final dbz h;
+   private volatile CompletableFuture<aqo<duh>> i = e;
+   private volatile CompletableFuture<aqo<duh>> j = e;
+   private volatile CompletableFuture<aqo<duh>> k = e;
+   private CompletableFuture<dtx> l = CompletableFuture.completedFuture(null);
    @Nullable
    private final aya<aql.a> m = null;
    private int n;
    private int o;
    private int p;
-   private final dbd q;
+   private final dbe q;
    private boolean r;
    private final ShortSet[] s;
    private final BitSet t = new BitSet();
    private final BitSet u = new BitSet();
-   private final eni v;
+   private final enj v;
    private final aql.b w;
    private final aql.c x;
    private boolean y;
    private CompletableFuture<Void> z = CompletableFuture.completedFuture(null);
    private CompletableFuture<?> A = CompletableFuture.completedFuture(null);
 
-   public aql(dbd $$0, int $$1, dby $$2, eni $$3, aql.b $$4, aql.c $$5) {
+   public aql(dbe $$0, int $$1, dbz $$2, enj $$3, aql.b $$4, aql.c $$5) {
       this.q = $$0;
       this.h = $$2;
       this.v = $$3;
@@ -55,29 +55,29 @@ public class aql {
       this.s = new ShortSet[$$2.an()];
    }
 
-   public CompletableFuture<aqo<dtw>> a(duv $$0) {
-      CompletableFuture<aqo<dtw>> $$1 = this.g.get($$0.c());
+   public CompletableFuture<aqo<dtx>> a(duw $$0) {
+      CompletableFuture<aqo<dtx>> $$1 = this.g.get($$0.c());
       return $$1 == null ? b : $$1;
    }
 
-   public CompletableFuture<aqo<dtw>> b(duv $$0) {
+   public CompletableFuture<aqo<dtx>> b(duw $$0) {
       return aqm.a(this.o).b($$0) ? this.a($$0) : b;
    }
 
-   public CompletableFuture<aqo<dug>> a() {
+   public CompletableFuture<aqo<duh>> a() {
       return this.j;
    }
 
-   public CompletableFuture<aqo<dug>> b() {
+   public CompletableFuture<aqo<duh>> b() {
       return this.k;
    }
 
-   public CompletableFuture<aqo<dug>> c() {
+   public CompletableFuture<aqo<duh>> c() {
       return this.i;
    }
 
    @Nullable
-   public dug d() {
+   public duh d() {
       return this.a().getNow(c).b(null);
    }
 
@@ -86,15 +86,15 @@ public class aql {
    }
 
    @Nullable
-   public dug f() {
+   public duh f() {
       return !this.A.isDone() ? null : this.d();
    }
 
    @Nullable
-   public duv g() {
+   public duw g() {
       for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
-         duv $$1 = f.get($$0);
-         CompletableFuture<aqo<dtw>> $$2 = this.a($$1);
+         duw $$1 = f.get($$0);
+         CompletableFuture<aqo<dtx>> $$2 = this.a($$1);
          if ($$2.getNow(a).a()) {
             return $$1;
          }
@@ -104,12 +104,12 @@ public class aql {
    }
 
    @Nullable
-   public dtw h() {
+   public dtx h() {
       for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
-         duv $$1 = f.get($$0);
-         CompletableFuture<aqo<dtw>> $$2 = this.a($$1);
+         duw $$1 = f.get($$0);
+         CompletableFuture<aqo<dtx>> $$2 = this.a($$1);
          if (!$$2.isCompletedExceptionally()) {
-            dtw $$3 = $$2.getNow(a).b(null);
+            dtx $$3 = $$2.getNow(a).b(null);
             if ($$3 != null) {
                return $$3;
             }
@@ -119,12 +119,12 @@ public class aql {
       return null;
    }
 
-   public CompletableFuture<dtw> i() {
+   public CompletableFuture<dtx> i() {
       return this.l;
    }
 
    public void a(iz $$0) {
-      dug $$1 = this.d();
+      duh $$1 = this.d();
       if ($$1 != null) {
          int $$2 = this.h.e($$0.v());
          if (this.s[$$2] == null) {
@@ -136,17 +136,17 @@ public class aql {
       }
    }
 
-   public void a(dcf $$0, int $$1) {
-      dtw $$2 = this.b(duv.k).getNow(a).b(null);
+   public void a(dcg $$0, int $$1) {
+      dtx $$2 = this.b(duw.k).getNow(a).b(null);
       if ($$2 != null) {
          $$2.a(true);
-         dug $$3 = this.d();
+         duh $$3 = this.d();
          if ($$3 != null) {
             int $$4 = this.v.d();
             int $$5 = this.v.e();
             if ($$1 >= $$4 && $$1 <= $$5) {
                int $$6 = $$1 - $$4;
-               if ($$0 == dcf.a) {
+               if ($$0 == dcg.a) {
                   this.u.set($$6);
                } else {
                   this.t.set($$6);
@@ -156,9 +156,9 @@ public class aql {
       }
    }
 
-   public void a(dug $$0) {
+   public void a(duh $$0) {
       if (this.r || !this.u.isEmpty() || !this.t.isEmpty()) {
-         dbw $$1 = $$0.F();
+         dbx $$1 = $$0.F();
          if (!this.u.isEmpty() || !this.t.isEmpty()) {
             List<arf> $$2 = this.x.a(this.q, true);
             if (!$$2.isEmpty()) {
@@ -182,11 +182,11 @@ public class aql {
                      kb $$8 = kb.a($$0.f(), $$7);
                      if ($$6.size() == 1) {
                         iz $$9 = $$8.g($$6.iterator().nextShort());
-                        dsa $$10 = $$1.a_($$9);
+                        dsb $$10 = $$1.a_($$9);
                         this.a($$4, new acq($$9, $$10));
                         this.a($$4, $$1, $$9, $$10);
                      } else {
-                        duh $$11 = $$0.b($$5);
+                        dui $$11 = $$0.b($$5);
                         aex $$12 = new aex($$8, $$6, $$11);
                         this.a($$4, $$12);
                         $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
@@ -200,16 +200,16 @@ public class aql {
       }
    }
 
-   private void a(List<arf> $$0, dbw $$1, iz $$2, dsa $$3) {
+   private void a(List<arf> $$0, dbx $$1, iz $$2, dsb $$3) {
       if ($$3.t()) {
          this.a($$0, $$1, $$2);
       }
    }
 
-   private void a(List<arf> $$0, dbw $$1, iz $$2) {
-      dpf $$3 = $$1.c_($$2);
+   private void a(List<arf> $$0, dbx $$1, iz $$2) {
+      dpg $$3 = $$1.c_($$2);
       if ($$3 != null) {
-         zv<?> $$4 = $$3.av_();
+         zv<?> $$4 = $$3.au_();
          if ($$4 != null) {
             this.a($$0, $$4);
          }
@@ -220,11 +220,11 @@ public class aql {
       $$0.forEach($$1x -> $$1x.c.b($$1));
    }
 
-   public CompletableFuture<aqo<dtw>> a(duv $$0, aqn $$1) {
+   public CompletableFuture<aqo<dtx>> a(duw $$0, aqn $$1) {
       int $$2 = $$0.c();
-      CompletableFuture<aqo<dtw>> $$3 = this.g.get($$2);
+      CompletableFuture<aqo<dtx>> $$3 = this.g.get($$2);
       if ($$3 != null) {
-         aqo<dtw> $$4 = $$3.getNow(d);
+         aqo<dtx> $$4 = $$3.getNow(d);
          if ($$4 == null) {
             String $$5 = "value in future for status: " + $$0 + " was incorrectly set to null at chunk: " + this.q;
             throw $$1.a(new IllegalStateException("null value previously set for chunk status"), $$5);
@@ -236,7 +236,7 @@ public class aql {
       }
 
       if (aqm.a(this.o).b($$0)) {
-         CompletableFuture<aqo<dtw>> $$6 = $$1.a(this, $$0);
+         CompletableFuture<aqo<dtx>> $$6 = $$1.a(this, $$0);
          this.a($$6, "schedule " + $$0);
          this.g.set($$2, $$6);
          return $$6;
@@ -253,7 +253,7 @@ public class aql {
       this.l = this.l.thenCombine((CompletionStage<? extends Object>)$$1, ($$0x, $$1x) -> $$0x);
    }
 
-   private void a(CompletableFuture<? extends aqo<? extends dtw>> $$0, String $$1) {
+   private void a(CompletableFuture<? extends aqo<? extends dtx>> $$0, String $$1) {
       if (this.m != null) {
          this.m.a(new aql.a(Thread.currentThread(), $$0, $$1));
       }
@@ -273,7 +273,7 @@ public class aql {
       return aqm.b(this.o);
    }
 
-   public dbd k() {
+   public dbe k() {
       return this.q;
    }
 
@@ -293,7 +293,7 @@ public class aql {
       this.o = $$0;
    }
 
-   private void a(aqn $$0, CompletableFuture<aqo<dug>> $$1, Executor $$2, aqx $$3) {
+   private void a(aqn $$0, CompletableFuture<aqo<duh>> $$1, Executor $$2, aqx $$3) {
       this.z.cancel(false);
       CompletableFuture<Void> $$4 = new CompletableFuture<>();
       $$4.thenRunAsync(() -> $$0.a(this.q, $$3), $$2);
@@ -307,17 +307,17 @@ public class aql {
    }
 
    protected void a(aqn $$0, Executor $$1) {
-      duv $$2 = aqm.a(this.n);
-      duv $$3 = aqm.a(this.o);
+      duw $$2 = aqm.a(this.n);
+      duw $$3 = aqm.a(this.o);
       boolean $$4 = aqm.e(this.n);
       boolean $$5 = aqm.e(this.o);
       aqx $$6 = aqm.b(this.n);
       aqx $$7 = aqm.b(this.o);
       if ($$4) {
-         aqo<dtw> $$8 = aqo.a(() -> "Unloaded ticket level " + this.q);
+         aqo<dtx> $$8 = aqo.a(() -> "Unloaded ticket level " + this.q);
 
          for (int $$9 = $$5 ? $$3.c() + 1 : 0; $$9 <= $$2.c(); $$9++) {
-            CompletableFuture<aqo<dtw>> $$10 = this.g.get($$9);
+            CompletableFuture<aqo<dtx>> $$10 = this.g.get($$9);
             if ($$10 == null) {
                this.g.set($$9, CompletableFuture.completedFuture($$8));
             }
@@ -384,12 +384,12 @@ public class aql {
       this.y = aqm.b(this.o).a(aqx.b);
    }
 
-   public void a(duf $$0) {
+   public void a(dug $$0) {
       for (int $$1 = 0; $$1 < this.g.length(); $$1++) {
-         CompletableFuture<aqo<dtw>> $$2 = this.g.get($$1);
+         CompletableFuture<aqo<dtx>> $$2 = this.g.get($$1);
          if ($$2 != null) {
-            dtw $$3 = $$2.getNow(a).b(null);
-            if ($$3 instanceof duq) {
+            dtx $$3 = $$2.getNow(a).b(null);
+            if ($$3 instanceof dur) {
                this.g.set($$1, CompletableFuture.completedFuture(aqo.a($$0)));
             }
          }
@@ -398,8 +398,8 @@ public class aql {
       this.a(CompletableFuture.completedFuture(aqo.a($$0.C())), "replaceProto");
    }
 
-   public List<Pair<duv, CompletableFuture<aqo<dtw>>>> p() {
-      List<Pair<duv, CompletableFuture<aqo<dtw>>>> $$0 = new ArrayList<>();
+   public List<Pair<duw, CompletableFuture<aqo<dtx>>>> p() {
+      List<Pair<duw, CompletableFuture<aqo<dtx>>>> $$0 = new ArrayList<>();
 
       for (int $$1 = 0; $$1 < f.size(); $$1++) {
          $$0.add(Pair.of(f.get($$1), this.g.get($$1)));
@@ -413,10 +413,10 @@ public class aql {
 
    @FunctionalInterface
    public interface b {
-      void onLevelChange(dbd var1, IntSupplier var2, int var3, IntConsumer var4);
+      void onLevelChange(dbe var1, IntSupplier var2, int var3, IntConsumer var4);
    }
 
    public interface c {
-      List<arf> a(dbd var1, boolean var2);
+      List<arf> a(dbe var1, boolean var2);
    }
 }

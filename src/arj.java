@@ -4,14 +4,14 @@ public class arj<T> {
    private final String i;
    private final Comparator<T> j;
    private final long k;
-   public static final arj<baa> a = a("start", ($$0, $$1) -> 0);
-   public static final arj<baa> b = a("dragon", ($$0, $$1) -> 0);
-   public static final arj<dbd> c = a("player", Comparator.comparingLong(dbd::a));
-   public static final arj<dbd> d = a("forced", Comparator.comparingLong(dbd::a));
-   public static final arj<dbd> e = a("light", Comparator.comparingLong(dbd::a));
+   public static final arj<bab> a = a("start", ($$0, $$1) -> 0);
+   public static final arj<bab> b = a("dragon", ($$0, $$1) -> 0);
+   public static final arj<dbe> c = a("player", Comparator.comparingLong(dbe::a));
+   public static final arj<dbe> d = a("forced", Comparator.comparingLong(dbe::a));
+   public static final arj<dbe> e = a("light", Comparator.comparingLong(dbe::a));
    public static final arj<iz> f = a("portal", kd::i, 300);
    public static final arj<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final arj<dbd> h = a("unknown", Comparator.comparingLong(dbd::a), 1);
+   public static final arj<dbe> h = a("unknown", Comparator.comparingLong(dbe::a), 1);
 
    public static <T> arj<T> a(String $$0, Comparator<T> $$1) {
       return new arj<>($$0, $$1, 0L);

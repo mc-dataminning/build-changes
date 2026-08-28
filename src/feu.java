@@ -1,38 +1,29 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public class feu {
-   private final fxu a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ur> c;
+   private final List<xt> a = Lists.newArrayList();
 
-   public feu(fxu $$0) {
-      this.a = $$0;
+   public void a(xt $$0) {
+      this.a.add($$0);
    }
 
-   public boolean a(int $$0, @Nullable ur $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
+   @Nullable
+   public xt a() {
+      if (this.a.isEmpty()) {
+         return null;
       } else {
-         return false;
+         return this.a.size() == 1 ? this.a.get(0) : xt.a(this.a);
       }
    }
 
-   private int a(Consumer<ur> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   public xt b() {
+      xt $$0 = this.a();
+      return $$0 != null ? $$0 : xt.b;
    }
 
-   public void a(int $$0, Consumer<ur> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahp($$2, $$0));
-   }
-
-   public void a(iz $$0, Consumer<ur> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agy($$2, $$0));
+   public void c() {
+      this.a.clear();
    }
 }

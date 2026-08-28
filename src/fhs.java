@@ -1,49 +1,39 @@
-public class fhs extends fhc {
-   private boolean a;
+import javax.annotation.Nullable;
 
-   public fhs(int $$0, int $$1, fhc.c $$2) {
-      super($$0, $$1, 20, 20, xo.c("narrator.button.difficulty_lock"), $$2, q);
-   }
+public class fhs extends fhb {
+   private final fgo a;
 
-   @Override
-   protected yc aK_() {
-      return xn.a(super.aK_(), this.a() ? xo.c("narrator.button.difficulty_lock.locked") : xo.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
+   public fhs(fgo $$0, xo $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
       this.a = $$0;
    }
 
    @Override
-   public void b(fgp $$0, int $$1, int $$2, float $$3) {
-      fhs.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fhs.a.c : fhs.a.f;
-      } else if (this.A()) {
-         $$4 = this.a ? fhs.a.b : fhs.a.e;
-      } else {
-         $$4 = this.a ? fhs.a.a : fhs.a.d;
-      }
-
-      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
+   protected void b(fgq $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.x() / 2;
+      int $$5 = this.D() + this.v() / 2;
+      xo $$6 = this.y();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fmn.a(ac.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   static enum a {
-      a(new ale("widget/locked_button")),
-      b(new ale("widget/locked_button_highlighted")),
-      c(new ale("widget/locked_button_disabled")),
-      d(new ale("widget/unlocked_button")),
-      e(new ale("widget/unlocked_button_highlighted")),
-      f(new ale("widget/unlocked_button_disabled"));
+   @Override
+   protected void a(fkz $$0) {
+   }
 
-      final ale g;
+   @Override
+   public void a(gtu $$0) {
+   }
 
-      private a(final ale $$0) {
-         this.g = $$0;
-      }
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fgn a(flf $$0) {
+      return null;
    }
 }

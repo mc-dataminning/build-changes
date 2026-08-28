@@ -1,64 +1,48 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public class gns extends gni<cge, ftr<cge>> {
+   private static final ale a = new ale("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final ale b = new ale("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final ale c = new ale("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final ale d = new ale("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final ale e = new ale("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final ale f = new ale("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final ale g = new ale("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final ale h = new ale("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final ale i = new ale("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final ale j = new ale("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final ale k = new ale("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final ale l = new ale("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fwf<cge> m;
+   private final fwg<cge> n;
 
-public class gns<T extends btn & cmk, M extends fty<T> & fwi> extends gnh<T, M> {
-   private static final Int2ObjectMap<ale> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, new ale("stone"));
-      $$0.put(2, new ale("iron"));
-      $$0.put(3, new ale("gold"));
-      $$0.put(4, new ale("emerald"));
-      $$0.put(5, new ale("diamond"));
-   });
-   private final Object2ObjectMap<cmn, gql.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<cml, gql.a> c = new Object2ObjectOpenHashMap();
-   private final auo d;
-   private final String e;
-
-   public gns(gkr<T, M> $$0, auo $$1, String $$2) {
+   public gns(gks<cge, ftr<cge>> $$0, fwv $$1) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+      this.m = new fwf<>($$1.a(fwy.bM));
+      this.n = new fwg<>($$1.a(fwy.bK));
    }
 
-   public void a(ezw $$0, gdm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         cmj $$10 = $$3.gB();
-         cmn $$11 = $$10.a();
-         cml $$12 = $$10.b();
-         gql.a $$13 = this.a(this.b, "type", lp.y, $$11);
-         gql.a $$14 = this.a(this.c, "profession", lp.z, $$12);
-         M $$15 = this.c();
-         $$15.a($$14 == gql.a.a || $$14 == gql.a.b && $$13 != gql.a.c);
-         ale $$16 = this.a("type", lp.y.b($$11));
-         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         $$15.a(true);
-         if ($$12 != cml.b && !$$3.p_()) {
-            ale $$17 = this.a("profession", lp.z.b($$12));
-            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            if ($$12 != cml.m) {
-               ale $$18 = this.a("profession_level", (ale)a.get(ayx.a($$10.c(), 1, a.size())));
-               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            }
-         }
-      }
-   }
+   public void a(ezx $$0, gdn $$1, int $$2, cge $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cge.b $$10 = $$3.gB();
 
-   private ale a(String $$0, ale $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
-   }
+      ftz<cge> $$11 = (ftz<cge>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   public <K> gql.a a(Object2ObjectMap<K, gql.a> $$0, String $$1, jd<K> $$2, K $$3) {
-      return (gql.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(gql.a).map(gql::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(gql.a.a));
+      ale $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gA().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

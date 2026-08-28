@@ -93,7 +93,7 @@ public class apu {
                                  throw h.create($$9);
                               }
 
-                              ur $$12 = $$10.h();
+                              ur $$12 = $$10.i();
                               $$10.a($$4);
                               $$8 += $$12.equals($$10) ? 0 : 1;
                            }
@@ -274,7 +274,7 @@ public class apu {
       vo $$3 = a($$2, $$1);
       int $$4;
       if ($$3 instanceof vh) {
-         $$4 = ayx.a(((vh)$$3).j());
+         $$4 = ayy.a(((vh)$$3).j());
       } else if ($$3 instanceof uq) {
          $$4 = ((uq)$$3).size();
       } else if ($$3 instanceof ur) {
@@ -296,7 +296,7 @@ public class apu {
       if (!($$4 instanceof vh)) {
          throw e.create($$2.toString());
       } else {
-         int $$5 = ayx.a(((vh)$$4).j() * $$3);
+         int $$5 = ayy.a(((vh)$$4).j() * $$3);
          $$0.a(() -> $$1.a($$2, $$3, $$5), false);
          return $$5;
       }
@@ -313,7 +313,7 @@ public class apu {
       if (fh.g.a($$2, 0)) {
          throw fh.b.create();
       } else {
-         ur $$4 = $$3.h().a($$2);
+         ur $$4 = $$3.i().a($$2);
          if ($$3.equals($$4)) {
             throw d.create();
          } else {

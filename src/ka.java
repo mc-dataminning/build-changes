@@ -52,14 +52,14 @@ public class ka {
    }
 
    public float e() {
-      return ayx.g(this.b);
+      return ayy.g(this.b);
    }
 
    public float f() {
-      return ayx.g(this.c);
+      return ayy.g(this.c);
    }
 
    public float g() {
-      return ayx.g(this.d);
+      return ayy.g(this.d);
    }
 }

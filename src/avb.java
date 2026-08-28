@@ -42,7 +42,7 @@ public class avb {
    }
 
    private static void a(MinecraftServer $$0, Collection<String> $$1, ProfileLookupCallback $$2) {
-      String[] $$3 = $$1.stream().filter($$0x -> !azt.b($$0x)).toArray(String[]::new);
+      String[] $$3 = $$1.stream().filter($$0x -> !azu.b($$0x)).toArray(String[]::new);
       if ($$0.Z()) {
          $$0.at().findProfilesByNames($$3, $$2);
       } else {
@@ -227,7 +227,7 @@ public class avb {
 
    @Nullable
    public static UUID a(final MinecraftServer $$0, String $$1) {
-      if (!azt.b($$1) && $$1.length() <= 16) {
+      if (!azu.b($$1) && $$1.length() <= 16) {
          Optional<UUID> $$3 = $$0.au().a($$1).map(GameProfile::getId);
          if ($$3.isPresent()) {
             return $$3.get();
@@ -405,7 +405,7 @@ public class avb {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(eps.d).toFile();
+      return $$0.a(ept.d).toFile();
    }
 
    private static void b(File $$0) {

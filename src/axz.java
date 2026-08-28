@@ -13,16 +13,16 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.apache.commons.lang3.mutable.MutableObject;
 
-public interface axz<C, I extends azy<C>> extends azy<C> {
-   @bab
+public interface axz<C, I extends azz<C>> extends azz<C> {
+   @bac
    String a();
 
    axz<C, I> a(axz.d<I> var1);
 
-   static <C, I extends azy<C>> Codec<axz<C, I>> a(Codec<I> $$0) {
+   static <C, I extends azz<C>> Codec<axz<C, I>> a(Codec<I> $$0) {
       MutableObject<Codec<axz<C, I>>> $$1 = new MutableObject();
 
-      record a<C, I extends azy<C>>(float a, axz<C, I> b, float c) {
+      record a<C, I extends azz<C>>(float a, axz<C, I> b, float c) {
       }
 
       Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
@@ -36,7 +36,7 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
       Codec<axz.e<C, I>> $$3 = RecordCodecBuilder.create(
          $$2x -> $$2x.group(
                   $$0.fieldOf("coordinate").forGetter(axz.e::d),
-                  ayf.a($$2.listOf())
+                  ayg.a($$2.listOf())
                      .fieldOf("points")
                      .forGetter(
                         $$0xx -> IntStream.range(0, $$0xx.c.length)
@@ -68,30 +68,30 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
       return (Codec<axz<C, I>>)$$1.getValue();
    }
 
-   static <C, I extends azy<C>> axz<C, I> a(float $$0) {
+   static <C, I extends azz<C>> axz<C, I> a(float $$0) {
       return new axz.c<>($$0);
    }
 
-   static <C, I extends azy<C>> axz.b<C, I> a(I $$0) {
+   static <C, I extends azz<C>> axz.b<C, I> a(I $$0) {
       return new axz.b<>($$0);
    }
 
-   static <C, I extends azy<C>> axz.b<C, I> a(I $$0, azy<Float> $$1) {
+   static <C, I extends azz<C>> axz.b<C, I> a(I $$0, azz<Float> $$1) {
       return new axz.b<>($$0, $$1);
    }
 
-   public static final class b<C, I extends azy<C>> {
+   public static final class b<C, I extends azz<C>> {
       private final I a;
-      private final azy<Float> b;
+      private final azz<Float> b;
       private final FloatList c = new FloatArrayList();
       private final List<axz<C, I>> d = Lists.newArrayList();
       private final FloatList e = new FloatArrayList();
 
       protected b(I $$0) {
-         this($$0, azy.a);
+         this($$0, azz.a);
       }
 
-      protected b(I $$0, azy<Float> $$1) {
+      protected b(I $$0, azz<Float> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -128,8 +128,8 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
       }
    }
 
-   @bab
-   public static record c<C, I extends azy<C>>(float b) implements axz<C, I> {
+   @bac
+   public static record c<C, I extends azz<C>>(float b) implements axz<C, I> {
       @Override
       public float a(C $$0) {
          return this.b;
@@ -159,8 +159,8 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
       I visit(I var1);
    }
 
-   @bab
-   public static record e<C, I extends azy<C>>(I b, float[] c, List<axz<C, I>> d, float[] e, float f, float g) implements axz<C, I> {
+   @bac
+   public static record e<C, I extends azz<C>>(I b, float[] c, List<axz<C, I>> d, float[] e, float f, float g) implements axz<C, I> {
 
       public e(I b, float[] c, List<axz<C, I>> d, float[] e, float f, float g) {
          a(c, d, e);
@@ -172,7 +172,7 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
          this.g = g;
       }
 
-      static <C, I extends azy<C>> axz.e<C, I> a(I $$0, float[] $$1, List<axz<C, I>> $$2, float[] $$3) {
+      static <C, I extends azz<C>> axz.e<C, I> a(I $$0, float[] $$1, List<axz<C, I>> $$2, float[] $$3) {
          a($$1, $$2, $$3);
          int $$4 = $$1.length - 1;
          float $$5 = Float.POSITIVE_INFINITY;
@@ -234,7 +234,7 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
          return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
       }
 
-      private static <C, I extends azy<C>> void a(float[] $$0, List<axz<C, I>> $$1, float[] $$2) {
+      private static <C, I extends azz<C>> void a(float[] $$0, List<axz<C, I>> $$1, float[] $$2) {
          if ($$0.length != $$1.size() || $$0.length != $$2.length) {
             throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
          } else if ($$0.length == 0) {
@@ -255,20 +255,20 @@ public interface axz<C, I extends azy<C>> extends azy<C> {
             float $$4 = this.c[$$2];
             float $$5 = this.c[$$2 + 1];
             float $$6 = ($$1 - $$4) / ($$5 - $$4);
-            azy<C> $$7 = (azy<C>)this.d.get($$2);
-            azy<C> $$8 = (azy<C>)this.d.get($$2 + 1);
+            azz<C> $$7 = (azz<C>)this.d.get($$2);
+            azz<C> $$8 = (azz<C>)this.d.get($$2 + 1);
             float $$9 = this.e[$$2];
             float $$10 = this.e[$$2 + 1];
             float $$11 = $$7.a($$0);
             float $$12 = $$8.a($$0);
             float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
             float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
-            return ayx.i($$6, $$11, $$12) + $$6 * (1.0F - $$6) * ayx.i($$6, $$13, $$14);
+            return ayy.i($$6, $$11, $$12) + $$6 * (1.0F - $$6) * ayy.i($$6, $$13, $$14);
          }
       }
 
       private static int a(float[] $$0, float $$1) {
-         return ayx.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
+         return ayy.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
       }
 
       @VisibleForTesting

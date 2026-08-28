@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 
 public class axc {
    private static final Codec<axc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayf.r.fieldOf("id").forGetter(axc::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axc::new)
+      $$0 -> $$0.group(ayg.r.fieldOf("id").forGetter(axc::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axc::new)
    );
-   public static final Codec<axc> a = Codec.either(ayf.r, b)
+   public static final Codec<axc> a = Codec.either(ayg.r, b)
       .xmap($$0 -> (axc)$$0.map($$0x -> new axc($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
    private final ale c;
    private final boolean d;
@@ -22,14 +22,14 @@ public class axc {
       this.e = $$2;
    }
 
-   private axc(ayf.c $$0, boolean $$1) {
+   private axc(ayg.c $$0, boolean $$1) {
       this.c = $$0.a();
       this.d = $$0.b();
       this.e = $$1;
    }
 
-   private ayf.c a() {
-      return new ayf.c(this.c, this.d);
+   private ayg.c a() {
+      return new ayg.c(this.c, this.d);
    }
 
    public static axc a(ale $$0) {

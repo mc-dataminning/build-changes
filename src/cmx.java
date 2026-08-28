@@ -1,19 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+public enum cmx {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-public record cmx(PrivateKey b, cmy c, Instant d) {
-   public static final Codec<cmx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axv.g.fieldOf("private_key").forGetter(cmx::b),
-               cmy.c.fieldOf("public_key").forGetter(cmx::c),
-               ayf.o.fieldOf("refreshed_after").forGetter(cmx::d)
-            )
-            .apply($$0, cmx::new)
-   );
+   private final int h;
+   private final int i;
+   private final String j;
+   private final xo k;
 
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
+   private cmx(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = xo.c("options.modelPart." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public String c() {
+      return this.j;
+   }
+
+   public xo d() {
+      return this.k;
    }
 }

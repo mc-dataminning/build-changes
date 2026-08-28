@@ -1,22 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmp extends dnj implements deo {
-   public static final MapCodec<dmp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ctg.q.fieldOf("color").forGetter(dmp::b), u()).apply($$0, dmp::new));
-   private final ctg c;
-
-   @Override
-   public MapCodec<dmp> a() {
-      return a;
+public abstract class dmp extends dmi {
+   protected dmp(dsa.d $$0) {
+      super($$0);
    }
 
-   public dmp(ctg $$0, drz.d $$1) {
-      super($$1);
-      this.c = $$0;
+   private static boolean b(dsb $$0, dca $$1, iz $$2) {
+      iz $$3 = $$2.c();
+      dsb $$4 = $$1.a_($$3);
+      if ($$4.a(dfa.dN) && $$4.c(dmh.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = enl.a($$1, $$0, $$2, $$4, $$3, je.b, $$4.b($$1, $$3));
+         return $$5 < $$1.Q();
+      }
    }
 
    @Override
-   public ctg b() {
-      return this.c;
+   protected abstract MapCodec<? extends dmp> a();
+
+   private static boolean c(dsb $$0, dca $$1, iz $$2) {
+      iz $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awu.a);
+   }
+
+   @Override
+   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dfa.j.o());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            dsb $$4 = this.o();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               iz $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dfa.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dfa.dN))));
+               }
+            }
+         }
+      }
    }
 }

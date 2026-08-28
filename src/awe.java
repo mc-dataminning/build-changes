@@ -11,13 +11,13 @@ public class awe extends awc {
    public static final String c = "recipeBook";
    private static final Logger d = LogUtils.getLogger();
 
-   public int a(Collection<cyv<?>> $$0, arf $$1) {
+   public int a(Collection<cyw<?>> $$0, arf $$1) {
       List<ale> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyv<?> $$4 : $$0) {
+      for (cyw<?> $$4 : $$0) {
          ale $$5 = $$4.a();
-         if (!this.a.contains($$5) && !$$4.b().ao_()) {
+         if (!this.a.contains($$5) && !$$4.b().an_()) {
             this.a($$5);
             this.d($$5);
             $$2.add($$5);
@@ -33,11 +33,11 @@ public class awe extends awc {
       return $$3;
    }
 
-   public int b(Collection<cyv<?>> $$0, arf $$1) {
+   public int b(Collection<cyw<?>> $$0, arf $$1) {
       List<ale> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyv<?> $$4 : $$0) {
+      for (cyw<?> $$4 : $$0) {
          ale $$5 = $$4.a();
          if (this.a.contains($$5)) {
             this.c($$5);
@@ -74,7 +74,7 @@ public class awe extends awc {
       return $$0;
    }
 
-   public void a(ur $$0, cyw $$1) {
+   public void a(ur $$0, cyx $$1) {
       this.a(awd.a($$0));
       ux $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -82,13 +82,13 @@ public class awe extends awc {
       this.a($$3, this::f, $$1);
    }
 
-   private void a(ux $$0, Consumer<cyv<?>> $$1, cyw $$2) {
+   private void a(ux $$0, Consumer<cyw<?>> $$1, cyx $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
             ale $$5 = new ale($$4);
-            Optional<cyv<?>> $$6 = $$2.a($$5);
+            Optional<cyw<?>> $$6 = $$2.a($$5);
             if ($$6.isEmpty()) {
                d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {

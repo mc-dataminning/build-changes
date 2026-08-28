@@ -21,7 +21,7 @@ public class aow {
    }
 
    private static int a(ep $$0, Collection<arf> $$1, iz $$2, float $$3) {
-      ald<dbw> $$4 = $$0.e().af();
+      ald<dbx> $$4 = $$0.e().af();
 
       for (arf $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

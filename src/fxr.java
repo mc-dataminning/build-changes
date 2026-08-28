@@ -1,106 +1,261 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fxr extends fxq implements abp, xc {
+public abstract class fxr implements aab {
+   private static final xo i = xo.c("disconnect.lost");
    private static final Logger j = LogUtils.getLogger();
-   private final GameProfile k;
-   private cpj l;
-   private final jw.b m;
-   private final fyg n = new fyg();
+   protected final ffe a;
+   protected final wj b;
    @Nullable
-   private fxz o;
+   protected final fyi c;
    @Nullable
-   protected fhd.b i;
+   protected String d;
+   protected final guh e;
+   @Nullable
+   protected final fnc f;
+   protected boolean g;
+   private final List<fxr.a> k = new ArrayList<>();
+   protected final Map<ale, byte[]> h;
 
-   public fxr(ffd $$0, wj $$1, fxx $$2) {
-      super($$0, $$1, $$2);
-      this.k = $$2.a();
-      this.m = $$2.c();
-      this.l = $$2.d();
-      this.i = $$2.i();
+   protected fxr(ffe $$0, wj $$1, fxy $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
+      this.h = $$2.h();
    }
 
    @Override
-   public boolean c() {
-      return this.b.i();
+   public void a(zv $$0, Exception $$1) {
+      j.error("Failed to handle packet {}, disconnecting", $$0, $$1);
+      aab.super.a($$0, $$1);
+      this.b.a(xo.c("disconnect.packetError"));
    }
 
    @Override
-   protected void a(aaw $$0) {
-      this.b($$0);
-   }
-
-   private void b(aaw $$0) {
-      j.warn("Unknown custom packet payload: {}", $$0.a().a());
+   public boolean a(zv<?> $$0) {
+      return aab.super.a($$0) ? true : this.g && ($$0 instanceof aai || $$0 instanceof aaj);
    }
 
    @Override
-   public void a(abr $$0) {
+   public void a(aae $$0) {
+      this.a(new aap($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   }
+
+   @Override
+   public void a(aaf $$0) {
       zy.a($$0, this, this.a);
-      this.n.a($$0.b(), $$0.e());
+      this.b(new aaq($$0.b()));
    }
 
    @Override
-   public void a(aak $$0) {
-      zy.a($$0, this, this.a);
-      this.n.a($$0.b());
-   }
-
-   @Override
-   public void a(abu $$0) {
-      this.l = cpl.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abt $$0) {
-      zy.a($$0, this, this.a);
-      if (this.o == null) {
-         this.o = new fxz();
-      }
-
-      List<atv> $$1 = this.o.a($$0.b());
-      this.b(new abz($$1));
-   }
-
-   @Override
-   public void a(abs $$0) {
-      this.i = null;
-   }
-
-   private <T> T a(Function<aur, T> $$0) {
-      if (this.o == null) {
-         return $$0.apply(aur.b);
-      } else {
-         Object var3;
-         try (aue $$1 = this.o.a()) {
-            var3 = $$0.apply($$1);
+   public void a(aac $$0) {
+      aaw $$1 = $$0.b();
+      if (!($$1 instanceof aax)) {
+         zy.a($$0, this, this.a);
+         if ($$1 instanceof aau $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
+         } else {
+            this.a($$1);
          }
+      }
+   }
 
-         return (T)var3;
+   protected abstract void a(aaw var1);
+
+   @Override
+   public void a(aah $$0) {
+      zy.a($$0, this, this.a);
+      UUID $$1 = $$0.b();
+      URL $$2 = a($$0.e());
+      if ($$2 == null) {
+         this.b.a(new aar($$1, aar.a.f));
+      } else {
+         String $$3 = $$0.f();
+         boolean $$4 = $$0.g();
+         fyi.a $$5 = this.c != null ? this.c.b() : fyi.a.c;
+         if ($$5 != fyi.a.c && (!$$4 || $$5 != fyi.a.b)) {
+            this.a.ae().a($$1, $$2, $$3);
+         } else {
+            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         }
       }
    }
 
    @Override
-   public void a(abq $$0) {
+   public void a(aag $$0) {
       zy.a($$0, this, this.a);
-      jw.b $$1 = this.a($$0x -> this.n.a($$0x, this.m, this.b.e()));
-      this.b.a(agu.b.bind(wz.a($$1)), new fxu(this.a, this.b, new fxx(this.k, this.e, $$1, this.l, this.d, this.c, this.f, this.h, this.i)));
-      this.b.a(aby.a);
-      this.b.a(agu.a.bind(wz.a($$1)));
+      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   }
+
+   static xo a(xo $$0, @Nullable xo $$1) {
+      return (xo)($$1 == null ? $$0 : xo.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   }
+
+   @Nullable
+   private static URL a(String $$0) {
+      try {
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
+         return null;
+      }
    }
 
    @Override
-   public void d() {
-      this.e();
+   public void a(acc $$0) {
+      zy.a($$0, this, this.a);
+      this.b.a(new acf($$0.b(), this.h.get($$0.b())));
+   }
+
+   @Override
+   public void a(aai $$0) {
+      zy.a($$0, this, this.a);
+      this.h.put($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aaj $$0) {
+      this.g = true;
+      zy.a($$0, this, this.a);
+      if (this.c == null) {
+         throw new IllegalStateException("Cannot transfer to server from singleplayer");
+      } else {
+         this.b.a(xo.c("disconnect.transfer"));
+         this.b.m();
+         this.b.n();
+         fzl $$1 = new fzl($$0.b(), $$0.e());
+         flv.a(Objects.requireNonNullElseGet(this.f, fnh::new), this.a, $$1, this.c, false, new fym(this.h));
+      }
+   }
+
+   @Override
+   public void a(aad $$0) {
+      this.b.a($$0.b());
+   }
+
+   protected void e() {
+      Iterator<fxr.a> $$0 = this.k.iterator();
+
+      while ($$0.hasNext()) {
+         fxr.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.c()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(zv<?> $$0) {
+      this.b.a($$0);
    }
 
    @Override
    public void a(xo $$0) {
-      super.a($$0);
-      this.a.B();
+      this.e.c();
+      this.a.a(this.b($$0), this.g);
+      j.warn("Client disconnected with reason: {}", $$0.getString());
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
+      $$0.a("Server brand", () -> this.d);
+   }
+
+   protected fnc b(xo $$0) {
+      fnc $$1 = Objects.requireNonNullElseGet(this.f, () -> new fqa(new fnh()));
+      return (fnc)(this.c != null && this.c.e() ? new gvb($$1, i, $$0) : new fmd($$1, i, $$0));
+   }
+
+   @Nullable
+   public String f() {
+      return this.d;
+   }
+
+   private void a(zv<? extends xa> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
+      } else {
+         this.k.add(new fxr.a($$0, $$1, ac.c() + $$2.toMillis()));
+      }
+   }
+
+   private fnc a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable xo $$4) {
+      fnc $$5 = this.a.y;
+      return $$5 instanceof fxr.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fxr.b(this.a, $$5, List.of(new fxr.b.a($$0, $$1, $$2)), $$3, $$4);
+   }
+
+   static record a(zv<? extends xa> a, BooleanSupplier b, long c) {
+   }
+
+   class b extends flu {
+      private final List<fxr.b.a> r;
+      @Nullable
+      private final fnc s;
+
+      b(final ffe $$0, @Nullable final fnc $$1, final List<fxr.b.a> $$2, final boolean $$3, @Nullable final xo $$4) {
+         super(
+            $$5 -> {
+               $$0.a($$1);
+               gro $$6 = $$0.ae();
+               if ($$5) {
+                  if (fxr.this.c != null) {
+                     fxr.this.c.a(fyi.a.a);
+                  }
+
+                  $$6.g();
+               } else {
+                  $$6.h();
+                  if ($$3) {
+                     fxr.this.b.a(xo.c("multiplayer.requiredTexturePrompt.disconnect"));
+                  } else if (fxr.this.c != null) {
+                     fxr.this.c.a(fyi.a.b);
+                  }
+               }
+
+               for (fxr.b.a $$7 : $$2) {
+                  $$6.a($$7.a, $$7.b, $$7.c);
+               }
+
+               if (fxr.this.c != null) {
+                  fyj.b(fxr.this.c);
+               }
+            },
+            $$3 ? xo.c("multiplayer.requiredTexturePrompt.line1") : xo.c("multiplayer.texturePrompt.line1"),
+            fxr.a($$3 ? xo.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : xo.c("multiplayer.texturePrompt.line2"), $$4),
+            $$3 ? xn.i : xn.f,
+            $$3 ? xn.p : xn.g
+         );
+         this.r = $$2;
+         this.s = $$1;
+      }
+
+      public fxr.b a(ffe $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable xo $$5) {
+         List<fxr.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.r.size() + 1).addAll(this.r).add(new fxr.b.a($$1, $$2, $$3)).build();
+         return fxr.this.new b($$0, this.s, $$6, $$4, $$5);
+      }
+
+      static record a(UUID a, URL b, String c) {
+      }
    }
 }

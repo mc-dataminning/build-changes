@@ -2,7 +2,7 @@ public class aej implements zv<ach> {
    public static final zm<wl, aej> a = zv.a(aej::a, aej::new);
    private final int b;
 
-   public aej(bri $$0) {
+   public aej(brj $$0) {
       this($$0.b());
    }
 

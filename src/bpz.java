@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bpz implements bqa {
-   private final bqa[] a;
+public interface bpz<P extends bpy> {
+   bpz<bpv> a = a("constant", bpv.b);
+   bpz<bqe> b = a("uniform", bqe.a);
+   bpz<bpq> c = a("biased_to_bottom", bpq.a);
+   bpz<bpr> d = a("clamped", bpr.a);
+   bpz<bqf> e = a("weighted_list", bqf.a);
+   bpz<bpt> f = a("clamped_normal", bpt.a);
 
-   public bpz(bqa... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(azf $$0) {
-      float $$1 = 1.0F;
-
-      for (bqa $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bpy> bpz<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.M, $$0, () -> $$1);
    }
 }

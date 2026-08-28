@@ -7,11 +7,11 @@ public class afs implements zv<ach> {
    public static final int d = 2;
    private final String e;
    private final xo f;
-   private final eww.a g;
+   private final ewx.a g;
    private final Optional<ze> h;
    private final int i;
 
-   public afs(ewl $$0, int $$1) {
+   public afs(ewm $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class afs implements zv<ach> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = xn.a;
-         this.g = eww.a.a;
+         this.g = ewx.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xq.d.decode($$0);
-         this.g = $$0.b(eww.a.class);
+         this.g = $$0.b(ewx.a.class);
          this.h = zg.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class afs implements zv<ach> {
       return this.i;
    }
 
-   public eww.a g() {
+   public ewx.a g() {
       return this.g;
    }
 

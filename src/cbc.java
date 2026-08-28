@@ -1,49 +1,65 @@
 import java.util.EnumSet;
 
-public class cbc extends cal {
-   private static final cee b = cee.b().a(6.0);
-   public static final int a = 400;
-   private final cfp c;
-   private cmi d;
-   private int e;
+public class cbc extends cam {
+   private final btq a;
+   private bto b;
+   private int c;
 
-   public cbc(cfp $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cal.a.a, cal.a.b));
+   public cbc(btq $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cam.a.a, cam.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dP().R()) {
-         return false;
-      } else if (this.c.el().a(8000) != 0) {
+      bto $$0 = this.a.p();
+      if ($$0 == null) {
          return false;
       } else {
-         this.d = this.c.dP().a(cmi.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
+      if (!this.b.bD()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.c.w(false);
-      this.d = null;
+      this.b = null;
+      this.a.K().n();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.G().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
+      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.K().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

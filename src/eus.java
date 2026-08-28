@@ -3,30 +3,29 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eus(String b) implements euu {
-   public static final MapCodec<eus> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eus::c)).apply($$0, eus::new));
+public record eus(eqh.b c) implements euv {
+   public static final MapCodec<eus> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eqh.b.e.fieldOf("target").forGetter(eus::c)).apply($$0, eus::new));
+   public static final Codec<eus> b = eqh.b.e.xmap(eus::new, eus::c);
 
-   public static euu a(String $$0) {
+   public static euv a(eqh.b $$0) {
       return new eus($$0);
    }
 
    @Override
-   public eut a() {
-      return euv.b;
+   public euu a() {
+      return euw.c;
+   }
+
+   @Nullable
+   @Override
+   public ewt a(eqh $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
-   public ews a(eqg $$0) {
-      return ews.c(this.b);
-   }
-
-   @Override
-   public Set<esz<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   public Set<eta<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

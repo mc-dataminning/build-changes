@@ -6,7 +6,7 @@ public class aci implements zv<ach> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bsy<?> f;
+   private final bsz<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,32 +18,32 @@ public class aci implements zv<ach> {
    private final byte o;
    private final int p;
 
-   public aci(bss $$0) {
+   public aci(bst $$0) {
       this($$0, 0);
    }
 
-   public aci(bss $$0, int $$1) {
+   public aci(bst $$0, int $$1) {
       this($$0.al(), $$0.cz(), $$0.du(), $$0.dw(), $$0.dA(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
    }
 
-   public aci(bss $$0, int $$1, iz $$2) {
+   public aci(bst $$0, int $$1, iz $$2) {
       this($$0.al(), $$0.cz(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
    }
 
-   public aci(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsy<?> $$7, int $$8, evp $$9, double $$10) {
+   public aci(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsz<?> $$7, int $$8, evq $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
       this.h = $$3;
       this.i = $$4;
-      this.m = (byte)ayx.d($$5 * 256.0F / 360.0F);
-      this.n = (byte)ayx.d($$6 * 256.0F / 360.0F);
-      this.o = (byte)ayx.a($$10 * 256.0 / 360.0);
+      this.m = (byte)ayy.d($$5 * 256.0F / 360.0F);
+      this.n = (byte)ayy.d($$6 * 256.0F / 360.0F);
+      this.o = (byte)ayy.a($$10 * 256.0 / 360.0);
       this.f = $$7;
       this.p = $$8;
-      this.j = (int)(ayx.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.k = (int)(ayx.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.l = (int)(ayx.a($$9.e, -3.9, 3.9) * 8000.0);
+      this.j = (int)(ayy.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.k = (int)(ayy.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.l = (int)(ayy.a($$9.e, -3.9, 3.9) * 8000.0);
    }
 
    private aci(wz $$0) {
@@ -95,7 +95,7 @@ public class aci implements zv<ach> {
       return this.e;
    }
 
-   public bsy<?> f() {
+   public bsz<?> f() {
       return this.f;
    }
 

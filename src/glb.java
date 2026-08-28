@@ -1,11 +1,12 @@
-public class glb extends ghu<cnt> {
-   public static final ale a = new ale("textures/entity/projectiles/spectral_arrow.png");
+public class glb extends gkc<cgc, fvz<cgc>> {
+   private static final ale a = new ale("textures/entity/snow_golem.png");
 
-   public glb(giv.a $$0) {
-      super($$0);
+   public glb(giw.a $$0) {
+      super($$0, new fvz<>($$0.a(fwy.bv)), 0.5F);
+      this.a(new gno(this, $$0.c(), $$0.b()));
    }
 
-   public ale a(cnt $$0) {
+   public ale a(cgc $$0) {
       return a;
    }
 }

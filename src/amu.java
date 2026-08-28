@@ -26,7 +26,7 @@ public class amu {
    private static final SuggestionProvider<ep> g = ($$0, $$1) -> {
       atz $$2 = ((ep)$$0.getSource()).l().aG();
       Collection<String> $$3 = $$2.d();
-      cpj $$4 = ((ep)$$0.getSource()).w();
+      cpk $$4 = ((ep)$$0.getSource()).w();
       return eu.b(
          $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(atw::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -115,7 +115,7 @@ public class amu {
       $$1.a();
       Collection<atw> $$2 = $$1.f();
       Collection<atw> $$3 = $$1.c();
-      cpj $$4 = $$0.w();
+      cpk $$4 = $$0.w();
       List<atw> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> xo.c("commands.datapack.list.available.none"), false);
@@ -152,12 +152,12 @@ public class amu {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cpj $$7 = ((ep)$$0.getSource()).w();
-            cpj $$8 = $$5.e();
+            cpk $$7 = ((ep)$$0.getSource()).w();
+            cpk $$8 = $$5.e();
             if (!$$2 && !$$8.b() && $$5.l() == aua.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, cpl.a($$7, $$8));
+               throw e.create($$3, cpm.a($$7, $$8));
             } else {
                return $$5;
             }

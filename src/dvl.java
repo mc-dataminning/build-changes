@@ -1,98 +1,106 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
 
-public class dvl {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<dvl> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dvl> i = new Object2ObjectOpenHashMap();
-   public static final dvl a = a(new dvl(1, null, $$0 -> new ayg(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dvl b = a(
-      new dvl(2, "deflate", $$0 -> new ayg(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dvl c = a(new dvl(3, "none", ayg::new, BufferedOutputStream::new));
-   public static final dvl d = a(
-      new dvl(4, "lz4", $$0 -> new ayg(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dvl e = a(new dvl(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final dvl f = b;
-   private static volatile dvl j = f;
-   private final int k;
-   @Nullable
-   private final String l;
-   private final dvl.a<InputStream> m;
-   private final dvl.a<OutputStream> n;
+public final class dvl implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<dvk> c = new Long2ObjectLinkedOpenHashMap();
+   private final dvn d;
+   private final Path e;
+   private final boolean f;
 
-   private dvl(int $$0, @Nullable String $$1, dvl.a<InputStream> $$2, dvl.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   dvl(dvn $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
    }
 
-   private static dvl a(dvl $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
-      }
-
-      return $$0;
-   }
-
-   @Nullable
-   public static dvl a(int $$0) {
-      return (dvl)h.get($$0);
-   }
-
-   public static void a(String $$0) {
-      dvl $$1 = (dvl)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
+   private dvk b(dbe $$0) throws IOException {
+      long $$1 = dbe.c($$0.h(), $$0.i());
+      dvk $$2 = (dvk)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         if (this.c.size() >= 256) {
+            ((dvk)this.c.removeLast()).close();
+         }
+
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         dvk $$4 = new dvk(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
    }
 
-   public static dvl a() {
-      return j;
+   @Nullable
+   public ur a(dbe $$0) throws IOException {
+      dvk $$1 = this.b($$0);
+
+      ur var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = ve.a($$2);
+      }
+
+      return var4;
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   public void a(dbe $$0, vl $$1) throws IOException {
+      dvk $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            ve.a((DataInput)$$3, $$1, va.a());
+         }
+      }
    }
 
-   public int b() {
-      return this.k;
+   protected void a(dbe $$0, @Nullable ur $$1) throws IOException {
+      dvk $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
+      } else {
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            ve.a($$1, (DataOutput)$$3);
+         }
+      }
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
+   @Override
+   public void close() throws IOException {
+      ayf<IOException> $$0 = new ayf<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         dvk $$1 = (dvk)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
-   }
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+      while (var1.hasNext()) {
+         dvk $$0 = (dvk)var1.next();
+         $$0.b();
+      }
    }
 }

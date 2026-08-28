@@ -55,7 +55,7 @@ public class jc<T> extends jq<T> implements jd<T> {
    }
 
    @Override
-   public Optional<ji.c<T>> a(azf $$0) {
+   public Optional<ji.c<T>> a(azg $$0) {
       return super.a($$0).or(() -> Optional.of(this.c));
    }
 

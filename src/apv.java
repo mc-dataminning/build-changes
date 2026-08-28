@@ -19,15 +19,15 @@ public class apv implements apt {
             return $$0.then(eq.a("entity").then($$1.apply(eq.a($$0, fc.a()))));
          }
       };
-   private final bss c;
+   private final bst c;
 
-   public apv(bss $$0) {
+   public apv(bst $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(ur $$0) throws CommandSyntaxException {
-      if (this.c instanceof cmv) {
+      if (this.c instanceof cmw) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cz();

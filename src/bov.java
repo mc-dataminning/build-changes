@@ -1,30 +1,13 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+public interface bov {
+   void a();
 
-public class bov {
-   private final Set<String> a = new ObjectOpenHashSet();
+   void b();
 
-   public Set<bon> a(Supplier<bne> $$0) {
-      Set<bon> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bom)$$1x.getRight()))
-         .collect(Collectors.toSet());
+   void c();
 
-      for (bon $$2 : $$1) {
-         this.a.add($$2.d());
-      }
+   boolean e();
 
-      return $$1;
-   }
+   bnh f();
 
-   private static bon a(Supplier<bne> $$0, String $$1, bom $$2) {
-      return bon.a($$1, $$2, () -> {
-         bmz.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)azx.b;
-      });
-   }
+   void d();
 }

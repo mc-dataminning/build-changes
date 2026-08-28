@@ -46,7 +46,7 @@ public class apj {
    }
 
    private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)azx.b);
+      return String.format("%.1f", (float)$$0 / (float)azy.b);
    }
 
    private static int a(ep $$0, float $$1) {

@@ -1,30 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cds extends cdx<btn> {
+public abstract class cds extends cdy<bto> {
+   protected abstract boolean a(bto var1, bto var2);
+
+   protected abstract ccs<bto> b();
+
    @Override
-   public Set<ccr<?>> a() {
-      return ImmutableSet.of(ccr.h, ccr.M, ccr.an);
+   public Set<ccs<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected void a(are $$0, btn $$1) {
-      bup<?> $$2 = $$1.dS();
-      List<clk> $$3 = Lists.newArrayList();
-      cct $$4 = $$2.c(ccr.h).orElse(cct.a());
-      Optional<btp> $$5 = $$4.a($$0x -> $$0x instanceof cks || $$0x instanceof cit).map(btp.class::cast);
+   protected void a(are $$0, bto $$1) {
+      $$1.dS().a(this.b(), this.b($$1));
+   }
 
-      for (btn $$7 : $$2.c(ccr.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof clk && ((clk)$$7).gr()) {
-            $$3.add((clk)$$7);
-         }
-      }
+   private Optional<bto> b(bto $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-      $$2.a(ccr.M, $$5);
-      $$2.a(ccr.an, $$3);
+   protected Optional<ccu> a(bto $$0) {
+      return $$0.dS().c(ccs.h);
    }
 }

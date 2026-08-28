@@ -1,464 +1,411 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Queues;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class gea implements ezm, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String q = "shaders/core/";
-   private static final String r = "shaders/include/";
-   static final Logger s = LogUtils.getLogger();
-   private static final ezf t = new ezf();
-   private static final boolean u = true;
-   private static gea v;
-   private static int w = -1;
-   private final Map<String, Object> x = Maps.newHashMap();
-   private final List<String> y = Lists.newArrayList();
-   private final List<Integer> z = Lists.newArrayList();
-   private final List<ezn> A = Lists.newArrayList();
-   private final List<Integer> B = Lists.newArrayList();
-   private final Map<String, ezn> C = Maps.newHashMap();
-   private final int D;
-   private final String E;
-   private boolean F;
-   private final ezg G;
-   private final ezk H;
-   private final ezk I;
-   private final fab J;
+public class gea {
+   private static final Logger a = LogUtils.getLogger();
+   private static final je[] b = je.values();
+   private static final int c = 60;
+   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean e = true;
    @Nullable
-   public final ezn b;
+   private Future<?> f;
    @Nullable
-   public final ezn c;
-   @Nullable
-   public final ezn d;
-   @Nullable
-   public final ezn e;
-   @Nullable
-   public final ezn f;
-   @Nullable
-   public final ezn g;
-   @Nullable
-   public final ezn h;
-   @Nullable
-   public final ezn i;
-   @Nullable
-   public final ezn j;
-   @Nullable
-   public final ezn k;
-   @Nullable
-   public final ezn l;
-   @Nullable
-   public final ezn m;
-   @Nullable
-   public final ezn n;
-   @Nullable
-   public final ezn o;
-   @Nullable
-   public final ezn p;
+   private gee g;
+   private final AtomicReference<gea.b> h = new AtomicReference<>();
+   private final AtomicReference<gea.a> i = new AtomicReference<>();
+   private final AtomicBoolean j = new AtomicBoolean(false);
 
-   public gea(aur $$0, String $$1, fab $$2) throws IOException {
-      this.E = $$1;
-      this.J = $$2;
-      ale $$3 = new ale("shaders/core/" + $$1 + ".json");
-
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = ayn.a($$4);
-         String $$6 = ayn.i($$5, "vertex");
-         String $$7 = ayn.i($$5, "fragment");
-         JsonArray $$8 = ayn.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var18) {
-                  alh $$12 = alh.a(var18);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
+   public void a(@Nullable gee $$0) {
+      if (this.f != null) {
+         try {
+            this.f.get();
+            this.f = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
          }
-
-         JsonArray $$13 = ayn.a($$5, "uniforms", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.b($$15);
-               } catch (Exception var17) {
-                  alh $$17 = alh.a(var17);
-                  $$17.a("uniforms[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         }
-
-         this.G = a(ayn.a($$5, "blend", null));
-         this.H = a($$0, ezk.a.a, $$6);
-         this.I = a($$0, ezk.a.b, $$7);
-         this.D = ezl.a();
-         int $$18 = 0;
-
-         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
-            String $$19 = (String)var26.next();
-            ezn.a(this.D, $$18, $$19);
-         }
-
-         ezl.b(this);
-         this.j();
-      } catch (Exception var20) {
-         alh $$22 = alh.a(var20);
-         $$22.b($$3.a());
-         throw $$22;
       }
 
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("TextureMat");
-      this.e = this.a("ScreenSize");
-      this.f = this.a("ColorModulator");
-      this.g = this.a("Light0_Direction");
-      this.h = this.a("Light1_Direction");
-      this.i = this.a("GlintAlpha");
-      this.j = this.a("FogStart");
-      this.k = this.a("FogEnd");
-      this.l = this.a("FogColor");
-      this.m = this.a("FogShape");
-      this.n = this.a("LineWidth");
-      this.o = this.a("GameTime");
-      this.p = this.a("ChunkOffset");
+      this.g = $$0;
+      if ($$0 != null) {
+         this.h.set(new gea.b($$0.f.length));
+         this.a();
+      } else {
+         this.h.set(null);
+      }
    }
 
-   private static ezk a(final aur $$0, ezk.a $$1, String $$2) throws IOException {
-      ezk $$3 = $$1.c().get($$2);
-      ezk $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         aum $$5 = $$0.getResourceOrThrow(new ale($$4));
+   public void a() {
+      this.e = true;
+   }
 
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.a($$4);
-            $$8 = ezk.a($$1, $$2, $$6, $$5.b(), new ezd() {
-               private final Set<String> c = Sets.newHashSet();
+   public void a(ggr $$0, List<ggn.b> $$1) {
+      for (gea.d $$2 : this.h.get().a().b) {
+         if ($$0.a($$2.a.b())) {
+            $$1.add($$2.a);
+         }
+      }
+   }
 
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     ale $$2 = new ale($$1);
+   public boolean b() {
+      return this.j.compareAndSet(true, false);
+   }
 
-                     try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
+   public void a(dbe $$0) {
+      gea.a $$1 = this.i.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
+      }
 
-                        return var5;
-                     } catch (IOException var9) {
-                        gea.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
+      gea.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(ggn.b $$0) {
+      gea.a $$1 = this.i.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      gea.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, fep $$1, ggr $$2, List<ggn.b> $$3) {
+      evq $$4 = $$1.b();
+      if (this.e && (this.f == null || this.f.isDone())) {
+         this.a($$0, $$1, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$4);
+   }
+
+   private void a(boolean $$0, fep $$1, evq $$2) {
+      this.e = false;
+      this.f = ac.g().submit(() -> {
+         gea.b $$3 = new gea.b(this.g.f.length);
+         this.i.set($$3.b);
+         Queue<gea.d> $$4 = Queues.newArrayDeque();
+         this.a($$1, $$4);
+         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
+         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+         });
+         this.h.set($$3);
+         this.i.set(null);
+         this.j.set(true);
+      });
+   }
+
+   private void a(boolean $$0, ggr $$1, List<ggn.b> $$2, evq $$3) {
+      gea.b $$4 = this.h.get();
+      this.a($$4);
+      if (!$$4.b.b.isEmpty()) {
+         Queue<gea.d> $$5 = Queues.newArrayDeque();
+
+         while (!$$4.b.b.isEmpty()) {
+            ggn.b $$6 = $$4.b.b.poll();
+            gea.d $$7 = $$4.a.a.a($$6);
+            if ($$7 != null && $$7.a == $$6) {
+               $$5.add($$7);
+            }
+         }
+
+         ggr $$8 = gdl.a($$1);
+         Consumer<ggn.b> $$9 = $$2x -> {
+            if ($$8.a($$2x.b())) {
+               $$2.add($$2x);
+            }
+         };
+         this.a($$4.a, $$3, $$5, $$0, $$9);
+      }
+   }
+
+   private void a(gea.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<ggn.b> $$3 = (List<ggn.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(gea.a $$0, dbe $$1) {
+      $$0.a.add(dbe.c($$1.e - 1, $$1.f));
+      $$0.a.add(dbe.c($$1.e, $$1.f - 1));
+      $$0.a.add(dbe.c($$1.e + 1, $$1.f));
+      $$0.a.add(dbe.c($$1.e, $$1.f + 1));
+   }
+
+   private void a(fep $$0, Queue<gea.d> $$1) {
+      int $$2 = 16;
+      evq $$3 = $$0.b();
+      iz $$4 = $$0.c();
+      ggn.b $$5 = this.g.a($$4);
+      if ($$5 == null) {
+         dbz $$6 = this.g.c();
+         boolean $$7 = $$4.v() > $$6.I_();
+         int $$8 = $$7 ? $$6.am() - 8 : $$6.I_() + 8;
+         int $$9 = ayy.a($$3.c / 16.0) * 16;
+         int $$10 = ayy.a($$3.e / 16.0) * 16;
+         int $$11 = this.g.b();
+         List<gea.d> $$12 = Lists.newArrayList();
+
+         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
+               ggn.b $$15 = this.g.a(new iz($$9 + kb.a($$13, 8), $$8, $$10 + kb.a($$14, 8)));
+               if ($$15 != null && this.a($$4, $$15.f())) {
+                  je $$16 = $$7 ? je.a : je.b;
+                  gea.d $$17 = new gea.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, je.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, je.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, je.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, je.c);
+                  }
+
+                  $$12.add($$17);
+               }
+            }
+         }
+
+         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
+         $$1.addAll($$12);
+      } else {
+         $$1.add(new gea.d($$5, null, 0));
+      }
+   }
+
+   private void a(gea.c $$0, evq $$1, Queue<gea.d> $$2, boolean $$3, Consumer<ggn.b> $$4) {
+      int $$5 = 16;
+      iz $$6 = new iz(ayy.a($$1.c / 16.0) * 16, ayy.a($$1.d / 16.0) * 16, ayy.a($$1.e / 16.0) * 16);
+      iz $$7 = $$6.b(8, 8, 8);
+
+      while (!$$2.isEmpty()) {
+         gea.d $$8 = $$2.poll();
+         ggn.b $$9 = $$8.a;
+         if ($$0.b.add($$8)) {
+            $$4.accept($$8.a);
+         }
+
+         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
+
+         for (je $$11 : b) {
+            ggn.b $$12 = this.a($$6, $$9, $$11);
+            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
+               if ($$3 && $$8.a()) {
+                  ggn.a $$13 = $$9.d();
+                  boolean $$14 = false;
+
+                  for (int $$15 = 0; $$15 < b.length; $$15++) {
+                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
+                        $$14 = true;
+                        break;
                      }
                   }
+
+                  if (!$$14) {
+                     continue;
+                  }
                }
-            });
-         }
-      } else {
-         $$8 = $$3;
-      }
 
-      return $$8;
-   }
+               if ($$3 && $$10) {
+                  iz $$16 = $$12.f();
+                  iz $$17 = $$16.b(
+                     ($$11.o() == je.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
+                     ($$11.o() == je.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
+                     ($$11.o() == je.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
+                  );
+                  evq $$18 = new evq((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
+                  evq $$19 = $$1.d($$18).d().a(d);
+                  boolean $$20 = true;
 
-   public static ezg a(JsonObject $$0) {
-      if ($$0 == null) {
-         return new ezg();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (ayn.a($$0, "func")) {
-            $$1 = ezg.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
+                  while ($$1.d($$18).g() > 3600.0) {
+                     $$18 = $$18.e($$19);
+                     dbz $$21 = this.g.c();
+                     if ($$18.d > (double)$$21.am() || $$18.d < (double)$$21.I_()) {
+                        break;
+                     }
+
+                     ggn.b $$22 = this.g.a(iz.a($$18.c, $$18.d, $$18.e));
+                     if ($$22 == null || $$0.a.a($$22) == null) {
+                        $$20 = false;
+                        break;
+                     }
+                  }
+
+                  if (!$$20) {
+                     continue;
+                  }
+               }
+
+               gea.d $$23 = $$0.a.a($$12);
+               if ($$23 != null) {
+                  $$23.b($$11);
+               } else {
+                  gea.d $$24 = new gea.d($$12, $$11, $$8.b + 1);
+                  $$24.a($$8.d, $$11);
+                  if ($$12.a()) {
+                     $$2.add($$24);
+                     $$0.a.a($$12, $$24);
+                  } else if (this.a($$6, $$12.f())) {
+                     $$0.a.a($$12, $$24);
+                     ((List)$$0.c.computeIfAbsent(dbe.a($$12.f()), $$0x -> new ArrayList())).add($$12);
+                  }
+               }
             }
-         }
-
-         if (ayn.a($$0, "srcrgb")) {
-            $$2 = ezg.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (ayn.a($$0, "dstrgb")) {
-            $$3 = ezg.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (ayn.a($$0, "srcalpha")) {
-            $$4 = ezg.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (ayn.a($$0, "dstalpha")) {
-            $$5 = ezg.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new ezg();
-         } else {
-            return $$7 ? new ezg($$2, $$3, $$4, $$5, $$1) : new ezg($$2, $$3, $$1);
          }
       }
    }
 
-   @Override
-   public void close() {
-      for (ezn $$0 : this.A) {
-         $$0.close();
-      }
-
-      ezl.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ezl.a(0);
-      w = -1;
-      v = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         if (this.x.get(this.y.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.F = false;
-      v = this;
-      this.G.a();
-      if (this.D != w) {
-         ezl.a(this.D);
-         w = this.D;
-      }
-
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         if (this.x.get($$2) != null) {
-            int $$3 = ezn.a(this.D, $$2);
-            ezn.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.x.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof eyi) {
-               $$5 = ((eyi)$$4).f();
-            } else if ($$4 instanceof goi) {
-               $$5 = ((goi)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
-            }
-
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
-            }
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (ezn $$6 : this.A) {
-         $$6.b();
-      }
-   }
-
-   @Override
-   public void b() {
-      this.F = true;
+   private boolean a(iz $$0, iz $$1) {
+      int $$2 = kb.a($$0.u());
+      int $$3 = kb.a($$0.w());
+      int $$4 = kb.a($$1.u());
+      int $$5 = kb.a($$1.w());
+      return aqs.a($$2, $$3, this.g.b(), $$4, $$5);
    }
 
    @Nullable
-   public ezn a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.C.get($$0);
-   }
-
-   public ezf b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      ezn $$1 = this.a($$0);
-      return (ezf)($$1 == null ? t : $$1);
-   }
-
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         int $$3 = ezn.a(this.D, $$2);
-         if ($$3 == -1) {
-            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
-            this.x.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.z.add($$3);
-         }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.y.remove($$5);
-      }
-
-      for (ezn $$6 : this.A) {
-         String $$7 = $$6.a();
-         int $$8 = ezn.a(this.D, $$7);
-         if ($$8 == -1) {
-            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
-         } else {
-            this.B.add($$8);
-            $$6.b($$8);
-            this.C.put($$7, $$6);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = ayn.m($$0, "sampler");
-      String $$2 = ayn.i($$1, "name");
-      if (!ayn.a($$1, "file")) {
-         this.x.put($$2, null);
-         this.y.add($$2);
+   private ggn.b a(iz $$0, ggn.b $$1, je $$2) {
+      iz $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
       } else {
-         this.y.add($$2);
+         return ayy.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
       }
    }
 
-   public void a(String $$0, Object $$1) {
-      this.x.put($$0, $$1);
-      this.b();
+   @Nullable
+   @bac
+   protected gea.d b(ggn.b $$0) {
+      return this.h.get().a.a.a($$0);
    }
 
-   private void b(JsonElement $$0) throws alh {
-      JsonObject $$1 = ayn.m($$0, "uniform");
-      String $$2 = ayn.i($$1, "name");
-      int $$3 = ezn.a(ayn.i($$1, "type"));
-      int $$4 = ayn.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = ayn.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new alh("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+   static record a(LongSet a, BlockingQueue<ggn.b> b) {
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = ayn.e($$8, "value");
-            } catch (Exception var13) {
-               alh $$10 = alh.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
-
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
-
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         ezn $$12 = new ezn($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
-         }
-
-         this.A.add($$12);
+      public a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
       }
    }
 
-   @Override
-   public ezk c() {
-      return this.H;
+   static record b(gea.c a, gea.a b) {
+
+      public b(int $$0) {
+         this(new gea.c($$0), new gea.a());
+      }
    }
 
-   @Override
-   public ezk d() {
-      return this.I;
+   static class c {
+      public final gea.e a;
+      public final LinkedHashSet<gea.d> b;
+      public final Long2ObjectMap<List<ggn.b>> c;
+
+      public c(int $$0) {
+         this.a = new gea.e($$0);
+         this.b = new LinkedHashSet<>($$0);
+         this.c = new Long2ObjectOpenHashMap();
+      }
    }
 
-   @Override
-   public void e() {
-      this.I.a(this);
-      this.H.a(this);
+   @bac
+   protected static class d {
+      @bac
+      protected final ggn.b a;
+      private byte c;
+      byte d;
+      @bac
+      protected final int b;
+
+      d(ggn.b $$0, @Nullable je $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
+         }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, je $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(je $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(je $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @bac
+      protected boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.f().hashCode();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof gea.d $$1) ? false : this.a.f().equals($$1.a.f());
+      }
    }
 
-   public fab h() {
-      return this.J;
-   }
+   static class e {
+      private final gea.d[] a;
 
-   public String i() {
-      return this.E;
-   }
+      e(int $$0) {
+         this.a = new gea.d[$$0];
+      }
 
-   @Override
-   public int a() {
-      return this.D;
+      public void a(ggn.b $$0, gea.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
+
+      @Nullable
+      public gea.d a(ggn.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      }
    }
 }

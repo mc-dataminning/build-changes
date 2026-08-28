@@ -106,9 +106,9 @@ public class aph {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1, bss $$2) throws CommandSyntaxException {
-      for (bss $$3 : $$1) {
-         a($$0, $$3, (are)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(bub.class), $$2.dF(), $$2.dH(), null);
+   private static int a(ep $$0, Collection<? extends bst> $$1, bst $$2) throws CommandSyntaxException {
+      for (bst $$3 : $$1) {
+         a($$0, $$3, (are)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(buc.class), $$2.dF(), $$2.dH(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,36 +120,36 @@ public class aph {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<? extends bss> $$1, are $$2, gn $$3, @Nullable gn $$4, @Nullable aph.a $$5) throws CommandSyntaxException {
-      evp $$6 = $$3.a($$0);
-      evo $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bub> $$8 = EnumSet.noneOf(bub.class);
+   private static int a(ep $$0, Collection<? extends bst> $$1, are $$2, gn $$3, @Nullable gn $$4, @Nullable aph.a $$5) throws CommandSyntaxException {
+      evq $$6 = $$3.a($$0);
+      evp $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<buc> $$8 = EnumSet.noneOf(buc.class);
       if ($$3.a()) {
-         $$8.add(bub.a);
+         $$8.add(buc.a);
       }
 
       if ($$3.b()) {
-         $$8.add(bub.b);
+         $$8.add(buc.b);
       }
 
       if ($$3.c()) {
-         $$8.add(bub.c);
+         $$8.add(buc.c);
       }
 
       if ($$4 == null) {
-         $$8.add(bub.e);
-         $$8.add(bub.d);
+         $$8.add(buc.e);
+         $$8.add(buc.d);
       } else {
          if ($$4.a()) {
-            $$8.add(bub.e);
+            $$8.add(buc.e);
          }
 
          if ($$4.b()) {
-            $$8.add(bub.d);
+            $$8.add(buc.d);
          }
       }
 
-      for (bss $$9 : $$1) {
+      for (bst $$9 : $$1) {
          if ($$4 == null) {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dF(), $$9.dH(), $$5);
          } else {
@@ -170,24 +170,24 @@ public class aph {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(ep $$0, bss $$1, are $$2, double $$3, double $$4, double $$5, Set<bub> $$6, float $$7, float $$8, @Nullable aph.a $$9) throws CommandSyntaxException {
+   private static void a(ep $$0, bst $$1, are $$2, double $$3, double $$4, double $$5, Set<buc> $$6, float $$7, float $$8, @Nullable aph.a $$9) throws CommandSyntaxException {
       iz $$10 = iz.a($$3, $$4, $$5);
-      if (!dbw.l($$10)) {
+      if (!dbx.l($$10)) {
          throw a.create();
       } else {
-         float $$11 = ayx.g($$7);
-         float $$12 = ayx.g($$8);
+         float $$11 = ayy.g($$7);
+         float $$12 = ayy.g($$8);
          if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
             if ($$9 != null) {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof btn $$13) || !$$13.fE()) {
+            if (!($$1 instanceof bto $$13) || !$$13.fE()) {
                $$1.h($$1.ds().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 
-            if ($$1 instanceof btw $$14) {
+            if ($$1 instanceof btx $$14) {
                $$14.K().n();
             }
          }
@@ -196,12 +196,12 @@ public class aph {
 
    @FunctionalInterface
    interface a {
-      void perform(ep var1, bss var2);
+      void perform(ep var1, bst var2);
    }
 
-   static record b(bss a, fb.a b) implements aph.a {
+   static record b(bst a, fb.a b) implements aph.a {
       @Override
-      public void perform(ep $$0, bss $$1) {
+      public void perform(ep $$0, bst $$1) {
          if ($$1 instanceof arf $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -210,9 +210,9 @@ public class aph {
       }
    }
 
-   static record c(evp a) implements aph.a {
+   static record c(evq a) implements aph.a {
       @Override
-      public void perform(ep $$0, bss $$1) {
+      public void perform(ep $$0, bst $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

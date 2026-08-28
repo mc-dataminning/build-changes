@@ -1,34 +1,45 @@
-import java.util.EnumSet;
+public class caa extends caz {
+   private final cfh g;
 
-public class caa extends cal {
-   private final btp a;
-   private final dbw b;
-
-   public caa(btp $$0, dbw $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cal.a.c));
+   public caa(cfh $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      boolean $$0 = this.a.aC || this.a.aB;
-      if ($$0 && this.a.ak().a(aws.h)) {
-         iz $$1 = this.a.dp().c();
-         dsa $$2 = this.b.a_($$1);
-         return $$2.a(dez.qP) || $$2.k(this.b, $$1) == ewf.a();
-      } else {
-         return false;
-      }
+      return this.g.s() && !this.g.gq() && super.a();
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      super.c();
+      this.g.x(false);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.x(false);
    }
 
    @Override
    public void e() {
-      this.a.I().a();
+      super.e();
+      this.g.x(this.m());
+   }
+
+   @Override
+   protected boolean a(dca $$0, iz $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         dsb $$2 = $$0.a_($$1);
+         if ($$2.a(dfa.cv)) {
+            return dpn.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dfa.cD) && $$2.c(dif.b) ? true : $$2.a(awo.R, $$0x -> $$0x.d(der.b).map($$0xx -> $$0xx != dso.a).orElse(true));
+         }
+      }
    }
 }

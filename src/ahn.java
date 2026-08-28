@@ -1,8 +1,8 @@
-public record ahn(blt b) implements zv<agv> {
+public record ahn(blu b) implements zv<agv> {
    public static final zm<wl, ahn> a = zv.a(ahn::a, ahn::new);
 
    private ahn(wl $$0) {
-      this($$0.b(blt.class));
+      this($$0.b(blu.class));
    }
 
    private void a(wl $$0) {

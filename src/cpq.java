@@ -1,55 +1,98 @@
-public class cpq {
-   public static final cpp a = new cpp.a().a(4).a(0.3F).c();
-   public static final cpp b = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp c = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp d = new cpp.a().a(1).a(0.6F).c();
-   public static final cpp e = a(6).c();
-   public static final cpp f = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp g = new cpp.a().a(3).a(0.6F).c();
-   public static final cpp h = new cpp.a().a(2).a(0.3F).a(new bsa(bsc.q, 600, 0), 0.3F).c();
-   public static final cpp i = new cpp.a().a(4).a(0.3F).a().c();
-   public static final cpp j = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp k = new cpp.a().a(8).a(0.8F).c();
-   public static final cpp l = new cpp.a().a(6).a(0.6F).c();
-   public static final cpp m = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp n = new cpp.a().a(6).a(0.8F).c();
-   public static final cpp o = new cpp.a().a(8).a(0.8F).c();
-   public static final cpp p = new cpp.a().a(5).a(0.6F).c();
-   public static final cpp q = new cpp.a().a(6).a(0.8F).c();
-   public static final cpp r = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp s = new cpp.a().a(1).a(0.3F).b().c();
-   public static final cpp t = new cpp.a()
-      .a(4)
-      .a(1.2F)
-      .a(new bsa(bsc.j, 400, 1), 1.0F)
-      .a(new bsa(bsc.k, 6000, 0), 1.0F)
-      .a(new bsa(bsc.l, 6000, 0), 1.0F)
-      .a(new bsa(bsc.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cpp u = new cpp.a().a(4).a(1.2F).a(new bsa(bsc.j, 100, 1), 1.0F).a(new bsa(bsc.v, 2400, 0), 1.0F).a().c();
-   public static final cpp v = new cpp.a().a(6).a(1.2F).c();
-   public static final cpp w = new cpp.a().a(6).a(0.1F).c();
-   public static final cpp x = new cpp.a().a(2).a(0.3F).c();
-   public static final cpp y = a(6).c();
-   public static final cpp z = new cpp.a().a(2).a(0.3F).c();
-   public static final cpp A = new cpp.a().a(2).a(0.3F).a(new bsa(bsc.s, 100, 0), 0.6F).c();
-   public static final cpp B = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp C = new cpp.a().a(1).a(0.3F).c();
-   public static final cpp D = new cpp.a().a(1).a(0.1F).a(new bsa(bsc.s, 1200, 1), 1.0F).a(new bsa(bsc.q, 300, 2), 1.0F).a(new bsa(bsc.i, 300, 0), 1.0F).c();
-   public static final cpp E = new cpp.a().a(8).a(0.3F).c();
-   public static final cpp F = new cpp.a().a(3).a(0.3F).c();
-   public static final cpp G = a(10).c();
-   public static final cpp H = new cpp.a().a(4).a(0.1F).a(new bsa(bsc.q, 600, 0), 0.8F).c();
-   public static final cpp I = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp J = new cpp.a().a(2).a(0.8F).a(new bsa(bsc.s, 100, 0), 1.0F).c();
-   public static final cpp K = a(6).a().c();
-   public static final cpp L = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp M = new cpp.a().a(2).a(0.1F).c();
-   public static final cpp N = new cpp.a().a(1).a(0.1F).c();
-   public static final cpp O = new cpp.a().a(1).a(0.1F).c();
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private static cpp.a a(int $$0) {
-      return new cpp.a().a($$0).a(0.6F);
+public record cpq(int c, float d, boolean e, float f, List<cpq.b> g) {
+   private static final float h = 1.6F;
+   public static final Codec<cpq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayg.k.fieldOf("nutrition").forGetter(cpq::b),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cpq::c),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpq::d),
+               ayg.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpq::e),
+               cpq.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpq::f)
+            )
+            .apply($$0, cpq::new)
+   );
+   public static final zm<wz, cpq> b = zm.a(zk.g, cpq::b, zk.i, cpq::c, zk.b, cpq::d, zk.i, cpq::e, cpq.b.b.a(zk.a()), cpq::f, cpq::new);
+
+   public int a() {
+      return (int)(this.f * 20.0F);
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public List<cpq.b> f() {
+      return this.g;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private float d = 1.6F;
+      private final Builder<cpq.b> e = ImmutableList.builder();
+
+      public cpq.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cpq.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cpq.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cpq.a b() {
+         this.d = 0.8F;
+         return this;
+      }
+
+      public cpq.a a(bsb $$0, float $$1) {
+         this.e.add(new cpq.b($$0, $$1));
+         return this;
+      }
+
+      public cpq c() {
+         float $$0 = cpo.a(this.a, this.b);
+         return new cpq(this.a, $$0, this.c, this.d, this.e.build());
+      }
+   }
+
+   public static record b(bsb c, float d) {
+      public static final Codec<cpq.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bsb.d.fieldOf("effect").forGetter(cpq.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpq.b::b))
+               .apply($$0, cpq.b::new)
+      );
+      public static final zm<wz, cpq.b> b = zm.a(bsb.e, cpq.b::a, zk.i, cpq.b::b, cpq.b::new);
+
+      public bsb a() {
+         return new bsb(this.c);
+      }
+
+      public float b() {
+         return this.d;
+      }
    }
 }

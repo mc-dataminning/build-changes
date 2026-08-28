@@ -1,28 +1,52 @@
-public class gja extends giu<cje> {
-   private final geg a;
+public class gja extends giv<bte> {
+   private static final ale a = new ale("textures/entity/experience_orb.png");
+   private static final gdv f = gdv.g(a);
 
-   public gja(giv.a $$0) {
+   public gja(giw.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   public void a(cje $$0, float $$1, float $$2, ezw $$3, gdm $$4, int $$5) {
-      dsa $$6 = $$0.u();
-      if ($$6.l() == dld.c) {
-         dbw $$7 = $$0.dP();
-         if ($$6 != $$7.a_($$0.dp()) && $$6.l() != dld.a) {
-            $$3.a();
-            iz $$8 = iz.a($$0.du(), $$0.cK().e, $$0.dA());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(gdh.b($$6)), false, azf.a(), $$6.a($$0.p()), goo.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
+   protected int a(bte $$0, iz $$1) {
+      return ayy.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public ale a(cje $$0) {
-      return gow.e;
+   public void a(bte $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+      $$3.a();
+      int $$6 = $$0.s();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
+      int $$16 = (int)((ayy.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((ayy.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      fab $$20 = $$4.getBuffer(f);
+      ezx.a $$21 = $$3.c();
+      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static void a(fab $$0, ezx.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(gop.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public ale a(bte $$0) {
+      return a;
    }
 }

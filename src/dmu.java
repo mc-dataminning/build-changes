@@ -1,76 +1,112 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dmu extends dex {
-   public static final MapCodec<dmu> a = b(dmu::new);
-   private static final xo d = xo.c("container.stonecutter");
-   public static final dsu b = dit.aE;
-   protected static final ewi c = dex.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dmu extends dfh implements dfb {
+   public static final MapCodec<dmu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ald.a(lq.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               ald.a(lq.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               ald.a(lq.G).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               u()
+            )
+            .apply($$0, dmu::new)
+   );
+   public static final int b = 7;
+   public static final dtb c = dsr.av;
+   protected static final float d = 1.0F;
+   protected static final ewj[] e = new ewj[]{
+      dey.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      dey.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final ald<dey> f;
+   private final ald<dey> g;
+   private final ald<cuj> h;
 
    @Override
    public MapCodec<dmu> a() {
       return a;
    }
 
-   public dmu(drz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, je.c));
+   protected dmu(ald<dey> $$0, ald<dey> $$1, ald<cuj> $$2, dsa.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dsa a(cxy $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   protected bqs a(dsa $$0, dbw $$1, iz $$2, cmv $$3, evl $$4) {
-      if ($$1.B) {
-         return bqs.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awj.ay);
-         return bqs.c;
+   protected boolean b(dsb $$0, dbd $$1, iz $$2) {
+      return $$0.a(dfa.cC);
+   }
+
+   @Override
+   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = dgt.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               je $$6 = je.c.a.a($$3);
+               iz $$7 = $$2.a($$6);
+               dsb $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(dfa.cC) || $$8.a(awo.af))) {
+                  jv<dey> $$9 = $$1.H_().d(lq.f);
+                  Optional<dey> $$10 = $$9.e(this.f);
+                  Optional<dey> $$11 = $$9.e(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().o());
+                     $$1.b($$2, $$11.get().o().a(diu.aE, $$6));
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Nullable
    @Override
-   protected bqw b(dsa $$0, dbw $$1, iz $$2) {
-      return new brc(($$2x, $$3, $$4) -> new crt($$2x, $$3, cqd.a($$1, $$2)), d);
+   public cuo a(dca $$0, iz $$1, dsb $$2) {
+      return new cuo((dbw)DataFixUtils.orElse($$0.H_().d(lq.G).e(this.h), this));
    }
 
    @Override
-   protected ewi a(dsa $$0, dbc $$1, iz $$2, evu $$3) {
-      return c;
+   public boolean b(dca $$0, iz $$1, dsb $$2) {
+      return $$2.c(c) != 7;
    }
 
    @Override
-   protected boolean f_(dsa $$0) {
+   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
       return true;
    }
 
    @Override
-   protected dld a_(dsa $$0) {
-      return dld.c;
+   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + ayy.a($$0.z, 2, 5));
+      dsb $$5 = $$3.a(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
    }
 
    @Override
-   protected dsa a(dsa $$0, dlk $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dsa a(dsa $$0, dju $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsb.a<dex, dsa> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dsa $$0, eoi $$1) {
-      return false;
+   protected void a(dsc.a<dey, dsb> $$0) {
+      $$0.a(c);
    }
 }

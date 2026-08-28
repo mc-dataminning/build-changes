@@ -1,10 +1,10 @@
 public class aee implements zv<ach> {
    public static final zm<wz, aee> a = zm.a(zk.g, aee::b, zk.a(lq.Q), aee::e, xq.d, aee::f, aee::new);
    private final int b;
-   private final cqz<?> c;
+   private final cra<?> c;
    private final xo d;
 
-   public aee(int $$0, cqz<?> $$1, xo $$2) {
+   public aee(int $$0, cra<?> $$1, xo $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -23,7 +23,7 @@ public class aee implements zv<ach> {
       return this.b;
    }
 
-   public cqz<?> e() {
+   public cra<?> e() {
       return this.c;
    }
 

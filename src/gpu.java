@@ -1,9 +1,17 @@
-public class gpu extends gqa {
-   public gpu(goy $$0) {
-      super($$0, new ale("textures/atlas/map_decorations.png"), new ale("map_decorations"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public gox a(epc $$0) {
-      return this.a($$0.a());
+public class gpu {
+   @Deprecated
+   public static int[] a(auo $$0, ale $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eyy $$3 = eyy.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
+
+      return var4;
    }
 }

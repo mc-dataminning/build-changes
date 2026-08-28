@@ -1,5 +1,3 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
@@ -10,10 +8,11 @@ import it.unimi.dsi.fastutil.bytes.ByteArrayList;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.function.BiConsumer;
@@ -35,36 +34,22 @@ public class vf implements DynamicOps<vo> {
    }
 
    public <U> U a(DynamicOps<U> $$0, vo $$1) {
-      switch ($$1.b()) {
-         case 0:
-            return (U)$$0.empty();
-         case 1:
-            return (U)$$0.createByte(((vh)$$1).i());
-         case 2:
-            return (U)$$0.createShort(((vh)$$1).h());
-         case 3:
-            return (U)$$0.createInt(((vh)$$1).g());
-         case 4:
-            return (U)$$0.createLong(((vh)$$1).f());
-         case 5:
-            return (U)$$0.createFloat(((vh)$$1).k());
-         case 6:
-            return (U)$$0.createDouble(((vh)$$1).j());
-         case 7:
-            return (U)$$0.createByteList(ByteBuffer.wrap(((uo)$$1).e()));
-         case 8:
-            return (U)$$0.createString($$1.s_());
-         case 9:
-            return (U)this.convertList($$0, $$1);
-         case 10:
-            return (U)this.convertMap($$0, $$1);
-         case 11:
-            return (U)$$0.createIntList(Arrays.stream(((uv)$$1).g()));
-         case 12:
-            return (U)$$0.createLongList(Arrays.stream(((uy)$$1).g()));
-         default:
-            throw new IllegalStateException("Unknown tag type: " + $$1);
-      }
+      return (U)(switch ($$1.b()) {
+         case 0 -> (Object)$$0.empty();
+         case 1 -> (Object)$$0.createByte(((vh)$$1).i());
+         case 2 -> (Object)$$0.createShort(((vh)$$1).h());
+         case 3 -> (Object)$$0.createInt(((vh)$$1).g());
+         case 4 -> (Object)$$0.createLong(((vh)$$1).f());
+         case 5 -> (Object)$$0.createFloat(((vh)$$1).k());
+         case 6 -> (Object)$$0.createDouble(((vh)$$1).j());
+         case 7 -> (Object)$$0.createByteList(ByteBuffer.wrap(((uo)$$1).e()));
+         case 8 -> (Object)$$0.createString($$1.s_());
+         case 9 -> (Object)this.convertList($$0, $$1);
+         case 10 -> (Object)this.convertMap($$0, $$1);
+         case 11 -> (Object)$$0.createIntList(Arrays.stream(((uv)$$1).g()));
+         case 12 -> (Object)$$0.createLongList(Arrays.stream(((uy)$$1).g()));
+         default -> throw new IllegalStateException("Unknown tag type: " + $$1);
+      });
    }
 
    public DataResult<Number> a(vo $$0) {
@@ -125,13 +110,9 @@ public class vf implements DynamicOps<vo> {
       } else if (!($$1 instanceof vm)) {
          return DataResult.error(() -> "key is not a string: " + $$1, $$0);
       } else {
-         ur $$3 = new ur();
-         if ($$0 instanceof ur $$4) {
-            $$4.e().forEach($$2x -> $$3.a($$2x, $$4.c($$2x)));
-         }
-
-         $$3.a($$1.s_(), $$2);
-         return DataResult.success($$3);
+         ur $$4 = $$0 instanceof ur $$3 ? $$3.h() : new ur();
+         $$4.a($$1.s_(), $$2);
+         return DataResult.success($$4);
       }
    }
 
@@ -139,34 +120,52 @@ public class vf implements DynamicOps<vo> {
       if (!($$0 instanceof ur) && !($$0 instanceof ut)) {
          return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
       } else {
-         ur $$2 = new ur();
-         if ($$0 instanceof ur $$3) {
-            $$3.e().forEach($$2x -> $$2.a($$2x, $$3.c($$2x)));
-         }
-
-         List<vo> $$4 = Lists.newArrayList();
+         ur $$3 = $$0 instanceof ur $$2 ? $$2.h() : new ur();
+         List<vo> $$4 = new ArrayList<>();
          $$1.entries().forEach($$2x -> {
-            vo $$3 = (vo)$$2x.getFirst();
-            if (!($$3 instanceof vm)) {
-               $$4.add($$3);
+            vo $$3x = (vo)$$2x.getFirst();
+            if (!($$3x instanceof vm)) {
+               $$4.add($$3x);
             } else {
-               $$2.a($$3.s_(), (vo)$$2x.getSecond());
+               $$3.a($$3x.s_(), (vo)$$2x.getSecond());
             }
          });
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$2) : DataResult.success($$2);
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+      }
+   }
+
+   public DataResult<vo> a(vo $$0, Map<vo, vo> $$1) {
+      if (!($$0 instanceof ur) && !($$0 instanceof ut)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else {
+         ur $$3 = $$0 instanceof ur $$2 ? $$2.h() : new ur();
+         List<vo> $$4 = new ArrayList<>();
+
+         for (Entry<vo, vo> $$5 : $$1.entrySet()) {
+            vo $$6 = $$5.getKey();
+            if ($$6 instanceof vm) {
+               $$3.a($$6.s_(), $$5.getValue());
+            } else {
+               $$4.add($$6);
+            }
+         }
+
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
       }
    }
 
    public DataResult<Stream<Pair<vo, vo>>> c(vo $$0) {
       return $$0 instanceof ur $$1
-         ? DataResult.success($$1.e().stream().map($$1x -> Pair.of(this.a($$1x), $$1.c($$1x))))
+         ? DataResult.success($$1.j().stream().map($$0x -> Pair.of(this.a((String)$$0x.getKey()), (vo)$$0x.getValue())))
          : DataResult.error(() -> "Not a map: " + $$0);
    }
 
    public DataResult<Consumer<BiConsumer<vo, vo>>> d(vo $$0) {
-      return $$0 instanceof ur $$1
-         ? DataResult.success((Consumer<BiConsumer>)$$1x -> $$1.e().forEach($$2 -> $$1x.accept(this.a($$2), $$1.c($$2))))
-         : DataResult.error(() -> "Not a map: " + $$0);
+      return $$0 instanceof ur $$1 ? DataResult.success((Consumer<BiConsumer>)$$1x -> {
+         for (Entry<String, vo> $$2 : $$1.j()) {
+            $$1x.accept(this.a($$2.getKey()), $$2.getValue());
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
    }
 
    public DataResult<MapLike<vo>> e(vo $$0) {
@@ -182,7 +181,7 @@ public class vf implements DynamicOps<vo> {
          }
 
          public Stream<Pair<vo, vo>> entries() {
-            return $$1.e().stream().map($$1xx -> Pair.of(vf.this.a($$1xx), $$1.c($$1xx)));
+            return $$1.j().stream().map($$0 -> Pair.of(vf.this.a($$0.getKey()), $$0.getValue()));
          }
 
          @Override
@@ -219,9 +218,11 @@ public class vf implements DynamicOps<vo> {
 
    public DataResult<Consumer<Consumer<vo>>> g(vo $$0) {
       if ($$0 instanceof ux $$1) {
-         return $$1.f() == 10
-            ? DataResult.success((Consumer<Consumer>)$$1x -> $$1.forEach($$1xx -> $$1.accept(a((ur)$$1xx))))
-            : DataResult.success($$1::forEach);
+         return $$1.f() == 10 ? DataResult.success((Consumer<Consumer>)$$1x -> {
+            for (vo $$2x : $$1) {
+               $$1x.accept(a((ur)$$2x));
+            }
+         }) : DataResult.success($$1::forEach);
       } else {
          return $$0 instanceof uq<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
       }
@@ -260,8 +261,8 @@ public class vf implements DynamicOps<vo> {
 
    public vo a(vo $$0, String $$1) {
       if ($$0 instanceof ur $$2) {
-         ur $$3 = new ur();
-         $$2.e().stream().filter($$1x -> !Objects.equals($$1x, $$1)).forEach($$2x -> $$3.a($$2x, $$2.c($$2x)));
+         ur $$3 = $$2.h();
+         $$3.r($$1);
          return $$3;
       } else {
          return $$0;
@@ -536,9 +537,9 @@ public class vf implements DynamicOps<vo> {
          } else if (!($$1 instanceof ur $$2)) {
             return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
          } else {
-            ur $$3 = new ur(Maps.newHashMap($$2.i()));
+            ur $$3 = $$2.h();
 
-            for (Entry<String, vo> $$4 : $$0.i().entrySet()) {
+            for (Entry<String, vo> $$4 : $$0.j()) {
                $$3.a($$4.getKey(), $$4.getValue());
             }
 

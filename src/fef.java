@@ -1,31 +1,61 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fef extends fed {
+public class fef extends fee {
    private static final Logger b = LogUtils.getLogger();
-   private static final xo c = xo.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+   private static final xo c = xo.c("mco.configure.world.opening");
+   private final fbe d;
+   private final fnc e;
+   private final boolean f;
+   private final ffe g;
 
-   public fef(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fef(fbe $$0, fnc $$1, boolean $$2, ffe $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
    public void run() {
-      fam $$0 = fam.a();
+      fan $$0 = fan.a();
 
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fbz var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fcn) {
+                     ((fcn)this.e).b();
+                  }
+
+                  this.d.e = fbe.c.b;
+                  if (this.f) {
+                     fai.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fcb var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
       }
    }
 

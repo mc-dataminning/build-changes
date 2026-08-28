@@ -5,9 +5,9 @@ public class ade implements zv<ach> {
    private final int d;
    private final int e;
    private final int f;
-   private final cun g;
+   private final cuo g;
 
-   public ade(int $$0, int $$1, int $$2, cun $$3) {
+   public ade(int $$0, int $$1, int $$2, cuo $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -18,14 +18,14 @@ public class ade implements zv<ach> {
       this.d = $$0.readByte();
       this.e = $$0.l();
       this.f = $$0.readShort();
-      this.g = cun.h.decode($$0);
+      this.g = cuo.h.decode($$0);
    }
 
    private void a(wz $$0) {
       $$0.k(this.d);
       $$0.c(this.e);
       $$0.l(this.f);
-      cun.h.encode($$0, this.g);
+      cuo.h.encode($$0, this.g);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class ade implements zv<ach> {
       return this.f;
    }
 
-   public cun f() {
+   public cuo f() {
       return this.g;
    }
 

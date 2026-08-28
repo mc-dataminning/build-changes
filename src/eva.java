@@ -1,26 +1,32 @@
-@FunctionalInterface
-public interface eva<T> {
-   void handle(T var1, evc<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends eva<T>> {
-      private final ale a;
-      private final Class<?> b;
+public class eva implements evb<MinecraftServer> {
+   final ale a;
 
-      public a(ale $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public eva(ale $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, evd<MinecraftServer> $$1, long $$2) {
+      alt $$3 = $$0.aF();
+
+      for (ib<ep> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
+   }
+
+   public static class a extends evb.a<MinecraftServer, eva> {
+      public a() {
+         super(new ale("function_tag"), eva.class);
       }
 
-      public ale a() {
-         return this.a;
+      public void a(ur $$0, eva $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public eva a(ur $$0) {
+         ale $$1 = new ale($$0.l("Name"));
+         return new eva($$1);
       }
-
-      public abstract void a(ur var1, C var2);
-
-      public abstract C b(ur var1);
    }
 }

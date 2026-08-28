@@ -1,6 +1,5 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
@@ -8,96 +7,87 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class esp extends ers {
-   private static final Logger b = LogUtils.getLogger();
+public class esp extends ert {
    public static final MapCodec<esp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xq.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  eqg.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  esp.a.c.optionalFieldOf("target", esp.a.a).forGetter($$0x -> $$0x.e)
+                  xq.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  ers.a(256).forGetter($$0x -> $$0x.c),
+                  eqh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, esp::new)
    );
-   private final Optional<xo> c;
-   private final Optional<eqg.b> d;
-   private final esp.a e;
+   private final List<xo> b;
+   private final ers c;
+   private final Optional<eqh.b> d;
 
-   private esp(List<etq> $$0, Optional<xo> $$1, Optional<eqg.b> $$2, esp.a $$3) {
+   public esp(List<etr> $$0, List<xo> $$1, ers $$2, Optional<eqh.b> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public eru<esp> b() {
-      return erv.p;
+   public erv<esp> b() {
+      return erw.A;
    }
 
    @Override
-   public Set<esz<?>> a() {
-      return this.d.<Set<esz<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<xo> a(eqg $$0, @Nullable eqg.b $$1) {
-      if ($$1 != null) {
-         bss $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ep $$3 = $$2.dg().a(2);
-            return $$2x -> {
-               try {
-                  return xr.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
+   public Set<eta<?>> a() {
+      return this.d.<Set<eta<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cun a(cun $$0, eqg $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   public cuo a(cuo $$0, eqh $$1) {
+      $$0.a(km.i, cxl.a, $$1x -> new cxl(this.a($$1x, $$1)));
       return $$0;
    }
 
-   public static ers.a<?> a(xo $$0, esp.a $$1) {
-      return a($$2 -> new esp($$2, Optional.of($$0), Optional.empty(), $$1));
+   private List<xo> a(@Nullable cxl $$0, eqh $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
+      } else {
+         UnaryOperator<xo> $$2 = esq.a($$1, this.d.orElse(null));
+         List<xo> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
+      }
    }
 
-   public static ers.a<?> a(xo $$0, esp.a $$1, eqg.b $$2) {
-      return a($$3 -> new esp($$3, Optional.of($$0), Optional.of($$2), $$1));
+   public static esp.a c() {
+      return new esp.a();
    }
 
-   public static enum a implements azs {
-      a("custom_name"),
-      b("item_name");
+   public static class a extends ert.a<esp.a> {
+      private Optional<eqh.b> a = Optional.empty();
+      private final Builder<xo> b = ImmutableList.builder();
+      private ers c = ers.a.b;
 
-      public static final Codec<esp.a> c = azs.a(esp.a::values);
-      private final String d;
+      public esp.a a(ers $$0) {
+         this.c = $$0;
+         return this;
+      }
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public esp.a a(eqh.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public esp.a a(xo $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected esp.a a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.d;
-      }
-
-      public kl<xo> a() {
-         return switch (this) {
-            case a -> km.f;
-            case b -> km.g;
-         };
+      public eru b() {
+         return new esp(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

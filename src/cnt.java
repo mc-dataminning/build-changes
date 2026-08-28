@@ -1,49 +1,51 @@
-public class cnt extends cnb {
-   private int f = 200;
-
-   public cnt(bsy<? extends cnt> $$0, dbw $$1) {
+public class cnt extends cnv {
+   public cnt(bsz<? extends cnt> $$0, dbx $$1) {
       super($$0, $$1);
    }
 
-   public cnt(dbw $$0, btn $$1, cun $$2) {
-      super(bsy.aV, $$1, $$0, $$2);
+   public cnt(dbx $$0, bto $$1) {
+      super(bsz.aT, $$1, $$0);
    }
 
-   public cnt(dbw $$0, double $$1, double $$2, double $$3, cun $$4) {
-      super(bsy.aV, $$1, $$2, $$3, $$0, $$4);
+   public cnt(dbx $$0, double $$1, double $$2, double $$3) {
+      super(bsz.aT, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dP().B && !this.b) {
-         this.dP().a(li.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+   protected cuj u() {
+      return cur.qC;
+   }
+
+   private lg v() {
+      cuo $$0 = this.p();
+      return (lg)(!$$0.e() && !$$0.a(this.u()) ? new le(li.S, $$0) : li.W);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lg $$1 = this.v();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(btn $$0) {
+   protected void a(evn $$0) {
       super.a($$0);
-      bsa $$1 = new bsa(bsc.x, this.f, 0);
-      $$0.b($$1, this.I());
+      bst $$1 = $$0.a();
+      int $$2 = $$1 instanceof cjl ? 3 : 0;
+      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
    }
 
    @Override
-   public void a(ur $$0) {
+   protected void a(evo $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
+      if (!this.dP().B) {
+         this.dP().a(this, (byte)3);
+         this.ao();
       }
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
-   }
-
-   @Override
-   protected cun x() {
-      return new cun(cuq.vp);
    }
 }

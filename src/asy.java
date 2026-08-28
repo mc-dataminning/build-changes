@@ -21,9 +21,9 @@ public record asy(List<asy.a> b) {
       return this.b;
    }
 
-   public static record a(ayp<Integer> a, String b) {
+   public static record a(ayq<Integer> a, String b) {
       static final Codec<asy.a> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayp.a(Codec.INT).fieldOf("formats").forGetter(asy.a::a), Codec.STRING.validate(asy::a).fieldOf("directory").forGetter(asy.a::b))
+         $$0 -> $$0.group(ayq.a(Codec.INT).fieldOf("formats").forGetter(asy.a::a), Codec.STRING.validate(asy::a).fieldOf("directory").forGetter(asy.a::b))
                .apply($$0, asy.a::new)
       );
 

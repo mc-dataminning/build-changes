@@ -4,12 +4,12 @@ import java.util.List;
 
 public class aun {
    private static final Codec<aun> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(azg.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aun::new)
+      $$0 -> $$0.group(Codec.list(azh.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aun::new)
    );
    public static final ato<aun> a = ato.a("filter", b);
-   private final List<azg> c;
+   private final List<azh> c;
 
-   public aun(List<azg> $$0) {
+   public aun(List<azh> $$0) {
       this.c = List.copyOf($$0);
    }
 

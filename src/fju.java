@@ -1,115 +1,178 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public class fju extends goi implements goj {
-   private static final int e = 256;
-   private final fjv f;
-   private final boolean g;
-   private final fju.a h;
+public class fju implements AutoCloseable {
+   private static final azg a = azg.a();
+   private static final float b = 32.0F;
+   private final goz c;
+   private final ale d;
+   private fjy e;
+   private fjy f;
+   private List<eya.a> g = List.of();
+   private List<eya> h = List.of();
+   private final fjr<fjy> i = new fjr<>(fjy[]::new, fjy[][]::new);
+   private final fjr<fju.a> j = new fjr<>(fju.a[]::new, fju.a[][]::new);
+   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
+   private final List<fjv> l = Lists.newArrayList();
 
-   public fju(fjv $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fju.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? eyx.b.a : eyx.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fju(goz $$0, ale $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public void a(auo $$0) {
+   public void a(List<eya.a> $$0, Set<fjt> $$1) {
+      this.g = $$0;
+      this.a($$1);
+   }
+
+   public void a(Set<fjt> $$0) {
+      this.h = List.of();
+      this.c();
+      this.h = this.b(this.g, $$0);
+   }
+
+   private void c() {
+      this.d();
+      this.i.a();
+      this.j.a();
+      this.k.clear();
+      this.e = fka.b.bake(this::a);
+      this.f = fka.a.bake(this::a);
+   }
+
+   private List<eya> b(List<eya.a> $$0, Set<fjt> $$1) {
+      IntSet $$2 = new IntOpenHashSet();
+      List<eya> $$3 = new ArrayList<>();
+
+      for (eya.a $$4 : $$0) {
+         if ($$4.b().a($$1)) {
+            $$3.add($$4.a());
+            $$2.addAll($$4.a().a());
+         }
+      }
+
+      Set<eya> $$5 = Sets.newHashSet();
+      $$2.forEach($$2x -> {
+         for (eya $$3x : $$3) {
+            exz $$4x = $$3x.a($$2x);
+            if ($$4x != null) {
+               $$5.add($$3x);
+               if ($$4x != fka.b) {
+                  ((IntList)this.k.computeIfAbsent(ayy.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      return $$3.stream().filter($$5::contains).toList();
    }
 
    @Override
    public void close() {
-      this.b();
+      this.d();
    }
 
-   @Nullable
-   public fjx a(eya $$0) {
-      if ($$0.c() != this.g) {
-         return null;
+   private void d() {
+      for (fjv $$0 : this.l) {
+         $$0.close();
+      }
+
+      this.l.clear();
+   }
+
+   private static boolean b(exz $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
       } else {
-         fju.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fjx(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+         return true;
       }
    }
 
-   @Override
-   public void a(ale $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
+   private fju.a b(int $$0) {
+      exz $$1 = null;
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fju.a e;
-      @Nullable
-      private fju.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      fju.a a(eya $$0) {
-         if (this.e != null && this.f != null) {
-            fju.a $$1 = this.e.a($$0);
+      for (eya $$2 : this.h) {
+         exz $$3 = $$2.a($$0);
+         if ($$3 != null) {
             if ($$1 == null) {
-               $$1 = this.f.a($$0);
+               $$1 = $$3;
             }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fju.a(this.a, this.b, $$2, this.d);
-                  this.f = new fju.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fju.a(this.a, this.b, this.c, $$3);
-                  this.f = new fju.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
+            if (!b($$3)) {
+               return new fju.a($$1, $$3);
             }
          }
+      }
+
+      return $$1 != null ? new fju.a($$1, fka.b) : fju.a.c;
+   }
+
+   public exz a(int $$0, boolean $$1) {
+      return this.j.a($$0, this::b).a($$1);
+   }
+
+   private fjy c(int $$0) {
+      for (eya $$1 : this.h) {
+         exz $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
+      return this.e;
+   }
+
+   public fjy a(int $$0) {
+      return this.i.a($$0, this::c);
+   }
+
+   private fjy a(eyb $$0) {
+      for (fjv $$1 : this.l) {
+         fjy $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      ale $$3 = this.d.e("/" + this.l.size());
+      boolean $$4 = $$0.c();
+      fjw $$5 = $$4 ? fjw.b($$3) : fjw.a($$3);
+      fjv $$6 = new fjv($$5, $$4);
+      this.l.add($$6);
+      this.c.a($$3, $$6);
+      fjy $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public fjy a(exz $$0) {
+      IntList $$1 = (IntList)this.k.get(ayy.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public ale a() {
+      return this.d;
+   }
+
+   public fjy b() {
+      return this.f;
+   }
+
+   static record a(exz a, exz b) {
+      static final fju.a c = new fju.a(fka.b, fka.b);
+
+      exz a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

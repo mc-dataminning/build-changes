@@ -1,31 +1,42 @@
-public class fly extends fnb {
-   private fhv a;
-   private final Runnable b;
-   private final Runnable c;
+public class fly extends fnc {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xo c = xo.c("credits_and_attribution.screen.title");
+   private static final xo d = xo.c("credits_and_attribution.button.credits");
+   private static final xo r = xo.c("credits_and_attribution.button.attribution");
+   private static final xo s = xo.c("credits_and_attribution.button.licenses");
+   private final fnc u;
+   private final fkq v = new fkq(this);
 
-   public fly(Runnable $$0, Runnable $$1) {
-      super(xo.c("datapackFailure.title"));
-      this.a = fhv.a;
-      this.b = $$0;
-      this.c = $$1;
+   public fly(fnc $$0) {
+      super(c);
+      this.u = $$0;
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.a = fhv.a(this.p, this.n(), this.n - 50);
-      this.c(fhc.a(xo.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(fhc.a(xn.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+      this.v.a(c, this.p);
+      fku $$0 = this.v.c(fku.d()).a(8);
+      $$0.c().b();
+      $$0.a(fhd.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fhd.a(r, flt.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(fhd.a(s, flt.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.v.b(fhd.a(xn.d, $$0x -> this.d()).a(200).a());
+      this.v.a();
+      this.v.a(this::c);
    }
 
    @Override
-   public void a(fgp $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+   protected void c() {
+      this.v.a();
+   }
+
+   private void m() {
+      this.m.a(new fnk(false, () -> this.m.a(this)));
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   public void d() {
+      this.m.a(this.u);
    }
 }

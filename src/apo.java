@@ -21,8 +21,8 @@ public class apo {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends cmv> $$1, int $$2) {
-      for (cmv $$3 : $$1) {
+   private static int a(ep $$0, Collection<? extends cmw> $$1, int $$2) {
+      for (cmw $$3 : $$1) {
          $$3.aa().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class apo {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<? extends cmv> $$1) {
-      for (cmv $$2 : $$1) {
-         $$2.aa().ifPresent(cmb::b);
+   private static int a(ep $$0, Collection<? extends cmw> $$1) {
+      for (cmw $$2 : $$1) {
+         $$2.aa().ifPresent(cmc::b);
       }
 
       if ($$1.size() == 1) {

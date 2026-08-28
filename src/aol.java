@@ -25,11 +25,11 @@ public class aol {
       );
    }
 
-   private static int a(ep $$0, bss $$1, bss $$2) throws CommandSyntaxException {
-      bss $$3 = $$1.dc();
+   private static int a(ep $$0, bst $$1, bst $$2) throws CommandSyntaxException {
+      bst $$3 = $$1.dc();
       if ($$3 != null) {
          throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ak() == bsy.by) {
+      } else if ($$2.ak() == bsz.by) {
          throw d.create();
       } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
@@ -43,8 +43,8 @@ public class aol {
       }
    }
 
-   private static int a(ep $$0, bss $$1) throws CommandSyntaxException {
-      bss $$2 = $$1.dc();
+   private static int a(ep $$0, bst $$1) throws CommandSyntaxException {
+      bst $$2 = $$1.dc();
       if ($$2 == null) {
          throw a.create($$1.O_());
       } else {

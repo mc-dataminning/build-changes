@@ -1,96 +1,51 @@
-public interface bro {
-   ald<brn> a = ald.a(lq.s, new ale("in_fire"));
-   ald<brn> b = ald.a(lq.s, new ale("lightning_bolt"));
-   ald<brn> c = ald.a(lq.s, new ale("on_fire"));
-   ald<brn> d = ald.a(lq.s, new ale("lava"));
-   ald<brn> e = ald.a(lq.s, new ale("hot_floor"));
-   ald<brn> f = ald.a(lq.s, new ale("in_wall"));
-   ald<brn> g = ald.a(lq.s, new ale("cramming"));
-   ald<brn> h = ald.a(lq.s, new ale("drown"));
-   ald<brn> i = ald.a(lq.s, new ale("starve"));
-   ald<brn> j = ald.a(lq.s, new ale("cactus"));
-   ald<brn> k = ald.a(lq.s, new ale("fall"));
-   ald<brn> l = ald.a(lq.s, new ale("fly_into_wall"));
-   ald<brn> m = ald.a(lq.s, new ale("out_of_world"));
-   ald<brn> n = ald.a(lq.s, new ale("generic"));
-   ald<brn> o = ald.a(lq.s, new ale("magic"));
-   ald<brn> p = ald.a(lq.s, new ale("wither"));
-   ald<brn> q = ald.a(lq.s, new ale("dragon_breath"));
-   ald<brn> r = ald.a(lq.s, new ale("dry_out"));
-   ald<brn> s = ald.a(lq.s, new ale("sweet_berry_bush"));
-   ald<brn> t = ald.a(lq.s, new ale("freeze"));
-   ald<brn> u = ald.a(lq.s, new ale("stalagmite"));
-   ald<brn> v = ald.a(lq.s, new ale("falling_block"));
-   ald<brn> w = ald.a(lq.s, new ale("falling_anvil"));
-   ald<brn> x = ald.a(lq.s, new ale("falling_stalactite"));
-   ald<brn> y = ald.a(lq.s, new ale("sting"));
-   ald<brn> z = ald.a(lq.s, new ale("mob_attack"));
-   ald<brn> A = ald.a(lq.s, new ale("mob_attack_no_aggro"));
-   ald<brn> B = ald.a(lq.s, new ale("player_attack"));
-   ald<brn> C = ald.a(lq.s, new ale("arrow"));
-   ald<brn> D = ald.a(lq.s, new ale("trident"));
-   ald<brn> E = ald.a(lq.s, new ale("mob_projectile"));
-   ald<brn> F = ald.a(lq.s, new ale("spit"));
-   ald<brn> G = ald.a(lq.s, new ale("wind_charge"));
-   ald<brn> H = ald.a(lq.s, new ale("fireworks"));
-   ald<brn> I = ald.a(lq.s, new ale("fireball"));
-   ald<brn> J = ald.a(lq.s, new ale("unattributed_fireball"));
-   ald<brn> K = ald.a(lq.s, new ale("wither_skull"));
-   ald<brn> L = ald.a(lq.s, new ale("thrown"));
-   ald<brn> M = ald.a(lq.s, new ale("indirect_magic"));
-   ald<brn> N = ald.a(lq.s, new ale("thorns"));
-   ald<brn> O = ald.a(lq.s, new ale("explosion"));
-   ald<brn> P = ald.a(lq.s, new ale("player_explosion"));
-   ald<brn> Q = ald.a(lq.s, new ale("sonic_boom"));
-   ald<brn> R = ald.a(lq.s, new ale("bad_respawn_point"));
-   ald<brn> S = ald.a(lq.s, new ale("outside_border"));
-   ald<brn> T = ald.a(lq.s, new ale("generic_kill"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(rc<brn> $$0) {
-      $$0.a(a, new brn("inFire", 0.1F, brj.d));
-      $$0.a(b, new brn("lightningBolt", 0.1F));
-      $$0.a(c, new brn("onFire", 0.0F, brj.d));
-      $$0.a(d, new brn("lava", 0.1F, brj.d));
-      $$0.a(e, new brn("hotFloor", 0.1F, brj.d));
-      $$0.a(f, new brn("inWall", 0.0F));
-      $$0.a(g, new brn("cramming", 0.0F));
-      $$0.a(h, new brn("drown", 0.0F, brj.c));
-      $$0.a(i, new brn("starve", 0.0F));
-      $$0.a(j, new brn("cactus", 0.1F));
-      $$0.a(k, new brn("fall", brk.b, 0.0F, brj.a, brp.b));
-      $$0.a(l, new brn("flyIntoWall", 0.0F));
-      $$0.a(m, new brn("outOfWorld", 0.0F));
-      $$0.a(n, new brn("generic", 0.0F));
-      $$0.a(o, new brn("magic", 0.0F));
-      $$0.a(p, new brn("wither", 0.0F));
-      $$0.a(q, new brn("dragonBreath", 0.0F));
-      $$0.a(r, new brn("dryout", 0.1F));
-      $$0.a(s, new brn("sweetBerryBush", 0.1F, brj.e));
-      $$0.a(t, new brn("freeze", 0.0F, brj.f));
-      $$0.a(u, new brn("stalagmite", 0.0F));
-      $$0.a(v, new brn("fallingBlock", 0.1F));
-      $$0.a(w, new brn("anvil", 0.1F));
-      $$0.a(x, new brn("fallingStalactite", 0.1F));
-      $$0.a(y, new brn("sting", 0.1F));
-      $$0.a(z, new brn("mob", 0.1F));
-      $$0.a(A, new brn("mob", 0.1F));
-      $$0.a(B, new brn("player", 0.1F));
-      $$0.a(C, new brn("arrow", 0.1F));
-      $$0.a(D, new brn("trident", 0.1F));
-      $$0.a(E, new brn("mob", 0.1F));
-      $$0.a(F, new brn("mob", 0.1F));
-      $$0.a(H, new brn("fireworks", 0.1F));
-      $$0.a(J, new brn("onFire", 0.1F, brj.d));
-      $$0.a(I, new brn("fireball", 0.1F, brj.d));
-      $$0.a(K, new brn("witherSkull", 0.1F));
-      $$0.a(L, new brn("thrown", 0.1F));
-      $$0.a(M, new brn("indirectMagic", 0.0F));
-      $$0.a(N, new brn("thorns", 0.1F, brj.b));
-      $$0.a(O, new brn("explosion", brk.c, 0.1F));
-      $$0.a(P, new brn("explosion.player", brk.c, 0.1F));
-      $$0.a(Q, new brn("sonic_boom", brk.c, 0.0F));
-      $$0.a(R, new brn("badRespawnPoint", brk.c, 0.1F, brj.a, brp.c));
-      $$0.a(S, new brn("outsideBorder", 0.0F));
-      $$0.a(T, new brn("genericKill", 0.0F));
+public record bro(String b, brl c, float d, brk e, brq f) {
+   public static final Codec<bro> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bro::a),
+               brl.d.fieldOf("scaling").forGetter(bro::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bro::c),
+               brk.g.optionalFieldOf("effects", brk.a).forGetter(bro::d),
+               brq.d.optionalFieldOf("death_message_type", brq.a).forGetter(bro::e)
+            )
+            .apply($$0, bro::new)
+   );
+
+   public bro(String $$0, brl $$1, float $$2) {
+      this($$0, $$1, $$2, brk.a, brq.a);
+   }
+
+   public bro(String $$0, brl $$1, float $$2, brk $$3) {
+      this($$0, $$1, $$2, $$3, brq.a);
+   }
+
+   public bro(String $$0, float $$1, brk $$2) {
+      this($$0, brl.b, $$1, $$2);
+   }
+
+   public bro(String $$0, float $$1) {
+      this($$0, brl.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public brl b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public brk d() {
+      return this.e;
+   }
+
+   public brq e() {
+      return this.f;
    }
 }

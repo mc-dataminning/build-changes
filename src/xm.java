@@ -47,7 +47,7 @@ public class xm {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements azs {
+   public static enum a implements azt {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,7 +55,7 @@ public class xm {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<xm.a> g = azs.a(xm.a::values).fieldOf("action");
+      public static final MapCodec<xm.a> g = azt.a(xm.a::values).fieldOf("action");
       public static final MapCodec<xm.a> h = g.validate(xm.a::a);
       private final boolean i;
       private final String j;

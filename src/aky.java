@@ -14,7 +14,7 @@ public class aky<E> implements Codec<jm<E>> {
    private final Codec<Either<axe<E>, List<ji<E>>>> d;
 
    private static <E> Codec<List<ji<E>>> a(Codec<ji<E>> $$0, boolean $$1) {
-      Codec<List<ji<E>>> $$2 = $$0.listOf().validate(ayf.b(ji::f));
+      Codec<List<ji<E>>> $$2 = $$0.listOf().validate(ayg.b(ji::f));
       return $$1
          ? $$2
          : Codec.either($$2, $$0)

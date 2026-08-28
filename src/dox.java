@@ -1,97 +1,76 @@
-public class dox {
-   public static final ald<dov> a = a("base");
-   public static final ald<dov> b = a("square_bottom_left");
-   public static final ald<dov> c = a("square_bottom_right");
-   public static final ald<dov> d = a("square_top_left");
-   public static final ald<dov> e = a("square_top_right");
-   public static final ald<dov> f = a("stripe_bottom");
-   public static final ald<dov> g = a("stripe_top");
-   public static final ald<dov> h = a("stripe_left");
-   public static final ald<dov> i = a("stripe_right");
-   public static final ald<dov> j = a("stripe_center");
-   public static final ald<dov> k = a("stripe_middle");
-   public static final ald<dov> l = a("stripe_downright");
-   public static final ald<dov> m = a("stripe_downleft");
-   public static final ald<dov> n = a("small_stripes");
-   public static final ald<dov> o = a("cross");
-   public static final ald<dov> p = a("straight_cross");
-   public static final ald<dov> q = a("triangle_bottom");
-   public static final ald<dov> r = a("triangle_top");
-   public static final ald<dov> s = a("triangles_bottom");
-   public static final ald<dov> t = a("triangles_top");
-   public static final ald<dov> u = a("diagonal_left");
-   public static final ald<dov> v = a("diagonal_up_right");
-   public static final ald<dov> w = a("diagonal_up_left");
-   public static final ald<dov> x = a("diagonal_right");
-   public static final ald<dov> y = a("circle");
-   public static final ald<dov> z = a("rhombus");
-   public static final ald<dov> A = a("half_vertical");
-   public static final ald<dov> B = a("half_horizontal");
-   public static final ald<dov> C = a("half_vertical_right");
-   public static final ald<dov> D = a("half_horizontal_bottom");
-   public static final ald<dov> E = a("border");
-   public static final ald<dov> F = a("curly_border");
-   public static final ald<dov> G = a("gradient");
-   public static final ald<dov> H = a("gradient_up");
-   public static final ald<dov> I = a("bricks");
-   public static final ald<dov> J = a("globe");
-   public static final ald<dov> K = a("creeper");
-   public static final ald<dov> L = a("skull");
-   public static final ald<dov> M = a("flower");
-   public static final ald<dov> N = a("mojang");
-   public static final ald<dov> O = a("piglin");
-   public static final ald<dov> P = a("flow");
-   public static final ald<dov> Q = a("guster");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   private static ald<dov> a(String $$0) {
-      return ald.a(lq.d, new ale($$0));
+public record dox(List<dox.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dox a = new dox(List.of());
+   public static final Codec<dox> b = dox.b.a.listOf().xmap(dox::new, dox::b);
+   public static final zm<wz, dox> c = dox.b.b.a(zk.a()).a(dox::new, dox::b);
+
+   public dox a() {
+      return new dox(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public static void a(rc<dov> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, F);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
+   public List<dox.b> b() {
+      return this.d;
    }
 
-   public static void a(rc<dov> $$0, ald<dov> $$1) {
-      $$0.a($$1, new dov($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   public static class a {
+      private final Builder<dox.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dox.a a(jj<dow> $$0, ald<dow> $$1, cth $$2) {
+         Optional<ji.c<dow>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dox.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
+
+      public dox.a a(ji<dow> $$0, cth $$1) {
+         return this.a(new dox.b($$0, $$1));
+      }
+
+      public dox.a a(dox.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dox.a a(dox $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dox a() {
+         return new dox(this.a.build());
+      }
+   }
+
+   public static record b(ji<dow> c, cth d) {
+      public static final Codec<dox.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dow.c.fieldOf("pattern").forGetter(dox.b::b), cth.q.fieldOf("color").forGetter(dox.b::c)).apply($$0, dox.b::new)
+      );
+      public static final zm<wz, dox.b> b = zm.a(dow.d, dox.b::b, cth.r, dox.b::c, dox.b::new);
+
+      public yc a() {
+         String $$0 = this.c.a().b();
+         return xo.c($$0 + "." + this.d.b());
+      }
+
+      public ji<dow> b() {
+         return this.c;
+      }
+
+      public cth c() {
+         return this.d;
+      }
    }
 }

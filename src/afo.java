@@ -5,16 +5,16 @@ public class afo implements zv<ach> {
    private final int d;
    private final int e;
 
-   public afo(bss $$0) {
+   public afo(bst $$0) {
       this($$0.al(), $$0.ds());
    }
 
-   public afo(int $$0, evp $$1) {
+   public afo(int $$0, evq $$1) {
       this.b = $$0;
       double $$2 = 3.9;
-      double $$3 = ayx.a($$1.c, -3.9, 3.9);
-      double $$4 = ayx.a($$1.d, -3.9, 3.9);
-      double $$5 = ayx.a($$1.e, -3.9, 3.9);
+      double $$3 = ayy.a($$1.c, -3.9, 3.9);
+      double $$4 = ayy.a($$1.d, -3.9, 3.9);
+      double $$5 = ayy.a($$1.e, -3.9, 3.9);
       this.c = (int)($$3 * 8000.0);
       this.d = (int)($$4 * 8000.0);
       this.e = (int)($$5 * 8000.0);

@@ -1,31 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum dbl implements dbc {
-   a;
+public class dbl {
+   public static final dbl a = new dbl(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dbl> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dbl::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Nullable
-   @Override
-   public dpf c_(iz $$0) {
-      return null;
+   public dbl(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public dsa a_(iz $$0) {
-      return dez.a.o();
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public ent b_(iz $$0) {
-      return enu.a.g();
-   }
-
-   @Override
-   public int I_() {
-      return 0;
-   }
-
-   @Override
-   public int J_() {
-      return 0;
+   public List<String> b() {
+      return this.d;
    }
 }

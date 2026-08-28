@@ -1,48 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public class cdz extends cdx<btw> {
-   public static final int a = 10;
-   private static final cee c = cee.b().a(10.0).d();
-   private final Predicate<cun> d;
+public class cdz<U extends cdy<?>> {
+   public static final cdz<cdi> a = a("dummy", cdi::new);
+   public static final cdz<cdq> b = a("nearest_items", cdq::new);
+   public static final cdz<cdr<bto>> c = a("nearest_living_entities", cdr::new);
+   public static final cdz<cdv> d = a("nearest_players", cdv::new);
+   public static final cdz<cdp> e = a("nearest_bed", cdp::new);
+   public static final cdz<cdm> f = a("hurt_by", cdm::new);
+   public static final cdz<cec> g = a("villager_hostiles", cec::new);
+   public static final cdz<ceb> h = a("villager_babies", ceb::new);
+   public static final cdz<cdw> i = a("secondary_pois", cdw::new);
+   public static final cdz<cdk> j = a("golem_detected", cdk::new);
+   public static final cdz<cdo<cgn>> k = a("armadillo_scare_detected", () -> new cdo<>(5, cgn::j, cgn::gB, ccs.G, 80));
+   public static final cdz<cdu> l = a("piglin_specific_sensor", cdu::new);
+   public static final cdz<cdt> m = a("piglin_brute_specific_sensor", cdt::new);
+   public static final cdz<cdl> n = a("hoglin_specific_sensor", cdl::new);
+   public static final cdz<cdf> o = a("nearest_adult", cdf::new);
+   public static final cdz<cdg> p = a("axolotl_attackables", cdg::new);
+   public static final cdz<cea> q = a("axolotl_temptations", () -> new cea(cgr.a()));
+   public static final cdz<cea> r = a("goat_temptations", () -> new cea(chf.a()));
+   public static final cdz<cea> s = a("frog_temptations", () -> new cea(cgz.a()));
+   public static final cdz<cea> t = a("camel_temptations", () -> new cea(cgw.b()));
+   public static final cdz<cea> u = a("armadillo_temptations", () -> new cea(cgo.b()));
+   public static final cdz<cdj> v = a("frog_attackables", cdj::new);
+   public static final cdz<cdn> w = a("is_in_water", cdn::new);
+   public static final cdz<ced> x = a("warden_entity_sensor", ced::new);
+   public static final cdz<cea> y = a("sniffer_temptations", () -> new cea(chw.a()));
+   public static final cdz<cdh> z = a("breeze_attack_entity_sensor", cdh::new);
+   private final Supplier<U> A;
 
-   public cdz(Predicate<cun> $$0) {
-      this.d = $$0;
+   private cdz(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   protected void a(are $$0, btw $$1) {
-      bup<?> $$2 = $$1.dS();
-      List<cmv> $$3 = $$0.x()
-         .stream()
-         .filter(bsx.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cmv $$4 = $$3.get(0);
-         $$2.a(ccr.O, $$4);
-      } else {
-         $$2.b(ccr.O);
-      }
+   public U a() {
+      return this.A.get();
    }
 
-   private boolean a(cmv $$0) {
-      return this.a($$0.eX()) || this.a($$0.eY());
-   }
-
-   private boolean a(cun $$0) {
-      return this.d.test($$0);
-   }
-
-   @Override
-   public Set<ccr<?>> a() {
-      return ImmutableSet.of(ccr.O);
+   private static <U extends cdy<?>> cdz<U> a(String $$0, Supplier<U> $$1) {
+      return jv.a(lp.C, new ale($$0), new cdz<>($$1));
    }
 }

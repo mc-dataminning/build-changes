@@ -3,211 +3,211 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class ls {
-   private static final Map<dex, lt> ap = Maps.newHashMap();
+   private static final Map<dey, lt> ap = Maps.newHashMap();
    private static final String aq = "wooden";
    private static final String ar = "has_planks";
-   public static final lt a = a(dez.r)
-      .a(dez.gz)
-      .h(dez.kg)
-      .j(dez.jY)
-      .m(dez.dD)
-      .a(dez.cH, dez.cU)
-      .k(dez.jx)
-      .l(dez.hP)
-      .f(dez.ko)
-      .o(dez.eC)
+   public static final lt a = a(dfa.r)
+      .a(dfa.gz)
+      .h(dfa.kg)
+      .j(dfa.jY)
+      .m(dfa.dD)
+      .a(dfa.cH, dfa.cU)
+      .k(dfa.jx)
+      .l(dfa.hP)
+      .f(dfa.ko)
+      .o(dfa.eC)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt b = a(dez.s)
-      .a(dez.gA)
-      .h(dez.kh)
-      .j(dez.jZ)
-      .m(dez.dE)
-      .a(dez.cI, dez.cV)
-      .k(dez.jy)
-      .l(dez.hQ)
-      .f(dez.kp)
-      .o(dez.eD)
+   public static final lt b = a(dfa.s)
+      .a(dfa.gA)
+      .h(dfa.kh)
+      .j(dfa.jZ)
+      .m(dfa.dE)
+      .a(dfa.cI, dfa.cV)
+      .k(dfa.jy)
+      .l(dfa.hQ)
+      .f(dfa.kp)
+      .o(dfa.eD)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt c = a(dez.p)
-      .a(dez.gx)
-      .h(dez.ke)
-      .j(dez.jW)
-      .m(dez.dB)
-      .a(dez.cG, dez.cT)
-      .k(dez.jv)
-      .l(dez.fL)
-      .f(dez.km)
-      .o(dez.eA)
+   public static final lt c = a(dfa.p)
+      .a(dfa.gx)
+      .h(dfa.ke)
+      .j(dfa.jW)
+      .m(dfa.dB)
+      .a(dfa.cG, dfa.cT)
+      .k(dfa.jv)
+      .l(dfa.fL)
+      .f(dfa.km)
+      .o(dfa.eA)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt d = a(dez.oE)
-      .a(dez.oS)
-      .h(dez.oK)
-      .j(dez.oO)
-      .m(dez.oI)
-      .a(dez.oW, dez.oY)
-      .k(dez.oG)
-      .l(dez.oQ)
-      .f(dez.oU)
-      .o(dez.oM)
+   public static final lt d = a(dfa.oE)
+      .a(dfa.oS)
+      .h(dfa.oK)
+      .j(dfa.oO)
+      .m(dfa.oI)
+      .a(dfa.oW, dfa.oY)
+      .k(dfa.oG)
+      .l(dfa.oQ)
+      .f(dfa.oU)
+      .o(dfa.oM)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt e = a(dez.q)
-      .a(dez.gy)
-      .h(dez.kf)
-      .j(dez.jX)
-      .m(dez.dC)
-      .a(dez.cJ, dez.cW)
-      .k(dez.jw)
-      .l(dez.fM)
-      .f(dez.kn)
-      .o(dez.eB)
+   public static final lt e = a(dfa.q)
+      .a(dfa.gy)
+      .h(dfa.kf)
+      .j(dfa.jX)
+      .m(dfa.dC)
+      .a(dfa.cJ, dfa.cW)
+      .k(dfa.jw)
+      .l(dfa.fM)
+      .f(dfa.kn)
+      .o(dfa.eB)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt f = a(dez.n)
-      .a(dez.gv)
-      .h(dez.dU)
-      .j(dez.fh)
-      .m(dez.dz)
-      .a(dez.cE, dez.cR)
-      .k(dez.jt)
-      .l(dez.cu)
-      .f(dez.cN)
-      .o(dez.ey)
+   public static final lt f = a(dfa.n)
+      .a(dfa.gv)
+      .h(dfa.dU)
+      .j(dfa.fh)
+      .m(dfa.dz)
+      .a(dfa.cE, dfa.cR)
+      .k(dfa.jt)
+      .l(dfa.cu)
+      .f(dfa.cN)
+      .o(dfa.ey)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt g = a(dez.t)
-      .a(dez.gB)
-      .h(dez.ki)
-      .j(dez.ka)
-      .m(dez.dF)
-      .a(dez.cK, dez.cX)
-      .k(dez.jz)
-      .l(dez.hR)
-      .f(dez.kq)
-      .o(dez.eE)
+   public static final lt g = a(dfa.t)
+      .a(dfa.gB)
+      .h(dfa.ki)
+      .j(dfa.ka)
+      .m(dfa.dF)
+      .a(dfa.cK, dfa.cX)
+      .k(dfa.jz)
+      .l(dfa.hR)
+      .f(dfa.kq)
+      .o(dfa.eE)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt h = a(dez.o)
-      .a(dez.gw)
-      .h(dez.kd)
-      .j(dez.jV)
-      .m(dez.dA)
-      .a(dez.cF, dez.cS)
-      .k(dez.ju)
-      .l(dez.fK)
-      .f(dez.kl)
-      .o(dez.ez)
+   public static final lt h = a(dfa.o)
+      .a(dfa.gw)
+      .h(dfa.kd)
+      .j(dfa.jV)
+      .m(dfa.dA)
+      .a(dfa.cF, dfa.cS)
+      .k(dfa.ju)
+      .l(dfa.fK)
+      .f(dfa.kl)
+      .o(dfa.ez)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt i = a(dez.oF)
-      .a(dez.oT)
-      .h(dez.oL)
-      .j(dez.oP)
-      .m(dez.oJ)
-      .a(dez.oX, dez.oZ)
-      .k(dez.oH)
-      .l(dez.oR)
-      .f(dez.oV)
-      .o(dez.oN)
+   public static final lt i = a(dfa.oF)
+      .a(dfa.oT)
+      .h(dfa.oL)
+      .j(dfa.oP)
+      .m(dfa.oJ)
+      .a(dfa.oX, dfa.oZ)
+      .k(dfa.oH)
+      .l(dfa.oR)
+      .f(dfa.oV)
+      .o(dfa.oN)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt j = a(dez.u)
-      .a(dez.gC)
-      .k(dez.jA)
-      .l(dez.hS)
-      .h(dez.kj)
-      .j(dez.kb)
-      .m(dez.dG)
-      .a(dez.cL, dez.cY)
-      .f(dez.kr)
-      .o(dez.eF)
+   public static final lt j = a(dfa.u)
+      .a(dfa.gC)
+      .k(dfa.jA)
+      .l(dfa.hS)
+      .h(dfa.kj)
+      .j(dfa.kb)
+      .m(dfa.dG)
+      .a(dfa.cL, dfa.cY)
+      .f(dfa.kr)
+      .o(dfa.eF)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt k = a(dez.v)
-      .a(dez.gD)
-      .k(dez.jB)
-      .l(dez.hT)
-      .g(dez.kk)
-      .i(dez.kc)
-      .m(dez.dH)
-      .a(dez.cM, dez.cZ)
-      .f(dez.ks)
-      .o(dez.eG)
-      .c(dez.w)
+   public static final lt k = a(dfa.v)
+      .a(dfa.gD)
+      .k(dfa.jB)
+      .l(dfa.hT)
+      .g(dfa.kk)
+      .i(dfa.kc)
+      .m(dfa.dH)
+      .a(dfa.cM, dfa.cZ)
+      .f(dfa.ks)
+      .o(dfa.eG)
+      .c(dfa.w)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt l = a(dez.w).k(dez.jC).l(dez.hU).a();
-   public static final lt m = a(dez.eM).p(dez.nL).l(dez.fk).k(dez.jL).a();
-   public static final lt n = a(dez.g).p(dez.nN).l(dez.no).k(dez.nB).n(dez.h).a();
-   public static final lt o = a(dez.h).l(dez.nq).k(dez.nD).a();
-   public static final lt p = a(dez.pr).p(dez.pt).l(dez.ps).k(dez.pu).n(dez.pv).a();
-   public static final lt q = a(dez.pv).p(dez.pH).m(dez.pF).a(dez.pG).l(dez.pD).k(dez.pE).n(dez.pw).b(dez.py).a();
-   public static final lt r = a(dez.pw).p(dez.pB).l(dez.pA).k(dez.pz).d(dez.px).a();
-   public static final lt s = a(dez.cj).p(dez.nF).l(dez.fi).k(dez.jJ).a();
-   public static final lt t = a(dez.kz).p(dez.nQ).l(dez.nj).k(dez.nx).a();
-   public static final lt u = a(dez.eI).p(dez.nI).l(dez.ng).k(dez.nu).a();
-   public static final lt v = a(dez.qW).e(dez.rf).f(dez.rM).o(dez.rU).b().a();
-   public static final lt w = a(dez.rf).k(dez.rv).l(dez.rr).b(dez.rj).b().a();
-   public static final lt x = a(dez.rw).e(dez.rD).f(dez.rQ).o(dez.rY).a("waxed_cut_copper").b().a();
-   public static final lt y = a(dez.rD).k(dez.rL).l(dez.rH).b(dez.rn).a("waxed_cut_copper").b().a();
-   public static final lt z = a(dez.qX).e(dez.re).f(dez.rN).o(dez.rV).b().a();
-   public static final lt A = a(dez.re).k(dez.ru).l(dez.rq).b(dez.ri).b().a();
-   public static final lt B = a(dez.ry).e(dez.rC).f(dez.rR).o(dez.rZ).a("waxed_exposed_cut_copper").b().a();
-   public static final lt C = a(dez.rC).k(dez.rK).l(dez.rG).b(dez.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final lt D = a(dez.qY).e(dez.rd).f(dez.rP).o(dez.rX).b().a();
-   public static final lt E = a(dez.rd).k(dez.rt).l(dez.rp).b(dez.rh).b().a();
-   public static final lt F = a(dez.rx).e(dez.rB).f(dez.rT).o(dez.sb).a("waxed_weathered_cut_copper").b().a();
-   public static final lt G = a(dez.rB).k(dez.rJ).l(dez.rF).b(dez.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final lt H = a(dez.qZ).e(dez.rc).f(dez.rO).o(dez.rW).b().a();
-   public static final lt I = a(dez.rc).k(dez.rs).l(dez.ro).b(dez.rg).b().a();
-   public static final lt J = a(dez.rz).e(dez.rA).f(dez.rS).o(dez.sa).a("waxed_oxidized_cut_copper").b().a();
-   public static final lt K = a(dez.rA).k(dez.rI).l(dez.rE).b(dez.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final lt L = a(dez.m).p(dez.fP).l(dez.cQ).k(dez.jI).a();
-   public static final lt M = a(dez.cn).p(dez.fQ).l(dez.ni).k(dez.nw).a();
-   public static final lt N = a(dez.e).p(dez.nR).l(dez.nr).k(dez.nE).n(dez.f).a();
-   public static final lt O = a(dez.f).l(dez.nh).k(dez.nv).a();
-   public static final lt P = a(dez.c).p(dez.nJ).l(dez.nn).k(dez.nA).n(dez.d).a();
-   public static final lt Q = a(dez.d).l(dez.ne).k(dez.ns).a();
-   public static final lt R = a(dez.qz).p(dez.qC).l(dez.qB).k(dez.qA).b(dez.qH).n(dez.qD).a();
-   public static final lt S = a(dez.qD).p(dez.qG).l(dez.qF).k(dez.qE).n(dez.qI).a();
-   public static final lt T = a(dez.qI).p(dez.qL).l(dez.qK).k(dez.qJ).b(dez.qM).a();
-   public static final lt U = a(dez.fn).h(dez.fo).p(dez.nM).l(dez.fp).k(dez.jM).b(dez.pI).d(dez.pJ).a();
-   public static final lt V = a(dez.kL).k(dez.nC).l(dez.np).p(dez.nO).a();
-   public static final lt W = a(dez.hZ).p(dez.nG).l(dez.ic).k(dez.if).a();
-   public static final lt X = a(dez.kw).l(dez.ky).k(dez.jQ).c().a();
-   public static final lt Y = a(dez.ia).l(dez.id).k(dez.ig).a();
-   public static final lt Z = a(dez.ib).l(dez.ie).k(dez.ih).a();
-   public static final lt aa = a(dez.hd).l(dez.hg).k(dez.jN).b(dez.he).c().a();
-   public static final lt ab = a(dez.jT).l(dez.nm).k(dez.nz).a();
-   public static final lt ac = a(dez.aV).p(dez.nP).l(dez.fD).k(dez.jF).b(dez.aW).e(dez.aX).c().a();
-   public static final lt ad = a(dez.aX).k(dez.jG).a();
-   public static final lt ae = a(dez.jS).k(dez.ny).l(dez.nl).a();
-   public static final lt af = a(dez.jp).p(dez.nH).l(dez.js).k(dez.jO).b(dez.jq).e(dez.jr).c().a();
-   public static final lt ag = a(dez.jr).k(dez.jP).a();
-   public static final lt ah = a(dez.jU).k(dez.nt).l(dez.nf).a();
-   public static final lt ai = a(dez.b).k(dez.jD).m(dez.dx).a(dez.dM).l(dez.nk).a();
-   public static final lt aj = a(dez.eH).p(dez.nK).l(dez.fj).k(dez.jK).b(dez.eK).d(dez.eJ).c().a();
-   public static final lt ak = a(dez.sJ).a();
-   public static final lt al = a(dez.sK).k(dez.sM).l(dez.sL).p(dez.sN).b(dez.ta).n(dez.sO).a();
-   public static final lt am = a(dez.sO).k(dez.sQ).l(dez.sP).p(dez.sR).a();
-   public static final lt an = a(dez.sW).k(dez.sY).l(dez.sX).p(dez.sZ).d(dez.tb).a();
-   public static final lt ao = a(dez.sS).k(dez.sU).l(dez.sT).p(dez.sV).d(dez.tc).a();
+   public static final lt l = a(dfa.w).k(dfa.jC).l(dfa.hU).a();
+   public static final lt m = a(dfa.eM).p(dfa.nL).l(dfa.fk).k(dfa.jL).a();
+   public static final lt n = a(dfa.g).p(dfa.nN).l(dfa.no).k(dfa.nB).n(dfa.h).a();
+   public static final lt o = a(dfa.h).l(dfa.nq).k(dfa.nD).a();
+   public static final lt p = a(dfa.pr).p(dfa.pt).l(dfa.ps).k(dfa.pu).n(dfa.pv).a();
+   public static final lt q = a(dfa.pv).p(dfa.pH).m(dfa.pF).a(dfa.pG).l(dfa.pD).k(dfa.pE).n(dfa.pw).b(dfa.py).a();
+   public static final lt r = a(dfa.pw).p(dfa.pB).l(dfa.pA).k(dfa.pz).d(dfa.px).a();
+   public static final lt s = a(dfa.cj).p(dfa.nF).l(dfa.fi).k(dfa.jJ).a();
+   public static final lt t = a(dfa.kz).p(dfa.nQ).l(dfa.nj).k(dfa.nx).a();
+   public static final lt u = a(dfa.eI).p(dfa.nI).l(dfa.ng).k(dfa.nu).a();
+   public static final lt v = a(dfa.qW).e(dfa.rf).f(dfa.rM).o(dfa.rU).b().a();
+   public static final lt w = a(dfa.rf).k(dfa.rv).l(dfa.rr).b(dfa.rj).b().a();
+   public static final lt x = a(dfa.rw).e(dfa.rD).f(dfa.rQ).o(dfa.rY).a("waxed_cut_copper").b().a();
+   public static final lt y = a(dfa.rD).k(dfa.rL).l(dfa.rH).b(dfa.rn).a("waxed_cut_copper").b().a();
+   public static final lt z = a(dfa.qX).e(dfa.re).f(dfa.rN).o(dfa.rV).b().a();
+   public static final lt A = a(dfa.re).k(dfa.ru).l(dfa.rq).b(dfa.ri).b().a();
+   public static final lt B = a(dfa.ry).e(dfa.rC).f(dfa.rR).o(dfa.rZ).a("waxed_exposed_cut_copper").b().a();
+   public static final lt C = a(dfa.rC).k(dfa.rK).l(dfa.rG).b(dfa.rm).a("waxed_exposed_cut_copper").b().a();
+   public static final lt D = a(dfa.qY).e(dfa.rd).f(dfa.rP).o(dfa.rX).b().a();
+   public static final lt E = a(dfa.rd).k(dfa.rt).l(dfa.rp).b(dfa.rh).b().a();
+   public static final lt F = a(dfa.rx).e(dfa.rB).f(dfa.rT).o(dfa.sb).a("waxed_weathered_cut_copper").b().a();
+   public static final lt G = a(dfa.rB).k(dfa.rJ).l(dfa.rF).b(dfa.rl).a("waxed_weathered_cut_copper").b().a();
+   public static final lt H = a(dfa.qZ).e(dfa.rc).f(dfa.rO).o(dfa.rW).b().a();
+   public static final lt I = a(dfa.rc).k(dfa.rs).l(dfa.ro).b(dfa.rg).b().a();
+   public static final lt J = a(dfa.rz).e(dfa.rA).f(dfa.rS).o(dfa.sa).a("waxed_oxidized_cut_copper").b().a();
+   public static final lt K = a(dfa.rA).k(dfa.rI).l(dfa.rE).b(dfa.rk).a("waxed_oxidized_cut_copper").b().a();
+   public static final lt L = a(dfa.m).p(dfa.fP).l(dfa.cQ).k(dfa.jI).a();
+   public static final lt M = a(dfa.cn).p(dfa.fQ).l(dfa.ni).k(dfa.nw).a();
+   public static final lt N = a(dfa.e).p(dfa.nR).l(dfa.nr).k(dfa.nE).n(dfa.f).a();
+   public static final lt O = a(dfa.f).l(dfa.nh).k(dfa.nv).a();
+   public static final lt P = a(dfa.c).p(dfa.nJ).l(dfa.nn).k(dfa.nA).n(dfa.d).a();
+   public static final lt Q = a(dfa.d).l(dfa.ne).k(dfa.ns).a();
+   public static final lt R = a(dfa.qz).p(dfa.qC).l(dfa.qB).k(dfa.qA).b(dfa.qH).n(dfa.qD).a();
+   public static final lt S = a(dfa.qD).p(dfa.qG).l(dfa.qF).k(dfa.qE).n(dfa.qI).a();
+   public static final lt T = a(dfa.qI).p(dfa.qL).l(dfa.qK).k(dfa.qJ).b(dfa.qM).a();
+   public static final lt U = a(dfa.fn).h(dfa.fo).p(dfa.nM).l(dfa.fp).k(dfa.jM).b(dfa.pI).d(dfa.pJ).a();
+   public static final lt V = a(dfa.kL).k(dfa.nC).l(dfa.np).p(dfa.nO).a();
+   public static final lt W = a(dfa.hZ).p(dfa.nG).l(dfa.ic).k(dfa.if).a();
+   public static final lt X = a(dfa.kw).l(dfa.ky).k(dfa.jQ).c().a();
+   public static final lt Y = a(dfa.ia).l(dfa.id).k(dfa.ig).a();
+   public static final lt Z = a(dfa.ib).l(dfa.ie).k(dfa.ih).a();
+   public static final lt aa = a(dfa.hd).l(dfa.hg).k(dfa.jN).b(dfa.he).c().a();
+   public static final lt ab = a(dfa.jT).l(dfa.nm).k(dfa.nz).a();
+   public static final lt ac = a(dfa.aV).p(dfa.nP).l(dfa.fD).k(dfa.jF).b(dfa.aW).e(dfa.aX).c().a();
+   public static final lt ad = a(dfa.aX).k(dfa.jG).a();
+   public static final lt ae = a(dfa.jS).k(dfa.ny).l(dfa.nl).a();
+   public static final lt af = a(dfa.jp).p(dfa.nH).l(dfa.js).k(dfa.jO).b(dfa.jq).e(dfa.jr).c().a();
+   public static final lt ag = a(dfa.jr).k(dfa.jP).a();
+   public static final lt ah = a(dfa.jU).k(dfa.nt).l(dfa.nf).a();
+   public static final lt ai = a(dfa.b).k(dfa.jD).m(dfa.dx).a(dfa.dM).l(dfa.nk).a();
+   public static final lt aj = a(dfa.eH).p(dfa.nK).l(dfa.fj).k(dfa.jK).b(dfa.eK).d(dfa.eJ).c().a();
+   public static final lt ak = a(dfa.sJ).a();
+   public static final lt al = a(dfa.sK).k(dfa.sM).l(dfa.sL).p(dfa.sN).b(dfa.ta).n(dfa.sO).a();
+   public static final lt am = a(dfa.sO).k(dfa.sQ).l(dfa.sP).p(dfa.sR).a();
+   public static final lt an = a(dfa.sW).k(dfa.sY).l(dfa.sX).p(dfa.sZ).d(dfa.tb).a();
+   public static final lt ao = a(dfa.sS).k(dfa.sU).l(dfa.sT).p(dfa.sV).d(dfa.tc).a();
 
-   private static lt.a a(dex $$0) {
+   private static lt.a a(dey $$0) {
       lt.a $$1 = new lt.a($$0);
       lt $$2 = ap.put($$0, $$1.a());
       if ($$2 != null) {

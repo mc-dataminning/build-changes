@@ -1,83 +1,46 @@
-public class btf extends cgc {
-   private static final akj<Integer> cc = akn.a(btf.class, akl.b);
-
-   public btf(bsy<? extends btf> $$0, dbw $$1) {
+public abstract class btf extends btq {
+   protected btf(bsz<? extends btf> $$0, dbx $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected lg s() {
-      return li.aP;
+   protected void a(double $$0, boolean $$1, dsb $$2, iz $$3) {
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(cc, 0);
-   }
+   public void a(evq $$0) {
+      if (this.da()) {
+         if (this.be()) {
+            this.a(0.02F, $$0);
+            this.a(btt.a, this.ds());
+            this.h(this.ds().a(0.8F));
+         } else if (this.bs()) {
+            this.a(0.02F, $$0);
+            this.a(btt.a, this.ds());
+            this.h(this.ds().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
 
-   @Override
-   protected avy u() {
-      return avz.kJ;
-   }
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aE()) {
+               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+            }
 
-   @Override
-   protected avy v() {
-      return avz.kG;
-   }
-
-   @Override
-   protected avy d(brl $$0) {
-      return avz.kI;
-   }
-
-   @Override
-   protected avy o_() {
-      return avz.kH;
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(btt.a, this.ds());
+            this.h(this.ds().a((double)$$1));
+         }
       }
 
-      this.dP().a(li.aQ, this.d(0.6), this.dx(), this.g(0.6), 0.0, 0.0, 0.0);
+      this.r(false);
    }
 
    @Override
-   public boolean a(brl $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
-      }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.ao.a(cc, $$0);
-   }
-
-   public int y() {
-      return this.ao.a(cc);
-   }
-
-   public static boolean a(bsy<? extends btn> $$0, dcl $$1, btr $$2, iz $$3, azf $$4) {
-      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dez.G);
+   public boolean q_() {
+      return false;
    }
 }

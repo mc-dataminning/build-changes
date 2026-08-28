@@ -1,29 +1,48 @@
 import com.mojang.serialization.Codec;
 
-public class eaf extends eaw<ecs> {
+public class eaf extends eax<ecs> {
    public eaf(Codec<ecs> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eay<ecs> $$0) {
-      iz $$1 = $$0.e();
-      dcr $$2 = $$0.b();
-      azf $$3 = $$0.d();
-      ecs $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
+   public boolean a(eaz<ecs> $$0) {
+      dcs $$1 = $$0.b();
+      ecs $$2 = $$0.f();
+      azg $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
          return false;
       } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+         iz.a $$8 = $$0.e().j();
+         iz.a $$9 = $$8.j().c($$2.b());
 
-         for (iz $$7 : iz.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               ecs.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
             }
          }
 
@@ -31,15 +50,17 @@ public class eaf extends eaw<ecs> {
       }
    }
 
-   private boolean a(dbx $$0, iz $$1, azf $$2) {
-      iz $$3 = $$1.d();
-      dsa $$4 = $$0.a_($$3);
-      return $$4.a(dez.kE) ? $$2.h() : $$4.d($$0, $$3, je.b);
-   }
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
 
-   private void a(dbx $$0, iz $$1, azf $$2, ecs $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

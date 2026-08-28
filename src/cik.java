@@ -1,30 +1,26 @@
-public class cik extends cic {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cik(chz $$0) {
-      super($$0);
-   }
+public interface cik {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), avz.ie, this.a.de(), 2.5F, 0.8F + this.a.el().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gn().a(cip.f);
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.c = 0;
-   }
+   void a(chz var1, iz var2, brm var3, @Nullable cmw var4);
 
-   @Override
-   public cip<cik> i() {
-      return cip.h;
-   }
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   ciq<? extends cik> i();
+
+   @Nullable
+   evq g();
+
+   float a(brm var1, float var2);
 }

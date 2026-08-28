@@ -1,17 +1,15 @@
-public enum cyi implements azs {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final azs.a<cyi> d = azs.a(cyi::values);
-   private final String e;
-
-   private cyi(final String $$0) {
-      this.e = $$0;
+public class cyi extends cyd {
+   public cyi(String $$0, cyj $$1, cyr $$2, cuo $$3, float $$4, int $$5) {
+      super(cyz.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cuo g() {
+      return new cuo(dfa.og);
+   }
+
+   @Override
+   public cyy<?> ao_() {
+      return cyy.s;
    }
 }

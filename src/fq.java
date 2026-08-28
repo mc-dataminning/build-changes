@@ -25,8 +25,8 @@ public class fq implements ArgumentType<ale> {
       }
    }
 
-   public static cyv<?> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      cyw $$2 = ((ep)$$0.getSource()).l().aJ();
+   public static cyw<?> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      cyx $$2 = ((ep)$$0.getSource()).l().aJ();
       ale $$3 = c($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }

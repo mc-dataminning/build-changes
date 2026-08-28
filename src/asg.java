@@ -36,7 +36,7 @@ public class asg implements ajj, xc {
    public asg(MinecraftServer $$0, wj $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1;
-      this.e = Ints.toByteArray(azf.a().f());
+      this.e = Ints.toByteArray(azg.a().f());
       this.m = $$2;
    }
 
@@ -88,7 +88,7 @@ public class asg implements ajj, xc {
    @Override
    public void a(ajl $$0) {
       Validate.validState(this.h == asg.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(azt.f($$0.b()), "Invalid characters in username", new Object[0]);
+      Validate.validState(azu.f($$0.b()), "Invalid characters in username", new Object[0]);
       this.j = $$0.b();
       GameProfile $$1 = this.f.S();
       if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {

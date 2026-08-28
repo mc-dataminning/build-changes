@@ -37,6 +37,7 @@ public interface kl<T> {
       private Codec<T> a;
       @Nullable
       private zm<? super wz, T> b;
+      private boolean c;
 
       public kl.a<T> a(Codec<T> $$0) {
          this.a = $$0;
@@ -48,9 +49,15 @@ public interface kl<T> {
          return this;
       }
 
-      public kl<T> a() {
+      public kl.a<T> a() {
+         this.c = true;
+         return this;
+      }
+
+      public kl<T> b() {
          zm<? super wz, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zk.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
-         return new kl.a.a<>(this.a, $$0);
+         Codec<T> $$1 = this.c && this.a != null ? km.a.a(this.a) : this.a;
+         return new kl.a.a<>($$1, $$0);
       }
 
       static class a<T> implements kl<T> {

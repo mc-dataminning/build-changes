@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adz(epg b, byte c, boolean d, Optional<List<epc>> e, Optional<epi.b> f) implements zv<ach> {
-   public static final zm<wz, adz> a = zm.a(epg.b, adz::b, zk.c, adz::e, zk.b, adz::f, epc.a.a(zk.a()).a(zk::a), adz::g, epi.b.a, adz::h, adz::new);
+public record adz(eph b, byte c, boolean d, Optional<List<epd>> e, Optional<epj.b> f) implements zv<ach> {
+   public static final zm<wz, adz> a = zm.a(eph.b, adz::b, zk.c, adz::e, zk.b, adz::f, epd.a.a(zk.a()).a(zk::a), adz::g, epj.b.a, adz::h, adz::new);
 
-   public adz(epg $$0, byte $$1, boolean $$2, @Nullable Collection<epc> $$3, @Nullable epi.b $$4) {
+   public adz(eph $$0, byte $$1, boolean $$2, @Nullable Collection<epd> $$3, @Nullable epj.b $$4) {
       this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
@@ -19,7 +19,7 @@ public record adz(epg b, byte c, boolean d, Optional<List<epc>> e, Optional<epi.
       $$0.a(this);
    }
 
-   public void a(epi $$0) {
+   public void a(epj $$0) {
       this.e.ifPresent($$0::a);
       this.f.ifPresent($$1 -> $$1.a($$0));
    }
@@ -32,11 +32,11 @@ public record adz(epg b, byte c, boolean d, Optional<List<epc>> e, Optional<epi.
       return this.d;
    }
 
-   public Optional<List<epc>> g() {
+   public Optional<List<epd>> g() {
       return this.e;
    }
 
-   public Optional<epi.b> h() {
+   public Optional<epj.b> h() {
       return this.f;
    }
 }

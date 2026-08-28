@@ -1,25 +1,24 @@
 import org.joml.Matrix4f;
 
-public interface fpt {
-   static fpt a(ayj $$0) {
-      return new fps($$0);
+public class fpt implements fpu {
+   private final ayk a;
+
+   public fpt(ayk $$0) {
+      this.a = $$0;
    }
 
-   static fpt a(crx $$0) {
-      if ($$0 instanceof crw $$1) {
-         return new fpr($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   public int a(fgo $$0) {
+      return $$0.a(this.a);
    }
 
-   int a();
-
-   int a(fgn var1);
-
-   default void a(fgn $$0, int $$1, int $$2, Matrix4f $$3, gdm.a $$4) {
+   @Override
+   public int a() {
+      return 10;
    }
 
-   default void a(fgn $$0, int $$1, int $$2, fgp $$3) {
+   @Override
+   public void a(fgo $$0, int $$1, int $$2, Matrix4f $$3, gdn.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fgo.a.a, 0, 15728880);
    }
 }

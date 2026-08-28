@@ -4,25 +4,25 @@ public class aqz {
    @Nullable
    protected static iz a(are $$0, int $$1, int $$2) {
       boolean $$3 = $$0.D_().h();
-      dug $$4 = $$0.d(kb.a($$1), kb.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dxs.a.e, $$1 & 15, $$2 & 15);
+      duh $$4 = $$0.d(kb.a($$1), kb.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dxt.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.I_()) {
          return null;
       } else {
-         int $$6 = $$4.a(dxs.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dxs.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(dxt.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dxt.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             iz.a $$7 = new iz.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dsa $$9 = $$0.a_($$7);
+               dsb $$9 = $$0.a_($$7);
                if (!$$9.u().c()) {
                   break;
                }
 
-               if (dex.a($$9.k($$0, $$7), je.b)) {
+               if (dey.a($$9.k($$0, $$7), je.b)) {
                   return $$7.c().i();
                }
             }
@@ -33,7 +33,7 @@ public class aqz {
    }
 
    @Nullable
-   public static iz a(are $$0, dbd $$1) {
+   public static iz a(are $$0, dbe $$1) {
       if (aa.a($$1)) {
          return null;
       } else {

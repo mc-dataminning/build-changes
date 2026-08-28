@@ -19,8 +19,8 @@ public record da(de.d c, Optional<bu> d) implements bv {
    }
 
    @Override
-   public boolean a(bss $$0, are $$1, @Nullable evp $$2) {
-      return !($$0 instanceof btm $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(bst $$0, are $$1, @Nullable evq $$2) {
+      return !($$0 instanceof btn $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public de.d b() {

@@ -1,34 +1,35 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fnf extends fmt {
-   private static final xo a = xo.c("options.sounds.title");
-   private fhz r;
+public class fnf extends fmu {
+   private static final xo a = xo.c("options.skinCustomisation.title");
+   @Nullable
+   private fia r;
 
-   private static ffg<?>[] a(ffh $$0) {
-      return new ffg[]{$$0.W(), $$0.X()};
-   }
-
-   public fnf(fnb $$0, ffh $$1) {
+   public fnf(fnc $$0, ffi $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void aM_() {
-      this.r = this.c(new fhz(this.m, this.n, this.o, this));
-      this.r.a(this.c.b(awa.a));
-      this.r.a(this.D());
-      this.r.a(this.c.at());
-      this.r.a(a(this.c));
+      this.r = this.c(new fia(this.m, this.n, this.o, this));
+      List<fhb> $$0 = new ArrayList<>();
+
+      for (cmx $$1 : cmx.values()) {
+         $$0.add(fhk.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      }
+
+      $$0.add(this.c.v().a(this.c));
+      this.r.a($$0);
       super.aM_();
    }
 
    @Override
    protected void c() {
       super.c();
-      this.r.a(this.n, this.d);
-   }
-
-   private ffg<?>[] D() {
-      return Arrays.stream(awa.values()).filter($$0 -> $$0 != awa.a).map($$0 -> this.c.b($$0)).toArray(ffg[]::new);
+      if (this.r != null) {
+         this.r.a(this.n, this.d);
+      }
    }
 }

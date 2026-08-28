@@ -8,9 +8,9 @@ public class agj implements zv<ach> {
    private final byte g;
    private final boolean h;
 
-   public agj(bss $$0) {
+   public agj(bst $$0) {
       this.b = $$0.al();
-      evp $$1 = $$0.do();
+      evq $$1 = $$0.do();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;

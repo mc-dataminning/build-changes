@@ -16,32 +16,32 @@ public class akl {
    public static final akk<String> e = akk.a(zk.l);
    public static final akk<xo> f = akk.a(xq.d);
    public static final akk<Optional<xo>> g = akk.a(xq.e);
-   public static final akk<cun> h = new akk<cun>() {
+   public static final akk<cuo> h = new akk<cuo>() {
       @Override
-      public zm<? super wz, cun> codec() {
-         return cun.h;
+      public zm<? super wz, cuo> codec() {
+         return cuo.h;
       }
 
-      public cun a(cun $$0) {
+      public cuo a(cuo $$0) {
          return $$0.s();
       }
    };
-   public static final akk<dsa> i = akk.a(zk.a(dex.q));
-   private static final zm<ByteBuf, Optional<dsa>> G = new zm<ByteBuf, Optional<dsa>>() {
-      public void a(ByteBuf $$0, Optional<dsa> $$1) {
+   public static final akk<dsb> i = akk.a(zk.a(dey.q));
+   private static final zm<ByteBuf, Optional<dsb>> G = new zm<ByteBuf, Optional<dsb>>() {
+      public void a(ByteBuf $$0, Optional<dsb> $$1) {
          if ($$1.isPresent()) {
-            xf.a($$0, dex.i($$1.get()));
+            xf.a($$0, dey.i($$1.get()));
          } else {
             xf.a($$0, 0);
          }
       }
 
-      public Optional<dsa> a(ByteBuf $$0) {
+      public Optional<dsb> a(ByteBuf $$0) {
          int $$1 = xf.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dex.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dey.a($$1));
       }
    };
-   public static final akk<Optional<dsa>> j = akk.a(G);
+   public static final akk<Optional<dsb>> j = akk.a(G);
    public static final akk<Boolean> k = akk.a(zk.b);
    public static final akk<lg> l = akk.a(li.bg);
    public static final akk<List<lg>> m = akk.a(li.bg.a(zk.a()));
@@ -58,10 +58,10 @@ public class akl {
       }
 
       public ur a(ur $$0) {
-         return $$0.h();
+         return $$0.i();
       }
    };
-   public static final akk<cmj> u = akk.a(cmj.d);
+   public static final akk<cmk> u = akk.a(cmk.d);
    private static final zm<ByteBuf, OptionalInt> H = new zm<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = xf.a($$0);
@@ -73,13 +73,13 @@ public class akl {
       }
    };
    public static final akk<OptionalInt> v = akk.a(H);
-   public static final akk<btz> w = akk.a(btz.t);
-   public static final akk<ji<cfh>> x = akk.a(zk.b(lq.l));
-   public static final akk<ji<cgh>> y = akk.a(zk.b(lq.m));
-   public static final akk<ji<cfo>> z = akk.a(zk.b(lq.B));
-   public static final akk<ji<cjb>> A = akk.a(zk.b(lq.S));
-   public static final akk<cgm.a> B = akk.a(cgm.a.e);
-   public static final akk<chu.a> C = akk.a(chu.a.i);
+   public static final akk<bua> w = akk.a(bua.t);
+   public static final akk<ji<cfi>> x = akk.a(zk.b(lq.l));
+   public static final akk<ji<cgi>> y = akk.a(zk.b(lq.m));
+   public static final akk<ji<cfp>> z = akk.a(zk.b(lq.B));
+   public static final akk<ji<cjc>> A = akk.a(zk.b(lq.S));
+   public static final akk<cgn.a> B = akk.a(cgn.a.e);
+   public static final akk<chv.a> C = akk.a(chv.a.i);
    public static final akk<Vector3f> D = akk.a(zk.r);
    public static final akk<Quaternionf> E = akk.a(zk.s);
 

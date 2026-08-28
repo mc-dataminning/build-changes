@@ -1,56 +1,20 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class cid extends cib {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private evp d;
-   private int e;
-
-   public cid(chz $$0) {
+public abstract class cid extends cic {
+   public cid(cia $$0) {
       super($$0);
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gn().a(cip.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gn().a(cip.a);
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public float a(brm $$0, float $$1) {
+      if (!($$0.c() instanceof cnc) && !($$0.c() instanceof cog)) {
+         return super.a($$0, $$1);
       } else {
-         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-            this.e++;
-         }
+         $$0.c().g(1);
+         return 0.0F;
       }
-   }
-
-   @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(evp $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public evp g() {
-      return this.d;
-   }
-
-   @Override
-   public cip<cid> i() {
-      return cip.i;
    }
 }

@@ -20,7 +20,7 @@ public class adr implements zv<ach> {
       this.i = $$0.l();
    }
 
-   public adr(dtr $$0) {
+   public adr(dts $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

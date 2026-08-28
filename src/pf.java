@@ -9,8 +9,8 @@ public class pf {
          akz.a.forEach($$1xx -> $$1xx.a($$3::a));
          jy.g $$4 = $$1.a($$2, $$1x, $$3);
          jk.a $$5 = $$4.a();
-         Optional<jk.b<dcv>> $$6 = $$5.a(lq.az);
-         Optional<jk.b<ehm>> $$7 = $$5.a(lq.aI);
+         Optional<jk.b<dcw>> $$6 = $$5.a(lq.az);
+         Optional<jk.b<ehn>> $$7 = $$5.a(lq.aI);
          if ($$6.isPresent() || $$7.isPresent()) {
             ph.a($$7.orElseGet(() -> $$1x.b(lq.aI)), $$6.orElseGet(() -> $$1x.b(lq.az)));
          }

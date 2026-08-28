@@ -1,274 +1,59 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class frz {
-   private static final xo a = xo.c("selectWorld.newWorld");
-   private final List<Consumer<frz>> b = new ArrayList<>();
-   private String c = a.getString();
-   private frz.a d = frz.a.a;
-   private bqp e = bqp.c;
-   @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fry l;
-   private frz.b m;
-   private final List<frz.b> n = new ArrayList<>();
-   private final List<frz.b> o = new ArrayList<>();
-   private dbs p = new dbs();
-
-   public frz(Path $$0, fry $$1, Optional<ald<ehx>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new frz.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
+public record frz(dyr a, jv<dvu> b, dyo c, jp<aln> d, alp e, dcr f) {
+   public frz(dyp $$0, jp<aln> $$1, alp $$2, dcr $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public void a(Consumer<frz> $$0) {
-      this.b.add($$0);
+   public frz(dyr $$0, dyo $$1, jp<aln> $$2, alp $$3, dcr $$4) {
+      this($$0, $$2.a(aln.c).d(lq.aT), $$1, $$2.a(aln.c), $$3, $$4);
    }
 
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
-      }
-
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
-      }
-
-      for (Consumer<frz> $$2 : this.b) {
-         $$2.accept(this);
-      }
+   public frz a(dyr $$0, dyo $$1) {
+      return new frz($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
+   public frz a(frz.b $$0) {
+      return new frz($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
-         }
-      }
+   public frz a(frz.a $$0) {
+      return new frz(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   public String b() {
+   public jw.b a() {
+      return this.d.a();
+   }
+
+   public dyr b() {
+      return this.a;
+   }
+
+   public jv<dvu> c() {
+      return this.b;
+   }
+
+   public dyo d() {
       return this.c;
    }
 
-   public String c() {
-      return this.k;
+   public jp<aln> e() {
+      return this.d;
    }
 
-   public void a(frz.a $$0) {
-      this.d = $$0;
-      this.a();
+   public alp f() {
+      return this.e;
    }
 
-   public frz.a d() {
-      return this.l() ? frz.a.d : this.d;
+   public dcr g() {
+      return this.f;
    }
 
-   public void a(bqp $$0) {
-      this.e = $$0;
-      this.a();
+   @FunctionalInterface
+   public interface a extends BiFunction<jw.b, dyo, dyo> {
    }
 
-   public bqp e() {
-      return this.f() ? bqp.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == frz.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == frz.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dyq.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(fry $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public fry k() {
-      return this.l;
-   }
-
-   public void a(fry.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(dcq $$0) {
-      dcq $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fry(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.d().c();
-   }
-
-   public void a(frz.b $$0) {
-      this.m = $$0;
-      ji<ehx> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public frz.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public frv n() {
-      ji<ehx> $$0 = this.m().c();
-      return $$0 != null ? frv.a.get($$0.e()) : null;
-   }
-
-   public List<frz.b> o() {
-      return this.n;
-   }
-
-   public List<frz.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      jv<ehx> $$0 = this.k().a().d(lq.aQ);
-      this.n.clear();
-      this.n.addAll(a($$0, axi.a).orElseGet(() -> $$0.h().map(frz.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, axi.b).orElse(this.n));
-      ji<ehx> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(frz.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<ji<ehx>> a(fry $$0, Optional<ald<ehx>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(lq.aQ).b($$1x));
-   }
-
-   private static Optional<List<frz.b>> a(jv<ehx> $$0, axe<ehx> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(frz.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(dbs $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public dbs q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", dbt.a),
-      b("hardcore", dbt.a),
-      c("creative", dbt.b),
-      d("spectator", dbt.d);
-
-      public final dbt e;
-      public final xo f;
-      private final xo g;
-
-      private a(final String $$0, final dbt $$1) {
-         this.e = $$1;
-         this.f = xo.c("selectWorld.gameMode." + $$0);
-         this.g = xo.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public xo a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable ji<ehx> a) {
-      private static final xo b = xo.c("generator.custom");
-
-      public xo a() {
-         return Optional.ofNullable(this.a).flatMap(ji::e).map($$0 -> xo.c($$0.a().f("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(ji::e).filter($$0 -> $$0.equals(ehy.d)).isPresent();
-      }
-
-      @Nullable
-      public ji<ehx> c() {
-         return this.a;
-      }
+   public interface b extends UnaryOperator<dyr> {
    }
 }
